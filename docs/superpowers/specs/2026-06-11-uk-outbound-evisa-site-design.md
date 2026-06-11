@@ -18,6 +18,10 @@ Derived from competitor organic-keyword analysis of `visahq.com` and `atlys.com`
 | Market | UK only (English, no hreflang at launch) |
 | Service direction | Outbound — Brits → world (eVisa/ETA facilitation) |
 | Product lines | (1) Visa/eVisa/ETA facilitation · (2) International Driving Permit (IDP) — both fulfilled, both P1 |
+| Payment | Stripe — full checkout upfront (service fee + govt/official fee, shown split) |
+| Service tiers | Standard · Express · Premium (per destination) |
+| Fulfilment | Manual back-office ops (MVP; most govt eVisa portals have no API) |
+| IDP model | Facilitation / done-for-you (obtain + post on customer's behalf; not an authorised issuer) |
 | Content model | Service + tools + evergreen guides (Atlys-style) |
 | Monetisation | Own visa service / lead capture |
 | Launch approach | Depth-first on top destination clusters |
@@ -244,8 +248,10 @@ Capture → CRM + email. Every money page and tool routes here.
 
 ## 8. Tech stack
 
-- WordPress + RankMath (SEO/schema) + Fluent Forms (funnel → CRM) + lightweight fast theme.
-- Tools = embedded JS widgets mounted in WP pages.
+- WordPress + RankMath (SEO/schema) + lightweight fast theme.
+- **Funnel/checkout**: multi-step `/apply` flow + **Stripe** payments. (Fluent Forms only for non-payment leads if any.)
+- **Tools**: client-side JS widgets — visa-photo maker via HTML canvas (photo never leaves browser = privacy + zero server cost); "do I need a visa" checker reads an **own JSON dataset** (passport×destination, plus 1949/1968 IDP mapping — shared with IDP logic).
+- **Secure PII**: encrypted document upload + storage (passport/licence scans), defined retention/deletion policy, GDPR/ICO compliant.
 - Schema: FAQPage, HowTo, BreadcrumbList, Service.
 
 ## 9. SEO / trust / compliance
@@ -296,3 +302,42 @@ Each excluded bucket from §11 has a designated home so expansion bolts on witho
 
 ### Dead — no silo
 UK inbound visas (separate brand, regulated) · competitor brand terms · non-UK/non-English locale keywords · pure flights/airline/airport terms · typos & ultra-low-volume noise.
+
+## 13. Component deep-dive (locked)
+
+### 13.1 `/apply` funnel + checkout
+Multi-step, progress bar, pre-filled from referrer (money page / tool):
+1. Service + destination (visa / IDP / bundle) + travel date
+2. Eligibility check → requirements + price
+3. Applicant details (name, DOB, email, phone, passport no./expiry; IDP adds UK licence no.)
+4. Document upload (passport scan, photo or reuse `/tools/visa-photo`, licence for IDP)
+5. **IDP branch**: also collects **delivery address** (permit is physically posted)
+6. Review + price breakdown — service fee + govt/official fee shown **split**
+7. **Payment — Stripe, full amount upfront** (card, Apple/Google Pay)
+8. Confirmation — order ref + timeline → email + CRM
+
+**Bundling**: visa + IDP = combined cart, single checkout, no discount.
+**Fulfilment**: order → back-office dashboard → ops submit to govt portal (visa) / obtain + post permit (IDP) → status emails (received → processing → issued → delivered).
+**Compliance**: encrypted PII storage + retention policy; "independent service, not a government website" disclaimer on every step.
+
+### 13.2 Destination money-page template (data-driven, reused all silos)
+Per-destination fields: price (×3 tiers), govt fee, processing times, visa types, requirements, FAQ.
+Section stack: Hero (H1=primary kw + CTA "Start your [X] eVisa — £Y") → Do-you-need-a-visa answer → Visa types → Price (split + total) → Processing time (standard/express/premium) → Requirements (→ photo tool) → How to apply (3-step, HowTo schema) → **IDP cross-sell** (drive destinations) → FAQ (FAQPage schema) → Related guides → EEAT footer. Sticky CTA.
+**Entry**: CTAs → `/apply` pre-filled (funnel lives only in `/apply`).
+**Tiers**: Standard / Express / Premium (concierge / expert-checked) — priced per destination.
+Schema: Service + FAQPage + HowTo + BreadcrumbList.
+
+### 13.3 Tools
+- **`/tools/do-i-need-a-visa/`** — input nationality (default UK) + destination → own-JSON lookup → result card {requirement, max stay, govt fee} + CTA to money page/`/apply`. Embeddable (backlink magnet). Serviced destinations get hard CTA; others info-only (signals P2 demand).
+- **`/tools/visa-photo/`** — client-side canvas: upload → crop to per-country preset + bg/compliance check → **free** compliant download. Pure traffic/link magnet; same widget reused at `/apply` photo step.
+
+### 13.4 IDP product + cross-sell
+- **Model**: facilitation/done-for-you — obtain the correct permit(s) on customer's behalf + post. Price = service fee + official permit cost.
+- **Permit logic**: destination → required permit (1949 Geneva / 1968 Vienna / both), auto-selected from shared JSON dataset. ⚠️ data-accuracy task — mapping must be correct per country.
+- **Pages**: `/idp/` (service + CTA), `/idp/countries/` (which-permit table), `/idp/[country]/` (per drive-destination, cross-sell target).
+- **Cross-sell**: drive-destination visa pages (Turkey, Morocco, UAE, Egypt, USA, India) → "Driving? Add IDP" → combined cart.
+
+### Open items to resolve before/within build
+- Confirm legal footing of IDP facilitation model (assumed legal as done-for-you).
+- Accurate per-country 1949/1968 permit mapping + per-destination govt fees + processing times (data-gathering task).
+- CRM/back-office dashboard choice for manual fulfilment ops.
