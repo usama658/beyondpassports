@@ -249,7 +249,7 @@ Capture → CRM + email. Every money page and tool routes here.
 ## 8. Tech stack
 
 - WordPress + RankMath (SEO/schema) + lightweight fast theme.
-- **Funnel/checkout**: multi-step `/apply` flow + **Stripe** payments. (Fluent Forms only for non-payment leads if any.)
+- **Funnel/checkout**: custom multi-step `/apply` flow + **Stripe** (Checkout / Payment Element) for upfront payment. On payment success → webhook / **Zapier** → **external CRM (Pipedrive default; HubSpot alt)** where the **deal pipeline = order lifecycle** and ops fulfilment + status emails run. (No WooCommerce.)
 - **Tools**: client-side JS widgets — visa-photo maker via HTML canvas (photo never leaves browser = privacy + zero server cost); "do I need a visa" checker reads an **own JSON dataset** (passport×destination, plus 1949/1968 IDP mapping — shared with IDP logic).
 - **Secure PII**: encrypted document upload + storage (passport/licence scans), defined retention/deletion policy, GDPR/ICO compliant.
 - Schema: FAQPage, HowTo, BreadcrumbList, Service.
@@ -340,4 +340,31 @@ Schema: Service + FAQPage + HowTo + BreadcrumbList.
 ### Open items to resolve before/within build
 - Confirm legal footing of IDP facilitation model (assumed legal as done-for-you).
 - Accurate per-country 1949/1968 permit mapping + per-destination govt fees + processing times (data-gathering task).
-- CRM/back-office dashboard choice for manual fulfilment ops.
+- Final CRM pick: Pipedrive (default) vs HubSpot.
+
+## 14. Operations & launch (locked)
+
+### 14.1 Homepage / IA
+- **Header nav**: Destinations ▾ (8 + all) · IDP · Tools ▾ (checker, photo) · How it works · Pricing · primary CTA.
+- **Homepage stack**: Hero with **embedded "do I need a visa?" checker** (routes to money pages) → popular-destinations grid (flag + "from £X") → how-it-works (3 steps) → IDP strip → tools strip → trust (reviews, Stripe, "not a government site") → FAQ → **footer = full silo index** (every money page, IDP, tools, legal).
+- Header dropdown + footer = the internal-link hub.
+
+### 14.2 CRM / back-office ops (external CRM + Zapier)
+- **Stack**: Stripe checkout → webhook/Zapier → **Pipedrive** (default). Deal pipeline stages = order lifecycle:
+  **New → Action-needed (missing docs) → Submitted → In-progress → Issued → Delivered → Closed** (+ Refunded/Cancelled).
+- **Per deal**: customer record, secure document links, destination/product/tier, govt-portal submission notes.
+- **SLA**: tier-based priority (Premium/Express first) tracked via deal fields/activities.
+- **Status emails**: triggered on stage change (Zapier/CRM automation).
+- **Docs**: encrypted upload + storage (links attached to deal), access-logged, retention/deletion policy.
+
+### 14.3 Content-production pipeline
+- **Money pages**: auto-populate the data-driven template from a per-destination **data sheet** (price×3 tiers, govt fee, processing times, visa types, requirements, FAQ, 1949/1968 permit).
+- **Guides**: written content (weather, plugs, things-to-do, etc.).
+- **Flow**: research/build data sheet → template populates money page → **AI-draft** guides + page prose → **mandatory human accuracy QA** (fees, requirements, permit mapping = liability-critical) → publish via `wordpress-publisher` skill.
+- ~30 pages at launch.
+
+### 14.4 Launch sequencing (all 8 destinations at once)
+- **P0 foundation**: WP + theme + RankMath + Stripe checkout + secure doc upload + Zapier→Pipedrive + legal/trust pages + analytics/GSC + status-email automations.
+- **P1 build (parallel)**: 8 destination money pages + Schengen hub + IDP silo (6 country pages) + UK hub + 2 tools + support guides + `/apply` funnel.
+- **P1 go-live (single launch)**: full QA pass → payments tested · doc security verified · disclaimers present · schema valid · sitemap + GSC submitted · conversion tracking · refund/terms live → launch all destinations together.
+- **P2+**: expansion per §12.
