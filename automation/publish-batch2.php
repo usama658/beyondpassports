@@ -1,0 +1,48 @@
+<?php
+// Publish 8 backlog guides + RankMath meta. Idempotent by slug. Run via wp eval-file.
+// slug => [title, answer, body-html, money-link-html, meta-desc, focus]
+$g = [
+'turkey-evisa-how-to-apply' => ['How to Apply for a Turkey e-Visa from the UK',
+ 'Most UK travellers no longer need a Turkey e-Visa. British citizens can enter Turkey visa-free for tourism or business stays of up to 90 days within any 180-day period, using just a valid passport. The e-Visa system still exists for other nationalities, but ordinary UK holidaymakers can skip it.',
+ '<h2>Do UK citizens still need one?</h2><p>For standard tourism, no — British passport holders enter visa-free for up to 90 days in any 180-day window. You may still need a permit to work, study, or stay longer.</p><h2>Passport rules</h2><p>Turkey generally requires your passport valid 150+ days from entry, with a blank page. Check the expiry well before you travel.</p><h3>FAQ</h3><p><strong>Visa needed in 2026?</strong> No, visa-free up to 90 days. <strong>Longer stays?</strong> Need a separate permit.</p>',
+ 'turkey','turkey travel guide','Turkey is visa-free for UK tourists up to 90 days — most British travellers no longer need a Turkey e-Visa. Here is what changed.','turkey evisa from the uk'],
+'how-to-apply-us-esta-uk' => ['How to Apply for a US ESTA from the UK',
+ 'UK citizens travelling to the USA under the Visa Waiver Programme must hold an approved ESTA before boarding. You apply online, answer eligibility questions, pay a fee, and most applicants get a quick decision. An approved ESTA is generally valid two years or until your passport expires.',
+ '<h2>What an ESTA is</h2><p>An electronic travel authorisation for stays up to 90 days (tourism, business, transit) — not a visa; a border officer makes the final call.</p><h2>How it works</h2><p>Apply online with passport + contact details, answer the questions, pay. Apply at least 72 hours before departure. Approval links electronically to your passport.</p><h3>FAQ</h3><p><strong>How long to approve?</strong> Minutes to 72 hours. <strong>Validity?</strong> Two years or passport expiry.</p>',
+ 'usa','USA travel guide','UK travellers need an approved ESTA to visit the USA visa-free. Here is how the ESTA application works and how long it lasts.','us esta from the uk'],
+'esta-denied-reasons-uk' => ['ESTA Denied for UK Travellers: Common Reasons',
+ 'An ESTA can be denied for UK travellers due to a previous US visa refusal or overstay, a criminal record, certain travel history, or errors on the form. A denial usually means you must apply for a traditional US visa instead, not that you are barred from the USA.',
+ '<h2>Common reasons</h2><p>Prior visa refusal/overstay, an arrest or conviction, a "yes" to an eligibility question, or travel to restricted countries. Simple form errors (passport number, name, DOB) also cause refusals.</p><h2>What to do</h2><p>If it was a genuine data error, resubmit corrected. If it relates to your history, apply for a visa via the US Embassy — don\'t just reapply.</p><h3>FAQ</h3><p><strong>Reapply after denial?</strong> Only if it was a correctable error. <strong>Barred from the USA?</strong> No — usually means apply for a visa.</p>',
+ 'usa','USA travel guide','An ESTA can be denied for UK travellers due to past refusals, criminal history, or form errors. Here are the common reasons + what to do next.','esta denied for uk travellers'],
+'india-evisa-how-to-apply-uk' => ['How to Apply for an India e-Visa for UK Citizens',
+ 'UK citizens can apply for an India e-Visa online before departure. You choose a category (tourist, business, medical), complete the form, upload a photo and passport scan, pay the fee, and receive an Electronic Travel Authorisation by email to present on arrival.',
+ '<h2>Choosing the category</h2><p>e-Tourist (holidays/family), e-Business (meetings/trade), e-Medical (treatment). Match it to your real purpose or risk refusal.</p><h2>The process</h2><p>Apply online a few days ahead; provide passport + travel details, upload a photo + passport bio-page scan, pay, and receive the ETA by email. Carry a printed/digital copy.</p><h3>FAQ</h3><p><strong>How early?</strong> Several days before travel. <strong>Print it?</strong> Yes — show it at immigration with your passport.</p>',
+ 'india','India travel guide','UK citizens apply for an India e-Visa online before travelling. Here is how the process works, category by category.','india evisa for uk citizens'],
+'india-evisa-photo-requirements' => ['India e-Visa Photo & Document Requirements',
+ 'An India e-Visa needs two uploads: a recent square colour photo on a plain light background showing your full face, and a clear scan of your passport bio-data page. Meeting these specs first time avoids delays or rejection.',
+ '<h2>Photo</h2><p>Recent, square, colour, plain light background, full face, neutral expression, eyes open. No sunglasses; head coverings only for religious reasons.</p><h2>Passport scan</h2><p>A legible bio-data page scan (no glare/cut-off). Passport valid 6+ months from arrival with 2 blank pages.</p><h3>FAQ</h3><p><strong>Background?</strong> Plain white/light, even lighting. <strong>Validity?</strong> 6+ months, 2 blank pages.</p>',
+ 'india','India travel guide','India e-Visa applications need a square colour photo on a plain background + a clear passport bio-page scan. Full requirements here.','india evisa photo requirements'],
+'australia-eta-how-to-apply-uk' => ['How to Apply for an Australian ETA from the UK',
+ 'UK citizens visiting Australia for tourism or business can apply for an ETA before flying, usually via the official Australian ETA app. It links electronically to your passport and generally allows multiple visits of up to three months each over 12 months.',
+ '<h2>What the ETA is</h2><p>An electronic authorisation for short visits (tourism, family, some business) — not a work visa. UK passport holders use the ETA (eVisitor is for many other European nationalities).</p><h2>How to apply</h2><p>Via the official ETA app: scan your passport, take an in-app photo, answer eligibility questions, pay. Decisions usually come quickly; nothing to print.</p><h3>FAQ</h3><p><strong>How long can I stay?</strong> Up to 3 months per visit, multiple entries over 12 months. <strong>ETA or eVisitor?</strong> UK citizens use the ETA.</p>',
+ 'australia','Australia travel guide','UK citizens apply for an Australian ETA before flying, usually via the official app. Here is how the ETA process works.','australian eta from the uk'],
+'passport-validity-rules-by-country' => ['Passport Validity Rules by Country (UK Travellers)',
+ 'Passport validity rules vary by destination. Many countries require at least six months\' validity beyond your arrival date; others only need it valid for your stay. Europe also limits how old the passport can be. Airlines enforce these strictly, so check before booking.',
+ '<h2>The six-month rule</h2><p>Common across Asia, the Middle East and Africa (e.g. India, Thailand) — 6+ months from entry. Fall short and you can be refused boarding.</p><h2>Europe: 3+6</h2><p>Schengen needs a passport issued within the last 10 years AND valid 3+ months after departure. Check both issue and expiry dates.</p><h2>Other</h2><p>Turkey ~150 days; some only need validity for your stay. Check every country on your itinerary, including transit.</p><h3>FAQ</h3><p><strong>How many months left?</strong> Often 6 from arrival; Europe = 3 after departure + issued within 10 years. <strong>Refused boarding?</strong> Yes, airlines check at check-in.</p>',
+ 'turkey','our country guides','Many countries need six months\' passport validity; Europe differs. How passport validity rules work for UK travellers.','passport validity rules by country'],
+'visa-free-countries-uk-citizens' => ['Visa-Free Countries for UK Citizens (2026)',
+ 'In 2026 the British passport gives access to many destinations either visa-free or with a simple electronic authorisation. Visa-free = enter on your passport alone; authorisations like the US ESTA, India e-Visa or Australian ETA are applied for online before you fly.',
+ '<h2>Visa-free</h2><p>Schengen Europe (90 days in any 180), Turkey (now visa-free up to 90 days), plus many countries across the Americas and Asia for short tourist trips. Confirm each limit.</p><h2>Need an authorisation</h2><p>USA (ESTA), India (e-Visa), Australia (ETA), Canada (eTA) — quick online approvals linked to your passport. Apply before travel or risk being refused boarding.</p><h3>FAQ</h3><p><strong>Turkey visa-free in 2026?</strong> Yes, up to 90 days. <strong>Visa-free vs authorisation?</strong> Visa-free = passport alone; authorisation = a quick online approval first.</p>',
+ 'turkey','our destination guides','In 2026 UK citizens can visit many countries visa-free or with a simple travel authorisation. Where British passport holders can go.','visa-free countries for uk citizens'],
+];
+foreach ( $g as $slug => $d ) {
+	$content = '<p style="font-size:18px;font-weight:500;background:#EEF3FA;padding:14px 18px;border-radius:8px">' . $d[1] . '</p>' . $d[2]
+		. '<p>For current entry rules + fees, see our <a href="/ukvisa/' . $d[3] . '/">' . $d[4] . '</a>.</p>';
+	$e = get_page_by_path( $slug, OBJECT, 'page' );
+	$arr = [ 'post_type' => 'page', 'post_name' => $slug, 'post_title' => $d[0], 'post_content' => $content, 'post_status' => 'publish' ];
+	if ( $e ) { $arr['ID'] = $e->ID; $id = $e->ID; wp_update_post( $arr ); } else { $id = wp_insert_post( $arr ); }
+	update_post_meta( $id, 'rank_math_title', $d[0] );
+	update_post_meta( $id, 'rank_math_description', $d[5] );
+	update_post_meta( $id, 'rank_math_focus_keyword', $d[6] );
+	echo "$slug -> #$id\n";
+}
