@@ -69,6 +69,15 @@ add_action( 'forminator_custom_form_after_stripe_charge', function ( $module, $f
 		wp_mail( $email, "Your visa application is confirmed ({$ref})", $body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
 	}
 
+	// 2c) Canonical WP Order record (Smart Orders Hub)
+	if ( function_exists( 'ukv_create_order' ) ) {
+		ukv_create_order( [
+			'order_ref' => $ref, 'name' => trim( "$first $last" ), 'email' => $email,
+			'destination' => $destName, 'tier' => $tierName, 'service_fee' => $tierP, 'govt_fee' => $govt,
+			'total' => $total, 'passport_number' => $pass, 'documents' => [], 'hubspot_deal' => $dealId,
+		] );
+	}
+
 	// 3) Associate
 	if ( $dealId && $contactId ) {
 		wp_remote_request( "https://api.hubapi.com/crm/v4/objects/deal/{$dealId}/associations/default/contact/{$contactId}", [
