@@ -1,0 +1,7 @@
+{
+  "required_top": ["slug", "name", "region", "visa", "tiers", "updated"],
+  "required_visa": ["required_for_uk", "type", "govt_fee_gbp", "processing", "requirements", "how_to_steps"],
+  "required_tiers": ["standard_gbp", "express_gbp", "premium_gbp"],
+  "enum_type": ["eVisa", "eTA", "visa-on-arrival", "visa-free", "embassy"],
+  "enum_idp_permit": ["1926", "1949", "1968", "both", "not-needed"]
+}

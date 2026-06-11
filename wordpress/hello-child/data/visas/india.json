@@ -1,0 +1,22 @@
+{
+  "slug": "india",
+  "name": "India",
+  "region": "asia",
+  "flag": "🇮🇳",
+  "visa": {
+    "required_for_uk": true,
+    "type": "eVisa",
+    "evisa_available": true,
+    "max_stay_days": 30,
+    "validity_days": 365,
+    "entry": "multiple",
+    "govt_fee_gbp": 22,
+    "processing": { "standard_days": 4, "express_hours": 48 },
+    "requirements": ["Passport valid 6+ months with 2 blank pages", "Passport-style photo", "Return or onward ticket"],
+    "how_to_steps": ["Check passport validity", "Complete the e-Visa application", "Pay and receive your e-Visa by email"],
+    "notes": ""
+  },
+  "idp": { "recommended": true, "permit_type": "1949", "notes": "" },
+  "tiers": { "standard_gbp": 29, "express_gbp": 49, "premium_gbp": 79 },
+  "updated": "2026-06-11"
+}

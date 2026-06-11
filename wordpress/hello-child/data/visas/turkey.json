@@ -1,0 +1,22 @@
+{
+  "slug": "turkey",
+  "name": "Turkey",
+  "region": "europe-asia",
+  "flag": "🇹🇷",
+  "visa": {
+    "required_for_uk": true,
+    "type": "eVisa",
+    "evisa_available": true,
+    "max_stay_days": 90,
+    "validity_days": 180,
+    "entry": "single",
+    "govt_fee_gbp": 0,
+    "processing": { "standard_days": 3, "express_hours": 24 },
+    "requirements": ["Passport valid 150+ days from entry", "Return or onward ticket", "Accommodation details"],
+    "how_to_steps": ["Check your passport validity", "Complete the application", "Pay and receive your eVisa by email"],
+    "notes": "Passport must have a blank page."
+  },
+  "idp": { "recommended": true, "permit_type": "1949", "notes": "Turkey recognises the 1949 permit." },
+  "tiers": { "standard_gbp": 29, "express_gbp": 49, "premium_gbp": 79 },
+  "updated": "2026-06-11"
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "egypt",
+  "name": "Egypt",
+  "region": "africa",
+  "flag": "🇪🇬",
+  "visa": {
+    "required_for_uk": true,
+    "type": "eVisa",
+    "evisa_available": true,
+    "max_stay_days": 30,
+    "validity_days": 90,
+    "entry": "single",
+    "govt_fee_gbp": 20,
+    "processing": { "standard_days": 7, "express_hours": 72 },
+    "requirements": ["Passport valid 6+ months from entry", "Confirmed accommodation", "Return ticket"],
+    "how_to_steps": ["Check passport validity", "Complete the application", "Pay and receive your eVisa by email"],
+    "notes": ""
+  },
+  "idp": { "recommended": true, "permit_type": "1949", "notes": "" },
+  "tiers": { "standard_gbp": 29, "express_gbp": 49, "premium_gbp": 79 },
+  "updated": "2026-06-11"
+}

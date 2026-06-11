@@ -1,0 +1,22 @@
+{
+  "slug": "morocco",
+  "name": "Morocco",
+  "region": "africa",
+  "flag": "🇲🇦",
+  "visa": {
+    "required_for_uk": false,
+    "type": "visa-free",
+    "evisa_available": false,
+    "max_stay_days": 90,
+    "validity_days": 0,
+    "entry": "single",
+    "govt_fee_gbp": 0,
+    "processing": { "standard_days": 0, "express_hours": 0 },
+    "requirements": ["Passport valid 6+ months from entry"],
+    "how_to_steps": ["Check passport validity", "Travel — no visa required for stays up to 90 days"],
+    "notes": "Visa-free for UK citizens up to 90 days."
+  },
+  "idp": { "recommended": true, "permit_type": "1968", "notes": "" },
+  "tiers": { "standard_gbp": 29, "express_gbp": 49, "premium_gbp": 79 },
+  "updated": "2026-06-11"
+}
