@@ -306,15 +306,13 @@ UK inbound visas (separate brand, regulated) · competitor brand terms · non-UK
 ## 13. Component deep-dive (locked)
 
 ### 13.1 `/apply` funnel + checkout
-Multi-step, progress bar, pre-filled from referrer (money page / tool):
+**6 steps** (Review + Pay merged), progress bar, pre-filled from referrer (money page / tool), **guest checkout**, **documents collected before payment**:
 1. Service + destination (visa / IDP / bundle) + travel date
-2. Eligibility check → requirements + price
+2. Eligibility check → requirements + tier (Standard/Express/Premium) + price
 3. Applicant details (name, DOB, email, phone, passport no./expiry; IDP adds UK licence no.)
-4. Document upload (passport scan, photo or reuse `/tools/visa-photo`, licence for IDP)
-5. **IDP branch**: also collects **delivery address** (permit is physically posted)
-6. Review + price breakdown — service fee + govt/official fee shown **split**
-7. **Payment — Stripe, full amount upfront** (card, Apple/Google Pay)
-8. Confirmation — order ref + timeline → email + CRM
+4. Document upload (passport scan, photo or reuse `/tools/visa-photo`, licence for IDP) — **IDP branch also collects delivery address** (permit is physically posted)
+5. **Review & Pay (one screen)** — split breakdown (service fee + govt/official fee at cost) beside **Stripe** payment, full amount upfront (card, Apple/Google Pay)
+6. Confirmation — order ref + timeline → email + CRM
 
 **Bundling**: visa + IDP = combined cart, single checkout, no discount.
 **Fulfilment**: order → back-office dashboard → ops submit to govt portal (visa) / obtain + post permit (IDP) → status emails (received → processing → issued → delivered).
