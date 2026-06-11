@@ -75,6 +75,61 @@ HOMEPAGE → 8 destination hubs + 2 tools + /apply
 
 ~30 pages at launch across 8 silos + UK hub + 2 tools + funnel/trust pages.
 
+### Full structure (all phases)
+
+`[P1]` launch · `[P2]` expansion · `[P3]` optional-later. Parked keyword buckets fold in as new silos that do not disturb the launch silos.
+
+```
+HOMEPAGE                                                   [P1]
+
+DESTINATION SILOS
+/turkey/ 💰  + plugs, weather-november, weather-february,
+             things-to-do-side, best-time-to-visit, tourist-tax   [P1]
+/egypt/ 💰   + visa-on-arrival, rules                      [P1]
+/india/ 💰   + e-arrival-card, duty-free-allowance         [P1]
+/morocco/ 💰 + weather-november, things-to-do-agadir,
+             vaccinations, entry-requirements              [P1]
+/uae/ 💰     + what-to-buy-dubai, work-visa                [P1]
+/australia/ 💰 + eta-uk-citizens, processing-time          [P1]
+/usa/ 💰     + esta-processing-time, tourist-visa-requirements [P1]
+             + cover-letter                                [P2]
+/canada/ /new-zealand/ /china/ /saudi-arabia/ /vietnam/
+/thailand/ /indonesia-bali/ /kenya/ /cambodia/
+/sri-lanka/ /jordan/   (same template)                     [P2]
+
+EUROPE / SCHENGEN HUB
+/europe/schengen/ 🏛️
+  + france, spain, italy, greece                           [P1]
+  + etias, ees-entry-exit, non-schengen-countries          [P1]
+  + cover-letter, invitation-letter, employment-letter,
+    appointment-guides                                     [P2]
+
+UK TRAVELLER HUB
+/uk/  + does-schengen-cover-uk, eta                        [P1]
+      + /uk/passport/ (fees, renewal, child-passport,
+        photo→tool)                                        [P2]
+
+EMBASSIES (programmatic nav silo)                          [P2]
+/embassies/[country]/[city]/  → links to destination money page
+
+TOOLS
+/tools/  + do-i-need-a-visa, visa-photo                    [P1]
+         + status-checker, ds-160-filler,
+           cover-letter-generator, appointment-tracker,
+           passport-index                                  [P2]
+
+FUNNEL & TRUST                                             [P1]
+/apply, /pricing, /how-it-works, /refunds, /terms, /about
+
+OPTIONAL LATER                                             [P3]
+/driving-abroad/  (IDP — only if serviced)
+/travel-updates/  (news layer — only with ads + authority)
+
+EXCLUDED (no silo — dead)
+competitor brands · typos/noise · non-UK locales ·
+UK inbound visas (separate brand) · pure flights/airline
+```
+
 ## 4. Internal-linking rules (silo discipline)
 
 1. Support guide → links **up** only, to its own money page (not other silos).
@@ -205,8 +260,20 @@ Parked / cut, with reason:
 | Driving licence / IDP | Adjacent travel-doc, off-core |
 | Typos / ultra-low-volume noise | Canonical term already mapped |
 
-## 12. Phase 2 (post-launch backlog)
+## 12. Phase 2 / 3 — parked buckets → silo homes
 
-- Destination expansion: Canada, New Zealand, China, Saudi Arabia, Vietnam, Thailand, Bali/Indonesia, Kenya, Cambodia, Sri Lanka, Jordan.
-- Tools: visa status checkers, DS-160 filler, cover-letter generator, appointment tracker, passport index.
-- Optional lightweight news layer once the domain has authority.
+Each excluded bucket from §11 has a designated home so expansion bolts on without disturbing launch silos.
+
+| Parked bucket | Silo home | Phase |
+|---|---|---|
+| Embassy / consulate navigational | **`/embassies/[country]/[city]/`** programmatic silo → links to destination money pages | P2 (highest-value parked) |
+| UK passport admin (fees, renewal, child passport, photo) | **`/uk/passport/`** sub-silo under UK hub → links to `/tools/visa-photo` | P2 |
+| App-support guides (cover/invitation/employment letter, bank balance) | Inside existing silos — Schengen + USA support guides | P2 |
+| Off-MVP destinations (Canada, NZ, China, Saudi, Vietnam, Thailand, Bali, Kenya, Cambodia, Sri Lanka, Jordan) | **New destination silos**, same template | P2 |
+| Per-country tools (status checker, DS-160, cover-letter gen, appointment tracker, passport index) | **`/tools/`** expansion, cross-linked to destinations | P2 |
+| Extra destination guides (weather / what-to-buy / things-to-do / tourist-tax / visa-free) | Inside that destination's silo | ongoing |
+| Driving licence / IDP | **`/driving-abroad/`** silo — only if serviced | P3 (optional) |
+| News / travel-disruption | **`/travel-updates/`** news layer — only with ads + domain authority | P3 (optional) |
+
+### Dead — no silo
+UK inbound visas (separate brand, regulated) · competitor brand terms · non-UK/non-English locale keywords · pure flights/airline/airport terms · typos & ultra-low-volume noise.
