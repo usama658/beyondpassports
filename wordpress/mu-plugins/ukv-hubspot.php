@@ -23,6 +23,23 @@ function ukv_hs_post( $path, $body ) {
 	return [ 'code' => wp_remote_retrieve_response_code( $res ), 'data' => json_decode( wp_remote_retrieve_body( $res ), true ) ];
 }
 
+// Callback-request form -> HubSpot lead contact (no payment)
+add_action( 'forminator_after_handle_form', function ( $entry ) {
+	$cb = (int) get_option( 'ukv_callback_form_id' );
+	if ( ! $cb || ! ukv_hs_token() || ! is_object( $entry ) || (int) ( $entry->form_id ?? 0 ) !== $cb ) { return; }
+	$m = (array) ( $entry->meta_data ?? [] );
+	$nameV = $m['name-1']['value'] ?? '';
+	if ( is_array( $nameV ) ) { $first = $nameV['first-name'] ?? ''; $last = $nameV['last-name'] ?? ''; if ( '' === $first && '' === $last ) { $first = reset( $nameV ); } }
+	else { $parts = explode( ' ', trim( (string) $nameV ), 2 ); $first = $parts[0] ?? 'Callback'; $last = $parts[1] ?? 'Lead'; }
+	$phone = $m['phone-1']['value'] ?? '';
+	if ( is_array( $phone ) ) { $phone = reset( $phone ); }
+	$dest = $m['select-1']['value'] ?? '';
+	ukv_hs_post( '/crm/v3/objects/contacts', [ 'properties' => array_filter( [
+		'firstname' => $first, 'lastname' => $last, 'phone' => (string) $phone,
+		'hs_lead_status' => 'NEW', 'message' => 'Callback request' . ( $dest ? ' — ' . $dest : '' ),
+	] ) ] );
+}, 20, 1 );
+
 // Fires only after a successful Stripe payment on a custom form.
 add_action( 'forminator_custom_form_after_stripe_charge', function ( $module, $field, $stripe_entry_data, $prepared_data, $field_data_array ) {
 	if ( ! ukv_hs_token() || ! is_array( $prepared_data ) ) { return; }
