@@ -23,7 +23,7 @@ if ( ! defined( 'UKV_GA4_ID' ) ) {
 	define( 'UKV_GA4_ID', 'G-LPFVV2XPSR' );
 }
 if ( ! defined( 'UKV_CLARITY_ID' ) ) {
-	define( 'UKV_CLARITY_ID', '' );
+	define( 'UKV_CLARITY_ID', 'x5inm0sdhr' );
 }
 
 if ( ! function_exists( 'ukv_analytics_consent_value' ) ) {
