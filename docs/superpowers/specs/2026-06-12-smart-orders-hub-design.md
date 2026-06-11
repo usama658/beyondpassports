@@ -58,5 +58,23 @@ A back-office system where the team manages every paid order + its documents in 
 - AI review (with key) returns a structured pass/flag verdict per document, shown as a badge; never auto-rejects.
 - order_ref matches the HubSpot deal; ops dashboard shows revenue + bottleneck.
 
+## Lead Journey + Case Intelligence (extension)
+
+### Journey log (per order + per callback lead)
+- **Critical header** (scannable, agent-edited): stage · blocker (none/docs-missing/payment-pending/eligibility/customer-deciding) · next-action + due date · priority · travel date · passport expiry · AI flag · **risk flag** (rejection-likely) · **order value / upsell note**.
+- **Timeline:** append-only notes, each = `date · agent · channel (call/WhatsApp/email) · 1-line summary · outcome`. Stored as order meta (`ukv_journey` = array). Reverse-chronological "story so far".
+- **Input (combo):** (1) in-order meta box (full edit), (2) quick-add note from the Orders list table, (3) push each note to the **HubSpot deal timeline** (engagement/note via API) so sales sees it.
+
+### Case Intelligence (improve success rate)
+- **Rules-based (free):** aggregate all `ukv_order` outcomes → rejection/refund rate **by destination, blocker, tier**; avg time-in-stage; per-case auto-flag when it matches a high-rejection pattern (high-rejection destination + open blocker + near travel date).
+- **AI-assisted (needs `UKV_ANTHROPIC_KEY`):** Claude reads the case's journey + a digest of similar past cases (same destination/tier + outcome) → a plain-language **next-best-action recommendation** to lift success.
+- **Success-rate dashboard:** overall + per-destination success rate, trend over time, **top rejection causes**. Closes the improvement loop.
+
+### Build phases (extension)
+7. Journey log (header fields + timeline + in-order meta box) — free.
+8. Quick-add note from Orders list + HubSpot timeline sync — free + API.
+9. Rules-based case pattern stats + per-case risk flag + success-rate dashboard — free.
+10. AI next-best-action recommendation (needs Anthropic key).
+
 ## Out of scope
 WhatsApp Business API automation (separate paid sub-project); building the customer-facing funnel (done); HubSpot pipeline setup (done).
