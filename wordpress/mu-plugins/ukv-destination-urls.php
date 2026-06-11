@@ -36,6 +36,14 @@ add_action( 'wp_body_open', function () {
 	echo '<div class="ukv-gov-bar" style="background:#0A2540;color:#cdd8e8;font:12px/1.5 Inter,Arial,sans-serif;text-align:center;padding:7px 12px">Independent visa &amp; permit service &mdash; we are <strong>not a government website</strong> and charge a service fee in addition to any official fees.</div>';
 } );
 
+// Homepage Organization + WebSite schema (reliable; independent of RankMath wizard)
+add_action( 'wp_head', function () {
+	if ( ! is_front_page() ) { return; }
+	$org = [ '@context' => 'https://schema.org', '@type' => 'Organization', 'name' => 'UKVisaCo', 'url' => home_url( '/' ), 'description' => 'Independent UK visa, eVisa and ETA facilitation service for British travellers.' ];
+	$web = [ '@context' => 'https://schema.org', '@type' => 'WebSite', 'name' => 'UKVisaCo', 'url' => home_url( '/' ) ];
+	echo '<script type="application/ld+json">' . wp_json_encode( [ $org, $web ] ) . '</script>';
+} );
+
 // Money-page schema (T9): Service + Organization JSON-LD on destination singles
 add_action( 'wp_head', function () {
 	if ( ! is_singular( 'destination' ) ) { return; }
