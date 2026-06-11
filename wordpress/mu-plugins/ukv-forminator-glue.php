@@ -41,3 +41,23 @@ add_shortcode( 'ukv_dest_field', function ( $a ) {
 	if ( is_array( $v ) ) { $v = reset( $v ); }
 	return esc_html( wp_strip_all_tags( (string) $v ) );
 } );
+
+// [ukv_visa_table] -> server-rendered "do I need a visa?" table of all destinations (crawlable, SEO)
+add_shortcode( 'ukv_visa_table', function () {
+	if ( ! function_exists( 'pods' ) ) { return ''; }
+	$ids = get_posts( [ 'post_type' => 'destination', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC', 'fields' => 'ids' ] );
+	$rows = '';
+	foreach ( $ids as $id ) {
+		$p     = pods( 'destination', $id );
+		$name  = get_the_title( $id );
+		$slug  = get_post_field( 'post_name', $id );
+		$req   = $p->field( 'required_for_uk' );
+		$type  = esc_html( $p->field( 'visa_type' ) );
+		$stay  = (int) $p->field( 'max_stay_days' );
+		$status = $req ? '<strong style="color:#1456B8">' . $type . ' required</strong>' : '<span style="color:#0f7b3f">No visa needed</span>';
+		$rows .= '<tr><td><a href="/ukvisa/' . esc_attr( $slug ) . '/">' . esc_html( $name ) . '</a></td><td>' . $status . '</td><td>' . $stay . ' days</td></tr>';
+	}
+	return '<table class="ukv-checker-table" style="width:100%;border-collapse:collapse;font-family:Inter,sans-serif">'
+		. '<thead><tr style="background:#0A2540;color:#fff"><th style="padding:10px;text-align:left">Destination</th><th style="padding:10px;text-align:left">UK citizens</th><th style="padding:10px;text-align:left">Max stay</th></tr></thead>'
+		. '<tbody>' . $rows . '</tbody></table>';
+} );
