@@ -17,6 +17,7 @@ Derived from competitor organic-keyword analysis of `visahq.com` and `atlys.com`
 |---|---|
 | Market | UK only (English, no hreflang at launch) |
 | Service direction | Outbound — Brits → world (eVisa/ETA facilitation) |
+| Product lines | (1) Visa/eVisa/ETA facilitation · (2) International Driving Permit (IDP) — both fulfilled, both P1 |
 | Content model | Service + tools + evergreen guides (Atlys-style) |
 | Monetisation | Own visa service / lead capture |
 | Launch approach | Depth-first on top destination clusters |
@@ -56,6 +57,9 @@ HOMEPAGE → 8 destination hubs + 2 tools + /apply
 /usa/                        MONEY
   /usa/esta-processing-time/
   /usa/tourist-visa-requirements/
+/idp/                        MONEY (2nd product line)
+  /idp/countries/
+  /idp/turkey/  /idp/morocco/  /idp/uae/  /idp/egypt/  /idp/usa/  /idp/india/
 /europe/schengen/            HUB
   /europe/france/
   /europe/spain/
@@ -97,6 +101,13 @@ DESTINATION SILOS
 /thailand/ /indonesia-bali/ /kenya/ /cambodia/
 /sri-lanka/ /jordan/   (same template)                     [P2]
 
+IDP SILO (2nd product line)
+/idp/ 💰  International Driving Permit for UK drivers       [P1]
+  + /idp/countries/ (1949 vs 1968)                         [P1]
+  + /idp/turkey/ /idp/morocco/ /idp/uae/ /idp/egypt/
+    /idp/usa/ /idp/india/  (drive-destination cross-sell)  [P1]
+  + more /idp/[country]/ as destinations expand            [P2]
+
 EUROPE / SCHENGEN HUB
 /europe/schengen/ 🏛️
   + france, spain, italy, greece                           [P1]
@@ -122,7 +133,6 @@ FUNNEL & TRUST                                             [P1]
 /apply, /pricing, /how-it-works, /refunds, /terms, /about
 
 OPTIONAL LATER                                             [P3]
-/driving-abroad/  (IDP — only if serviced)
 /travel-updates/  (news layer — only with ads + authority)
 
 EXCLUDED (no silo — dead)
@@ -184,6 +194,13 @@ Volumes from competitor keyword export. 💰 = money page, 🏛️ = hub.
 - `/usa/esta-processing-time/` — **how long do estas take (1,000)**
 - `/usa/tourist-visa-requirements/` — **required bank balance for us tourist visa**
 
+### IDP (International Driving Permit — 2nd product line)
+- `/idp/` 💰 — **international driving permit (1949)** · 1949 international driving permit (480); idp uk; international driving license valid countries (480); idp 1968 countries
+- `/idp/countries/` — **idp 1949 countries / idp 1968 countries** · which permit for which country
+- `/idp/[country]/` — **do i need an idp for [country]** · per drive-destination (turkey, morocco, uae, egypt, usa, india)
+
+Note: keyword volume is modest + high purchase-intent. IDP value is the **cross-sell** off drive-destination visa pages, not head-term traffic.
+
 ### Europe / Schengen
 - `/europe/schengen/` 🏛️ — **schengen visa (33,100)** · schengen visa fee (2,900); schengen visa cost (2,400); schengen visa appointment (2,400); schengen visa photo requirements (880); easiest country to get schengen visa
 - `/europe/france/` — **france visa (6,600)** · france visa application (5,400); france visa appointment (2,900); france visa from uk (1,300)
@@ -223,6 +240,8 @@ Money-page + tool CTAs → `/apply`:
 
 Capture → CRM + email. Every money page and tool routes here.
 
+**Two product lines, one funnel**: `/apply` handles both visa and IDP (service selector / `?service=idp`). IDP cross-sells from drive-destination visa pages (Turkey, Morocco, UAE, Egypt, USA, India): "Driving there? You'll need an IDP" → `/idp/[country]/` → `/apply`. Visa pages can bundle IDP at checkout.
+
 ## 8. Tech stack
 
 - WordPress + RankMath (SEO/schema) + Fluent Forms (funnel → CRM) + lightweight fast theme.
@@ -257,8 +276,9 @@ Parked / cut, with reason:
 | Non-English / non-UK locale keywords | UK-only English site, no hreflang |
 | Flights / airline / airport terms | Flight intent, not visa |
 | App-support guides (cover/invitation/employment letters, bank balance) | Low commercial value — Phase-2 Schengen-silo candidates |
-| Driving licence / IDP | Adjacent travel-doc, off-core |
 | Typos / ultra-low-volume noise | Canonical term already mapped |
+
+(IDP is **in scope** — P1 second product line, see §3/§5/§7.)
 
 ## 12. Phase 2 / 3 — parked buckets → silo homes
 
@@ -272,7 +292,6 @@ Each excluded bucket from §11 has a designated home so expansion bolts on witho
 | Off-MVP destinations (Canada, NZ, China, Saudi, Vietnam, Thailand, Bali, Kenya, Cambodia, Sri Lanka, Jordan) | **New destination silos**, same template | P2 |
 | Per-country tools (status checker, DS-160, cover-letter gen, appointment tracker, passport index) | **`/tools/`** expansion, cross-linked to destinations | P2 |
 | Extra destination guides (weather / what-to-buy / things-to-do / tourist-tax / visa-free) | Inside that destination's silo | ongoing |
-| Driving licence / IDP | **`/driving-abroad/`** silo — only if serviced | P3 (optional) |
 | News / travel-disruption | **`/travel-updates/`** news layer — only with ads + domain authority | P3 (optional) |
 
 ### Dead — no silo
