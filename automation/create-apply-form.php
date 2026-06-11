@@ -17,9 +17,9 @@ $dests = [ 'turkey' => 'Turkey', 'egypt' => 'Egypt', 'india' => 'India', 'morocc
 $dest_options = [];
 foreach ( $dests as $slug => $label ) { $dest_options[] = [ 'label' => $label, 'value' => $slug, 'limit' => '', 'key' => $uk() ]; }
 $tier_options = [
-	[ 'label' => 'Standard (£29)', 'value' => '29', 'key' => $uk() ],
-	[ 'label' => 'Express (£49)', 'value' => '49', 'key' => $uk() ],
-	[ 'label' => 'Premium (£79)', 'value' => '79', 'key' => $uk() ],
+	[ 'label' => 'Standard (£29)', 'value' => '29', 'calculation' => '29', 'key' => $uk() ],
+	[ 'label' => 'Express (£49)', 'value' => '49', 'calculation' => '49', 'key' => $uk() ],
+	[ 'label' => 'Premium (£79)', 'value' => '79', 'calculation' => '79', 'key' => $uk() ],
 ];
 
 $wrappers = [
