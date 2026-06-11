@@ -61,3 +61,41 @@ add_shortcode( 'ukv_visa_table', function () {
 		. '<thead><tr style="background:#0A2540;color:#fff"><th style="padding:10px;text-align:left">Destination</th><th style="padding:10px;text-align:left">UK citizens</th><th style="padding:10px;text-align:left">Max stay</th></tr></thead>'
 		. '<tbody>' . $rows . '</tbody></table>';
 } );
+
+// [ukv_dest_grid] -> conversion destination cards linking to money pages
+add_shortcode( 'ukv_dest_grid', function () {
+	if ( ! function_exists( 'pods' ) ) { return ''; }
+	$ids = get_posts( [ 'post_type' => 'destination', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC', 'fields' => 'ids' ] );
+	$cards = '';
+	foreach ( $ids as $id ) {
+		$p     = pods( 'destination', $id );
+		$name  = esc_html( get_the_title( $id ) );
+		$slug  = esc_attr( get_post_field( 'post_name', $id ) );
+		$req   = $p->field( 'required_for_uk' );
+		$type  = esc_html( $p->field( 'visa_type' ) );
+		$badge = $req
+			? '<span style="background:#1456B8;color:#fff;font-size:12px;padding:3px 8px;border-radius:20px">' . $type . '</span>'
+			: '<span style="background:#0f7b3f;color:#fff;font-size:12px;padding:3px 8px;border-radius:20px">visa-free</span>';
+		$cards .= '<a href="/ukvisa/' . $slug . '/" style="display:block;text-decoration:none;border:1px solid #e3e8f0;border-radius:10px;padding:18px;background:#fff;color:#0A2540;transition:.15s">'
+			. '<div style="font-size:18px;font-weight:700;margin-bottom:6px">' . $name . '</div>' . $badge . '</a>';
+	}
+	return '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;font-family:Inter,sans-serif">' . $cards . '</div>';
+} );
+
+// [ukv_idp_table] -> IDP requirement by destination + licence type (crawlable; encodes the photocard rule)
+add_shortcode( 'ukv_idp_table', function () {
+	if ( ! function_exists( 'pods' ) ) { return ''; }
+	$ids = get_posts( [ 'post_type' => 'destination', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC', 'fields' => 'ids' ] );
+	$yn = function ( $v ) { return $v ? '<strong style="color:#1456B8">Yes</strong>' : '<span style="color:#0f7b3f">No</span>'; };
+	$rows = '';
+	foreach ( $ids as $id ) {
+		$p    = pods( 'destination', $id );
+		$name = esc_html( get_the_title( $id ) );
+		$conv = esc_html( $p->field( 'idp_permit_type' ) );
+		$rows .= '<tr><td>' . $name . '</td><td>' . $conv . '</td><td>' . $yn( $p->field( 'idp_required_photocard' ) ) . '</td><td>' . $yn( $p->field( 'idp_required_paper' ) ) . '</td></tr>';
+	}
+	return '<table class="ukv-idp-table" style="width:100%;border-collapse:collapse;font-family:Inter,sans-serif">'
+		. '<thead><tr style="background:#0A2540;color:#fff"><th style="padding:10px;text-align:left">Destination</th><th style="padding:10px;text-align:left">Convention</th><th style="padding:10px;text-align:left">Photocard licence</th><th style="padding:10px;text-align:left">Paper licence</th></tr></thead>'
+		. '<tbody>' . $rows . '</tbody></table>'
+		. '<p style="font-size:13px;color:#5a6577">"Yes" = an International Driving Permit is needed. With a UK photocard licence you do <strong>not</strong> need an IDP in the EU/EEA, Switzerland, Norway, Iceland or Liechtenstein. IDPs are issued in person at PayPoint for &pound;5.50.</p>';
+} );
