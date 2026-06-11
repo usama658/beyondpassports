@@ -58,3 +58,47 @@ add_action( 'manage_ukv_order_posts_custom_column', function ( $col, $pid ) {
 		case 'ukv_status': $s = $g( 'ukv_status' ); echo '<strong>' . esc_html( UKV_ORDER_STATUSES[ $s ] ?? $s ) . '</strong>'; break;
 	}
 }, 10, 2 );
+
+// Phase 2 (completeness) + Phase 3 (SLA): extra columns
+add_filter( 'manage_ukv_order_posts_columns', function ( $c ) {
+	$new = [];
+	foreach ( $c as $k => $v ) { $new[ $k ] = $v; if ( 'ukv_total' === $k ) { $new['ukv_docs'] = 'Docs'; $new['ukv_sla'] = 'SLA'; } }
+	return $new;
+} );
+function ukv_order_sla_hours( $tier ) {
+	$t = strtolower( (string) $tier );
+	if ( strpos( $t, 'express' ) !== false ) { return 24; }
+	if ( strpos( $t, 'premium' ) !== false ) { return 12; }
+	return 72;
+}
+add_action( 'manage_ukv_order_posts_custom_column', function ( $col, $pid ) {
+	if ( 'ukv_docs' === $col ) {
+		$n = count( array_filter( (array) get_post_meta( $pid, 'ukv_documents', true ) ) );
+		echo $n ? '<span style="color:#0f7b3f">' . (int) $n . ' file(s)</span>' : '<span style="color:#c00">No docs</span>';
+	}
+	if ( 'ukv_sla' === $col ) {
+		$st = get_post_meta( $pid, 'ukv_status', true );
+		if ( in_array( $st, [ 'delivered', 'won', 'refunded', 'rejected' ], true ) ) { echo '&mdash;'; return; }
+		$due = (int) get_post_meta( $pid, 'ukv_created', true ) + ukv_order_sla_hours( get_post_meta( $pid, 'ukv_tier', true ) ) * 3600;
+		$now = time();
+		if ( $now > $due ) { echo '<span style="color:#c00;font-weight:700">Overdue</span>'; }
+		elseif ( $now > $due - 6 * 3600 ) { echo '<span style="color:#b8860b">Due soon</span>'; }
+		else { echo '<span style="color:#0f7b3f">On track</span>'; }
+	}
+}, 9, 2 );
+
+// Phase 4: ops insights dashboard widget
+add_action( 'wp_dashboard_setup', function () {
+	wp_add_dashboard_widget( 'ukv_orders_insights', 'UKVisaCo — Orders insights', function () {
+		$ids = get_posts( [ 'post_type' => 'ukv_order', 'posts_per_page' => -1, 'fields' => 'ids', 'post_status' => 'publish' ] );
+		$by = []; $rev = 0;
+		foreach ( $ids as $pid ) {
+			$s = get_post_meta( $pid, 'ukv_status', true ) ?: 'paid';
+			$by[ $s ] = ( $by[ $s ] ?? 0 ) + 1;
+			if ( ! in_array( $s, [ 'refunded', 'rejected' ], true ) ) { $rev += (float) get_post_meta( $pid, 'ukv_total', true ); }
+		}
+		echo '<p><strong>Total orders:</strong> ' . count( $ids ) . ' &middot; <strong>Revenue:</strong> £' . number_format( $rev, 2 ) . '</p><ul style="margin-left:1em">';
+		foreach ( UKV_ORDER_STATUSES as $k => $label ) { if ( ! empty( $by[ $k ] ) ) { echo '<li>' . esc_html( $label ) . ': <strong>' . (int) $by[ $k ] . '</strong></li>'; } }
+		echo '</ul>';
+	} );
+} );
