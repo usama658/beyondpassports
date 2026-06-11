@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const url = process.argv[2] || 'http://localhost/ukvisa/';
+const out = process.argv[3] || 'shot.png';
+const full = process.argv[4] === 'full';
+const b = await chromium.launch();
+const p = await (await b.newContext({ viewport: { width: 1366, height: 900 } })).newPage();
+p.setDefaultNavigationTimeout(60000);
+await p.goto(url, { waitUntil: 'load' }).catch(() => {});
+await p.waitForTimeout(2500);
+await p.screenshot({ path: out, fullPage: full });
+await b.close();
+console.log('shot ' + out);
