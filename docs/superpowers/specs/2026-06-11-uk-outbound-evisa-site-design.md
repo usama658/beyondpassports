@@ -204,6 +204,36 @@ Ratio guide per money page's inbound internal anchors: **≤ ~20% exact-match** 
 
 Rules: no fake `Review`/`Rating`; validate via Rich Results Test; RankMath supplies base (Org, WebSite, Breadcrumb), custom JSON-LD for `Service`/`HowTo`/tool. `/apply?...` `noindex`, no schema.
 
+## 3.3 Schengen silo blueprint (differs — appointment-based, not eVisa)
+
+| URL | Type | Primary kw (vol) | Schema |
+|---|---|---|---|
+| `/europe/schengen/` | Hub | schengen visa (33,100) | Service · Breadcrumb |
+| `/europe/france/` | Country | france visa (6,600) | Service · FAQ · Breadcrumb |
+| `/europe/spain/` | Country | spain visa (5,400) | Service · FAQ · Breadcrumb |
+| `/europe/italy/` | Country | italy visa (1,900) | Service · FAQ · Breadcrumb |
+| `/europe/greece/` | Country | greek travel visa (1,900) | Service · FAQ · Breadcrumb |
+| `/europe/etias/` | Guide | etias application (6,600) | Article · Breadcrumb |
+| `/europe/ees-entry-exit/` | Guide | eu entry exit system problems (2,400) | Article · Breadcrumb |
+| `/europe/non-schengen-countries/` | Guide | non schengen european countries (1,300) | Article · Breadcrumb |
+
+- **Intent**: appointment-based → `/apply` routes to **Premium/quote band** (~£99+ service + €90 govt), not instant eVisa.
+- **Hub logic**: "which country do you apply to?" (most time / first entry) → per-country pages.
+- **Links**: hub → per-country + ETIAS/EES/non-Schengen + `/apply?product=visa&dest=schengen` (quote); per-country → hub (up) + `/apply`; guides → hub (up). EES lives only here (no `/uk/ees`).
+
+## 3.4 IDP silo blueprint (mirrors destination silo; physical product)
+
+| URL | Type | Primary kw (vol) | Schema |
+|---|---|---|---|
+| `/idp/` | Money | international driving permit (1,000) | Service · HowTo · FAQ · Breadcrumb |
+| `/idp/countries/` | Guide | idp 1949/1968 countries | Article · FAQ · Breadcrumb |
+| `/idp/turkey/` `/idp/morocco/` `/idp/uae/` `/idp/egypt/` `/idp/usa/` `/idp/india/` | Country | do i need an idp for [country] | Service · FAQ · Breadcrumb |
+
+- **Permit logic**: destination → 1949/1968 auto-selected (shared JSON dataset).
+- **Physical**: posted permit → postage tier + delivery address; **no govt-portal submission** (obtain + post).
+- **Links**: `/idp/` → `/idp/countries/` + per-country + `/apply?product=idp`; per-country → `/idp/` (up) + `/apply`; **cross-sell** from drive-destination money pages (Turkey/Morocco/UAE/Egypt/USA/India) → `/idp/[country]/`.
+- Anchor/schema rules per §3.2.
+
 ## 4. Internal-linking rules (silo discipline)
 
 1. Support guide → links **up** only, to its own money page (not other silos).
