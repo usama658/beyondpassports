@@ -76,5 +76,37 @@ A back-office system where the team manages every paid order + its documents in 
 9. Rules-based case pattern stats + per-case risk flag + success-rate dashboard — free.
 10. AI next-best-action recommendation (needs Anthropic key).
 
+## Smart Stories → Client Updates + Helpful Content (extension)
+
+Source data = journey logs + a new **barrier register**. Two outputs: private per-client updates, and public anonymised content. Engine is rules-based now (free); AI-polished drafts later (needs `UKV_ANTHROPIC_KEY`). Nothing sends or publishes without human approval.
+
+### Barrier register (the spine)
+A barrier is logged on a case (or destination-wide), tagged:
+- **Nature:** `temporary` (portal outage, backlog, seasonal surge, doc re-check) vs `permanent` (policy change, new requirement, route closed).
+- **Scope:** `case` · `destination` · `all`.
+- **Guidance:** plain-English next step for the client.
+- **Sources (all of the above):** (1) agent logs manually on a case; (2) rules auto-detect known patterns (SLA breach, passport validity short of destination requirement, high-rejection destination + open blocker); (3) **destination-wide** barrier fans out to every open case for that destination.
+
+### Proactive client updates (private)
+When a barrier affects a client, draft an update (email / WhatsApp link / call task): *what changed · temporary or permanent · what you must do · our next step*. Destination-wide barrier drafts updates for all affected open cases at once. Human approves before send. No PII concern — it goes to that client only.
+
+### Public helpful content (anonymised)
+Anonymised case studies + problem→solution guides → SEO + trust (feeds #26). **Two redaction layers, both enforced before publish:**
+- **Privacy (protect client):** strip ALL PII — name, email, phone, passport number, exact dates, order ref → generalise to "a UK traveller to X".
+- **Competitor-safe (protect business):** never expose internal margins, supplier/agent names, processing routes, volumes, or operational playbook. Publish reader value only, never *how we operate*.
+
+**Privacy model = both tiers (combo):**
+- **Anonymise-only:** any case → general guides, no consent needed (no PII present).
+- **Consented testimonials:** a checkout/order opt-in field unlocks richer, still-anonymised testimonials only for cases that ticked consent.
+
+All public content is created as **DRAFT → human approves → publish**. Never auto-publish.
+
+### Build phases (extension)
+11. Barrier register — case fields (nature/scope/guidance) + agent-log UI + rules auto-detect + destination-wide fan-out. Free.
+12. Proactive client updates — draft email/WhatsApp/call-task per affected case + destination fan-out + approve-to-send. Free (+ SMTP at prod).
+13. Public content engine — anonymise-only guide generator with both redaction layers (privacy + competitor-safe), draft→approve→publish. Free (rules templates).
+14. Consented testimonials tier — checkout consent field + richer testimonial drafts from consented cases. Free.
+15. AI polish — Claude rewrites barrier guidance + content drafts into plain, on-brand prose (needs Anthropic key). Folds into P10.
+
 ## Out of scope
 WhatsApp Business API automation (separate paid sub-project); building the customer-facing funnel (done); HubSpot pipeline setup (done).
