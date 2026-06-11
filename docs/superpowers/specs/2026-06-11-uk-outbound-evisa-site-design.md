@@ -1,7 +1,12 @@
 # UK Outbound eVisa Site — Design Spec
 
 **Date:** 2026-06-11
-**Status:** Approved (design); pending spec review
+**Status:** Approved (design); decomposed into 6 sub-project specs (#1 foundation, #2 content-silos, #3 tools, #4 apply-funnel, #5 crm-ops, #6 idp-driving-abroad).
+
+> **Revision 2026-06-11 — IDP pivot (supersedes IDP content below).** Research corrected two locked assumptions:
+> 1. **Issuer:** UK IDPs are issued **in person only at PayPoint** (since 1 Apr 2024), **not the Post Office**; no postal/online channel exists.
+> 2. **Model:** done-for-you postal IDP is impractical (requires custody of customers' original licence + passport). IDP is therefore rebuilt as **guided self-service** (SEO silo + free checker/photo + PayPoint locator), **not** a fulfilled/paid product. It exits the Stripe `/apply` funnel and becomes a cross-sell.
+> 3. **Accuracy rule:** an IDP is **not** needed in the EU/EEA/CH/NO/IS/LI for **UK photocard** holders (only paper-licence holders). See sub-spec `2026-06-11-idp-driving-abroad-design.md` and memory `idp-paypoint-self-service`. Where §3.4, §13.1, §13.4, §15 and the IDP rows below conflict with this banner, the banner + #6 spec win.
 
 ## 1. Summary
 
@@ -17,11 +22,11 @@ Derived from competitor organic-keyword analysis of `visahq.com` and `atlys.com`
 |---|---|
 | Market | UK only (English, no hreflang at launch) |
 | Service direction | Outbound — Brits → world (eVisa/ETA facilitation) |
-| Product lines | (1) Visa/eVisa/ETA facilitation · (2) International Driving Permit (IDP) — both fulfilled, both P1 |
+| Product lines | (1) Visa/eVisa/ETA facilitation (fulfilled, paid) · (2) IDP / driving-abroad — **guided self-service, lead-gen/SEO, not fulfilled** (revised, see banner) |
 | Payment | Stripe — full checkout upfront (service fee + govt/official fee, shown split) |
 | Service tiers | Standard · Express · Premium (per destination) |
 | Fulfilment | Manual back-office ops (MVP; most govt eVisa portals have no API) |
-| IDP model | Facilitation / done-for-you (obtain + post on customer's behalf; not an authorised issuer) |
+| IDP model | ~~Facilitation / done-for-you~~ → **Guided self-service** (PayPoint is in-person-only sole issuer; we provide checker/photo/locator/guides + visa cross-sell). See banner + #6 spec. |
 | Content model | Service + tools + evergreen guides (Atlys-style) |
 | Monetisation | Own visa service / lead capture |
 | Launch approach | Depth-first on top destination clusters |
