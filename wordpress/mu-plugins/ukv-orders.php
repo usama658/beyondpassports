@@ -102,3 +102,48 @@ add_action( 'wp_dashboard_setup', function () {
 		echo '</ul>';
 	} );
 } );
+
+// Phase 7: Lead Journey meta box (critical header + note timeline)
+const UKV_BLOCKERS = [ 'none' => 'None', 'docs_missing' => 'Docs missing', 'payment_pending' => 'Payment pending', 'eligibility' => 'Eligibility issue', 'customer_deciding' => 'Customer deciding' ];
+add_action( 'add_meta_boxes', function () {
+	add_meta_box( 'ukv_journey', 'Lead Journey & decision', 'ukv_journey_metabox', 'ukv_order', 'normal', 'high' );
+} );
+function ukv_journey_metabox( $post ) {
+	$pid = $post->ID; wp_nonce_field( 'ukv_journey', 'ukv_journey_nonce' );
+	$g = fn( $k, $d = '' ) => get_post_meta( $pid, $k, true ) ?: $d;
+	echo '<style>.ukvj label{display:block;font-weight:600;margin:8px 0 2px}.ukvj input,.ukvj select,.ukvj textarea{width:100%}.ukvj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}</style><div class="ukvj">';
+	echo '<div class="ukvj-grid">';
+	echo '<div><label>Stage</label><select name="ukv_status">'; foreach ( UKV_ORDER_STATUSES as $k => $v ) { echo '<option value="' . esc_attr( $k ) . '" ' . selected( $g( 'ukv_status', 'paid' ), $k, false ) . '>' . esc_html( $v ) . '</option>'; } echo '</select></div>';
+	echo '<div><label>Blocker</label><select name="ukv_blocker">'; foreach ( UKV_BLOCKERS as $k => $v ) { echo '<option value="' . esc_attr( $k ) . '" ' . selected( $g( 'ukv_blocker', 'none' ), $k, false ) . '>' . esc_html( $v ) . '</option>'; } echo '</select></div>';
+	echo '<div><label>Priority</label><select name="ukv_priority">'; foreach ( [ 'normal' => 'Normal', 'high' => 'High', 'urgent' => 'Urgent' ] as $k => $v ) { echo '<option value="' . esc_attr( $k ) . '" ' . selected( $g( 'ukv_priority', 'normal' ), $k, false ) . '>' . esc_html( $v ) . '</option>'; } echo '</select></div>';
+	echo '<div><label>Next action</label><input name="ukv_next_action" value="' . esc_attr( $g( 'ukv_next_action' ) ) . '"></div>';
+	echo '<div><label>Next action due</label><input type="date" name="ukv_next_due" value="' . esc_attr( $g( 'ukv_next_due' ) ) . '"></div>';
+	echo '<div><label>Travel date</label><input type="date" name="ukv_travel_date" value="' . esc_attr( $g( 'ukv_travel_date' ) ) . '"></div>';
+	echo '</div>';
+	echo '<p><label style="display:inline;font-weight:600"><input type="checkbox" name="ukv_risk_flag" value="1" ' . checked( $g( 'ukv_risk_flag' ), '1', false ) . '> Risk flag (rejection-likely)</label></p>';
+	echo '<label>Value / upsell note</label><input name="ukv_value_note" value="' . esc_attr( $g( 'ukv_value_note' ) ) . '">';
+	echo '<hr><label>Add journey note (logs to the story below)</label><textarea name="ukv_new_note" rows="2" placeholder="What happened on this call / chat..."></textarea>';
+	echo '<label style="display:inline">Channel:</label> <select name="ukv_new_note_channel" style="width:auto"><option value="call">Call</option><option value="whatsapp">WhatsApp</option><option value="email">Email</option><option value="internal">Internal</option></select>';
+	$journey = (array) get_post_meta( $pid, 'ukv_journey', true );
+	echo '<hr><strong>Story so far</strong><ul style="margin-top:6px;max-height:240px;overflow:auto">';
+	if ( ! $journey ) { echo '<li><em>No notes yet — add the first above.</em></li>'; }
+	foreach ( array_reverse( $journey ) as $n ) {
+		echo '<li style="border-bottom:1px solid #eee;padding:4px 0"><strong>' . esc_html( $n['date'] ?? '' ) . '</strong> · ' . esc_html( $n['agent'] ?? '' ) . ' · <em>' . esc_html( $n['channel'] ?? '' ) . '</em><br>' . esc_html( $n['text'] ?? '' ) . '</li>';
+	}
+	echo '</ul></div>';
+}
+add_action( 'save_post_ukv_order', function ( $pid ) {
+	if ( ! isset( $_POST['ukv_journey_nonce'] ) || ! wp_verify_nonce( $_POST['ukv_journey_nonce'], 'ukv_journey' ) ) { return; }
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
+	foreach ( [ 'ukv_status', 'ukv_blocker', 'ukv_priority', 'ukv_next_action', 'ukv_next_due', 'ukv_travel_date', 'ukv_value_note' ] as $f ) {
+		if ( isset( $_POST[ $f ] ) ) { update_post_meta( $pid, $f, sanitize_text_field( wp_unslash( $_POST[ $f ] ) ) ); }
+	}
+	update_post_meta( $pid, 'ukv_risk_flag', isset( $_POST['ukv_risk_flag'] ) ? '1' : '' );
+	$note = isset( $_POST['ukv_new_note'] ) ? trim( wp_unslash( $_POST['ukv_new_note'] ) ) : '';
+	if ( '' !== $note ) {
+		$j = (array) get_post_meta( $pid, 'ukv_journey', true );
+		$u = wp_get_current_user();
+		$j[] = [ 'date' => gmdate( 'Y-m-d H:i' ), 'agent' => $u->display_name ?: 'agent', 'channel' => sanitize_text_field( wp_unslash( $_POST['ukv_new_note_channel'] ?? 'internal' ) ), 'text' => sanitize_textarea_field( $note ) ];
+		update_post_meta( $pid, 'ukv_journey', $j );
+	}
+} );
