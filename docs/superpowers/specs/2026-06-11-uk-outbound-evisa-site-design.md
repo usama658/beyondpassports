@@ -334,6 +334,14 @@ Schema: Service + FAQPage + HowTo + BreadcrumbList.
 - **Permit logic**: destination → required permit (1949 Geneva / 1968 Vienna / both), auto-selected from shared JSON dataset. ⚠️ data-accuracy task — mapping must be correct per country.
 - **Pages**: `/idp/` (service + CTA), `/idp/countries/` (which-permit table), `/idp/[country]/` (per drive-destination, cross-sell target).
 - **Cross-sell**: drive-destination visa pages (Turkey, Morocco, UAE, Egypt, USA, India) → "Driving? Add IDP" → combined cart.
+- **IDP `/apply` path** (same 6-step shell, IDP-specific differences):
+  1. Service + destination ("Driving in [country]") + trip date
+  2. **Permit + tier** — required permit (1949/1968) **auto-selected from destination**; Standard/Express; **postage option** (tracked / express). Premium tier optional for IDP.
+  3. Applicant details — name, DOB, email, phone, **UK driving licence no.**
+  4. **Documents + delivery** — driving licence (front + back), passport-style photo (reuse `/tools/visa-photo`), **delivery address**
+  5. Review & Pay — split: service fee + official permit (~£5.50) + postage → Stripe
+  6. Confirmation — "we obtain + **post** the permit (tracked), delivery ETA" → status emails → Pipedrive
+  - Divergence from visa flow: **no govt-portal submission** — ops obtain + physically post the permit; fulfilment stage in Pipedrive reflects "obtained → posted → delivered".
 
 ### Open items to resolve before/within build
 - Confirm legal footing of IDP facilitation model (assumed legal as done-for-you).
