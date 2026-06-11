@@ -173,6 +173,37 @@ Homepage + footer → money page (silo's strongest URL). Guides catch long-tail/
 ### Replication
 Identical structure per destination — swap data sheet (price/govt fee/processing/visa types/FAQ) + that destination's guide set. **Schengen** differs (hub + per-country sub-pages, appointment intent). **IDP** mirrors it (`/idp/` money + `/idp/countries/` + per-country).
 
+## 3.2 Anchor text & schema
+
+### Anchor-text strategy (internal links)
+Principle: descriptive + varied + natural. Avoid exact-match over-optimisation (rotate from a pool).
+
+| Link | Anchor approach | Examples (Turkey) |
+|---|---|---|
+| Guide → money | rotate descriptive/branded; exact-match sparingly | "apply for your Turkey eVisa" · "Turkey eVisa for UK travellers" · "do you need a Turkey visa?" · ("Turkey visa" ≤ ~1/silo) |
+| Money → `/apply` | action verbs (CTA), not keyword-stuffed | "Start your Turkey eVisa" · "Apply now" · "Begin application" |
+| Money → tool | task-descriptive | "check if you need a visa" · "make your visa photo" |
+| Money → IDP | contextual cross-sell | "add an International Driving Permit" · "driving in Turkey? get an IDP" |
+| Guide ↔ sibling | topical descriptive | "best time to visit" · "what plugs you'll need" |
+| Home/footer → money | destination name | "Turkey" · "Turkey visa" |
+| Breadcrumb | page title | "Turkey" |
+
+Ratio guide per money page's inbound internal anchors: **≤ ~20% exact-match** ("turkey visa"), remainder descriptive/branded/naked. Backlink outreach anchors even more brand/varied.
+
+### Schema (JSON-LD) by page type
+| Page type | Schema |
+|---|---|
+| Global (all) | `Organization` (name, logo, sameAs, contactPoint) + `WebSite` (+ SearchAction) |
+| Destination money | `Service` (serviceType, provider=Org, areaServed GB, `offers` per tier w/ price + GBP) · `FAQPage` · `HowTo` (apply steps) · `BreadcrumbList` |
+| Support guide | `Article` (headline, datePublished, dateModified, `author` Person w/ knowsAbout, publisher) · `BreadcrumbList` · `FAQPage` (if guide has FAQ) |
+| Schengen hub | `Service` + `BreadcrumbList`; per-country sub-pages = `Service` |
+| IDP money / per-country | `Service` (offers) · `HowTo` · `FAQPage` · `BreadcrumbList`; `/idp/countries/` = `Article` + `FAQPage` |
+| Tools | `WebApplication` (applicationCategory) for checker + photo maker |
+| Pricing | `OfferCatalog` / `PriceSpecification` |
+| EEAT | `Person` author (jobTitle "visa specialist", knowsAbout); `AggregateRating` on Org/Service **only if genuine** (Trustpilot) |
+
+Rules: no fake `Review`/`Rating`; validate via Rich Results Test; RankMath supplies base (Org, WebSite, Breadcrumb), custom JSON-LD for `Service`/`HowTo`/tool. `/apply?...` `noindex`, no schema.
+
 ## 4. Internal-linking rules (silo discipline)
 
 1. Support guide → links **up** only, to its own money page (not other silos).
