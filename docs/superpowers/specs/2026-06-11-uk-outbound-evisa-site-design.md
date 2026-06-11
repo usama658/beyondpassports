@@ -399,3 +399,22 @@ Flat across eVisa destinations; **Schengen = higher band** (~£99+ service; appo
 - **Govt-fee portion**: refundable until submitted to the authority; non-refundable once submitted.
 - **Service fee**: non-refundable once work has started (clearly stated pre-checkout).
 - Define on `/refunds` + surface at checkout.
+
+## 16. Analytics, KPIs & growth (locked)
+
+### 16.1 Analytics stack
+- **GA4 + Google Search Console + Microsoft Clarity** (free heatmaps/recordings) + **Looker Studio** dashboards + existing **Ahrefs/SEMrush** for rank tracking. Zero new tooling cost.
+- **Funnel events**: `checker_used → money_page_view → apply_start →` step completions (eligibility/details/docs/payment) `→ purchase`, plus `tool_use`, `idp_attach`.
+- **Purchase tracking = server-side**: Stripe webhook → GA4 Measurement Protocol (value, destination, tier, product) — avoids client-side loss; mirror deal value into Pipedrive.
+- **Dashboards** (Looker Studio): traffic + rank by silo, conversion rate + revenue per destination, AOV, tier mix, IDP attach.
+
+### 16.2 KPIs
+- **Acquisition**: organic sessions · keywords top-10 per cluster · GSC impressions/clicks.
+- **Funnel**: guide→money-page CTR · money-page→apply-start % · apply→purchase % · visit→order %.
+- **Revenue**: orders · AOV · revenue/destination · tier mix % · IDP attach % · contribution margin.
+- **Ops/quality**: fulfilment time vs tier SLA · refund/chargeback rate · review rating.
+- **North-star**: monthly revenue (leading indicator = organic sessions × conversion rate).
+
+### 16.3 Growth — organic-first + paid bootstrap
+- **Organic core**: silo internal-linking engine · content velocity (P2 destinations + support guides, refresh dates) · **link magnets** (embeddable do-i-need-a-visa widget + photo maker → embed outreach; linkable visa-data assets) · **digital PR** (data stories — visa fee changes, EES/ETIAS, rejection stats, seasonal — captures the news-link pull without being a news site) · reviews/EEAT (Trustpilot, author authority, schema).
+- **Paid bootstrap**: Google Ads on high-intent commercial terms (e.g. `turkey visa`, `egypt visa`, `dubai visa`) → money pages / `/apply` to seed revenue while SEO matures; **manage CPA against per-order contribution margin**; taper per destination as organic reaches top-10. (Uses existing Google Ads skills.)
