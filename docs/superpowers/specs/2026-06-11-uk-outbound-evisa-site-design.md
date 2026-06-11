@@ -248,7 +248,7 @@ Capture → CRM + email. Every money page and tool routes here.
 
 ## 8. Tech stack
 
-- WordPress + RankMath (SEO/schema) + lightweight fast theme.
+- WordPress + RankMath (SEO/schema). **Visual base = Travisa** (Envato Elements Elementor Template Kit; requires Elementor + Jeg Elementor Kit + MetForm). Custom money pages, `/apply` funnel, and JS tools built on top of the kit's trust chrome.
 - **Funnel/checkout**: custom multi-step `/apply` flow + **Stripe** (Checkout / Payment Element) for upfront payment. On payment success → webhook / **Zapier** → **external CRM (Pipedrive default; HubSpot alt)** where the **deal pipeline = order lifecycle** and ops fulfilment + status emails run. (No WooCommerce.)
 - **Tools**: client-side JS widgets — visa-photo maker via HTML canvas (photo never leaves browser = privacy + zero server cost); "do I need a visa" checker reads an **own JSON dataset** (passport×destination, plus 1949/1968 IDP mapping — shared with IDP logic).
 - **Secure PII**: encrypted document upload + storage (passport/licence scans), defined retention/deletion policy, GDPR/ICO compliant.
@@ -418,3 +418,10 @@ Flat across eVisa destinations; **Schengen = higher band** (~£99+ service; appo
 ### 16.3 Growth — organic-first + paid bootstrap
 - **Organic core**: silo internal-linking engine · content velocity (P2 destinations + support guides, refresh dates) · **link magnets** (embeddable do-i-need-a-visa widget + photo maker → embed outreach; linkable visa-data assets) · **digital PR** (data stories — visa fee changes, EES/ETIAS, rejection stats, seasonal — captures the news-link pull without being a news site) · reviews/EEAT (Trustpilot, author authority, schema).
 - **Paid bootstrap**: Google Ads on high-intent commercial terms (e.g. `turkey visa`, `egypt visa`, `dubai visa`) → money pages / `/apply` to seed revenue while SEO matures; **manage CPA against per-order contribution margin**; taper per destination as organic reaches top-10. (Uses existing Google Ads skills.)
+
+## 17. Brand & UI (locked)
+
+- **Direction**: A — **Trust / official-adjacent** (navy + white, document-grade, clear), borrowing **B**'s rounded CTAs + visible social proof for conversion; **gold accent reserved for the Premium tier**.
+- **Theme base**: **Travisa** Envato Elements Elementor Template Kit (Elementor + Jeg Elementor Kit + MetForm). Chosen for most templates (18+) + kit flexibility over a rigid full theme.
+- **Repurpose, don't adopt wholesale**: Travisa is an immigration-*consulting* design — keep its trust chrome, service cards, FAQ/pricing blocks; **custom-build** the conversion-critical pieces (destination money pages, `/apply` funnel, the two tools, IDP pages) on top.
+- Mockups/iterations persist in `.superpowers/brainstorm/` (git-ignored).
