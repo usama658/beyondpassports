@@ -59,6 +59,16 @@ add_action( 'forminator_custom_form_after_stripe_charge', function ( $module, $f
 	] ] );
 	$dealId = ( $d && $d['code'] >= 200 && $d['code'] < 300 ) ? ( $d['data']['id'] ?? 0 ) : 0;
 
+	// 2b) Free order-confirmation email (lifecycle #1). Local XAMPP won't deliver without SMTP; works on prod.
+	if ( $email ) {
+		$body = "Hi {$first},\n\nThanks — we've received your payment for your {$destName} visa application ({$tierName}).\n"
+			. "Order reference: {$ref}\nTotal paid: GBP{$total} (service GBP{$tierP} + government fee GBP{$govt}).\n\n"
+			. "Our team will now review your documents and submit your application. We'll keep you updated at each step.\n\n"
+			. "Independent service — not a government website. Our service fee is in addition to any official government fee. "
+			. "Express tiers speed up our handling, not the government's decision.\n\nUKVisaCo";
+		wp_mail( $email, "Your visa application is confirmed ({$ref})", $body, [ 'Content-Type: text/plain; charset=UTF-8' ] );
+	}
+
 	// 3) Associate
 	if ( $dealId && $contactId ) {
 		wp_remote_request( "https://api.hubapi.com/crm/v4/objects/deal/{$dealId}/associations/default/contact/{$contactId}", [
