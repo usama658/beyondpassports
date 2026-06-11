@@ -25,6 +25,12 @@ function ukv_dest_value( $dest, $field ) {
 	return pods( 'destination', $post->ID )->field( $field );
 }
 
+// Prefill the Apply form's destination dropdown from ?dest= (money-page CTAs pass it)
+add_action( 'wp_footer', function () {
+	if ( ! is_page( 'apply' ) ) { return; }
+	echo '<script>document.addEventListener("DOMContentLoaded",function(){var d=new URLSearchParams(location.search).get("dest");if(!d)return;var t=setInterval(function(){var s=document.querySelector("select[name=select-1]");if(s){s.value=d;s.dispatchEvent(new Event("change",{bubbles:true}));clearInterval(t);}},300);setTimeout(function(){clearInterval(t);},6000);});</script>';
+} );
+
 // Expand [ukv_dest_fee] inside Forminator hidden field (render + calculation) so the total computes
 add_filter( 'forminator_field_hidden_field_value', function ( $value ) {
 	if ( is_string( $value ) && false !== strpos( $value, '[ukv_dest_fee' ) ) {
