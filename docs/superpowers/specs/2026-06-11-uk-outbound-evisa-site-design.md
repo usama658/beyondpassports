@@ -307,7 +307,7 @@ UK inbound visas (separate brand, regulated) · competitor brand terms · non-UK
 
 ### 13.1 `/apply` funnel + checkout
 **6 steps** (Review + Pay merged), progress bar, pre-filled from referrer (money page / tool), **guest checkout**, **documents collected before payment**:
-1. Service + destination (visa / IDP / bundle) + travel date
+1. **Product chooser + destination** — 3 explicit options: **Visa only** (digital eVisa, emailed) · **IDP only** (physical permit, posted) · **Visa + IDP** (both, one checkout) — + destination + travel date. Selection branches later steps (fields, delivery, price). Pre-selected when arriving from a money page / IDP page.
 2. Eligibility check → requirements + tier (Standard/Express/Premium) + price
 3. Applicant details (name, DOB, email, phone, passport no./expiry; IDP adds UK licence no.)
 4. Document upload (passport scan, photo or reuse `/tools/visa-photo`, licence for IDP) — **IDP branch also collects delivery address** (permit is physically posted)
