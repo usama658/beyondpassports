@@ -144,6 +144,35 @@ competitor brands · typos/noise · non-UK locales ·
 UK inbound visas (separate brand) · pure flights/airline
 ```
 
+## 3.1 Silo blueprint (canonical: Turkey — every destination silo replicates this)
+
+### Page inventory
+| URL | Type | Primary kw (vol) | Intent | Schema |
+|---|---|---|---|---|
+| `/turkey/` | Money | turkey visa (4,400) | transactional | Service · FAQPage · HowTo · Breadcrumb |
+| `/turkey/plugs/` | Guide | turkey plug type (2,900) | info | Article · Breadcrumb |
+| `/turkey/weather-november/` | Guide | turkey weather november (5,400) | info | Article · Breadcrumb |
+| `/turkey/weather-february/` | Guide | weather in turkey in february (2,400) | info | Article · Breadcrumb |
+| `/turkey/things-to-do-side/` | Guide | side turkey (9,900) | info | Article · Breadcrumb |
+| `/turkey/best-time-to-visit/` | Guide | best time to visit turkey (1,600) | info | Article · Breadcrumb |
+| `/turkey/tourist-tax/` | Guide | turkey tourist tax (320) | info | Article · Breadcrumb |
+
+### URL conventions
+- Lowercase, hyphenated, **trailing slash**; `/[country]/` root **= money page** (not `/turkey/visa/`).
+- Self-referential canonical on every page; `/apply?...` is `noindex`, canonical → `/apply`.
+- No hreflang (UK-only).
+
+### Internal-link map
+- **Money `/turkey/`** links down+out: → `/apply?product=visa&dest=turkey` (hero/price/sticky CTAs ×3+); → each guide ("Turkey guides" block + contextual in-body); → `/tools/do-i-need-a-visa` (eligibility) and `/tools/visa-photo` (requirements); → `/idp/turkey/` (cross-sell); Breadcrumb → Home. Receives from: homepage grid, footer, checker result, every guide (up-link), UK hub.
+- **Guides** link up only: → `/turkey/` (1 contextual in-body link + 1 CTA "Get your Turkey eVisa →"); → 1–2 sibling guides ("Related", same silo). **Never** link to other country silos.
+- **Anchor text**: vary, no exact-match spam — mix "Turkey visa", "apply for your Turkey eVisa", "Turkey eVisa for UK travellers", "start your application".
+
+### Link-equity flow
+Homepage + footer → money page (silo's strongest URL). Guides catch long-tail/top-funnel and funnel equity **up** to money page → which passes equity **out** to `/apply` + tools + `/idp/`. Cross-silo links sparing + contextual only.
+
+### Replication
+Identical structure per destination — swap data sheet (price/govt fee/processing/visa types/FAQ) + that destination's guide set. **Schengen** differs (hub + per-country sub-pages, appointment intent). **IDP** mirrors it (`/idp/` money + `/idp/countries/` + per-country).
+
 ## 4. Internal-linking rules (silo discipline)
 
 1. Support guide → links **up** only, to its own money page (not other silos).
