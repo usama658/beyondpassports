@@ -1,7 +1,6 @@
 <?php
 /**
- * Plugin Name: UKV — Destination URLs + money-page render
- * Desc: Root URLs (/turkey/) for the 'destination' CPT + render the Pods money-page template on singles.
+ * Plugin Name: UKV — Destination URLs + money-page render + disclaimer + schema
  */
 
 // Pretty permalink -> /<slug>/
@@ -12,7 +11,7 @@ add_filter( 'post_type_link', function ( $link, $post ) {
 	return $link;
 }, 10, 2 );
 
-// Register a rewrite rule for each real destination slug (pages unaffected)
+// Rewrite rule per real destination slug (pages unaffected)
 add_action( 'init', function () {
 	$ids = get_posts( [ 'post_type' => 'destination', 'post_status' => 'publish', 'numberposts' => -1, 'fields' => 'ids' ] );
 	foreach ( $ids as $id ) {
@@ -23,13 +22,32 @@ add_action( 'init', function () {
 	}
 } );
 
-// Render the money-page Pods template as the destination single content
+// Render money-page Pods template on destination singles
 add_filter( 'the_content', function ( $c ) {
 	if ( is_singular( 'destination' ) && is_main_query() && in_the_loop() && function_exists( 'pods' ) ) {
 		$out = pods( 'destination', get_the_ID() )->template( 'destination-single' );
 		if ( $out ) { return $out; }
 	}
 	return $c;
+} );
+
+// Site-wide "not a government website" disclaimer strip (T2)
+add_action( 'wp_body_open', function () {
+	echo '<div class="ukv-gov-bar" style="background:#0A2540;color:#cdd8e8;font:12px/1.5 Inter,Arial,sans-serif;text-align:center;padding:7px 12px">Independent visa &amp; permit service &mdash; we are <strong>not a government website</strong> and charge a service fee in addition to any official fees.</div>';
+} );
+
+// Money-page schema (T9): Service + Organization JSON-LD on destination singles
+add_action( 'wp_head', function () {
+	if ( ! is_singular( 'destination' ) ) { return; }
+	$ld = [
+		'@context' => 'https://schema.org',
+		'@type'    => 'Service',
+		'name'     => get_the_title() . ' Visa Service',
+		'serviceType' => 'Visa facilitation',
+		'provider' => [ '@type' => 'Organization', 'name' => 'UKVisaCo' ],
+		'areaServed' => [ '@type' => 'Country', 'name' => 'United Kingdom' ],
+	];
+	echo '<script type="application/ld+json">' . wp_json_encode( $ld ) . '</script>';
 } );
 
 // Brand CSS for money pages
