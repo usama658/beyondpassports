@@ -25,6 +25,23 @@ function ukv_dest_value( $dest, $field ) {
 	return pods( 'destination', $post->ID )->field( $field );
 }
 
+// Expand [ukv_dest_fee] inside Forminator hidden field (render + calculation) so the total computes
+add_filter( 'forminator_field_hidden_field_value', function ( $value ) {
+	if ( is_string( $value ) && false !== strpos( $value, '[ukv_dest_fee' ) ) {
+		$n = do_shortcode( $value );
+		return ( '' === trim( $n ) ) ? '0' : $n;
+	}
+	return $value;
+}, 10, 1 );
+add_filter( 'forminator_field_hidden_calculable_value', function ( $calc, $submitted = null, $settings = null ) {
+	if ( is_array( $settings ) && isset( $settings['custom_value'] ) && false !== strpos( (string) $settings['custom_value'], '[ukv_dest_fee' ) ) {
+		$n = do_shortcode( (string) $settings['custom_value'] );
+		return is_numeric( $n ) ? (float) $n : 0;
+	}
+	if ( ! is_numeric( $calc ) ) { return 0; }
+	return $calc;
+}, 10, 3 );
+
 // [ukv_dest_fee dest="egypt"] -> plain number for Forminator calculation/hidden default
 add_shortcode( 'ukv_dest_fee', function ( $a ) {
 	$a = shortcode_atts( [ 'dest' => '' ], $a );
