@@ -85,6 +85,28 @@ add_shortcode( 'ukv_visa_table', function () {
 		. '<tbody>' . $rows . '</tbody></table>';
 } );
 
+// Floating WhatsApp button site-wide (main lead channel). Number in option ukv_whatsapp_number.
+add_action( 'wp_footer', function () {
+	$num = preg_replace( '/[^0-9]/', '', (string) get_option( 'ukv_whatsapp_number', '' ) );
+	if ( ! $num ) { return; }
+	$href = 'https://wa.me/' . $num . '?text=' . rawurlencode( 'Hi, I would like help with a visa application' );
+	echo '<a href="' . esc_url( $href ) . '" target="_blank" rel="noopener nofollow" aria-label="Chat on WhatsApp" '
+		. 'style="position:fixed;bottom:22px;right:22px;z-index:99999;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.28)">'
+		. '<svg viewBox="0 0 32 32" width="32" height="32" fill="#fff"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2.1A15.4 15.4 0 0 0 16 31.5C24.6 31.5 31.5 24.6 31.5 16S24.6.5 16 .5zm0 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.7 12.7 0 0 1 3.2 16C3.2 8.9 8.9 3.2 16 3.2S28.8 8.9 28.8 16 23.1 28.5 16 28.5zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.7-.7-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 2.5 1.1 3.5 1.2 4.8 1 .8-.1 2.4-1 2.8-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg></a>';
+}, 99 );
+
+// [ukv_whatsapp] -> primary WhatsApp lead CTA (page-aware pre-filled message). Number in option ukv_whatsapp_number.
+add_shortcode( 'ukv_whatsapp', function ( $a ) {
+	$a = shortcode_atts( [ 'label' => 'Chat on WhatsApp', 'text' => 'Hi, I would like help with a visa application' ], $a );
+	$num = preg_replace( '/[^0-9]/', '', (string) get_option( 'ukv_whatsapp_number', '' ) );
+	if ( ! $num ) { return ''; }
+	if ( is_singular( 'destination' ) ) { $a['text'] = 'Hi, I would like help with my ' . get_the_title() . ' visa application'; }
+	$href = 'https://wa.me/' . $num . '?text=' . rawurlencode( $a['text'] );
+	return '<a class="ukv-wa" href="' . esc_url( $href ) . '" target="_blank" rel="noopener nofollow" '
+		. 'style="display:inline-block;background:#25D366;color:#fff;padding:12px 24px;border-radius:6px;font-weight:600;text-decoration:none">'
+		. esc_html( $a['label'] ) . '</a>';
+} );
+
 // [ukv_dest_grid] -> conversion destination cards linking to money pages
 add_shortcode( 'ukv_dest_grid', function () {
 	if ( ! function_exists( 'pods' ) ) { return ''; }
