@@ -368,3 +368,34 @@ Schema: Service + FAQPage + HowTo + BreadcrumbList.
 - **P1 build (parallel)**: 8 destination money pages + Schengen hub + IDP silo (6 country pages) + UK hub + 2 tools + support guides + `/apply` funnel.
 - **P1 go-live (single launch)**: full QA pass → payments tested · doc security verified · disclaimers present · schema valid · sitemap + GSC submitted · conversion tracking · refund/terms live → launch all destinations together.
 - **P2+**: expansion per §12.
+
+## 15. Pricing & unit economics (locked model; numbers indicative)
+
+### 15.1 Price composition
+Customer pays **Service fee (margin) + Govt/official fee (pass-through at cost)**, shown **split** (transparency = trust + compliance). Stripe cost on the govt-fee portion is **absorbed**, baked into the service-fee margin — no separate card line, no hidden total.
+
+### 15.2 Tiers (speed + support; flat across eVisa destinations)
+| Tier | Includes | Indicative service fee |
+|---|---|---|
+| Standard | normal processing | ~£29 |
+| Express | priority handling / faster submit | ~£49 |
+| Premium | concierge + expert-checked + priority support | ~£79 |
+
+Flat across eVisa destinations; **Schengen = higher band** (~£99+ service; appointment + doc-check work). Final per-destination figures set from the data sheet + competitor check (open item).
+
+### 15.3 Per product
+- **eVisa / ETA**: tier service fee + govt fee at cost (e.g. ESTA $21, Egypt ~$25, Turkey free-for-UK, India ~$, Australia ETA ~AUD20).
+- **Schengen**: higher band / quote; €90 govt fee at cost.
+- **IDP**: service fee ~£19 + official permit ~£5.50 (per 1949/1968) + **postage tier** (tracked ~£3.95 / express). Physical delivery cost included.
+- **Bundle (visa + IDP)**: combined cart, **no discount** = sum of both service fees.
+
+### 15.4 Unit economics (per order)
+- **Revenue** = service fee (+ tier uplift) (+ IDP attach).
+- **Variable cost** = Stripe (~1.5% + 20p, on full total incl. pass-through) + manual fulfilment labour (ops minutes/order) + postage (IDP) + refund/chargeback allowance.
+- **Fixed cost** = WP hosting, CRM (Pipedrive), Zapier, domain/email, RankMath — spread across volume.
+- **Contribution margin** = service fee − (Stripe-on-total + labour + postage). Price tiers so Standard clears a positive contribution after absorbing Stripe-on-govt-fee.
+
+### 15.5 Refund policy economics (feeds trust pages)
+- **Govt-fee portion**: refundable until submitted to the authority; non-refundable once submitted.
+- **Service fee**: non-refundable once work has started (clearly stated pre-checkout).
+- Define on `/refunds` + surface at checkout.
