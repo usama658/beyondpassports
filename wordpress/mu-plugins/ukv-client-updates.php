@@ -23,6 +23,8 @@ function ukv_draft_client_update( $barrier_id, $order_id ) {
 	$dest     = $o( 'ukv_destination' ) ?: 'visa';
 	$ref      = $o( 'ukv_order_ref' );
 	$guidance = $b( 'guidance' );
+	// A destination/all barrier fans this guidance out to many clients — redact any PII a staff member typed in.
+	if ( function_exists( 'ukv_redact_pii' ) ) { $guidance = ukv_redact_pii( $guidance ); }
 	$nature   = $b( 'nature' ) === 'permanent' ? 'permanent' : 'temporary';
 
 	$subject = sprintf( 'Update on your %s visa application (%s)', $dest, $ref );
@@ -133,14 +135,18 @@ add_action( 'admin_post_ukv_send_client_updates', function () {
 	}
 
 	$orders = function_exists( 'ukv_affected_orders' ) ? ukv_affected_orders( $bid ) : [];
-	$done   = [];
+	$prev   = get_post_meta( $bid, 'ukv_update_sent', true );
+	$prev   = is_array( $prev ) ? array_map( 'intval', $prev ) : [];
+	$sent_now = 0;
 	foreach ( $orders as $oid ) {
-		if ( ukv_send_client_update( $bid, $oid ) ) { $done[] = (int) $oid; }
+		$oid = (int) $oid;
+		if ( in_array( $oid, $prev, true ) ) { continue; } // already emailed for this barrier — don't re-send
+		if ( ukv_send_client_update( $bid, $oid ) ) { $prev[] = $oid; $sent_now++; }
 	}
-	update_post_meta( $bid, 'ukv_update_sent', $done );
+	update_post_meta( $bid, 'ukv_update_sent', array_values( array_unique( $prev ) ) );
 
 	wp_safe_redirect( add_query_arg(
-		[ 'ukv_sent' => count( $done ) ],
+		[ 'ukv_sent' => $sent_now ],
 		get_edit_post_link( $bid, 'url' )
 	) );
 	exit;

@@ -213,6 +213,7 @@ function ukv_order_barriers_metabox( $post ) {
 add_action( 'save_post_ukv_order', function ( $pid ) {
 	if ( ! isset( $_POST['ukv_log_barrier_nonce'] ) || ! wp_verify_nonce( $_POST['ukv_log_barrier_nonce'], 'ukv_log_barrier' ) ) { return; }
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
+	if ( ! current_user_can( 'edit_post', $pid ) ) { return; }
 	$g = isset( $_POST['ukv_log_barrier_guidance'] ) ? trim( wp_unslash( $_POST['ukv_log_barrier_guidance'] ) ) : '';
 	if ( '' === $g ) { return; }
 	ukv_barrier_create( [

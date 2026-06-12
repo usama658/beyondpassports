@@ -113,6 +113,8 @@ function ukv_tracker_view( $order_id ) {
 			foreach ( $bids as $bid ) {
 				$guidance = (string) get_post_meta( $bid, 'guidance', true );
 				if ( '' === $guidance ) { continue; }
+				// Guidance is staff free-text shown to the public — strip any PII a staff member typed in.
+				if ( function_exists( 'ukv_redact_pii' ) ) { $guidance = ukv_redact_pii( $guidance ); }
 				$nat   = (string) get_post_meta( $bid, 'nature', true );
 				$natl  = defined( 'UKV_BARRIER_NATURE' ) ? ( UKV_BARRIER_NATURE[ $nat ] ?? '' ) : '';
 				$o .= '<div style="background:#fff8e1;border:1px solid #f0e0a0;border-radius:6px;padding:.75em;margin:.5em 0">';

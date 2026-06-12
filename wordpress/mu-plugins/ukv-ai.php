@@ -109,7 +109,16 @@ function ukv_ai_polish_guidance( int $barrier_id ): ?string {
 		return null;
 	}
 
-	return ukv_ai( ukv_ai_brand_rules(), $guidance, [ 'max_tokens' => 400 ] );
+	// Guidance is staff free-text. Redact any PII before it leaves to the external API,
+	// and discard the result if the leak gate flags it (mirrors ukv_ai_polish_content).
+	if ( function_exists( 'ukv_redact_pii' ) ) {
+		$guidance = ukv_redact_pii( $guidance );
+	}
+	$out = ukv_ai( ukv_ai_brand_rules(), $guidance, [ 'max_tokens' => 400 ] );
+	if ( $out && function_exists( 'ukv_story_has_leak' ) && ukv_story_has_leak( $out ) ) {
+		return null;
+	}
+	return $out;
 }
 
 /**

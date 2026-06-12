@@ -48,7 +48,9 @@ function ukv_doc_review_verdict( int $order_id ): ?array {
 	// Guarded: the field may not be wired yet — default to the common 6-month rule.
 	$validity_months = 6;
 	if ( function_exists( 'ukv_dest_value' ) ) {
-		$v = ukv_dest_value( $dest, 'passport_validity_months' );
+		// ukv_dest_value resolves a destination by SLUG; $dest is the display name ("Egypt") -> slugify.
+		$dest_slug = function_exists( 'ukv_dest_slug' ) ? ukv_dest_slug( $dest ) : sanitize_title( $dest );
+		$v = ukv_dest_value( $dest_slug, 'passport_validity_months' );
 		if ( is_numeric( $v ) && (int) $v > 0 ) {
 			$validity_months = (int) $v;
 		}

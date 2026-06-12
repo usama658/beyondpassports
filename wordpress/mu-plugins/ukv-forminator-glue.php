@@ -16,7 +16,8 @@ function ukv_dest_resolve( $attr = '' ) {
 function ukv_dest_value( $dest, $field ) {
 	$allowed = [ 'required_for_uk', 'visa_type', 'max_stay_days', 'govt_fee_gbp',
 		'tier_standard_gbp', 'tier_express_gbp', 'tier_premium_gbp',
-		'idp_permit_type', 'idp_required_photocard', 'idp_required_paper' ];
+		'idp_permit_type', 'idp_required_photocard', 'idp_required_paper',
+		'passport_validity_months' ];
 	if ( ! in_array( $field, $allowed, true ) || ! function_exists( 'pods' ) || '' === $dest ) {
 		return null;
 	}

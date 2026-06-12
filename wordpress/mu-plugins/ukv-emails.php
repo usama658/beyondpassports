@@ -112,10 +112,10 @@ function ukv_email_on_status_change( int $order_id, string $new_status ): void {
 			ukv_email_fire( 'submitted', $order_id );
 			break;
 		case 'awaiting_decision':
-		case 'decision':
 			ukv_email_fire( 'decision', $order_id );
 			break;
 		case 'delivered':
+		case 'won': // approved/delivered — both are a successful completion
 			ukv_email_fire( 'delivered', $order_id );
 			ukv_email_fire( 'review_request', $order_id );
 			break;

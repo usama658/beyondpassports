@@ -89,6 +89,9 @@ add_action( 'admin_notices', function () {
 /** Also sync notes added via the P7 Journey meta box ($_POST['ukv_new_note']) to HubSpot. */
 add_action( 'save_post_ukv_order', function ( $pid ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
+	// Only act on a genuine P7 Journey meta-box submit: verify its nonce + capability before any outbound push.
+	if ( ! isset( $_POST['ukv_journey_nonce'] ) || ! wp_verify_nonce( $_POST['ukv_journey_nonce'], 'ukv_journey' ) ) { return; }
+	if ( ! current_user_can( 'edit_post', $pid ) ) { return; }
 	$note = isset( $_POST['ukv_new_note'] ) ? trim( wp_unslash( $_POST['ukv_new_note'] ) ) : '';
 	if ( '' !== $note ) { ukv_hs_push_note( $pid, $note ); }
 }, 12 );
