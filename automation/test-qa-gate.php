@@ -53,8 +53,14 @@ foreach ( $journey as $n ) {
 }
 $ok( $has_note, 'journey note mentioning "blocked by QA gate" was appended' );
 
-/* 3) Add a document + sign-off -> can submit, gate allows. */
-update_post_meta( $oid, 'ukv_documents', [ 9999 ] ); // dummy attachment id
+/* 3) Add the required documents + sign-off -> can submit, gate allows.
+ * Post-Gap #78 the gate compares uploaded vs the destination's required count
+ * (ukv_required_docs order meta, synced on save). Attach enough dummy docs to meet it. */
+$need = function_exists( 'ukv_required_docs_count' )
+	? max( 1, ukv_required_docs_count( (string) get_post_meta( $oid, 'ukv_destination', true ) ) )
+	: 1;
+$dummy_docs = range( 9001, 9000 + $need ); // distinct dummy attachment ids
+update_post_meta( $oid, 'ukv_documents', $dummy_docs );
 update_post_meta( $oid, 'ukv_qa_signed_off', '1' );
 
 $r3 = ukv_qa_can_submit( $oid );
