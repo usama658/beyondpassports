@@ -78,7 +78,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 - **Alternates:** alternative centre/city; courier-submission route where offered.
 
 ### 5.2 Book appointment
-- **Process:** `[INPUT: do YOU book for the customer, or guide them to book?]` create appointment pack (forms + "what to bring").
+- **Process:** **we book the appointment for the customer** (secure the VFS/TLS/embassy slot) + create the appointment pack (forms + "what to bring").
 - **Problems:** customer can't attend the slot; documents incomplete for the appointment; ID requirements at the centre.
 - **Solutions:** reschedule; pre-appointment checklist call; confirm exactly what to bring.
 - **Alternates:** courier/drop-box submission where the route allows (no in-person).
@@ -119,7 +119,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 8.2 Refused / rejected
 - **Process:** capture **structured reason** (#73: doc quality / eligibility / validity / portal / withdrawn / other); advise options.
 - **Problems:** customer upset; refund expectation; reapply vs appeal unclear.
-- **Solutions:** clear, kind comms; **refund policy** `[INPUT: refund on govt refusal? our fee retained?]`; reapply where viable; appeal where the route allows.
+- **Solutions:** clear, kind comms; **refund policy: we refund our service fee; the government fee is non-refundable (already paid to the authority)**; reapply where viable; appeal where the route allows.
 - **Alternates:** reapply with corrected docs; alternative visa type; alternative destination route.
 
 ### 8.3 More info requested
@@ -130,7 +130,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ## PHASE 9 — Delivery
 
 ### 9.1 Deliver the grant
-- **Process:** e-visa PDF emailed to print / ETA confirmation / **sticker-visa passport returned** `[INPUT: courier? tracked? who pays return postage?]`; delivered email + "Using your visa on arrival" guide; archive to Drive (Zapier).
+- **Process:** e-visa PDF emailed to print / ETA confirmation / **sticker-visa passport returned by tracked + insured courier (we absorb the cost)**; delivered email + "Using your visa on arrival" guide; archive to Drive (Zapier).
 - **Problems:** customer can't open/print PDF; passport lost in return post; wrong details on the grant.
 - **Solutions:** resend/re-host PDF; **tracked, insured return** for passports; if grant has an error → contact authority to correct.
 - **Alternates:** in-person/collection for local customers `[INPUT]`.
@@ -140,14 +140,18 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ## PHASE 10 — Aftercare & close
 
 ### 10.1 Confirm + review + retain
-- **Process:** confirm receipt; review-request email (consented testimonials); **GDPR purge** of stored scans after retention `[INPUT: 30/90 days?]` (#71); close order; outcome feeds success stats + feedback loop (#73/#76).
+- **Process:** confirm receipt; review-request email (consented testimonials); **GDPR purge** of stored scans after retention — **configurable, default 90 days after delivery (extendable to closed + 6 months for disputes)** (#71); close order; outcome feeds success stats + feedback loop (#73/#76).
 - **Problems:** data kept too long (GDPR risk); no review captured.
 - **Solutions:** auto-purge cron (#71); review ask + incentive `[INPUT: incentive?]`.
 - **Alternates:** repeat-customer fast-track for returning travellers `[INPUT: loyalty?]`.
 
 ---
 
-## Open `[INPUT]` items to lock the process
+## Locked policies
+Refund on refusal = **refund our service fee; govt fee non-refundable**. Appointments = **we book for the
+customer**. Passport return = **tracked + insured courier, we pay**. GDPR retention = **configurable, default 90
+days post-delivery**. First touch = **call within ~1 working hour**. Ownership = **assigned owner + queue fallback**.
+
+## Still-open `[INPUT]` items
 Non-Stripe payments? · call retry cadence · chases before pausing · one-order-per-traveller? · conditional-submit
-allowed? · do you book appointments (or guide)? · premium slots? · expedite/embassy-contact route? · refund policy
-on refusal? · passport return method + who pays? · GDPR retention period · review incentive · loyalty/repeat fast-track.
+allowed? · premium appointment slots? · expedite/embassy-contact route? · review incentive · loyalty/repeat fast-track.
