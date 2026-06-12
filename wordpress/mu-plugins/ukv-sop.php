@@ -137,6 +137,112 @@ const UKV_STAGE_SOP = [
 ];
 
 /**
+ * Per-stage RECIPE — the 9-lens decision card, keyed by ukv_status.
+ * what/why/how/when/where/which/who/would/could. Source: docs/superpowers/production-line-recipes.md.
+ */
+const UKV_STAGE_RECIPE = [
+	'paid' => [
+		'what' => 'Open the order, confirm the trip, set expectations.',
+		'why'  => 'Right scope + a strong first impression prevent rework and build trust.',
+		'how'  => 'Order/deal auto-created on charge; owner calls, confirms details, logs a note.',
+		'when' => 'Call within ~1 working hour of payment.',
+		'where'=> 'Production Line (paid) → order screen; phone, backed by WhatsApp + email.',
+		'which'=> 'orders · hubspot · ownership · emails (order_paid).',
+		'who'  => 'The assigned owner (round-robin; queue fallback).',
+		'would'=> 'Call, confirm trip, set owner, send confirmation; request nothing yet.',
+		'could'=> 'WhatsApp-first if preferred; retry 3×/24h then pause+notify; manual order if non-Stripe.',
+	],
+	'awaiting_docs' => [
+		'what' => 'Get the right documents in, correctly.',
+		'why'  => 'Bad/missing docs are the #1 cause of delay and refusal.',
+		'how'  => 'Send the required-docs list + guide; customer uploads via ref+email; save + auto-chase.',
+		'when' => 'Chase at 24h → escalating → pause ~1 week; near-travel keep a 2-day cadence.',
+		'where'=> '/upload-documents/ (gated) → ukv_documents; docs_needed email.',
+		'which'=> 'doc-upload · required-docs · emails · orders (auto-chase).',
+		'who'  => 'The owner.',
+		'would'=> 'Request, receive, verify legibility, confirm receipt.',
+		'could'=> 'Collect over WhatsApp; redo a blurred scan; pause + advise renewal if validity short.',
+	],
+	'doc_review' => [
+		'what' => 'Catch every error before submission.',
+		'why'  => 'Core value-add — this is what lifts the success rate.',
+		'how'  => 'AI advisory check → human confirm → 100% complete → record sign-off.',
+		'when' => 'As soon as docs are complete; always before submit.',
+		'where'=> 'Order screen (AI badge + QA sign-off); the QA gate enforces it.',
+		'which'=> 'doc-review · required-docs · qa-gate · stage-gates.',
+		'who'  => 'Owner (+ a 2nd reviewer for high-risk).',
+		'would'=> 'Fix issues with the customer, then sign off.',
+		'could'=> 'Re-take a photo; refund-our-fee if not viable; conditional-submit near-travel w/ consent.',
+	],
+	'submitted' => [
+		'what' => 'Lodge the application + pay the government fee.',
+		'why'  => 'Point of no return; accuracy is everything.',
+		'how'  => 'Submit on the official portal; pay the govt fee; record govt-ref + fee-paid.',
+		'when' => 'Only after the QA gate passes.',
+		'where'=> 'Official portal; order screen (govt fields); submitted email + tracker.',
+		'which'=> 'govt-fields · qa-gate · emails (submitted) · tracker.',
+		'who'  => 'The owner.',
+		'would'=> 'Submit, record the reference, set a cautious timeframe (no guarantee).',
+		'could'=> 'Retry on portal outage (barrier + fan-out); alternate channel where available.',
+	],
+	'awaiting_decision' => [
+		'what' => 'Manage the wait and any queries.',
+		'why'  => 'Proactive updates keep clients calm and catch problems early.',
+		'how'  => 'Monitor; answer queries fast; each delay = barrier + proactive update.',
+		'when' => 'Throughout the wait; same day on any authority query.',
+		'where'=> 'Barrier register + proactive updates; tracker for the customer.',
+		'which'=> 'barriers · client-updates · emails (decision).',
+		'who'  => 'Owner; near-travel/high-risk escalate to a lead.',
+		'would'=> 'Update only on real news; reset expectations on backlogs.',
+		'could'=> 'Paid official expedite where offered; contact authority + honest contingency near-travel.',
+	],
+	'delivered' => [
+		'what' => 'Get the visa to the customer + show how to use it.',
+		'why'  => 'A smooth handover = a happy, repeat customer.',
+		'how'  => 'Email the e-visa / return passport by tracked+insured courier (we pay); delivered email + guide; archive.',
+		'when' => 'Same day as the grant.',
+		'where'=> 'Email/courier; order screen (return tracking); Zapier archive.',
+		'which'=> 'emails (delivered) · passport-return · zapier.',
+		'who'  => 'Owner; dispatch by ops.',
+		'would'=> 'Deliver, confirm receipt, give arrival tips (border officer decides).',
+		'could'=> 'Re-host a PDF; correct a grant error with the authority; local collection where offered.',
+	],
+	'won' => [
+		'what' => 'Wrap up, learn, retain.',
+		'why'  => 'Reviews + repeat business + GDPR compliance.',
+		'how'  => 'Confirm receipt; review request + next-order discount; purge scans at 90 days.',
+		'when' => 'On delivery confirmation; purge at 90 days.',
+		'where'=> 'Email; retention cron; success dashboard.',
+		'which'=> 'discounts · emails (review_request) · retention · feedback-loop.',
+		'who'  => 'Owner; system runs the purge.',
+		'would'=> 'Ask for a review, retain the relationship, delete data on time.',
+		'could'=> 'Returning-customer fast-track; consented story → anonymised content.',
+	],
+	'rejected' => [
+		'what' => 'Record the refusal + advise options.',
+		'why'  => 'Outcomes drive the customer\'s next step and our learning loop.',
+		'how'  => 'Capture the structured reason; advise reapply/appeal; refund our service fee.',
+		'when' => 'As soon as the authority decides.',
+		'where'=> 'Order screen (rejection-reason); success dashboard + feedback loop.',
+		'which'=> 'rejection · refunds · feedback-loop · insights.',
+		'who'  => 'Owner; refunds approved by a lead.',
+		'would'=> 'Communicate clearly + kindly; log the reason.',
+		'could'=> 'Reapply with corrected docs; appeal where allowed; alternative visa/route.',
+	],
+	'refunded' => [
+		'what' => 'Return the service fee; close cleanly.',
+		'why'  => 'Fair outcome + clean records.',
+		'how'  => 'Confirm the service-fee refund (govt fee non-refundable); record reason; close.',
+		'when' => 'After the refusal/cancellation decision.',
+		'where'=> 'Order screen; refund flow.',
+		'which'=> 'refunds · emails (refunded).',
+		'who'  => 'Owner; lead approves.',
+		'would'=> 'Refund our fee, record reason, offer an alternative where viable.',
+		'could'=> 'Keep records (retention extendable to closed + 6 months) for disputes.',
+	],
+];
+
+/**
  * Common problems/blockers → solution, keyed by blocker/barrier nature.
  * Sourced from the delay & exception register.
  */
@@ -160,6 +266,12 @@ const UKV_TROUBLESHOOTING = [
 function ukv_stage_sop( $status ) {
 	$status = (string) $status;
 	return UKV_STAGE_SOP[ $status ] ?? [];
+}
+
+/** Return the 9-lens recipe for a status. Empty-safe. */
+function ukv_stage_recipe( $status ) {
+	$status = (string) $status;
+	return UKV_STAGE_RECIPE[ $status ] ?? [];
 }
 
 /**
@@ -231,6 +343,22 @@ function ukv_sop_metabox( $post ) {
 		if ( ! empty( $sop['next'] ) ) {
 			echo '<p style="margin:6px 0 8px"><strong>' . esc_html__( 'Moves forward when', 'ukv' ) . ':</strong> ' . esc_html( $sop['next'] ) . '</p>';
 		}
+	}
+
+	// Full 9-lens recipe for this stage (collapsible).
+	$recipe = ukv_stage_recipe( $status );
+	if ( ! empty( $recipe ) ) {
+		$labels = [
+			'what' => 'What', 'why' => 'Why', 'how' => 'How', 'when' => 'When', 'where' => 'Where',
+			'which' => 'Which (tools)', 'who' => 'Who', 'would' => 'Would (standard)', 'could' => 'Could (alternatives)',
+		];
+		echo '<details style="margin:4px 0 8px"><summary style="cursor:pointer;font-weight:600">' . esc_html__( 'Full recipe (9 lenses)', 'ukv' ) . '</summary>';
+		echo '<ul style="margin:6px 0 0;padding-left:0;list-style:none">';
+		foreach ( $labels as $k => $label ) {
+			if ( empty( $recipe[ $k ] ) ) { continue; }
+			echo '<li style="margin:0 0 4px"><strong>' . esc_html( $label ) . ':</strong> ' . esc_html( $recipe[ $k ] ) . '</li>';
+		}
+		echo '</ul></details>';
 	}
 
 	$ts = ukv_order_troubleshooting( $post->ID );
