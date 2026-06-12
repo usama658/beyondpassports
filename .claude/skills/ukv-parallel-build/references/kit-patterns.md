@@ -16,15 +16,22 @@ In `_elementor_data`, reference a global instead of a literal so it tracks the k
 `jkit_fun_fact` (stat counters), `divider`, `jkit_post_block`, `icon-list`, `icon-box`,
 `jkit_testimonials`, `jkit_accordion` (FAQ).
 
-## Kit-native section recipe (the hybrid approach)
-A section template = an `elementor_library` post with meta `_elementor_template_type='section'` and
-`_elementor_data` = a JSON array of `section → column → widget` elements. To stay native + dynamic:
-- Use `jkit_heading` / `jkit_button` / `jkit_icon_box` for the kit chrome, referencing global colours/typography.
-- Embed LIVE data with the core `shortcode` widget:
-  `{ "id":"<8hex>", "elType":"widget", "widgetType":"shortcode", "settings":{ "shortcode":"[ukv_testimonials]" } }`.
-- Section/column wrappers carry padding + responsive controls (`_element_width_tablet`, `padding_mobile`, etc.).
-- Give every element a unique 7–8 char id (`substr(md5(uniqid()),0,8)` in the build script).
-- Upsert the template by title (idempotent) so re-runs don't duplicate.
+## Kit-native section workflow (CLONE-AND-MODIFY — the operator's actual method)
+Do NOT hand-author `_elementor_data` JSON from scratch — it doesn't match how the operator works and is hard to
+verify. Instead: **duplicate the closest existing kit block, then modify it in the Elementor frontend.** Header
+and footer are left as-is; work happens on sections only.
+
+Claude's job is NOT to generate the section, but to **map each needed section to the closest kit block** and tell
+the operator what to change + which `[ukv_*]` shortcode to drop in (via Elementor's core **Shortcode** widget).
+The authoritative map lives at `docs/superpowers/kit-section-map.md` — read it. It pairs each UKV section with a
+source (template # → section index), the edits to make, and the live-data shortcode.
+
+To clone in Elementor: open the source template → right-click the section → Copy → Paste onto the target page (or
+Save as Template) → edit inline. Global colours/typography carry over automatically, and the block is already
+responsive (just check the device switcher after editing).
+
+Only generate `_elementor_data` programmatically if the operator explicitly asks for it; the shortcodes
+(`references/shortcodes.md`) are the live-data bridge either way.
 
 ## Reference templates to copy structures from
 Home #202, Visa #229, Visa Detail #223, Pricing #187, FAQ #193 (accordion), Contact #211, Header #166, Footer #169.
