@@ -20,13 +20,13 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 1.2 First contact — call within ~1 working hour
 - **Process:** owner calls to confirm trip (destination, **travel date**, traveller count), explain the 6 steps, set expectations; logs a journey note.
 - **Problems:** no answer; wrong number; customer in different timezone; outside hours.
-- **Solutions:** call → if no answer, WhatsApp + email immediately; retry cadence `[INPUT: e.g. 3 attempts over 24h?]`; out-of-hours → next-morning call + instant auto-email so they're never in silence.
+- **Solutions:** call → if no answer, WhatsApp + email immediately; **retry cadence (configurable, tiered): up to 3 attempts within 24h alongside WhatsApp+email; persist 2×/day up to 3 days for near-travel/high-value; then pause + notify**; out-of-hours → next-morning call + instant auto-email so they're never in silence.
 - **Alternates:** WhatsApp-first for customers who prefer chat; callback booking link.
 
 ### 1.3 Confirm scope + route
 - **Process:** lock product route — online (eVisa/ETA), appointment visa, or IDP — and the required-docs set.
 - **Problems:** customer unsure of trip dates; trip too soon for the tier; needs visa for a transit too; group/family.
-- **Solutions:** advise express if tight; flag if timeline isn't achievable honestly; one order per traveller `[INPUT: confirm]`.
+- **Solutions:** advise express if tight; flag if timeline isn't achievable honestly; **one order per traveller, linked as a group** (per-person docs/fees, clean tracking).
 - **Alternates:** hold order as "planning" if dates unconfirmed.
 
 ---
@@ -42,7 +42,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 3.1 Request + receive documents
 - **Process:** send required-docs list + "How to send documents" guide; customer uploads; agent saves to order; auto-chase at 24h.
 - **Problems:** **no structured upload yet** (#68 — manual reply/WhatsApp); blurred/cropped scans; wrong document; missing extras; customer unresponsive.
-- **Solutions:** build the post-pay upload (#68); on bad scan → request redo with the photo guide; chase cadence then pause + notify `[INPUT: how many chases before pausing?]`.
+- **Solutions:** build the post-pay upload (#68); on bad scan → request redo with the photo guide; **chase cadence: auto-chase at 24h then escalating chases; pause + notify after ~1 week of silence; near travel date keep a 2-day cadence (no pause)**.
 - **Alternates:** collect docs over WhatsApp; agent takes details on the call.
 
 ### 3.2 Passport validity
@@ -65,7 +65,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 - **Process:** must be 100% complete + a human sign-off recorded BEFORE status can move to submitted.
 - **Problems:** pressure to submit incomplete to hit travel date; gate not enforced yet.
 - **Solutions:** build the hard gate (#75); if incomplete near travel → escalate, don't submit broken.
-- **Alternates:** conditional submit only where the portal allows later document upload `[INPUT]`.
+- **Alternates:** **conditional submit allowed where the official portal supports later document upload — especially near the travel date, with the customer's consent**; default remains 100% before submit.
 
 ---
 
@@ -74,7 +74,7 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 5.1 Identify centre + slots
 - **Process:** find VFS/TLS/embassy for the destination; check slot availability.
 - **Problems:** **no slots** (major bottleneck — days/weeks); centre far from customer; premium-slot upsell by centre.
-- **Solutions:** monitor for releases; offer flexible dates; book earliest; advise premium lounge/slot if customer wants `[INPUT: do you book premium?]`.
+- **Solutions:** monitor for releases; offer flexible dates; book earliest; **premium/fast-track slots offered as a paid add-on (all tiers) — customer pays the centre's extra fee**.
 - **Alternates:** alternative centre/city; courier-submission route where offered.
 
 ### 5.2 Book appointment
@@ -106,8 +106,8 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 7.1 Monitor + manage the wait
 - **Process:** status `awaiting_decision`; watch for queries; update customer on real news only.
 - **Problems (delay register):** portal outage; **govt backlog/seasonal surge**; **Request for Evidence** (more docs); administrative processing/extra checks (open-ended); **near travel date, no decision**.
-- **Solutions:** each delay = a **barrier + proactive client update**; destination-wide ones fan out to all affected; RFE → get docs from customer fast + resubmit; near-travel → escalate `[INPUT: do you have an expedite/embassy-contact route?]`.
-- **Alternates:** premium/priority processing if the destination offers it (paid); contingency advice (change travel) when truly stuck.
+- **Solutions:** each delay = a **barrier + proactive client update**; destination-wide ones fan out to all affected; RFE → get docs from customer fast + resubmit; near-travel → **escalate: contact the authority where possible AND honestly advise contingency (rebook travel) — no false promises**.
+- **Alternates:** **paid official priority/expedite where the destination offers it** (customer pays); contingency advice (change travel) when truly stuck.
 
 ---
 
@@ -142,16 +142,23 @@ approval guarantee; IDP = guided self-service at PayPoint. `[INPUT]` = your real
 ### 10.1 Confirm + review + retain
 - **Process:** confirm receipt; review-request email (consented testimonials); **GDPR purge** of stored scans after retention — **configurable, default 90 days after delivery (extendable to closed + 6 months for disputes)** (#71); close order; outcome feeds success stats + feedback loop (#73/#76).
 - **Problems:** data kept too long (GDPR risk); no review captured.
-- **Solutions:** auto-purge cron (#71); review ask + incentive `[INPUT: incentive?]`.
-- **Alternates:** repeat-customer fast-track for returning travellers `[INPUT: loyalty?]`.
+- **Solutions:** auto-purge cron (#71); review ask + **incentive: a discount on their next order**.
+- **Alternates:** **repeat-customer fast-track: reuse known details, lighter intake (re-collect only what changed), + a loyalty discount** for returning travellers.
 
 ---
 
-## Locked policies
-Refund on refusal = **refund our service fee; govt fee non-refundable**. Appointments = **we book for the
-customer**. Passport return = **tracked + insured courier, we pay**. GDPR retention = **configurable, default 90
-days post-delivery**. First touch = **call within ~1 working hour**. Ownership = **assigned owner + queue fallback**.
+## Locked policies (all resolved)
+- Refund on refusal = **refund our service fee; govt fee non-refundable**.
+- Appointments = **we book for the customer**; **premium/fast-track slots = paid add-on (all tiers)**.
+- Passport return = **tracked + insured courier, we pay**.
+- GDPR retention = **configurable, default 90 days post-delivery** (extendable to closed+6mo).
+- First touch = **call within ~1 working hour**; retry **3×/24h + WhatsApp/email, persist 2×/day ≤3 days near-travel, then pause+notify**.
+- Ownership = **assigned owner + queue fallback**.
+- Doc chases = **24h auto-chase → escalating → pause after ~1 week; near-travel 2-day cadence**.
+- Bookings = **one order per traveller, linked as a group**.
+- Submit = **100% by default; conditional submit where the portal allows later upload, near-travel, with consent**.
+- Near-travel/no decision = **contact authority + honest contingency; paid official expedite where offered**.
+- Reviews = **discount on next order**. Loyalty = **lighter intake (reuse details) + returning-customer discount**.
 
-## Still-open `[INPUT]` items
-Non-Stripe payments? · call retry cadence · chases before pausing · one-order-per-traveller? · conditional-submit
-allowed? · premium appointment slots? · expedite/embassy-contact route? · review incentive · loyalty/repeat fast-track.
+## Minor remaining note
+Non-Stripe payments (phone/bank transfer) → handle via manual order creation if you take them (default: Stripe online only).
