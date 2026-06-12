@@ -28,6 +28,8 @@ function ukv_email_template( string $event, int $order_id ): array {
 		'delivered'       => "Your {$dest} visa is ready ({$ref})",
 		'review_request'  => "How did we do? Your {$dest} visa ({$ref})",
 		'checker_abandon' => "Finish your {$dest} visa check — we can help",
+		'refunded'        => "Your refund for the {$dest} application ({$ref})",
+		'appointment_booked' => "Your appointment is booked — {$dest} visa ({$ref})",
 	];
 
 	$bodies = [
@@ -38,6 +40,8 @@ function ukv_email_template( string $event, int $order_id ): array {
 		'delivered' => "Hi {$name},\n\nYour {$dest} visa is ready (order {$ref}). Please check the details carefully and keep a copy with your travel documents.\n\nHow to use it at the border: {$base}using-your-visa-on-arrival/\n\nIf anything doesn't look right, contact us straight away and we'll help.\n",
 		'review_request' => "Hi {$name},\n\nWe hope your {$dest} visa (order {$ref}) made your trip planning easier. If you have a moment, we'd really appreciate a short review of how we did — it helps other travellers know what to expect.\n",
 		'checker_abandon' => "Hi {$name},\n\nIt looks like you started a visa check for {$dest} but didn't finish. If you'd like a hand, we can guide you through it — just reply and we'll pick up where you left off.\n",
+		'refunded' => "Hi {$name},\n\nWe've processed a refund of our service fee for your {$dest} application (order {$ref}). Please note the government fee is non-refundable as it was already paid to the authority on your behalf.\n\nThe refund will appear on your original payment method shortly. If you have any questions, just reply or message us on WhatsApp.\n",
+		'appointment_booked' => "Hi {$name},\n\nGood news — we've booked your appointment for your {$dest} visa (order {$ref}). We'll send you the full details (centre, date and what to bring) separately so you're fully prepared.\n\nPlease arrive a little early and bring your passport and the documents we list. Any questions, just reply or message us.\n",
 	];
 
 	$subject = $subjects[ $event ] ?? "Update on your {$dest} visa ({$ref})";
