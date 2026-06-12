@@ -18,6 +18,7 @@ function ukv_email_template( string $event, int $order_id ): array {
 	$name  = $g( 'ukv_name' ) ?: 'there';
 	$dest  = $g( 'ukv_destination' ) ?: 'your destination';
 	$ref   = $g( 'ukv_order_ref' ) ?: '—';
+	$base  = home_url( '/' ); // portable: becomes the live domain at launch
 
 	$subjects = [
 		'order_paid'      => "Your {$dest} visa order is confirmed ({$ref})",
@@ -30,11 +31,11 @@ function ukv_email_template( string $event, int $order_id ): array {
 	];
 
 	$bodies = [
-		'order_paid' => "Hi {$name},\n\nThanks — we've received your order for your {$dest} visa. Your order reference is {$ref}.\n\nOur team will be in touch shortly (usually by phone or WhatsApp) to guide you through the next steps. There's nothing you need to do right now.\n",
-		'docs_needed' => "Hi {$name},\n\nTo move your {$dest} visa application forward (order {$ref}), we need a few documents from you. The quickest way is to reply here or to our WhatsApp message, and we'll confirm exactly what's required.\n\nWe'll keep this moving as soon as we have what we need.\n",
-		'submitted' => "Hi {$name},\n\nGood news — your {$dest} visa application (order {$ref}) has now been submitted. We'll let you know as soon as there's a decision.\n",
+		'order_paid' => "Hi {$name},\n\nThanks — we've received your order for your {$dest} visa. Your order reference is {$ref}.\n\nHere's exactly what happens next: {$base}how-it-works/\nYou can check your progress any time here: {$base}track/\n\nWe'll be in touch shortly (usually by phone or WhatsApp) and let you know which documents we need. Nothing for you to do right now.\n",
+		'docs_needed' => "Hi {$name},\n\nTo move your {$dest} visa application forward (order {$ref}), we need a couple of documents — usually your passport bio page and a passport-style photo.\n\nHow to send them (it's quick): {$base}how-to-send-documents/\nOr just reply here / to our WhatsApp message and we'll guide you.\n",
+		'submitted' => "Hi {$name},\n\nGood news — your {$dest} visa application (order {$ref}) has now been submitted to the official system. Timeframes vary by destination and we'll let you know as soon as there's a decision. You can follow progress here: {$base}track/\n",
 		'decision' => "Hi {$name},\n\nThere's an update on your {$dest} visa application (order {$ref}). A member of our team will be in touch by phone or WhatsApp with the details and any next steps.\n",
-		'delivered' => "Hi {$name},\n\nYour {$dest} visa is ready (order {$ref}). Please check the details carefully and keep a copy with your travel documents.\n\nIf anything doesn't look right, contact us straight away and we'll help.\n",
+		'delivered' => "Hi {$name},\n\nYour {$dest} visa is ready (order {$ref}). Please check the details carefully and keep a copy with your travel documents.\n\nHow to use it at the border: {$base}using-your-visa-on-arrival/\n\nIf anything doesn't look right, contact us straight away and we'll help.\n",
 		'review_request' => "Hi {$name},\n\nWe hope your {$dest} visa (order {$ref}) made your trip planning easier. If you have a moment, we'd really appreciate a short review of how we did — it helps other travellers know what to expect.\n",
 		'checker_abandon' => "Hi {$name},\n\nIt looks like you started a visa check for {$dest} but didn't finish. If you'd like a hand, we can guide you through it — just reply and we'll pick up where you left off.\n",
 	];
