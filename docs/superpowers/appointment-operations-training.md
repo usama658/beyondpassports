@@ -26,6 +26,30 @@ application to be done *first*, then you book the in-person appointment to lodge
 > Verify per destination: whether it's VFS / TLS / embassy, the exact category, the fee, and whether biometrics
 > are required. Put this in the destination's setup sheet.
 
+## Part 1b — Two lists: what you need to BOOK vs to ATTEND
+
+You do NOT need every customer document to book a slot. Two different lists:
+
+**List 1 — minimum to BOOK the slot (secure the timeline now):**
+1. Centre account (pre-created, logged in).
+2. The completed online visa application + its reference number (most centres need the online form done first).
+3. Passport core details (name, number, nationality, DOB, expiry — from an early scan).
+4. Visa category + intended travel dates.
+5. Appointment fee / payment method (+ premium-slot fee if upgrading).
+6. Customer contact + consent to the date/city.
+
+**List 2 — full set needed to ATTEND/lodge (by the appointment day):**
+- All supporting documents (destination-specific: bank statements, accommodation, itinerary, travel insurance,
+  invitation/sponsor letters, employment proof…), spec-compliant photos, the printed appointment confirmation,
+  and the passport itself.
+
+**The rule:**
+- Safe default → docs ready, then book (no risk of a wasted slot).
+- Slot-scarce + tight travel date → book on **List 1** to lock the timeline, then race to complete **List 2**
+  before the appointment day. A calculated risk — only when you're confident the docs will be ready in time.
+- Decision shortcut: slots plentiful → wait for docs; slots scarce → book on List 1 now, chase List 2 hard.
+- Confirm each destination's exact List 2 and store it in the destination's required-docs so completeness tracks it.
+
 ## Part 2 — Getting slots (the routine)
 
 Slots are scarce; this is a discipline, not luck.
@@ -61,6 +85,42 @@ customer. The edge is preparedness + flexibility + premium, full stop.
 
 ### Recipe F — Passport return
 - **What** get the passport safely back. **Why** you hold the customer's most important document. **How** **tracked + insured courier (we pay)**; record carrier + tracking; mark dispatched. **When** when the decision/passport is returned by the centre. **Where** order Passport-return box. **Which** passport-return + emails. **Who** ops/owner. **Would** dispatch tracked + notify the customer. **Could** local collection where the customer prefers + it's offered.
+
+## Part 4 — Finding the right centre at the right time + managing the line
+
+### Finding the RIGHT centre
+1. **Which operator?** Per destination it's VFS *or* TLS *or* the embassy direct — never assume. Record it per
+   country in the **Supply-chain registry** so you (and the team) always know.
+2. **Which city?** Default to the centre nearest the customer, but stay flexible — offer the earliest slot at any
+   reasonable city (flexibility is the biggest lever).
+3. **Right category** at that centre (tourist/visit/business) — the category drives which slots show.
+
+### Finding the RIGHT time
+- Slots release in **batches** — commonly early-morning weekdays, local time. Learn each centre's window and note
+  it in the registry.
+- **Sweep daily** at those windows across every order awaiting a slot.
+- Book the **moment docs are ready** (or List-1 minimum if slots are scarce).
+
+### Managing the production line for appointment orders
+Appointment orders carry an extra phase the online ones don't. Run them like this:
+- **Flag the route at intake.** When you confirm scope (Step 2), mark the order as the *appointment route* so it's
+  never treated like a quick online visa. Its journey + SLA expectations differ (weeks, not days).
+- **Use the Appointment box status** as the sub-tracker: `to_book → booked → attended → completed`. At a glance you
+  know where every appointment order sits.
+- **A daily "awaiting slot" sweep.** First thing each morning, work through every order in `to_book`, at its
+  centre's release window. This is the appointment owner's core routine.
+- **Don't let it submit early.** The stage gate already blocks submission until the application is lodged + the
+  government reference is recorded — for appointment orders, lodgement happens *at* the appointment, so the order
+  legitimately sits longer at doc_review/appointment before it can move.
+- **Owner digest + SLA.** Appointment orders show on the owner's digest; because cycles are long, set the
+  customer's expectations up front and update only on real news.
+- **Capacity.** Appointment orders take far more handling per order than online ones — count them heavier when
+  planning how many an owner can run at once.
+
+### The board view for appointments
+On the Production Line board, an appointment-route order typically lingers in **Doc review** (collecting List 2 +
+booking + attending) before it can reach **Submitted**. That's expected — the appointment IS the submission for
+these. Use the Appointment-box status to see the real sub-stage; don't mistake a long doc_review dwell for a stall.
 
 ## The honest summary
 You can run the **entire business** without ever doing this — online visas have no appointments. Add this layer
