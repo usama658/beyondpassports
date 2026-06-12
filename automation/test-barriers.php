@@ -13,27 +13,27 @@ function t_order( $ref, $destName, $status, $tier = 'Standard', $days_old = 0, &
 	return $oid;
 }
 
-// 2 open Egypt, 1 won Egypt (resolved -> excluded from fan-out), 1 open Turkey.
-$eg1 = t_order( 'T-EG-1', 'Egypt', 'paid', 'Standard', 0, $created );
-$eg2 = t_order( 'T-EG-2', 'Egypt', 'awaiting_docs', 'Standard', 0, $created );
-$egW = t_order( 'T-EG-W', 'Egypt', 'won', 'Standard', 0, $created );
+// 2 open Testlandia, 1 won Testlandia (resolved -> excluded from fan-out), 1 open Turkey.
+$eg1 = t_order( 'T-EG-1', 'Testlandia', 'paid', 'Standard', 0, $created );
+$eg2 = t_order( 'T-EG-2', 'Testlandia', 'awaiting_docs', 'Standard', 0, $created );
+$egW = t_order( 'T-EG-W', 'Testlandia', 'won', 'Standard', 0, $created );
 $tk1 = t_order( 'T-TK-1', 'Turkey', 'paid', 'Standard', 0, $created );
 
-// 1) Destination barrier (egypt) fan-out = only the 2 OPEN egypt orders.
-$bid = ukv_barrier_create( [ 'nature' => 'temporary', 'scope' => 'destination', 'destination' => 'egypt', 'guidance' => 'Egypt portal down 48h.' ] );
+// 1) Destination barrier (testlandia) fan-out = only the 2 OPEN testlandia orders.
+$bid = ukv_barrier_create( [ 'nature' => 'temporary', 'scope' => 'destination', 'destination' => 'testlandia', 'guidance' => 'Testlandia portal down 48h.' ] );
 $created_b = [ $bid ];
 $aff = ukv_affected_orders( $bid );
 sort( $aff ); $exp = [ $eg1, $eg2 ]; sort( $exp );
-t_assert( $aff === $exp, 'destination barrier fans out to exactly the 2 open Egypt orders (not won, not Turkey)' );
+t_assert( $aff === $exp, 'destination barrier fans out to exactly the 2 open Testlandia orders (not won, not Turkey)' );
 
-// 2) Live surface: open egypt order sees it; turkey order does not. Zero duplication (1 record).
-t_assert( in_array( $bid, ukv_barriers_for_order( $eg1 ), true ), 'open Egypt order surfaces the destination barrier' );
-t_assert( ! in_array( $bid, ukv_barriers_for_order( $tk1 ), true ), 'Turkey order does NOT surface the Egypt barrier' );
-$all_eg_barriers = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'destination', 'value' => 'egypt' ] ] ] );
+// 2) Live surface: open testlandia order sees it; turkey order does not. Zero duplication (1 record).
+t_assert( in_array( $bid, ukv_barriers_for_order( $eg1 ), true ), 'open Testlandia order surfaces the destination barrier' );
+t_assert( ! in_array( $bid, ukv_barriers_for_order( $tk1 ), true ), 'Turkey order does NOT surface the Testlandia barrier' );
+$all_eg_barriers = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'destination', 'value' => 'testlandia' ] ] ] );
 t_assert( count( $all_eg_barriers ) === 1, 'single stored record for the destination barrier (no copies onto orders)' );
 
 // 3) Auto-detect idempotency: SLA-breached order (4 days old, 72h SLA) -> exactly 1 sla barrier after 2 runs.
-$slaO = t_order( 'T-SLA-1', 'Egypt', 'paid', 'Standard', 4, $created );
+$slaO = t_order( 'T-SLA-1', 'Testlandia', 'paid', 'Standard', 4, $created );
 ukv_auto_detect_barriers();
 ukv_auto_detect_barriers();
 $sla = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'rule_key', 'value' => 'T-SLA-1:sla_breach' ] ] ] );

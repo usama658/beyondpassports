@@ -13,26 +13,26 @@ function mk_order( $ref, $dest, $status, $tier, $days_old, $name, $email, &$orde
 }
 
 echo "== Seed ==\n";
-$eg1 = mk_order( 'E2E-EG-1', 'Egypt', 'paid', 'Standard', 0, 'Alice A', 'alice@x.com', $orders );
-$eg2 = mk_order( 'E2E-EG-2', 'Egypt', 'awaiting_docs', 'Standard', 0, 'Bob B', 'bob@x.com', $orders );
-$egDone = mk_order( 'E2E-EG-D', 'Egypt', 'delivered', 'Standard', 0, 'Carol C', 'carol@x.com', $orders );
+$eg1 = mk_order( 'E2E-EG-1', 'Testlandia', 'paid', 'Standard', 0, 'Alice A', 'alice@x.com', $orders );
+$eg2 = mk_order( 'E2E-EG-2', 'Testlandia', 'awaiting_docs', 'Standard', 0, 'Bob B', 'bob@x.com', $orders );
+$egDone = mk_order( 'E2E-EG-D', 'Testlandia', 'delivered', 'Standard', 0, 'Carol C', 'carol@x.com', $orders );
 $tk1 = mk_order( 'E2E-TK-1', 'Turkey', 'paid', 'Standard', 0, 'Dan D', 'dan@x.com', $orders );
 
-// CHECK 1: destination barrier surfaces on every OPEN Egypt order via live query; zero duplication.
+// CHECK 1: destination barrier surfaces on every OPEN Testlandia order via live query; zero duplication.
 echo "== Check 1: fan-out + no duplication ==\n";
-$bid = ukv_barrier_create( [ 'nature' => 'temporary', 'scope' => 'destination', 'destination' => 'egypt',
-	'guidance' => 'The Egypt e-visa portal is briefly down; no action needed, we resubmit automatically.' ] );
+$bid = ukv_barrier_create( [ 'nature' => 'temporary', 'scope' => 'destination', 'destination' => 'testlandia',
+	'guidance' => 'The Testlandia e-visa portal is briefly down; no action needed, we resubmit automatically.' ] );
 $barriers[] = $bid;
 $aff = ukv_affected_orders( $bid ); sort( $aff ); $exp = [ $eg1, $eg2 ]; sort( $exp );
-e( $aff === $exp, 'barrier fans out to the 2 OPEN Egypt orders only (delivered + Turkey excluded)' );
-e( in_array( $bid, ukv_barriers_for_order( $eg1 ), true ) && in_array( $bid, ukv_barriers_for_order( $eg2 ), true ), 'both open Egypt orders surface it live' );
+e( $aff === $exp, 'barrier fans out to the 2 OPEN Testlandia orders only (delivered + Turkey excluded)' );
+e( in_array( $bid, ukv_barriers_for_order( $eg1 ), true ) && in_array( $bid, ukv_barriers_for_order( $eg2 ), true ), 'both open Testlandia orders surface it live' );
 e( ! in_array( $bid, ukv_barriers_for_order( $tk1 ), true ), 'Turkey order does not surface it' );
-$stored = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'destination', 'value' => 'egypt' ], [ 'key' => 'status', 'value' => 'open' ] ] ] );
+$stored = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'destination', 'value' => 'testlandia' ], [ 'key' => 'status', 'value' => 'open' ] ] ] );
 e( count( $stored ) === 1, 'single stored record — fan-out is by query, never copied' );
 
 // CHECK 2: auto-detect cron idempotent.
 echo "== Check 2: auto-detect idempotent ==\n";
-$sla = mk_order( 'E2E-SLA', 'India', 'paid', 'Standard', 5, 'Eve E', 'eve@x.com', $orders ); // 5d old, 72h SLA -> breach (India, to keep Egypt fan-out = 2)
+$sla = mk_order( 'E2E-SLA', 'India', 'paid', 'Standard', 5, 'Eve E', 'eve@x.com', $orders ); // 5d old, 72h SLA -> breach (India, to keep Testlandia fan-out = 2)
 ukv_auto_detect_barriers(); ukv_auto_detect_barriers();
 $slaB = get_posts( [ 'post_type' => 'ukv_barrier', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => -1, 'meta_query' => [ [ 'key' => 'rule_key', 'value' => 'E2E-SLA:sla_breach' ] ] ] );
 e( count( $slaB ) === 1, 'two cron runs create exactly one SLA barrier (idempotent)' );

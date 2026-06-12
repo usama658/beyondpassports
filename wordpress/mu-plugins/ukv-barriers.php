@@ -158,7 +158,7 @@ function ukv_auto_detect_barriers() {
 		}
 
 		// Rule 2: passport validity short of destination requirement (only if both data points exist).
-		$expiry = (string) get_post_meta( $oid, 'passport_expiry', true ); // YYYY-MM-DD if set
+		$expiry = (string) get_post_meta( $oid, 'ukv_passport_expiry', true ); // YYYY-MM-DD if set
 		$req_months = function_exists( 'ukv_dest_value' ) ? (int) ukv_dest_value( $slug, 'passport_validity_months' ) : 0;
 		$travel = (string) get_post_meta( $oid, 'ukv_travel_date', true );
 		if ( $expiry && $req_months && $travel ) {
