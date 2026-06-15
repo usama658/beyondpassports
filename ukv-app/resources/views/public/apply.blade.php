@@ -17,11 +17,15 @@
   .ukv-form label{display:block;font-family:var(--body);font-weight:600;font-size:13px;color:#4a5b65;margin:0 0 5px;letter-spacing:.01em}
   .ukv-form .req{color:var(--cta)}
   .ukv-form input,.ukv-form select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;background:var(--white);color:var(--ink)}
-  .ukv-form input:focus,.ukv-form select:focus,.ukv-form button:focus-visible,a:focus-visible{outline:3px solid rgba(20,86,184,.45);outline-offset:2px}
-  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:5px 0 0;letter-spacing:.04em}
+  /* Page-local 45%-alpha focus ring removed — it was lower-contrast than, and overrode, the
+     canonical solid --cta ring in ukv.css. Rely on the shared ring now. (audit S5) */
+  /* Field error state (paired with aria-invalid set by JS on failed submit). (audit P2) */
+  .ukv-form [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
+  .ukv-form .field-error{display:block;color:#8a2a22;font-size:12.5px;margin:5px 0 0;font-weight:600}
+  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:5px 0 0;letter-spacing:.04em}
   /* fieldset reset + group heading */
   .ukv-form fieldset{border:0;margin:0;padding:0}
-  .ukv-form .legend{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:26px 0 2px;border-top:1px dashed var(--paper-edge);padding-top:18px}
+  .ukv-form .legend{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:26px 0 2px;border-top:1px dashed var(--paper-edge);padding-top:18px}
   .ukv-form .legend:first-of-type{border-top:0;padding-top:0;margin-top:8px}
   /* consent row */
   .consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 0}
@@ -50,16 +54,16 @@
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 8px}
   .tier{border:1px solid var(--paper-edge);border-radius:10px;padding:16px;text-align:center;background:#f7fafb}
   .tier.is-featured{border-color:var(--gold);box-shadow:0 0 0 2px rgba(200,162,74,.25)}
-  .tier .tname{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp)}
+  .tier .tname{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text)}
   .tier .tprice{font-family:var(--display);font-size:30px;font-weight:600;color:var(--navy);margin:6px 0 2px}
   .tier .tdesc{font-size:12.5px;color:var(--muted)}
   .tier .tbadge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;background:var(--gold);color:var(--navy);border-radius:99px;padding:2px 8px;margin-top:8px}
   /* summary chip list in review panel */
   .case-summary{list-style:none;margin:0 0 16px;padding:14px 16px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:8px;font-size:13.5px;color:#33454f}
   .case-summary li{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
-  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#6b7d87;text-transform:uppercase}
+  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);text-transform:uppercase}
   .case-summary .v{font-weight:600;text-align:right}
-  .micro-note{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:14px 0 0;letter-spacing:.03em}
+  .micro-note{font-family:var(--mono);font-size:11px;color:var(--hint);margin:14px 0 0;letter-spacing:.03em}
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
     .tiers{grid-template-columns:1fr}
@@ -420,6 +424,66 @@
              d.is_minor && d.prior_refusal && d.email && d.phone && d.consent;
     }
 
+    // --- Per-field error identification (WCAG 3.3.1 / 4.1.3 — audit P2) -----------------
+    // Mirrors the track.blade.php pattern: each offending control gets aria-invalid="true"
+    // + aria-errormessage pointing at a per-field message; the generic #form-error banner
+    // (role=alert aria-live=assertive) still announces the summary.
+    function fieldError(ctrl) {
+      // The control's own per-field error <p>, created lazily and reused.
+      var id = ctrl.id + '-error';
+      var msg = document.getElementById(id);
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.id = id;
+        msg.className = 'field-error';
+        // Place the message right after the control (before any existing .hint).
+        ctrl.parentNode.insertBefore(msg, ctrl.nextSibling);
+      }
+      return msg;
+    }
+    function markInvalid(ctrl, message) {
+      ctrl.setAttribute('aria-invalid', 'true');
+      ctrl.setAttribute('aria-errormessage', ctrl.id + '-error');
+      fieldError(ctrl).textContent = message;
+      // Clear the flag (and message) as soon as the visitor edits the field.
+      var clear = function () {
+        ctrl.removeAttribute('aria-invalid');
+        var m = document.getElementById(ctrl.id + '-error');
+        if (m) m.textContent = '';
+        ctrl.removeEventListener('input', clear);
+        ctrl.removeEventListener('change', clear);
+      };
+      ctrl.addEventListener('input', clear);
+      ctrl.addEventListener('change', clear);
+    }
+    function clearAllInvalid() {
+      var marked = form.querySelectorAll('[aria-invalid="true"]');
+      for (var i = 0; i < marked.length; i++) {
+        marked[i].removeAttribute('aria-invalid');
+        var m = document.getElementById(marked[i].id + '-error');
+        if (m) m.textContent = '';
+      }
+    }
+    // Flag every required control that is currently empty/invalid; return the first one.
+    function flagInvalidFields() {
+      clearAllInvalid();
+      var controls = form.querySelectorAll('input[required], select[required]');
+      var first = null;
+      for (var i = 0; i < controls.length; i++) {
+        var c = controls[i];
+        // Skip hidden (e.g. guardian field when not required).
+        if (c.disabled || c.closest('[hidden]')) continue;
+        var empty = c.type === 'checkbox' ? !c.checked : !String(c.value).trim();
+        if (empty || !c.checkValidity()) {
+          var label = form.querySelector('label[for="' + c.id + '"]');
+          var name = label ? label.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field';
+          markInvalid(c, name + ' is required.');
+          if (!first) first = c;
+        }
+      }
+      return first;
+    }
+
     function row(k, v) {
       return '<li><span class="k">' + k + '</span><span class="v">' + v + '</span></li>';
     }
@@ -476,11 +540,12 @@
       e.preventDefault();
       var d = collect();
       if (!valid(d)) {
-        showError(DEFAULT_ERR);
-        var firstInvalid = form.querySelector(':invalid');
+        showError(DEFAULT_ERR);                 // generic role=alert aria-live banner
+        var firstInvalid = flagInvalidFields(); // per-field aria-invalid + aria-errormessage
         if (firstInvalid) firstInvalid.focus();
         return;
       }
+      clearAllInvalid();
       errBox.classList.remove('show');
 
       setSubmitting(true);

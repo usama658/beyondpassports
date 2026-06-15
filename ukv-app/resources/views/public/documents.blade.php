@@ -23,7 +23,7 @@
   .compliance p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55}
   .compliance strong{color:var(--ink)}
 
-  .privacy-note{font-family:var(--mono);font-size:11px;color:#6b7d87;letter-spacing:.04em;margin:14px 0 0}
+  .privacy-note{font-family:var(--mono);font-size:11px;color:var(--hint);letter-spacing:.04em;margin:14px 0 0}
 
   .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0;line-height:1.5}
   .form-error.show{display:block}

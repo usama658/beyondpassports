@@ -51,6 +51,11 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->plugin(
+                \Jeffgreco13\FilamentBreezy\BreezyCore::make()
+                    ->myProfile()
+                    ->enableTwoFactorAuthentication() // optional per-user TOTP; set up via My Profile
+            )
             ->authMiddleware([
                 Authenticate::class,
             ]);

@@ -24,7 +24,7 @@
   /* Page-local layout only — design system lives in assets/ukv.css */
   .article-head{padding:56px 0 0}
   .breadcrumb{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);margin:0 0 22px}
-  .breadcrumb a{color:var(--stamp)}
+  .breadcrumb a{color:var(--stamp-text)}
   .breadcrumb span[aria-current]{color:var(--ink)}
   .article-head h1{font-size:clamp(32px,4.6vw,52px);color:var(--navy);letter-spacing:-.015em;max-width:18ch}
   .article-meta{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);margin:14px 0 0}
@@ -41,7 +41,7 @@
   .inline-note{font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding:4px 0 4px 14px;margin:0 0 1.3em;font-style:italic}
   /* callout — uses .alt surface tokens */
   .callout{background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--stamp);border-radius:10px;padding:22px 24px;margin:1.6em 0 1.8em;box-shadow:var(--shadow)}
-  .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:0 0 .5em}
+  .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 .5em}
   .callout p{font-size:17px;margin:0;line-height:1.65}
   /* related guides */
   .related{max-width:70ch;margin:0 auto}
@@ -56,7 +56,8 @@
   .cta-inline h2{font-size:24px;color:var(--navy);margin:0 0 .3em}
   .cta-inline p{font-size:16px;color:#33454f;margin:0 0 16px;max-width:52ch}
   .cta-inline .row{display:flex;gap:12px;flex-wrap:wrap}
-  a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  /* Page-local gold focus ring removed: gold-on-white ≈2:1 failed 1.4.11 non-text contrast.
+     The canonical 3px --cta ring in ukv.css (and its light dark-surface variant) now applies. (audit S5) */
   @media (max-width:860px){
     .article-body p,.article-body li{font-size:17px}
     .standfirst{font-size:18px}

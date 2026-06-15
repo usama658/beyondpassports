@@ -36,11 +36,11 @@
   .article .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp)}
   .article h3{font-family:var(--display);font-size:20px;color:var(--navy);margin:8px 0 6px;line-height:1.18}
   .article .excerpt{font-size:15px;color:#33454f;margin:0 0 16px;flex:1}
-  .article .meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#6b7d87;
+  .article .meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);
     display:flex;gap:10px;align-items:center;border-top:1px solid var(--paper-edge);padding-top:12px}
   .article .meta .dot{opacity:.6}
 
-  .compliance{font-family:var(--mono);font-size:12px;color:#6b7d87;margin:22px 0 0;max-width:66ch}
+  .compliance{font-family:var(--mono);font-size:12px;color:var(--hint);margin:22px 0 0;max-width:66ch}
 </style>
 @endpush
 

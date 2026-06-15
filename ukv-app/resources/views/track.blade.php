@@ -65,7 +65,7 @@
   .lookup label{display:block;font-weight:600;font-size:14px;margin:0 0 8px}
   .lookup .ref-input{width:100%;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:16px;padding:13px 14px;border:1px solid var(--paper-edge);border-radius:8px}
   .lookup .ref-input:focus{outline:2px solid var(--cta);outline-offset:1px}
-  .lookup .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:10px 0 0;letter-spacing:.04em}
+  .lookup .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:10px 0 0;letter-spacing:.04em}
   .lookup .form-error{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0}
   .lookup button{margin-top:16px}
 
@@ -80,14 +80,14 @@
   .stage::before{content:"";position:absolute;top:30px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--paper-edge) 0 6px,transparent 6px 12px);z-index:0}
   .stage:first-child::before{display:none}
   .stage.is-done::before,.stage.is-current::before{background:var(--stamp)}
-  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:#6b7d87;font-family:var(--mono);font-weight:700;font-size:16px}
+  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:var(--hint);font-family:var(--mono);font-weight:700;font-size:16px}
   .stage.is-done .dot{background:#eaf3f2;border-color:var(--stamp);color:var(--stamp)}
   .stage.is-current .dot{background:var(--navy);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(200,162,74,.25)}
   .stage.is-outcome .dot{background:#fdeceb;border-color:#c0392b;color:#8a2a22}
   .stage .name{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);font-weight:600}
   .stage.is-current .name{color:var(--navy)}
   .stage.is-done .name{color:var(--ink)}
-  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:#6b7d87;letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
+  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:var(--hint);letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
 
   .now-next{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 0}
   .nn{border:1px solid var(--paper-edge);border-radius:10px;padding:16px 18px;background:#f7fafb}

@@ -12,7 +12,7 @@
   .contact-hero p.lede{font-size:18px;color:#33454f;max-width:52ch;margin:0 auto 8px}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:24px}
   .hero-actions .btn{padding:16px 30px;font-size:17px}
-  .hero-note{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#6b7d87;margin:16px 0 0}
+  .hero-note{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);margin:16px 0 0}
 
   /* contact methods row */
   .methods{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -23,7 +23,7 @@
   .method .detail{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--navy);letter-spacing:.02em;word-break:break-word}
   .method .detail a{color:var(--navy)}
   .method .sub{font-size:14px;color:var(--muted);margin:0}
-  .method .hours{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#6b7d87;margin:2px 0 0}
+  .method .hours{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);margin:2px 0 0}
 
   /* callback form card */
   .callback-wrap{max-width:640px;margin:0 auto}
@@ -36,7 +36,7 @@
   .consent{display:flex;gap:10px;align-items:flex-start;margin:16px 0 0}
   .consent input{width:auto;margin-top:3px;flex:0 0 auto}
   .consent label{margin:0;font-weight:500;color:#4a5b65;font-size:14px;line-height:1.45}
-  .privacy-note{font-family:var(--mono);font-size:11px;color:#6b7d87;letter-spacing:.04em;margin:12px 0 0}
+  .privacy-note{font-family:var(--mono);font-size:11px;color:var(--hint);letter-spacing:.04em;margin:12px 0 0}
   .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0}
   .form-error.show{display:block}
   .form-ok{display:none;background:#eaf3f2;border:1px solid #b9ddd9;color:#0a5450;border-radius:6px;padding:16px 16px;font-size:15px;margin:14px 0 0;line-height:1.5}
@@ -132,7 +132,7 @@
             <option value="late">Late afternoon (3–6)</option>
           </select>
 
-          <label for="cb-message">Your enquiry <span style="font-weight:400;color:#6b7d87">(optional)</span></label>
+          <label for="cb-message">Your enquiry <span style="font-weight:400;color:var(--hint)">(optional)</span></label>
           <textarea id="cb-message" name="message" placeholder="Where are you travelling, and roughly when?"></textarea>
 
           <div class="consent">

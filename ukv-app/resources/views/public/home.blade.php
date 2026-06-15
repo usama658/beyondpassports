@@ -46,7 +46,7 @@
         <label for="nat">Your passport</label>
         <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
         <button class="btn" type="button" onclick="location.href='{{ url('/apply') }}'">Check what I need →</button>
-        <p style="font-size:12px;color:#6b7d87;margin:12px 0 0;font-family:var(--mono)">No account needed · takes 30 seconds</p>
+        <p style="font-size:12px;color:var(--hint);margin:12px 0 0;font-family:var(--mono)">No account needed · takes 30 seconds</p>
       </div>
     </div>
   </div>

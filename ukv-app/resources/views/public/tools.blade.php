@@ -15,16 +15,20 @@
   .checkers{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
   .checker:focus-within{box-shadow:0 0 0 3px rgba(20,86,184,.18),var(--shadow)}
   .checker .cbody form{margin:0}
-  .checker .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:12px 0 0;letter-spacing:.04em}
+  .checker .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:12px 0 0;letter-spacing:.04em}
+  /* checker validation message (announced via aria-live) + invalid-control state. (audit P3) */
+  .checker .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:10px 12px;font-size:13.5px;margin:12px 0 0}
+  .checker .form-error.show{display:block}
+  .checker select[aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
   /* result panel inside a checker */
   .result{margin-top:16px;border:1px dashed var(--paper-edge);border-radius:8px;background:#f7fafb;padding:16px 16px 14px}
   .result[aria-hidden="true"]{display:none}
-  .result .rtag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .result .rtag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 6px;display:flex;align-items:center;gap:8px}
   .result .rtag svg{flex:0 0 auto}
   .result h3{font-family:var(--display);font-size:18px;color:var(--navy);margin:0 0 6px;line-height:1.2}
   .result p{font-size:14px;color:#33454f;margin:0 0 10px;line-height:1.55}
   .result .rlink{font-family:var(--body);font-size:14px;font-weight:600}
-  .result .rmicro{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:10px 0 0;letter-spacing:.03em}
+  .result .rmicro{font-family:var(--mono);font-size:11px;color:var(--hint);margin:10px 0 0;letter-spacing:.03em}
   /* honest note */
   .honest{max-width:760px;margin:0 auto;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--gold);border-radius:10px;padding:20px 22px}
   .honest p{margin:0;font-size:15px;color:#33454f;line-height:1.6}
@@ -72,6 +76,7 @@
           </select>
           <button type="submit" class="btn">Check what I need →</button>
           <p class="hint">Free · general guidance · we confirm your exact rules</p>
+          <p class="form-error" id="visa-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
         </form>
 
         <div class="result" id="visa-result" role="region" aria-label="Visa checker result" aria-hidden="true" tabindex="-1">
@@ -105,6 +110,7 @@
           </select>
           <button type="submit" class="btn">Check IDP →</button>
           <p class="hint">Free · IDPs are issued in person at PayPoint</p>
+          <p class="form-error" id="idp-error" role="alert" aria-live="assertive">Choose where you'll drive and your licence type to see your result.</p>
         </form>
 
         <div class="result" id="idp-result" role="region" aria-label="IDP checker result" aria-hidden="true" tabindex="-1">
@@ -176,12 +182,30 @@
     function show(el) { el.setAttribute('aria-hidden', 'false'); }
     function hide(el) { el.setAttribute('aria-hidden', 'true'); }
 
+    // --- Validation announcement (WCAG 3.3.1 / 4.1.3 — audit P3) -----------------------
+    // On an empty submit, announce a message in an aria-live region and flag the empty
+    // control with aria-invalid="true" instead of silently moving focus.
+    function showFieldError(errEl) { if (errEl) errEl.classList.add('show'); }
+    function hideFieldError(errEl) { if (errEl) errEl.classList.remove('show'); }
+    function markInvalid(ctrl) {
+      ctrl.setAttribute('aria-invalid', 'true');
+      var clear = function () {
+        ctrl.removeAttribute('aria-invalid');
+        ctrl.removeEventListener('change', clear);
+      };
+      ctrl.addEventListener('change', clear);
+    }
+    function clearInvalid() {
+      for (var i = 0; i < arguments.length; i++) arguments[i].removeAttribute('aria-invalid');
+    }
+
     // --- VISA CHECKER --------------------------------------------------------
     var vForm   = document.getElementById('visa-form');
     var vResult = document.getElementById('visa-result');
     var vTitle  = document.getElementById('visa-result-title');
     var vBody   = document.getElementById('visa-result-body');
     var vLink   = document.getElementById('visa-result-link');
+    var vError  = document.getElementById('visa-error');
 
     vForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -189,9 +213,14 @@
       var pass = vForm.pass.value;
       if (!dest || !pass) {
         hide(vResult);
+        clearInvalid(vForm.dest, vForm.pass);
+        markInvalid(dest ? vForm.pass : vForm.dest);
+        showFieldError(vError);
         (dest ? vForm.pass : vForm.dest).focus();
         return;
       }
+      clearInvalid(vForm.dest, vForm.pass);
+      hideFieldError(vError);
       if (pass === 'UK') {
         var info = VISA[dest];
         vTitle.textContent = 'Most UK travellers need: ' + info.note + ' for ' + dest + '.';
@@ -218,6 +247,7 @@
     var iTitle  = document.getElementById('idp-result-title');
     var iBody   = document.getElementById('idp-result-body');
     var iLink   = document.getElementById('idp-result-link');
+    var iError  = document.getElementById('idp-error');
 
     iForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -225,9 +255,14 @@
       var lic  = iForm.lic.value;
       if (!dest || !lic) {
         hide(iResult);
+        clearInvalid(iForm.dest, iForm.lic);
+        markInvalid(dest ? iForm.lic : iForm.dest);
+        showFieldError(iError);
         (dest ? iForm.lic : iForm.dest).focus();
         return;
       }
+      clearInvalid(iForm.dest, iForm.lic);
+      hideFieldError(iError);
       var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
 
       if (lic === 'provisional') {
