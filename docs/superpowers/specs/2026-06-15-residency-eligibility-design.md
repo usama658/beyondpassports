@@ -42,6 +42,17 @@ points, pre-payment primary:
 The flow docs (delivery-framework Stage 1, detailed-process Phase 0/1, runbook 1.2–1.3, recipes Step 1,
 page-copy apply/checker) must each gain an explicit **Eligibility screen** step.
 
+## Pricing impact (two lanes)
+Eligibility changes pricing. The fixed tiers (Standard/Express/Premium) are costed for the **standard lane**
+(UK passport + UK resident + online visa). A manual-review case costs more (eligibility research, possibly an
+appointment visa = slot work + passport custody + courier + insurance) — so it must NOT be sold at a fixed tier.
+- **Standard lane** → fixed tiers + instant Stripe checkout (as today).
+- **Manual-review lane** → **bespoke quote**: no fixed-tier checkout; agent sets a custom price after eligibility
+  review and sends a **Stripe Payment Link**; the order is created/cleared on payment.
+The apply funnel (#299) must therefore **branch before payment**: standard → tiers+checkout; non-standard → hide
+tiers, show "request a personalised quote" → route to the callback form (#324). Charging a non-standard case the
+fixed tier = selling a costly service at the cheap price (margin loss + refund mess).
+
 ## Data model
 New order meta (all `ukv_`-prefixed):
 - `ukv_nationality` (ISO country / display name of the passport).
