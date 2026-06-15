@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order confirmed — thank you | UKVisaCo</title>
+<meta name="description" content="Thank you — your UKVisaCo order is confirmed. We'll review your details and keep you updated. Independent service — not a government website. Service fee separate from any government fee.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* confirmation.html — page-scoped only. Palette/type/components inherited from ukv.css. */
+  .conf-hero{padding:64px 0 8px;text-align:center}
+  .conf-hero .stamp-badge{width:96px;height:96px;border-radius:50%;background:#f7fafb;border:1px solid var(--paper-edge);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;box-shadow:var(--shadow)}
+  .conf-hero h1{font-size:clamp(30px,4.4vw,46px);color:var(--navy);letter-spacing:-.015em;max-width:18ch;margin-left:auto;margin-right:auto}
+  .conf-hero .sub{font-size:18px;color:#33454f;max-width:46ch;margin:0 auto}
+  .conf-wrap{max-width:760px;margin:0 auto}
+  /* order summary card (boarding-pass family) */
+  .order-card{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;margin:0 auto}
+  .order-ref{background:var(--navy);color:#fff;padding:18px 22px}
+  .order-ref .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+  .order-ref .mrz-ref{font-family:var(--mono);font-weight:700;font-size:clamp(18px,3.4vw,24px);letter-spacing:.14em;color:#fff;margin:0;word-break:break-all}
+  .order-body{padding:22px}
+  .order-rows{list-style:none;margin:0;padding:0}
+  .order-rows li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed var(--paper-edge)}
+  .order-rows li:last-child{border-bottom:0}
+  .order-rows .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#90a2ac;text-transform:uppercase;align-self:center}
+  .order-rows .v{font-weight:600;text-align:right;color:#33454f}
+  .order-rows .v small{display:block;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:0;margin-top:2px}
+  .ref-note{font-family:var(--mono);font-size:11px;color:#90a2ac;letter-spacing:.03em;margin:16px 0 4px;line-height:1.6}
+  .order-body .btn{margin-top:14px}
+  /* next action callout */
+  .next-action{background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:0 auto 4px}
+  .next-action p{margin:0;font-size:15px;color:#33454f}
+  .next-action strong{color:var(--ink)}
+  /* compliance microcopy */
+  .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:18px auto 0;max-width:760px}
+  .compliance strong{color:var(--ink)}
+  /* shared focus ring (mirrors apply.html) */
+  a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid rgba(20,86,184,.45);outline-offset:2px}
+  /* reassurance band button row */
+  .reassure .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  @media (max-width:620px){
+    .order-rows li{flex-direction:column;gap:2px}
+    .order-rows .v{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- 1. CONFIRMATION HERO -->
+<section class="conf-hero"><div class="wrap">
+  <div class="conf-wrap reveal">
+    <div class="stamp-badge">
+      <svg width="64" height="64" viewBox="0 0 48 48" role="img" aria-label="Payment received"><use href="#ukv-stamp"></use></svg>
+    </div>
+    <p class="eyebrow">Payment received</p>
+    <h1>You're all set — we've got it from here.</h1>
+    <p class="sub">A confirmation email is on its way.</p>
+  </div>
+</div></section>
+
+<!-- 2. ORDER SUMMARY -->
+<section style="padding-top:24px"><div class="wrap">
+  <div class="conf-wrap">
+    <div class="order-card reveal">
+      <div class="order-ref">
+        <p class="lab">Your order reference</p>
+        <p class="mrz-ref">UKV&lt;2026&lt;004821&lt;&lt;&lt;</p>
+      </div>
+      <div class="order-body">
+        <ul class="order-rows">
+          <li><span class="k">Destination</span><span class="v">Turkey · eVisa</span></li>
+          <li><span class="k">Service tier</span><span class="v">Express</span></li>
+          <li><span class="k">Amount paid</span><span class="v">£59.00<small>Our service fee. Any government or scheme fee is separate and may be payable separately.</small></span></li>
+        </ul>
+        <p class="ref-note">Your reference is also in your email — you'll need it to track progress.</p>
+        <a href="track.html" class="btn" style="width:100%;text-align:center">Track my application →</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3. WHAT HAPPENS NEXT -->
+<section style="padding-top:8px"><div class="wrap">
+  <div class="sec-head reveal" style="max-width:760px;margin-left:auto;margin-right:auto"><p class="eyebrow">What happens next</p><h2>Three steps from here</h2></div>
+  <div class="conf-wrap">
+    <div class="next-action reveal" style="margin-bottom:28px">
+      <p><strong>One thing to do now:</strong> reply to the confirmation email (or use the secure link inside it) to <strong>upload your passport photo page and any documents we've asked for</strong>. We can't start the review until those are in.</p>
+    </div>
+  </div>
+  <div class="steps" style="max-width:760px;margin:0 auto">
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>We review your details</h3><p>A UK-based adviser checks your answers and the documents you upload for errors before anything is submitted.</p></div>
+    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check your documents</h3><p>We get everything in order and confirm exactly what's needed. If anything's missing, we'll email you.</p></div>
+    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>We submit and keep you updated</h3><p>We handle the submission and track progress, updating you by email at every stage until it's done.</p></div>
+  </div>
+</div></section>
+
+<!-- 4. REASSURANCE BAND -->
+<section class="alt reassure"><div class="wrap reveal" style="max-width:760px">
+  <p class="eyebrow">We're here to help</p>
+  <h2 style="font-size:clamp(24px,3vw,32px);color:var(--navy);max-width:24ch">Questions? Call us or message on WhatsApp.</h2>
+  <p style="color:#33454f;max-width:52ch">Calls are the fastest way to reach our UK team. Have your order reference handy and we'll pick up right where you are.</p>
+  <div class="row">
+    <a href="tel:+440000000000" class="btn">Call our UK team</a>
+    <a href="#" class="btn btn--wa">Message on WhatsApp</a>
+  </div>
+  <p class="compliance">
+    <strong>UKVisaCo is an independent service and is not a government website.</strong>
+    The amount you paid is <strong>our service fee</strong> — it is separate from, and additional to, any government or scheme fee, which may be payable separately.
+    Processing and any decision are made by the relevant authorities in their own time; we cannot speed up or guarantee a government decision or approval.
+  </p>
+</div></section>
+
+<!-- 5. FOOTER -->
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script src="assets/ukv-illustrations.js"></script>
+</body>
+</html>

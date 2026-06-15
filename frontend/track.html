@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track your application — UK visa & eVisa status | UKVisaCo</title>
+<meta name="description" content="Track your UKVisaCo application with your order reference. See each stage from received to delivered. Independent service — not a government website; government processing time is set by the destination's authorities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* track.html — page-scoped layout only. Palette/type/components inherited from ukv.css. */
+  .track-hero{padding:56px 0 0}
+  .track-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:640px;margin:0 auto;text-align:center}
+  .track-hero h1{font-size:clamp(34px,5vw,54px);color:var(--navy);letter-spacing:-.015em}
+  .track-hero p.lede{font-size:18px;color:#33454f;max-width:48ch;margin:0 auto}
+  /* lookup card sits left-aligned inside (form controls read better left) */
+  .checker.lookup{max-width:640px;margin:8px auto 0;text-align:left}
+  .lookup .ref-input{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+  .lookup .hint{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:10px 0 0;letter-spacing:.04em}
+  .lookup .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0}
+  .lookup .form-error.show{display:block}
+
+  /* status panel toggled by JS */
+  .status[aria-hidden="true"]{display:none}
+  .status{max-width:760px;margin:0 auto}
+  .status-mrz{background:var(--navy);border-radius:10px 10px 0 0;padding:20px 22px}
+  .status-mrz .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+  .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:clamp(18px,3.4vw,26px);color:#fff;letter-spacing:.14em;margin:0;word-break:break-all}
+  .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 12px 12px;box-shadow:var(--shadow);padding:26px 22px}
+
+  /* boarding-pass styled horizontal stage timeline */
+  .timeline{list-style:none;margin:4px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .stage{position:relative;text-align:center;padding:8px 6px 0}
+  /* connector line between stages */
+  .stage::before{content:"";position:absolute;top:30px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--paper-edge) 0 6px,transparent 6px 12px);z-index:0}
+  .stage:first-child::before{display:none}
+  .stage.is-done::before,.stage.is-current::before{background:var(--stamp)}
+  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:#90a2ac}
+  .stage.is-done .dot{background:#eaf3f2;border-color:var(--stamp);color:var(--stamp)}
+  .stage.is-current .dot{background:var(--navy);border-color:var(--gold);box-shadow:0 0 0 4px rgba(200,162,74,.25)}
+  .stage .dot svg{width:28px;height:28px}
+  .stage .num{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff}
+  .stage .name{font-size:12.5px;line-height:1.35;color:var(--muted);font-weight:600}
+  .stage.is-current .name{color:var(--navy)}
+  .stage.is-done .name{color:var(--ink)}
+  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:#90a2ac;letter-spacing:.04em;margin-top:3px}
+
+  /* plain-English now/next notes */
+  .now-next{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 0}
+  .nn{border:1px solid var(--paper-edge);border-radius:10px;padding:16px 18px;background:#f7fafb}
+  .nn .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:0 0 6px}
+  .nn p{margin:0;font-size:14.5px;color:#33454f}
+  .reassure{display:flex;gap:12px;align-items:flex-start;margin:20px 0 0;padding:16px 18px;border:1px dashed var(--paper-edge);border-radius:10px;background:var(--white)}
+  .reassure svg{flex:0 0 32px;height:32px;color:var(--stamp)}
+  .reassure p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
+  .reassure strong{color:var(--ink)}
+
+  /* help row */
+  .help{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:1px solid var(--paper-edge);border-radius:12px;background:var(--white);padding:18px 22px}
+  .help p{margin:0;font-size:15px;color:#33454f}
+  .help .links{display:flex;gap:10px;flex-wrap:wrap}
+
+  @media (max-width:620px){
+    .timeline{grid-template-columns:1fr;gap:0}
+    .stage{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:14px;text-align:left;padding:10px 0}
+    .stage::before{top:0;left:23px;width:2px;height:50%}
+    .stage:first-child::before{display:none}
+    .stage .dot{margin:0}
+    .now-next{grid-template-columns:1fr}
+    .help{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- HERO + LOOKUP -->
+<section class="track-hero"><div class="wrap">
+  <div class="track-grid reveal">
+    <div>
+      <p class="eyebrow">Track your application</p>
+      <h1>Where's my visa?</h1>
+      <p class="lede">Enter the order reference from your confirmation email to see exactly where your application is — from our first check to delivery.</p>
+    </div>
+  </div>
+
+  <div class="checker lookup reveal" id="lookup-card">
+    <div class="stub"><span>STATUS TRACKER</span><span>UKV&lt;TRACK&lt;&lt;&lt;</span></div>
+    <div class="cbody">
+      <form id="track-form" novalidate>
+        <label for="ref">Your order reference</label>
+        <input type="text" id="ref" name="ref" class="ref-input" placeholder="UKV-2026-004821" autocomplete="off" aria-describedby="ref-hint" required aria-required="true">
+        <p class="hint" id="ref-hint">Format: UKV-YEAR-NUMBER · it's in your confirmation email</p>
+        <div class="form-error" id="track-error" role="alert" aria-live="assertive">Please enter your order reference to track your application.</div>
+        <button type="submit" class="btn">Track →</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<!-- STATUS PANEL (hidden until lookup) -->
+<section style="padding-top:0"><div class="wrap">
+  <div class="status" id="status-panel" role="region" aria-label="Application status" aria-hidden="true" tabindex="-1">
+
+    <div class="status-mrz">
+      <p class="lab">Order reference</p>
+      <p class="ref">UKV&lt;2026&lt;004821&lt;&lt;&lt;</p>
+    </div>
+
+    <div class="status-card">
+      <ol class="timeline" aria-label="Application stages">
+        <li class="stage is-done">
+          <span class="dot"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg></span>
+          <span class="name">Received<span class="when">Mon, done</span></span>
+        </li>
+        <li class="stage is-done">
+          <span class="dot"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg></span>
+          <span class="name">Documents checked<span class="when">Tue, done</span></span>
+        </li>
+        <li class="stage is-done">
+          <span class="dot"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg></span>
+          <span class="name">Submitted<span class="when">Wed, done</span></span>
+        </li>
+        <li class="stage is-current" aria-current="step">
+          <span class="dot"><span class="num">4</span></span>
+          <span class="name">Government processing<span class="when">In progress</span></span>
+        </li>
+        <li class="stage">
+          <span class="dot"><span class="num">5</span></span>
+          <span class="name">Delivered<span class="when">To come</span></span>
+        </li>
+      </ol>
+
+      <div class="now-next">
+        <div class="nn">
+          <p class="k">What's happening now</p>
+          <p>We've checked your documents and submitted your application. It's now with the destination's government for a decision — there's nothing more for you to do at this stage.</p>
+        </div>
+        <div class="nn">
+          <p class="k">What's next</p>
+          <p>As soon as the authorities issue their decision, we'll deliver your visa or eVisa to you and update this tracker. We'll email you the moment it lands.</p>
+        </div>
+      </div>
+
+      <div class="reassure">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <p><strong>Government processing time is set by the destination's authorities</strong> — not by us, and express speeds our handling only, not their decision. We'll notify you the moment there's an update.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- HELP ROW -->
+<section class="alt" style="padding:40px 0"><div class="wrap">
+  <div class="help reveal">
+    <p>Can't find your reference? It's in your confirmation email.</p>
+    <div class="links">
+      <a href="tel:+440000000000" class="btn btn--ghost" style="padding:10px 18px">Call us</a>
+      <a href="#" class="btn btn--wa">WhatsApp</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA BAND -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Not started yet? Let's get you travelling</h2>
+  <p style="max-width:50ch;color:#cdd9e1">Begin your application and we'll check, prepare and submit it for you — then you can track every step right here. Independent service, not a government website.</p>
+  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script src="assets/ukv-illustrations.js"></script>
+<script>
+  // track.html — front-end status lookup. Vanilla JS, no network: any non-empty
+  // reference reveals the demo status panel below.
+  (function () {
+    var form  = document.getElementById('track-form');
+    var input = document.getElementById('ref');
+    var err   = document.getElementById('track-error');
+    var panel = document.getElementById('status-panel');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ref = input.value.trim();
+      if (!ref) {
+        err.classList.add('show');
+        panel.setAttribute('aria-hidden', 'true');
+        input.focus();
+        return;
+      }
+      err.classList.remove('show');
+      panel.setAttribute('aria-hidden', 'false');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      panel.focus({ preventScroll: true });
+    });
+
+    // clear the error as soon as the traveller starts typing
+    input.addEventListener('input', function () {
+      if (input.value.trim()) err.classList.remove('show');
+    });
+  })();
+</script>
+</body>
+</html>

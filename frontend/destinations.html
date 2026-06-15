@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destinations — UK eVisas, ETAs & Visa Guides | UKVisaCo</title>
+<meta name="description" content="Browse destinations we help UK travellers with — eVisas, ETAs and visa-free entry guides. Clear fixed service fees, separate from government fees. Independent service, not a government website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* Page-local layout only — design system + palette live in assets/ukv.css */
+  .page-hero{padding:64px 0 8px}
+  .page-hero h1{font-family:var(--display);font-size:clamp(34px,5vw,54px);color:var(--navy);letter-spacing:-.015em;margin:.1em 0 .35em}
+  .page-hero p.sub{font-size:18px;max-width:48ch;color:#33454f;margin:0}
+
+  /* Filter chips */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
+  .chip{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:9px 18px;border-radius:999px;border:1.5px solid var(--navy);background:transparent;
+    color:var(--navy);cursor:pointer;transition:background .12s ease,color .12s ease}
+  .chip:hover{background:rgba(10,37,64,.07)}
+  .chip[aria-pressed="true"]{background:var(--navy);color:#fff}
+  .chip:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+
+  /* .pass cards are anchors here — make them behave like the design-system card */
+  a.pass{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+  a.pass:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
+
+  .reassure{margin:34px 0 4px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+  .reassure p{margin:0;font-size:16px;color:#33454f;max-width:46ch}
+  .compliance{font-family:var(--mono);font-size:12px;color:#90a2ac;margin:18px 0 0;max-width:60ch}
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- PAGE HERO -->
+<section class="page-hero"><div class="wrap">
+  <p class="eyebrow">Destinations</p>
+  <h1>Where are you headed?</h1>
+  <p class="sub">Pick a destination to see what UK travellers need — eVisa, ETA or visa-free entry — with our clear fixed service fee shown up front.</p>
+</div></section>
+<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;CHOOSE&lt;YOUR&lt;DESTINATION&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
+
+<!-- DESTINATIONS GRID + FILTERS -->
+<section><div class="wrap">
+  <div class="filters" role="group" aria-label="Filter destinations by type">
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-filter="evisa" aria-pressed="false">eVisa</button>
+    <button type="button" class="chip" data-filter="eta" aria-pressed="false">ETA</button>
+    <button type="button" class="chip" data-filter="visafree" aria-pressed="false">Visa-free</button>
+  </div>
+
+  <div class="dests" id="dest-grid">
+    <a class="pass reveal" href="destination.html" data-type="evisa"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Turkey skyline"><use href="#sky-turkey"></use></svg></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>Turkey</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub"><div class="fee">£39</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="evisa"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Egypt skyline"><use href="#sky-egypt"></use></svg></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>Egypt</h3><div class="t">UK citizens · 30 days</div></div><div class="stub"><div class="fee">£49</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="evisa"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="India skyline"><use href="#sky-india"></use></svg></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>India</h3><div class="t">UK citizens · 30 days</div></div><div class="stub"><div class="fee">£55</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="eta"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="USA skyline"><use href="#sky-usa"></use></svg></div><div class="lower"><div class="main"><div class="k">ETA</div><h3>USA (ESTA)</h3><div class="t">Authorisation linked to passport</div></div><div class="stub"><div class="fee">£35</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="eta"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Australia skyline"><use href="#sky-australia"></use></svg></div><div class="lower"><div class="main"><div class="k">eTA</div><h3>Australia</h3><div class="t">Authorisation linked to passport</div></div><div class="stub"><div class="fee">£39</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="visafree"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Thailand skyline"><use href="#sky-thailand"></use></svg></div><div class="lower"><div class="main"><div class="k">Visa-free</div><h3>Thailand</h3><div class="t">UK citizens · entry rules apply</div></div><div class="stub"><div class="fee">Free</div><div class="lab">GUIDE</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="evisa"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="UAE skyline"><use href="#sky-generic"></use></svg></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>UAE</h3><div class="t">UK citizens · check trip details</div></div><div class="stub"><div class="fee">£45</div><div class="lab">FROM</div></div></div></a>
+    <a class="pass reveal" href="destination.html" data-type="evisa"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Vietnam skyline"><use href="#sky-generic"></use></svg></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>Vietnam</h3><div class="t">UK citizens · check trip details</div></div><div class="stub"><div class="fee">£45</div><div class="lab">FROM</div></div></div></a>
+  </div>
+
+  <div class="reassure reveal">
+    <p>Don't see your destination? We handle many more — tell us your trip and we'll confirm exactly what you need.</p>
+    <a href="apply.html" class="btn">Tell us your trip →</a>
+  </div>
+  <p class="compliance">UKVisaCo is an independent service and is not a government website. Fees shown are our service fee and are separate from any government or embassy fees, which you pay in addition.</p>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Let's get you travelling</h2>
+  <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question.</p>
+  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script>
+(function () {
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#dest-grid .pass'));
+  function apply(filter) {
+    cards.forEach(function (c) {
+      var show = (filter === 'all' || c.getAttribute('data-type') === filter);
+      c.style.display = show ? '' : 'none';
+    });
+    chips.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false');
+    });
+  }
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
+  });
+})();
+</script>
+<script src="assets/ukv-illustrations.js"></script>
+</body>
+</html>
