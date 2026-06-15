@@ -36,7 +36,9 @@
 | to these endpoints from a browser, so prefer an explicit allowlist in prod.
 */
 
-$frontendOrigin = env('UKV_FRONTEND_ORIGIN', '*');
+// `?:` so a present-but-blank UKV_FRONTEND_ORIGIN (dev/default) falls back to '*',
+// not an empty allow-list. Lock to an explicit origin in prod.
+$frontendOrigin = env('UKV_FRONTEND_ORIGIN') ?: '*';
 
 $allowedOrigins = $frontendOrigin === '*'
     ? ['*']

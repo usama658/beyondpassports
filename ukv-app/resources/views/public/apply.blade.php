@@ -330,7 +330,7 @@
   <div class="rule"></div>
   <h2>Real people checking real applications</h2>
   <p style="max-width:52ch;color:#cdd9e1">A UK-based team reviews every case before anything is submitted. We're an independent service — not a government website — and we'll always tell you honestly what you need.</p>
-  <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

@@ -178,7 +178,7 @@
   <div class="rule"></div>
   <h2>Decide what suits you — or ask us, we'll be honest</h2>
   <p style="max-width:50ch;color:#cdd9e1">Happy to do it yourself? Brilliant — go for it. Want a person to check it and save you the hassle? Start your application, or message us first and we'll tell you straight whether you need us.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/440000000000" class="btn btn--wa">Ask us first on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Ask us first on WhatsApp</a></div>
 </div></section>
 
 {{-- FAQPage structured data --}}

@@ -286,12 +286,16 @@ final class OrderService
      */
     public function refund(Order $order, float $amount, ?string $reason = null): void
     {
-        $order->refund_amount = $amount;
-        $order->refund_reason = $this->clean($reason);
-        $order->refunded_at = Carbon::now();
-        $order->save();
+        // One transaction: if transition() throws (e.g. refunding a terminal order), the
+        // refund-field writes roll back too — no orphaned refund_amount on a non-refunded order.
+        DB::transaction(function () use ($order, $amount, $reason): void {
+            $order->refund_amount = $amount;
+            $order->refund_reason = $this->clean($reason);
+            $order->refunded_at = Carbon::now();
+            $order->save();
 
-        $this->transition($order, OrderStatus::Refunded);
+            $this->transition($order, OrderStatus::Refunded);
+        });
     }
 
     // -----------------------------------------------------------------------------------

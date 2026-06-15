@@ -122,7 +122,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="https://wa.me/440000000000">WhatsApp</a></div>
+<div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
 <header class="site-head"><div class="wrap">
   <a href="/" class="brand">UKVisa<b>Co</b></a>
   <nav class="nav" aria-label="Primary"><a href="/#how">How it works</a><a href="/track" aria-current="page">Track</a></nav>
@@ -234,8 +234,8 @@
     <div class="help">
       <p>Can't find your reference? It's in your confirmation email.</p>
       <div class="links">
-        <a href="tel:+440000000000" class="btn btn--ghost">Call us</a>
-        <a href="https://wa.me/440000000000" class="btn btn--ghost">WhatsApp</a>
+        <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn btn--ghost">Call us</a>
+        <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--ghost">WhatsApp</a>
       </div>
     </div>
   </div></section>

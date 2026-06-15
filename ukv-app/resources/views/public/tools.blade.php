@@ -148,7 +148,7 @@
   <div class="rule"></div>
   <h2>Checked it — now let's sort it</h2>
   <p style="max-width:50ch;color:#cdd9e1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

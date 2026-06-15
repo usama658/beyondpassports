@@ -50,6 +50,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\SecurityHeaders::class, // admin gets the (admin-relaxed) CSP + headers too
             ])
             ->plugin(
                 \Jeffgreco13\FilamentBreezy\BreezyCore::make()

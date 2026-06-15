@@ -9,4 +9,10 @@ return [
 
     // Owner/ops digest recipient (daily pending-actions email).
     'owner_email' => env('UKV_OWNER_EMAIL', ''),
+
+    // Public contact details — surfaced site-wide (topbar, footer, contact page, CTAs).
+    'phone' => env('UKV_PHONE', ''),            // human-readable display, e.g. +44 20 1234 5678
+    'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
+    'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
+    'email' => env('UKV_EMAIL', ''),            // public enquiries inbox
 ];

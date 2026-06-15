@@ -63,8 +63,8 @@
     <h1>Questions? We're a phone call away.</h1>
     <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
     <div class="hero-actions">
-      <a href="tel:+440000000000" class="btn">Call us now</a>
-      <a href="https://wa.me/440000000000" class="btn btn--wa">Message on WhatsApp</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call us now</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Message on WhatsApp</a>
     </div>
     <p class="hero-note">Mon–Sat 9–6 UK time · independent service, not a government website</p>
   </div>
@@ -83,21 +83,21 @@
     <div class="method">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg></span>
       <h3>Call us</h3>
-      <p class="detail"><a href="tel:+440000000000">+44 00 0000 0000</a></p>
+      <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">{{ config('ukv.phone') ?: 'Call us' }}</a></p>
       <p class="sub">Our main line — best for anything you'd rather just talk through.</p>
       <p class="hours">Mon–Sat 9–6 UK time</p>
     </div>
     <div class="method">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></span>
       <h3>WhatsApp</h3>
-      <p class="detail"><a href="https://wa.me/440000000000">+44 00 0000 0000</a></p>
+      <p class="detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message us' }}</a></p>
       <p class="sub">Quick questions, photos of a document, a fast reply on the go.</p>
       <p class="hours">Replies Mon–Sat 9–6 UK time</p>
     </div>
     <div class="method">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
       <h3>Email</h3>
-      <p class="detail"><a href="mailto:hello@ukvisaco.example">hello@ukvisaco.example</a></p>
+      <p class="detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}">{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}</a></p>
       <p class="sub">Best for sending documents or anything you want in writing.</p>
       <p class="hours">We reply within one working day</p>
     </div>

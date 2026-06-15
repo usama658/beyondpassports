@@ -42,7 +42,7 @@
       <div class="stub"><span>VISA CHECK</span><span>UKV&lt;START&lt;&lt;&lt;</span></div>
       <div class="cbody">
         <label for="dest">Where are you going?</label>
-        <select id="dest"><option>Choose a destination…</option><option>Turkey</option><option>Egypt</option><option>India</option><option>USA (ESTA)</option><option>Australia (eTA)</option><option>Thailand</option></select>
+        <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
         <label for="nat">Your passport</label>
         <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
         <button class="btn" type="button" onclick="location.href='{{ url('/apply') }}'">Check what I need →</button>
@@ -101,7 +101,7 @@
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
   <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

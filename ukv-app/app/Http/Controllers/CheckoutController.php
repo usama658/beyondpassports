@@ -30,6 +30,12 @@ final class CheckoutController extends Controller
      */
     public function create(Order $order): RedirectResponse
     {
+        // Already paid — never open a second Checkout Session (no double-charge if a paid
+        // checkout URL is reopened). Send them to their confirmation. (audit NEW-LOW-1)
+        if ($order->paid_at !== null) {
+            return redirect()->route('confirmation', ['order' => $order->order_ref]);
+        }
+
         // Manual-review / unpriced orders never go through self-serve Stripe Checkout — they
         // get a bespoke quote from an agent. Guard so a stray /checkout/{ref} can't 500.
         if ($order->eligibility === \App\Enums\EligibilityLane::ManualReview || ! $order->service_fee) {

@@ -135,8 +135,8 @@
   <div class="help reveal" style="max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:1px solid var(--paper-edge);border-radius:12px;background:var(--white);padding:18px 22px">
     <p style="margin:0;font-size:15px;color:#33454f">Not sure which documents to send, or can't find your reference? We'll help.</p>
     <div class="links" style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="tel:+440000000000" class="btn btn--ghost" style="padding:13px 22px">Call us</a>
-      <a href="https://wa.me/440000000000" class="btn btn--ghost" style="padding:13px 22px">WhatsApp</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn btn--ghost" style="padding:13px 22px">Call us</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--ghost" style="padding:13px 22px">WhatsApp</a>
       <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:13px 22px">Track application</a>
     </div>
   </div>
