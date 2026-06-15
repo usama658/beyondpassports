@@ -94,6 +94,14 @@ final class OrderService
             $order->travel_date = $this->date($data['travel_date'] ?? null);
             $order->passport_expiry = $this->date($data['passport_expiry'] ?? null);
 
+            // CCRs 2013 (reg 36): durable, timestamped record of the customer's express request
+            // to begin the service within the 14-day cancellation window. Without it we cannot
+            // lawfully start work before the 14 days elapse; with it, the right to cancel is lost
+            // once the service is fully performed.
+            if (! empty($data['begin_now'])) {
+                $order->immediate_performance_consent_at = Carbon::now();
+            }
+
             // Persist so the order has an id + order_ref (booted::creating) before we attach
             // events and let EligibilityService read the related destination.
             $order->status = OrderStatus::Paid->value; // entry stage for both lanes

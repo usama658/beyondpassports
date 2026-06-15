@@ -42,6 +42,8 @@ class Order extends Model
         'group_id', 'premium_slot', 'premium_slot_fee', 'premium_slot_added_at', 'story_consent',
         // refund
         'refund_amount', 'refund_reason', 'refunded_at',
+        // consumer rights (CCRs 2013 reg 36: express request to begin within the 14-day window)
+        'immediate_performance_consent_at',
         // lifecycle
         'closed_at',
     ];
@@ -75,6 +77,7 @@ class Order extends Model
             'govt_fee_paid_at' => 'datetime',
             'premium_slot_added_at' => 'datetime',
             'refunded_at' => 'datetime',
+            'immediate_performance_consent_at' => 'datetime',
             'closed_at' => 'datetime',
             // booleans
             'risk_flag' => 'boolean',

@@ -57,6 +57,7 @@ final class ApplyNoJsTest extends TestCase
             'is_minor' => false,
             'prior_refusal' => false,
             'consent' => true,
+            'begin_now' => true,
         ], $overrides);
     }
 

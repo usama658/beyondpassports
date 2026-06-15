@@ -60,6 +60,7 @@ class ApplyRequest extends FormRequest
             'prior_refusal' => $this->toBool($this->input('prior_refusal', $this->input('refusal'))),
             'dual_nationality' => $this->input('dual_nationality'),
             'consent' => $this->toBool($this->input('consent')),
+            'begin_now' => $this->toBool($this->input('begin_now')),
         ]);
     }
 
@@ -96,6 +97,9 @@ class ApplyRequest extends FormRequest
 
             // --- Consent (must be ticked) ---
             'consent' => ['accepted'],
+            // CCRs 2013 reg 36: express request to begin the service within the 14-day
+            // cancellation window (the service is time-sensitive and begins on payment).
+            'begin_now' => ['accepted'],
         ];
     }
 
@@ -106,6 +110,7 @@ class ApplyRequest extends FormRequest
     {
         return [
             'consent.accepted' => 'You must agree to the terms to continue.',
+            'begin_now.accepted' => 'Please confirm you want us to begin work on your application straight away.',
             'travel_date.after_or_equal' => 'Travel date cannot be in the past.',
             'guardian_name.required_if' => 'A guardian name is required for a minor traveller.',
             'passport_expiry.after' => 'Passport expiry must be a future date.',

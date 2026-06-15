@@ -56,6 +56,7 @@ final class LoyaltyAndGroupsTest extends TestCase
             'prior_refusal' => false,
             'is_minor' => false,
             'consent' => true,
+            'begin_now' => true,
         ];
     }
 

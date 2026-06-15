@@ -57,6 +57,7 @@ final class ApplyFlowTest extends TestCase
             'is_minor' => false,
             'prior_refusal' => false,
             'consent' => true,
+            'begin_now' => true,
         ], $overrides);
     }
 
@@ -138,6 +139,38 @@ final class ApplyFlowTest extends TestCase
 
         $response->assertStatus(201);
         $response->assertJsonPath('lane', EligibilityLane::ManualReview->value);
+    }
+
+    public function test_immediate_performance_consent_is_timestamped_when_begin_now_is_ticked(): void
+    {
+        Mail::fake();
+        Queue::fake();
+
+        $dest = $this->makeDestination();
+
+        $response = $this->postJson('/apply', $this->standardIntake($dest));
+        $response->assertStatus(201);
+
+        $order = Order::query()->where('order_ref', $response->json('order_ref'))->firstOrFail();
+
+        // CCRs 2013 reg 36: a durable, timestamped record of the express request to begin.
+        $this->assertNotNull($order->immediate_performance_consent_at,
+            'expected the immediate-performance consent to be timestamped');
+    }
+
+    public function test_intake_without_begin_now_consent_is_rejected_with_422(): void
+    {
+        Mail::fake();
+        Queue::fake();
+
+        $dest = $this->makeDestination();
+
+        // Everything valid EXCEPT the CCRs reg-36 express-request acknowledgment.
+        $response = $this->postJson('/apply', $this->standardIntake($dest, ['begin_now' => false]));
+
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors('begin_now');
+        $this->assertSame(0, Order::query()->count());
     }
 
     public function test_invalid_intake_is_rejected_with_422_and_no_order(): void

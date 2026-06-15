@@ -246,7 +246,12 @@
             <label for="consent">I agree to UKVisaCo contacting me about this application and accept that this is an independent service, not a government website. I understand the service fee is separate from any government fee.</label>
           </div>
 
-          <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick the consent box.</div>
+          <div class="consent">
+            <input type="checkbox" id="begin_now" name="begin_now" value="1" @checked(old('begin_now')) required aria-required="true">
+            <label for="begin_now">I ask UKVisaCo to <strong>begin work on my application straight away</strong>. I understand I have a 14-day right to cancel, but that if I cancel after work has started I’ll pay for what’s already done, and that once the service is fully performed I lose the right to cancel. See our <a href="{{ route('legal') }}#terms">cancellation &amp; refunds</a> policy.</label>
+          </div>
+
+          <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick both consent boxes.</div>
 
           <button type="submit" class="btn">Continue →</button>
           <p class="hint" style="text-align:center;margin-top:14px">No payment taken yet · we check your details before anything is submitted</p>
@@ -413,7 +418,8 @@
         email:             form.email.value.trim(),
         phone:             form.phone.value.trim(),
         tier:              form.tier.value || 'standard',
-        consent:           form.consent.checked ? 1 : 0
+        consent:           form.consent.checked ? 1 : 0,
+        begin_now:         form.begin_now.checked ? 1 : 0
       };
     }
 
@@ -421,7 +427,7 @@
       if (!form.checkValidity()) return false;
       return d.destination && d.trip_purpose && d.travel_date && d.applicant_name &&
              d.nationality && d.residence_country && d.residency_status &&
-             d.is_minor && d.prior_refusal && d.email && d.phone && d.consent;
+             d.is_minor && d.prior_refusal && d.email && d.phone && d.consent && d.begin_now;
     }
 
     // --- Per-field error identification (WCAG 3.3.1 / 4.1.3 — audit P2) -----------------
