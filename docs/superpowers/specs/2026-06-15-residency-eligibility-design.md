@@ -30,6 +30,18 @@ A non-standard order **cannot enter the normal production-line flow** (cannot ad
 records an **eligibility clearance** (rules verified + quote agreed, or referred/declined). This protects against
 applying UK rules to a non-UK case.
 
+## Where it runs — PRE-payment first (refinement)
+The audit also found no eligibility step in any **flow** (it appears only as a rejection *reason*). Screen at TWO
+points, pre-payment primary:
+1. **Pre-payment (primary):** the **checker** + **apply funnel** ask nationality + residence. A non-standard combo
+   does NOT proceed to the standard Stripe checkout — it shows "we'll confirm your specific requirements + price"
+   and routes to a callback/quote. This stops a non-UK/non-resident customer paying for rules that don't apply.
+2. **Post-payment (backstop):** the order-level eligibility gate (below) catches anything that slips through —
+   blocks the order from advancing until an agent clears it.
+
+The flow docs (delivery-framework Stage 1, detailed-process Phase 0/1, runbook 1.2–1.3, recipes Step 1,
+page-copy apply/checker) must each gain an explicit **Eligibility screen** step.
+
 ## Data model
 New order meta (all `ukv_`-prefixed):
 - `ukv_nationality` (ISO country / display name of the passport).
