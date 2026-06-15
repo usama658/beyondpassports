@@ -34,3 +34,37 @@ eligibility + funnel + pricing changes are built once, correctly. Tasks #120–1
 The residency gap showed the cost of a silent assumption found late. Surfacing these now means the eligibility +
 funnel + pricing rebuild captures ALL the needed dimensions at once — instead of reopening the apply form and
 order schema repeatedly.
+
+---
+
+## Wave 2 — broader business / legal / ops / growth gaps (tasks #130–141)
+Beyond the data/eligibility gaps, these are business-readiness gaps. The software is built; these are where the
+*business* is unfinished.
+
+**Legal / regulatory (confirm before launch):**
+- #130 OISC/IAA regulation scope — confirm outbound facilitation is outside regulated UK immigration advice.
+- #131 Consumer Contracts Regs — statutory 14-day cancellation right + service-start waiver at checkout.
+- #132 Sub-processor DPAs — HubSpot/Stripe/host/Anthropic (with the GDPR transfer item #123).
+
+**Financial (margin/cash risk):**
+- #133 FX risk on government fees (GBP collected vs USD/local cost) — buffer or quote-at-time.
+- #134 Supplier payment mechanics (how govt fees are actually paid).
+- #137 Cash-flow / float (collect upfront, pay later; refund/chargeback impact).
+
+**Continuity / ops:**
+- #136 Business continuity / single-point-of-failure (solo operator, held passports, deadlines).
+- #135 Formal complaints procedure.
+- #138 Visa-rule-change monitoring (keep destination data accurate).
+
+**Tech / security:**
+- #139 Admin 2FA + brute-force + patching + uptime + off-site backups (you hold passport data).
+
+**Growth (existential):**
+- #140 Acquisition / traffic — the funnel is built but has no traffic plan. No traffic = no orders.
+- #141 Entry requirements beyond visa (vaccinations/transit/onward-ticket).
+
+## The honest meta-point
+The software was the easy, finished part. The remaining risk is now almost entirely **business + legal + ops +
+growth** — and #140 (acquisition) is existential: a perfect production line with no customers produces nothing.
+Prioritise the launch-blocking legal items (#130/#131/#123/#132) + the financial-correctness items (#124 VAT,
+#133 FX) + a traffic plan (#140) over building more features.
