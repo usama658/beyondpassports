@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkey eVisa for UK Travellers — Prepared & Checked | UKVisaCo</title>
+<meta name="description" content="Apply for your Turkey eVisa with an independent UK team that prepares and checks every application. Clear fixed service fees, fast handling, every step tracked. Not a government website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* destination.html — page-scoped bits only (facts grid + pricing tiers + reqs).
+     Reuses shared CSS vars/components from ukv.css; no palette redefinition. */
+  /* hero skyline band */
+  .dhero{background:var(--navy);color:#eaf0f4;padding:64px 0 0;position:relative;overflow:hidden}
+  .dhero h1{color:#fff;font-size:clamp(34px,4.8vw,54px);letter-spacing:-.015em;max-width:18ch}
+  .dhero p.lede{font-size:19px;max-width:46ch;color:#cdd9e1}
+  .dhero .eyebrow{color:var(--gold)}
+  .dhero .btn{margin-top:8px}
+  .dhero .skyband{margin-top:36px}
+  /* at-a-glance facts */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .fact{background:var(--white);border:1px solid var(--paper-edge);border-radius:10px;padding:18px 18px}
+  .fact .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 6px}
+  .fact .v{font-family:var(--display);font-size:20px;color:var(--navy);font-weight:600;line-height:1.2}
+  /* pricing tiers */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .tier{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:26px 24px;position:relative}
+  .tier.feat{border-color:var(--gold);box-shadow:var(--shadow)}
+  .tier .badge{position:absolute;top:-12px;left:24px;background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:20px}
+  .tier .name{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 8px}
+  .tier .price{font-family:var(--display);font-size:42px;font-weight:600;color:var(--navy);line-height:1}
+  .tier .price small{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.04em}
+  .tier .sub{font-size:14px;color:var(--muted);margin:6px 0 18px}
+  .tier ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
+  .tier li{position:relative;padding-left:26px;margin-bottom:10px;font-size:15px;color:var(--ink)}
+  .tier li::before{content:"";position:absolute;left:0;top:3px;width:16px;height:16px;border-radius:50%;border:2px solid var(--stamp);background:
+    radial-gradient(circle at 50% 60%, transparent 40%, transparent 41%)}
+  .tier li .chk{position:absolute;left:3px;top:1px;color:var(--stamp);font-weight:700;font-size:13px}
+  .tier .btn{width:100%;text-align:center}
+  .tier.feat .btn{}
+  /* compliance note block */
+  .pricenote{background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;margin-top:26px;font-size:14px;color:#3a4b55}
+  .pricenote strong{color:var(--navy)}
+  .pricenote p{margin:0 0 6px}
+  .pricenote p:last-child{margin-bottom:0}
+  /* requirements checklist */
+  .reqs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 36px}
+  .req{display:flex;gap:14px;align-items:flex-start}
+  .req svg{flex:0 0 28px}
+  .req h3{font-size:16px;font-family:var(--body);font-weight:600;margin:2px 0 2px}
+  .req p{margin:0;font-size:14px;color:var(--muted)}
+  /* FAQ */
+  .faq{max-width:78ch}
+  .faq details{border-bottom:1px solid var(--paper-edge);padding:18px 0}
+  .faq summary{font-family:var(--display);font-size:19px;color:var(--navy);font-weight:500;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:var(--mono);font-size:22px;color:var(--gold);flex:0 0 auto;transition:transform .15s ease}
+  .faq details[open] summary::after{content:"–"}
+  .faq summary:focus-visible{outline:2px solid var(--cta);outline-offset:4px;border-radius:4px}
+  .faq p{margin:12px 0 0;color:#3a4b55;font-size:16px}
+  @media (max-width:860px){
+    .facts,.tiers,.reqs{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="index.html#destinations">Destinations</a><a href="index.html#why">Why us</a><a href="#" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- 1. HERO -->
+<section class="dhero"><div class="wrap">
+  <p class="eyebrow">Turkey · eVisa</p>
+  <h1>Turkey eVisa, prepared and checked by our UK team</h1>
+  <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
+  <a href="#pricing" class="btn">Start my Turkey application →</a>
+  <div class="skyband">
+    <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" style="width:100%;height:120px;opacity:.55"><use href="#sky-turkey"></use></svg>
+  </div>
+</div></section>
+<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;TRAVELLER&lt;&lt;TURKEY&lt;eVISA&lt;READY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
+
+<!-- 2. AT A GLANCE -->
+<section><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">At a glance</p><h2>The Turkey eVisa, in short</h2></div>
+  <div class="facts">
+    <div class="fact reveal"><p class="k">Validity</p><div class="v">Up to 90 days</div></div>
+    <div class="fact reveal"><p class="k">Type</p><div class="v">Single / multiple entry</div></div>
+    <div class="fact reveal"><p class="k">Typical processing</p><div class="v">1–3 business days <small style="font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:4px">our handling</small></div></div>
+    <div class="fact reveal"><p class="k">Passport</p><div class="v">6 months validity recommended</div></div>
+  </div>
+</div></section>
+
+<!-- 3. PRICING -->
+<section id="pricing" class="alt"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Clear fixed service fees</p><h2>Choose your level of service</h2></div>
+  <div class="tiers">
+    <div class="tier reveal">
+      <p class="name">Standard</p>
+      <div class="price">£39 <small>service fee</small></div>
+      <p class="sub">Everything you need, done right.</p>
+      <ul>
+        <li><span class="chk">✓</span>Document &amp; eligibility check</li>
+        <li><span class="chk">✓</span>Application prepared by our UK team</li>
+        <li><span class="chk">✓</span>Submitted &amp; tracked to completion</li>
+        <li><span class="chk">✓</span>Email support</li>
+      </ul>
+      <a href="#" class="btn btn--ghost" style="text-align:center">Choose Standard</a>
+    </div>
+    <div class="tier feat reveal">
+      <span class="badge">Most popular</span>
+      <p class="name">Express</p>
+      <div class="price">£59 <small>service fee</small></div>
+      <p class="sub">When you're short on time.</p>
+      <ul>
+        <li><span class="chk">✓</span>Everything in Standard</li>
+        <li><span class="chk">✓</span>Priority handling by our team</li>
+        <li><span class="chk">✓</span>Faster preparation &amp; submission</li>
+        <li><span class="chk">✓</span>WhatsApp + email support</li>
+      </ul>
+      <a href="#" class="btn">Choose Express</a>
+    </div>
+    <div class="tier reveal">
+      <p class="name">Premium</p>
+      <div class="price">£89 <small>service fee</small></div>
+      <p class="sub">Full hands-on support.</p>
+      <ul>
+        <li><span class="chk">✓</span>Everything in Express</li>
+        <li><span class="chk">✓</span>Dedicated case handler</li>
+        <li><span class="chk">✓</span>Phone support &amp; document help</li>
+        <li><span class="chk">✓</span>Re-check &amp; re-submit if needed</li>
+      </ul>
+      <a href="#" class="btn btn--ghost" style="text-align:center">Choose Premium</a>
+    </div>
+  </div>
+  <div class="pricenote reveal">
+    <p><strong>Our service fee is separate from the Turkish government fee.</strong> The government charges its own fee for the eVisa, which you'll see clearly before you pay anything.</p>
+    <p><strong>Express speeds our handling — it does not change the government's decision or its processing time.</strong> We cannot guarantee approval; the outcome is always decided by the Turkish authorities.</p>
+  </div>
+</div></section>
+
+<!-- 4. WHAT YOU GET / HOW IT WORKS -->
+<section id="how"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">What you get</p><h2>Three simple steps</h2></div>
+  <div class="steps">
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Share your travel dates and passport details. We confirm exactly what your Turkey eVisa needs.</p></div>
+    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team reviews every detail for errors before anything is submitted to the authorities.</p></div>
+    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>Submit &amp; track</h3><p>We handle the submission and keep you updated until your eVisa is delivered.</p></div>
+  </div>
+</div></section>
+
+<!-- 5. REQUIREMENTS -->
+<section class="alt"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Before you start</p><h2>What you'll need</h2></div>
+  <div class="reqs">
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>A valid passport</h3><p>Recommended at least 6 months' validity beyond your travel dates.</p></div>
+    </div>
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>Your travel dates</h3><p>Intended arrival and departure dates for your trip to Turkey.</p></div>
+    </div>
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>A digital passport photo</h3><p>A clear, recent photo where required — we'll tell you the exact spec.</p></div>
+    </div>
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>Contact &amp; payment details</h3><p>An email for updates and a card to cover the service and government fees.</p></div>
+    </div>
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>Accommodation details</h3><p>Where you'll be staying — handy to have ready if asked.</p></div>
+    </div>
+    <div class="req reveal">
+      <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ukv-stamp"></use></svg>
+      <div><h3>That's it</h3><p>No account needed to start. We'll guide you through anything else.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6. FAQ -->
+<section><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>Turkey eVisa FAQ</h2></div>
+  <div class="faq reveal">
+    <details>
+      <summary>Do I actually need a Turkey eVisa?</summary>
+      <p>Many travellers do, but it depends on your nationality, passport and trip. Tell us your details and we'll confirm whether you need one before you pay — and we'll tell you honestly if you don't.</p>
+    </details>
+    <details>
+      <summary>How long does it take?</summary>
+      <p>Typical processing is around 1–3 business days for our handling. Express prioritises your case within our team. Note that the government sets its own processing time, which we can't control or shorten.</p>
+    </details>
+    <details>
+      <summary>Is this the official government website?</summary>
+      <p>No. UKVisaCo is an independent service — we are not a government website and not affiliated with any government. We prepare, check and submit your application on your behalf for a separate service fee.</p>
+    </details>
+    <details>
+      <summary>What does your fee cover, and is the government fee included?</summary>
+      <p>Our fee covers our preparation, checking, submission and support. The Turkish government charges its own separate fee for the eVisa, which is shown clearly before you pay. The two are always kept separate.</p>
+    </details>
+    <details>
+      <summary>What happens if my application is refused?</summary>
+      <p>The outcome of any application is decided solely by the Turkish authorities — we cannot guarantee approval. We focus on getting your application accurate and complete to give it the best chance, and we're upfront with you throughout.</p>
+    </details>
+  </div>
+</div></section>
+
+<!-- 7. CTA -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Ready for Turkey? Let's get it sorted.</h2>
+  <p style="max-width:48ch;color:#cdd9e1">Start your Turkey eVisa now, or message our UK team with any question first.</p>
+  <div class="row"><a href="#pricing" class="btn">Start my Turkey application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong style="color:#fff">Service</strong><br><a href="index.html#how">How it works</a><br><a href="index.html#destinations">Destinations</a><br><a href="#">Track application</a></div>
+    <div><strong style="color:#fff">Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;TURKEY&lt;eVISA&lt;INDEPENDENT&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script src="assets/ukv-illustrations.js"></script>
+</body>
+</html>

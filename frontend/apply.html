@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start your application — UK visas, eVisas &amp; ETAs | UKVisaCo</title>
+<meta name="description" content="Begin your UK visa or eVisa application with UKVisaCo. Tell us your trip and we'll check exactly what you need. Independent service — not a government website. Service fee separate from the government fee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* apply.html — page-scoped form layout only. Palette/type/components inherited from ukv.css. */
+  .apply-hero{padding:48px 0 0}
+  .apply-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:760px;margin:0 auto}
+  .intro-route{margin:18px 0 4px}
+  /* form grid inside the boarding-pass body */
+  .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ukv-form .field{margin:14px 0 0}
+  .ukv-form .field--full{grid-column:1 / -1}
+  .ukv-form label{display:block;font-family:var(--body);font-weight:600;font-size:13px;color:#4a5b65;margin:0 0 5px;letter-spacing:.01em}
+  .ukv-form .req{color:var(--cta)}
+  .ukv-form input,.ukv-form select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;background:var(--white);color:var(--ink)}
+  .ukv-form input:focus,.ukv-form select:focus,.ukv-form button:focus-visible,a:focus-visible{outline:3px solid rgba(20,86,184,.45);outline-offset:2px}
+  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:5px 0 0;letter-spacing:.04em}
+  /* fieldset reset + group heading */
+  .ukv-form fieldset{border:0;margin:0;padding:0}
+  .ukv-form .legend{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:26px 0 2px;border-top:1px dashed var(--paper-edge);padding-top:18px}
+  .ukv-form .legend:first-of-type{border-top:0;padding-top:0;margin-top:8px}
+  /* consent row */
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 0}
+  .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px}
+  .consent label{font-weight:400;font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+  /* inline validation message */
+  .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:12px 14px;font-size:14px;margin:18px 0 0}
+  .form-error.show{display:block}
+  /* compliance microcopy under the form */
+  .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
+  .compliance strong{color:var(--ink)}
+  /* outcome panels */
+  .outcome{max-width:760px;margin:0 auto}
+  .outcome[aria-hidden="true"]{display:none}
+  .panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .panel .phead{background:var(--navy);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:14px}
+  .panel .phead svg{flex:0 0 auto}
+  .panel .phead .ptag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin:0 0 3px}
+  .panel .phead h2{font-size:22px;color:#fff;margin:0}
+  .panel .pbody{padding:24px 22px}
+  .panel .pbody p{margin:0 0 14px;color:#33454f}
+  /* tier cards (standard lane) */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 8px}
+  .tier{border:1px solid var(--paper-edge);border-radius:10px;padding:16px;text-align:center;background:#f7fafb}
+  .tier.is-featured{border-color:var(--gold);box-shadow:0 0 0 2px rgba(200,162,74,.25)}
+  .tier .tname{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp)}
+  .tier .tprice{font-family:var(--display);font-size:30px;font-weight:600;color:var(--navy);margin:6px 0 2px}
+  .tier .tdesc{font-size:12.5px;color:var(--muted)}
+  .tier .tbadge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;background:var(--gold);color:var(--navy);border-radius:99px;padding:2px 8px;margin-top:8px}
+  /* summary chip list in review panel */
+  .case-summary{list-style:none;margin:0 0 16px;padding:14px 16px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:8px;font-size:13.5px;color:#33454f}
+  .case-summary li{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
+  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#90a2ac;text-transform:uppercase}
+  .case-summary .v{font-weight:600;text-align:right}
+  .micro-note{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:14px 0 0;letter-spacing:.03em}
+  @media (max-width:620px){
+    .ukv-form .grid2{grid-template-columns:1fr}
+    .tiers{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="index.html#destinations">Destinations</a><a href="index.html#why">Why us</a><a href="#" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- INTRO -->
+<section class="apply-hero"><div class="wrap">
+  <div class="apply-grid">
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow">Start your application</p>
+      <h1 style="font-size:clamp(32px,4.6vw,46px);color:var(--navy);letter-spacing:-.015em">Tell us your trip — we'll confirm exactly what you need.</h1>
+      <p style="font-size:18px;color:#33454f;max-width:52ch;margin:0 auto">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
+      <div class="intro-route">
+        <svg viewBox="0 0 400 200" style="width:100%;max-height:120px;opacity:.85" aria-hidden="true"><use href="#ukv-route"></use></svg>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FORM (boarding-pass styled) -->
+<section style="padding-top:0"><div class="wrap">
+  <div class="apply-grid">
+
+    <!-- INTAKE FORM -->
+    <div class="checker reveal" id="form-card">
+      <div class="stub"><span>APPLICATION</span><span>UKV&lt;NEW&lt;&lt;&lt;</span></div>
+      <div class="cbody">
+        <form class="ukv-form" id="apply-form" novalidate>
+
+          <p class="legend">Your trip</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="dest">Destination <span class="req" aria-hidden="true">*</span></label>
+              <select id="dest" name="dest" required aria-required="true">
+                <option value="">Choose a destination…</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Egypt">Egypt</option>
+                <option value="India">India</option>
+                <option value="USA (ESTA)">USA (ESTA)</option>
+                <option value="Australia (eTA)">Australia (eTA)</option>
+                <option value="Thailand">Thailand</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="purpose">Trip purpose <span class="req" aria-hidden="true">*</span></label>
+              <select id="purpose" name="purpose" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="tourist">Tourism / holiday</option>
+                <option value="business">Business</option>
+                <option value="study">Study</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="travel-date">Approximate travel date <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" id="travel-date" name="travel-date" required aria-required="true">
+            </div>
+          </div>
+
+          <p class="legend">Traveller</p>
+          <div class="grid2">
+            <div class="field field--full">
+              <label for="name">Traveller's full name (as on passport) <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Alex Taylor" required aria-required="true">
+            </div>
+            <div class="field">
+              <label for="nationality">Passport nationality <span class="req" aria-hidden="true">*</span></label>
+              <select id="nationality" name="nationality" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Other">Other nationality</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="residence">Country of residence <span class="req" aria-hidden="true">*</span></label>
+              <select id="residence" name="residence" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Other">Outside the UK</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="status">Residency status <span class="req" aria-hidden="true">*</span></label>
+              <select id="status" name="status" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="citizen">Citizen</option>
+                <option value="settled">Settled / permanent resident</option>
+                <option value="visa">Visa holder</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="minor">Is the traveller a minor (under 18)? <span class="req" aria-hidden="true">*</span></label>
+              <select id="minor" name="minor" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="refusal">Any previous visa refusal (for this traveller, any country)? <span class="req" aria-hidden="true">*</span></label>
+              <select id="refusal" name="refusal" required aria-required="true">
+                <option value="">Choose…</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+              <p class="hint">We ask because a prior refusal can change what's required. It does not mean we can't help.</p>
+            </div>
+          </div>
+
+          <p class="legend">How we reach you</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required aria-required="true">
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+44 …" required aria-required="true">
+            </div>
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="consent" name="consent" required aria-required="true">
+            <label for="consent">I agree to UKVisaCo contacting me about this application and accept that this is an independent service, not a government website. I understand the service fee is separate from any government fee.</label>
+          </div>
+
+          <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick the consent box.</div>
+
+          <button type="submit" class="btn">Continue →</button>
+          <p class="hint" style="text-align:center;margin-top:14px">No payment taken yet · this is a prototype, nothing is submitted</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- COMPLIANCE STRIP -->
+    <p class="compliance reveal">
+      <strong>UKVisaCo is an independent service and is not a government website.</strong>
+      Our service fee is separate from, and additional to, any government or scheme fee.
+      Express speeds <strong>our</strong> handling — it does not speed up or change the government's decision, and we cannot guarantee approval.
+      For non-standard cases, we confirm the exact requirements and give you a personalised quote after a quick human check.
+    </p>
+
+    <!-- OUTCOME: STANDARD LANE -->
+    <div class="outcome" id="outcome-standard" role="region" aria-label="Standard service result" aria-hidden="true" tabindex="-1">
+      <div class="panel">
+        <div class="phead">
+          <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+          <div>
+            <p class="ptag">Standard service · eligible</p>
+            <h2>You're on our standard service — choose your tier</h2>
+          </div>
+        </div>
+        <div class="pbody">
+          <p>Good news — based on your answers, your application follows our standard, fixed-fee route. Pick the speed that suits you and we'll take it from there.</p>
+          <div class="tiers">
+            <div class="tier">
+              <div class="tname">Standard</div>
+              <div class="tprice">£39</div>
+              <div class="tdesc">Full check &amp; submission at our usual pace</div>
+            </div>
+            <div class="tier is-featured">
+              <div class="tname">Express</div>
+              <div class="tprice">£59</div>
+              <div class="tdesc">We prioritise your handling</div>
+              <span class="tbadge">Most popular</span>
+            </div>
+            <div class="tier">
+              <div class="tname">Premium</div>
+              <div class="tprice">£89</div>
+              <div class="tdesc">Top of the queue + priority support</div>
+            </div>
+          </div>
+          <p class="micro-note">Tier fee is our service fee only and is separate from the government fee. Express speeds our handling, not the government's decision. No approval is guaranteed.</p>
+          <button type="button" class="btn" id="pay-btn">Continue to secure payment →</button>
+          <button type="button" class="btn btn--ghost" id="edit-standard" style="margin-top:10px">← Edit my answers</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTCOME: MANUAL-REVIEW LANE -->
+    <div class="outcome" id="outcome-review" role="region" aria-label="Manual review result" aria-hidden="true" tabindex="-1">
+      <div class="panel">
+        <div class="phead">
+          <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-route"></use></svg>
+          <div>
+            <p class="ptag">Manual review · human check</p>
+            <h2>Your case needs a quick human check</h2>
+          </div>
+        </div>
+        <div class="pbody">
+          <p>Thanks — we've got your details. For your situation, the exact requirements and the correct fee depend on your nationality and where you live, so we confirm them by hand rather than show a one-size-fits-all price.</p>
+          <ul class="case-summary" id="review-summary" aria-label="Your answers">
+            <!-- filled by JS -->
+          </ul>
+          <p>A UK-based adviser will review your answers, confirm precisely what you need and send a <strong>personalised quote</strong> — usually within one business day. No payment is taken until you've approved that quote.</p>
+          <p class="micro-note">We quote after a human check because rules and price depend on your nationality and residence. Our service fee is separate from the government fee, and no approval can be guaranteed.</p>
+          <button type="button" class="btn" id="callback-btn">Request my callback →</button>
+          <button type="button" class="btn btn--ghost" id="edit-review" style="margin-top:10px">← Edit my answers</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- CTA BAND -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Real people checking real applications</h2>
+  <p style="max-width:52ch;color:#cdd9e1">A UK-based team reviews every case before anything is submitted. We're an independent service — not a government website — and we'll always tell you honestly what you need.</p>
+  <div class="row"><a href="index.html#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="index.html#destinations">Destinations</a><br><a href="#">Track application</a></div>
+    <div><strong>Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script src="assets/ukv-illustrations.js"></script>
+<script>
+  // apply.html — eligibility "capture-and-route" branching. Vanilla JS, no network.
+  (function () {
+    var form     = document.getElementById('apply-form');
+    var formCard = document.getElementById('form-card');
+    var errBox   = document.getElementById('form-error');
+    var paneStd  = document.getElementById('outcome-standard');
+    var paneRev  = document.getElementById('outcome-review');
+    var summary  = document.getElementById('review-summary');
+    if (!form) return;
+
+    var LABELS = {
+      nationality: { UK: 'United Kingdom', Other: 'Other nationality' },
+      residence:   { UK: 'United Kingdom', Other: 'Outside the UK' },
+      status:      { citizen: 'Citizen', settled: 'Settled / permanent resident', visa: 'Visa holder' },
+      purpose:     { tourist: 'Tourism / holiday', business: 'Business', study: 'Study', other: 'Other' },
+      minor:       { no: 'No', yes: 'Yes' },
+      refusal:     { no: 'No', yes: 'Yes' }
+    };
+
+    function show(el) { el.setAttribute('aria-hidden', 'false'); }
+    function hide(el) { el.setAttribute('aria-hidden', 'true'); }
+
+    function isStandard(d) {
+      // STANDARD lane = UK passport + UK residence + citizen + tourist + not a minor + no prior refusal.
+      return d.nationality === 'UK'
+          && d.residence   === 'UK'
+          && d.status      === 'citizen'
+          && d.purpose     === 'tourist'
+          && d.minor       === 'no'
+          && d.refusal     === 'no';
+    }
+
+    function collect() {
+      return {
+        dest:        form.dest.value,
+        purpose:     form.purpose.value,
+        date:        form['travel-date'].value,
+        name:        form.name.value.trim(),
+        nationality: form.nationality.value,
+        residence:   form.residence.value,
+        status:      form.status.value,
+        minor:       form.minor.value,
+        refusal:     form.refusal.value,
+        email:       form.email.value.trim(),
+        phone:       form.phone.value.trim(),
+        consent:     form.consent.checked
+      };
+    }
+
+    function valid(d) {
+      // native validity + every required select chosen + consent ticked
+      if (!form.checkValidity()) return false;
+      return d.dest && d.purpose && d.date && d.name && d.nationality &&
+             d.residence && d.status && d.minor && d.refusal &&
+             d.email && d.phone && d.consent;
+    }
+
+    function row(k, v) {
+      return '<li><span class="k">' + k + '</span><span class="v">' + v + '</span></li>';
+    }
+
+    function fillSummary(d) {
+      summary.innerHTML =
+        row('Destination', d.dest) +
+        row('Purpose', LABELS.purpose[d.purpose] || d.purpose) +
+        row('Passport', LABELS.nationality[d.nationality] || d.nationality) +
+        row('Residence', LABELS.residence[d.residence] || d.residence) +
+        row('Status', LABELS.status[d.status] || d.status) +
+        row('Minor', LABELS.minor[d.minor] || d.minor) +
+        row('Prior refusal', LABELS.refusal[d.refusal] || d.refusal);
+    }
+
+    function route(pane) {
+      formCard.style.display = 'none';
+      hide(pane === paneStd ? paneRev : paneStd);
+      show(pane);
+      pane.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      pane.focus({ preventScroll: true });
+    }
+
+    function backToForm() {
+      hide(paneStd); hide(paneRev);
+      formCard.style.display = '';
+      formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = collect();
+      if (!valid(d)) {
+        errBox.classList.add('show');
+        // surface the first invalid native control
+        var firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+      errBox.classList.remove('show');
+      if (isStandard(d)) {
+        route(paneStd);
+      } else {
+        fillSummary(d);
+        route(paneRev);
+      }
+    });
+
+    document.getElementById('edit-standard').addEventListener('click', backToForm);
+    document.getElementById('edit-review').addEventListener('click', backToForm);
+
+    document.getElementById('pay-btn').addEventListener('click', function () {
+      alert('Prototype only — secure payment (Stripe) is not connected in this demo.');
+    });
+    document.getElementById('callback-btn').addEventListener('click', function () {
+      alert('Prototype only — your callback request would be sent to our UK team. Nothing is submitted in this demo.');
+    });
+  })();
+</script>
+</body>
+</html>
