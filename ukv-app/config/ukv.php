@@ -6,4 +6,7 @@ return [
 
     // GDPR document retention: purge stored docs this many days after order closure.
     'doc_retention_days' => env('UKV_DOC_RETENTION_DAYS', 90),
+
+    // Owner/ops digest recipient (daily pending-actions email).
+    'owner_email' => env('UKV_OWNER_EMAIL', ''),
 ];

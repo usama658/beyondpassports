@@ -9,6 +9,7 @@ use App\Enums\EventChannel;
 use App\Enums\EventType;
 use App\Enums\OrderStatus;
 use App\Enums\OrderTier;
+use App\Jobs\SyncOrderToHubSpot;
 use App\Models\Destination;
 use App\Models\Order;
 use App\Models\OrderEvent;
@@ -40,10 +41,10 @@ final class OrderService
     public function __construct(
         private readonly EligibilityService $eligibility,
         private readonly PricingService $pricing,
-        // Optional, deliberately untyped to avoid a hard dependency on an EmailService class
-        // that may not exist yet. When bound in the container it will be passed through and
-        // invoked at the documented hook point in transition().
-        private readonly mixed $emailer = null,
+        // EmailService is autowired by the container (required so the hook always fires;
+        // a nullable default would resolve to null and silently skip emails). transition()
+        // invokes it via the onStageChange() hook below.
+        private readonly EmailService $emailer,
     ) {}
 
     // -----------------------------------------------------------------------------------
@@ -135,6 +136,9 @@ final class OrderService
                     'source' => 'apply_form',
                 ],
             );
+
+            // CRM sync (after the transaction commits so HubSpot never sees a rolled-back order).
+            SyncOrderToHubSpot::dispatch($order)->afterCommit();
 
             return $order;
         });
@@ -242,9 +246,25 @@ final class OrderService
         // It is invoked through the optional injected dependency rather than a hard `new`/
         // facade call, so this service stays decoupled and unit-testable. If no emailer is
         // bound, the transition silently completes (matches "no email on a reverted status").
-        if ($this->emailer !== null && method_exists($this->emailer, 'onStageChange')) {
-            $this->emailer->onStageChange($order, $from, $to);
-        }
+        $this->emailer->onStageChange($order, $from, $to);
+
+        // CRM sync on every status change.
+        SyncOrderToHubSpot::dispatch($order, "Status: {$from->value} -> {$to->value}")->afterCommit();
+    }
+
+    /**
+     * Process a refund: record the refund fields, then transition to `refunded`
+     * (which records the journey event and fires the refund email via onStageChange).
+     * #178 — refund / cancellation flow.
+     */
+    public function refund(Order $order, float $amount, ?string $reason = null): void
+    {
+        $order->refund_amount = $amount;
+        $order->refund_reason = $this->clean($reason);
+        $order->refunded_at = Carbon::now();
+        $order->save();
+
+        $this->transition($order, OrderStatus::Refunded);
     }
 
     // -----------------------------------------------------------------------------------

@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Enums\EventChannel;
 use App\Enums\EventType;
+use App\Enums\OrderStatus;
 use App\Mail\AppointmentBooked;
 use App\Mail\CheckerAbandon;
 use App\Mail\DecisionMade;
@@ -124,6 +125,40 @@ final class EmailService
         Mail::to($leadEmail)->queue(new CheckerAbandon($name, $dest));
 
         return true;
+    }
+
+    /**
+     * Stage-change hook called by OrderService::transition() on every real, allowed move.
+     * Maps the target status to its lifecycle email(s). Idempotency + empty-recipient
+     * guards live in dispatch(), so this is safe to call on every transition.
+     *
+     * `paid` is intentionally silent here — it is the entry stage set at creation; the
+     * order_paid confirmation is owned by the Stripe webhook (genuine payment), not the
+     * pipeline move. doc_review and rejected have no customer email.
+     */
+    public function onStageChange(Order $order, OrderStatus $from, OrderStatus $to): void
+    {
+        switch ($to) {
+            case OrderStatus::Submitted:
+                $this->sendSubmitted($order);
+                break;
+            case OrderStatus::AwaitingDecision:
+                $this->sendDecision($order);
+                break;
+            case OrderStatus::AwaitingDocs:
+                $this->sendDocsNeeded($order);
+                break;
+            case OrderStatus::Delivered:
+            case OrderStatus::Won:
+                $this->sendDelivered($order);
+                $this->sendReviewRequest($order);
+                break;
+            case OrderStatus::Refunded:
+                $this->sendRefunded($order);
+                break;
+            default:
+                break;
+        }
     }
 
     // --- internals ---------------------------------------------------------

@@ -10,3 +10,4 @@ Artisan::command('inspire', function () {
 // --- UKV scheduled tasks ---
 \Illuminate\Support\Facades\Schedule::command('ukv:purge-documents')->daily();
 \Illuminate\Support\Facades\Schedule::command('ukv:reconcile-stripe')->dailyAt('06:00')->withoutOverlapping();
+\Illuminate\Support\Facades\Schedule::command('ukv:owner-digest')->dailyAt('08:00');

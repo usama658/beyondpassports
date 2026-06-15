@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Models\Destination;
+use Illuminate\Contracts\View\View;
+
+/**
+ * Public, database-driven destination "money pages".
+ *
+ * These are the SEO/marketing pages a traveller lands on before applying. Everything
+ * rendered here comes from the `destinations` table (see the create_destinations_table
+ * migration) — no per-destination hard-coding. The single page mirrors the coded
+ * reference at frontend/destination.html (the Turkey eVisa money page).
+ *
+ * Routes to register (NOT wired here — routes/web.php is owned elsewhere):
+ *   GET /destinations            -> index()
+ *   GET /visa/{destination:slug} -> show()    (route-model binding key: slug)
+ *
+ * Compliance copy (independent service / govt fee separate / express = our handling /
+ * no approval guarantee) lives in the Blade views and is required on every page.
+ */
+class DestinationController extends Controller
+{
+    /**
+     * Destinations hub — boarding-pass cards for every published destination.
+     */
+    public function index(): View
+    {
+        $destinations = Destination::query()
+            ->orderBy('name')
+            ->get();
+
+        return view('destinations.index', [
+            'destinations' => $destinations,
+        ]);
+    }
+
+    /**
+     * Single destination money page, bound by slug.
+     *
+     * Bind in the route as {destination:slug} so the URL is /visa/turkey, not /visa/7.
+     */
+    public function show(Destination $destination): View
+    {
+        return view('destinations.show', [
+            'destination' => $destination,
+        ]);
+    }
+}

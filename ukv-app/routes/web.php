@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\DocumentUploadController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\TrackController;
 use App\Models\Order;
@@ -33,6 +35,11 @@ Route::get('/confirmation/{order:order_ref}', function (Order $order) {
 Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
     ->middleware('throttle:10,1')
     ->name('documents.upload');
+
+// --- Public destination money pages (DB-driven, SEO) ---
+Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
+Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 // --- Public status tracker ---
 Route::get('/track', [TrackController::class, 'show'])->name('track.show');

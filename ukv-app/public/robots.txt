@@ -1,2 +1,15 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Private / transactional / authenticated areas — keep out of the index.
+Disallow: /admin
+Disallow: /admin/
+Disallow: /track
+Disallow: /checkout/
+Disallow: /confirmation/
+Disallow: /documents/
+Disallow: /stripe/
+Disallow: /apply
+
+# Update the host to your production domain after deploy.
+Sitemap: https://localhost/sitemap.xml
