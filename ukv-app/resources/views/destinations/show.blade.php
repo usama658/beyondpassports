@@ -233,7 +233,7 @@
     </div>
   </div>
   <div class="pricenote reveal">
-    <p><strong>Our service fee is separate from the {{ $name }} government fee.</strong> The government charges its own fee@if ($gbp($govtFee)) (currently {{ $gbp($govtFee) }})@endif for the {{ $visaType }}, which you'll see clearly before you pay anything.</p>
+    <p><strong>Our service fee is separate from the {{ $name }} government fee.</strong> The government charges its own fee{{ $gbp($govtFee) ? ' (currently '.$gbp($govtFee).')' : '' }} for the {{ $visaType }}, which you'll see clearly before you pay anything.</p>
     <p><strong>Express speeds our handling — it does not change the government's decision or its processing time.</strong> We cannot guarantee approval; the outcome is always decided by the {{ $name }} authorities.</p>
   </div>
 </div></section>
