@@ -20,7 +20,7 @@
   .checker:focus-within{box-shadow:0 0 0 3px rgba(20,86,184,.18),var(--shadow)}
   .checker .cbody form{margin:0}
   .checker select:focus,.checker button:focus-visible,a:focus-visible{outline:3px solid rgba(20,86,184,.45);outline-offset:2px}
-  .checker .hint{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:12px 0 0;letter-spacing:.04em}
+  .checker .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:12px 0 0;letter-spacing:.04em}
   /* result panel inside a checker */
   .result{margin-top:16px;border:1px dashed var(--paper-edge);border-radius:8px;background:#f7fafb;padding:16px 16px 14px}
   .result[aria-hidden="true"]{display:none}
@@ -29,7 +29,7 @@
   .result h3{font-family:var(--display);font-size:18px;color:var(--navy);margin:0 0 6px;line-height:1.2}
   .result p{font-size:14px;color:#33454f;margin:0 0 10px;line-height:1.55}
   .result .rlink{font-family:var(--body);font-size:14px;font-weight:600}
-  .result .rmicro{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:10px 0 0;letter-spacing:.03em}
+  .result .rmicro{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:10px 0 0;letter-spacing:.03em}
   /* honest note */
   .honest{max-width:760px;margin:0 auto;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--gold);border-radius:10px;padding:20px 22px}
   .honest p{margin:0;font-size:15px;color:#33454f;line-height:1.6}
@@ -38,10 +38,13 @@
     .checkers{grid-template-columns:1fr}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
-<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="https://wa.me/440000000000">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><a href="index.html" class="brand">UKVisa<b>Co</b></a><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<main id="main">
 
 <!-- HERO -->
 <section class="tools-hero"><div class="wrap">
@@ -120,7 +123,7 @@
         </form>
 
         <div class="result" id="idp-result" role="region" aria-label="IDP checker result" aria-hidden="true" tabindex="-1">
-          <p class="rtag"><svg width="16" height="16" viewBox="0 0 400 200" aria-hidden="true"><use href="#ukv-route"></use></svg> IDP check</p>
+          <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> IDP check</p>
           <h3 id="idp-result-title">—</h3>
           <p id="idp-result-body">—</p>
           <a class="rlink" id="idp-result-link" href="apply.html">Get help with my IDP paperwork →</a>
@@ -154,13 +157,14 @@
   <div class="rule"></div>
   <h2>Checked it — now let's sort it</h2>
   <p style="max-width:50ch;color:#cdd9e1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
-  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
+</main>
 
 <footer><div class="wrap">
   <div class="cols">
     <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa, eVisa &amp; IDP facilitation. Not a government website.</p></div>
-    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a><br><a href="idp.html">Driving abroad (IDP)</a><br><a href="guide.html">Visa hub</a><br><a href="blog-index.html">Guides &amp; stories</a></div>
     <div><strong>Legal</strong><br><a href="legal.html#privacy">Privacy</a><br><a href="legal.html#terms">Terms</a><br><a href="legal.html#complaints">Complaints</a></div>
   </div>
 </div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>

@@ -18,7 +18,7 @@
   /* lookup card sits left-aligned inside (form controls read better left) */
   .checker.lookup{max-width:640px;margin:8px auto 0;text-align:left}
   .lookup .ref-input{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
-  .lookup .hint{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:10px 0 0;letter-spacing:.04em}
+  .lookup .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:10px 0 0;letter-spacing:.04em}
   .lookup .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0}
   .lookup .form-error.show{display:block}
 
@@ -37,7 +37,7 @@
   .stage::before{content:"";position:absolute;top:30px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--paper-edge) 0 6px,transparent 6px 12px);z-index:0}
   .stage:first-child::before{display:none}
   .stage.is-done::before,.stage.is-current::before{background:var(--stamp)}
-  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:#90a2ac}
+  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:#6b7d87}
   .stage.is-done .dot{background:#eaf3f2;border-color:var(--stamp);color:var(--stamp)}
   .stage.is-current .dot{background:var(--navy);border-color:var(--gold);box-shadow:0 0 0 4px rgba(200,162,74,.25)}
   .stage .dot svg{width:28px;height:28px}
@@ -45,7 +45,7 @@
   .stage .name{font-size:12.5px;line-height:1.35;color:var(--muted);font-weight:600}
   .stage.is-current .name{color:var(--navy)}
   .stage.is-done .name{color:var(--ink)}
-  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:#90a2ac;letter-spacing:.04em;margin-top:3px}
+  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:#6b7d87;letter-spacing:.04em;margin-top:3px}
 
   /* plain-English now/next notes */
   .now-next{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 0}
@@ -72,10 +72,13 @@
     .help{flex-direction:column;align-items:flex-start}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
-<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="https://wa.me/440000000000">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><a href="index.html" class="brand">UKVisa<b>Co</b></a><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<main id="main">
 
 <!-- HERO + LOOKUP -->
 <section class="track-hero"><div class="wrap">
@@ -159,7 +162,7 @@
     <p>Can't find your reference? It's in your confirmation email.</p>
     <div class="links">
       <a href="tel:+440000000000" class="btn btn--ghost" style="padding:10px 18px">Call us</a>
-      <a href="#" class="btn btn--wa">WhatsApp</a>
+      <a href="https://wa.me/440000000000" class="btn btn--wa">WhatsApp</a>
     </div>
   </div>
 </div></section>
@@ -169,13 +172,14 @@
   <div class="rule"></div>
   <h2>Not started yet? Let's get you travelling</h2>
   <p style="max-width:50ch;color:#cdd9e1">Begin your application and we'll check, prepare and submit it for you — then you can track every step right here. Independent service, not a government website.</p>
-  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
+</main>
 
 <footer><div class="wrap">
   <div class="cols">
     <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
-    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a><br><a href="idp.html">Driving abroad (IDP)</a><br><a href="guide.html">Visa hub</a><br><a href="blog-index.html">Guides &amp; stories</a></div>
     <div><strong>Legal</strong><br><a href="legal.html#privacy">Privacy</a><br><a href="legal.html#terms">Terms</a><br><a href="legal.html#complaints">Complaints</a></div>
   </div>
 </div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
@@ -191,6 +195,8 @@
     var panel = document.getElementById('status-panel');
     if (!form) return;
 
+    var RM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var ref = input.value.trim();
@@ -202,7 +208,7 @@
       }
       err.classList.remove('show');
       panel.setAttribute('aria-hidden', 'false');
-      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      panel.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
       panel.focus({ preventScroll: true });
     });
 

@@ -22,7 +22,7 @@
   .ukv-form .req{color:var(--cta)}
   .ukv-form input,.ukv-form select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;background:var(--white);color:var(--ink)}
   .ukv-form input:focus,.ukv-form select:focus,.ukv-form button:focus-visible,a:focus-visible{outline:3px solid rgba(20,86,184,.45);outline-offset:2px}
-  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:5px 0 0;letter-spacing:.04em}
+  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:5px 0 0;letter-spacing:.04em}
   /* fieldset reset + group heading */
   .ukv-form fieldset{border:0;margin:0;padding:0}
   .ukv-form .legend{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);margin:26px 0 2px;border-top:1px dashed var(--paper-edge);padding-top:18px}
@@ -58,18 +58,21 @@
   /* summary chip list in review panel */
   .case-summary{list-style:none;margin:0 0 16px;padding:14px 16px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:8px;font-size:13.5px;color:#33454f}
   .case-summary li{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
-  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#90a2ac;text-transform:uppercase}
+  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#6b7d87;text-transform:uppercase}
   .case-summary .v{font-weight:600;text-align:right}
-  .micro-note{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:14px 0 0;letter-spacing:.03em}
+  .micro-note{font-family:var(--mono);font-size:11px;color:#6b7d87;margin:14px 0 0;letter-spacing:.03em}
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
     .tiers{grid-template-columns:1fr}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
-<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="https://wa.me/440000000000">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><a href="index.html" class="brand">UKVisa<b>Co</b></a><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+<main id="main">
 
 <!-- INTRO -->
 <section class="apply-hero"><div class="wrap">
@@ -276,13 +279,14 @@
   <div class="rule"></div>
   <h2>Real people checking real applications</h2>
   <p style="max-width:52ch;color:#cdd9e1">A UK-based team reviews every case before anything is submitted. We're an independent service — not a government website — and we'll always tell you honestly what you need.</p>
-  <div class="row"><a href="index.html#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="index.html#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/440000000000" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
+</main>
 
 <footer><div class="wrap">
   <div class="cols">
     <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
-    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a><br><a href="idp.html">Driving abroad (IDP)</a><br><a href="guide.html">Visa hub</a><br><a href="blog-index.html">Guides &amp; stories</a></div>
     <div><strong>Legal</strong><br><a href="legal.html#privacy">Privacy</a><br><a href="legal.html#terms">Terms</a><br><a href="legal.html#complaints">Complaints</a></div>
   </div>
 </div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
@@ -298,6 +302,8 @@
     var paneRev  = document.getElementById('outcome-review');
     var summary  = document.getElementById('review-summary');
     if (!form) return;
+
+    var RM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
     var LABELS = {
       nationality: { UK: 'United Kingdom', Other: 'Other nationality' },
@@ -365,14 +371,14 @@
       formCard.style.display = 'none';
       hide(pane === paneStd ? paneRev : paneStd);
       show(pane);
-      pane.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      pane.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
       pane.focus({ preventScroll: true });
     }
 
     function backToForm() {
       hide(paneStd); hide(paneRev);
       formCard.style.display = '';
-      formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      formCard.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
     }
 
     form.addEventListener('submit', function (e) {
