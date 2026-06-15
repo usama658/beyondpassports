@@ -11,3 +11,7 @@ Artisan::command('inspire', function () {
 \Illuminate\Support\Facades\Schedule::command('ukv:purge-documents')->daily();
 \Illuminate\Support\Facades\Schedule::command('ukv:reconcile-stripe')->dailyAt('06:00')->withoutOverlapping();
 \Illuminate\Support\Facades\Schedule::command('ukv:owner-digest')->dailyAt('08:00');
+
+// --- Guide engine: freshness (Module B) + AI change-detection (Module C) ---
+\Illuminate\Support\Facades\Schedule::command('destinations:freshness')->dailyAt('07:00');
+\Illuminate\Support\Facades\Schedule::command('destinations:check-changes')->weekly()->mondays()->at('05:00')->withoutOverlapping();

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Guides & stories — visa guides and real journeys | UKVisaCo')
-@section('description', 'Plain-English visa guides and anonymised traveller stories for UK travellers — eVisas, ETAs, passport-validity tips and document prep. Independent service, not a government website. General info only; requirements depend on your nationality and residence.')
+@section('title', 'Visa guides for UK travellers — plain-English help | UKVisaCo')
+@section('description', 'Plain-English visa guides for UK travellers — eVisas, ETAs, passport-validity rules, documents and processing times. Independent service, not a government website. General info only; requirements depend on your nationality and residence.')
 
 @section('canonical', url('/guides'))
 
@@ -12,35 +12,14 @@
   .page-hero h1{font-family:var(--display);font-size:clamp(34px,5vw,54px);color:var(--navy);letter-spacing:-.015em;margin:.1em 0 .35em}
   .page-hero p.sub{font-size:18px;max-width:52ch;color:#33454f;margin:0}
 
-  /* Category filter chips */
-  .filters{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
-  .chip{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-    padding:9px 18px;border-radius:999px;border:1.5px solid var(--navy);background:transparent;
-    color:var(--navy);cursor:pointer;transition:background .12s ease,color .12s ease}
-  .chip:hover{background:rgba(10,37,64,.07)}
-  .chip[aria-pressed="true"]{background:var(--navy);color:#fff}
-  .chip:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+  /* Country-hub chips — link ACROSS to the money-page hubs that carry a cluster */
+  .hubs{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 4px}
+  .hubs a{font-family:var(--mono);font-size:13px;letter-spacing:.04em;padding:9px 18px;border-radius:999px;
+    border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;transition:background .12s ease,color .12s ease}
+  .hubs a:hover{background:var(--navy);color:#fff}
+  .hubs a:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
 
-  /* Article card grid */
-  .articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin:26px 0 4px}
-  a.article{display:flex;flex-direction:column;text-decoration:none;color:inherit;
-    background:var(--white);border:1px solid var(--paper-edge);border-radius:10px;overflow:hidden;
-    transition:transform .12s ease,box-shadow .15s ease}
-  a.article:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(10,37,64,.10)}
-  a.article:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
-  .article .band{height:8px;background:var(--navy)}
-  .article[data-cat="guides"] .band{background:var(--cta)}
-  .article[data-cat="tips"] .band{background:var(--stamp)}
-  .article[data-cat="stories"] .band{background:var(--gold)}
-  .article .body{padding:20px 20px 18px;display:flex;flex-direction:column;flex:1}
-  .article .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp)}
-  .article h3{font-family:var(--display);font-size:20px;color:var(--navy);margin:8px 0 6px;line-height:1.18}
-  .article .excerpt{font-size:15px;color:#33454f;margin:0 0 16px;flex:1}
-  .article .meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);
-    display:flex;gap:10px;align-items:center;border-top:1px solid var(--paper-edge);padding-top:12px}
-  .article .meta .dot{opacity:.6}
-
-  .compliance{font-family:var(--mono);font-size:12px;color:var(--hint);margin:22px 0 0;max-width:66ch}
+  .compliance{font-family:var(--mono);font-size:12px;color:var(--hint);margin:26px 0 0;max-width:66ch}
 </style>
 @endpush
 
@@ -48,40 +27,34 @@
 
 {{-- HERO --}}
 <section class="page-hero"><div class="wrap">
-  <p class="eyebrow">Guides &amp; stories</p>
-  <h1>Travel-ready: visa guides &amp; real journeys</h1>
-  <p class="sub">Plain-English guides to eVisas, ETAs and entry rules — plus anonymised stories from UK travellers we've helped. Practical, honest and jargon-free.</p>
+  <p class="eyebrow">Visa guides</p>
+  <h1>Travel-ready: plain-English visa guides</h1>
+  <p class="sub">Plain-English guides to eVisas, ETAs, passport rules, documents and processing times for UK travellers. Practical, honest and jargon-free.</p>
 </div></section>
 <div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;READ&lt;BEFORE&lt;YOU&lt;TRAVEL&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
-{{-- ARTICLE GRID + CATEGORY FILTERS --}}
+{{-- COUNTRY HUBS — link across to the money pages that carry a published cluster --}}
+@if ($countryHubs->isNotEmpty())
 <section><div class="wrap">
-  <div class="filters" role="group" aria-label="Filter guides by category">
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" class="chip" data-filter="guides" aria-pressed="false">Guides</button>
-    <button type="button" class="chip" data-filter="tips" aria-pressed="false">Destination tips</button>
-    <button type="button" class="chip" data-filter="stories" aria-pressed="false">Traveller stories</button>
-  </div>
-
-  <div class="articles" id="article-grid">
-    @foreach ($guides as $slug => $guide)
-      <a class="article reveal" href="{{ url('/guides/'.$slug) }}" data-cat="{{ $guide['category'] }}">
-        <div class="band"></div>
-        <div class="body">
-          <div class="cat">{{ $guide['category_label'] }}</div>
-          <h3>{{ $guide['title'] }}</h3>
-          <p class="excerpt">{{ $guide['excerpt'] }}</p>
-          <div class="meta">
-            <span>{{ $guide['read_time'] }}</span>
-            <span class="dot">·</span>
-            <span>{{ $guide['date'] }}</span>
-          </div>
-        </div>
-      </a>
+  <div class="sec-head reveal" style="margin-bottom:14px"><p class="eyebrow">By destination</p><h2 style="font-size:clamp(24px,3vw,30px);color:var(--navy)">Guides for a specific country</h2></div>
+  <nav class="hubs" aria-label="Country guide hubs">
+    @foreach ($countryHubs as $hub)
+      <a href="{{ url('/visa/'.$hub->slug) }}">{{ $hub->name }} guides →</a>
     @endforeach
-  </div>
+  </nav>
+</div></section>
+@endif
 
-  <p class="compliance">UKVisaCo is an independent service and is not a government website. Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm before you travel. Traveller stories are anonymised; names and identifying details have been removed.</p>
+{{-- EVERGREEN GUIDE GRID --}}
+<section><div class="wrap">
+  @if ($evergreen->isNotEmpty())
+    <div class="sec-head reveal" style="margin-bottom:18px"><p class="eyebrow">Read up</p><h2 style="font-size:clamp(24px,3vw,30px);color:var(--navy)">General travel guides</h2></div>
+    @include('partials.guide-cluster', ['cluster' => $evergreen])
+  @else
+    <p class="sub" style="margin:20px 0">New guides are on the way — in the meantime, our free checker can tell you exactly what your trip needs.</p>
+  @endif
+
+  <p class="compliance">UKVisaCo is an independent service and is not a government website. Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
 </div></section>
 
 {{-- CTA --}}
@@ -94,25 +67,5 @@
     <a href="{{ url('/tools') }}" class="btn btn--ghost" style="color:#fff;border-color:#fff">Check what I need</a>
   </div>
 </div></section>
-
-<script>
-(function () {
-  // Category filter chips — client-side, no network.
-  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#article-grid .article'));
-  function apply(filter) {
-    cards.forEach(function (c) {
-      var show = (filter === 'all' || c.getAttribute('data-cat') === filter);
-      c.style.display = show ? '' : 'none';
-    });
-    chips.forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false');
-    });
-  }
-  chips.forEach(function (b) {
-    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
-  });
-})();
-</script>
 
 @endsection

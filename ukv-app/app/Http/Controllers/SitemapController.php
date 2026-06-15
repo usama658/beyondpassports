@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Destination;
+use App\Models\Guide;
 use Illuminate\Http\Response;
 
 /**
@@ -38,6 +39,7 @@ class SitemapController extends Controller
             ['/tools', 'monthly', '0.7'],
             ['/driving-abroad', 'monthly', '0.7'],
             ['/guides', 'weekly', '0.6'],
+            ['/document-checklist', 'monthly', '0.7'],
             ['/compare', 'monthly', '0.5'],
             ['/about', 'monthly', '0.4'],
             ['/contact', 'monthly', '0.4'],
@@ -78,6 +80,24 @@ class SitemapController extends Controller
                     'lastmod' => optional($destination->updated_at)->toDateString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.7',
+                ];
+            });
+
+        // Nested country guides (spokes): /visa/{slug}/{topic} for each PUBLISHED country guide.
+        Guide::query()
+            ->published()
+            ->whereNotNull('destination_id')
+            ->with('destination:id,slug')
+            ->get()
+            ->each(function (Guide $guide) use (&$urls, $base) {
+                if (! $guide->destination?->slug || ! $guide->guide_type) {
+                    return;
+                }
+                $urls[] = [
+                    'loc' => $base . '/visa/' . $guide->destination->slug . '/' . $guide->guide_type->topicSlug(),
+                    'lastmod' => optional($guide->published_at ?? $guide->updated_at)->toDateString(),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.6',
                 ];
             });
 

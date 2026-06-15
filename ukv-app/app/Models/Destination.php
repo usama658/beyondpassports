@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 class Destination extends Model
 {
@@ -23,6 +25,9 @@ class Destination extends Model
         'idp_required_photocard',
         'idp_required_paper',
         'required_docs',
+        'facts_checked_at',
+        'review_interval_days',
+        'sources',
     ];
 
     protected function casts(): array
@@ -38,6 +43,9 @@ class Destination extends Model
             'idp_required_photocard' => 'boolean',
             'idp_required_paper' => 'boolean',
             'required_docs' => 'array',
+            'facts_checked_at' => 'datetime',
+            'review_interval_days' => 'integer',
+            'sources' => 'array',
         ];
     }
 
@@ -51,8 +59,28 @@ class Destination extends Model
         return $this->hasMany(Barrier::class);
     }
 
+    public function guides(): HasMany
+    {
+        return $this->hasMany(Guide::class);
+    }
+
     public function supplyNodes(): BelongsToMany
     {
         return $this->belongsToMany(SupplyNode::class);
+    }
+
+    /**
+     * Destinations whose facts review is overdue (Module B): never reviewed, or last reviewed more
+     * than `review_interval_days` ago. Computed in PHP (per-row cadence) over a cheap candidate set
+     * — `null`/old timestamps are pulled, then filtered by each row's own interval.
+     */
+    public function scopeOverdueForReview(Builder $query): Builder
+    {
+        $now = Carbon::now();
+
+        return $query->where(function (Builder $q) use ($now): void {
+            $q->whereNull('facts_checked_at')
+                ->orWhereRaw('DATE_ADD(facts_checked_at, INTERVAL review_interval_days DAY) <= ?', [$now]);
+        });
     }
 }

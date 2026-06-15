@@ -204,6 +204,82 @@ final class AiService
         return $this->callVision($system, $userText, $mime, $bytes, 500, 'reviewDocumentImage', $document);
     }
 
+    /**
+     * Draft a country-guide BODY (HTML prose) around injected ground-truth facts.
+     *
+     * LEAK SURFACE — destination/topic facts ONLY:
+     *   The $facts array is a label => value map of PUBLIC destination data (fees, stay length,
+     *   passport validity, processing time, document list, official source URLs, etc.) assembled
+     *   by GuideContentService from the destinations / requirements engine. It contains NO customer
+     *   data — no order, no name, no email, no passport number, no document bytes. This method does
+     *   not receive an Order or a Document and so cannot leak one. As belt-and-braces, every fact
+     *   value is PII-redacted before it leaves the building.
+     *
+     * FACTUALITY — the prompt is the first line of the no-invention defence:
+     *   The model is told it may ONLY state figures (£-amounts, day-counts, dates) that appear in
+     *   the injected facts, and must never invent or estimate a number, fee, timescale, or date that
+     *   was not provided. GuideContentService additionally runs flagUnsourcedFacts() over the result
+     *   and the publish gate blocks until a human verifies the facts — so this prompt is necessary
+     *   but not sufficient, by design.
+     *
+     * Honesty rules mirror the rest of the class: independent service, NOT a government site;
+     * "express" speeds OUR handling not the government decision; never guarantee approval.
+     *
+     * Guarded no-op: with no Anthropic key configured this returns '' (empty string) — never throws,
+     * never partially drafts. Callers treat '' as "AI unavailable, leave the body for a human".
+     *
+     * @param  array<string, string>  $facts  Label => value map of destination ground-truth facts.
+     * @param  string  $type  The GuideType value (e.g. "cost_fees") — steers the topic focus.
+     * @return string  Draft HTML body, or '' when disabled / on any failure.
+     */
+    public function draftGuide(array $facts, string $type): string
+    {
+        if (! $this->enabled()) {
+            Log::info('AiService draftGuide no-op: no Anthropic key configured.', ['guide_type' => $type]);
+
+            return '';
+        }
+
+        // Redact defensively even though facts are already meant to be PII-free public data.
+        $clean = [];
+        foreach ($facts as $label => $value) {
+            $value = trim((string) $value);
+            if ($value === '') {
+                continue;
+            }
+            $clean[(string) $label] = $this->redactPii($value);
+        }
+
+        $factsBlock = $clean === []
+            ? '(No specific facts were supplied. Do NOT state any figure, fee, timescale, or date.)'
+            : $this->renderSummary($clean);
+
+        $system = 'You are a careful content writer for an independent UK visa support service, drafting '
+            .'a single informational guide article for UK travellers. '
+            .'CRITICAL FACTUALITY RULE: you may ONLY state a specific figure — any £-amount, number of '
+            .'days, processing timescale, passport-validity period, or date — if that exact figure appears '
+            .'in the FACTS block below. You must NEVER invent, estimate, round, infer, or "remember" any '
+            .'fee, cost, timescale, day-count, or date that is not in the FACTS. If a fact is not provided, '
+            .'write the prose without a number (e.g. "the government fee, shown at checkout") rather than '
+            .'guessing one. '
+            .'HONESTY RULES: we are an independent service, NOT a government website; an express or priority '
+            .'option speeds up OUR handling and paperwork, it does NOT make the government decide faster and '
+            .'never guarantees a faster or successful decision; NEVER guarantee or imply a guaranteed '
+            .'approval or a specific outcome; entry rules depend on nationality and residence and change over '
+            .'time, so tell the reader to confirm the current rule at the official source. '
+            .'OUTPUT: return clean HTML body content only — use <h2>/<h3>, <p>, <ul>/<li>, <strong>. Do NOT '
+            .'include <html>, <head>, <body>, a top-level <h1>, inline styles, scripts, or Markdown fences. '
+            .'Write for the guide topic "'.$type.'". Be concise, accurate, and reassuring.';
+
+        $user = "Draft the body of a UK-traveller guide on the topic \"{$type}\".\n\n"
+            ."FACTS (the ONLY figures you may state — do not introduce any other number, fee, or date):\n"
+            .$factsBlock
+            ."\n\nWrite several short HTML sections around these facts. Where a relevant figure is not in "
+            .'the FACTS, describe it qualitatively instead of inventing a value.';
+
+        return $this->callText($system, $user, 1500, 'draftGuide', ['guide_type' => $type]) ?? '';
+    }
+
     // -----------------------------------------------------------------------------------
     // Prompt builders — the ONLY place order fields are selected for export (the leak gate)
     // -----------------------------------------------------------------------------------
@@ -413,6 +489,55 @@ final class AiService
             Log::warning("AiService {$context} returned no usable text.", [
                 'order_ref' => $order->order_ref,
             ]);
+
+            return null;
+        }
+
+        return trim($text);
+    }
+
+    /**
+     * Order-agnostic sibling of call(): send a system + user prompt and return the text, or null.
+     *
+     * Used by draftGuide(), which operates on PUBLIC destination facts and has no Order/Document to
+     * scope logging to. Same null-safe contract as call(): returns null on any non-2xx, transport
+     * error, or missing field; never throws. The request body (the prompt) is NEVER logged.
+     *
+     * @param  array<string, scalar>  $logContext  Non-PII context for log lines (e.g. guide_type).
+     */
+    private function callText(string $system, string $user, int $maxTokens, string $context, array $logContext = []): ?string
+    {
+        $body = [
+            'model' => $this->model(),
+            'max_tokens' => $maxTokens,
+            'system' => $system,
+            'messages' => [
+                ['role' => 'user', 'content' => $user],
+            ],
+        ];
+
+        try {
+            $res = $this->client()->post(self::API_URL, $body);
+        } catch (\Throwable $e) {
+            Log::warning("AiService {$context} transport error.", array_merge($logContext, [
+                'error' => $e->getMessage(),
+            ]));
+
+            return null;
+        }
+
+        if (! $res->successful()) {
+            Log::warning("AiService {$context} non-2xx response.", array_merge($logContext, [
+                'status' => $res->status(),
+            ]));
+
+            return null;
+        }
+
+        $text = $res->json('content.0.text');
+
+        if (! is_string($text) || trim($text) === '') {
+            Log::warning("AiService {$context} returned no usable text.", $logContext);
 
             return null;
         }

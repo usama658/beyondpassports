@@ -303,6 +303,17 @@
   </div>
 </div></section>
 
+{{-- 6b. GUIDES FOR {COUNTRY} — published guide cluster (Guide engine, hub-and-spoke) --}}
+@if (isset($guideCluster) && $guideCluster->isNotEmpty())
+<section class="alt"><div class="wrap">
+  @include('partials.guide-cluster', [
+    'cluster' => $guideCluster,
+    'country' => $name,
+    'heading' => 'Guides for '.$name,
+  ])
+</div></section>
+@endif
+
 {{-- 7. CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>

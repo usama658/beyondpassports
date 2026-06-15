@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Destination;
+use App\Services\GuideService;
 use App\Services\RequirementService;
 use Illuminate\Contracts\View\View;
 
@@ -51,9 +52,14 @@ class DestinationController extends Controller
         // with no traveller-specific context (tourist-adult baseline).
         $docItems = $requirements->preview($destination);
 
+        // Guide engine: the published guide cluster for this destination (hub-and-spoke).
+        // Cards link DOWN to /visa/{slug}/{topic}. Empty when nothing is published yet.
+        $guideCluster = app(GuideService::class)->clusterFor($destination);
+
         return view('destinations.show', [
-            'destination' => $destination,
-            'docItems'    => $docItems,
+            'destination'  => $destination,
+            'docItems'     => $docItems,
+            'guideCluster' => $guideCluster,
         ]);
     }
 }

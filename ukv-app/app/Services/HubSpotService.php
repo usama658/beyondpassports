@@ -213,6 +213,104 @@ final class HubSpotService
         return true;
     }
 
+    /**
+     * Upsert a top-of-funnel LEAD contact, keyed by email, from a non-order source (e.g. the public
+     * document-checklist tool). Unlike upsertContact()/upsertDeal() this takes plain primitives — there
+     * is no Order and no deal — so it can be reused by any lead-capture surface.
+     *
+     * CONSENT SPLIT (caller's responsibility, enforced here too):
+     *   - Identity (email/name/phone) + the lead-source tag are TRANSACTIONAL — sent whenever we have
+     *     consent to deliver what the user asked for.
+     *   - Marketing fields (the HubSpot subscription/marketing-consent property) are ONLY sent when
+     *     $marketingConsent === true. When false we deliberately send NOTHING marketing-related, so a
+     *     lead can never be enrolled into nurture (#23) without an explicit opt-in.
+     *
+     * Field-mapping ASSUMPTIONS (create these CUSTOM contact properties in the portal; HubSpot
+     * silently ignores unknown properties so a missing one is non-fatal):
+     *   - `ukv_lead_source`        (single-line text) — set to $source, e.g. "document-checklist".
+     *   - `ukv_destination`        (single-line text) — the traveller's chosen destination.
+     *   - `ukv_marketing_consent`  (single checkbox / bool) — only written when opted in.
+     *   email/firstname/lastname/phone are HubSpot DEFAULT contact properties.
+     *
+     * Returns the HubSpot contact id on success, or null on no-op / failure.
+     */
+    public function upsertLead(
+        string $email,
+        ?string $name = null,
+        ?string $phone = null,
+        ?string $destination = null,
+        string $source = 'document-checklist',
+        bool $marketingConsent = false,
+    ): ?string {
+        if (! $this->enabled()) {
+            Log::info('HubSpot upsertLead no-op: no token configured.', ['source' => $source]);
+
+            return null;
+        }
+
+        $email = $this->clean($email);
+        if ($email === null) {
+            Log::warning('HubSpot upsertLead skipped: no email.', ['source' => $source]);
+
+            return null;
+        }
+
+        [$first, $last] = $this->splitName($name);
+
+        // Transactional identity + lead-source tag (always allowed).
+        $properties = array_filter([
+            'email' => $email,
+            'firstname' => $first,
+            'lastname' => $last,
+            'phone' => $this->clean($phone),
+            'ukv_destination' => $this->clean($destination),
+            'ukv_lead_source' => $this->clean($source),
+        ], static fn ($v): bool => $v !== null && $v !== '');
+
+        // Marketing-only property — gated on explicit opt-in. When false we send NOTHING marketing,
+        // so HubSpot never records a consent we don't have.
+        if ($marketingConsent) {
+            $properties['ukv_marketing_consent'] = 'true';
+        }
+
+        $existingId = $this->findContactIdByEmail($email);
+
+        if ($existingId !== null) {
+            $res = $this->client()->patch("/crm/v3/objects/contacts/{$existingId}", [
+                'properties' => $properties,
+            ]);
+
+            return $this->idFromLeadResponse($res, 'upsertLead(update)', $source) ? $existingId : null;
+        }
+
+        $res = $this->client()->post('/crm/v3/objects/contacts', [
+            'properties' => $properties,
+        ]);
+
+        return $this->idFromLeadResponse($res, 'upsertLead(create)', $source);
+    }
+
+    /**
+     * Pull the contact id from a lead write response (no Order in scope). Mirrors idFromResponse()
+     * but logs with the lead source instead of an order ref. Returns null on error.
+     */
+    private function idFromLeadResponse(Response $res, string $context, string $source): ?string
+    {
+        if (! $res->successful()) {
+            Log::warning("HubSpot {$context} failed.", [
+                'source' => $source,
+                'status' => $res->status(),
+                'body' => $res->body(),
+            ]);
+
+            return null;
+        }
+
+        $id = $res->json('id');
+
+        return $id !== null ? (string) $id : null;
+    }
+
     // -----------------------------------------------------------------------------------
     // Property mappers (the ONLY place order fields are selected for export)
     // -----------------------------------------------------------------------------------

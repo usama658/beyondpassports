@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApplyController;
+use App\Http\Controllers\ChecklistController;
+use App\Http\Controllers\ChecklistDeliveryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DestinationController;
@@ -22,8 +24,20 @@ Route::view('/contact', 'public.contact')->name('contact');
 Route::view('/legal', 'public.legal')->name('legal');
 Route::view('/compare', 'public.compare')->name('compare');
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
+// Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
+Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
 Route::get('/guides/{slug}', [GuideController::class, 'show'])->name('guides.show');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
+
+// --- Document-checklist tool (value-first lead magnet; reuses the requirements engine) ---
+Route::get('/document-checklist', [ChecklistController::class, 'tool'])->name('checklist.tool');
+Route::post('/document-checklist', [ChecklistController::class, 'result'])
+    ->middleware('throttle:contact')
+    ->name('checklist.result');
+Route::get('/checklist/{checklistRequest}', [ChecklistController::class, 'show'])->name('checklist.show');
+Route::post('/checklist/{checklist}/send', [ChecklistDeliveryController::class, 'send'])
+    ->middleware('throttle:contact')
+    ->name('checklist.send');
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 // --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
@@ -57,6 +71,11 @@ Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
+// Nested country guide (spoke) — constrained to the 15 known topic slugs so it never shadows
+// a real destination slug or the money page above.
+Route::get('/visa/{destination:slug}/{topic}', [GuideController::class, 'showCountry'])
+    ->where('topic', 'do-i-need-a-visa|documents|passport-validity|processing-time|how-to-apply|cost|when-to-apply|children|refused|uk-residents|transit|visa-on-arrival|entries|driving|health')
+    ->name('guides.country');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 // --- Public status tracker ---

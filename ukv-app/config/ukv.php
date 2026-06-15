@@ -21,4 +21,11 @@ return [
     // partner. Leave blank to show a neutral "ask us" note instead of a link.
     'insurance_partner_name' => env('UKV_INSURANCE_PARTNER', ''),  // e.g. AcmeTravelCover
     'insurance_partner_url' => env('UKV_INSURANCE_URL', ''),       // affiliate/landing URL
+
+    // Document-checklist tool: calendar-reminder timing (days). The .ics "start your application
+    // by" deadline = travel_date − default_processing_days − deadline_buffer_days.
+    'checklist' => [
+        'default_processing_days' => (int) env('UKV_CHECKLIST_PROCESSING_DAYS', 21),
+        'deadline_buffer_days' => (int) env('UKV_CHECKLIST_BUFFER_DAYS', 7),
+    ],
 ];
