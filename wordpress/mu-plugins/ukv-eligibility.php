@@ -27,7 +27,8 @@ function ukv_eligibility_evaluate( array $a ) {
 	$status  = $a['residency_status'] ?? '';
 	$purpose = $a['trip_purpose'] ?? 'tourist';
 	$refusal = ! empty( $a['prior_refusal'] );
-	if ( ukv_is_uk( $nat ) && ukv_is_uk( $res ) && 'citizen' === $status && 'tourist' === $purpose && ! $refusal ) {
+	$minor   = ! empty( $a['is_minor'] ); // child applications differ (guardian, consent, docs) -> always reviewed
+	if ( ukv_is_uk( $nat ) && ukv_is_uk( $res ) && 'citizen' === $status && 'tourist' === $purpose && ! $refusal && ! $minor ) {
 		return 'standard';
 	}
 	return 'manual_review';
@@ -61,6 +62,7 @@ function ukv_eligibility_apply( $order_id, array $data ) {
 		'residency_status' => (string) get_post_meta( $order_id, 'ukv_residency_status', true ),
 		'trip_purpose'     => (string) ( get_post_meta( $order_id, 'ukv_trip_purpose', true ) ?: 'tourist' ),
 		'prior_refusal'    => '1' === get_post_meta( $order_id, 'ukv_prior_refusal', true ),
+		'is_minor'         => '1' === get_post_meta( $order_id, 'ukv_is_minor', true ),
 	];
 	$existing = get_post_meta( $order_id, 'ukv_eligibility', true );
 	// Don't overwrite an agent decision (cleared/referred); only (re)compute standard/manual_review.

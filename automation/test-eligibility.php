@@ -10,6 +10,7 @@ e( 'manual_review' === ukv_eligibility_evaluate( array_merge( $std, [ 'residence
 e( 'manual_review' === ukv_eligibility_evaluate( array_merge( $std, [ 'residency_status' => 'visa_holder' ] ) ), 'non-citizen status -> manual_review' );
 e( 'manual_review' === ukv_eligibility_evaluate( array_merge( $std, [ 'trip_purpose' => 'business' ] ) ), 'business purpose -> manual_review' );
 e( 'manual_review' === ukv_eligibility_evaluate( array_merge( $std, [ 'prior_refusal' => true ] ) ), 'prior refusal -> manual_review' );
+e( 'manual_review' === ukv_eligibility_evaluate( array_merge( $std, [ 'is_minor' => true ] ) ), 'minor -> manual_review' );
 e( ukv_funnel_is_standard( 'UK', 'UK', 'citizen', 'tourist' ) && ! ukv_funnel_is_standard( 'India', 'UK', 'citizen' ), 'funnel_is_standard helper' );
 
 // apply + store on a real order
