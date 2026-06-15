@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\DiscountContext;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\DiscountResource\Pages;
 use App\Models\Discount;
 use Filament\Forms\Components\Section;
@@ -19,6 +20,8 @@ use Filament\Tables\Table;
 
 class DiscountResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Discount::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-ticket';

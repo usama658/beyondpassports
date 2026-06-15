@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\AppointmentStatus;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\AppointmentResource\Pages;
 use App\Models\Appointment;
 use Filament\Forms\Components\DatePicker;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 
 class AppointmentResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Appointment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';

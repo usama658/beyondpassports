@@ -19,9 +19,9 @@ class Order extends Model
 {
     protected $fillable = [
         // identity / customer
-        'order_ref', 'name', 'email', 'passport_number', 'hubspot_deal_id',
+        'order_ref', 'name', 'email', 'phone', 'passport_number', 'hubspot_deal_id',
         // destination + pricing
-        'destination_id', 'destination_name', 'tier', 'service_fee', 'govt_fee', 'total',
+        'destination_id', 'destination_name', 'tier', 'service_fee', 'govt_fee', 'total', 'paid_at',
         // pipeline
         'status', 'status_last', 'blocker', 'priority', 'next_action', 'next_due',
         'travel_date', 'risk_flag', 'value_note',
@@ -70,6 +70,7 @@ class Order extends Model
             'residency_visa_expiry' => 'date',
             'passport_expiry' => 'date',
             // datetimes
+            'paid_at' => 'datetime',
             'govt_fee_paid_at' => 'datetime',
             'premium_slot_added_at' => 'datetime',
             'refunded_at' => 'datetime',

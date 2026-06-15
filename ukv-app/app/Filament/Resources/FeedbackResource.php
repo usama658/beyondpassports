@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\FeedbackSource;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\FeedbackResource\Pages;
 use App\Models\Feedback;
 use Filament\Forms\Components\Section;
@@ -19,6 +20,8 @@ use Filament\Tables\Table;
 
 class FeedbackResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Feedback::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';

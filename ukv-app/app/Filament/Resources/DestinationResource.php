@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\DestinationResource\Pages;
 use App\Models\Destination;
 use Filament\Forms;
@@ -13,6 +14,8 @@ use Illuminate\Support\Str;
 
 class DestinationResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Destination::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';

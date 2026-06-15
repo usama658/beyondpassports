@@ -6,6 +6,7 @@ use App\Enums\BarrierDetectedBy;
 use App\Enums\BarrierNature;
 use App\Enums\BarrierScope;
 use App\Enums\BarrierStatus;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\BarrierResource\Pages;
 use App\Models\Barrier;
 use Filament\Forms\Components\Select;
@@ -20,6 +21,8 @@ use Filament\Tables\Table;
 
 class BarrierResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Barrier::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-exclamation-triangle';

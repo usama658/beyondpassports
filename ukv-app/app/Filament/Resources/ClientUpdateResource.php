@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\ClientUpdateChannel;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\ClientUpdateResource\Pages;
 use App\Models\ClientUpdate;
 use Filament\Forms\Components\DateTimePicker;
@@ -18,6 +19,8 @@ use Filament\Tables\Table;
 
 class ClientUpdateResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = ClientUpdate::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';

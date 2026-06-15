@@ -22,23 +22,18 @@ use Illuminate\Support\Facades\Log;
  *      order `paid` on checkout.session.completed.
  *
  *   2. BESPOKE quote lane (manual_review / cleared) -> a per-order Stripe Payment Link for an
- *      agent-set amount. The link creation lives in PricingService::bespokeQuote() (currently a
- *      placeholder). createBespokeQuotePaymentLink() below is the placeholder seam where the
- *      live Payment Links API call will go. No live URL is invented here.
+ *      agent-set amount, created by createBespokeQuotePaymentLink() via the live Payment Links
+ *      API (guarded to a placeholder when no Stripe secret is configured).
  *
- * Status flow is none -> sent -> paid. Nothing in the existing app sets 'paid'; the webhook in
- * this service is the sole writer of the `paid` order status (mirrors the WP source, where the
- * "paid" status had no setter).
- *
- * SDK: references stripe/stripe-php as `\Stripe\...`. The package is NOT installed yet; it must
- * be required before this code can run (see reply notes).
+ * Payment is signalled by the order's `paid_at` timestamp (set by the webhook), a distinct
+ * "money received" marker rather than the `paid` pipeline ENTRY stage (orders are created at
+ * `paid`). The webhook in this service is the sole writer of `paid_at`.
  */
 final class StripeService
 {
     public function __construct(
         private readonly PricingService $pricing,
-        // private readonly OrderService $orders,   // wire when OrderService::transition() exists
-        // private readonly EmailService $emails,   // wire when EmailService exists (order_paid)
+        private readonly EmailService $emails,
     ) {}
 
     /**
@@ -132,8 +127,8 @@ final class StripeService
      *   signature throws \Stripe\Exception\SignatureVerificationException (the controller maps
      *   that to a 400).
      * - On `checkout.session.completed`, resolves the order from session metadata and marks it
-     *   PAID. Idempotent: if the order is already `paid`, it is left untouched.
-     * - Records an order_event and leaves a hook for EmailService order_paid.
+     *   paid. Idempotent: if the order already has `paid_at` set, it is left untouched.
+     * - Records an order_event, sends the order_paid email, and dispatches the CRM sync.
      *
      * @param  string  $payload  raw request body (must be the unparsed body for signature checks)
      * @param  string  $sig      value of the Stripe-Signature header
@@ -172,24 +167,24 @@ final class StripeService
      */
     private function markOrderPaid(Order $order, \Stripe\Checkout\Session $session): void
     {
-        // --- Idempotency: ignore if already paid (or already past paid in the pipeline). ---
-        if ($order->status === OrderStatus::Paid) {
+        // --- Idempotency: keyed on `paid_at`, NOT on the `status === Paid` check. ---
+        // Orders are CREATED at `paid` (the pipeline entry stage), so the old status check
+        // returned early for every brand-new order and the payment audit/email never ran (H-3).
+        // `paid_at` is the distinct "money received" signal: null = not yet paid, set = done.
+        // A Stripe retry of the same event therefore short-circuits here without duplicating
+        // the audit event, the confirmation email, or the CRM sync.
+        if ($order->paid_at !== null) {
             return;
         }
 
-        // Preserve prior status for the gate's revert-to behaviour, then transition to PAID.
-        //
-        // PREFERRED: route through OrderService::transition() once it exists, so stage/QA/
-        // eligibility gates + audit run centrally:
-        //   $this->orders->transition($order, OrderStatus::Paid, agent: 'stripe-webhook');
-        //
-        // Until then, set the status directly. `paid` is the pipeline ENTRY stage, so no gate
-        // blocks entry to it (see EligibilityService::canAdvancePastPaid + stage gates: 'paid'
-        // is always enterable).
-        $order->status_last = $order->status instanceof OrderStatus
-            ? $order->status->value
-            : (string) $order->status;
-        $order->status = OrderStatus::Paid;
+        // Stamp the money-received signal and ensure the order rests at the `paid` entry stage.
+        $order->paid_at = Carbon::now();
+        if (! ($order->status instanceof OrderStatus && $order->status === OrderStatus::Paid)) {
+            $order->status_last = $order->status instanceof OrderStatus
+                ? $order->status->value
+                : (string) $order->status;
+            $order->status = OrderStatus::Paid;
+        }
         $order->save();
 
         // --- Audit trail ---
@@ -199,7 +194,7 @@ final class StripeService
             'channel' => EventChannel::Internal,
             'type' => EventType::System,
             'text' => sprintf(
-                'Payment confirmed via Stripe Checkout (%s). Order marked paid.',
+                'Payment received via Stripe Checkout (%s). Order marked paid.',
                 $session->id ?? 'unknown session',
             ),
             'meta' => [
@@ -210,40 +205,66 @@ final class StripeService
             ],
         ]);
 
-        // --- Email hook ---
-        // TODO(email): send the order_paid confirmation once EmailService is available, e.g.
-        //   $this->emails->send($order, 'order_paid');
-        // Kept as a hook so the webhook stays the single source of the paid transition.
+        // --- Side effects (BLOCKER-3): payment-confirmation email + CRM sync. ---
+        // The webhook is the sole writer of a genuine payment, so the order_paid email is
+        // owned here (EmailService::onStageChange is deliberately silent on `paid`).
+        $this->emails->sendOrderPaid($order);
+        \App\Jobs\SyncOrderToHubSpot::dispatch($order, 'Payment received via Stripe.');
     }
 
     /**
-     * Bespoke-quote Payment Link path (manual_review / cleared lane) — PLACEHOLDER.
+     * Bespoke-quote Payment Link path (manual_review / cleared lane). (H-4)
      *
-     * The standard lane uses Checkout Sessions (above). The bespoke lane instead needs a
-     * per-order Stripe Payment Link for an agent-set amount. Today PricingService::bespokeQuote()
-     * writes PricingService::QUOTE_PLACEHOLDER_LINK; this method is the seam where the live
-     * Payment Links API call will go, returning the hosted URL to store on the Quote.
+     * The standard lane uses Checkout Sessions (above). The bespoke lane needs a per-order
+     * Stripe Payment Link for an agent-set amount. This creates an inline GBP Price and a
+     * Payment Link via the live Stripe API, persists the hosted URL on the order's latest
+     * quote (if any), and returns it.
      *
-     * Intentionally NOT implemented against the live API yet (no live URL invented). When wired:
+     * Guard: when config('services.stripe.secret') is empty (no keys configured — pre-launch),
+     * this logs and returns PricingService::QUOTE_PLACEHOLDER_LINK without calling Stripe, so
+     * the method is a safe no-op in environments with no Stripe credentials.
      *
-     *   $client = $this->client();
-     *   $price = $client->prices->create([
-     *       'currency' => 'gbp',
-     *       'unit_amount' => (int) round($amount * 100),
-     *       'product_data' => ['name' => "Bespoke UK visa service — {$order->order_ref}"],
-     *   ]);
-     *   $link = $client->paymentLinks->create([
-     *       'line_items' => [['price' => $price->id, 'quantity' => 1]],
-     *       'metadata' => ['order_id' => (string) $order->getKey(), 'order_ref' => $order->order_ref],
-     *   ]);
-     *   return (string) $link->url;
-     *
-     * @return string the placeholder link until the live API is wired
+     * @return string the hosted Payment Link URL, or the placeholder when Stripe is unconfigured.
      */
     public function createBespokeQuotePaymentLink(Order $order, float $amount): string
     {
-        // TODO(stripe): replace with the live Payment Links API call shown in the docblock.
-        return PricingService::QUOTE_PLACEHOLDER_LINK;
+        if ((string) config('services.stripe.secret') === '') {
+            Log::info('Stripe not configured; bespoke Payment Link not created (returning placeholder).', [
+                'order_ref' => $order->order_ref,
+                'amount' => $amount,
+            ]);
+
+            return PricingService::QUOTE_PLACEHOLDER_LINK;
+        }
+
+        // The static \Stripe\* resources read the global API key.
+        \Stripe\Stripe::setApiKey((string) config('services.stripe.secret'));
+
+        $price = \Stripe\Price::create([
+            'currency' => 'gbp',
+            // Smallest currency unit (pence); round to avoid float drift.
+            'unit_amount' => (int) round($amount * 100),
+            'product_data' => ['name' => "Bespoke UK visa service — {$order->order_ref}"],
+        ]);
+
+        $link = \Stripe\PaymentLink::create([
+            'line_items' => [['price' => $price->id, 'quantity' => 1]],
+            'metadata' => [
+                'order_id' => (string) $order->getKey(),
+                'order_ref' => (string) $order->order_ref,
+            ],
+        ]);
+
+        $url = (string) $link->url;
+
+        // Persist the live URL on the order's latest quote, if one exists.
+        $quote = $order->quotes()->latest('id')->first();
+        if ($quote !== null) {
+            $quote->payment_link = $url;
+            $quote->save();
+        }
+
+        return $url;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\SupplyNodeType;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\SupplyNodeResource\Pages;
 use App\Models\SupplyNode;
 use Filament\Forms;
@@ -14,6 +15,8 @@ use Illuminate\Support\Str;
 
 class SupplyNodeResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = SupplyNode::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';

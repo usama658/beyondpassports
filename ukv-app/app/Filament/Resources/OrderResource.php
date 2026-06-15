@@ -10,6 +10,7 @@ use App\Enums\OrderStatus;
 use App\Enums\OrderTier;
 use App\Enums\ResidencyStatus;
 use App\Enums\TripPurpose;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
 use App\Services\LoyaltyService;
@@ -32,6 +33,8 @@ use Filament\Tables\Table;
 
 class OrderResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
@@ -108,6 +111,10 @@ class OrderResource extends Resource
                     TextInput::make('email')
                         ->label('Email')
                         ->email()
+                        ->maxLength(255),
+                    TextInput::make('phone')
+                        ->label('Phone')
+                        ->tel()
                         ->maxLength(255),
                     TextInput::make('passport_number')
                         ->label('Passport number')
@@ -245,6 +252,10 @@ class OrderResource extends Resource
                     ->searchable()
                     ->description(fn (Order $record): ?string => $record->email)
                     ->toggleable(),
+                TextColumn::make('phone')
+                    ->label('Phone')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('destination_name')
                     ->label('Destination')
                     ->searchable()
@@ -370,6 +381,57 @@ class OrderResource extends Resource
                             ->send();
                     }),
 
+                Action::make('refund')
+                    ->label('Refund')
+                    ->icon('heroicon-o-banknotes')
+                    ->color('danger')
+                    ->modalHeading('Process refund')
+                    ->modalDescription(fn (Order $record): string => 'Record a refund for order '
+                        .$record->order_ref.' and move it to the refunded stage.')
+                    // Only show where a refund transition is actually legal (not already closed
+                    // to a non-refundable terminal state). OrderService::refund() enforces the
+                    // gate; this just hides a dead button.
+                    ->visible(fn (Order $record): bool => ! in_array(
+                        $record->status,
+                        [OrderStatus::Won, OrderStatus::Rejected, OrderStatus::Refunded],
+                        true,
+                    ))
+                    ->form([
+                        TextInput::make('amount')
+                            ->label('Refund amount')
+                            ->numeric()
+                            ->prefix('£')
+                            ->required()
+                            ->default(fn (Order $record): ?float => $record->service_fee !== null
+                                ? (float) $record->service_fee
+                                : null),
+                        Textarea::make('reason')
+                            ->label('Reason')
+                            ->rows(3),
+                    ])
+                    ->action(function (Order $record, array $data): void {
+                        try {
+                            app(OrderService::class)->refund(
+                                $record,
+                                (float) $data['amount'],
+                                $data['reason'] ?? null,
+                            );
+
+                            Notification::make()
+                                ->title('Refund recorded')
+                                ->body("Order {$record->order_ref} refunded £"
+                                    .number_format((float) $data['amount'], 2).'.')
+                                ->success()
+                                ->send();
+                        } catch (\DomainException $e) {
+                            Notification::make()
+                                ->title('Refund blocked')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+
                 Action::make('issueReviewIncentive')
                     ->label('Issue review-incentive code')
                     ->icon('heroicon-o-gift')
@@ -397,13 +459,17 @@ class OrderResource extends Resource
      */
     protected static function nextStatuses(Order $record): array
     {
+        // NOTE: Refunded is intentionally excluded from every adjacency here (audit H-2).
+        // Refunds must go through the dedicated "Refund" action so the refund amount/reason
+        // are recorded via OrderService::refund(); the generic advance-stage path no longer
+        // offers it.
         $allowed = [
-            OrderStatus::Paid->value => [OrderStatus::AwaitingDocs, OrderStatus::Refunded],
-            OrderStatus::AwaitingDocs->value => [OrderStatus::DocReview, OrderStatus::Refunded],
-            OrderStatus::DocReview->value => [OrderStatus::Submitted, OrderStatus::Refunded],
-            OrderStatus::Submitted->value => [OrderStatus::AwaitingDecision, OrderStatus::Refunded],
-            OrderStatus::AwaitingDecision->value => [OrderStatus::Delivered, OrderStatus::Rejected, OrderStatus::Refunded],
-            OrderStatus::Delivered->value => [OrderStatus::Won, OrderStatus::Rejected, OrderStatus::Refunded],
+            OrderStatus::Paid->value => [OrderStatus::AwaitingDocs],
+            OrderStatus::AwaitingDocs->value => [OrderStatus::DocReview],
+            OrderStatus::DocReview->value => [OrderStatus::Submitted],
+            OrderStatus::Submitted->value => [OrderStatus::AwaitingDecision],
+            OrderStatus::AwaitingDecision->value => [OrderStatus::Delivered, OrderStatus::Rejected],
+            OrderStatus::Delivered->value => [OrderStatus::Won, OrderStatus::Rejected],
             OrderStatus::Won->value => [],
             OrderStatus::Rejected->value => [],
             OrderStatus::Refunded->value => [],

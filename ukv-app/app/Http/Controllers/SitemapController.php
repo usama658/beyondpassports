@@ -44,12 +44,9 @@ class SitemapController extends Controller
             ['/legal', 'yearly', '0.2'],
         ];
 
-        // Guide articles (static registry — keep in sync with GuideController::GUIDES).
-        $guideSlugs = [
-            'eta-vs-visa-difference', 'passport-validity-mistake',
-            'do-uk-travellers-need-visa-turkey', 'idp-which-type',
-            'applied-and-refused-next-steps', 'documents-before-you-apply',
-        ];
+        // Guide articles — read straight from the GuideController registry so the
+        // sitemap can never drift from the guides that actually exist (audit M-7).
+        $guideSlugs = GuideController::slugs();
 
         $urls = [];
 

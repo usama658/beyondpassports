@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\QuoteStatus;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\QuoteResource\Pages;
 use App\Models\Quote;
 use Filament\Forms\Components\DateTimePicker;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 
 class QuoteResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Quote::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';

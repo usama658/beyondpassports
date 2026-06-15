@@ -44,6 +44,7 @@ Route::get('/confirmation/{order:order_ref}', function (Order $order) {
 })->name('confirmation');
 
 // --- Post-payment document upload (customer authenticates by order ref + email) ---
+Route::view('/documents', 'public.documents')->name('documents');
 Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
     ->middleware('throttle:10,1')
     ->name('documents.upload');

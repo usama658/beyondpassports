@@ -117,6 +117,21 @@ class GuideController extends Controller
     ];
 
     /**
+     * Public slugs of every guide in the registry, in registry order.
+     *
+     * Single source of truth for anything outside this controller that needs the
+     * canonical guide URL list — notably SitemapController, which would otherwise
+     * keep a hand-maintained copy that silently drifts when a guide is added or
+     * removed here (audit M-7).
+     *
+     * @return list<string>
+     */
+    public static function slugs(): array
+    {
+        return array_keys(self::GUIDES);
+    }
+
+    /**
      * Guides hub — category chips + responsive card grid.
      */
     public function index(): View

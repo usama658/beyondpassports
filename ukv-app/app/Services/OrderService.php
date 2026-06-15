@@ -81,8 +81,9 @@ final class OrderService
             $order->applicant_name = $this->clean($data['applicant_name'] ?? null);
             $order->guardian_name = $this->clean($data['guardian_name'] ?? null);
             $order->email = $this->clean($data['email'] ?? null);
-            // Phone has no dedicated order column in this schema; it is captured into the
-            // opening event meta below so nothing is lost.
+            // Phone is persisted to its own column (M-4) AND retained in the opening event
+            // meta below, so agents can find a callback number without digging the event log.
+            $order->phone = $this->clean($data['phone'] ?? null);
 
             // --- Destination snapshot (id + display-name snapshot, per MEMORY convention) ---
             $order->destination_id = $destination?->getKey();

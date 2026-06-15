@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Enums\RejectionReason;
+use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\RejectionResource\Pages;
 use App\Models\Rejection;
 use Filament\Forms\Components\DateTimePicker;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 
 class RejectionResource extends Resource
 {
+    use AuthorizesByRole;
+
     protected static ?string $model = Rejection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-x-circle';
