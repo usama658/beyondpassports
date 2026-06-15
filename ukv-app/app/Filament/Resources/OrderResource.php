@@ -16,6 +16,7 @@ use App\Models\Order;
 use App\Services\LoyaltyService;
 use App\Services\OrderService;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -28,8 +29,10 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrderResource extends Resource
 {
@@ -86,6 +89,35 @@ class OrderResource extends Resource
             EligibilityLane::Referred => 'danger',
             default => 'gray',
         };
+    }
+
+    /** Human labels for the fraud-guard reason codes stored in orders.risk_reason. */
+    protected static function riskReasonLabel(string $code): string
+    {
+        return match ($code) {
+            'velocity' => 'High order velocity (same email/IP)',
+            'duplicate' => 'Duplicate recent order (same email + destination)',
+            'disposable_email' => 'Disposable email domain',
+            'email_pattern' => 'Suspicious email pattern',
+            'prior_refusal' => 'Declared prior visa refusal',
+            'contradictory_fields' => 'Contradictory intake fields',
+            'missing_contact' => 'Missing contact details',
+            default => str($code)->headline()->toString(),
+        };
+    }
+
+    /** Render an order's stored risk reasons as a readable, comma-separated list. */
+    protected static function riskReasonLabels(Order $record): string
+    {
+        $reasons = $record->risk_reason;
+
+        if (! is_array($reasons) || $reasons === []) {
+            return $record->risk_flag ? 'Flagged (no reasons recorded)' : 'Not flagged';
+        }
+
+        return collect($reasons)
+            ->map(fn (string $code): string => self::riskReasonLabel($code))
+            ->implode(', ');
     }
 
     public static function form(Form $form): Form
@@ -161,7 +193,6 @@ class OrderResource extends Resource
                     Toggle::make('is_minor')->label('Is minor')->inline(false),
                     Toggle::make('prior_refusal')->label('Prior refusal')->inline(false),
                     Toggle::make('insurance_required')->label('Insurance required')->inline(false),
-                    Toggle::make('risk_flag')->label('Risk flag')->inline(false),
                 ]),
 
             Section::make('Eligibility lane')
@@ -175,6 +206,26 @@ class OrderResource extends Resource
                         ->label('Eligibility note')
                         ->rows(2)
                         ->columnSpanFull(),
+                ]),
+
+            Section::make('Risk review')
+                ->columns(2)
+                ->description('Advisory fraud guard (#128). Set automatically on apply — never blocks the customer. Clear the flag once reviewed.')
+                ->schema([
+                    Toggle::make('risk_flag')
+                        ->label('Flagged for review')
+                        ->inline(false),
+                    TextInput::make('risk_score')
+                        ->label('Risk score')
+                        ->numeric()
+                        ->disabled()
+                        ->dehydrated(false),
+                    Placeholder::make('risk_reason_display')
+                        ->label('Reasons')
+                        ->columnSpanFull()
+                        ->content(fn (?Order $record): string => $record !== null
+                            ? self::riskReasonLabels($record)
+                            : '—'),
                 ]),
 
             Section::make('Status & Tier')
@@ -296,6 +347,17 @@ class OrderResource extends Resource
                         default => 'gray',
                     })
                     ->toggleable(),
+                BadgeColumn::make('risk_flag')
+                    ->label('Risk')
+                    ->formatStateUsing(fn (bool $state, Order $record): string => $state
+                        ? 'Flagged'.($record->risk_score ? " ({$record->risk_score})" : '')
+                        : 'OK')
+                    ->color(fn (bool $state): string => $state ? 'danger' : 'gray')
+                    ->icon(fn (bool $state): ?string => $state ? 'heroicon-o-flag' : null)
+                    ->tooltip(fn (Order $record): ?string => $record->risk_flag
+                        ? self::riskReasonLabels($record)
+                        : null)
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Created')
                     ->dateTime('d M Y H:i')
@@ -317,6 +379,10 @@ class OrderResource extends Resource
                         ->orderBy('destination_name')
                         ->pluck('destination_name', 'destination_name')
                         ->all()),
+                Filter::make('risk_flag')
+                    ->label('Flagged for review')
+                    ->query(fn (Builder $query): Builder => $query->where('risk_flag', true))
+                    ->toggle(),
             ])
             ->actions([
                 Action::make('advanceStage')

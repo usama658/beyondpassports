@@ -8,11 +8,13 @@ use App\Enums\BarrierStatus;
 use App\Enums\OrderBlocker;
 use App\Enums\OrderStatus;
 use App\Enums\OrderTier;
+use App\Models\Document;
 use App\Models\Order;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Optional Anthropic / Claude "AI Assist" layer for the UK visa app.
@@ -51,6 +53,19 @@ final class AiService
     private const DEFAULT_MODEL = 'claude-opus-4-8';
 
     private const TIMEOUT = 30;
+
+    /**
+     * MIME types we will send to the vision endpoint. Anthropic accepts jpeg/png/gif/webp image
+     * blocks. HEIC and PDF are NOT image blocks the API understands here, so we never send them
+     * (reviewDocumentImage no-ops for them) — that also keeps the leak surface to plain raster
+     * images only.
+     *
+     * @var array<int, string>
+     */
+    private const VISION_MIMES = ['image/jpeg', 'image/png'];
+
+    /** Vision payloads can be larger; give them a little more room than text calls. */
+    private const VISION_TIMEOUT = 45;
 
     // -----------------------------------------------------------------------------------
     // Public API
@@ -112,6 +127,81 @@ final class AiService
             .'or duplicates. Be concise and do not invent document contents you cannot see.';
 
         return $this->call($system, $summary, 400, 'reviewDocumentMeta', $order);
+    }
+
+    /**
+     * VISION-based advisory review of a SINGLE uploaded document IMAGE (Phase-2 #99).
+     *
+     * This is the ONE method in the whole app where a document's image BYTES leave the building.
+     * Because of that the leak gate here is deliberately tight:
+     *
+     *   WHAT IS SENT (and nothing else):
+     *     - exactly ONE image block: the base64 of the single $document's stored file;
+     *     - a GENERIC, case-agnostic instruction asking only for document-QUALITY signals.
+     *
+     *   WHAT IS NEVER SENT:
+     *     - NO customer PII (no name, email, phone, passport number);
+     *     - NO order reference, order id, status, destination, or any other order field;
+     *     - NO filename (a client filename can itself be PII, e.g. "John-Smith-passport.jpg");
+     *     - NO other document, and never more than one image per request;
+     *     - NO disk path or storage URL.
+     *   The model is told NOT to transcribe or extract any personal data — only to judge quality.
+     *
+     * Guards:
+     *   - No Anthropic key  => logged no-op, returns null (safe pre-launch).
+     *   - Non-image document (HEIC/PDF/unknown) => returns null (we only do raster vision here).
+     *   - Missing/empty/unreadable file on disk => returns null (logged).
+     *
+     * ADVISORY ONLY: the returned string is a checklist for a human reviewer. It never changes the
+     * order status, never approves/rejects, never emails anyone.
+     *
+     * @return string|null A short advisory note, or null (no key / not an image / file gone / AI failure).
+     */
+    public function reviewDocumentImage(Document $document): ?string
+    {
+        if (! $this->enabled()) {
+            $this->logDoc('info', 'reviewDocumentImage no-op: no Anthropic key configured.', $document);
+
+            return null;
+        }
+
+        $mime = $this->enumValue($document->mime);
+
+        if ($mime === null || ! in_array($mime, self::VISION_MIMES, true)) {
+            // Only plain raster images go to the vision endpoint. PDFs/HEIC are out of scope here.
+            $this->logDoc('info', 'reviewDocumentImage skipped: document is not a reviewable image.', $document, [
+                'mime' => $mime ?? 'unknown',
+            ]);
+
+            return null;
+        }
+
+        $bytes = $this->readDocumentBytes($document);
+
+        if ($bytes === null || $bytes === '') {
+            // Missing/empty/unreadable file — already logged in readDocumentBytes().
+            return null;
+        }
+
+        // GENERIC instruction — contains NO order/customer specifics whatsoever.
+        $system = 'You are a meticulous document-quality assistant for an independent UK visa support '
+            .'service. You ADVISE a human reviewer who makes the final decision — you never approve or '
+            .'reject anything and you never change any record. You are shown ONE document image and '
+            .'NOTHING else about the case. Do NOT transcribe, extract, or repeat any personal data from '
+            .'the image (no names, numbers, dates of birth, or passport/reference numbers) — comment only '
+            .'on document QUALITY. Produce a short checklist-style note (one bullet per point) covering: '
+            .'(1) legibility — is the whole document sharp, well-lit, and fully in frame, with no glare, '
+            .'blur, shadow, or cropped edges? (2) type — does this look like the kind of document a visa '
+            .'application expects (e.g. a passport bio-data page, a photo, or a supporting letter), and if '
+            .'so which? (3) expiry/validity — if a passport, is the machine-readable zone (MRZ) or an '
+            .'expiry date visible, and does the expiry appear to be in the future rather than obviously '
+            .'past? State plainly when something is not visible rather than guessing. End with a one-line '
+            .'advisory verdict such as "Looks usable" or "Ask the customer to re-upload". Be concise.';
+
+        $userText = 'Please assess the quality of the single attached document image using the checklist. '
+            .'Remember: do not read out any personal data; comment only on whether the image is usable.';
+
+        return $this->callVision($system, $userText, $mime, $bytes, 500, 'reviewDocumentImage', $document);
     }
 
     // -----------------------------------------------------------------------------------
@@ -330,8 +420,140 @@ final class AiService
         return trim($text);
     }
 
+    /**
+     * Send ONE image block + a generic instruction to the Anthropic Messages API and return the
+     * advisory text, or null. This is the vision sibling of call().
+     *
+     * The request body is built HERE and contains ONLY: the model, the generic system prompt, the
+     * generic user text, and a single base64 image block of the given MIME. No order/customer data
+     * is in scope of this method — it receives only $mime + $bytes + the generic strings above.
+     *
+     * Null-safe by design: returns null on any non-2xx response, transport error, or missing field.
+     * Never throws. The API key is read from config and attached as the x-api-key header only. The
+     * request body (which contains the image bytes) is NEVER logged.
+     */
+    private function callVision(
+        string $system,
+        string $userText,
+        string $mime,
+        string $bytes,
+        int $maxTokens,
+        string $context,
+        Document $document,
+    ): ?string {
+        $body = [
+            'model' => $this->model(),
+            'max_tokens' => $maxTokens,
+            'system' => $system,
+            'messages' => [
+                [
+                    'role' => 'user',
+                    'content' => [
+                        [
+                            'type' => 'image',
+                            'source' => [
+                                'type' => 'base64',
+                                'media_type' => $mime,
+                                'data' => base64_encode($bytes),
+                            ],
+                        ],
+                        [
+                            'type' => 'text',
+                            'text' => $userText,
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        try {
+            $res = $this->client(self::VISION_TIMEOUT)->post(self::API_URL, $body);
+        } catch (\Throwable $e) {
+            // NEVER log the body (it contains the image bytes) or the key.
+            $this->logDoc('warning', "AiService {$context} transport error.", $document, [
+                'error' => $e->getMessage(),
+            ]);
+
+            return null;
+        }
+
+        if (! $res->successful()) {
+            $this->logDoc('warning', "AiService {$context} non-2xx response.", $document, [
+                'status' => $res->status(),
+            ]);
+
+            return null;
+        }
+
+        $text = $res->json('content.0.text');
+
+        if (! is_string($text) || trim($text) === '') {
+            $this->logDoc('warning', "AiService {$context} returned no usable text.", $document);
+
+            return null;
+        }
+
+        return trim($text);
+    }
+
+    /**
+     * Read the stored bytes for a document from its (private) disk. Returns null + logs when the
+     * disk/path is missing or the file cannot be read. Never throws.
+     */
+    private function readDocumentBytes(Document $document): ?string
+    {
+        $disk = (string) $document->disk;
+        $path = (string) $document->path;
+
+        if ($disk === '' || $path === '') {
+            $this->logDoc('warning', 'reviewDocumentImage skipped: document has no stored file.', $document);
+
+            return null;
+        }
+
+        try {
+            $storage = Storage::disk($disk);
+
+            if (! $storage->exists($path)) {
+                $this->logDoc('warning', 'reviewDocumentImage skipped: stored file is missing.', $document);
+
+                return null;
+            }
+
+            $bytes = $storage->get($path);
+        } catch (\Throwable $e) {
+            $this->logDoc('warning', 'reviewDocumentImage could not read the stored file.', $document, [
+                'error' => $e->getMessage(),
+            ]);
+
+            return null;
+        }
+
+        if (! is_string($bytes) || $bytes === '') {
+            $this->logDoc('warning', 'reviewDocumentImage skipped: stored file is empty.', $document);
+
+            return null;
+        }
+
+        return $bytes;
+    }
+
+    /**
+     * Log a document-scoped line WITHOUT any PII or bytes. We log only the document id + order id —
+     * never the filename, the path, or the file contents.
+     *
+     * @param  array<string, mixed>  $extra
+     */
+    private function logDoc(string $level, string $message, Document $document, array $extra = []): void
+    {
+        Log::{$level}($message, array_merge([
+            'document_id' => $document->getKey(),
+            'order_id' => $document->order_id,
+        ], $extra));
+    }
+
     /** A configured HTTP client for the Anthropic Messages API. */
-    private function client(): PendingRequest
+    private function client(?int $timeout = null): PendingRequest
     {
         return Http::withHeaders([
             'x-api-key' => $this->key(),
@@ -339,7 +561,7 @@ final class AiService
         ])
             ->acceptJson()
             ->asJson()
-            ->timeout(self::TIMEOUT);
+            ->timeout($timeout ?? self::TIMEOUT);
     }
 
     private function key(): string

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Enums\EligibilityLane;
 use App\Http\Requests\ApplyRequest;
 use App\Models\Order;
+use App\Services\FraudService;
 use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -23,11 +24,20 @@ use Illuminate\Http\RedirectResponse;
  */
 class ApplyController extends Controller
 {
-    public function __construct(private readonly OrderService $orders) {}
+    public function __construct(
+        private readonly OrderService $orders,
+        private readonly FraudService $fraud,
+    ) {}
 
     public function store(ApplyRequest $request): JsonResponse|RedirectResponse
     {
         $order = $this->orders->createFromIntake($request->validated());
+
+        // Advisory fraud/risk guard (#128): score the freshly-created order and, if it crosses
+        // the threshold, flag it + log a fraud event for human review. This NEVER blocks the
+        // customer — the funnel below proceeds exactly the same whether flagged or not. It
+        // complements Stripe Radar (card-level, dashboard config); this is application-level.
+        $this->fraud->flagIfRisky($order, $request->ip());
 
         $lane = $order->eligibility instanceof EligibilityLane
             ? $order->eligibility

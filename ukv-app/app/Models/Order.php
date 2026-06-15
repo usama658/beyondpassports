@@ -24,7 +24,7 @@ class Order extends Model
         'destination_id', 'destination_name', 'tier', 'service_fee', 'govt_fee', 'total', 'paid_at',
         // pipeline
         'status', 'status_last', 'blocker', 'priority', 'next_action', 'next_due',
-        'travel_date', 'risk_flag', 'value_note',
+        'travel_date', 'risk_flag', 'risk_score', 'risk_reason', 'value_note',
         // eligibility + intake
         'eligibility', 'eligibility_note', 'nationality', 'residence_country',
         'residency_status', 'residency_visa_expiry', 'trip_purpose', 'visa_entries',
@@ -64,6 +64,7 @@ class Order extends Model
             'premium_slot_fee' => 'decimal:2',
             'refund_amount' => 'decimal:2',
             'required_docs_count' => 'integer',
+            'risk_score' => 'integer',
             // dates
             'next_due' => 'date',
             'travel_date' => 'date',
@@ -88,6 +89,7 @@ class Order extends Model
             'story_consent' => 'boolean',
             // json
             'doc_review' => 'array',
+            'risk_reason' => 'array',
         ];
     }
 

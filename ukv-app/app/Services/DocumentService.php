@@ -8,6 +8,7 @@ use App\Enums\DocumentMime;
 use App\Enums\DocumentUploadedBy;
 use App\Enums\EventChannel;
 use App\Enums\EventType;
+use App\Jobs\GenerateDocReview;
 use App\Models\Document;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
@@ -88,7 +89,7 @@ final class DocumentService
             throw new \RuntimeException('Could not store the uploaded file.');
         }
 
-        return DB::transaction(function () use ($order, $path, $original, $mime, $size, $uploadedBy): Document {
+        $document = DB::transaction(function () use ($order, $path, $original, $mime, $size, $uploadedBy): Document {
             $document = $order->documents()->create([
                 'disk' => self::DISK,
                 'path' => $path,
@@ -115,6 +116,42 @@ final class DocumentService
 
             return $document;
         });
+
+        // Opt-in, safe-by-default: queue an ADVISORY vision review of the image (Phase-2 #99).
+        // Only for raster images we can actually send to the vision endpoint, and only when an
+        // Anthropic key is configured — so this is a guaranteed no-op pre-launch. The job itself
+        // also guards again (key + image + file present) and never changes order state.
+        $this->maybeDispatchDocReview($document, $mime);
+
+        return $document;
+    }
+
+    /**
+     * MIME types eligible for the advisory vision review. PDFs/HEIC are excluded — the vision
+     * endpoint takes plain raster image blocks, and limiting the set also limits the leak surface.
+     *
+     * @var array<int, string>
+     */
+    private const VISION_REVIEWABLE = [
+        DocumentMime::Jpeg->value,
+        DocumentMime::Png->value,
+    ];
+
+    /**
+     * Queue an advisory vision review iff: the file is a reviewable image AND an Anthropic key is
+     * configured. Both guards keep this opt-in and safe pre-launch; the job re-checks regardless.
+     */
+    private function maybeDispatchDocReview(Document $document, DocumentMime $mime): void
+    {
+        if (! in_array($mime->value, self::VISION_REVIEWABLE, true)) {
+            return;
+        }
+
+        if (trim((string) config('services.anthropic.key', '')) === '') {
+            return;
+        }
+
+        GenerateDocReview::dispatch($document);
     }
 
     /**
