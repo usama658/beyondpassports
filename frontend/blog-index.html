@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guides & Stories — Visa guides and real journeys | UKVisaCo</title>
+<meta name="description" content="Travel-ready visa guides and anonymised traveller stories for UK travellers — eVisas, ETAs, passport-validity tips and document prep. Independent service, not a government website. General info only; requirements depend on your nationality and residence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ukv.css">
+<style>
+  /* Page-local layout only — design system + palette live in assets/ukv.css */
+  .page-hero{padding:64px 0 8px}
+  .page-hero h1{font-family:var(--display);font-size:clamp(34px,5vw,54px);color:var(--navy);letter-spacing:-.015em;margin:.1em 0 .35em}
+  .page-hero p.sub{font-size:18px;max-width:52ch;color:#33454f;margin:0}
+
+  /* Category filter chips */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
+  .chip{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:9px 18px;border-radius:999px;border:1.5px solid var(--navy);background:transparent;
+    color:var(--navy);cursor:pointer;transition:background .12s ease,color .12s ease}
+  .chip:hover{background:rgba(10,37,64,.07)}
+  .chip[aria-pressed="true"]{background:var(--navy);color:#fff}
+  .chip:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+
+  /* Article card grid */
+  .articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin:26px 0 4px}
+  a.article{display:flex;flex-direction:column;text-decoration:none;color:inherit;
+    background:var(--white);border:1px solid var(--paper-edge);border-radius:10px;overflow:hidden;
+    transition:transform .12s ease,box-shadow .15s ease}
+  a.article:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(10,37,64,.10)}
+  a.article:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
+  .article .band{height:8px;background:var(--navy)}
+  .article[data-cat="guides"] .band{background:var(--cta)}
+  .article[data-cat="tips"] .band{background:var(--stamp)}
+  .article[data-cat="stories"] .band{background:var(--gold)}
+  .article .body{padding:20px 20px 18px;display:flex;flex-direction:column;flex:1}
+  .article .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp)}
+  .article h3{font-family:var(--display);font-size:20px;color:var(--navy);margin:8px 0 6px;line-height:1.18}
+  .article .excerpt{font-size:15px;color:#33454f;margin:0 0 16px;flex:1}
+  .article .meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#90a2ac;
+    display:flex;gap:10px;align-items:center;border-top:1px solid var(--paper-edge);padding-top:12px}
+  .article .meta .dot{opacity:.6}
+
+  /* Newsletter strip */
+  .news{padding:48px 0}
+  .news .inner{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+  .news h2{font-size:clamp(24px,3vw,32px);color:var(--navy);margin:0 0 .3em}
+  .news p.lead{margin:0;color:#33454f;max-width:46ch}
+  .news form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin-top:4px}
+  .news label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp);display:block;margin-bottom:6px}
+  .news input[type=email]{padding:13px 14px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;min-width:240px;background:#fff}
+  .news input[type=email]:focus-visible{outline:2px solid var(--cta);outline-offset:1px}
+  .news .consent{font-family:var(--mono);font-size:11px;color:#90a2ac;margin:12px 0 0;max-width:52ch}
+  .news .msg{font-family:var(--mono);font-size:12px;color:var(--stamp);margin:12px 0 0;min-height:1.2em}
+
+  .compliance{font-family:var(--mono);font-size:12px;color:#90a2ac;margin:22px 0 0;max-width:66ch}
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap"><div class="brand">UKVisa<b>Co</b></div><nav class="nav"><a href="index.html#how">How it works</a><a href="destinations.html">Destinations</a><a href="index.html#why">Why us</a><a href="track.html" class="btn btn--ghost" style="padding:8px 16px">Track</a></nav></div></header>
+
+<!-- HERO -->
+<section class="page-hero"><div class="wrap">
+  <p class="eyebrow">Guides &amp; stories</p>
+  <h1>Travel-ready: visa guides &amp; real journeys</h1>
+  <p class="sub">Plain-English guides to eVisas, ETAs and entry rules — plus anonymised stories from UK travellers we've helped. Practical, honest and jargon-free.</p>
+</div></section>
+<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;READ&lt;BEFORE&lt;YOU&lt;TRAVEL&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
+
+<!-- ARTICLE GRID + CATEGORY FILTERS -->
+<section><div class="wrap">
+  <div class="filters" role="group" aria-label="Filter articles by category">
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-filter="guides" aria-pressed="false">Guides</button>
+    <button type="button" class="chip" data-filter="tips" aria-pressed="false">Destination tips</button>
+    <button type="button" class="chip" data-filter="stories" aria-pressed="false">Traveller stories</button>
+  </div>
+
+  <div class="articles" id="article-grid">
+
+    <a class="article reveal" href="blog-single.html" data-cat="tips">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Destination tips</div>
+        <h3>Do UK travellers need a visa for Turkey in 2026?</h3>
+        <p class="excerpt">What's changed, who's eligible for an eVisa, and how long it covers — at a glance.</p>
+        <div class="meta"><span>5 min read</span><span class="dot">·</span><span>12 Jan 2026</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="guides">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Guide</div>
+        <h3>ETA vs visa: what's the difference?</h3>
+        <p class="excerpt">Two very different things that travellers often confuse — and why it matters before you book.</p>
+        <div class="meta"><span>6 min read</span><span class="dot">·</span><span>08 Jan 2026</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="guides">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Guide</div>
+        <h3>How to avoid the #1 passport-validity mistake</h3>
+        <p class="excerpt">Many countries count validity from your return date, not departure. Here's how to check yours.</p>
+        <div class="meta"><span>4 min read</span><span class="dot">·</span><span>22 Dec 2025</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="stories">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Traveller story</div>
+        <h3>A family's smooth eVisa for Egypt (anonymised)</h3>
+        <p class="excerpt">How one family prepared documents early and travelled stress-free — names and details removed.</p>
+        <div class="meta"><span>5 min read</span><span class="dot">·</span><span>15 Dec 2025</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="guides">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Guide</div>
+        <h3>International Driving Permit: which type for which country?</h3>
+        <p class="excerpt">1949 vs 1968 IDP, what each covers, and how to work out which one your trip needs.</p>
+        <div class="meta"><span>7 min read</span><span class="dot">·</span><span>03 Dec 2025</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="stories">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Traveller story</div>
+        <h3>Applied and refused — what happens next?</h3>
+        <p class="excerpt">An anonymised account of a refused application and the calm, practical steps that followed.</p>
+        <div class="meta"><span>6 min read</span><span class="dot">·</span><span>26 Nov 2025</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="tips">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Destination tips</div>
+        <h3>Booking appointments: getting an early slot</h3>
+        <p class="excerpt">General tips for finding earlier availability when an in-person appointment is required.</p>
+        <div class="meta"><span>4 min read</span><span class="dot">·</span><span>18 Nov 2025</span></div>
+      </div>
+    </a>
+
+    <a class="article reveal" href="blog-single.html" data-cat="guides">
+      <div class="band"></div>
+      <div class="body">
+        <div class="cat">Guide</div>
+        <h3>5 documents to prepare before you apply</h3>
+        <p class="excerpt">A simple checklist that helps most applications go through without back-and-forth.</p>
+        <div class="meta"><span>5 min read</span><span class="dot">·</span><span>10 Nov 2025</span></div>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="compliance">UKVisaCo is an independent service and is not a government website. Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm before you travel. Traveller stories are anonymised and shared with permission; names and identifying details have been removed.</p>
+</div></section>
+
+<!-- NEWSLETTER -->
+<section class="alt news"><div class="wrap reveal">
+  <div class="inner">
+    <div>
+      <h2>Stay travel-ready</h2>
+      <p class="lead">Occasional, practical updates — new guides and entry-rule changes for UK travellers. No spam.</p>
+    </div>
+    <form id="news-form" novalidate>
+      <div>
+        <label for="news-email">Email address</label>
+        <input type="email" id="news-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <button type="submit" class="btn">Keep me updated →</button>
+      <p class="msg" id="news-msg" role="status" aria-live="polite"></p>
+      <p class="consent">By subscribing you agree we may email you occasional travel guidance. Unsubscribe any time. See our <a href="legal.html#privacy">privacy notice</a>.</p>
+    </form>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Ready when you are</h2>
+  <p style="max-width:48ch;color:#cdd9e1">Read up, then let our UK team confirm exactly what your trip needs.</p>
+  <div class="row"><a href="apply.html" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong>Service</strong><br><a href="index.html#how">How it works</a><br><a href="destinations.html">Destinations</a><br><a href="track.html">Track application</a></div>
+    <div><strong>Legal</strong><br><a href="legal.html#privacy">Privacy</a><br><a href="legal.html#terms">Terms</a><br><a href="legal.html#complaints">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script>
+(function () {
+  // Category filter chips
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#article-grid .article'));
+  function apply(filter) {
+    cards.forEach(function (c) {
+      var show = (filter === 'all' || c.getAttribute('data-cat') === filter);
+      c.style.display = show ? '' : 'none';
+    });
+    chips.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false');
+    });
+  }
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
+  });
+
+  // Newsletter — local only, no network
+  var form = document.getElementById('news-form');
+  var input = document.getElementById('news-email');
+  var msg = document.getElementById('news-msg');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var val = (input.value || '').trim();
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      if (!ok) {
+        msg.textContent = 'Please enter a valid email address.';
+        input.focus();
+        return;
+      }
+      form.reset();
+      msg.textContent = 'Thanks — you’re on the list. Watch your inbox.';
+    });
+  }
+})();
+</script>
+<script src="assets/ukv-illustrations.js"></script>
+</body>
+</html>
