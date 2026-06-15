@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update this to your production domain after deploy.
+Sitemap: https://YOUR-SITE.netlify.app/sitemap.xml

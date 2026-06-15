@@ -185,9 +185,12 @@
 </div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
 
 <script src="assets/ukv-illustrations.js"></script>
+<script src="assets/ukv-config.js"></script>
 <script>
-  // track.html — front-end status lookup. Vanilla JS, no network: any non-empty
-  // reference reveals the demo status panel below.
+  // track.html — status lookup wired to the Laravel app.
+  // With UKV_API_BASE set, submitting the reference navigates (full page) to the
+  // app's server-rendered status page (POST /track/lookup, field "ref").
+  // With no API base, it falls back to revealing the local demo status panel.
   (function () {
     var form  = document.getElementById('track-form');
     var input = document.getElementById('ref');
@@ -195,18 +198,36 @@
     var panel = document.getElementById('status-panel');
     if (!form) return;
 
-    var RM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var RM  = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var API = (window.UKV_API_BASE || '').replace(/\/$/, '');
 
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
       var ref = input.value.trim();
       if (!ref) {
+        e.preventDefault();
         err.classList.add('show');
         panel.setAttribute('aria-hidden', 'true');
         input.focus();
         return;
       }
       err.classList.remove('show');
+
+      if (API) {
+        // Full-page submit to the Laravel status page; let the browser navigate.
+        e.preventDefault();
+        var f = document.createElement('form');
+        f.method = 'POST';
+        f.action = API + '/track/lookup';
+        var i = document.createElement('input');
+        i.type = 'hidden'; i.name = 'ref'; i.value = ref;
+        f.appendChild(i);
+        document.body.appendChild(f);
+        f.submit();
+        return;
+      }
+
+      // No API base → graceful demo: reveal the local status panel.
+      e.preventDefault();
       panel.setAttribute('aria-hidden', 'false');
       panel.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
       panel.focus({ preventScroll: true });

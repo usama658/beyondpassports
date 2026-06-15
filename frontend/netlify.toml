@@ -1,0 +1,50 @@
+# Netlify configuration for the UKVisaCo static front-end.
+# This folder (frontend/) is the site root. No build step — pure static HTML/CSS/JS.
+#
+# CSP DECISION (pragmatic, documented trade-off):
+#   The 16 HTML pages use inline <style> blocks, inline style="" attributes,
+#   inline <script> blocks, inline onclick="" handlers, and JSON-LD <script>.
+#   A strict CSP (nonces/hashes, no 'unsafe-inline') would require refactoring
+#   every page and the inline scripts. We deliberately allow 'unsafe-inline'
+#   for script-src and style-src so the existing pages work unchanged.
+#   Google Fonts are explicitly allowed: fonts.googleapis.com (CSS) via style-src,
+#   fonts.gstatic.com (font files) via font-src. All other content is locked to
+#   'self'. No remote images, XHR/fetch, or external scripts are used by the site.
+#   If a stricter policy is wanted later, replace inline JS/CSS with external files
+#   + per-response nonces and drop 'unsafe-inline'.
+
+[build]
+  publish = "."
+  # No build command — the site is already static.
+  command = ""
+
+# ----------------------------------------------------------------------------
+# Security headers + CSP for all pages
+# ----------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # NOTE: apply.html fetches the Laravel API (connect-src) and track.html / the
+    # Stripe checkout hand-off navigate to it (form-action). UKV_API_BASE is set in
+    # assets/ukv-config.js. We allow https: (any production API host) plus the local
+    # dev host. TIGHTEN to your exact API origin in production, e.g.
+    #   connect-src 'self' https://api.yourhost.example;
+    #   form-action 'self' https://api.yourhost.example;
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self' https: http://localhost:8000; frame-ancestors 'self'; object-src 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https: http://localhost:8000"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+# ----------------------------------------------------------------------------
+# Caching — long cache for fingerprint-free static assets, no-cache for HTML
+# ----------------------------------------------------------------------------
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

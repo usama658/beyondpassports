@@ -1,0 +1,14 @@
+# Netlify redirects / rewrites for the UKVisaCo static site.
+#
+# Clean-URL note: Netlify's "Pretty URLs" asset optimization (enabled by default
+# in site settings) already serves /about for /about.html. The pages link to each
+# other with explicit .html paths (e.g. destinations.html, track.html), so no
+# rewrite rules are required for navigation to work. Add explicit aliases here
+# only if you later switch the internal links to extension-less paths.
+#
+# Example (uncomment to force a clean alias without changing the HTML):
+# /about    /about.html    200
+
+# 404 fallback — serve the custom 404 page with a real 404 status.
+# Must be the LAST rule so it only catches paths nothing else matched.
+/*    /404.html    404

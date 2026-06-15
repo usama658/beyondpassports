@@ -198,7 +198,7 @@
           <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick the consent box.</div>
 
           <button type="submit" class="btn">Continue →</button>
-          <p class="hint" style="text-align:center;margin-top:14px">No payment taken yet · this is a prototype, nothing is submitted</p>
+          <p class="hint" style="text-align:center;margin-top:14px">No payment taken yet · we check your details before anything is submitted</p>
         </form>
       </div>
     </div>
@@ -292,8 +292,11 @@
 </div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
 
 <script src="assets/ukv-illustrations.js"></script>
+<script src="assets/ukv-config.js"></script>
 <script>
-  // apply.html — eligibility "capture-and-route" branching. Vanilla JS, no network.
+  // apply.html — eligibility "capture-and-route" branching, wired to the Laravel API.
+  // The client-side eligibility check below is only a PREVIEW; the SERVER response
+  // from POST /apply is authoritative for which lane (standard / manual_review) applies.
   (function () {
     var form     = document.getElementById('apply-form');
     var formCard = document.getElementById('form-card');
@@ -301,9 +304,12 @@
     var paneStd  = document.getElementById('outcome-standard');
     var paneRev  = document.getElementById('outcome-review');
     var summary  = document.getElementById('review-summary');
+    var submitBtn = form.querySelector('button[type="submit"]');
     if (!form) return;
 
     var RM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var API = (window.UKV_API_BASE || '').replace(/\/$/, '');
+    var lastOrderRef = '';   // order_ref returned by the server for the current case
 
     var LABELS = {
       nationality: { UK: 'United Kingdom', Other: 'Other nationality' },
@@ -344,6 +350,26 @@
       };
     }
 
+    // Map the collected client fields to the names the Laravel /apply endpoint expects.
+    // tier is the chosen service level; only meaningful on the standard lane, default 'standard'.
+    function serverPayload(d, tier) {
+      return {
+        dest:               d.dest,
+        name:               d.name,
+        email:              d.email,
+        phone:              d.phone,
+        nationality:        d.nationality,
+        residence_country:  d.residence,
+        residency_status:   d.status,
+        trip_purpose:       d.purpose,
+        'travel-date':      d.date,
+        minor:              d.minor,
+        refusal:            d.refusal,
+        consent:            d.consent ? 1 : 0,
+        tier:               tier || 'standard'
+      };
+    }
+
     function valid(d) {
       // native validity + every required select chosen + consent ticked
       if (!form.checkValidity()) return false;
@@ -381,33 +407,96 @@
       formCard.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
     }
 
+    // Show an inline error message in the existing error box.
+    function showError(msg) {
+      errBox.textContent = msg;
+      errBox.classList.add('show');
+    }
+    var DEFAULT_ERR = errBox.textContent;
+
+    function setSubmitting(on) {
+      if (!submitBtn) return;
+      submitBtn.disabled = on;
+      submitBtn.textContent = on ? 'Checking your details…' : 'Continue →';
+    }
+
+    // Route to a lane based on the SERVER's authoritative response.
+    // resp = { lane, order_ref, next, checkout_hint }
+    function routeFromServer(resp, d) {
+      lastOrderRef = (resp && resp.order_ref) || '';
+      if (resp && resp.lane === 'standard') {
+        route(paneStd);
+      } else {
+        // manual_review (or anything not explicitly standard) → callback panel
+        fillSummary(d);
+        route(paneRev);
+      }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var d = collect();
       if (!valid(d)) {
-        errBox.classList.add('show');
+        showError(DEFAULT_ERR);
         // surface the first invalid native control
         var firstInvalid = form.querySelector(':invalid');
         if (firstInvalid) firstInvalid.focus();
         return;
       }
       errBox.classList.remove('show');
-      if (isStandard(d)) {
-        route(paneStd);
-      } else {
-        fillSummary(d);
-        route(paneRev);
+
+      // No API base configured → fall back to the local eligibility preview so the
+      // page still works as a graceful demo.
+      if (!API) {
+        if (isStandard(d)) { route(paneStd); }
+        else { fillSummary(d); route(paneRev); }
+        return;
       }
+
+      setSubmitting(true);
+      fetch(API + '/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(serverPayload(d, 'standard'))
+      })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (resp) {
+        setSubmitting(false);
+        routeFromServer(resp, d);
+      })
+      .catch(function () {
+        setSubmitting(false);
+        // API unreachable → keep the journey alive with the client-side preview,
+        // but tell the traveller their case isn't submitted yet.
+        showError('We couldn’t reach our servers just now, so this is a preview only — nothing has been submitted. Please check your connection and try again, or contact us to continue.');
+        if (isStandard(d)) { route(paneStd); }
+        else { fillSummary(d); route(paneRev); }
+      });
     });
 
     document.getElementById('edit-standard').addEventListener('click', backToForm);
     document.getElementById('edit-review').addEventListener('click', backToForm);
 
+    // STANDARD lane → hand off to Stripe via the Laravel checkout route.
     document.getElementById('pay-btn').addEventListener('click', function () {
-      alert('Prototype only — secure payment (Stripe) is not connected in this demo.');
+      if (!API || !lastOrderRef) {
+        alert('Demo: secure payment (Stripe) runs through the Laravel app once the API base is configured and your application has been received.');
+        return;
+      }
+      // Browser navigates to the app's checkout route, which redirects to Stripe.
+      window.location = API + '/checkout/' + encodeURIComponent(lastOrderRef);
     });
+
+    // MANUAL-REVIEW lane → the case is already lodged by /apply; confirm the callback.
     document.getElementById('callback-btn').addEventListener('click', function () {
-      alert('Prototype only — your callback request would be sent to our UK team. Nothing is submitted in this demo.');
+      if (!API || !lastOrderRef) {
+        alert('Demo: your callback request would be sent to our UK team once the API base is configured.');
+        return;
+      }
+      alert('Thanks — your case (' + lastOrderRef + ') is with our UK team. A UK-based adviser will call you back, usually within one business day.');
     });
   })();
 </script>
