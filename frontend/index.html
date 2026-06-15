@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Visas, eVisas & ETAs — Sorted Without the Stress | UKVisaCo</title>
+<meta name="description" content="Independent UK visa & eVisa service. We check, prepare and submit your application for 14+ destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14202E; --navy:#0A2540; --paper:#EEF2F4; --gold:#C8A24A; --stamp:#0E6E6E; --cta:#1456B8;
+    --paper-edge:#dfe6ea; --white:#fff;
+    --display:"Fraunces",Georgia,serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0 0 .4em}
+  a{color:var(--cta);text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp)}
+  .btn{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:14px 26px;border-radius:6px;border:0;cursor:pointer;font-size:16px;transition:transform .08s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(2px);box-shadow:0 0 0 3px rgba(20,86,184,.18)}
+  .btn--ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+  .btn--ghost:hover{box-shadow:0 0 0 3px rgba(10,37,64,.12)}
+  /* MRZ signature strip */
+  .mrz{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:#9fb2bd;background:var(--navy);padding:10px 0;overflow:hidden;white-space:nowrap}
+  .mrz span{opacity:.85}
+  /* header */
+  .site-head{position:sticky;top:0;z-index:50;background:rgba(238,242,244,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--paper-edge)}
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--display);font-weight:600;font-size:21px;color:var(--navy);letter-spacing:-.01em}
+  .brand b{color:var(--gold)}
+  .nav a{color:var(--ink);font-size:15px;margin-left:22px}
+  .nav a:hover{color:var(--cta)}
+  .topbar{background:var(--navy);color:#cdd9e1;font-family:var(--mono);font-size:12px;text-align:center;padding:6px}
+  .topbar a{color:var(--gold)}
+  /* hero */
+  .hero{padding:64px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);color:var(--navy);letter-spacing:-.015em}
+  .hero p.lede{font-size:19px;max-width:42ch;color:#33454f}
+  .hero .micro{font-family:var(--mono);font-size:12px;color:var(--stamp);margin-top:18px}
+  /* checker card = boarding pass */
+  .checker{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:0 18px 40px -24px rgba(10,37,64,.35);overflow:hidden}
+  .checker .stub{background:var(--navy);color:#fff;padding:14px 20px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;display:flex;justify-content:space-between}
+  .checker .body{padding:22px 20px}
+  .checker label{display:block;font-size:13px;font-weight:600;color:#4a5b65;margin:10px 0 4px}
+  .checker select,.checker input{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px}
+  .checker .btn{width:100%;margin-top:16px}
+  /* sections */
+  section{padding:72px 0}
+  .sec-head{max-width:60ch;margin-bottom:36px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,38px);color:var(--navy)}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step .num{font-family:var(--mono);font-size:14px;color:var(--gold);font-weight:700}
+  .step h3{font-size:20px;margin-top:8px}
+  .step .rule{height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:10px 0 14px}
+  /* destinations = boarding-pass cards */
+  .dests{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pass{display:flex;background:var(--white);border:1px solid var(--paper-edge);border-radius:10px;overflow:hidden;transition:transform .12s ease,box-shadow .15s ease}
+  .pass:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px rgba(10,37,64,.4)}
+  .pass .main{padding:16px 18px;flex:1}
+  .pass .main .k{font-family:var(--mono);font-size:11px;color:var(--stamp);letter-spacing:.1em;text-transform:uppercase}
+  .pass .main h3{font-size:19px;margin:4px 0 2px;color:var(--navy)}
+  .pass .main .t{font-size:13px;color:#5a6b75}
+  .pass .stub{border-left:2px dashed var(--paper-edge);padding:16px 14px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#f7fafb;min-width:96px}
+  .pass .stub .fee{font-family:var(--display);font-size:22px;color:var(--navy);font-weight:600}
+  .pass .stub .lab{font-family:var(--mono);font-size:10px;color:#90a2ac;letter-spacing:.08em}
+  /* why us */
+  .why{background:var(--white);border-top:1px solid var(--paper-edge);border-bottom:1px solid var(--paper-edge)}
+  .ticks{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 36px}
+  .tick{display:flex;gap:12px;align-items:flex-start}
+  .tick .stamp{flex:0 0 34px;height:34px;border:2px solid var(--stamp);border-radius:50%;color:var(--stamp);display:flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(-8deg);font-size:15px}
+  .tick h3{font-size:17px;font-family:var(--body);font-weight:600;margin:0 0 2px}
+  .tick p{margin:0;font-size:15px;color:#4a5b65}
+  /* testimonial */
+  .quote{max-width:62ch}
+  .quote blockquote{font-family:var(--display);font-size:clamp(22px,2.8vw,30px);line-height:1.3;color:var(--navy);margin:0}
+  .quote .by{font-family:var(--mono);font-size:13px;color:var(--stamp);margin-top:16px}
+  /* CTA band */
+  .cta-band{background:var(--navy);color:#eaf0f4}
+  .cta-band .rule{height:3px;width:80px;background:var(--gold);margin-bottom:20px}
+  .cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px)}
+  .cta-band .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+  .cta-band .btn--wa{background:#25D366}
+  /* footer */
+  footer{background:var(--navy);color:#9fb2bd;font-size:14px;padding:36px 0 0}
+  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:24px}
+  footer a{color:#cdd9e1}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (max-width:860px){
+    .hero-grid,.steps,.dests,.ticks{grid-template-columns:1fr}
+    .nav{display:none}
+    section{padding:52px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="topbar">Independent service — not a government website · <a href="tel:+440000000000">Call us</a> · <a href="#">WhatsApp</a></div>
+<header class="site-head"><div class="wrap">
+  <div class="brand">UKVisa<b>Co</b></div>
+  <nav class="nav">
+    <a href="#how">How it works</a><a href="#destinations">Destinations</a><a href="#why">Why us</a><a href="#" class="btn btn--ghost" style="padding:8px 16px">Track</a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<section class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Independent UK visa &amp; eVisa service</p>
+      <h1>UK visas, eVisas &amp; ETAs — sorted, without the stress.</h1>
+      <p class="lede">We check, prepare and submit your application for 14+ destinations, so you travel with confidence. UK-based team, clear fixed fees, every step tracked.</p>
+      <p class="micro">We catch the errors. We handle the paperwork. You get the visa.</p>
+    </div>
+    <div class="checker" id="checker">
+      <div class="stub"><span>VISA CHECK</span><span>UKV&lt;START&lt;&lt;&lt;</span></div>
+      <div class="body">
+        <label for="dest">Where are you going?</label>
+        <select id="dest"><option>Choose a destination…</option><option>Turkey</option><option>Egypt</option><option>India</option><option>USA (ESTA)</option><option>Australia (eTA)</option><option>Thailand</option></select>
+        <label for="nat">Your passport</label>
+        <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
+        <button class="btn">Check what I need →</button>
+        <p style="font-size:12px;color:#90a2ac;margin:12px 0 0;font-family:var(--mono)">No account needed · takes 30 seconds</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;TRAVELLER&lt;&lt;READY&lt;TO&lt;GO&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
+
+<!-- HOW -->
+<section id="how"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">The process</p><h2>Three simple steps</h2></div>
+  <div class="steps">
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Pick your destination and answer a few questions. We confirm exactly what you need.</p></div>
+    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our team reviews your documents for errors before anything is submitted.</p></div>
+    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>Submit &amp; track</h3><p>We handle the submission and keep you updated until it's delivered.</p></div>
+  </div>
+</div></section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="why"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Popular destinations</p><h2>Clear requirements, fixed fees</h2></div>
+  <div class="dests">
+    <div class="pass reveal"><div class="main"><div class="k">eVisa</div><h3>Turkey</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub"><div class="fee">£39</div><div class="lab">FROM</div></div></div>
+    <div class="pass reveal"><div class="main"><div class="k">eVisa</div><h3>Egypt</h3><div class="t">UK citizens · 30 days</div></div><div class="stub"><div class="fee">£49</div><div class="lab">FROM</div></div></div>
+    <div class="pass reveal"><div class="main"><div class="k">eVisa</div><h3>India</h3><div class="t">UK citizens · 30 days</div></div><div class="stub"><div class="fee">£55</div><div class="lab">FROM</div></div></div>
+    <div class="pass reveal"><div class="main"><div class="k">ETA</div><h3>USA (ESTA)</h3><div class="t">Authorisation linked to passport</div></div><div class="stub"><div class="fee">£35</div><div class="lab">FROM</div></div></div>
+    <div class="pass reveal"><div class="main"><div class="k">eTA</div><h3>Australia</h3><div class="t">Authorisation linked to passport</div></div><div class="stub"><div class="fee">£39</div><div class="lab">FROM</div></div></div>
+    <div class="pass reveal"><div class="main"><div class="k">Visa-free</div><h3>Thailand</h3><div class="t">UK citizens · entry rules apply</div></div><div class="stub"><div class="fee">Free</div><div class="lab">GUIDE</div></div></div>
+  </div>
+</div></section>
+
+<!-- WHY -->
+<section id="why"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Why travellers choose us</p><h2>We make sure it's right</h2></div>
+  <div class="ticks">
+    <div class="tick reveal"><div class="stamp">✓</div><div><h3>We catch errors before they cost you</h3><p>A human checks every document before submission.</p></div></div>
+    <div class="tick reveal"><div class="stamp">✓</div><div><h3>One clear fee, no surprises</h3><p>Our service fee is separate from the government fee — shown up front.</p></div></div>
+    <div class="tick reveal"><div class="stamp">✓</div><div><h3>Express when you're short on time</h3><p>Express speeds our handling — not the government's decision.</p></div></div>
+    <div class="tick reveal"><div class="stamp">✓</div><div><h3>Honest advice</h3><p>We'll tell you if you don't need us. No false promises on approval.</p></div></div>
+  </div>
+</div></section>
+
+<!-- TESTIMONIAL -->
+<section class="why"><div class="wrap quote reveal">
+  <p class="eyebrow">Trusted by UK travellers</p>
+  <blockquote>“They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.”</blockquote>
+  <div class="by">— A UK traveller to Egypt · UKV&lt;2026&lt;004821&lt;&lt;&lt;</div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>Let's get you travelling</h2>
+  <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question.</p>
+  <div class="row"><a href="#" class="btn">Start my application →</a><a href="#" class="btn btn--wa">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="color:#fff">UKVisa<b>Co</b></div><p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p></div>
+    <div><strong style="color:#fff">Service</strong><br><a href="#">How it works</a><br><a href="#">Destinations</a><br><a href="#">Track application</a></div>
+    <div><strong style="color:#fff">Legal</strong><br><a href="#">Privacy</a><br><a href="#">Terms</a><br><a href="#">Complaints</a></div>
+  </div>
+</div><div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;CO&lt;INDEPENDENT&lt;VISA&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div></footer>
+
+<script>
+  // scroll reveal (reduced-motion safe — CSS shows them anyway)
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  } else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>
