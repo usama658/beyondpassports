@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             DestinationSeeder::class,
+            DocumentRequirementSeeder::class,
             SupplyNodeSeeder::class,
             DemoOrderSeeder::class,
         ]);

@@ -130,6 +130,129 @@
   </div>
 </div></section>
 
+{{-- 2b. APPLICATION DETAILS (post-pay detail capture -> personalises the checklist below) --}}
+@php
+    /** @var \App\Models\Order|null $order */
+    $detailOrder = $order ?? null;
+    // Re-use the same ref+email the customer arrived with so the detail POST can re-authenticate.
+    $detailRef = $detailOrder?->order_ref ?? old('ref');
+    $detailEmail = $detailOrder?->email ?? old('email');
+    // Pre-fill helper: old() input wins (after a validation bounce), then the saved order value.
+    $detailVal = fn (string $field) => old($field, $detailOrder?->{$field});
+    $payerVal = old('payer_is_applicant', $detailOrder?->payer_is_applicant);
+    // Boolean cast may give true/false/null; normalise to the radio's 'yes'/'no'/'' string.
+    $payerChoice = $payerVal === null ? '' : ($payerVal ? 'yes' : 'no');
+    $returnVal = $detailOrder?->return_date
+        ? $detailOrder->return_date->format('Y-m-d')
+        : old('return_date');
+@endphp
+<section style="padding:8px 0 40px"><div class="wrap">
+  <div class="upload-wrap reveal">
+    <div class="checker upload">
+      <div class="stub"><span>YOUR APPLICATION DETAILS</span><span>UKV&lt;DETAILS&lt;&lt;&lt;</span></div>
+      <div class="cbody">
+        <p class="lede" style="font-size:16px;margin:0 0 16px;color:#33454f">A few quick details about your trip help us tailor the exact document checklist below to your case. Everything here is optional — answer what you can.</p>
+
+        <form id="detail-form" method="POST" action="{{ url('/documents/details') }}" novalidate>
+          @csrf
+
+          {{-- Auth context: same ref+email the customer used to reach this page. --}}
+          <label for="detail-ref">Your order reference</label>
+          <input
+            type="text"
+            id="detail-ref"
+            name="ref"
+            value="{{ $detailRef }}"
+            class="ref-input"
+            placeholder="UKV-2026-004821"
+            autocomplete="off"
+            inputmode="text"
+            maxlength="32"
+            style="text-transform:uppercase"
+            required
+            aria-required="true">
+
+          <label for="detail-email">Email on your application</label>
+          <input
+            type="email"
+            id="detail-email"
+            name="email"
+            value="{{ $detailEmail }}"
+            autocomplete="email"
+            placeholder="you@example.com"
+            maxlength="255"
+            required
+            aria-required="true">
+
+          <label for="employment_status">Your employment status</label>
+          <select id="employment_status" name="employment_status" class="ref-input">
+            <option value="">Prefer not to say</option>
+            @foreach ([
+                'employed' => 'Employed',
+                'self_employed' => 'Self-employed',
+                'student' => 'Student',
+                'retired' => 'Retired',
+                'unemployed' => 'Not currently working',
+                'other' => 'Other',
+            ] as $value => $text)
+              <option value="{{ $value }}" @selected($detailVal('employment_status') === $value)>{{ $text }}</option>
+            @endforeach
+          </select>
+
+          <label for="accommodation_type">Where you'll be staying</label>
+          <select id="accommodation_type" name="accommodation_type" class="ref-input">
+            <option value="">Prefer not to say</option>
+            @foreach ([
+                'hotel' => 'Hotel or booked accommodation',
+                'host' => 'Staying with a host (friend or family)',
+                'own_property' => 'My own property',
+                'other' => 'Other',
+            ] as $value => $text)
+              <option value="{{ $value }}" @selected($detailVal('accommodation_type') === $value)>{{ $text }}</option>
+            @endforeach
+          </select>
+
+          <label for="funding_source">How the trip is funded</label>
+          <select id="funding_source" name="funding_source" class="ref-input">
+            <option value="">Prefer not to say</option>
+            @foreach ([
+                'self' => 'I am funding it myself',
+                'sponsored' => 'Someone is sponsoring me',
+            ] as $value => $text)
+              <option value="{{ $value }}" @selected($detailVal('funding_source') === $value)>{{ $text }}</option>
+            @endforeach
+          </select>
+
+          <label for="payer_is_applicant">Are you the person paying for the trip?</label>
+          <select id="payer_is_applicant" name="payer_is_applicant" class="ref-input">
+            <option value="">Prefer not to say</option>
+            <option value="yes" @selected($payerChoice === 'yes')>Yes — I'm paying</option>
+            <option value="no" @selected($payerChoice === 'no')>No — someone else is paying</option>
+          </select>
+
+          <label for="return_date">Your planned return date</label>
+          <input
+            type="date"
+            id="return_date"
+            name="return_date"
+            value="{{ $returnVal }}"
+            class="ref-input">
+          <p class="field-hint">If you know it. This helps us confirm your trip length matches your documents.</p>
+
+          <button type="submit" class="btn" style="margin-top:16px">Save my details</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+{{-- 2c. PERSONALISED DOCUMENT CHECKLIST (partial authored in parallel; pure presentational) --}}
+<section class="alt"><div class="wrap">
+  <div class="upload-wrap reveal">
+    @include('partials.doc-checklist', ['items' => $docChecklist ?? [], 'personalised' => true])
+  </div>
+</div></section>
+
 {{-- 3. HELP BAND --}}
 <section style="padding:40px 0"><div class="wrap">
   <div class="help reveal" style="max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:1px solid var(--paper-edge);border-radius:12px;background:var(--white);padding:18px 22px">

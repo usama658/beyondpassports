@@ -39,15 +39,20 @@ Route::get('/checkout/{order:order_ref}', [CheckoutController::class, 'create'])
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
 // --- Confirmation / thank-you ---
-Route::get('/confirmation/{order:order_ref}', function (Order $order) {
-    return view('confirmation', ['order' => $order]);
+Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
+    // Document Requirements Engine: pass the personalised checklist (for()) to the view.
+    return view('confirmation', [
+        'order'    => $order,
+        'docItems' => $requirements->for($order),
+    ]);
 })->name('confirmation');
 
 // --- Post-payment document upload (customer authenticates by order ref + email) ---
-Route::view('/documents', 'public.documents')->name('documents');
+Route::get('/documents', [DocumentUploadController::class, 'page'])->name('documents');
 Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
     ->middleware('throttle:10,1')
     ->name('documents.upload');
+Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->middleware('throttle:10,1')->name('documents.detail'); // post-pay document-detail capture (Document Requirements Engine)
 
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');

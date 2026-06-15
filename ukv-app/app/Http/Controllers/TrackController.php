@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\OrderStatus;
 use App\Models\Order;
+use App\Services\RequirementService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -169,7 +170,7 @@ class TrackController extends Controller
      * Apply `throttle:` middleware to the route that points here (e.g. throttle:10,1)
      * to rate-limit enumeration attempts.
      */
-    public function lookup(Request $request): View
+    public function lookup(Request $request, RequirementService $requirements): View
     {
         $validated = $request->validate([
             'ref' => ['required', 'string', 'max:32'],
@@ -192,6 +193,12 @@ class TrackController extends Controller
 
         $timeline = self::stagesFor($order->status);
 
+        // Document Requirements Engine: the personalised checklist for this order. This is
+        // generic "documents to prepare" guidance (document types + notes), not customer PII —
+        // and the requester already holds the reference. Helps travellers gather the right
+        // documents while their application progresses.
+        $docItems = $requirements->for($order);
+
         // Only ever pass the reference (already known to the requester) + derived,
         // generic stage data to the view. No name/email/passport/destination/fees.
         return view('track', [
@@ -203,6 +210,7 @@ class TrackController extends Controller
                 'now'           => $timeline['now'],
                 'next'          => $timeline['next'],
             ],
+            'docItems' => $docItems,
         ]);
     }
 }

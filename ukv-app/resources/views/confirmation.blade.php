@@ -8,6 +8,9 @@
 --}}
 @php
     /** @var \App\Models\Order $order */
+    // Document Requirements Engine: personalised checklist items, computed in the
+    // confirmation route closure via RequirementService::for($order). Guarded for safety.
+    $docItems = $docItems ?? [];
     $lane = $order->eligibility instanceof \App\Enums\EligibilityLane
         ? $order->eligibility->value
         : (string) $order->eligibility;
@@ -111,6 +114,15 @@
                     <li>Nothing is charged until you approve that quote.</li>
                 </ol>
                 <p>No payment is taken yet. We'll be in touch using the contact details you gave us.</p>
+            @endif
+
+            {{-- Personalised document checklist (Document Requirements Engine).
+                 $docItems comes from RequirementService::for($order) in the confirmation route.
+                 Renders nothing heavy when empty — the partial handles its own empty state. --}}
+            @if (! empty($docItems))
+                <div style="margin-top:26px;border-top:1px dashed var(--edge);padding-top:22px">
+                    @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => true])
+                </div>
             @endif
 
             {{-- Optional FCA-safe travel-insurance introducer (no charge taken here). --}}

@@ -279,6 +279,17 @@
   </div>
 </div></section>
 
+{{-- 5b. DOCUMENT CHECKLIST PREVIEW (Document Requirements Engine) --}}
+{{-- $docItems is computed in DestinationController::show via RequirementService::preview().
+     Generic, destination-scoped preview — no order context. Renders nothing if empty. --}}
+@if (! empty($docItems))
+<section><div class="wrap">
+  <div class="reveal" style="max-width:78ch">
+    @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
+  </div>
+</div></section>
+@endif
+
 {{-- 6. FAQ --}}
 <section><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>{{ $visaLabel }} FAQ</h2></div>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Destination;
+use App\Services\RequirementService;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -43,10 +44,16 @@ class DestinationController extends Controller
      *
      * Bind in the route as {destination:slug} so the URL is /visa/turkey, not /visa/7.
      */
-    public function show(Destination $destination): View
+    public function show(Destination $destination, RequirementService $requirements): View
     {
+        // Document Requirements Engine: a generic "documents you'll likely need" preview for
+        // this destination. No order yet — preview() evaluates rules scoped to the destination
+        // with no traveller-specific context (tourist-adult baseline).
+        $docItems = $requirements->preview($destination);
+
         return view('destinations.show', [
             'destination' => $destination,
+            'docItems'    => $docItems,
         ]);
     }
 }

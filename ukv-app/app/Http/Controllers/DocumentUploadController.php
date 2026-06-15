@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Enums\DocumentUploadedBy;
+use App\Http\Requests\DocumentDetailRequest;
 use App\Models\Order;
 use App\Services\DocumentService;
+use App\Services\RequirementService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -28,6 +32,56 @@ use Illuminate\Http\Request;
 class DocumentUploadController extends Controller
 {
     public function __construct(private readonly DocumentService $documents) {}
+
+    /**
+     * Render the public /documents page.
+     *
+     * If the request carries a matching ref+email (e.g. after submitting the detail form, or via a
+     * link from the tracker/confirmation email), we load that order so the detail form can pre-fill
+     * and so the personalised checklist can be computed. With no/invalid credentials the page still
+     * renders — just without an order, so the checklist falls back to empty and the detail fields
+     * stay blank. The lookup reuses the same non-enumerating ref+email match as the upload endpoint.
+     */
+    public function page(Request $request, RequirementService $requirements): View
+    {
+        $order = $this->authenticate(
+            (string) $request->query('ref', $request->old('ref', '')),
+            (string) $request->query('email', $request->old('email', '')),
+        );
+
+        // Personalised checklist partial contract: empty list when no order is identified yet.
+        $docChecklist = $order !== null ? $requirements->for($order) : [];
+
+        return view('public.documents', [
+            'order' => $order,
+            'docChecklist' => $docChecklist,
+        ]);
+    }
+
+    /**
+     * Persist the post-pay document-detail fields against the customer's order.
+     *
+     * Same ref+email auth as upload: a miss returns the generic non-enumerating message and never
+     * reveals whether the ref or the email was wrong. On success we redirect back to the page with
+     * the credentials so it re-renders pre-filled with a refreshed personalised checklist.
+     */
+    public function detail(DocumentDetailRequest $request): RedirectResponse
+    {
+        $order = $this->authenticate($request->input('ref'), $request->input('email'));
+
+        if ($order === null) {
+            return back()
+                ->withInput($request->only(['ref', 'email']))
+                ->with('error', "We couldn't find an application matching those details. "
+                    .'Please check your reference and email, or contact us.');
+        }
+
+        $order->fill($request->detailAttributes())->save();
+
+        return redirect()
+            ->route('documents', ['ref' => $order->order_ref, 'email' => $order->email])
+            ->with('status', "Thanks — we've saved your application details. Your document checklist below is now tailored to your case.");
+    }
 
     /**
      * Validate the ref+email match, then store each uploaded file.

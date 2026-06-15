@@ -97,10 +97,19 @@ final class EmailService
         return $this->dispatch($order, self::EVENT_ORDER_PAID, new OrderPaid($order));
     }
 
-    /** docs_needed — intended: order enters `awaiting_docs`. */
+    /**
+     * docs_needed — intended: order enters `awaiting_docs`.
+     *
+     * Embeds a personalised document checklist (RequirementService::for) so the
+     * customer sees the exact documents to prepare for THEIR case. The items are
+     * plain arrays, so they serialise cleanly through the queued Mailable. If the
+     * engine yields nothing, the email still renders fine (checklist section omitted).
+     */
     public function sendDocsNeeded(Order $order): bool
     {
-        return $this->dispatch($order, self::EVENT_DOCS_NEEDED, new DocsNeeded($order));
+        $items = app(RequirementService::class)->for($order);
+
+        return $this->dispatch($order, self::EVENT_DOCS_NEEDED, new DocsNeeded($order, $items));
     }
 
     /** appointment_booked — intended: an appointment is booked for the order. */

@@ -34,6 +34,8 @@ class Order extends Model
         'govt_ref', 'govt_fee_paid', 'govt_fee_paid_at',
         // passport
         'passport_expiry',
+        // post-pay document detail (Document Requirements Engine)
+        'employment_status', 'accommodation_type', 'funding_source', 'return_date', 'payer_is_applicant',
         // documents / QA
         'required_docs_count', 'qa_signed_off', 'doc_review', 'docs_purged',
         // ownership / SLA
@@ -72,6 +74,7 @@ class Order extends Model
             'travel_date' => 'date',
             'residency_visa_expiry' => 'date',
             'passport_expiry' => 'date',
+            'return_date' => 'date',
             // datetimes
             'paid_at' => 'datetime',
             'govt_fee_paid_at' => 'datetime',
@@ -90,6 +93,7 @@ class Order extends Model
             'sla_escalated' => 'boolean',
             'premium_slot' => 'boolean',
             'story_consent' => 'boolean',
+            'payer_is_applicant' => 'boolean',
             // json
             'doc_review' => 'array',
             'risk_reason' => 'array',

@@ -13,6 +13,10 @@
     $result      = $result      ?? null;
     $notFound    = $notFound    ?? false;
     $searchedRef = $searchedRef ?? null;
+    // Document Requirements Engine: personalised checklist for a matched order (from
+    // TrackController::lookup via RequirementService::for()). Empty/absent on the bare form
+    // and on a not-found result. Document-type guidance only — no PII.
+    $docItems    = $docItems    ?? [];
 
     /** Render a reference in MRZ flavour: UKV-2026-004821 -> UKV<2026<004821<<< */
     $mrz = function (string $ref): string {
@@ -228,6 +232,19 @@
         </div>
       </div>
     </div></section>
+
+    {{-- Personalised document checklist (Document Requirements Engine).
+         $docItems is the RequirementService::for() output for the matched order — document-type
+         guidance only, no PII. Renders nothing when empty (the partial handles that). --}}
+    @if (! empty($docItems))
+      <section><div class="wrap">
+        <div class="status" style="margin-top:24px">
+          <div class="status-card" style="border-radius:12px;border-top:1px solid var(--paper-edge)">
+            @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => true])
+          </div>
+        </div>
+      </div></section>
+    @endif
   @endif
 
   <section><div class="wrap">

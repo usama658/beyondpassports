@@ -71,6 +71,25 @@
 </style>
 @endpush
 
+@php
+    // --- Document Requirements Engine: pre-apply preview ----------------------------------
+    // /apply is a Route::view (no controller), so $docItems is computed here at the view level
+    // (NOT inside the partial — the partial stays pure presentational). If the visitor arrived
+    // with a ?destination=<slug|name> param we preview that destination; otherwise we show the
+    // partial's generic "we'll confirm after you apply" empty state. This block does not touch
+    // the form / consent / routing JS.
+    $docItems = [];
+    $previewDest = null;
+    $destParam = request()->query('destination');
+    if ($destParam) {
+        $previewDest = ($navDestinations ?? collect())
+            ->first(fn ($d) => $d->slug === $destParam || $d->name === $destParam);
+        if ($previewDest) {
+            $docItems = app(\App\Services\RequirementService::class)->preview($previewDest);
+        }
+    }
+@endphp
+
 @section('content')
 
 {{-- INTRO --}}
@@ -266,6 +285,15 @@
       Express speeds <strong>our</strong> handling — it does not speed up or change the government's decision, and we cannot guarantee approval.
       For non-standard cases, we confirm the exact requirements and give you a personalised quote after a quick human check.
     </p>
+
+    {{-- DOCUMENTS YOU'LL LIKELY NEED (Document Requirements Engine preview) --}}
+    {{-- Only shown when the visitor arrived with a recognised ?destination= param; otherwise
+         the generic apply landing stays focused on the form. Pure presentational include. --}}
+    @if (! empty($docItems))
+      <div class="reveal" style="background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);padding:24px 22px">
+        @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
+      </div>
+    @endif
 
     {{-- OUTCOME: STANDARD LANE --}}
     <div class="outcome" id="outcome-standard" role="region" aria-label="Standard service result" aria-hidden="true" tabindex="-1">
