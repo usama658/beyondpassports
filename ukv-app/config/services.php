@@ -44,6 +44,16 @@ return [
         'token' => env('HUBSPOT_TOKEN'),
     ],
 
+    'whatsapp' => [
+        // Meta WhatsApp Business (Cloud API) credentials. Empty => WhatsAppService no-ops
+        // (safe pre-launch). See app/Services/WhatsAppService.php.
+        'token' => env('WHATSAPP_TOKEN'),
+        'phone_id' => env('WHATSAPP_PHONE_ID'),
+        // Pre-approved message-template name used for business-initiated sends outside the
+        // 24h customer-service window. TODO: register this template in Meta Business Manager.
+        'template' => env('WHATSAPP_TEMPLATE', 'order_status_update'),
+    ],
+
     'anthropic' => [
         'key' => env('ANTHROPIC_API_KEY'),
         'model' => env('ANTHROPIC_MODEL', 'claude-opus-4-8'),

@@ -9,6 +9,7 @@ use App\Enums\EventChannel;
 use App\Enums\EventType;
 use App\Enums\OrderStatus;
 use App\Enums\OrderTier;
+use App\Jobs\SendWhatsAppUpdate;
 use App\Jobs\SyncOrderToHubSpot;
 use App\Models\Destination;
 use App\Models\Order;
@@ -277,6 +278,9 @@ final class OrderService
 
         // CRM sync on every status change.
         SyncOrderToHubSpot::dispatch($order, "Status: {$from->value} -> {$to->value}")->afterCommit();
+
+        // WhatsApp customer notification (queued; guarded no-op without creds/phone, idempotent).
+        SendWhatsAppUpdate::dispatch($order, $from->value, $to->value)->afterCommit();
     }
 
     /**

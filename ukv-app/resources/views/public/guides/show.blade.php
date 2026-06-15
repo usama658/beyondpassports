@@ -112,6 +112,13 @@
 </div>
 </div>
 
+{{-- OPTIONAL: FCA-safe travel-insurance introducer (signpost only, no charge). --}}
+<div class="wrap">
+<div style="max-width:70ch;margin:0 auto">
+  @include('partials.insurance-introducer', ['compact' => true])
+</div>
+</div>
+
 {{-- RELATED GUIDES --}}
 @if (!empty($related))
 <section><div class="wrap">

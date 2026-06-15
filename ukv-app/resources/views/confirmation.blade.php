@@ -113,6 +113,9 @@
                 <p>No payment is taken yet. We'll be in touch using the contact details you gave us.</p>
             @endif
 
+            {{-- Optional FCA-safe travel-insurance introducer (no charge taken here). --}}
+            @include('partials.insurance-introducer')
+
             <p class="compliance">
                 UKVisaCo is an independent service and is not a government website. Our service
                 fee is separate from, and additional to, any government or scheme fee. Express
