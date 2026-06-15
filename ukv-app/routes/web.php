@@ -27,7 +27,7 @@ Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 // --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
-Route::view('/apply', 'welcome')->name('apply'); // placeholder GET target (cancel_url); static UI is on the front host
+Route::view('/apply', 'public.apply')->name('apply'); // eligibility-aware intake form (POSTs to apply.store)
 Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
 
 // --- Checkout (standard lane -> Stripe hosted Checkout) ---

@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Share the live destination list with public pages that show a picker/preview,
         // so every seeded location appears everywhere (not a hardcoded subset).
-        View::composer(['public.home', 'public.tools'], function ($view) {
+        View::composer(['public.home', 'public.tools', 'public.apply'], function ($view) {
             $view->with('navDestinations', \App\Models\Destination::orderBy('name')->get());
         });
     }
