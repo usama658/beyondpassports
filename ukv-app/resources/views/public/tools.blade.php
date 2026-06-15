@@ -60,12 +60,9 @@
           <label for="v-dest">Where are you going?</label>
           <select id="v-dest" name="dest">
             <option value="">Choose a destination…</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Egypt">Egypt</option>
-            <option value="India">India</option>
-            <option value="USA (ESTA)">USA (ESTA)</option>
-            <option value="Australia (eTA)">Australia (eTA)</option>
-            <option value="Thailand">Thailand</option>
+            @foreach ($navDestinations as $d)
+            <option value="{{ $d->name }}">{{ $d->name }}</option>
+            @endforeach
           </select>
           <label for="v-pass">Your passport</label>
           <select id="v-pass" name="pass">
@@ -95,12 +92,9 @@
           <label for="i-dest">Where will you drive?</label>
           <select id="i-dest" name="dest">
             <option value="">Choose a destination…</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Egypt">Egypt</option>
-            <option value="India">India</option>
-            <option value="USA (ESTA)">USA</option>
-            <option value="Australia (eTA)">Australia</option>
-            <option value="Thailand">Thailand</option>
+            @foreach ($navDestinations as $d)
+            <option value="{{ $d->name }}">{{ $d->name }}</option>
+            @endforeach
           </select>
           <label for="i-lic">Your UK licence</label>
           <select id="i-lic" name="lic">
