@@ -2,17 +2,29 @@
 
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\DocumentUploadController;
+use App\Http\Controllers\GuideController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\TrackController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// --- Public site (the content silo) ---
+Route::view('/', 'public.home')->name('home');
+Route::view('/tools', 'public.tools')->name('tools');
+Route::view('/driving-abroad', 'public.driving-abroad')->name('idp');
+Route::view('/about', 'public.about')->name('about');
+Route::view('/contact', 'public.contact')->name('contact');
+Route::view('/legal', 'public.legal')->name('legal');
+Route::view('/compare', 'public.compare')->name('compare');
+Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
+Route::get('/guides/{slug}', [GuideController::class, 'show'])->name('guides.show');
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 // --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
 Route::view('/apply', 'welcome')->name('apply'); // placeholder GET target (cancel_url); static UI is on the front host

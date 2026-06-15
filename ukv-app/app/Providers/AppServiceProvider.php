@@ -24,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Throttle the public status-tracker lookup (anti-enumeration).
         RateLimiter::for('tracker', fn (Request $request) => Limit::perMinute(10)->by($request->ip()));
+        // Throttle the contact/callback form (anti-spam).
+        RateLimiter::for('contact', fn (Request $request) => Limit::perMinute(5)->by($request->ip()));
     }
 }

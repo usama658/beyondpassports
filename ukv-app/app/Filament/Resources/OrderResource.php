@@ -12,6 +12,7 @@ use App\Enums\ResidencyStatus;
 use App\Enums\TripPurpose;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
+use App\Services\LoyaltyService;
 use App\Services\OrderService;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
@@ -365,6 +366,24 @@ class OrderResource extends Resource
                         Notification::make()
                             ->title('Eligibility updated')
                             ->body("Order {$record->order_ref} set to ".$data['lane'].'.')
+                            ->success()
+                            ->send();
+                    }),
+
+                Action::make('issueReviewIncentive')
+                    ->label('Issue review-incentive code')
+                    ->icon('heroicon-o-gift')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->modalHeading('Issue review-incentive code')
+                    ->modalDescription(fn (Order $record): string => 'Mint a next-order discount code tied to '
+                        .($record->email ?: 'this order').'. Sent with the review-request email.')
+                    ->action(function (Order $record): void {
+                        $discount = app(LoyaltyService::class)->issueReviewIncentive($record);
+
+                        Notification::make()
+                            ->title('Review-incentive code issued')
+                            ->body("Code {$discount->code} (£".number_format((float) $discount->amount, 2).' off the next order).')
                             ->success()
                             ->send();
                     }),

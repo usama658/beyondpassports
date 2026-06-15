@@ -35,12 +35,20 @@ class SitemapController extends Controller
         $static = [
             ['/', 'weekly', '1.0'],
             ['/destinations', 'weekly', '0.8'],
-            // Static info pages — uncomment/adjust to match the routes you register:
-            // ['/about', 'monthly', '0.5'],
-            // ['/contact', 'monthly', '0.5'],
-            // ['/idp', 'monthly', '0.7'],
-            // ['/guide', 'monthly', '0.6'],
-            // ['/legal', 'yearly', '0.3'],
+            ['/tools', 'monthly', '0.7'],
+            ['/driving-abroad', 'monthly', '0.7'],
+            ['/guides', 'weekly', '0.6'],
+            ['/compare', 'monthly', '0.5'],
+            ['/about', 'monthly', '0.4'],
+            ['/contact', 'monthly', '0.4'],
+            ['/legal', 'yearly', '0.2'],
+        ];
+
+        // Guide articles (static registry — keep in sync with GuideController::GUIDES).
+        $guideSlugs = [
+            'eta-vs-visa-difference', 'passport-validity-mistake',
+            'do-uk-travellers-need-visa-turkey', 'idp-which-type',
+            'applied-and-refused-next-steps', 'documents-before-you-apply',
         ];
 
         $urls = [];
@@ -51,6 +59,15 @@ class SitemapController extends Controller
                 'lastmod' => $today,
                 'changefreq' => $changefreq,
                 'priority' => $priority,
+            ];
+        }
+
+        foreach ($guideSlugs as $slug) {
+            $urls[] = [
+                'loc' => $base . '/guides/' . $slug,
+                'lastmod' => $today,
+                'changefreq' => 'monthly',
+                'priority' => '0.5',
             ];
         }
 

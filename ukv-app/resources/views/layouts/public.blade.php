@@ -22,9 +22,10 @@
 <header class="site-head"><div class="wrap">
   <a href="{{ url('/') }}" class="brand">UKVisa<b>Co</b></a>
   <nav class="nav" aria-label="Primary">
-    <a href="{{ url('/#how') }}">How it works</a>
     <a href="{{ url('/destinations') }}">Destinations</a>
-    <a href="{{ url('/#why') }}">Why us</a>
+    <a href="{{ url('/tools') }}">Visa checker</a>
+    <a href="{{ url('/driving-abroad') }}">Driving abroad</a>
+    <a href="{{ url('/guides') }}">Guides</a>
     <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:8px 16px">Track</a>
   </nav>
 </div></header>
@@ -32,31 +33,7 @@
 {{-- Reusable inline SVG symbol library: skyline silhouette + UKV stamp.
      Self-contained so the public money pages render fully without the front host's
      ukv-illustrations.js. Hidden defs only — referenced via <use href="#..."> below. --}}
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="ukv-skyline" viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet">
-    <g fill="#C8A24A">
-      <rect x="6"  y="58" width="16" height="38"/>
-      <rect x="28" y="44" width="14" height="52"/>
-      <rect x="48" y="66" width="18" height="30"/>
-      <rect x="72" y="36" width="12" height="60"/>
-      <polygon points="78,36 84,22 90,36"/>
-      <rect x="96" y="52" width="20" height="44"/>
-      <rect x="122" y="30" width="10" height="66"/>
-      <circle cx="127" cy="26" r="6"/>
-      <rect x="140" y="60" width="22" height="36"/>
-      <rect x="168" y="40" width="14" height="56"/>
-      <polygon points="168,40 175,28 182,40"/>
-      <rect x="190" y="54" width="18" height="42"/>
-      <rect x="214" y="46" width="16" height="50"/>
-    </g>
-  </symbol>
-  <symbol id="ukv-stamp" viewBox="0 0 48 48">
-    <g fill="none" stroke="#0E6E6E" stroke-width="2.5">
-      <circle cx="24" cy="24" r="20" stroke-dasharray="4 3"/>
-      <path d="M14 25l7 7 13-15" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-  </symbol>
-</svg>
+@include('partials.svg-symbols')
 
 <main id="main">
 @yield('content')
@@ -70,15 +47,29 @@
     </div>
     <div>
       <strong>Service</strong><br>
-      <a href="{{ url('/#how') }}">How it works</a><br>
       <a href="{{ url('/destinations') }}">Destinations</a><br>
+      <a href="{{ url('/tools') }}">Visa checker</a><br>
+      <a href="{{ url('/apply') }}">Start an application</a><br>
       <a href="{{ url('/track') }}">Track application</a>
     </div>
     <div>
+      <strong>Guides</strong><br>
+      <a href="{{ url('/guides') }}">Visa guides &amp; stories</a><br>
+      <a href="{{ url('/reviews') }}">Traveller reviews</a><br>
+      <a href="{{ url('/driving-abroad') }}">Driving abroad (IDP)</a><br>
+      <a href="{{ url('/compare') }}">Apply yourself vs us</a>
+    </div>
+    <div>
+      <strong>Company</strong><br>
+      <a href="{{ url('/about') }}">About us</a><br>
+      <a href="{{ url('/contact') }}">Contact</a>
+    </div>
+    <div>
       <strong>Legal</strong><br>
-      <a href="{{ url('/#privacy') }}">Privacy</a><br>
-      <a href="{{ url('/#terms') }}">Terms</a><br>
-      <a href="{{ url('/#complaints') }}">Complaints</a>
+      <a href="{{ url('/legal') }}#privacy">Privacy</a><br>
+      <a href="{{ url('/legal') }}#terms">Terms</a><br>
+      <a href="{{ url('/legal') }}#complaints">Complaints</a><br>
+      <a href="{{ url('/legal') }}#disclaimer">Disclaimer</a>
     </div>
   </div>
 </div>

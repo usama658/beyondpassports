@@ -45,6 +45,8 @@ final class OrderService
         // a nullable default would resolve to null and silently skip emails). transition()
         // invokes it via the onStageChange() hook below.
         private readonly EmailService $emailer,
+        // Loyalty (L2.7 / #177): returning-customer discount on the standard lane. Autowired.
+        private readonly LoyaltyService $loyalty,
     ) {}
 
     // -----------------------------------------------------------------------------------
@@ -109,8 +111,15 @@ final class OrderService
             ]);
 
             // --- Lane-specific pricing ---
+            $loyaltyDiscount = 0.0;
             if ($order->eligibility === EligibilityLane::Standard) {
                 $this->applyTierPricing($order, $destination, $data['tier'] ?? null);
+
+                // Returning-customer loyalty discount (#83): reduce service_fee + total by a
+                // fixed/percent reward, mint an auditable `loyal` Discount row. Guarded — a
+                // first-time customer (no prior order with this email) gets nothing. Only the
+                // fixed-fee standard lane is discounted (manual_review has no fixed charge).
+                $loyaltyDiscount = $this->loyalty->applyReturningCustomerDiscount($order);
             }
             // manual_review: NO fixed charge. Fees stay null; an agent issues a bespoke quote
             // via PricingService::bespokeQuote() later.
@@ -136,6 +145,23 @@ final class OrderService
                     'source' => 'apply_form',
                 ],
             );
+
+            // --- Loyalty discount audit note (only when one was actually applied) ---
+            if ($loyaltyDiscount > 0.0) {
+                $this->recordEvent(
+                    $order,
+                    EventType::System,
+                    'Returning-customer loyalty discount applied: -£'
+                        .number_format($loyaltyDiscount, 2)
+                        ." (service fee now £".number_format((float) $order->service_fee, 2).').',
+                    channel: EventChannel::Internal,
+                    meta: [
+                        'loyalty_discount' => $loyaltyDiscount,
+                        'service_fee' => (float) $order->service_fee,
+                        'total' => (float) $order->total,
+                    ],
+                );
+            }
 
             // CRM sync (after the transaction commits so HubSpot never sees a rolled-back order).
             SyncOrderToHubSpot::dispatch($order)->afterCommit();
