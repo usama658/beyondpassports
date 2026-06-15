@@ -30,6 +30,13 @@ final class CheckoutController extends Controller
      */
     public function create(Order $order): RedirectResponse
     {
+        // Manual-review / unpriced orders never go through self-serve Stripe Checkout — they
+        // get a bespoke quote from an agent. Guard so a stray /checkout/{ref} can't 500.
+        if ($order->eligibility === \App\Enums\EligibilityLane::ManualReview || ! $order->service_fee) {
+            return redirect()->route('apply')->with('status',
+                'This application needs a personalised quote — our team will be in touch.');
+        }
+
         $url = $this->stripe->createCheckoutSession($order);
 
         // away() — Stripe Checkout is an external host, not an app route.

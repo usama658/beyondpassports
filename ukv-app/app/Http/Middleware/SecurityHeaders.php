@@ -100,7 +100,9 @@ class SecurityHeaders
             "img-src 'self' data:",
             "font-src 'self' data:",
             "style-src 'self' 'unsafe-inline'",
-            "script-src 'self' https://js.stripe.com",
+            // 'unsafe-inline' needed: the public pages carry inline <script> (apply funnel
+            // routing, checker JS, reveal). A per-request nonce is the stricter future upgrade.
+            "script-src 'self' 'unsafe-inline' https://js.stripe.com",
             "connect-src 'self' https://api.stripe.com",
             "frame-src https://js.stripe.com https://hooks.stripe.com",
         ]);
