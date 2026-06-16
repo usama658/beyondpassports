@@ -170,6 +170,20 @@
   </div>
 </div></section>
 
+{{-- FIND NEAREST PAYPOINT — reuses /find-a-centre pre-scoped to the paypoint type --}}
+<section id="find-paypoint"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Step 2, made easy</p><h2>Find your nearest PayPoint</h2></div>
+  <p style="max-width:56ch;color:#33454f">Enter your postcode and we'll show the closest PayPoint stores that issue the IDP in person — so you don't have to go hunting.</p>
+  <form method="GET" action="{{ route('centre.search') }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;max-width:520px">
+    <input type="hidden" name="type" value="paypoint">
+    <input type="text" name="postcode" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" required aria-label="Your postcode"
+           style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge,#d9cfbe);border-radius:8px;font:inherit;font-size:15px">
+    <button type="submit" class="btn">Find nearest →</button>
+  </form>
+  <p class="hint" style="margin-top:12px"><a href="{{ url('/find-a-centre?type=paypoint') }}">Or use my location on the full finder →</a></p>
+  <p class="hint" style="margin-top:6px;color:var(--hint,#6b7a83)">The IDP is issued in person at PayPoint — we prepare and check your paperwork; we don't issue the permit ourselves.</p>
+</div></section>
+
 {{-- FAQ --}}
 <section id="faq"><div class="wrap">
   <div class="sec-head reveal" style="margin:0 auto 36px;text-align:center"><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
