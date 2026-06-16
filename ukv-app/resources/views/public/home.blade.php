@@ -41,6 +41,15 @@
 </style>
 @endpush
 
+@push('head')
+<style>
+  /* photo-led destination cards: real image fills the .sky header, skyline SVG is the fallback */
+  .dests .pass .sky{height:160px;overflow:hidden;background:#e9edf0}
+  .dests .pass .sky img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+  .dests .pass:hover .sky img{transform:scale(1.05)}
+</style>
+@endpush
+
 @section('content')
 
 {{-- HERO — light "Sunset Coast" band (white checker card on top) --}}
@@ -90,7 +99,7 @@
   <div class="sec-head reveal"><p class="eyebrow">Popular destinations</p><h2>Clear requirements, fixed fees</h2></div>
   <div class="dests">
     @foreach ($navDestinations as $d)
-    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg></div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
+    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
     @endforeach
   </div>
   <p style="margin-top:26px"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></p>

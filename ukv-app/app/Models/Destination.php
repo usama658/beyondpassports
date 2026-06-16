@@ -13,6 +13,7 @@ class Destination extends Model
     protected $fillable = [
         'name',
         'slug',
+        'image_path',
         'visa_type',
         'required_for_uk',
         'max_stay_days',
