@@ -39,5 +39,15 @@ class AppServiceProvider extends ServiceProvider
         View::composer('public.home', function ($view) {
             $view->with('slotSummary', app(\App\Services\SlotService::class)->summary());
         });
+
+        // Header mega-menu (shared layout): a small set of destinations with a photo + "from" fee
+        // for the Destinations dropdown panel. On every public page, so kept cheap (≤6 rows).
+        View::composer('layouts.public', function ($view) {
+            $view->with('navMenuDestinations', \App\Models\Destination::query()
+                ->orderByRaw('image_path IS NULL') // photographed first
+                ->orderBy('name')
+                ->take(6)
+                ->get());
+        });
     }
 }

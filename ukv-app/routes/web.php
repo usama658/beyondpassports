@@ -12,6 +12,7 @@ use App\Http\Controllers\GuideController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\TrackController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,8 @@ Route::post('/checklist/{checklist}/send', [ChecklistDeliveryController::class, 
     ->middleware('throttle:contact')
     ->name('checklist.send');
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
+// Footer newsletter opt-in (consent-gated marketing capture).
+Route::post('/subscribe', [SubscribeController::class, 'store'])->middleware('throttle:contact')->name('subscribe.store');
 
 // --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
 Route::view('/apply', 'public.apply')->name('apply'); // eligibility-aware intake form (POSTs to apply.store)
