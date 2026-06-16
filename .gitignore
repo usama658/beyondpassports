@@ -1,1 +1,5 @@
 .superpowers/
+
+# Installed third-party skills (tooling, not app code)
+.agents/skills/
+.claude/skills/
