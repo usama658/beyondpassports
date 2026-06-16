@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'UK Visas, eVisas & ETAs — Sorted Without the Stress | UKVisaCo')
-@section('description', 'Independent UK visa & eVisa service. We check, prepare and submit your application for 14+ destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.')
+@section('description', 'Independent UK visa & eVisa service. We check, prepare and submit your application for a growing list of destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.')
 
 @push('head')
 <style>
@@ -35,7 +35,7 @@
     <div>
       <p class="eyebrow">Independent UK visa &amp; eVisa service</p>
       <h1>UK visas, eVisas &amp; ETAs — sorted, without the stress.</h1>
-      <p class="lede">We check, prepare and submit your application for 14+ destinations, so you travel with confidence. UK-based team, clear fixed fees, every step tracked.</p>
+      <p class="lede">We check, prepare and submit your application for {{ ($navDestinations->count() ?? 0) >= 3 ? $navDestinations->count().' destinations' : 'popular destinations' }}, so you travel with confidence. UK-based team, clear fixed fees, every step tracked.</p>
       <p class="micro">We catch the errors. We handle the paperwork. You get the visa.</p>
     </div>
     <div class="checker" id="checker">
