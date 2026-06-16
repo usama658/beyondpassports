@@ -91,7 +91,7 @@ class DestinationResource extends Resource
                     ]),
 
                 Forms\Components\Section::make('Stay & passport')
-                    ->columns(2)
+                    ->columns(3)
                     ->schema([
                         Forms\Components\TextInput::make('max_stay_days')
                             ->label('Max stay (days)')
@@ -104,6 +104,46 @@ class DestinationResource extends Resource
                             ->integer()
                             ->minValue(0)
                             ->default(6),
+                        Forms\Components\TextInput::make('processing_days')
+                            ->label('Typical processing (days)')
+                            ->helperText('Used for the document-checklist "apply by" reminder. Blank = site default.')
+                            ->numeric()
+                            ->integer()
+                            ->minValue(0),
+                    ]),
+
+                Forms\Components\Section::make('Data freshness & sources')
+                    ->description('Official sources power the public "verify this yourself" links and the weekly AI change-detection. Saving a review here re-stamps the "facts last reviewed" date on this destination\'s guides.')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('review_interval_days')
+                            ->label('Review interval (days)')
+                            ->helperText('Flag this destination for re-check after this many days.')
+                            ->numeric()
+                            ->integer()
+                            ->minValue(1)
+                            ->default(90),
+                        Forms\Components\DateTimePicker::make('facts_checked_at')
+                            ->label('Facts last verified')
+                            ->helperText('Set this when you confirm the figures against the official source.'),
+                        Forms\Components\Repeater::make('sources')
+                            ->label('Official sources')
+                            ->helperText('Each source links out publicly and is fetched by AI change-detection.')
+                            ->schema([
+                                Forms\Components\TextInput::make('label')
+                                    ->label('Label')
+                                    ->placeholder('e.g. gov.uk — Turkey travel advice')
+                                    ->maxLength(120),
+                                Forms\Components\TextInput::make('url')
+                                    ->label('URL')
+                                    ->url()
+                                    ->required()
+                                    ->maxLength(300),
+                            ])
+                            ->columns(2)
+                            ->addActionLabel('Add source')
+                            ->reorderable()
+                            ->columnSpanFull(),
                     ]),
 
                 Forms\Components\Section::make('IDP (International Driving Permit)')

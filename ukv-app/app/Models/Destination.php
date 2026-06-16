@@ -28,6 +28,7 @@ class Destination extends Model
         'facts_checked_at',
         'review_interval_days',
         'sources',
+        'processing_days',
     ];
 
     protected function casts(): array
@@ -46,6 +47,7 @@ class Destination extends Model
             'facts_checked_at' => 'datetime',
             'review_interval_days' => 'integer',
             'sources' => 'array',
+            'processing_days' => 'integer',
         ];
     }
 
