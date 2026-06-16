@@ -320,7 +320,6 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .ft-cap input[type=email]{flex:1;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:14px}
 .ft-cap input::placeholder{color:#8d949a}
 .ft-consent{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12px;color:#9aa0a5;max-width:480px}
-.ft-unsub{margin:6px 0 0;font-size:12px;color:#8d949a;text-align:center;max-width:480px}
 .ft-consent input{margin-top:2px}
 .ft-consent a{color:#d3d7da;text-decoration:underline}
 .ft-ok{margin-top:10px;font-size:13px;color:#9fe0c0;font-weight:700}

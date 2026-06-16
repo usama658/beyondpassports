@@ -90,8 +90,7 @@
             <input id="sub-email" type="email" name="email" placeholder="Get visa-rule updates by email" value="{{ old('email') }}" required>
             <button class="btn" type="submit" style="padding:11px 16px">Join</button>
           </div>
-          <label class="ft-consent"><input type="checkbox" name="consent" value="1" required> <span>I agree to receive occasional email updates. <a href="{{ url('/legal') }}#privacy">Privacy notice</a>.</span></label>
-          <p class="ft-unsub">Unsubscribe any time.</p>
+          <label class="ft-consent"><input type="checkbox" name="consent" value="1" required> <span>I agree to receive occasional email updates. <a href="{{ url('/legal') }}#privacy">Privacy notice</a>. Unsubscribe any time.</span></label>
           @if (session('subscribe_status'))<p class="ft-ok">{{ session('subscribe_status') }}</p>@endif
           @error('email')<p class="ft-err">{{ $message }}</p>@enderror
           @error('consent')<p class="ft-err">{{ $message }}</p>@enderror
