@@ -39,4 +39,4 @@
   </ul>
   <p>If you'd rather not piece it together yourself, you can <a href="{{ url('/tools') }}">use our free checker</a> to see what applies to your trip, and we'll confirm the details for your nationality and destination.</p>
 
-  <p class="inline-note">A reminder on what we are: UKVisaCo is an independent service and not a government website. We can't change or guarantee any government decision — we help you understand the requirements, prepare your application carefully and submit it correctly.</p>
+  <p class="inline-note">A reminder on what we are: Beyond Passports is an independent service and not a government website. We can't change or guarantee any government decision — we help you understand the requirements, prepare your application carefully and submit it correctly.</p>

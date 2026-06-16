@@ -39,7 +39,7 @@
 <body>
   <div class="sheet">
     <div class="brand">
-      <span class="logo">UKVisaCo</span>
+      <span class="logo">Beyond Passports</span>
       <span class="url">{{ rtrim((string) config('ukv.base_url', ''), '/') }}</span>
     </div>
     <p class="meta">{{ $destination }} &middot; Prepared {{ optional($request->created_at)->format('j M Y') ?? now()->format('j M Y') }}</p>

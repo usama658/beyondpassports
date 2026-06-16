@@ -1,4 +1,4 @@
-{{-- UKVisaCo inline SVG symbol library — ported from frontend/assets/ukv-illustrations.js.
+{{-- Beyond Passports inline SVG symbol library — ported from frontend/assets/ukv-illustrations.js.
      Renders the full document-world artwork: route map, passport stamp, monogram avatar,
      and the seven destination skylines. Hidden <defs> only; referenced via <use href="#...">.
      Self-contained so public pages render fully without the front host's JS sprite.

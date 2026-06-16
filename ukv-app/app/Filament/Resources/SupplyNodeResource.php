@@ -106,7 +106,7 @@ class SupplyNodeResource extends Resource
                         Forms\Components\TextInput::make('postcode')
                             ->maxLength(16),
                         Forms\Components\Toggle::make('we_book_here')
-                            ->label('UKVisaCo books appointments here')
+                            ->label('Beyond Passports books appointments here')
                             ->inline(false),
                         Forms\Components\TextInput::make('lat')
                             ->label('Latitude')

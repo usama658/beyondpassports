@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'International Driving Permit (IDP) — sorted the right way | UKVisaCo')
+@section('title', 'International Driving Permit (IDP) — sorted the right way | Beyond Passports')
 @section('description', 'Need an International Driving Permit to drive abroad? We confirm which IDP type you need (1949/1968/1926), prepare and check your paperwork, and tell you exactly what to bring to your in-person PayPoint visit. Independent service — not a government website; the IDP is issued in person at PayPoint, not by us.')
 
 @push('head')
@@ -65,7 +65,7 @@
   "@@context": "https://schema.org",
   "@@type": "FAQPage",
   "mainEntity": [
-    {"@@type":"Question","name":"Is this a government service?","acceptedAnswer":{"@@type":"Answer","text":"No. UKVisaCo is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there."}},
+    {"@@type":"Question","name":"Is this a government service?","acceptedAnswer":{"@@type":"Answer","text":"No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there."}},
     {"@@type":"Question","name":"Can you get the IDP for me?","acceptedAnswer":{"@@type":"Answer","text":"No — an IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time."}},
     {"@@type":"Question","name":"Which countries need which type?","acceptedAnswer":{"@@type":"Answer","text":"It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type — and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off."}},
     {"@@type":"Question","name":"What if I only have a provisional licence?","acceptedAnswer":{"@@type":"Answer","text":"You can't get an IDP on a provisional licence. An IDP can only be issued against a full UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet — we'll tell you straight rather than send you on a wasted trip."}}
@@ -190,7 +190,7 @@
   <div class="faqs">
     <details class="faq reveal">
       <summary>Is this a government service?</summary>
-      <div class="a"><p>No. UKVisaCo is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p></div>
+      <div class="a"><p>No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p></div>
     </details>
     <details class="faq reveal">
       <summary>Can you get the IDP for me?</summary>

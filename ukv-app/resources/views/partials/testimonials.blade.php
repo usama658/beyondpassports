@@ -64,7 +64,7 @@
         @endif
         <figcaption class="by">
           <span class="avatar">
-            <svg viewBox="0 0 44 44" role="img" aria-label="UKVisaCo traveller"><use href="#ukv-monogram"></use></svg>
+            <svg viewBox="0 0 44 44" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-monogram"></use></svg>
           </span>
           <span>{{ $t['attribution'] }}</span>
         </figcaption>

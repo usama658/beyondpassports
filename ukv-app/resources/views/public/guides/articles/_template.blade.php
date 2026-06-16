@@ -29,4 +29,4 @@
 
   <p>For more background, the <a href="{{ url('/guides/eta-vs-visa-difference') }}">ETA vs visa explainer</a> and our checklist of <a href="{{ url('/guides/documents-before-you-apply') }}">documents to prepare before you apply</a> are good companions to this guide.</p>
 
-  <p class="inline-note">UKVisaCo is an independent service and not a government website. We help you understand requirements, prepare carefully and submit correctly — we can't change a rule or guarantee any government decision.</p>
+  <p class="inline-note">Beyond Passports is an independent service and not a government website. We help you understand requirements, prepare carefully and submit correctly — we can't change a rule or guarantee any government decision.</p>

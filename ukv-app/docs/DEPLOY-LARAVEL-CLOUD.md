@@ -1,6 +1,6 @@
 # Quick deploy to Laravel Cloud → your first live URL
 
-The fastest way to get UKVisaCo onto a public URL. Laravel Cloud is purpose-built for this stack (PHP, MySQL, queue workers, scheduler, auto-SSL) — unlike Netlify, which can't run it.
+The fastest way to get Beyond Passports onto a public URL. Laravel Cloud is purpose-built for this stack (PHP, MySQL, queue workers, scheduler, auto-SSL) — unlike Netlify, which can't run it.
 
 > UI labels change over time; this is the flow, verify exact button names in the dashboard. App lives in the **`ukv-app/`** subdirectory of the repo — set that as the app root.
 
@@ -22,7 +22,7 @@ The fastest way to get UKVisaCo onto a public URL. Laravel Cloud is purpose-buil
 Set these in the app's **Environment** tab (full reference + meaning in `GO-LIVE-RUNBOOK.md` Phase 3). Minimum to boot + transact:
 
 ```
-APP_NAME=UKVisaCo
+APP_NAME=Beyond Passports
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://<your-cloud-domain>        # update to custom domain later
@@ -41,7 +41,7 @@ SESSION_DRIVER=database
 
 MAIL_MAILER=smtp                             # real SMTP (Postmark/SES/Mailgun)
 MAIL_HOST=  MAIL_PORT=587  MAIL_USERNAME=  MAIL_PASSWORD=
-MAIL_FROM_ADDRESS=hello@yourdomain.com  MAIL_FROM_NAME="UKVisaCo"
+MAIL_FROM_ADDRESS=hello@yourdomain.com  MAIL_FROM_NAME="Beyond Passports"
 
 # Integrations — blank = feature simply off (safe). Fill when ready:
 STRIPE_SECRET=            STRIPE_WEBHOOK_SECRET=        # step 7

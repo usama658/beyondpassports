@@ -46,7 +46,7 @@
         ],
         [
             'q' => 'Is this the official government website?',
-            'a' => "No. UKVisaCo is an independent service — we are not a government website and not affiliated with any government. We prepare, check and submit your application on your behalf for a separate service fee.",
+            'a' => "No. Beyond Passports is an independent service — we are not a government website and not affiliated with any government. We prepare, check and submit your application on your behalf for a separate service fee.",
         ],
         [
             'q' => 'What does your fee cover, and is the government fee included?',
@@ -68,7 +68,7 @@
         'areaServed'  => $name,
         'provider' => [
             '@type' => 'Organization',
-            'name'  => 'UKVisaCo',
+            'name'  => 'Beyond Passports',
             'url'   => url('/'),
         ],
         'url' => url('/visa/'.$destination->slug),
@@ -96,7 +96,7 @@
     ];
 @endphp
 
-@section('title', $visaLabel.' for UK travellers — Prepared & Checked | UKVisaCo')
+@section('title', $visaLabel.' for UK travellers — Prepared & Checked | Beyond Passports')
 @section('description', 'Apply for your '.$visaLabel.' with an independent UK team that prepares and checks every application. Clear fixed service fees, fast handling, every step tracked. Not a government website.')
 @section('canonical', url('/visa/'.$destination->slug))
 

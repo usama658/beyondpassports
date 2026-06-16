@@ -8,7 +8,7 @@
   individual page template, NOT here — see the worked example at the bottom.
 --}}
 @php
-    $siteName = config('app.name', 'UKVisaCo');
+    $siteName = config('app.name', 'Beyond Passports');
     $base     = rtrim(config('app.url'), '/');
 @endphp
 

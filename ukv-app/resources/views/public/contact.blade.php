@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Contact us — talk to a real UK-based person | UKVisaCo')
+@section('title', 'Contact us — talk to a real UK-based person | Beyond Passports')
 @section('description', 'Questions about your UK outbound visa? Call us and a real, UK-based person answers — Mon–Sat 9–6. WhatsApp for quick questions, email for documents, or request a callback. Independent service — not a government website.')
 
 @push('head')

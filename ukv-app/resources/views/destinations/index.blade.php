@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Visa & eVisa destinations for UK travellers | UKVisaCo')
+@section('title', 'Visa & eVisa destinations for UK travellers | Beyond Passports')
 @section('description', 'Browse the destinations we prepare and check visa & eVisa applications for. Clear fixed service fees, fast handling, every step tracked. Independent service — not a government website.')
 
 @section('content')

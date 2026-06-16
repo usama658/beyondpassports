@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Document checklist — see exactly what you need for your trip | UKVisaCo')
+@section('title', 'Document checklist — see exactly what you need for your trip | Beyond Passports')
 @section('description', "Free document checklist for your UK visa, eVisa or ETA trip. Answer a few questions and get your tailored list on screen instantly — keep it, share it or have it sent to you. Independent service — not a government website.")
 
 @push('head')
@@ -191,7 +191,7 @@
 
     {{-- COMPLIANCE STRIP --}}
     <p class="compliance reveal">
-      <strong>UKVisaCo is an independent service and is not a government website.</strong>
+      <strong>Beyond Passports is an independent service and is not a government website.</strong>
       This checklist is general guidance to help you prepare — your exact requirements depend on your nationality, residence and full situation, and we confirm them before anything is submitted.
       Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
     </p>

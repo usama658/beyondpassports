@@ -16,7 +16,7 @@ return [
     'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
     'email' => env('UKV_EMAIL', ''),            // public enquiries inbox
 
-    // Travel-insurance INTRODUCER (FCA-safe signpost only). UKVisaCo does NOT sell or arrange
+    // Travel-insurance INTRODUCER (FCA-safe signpost only). Beyond Passports does NOT sell or arrange
     // insurance and takes no charge — this is an optional affiliate link to an FCA-authorised
     // partner. Leave blank to show a neutral "ask us" note instead of a link.
     'insurance_partner_name' => env('UKV_INSURANCE_PARTNER', ''),  // e.g. AcmeTravelCover

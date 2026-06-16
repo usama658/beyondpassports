@@ -1,12 +1,12 @@
 # Nearest-centre finder + held-slot inventory — design spec
 
-**Goal:** show users the nearest in-person centres (IDP/PayPoint, visa application centres) to their location so they don't have to search, highlight centres where UKVisaCo holds appointment slots, and (Phase 2) show live held-slot availability near them.
+**Goal:** show users the nearest in-person centres (IDP/PayPoint, visa application centres) to their location so they don't have to search, highlight centres where Beyond Passports holds appointment slots, and (Phase 2) show live held-slot availability near them.
 
 **Decisions (locked):** location = UK postcode + optional one-tap browser geolocation; geocoding via free postcodes.io (no key) + Haversine distance; surfaces = dedicated `/find-a-centre` page + a reusable `nearest-centre` partial embedded on the IDP page (`driving-abroad`) and the checklist result page.
 
 **Phasing:** Wave 1 = foundation finder (geo + nearest + "we book here" badge). Wave 2 = held-slot inventory (centre_slots + ops tooling + availability display + hold-on-apply). Build both now; Wave 2 plugs into Wave 1's surface.
 
-**Caveats:** renders empty until real centre geo + slots are populated (owner, #95) and postcodes.io is reachable. Live inventory is only meaningful if UKVisaCo actually holds slots (operational).
+**Caveats:** renders empty until real centre geo + slots are populated (owner, #95) and postcodes.io is reachable. Live inventory is only meaningful if Beyond Passports actually holds slots (operational).
 
 ## Wave 1 — foundation
 

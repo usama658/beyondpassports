@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'About Us — Independent UK Visa & eVisa Service | UKVisaCo')
-@section('description', 'UKVisaCo is an independent, UK-based visa, eVisa, ETA and IDP facilitation service for British travellers. Not a government website. Clear fees, human checks, honest advice.')
+@section('title', 'About Us — Independent UK Visa & eVisa Service | Beyond Passports')
+@section('description', 'Beyond Passports is an independent, UK-based visa, eVisa, ETA and IDP facilitation service for British travellers. Not a government website. Clear fees, human checks, honest advice.')
 
 @push('head')
 <style>
@@ -33,7 +33,7 @@
 <section id="who"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>A private service, not a public office</h2></div>
   <div class="prose reveal">
-    <p>UKVisaCo is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
+    <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
     <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself — using us is optional.</p>
     <p class="note">Our service fee is separate from, and additional to, any government or embassy fee. The official fee is set and collected by the relevant authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
   </div>
@@ -64,14 +64,14 @@
 <section class="alt"><div class="wrap quote reveal">
   <p class="eyebrow">In our travellers' words</p>
   <blockquote>“I half-expected a faceless form. Instead a real person rang me back, spotted a date I'd entered wrong, and walked me through it. Felt like having a friend who actually knows the rules.”</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 48 48" role="img" aria-label="UKVisaCo traveller"><use href="#ukv-stamp"></use></svg></span>— A UK traveller to India · UKV&lt;2026&lt;006140&lt;&lt;&lt;</div>
+  <div class="by"><span class="avatar"><svg viewBox="0 0 48 48" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-stamp"></use></svg></span>— A UK traveller to India · UKV&lt;2026&lt;006140&lt;&lt;&lt;</div>
 </div></section>
 
 {{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
 <section id="transparency"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Transparency</p><h2>The important bit, in plain English</h2></div>
   <div class="callout reveal">
-    <p>UKVisaCo is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities — we cannot guarantee any outcome.</p>
+    <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities — we cannot guarantee any outcome.</p>
     <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only — it does not make a government or embassy decide any faster, and an ETA does not produce a physical document.</p>
   </div>
 </div></section>

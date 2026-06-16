@@ -41,7 +41,7 @@ return new class extends Migration
                 'slug'    => 'eta-vs-visa-difference',
                 'title'   => "ETA vs visa: what's the difference?",
                 'excerpt' => 'Two very different things travellers often confuse — and why it matters before you book.',
-                'meta_title'       => "ETA vs visa: what's the difference? | UKVisaCo Guides",
+                'meta_title'       => "ETA vs visa: what's the difference? | Beyond Passports Guides",
                 'meta_description' => 'An ETA is digital permission linked to your passport; a visa is a formal permission that often produces a document. Here is the plain-English difference for UK travellers.',
                 'quick_answer' => 'An <strong>ETA</strong> (electronic travel authorisation) is digital permission to travel that is linked to your passport — there is no sticker, stamp or paper document. A <strong>visa</strong> is a separate, usually more involved permission that often does produce a document or stamp. Which one you need depends on where you are going and your nationality — not on which word sounds more official.',
                 'body'    => $this->etaVsVisaBody($u),
@@ -50,7 +50,7 @@ return new class extends Migration
                 'slug'    => 'passport-validity-mistake',
                 'title'   => 'Avoid the #1 passport-validity mistake',
                 'excerpt' => 'Many countries count validity from your return date, not departure. Here is how to check yours.',
-                'meta_title'       => 'Avoid the #1 passport-validity mistake | UKVisaCo Guides',
+                'meta_title'       => 'Avoid the #1 passport-validity mistake | Beyond Passports Guides',
                 'meta_description' => 'Most countries count passport validity from your return date and require months of validity beyond it. Here is how to check yours before you book.',
                 'quick_answer' => 'Most countries do not count passport validity from the day you fly out — they count from the day you are due to <strong>return</strong>, and many require several months left beyond that date. Check the months-of-validity rule for your destination as soon as you start planning, because renewing a passport takes time you may not have closer to the trip.',
                 'body'    => $this->passportValidityBody($u),
@@ -59,7 +59,7 @@ return new class extends Migration
                 'slug'    => 'idp-which-type',
                 'title'   => 'International Driving Permit: which type for which country?',
                 'excerpt' => '1949 vs 1968 IDP, what each covers, and how to work out which one your trip needs.',
-                'meta_title'       => 'International Driving Permit: which type for which country? | UKVisaCo Guides',
+                'meta_title'       => 'International Driving Permit: which type for which country? | Beyond Passports Guides',
                 'meta_description' => 'There are different IDP types (1949 and 1968 conventions). The type you need depends on the country you are driving in — here is how to work it out.',
                 'quick_answer' => 'An International Driving Permit (IDP) is a translation of your UK licence, not a replacement — you carry both. There are different IDP types (the 1949 and 1968 conventions are the common ones), and the type you need depends on the country you are driving in. Some trips even need more than one. Check the destination before you travel and arrange the correct type in good time.',
                 'body'    => $this->templateBody($u),
@@ -68,7 +68,7 @@ return new class extends Migration
                 'slug'    => 'applied-and-refused-next-steps',
                 'title'   => 'Applied and refused — what happens next?',
                 'excerpt' => 'A calm, practical look at what a refusal can mean and the sensible steps that follow.',
-                'meta_title'       => 'Applied and refused — what happens next? | UKVisaCo Guides',
+                'meta_title'       => 'Applied and refused — what happens next? | Beyond Passports Guides',
                 'meta_description' => 'A refusal is not always the end of the road. Read your decision notice, understand the reason, and take a careful, accurate fresh application — here is how.',
                 'quick_answer' => 'A refusal is not always the end of the road, but the right next step depends entirely on the reason given and the destination\'s own rules. Read any decision notice carefully, do not simply re-submit the same application unchanged, and take time to understand what was missing. No service can overturn or guarantee a government decision — but a careful, accurate fresh application often addresses the cause.',
                 'body'    => $this->templateBody($u),
@@ -77,7 +77,7 @@ return new class extends Migration
                 'slug'    => 'documents-before-you-apply',
                 'title'   => 'Documents to prepare before you apply',
                 'excerpt' => 'A simple checklist that helps most applications go through without back-and-forth.',
-                'meta_title'       => 'Documents to prepare before you apply | UKVisaCo Guides',
+                'meta_title'       => 'Documents to prepare before you apply | Beyond Passports Guides',
                 'meta_description' => 'Most delayed or refused applications come down to documents, not eligibility. Here is the simple checklist to prepare before you apply.',
                 'quick_answer' => 'Most delayed or refused applications come down to documents, not eligibility. Before you apply, have your passport (checked for validity and blank pages), a clear digital photo that meets the spec, and details of your trip — dates, accommodation and onward travel — ready. Getting these right up front is the single biggest thing you can do to avoid back-and-forth.',
                 'body'    => $this->templateBody($u),
@@ -105,7 +105,7 @@ return new class extends Migration
                 'faq'              => null,
                 'status'           => 'published',
                 'published_at'     => $now,
-                'reviewed_by'      => 'UKVisaCo editorial team',
+                'reviewed_by'      => 'Beyond Passports editorial team',
                 'reviewed_at'      => $now,
                 'sort_order'       => $sort,
             ]);
@@ -134,12 +134,12 @@ return new class extends Migration
                     'excerpt'          => 'What has changed, who is eligible for an eVisa, and how long it covers — at a glance.',
                     'quick_answer'     => 'Entry rules for any single country change over time and depend on your nationality and residence, so always confirm the current rule before you book. As a general orientation, many UK travellers heading to Turkey for a short tourist trip use an <strong>eVisa</strong> — an online authorisation you arrange in advance — rather than a sticker visa. The length of stay it permits is set by the destination, not by us.',
                     'body'             => $this->turkeyBody($u),
-                    'meta_title'       => 'Do UK travellers need a visa for Turkey? | UKVisaCo',
+                    'meta_title'       => 'Do UK travellers need a visa for Turkey? | Beyond Passports',
                     'meta_description' => 'Many UK travellers use a Turkey eVisa for short tourist trips — an online authorisation arranged in advance. Here is the general picture, plus what to check before you book.',
                     'faq'              => null,
                     'status'           => 'published',
                     'published_at'     => $now,
-                    'reviewed_by'      => 'UKVisaCo editorial team',
+                    'reviewed_by'      => 'Beyond Passports editorial team',
                     'reviewed_at'      => $now,
                     'sort_order'       => 1,
                 ]);
@@ -215,7 +215,7 @@ return new class extends Migration
   </ul>
   <p>If you'd rather not piece it together yourself, you can <a href="{$u('/tools')}">use our free checker</a> to see what applies to your trip, and we'll confirm the details for your nationality and destination.</p>
 
-  <p class="inline-note">A reminder on what we are: UKVisaCo is an independent service and not a government website. We can't change or guarantee any government decision — we help you understand the requirements, prepare your application carefully and submit it correctly.</p>
+  <p class="inline-note">A reminder on what we are: Beyond Passports is an independent service and not a government website. We can't change or guarantee any government decision — we help you understand the requirements, prepare your application carefully and submit it correctly.</p>
 HTML;
     }
 
@@ -247,7 +247,7 @@ HTML;
   <p>If your passport doesn't clear the buffer, the safest move is to renew it before you commit to travel dates, because a renewal takes time you may not have closer to departure. Plan around the renewal, not the other way round.</p>
   <p>Checking this early is the single cheapest insurance there is. Once you know your passport is good, you can <a href="{$u('/tools')}">use our free checker</a> to see what else your trip needs, browse <a href="{$u('/destinations')}">destination requirements</a>, or read our guide to the <a href="{$docs}">documents to prepare before you apply</a>.</p>
 
-  <p class="inline-note">UKVisaCo is an independent service and not a government website. We help you check requirements and prepare accurately — we can't change a passport rule or guarantee any government decision.</p>
+  <p class="inline-note">Beyond Passports is an independent service and not a government website. We help you check requirements and prepare accurately — we can't change a passport rule or guarantee any government decision.</p>
 HTML;
     }
 
@@ -281,7 +281,7 @@ HTML;
   <h2>How to be sure</h2>
   <p>If you'd rather not work it out alone, <a href="{$u('/tools')}">run our free checker</a> for your trip, or browse our <a href="{$u('/destinations')}">destinations</a> to see the current category and what's usually required. When you're ready, our UK team can prepare and check your application before it's submitted — <a href="{$u('/apply')}">start your application here</a>.</p>
 
-  <p class="inline-note">UKVisaCo is an independent service and not a government website. This is general guidance only; requirements depend on your nationality and residence and can change, and no service can guarantee a government decision.</p>
+  <p class="inline-note">Beyond Passports is an independent service and not a government website. This is general guidance only; requirements depend on your nationality and residence and can change, and no service can guarantee a government decision.</p>
 HTML;
     }
 
@@ -318,7 +318,7 @@ HTML;
 
   <p>For more background, the <a href="{$eta}">ETA vs visa explainer</a> and our checklist of <a href="{$docs}">documents to prepare before you apply</a> are good companions to this guide.</p>
 
-  <p class="inline-note">UKVisaCo is an independent service and not a government website. We help you understand requirements, prepare carefully and submit correctly — we can't change a rule or guarantee any government decision.</p>
+  <p class="inline-note">Beyond Passports is an independent service and not a government website. We help you understand requirements, prepare carefully and submit correctly — we can't change a rule or guarantee any government decision.</p>
 HTML;
     }
 };

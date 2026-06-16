@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Legal & policies — Privacy, Terms, Complaints, Disclaimer | UKVisaCo')
-@section('description', 'UKVisaCo legal centre: privacy policy, terms of service, complaints procedure and disclaimer. Independent UK visa & eVisa facilitation — not a government website; our service fee is separate from government fees and we cannot guarantee visa approval.')
+@section('title', 'Legal & policies — Privacy, Terms, Complaints, Disclaimer | Beyond Passports')
+@section('description', 'Beyond Passports legal centre: privacy policy, terms of service, complaints procedure and disclaimer. Independent UK visa & eVisa facilitation — not a government website; our service fee is separate from government fees and we cannot guarantee visa approval.')
 @section('canonical', url('/legal'))
 
 @push('head')
@@ -70,10 +70,10 @@
   <div class="reveal">
     <p class="eyebrow">Legal centre</p>
     <h1>Legal &amp; policies</h1>
-    <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. UKVisaCo is an independent facilitation service — not a government website and not affiliated with gov.uk or any embassy.</p>
+    <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service — not a government website and not affiliated with gov.uk or any embassy.</p>
     <div class="draft-banner" role="note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
-      <p><strong>Draft for review — have a solicitor review before relying on these.</strong> These policies are working drafts written for UKVisaCo's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
+      <p><strong>Draft for review — have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
     </div>
   </div>
 </div></section>
@@ -105,7 +105,7 @@
         <h2 id="privacy-h">Privacy Policy</h2>
         <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
 
-        <p>This policy explains what personal data UKVisaCo collects when you use our visa, eVisa, ETA and IDP-guidance facilitation service, why we collect it, how long we keep it, and the rights you have over it. The <strong>data controller</strong> is UKVisaCo, company registration number <strong>[to complete]</strong>, registered at <strong>[to complete]</strong>. For any privacy question, email <a href="mailto:privacy@ukvisaco.example">privacy@ukvisaco.example</a> <strong>[to complete]</strong>.</p>
+        <p>This policy explains what personal data Beyond Passports collects when you use our visa, eVisa, ETA and IDP-guidance facilitation service, why we collect it, how long we keep it, and the rights you have over it. The <strong>data controller</strong> is Beyond Passports, company registration number <strong>[to complete]</strong>, registered at <strong>[to complete]</strong>. For any privacy question, email <a href="mailto:privacy@ukvisaco.example">privacy@ukvisaco.example</a> <strong>[to complete]</strong>.</p>
 
         <h3>What data we collect</h3>
         <ul class="plain">
@@ -150,10 +150,10 @@
         <h2 id="terms-h">Terms of Service</h2>
         <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
 
-        <p>These terms govern your use of UKVisaCo's service. UKVisaCo is operated by <strong>[to complete]</strong> (company registration number <strong>[to complete]</strong>), and you can reach us at <strong>[to complete]</strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
+        <p>These terms govern your use of Beyond Passports's service. Beyond Passports is operated by <strong>[to complete]</strong> (company registration number <strong>[to complete]</strong>), and you can reach us at <strong>[to complete]</strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
 
         <h3>Nature of our service</h3>
-        <p>UKVisaCo provides <strong>independent facilitation and guided self-service</strong>: we help you complete, check and submit applications for visas, eVisas and travel authorisations. <strong>We are not a government body, are not affiliated with gov.uk or any embassy, and we do not provide legal or immigration advice.</strong> If you need regulated immigration advice, please consult a qualified adviser.</p>
+        <p>Beyond Passports provides <strong>independent facilitation and guided self-service</strong>: we help you complete, check and submit applications for visas, eVisas and travel authorisations. <strong>We are not a government body, are not affiliated with gov.uk or any embassy, and we do not provide legal or immigration advice.</strong> If you need regulated immigration advice, please consult a qualified adviser.</p>
 
         <h3>Our service fee vs government fees</h3>
         <p>The price you pay us is a <strong>service fee for our assistance</strong>. It is <strong>separate from, and additional to, any government or official application fee</strong>, which is set and collected by the relevant authority. Where a government fee applies, we will make the amount clear before you pay.</p>
@@ -210,7 +210,7 @@
         <h2 id="disclaimer-h">Disclaimer</h2>
         <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
 
-        <p><strong>UKVisaCo is an independent service. We are not affiliated with, endorsed by, or connected to gov.uk, the UK government, any embassy, consulate or official authority.</strong> Official applications can be made directly with the relevant authority, usually for the government fee alone.</p>
+        <p><strong>Beyond Passports is an independent service. We are not affiliated with, endorsed by, or connected to gov.uk, the UK government, any embassy, consulate or official authority.</strong> Official applications can be made directly with the relevant authority, usually for the government fee alone.</p>
 
         <p>The information on this website is provided as <strong>general guidance only</strong> and does not constitute legal or immigration advice. Visa and travel-authorisation requirements <strong>depend on your nationality, country of residence and individual circumstances</strong>, and they change frequently.</p>
 

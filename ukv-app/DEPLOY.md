@@ -1,4 +1,4 @@
-# UKVisaCo — Deploy & Launch Runbook (Laravel app)
+# Beyond Passports — Deploy & Launch Runbook (Laravel app)
 
 The app is **code-complete and tested** (62 passing). What remains to go live is **operational** —
 keys, a host, and data verification. Work top to bottom; each step is a real launch blocker.
@@ -11,7 +11,7 @@ Laravel 12 needs **PHP 8.2+ + MySQL/MariaDB**. Options:
 Static front (`/public`) is served by the same app — no separate Netlify needed (Laravel is canonical).
 
 ## 1. Environment (`.env` in production) — see `.env.production.example`
-- `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://yourdomain`, `APP_NAME=UKVisaCo`
+- `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://yourdomain`, `APP_NAME=Beyond Passports`
 - `php artisan key:generate` (fresh `APP_KEY` — never reuse the local one)
 - `UKV_BASE_URL=https://yourdomain`, `UKV_FRONTEND_ORIGIN=https://yourdomain` (NOT `*`)
 - DB creds; `QUEUE_CONNECTION=database` (with a worker) or `redis`

@@ -29,8 +29,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Track your application — UK visa &amp; eVisa status | UKVisaCo</title>
-<meta name="description" content="Track your UKVisaCo application with your order reference. See each stage from received to delivered. Independent service — not a government website.">
+<title>Track your application — UK visa &amp; eVisa status | Beyond Passports</title>
+<meta name="description" content="Track your Beyond Passports application with your order reference. See each stage from received to delivered. Independent service — not a government website.">
 <meta name="robots" content="noindex,nofollow">
 <style>
   /* Self-contained styles. Palette/type lifted from the coded design (assets/ukv.css);
@@ -128,7 +128,7 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
 <header class="site-head"><div class="wrap">
-  <a href="/" class="brand">UKVisa<b>Co</b></a>
+  <a href="/" class="brand">Beyond <b>Passports</b></a>
   <nav class="nav" aria-label="Primary"><a href="/#how">How it works</a><a href="/track" aria-current="page">Track</a></nav>
 </div></header>
 
@@ -260,7 +260,7 @@
 </main>
 
 <footer><div class="wrap">
-  <div class="brand">UKVisa<b>Co</b></div>
+  <div class="brand">Beyond <b>Passports</b></div>
   <p>Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
 </div></footer>
 

@@ -16,7 +16,7 @@
   Set sane defaults in the layout's @section if you prefer.
 --}}
 @php
-    $siteName    = config('app.name', 'UKVisaCo');
+    $siteName    = config('app.name', 'Beyond Passports');
     $metaTitle   = trim($title ?? '') !== '' ? $title : $siteName;
     $fullTitle   = \Illuminate\Support\Str::contains($metaTitle, $siteName)
                         ? $metaTitle

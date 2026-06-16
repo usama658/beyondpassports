@@ -1,6 +1,6 @@
-# UKVisaCo — Operator Training Manual (Laravel + Filament back-office)
+# Beyond Passports — Operator Training Manual (Laravel + Filament back-office)
 
-This is the operating manual for the **new** UKVisaCo back-office. The WordPress system is
+This is the operating manual for the **new** Beyond Passports back-office. The WordPress system is
 retired; everything below happens in the Filament admin at **`/admin`**. It is written to be
 followed step-by-step at the screen — every page, action, column and field named here is real.
 

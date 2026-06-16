@@ -27,7 +27,7 @@
 <html lang="en-GB">
 <head>
 @include('partials.seo-meta', [
-    'title'       => 'Your document checklist for '.$destName.' | UKVisaCo',
+    'title'       => 'Your document checklist for '.$destName.' | Beyond Passports',
     'description' => 'Your tailored document checklist. Keep it, share it, or have it sent to you. Independent service — not a government website.',
     'canonical'   => $shareUrl,
     'noindex'     => true,
@@ -83,7 +83,7 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
 <header class="site-head"><div class="wrap">
-  <a href="{{ url('/') }}" class="brand">UKVisa<b>Co</b></a>
+  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <nav class="nav" aria-label="Primary">
     <a href="{{ url('/destinations') }}">Destinations</a>
     <a href="{{ url('/tools') }}">Visa checker</a>
@@ -230,7 +230,7 @@
   {{-- COMPLIANCE STRIP --}}
   <section><div class="wrap">
     <p class="compliance">
-      <strong>UKVisaCo is an independent service and is not a government website.</strong>
+      <strong>Beyond Passports is an independent service and is not a government website.</strong>
       This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
       Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
     </p>
@@ -241,7 +241,7 @@
 <footer><div class="wrap">
   <div class="cols">
     <div>
-      <div class="brand" style="color:#fff">UKVisa<b>Co</b></div>
+      <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
       <p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
     </div>
     <div>

@@ -20,7 +20,7 @@
         : url('/guides/'.$guide->slug);
 
     // --- Meta + display copy -------------------------------------------------------------
-    $metaTitle = $guide->meta_title ?: ($guide->title.' | UKVisaCo');
+    $metaTitle = $guide->meta_title ?: ($guide->title.' | Beyond Passports');
     $metaDesc  = $guide->meta_description ?: $guide->excerpt;
     $eyebrow   = $isCountry ? $destination->name.' · '.$type->label() : 'Guide';
 
@@ -63,8 +63,8 @@
         'inLanguage' => 'en-GB',
         'datePublished' => $published?->toDateString(),
         'dateModified'  => $modified?->toDateString(),
-        'author'    => ['@type' => 'Organization', 'name' => 'UKVisaCo'],
-        'publisher' => ['@type' => 'Organization', 'name' => 'UKVisaCo', 'url' => url('/')],
+        'author'    => ['@type' => 'Organization', 'name' => 'Beyond Passports'],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Beyond Passports', 'url' => url('/')],
         'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $guideUrl],
     ];
     if ($guide->reviewed_by) {
@@ -207,7 +207,7 @@
   <p class="eyebrow">{{ $eyebrow }}</p>
   <h1>{{ $guide->title }}</h1>
   <p class="article-meta">
-    @if ($published){{ $published->toDateString() }} · @endif{{ $readTime }} · by UKVisaCo team
+    @if ($published){{ $published->toDateString() }} · @endif{{ $readTime }} · by Beyond Passports team
   </p>
   <p class="standfirst">{{ $guide->excerpt }}</p>
 </div></header>
@@ -253,7 +253,7 @@
 {{-- MANDATORY COMPLIANCE DISCLAIMER --}}
 <div class="wrap">
 <div class="disclaimer">
-  <p><strong>UKVisaCo is an independent service and is not a government website</strong> or affiliated with any government or official body.</p>
+  <p><strong>Beyond Passports is an independent service and is not a government website</strong> or affiliated with any government or official body.</p>
   <p>This guide is general information only — exact requirements depend on your nationality, residence and trip, so always confirm the current rules at the official source before you travel.</p>
   <p>Our service fee is <strong>separate from any government fee</strong>, which is shown clearly before you pay. We prepare and check your application for that fee.</p>
   <p><strong>No service can guarantee a government decision.</strong> The outcome of any application is decided solely by the relevant authorities.</p>

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Apply Yourself vs Use UKVisaCo — Honest Comparison | UKVisaCo')
-@section('description', 'An honest, balanced comparison of applying for your visa, eVisa, ETA or IDP yourself versus using UKVisaCo. Real trade-offs on cost, time, error-checking and support. Not a government website.')
+@section('title', 'Apply Yourself vs Use Beyond Passports — Honest Comparison | Beyond Passports')
+@section('description', 'An honest, balanced comparison of applying for your visa, eVisa, ETA or IDP yourself versus using Beyond Passports. Real trade-offs on cost, time, error-checking and support. Not a government website.')
 @section('canonical', url('/compare'))
 
 @push('head')
@@ -59,7 +59,7 @@
 {{-- HERO --}}
 <section class="hero"><div class="wrap">
   <p class="eyebrow">Honest comparison</p>
-  <h1>Apply yourself vs use UKVisaCo</h1>
+  <h1>Apply yourself vs use Beyond Passports</h1>
   <p class="lede">Both are valid. Here's the real trade-off — no spin.</p>
 </div></section>
 <div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;DIY&lt;&lt;OR&lt;&lt;UKVISACO&lt;&lt;HONEST&lt;COMPARISON&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
@@ -67,14 +67,14 @@
 {{-- COMPARISON TABLE --}}
 <section id="compare"><div class="wrap cmp">
   <div class="sec-head reveal"><p class="eyebrow">Side by side</p><h2>The honest comparison</h2></div>
-  <div class="cmp-scroll reveal" tabindex="0" role="region" aria-label="Comparison of applying yourself versus using UKVisaCo">
+  <div class="cmp-scroll reveal" tabindex="0" role="region" aria-label="Comparison of applying yourself versus using Beyond Passports">
     <table class="cmp-table">
-      <caption>Doing it yourself vs using UKVisaCo — scroll sideways on small screens.</caption>
+      <caption>Doing it yourself vs using Beyond Passports — scroll sideways on small screens.</caption>
       <thead>
         <tr>
           <th scope="col">What matters</th>
           <th scope="col">Do it yourself</th>
-          <th scope="col">UKVisaCo</th>
+          <th scope="col">Beyond Passports</th>
         </tr>
       </thead>
       <tbody>
@@ -131,7 +131,7 @@
     </div>
     <div class="card us reveal">
       <p class="kicker">When we're worth it</p>
-      <h3>Use UKVisaCo if…</h3>
+      <h3>Use Beyond Passports if…</h3>
       <ul>
         <li>You're short on time and would rather not navigate the forms.</li>
         <li>It's your first application, or the rules feel confusing.</li>
@@ -146,7 +146,7 @@
 
 {{-- HOW USING US WORKS --}}
 <section id="how"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">If you choose us</p><h2>How using UKVisaCo works</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">If you choose us</p><h2>How using Beyond Passports works</h2></div>
   <div class="steps">
     <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>We check</h3><p>Tell us your trip and passport. We confirm what you need — and say plainly if you'd be better off applying yourself.</p></div>
     <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>A real person reviews and prepares your documents, catching errors before anything goes near a government portal.</p></div>
@@ -160,7 +160,7 @@
   <div class="faqs">
     <details class="faq reveal">
       <summary>Is this a government service?</summary>
-      <div class="a"><p>No. UKVisaCo is an independent, private service — not a government website and not affiliated with gov.uk, any embassy or any official authority. You can always apply directly with the relevant authority yourself; using us is entirely optional.</p></div>
+      <div class="a"><p>No. Beyond Passports is an independent, private service — not a government website and not affiliated with gov.uk, any embassy or any official authority. You can always apply directly with the relevant authority yourself; using us is entirely optional.</p></div>
     </details>
     <details class="faq reveal">
       <summary>Do I pay more by using you?</summary>
@@ -193,7 +193,7 @@
       "name": "Is this a government service?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. UKVisaCo is an independent, private service — not a government website and not affiliated with gov.uk, any embassy or any official authority. You can always apply directly with the relevant authority yourself; using us is entirely optional."
+        "text": "No. Beyond Passports is an independent, private service — not a government website and not affiliated with gov.uk, any embassy or any official authority. You can always apply directly with the relevant authority yourself; using us is entirely optional."
       }
     },
     {

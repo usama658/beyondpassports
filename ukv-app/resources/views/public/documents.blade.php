@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Upload your documents — secure post-payment upload | UKVisaCo')
+@section('title', 'Upload your documents — secure post-payment upload | Beyond Passports')
 @section('description', 'Already paid? Upload the documents we asked for using your order reference and email. Secure file upload — PDF, JPG or PNG. Independent service, not a government website.')
 
 {{-- Status lookup-style action page: do not index. --}}

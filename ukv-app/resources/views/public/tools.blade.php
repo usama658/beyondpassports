@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Free checkers — Do I need a visa or an IDP? | UKVisaCo')
-@section('description', 'Free UK travel checkers from UKVisaCo. Find out whether you need a visa, eVisa or ETA, and whether you need an International Driving Permit (IDP) for your trip. Independent service — not a government website.')
+@section('title', 'Free checkers — Do I need a visa or an IDP? | Beyond Passports')
+@section('description', 'Free UK travel checkers from Beyond Passports. Find out whether you need a visa, eVisa or ETA, and whether you need an International Driving Permit (IDP) for your trip. Independent service — not a government website.')
 
 @push('head')
 <style>
@@ -139,7 +139,7 @@
 {{-- HONEST NOTE --}}
 <section><div class="wrap">
   <div class="honest reveal">
-    <p><strong>These checkers give general guidance for UK citizens.</strong> Your exact requirements depend on your nationality, residence and trip — we confirm them before you pay. UKVisaCo is an independent service and is not a government website. No approval is guaranteed.</p>
+    <p><strong>These checkers give general guidance for UK citizens.</strong> Your exact requirements depend on your nationality, residence and trip — we confirm them before you pay. Beyond Passports is an independent service and is not a government website. No approval is guaranteed.</p>
   </div>
 </div></section>
 

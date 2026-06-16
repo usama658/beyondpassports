@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\View as ViewFacade;
  * deliberately generic ("UK traveller · Egypt eVisa"). Do not add real names,
  * faces, order numbers tied to a person, or anything re-identifying.
  *
- * Compliance: UKVisaCo is an independent commercial service, not a government
+ * Compliance: Beyond Passports is an independent commercial service, not a government
  * website. Nothing here implies a guaranteed visa outcome.
  *
  * Schema note: we do NOT emit Review / AggregateRating JSON-LD because these are

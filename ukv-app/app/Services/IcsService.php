@@ -30,7 +30,7 @@ use Illuminate\Support\Str;
  */
 final class IcsService
 {
-    private const PRODID = '-//UKVisaCo//Document Checklist//EN';
+    private const PRODID = '-//Beyond Passports//Document Checklist//EN';
 
     /** Conservative fallbacks (days) when config is unset. */
     private const FALLBACK_PROCESSING_DAYS = 21;

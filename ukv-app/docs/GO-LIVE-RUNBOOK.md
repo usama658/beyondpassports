@@ -1,4 +1,4 @@
-# UKVisaCo — Go-Live Runbook (owner edition)
+# Beyond Passports — Go-Live Runbook (owner edition)
 
 A step-by-step walkthrough to take the Laravel app live, written so someone with **no prior
 Laravel knowledge** can follow it. Work through the phases **in order** — each one ends with a
@@ -148,7 +148,7 @@ left blank — blank simply turns that feature off (the app degrades gracefully)
 ### Core app
 | Var | Set to | Notes |
 |---|---|---|
-| `APP_NAME` | `UKVisaCo` | |
+| `APP_NAME` | `Beyond Passports` | |
 | `APP_ENV` | `production` | must be `production` |
 | `APP_KEY` | *(auto)* | set by `key:generate` — leave it |
 | `APP_DEBUG` | `false` | **never** `true` in production (leaks secrets) |

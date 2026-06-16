@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'UK Visas, eVisas & ETAs — Sorted Without the Stress | UKVisaCo')
+@section('title', 'UK Visas, eVisas & ETAs — Sorted Without the Stress | Beyond Passports')
 @section('description', 'Independent UK visa & eVisa service. We check, prepare and submit your application for a growing list of destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.')
 
 @push('head')
@@ -19,7 +19,7 @@
 {
   "@@context": "https://schema.org",
   "@@type": "Organization",
-  "name": "UKVisaCo",
+  "name": "Beyond Passports",
   "url": "{{ url('/') }}",
   "description": "Independent UK visa & eVisa facilitation service. Not a government website.",
   "areaServed": "GB"
@@ -93,7 +93,7 @@
 <section class="alt"><div class="wrap quote reveal">
   <p class="eyebrow">Trusted by UK travellers</p>
   <blockquote>“They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.”</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="UKVisaCo traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt · UKV&lt;2026&lt;004821&lt;&lt;&lt;</div>
+  <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt · UKV&lt;2026&lt;004821&lt;&lt;&lt;</div>
 </div></section>
 
 {{-- APPOINTMENTS / NEAREST CENTRE --}}

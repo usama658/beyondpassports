@@ -1,7 +1,7 @@
 {{--
-    Travel-insurance INTRODUCER (FCA-safe signpost — NOT a product UKVisaCo sells/arranges).
+    Travel-insurance INTRODUCER (FCA-safe signpost — NOT a product Beyond Passports sells/arranges).
 
-    UKVisaCo is not an insurer and takes no charge here. This is an optional introduction to an
+    Beyond Passports is not an insurer and takes no charge here. This is an optional introduction to an
     FCA-authorised travel-insurance partner. If no partner is configured, we show a neutral
     "ask us" note instead of a dead link — never invent a provider or imply we arrange cover.
 
@@ -52,7 +52,7 @@
 
     {{-- FCA-required disclosure — keep verbatim; do not soften. --}}
     <p style="font-size:12.5px;color:#5d6f79;margin:14px 0 0;line-height:1.6">
-        UKVisaCo is not an insurer and does not provide insurance advice. This is an introduction
+        Beyond Passports is not an insurer and does not provide insurance advice. This is an introduction
         to {{ $partnerLabel }}, an FCA-authorised provider; we may receive a referral fee. Cover
         and eligibility are arranged solely between you and {{ $partnerLabel }}.
     </p>

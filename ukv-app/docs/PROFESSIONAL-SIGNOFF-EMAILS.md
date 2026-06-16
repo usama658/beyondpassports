@@ -4,7 +4,7 @@
 > Each carries criminal, tax, or regulatory liability that cannot be undone after the fact. Book
 > these reviews before taking the first paying customer.
 
-**About UKVisaCo (paste into any email if the recipient asks):** UKVisaCo is an independent,
+**About Beyond Passports (paste into any email if the recipient asks):** Beyond Passports is an independent,
 UK-based **outbound** travel-document **facilitation** service for British/UK travellers going
 abroad — foreign tourist visas, eVisas, ETAs, and IDP (International Driving Permit) guidance. We are
 **not** a government body and **not** UK immigration advisers. We charge a **service fee** that is
@@ -21,12 +21,12 @@ Fill in `[bracketed]` fields before sending.
 ## Email 1 — Data-protection solicitor / DPO (#124 — GDPR cross-border transfers)
 
 **To:** [solicitor / DPO name] — Data-protection solicitor / outsourced DPO
-**From:** [your name], UKVisaCo
+**From:** [your name], Beyond Passports
 **Subject:** Sign-off needed: UK GDPR cross-border transfers (passport data to US processors) before launch
 
 Dear [name],
 
-I run UKVisaCo, an independent UK outbound travel-document facilitation service (not a government
+I run Beyond Passports, an independent UK outbound travel-document facilitation service (not a government
 body, not UK immigration advice). Before we launch I need a professional sign-off on our
 international data-transfer position. Customers give us passport scans, dates of birth, nationality,
 and travel plans; some of that data is processed by US-based providers (Stripe for payments, HubSpot
@@ -59,7 +59,7 @@ and fee.
 
 Kind regards,
 [your name]
-UKVisaCo — [phone] / [email]
+Beyond Passports — [phone] / [email]
 
 **What to attach:** our **privacy-policy draft** and our **sub-processor list** (processor, role,
 data categories, DPA location, intended transfer mechanism for Stripe, HubSpot, Anthropic, hosting,
@@ -70,19 +70,19 @@ email).
 ## Email 2 — Accountant / VAT adviser (#125 — VAT treatment of the service fee)
 
 **To:** [accountant name] — Accountant / VAT adviser
-**From:** [your name], UKVisaCo
+**From:** [your name], Beyond Passports
 **Subject:** Sign-off needed: VAT treatment of our service fee + government-fee disbursement before launch
 
 Dear [name],
 
-I'm launching UKVisaCo, an independent UK outbound visa/eVisa/ETA/IDP facilitation service. We charge
+I'm launching Beyond Passports, an independent UK outbound visa/eVisa/ETA/IDP facilitation service. We charge
 a **service fee** and separately pass through the actual **government/visa fee** we pay on the
 customer's behalf, at exact cost. I need your sign-off on the VAT treatment before we take the first
 payment.
 
 Could you confirm or correct the following:
 
-1. **Service fee VAT status.** Is the UKVisaCo service fee a **standard-rated (20%)** supply of
+1. **Service fee VAT status.** Is the Beyond Passports service fee a **standard-rated (20%)** supply of
    facilitation/administration services, or could any of it be exempt or outside scope? (We expect
    standard-rated and want to price on that basis even while below the threshold.)
 2. **Place of supply.** For a **UK consumer** customer, is the place of supply the UK, and does that
@@ -96,14 +96,14 @@ Could you confirm or correct the following:
    run-rate should we start the registration process? Should we register voluntarily at launch, or
    stay unregistered until we approach the threshold (mostly consumer customers who can't reclaim)?
 5. **Invoicing / receipt wording.** What exact wording should the two invoice lines use — e.g.
-   "UKVisaCo service fee" vs "Government/visa fee (paid on your behalf — disbursement, at cost)" — to
+   "Beyond Passports service fee" vs "Government/visa fee (paid on your behalf — disbursement, at cost)" — to
    keep the disbursement treatment clean?
 
 A one-hour review would be ideal. Please let me know your availability and fee.
 
 Kind regards,
 [your name]
-UKVisaCo — [phone] / [email]
+Beyond Passports — [phone] / [email]
 
 **What to attach:** our **pricing model** (showing the service fee vs government fee split) and a
 **sample order/invoice** with the two separated lines and the supplier receipt for the exact
@@ -114,12 +114,12 @@ government fee paid.
 ## Email 3 — Immigration-law / OISC (IAA) specialist (#130 — regulatory scope)
 
 **To:** [solicitor name] — Immigration / regulatory solicitor (IAA/OISC scope)
-**From:** [your name], UKVisaCo
+**From:** [your name], Beyond Passports
 **Subject:** Sign-off needed: does outbound visa facilitation fall outside OISC/IAA regulation?
 
 Dear [name],
 
-I'm launching UKVisaCo, an independent UK service that helps British/UK travellers obtain
+I'm launching Beyond Passports, an independent UK service that helps British/UK travellers obtain
 **foreign** travel documents — other countries' tourist visas, eVisas, ETAs — and provides IDP
 (International Driving Permit) guidance. We help people **travel abroad**; we do **not** advise on UK
 leave to enter/remain, UK visas, asylum, or British nationality. I need your sign-off that we sit
@@ -146,9 +146,9 @@ carve-out. Please let me know your availability and fee.
 
 Kind regards,
 [your name]
-UKVisaCo — [phone] / [email]
+Beyond Passports — [phone] / [email]
 
-**What to attach:** our **site disclaimer** (e.g. "UKVisaCo provides outbound travel-document
+**What to attach:** our **site disclaimer** (e.g. "Beyond Passports provides outbound travel-document
 facilitation for travel to other countries. We are not immigration advisers and do not provide UK
 immigration advice. We are not a government body.") and our **service description** (what we do and
 explicitly do not do).

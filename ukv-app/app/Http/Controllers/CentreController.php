@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Surfaces the nearest in-person supply nodes (visa application centres, PayPoint IDP
  * issuers, embassies, couriers) to a visitor's location, and highlights nodes where
- * UKVisaCo books appointments (`we_book_here`).
+ * Beyond Passports books appointments (`we_book_here`).
  *
  * Privacy / honesty stance:
  *  - Location is a UK postcode (resolved server-side via PostcodeService -> postcodes.io)
@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
  *    stored — both endpoints are stateless GETs that render results inline.
  *  - Works with NO JavaScript: the postcode form is a plain GET to /find-a-centre/search.
  *    The "use my location" button is progressive enhancement only.
- *  - UKVisaCo is an independent service, not a government site — the view carries that
+ *  - Beyond Passports is an independent service, not a government site — the view carries that
  *    strip, and PayPoint-type results link the official PayPoint locator (we don't
  *    replicate their database).
  *

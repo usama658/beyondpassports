@@ -1,6 +1,6 @@
 # 09 — Compliance + Operations DECISION PACK (advisory draft)
 
-Scope: a practical pre-launch decision pack for **UKVisaCo** — an independent, UK-based, outbound
+Scope: a practical pre-launch decision pack for **Beyond Passports** — an independent, UK-based, outbound
 visa / eVisa / ETA + IDP-guidance **facilitation** business. NOT a government body, NOT regulated UK
 immigration advice. Charges a **service fee** that is separate from, and on top of, the actual
 government fees it pays on the customer's behalf. Small/solo operator at launch. US/third-party
@@ -90,7 +90,7 @@ international-transfers guidance on 15 Jan 2026**.
 
 **(a) The issue.** The UK VAT registration threshold from 1 Apr 2026 is **£90,000** of taxable
 turnover on a **rolling 12-month** basis (deregistration £88,000); standard rate is **20%**. Two
-questions: (i) when must UKVisaCo register, and (ii) is the *government fee* you collect part of your
+questions: (i) when must Beyond Passports register, and (ii) is the *government fee* you collect part of your
 taxable turnover or a non-VATable **disbursement**? This is the difference between your turnover being
 "service fees only" (slow to hit £90k) vs "service fees + every government fee passed through" (fast to
 hit £90k, and a 20% liability on money you never kept).
@@ -112,7 +112,7 @@ hit £90k, and a 20% liability on money you never kept).
   approach the threshold.
 
 **(c) Actions / checklist.**
-- [ ] Structure the invoice with two clearly separated lines: **"UKVisaCo service fee"** (your supply)
+- [ ] Structure the invoice with two clearly separated lines: **"Beyond Passports service fee"** (your supply)
       and **"Government/visa fee (paid on your behalf — disbursement)"** at exact cost.
 - [ ] Build a rolling-12-month turnover tracker on **service fees only** (assuming disbursement
       treatment holds); set an alert at ~£75k to start the registration process before £90k.
@@ -135,7 +135,7 @@ this unregulated is a **criminal offence**. Your business does the opposite dire
 **leave** the UK / travel to **other countries** (foreign tourist/eVisa/ETA, IDP guidance). That is
 **outbound travel facilitation, not UK immigration advice**, and falls **outside** the IAA's remit.
 
-**(b) Recommended position.** UKVisaCo is **not** providing UK regulated immigration advice and does
+**(b) Recommended position.** Beyond Passports is **not** providing UK regulated immigration advice and does
 **not** need IAA authorisation — **provided it stays strictly on the outbound side of the line**. The
 position is sound but fragile: it survives only if your copy, scripts, and AI outputs never drift into
 UK immigration.
@@ -153,7 +153,7 @@ UK immigration.
   regulated adviser or gov.uk**, not answer.
 
 **(d) Actions / checklist.**
-- [ ] Add a prominent disclaimer site-wide: *"UKVisaCo provides outbound travel-document facilitation
+- [ ] Add a prominent disclaimer site-wide: *"Beyond Passports provides outbound travel-document facilitation
       for travel to other countries. We are not immigration advisers and do not provide UK immigration
       advice. We are not a government body."*
 - [ ] Write a one-page **refusal script** for any UK-immigration question (decline + refer to IAA

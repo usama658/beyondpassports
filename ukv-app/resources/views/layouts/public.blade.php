@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@yield('title', 'UK visa & eVisa facilitation | UKVisaCo')</title>
+<title>@yield('title', 'UK visa & eVisa facilitation | Beyond Passports')</title>
 <meta name="description" content="@yield('description', 'Independent UK team that prepares and checks your visa or eVisa application. Clear fixed service fees, fast handling, every step tracked. Not a government website.')">
 @hasSection('canonical')
 <link rel="canonical" href="@yield('canonical')">
@@ -20,7 +20,7 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
 <header class="site-head"><div class="wrap">
-  <a href="{{ url('/') }}" class="brand">UKVisa<b>Co</b></a>
+  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <nav class="nav" aria-label="Primary">
     <a href="{{ url('/destinations') }}">Destinations</a>
     <a href="{{ url('/tools') }}">Visa checker</a>
@@ -44,7 +44,7 @@
 <footer><div class="wrap">
   <div class="cols">
     <div>
-      <div class="brand" style="color:#fff">UKVisa<b>Co</b></div>
+      <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
       <p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
     </div>
     <div>

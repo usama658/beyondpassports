@@ -2,7 +2,7 @@
     Held-slot availability surface (Wave 2 / B3) — PRESENTATIONAL.
 
     Shown per centre card inside partials.nearest-centre (A3). For a given supply node it
-    surfaces the next bookable, UKVisaCo-held appointment slots:
+    surfaces the next bookable, Beyond Passports-held appointment slots:
         "✓ Appointments available — next: {date}"  (+ "+N more" when there's a queue)
 
     MUST render nothing (no empty box) when there are no slots, so it is harmless in the

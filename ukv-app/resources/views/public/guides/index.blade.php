@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Visa guides for UK travellers — plain-English help | UKVisaCo')
+@section('title', 'Visa guides for UK travellers — plain-English help | Beyond Passports')
 @section('description', 'Plain-English visa guides for UK travellers — eVisas, ETAs, passport-validity rules, documents and processing times. Independent service, not a government website. General info only; requirements depend on your nationality and residence.')
 
 @section('canonical', url('/guides'))
@@ -54,7 +54,7 @@
     <p class="sub" style="margin:20px 0">New guides are on the way — in the meantime, our free checker can tell you exactly what your trip needs.</p>
   @endif
 
-  <p class="compliance">UKVisaCo is an independent service and is not a government website. Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
+  <p class="compliance">Beyond Passports is an independent service and is not a government website. Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
 </div></section>
 
 {{-- CTA --}}

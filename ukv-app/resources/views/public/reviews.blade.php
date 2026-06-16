@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Traveller Reviews — What UK Travellers Say | UKVisaCo')
+@section('title', 'Traveller Reviews — What UK Travellers Say | Beyond Passports')
 @section('description', 'Anonymised, consented reviews from UK travellers we have helped with eVisas, ETAs and IDPs. Independent UK service — not a government website. No approval guarantees.')
 @section('canonical', url('/reviews'))
 
@@ -44,7 +44,7 @@
 <section id="transparency"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">About these reviews</p><h2>Honest, anonymised, consented</h2></div>
   <div class="callout reveal">
-    <p>Every review on this page is shared with the traveller’s permission and anonymised — we never publish full names or identifying details. UKVisaCo is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
+    <p>Every review on this page is shared with the traveller’s permission and anonymised — we never publish full names or identifying details. Beyond Passports is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
   </div>
 </div></section>
 

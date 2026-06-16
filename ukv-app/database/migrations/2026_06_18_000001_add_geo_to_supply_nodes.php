@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::table('supply_nodes', function (Blueprint $table) {
             // Geo foundation for the nearest-centre finder (Wave 1, A1). Populated from
             // postcodes.io geocoding (lat/lng) + ops-entered address/postcode. `we_book_here`
-            // flags centres where UKVisaCo holds appointment slots (badge + tie-break boost).
+            // flags centres where Beyond Passports holds appointment slots (badge + tie-break boost).
             $table->string('address')->nullable()->after('name');          // free-text street address
             $table->string('postcode')->nullable()->after('address');      // UK postcode (geocode source)
             $table->decimal('lat', 9, 6)->nullable()->after('postcode');   // WGS84 latitude

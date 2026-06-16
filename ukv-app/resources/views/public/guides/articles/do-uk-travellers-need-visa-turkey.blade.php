@@ -22,4 +22,4 @@
   <h2>How to be sure</h2>
   <p>If you'd rather not work it out alone, <a href="{{ url('/tools') }}">run our free checker</a> for your trip, or browse our <a href="{{ url('/destinations') }}">destinations</a> to see the current category and what's usually required. When you're ready, our UK team can prepare and check your application before it's submitted — <a href="{{ url('/apply') }}">start your application here</a>.</p>
 
-  <p class="inline-note">UKVisaCo is an independent service and not a government website. This is general guidance only; requirements depend on your nationality and residence and can change, and no service can guarantee a government decision.</p>
+  <p class="inline-note">Beyond Passports is an independent service and not a government website. This is general guidance only; requirements depend on your nationality and residence and can change, and no service can guarantee a government decision.</p>

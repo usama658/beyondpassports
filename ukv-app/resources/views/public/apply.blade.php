@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Start your application — UK visas, eVisas & ETAs | UKVisaCo')
-@section('description', "Begin your UK visa or eVisa application with UKVisaCo. Tell us your trip and we'll check exactly what you need. Independent service — not a government website. Service fee separate from the government fee.")
+@section('title', 'Start your application — UK visas, eVisas & ETAs | Beyond Passports')
+@section('description', "Begin your UK visa or eVisa application with Beyond Passports. Tell us your trip and we'll check exactly what you need. Independent service — not a government website. Service fee separate from the government fee.")
 
 @push('head')
 <style>
@@ -262,12 +262,12 @@
 
           <div class="consent">
             <input type="checkbox" id="consent" name="consent" value="1" @checked(old('consent')) required aria-required="true">
-            <label for="consent">I agree to UKVisaCo contacting me about this application and accept that this is an independent service, not a government website. I understand the service fee is separate from any government fee.</label>
+            <label for="consent">I agree to Beyond Passports contacting me about this application and accept that this is an independent service, not a government website. I understand the service fee is separate from any government fee.</label>
           </div>
 
           <div class="consent">
             <input type="checkbox" id="begin_now" name="begin_now" value="1" @checked(old('begin_now')) required aria-required="true">
-            <label for="begin_now">I ask UKVisaCo to <strong>begin work on my application straight away</strong>. I understand I have a 14-day right to cancel, but that if I cancel after work has started I’ll pay for what’s already done, and that once the service is fully performed I lose the right to cancel. See our <a href="{{ route('legal') }}#terms">cancellation &amp; refunds</a> policy.</label>
+            <label for="begin_now">I ask Beyond Passports to <strong>begin work on my application straight away</strong>. I understand I have a 14-day right to cancel, but that if I cancel after work has started I’ll pay for what’s already done, and that once the service is fully performed I lose the right to cancel. See our <a href="{{ route('legal') }}#terms">cancellation &amp; refunds</a> policy.</label>
           </div>
 
           <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick both consent boxes.</div>
@@ -280,7 +280,7 @@
 
     {{-- COMPLIANCE STRIP --}}
     <p class="compliance reveal">
-      <strong>UKVisaCo is an independent service and is not a government website.</strong>
+      <strong>Beyond Passports is an independent service and is not a government website.</strong>
       Our service fee is separate from, and additional to, any government or scheme fee.
       Express speeds <strong>our</strong> handling — it does not speed up or change the government's decision, and we cannot guarantee approval.
       For non-standard cases, we confirm the exact requirements and give you a personalised quote after a quick human check.

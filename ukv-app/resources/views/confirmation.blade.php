@@ -24,7 +24,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Application received — {{ $order->order_ref }} | UKVisaCo</title>
+    <title>Application received — {{ $order->order_ref }} | Beyond Passports</title>
     <style>
         :root{
             --navy:#0f2747; --gold:#c8a24a; --ink:#1c2b33; --muted:#5d6f79;
@@ -129,7 +129,7 @@
             @include('partials.insurance-introducer')
 
             <p class="compliance">
-                UKVisaCo is an independent service and is not a government website. Our service
+                Beyond Passports is an independent service and is not a government website. Our service
                 fee is separate from, and additional to, any government or scheme fee. Express
                 speeds our handling — it does not speed up or change the government's decision,
                 and we cannot guarantee approval.

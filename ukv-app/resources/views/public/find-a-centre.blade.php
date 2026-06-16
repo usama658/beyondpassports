@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Find your nearest visa centre or PayPoint | UKVisaCo')
+@section('title', 'Find your nearest visa centre or PayPoint | Beyond Passports')
 @section('description', 'Find your nearest UK visa application centre, PayPoint (for IDPs), embassy or courier drop-off by postcode. We flag centres where we can book your appointment. Independent service — not a government website.')
 
 @php
@@ -142,7 +142,7 @@
 {{-- COMPLIANCE STRIP --}}
 <section><div class="wrap">
   <div class="fc-compliance reveal">
-    <p><strong>UKVisaCo is an independent service and is not a government website.</strong> Distances are straight-line estimates to help you find your nearest option — always confirm opening hours and booking with the centre before you travel. International Driving Permits (IDPs) are issued in person at PayPoint; for the full list of PayPoint locations, use the <a href="https://www.paypoint.com/en-gb/consumers/store-locator" target="_blank" rel="noopener noreferrer">official PayPoint store locator</a>. Most UK travel documents (eVisa / ETA) need no in-person visit at all.</p>
+    <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Distances are straight-line estimates to help you find your nearest option — always confirm opening hours and booking with the centre before you travel. International Driving Permits (IDPs) are issued in person at PayPoint; for the full list of PayPoint locations, use the <a href="https://www.paypoint.com/en-gb/consumers/store-locator" target="_blank" rel="noopener noreferrer">official PayPoint store locator</a>. Most UK travel documents (eVisa / ETA) need no in-person visit at all.</p>
   </div>
 </div></section>
 
