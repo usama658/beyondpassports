@@ -12,6 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Trust reverse proxies (Cloudflare tunnel/CDN, Forge/LB, Laravel Cloud) so the app honours
+        // X-Forwarded-Proto/Host and generates correct https://<public-host> asset/route URLs
+        // instead of the internal http://127.0.0.1. Required behind any proxy in production too.
+        $middleware->trustProxies(at: '*');
         // Stripe posts its webhook without a CSRF token.
         $middleware->validateCsrfTokens(except: ['stripe/webhook']);
         // Security headers (CSP/HSTS/etc.) on web responses; admin gets a Filament-safe CSP.
