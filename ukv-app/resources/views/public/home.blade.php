@@ -27,19 +27,51 @@
 </script>
 @endpush
 
+@push('head')
+<style>
+  /* Home hero upgrade — navy "departure" band that makes the white boarding-pass checker + gold
+     accents pop. Page-scoped (hp- prefix) so it can't affect other pages. Amplifies the existing
+     passport/boarding-pass identity rather than adding off-brand stock imagery. */
+  .hp-hero{position:relative;background:linear-gradient(180deg,#0A2540 0%,#0c2e52 100%);color:#fff;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+  .hp-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 420px at 78% -12%,rgba(200,162,74,.18),transparent 62%);pointer-events:none}
+  .hp-hero > .wrap{position:relative;z-index:2;padding:64px 0 76px}
+  .hp-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+  .hp-hero .eyebrow{color:var(--gold)}
+  .hp-hero h1{color:#fff;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
+  .hp-hero .lede{color:#cfdbe6;font-size:19px;line-height:1.55;max-width:50ch;margin:0 0 6px}
+  .hp-trust{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:7px 14px;font-size:13.5px;color:#e7eef4}
+  .hp-trust span b{color:var(--gold);font-weight:700}
+  .hp-hero .micro{color:#9fb2bd;font-family:var(--mono);font-size:12px;letter-spacing:.04em;margin:20px 0 0}
+  /* the shared .checker card already has a white surface + shadow — it lifts beautifully on navy */
+  .hp-hero .checker{box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
+  .hp-skybacker{position:absolute;left:0;right:0;bottom:0;z-index:1;opacity:.10;pointer-events:none}
+  .hp-skybacker svg{width:100%;height:120px;display:block}
+  @media (max-width:820px){
+    .hp-grid{grid-template-columns:1fr;gap:30px}
+    .hp-hero > .wrap{padding:44px 0 54px}
+  }
+</style>
+@endpush
+
 @section('content')
 
-{{-- HERO --}}
-<section class="hero"><div class="wrap">
-  <div class="hero-grid">
+{{-- HERO — navy departure band (signature checker card on top) --}}
+<section class="hp-hero"><div class="wrap">
+  <div class="hp-grid">
     <div>
       <p class="eyebrow">Independent UK visa &amp; eVisa service</p>
       <h1>UK visas, eVisas &amp; ETAs — sorted, without the stress.</h1>
-      <p class="lede">We check, prepare and submit your application for {{ ($navDestinations->count() ?? 0) >= 3 ? $navDestinations->count().' destinations' : 'popular destinations' }}, so you travel with confidence. UK-based team, clear fixed fees, every step tracked.</p>
+      <p class="lede">We check, prepare and submit your application for {{ ($navDestinations->count() ?? 0) >= 3 ? $navDestinations->count().' destinations' : 'popular destinations' }}, so you travel with confidence.</p>
+      <div class="hp-trust">
+        <span><b>✓</b> UK-based team</span>
+        <span><b>✓</b> Clear fixed fees</span>
+        <span><b>✓</b> Every step tracked</span>
+      </div>
       <p class="micro">We catch the errors. We handle the paperwork. You get the visa.</p>
     </div>
     <div class="checker" id="checker">
-      <div class="stub"><span>VISA CHECK</span><span>UKV&lt;START&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>VISA CHECK</span><span>BP&lt;START&lt;&lt;&lt;</span></div>
       <div class="cbody">
         <label for="dest">Where are you going?</label>
         <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
@@ -50,8 +82,8 @@
       </div>
     </div>
   </div>
-  {{-- skyline backdrop band below the hero --}}
-  <div class="hero-sky" aria-hidden="true">
+  {{-- skyline silhouette anchored to the foot of the navy band --}}
+  <div class="hp-skybacker" aria-hidden="true">
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
