@@ -106,6 +106,34 @@
     </div>
   </div></section>
 
+  {{-- STICKY QUICK-ACTION BAR — keeps save/email/share/apply reachable without deep scroll.
+       Config-gated (ukv.checklist.sticky_action_bar): off => original scroll-only layout. The full
+       sections below are untouched; this bar just mirrors them as always-visible triggers. --}}
+  @if (config('ukv.checklist.sticky_action_bar', true))
+  <style>
+    .cr-actionbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--paper-edge,#e6ddcf);box-shadow:0 2px 10px rgba(15,39,71,.06)}
+    .cr-actionbar .wrap{display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 0;flex-wrap:wrap}
+    .cr-actionbar .ab-label{margin-right:auto;font-family:var(--mono,'Space Mono',monospace);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b7a83}
+    .cr-actionbar a{font-size:14px;padding:9px 14px;border-radius:8px;text-decoration:none;white-space:nowrap}
+    .cr-actionbar .ab-ghost{border:1px solid var(--paper-edge,#d9cfbe);color:#0f2747;background:#fff}
+    .cr-actionbar .ab-primary{background:#0f2747;color:#fff;font-weight:600}
+    @media (max-width:640px){
+      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6ddcf);border-bottom:0;box-shadow:0 -2px 12px rgba(15,39,71,.10)}
+      .cr-actionbar .wrap{justify-content:space-between;padding:8px 12px;gap:6px}
+      .cr-actionbar .ab-label{display:none}
+      .cr-actionbar a{flex:1;text-align:center;padding:10px 4px;font-size:12px}
+      main#main{padding-bottom:66px}
+    }
+  </style>
+  <div class="cr-actionbar"><div class="wrap">
+    <span class="ab-label">Your checklist</span>
+    <a class="ab-ghost" href="{{ url('/checklist/'.$request->token.'/print') }}" target="_blank" rel="noopener">⤓ Save / PDF</a>
+    <a class="ab-ghost" href="#send">✉ Email me</a>
+    <a class="ab-ghost" href="#share">↗ Share</a>
+    <a class="ab-primary" href="{{ $applyUrl }}">Start application →</a>
+  </div></div>
+  @endif
+
   {{-- THE CHECKLIST (snapshotted items) --}}
   <section><div class="wrap">
     <div class="cr-panel">
@@ -174,7 +202,7 @@
 
   {{-- SHARE LINK --}}
   <section><div class="wrap">
-    <div class="share">
+    <div class="share" id="share">
       <p class="k">Your saved link</p>
       <div class="url-row">
         <input type="text" value="{{ $shareUrl }}" readonly aria-label="Saved checklist link" onfocus="this.select()">

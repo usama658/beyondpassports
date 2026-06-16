@@ -27,5 +27,8 @@ return [
     'checklist' => [
         'default_processing_days' => (int) env('UKV_CHECKLIST_PROCESSING_DAYS', 21),
         'deadline_buffer_days' => (int) env('UKV_CHECKLIST_BUFFER_DAYS', 7),
+        // Sticky quick-action bar on the result page (save/email/share/apply always reachable).
+        // Set UKV_CHECKLIST_STICKY_BAR=false to revert to the original scroll-only layout.
+        'sticky_action_bar' => (bool) env('UKV_CHECKLIST_STICKY_BAR', true),
     ],
 ];
