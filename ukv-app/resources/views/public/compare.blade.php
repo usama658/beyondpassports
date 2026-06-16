@@ -25,7 +25,7 @@
   table.cmp-table caption{text-align:left;font-family:var(--mono);font-size:13px;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--cmp-edge)}
   table.cmp-table th,table.cmp-table td{padding:18px 20px;text-align:left;vertical-align:top;line-height:1.55;border-bottom:1px solid var(--cmp-edge)}
   table.cmp-table thead th{background:var(--cmp-head);color:#fff;font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
-  table.cmp-table thead th:first-child{background:#08203a}
+  table.cmp-table thead th:first-child{background:#171b1d}
   table.cmp-table tbody th[scope=row]{font-family:var(--display);font-weight:600;color:var(--navy);font-size:16px;width:22%;background:var(--cmp-zebra)}
   table.cmp-table td:nth-child(2){color:var(--cmp-diy)}
   table.cmp-table td:nth-child(3){color:var(--cmp-us);background:#f4f9f9}
@@ -62,7 +62,6 @@
   <h1>Apply yourself vs use Beyond Passports</h1>
   <p class="lede">Both are valid. Here's the real trade-off — no spin.</p>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;DIY&lt;&lt;OR&lt;&lt;UKVISACO&lt;&lt;HONEST&lt;COMPARISON&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- COMPARISON TABLE --}}
 <section id="compare"><div class="wrap cmp">
@@ -177,7 +176,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Decide what suits you — or ask us, we'll be honest</h2>
-  <p style="max-width:50ch;color:#cdd9e1">Happy to do it yourself? Brilliant — go for it. Want a person to check it and save you the hassle? Start your application, or message us first and we'll tell you straight whether you need us.</p>
+  <p style="max-width:50ch;color:#eef0f1">Happy to do it yourself? Brilliant — go for it. Want a person to check it and save you the hassle? Start your application, or message us first and we'll tell you straight whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Ask us first on WhatsApp</a></div>
 </div></section>
 

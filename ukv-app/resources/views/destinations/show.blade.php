@@ -104,10 +104,10 @@
 {{-- Page-scoped styles lifted verbatim from the coded reference (frontend/destination.html).
      Reuses the shared CSS vars/components from ukv.css; no palette redefinition. --}}
 <style>
-  .dhero{background:var(--navy);color:#eaf0f4;padding:64px 0 0;position:relative;overflow:hidden}
+  .dhero{background:var(--navy);color:#eef0f1;padding:64px 0 0;position:relative;overflow:hidden}
   .dhero h1{color:#fff;font-size:clamp(34px,4.8vw,54px);letter-spacing:-.015em;max-width:18ch}
-  .dhero p.lede{font-size:19px;max-width:46ch;color:#cdd9e1}
-  .dhero .eyebrow{color:var(--gold)}
+  .dhero p.lede{font-size:19px;max-width:46ch;color:#d3d7da}
+  .dhero .eyebrow{color:#F2C2AC}
   .dhero .btn{margin-top:8px}
   .dhero .skyband{margin-top:36px}
   .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -162,7 +162,6 @@
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" style="width:100%;height:120px;opacity:.55" aria-hidden="true"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;TRAVELLER&lt;&lt;{{ Str::upper(Str::slug($name, '<')) }}&lt;{{ Str::upper(Str::slug($visaType, '<')) }}&lt;READY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- 2. AT A GLANCE --}}
 <section><div class="wrap">
@@ -318,7 +317,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Ready for {{ $name }}? Let's get it sorted.</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Start your {{ $visaLabel }} now, or message our UK team with any question first.</p>
+  <p style="max-width:48ch;color:#eef0f1">Start your {{ $visaLabel }} now, or message our UK team with any question first.</p>
   <div class="row"><a href="#pricing" class="btn">Start my {{ $name }} application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 

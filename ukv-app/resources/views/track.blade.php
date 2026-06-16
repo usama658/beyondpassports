@@ -18,11 +18,8 @@
     // and on a not-found result. Document-type guidance only — no PII.
     $docItems    = $docItems    ?? [];
 
-    /** Render a reference in MRZ flavour: UKV-2026-004821 -> UKV<2026<004821<<< */
-    $mrz = function (string $ref): string {
-        $core = strtoupper(str_replace('-', '<', trim($ref)));
-        return $core . '<<<';
-    };
+    /** Display the order reference plainly (MRZ flavour removed in the re-skin). */
+    $mrz = fn (string $ref): string => strtoupper(trim($ref));
 @endphp
 <!doctype html>
 <html lang="en-GB">
@@ -32,17 +29,23 @@
 <title>Track your application — UK visa &amp; eVisa status | Beyond Passports</title>
 <meta name="description" content="Track your Beyond Passports application with your order reference. See each stage from received to delivered. Independent service — not a government website.">
 <meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* Self-contained styles. Palette/type lifted from the coded design (assets/ukv.css);
-     swap this <style> for <link rel="stylesheet" href="..."> once the shared CSS ships. */
+  /* Self-contained styles — warm-light "Sunset Coast" palette, matching assets/ukv.css.
+     Terracotta CTA, sage accent, cool-grey background, Plus Jakarta Sans throughout. */
   :root{
-    --ink:#14202E; --navy:#0A2540; --paper:#EEF2F4; --gold:#C8A24A; --stamp:#0E6E6E;
-    --cta:#1456B8; --paper-edge:#dfe6ea; --white:#fff; --muted:#5a6b75;
-    --shadow:0 18px 40px -24px rgba(10,37,64,.35);
-    --mono:'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#5C9A7B;
+    --stamp-text:#3f7259;
+    --cta:#C75D38; --paper-edge:#e6e8ea; --white:#fff; --muted:#697079; --hint:#697079;
+    --shadow:0 18px 44px -26px rgba(40,50,70,.30);
+    --display:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --mono:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
   a{color:var(--cta)}
   .skip-link{position:absolute;left:-9999px;top:0}
@@ -51,20 +54,20 @@
   .topbar a{color:#fff}
   .site-head{background:var(--white);border-bottom:1px solid var(--paper-edge)}
   .site-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-  .brand{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;color:var(--navy);text-decoration:none}
-  .brand b{color:var(--gold)}
+  .brand{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);text-decoration:none}
+  .brand b{color:var(--cta)}
   .nav a{margin-left:18px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px}
   .btn{display:inline-block;background:var(--cta);color:#fff;text-decoration:none;border:0;border-radius:8px;padding:13px 22px;font-weight:600;font-size:15px;cursor:pointer;font-family:inherit}
   .btn--ghost{background:transparent;color:var(--navy);border:1px solid var(--paper-edge)}
 
   .track-hero{padding:56px 0 0}
   .track-grid{max-width:640px;margin:0 auto;text-align:center}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp);margin:0 0 6px}
-  .track-hero h1{font-family:Fraunces,Georgia,serif;font-size:clamp(34px,5vw,54px);color:var(--navy);letter-spacing:-.015em;margin:0 0 12px}
+  .eyebrow{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin:0 0 6px}
+  .track-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);color:var(--ink);letter-spacing:-.015em;margin:0 0 12px}
   .track-hero p.lede{font-size:18px;color:#33454f;max-width:48ch;margin:0 auto}
 
   .lookup{max-width:640px;margin:24px auto 0;text-align:left;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
-  .lookup .stub{display:flex;justify-content:space-between;background:var(--navy);color:var(--gold);font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:12px 22px}
+  .lookup .stub{display:flex;justify-content:space-between;background:var(--stamp);color:#fff;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.1em;padding:14px 22px}
   .lookup .cbody{padding:24px 22px}
   .lookup label{display:block;font-weight:600;font-size:14px;margin:0 0 8px}
   .lookup .ref-input{width:100%;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:16px;padding:13px 14px;border:1px solid var(--paper-edge);border-radius:8px}
@@ -74,9 +77,9 @@
   .lookup button{margin-top:16px}
 
   .status{max-width:760px;margin:32px auto 0}
-  .status-mrz{background:var(--navy);border-radius:10px 10px 0 0;padding:20px 22px}
-  .status-mrz .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
-  .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:clamp(18px,3.4vw,26px);color:#fff;letter-spacing:.14em;margin:0;word-break:break-all}
+  .status-mrz{background:var(--stamp);border-radius:12px 12px 0 0;padding:20px 22px}
+  .status-mrz .lab{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin:0 0 6px}
+  .status-mrz .ref{font-family:var(--display);font-weight:800;font-size:clamp(18px,3.4vw,26px);color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
   .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 12px 12px;box-shadow:var(--shadow);padding:26px 22px}
 
   .timeline{list-style:none;margin:4px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
@@ -86,7 +89,7 @@
   .stage.is-done::before,.stage.is-current::before{background:var(--stamp)}
   .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:var(--hint);font-family:var(--mono);font-weight:700;font-size:16px}
   .stage.is-done .dot{background:#eaf3f2;border-color:var(--stamp);color:var(--stamp)}
-  .stage.is-current .dot{background:var(--navy);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(200,162,74,.25)}
+  .stage.is-current .dot{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.22)}
   .stage.is-outcome .dot{background:#fdeceb;border-color:#c0392b;color:#8a2a22}
   .stage .name{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);font-weight:600}
   .stage.is-current .name{color:var(--navy)}
@@ -143,7 +146,7 @@
 
     <form class="lookup" method="POST" action="/track/lookup" novalidate>
       @csrf
-      <div class="stub"><span>STATUS TRACKER</span><span>UKV&lt;TRACK&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Status tracker</span><span>Live</span></div>
       <div class="cbody">
         <label for="ref">Your order reference</label>
         <input

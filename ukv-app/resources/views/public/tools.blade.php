@@ -13,7 +13,7 @@
   .hero-sky svg{width:100%;height:100%}
   /* two-column checker grid */
   .checkers{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
-  .checker:focus-within{box-shadow:0 0 0 3px rgba(20,86,184,.18),var(--shadow)}
+  .checker:focus-within{box-shadow:0 0 0 3px rgba(199,93,56,.20),var(--shadow)}
   .checker .cbody form{margin:0}
   .checker .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:12px 0 0;letter-spacing:.04em}
   /* checker validation message (announced via aria-live) + invalid-control state. (audit P3) */
@@ -50,7 +50,6 @@
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>UKV&lt;CHECK&lt;VISA&lt;AND&lt;IDP&lt;FREE&lt;GENERAL&lt;GUIDANCE&lt;ONLY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- TWO CHECKERS --}}
 <section><div class="wrap">
@@ -58,7 +57,7 @@
 
     {{-- A) VISA CHECKER --}}
     <div class="checker reveal" id="visa-card">
-      <div class="stub"><span>VISA CHECK</span><span>UKV&lt;DEST&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Visa check</span><span>By destination</span></div>
       <div class="cbody">
         <form id="visa-form" novalidate>
           <label for="v-dest">Where are you going?</label>
@@ -91,7 +90,7 @@
 
     {{-- B) IDP CHECKER --}}
     <div class="checker reveal" id="idp-card">
-      <div class="stub"><span>IDP CHECK</span><span>DVLA&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>IDP check</span><span>Driving abroad</span></div>
       <div class="cbody">
         <form id="idp-form" novalidate>
           <label for="i-dest">Where will you drive?</label>
@@ -147,7 +146,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Checked it — now let's sort it</h2>
-  <p style="max-width:50ch;color:#cdd9e1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
+  <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 

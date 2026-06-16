@@ -38,7 +38,7 @@
   .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
   .quote.quote--card{max-width:none;background:var(--white,#fff);border:1px solid var(--paper-edge,#e3e9ed);border-radius:12px;padding:26px 24px;display:flex;flex-direction:column;height:100%}
   .quote.quote--card blockquote{font-size:clamp(18px,1.6vw,21px);line-height:1.4}
-  .quote.quote--card .rating{font-family:var(--mono);font-size:15px;color:var(--gold,#C8A24A);margin-top:16px;letter-spacing:2px}
+  .quote.quote--card .rating{font-family:var(--mono);font-size:15px;color:var(--gold,#C75D38);margin-top:16px;letter-spacing:2px}
   .quote.quote--card .by{margin-top:auto;padding-top:18px}
   .quote.quote--card .by .avatar svg{width:100%;height:100%;display:block}
   @media (max-width:860px){.quote-grid{grid-template-columns:1fr}}

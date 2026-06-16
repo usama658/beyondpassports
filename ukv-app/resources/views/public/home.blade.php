@@ -4,17 +4,6 @@
 @section('description', 'Independent UK visa & eVisa service. We check, prepare and submit your application for a growing list of destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.')
 
 @push('head')
-<style>
-  /* Page-local layout only — design system lives in assets/ukv.css */
-  .hero{padding:64px 0 0}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-  .hero h1{font-size:clamp(38px,5.2vw,60px);color:var(--navy);letter-spacing:-.015em}
-  .hero p.lede{font-size:19px;max-width:42ch;color:#33454f}
-  .hero .micro{font-family:var(--mono);font-size:12px;color:var(--stamp);margin-top:18px}
-  .hero-sky{margin:40px 0 0;background:var(--navy);border-radius:12px;overflow:hidden;height:120px}
-  .hero-sky svg{width:100%;height:100%}
-  @media (max-width:860px){.hero-grid{grid-template-columns:1fr!important}}
-</style>
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
@@ -29,22 +18,20 @@
 
 @push('head')
 <style>
-  /* Home hero upgrade — navy "departure" band that makes the white boarding-pass checker + gold
-     accents pop. Page-scoped (hp- prefix) so it can't affect other pages. Amplifies the existing
-     passport/boarding-pass identity rather than adding off-brand stock imagery. */
-  .hp-hero{position:relative;background:linear-gradient(180deg,#0A2540 0%,#0c2e52 100%);color:#fff;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
-  .hp-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 420px at 78% -12%,rgba(200,162,74,.18),transparent 62%);pointer-events:none}
+  /* Home hero — light "Sunset Coast" band. Page-scoped (hp- prefix) so it can't affect other
+     pages. White → faint grey, terracotta eyebrow, big Plus Jakarta ink headline; the shared
+     .checker card lifts on the light surface with the design-system soft shadow. */
+  .hp-hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--paper) 100%);color:var(--ink);overflow:hidden;border-bottom:1px solid var(--paper-edge)}
+  .hp-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 420px at 78% -12%,rgba(199,93,56,.10),transparent 62%);pointer-events:none}
   .hp-hero > .wrap{position:relative;z-index:2;padding:64px 0 76px}
   .hp-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
-  .hp-hero .eyebrow{color:var(--gold)}
-  .hp-hero h1{color:#fff;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
-  .hp-hero .lede{color:#cfdbe6;font-size:19px;line-height:1.55;max-width:50ch;margin:0 0 6px}
+  .hp-hero .eyebrow{color:var(--cta)}
+  .hp-hero h1{color:var(--ink);font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
+  .hp-hero .lede{color:var(--muted);font-size:19px;line-height:1.55;max-width:50ch;margin:0 0 6px}
   .hp-trust{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
-  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:7px 14px;font-size:13.5px;color:#e7eef4}
-  .hp-trust span b{color:var(--gold);font-weight:700}
-  .hp-hero .micro{color:#9fb2bd;font-family:var(--mono);font-size:12px;letter-spacing:.04em;margin:20px 0 0}
-  /* the shared .checker card already has a white surface + shadow — it lifts beautifully on navy */
-  .hp-hero .checker{box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
+  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--ink)}
+  .hp-trust span b{color:var(--cta);font-weight:700}
+  .hp-hero .micro{color:var(--muted);font-size:12px;letter-spacing:.04em;margin:20px 0 0}
   .hp-skybacker{position:absolute;left:0;right:0;bottom:0;z-index:1;opacity:.10;pointer-events:none}
   .hp-skybacker svg{width:100%;height:120px;display:block}
   @media (max-width:820px){
@@ -56,7 +43,7 @@
 
 @section('content')
 
-{{-- HERO — navy departure band (signature checker card on top) --}}
+{{-- HERO — light "Sunset Coast" band (white checker card on top) --}}
 <section class="hp-hero"><div class="wrap">
   <div class="hp-grid">
     <div>
@@ -71,7 +58,7 @@
       <p class="micro">We catch the errors. We handle the paperwork. You get the visa.</p>
     </div>
     <div class="checker" id="checker">
-      <div class="stub"><span>VISA CHECK</span><span>BP&lt;START&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>VISA CHECK</span></div>
       <div class="cbody">
         <label for="dest">Where are you going?</label>
         <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
@@ -82,12 +69,11 @@
       </div>
     </div>
   </div>
-  {{-- skyline silhouette anchored to the foot of the navy band --}}
+  {{-- skyline silhouette anchored to the foot of the hero band --}}
   <div class="hp-skybacker" aria-hidden="true">
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;TRAVELLER&lt;&lt;READY&lt;TO&lt;GO&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- HOW --}}
 <section id="how"><div class="wrap">
@@ -134,17 +120,17 @@
     <p class="eyebrow">In-person centres</p>
     @if (($slotSummary['available_count'] ?? 0) > 0)
       <h2>Appointments ready when you are</h2>
-      <p style="max-width:58ch;color:#33454f">
+      <p style="max-width:58ch;color:var(--muted)">
         <strong>{{ $slotSummary['available_count'] }} appointment{{ $slotSummary['available_count'] === 1 ? '' : 's' }} available</strong>@if (! empty($slotSummary['next_slot_at'])) — next on {{ $slotSummary['next_slot_at']->format('j M Y') }}@endif@if (($slotSummary['centre_count'] ?? 0) > 0), across {{ $slotSummary['centre_count'] }} centre{{ $slotSummary['centre_count'] === 1 ? '' : 's' }}@endif. Enter your postcode to find the one nearest you.
       </p>
     @else
       <h2>Find your nearest centre</h2>
-      <p style="max-width:58ch;color:#33454f">For visas or IDPs that need an in-person visit, enter your postcode and we'll show the closest centre — so you don't have to go hunting.</p>
+      <p style="max-width:58ch;color:var(--muted)">For visas or IDPs that need an in-person visit, enter your postcode and we'll show the closest centre — so you don't have to go hunting.</p>
     @endif
   </div>
   <form method="GET" action="{{ route('centre.search') }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;max-width:520px">
     <input type="text" name="postcode" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" required aria-label="Your postcode"
-           style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge,#d9cfbe);border-radius:8px;font:inherit;font-size:15px">
+           style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge);border-radius:8px;font:inherit;font-size:15px">
     <button type="submit" class="btn">Find nearest →</button>
   </form>
   <p class="hint" style="margin-top:10px"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Most visas are online (eVisa/ETA) and need no appointment.</p>
@@ -154,7 +140,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question.</p>
+  <p style="max-width:48ch;color:rgba(255,255,255,.85)">Start your application now, or message our UK team with any question.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 

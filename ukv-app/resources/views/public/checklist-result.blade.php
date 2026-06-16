@@ -36,7 +36,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 <style>
   /* checklist-result.blade.php — page-scoped layout. Palette/type/components from ukv.css. */
@@ -65,7 +65,7 @@
   .deliver [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
   .server-errors{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:12px 16px;font-size:14px;margin:0 0 16px}
   .server-errors ul{margin:6px 0 0;padding-left:20px}
-  .sent-ok{background:#eaf3f2;border:1px solid #bfe0db;color:#0e6e6e;border-radius:8px;padding:12px 16px;font-size:14px;margin:0 0 16px;font-weight:600}
+  .sent-ok{background:#eaf3f2;border:1px solid #bfe0db;color:#5C9A7B;border-radius:8px;padding:12px 16px;font-size:14px;margin:0 0 16px;font-weight:600}
   /* share row */
   .share{margin:22px auto 0;max-width:760px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:12px;padding:18px 20px}
   .share .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
@@ -111,14 +111,14 @@
        sections below are untouched; this bar just mirrors them as always-visible triggers. --}}
   @if (config('ukv.checklist.sticky_action_bar', true))
   <style>
-    .cr-actionbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--paper-edge,#e6ddcf);box-shadow:0 2px 10px rgba(15,39,71,.06)}
+    .cr-actionbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--paper-edge,#e6e8ea);box-shadow:0 2px 10px rgba(40,50,70,.06)}
     .cr-actionbar .wrap{display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 0;flex-wrap:wrap}
-    .cr-actionbar .ab-label{margin-right:auto;font-family:var(--mono,'Space Mono',monospace);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b7a83}
+    .cr-actionbar .ab-label{margin-right:auto;font-family:var(--mono,'Plus Jakarta Sans',sans-serif);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b7a83}
     .cr-actionbar a{font-size:14px;padding:9px 14px;border-radius:8px;text-decoration:none;white-space:nowrap}
-    .cr-actionbar .ab-ghost{border:1px solid var(--paper-edge,#d9cfbe);color:#0f2747;background:#fff}
-    .cr-actionbar .ab-primary{background:#0f2747;color:#fff;font-weight:600}
+    .cr-actionbar .ab-ghost{border:1px solid var(--paper-edge,#e6e8ea);color:var(--navy);background:#fff}
+    .cr-actionbar .ab-primary{background:var(--cta);color:#fff;font-weight:600}
     @media (max-width:640px){
-      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6ddcf);border-bottom:0;box-shadow:0 -2px 12px rgba(15,39,71,.10)}
+      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6e8ea);border-bottom:0;box-shadow:0 -2px 12px rgba(40,50,70,.10)}
       .cr-actionbar .wrap{justify-content:space-between;padding:8px 12px;gap:6px}
       .cr-actionbar .ab-label{display:none}
       .cr-actionbar a{flex:1;text-align:center;padding:10px 4px;font-size:12px}
@@ -259,7 +259,6 @@
     </div>
   </div>
 </div>
-<div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;INDEPENDENT&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 </footer>
 
 </body>

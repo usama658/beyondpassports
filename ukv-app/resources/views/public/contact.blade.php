@@ -70,9 +70,6 @@
   </div>
 </div></section>
 
-{{-- MRZ strip --}}
-<div class="mrz"><div class="wrap"><span>UKV&lt;CO&lt;TALK&lt;TO&lt;A&lt;HUMAN&lt;&lt;UK&lt;BASED&lt;&lt;MON&lt;SAT&lt;0900&lt;1800&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
-
 {{-- 2. CONTACT METHODS --}}
 <section><div class="wrap">
   <div class="sec-head reveal" style="max-width:60ch;margin:0 auto 36px;text-align:center">
@@ -114,7 +111,7 @@
     </div>
 
     <div class="checker callback">
-      <div class="stub"><span>CALLBACK REQUEST</span><span>UKV&lt;CALLBACK&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Callback request</span><span>UK-based team</span></div>
       <div class="cbody">
         <form id="callback-form" method="POST" action="{{ url('/contact') }}" novalidate>
           @csrf

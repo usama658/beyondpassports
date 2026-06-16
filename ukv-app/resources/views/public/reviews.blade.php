@@ -29,7 +29,6 @@
   <p class="lede">Real words from travellers we have helped — shared with their consent and anonymised for privacy. We never promise an approval; what we promise is careful checking and a UK team you can actually talk to.</p>
   <p class="micro">Consented &amp; anonymised · independent service · not a government website</p>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;TRAVELLERS&lt;&lt;IN&lt;THEIR&lt;OWN&lt;WORDS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- ALL TESTIMONIALS (shared partial, full list) --}}
 @include('partials.testimonials', [
@@ -52,7 +51,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let’s get you travelling</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
+  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 

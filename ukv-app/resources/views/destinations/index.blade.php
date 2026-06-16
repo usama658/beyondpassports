@@ -14,7 +14,6 @@
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" style="width:100%;height:110px;opacity:.55" aria-hidden="true"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>UKV&lt;DESTINATIONS&lt;PREPARED&lt;AND&lt;CHECKED&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- DESTINATION CARDS --}}
 <section><div class="wrap">

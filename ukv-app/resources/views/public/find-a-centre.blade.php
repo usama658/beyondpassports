@@ -31,7 +31,7 @@
   .fc-hero p.lede{font-size:18px;color:#33454f;max-width:54ch;margin:0 auto}
 
   .fc-finder{max-width:640px;margin:26px auto 0;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
-  .fc-finder .stub{display:flex;justify-content:space-between;background:var(--navy);color:var(--gold);font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:12px 22px}
+  .fc-finder .stub{display:flex;justify-content:space-between;background:#f7fafb;color:var(--cta);font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:12px 22px;border-bottom:1px solid var(--paper-edge)}
   .fc-finder .cbody{padding:24px 22px}
   .fc-finder label{display:block;font-weight:600;font-size:14px;margin:0 0 8px}
   .fc-row{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;align-items:end}
@@ -52,7 +52,7 @@
   .fc-results .searched{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:center;margin:0 0 16px}
   .fc-results .searched strong{color:var(--navy)}
 
-  .fc-compliance{max-width:760px;margin:28px auto 0;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--gold);border-radius:10px;padding:18px 20px}
+  .fc-compliance{max-width:760px;margin:28px auto 0;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--cta);border-radius:10px;padding:18px 20px}
   .fc-compliance p{margin:0;font-size:14px;color:#33454f;line-height:1.6}
   .fc-compliance strong{color:var(--ink)}
 
@@ -70,12 +70,11 @@
   <h1>Find your nearest centre</h1>
   <p class="lede">Enter your postcode to see the nearest visa application centres, PayPoint IDP issuers, embassies and courier drop-offs — closest first. We flag any where we can book your appointment for you.</p>
 </div></section>
-<div class="mrz"><div class="wrap"><span>UKV&lt;FIND&lt;NEAREST&lt;CENTRE&lt;BY&lt;POSTCODE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- FINDER FORM (GET — works with no JS) --}}
 <section><div class="wrap">
   <form class="fc-finder" method="GET" action="{{ url('/find-a-centre/search') }}" novalidate>
-    <div class="stub"><span>CENTRE FINDER</span><span>UKV&lt;FIND&lt;&lt;&lt;</span></div>
+    <div class="stub"><span>Centre finder</span><span>By postcode</span></div>
     <div class="cbody">
       <div class="fc-row">
         <div>

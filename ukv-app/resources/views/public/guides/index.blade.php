@@ -31,7 +31,6 @@
   <h1>Travel-ready: plain-English visa guides</h1>
   <p class="sub">Plain-English guides to eVisas, ETAs, passport rules, documents and processing times for UK travellers. Practical, honest and jargon-free.</p>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;READ&lt;BEFORE&lt;YOU&lt;TRAVEL&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- COUNTRY HUBS — link across to the money pages that carry a published cluster --}}
 @if ($countryHubs->isNotEmpty())
@@ -61,7 +60,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Ready when you are</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Read up, then let our UK team confirm exactly what your trip needs.</p>
+  <p style="max-width:48ch;color:#eef0f1">Read up, then let our UK team confirm exactly what your trip needs.</p>
   <div class="row">
     <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
     <a href="{{ url('/tools') }}" class="btn btn--ghost" style="color:#fff;border-color:#fff">Check what I need</a>

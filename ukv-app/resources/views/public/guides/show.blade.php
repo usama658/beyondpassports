@@ -211,7 +211,6 @@
   </p>
   <p class="standfirst">{{ $guide->excerpt }}</p>
 </div></header>
-<div class="mrz"><div class="wrap"><span>UKV&lt;GUIDE&lt;PLAIN&lt;ENGLISH&lt;READ&lt;BEFORE&lt;YOU&lt;TRAVEL&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- ARTICLE BODY --}}
 <section><div class="wrap">
@@ -315,7 +314,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Check what your trip needs, or start your application with our UK-based team.</p>
+  <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application with our UK-based team.</p>
   <div class="row">
     <a href="{{ $applyUrl }}" class="btn">Start my application →</a>
     <a href="{{ $checklistUrl }}" class="btn btn--ghost" style="color:#fff;border-color:#fff">Check what I need</a>

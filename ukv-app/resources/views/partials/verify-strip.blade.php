@@ -39,16 +39,16 @@
 
 <aside class="verify-strip" role="note" aria-label="Fact verification">
   <style>
-    /* verify-strip partial — self-contained, palette-matched (navy #0f2747 / gold #c8a24a / teal #0e6e6e, Inter). */
-    .verify-strip{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1c2b33;background:#f7fafb;border:1px solid #dfe6ea;border-left:3px solid #c8a24a;border-radius:8px;padding:14px 16px;margin:18px 0}
+    /* verify-strip partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta). */
+    .verify-strip{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b;background:#f7fafb;border:1px solid #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:14px 16px;margin:18px 0}
     .verify-strip .vs-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-    .verify-strip .vs-badge{font-family:"Space Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0e6e6e}
-    .verify-strip .vs-text{font-size:14px;color:#1c2b33;line-height:1.5;margin:0}
-    .verify-strip .vs-text strong{color:#0f2747;font-weight:600}
+    .verify-strip .vs-badge{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#3f7259}
+    .verify-strip .vs-text{font-size:14px;color:#22282b;line-height:1.5;margin:0}
+    .verify-strip .vs-text strong{color:#22282b;font-weight:600}
     .verify-strip .vs-sources{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
     .verify-strip .vs-sources li{font-size:13px}
-    .verify-strip .vs-sources a{color:#0e6e6e;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(14,110,110,.35)}
-    .verify-strip .vs-sources a:hover{border-bottom-color:#0e6e6e}
+    .verify-strip .vs-sources a{color:#3f7259;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(63,114,89,.35)}
+    .verify-strip .vs-sources a:hover{border-bottom-color:#3f7259}
   </style>
 
   <div class="vs-head">

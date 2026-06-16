@@ -53,7 +53,7 @@
   /* tier cards (standard lane) */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 8px}
   .tier{border:1px solid var(--paper-edge);border-radius:10px;padding:16px;text-align:center;background:#f7fafb}
-  .tier.is-featured{border-color:var(--gold);box-shadow:0 0 0 2px rgba(200,162,74,.25)}
+  .tier.is-featured{border-color:var(--cta);box-shadow:0 0 0 2px rgba(199,93,56,.22)}
   .tier .tname{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text)}
   .tier .tprice{font-family:var(--display);font-size:30px;font-weight:600;color:var(--navy);margin:6px 0 2px}
   .tier .tdesc{font-size:12.5px;color:var(--muted)}
@@ -112,7 +112,7 @@
 
     {{-- INTAKE FORM --}}
     <div class="checker reveal" id="form-card">
-      <div class="stub"><span>APPLICATION</span><span>UKV&lt;NEW&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Application</span><span>New request</span></div>
       <div class="cbody">
 
         {{-- Server-side validation summary: shown only on a no-JS POST that fails ApplyRequest. --}}

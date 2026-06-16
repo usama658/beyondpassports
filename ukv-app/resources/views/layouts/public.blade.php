@@ -10,7 +10,7 @@
 @endif
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {{-- Published copy of the coded design system (public/assets/ukv.css). --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 @stack('head')
@@ -75,7 +75,6 @@
     </div>
   </div>
 </div>
-<div class="mrz" style="margin-top:8px"><div class="wrap"><span>UKV&lt;INDEPENDENT&lt;SERVICE&lt;NOT&lt;A&lt;GOVERNMENT&lt;WEBSITE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 </footer>
 
 <script>

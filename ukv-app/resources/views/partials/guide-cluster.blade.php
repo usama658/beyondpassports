@@ -50,14 +50,14 @@
     .guide-cluster a.gc-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;
       background:var(--white,#fff);border:1px solid var(--paper-edge,#dfe6ea);border-radius:10px;overflow:hidden;
       transition:transform .12s ease,box-shadow .15s ease}
-    .guide-cluster a.gc-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(10,37,64,.10)}
-    .guide-cluster a.gc-card:focus-visible{outline:2px solid var(--cta,#c8a24a);outline-offset:3px}
-    .guide-cluster .gc-card .band{height:7px;background:var(--cta,#c8a24a)}
+    .guide-cluster a.gc-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(40,50,70,.12)}
+    .guide-cluster a.gc-card:focus-visible{outline:2px solid var(--cta,#C75D38);outline-offset:3px}
+    .guide-cluster .gc-card .band{height:7px;background:var(--cta,#C75D38)}
     .guide-cluster .gc-card .gc-body{padding:18px 18px 16px;display:flex;flex-direction:column;flex:1}
-    .guide-cluster .gc-card .gc-cat{font-family:var(--mono,"Space Mono",monospace);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp,#0e6e6e)}
-    .guide-cluster .gc-card h3{font-family:var(--display,Fraunces,serif);font-size:19px;color:var(--navy,#0f2747);margin:8px 0 6px;line-height:1.18}
+    .guide-cluster .gc-card .gc-cat{font-family:var(--mono,"Plus Jakarta Sans",system-ui,sans-serif);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text,#3f7259)}
+    .guide-cluster .gc-card h3{font-family:var(--display,"Plus Jakarta Sans",system-ui,sans-serif);font-size:19px;color:var(--navy,#22282b);margin:8px 0 6px;line-height:1.18}
     .guide-cluster .gc-card .gc-excerpt{font-size:14.5px;color:#33454f;margin:0 0 14px;flex:1}
-    .guide-cluster .gc-card .gc-meta{font-family:var(--mono,"Space Mono",monospace);font-size:11px;letter-spacing:.06em;color:var(--hint,#5d6f79);
+    .guide-cluster .gc-card .gc-meta{font-family:var(--mono,"Plus Jakarta Sans",system-ui,sans-serif);font-size:11px;letter-spacing:.06em;color:var(--hint,#697079);
       border-top:1px solid var(--paper-edge,#dfe6ea);padding-top:11px}
   </style>
 

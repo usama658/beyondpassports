@@ -19,7 +19,7 @@
   .upload .file-input:focus{outline:2px solid var(--cta);outline-offset:1px;border-color:var(--cta)}
   .upload .field-hint{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.45}
 
-  .compliance{margin:18px 0 0;padding:14px 16px;border:1px dashed var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;background:var(--white)}
+  .compliance{margin:18px 0 0;padding:14px 16px;border:1px dashed var(--paper-edge);border-left:3px solid var(--cta);border-radius:8px;background:var(--white)}
   .compliance p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55}
   .compliance strong{color:var(--ink)}
 
@@ -49,14 +49,11 @@
   </div>
 </div></section>
 
-{{-- MRZ strip --}}
-<div class="mrz"><div class="wrap"><span>UKV&lt;CO&lt;SECURE&lt;DOCUMENT&lt;UPLOAD&lt;&lt;PDF&lt;JPG&lt;PNG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
-
 {{-- 2. UPLOAD FORM (posts to POST /documents/upload, progressively enhanced via fetch) --}}
 <section class="alt"><div class="wrap">
   <div class="upload-wrap reveal">
     <div class="checker upload">
-      <div class="stub"><span>DOCUMENT UPLOAD</span><span>UKV&lt;UPLOAD&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Document upload</span><span>Secure</span></div>
       <div class="cbody">
         <form id="upload-form" method="POST" action="{{ url('/documents/upload') }}" enctype="multipart/form-data" novalidate>
           @csrf
@@ -149,7 +146,7 @@
 <section style="padding:8px 0 40px"><div class="wrap">
   <div class="upload-wrap reveal">
     <div class="checker upload">
-      <div class="stub"><span>YOUR APPLICATION DETAILS</span><span>UKV&lt;DETAILS&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Your application details</span><span>Optional</span></div>
       <div class="cbody">
         <p class="lede" style="font-size:16px;margin:0 0 16px;color:#33454f">A few quick details about your trip help us tailor the exact document checklist below to your case. Everything here is optional — answer what you can.</p>
 

@@ -52,25 +52,25 @@
 
 <div class="doc-checklist" role="region" aria-label="{{ $heading }}">
   <style>
-    /* doc-checklist partial — self-contained, palette-matched (navy #0f2747 / gold #c8a24a, Inter).
+    /* doc-checklist partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta).
        Scoped to .doc-checklist so it is safe to drop on any surface (some use ukv.css vars,
        some are standalone documents like confirmation/track). Uses literal colours, not vars. */
-    .doc-checklist{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1c2b33}
-    .doc-checklist .dc-head{font-family:"Space Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0e6e6e;margin:0 0 6px}
-    .doc-checklist .dc-title{font-size:20px;font-weight:600;color:#0f2747;margin:0 0 4px;line-height:1.3}
-    .doc-checklist .dc-intro{font-size:14px;color:#5d6f79;margin:0 0 18px;max-width:60ch}
+    .doc-checklist{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b}
+    .doc-checklist .dc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#3f7259;margin:0 0 6px}
+    .doc-checklist .dc-title{font-size:20px;font-weight:600;color:#22282b;margin:0 0 4px;line-height:1.3}
+    .doc-checklist .dc-intro{font-size:14px;color:#697079;margin:0 0 18px;max-width:60ch}
     .doc-checklist .dc-group{margin:0 0 20px}
     .doc-checklist .dc-group:last-child{margin-bottom:0}
-    .doc-checklist .dc-group-name{font-family:"Space Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0f2747;border-bottom:1px solid #dfe6ea;padding:0 0 7px;margin:0 0 12px}
-    .doc-checklist .dc-sub{font-size:12px;font-weight:600;color:#5d6f79;margin:14px 0 8px;letter-spacing:.01em}
+    .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#22282b;border-bottom:1px solid #e6e8ea;padding:0 0 7px;margin:0 0 12px}
+    .doc-checklist .dc-sub{font-size:12px;font-weight:600;color:#697079;margin:14px 0 8px;letter-spacing:.01em}
     .doc-checklist ul.dc-list{list-style:none;margin:0;padding:0}
     .doc-checklist ul.dc-list li{position:relative;padding:0 0 0 26px;margin:0 0 12px}
     .doc-checklist ul.dc-list li:last-child{margin-bottom:0}
-    .doc-checklist ul.dc-list li::before{content:"";position:absolute;left:2px;top:6px;width:9px;height:9px;border-radius:2px;background:#c8a24a}
-    .doc-checklist ul.dc-list.is-recommended li::before{background:transparent;border:1.5px solid #c8a24a}
-    .doc-checklist .dc-label{display:block;font-weight:600;font-size:15px;color:#1c2b33;line-height:1.4}
-    .doc-checklist .dc-note{display:block;font-size:13px;color:#5d6f79;margin-top:2px;line-height:1.5}
-    .doc-checklist .dc-empty{font-size:14px;color:#5d6f79;background:#f7fafb;border:1px dashed #dfe6ea;border-left:3px solid #c8a24a;border-radius:8px;padding:14px 16px;margin:0}
+    .doc-checklist ul.dc-list li::before{content:"";position:absolute;left:2px;top:6px;width:9px;height:9px;border-radius:2px;background:#C75D38}
+    .doc-checklist ul.dc-list.is-recommended li::before{background:transparent;border:1.5px solid #C75D38}
+    .doc-checklist .dc-label{display:block;font-weight:600;font-size:15px;color:#22282b;line-height:1.4}
+    .doc-checklist .dc-note{display:block;font-size:13px;color:#697079;margin-top:2px;line-height:1.5}
+    .doc-checklist .dc-empty{font-size:14px;color:#697079;background:#f7fafb;border:1px dashed #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:14px 16px;margin:0}
   </style>
 
   <p class="dc-head">{{ $personalised ? 'Your checklist' : 'Before you apply' }}</p>

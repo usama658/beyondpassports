@@ -88,7 +88,6 @@
     <a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;DRIVER&lt;&lt;ABROAD&lt;READY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- WHAT IS AN IDP --}}
 <section id="what"><div class="wrap">
@@ -211,7 +210,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Driving abroad soon? Let's get you road-ready</h2>
-  <p style="max-width:50ch;color:#cdd9e1">Check whether you need an IDP and which type, then we'll prepare your paperwork so your in-person PayPoint visit goes right first time. Independent service, not a government website.</p>
+  <p style="max-width:50ch;color:#eef0f1">Check whether you need an IDP and which type, then we'll prepare your paperwork so your in-person PayPoint visit goes right first time. Independent service, not a government website.</p>
   <div class="row"><a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 

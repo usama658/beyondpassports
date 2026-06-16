@@ -57,14 +57,13 @@
     </ul>
   </div>
 </div></section>
-<div class="mrz"><div class="wrap"><span>UKV&lt;DOCUMENT&lt;CHECKLIST&lt;TAILORED&lt;TO&lt;YOUR&lt;TRIP&lt;FREE&lt;ON&lt;SCREEN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- WIZARD --}}
 <section style="padding-top:0"><div class="wrap">
   <div class="dct-grid">
 
     <div class="checker reveal" id="dct-card">
-      <div class="stub"><span>DOCUMENT CHECKLIST</span><span>UKV&lt;DOCS&lt;&lt;&lt;</span></div>
+      <div class="stub"><span>Document checklist</span><span>Free · no sign-up</span></div>
       <div class="cbody">
 
         {{-- Server-side validation summary (shown on a no-JS POST that fails validation). --}}

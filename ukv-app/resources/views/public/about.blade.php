@@ -27,7 +27,6 @@
   <h1>An independent UK team that makes visas simple.</h1>
   <p class="lede">We're a private, UK-based service that checks, prepares and submits travel-document applications for British travellers heading abroad — so you don't have to second-guess the rules.</p>
 </div></section>
-<div class="mrz"><div class="wrap"><span>P&lt;GBR&lt;UKVISACO&lt;&lt;INDEPENDENT&lt;UK&lt;TEAM&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></div></div>
 
 {{-- WHO WE ARE --}}
 <section id="who"><div class="wrap">
@@ -64,7 +63,7 @@
 <section class="alt"><div class="wrap quote reveal">
   <p class="eyebrow">In our travellers' words</p>
   <blockquote>“I half-expected a faceless form. Instead a real person rang me back, spotted a date I'd entered wrong, and walked me through it. Felt like having a friend who actually knows the rules.”</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 48 48" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-stamp"></use></svg></span>— A UK traveller to India · UKV&lt;2026&lt;006140&lt;&lt;&lt;</div>
+  <div class="by"><span class="avatar"><svg viewBox="0 0 48 48" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-stamp"></use></svg></span>— A UK traveller to India</div>
 </div></section>
 
 {{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
@@ -80,7 +79,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#cdd9e1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
+  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
 </div></section>
 
