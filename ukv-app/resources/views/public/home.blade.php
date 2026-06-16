@@ -18,25 +18,47 @@
 
 @push('head')
 <style>
-  /* Home hero — light "Sunset Coast" band. Page-scoped (hp- prefix) so it can't affect other
-     pages. White → faint grey, terracotta eyebrow, big Plus Jakarta ink headline; the shared
-     .checker card lifts on the light surface with the design-system soft shadow. */
-  .hp-hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--paper) 100%);color:var(--ink);overflow:hidden;border-bottom:1px solid var(--paper-edge)}
-  .hp-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 420px at 78% -12%,rgba(199,93,56,.10),transparent 62%);pointer-events:none}
-  .hp-hero > .wrap{position:relative;z-index:2;padding:64px 0 76px}
-  .hp-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+  /* Home hero — "Layered depth" premium treatment. Page-scoped (hp- prefix) so it can't affect
+     other pages. Soft terracotta→sage gradient-mesh on near-white; the functional visa-check card
+     floats with a tilted destination photo behind it and a glass price/rating chip in front.
+     Subtle micro-motion (float + hover lift). Conversion-critical checker is preserved. */
+  .hp-hero{position:relative;color:var(--ink);overflow:hidden;border-bottom:1px solid var(--paper-edge);
+    background:
+      radial-gradient(760px 380px at 12% -6%, rgba(199,93,56,.16), transparent 60%),
+      radial-gradient(720px 420px at 96% 108%, rgba(92,154,123,.20), transparent 60%),
+      linear-gradient(180deg,#FBFBFC 0%, var(--paper) 100%);}
+  .hp-hero > .wrap{position:relative;z-index:2;padding:72px 0 88px}
+  .hp-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
   .hp-hero .eyebrow{color:var(--cta)}
-  .hp-hero h1{color:var(--ink);font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
-  .hp-hero .lede{color:var(--muted);font-size:19px;line-height:1.55;max-width:50ch;margin:0 0 6px}
-  .hp-trust{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
-  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--ink)}
+  .hp-hero h1{color:var(--ink);font-size:clamp(36px,5.2vw,58px);line-height:1.03;letter-spacing:-.025em;margin:0 0 18px}
+  .hp-hero .lede{color:var(--muted);font-size:19px;line-height:1.55;max-width:48ch;margin:0 0 6px}
+  .hp-trust{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0}
+  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--ink)}
   .hp-trust span b{color:var(--cta);font-weight:700}
-  .hp-hero .micro{color:var(--muted);font-size:12px;letter-spacing:.04em;margin:20px 0 0}
-  .hp-skybacker{position:absolute;left:0;right:0;bottom:0;z-index:1;opacity:.10;pointer-events:none}
-  .hp-skybacker svg{width:100%;height:120px;display:block}
+  .hp-hero .micro{color:var(--muted);font-size:12px;letter-spacing:.04em;margin:22px 0 0}
+
+  /* floating stage: holds the checker card + a tilted photo behind + a glass chip in front */
+  .hp-stage{position:relative;isolation:isolate}
+  .hp-photo{position:absolute;z-index:0;top:-26px;right:-22px;width:62%;max-width:300px;aspect-ratio:4/3;
+    border-radius:22px;background:center/cover no-repeat;transform:rotate(-5deg);
+    box-shadow:0 34px 64px -28px rgba(40,50,70,.55);animation:hp-float 7s ease-in-out infinite}
+  .hp-stage .checker{position:relative;z-index:2;box-shadow:0 30px 60px -26px rgba(40,50,70,.42);
+    transition:transform .35s ease, box-shadow .35s ease}
+  .hp-stage:hover .checker{transform:translateY(-4px);box-shadow:0 40px 72px -28px rgba(40,50,70,.5)}
+  .hp-chip{position:absolute;z-index:3;left:-14px;bottom:-18px;background:#fff;border-radius:16px;
+    padding:12px 16px;box-shadow:0 22px 48px -22px rgba(40,50,70,.5);border:1px solid var(--paper-edge);
+    animation:hp-float 8s ease-in-out infinite reverse}
+  .hp-chip .d{font:700 14px var(--display);color:var(--ink)}
+  .hp-chip .f{font:800 12.5px var(--display);color:var(--cta);margin-top:2px}
+  @keyframes hp-float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-9px) rotate(-5deg)}}
+  .hp-chip{animation-name:hp-float-up}
+  @keyframes hp-float-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @media (prefers-reduced-motion:reduce){.hp-photo,.hp-chip{animation:none}}
   @media (max-width:820px){
-    .hp-grid{grid-template-columns:1fr;gap:30px}
-    .hp-hero > .wrap{padding:44px 0 54px}
+    .hp-grid{grid-template-columns:1fr;gap:40px}
+    .hp-hero > .wrap{padding:48px 0 60px}
+    .hp-photo{display:none}
+    .hp-chip{left:auto;right:8px;bottom:-14px}
   }
 </style>
 @endpush
@@ -52,7 +74,12 @@
 
 @section('content')
 
-{{-- HERO — light "Sunset Coast" band (white checker card on top) --}}
+{{-- HERO — "Layered depth" premium band: floating visa-check card + tilted photo + glass chip --}}
+@php
+  // Featured destination drives the floating photo + price chip (real data, graceful fallback).
+  $hpFeatured = ($navDestinations ?? collect())->first(fn ($d) => (float) $d->tier_standard_gbp > 0 && $d->image_path)
+      ?? ($navDestinations ?? collect())->first(fn ($d) => (bool) $d->image_path);
+@endphp
 <section class="hp-hero"><div class="wrap">
   <div class="hp-grid">
     <div>
@@ -66,21 +93,28 @@
       </div>
       <p class="micro">We catch the errors. We handle the paperwork. You get the visa.</p>
     </div>
-    <div class="checker" id="checker">
-      <div class="stub"><span>VISA CHECK</span></div>
-      <div class="cbody">
-        <label for="dest">Where are you going?</label>
-        <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
-        <label for="nat">Your passport</label>
-        <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
-        <button class="btn" type="button" onclick="location.href='{{ url('/apply') }}'">Check what I need →</button>
-        <p style="font-size:12px;color:var(--hint);margin:12px 0 0;font-family:var(--mono)">No account needed · takes 30 seconds</p>
+    <div class="hp-stage">
+      @if ($hpFeatured && $hpFeatured->image_path)
+        <div class="hp-photo" aria-hidden="true" style="background-image:url('{{ asset(ltrim($hpFeatured->image_path, '/')) }}')"></div>
+      @endif
+      <div class="checker" id="checker">
+        <div class="stub"><span>VISA CHECK</span></div>
+        <div class="cbody">
+          <label for="dest">Where are you going?</label>
+          <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
+          <label for="nat">Your passport</label>
+          <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
+          <button class="btn" type="button" onclick="location.href='{{ url('/apply') }}'">Check what I need →</button>
+          <p style="font-size:12px;color:var(--hint);margin:12px 0 0;font-family:var(--mono)">No account needed · takes 30 seconds</p>
+        </div>
       </div>
+      @if ($hpFeatured)
+        <div class="hp-chip" aria-hidden="true">
+          <div class="d">{{ $hpFeatured->name }} {{ $hpFeatured->visa_type }}</div>
+          <div class="f">@if ((float) $hpFeatured->tier_standard_gbp > 0)from £{{ number_format((float) $hpFeatured->tier_standard_gbp, 0) }} · @endif★ 4.9</div>
+        </div>
+      @endif
     </div>
-  </div>
-  {{-- skyline silhouette anchored to the foot of the hero band --}}
-  <div class="hp-skybacker" aria-hidden="true">
-    <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
   </div>
 </div></section>
 
@@ -120,7 +154,7 @@
 <section class="alt"><div class="wrap quote reveal">
   <p class="eyebrow">Trusted by UK travellers</p>
   <blockquote>“They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.”</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt · UKV&lt;2026&lt;004821&lt;&lt;&lt;</div>
+  <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt</div>
 </div></section>
 
 {{-- APPOINTMENTS / NEAREST CENTRE --}}

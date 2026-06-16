@@ -41,13 +41,13 @@
 @section('content')
 
 {{-- 1. HERO --}}
-<section class="docs-hero"><div class="wrap">
+<section class="docs-hero mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <div class="inner reveal">
     <p class="eyebrow">Secure document upload</p>
     <h1>Send us your documents</h1>
     <p class="lede">Already paid and ready to send what we asked for? Enter your order reference and the email on your application, then attach your file. We'll confirm the moment it lands with us.</p>
   </div>
-</div></section>
+</div></div></div></section>
 
 {{-- 2. UPLOAD FORM (posts to POST /documents/upload, progressively enhanced via fetch) --}}
 <section class="alt"><div class="wrap">

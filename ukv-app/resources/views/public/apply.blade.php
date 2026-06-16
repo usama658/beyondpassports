@@ -93,12 +93,12 @@
 @section('content')
 
 {{-- INTRO --}}
-<section class="apply-hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap">
   <div class="apply-grid">
     <div class="reveal" style="text-align:center">
       <p class="eyebrow">Start your application</p>
       <h1 style="font-size:clamp(32px,4.6vw,46px);color:var(--navy);letter-spacing:-.015em">Tell us your trip — we'll confirm exactly what you need.</h1>
-      <p style="font-size:18px;color:#33454f;max-width:52ch;margin:0 auto">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
+      <p class="lede" style="max-width:52ch;margin:0 auto">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
       <div class="intro-route">
         <svg viewBox="0 0 400 200" style="width:100%;max-height:120px;opacity:.85" aria-hidden="true"><use href="#ukv-route"></use></svg>
       </div>

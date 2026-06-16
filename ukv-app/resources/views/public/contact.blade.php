@@ -57,18 +57,16 @@
 @section('content')
 
 {{-- 1. HERO — phone is the primary channel --}}
-<section class="contact-hero"><div class="wrap">
-  <div class="inner reveal">
-    <p class="eyebrow">Talk to a human</p>
-    <h1>Questions? We're a phone call away.</h1>
-    <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
-    <div class="hero-actions">
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call us now</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Message on WhatsApp</a>
-    </div>
-    <p class="hero-note">Mon–Sat 9–6 UK time · independent service, not a government website</p>
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
+  <p class="eyebrow">Talk to a human</p>
+  <h1>Questions? We're a phone call away.</h1>
+  <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
+  <div class="hero-actions">
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call us now</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Message on WhatsApp</a>
   </div>
-</div></section>
+  <p class="hero-note">Mon–Sat 9–6 UK time · independent service, not a government website</p>
+</div></div></div></section>
 
 {{-- 2. CONTACT METHODS --}}
 <section><div class="wrap">

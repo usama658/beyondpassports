@@ -23,12 +23,12 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Traveller reviews</p>
   <h1>What UK travellers say about us.</h1>
   <p class="lede">Real words from travellers we have helped — shared with their consent and anonymised for privacy. We never promise an approval; what we promise is careful checking and a UK team you can actually talk to.</p>
   <p class="micro">Consented &amp; anonymised · independent service · not a government website</p>
-</div></section>
+</div></div></div></section>
 
 {{-- ALL TESTIMONIALS (shared partial, full list) --}}
 @include('partials.testimonials', [

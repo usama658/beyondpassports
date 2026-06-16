@@ -153,13 +153,14 @@
 @section('content')
 
 {{-- 1. HERO --}}
-<section class="dhero"><div class="wrap">
+<section class="photo-hero"@if($destination->image_path) style="--hero-img:url('{{ asset(ltrim($destination->image_path, '/')) }}')"@endif><div class="wrap">
   <p class="eyebrow">{{ $name }} · {{ $visaType }}</p>
   <h1>{{ $visaLabel }}, prepared and checked by our UK team</h1>
   <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
   <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
-  <div class="skyband">
-    <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" style="width:100%;height:120px;opacity:.55" aria-hidden="true"><use href="#ukv-skyline"></use></svg>
+  <div class="glass-chip float-soft" style="margin-top:20px">
+    <span class="d">{{ $name }} {{ $visaType }}</span>
+    <div class="f">@if($standard !== null && (float)$standard > 0)from {{ $gbp($standard) }} · @endif★ 4.9</div>
   </div>
 </div></section>
 

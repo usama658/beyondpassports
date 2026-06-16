@@ -98,13 +98,11 @@
 <main id="main">
 
   {{-- HERO --}}
-  <section class="cr-hero"><div class="wrap">
-    <div class="cr-grid">
-      <p class="eyebrow">Your document checklist</p>
-      <h1>What you'll need for {{ $destName }}</h1>
-      <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
-    </div>
-  </div></section>
+  <section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
+    <p class="eyebrow">Your document checklist</p>
+    <h1>What you'll need for {{ $destName }}</h1>
+    <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
+  </div></div></div></section>
 
   {{-- STICKY QUICK-ACTION BAR — keeps save/email/share/apply reachable without deep scroll.
        Config-gated (ukv.checklist.sticky_action_bar): off => original scroll-only layout. The full

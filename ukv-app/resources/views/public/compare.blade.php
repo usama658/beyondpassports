@@ -57,11 +57,11 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Honest comparison</p>
   <h1>Apply yourself vs use Beyond Passports</h1>
   <p class="lede">Both are valid. Here's the real trade-off — no spin.</p>
-</div></section>
+</div></div></div></section>
 
 {{-- COMPARISON TABLE --}}
 <section id="compare"><div class="wrap cmp">

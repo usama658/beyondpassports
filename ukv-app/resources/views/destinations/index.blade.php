@@ -3,17 +3,18 @@
 @section('title', 'Visa & eVisa destinations for UK travellers | Beyond Passports')
 @section('description', 'Browse the destinations we prepare and check visa & eVisa applications for. Clear fixed service fees, fast handling, every step tracked. Independent service — not a government website.')
 
+@push('head')
+<style>.dests .pass .sky{height:160px;overflow:hidden;background:#e9edf0}.dests .pass .sky img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}.dests .pass:hover .sky img{transform:scale(1.05)}</style>
+@endpush
+
 @section('content')
 
 {{-- HERO --}}
-<section class="dhero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Destinations</p>
   <h1>Where are you travelling?</h1>
   <p class="lede">Pick your destination to see exactly what's needed, our fixed service fees, and how we prepare and check your application before it's submitted.</p>
-  <div class="skyband" style="margin-top:32px">
-    <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" style="width:100%;height:110px;opacity:.55" aria-hidden="true"><use href="#ukv-skyline"></use></svg>
-  </div>
-</div></section>
+</div></div></div></section>
 
 {{-- DESTINATION CARDS --}}
 <section><div class="wrap">
@@ -31,9 +32,7 @@
           $fromFee = $destination->tier_standard_gbp;
         @endphp
         <a class="pass reveal" href="{{ url('/visa/'.$destination->slug) }}" style="text-decoration:none;color:inherit">
-          <div class="sky">
-            <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#ukv-skyline"></use></svg>
-          </div>
+          <div class="sky">@if ($destination->image_path)<img src="{{ asset(ltrim($destination->image_path, '/')) }}" alt="{{ $destination->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $destination->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div>
           <div class="lower">
             <div class="main">
               <span class="k">{{ $destination->visa_type ? strtoupper($destination->visa_type) : 'Visa' }}</span>

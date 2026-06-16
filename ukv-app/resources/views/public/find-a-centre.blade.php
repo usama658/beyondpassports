@@ -65,11 +65,11 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="fc-hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Find a centre</p>
   <h1>Find your nearest centre</h1>
   <p class="lede">Enter your postcode to see the nearest visa application centres, PayPoint IDP issuers, embassies and courier drop-offs — closest first. We flag any where we can book your appointment for you.</p>
-</div></section>
+</div></div></div></section>
 
 {{-- FINDER FORM (GET — works with no JS) --}}
 <section><div class="wrap">

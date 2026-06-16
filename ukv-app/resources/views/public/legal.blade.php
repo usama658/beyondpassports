@@ -66,8 +66,7 @@
 @section('content')
 
 {{-- PAGE TITLE HERO --}}
-<section class="legal-hero" id="top"><div class="wrap">
-  <div class="reveal">
+<section class="mesh-hero mesh-hero--sm" id="top"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
     <p class="eyebrow">Legal centre</p>
     <h1>Legal &amp; policies</h1>
     <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service — not a government website and not affiliated with gov.uk or any embassy.</p>
@@ -76,7 +75,7 @@
       <p><strong>Draft for review — have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
     </div>
   </div>
-</div></section>
+</div></div></section>
 
 {{-- TWO-COLUMN: SWITCHER + DOCUMENT --}}
 <section style="padding-top:40px"><div class="wrap">

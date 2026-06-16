@@ -26,11 +26,11 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="page-hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Visa guides</p>
   <h1>Travel-ready: plain-English visa guides</h1>
-  <p class="sub">Plain-English guides to eVisas, ETAs, passport rules, documents and processing times for UK travellers. Practical, honest and jargon-free.</p>
-</div></section>
+  <p class="lede">Plain-English guides to eVisas, ETAs, passport rules, documents and processing times for UK travellers. Practical, honest and jargon-free.</p>
+</div></div></div></section>
 
 {{-- COUNTRY HUBS — link across to the money pages that carry a published cluster --}}
 @if ($countryHubs->isNotEmpty())

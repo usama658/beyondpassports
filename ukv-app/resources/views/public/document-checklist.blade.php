@@ -45,7 +45,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="dct-hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Free document checklist</p>
   <h1>See exactly which documents you need.</h1>
   <p class="lede">Answer a few quick questions about your trip and get your tailored checklist on screen — free, with nothing to pay and no sign-up. Keep it, share it, or have it sent to you.</p>
@@ -56,7 +56,7 @@
       <li><p class="pk">Confirmed by a human</p><p>When you apply, our UK team confirms your exact list before anything is submitted.</p></li>
     </ul>
   </div>
-</div></section>
+</div></div></div></section>
 
 {{-- WIZARD --}}
 <section style="padding-top:0"><div class="wrap">

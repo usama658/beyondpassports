@@ -144,3 +144,83 @@ footer strong{color:#fff}
 .dhero p.lede{color:#d3d7da}
 .skyband{margin-top:36px;background:var(--stamp);border-radius:16px;overflow:hidden;max-height:140px}
 .skyband svg{width:100%;height:120px;display:block}
+
+/* ============================================================================
+   PREMIUM LAYER (site-wide "$10K" polish). Appended so it cascades over the
+   base system without disturbing it. Adds: elevation tokens, reusable hero
+   patterns (.mesh-hero / .photo-hero), .glass-chip accent, richer type scale,
+   section rhythm, tasteful motion. Spec: docs/superpowers/specs/2026-06-17-premium-sitewide-design.md
+   ============================================================================ */
+:root{
+  /* elevation scale — soft, deep, layered */
+  --lift-1:0 18px 44px -26px rgba(40,50,70,.30);
+  --lift-2:0 26px 56px -28px rgba(40,50,70,.40);
+  --lift-3:0 36px 70px -30px rgba(40,50,70,.50);
+  /* gradient-mesh ink tints for the hero backdrops */
+  --mesh-terra:rgba(199,93,56,.16); --mesh-sage:rgba(92,154,123,.20);
+  --paper-hi:#FBFBFC;
+}
+/* richer display scale + tracking */
+h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
+/* cards: rounder + layered shadow + smooth hover */
+.pass,.checker,.faq{border-radius:18px}
+.pass{box-shadow:var(--lift-1);transition:transform .3s ease,box-shadow .3s ease}
+.pass:hover{transform:translateY(-4px);box-shadow:var(--lift-2)}
+.checker{box-shadow:var(--lift-2)}
+/* more breathing room above section bodies */
+.sec-head{margin-bottom:40px}
+
+/* glass chip — floating price/rating/count accent (reused across heroes) */
+.glass-chip{display:inline-block;background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;
+  padding:12px 16px;box-shadow:var(--lift-3)}
+.glass-chip .d{font-family:var(--display);font-weight:700;font-size:14px;color:var(--ink)}
+.glass-chip .f{font-family:var(--display);font-weight:800;font-size:12.5px;color:var(--cta);margin-top:2px}
+
+/* soft accent float (≤9px). Applied to floating photos/chips only. */
+@keyframes float-soft{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float-soft{animation:float-soft 7.5s ease-in-out infinite}
+
+/* ---- MESH HERO (functional pages) ----------------------------------------
+   Terracotta→sage gradient-mesh on near-white. Left = copy, right = the page's
+   primary card (form/checker/finder) floating. Pages opt in with .mesh-hero on
+   their first <section>; put copy in .mh-copy and the card in .mh-card. */
+.mesh-hero{position:relative;color:var(--ink);overflow:hidden;border-bottom:1px solid var(--paper-edge);
+  background:
+    radial-gradient(760px 380px at 12% -6%, var(--mesh-terra), transparent 60%),
+    radial-gradient(720px 420px at 96% 108%, var(--mesh-sage), transparent 60%),
+    linear-gradient(180deg,var(--paper-hi) 0%, var(--paper) 100%);}
+.mesh-hero > .wrap{position:relative;z-index:2;padding:72px 0 84px}
+.mesh-hero .eyebrow{color:var(--cta)}
+.mesh-hero h1{color:var(--ink);margin:0 0 16px}
+.mesh-hero .lede{color:var(--muted);font-size:19px;line-height:1.55;max-width:48ch;margin:0 0 6px}
+.mh-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+.mh-card{position:relative}
+.mh-card > *{position:relative;z-index:2}
+.mesh-hero .hp-trust,.mesh-hero .mh-trust{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0}
+.mesh-hero .mh-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--ink)}
+.mesh-hero .mh-trust span b{color:var(--cta);font-weight:700}
+/* compact: centered single column, less padding, no card */
+.mesh-hero--sm > .wrap{padding:52px 0 56px}
+.mesh-hero--sm .mh-grid{grid-template-columns:1fr;max-width:62ch}
+
+/* ---- PHOTO HERO (destination/money pages) --------------------------------
+   Full-bleed destination photo + left-heavy dark scrim + white copy. Set the
+   photo with inline style="--hero-img:url(...)" or a background on .photo-hero. */
+.photo-hero{position:relative;min-height:440px;display:flex;align-items:center;overflow:hidden;
+  background:#22282b center/cover no-repeat;background-image:var(--hero-img)}
+.photo-hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(18,16,14,.82) 0%,rgba(18,16,14,.5) 52%,rgba(18,16,14,.12) 100%)}
+.photo-hero > .wrap{position:relative;z-index:2;padding:64px 0;color:#fff}
+.photo-hero .eyebrow{color:var(--cta-soft,#F2C2AC)}
+.photo-hero h1{color:#fff;max-width:18ch}
+.photo-hero .lede{color:rgba(255,255,255,.88);max-width:46ch}
+.photo-hero .glass-chip{margin-top:6px}
+/* white focus ring already covers .photo-hero via the dark-surface group below */
+.photo-hero a:focus-visible,.photo-hero .btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+@media (max-width:860px){
+  .mh-grid{grid-template-columns:1fr}
+  .mesh-hero > .wrap{padding:48px 0 56px}
+  .photo-hero{min-height:380px}
+}
+@media (prefers-reduced-motion:reduce){.float-soft{animation:none}}

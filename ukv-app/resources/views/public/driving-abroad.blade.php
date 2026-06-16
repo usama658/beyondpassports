@@ -77,7 +77,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="hero"><div class="wrap reveal">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
   <p class="eyebrow">Driving abroad</p>
   <h1>International Driving Permit — sorted the right way</h1>
   <p class="lede">We confirm which IDP you need and prepare your paperwork, so your in-person collection goes smoothly first time.</p>
@@ -87,7 +87,7 @@
   <div class="cta-row">
     <a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a>
   </div>
-</div></section>
+</div></div></div></section>
 
 {{-- WHAT IS AN IDP --}}
 <section id="what"><div class="wrap">

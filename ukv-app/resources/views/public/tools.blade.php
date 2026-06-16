@@ -42,14 +42,14 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="tools-hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">Free checkers</p>
   <h1>Do I need a visa? Do I need an IDP?</h1>
   <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay.</p>
   <div class="hero-sky" aria-hidden="true">
     <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
   </div>
-</div></section>
+</div></div></div></section>
 
 {{-- TWO CHECKERS --}}
 <section><div class="wrap">

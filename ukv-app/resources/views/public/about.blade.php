@@ -22,11 +22,11 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="hero"><div class="wrap">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
   <p class="eyebrow">About us</p>
   <h1>An independent UK team that makes visas simple.</h1>
   <p class="lede">We're a private, UK-based service that checks, prepares and submits travel-document applications for British travellers heading abroad — so you don't have to second-guess the rules.</p>
-</div></section>
+</div></div></div></section>
 
 {{-- WHO WE ARE --}}
 <section id="who"><div class="wrap">
