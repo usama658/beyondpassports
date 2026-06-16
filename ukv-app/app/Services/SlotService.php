@@ -103,6 +103,55 @@ final class SlotService
     }
 
     /**
+     * Hold-on-apply: tentatively reserve the soonest available slot at a "we book here" centre for
+     * an order whose destination needs an IN-PERSON appointment. Returns the held slot, or null.
+     *
+     * No-op (null) when: the destination's visa is online / at-destination (eVisa, ETA, visa-free,
+     * visa-on-arrival — no UK centre needed), the destination is unknown, or no slot is free. The
+     * short hold auto-releases via slots:release-expired if the customer doesn't proceed, so an
+     * abandoned application never strands inventory.
+     */
+    public function holdForOrder(Order $order, ?int $minutes = null): ?CentreSlot
+    {
+        $destination = $order->destination;
+        if (! $destination || $this->isOnlineVisa((string) $destination->visa_type)) {
+            return null;
+        }
+
+        $slot = CentreSlot::query()
+            ->available()
+            ->whereHas('supplyNode', fn ($q) => $q->where('we_book_here', true))
+            ->orderBy('slot_at')
+            ->first();
+
+        if ($slot === null) {
+            return null;
+        }
+
+        $minutes ??= (int) config('ukv.slots.hold_minutes', 60);
+
+        return $this->hold($slot, $order, $minutes) ? $slot : null;
+    }
+
+    /** Online / at-destination visa types need no UK in-person appointment. Blank/unknown => safe (no hold). */
+    private function isOnlineVisa(string $visaType): bool
+    {
+        $v = strtolower(trim($visaType));
+
+        if ($v === '') {
+            return true;
+        }
+
+        foreach (['visa-free', 'visa free', 'evisa', 'e-visa', 'eta', 'esta', 'visa on arrival'] as $needle) {
+            if (str_contains($v, $needle)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Sweep lapsed holds back into the available pool.
      *
      * Each held slot whose hold_expires_at has passed is reset to `available` with its hold

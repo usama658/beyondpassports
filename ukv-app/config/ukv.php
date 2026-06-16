@@ -31,4 +31,12 @@ return [
         // Set UKV_CHECKLIST_STICKY_BAR=false to revert to the original scroll-only layout.
         'sticky_action_bar' => (bool) env('UKV_CHECKLIST_STICKY_BAR', true),
     ],
+
+    // Appointment slots. auto_hold_on_apply tentatively reserves the soonest slot at a centre we
+    // book at when an in-person/biometric order is created (online visas are skipped). The short
+    // hold (minutes) auto-releases via slots:release-expired if the customer doesn't proceed.
+    'slots' => [
+        'auto_hold_on_apply' => (bool) env('UKV_SLOTS_AUTO_HOLD', true),
+        'hold_minutes' => (int) env('UKV_SLOTS_HOLD_MINUTES', 60),
+    ],
 ];

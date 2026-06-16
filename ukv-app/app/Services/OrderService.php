@@ -16,6 +16,7 @@ use App\Models\Order;
 use App\Models\OrderEvent;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
@@ -48,6 +49,8 @@ final class OrderService
         private readonly EmailService $emailer,
         // Loyalty (L2.7 / #177): returning-customer discount on the standard lane. Autowired.
         private readonly LoyaltyService $loyalty,
+        // Hold-on-apply: tentatively reserve an appointment slot for in-person destinations. Autowired.
+        private readonly \App\Services\SlotService $slots,
     ) {}
 
     // -----------------------------------------------------------------------------------
@@ -135,6 +138,21 @@ final class OrderService
             // via PricingService::bespokeQuote() later.
 
             $order->save();
+
+            // --- Hold-on-apply: tentatively reserve a slot for in-person/biometric destinations.
+            // No-op for online visas (eVisa/ETA/visa-free) or when no slot is free. Flag-gated and
+            // fully guarded — a slot-hold failure must NEVER block order creation. The short hold
+            // auto-releases (slots:release-expired) if the customer doesn't proceed. ---
+            if (config('ukv.slots.auto_hold_on_apply', true)) {
+                try {
+                    $this->slots->holdForOrder($order);
+                } catch (\Throwable $e) {
+                    Log::warning('Slot hold-on-apply failed.', [
+                        'order' => $order->getKey(),
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            }
 
             // --- Opening journey event ---
             $lane = $order->eligibility instanceof EligibilityLane
