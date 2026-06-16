@@ -240,6 +240,10 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
    their own weight. Nudge the Track/Start buttons to the right as a grouped cluster. */
 .nav > a:not(.btn){font-weight:600;font-size:15px;line-height:1;display:inline-flex;align-items:center}
 .nav .btn{margin:0}
+/* Base `.nav a{color:var(--ink)}` outranks `.btn{color:#fff}` — restore button text colours with
+   higher specificity so the solid CTA is white on terracotta and the ghost stays terracotta. */
+.nav a.btn{color:#fff}
+.nav a.btn--ghost{color:var(--cta)}
 .nav > a.btn--ghost{margin-left:6px}              /* small separation before the action cluster */
 .mlink{color:var(--ink);font-size:15px;font-weight:600;line-height:1;position:relative;padding:4px 0;cursor:pointer}
 .mlink:hover{color:var(--cta)}
