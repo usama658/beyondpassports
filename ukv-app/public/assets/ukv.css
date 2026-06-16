@@ -45,6 +45,9 @@ button,a,.btn,summary{touch-action:manipulation}
 .btn--ghost{background:transparent;color:var(--cta);border:1.5px solid var(--cta)}
 .btn--ghost:hover{background:transparent;box-shadow:0 0 0 3px rgba(199,93,56,.14)}
 .btn--wa{background:#25D366}
+/* glass secondary button (on dark/mesh surfaces — CTA band + footer) */
+.btn--glass{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.32);color:#fff}
+.btn--glass:hover{background:rgba(255,255,255,.22);box-shadow:none}
 /* MRZ signature strip — retired in the warm-light system (kills passport-MRZ strips
    everywhere with no blade edits). */
 .mrz{display:none}
@@ -93,11 +96,16 @@ section{padding:72px 0}
 .step .num{font-family:var(--body);font-size:14px;color:var(--cta);font-weight:800}
 .step h3{font-size:20px;margin-top:8px}
 .step .rule{height:2px;background:linear-gradient(90deg,var(--cta),transparent);margin:10px 0 14px}
-/* CTA band — deep ink surface, white text */
-.cta-band{background:var(--navy);color:#eef0f1}
-.cta-band .rule{height:3px;width:80px;background:var(--cta);margin-bottom:20px}
+/* CTA band — gradient-mesh on ink, centred (matches the footer CTA for site-wide consistency) */
+.cta-band{position:relative;overflow:hidden;color:#fff;text-align:center;
+  background:
+    radial-gradient(620px 260px at 16% 0%,rgba(199,93,56,.5),transparent 60%),
+    radial-gradient(580px 260px at 92% 100%,rgba(92,154,123,.5),transparent 60%),
+    var(--navy)}
+.cta-band .rule{height:3px;width:80px;background:var(--cta);margin:0 auto 20px}
 .cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px)}
-.cta-band .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.cta-band p{margin-left:auto;margin-right:auto}
+.cta-band .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;justify-content:center}
 /* footer */
 footer{background:var(--navy);color:#aab0b5;font-size:14px;padding:36px 0 0}
 footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:24px}
