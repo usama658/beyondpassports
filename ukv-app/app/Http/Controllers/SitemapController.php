@@ -40,6 +40,7 @@ class SitemapController extends Controller
             ['/driving-abroad', 'monthly', '0.7'],
             ['/guides', 'weekly', '0.6'],
             ['/document-checklist', 'monthly', '0.7'],
+            ['/find-a-centre', 'monthly', '0.6'],
             ['/compare', 'monthly', '0.5'],
             ['/about', 'monthly', '0.4'],
             ['/contact', 'monthly', '0.4'],

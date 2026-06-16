@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplyController;
+use App\Http\Controllers\CentreController;
 use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\ChecklistDeliveryController;
 use App\Http\Controllers\CheckoutController;
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 // --- Public site (the content silo) ---
 Route::view('/', 'public.home')->name('home');
 Route::view('/tools', 'public.tools')->name('tools');
+// Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
+Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.page');
+Route::get('/find-a-centre/search', [CentreController::class, 'search'])
+    ->middleware('throttle:contact')
+    ->name('centre.search');
 Route::view('/driving-abroad', 'public.driving-abroad')->name('idp');
 Route::view('/about', 'public.about')->name('about');
 Route::view('/contact', 'public.contact')->name('contact');

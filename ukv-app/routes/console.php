@@ -15,3 +15,6 @@ Artisan::command('inspire', function () {
 // --- Guide engine: freshness (Module B) + AI change-detection (Module C) ---
 \Illuminate\Support\Facades\Schedule::command('destinations:freshness')->dailyAt('07:00');
 \Illuminate\Support\Facades\Schedule::command('destinations:check-changes')->weekly()->mondays()->at('05:00')->withoutOverlapping();
+
+// Release expired appointment-slot holds back to the available pool.
+\Illuminate\Support\Facades\Schedule::command('slots:release-expired')->everyFiveMinutes();

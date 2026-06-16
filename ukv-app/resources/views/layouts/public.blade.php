@@ -26,6 +26,7 @@
     <a href="{{ url('/tools') }}">Visa checker</a>
     <a href="{{ url('/document-checklist') }}">Document checker</a>
     <a href="{{ url('/driving-abroad') }}">Driving abroad</a>
+    <a href="{{ url('/find-a-centre') }}">Find a centre</a>
     <a href="{{ url('/guides') }}">Guides</a>
     <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:8px 16px">Track</a>
   </nav>
