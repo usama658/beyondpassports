@@ -106,7 +106,45 @@ HTML;
             'meta_description' => 'Turkey is visa-free for UK tourists so there is no visa wait — but passport renewals and any required visa have timescales. What to plan for before you travel.',
         ], $now, $reviewer);
 
-        $this->command?->info('TurkeyGoldGuidesSeeder: documents + processing-time guides published.');
+        // ---- DO I NEED A VISA (upgrade of the legacy-migrated row) ---------------------------
+        $doINeedBody = <<<'HTML'
+<p><strong>For most trips, no.</strong> British citizens travelling to Turkey as tourists do <strong>not</strong> need a visa for stays of up to <strong>90 days within any 180-day period</strong>. You travel on your passport alone — there is no eVisa to buy and no government visa fee for this kind of visit.</p>
+
+<h2>Quick answer by trip type</h2>
+<ul>
+  <li><strong>Holiday or short visit, 90 days or less</strong> — visa-free. Just make sure your passport meets the validity rule below.</li>
+  <li><strong>Staying longer than 90 days</strong> — you need the right visa or a residence permit.</li>
+  <li><strong>Work, study or certain business activities</strong> — a visa and supporting documents are required, whatever the length of stay.</li>
+  <li><strong>Not a British citizen, or a dual national travelling on a different passport</strong> — the rules can differ; check the requirement for the passport you will actually use.</li>
+</ul>
+
+<h2>The 90-in-180 rule, simply</h2>
+<p>The 90 days are counted across a rolling 180-day window, not per entry. If you make several trips, the days add up. Plan multiple visits with that total in mind, and never overstay — it can affect future travel.</p>
+
+<h2>The one thing people get wrong: passport validity</h2>
+<p>Even though no visa is needed, Turkey still requires your passport to be valid for at least <strong>150 days from the date you arrive</strong>, with at least one blank page. A passport that is too close to expiry is one of the most common reasons UK travellers are turned away. Check yours before you book, and renew early if in doubt.</p>
+
+<h2>How to be certain — and how we help</h2>
+<p>Entry rules can change. Always confirm the current position on the official source before you travel. If your trip falls outside the visa-free rule — a longer stay, work, study, or a less common purpose — start your application with us: we confirm exactly what you need, prepare it correctly and keep it tracked. We are an independent service, not a government website, and our service fee is separate from any official fee. We cannot guarantee a visa will be granted.</p>
+HTML;
+
+        $this->upsert($turkey, GuideType::DoINeedVisa, [
+            'slug' => 'turkey-do-i-need-a-visa',
+            'title' => 'Do UK citizens need a visa for Turkey?',
+            'excerpt' => 'For tourism up to 90 days, no — British citizens travel to Turkey visa-free. Longer stays, work or study do need a visa. Here is exactly how it works, plus the passport rule that catches people out.',
+            'quick_answer' => 'For tourism up to <strong>90 days in any 180-day period</strong>, UK citizens need <strong>no visa</strong> for Turkey and pay no government visa fee. You do need a passport valid for at least <strong>150 days</strong> from arrival. Longer stays, work or study require a visa or permit.',
+            'body' => $doINeedBody,
+            'faq' => [
+                ['q' => 'Do British citizens need a visa to visit Turkey?', 'a' => 'Not for tourism or short visits of up to 90 days within any 180-day period — you travel visa-free on a valid passport. Longer stays, work or study require a visa or residence permit.'],
+                ['q' => 'How many days can I stay in Turkey without a visa?', 'a' => 'Up to 90 days in any rolling 180-day period. The days add up across multiple trips, so plan with the total in mind and do not overstay.'],
+                ['q' => 'Is there a government fee for visiting Turkey?', 'a' => 'For visa-free tourist visits there is no government visa fee. If a visa or permit is required for your trip, official fees may apply — always confirm on the official source.'],
+                ['q' => 'What passport validity does Turkey require?', 'a' => 'At least 150 days from your arrival date, with a blank page. Renew early if your passport is close to expiry.'],
+            ],
+            'meta_title' => 'Do UK Citizens Need a Visa for Turkey? (Visa-Free Rules) | UKVisaCo',
+            'meta_description' => 'UK citizens do not need a visa for Turkey for tourism up to 90 days in any 180-day period. Passport must be valid 150+ days. Longer stays/work need a visa. Independent service.',
+        ], $now, $reviewer);
+
+        $this->command?->info('TurkeyGoldGuidesSeeder: do-i-need-a-visa + documents + processing-time guides published.');
     }
 
     /**
