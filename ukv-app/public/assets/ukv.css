@@ -231,6 +231,7 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
    Esc close + single-open. Spec: 2026-06-17-premium-sitewide-design.md
    ============================================================================ */
 .site-head{position:sticky;top:0}                 /* positioning context for the panels */
+.site-head .wrap{position:relative}               /* deterministic anchor for the dropdown band */
 .nav{display:flex;align-items:center;gap:22px}
 /* Reset the base `.nav a{margin-left:22px}` so horizontal spacing is purely the flex gap
    (otherwise plain links get gap+margin = double the space of the <details> summaries). */
@@ -247,21 +248,27 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .nav > a{position:relative;padding:4px 0}
 .nav > a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--cta);transition:right .25s ease}
 
-/* dropdown trigger (details/summary) — RELATIVE so its panel anchors to it, not the header */
-.mega{position:relative}
+/* dropdown trigger (details/summary). The trigger STRETCHES to the full header-row height so its
+   bottom edge == the header's bottom edge; the panel then anchors to that bottom (top:100%) and
+   always clears the bar — no first-row tuck-under, no ride-up. */
+.mega{position:relative;display:inline-block}
 .mega > summary{list-style:none;display:inline-flex;align-items:center;gap:6px;color:var(--ink);font-size:15px;font-weight:600;cursor:pointer;padding:4px 0}
 .mega > summary::-webkit-details-marker{display:none}
 .mega > summary .ch{font-size:10px;color:var(--muted);transition:transform .2s ease}
 .mega[open] > summary{color:var(--cta)}
 .mega[open] > summary .ch{transform:rotate(180deg)}
-/* panel drops DIRECTLY BELOW its trigger (top:100% of the trigger) — never overlaps the nav.
-   Fixed-width card, left-anchored; clamps to the viewport on small screens. */
-.mega-panel{position:absolute;top:calc(100% + 12px);left:0;width:min(720px,92vw);background:#fff;
-  border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--lift-3);z-index:70;overflow:hidden;
+/* Panel anchors to the trigger and hangs below the header bar (offset clears the 64px row),
+   centred on the trigger and viewport-clamped so it never overflows. Opacity-only animation so
+   the centring transform persists. */
+.mega-panel{position:absolute;top:100%;margin-top:12px;left:50%;transform:translateX(-50%);width:min(760px,94vw);
+  background:#fff;border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--lift-3);z-index:70;
   animation:mega-in .16s ease}
-@keyframes mega-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.mega-panel .wrap{max-width:none;margin:0;padding:18px}
-.mega-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@keyframes mega-in{from{opacity:0}to{opacity:1}}
+/* Reset the inherited header rule `.site-head .wrap{height:64px;display:flex}` — the panel's inner
+   .wrap is a descendant of .site-head, and that 64px flex row was vertically-centring (overflowing)
+   the card grid. Force a normal block box. */
+.mega-panel > .wrap{display:block;height:auto;max-width:none;margin:0;padding:18px}
+.mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .mega-card{display:block;border:1px solid var(--paper-edge);border-radius:14px;overflow:hidden;background:#fff;
   transition:transform .25s ease,box-shadow .25s ease}
 .mega-card:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
@@ -285,7 +292,7 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
   .nav{display:none;flex-direction:column;align-items:flex-start;width:100%;gap:6px;padding:10px 0 14px}
   .nav.open{display:flex}
   .mega{width:100%}
-  .mega-panel{position:static;box-shadow:none;border:0;animation:none}
+  .mega-panel{position:static;transform:none;width:auto;box-shadow:none;border:0;border-radius:0;animation:none}
   .mega-panel .wrap{padding:8px 0 4px}
   .mega-grid,.mega-list{grid-template-columns:1fr 1fr}
   .nav > a.btn--ghost{margin-left:0}              /* no indent in the stacked mobile menu */
@@ -304,15 +311,20 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .ft-cta .btn--glass{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.32);color:#fff}
 .ft-cta .btn--glass:hover{background:rgba(255,255,255,.22)}
 .ft-main{background:#1b2024}
-.ft-main .cols{grid-template-columns:1.6fr 1fr 1fr 1.4fr;display:grid;gap:26px;padding:40px 0 26px}
+.ft-main .cols{grid-template-columns:2.4fr 1fr 1fr 1fr;display:grid;gap:40px;padding:40px 0 26px;align-items:start}
 .ft-cap{display:flex;gap:8px;margin-top:12px;max-width:340px}
 .ft-cap input[type=email]{flex:1;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:14px}
 .ft-cap input::placeholder{color:#8d949a}
-.ft-consent{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12px;color:#9aa0a5;max-width:340px}
+.ft-consent{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12px;color:#9aa0a5;max-width:480px}
 .ft-consent input{margin-top:2px}
 .ft-consent a{color:#d3d7da;text-decoration:underline}
 .ft-ok{margin-top:10px;font-size:13px;color:#9fe0c0;font-weight:700}
 .ft-err{margin-top:8px;font-size:12.5px;color:#f0b3a0}
 .ft-bottom{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#8d949a}
 .ft-bottom a{color:#aab0b5}
+/* Column link lists stack one-per-line (markup has no <br>); the email button + the consent
+   privacy link must stay inline so they don't break the form layout. */
+.ft-main .cols a{display:block;padding:4px 0}
+.ft-main .cols .ft-cap a{display:inline-block;padding:11px 16px}
+.ft-main .cols .ft-consent a{display:inline;padding:0}
 @media (max-width:860px){.ft-main .cols{grid-template-columns:1fr 1fr}}
