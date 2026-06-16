@@ -167,4 +167,26 @@ final class SlotService
                 'order_id' => null,
             ]);
     }
+
+    /**
+     * Aggregate availability for the home teaser: upcoming available slots at "we book here"
+     * centres, the soonest slot, and how many distinct centres have availability. Zeros/null when
+     * nothing is available, so the home band falls back to a plain finder CTA (no fake counts).
+     *
+     * @return array{available_count:int, next_slot_at:?\Illuminate\Support\Carbon, centre_count:int}
+     */
+    public function summary(): array
+    {
+        $base = fn () => CentreSlot::query()
+            ->available()
+            ->whereHas('supplyNode', fn ($q) => $q->where('we_book_here', true));
+
+        $soonest = $base()->min('slot_at');
+
+        return [
+            'available_count' => $base()->count(),
+            'next_slot_at' => $soonest ? Carbon::parse($soonest) : null,
+            'centre_count' => $base()->distinct('supply_node_id')->count('supply_node_id'),
+        ];
+    }
 }

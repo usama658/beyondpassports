@@ -96,6 +96,28 @@
   <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="UKVisaCo traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt · UKV&lt;2026&lt;004821&lt;&lt;&lt;</div>
 </div></section>
 
+{{-- APPOINTMENTS / NEAREST CENTRE --}}
+<section id="appointments" class="alt"><div class="wrap reveal">
+  <div class="sec-head">
+    <p class="eyebrow">In-person centres</p>
+    @if (($slotSummary['available_count'] ?? 0) > 0)
+      <h2>Appointments ready when you are</h2>
+      <p style="max-width:58ch;color:#33454f">
+        <strong>{{ $slotSummary['available_count'] }} appointment{{ $slotSummary['available_count'] === 1 ? '' : 's' }} available</strong>@if (! empty($slotSummary['next_slot_at'])) — next on {{ $slotSummary['next_slot_at']->format('j M Y') }}@endif@if (($slotSummary['centre_count'] ?? 0) > 0), across {{ $slotSummary['centre_count'] }} centre{{ $slotSummary['centre_count'] === 1 ? '' : 's' }}@endif. Enter your postcode to find the one nearest you.
+      </p>
+    @else
+      <h2>Find your nearest centre</h2>
+      <p style="max-width:58ch;color:#33454f">For visas or IDPs that need an in-person visit, enter your postcode and we'll show the closest centre — so you don't have to go hunting.</p>
+    @endif
+  </div>
+  <form method="GET" action="{{ route('centre.search') }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;max-width:520px">
+    <input type="text" name="postcode" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" required aria-label="Your postcode"
+           style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge,#d9cfbe);border-radius:8px;font:inherit;font-size:15px">
+    <button type="submit" class="btn">Find nearest →</button>
+  </form>
+  <p class="hint" style="margin-top:10px"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Most visas are online (eVisa/ETA) and need no appointment.</p>
+</div></section>
+
 {{-- CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>

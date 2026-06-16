@@ -33,5 +33,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['public.home', 'public.tools', 'public.apply'], function ($view) {
             $view->with('navDestinations', \App\Models\Destination::orderBy('name')->get());
         });
+
+        // Home appointments band: live slot summary (guarded — zeros => the band shows a plain
+        // finder CTA instead of fake counts).
+        View::composer('public.home', function ($view) {
+            $view->with('slotSummary', app(\App\Services\SlotService::class)->summary());
+        });
     }
 }
