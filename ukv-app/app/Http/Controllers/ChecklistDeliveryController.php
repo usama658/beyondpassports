@@ -40,7 +40,7 @@ class ChecklistDeliveryController extends Controller
         $data = $request->validate([
             // At least one delivery channel must be chosen.
             'channels' => ['required', 'array', 'min:1'],
-            'channels.*' => ['string', Rule::in(['email', 'whatsapp'])],
+            'channels.*' => ['string', Rule::in(['email', 'whatsapp', 'pdf', 'calendar'])],
 
             // Email required only when email delivery is chosen.
             'email' => [
@@ -83,9 +83,15 @@ class ChecklistDeliveryController extends Controller
         $checklist->marketing_consent = (bool) ($data['marketing_consent'] ?? false);
         $checklist->save();
 
+        // PDF + calendar are "include with my copy" extras: attach the .ics + a printable link to
+        // the email when chosen. They also have always-available no-contact download buttons on the
+        // result page, so they work even when email is not selected.
+        $attachIcs = in_array('calendar', $channels, true);
+        $includePdf = in_array('pdf', $channels, true);
+
         // --- Dispatch chosen deliveries (transactional — no marketing consent needed) ---
         if (in_array('email', $channels, true) && $checklist->email !== null) {
-            Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist));
+            Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist, $attachIcs, $includePdf));
         }
 
         if (in_array('whatsapp', $channels, true) && $checklist->phone !== null) {

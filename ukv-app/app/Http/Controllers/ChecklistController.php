@@ -6,10 +6,13 @@ namespace App\Http\Controllers;
 
 use App\Models\ChecklistRequest;
 use App\Models\Destination;
+use App\Services\ChecklistPdfService;
 use App\Services\ChecklistService;
+use App\Services\IcsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * Public document-checklist tool (build wave 1: web layer).
@@ -107,6 +110,43 @@ class ChecklistController extends Controller
             'request'     => $checklistRequest,
             'destination' => $checklistRequest->destination,
         ]);
+    }
+
+    /**
+     * Instant calendar reminder (.ics) — no contact required (value-first). 404 when the request
+     * has no travel date to anchor the "apply by" deadline. Uses the destination's processing_days
+     * (falls back to the config default inside IcsService).
+     */
+    public function calendar(ChecklistRequest $checklistRequest, IcsService $ics): Response
+    {
+        $checklistRequest->loadMissing('destination');
+        $inputs = is_array($checklistRequest->inputs) ? $checklistRequest->inputs : [];
+
+        $body = $ics->buildForChecklist(
+            (string) ($checklistRequest->destination?->name ?? 'your trip'),
+            $inputs['travel_date'] ?? null,
+            $checklistRequest->destination?->processing_days,
+        );
+
+        abort_if($body === null, 404);
+
+        $name = $checklistRequest->destination?->slug ?? 'trip';
+
+        return response($body, 200, [
+            'Content-Type' => 'text/calendar; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="ukvisaco-'.$name.'-reminder.ics"',
+        ]);
+    }
+
+    /**
+     * Printable / save-as-PDF view of the saved checklist (print-CSS; no PDF dependency). No
+     * contact required.
+     */
+    public function printable(ChecklistRequest $checklistRequest, ChecklistPdfService $pdf): Response
+    {
+        $checklistRequest->loadMissing('destination');
+
+        return $pdf->renderPrintable($checklistRequest);
     }
 
     /**

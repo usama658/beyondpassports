@@ -181,6 +181,10 @@
         <a href="https://wa.me/?text={{ urlencode('My document checklist for '.$destName.': '.$shareUrl) }}" class="btn btn--wa">Share on WhatsApp</a>
       </div>
       <p class="note">This page is your saved checklist — bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
+      <div class="url-row" style="margin-top:12px">
+        <a href="{{ url('/checklist/'.$request->token.'/print') }}" class="btn btn--ghost" target="_blank" rel="noopener">Download / print (PDF)</a>
+        <a href="{{ url('/checklist/'.$request->token.'/calendar.ics') }}" class="btn btn--ghost">Add a reminder to my calendar</a>
+      </div>
     </div>
   </div></section>
 

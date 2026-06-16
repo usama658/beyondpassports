@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Mail;
 
 use App\Models\ChecklistRequest;
+use App\Services\IcsService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -30,7 +32,11 @@ final class ChecklistDelivery extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public function __construct(public readonly ChecklistRequest $request) {}
+    public function __construct(
+        public readonly ChecklistRequest $request,
+        public readonly bool $attachIcs = false,
+        public readonly bool $includePdf = false,
+    ) {}
 
     private function dest(): string
     {
@@ -69,7 +75,39 @@ final class ChecklistDelivery extends Mailable implements ShouldQueue
                 'applyUrl' => $base.'/apply'.($slug ? '?destination='.urlencode((string) $slug) : ''),
                 'baseUrl' => $base,
                 'travelDate' => $inputs['travel_date'] ?? null,
+                // Printable/save-as-PDF link, only when the user asked to include a PDF.
+                'printUrl' => $this->includePdf ? $base.'/checklist/'.$this->request->token.'/print' : null,
             ],
         );
+    }
+
+    /**
+     * Attach the calendar reminder (.ics) when the user ticked "Calendar reminder". Built from the
+     * destination's processing_days; skipped silently if there is no travel date to anchor it.
+     *
+     * @return array<int, Attachment>
+     */
+    public function attachments(): array
+    {
+        if (! $this->attachIcs) {
+            return [];
+        }
+
+        $inputs = is_array($this->request->inputs) ? $this->request->inputs : [];
+
+        $ics = app(IcsService::class)->buildForChecklist(
+            $this->dest(),
+            $inputs['travel_date'] ?? null,
+            $this->request->destination?->processing_days,
+        );
+
+        if ($ics === null) {
+            return [];
+        }
+
+        return [
+            Attachment::fromData(fn (): string => $ics, 'ukvisaco-reminder.ics')
+                ->withMime('text/calendar'),
+        ];
     }
 }

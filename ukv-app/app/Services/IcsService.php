@@ -110,7 +110,8 @@ final class IcsService
             'PRODID:'.self::PRODID,
             'CALSCALE:GREGORIAN',
             'METHOD:PUBLISH',
-            ...$events,
+            // Each event() returns a list of lines; flatten the array-of-events into one line list.
+            ...array_merge(...$events),
             'END:VCALENDAR',
         ];
 
