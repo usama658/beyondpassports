@@ -203,7 +203,7 @@
   <div class="rule"></div>
   <h2>Know what you need — then let's sort it</h2>
   <p style="max-width:52ch;color:#cdd9e1">Get your checklist free, then start your application when you're ready. A UK-based team checks every case before anything is submitted.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection
