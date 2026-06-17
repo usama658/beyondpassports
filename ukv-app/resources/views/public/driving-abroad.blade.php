@@ -111,6 +111,20 @@
   .da-callout p{margin:0;font-size:15.5px;color:#3a4248;line-height:1.6}
   .da-callout strong{color:var(--ink)}
 
+  /* ── find PayPoint — split copy + form card ──────────────────── */
+  .da-find-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .da-find-pin{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .da-find-pin svg{width:30px;height:30px;color:var(--cta);flex:none}
+  .da-find-pin .eyebrow{margin:0}
+  .da-find-grid h2{font-size:clamp(24px,3vw,32px);color:var(--navy);margin:0 0 10px;letter-spacing:-.02em}
+  .da-find-grid .da-find-copy p{color:#3a4248;font-size:16px;line-height:1.6;margin:0;max-width:46ch}
+  .da-find-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:18px;padding:26px 28px;box-shadow:var(--lift-1)}
+  .da-find-card .da-pp-form{flex-direction:column;flex-wrap:nowrap;max-width:none;margin-top:0}
+  .da-find-card .da-pp-form input[type=text]{min-width:0;width:100%;background:var(--white)}
+  .da-find-card .da-pp-form .btn{width:100%;justify-content:center}
+  .da-find-card .da-pp-hint{margin-top:14px}
+  @media (max-width:820px){ .da-find-grid{grid-template-columns:1fr;gap:26px} }
+
   /* ── PayPoint finder form ────────────────────────────────────── */
   .da-pp-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;max-width:520px}
   .da-pp-form input[type=text]{
@@ -318,20 +332,27 @@
 {{-- FIND NEAREST PAYPOINT — reuses /find-a-centre pre-scoped to the paypoint type --}}
 <section id="find-paypoint">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Step 2, made easy</p>
-      <h2>Find your nearest PayPoint</h2>
-      <p style="max-width:54ch;color:#3a4248;font-size:16px;margin-top:6px">Enter your postcode and we'll show the closest PayPoint stores that issue the IDP in person — so you don't have to go hunting.</p>
-    </div>
-    <form class="da-pp-form reveal" method="GET" action="{{ route('centre.search') }}">
-      <input type="hidden" name="type" value="paypoint">
-      <input type="text" name="postcode" placeholder="e.g. SW1A 1AA"
-             autocomplete="postal-code" required aria-label="Your postcode">
-      <button type="submit" class="btn">Find nearest →</button>
-    </form>
-    <div class="da-pp-hint reveal">
-      <a href="{{ url('/find-a-centre?type=paypoint') }}">Or use my location on the full finder →</a><br>
-      <span>The IDP is issued in person at PayPoint — we prepare and check your paperwork; we don't issue the permit ourselves.</span>
+    <div class="da-find-grid">
+      <div class="da-find-copy reveal">
+        <div class="da-find-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p class="eyebrow">Step 2, made easy</p>
+        </div>
+        <h2>Find your nearest PayPoint</h2>
+        <p>Enter your postcode and we'll show the closest PayPoint stores that issue the IDP in person — so you don't have to go hunting.</p>
+      </div>
+      <div class="da-find-card reveal">
+        <form class="da-pp-form" method="GET" action="{{ route('centre.search') }}">
+          <input type="hidden" name="type" value="paypoint">
+          <input type="text" name="postcode" placeholder="e.g. SW1A 1AA"
+                 autocomplete="postal-code" required aria-label="Your postcode">
+          <button type="submit" class="btn">Find nearest →</button>
+        </form>
+        <div class="da-pp-hint">
+          <a href="{{ url('/find-a-centre?type=paypoint') }}">Or use my location on the full finder →</a><br>
+          <span>The IDP is issued in person at PayPoint — we prepare and check your paperwork; we don't issue the permit ourselves.</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
