@@ -86,13 +86,13 @@
        Scoped to .doc-checklist so it is safe to drop on any surface (some use ukv.css vars,
        some are standalone documents like confirmation/track). Uses literal colours, not vars. */
     .doc-checklist{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b}
-    .doc-checklist .dc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#3f7259;margin:0 0 6px}
+    .doc-checklist .dc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C75D38;margin:0 0 6px}
     .doc-checklist .dc-title{font-size:clamp(28px,3.4vw,38px);font-weight:700;letter-spacing:-.02em;color:#22282b;margin:0 0 8px;line-height:1.1}
     .doc-checklist .dc-intro{font-size:14px;color:#697079;margin:0 0 18px;max-width:60ch}
     .doc-checklist .dc-panel{background:#fff;border:1px solid #e6e8ea;border-radius:18px;padding:22px 28px;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
     .doc-checklist .dc-group{margin:0 0 20px}
     .doc-checklist .dc-group:last-child{margin-bottom:0}
-    .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#22282b;border-bottom:1px solid #e6e8ea;padding:0 0 9px;margin:0 0 14px}
+    .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#C75D38;border-bottom:1px solid #e6e8ea;padding:0 0 9px;margin:0 0 14px}
     .doc-checklist .dc-sub{font-size:12px;font-weight:600;color:#697079;margin:14px 0 8px;letter-spacing:.01em}
     .doc-checklist ul.dc-list{list-style:none;margin:0;padding:0}
     .doc-checklist ul.dc-list li{position:relative;padding:0 0 0 32px;margin:0 0 14px}
