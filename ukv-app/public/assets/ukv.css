@@ -53,9 +53,16 @@ button,a,.btn,summary{touch-action:manipulation}
 /* MRZ signature strip — retired in the warm-light system (kills passport-MRZ strips
    everywhere with no blade edits). */
 .mrz{display:none}
-.topbar{background:var(--navy);color:#cdd2d6;font-family:var(--body);font-size:12px;text-align:center;padding:4px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 8px}
-/* Topbar links: terracotta-tinted light for ≥4.5:1 on ink, ≥24px target. (WCAG 1.4.3 + 2.5.8) */
-.topbar a{color:#F2C2AC;text-decoration:underline;display:inline-flex;align-items:center;min-height:24px;padding:0 6px}
+/* Utility top bar — split: compliance note left, rating + contact right (within content width). */
+.topbar{background:var(--navy);color:#aeb4b9;font-family:var(--body);font-size:12.5px;padding:7px 0}
+.topbar .tb-row{display:flex;justify-content:space-between;align-items:center;gap:8px 18px;flex-wrap:wrap}
+.tb-note strong{color:#fff;font-weight:700}
+.tb-links{display:inline-flex;align-items:center;gap:18px}
+.tb-rate{color:#fff;font-weight:700;letter-spacing:.01em}
+/* Links: terracotta-tinted light for ≥4.5:1 on ink, ≥24px target. (WCAG 1.4.3 + 2.5.8) */
+.topbar a{color:#F2C2AC;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
+.topbar a:hover{text-decoration:underline}
+@media (max-width:600px){.topbar .tb-row{justify-content:center}.tb-note{width:100%;text-align:center}.tb-links{gap:14px}}
 /* header */
 .site-head{position:sticky;top:0;z-index:50;background:rgba(244,245,246,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--paper-edge)}
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
