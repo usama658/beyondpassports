@@ -8,21 +8,6 @@
 <style>
   /* legal — page-scoped layout only. Palette/type/components from ukv.css. */
 
-  /* ── hero — navy mesh (consistent with site) ─────────────────── */
-  .lg-hero{position:relative;overflow:hidden;background:var(--navy);padding:84px 0 76px}
-  .lg-hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(92,154,123,.42),transparent 62%),
-     radial-gradient(40% 60% at 70% 8%,rgba(242,194,172,.16),transparent 60%)}
-  .lg-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.08),rgba(15,20,22,.32))}
-  .lg-hero .wrap{position:relative;z-index:2}
-  .lg-hero .eyebrow{color:var(--soft)}
-  .lg-hero h1{color:#fff}
-  .lg-hero .lede{color:rgba(255,255,255,.82);max-width:62ch}
-  .lg-hero .draft-banner{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9)}
-  .lg-hero .draft-banner strong{color:#fff}
-  .lg-hero .draft-banner svg{color:var(--soft)}
-
   /* ── two-column shell ────────────────────────────────────────── */
   .legal-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:52px;
     align-items:start;padding-top:12px}
@@ -43,17 +28,22 @@
     border-left-color:var(--cta);color:var(--navy);font-weight:700;
     box-shadow:0 2px 8px -4px rgba(40,50,70,.10)}
 
-  /* ── document body ───────────────────────────────────────────── */
-  .doc-body{max-width:70ch}
-  .doc-body .updated{font-weight:700;font-size:11.5px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  /* ── document body — security-paper doc cards (pick H) ───────── */
+  .doc-body{max-width:760px;display:flex;flex-direction:column;gap:20px}
+  /* "Last updated" rendered as a sage official stamp chip */
+  .doc-body .updated{display:inline-flex;align-items:center;gap:7px;width:fit-content;
+    background:#fff;border:1px solid #ead9c4;border-radius:999px;padding:5px 13px;
+    font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--cta);margin:0 0 14px}
+  .doc-body .updated::before{content:"✓";color:var(--sage,#5C9A7B);font-weight:800}
 
-  .legal-sec{padding:8px 0 44px;border-bottom:1px dashed var(--paper-edge);
-    scroll-margin-top:90px}
-  .legal-sec:last-of-type{border-bottom:0}
+  .legal-sec{position:relative;background:linear-gradient(180deg,#fbf7f2,#fff);
+    border:1px solid #ead9c4;border-radius:18px;padding:32px 34px;
+    box-shadow:0 18px 46px -34px rgba(120,80,40,.45);scroll-margin-top:90px}
+  .legal-sec::after{content:"";position:absolute;inset:7px;border:1px dashed rgba(199,93,56,.24);border-radius:13px;pointer-events:none}
+  .legal-sec > *{position:relative}
 
-  .legal-sec h2{font-size:clamp(24px,3vw,32px);color:var(--navy);
-    letter-spacing:-.015em;margin:0 0 6px}
+  .legal-sec h2{font-size:clamp(23px,3vw,30px);color:var(--navy);
+    letter-spacing:-.015em;margin:0 0 8px}
   .legal-sec h3{font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 8px}
 
   .doc-body p{font-size:15.5px;line-height:1.75;color:#2b3b44;margin:0 0 16px}
@@ -104,7 +94,7 @@
 @section('content')
 
 {{-- PAGE TITLE HERO --}}
-<section class="lg-hero" id="top">
+<section class="mesh-hero mesh-hero--sm" id="top">
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy reveal">
