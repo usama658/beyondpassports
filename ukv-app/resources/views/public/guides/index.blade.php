@@ -30,45 +30,37 @@
   .gi-topics .tl{display:flex;align-items:center;gap:13px;min-width:0}
   .gi-topics .ti{width:36px;height:36px;border-radius:9px;background:rgba(242,194,172,.16);display:flex;align-items:center;justify-content:center;color:var(--soft);flex:0 0 36px}
   .gi-topics .ti svg{width:18px;height:18px}
-  .gi-topics .tt{font-size:14.5px;font-weight:600;line-height:1.3}
-  .gi-topics .tc{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 2px}
+  .gi-topics .tt{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
+  .gi-topics .tc{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 2px}
   .gi-topics .ta{color:var(--soft);opacity:.6;flex:0 0 auto}
   @media (max-width:820px){.gi-hero .gi-grid{grid-template-columns:1fr;gap:30px}}
 
-  /* ---- COUNTRY HUBS ------------------------------------------------ */
+  /* ---- COUNTRY HUBS — minimal two-column rows (pick F) ------------- */
   .gi-hubs-wrap { padding: 52px 0 0 }
-  .gi-hubs-head { margin-bottom: 22px }
+  .gi-hubs-head { margin-bottom: 14px }
   .gi-hubs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+    max-width: 860px;
   }
   .gi-hubs a {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: .02em;
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1.5px solid var(--paper-edge);
-    background: var(--white);
-    color: var(--ink);
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 2px;
+    border-bottom: 1px solid var(--paper-edge);
     text-decoration: none;
-    box-shadow: 0 2px 8px -4px rgba(40,50,70,.14);
-    transition: border-color .14s ease, background .14s ease, color .14s ease, transform .14s ease, box-shadow .14s ease;
+    color: var(--navy);
   }
-  .gi-hubs a:hover {
-    border-color: var(--cta);
-    background: var(--cta);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px rgba(199,93,56,.4);
-  }
-  .gi-hubs a:focus-visible { outline: 3px solid var(--cta); outline-offset: 3px }
-  .gi-hubs a .arrow { opacity: .55; font-size: 12px; transition: opacity .14s ease }
-  .gi-hubs a:hover .arrow { opacity: 1 }
+  .gi-hubs a .hn { font-size: 17px; font-weight: 600; letter-spacing: -.01em }
+  .gi-hubs a:hover .hn { color: var(--cta) }
+  .gi-hubs a .hr { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--muted); white-space: nowrap }
+  .gi-hubs a .arrow { color: var(--cta); transition: transform .15s ease; display: inline-flex }
+  .gi-hubs a:hover .arrow { transform: translateX(3px) }
+  .gi-hubs a:focus-visible { outline: 2px solid var(--cta); outline-offset: 3px }
+  @media (max-width: 620px) { .gi-hubs { grid-template-columns: 1fr } }
 
   /* ---- GUIDES SECTION ---------------------------------------------- */
   .gi-guides-wrap { padding: 56px 0 64px }
@@ -155,12 +147,14 @@
     <nav class="gi-hubs" aria-label="Country guide hubs">
       @foreach ($countryHubs as $hub)
         <a href="{{ url('/visa/'.$hub->slug) }}">
-          {{ $hub->name }}
-          <span class="arrow" aria-hidden="true">→</span>
+          <span class="hn">{{ $hub->name }}</span>
+          <span class="hr">{{ $hub->guides_count }} {{ \Illuminate\Support\Str::plural('guide', $hub->guides_count) }}
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </span>
         </a>
       @endforeach
     </nav>
-    <div style="height:52px"></div>
+    <div style="height:48px"></div>
   </div>
 </section>
 @endif

@@ -61,6 +61,7 @@ class GuideController extends Controller
         // Country hubs that have at least one published guide — link ACROSS to /visa/{slug}.
         $countryHubs = Destination::query()
             ->whereHas('guides', fn ($q) => $q->published())
+            ->withCount(['guides' => fn ($q) => $q->published()])
             ->orderBy('name')
             ->get();
 
