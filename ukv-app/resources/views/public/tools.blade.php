@@ -7,13 +7,20 @@
 <style>
   /* tools.blade — page-scoped layout only. Palette/type/components inherited from ukv.css. */
 
-  /* ── Hero copy column ── */
-  .tl-hero-copy h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:var(--navy);max-width:20ch}
-  .tl-hero-copy .lede{color:var(--muted);max-width:50ch;margin:.6em 0 1.6em}
-  /* mini trust row */
+  /* ── Hero — navy mesh (pick B) ── */
+  .tl-hero{
+    background:
+      radial-gradient(640px 280px at 12% 0, rgba(199,93,56,.5), transparent 60%),
+      radial-gradient(600px 260px at 92% 100%, rgba(92,154,123,.5), transparent 60%),
+      var(--navy);
+  }
+  .tl-hero .eyebrow{color:var(--soft)}
+  .tl-hero-copy h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:#fff;max-width:18ch}
+  .tl-hero-copy .lede{color:rgba(255,255,255,.85);max-width:50ch;margin:.6em 0 1.6em}
+  /* mini trust row (glass on dark) */
   .tl-trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-  .tl-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.80);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--ink);font-weight:600}
-  .tl-trust span::before{content:"✓";display:inline-block;width:16px;height:16px;background:var(--stamp-text);color:#fff;border-radius:50%;font-size:9px;font-weight:800;line-height:16px;text-align:center;flex:0 0 16px}
+  .tl-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 14px;font-size:12.5px;color:#fff;font-weight:600}
+  .tl-trust span::before{content:"✓";display:inline-block;width:16px;height:16px;background:var(--soft);color:var(--navy);border-radius:50%;font-size:9px;font-weight:800;line-height:16px;text-align:center;flex:0 0 16px}
 
   /* ── Two-checker grid ── */
   .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
@@ -57,8 +64,8 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="mesh-hero">
+{{-- HERO — navy mesh --}}
+<section class="mesh-hero tl-hero">
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy tl-hero-copy reveal">
