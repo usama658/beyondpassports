@@ -36,4 +36,4 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "${A2_PORT:-7822}" -H "$A2_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
           ssh -i ~/.ssh/deploy_key -p "${A2_PORT:-7822}" -o StrictHostKeyChecking=accept-new \
-            "$A2_USER@$A2_HOST" "PHP='$A2_PHP' bash ~/beyondpassports/ukv-app/scripts/update-a2.sh"
+            "$A2_USER@$A2_HOST" "cd ~/beyondpassports && git fetch --depth 1 origin master && git reset --hard origin/master && PHP='$A2_PHP' bash ukv-app/scripts/update-a2.sh"
