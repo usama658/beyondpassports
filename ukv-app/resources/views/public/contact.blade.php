@@ -168,7 +168,6 @@
   .ct-methods .ct-method--primary .ct-sub { color: rgba(255,255,255,.8); font-size: 15px; }
   .ct-methods .ct-method--primary .ct-hours { background: rgba(255,255,255,.12); color: var(--soft); }
   .ct-methods .ct-method--primary .ct-call-btn { align-self: flex-start; margin-top: 18px; padding: 13px 26px; }
-  .ct-methods .ct-method--primary .ct-sub { max-width: 32ch; }
   /* right-column cards: icon-left rows (matches preview), all text kept */
   .ct-methods .ct-method--wa,
   .ct-methods .ct-method--email { flex-direction: row; align-items: flex-start; gap: 16px; }
@@ -178,10 +177,11 @@
 
   /* ── Callback section — form on soft-sky ground ─────────────────────────── */
   .ct-form-sec { background: linear-gradient(180deg, #EAF1F4, var(--paper)); }
-  .ct-callback-wrap { max-width: 600px; margin: 0 auto; }
+  .ct-callback-wrap { max-width: 560px; margin: 0 auto; }
   .ct-callback .checker { background: var(--white); border: 1px solid var(--paper-edge); box-shadow: var(--lift-2); }
   .ct-callback .checker .cbody { padding: 32px 34px; }
   .ct-callback-intro { text-align: center; max-width: 52ch; margin: 0 auto 24px; }
+  .ct-callback-intro .eyebrow { color: var(--cta); }
   .ct-callback-intro h2 { font-size: clamp(26px, 3.2vw, 36px); color: var(--navy); margin-bottom: 10px; }
   .ct-callback-intro p { color: var(--muted); margin: 0; }
 
@@ -336,8 +336,8 @@
     <p class="sc-lab">Beyond Passports · UK team</p>
     <p class="sc-big">Mon–Sat · 9–6 UK time</p>
     <div class="ct-actions">
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call now</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">WhatsApp</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">Call now</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa">WhatsApp</a>
     </div>
   </div>
 </div></div></section>
@@ -355,10 +355,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg>
       </span>
       <h3>Call us</h3>
-      <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">{{ config('ukv.phone') ?: 'Call our UK team' }}</a></p>
+      <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
       <p class="ct-sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
       <span class="ct-hours">Mon–Sat &nbsp;9–6 UK time</span>
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn ct-call-btn">Call now</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn ct-call-btn">Call now</a>
     </div>
 
     <div class="ct-method ct-method--wa">
@@ -367,7 +367,7 @@
       </span>
       <div class="ct-mbody">
         <h3>WhatsApp</h3>
-        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message our UK team' }}</a></p>
+        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
         <p class="ct-sub">Quick questions, photos of a document, a fast reply on the go.</p>
         <span class="ct-hours">Replies Mon–Sat &nbsp;9–6 UK time</span>
       </div>
@@ -397,7 +397,6 @@
           <div class="ct-callback-intro">
             <p class="eyebrow">Rather we call you?</p>
             <h2>Request a callback</h2>
-            <p>Leave your number and the best time to reach you — we'll call when it suits you. No queue, no obligation.</p>
           </div>
           <form id="callback-form" method="POST" action="{{ url('/contact') }}" novalidate>
             @csrf
