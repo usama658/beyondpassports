@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Dev-only design preview loop + installed skills (never deploy)
+/public/__*.html
+/.agents/
+/skills-lock.json
+/storage/design_pick.json
