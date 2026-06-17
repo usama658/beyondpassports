@@ -167,6 +167,12 @@
   .faqd summary::after{content:"+";font-family:var(--mono);font-size:22px;color:var(--gold);flex:0 0 auto;transition:transform .15s ease}
   .faqd details[open] summary::after{content:"–"}
   .faqd p{margin:12px 0 0;color:#3a4b55;font-size:16px}
+  /* FAQ — tinted panel accordion (option E) */
+  .faq-e{background:var(--paper)}
+  .faq-e .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  .faq-e .faq-panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;padding:6px 30px;max-width:80ch;margin:0 auto;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .faq-e .faqd{max-width:none}
+  .faq-e .faqd details:last-child{border-bottom:0}
   @media (max-width:860px){
     .facts,.tiers,.reqs{grid-template-columns:1fr}
   }
@@ -261,44 +267,7 @@
   </div>
 </div></section>
 
-{{-- 5. REQUIREMENTS — sticky heading + list (E) --}}
-<section class="alt"><div class="wrap">
-  <div class="reqs-split reveal">
-    <div class="reqs-intro">
-      <p class="eyebrow">Before you start</p>
-      <h2>What you'll need</h2>
-      <p class="lede">Have these ready and your application moves faster — we'll confirm the exact list for your trip.</p>
-    </div>
-    <div class="reqs">
-    @forelse ($docs as $doc)
-      <div class="req reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><h3>{{ $doc }}</h3></div>
-      </div>
-    @empty
-      {{-- Fallback when required_docs is empty: sensible generic checklist. --}}
-      <div class="req reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><h3>A valid passport</h3><p>{{ $passport ? 'Recommended at least '.$passport.' months\' validity beyond your travel dates.' : 'Valid for your full trip.' }}</p></div>
-      </div>
-      <div class="req reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><h3>Your travel dates</h3><p>Intended arrival and departure dates for your trip to {{ $name }}.</p></div>
-      </div>
-      <div class="req reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><h3>A digital passport photo</h3><p>A clear, recent photo where required — we'll tell you the exact spec.</p></div>
-      </div>
-      <div class="req reveal">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><h3>Contact &amp; payment details</h3><p>An email for updates and a card to cover the service and government fees.</p></div>
-      </div>
-    @endforelse
-    </div>
-  </div>
-</div></section>
-
-{{-- 5b. DOCUMENT CHECKLIST PREVIEW (Document Requirements Engine) --}}
+{{-- 5. DOCUMENT CHECKLIST PREVIEW (Document Requirements Engine) — the canonical requirements section --}}
 {{-- $docItems is computed in DestinationController::show via RequirementService::preview().
      Generic, destination-scoped preview — no order context. Renders nothing if empty. --}}
 @if (! empty($docItems))
@@ -309,16 +278,18 @@
 </div></section>
 @endif
 
-{{-- 6. FAQ --}}
-<section><div class="wrap">
+{{-- 6. FAQ — tinted panel accordion (E) --}}
+<section class="faq-e"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>{{ $visaLabel }} FAQ</h2></div>
-  <div class="faqd reveal">
+  <div class="faq-panel reveal">
+    <div class="faqd">
     @foreach ($faqs as $f)
       <details>
         <summary>{{ $f['q'] }}</summary>
         <p>{{ $f['a'] }}</p>
       </details>
     @endforeach
+    </div>
   </div>
 </div></section>
 
