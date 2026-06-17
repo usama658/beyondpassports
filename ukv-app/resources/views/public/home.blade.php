@@ -161,7 +161,7 @@
     var paused = false, raf;
     var loop = function () {
       if (!paused) {
-        sc.scrollLeft += 0.5;                       // glide speed (px/frame)
+        sc.scrollLeft += 1.1;                       // glide speed (px/frame)
         if (sc.scrollLeft >= sc.scrollWidth / 2) sc.scrollLeft -= sc.scrollWidth / 2;  // seamless wrap
       }
       raf = requestAnimationFrame(loop);
