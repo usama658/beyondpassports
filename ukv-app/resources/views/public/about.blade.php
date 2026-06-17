@@ -7,6 +7,50 @@
 <style>
   /* ── about page — page-scoped styles only. Design system in ukv.css ─────── */
 
+  /* ── Hero — statement left + "who we are" credentials card right ─────────── */
+  .ab-hero {
+    background: linear-gradient(180deg, #EAF1F4, #F2F5F6 60%, var(--paper));
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  .ab-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .ab-hero-copy h1 { max-width: 18ch; }
+  .ab-hero-copy .lede { max-width: 50ch; }
+  .ab-idcard {
+    background:
+      radial-gradient(380px 180px at 110% -10%, rgba(199,93,56,.30), transparent 60%),
+      radial-gradient(360px 180px at -10% 120%, rgba(92,154,123,.28), transparent 60%),
+      var(--navy);
+    color: #fff;
+    border-radius: 18px;
+    padding: 26px 28px;
+    box-shadow: var(--lift-2);
+  }
+  .ab-idcard .ic-k {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin: 0 0 6px;
+  }
+  .ab-idcard .ic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(255,255,255,.14);
+    font-size: 14px;
+  }
+  .ab-idcard .ic-row:first-of-type { border-top: 0; }
+  .ab-idcard .ic-row span { color: rgba(255,255,255,.72); }
+  .ab-idcard .ic-row b { font-weight: 700; color: #fff; }
+
   /* ── Who we are — prose ──────────────────────────────────────────────────── */
   .ab-prose { max-width: 66ch; }
   .ab-prose p {
@@ -112,6 +156,10 @@
   }
   .ab-chip b { color: var(--cta); }
 
+  @media (max-width: 860px) {
+    .ab-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .ab-hero-copy h1, .ab-hero-copy .lede { max-width: none; }
+  }
   @media (max-width: 760px) {
     .ab-values { grid-template-columns: 1fr; }
     .ab-callout { padding: 22px 20px; }
@@ -122,16 +170,20 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
-  <p class="eyebrow">About us</p>
-  <h1>An independent UK team that makes visas simple.</h1>
-  <p class="lede">We're a private, UK-based service that checks, prepares and submits travel-document applications for British travellers heading abroad — so you don't have to second-guess the rules.</p>
-  <div class="ab-chips">
-    <span class="ab-chip"><b>UK-based</b> &nbsp;team</span>
-    <span class="ab-chip">Mon–Sat &nbsp;<b>9–6</b></span>
-    <span class="ab-chip">Not a government website</span>
+<section class="ab-hero"><div class="wrap"><div class="ab-hero-grid">
+  <div class="ab-hero-copy reveal">
+    <p class="eyebrow">About us</p>
+    <h1>An independent UK team that makes visas simple.</h1>
+    <p class="lede">We're a private, UK-based service that checks, prepares and submits travel-document applications for British travellers heading abroad — so you don't have to second-guess the rules.</p>
   </div>
-</div></div></div></section>
+  <div class="ab-idcard reveal" aria-label="Who we are at a glance">
+    <p class="ic-k">Beyond Passports · who we are</p>
+    <div class="ic-row"><span>Based</span><b>United Kingdom</b></div>
+    <div class="ic-row"><span>Team hours</span><b>Mon–Sat 9–6</b></div>
+    <div class="ic-row"><span>Status</span><b>Independent service</b></div>
+    <div class="ic-row"><span>Not</span><b>a government website</b></div>
+  </div>
+</div></div></section>
 
 {{-- WHO WE ARE --}}
 <section id="who"><div class="wrap">
