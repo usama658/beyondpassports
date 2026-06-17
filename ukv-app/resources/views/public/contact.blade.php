@@ -167,6 +167,12 @@
   .ct-methods .ct-method--primary .ct-detail a { color: #fff; }
   .ct-methods .ct-method--primary .ct-sub { color: rgba(255,255,255,.8); font-size: 15px; }
   .ct-methods .ct-method--primary .ct-hours { background: rgba(255,255,255,.12); color: var(--soft); }
+  /* right-column cards: icon-left rows (matches preview), all text kept */
+  .ct-methods .ct-method--wa,
+  .ct-methods .ct-method--email { flex-direction: row; align-items: flex-start; gap: 16px; }
+  .ct-methods .ct-method--wa .ct-ico,
+  .ct-methods .ct-method--email .ct-ico { margin-bottom: 0; }
+  .ct-mbody { display: flex; flex-direction: column; gap: 6px; }
 
   /* ── Callback section ──────────────────────────────────────────────────── */
   .ct-callback-wrap { max-width: 660px; margin: 0 auto; }
@@ -350,20 +356,24 @@
       <span class="ct-ico" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
       </span>
-      <h3>WhatsApp</h3>
-      <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message us' }}</a></p>
-      <p class="ct-sub">Quick questions, photos of a document, a fast reply on the go.</p>
-      <span class="ct-hours">Replies Mon–Sat &nbsp;9–6 UK time</span>
+      <div class="ct-mbody">
+        <h3>WhatsApp</h3>
+        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message us' }}</a></p>
+        <p class="ct-sub">Quick questions, photos of a document, a fast reply on the go.</p>
+        <span class="ct-hours">Replies Mon–Sat &nbsp;9–6 UK time</span>
+      </div>
     </div>
 
     <div class="ct-method ct-method--email">
       <span class="ct-ico" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
       </span>
-      <h3>Email</h3>
-      <p class="ct-detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}">{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}</a></p>
-      <p class="ct-sub">Best for sending documents or anything you want in writing.</p>
-      <span class="ct-hours">Reply within one working day</span>
+      <div class="ct-mbody">
+        <h3>Email</h3>
+        <p class="ct-detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}">{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}</a></p>
+        <p class="ct-sub">Best for sending documents or anything you want in writing.</p>
+        <span class="ct-hours">Reply within one working day</span>
+      </div>
     </div>
 
   </div>
