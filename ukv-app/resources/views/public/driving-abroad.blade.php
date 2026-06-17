@@ -85,6 +85,7 @@
   @media (max-width:680px){ .da-bring{grid-template-columns:1fr} }
 
   /* ── eligibility — can / can't contrast cards ────────────────── */
+  #who .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
   #who .da-split{align-items:center}
   .da-cc{display:grid;gap:14px}
   .da-cc-card{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);padding:22px 24px;box-shadow:var(--lift-1)}
