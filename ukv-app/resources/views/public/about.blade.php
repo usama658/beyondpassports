@@ -221,6 +221,12 @@
   }
   .ab-chip b { color: var(--cta); }
 
+  /* Transparency: full-width card + unrestricted heading */
+  #transparency .sec-head, #transparency .sec-head h2 { max-width: none; }
+  .ab-callout { max-width: none; width: 100%; }
+  .ab-callout p { max-width: none; }
+  @media (min-width: 561px) { .ab-callout { padding-right: 116px; } }
+
   @media (max-width: 860px) {
     .ab-hero-grid { grid-template-columns: 1fr; gap: 30px; }
     .ab-hero-copy h1, .ab-hero-copy .lede { max-width: none; }
