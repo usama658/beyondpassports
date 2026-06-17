@@ -129,8 +129,15 @@
   @media (max-width:520px){.dmoney-facts{grid-template-columns:1fr}.dmoney-facts>div{border-left:0;border-top:1px solid rgba(255,255,255,.12)}}
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
   .tier{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:26px 24px;position:relative}
-  .tier.feat{border-color:var(--gold);box-shadow:var(--shadow)}
-  .tier .badge{position:absolute;top:-12px;left:24px;background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:20px}
+  /* Featured tier rendered dark (option C) */
+  .tier.feat{background:var(--navy);border-color:var(--navy);box-shadow:var(--shadow)}
+  .tier.feat .name{color:var(--soft)}
+  .tier.feat .price{color:#fff}
+  .tier.feat .price small{color:#aab0b5}
+  .tier.feat .sub{color:#cfd4d8}
+  .tier.feat li{color:#e4e7ea}
+  .tier.feat li .chk{color:var(--soft)}
+  .tier .badge{position:absolute;top:-12px;left:24px;background:var(--soft);color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:20px}
   .tier .name{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 8px}
   .tier .price{font-family:var(--display);font-size:42px;font-weight:600;color:var(--navy);line-height:1}
   .tier .price small{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.04em}
