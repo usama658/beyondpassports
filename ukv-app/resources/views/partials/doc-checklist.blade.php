@@ -53,8 +53,8 @@
     $docIcon = function (array $item): string {
         $k = strtolower(($item['document_key'] ?? '').' '.($item['label'] ?? ''));
         $map = [
-            'passport' => 'passport',
             'photo|picture|image' => 'photo',
+            'passport' => 'passport',
             'bank|fund|statement|salary|income|money|financ|payment' => 'money',
             'accommod|hotel|booking|stay|address|residence' => 'bed',
             'flight|onward|return|itinerar|ticket|transport|travel date|dates|when' => 'plane',
@@ -87,7 +87,7 @@
        some are standalone documents like confirmation/track). Uses literal colours, not vars. */
     .doc-checklist{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b}
     .doc-checklist .dc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#3f7259;margin:0 0 6px}
-    .doc-checklist .dc-title{font-size:20px;font-weight:600;color:#22282b;margin:0 0 4px;line-height:1.3}
+    .doc-checklist .dc-title{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.01em;color:#22282b;margin:0 0 6px;line-height:1.2}
     .doc-checklist .dc-intro{font-size:14px;color:#697079;margin:0 0 18px;max-width:60ch}
     .doc-checklist .dc-panel{background:#fff;border:1px solid #e6e8ea;border-radius:18px;padding:22px 28px;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
     .doc-checklist .dc-group{margin:0 0 20px}
