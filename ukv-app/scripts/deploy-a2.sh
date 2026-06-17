@@ -37,11 +37,13 @@ fi
 
 say "2/8  Composer install (no-dev)"
 COMPOSER_BIN="$(command -v composer || true)"
-if [ -n "$COMPOSER_BIN" ]; then
-  "$PHP" -d memory_limit=-1 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
-else
-  [ -f composer.phar ] || curl -sS https://getcomposer.org/installer | "$PHP"
-  "$PHP" -d memory_limit=-1 composer.phar install --no-dev --optimize-autoloader --no-interaction
+[ -n "$COMPOSER_BIN" ] || { curl -sS https://getcomposer.org/installer | "$PHP"; COMPOSER_BIN="composer.phar"; }
+composer_install(){ "$PHP" -d memory_limit=-1 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction "$@"; }
+# Some A2 PHP CLIs ship without ext-zip; retry ignoring it so deploy isn't blocked.
+# (Excel/xlsx exports need zip — enable it in cPanel → Select PHP Version for full function.)
+if ! composer_install; then
+  echo "Composer failed (likely ext-zip). Retrying with --ignore-platform-req=ext-zip ..."
+  composer_install --ignore-platform-req=ext-zip
 fi
 
 say "3/8  Write .env"
