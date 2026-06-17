@@ -26,6 +26,9 @@
   .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
 
   /* ── Checker card overrides ── */
+  /* navy stub header (pick B) */
+  .tl-checker .stub{background:linear-gradient(100deg,var(--navy),#2e3740);color:#fff;border-bottom:0}
+  .tl-checker .stub span:last-child{color:var(--soft)}
   .tl-checker .cbody{padding:26px 22px}
   .tl-checker label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:16px 0 5px;letter-spacing:.01em}
   .tl-checker label:first-of-type{margin-top:0}
