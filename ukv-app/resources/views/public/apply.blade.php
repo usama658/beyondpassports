@@ -37,7 +37,7 @@
   .ap-prog{display:none}
   .ukv-form.is-stepped .ap-prog{display:block;margin:0 0 24px}
   .ap-prog .bar{display:flex;align-items:center}
-  .ap-prog .node{width:30px;height:30px;border-radius:50%;background:#eef2f3;border:2px solid var(--paper-edge);color:var(--muted);font-family:var(--body);font-weight:800;font-size:12px;line-height:26px;text-align:center;flex:none}
+  .ap-prog .node{width:28px;height:28px;border-radius:50%;background:#eef2f3;border:2px solid var(--paper-edge);color:var(--muted);font-family:var(--body);font-weight:800;font-size:12px;line-height:24px;text-align:center;flex:none}
   .ap-prog .node.done{background:#eaf3ef;border-color:var(--stamp-text);color:var(--stamp-text)}
   .ap-prog .node.on{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.15)}
   .ap-prog .seg{height:2px;flex:1;background:var(--paper-edge);margin:0 5px}
@@ -57,9 +57,10 @@
   .ap-rail.is-stepped li{cursor:pointer}
   .ap-rail li.done{color:var(--stamp-text)}
   .ap-rail li.done::before{background:var(--stamp-text)}
-  .ap-stepnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;border-top:1px solid var(--paper-edge);padding-top:20px}
-  .ap-stepnav .ap-count{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)}
-  .ap-stepnav .ap-next{padding:12px 24px}
+  .ap-stepnav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px;border-top:1px solid var(--paper-edge);padding-top:20px}
+  .ap-stepnav .ap-count{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted);white-space:nowrap;margin-left:auto}
+  .ap-stepnav .btn{width:auto;flex:0 0 auto}
+  .ap-stepnav .ap-next{padding:12px 26px}
   .ap-stepnav .ap-back{background:transparent;color:var(--cta);border:1.5px solid var(--cta);padding:11px 20px}
   @media (prefers-reduced-motion:reduce){.ukv-form.is-stepped .ap-step.is-active{animation:none}}
 
@@ -70,7 +71,7 @@
   .ukv-form .field[hidden]{display:none}
   .ukv-form label{display:block;font-family:var(--body);font-weight:600;font-size:13px;color:#4a5b65;margin:0 0 5px;letter-spacing:.01em}
   .ukv-form .req{color:var(--cta)}
-  .ukv-form input,.ukv-form select{width:100%;padding:12px 13px;border:1px solid var(--paper-edge);border-radius:10px;font:inherit;font-size:15px;background:var(--white);color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
+  .ukv-form input,.ukv-form select{width:100%;padding:11px 12px;border:1px solid var(--paper-edge);border-radius:10px;font:inherit;font-size:14px;background:var(--white);color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
   .ukv-form input:hover,.ukv-form select:hover{border-color:#c8cdd2}
   .ukv-form [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
   .ukv-form .field-error{display:block;color:#8a2a22;font-size:12.5px;margin:5px 0 0;font-weight:600}
