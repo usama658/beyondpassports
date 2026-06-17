@@ -27,12 +27,23 @@
 <style>
   /* find-a-centre — page-scoped layout only. Palette/type/components from ukv.css. */
 
-  /* ── hero trust pills ─────────────────────────────────────────── */
+  /* ── hero — navy mesh (pick A) ────────────────────────────────── */
+  .fc-hero{
+    background:
+      radial-gradient(640px 280px at 12% 0, rgba(199,93,56,.5), transparent 60%),
+      radial-gradient(600px 260px at 92% 100%, rgba(92,154,123,.5), transparent 60%),
+      var(--navy);
+    color:#fff;padding:60px 0;
+  }
+  .fc-hero .eyebrow{color:var(--soft)}
+  .fc-hero h1{color:#fff;max-width:18ch}
+  .fc-hero .lede{color:rgba(255,255,255,.85);max-width:54ch}
+  /* ── hero trust pills (glass on dark) ─────────────────────────── */
   .fc-trust{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
-  .fc-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.72);
-    backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;
-    padding:8px 15px;font-size:13px;color:var(--ink)}
-  .fc-trust span b{color:var(--cta);font-weight:700}
+  .fc-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;
+    padding:8px 15px;font-size:13px;color:#fff}
+  .fc-trust span b{color:var(--soft);font-weight:700}
 
   /* ── finder card ─────────────────────────────────────────────── */
   .fc-finder{max-width:660px;margin:0 auto;background:var(--white);
@@ -123,20 +134,16 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm">
-  <div class="wrap">
-    <div class="mh-grid">
-      <div class="mh-copy reveal">
-        <p class="eyebrow">Find a centre</p>
-        <h1>Find your nearest centre</h1>
-        <p class="lede">Enter your postcode to see visa application centres, PayPoint IDP issuers, embassies and courier drop-offs — closest first. We flag any where we can book your appointment for you.</p>
-        <div class="fc-trust">
-          <span><b>✓</b> Sorted by distance</span>
-          <span><b>✓</b> All types in one search</span>
-          <span><b>✓</b> Nothing stored</span>
-        </div>
-      </div>
+{{-- HERO — navy mesh --}}
+<section class="fc-hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Find a centre</p>
+    <h1>Find your nearest centre</h1>
+    <p class="lede">Enter your postcode to see visa application centres, PayPoint IDP issuers, embassies and courier drop-offs — closest first. We flag any where we can book your appointment for you.</p>
+    <div class="fc-trust">
+      <span><b>✓</b> Sorted by distance</span>
+      <span><b>✓</b> All types in one search</span>
+      <span><b>✓</b> Nothing stored</span>
     </div>
   </div>
 </section>
