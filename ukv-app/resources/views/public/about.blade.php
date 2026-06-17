@@ -51,8 +51,13 @@
   .ab-idcard .ic-row span { color: rgba(255,255,255,.72); }
   .ab-idcard .ic-row b { font-weight: 700; color: #fff; }
 
-  /* ── Who we are — prose ──────────────────────────────────────────────────── */
-  .ab-prose { max-width: 66ch; }
+  /* ── Who we are — prose + "we are / we are not" contrast cards ───────────── */
+  .ab-who-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 44px;
+    align-items: start;
+  }
   .ab-prose p {
     font-size: 17px;
     line-height: 1.7;
@@ -71,6 +76,34 @@
     line-height: 1.6;
     color: var(--stamp-text);
   }
+  .ab-contrast { display: grid; gap: 14px; }
+  .ab-cc {
+    background: var(--white);
+    border: 1px solid var(--paper-edge);
+    border-radius: 16px;
+    box-shadow: var(--lift-1);
+    padding: 20px 22px;
+  }
+  .ab-cc .cc-t {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .ab-cc.is-are .cc-t { color: var(--sage-deep, #3f7259); }
+  .ab-cc.is-not .cc-t { color: var(--cta); }
+  .ab-cc ul { margin: 0; padding: 0; list-style: none; }
+  .ab-cc li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #33454f;
+    padding: 6px 0;
+  }
+  .ab-cc li svg { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; }
 
   /* ── Values — elevated tick cards ───────────────────────────────────────── */
   .ab-values {
@@ -159,6 +192,7 @@
   @media (max-width: 860px) {
     .ab-hero-grid { grid-template-columns: 1fr; gap: 30px; }
     .ab-hero-copy h1, .ab-hero-copy .lede { max-width: none; }
+    .ab-who-grid { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 760px) {
     .ab-values { grid-template-columns: 1fr; }
@@ -186,12 +220,36 @@
 </div></div></section>
 
 {{-- WHO WE ARE --}}
+@php
+  $ccTick = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#3f7259" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $ccCross = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#C75D38" stroke-width="2.2" stroke-linecap="round"/></svg>';
+@endphp
 <section id="who"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>A private service, not a public office</h2></div>
-  <div class="ab-prose reveal">
-    <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
-    <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself — using us is optional.</p>
-    <p class="ab-note">Our service fee is separate from, and additional to, any government or embassy fee. The official fee is set and collected by the relevant authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
+  <div class="ab-who-grid">
+    <div class="ab-prose reveal">
+      <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
+      <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself — using us is optional.</p>
+      <p class="ab-note">Our service fee is separate from, and additional to, any government or embassy fee. The official fee is set and collected by the relevant authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
+    </div>
+    <div class="ab-contrast reveal">
+      <div class="ab-cc is-are">
+        <p class="cc-t">We are</p>
+        <ul>
+          <li>{!! $ccTick !!}An independent, UK-based service</li>
+          <li>{!! $ccTick !!}Real human document checks</li>
+          <li>{!! $ccTick !!}Optional — your choice to use</li>
+        </ul>
+      </div>
+      <div class="ab-cc is-not">
+        <p class="cc-t">We are not</p>
+        <ul>
+          <li>{!! $ccCross !!}A government body or gov.uk</li>
+          <li>{!! $ccCross !!}An embassy or consulate</li>
+          <li>{!! $ccCross !!}Able to guarantee a decision</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div></section>
 
