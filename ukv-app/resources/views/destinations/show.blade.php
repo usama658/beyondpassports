@@ -257,17 +257,7 @@
   </div>
 </div></section>
 
-{{-- 4. HOW IT WORKS --}}
-<section id="how"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">What you get</p><h2>Three simple steps</h2></div>
-  <div class="steps">
-    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Share your travel dates and passport details. We confirm exactly what your {{ $visaLabel }} needs.</p></div>
-    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team reviews every detail for errors before anything is submitted to the authorities.</p></div>
-    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>Submit &amp; track</h3><p>We handle the submission and keep you updated until your {{ $visaType }} is delivered.</p></div>
-  </div>
-</div></section>
-
-{{-- 5. DOCUMENT CHECKLIST PREVIEW (Document Requirements Engine) — the canonical requirements section --}}
+{{-- 4. DOCUMENT CHECKLIST PREVIEW (Document Requirements Engine) — the canonical requirements section --}}
 {{-- $docItems is computed in DestinationController::show via RequirementService::preview().
      Generic, destination-scoped preview — no order context. Renders nothing if empty. --}}
 @if (! empty($docItems))
@@ -277,6 +267,16 @@
   </div>
 </div></section>
 @endif
+
+{{-- 5. HOW IT WORKS --}}
+<section id="how"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">What you get</p><h2>Three simple steps</h2></div>
+  <div class="steps">
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Share your travel dates and passport details. We confirm exactly what your {{ $visaLabel }} needs.</p></div>
+    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team reviews every detail for errors before anything is submitted to the authorities.</p></div>
+    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>Submit &amp; track</h3><p>We handle the submission and keep you updated until your {{ $visaType }} is delivered.</p></div>
+  </div>
+</div></section>
 
 {{-- 6. FAQ — tinted panel accordion (E) --}}
 <section class="faq-e"><div class="wrap">
