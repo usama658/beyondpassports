@@ -42,14 +42,16 @@
   .ap-prog .node.on{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.15)}
   .ap-prog .seg{height:2px;flex:1;background:var(--paper-edge);margin:0 5px}
   .ap-prog .seg.done{background:var(--stamp-text)}
-  .ap-prog .labels{display:flex;margin:9px 0 0}
-  .ap-prog .labels span{flex:1;text-align:center;font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.02em;color:var(--muted)}
-  .ap-prog .labels span.on{color:var(--cta)}
-  .ap-prog .labels span.done{color:var(--stamp-text)}
+  .ap-prog .labels{display:flex;align-items:flex-start;margin:9px 0 0}
+  .ap-prog .labels .lb{flex:0 0 28px;text-align:center;white-space:nowrap;font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.02em;color:var(--muted)}
+  .ap-prog .labels .lsp{flex:1}
+  .ap-prog .labels .lb.on{color:var(--cta)}
+  .ap-prog .labels .lb.done{color:var(--stamp-text)}
   /* resume banner */
-  .ap-resume{display:flex;align-items:center;gap:9px;background:#eaf3ef;border:1px solid #cfe6da;border-radius:10px;padding:10px 14px;font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--stamp-text);margin:0 0 18px}
+  .ap-resume{display:flex;align-items:center;gap:11px;background:#eaf3ef;border:1px solid #cfe6da;border-radius:10px;padding:11px 15px;font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--stamp-text);margin:0 0 18px}
+  .ap-resume .ap-resume-ic{flex:none;width:26px;height:26px;border-radius:50%;background:var(--stamp-text);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1}
   .ap-resume button{margin-left:auto;background:transparent;border:0;color:var(--muted);font:600 12px var(--body);text-decoration:underline;cursor:pointer;padding:0}
-  @media (max-width:560px){.ap-prog .labels span{font-size:9px}}
+  @media (max-width:560px){.ap-prog .labels .lb{font-size:9px}}
   /* stepped wizard (JS-on only) */
   .ukv-form.is-stepped .ap-step{display:none}
   .ukv-form.is-stepped .ap-step.is-active{display:block;animation:apfade .25s ease}
@@ -743,13 +745,17 @@
       barHtml += '<span class="node" data-i="' + i + '">' + (i + 1) + '</span>';
       if (i < last) barHtml += '<span class="seg" data-i="' + i + '"></span>';
     }
-    barHtml += '</div><div class="labels">' +
-      LABELS.slice(0, steps.length).map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</div>';
+    var labs = '';
+    LABELS.slice(0, steps.length).forEach(function (l, i) {
+      labs += '<span class="lb">' + l + '</span>';
+      if (i < steps.length - 1) labs += '<span class="lsp"></span>';
+    });
+    barHtml += '</div><div class="labels">' + labs + '</div>';
     prog.innerHTML = barHtml;
     steps[0].parentNode.insertBefore(prog, steps[0]);
     var nodes  = [].slice.call(prog.querySelectorAll('.node'));
     var segs   = [].slice.call(prog.querySelectorAll('.seg'));
-    var pLabels = [].slice.call(prog.querySelectorAll('.labels span'));
+    var pLabels = [].slice.call(prog.querySelectorAll('.labels .lb'));
 
     // ── Step nav (Back · count · Next) inside the last step ──
     var nav = document.createElement('div');
@@ -850,7 +856,7 @@
     if (resumed) {
       var banner = document.createElement('div');
       banner.className = 'ap-resume';
-      banner.innerHTML = '<span aria-hidden="true">↻</span><span>Welcome back — we saved your answers on this device.</span>';
+      banner.innerHTML = '<span class="ap-resume-ic" aria-hidden="true">↻</span><span>Welcome back — we saved your answers on this device.</span>';
       var clr = document.createElement('button');
       clr.type = 'button'; clr.textContent = 'Start over';
       clr.addEventListener('click', function () {
