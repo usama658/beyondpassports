@@ -33,6 +33,17 @@
 
   /* ── Boarding-pass-styled form card overrides ── */
   .ap-form-card .cbody{padding:32px 28px}
+  /* section-progress rail (E) */
+  .ap-cardrow{display:grid;grid-template-columns:212px 1fr}
+  .ap-rail{background:#f7fafb;border-right:1px solid var(--paper-edge)}
+  .ap-rail .sticky-inner{position:sticky;top:96px;padding:26px 22px}
+  .ap-rail-h{font-family:var(--body);font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .ap-rail ul{list-style:none;margin:0;padding:0}
+  .ap-rail li{font-family:var(--body);font-weight:600;font-size:13.5px;color:var(--muted);padding:10px 0 10px 24px;position:relative}
+  .ap-rail li::before{content:"";position:absolute;left:0;top:14px;width:9px;height:9px;border-radius:50%;background:var(--paper-edge);transition:background .2s ease,box-shadow .2s ease}
+  .ap-rail li.on{color:var(--cta)}
+  .ap-rail li.on::before{background:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.15)}
+  @media (max-width:760px){.ap-cardrow{grid-template-columns:1fr}.ap-rail{display:none}}
 
   /* ── Form internals ── */
   .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -161,6 +172,19 @@
     {{-- INTAKE FORM --}}
     <div class="checker ap-form-card reveal" id="form-card">
       <div class="stub"><span>Application</span><span>New request</span></div>
+      <div class="ap-cardrow">
+      <aside class="ap-rail" aria-hidden="true">
+        <div class="sticky-inner">
+          <p class="ap-rail-h">Sections</p>
+          <ul id="ap-rail-list">
+            <li data-target="sec-trip" class="on">Your trip</li>
+            <li data-target="sec-traveller">Traveller</li>
+            <li data-target="sec-passport">Passport</li>
+            <li data-target="sec-contact">How we reach you</li>
+            <li data-target="sec-service">Service level</li>
+          </ul>
+        </div>
+      </aside>
       <div class="cbody">
 
         {{-- Server-side validation summary --}}
@@ -178,7 +202,7 @@
         <form class="ukv-form" id="apply-form" method="POST" action="{{ url('/apply') }}" novalidate>
           @csrf
 
-          <p class="legend">Your trip</p>
+          <p class="legend" id="sec-trip">Your trip</p>
           <div class="grid2">
             <div class="field">
               <label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
@@ -214,7 +238,7 @@
             </div>
           </div>
 
-          <p class="legend">Traveller</p>
+          <p class="legend" id="sec-traveller">Traveller</p>
           <div class="grid2">
             <div class="field field--full">
               <label for="applicant_name">Traveller's full name (as on passport) <span class="req" aria-hidden="true">*</span></label>
@@ -274,7 +298,7 @@
             </div>
           </div>
 
-          <p class="legend">Passport</p>
+          <p class="legend" id="sec-passport">Passport</p>
           <div class="grid2">
             <div class="field">
               <label for="passport_expiry">Passport expiry date</label>
@@ -283,7 +307,7 @@
             </div>
           </div>
 
-          <p class="legend">How we reach you</p>
+          <p class="legend" id="sec-contact">How we reach you</p>
           <div class="grid2">
             <div class="field">
               <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
@@ -295,7 +319,7 @@
             </div>
           </div>
 
-          <p class="legend">Service level</p>
+          <p class="legend" id="sec-service">Service level</p>
           <div class="grid2">
             <div class="field field--full">
               <label for="tier">Choose your service tier</label>
@@ -326,6 +350,7 @@
           </div>
         </form>
       </div>
+      </div>{{-- /.ap-cardrow --}}
     </div>
 
     {{-- COMPLIANCE STRIP --}}
@@ -661,6 +686,29 @@
       if (!lastOrderRef) return;
       alert('Thanks — your case (' + lastOrderRef + ') is with our UK team. A UK-based adviser will call you back, usually within one business day.');
     });
+  });
+</script>
+@endpush
+
+@push('head')
+<script>
+  // Apply form — section-progress rail scroll-spy. Highlights the rail item for the
+  // legend currently nearest the top of the viewport. Purely visual; no form coupling.
+  document.addEventListener('DOMContentLoaded', function () {
+    var list = document.getElementById('ap-rail-list');
+    if (!list) return;
+    var items = [].slice.call(list.querySelectorAll('li'));
+    var secs  = items.map(function (li) { return document.getElementById(li.getAttribute('data-target')); });
+    function spy() {
+      var idx = 0;
+      for (var i = 0; i < secs.length; i++) {
+        if (secs[i] && secs[i].getBoundingClientRect().top < 160) idx = i;
+      }
+      items.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
+    }
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', spy);
+    spy();
   });
 </script>
 @endpush
