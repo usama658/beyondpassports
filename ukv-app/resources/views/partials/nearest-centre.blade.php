@@ -60,14 +60,21 @@
     .nearest-centre .nc-empty .nc-empty-ic svg{width:28px;height:28px}
     .nearest-centre .nc-empty p{margin:0 auto;max-width:48ch;font-size:14.5px;color:#697079;line-height:1.6}
     .nearest-centre .nc-empty strong{color:#22282b}
-    .nearest-centre .nc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-    /* result card — premium: soft shadow, hover lift, distance pill */
-    .nearest-centre .nc-card{border:1px solid #e6e8ea;border-radius:14px;background:#fff;padding:20px 22px;box-shadow:0 10px 30px -24px rgba(40,50,70,.4);transition:transform .2s ease,box-shadow .2s ease}
+    .nearest-centre .nc-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+    /* result card — info + action rail (pick F) */
+    .nearest-centre .nc-card{display:grid;grid-template-columns:1fr auto;gap:0;border:1px solid #e6e8ea;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 10px 30px -24px rgba(40,50,70,.4);transition:transform .2s ease,box-shadow .2s ease}
     .nearest-centre .nc-card:hover{transform:translateY(-2px);box-shadow:0 18px 44px -26px rgba(40,50,70,.5)}
-    .nearest-centre .nc-card.is-booked{border-color:#eccab4;box-shadow:0 10px 30px -24px rgba(199,93,56,.5)}
-    .nearest-centre .nc-card-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 14px;margin:0 0 10px}
+    .nearest-centre .nc-card.is-booked{border-color:#eccab4}
+    .nearest-centre .nc-info{padding:20px 22px;min-width:0}
+    .nearest-centre .nc-rail{background:#f4f5f6;border-left:1px solid #e6e8ea;padding:18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;min-width:158px}
+    .nearest-centre .nc-card.is-booked .nc-rail{background:linear-gradient(180deg,#fbeee6,#fff);border-left-color:#eccab4}
+    .nearest-centre .nc-km{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:19px;font-weight:800;color:#22282b;line-height:1.1}
+    .nearest-centre .nc-km small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#697079;margin-top:3px}
+    .nearest-centre .nc-railbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;border-radius:10px;padding:10px 14px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:13px;text-decoration:none}
+    .nearest-centre .nc-railbtn.is-pri{background:#C75D38;color:#fff}
+    .nearest-centre .nc-railbtn.is-ghost{background:#fff;border:1px solid #e6e8ea;color:#22282b}
+    .nearest-centre .nc-card-top{margin:0 0 10px}
     .nearest-centre .nc-name{font-size:17px;font-weight:700;color:#22282b;margin:0;line-height:1.3}
-    .nearest-centre .nc-dist{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11.5px;font-weight:700;color:#3f7259;white-space:nowrap;letter-spacing:.02em;background:#eaf3f2;border:1px solid #cfe6e3;border-radius:999px;padding:3px 10px}
     .nearest-centre .nc-badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
     .nearest-centre .nc-badge{display:inline-flex;align-items:center;gap:5px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:#eef3f7;color:#22282b;border:1px solid #e6e8ea}
     .nearest-centre .nc-badge.is-type{background:#eaf3f2;color:#3f7259;border-color:#cfe6e3}
@@ -118,45 +125,47 @@
               $node->postcode ?? null,
           ])));
         @endphp
+        @php
+          // Rail action label
+          $railLabel = $contactHref
+              ? (str_starts_with($contactHref, 'tel:') ? 'Call' : (str_starts_with($contactHref, 'mailto:') ? 'Email' : 'Website ↗'))
+              : null;
+        @endphp
         <li class="nc-card @if ($booked) is-booked @endif">
-          <div class="nc-card-top">
+          <div class="nc-info">
             <h3 class="nc-name">{{ $node->name }}</h3>
-            @if ($distance !== null)
-              <span class="nc-dist" aria-label="{{ number_format((float) $distance, 1) }} kilometres away">{{ number_format((float) $distance, 1) }} km away</span>
-            @endif
-          </div>
 
-          <div class="nc-badges">
-            <span class="nc-badge is-type">{{ $tlabel }}</span>
-            @if ($booked)
-              <span class="nc-badge is-book" title="We can book your appointment here">✓ We book here</span>
-            @endif
-          </div>
+            <div class="nc-badges">
+              <span class="nc-badge is-type">{{ $tlabel }}</span>
+              @if ($booked)
+                <span class="nc-badge is-book" title="We can book your appointment here">✓ We book here</span>
+              @endif
+            </div>
 
-          @if ($addressLine !== '')
-            <p class="nc-addr">{{ $addressLine }}</p>
-          @endif
-
-          <div class="nc-meta">
-            @if ($contactHref !== null)
-              <a class="nc-link"
-                 href="{{ $contactHref }}"
-                 @if (str_starts_with($contactHref, 'http')) target="_blank" rel="noopener noreferrer" @endif
-              >{{ str_starts_with($contactHref, 'tel:') ? 'Call this centre' : (str_starts_with($contactHref, 'mailto:') ? 'Email this centre' : 'Visit website') }} →</a>
-            @elseif (is_string($contact) && $contact !== '')
-              <span class="nc-pp">{{ $contact }}</span>
+            @if ($addressLine !== '')
+              <p class="nc-addr"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 15px;margin-top:2px;color:#9aa1a8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> {{ $addressLine }}</p>
             @endif
 
             @if ($tkey === 'paypoint' && $contactHref === null)
-              {{-- PayPoint IDP nodes with no specific contact: link the official PayPoint
-                   locator (we don't replicate their full store database). --}}
-              <span class="nc-pp">IDPs are issued in person — <a href="{{ $paypointLocator }}" target="_blank" rel="noopener noreferrer">find a PayPoint near you</a>.</span>
+              <p class="nc-pp" style="margin:8px 0 0">IDPs are issued in person — <a href="{{ $paypointLocator }}" target="_blank" rel="noopener noreferrer">find a PayPoint near you</a>.</p>
+            @elseif (! $contactHref && is_string($contact) && $contact !== '')
+              <p class="nc-pp" style="margin:8px 0 0">{{ $contact }}</p>
             @endif
+
+            {{-- Held-slot availability (Wave 2). Guarded — renders nothing if absent. --}}
+            @includeIf('partials.centre-slots', ['node' => $node])
           </div>
 
-          {{-- Held-slot availability (Wave 2, partial owned by agent B3). Referenced by
-               contract only — guarded so it renders nothing in a Wave-1-only state. --}}
-          @includeIf('partials.centre-slots', ['node' => $node])
+          <div class="nc-rail">
+            @if ($distance !== null)
+              <span class="nc-km" aria-label="{{ number_format((float) $distance, 1) }} kilometres away">{{ number_format((float) $distance, 1) }}<small>km away</small></span>
+            @endif
+            @if ($contactHref !== null)
+              <a class="nc-railbtn {{ $booked ? 'is-pri' : 'is-ghost' }}"
+                 href="{{ $contactHref }}"
+                 @if (str_starts_with($contactHref, 'http')) target="_blank" rel="noopener noreferrer" @endif>{{ $railLabel }}</a>
+            @endif
+          </div>
         </li>
       @endforeach
     </ul>
