@@ -96,8 +96,9 @@
     radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
     repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
     var(--paper)}
-  #appointments .sec-head{text-align:center;max-width:62ch;margin-left:auto;margin-right:auto}
-  #appointments .sec-head p{margin-left:auto;margin-right:auto}
+  #appointments .sec-head{text-align:center;max-width:none}
+  #appointments .sec-head h2{max-width:none}
+  #appointments .sec-head p{max-width:58ch;margin-left:auto;margin-right:auto}
   #appointments .pin{display:block;margin:0 auto 12px;color:var(--cta)}
   #appointments form{margin-left:auto;margin-right:auto;justify-content:center}
   #appointments .hint{text-align:center}
