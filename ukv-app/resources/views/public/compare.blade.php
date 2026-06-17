@@ -209,8 +209,15 @@
   }
   .cmp-card.us li::before { background: var(--cta); }
 
-  /* ── FAQ accordion — inherit .faqs/.faq from ukv.css ────────────────────── */
-  /* (all base styles inherited, no overrides needed) */
+  /* ── FAQ — money-page tinted-panel accordion (.faq-e / .faqd) ───────────── */
+  .faq-e .faq-panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;padding:6px 30px;max-width:80ch;margin:0 auto;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .faqd details{border-bottom:1px solid var(--paper-edge);padding:18px 0}
+  .faqd details:last-child{border-bottom:0}
+  .faqd summary{font-family:var(--display);font-size:19px;color:var(--navy);font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faqd summary::-webkit-details-marker{display:none}
+  .faqd summary::after{content:"+";font-size:22px;color:var(--cta);flex:0 0 auto;font-weight:700;transition:transform .15s ease}
+  .faqd details[open] summary::after{content:"–"}
+  .faqd .a p{margin:12px 0 0;color:#3a4b55;font-size:16px;line-height:1.65}
 
   @media (max-width: 760px) {
     .cmp-balance { grid-template-columns: 1fr; }
@@ -334,18 +341,18 @@
 </div></section>
 
 {{-- FAQ --}}
-<section id="faq" class="alt"><div class="wrap">
+<section id="faq" class="alt faq-e"><div class="wrap">
   <div class="sec-head reveal" style="margin:0 auto 36px;text-align:center"><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
-  <div class="faqs">
-    <details class="faq reveal">
+  <div class="faq-panel faqd reveal">
+    <details>
       <summary>Is this a government service?</summary>
       <div class="a"><p>No. Beyond Passports is an independent, private service — not a government website and not affiliated with gov.uk, any embassy or any official authority. You can always apply directly with the relevant authority yourself; using us is entirely optional.</p></div>
     </details>
-    <details class="faq reveal">
+    <details>
       <summary>Do I pay more by using you?</summary>
       <div class="a"><p>Yes — and we won't pretend otherwise. The official government or embassy fee is the same whichever route you take. Our service fee is charged <strong>on top</strong> of that official fee, and pays for the checking, preparation and support we provide. We show both fees separately before you pay, so there are no surprises. Applying yourself is always the lower-cost option.</p></div>
     </details>
-    <details class="faq reveal">
+    <details>
       <summary>Does express get me approved faster?</summary>
       <div class="a"><p>No. An express option speeds up <strong>our</strong> handling and submission of your application — it does not make a government or embassy decide any faster, and it cannot guarantee approval. The decision, and how long it takes, is entirely down to the relevant authority.</p></div>
     </details>
