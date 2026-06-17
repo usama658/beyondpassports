@@ -31,18 +31,15 @@
   .da-prose p{color:#3a4248;margin:0 0 1em;font-size:16.5px;line-height:1.72}
   .da-prose p:last-child{margin-bottom:0}
 
-  /* ── "carry both" visual — UK licence + IDP ──────────────────── */
-  .da-carry{display:flex;gap:14px;align-items:stretch}
-  .da-doc{flex:1;border-radius:16px;padding:22px;color:#fff;box-shadow:var(--lift-1);
-    min-height:170px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-  .da-doc::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(52deg,rgba(255,255,255,.04) 0 2px,transparent 2px 9px);pointer-events:none}
-  .da-doc.is-lic{background:linear-gradient(150deg,#41806a,var(--sage-t))}
-  .da-doc.is-idp{background:linear-gradient(150deg,#3a4654,var(--navy))}
-  .da-doc .dk{font:800 10px var(--display);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
-  .da-doc .dt{font:800 18px var(--display);margin-top:auto}
-  .da-doc .ds{font-size:12.5px;opacity:.78;margin-top:4px}
-  .da-plus{display:flex;align-items:center;justify-content:center;font:800 26px var(--display);color:var(--cta);flex:0 0 auto}
-  .da-carry-note{text-align:center;color:var(--muted);font-size:13.5px;margin:14px 0 0}
+  /* ── what-is — centred prose + definition callout ────────────── */
+  .da-what{max-width:720px;margin:0 auto;text-align:center}
+  .da-what .da-prose{text-align:left}
+  .da-what h2{margin-inline:auto}
+  .da-defcard{text-align:left;background:linear-gradient(180deg,#FBF6F1,var(--white));
+    border:1px solid var(--paper-edge);border-left:4px solid var(--cta);
+    border-radius:0 14px 14px 0;padding:20px 24px;margin-top:24px;
+    font-size:15.5px;line-height:1.6;color:#3a4248;box-shadow:var(--lift-1)}
+  .da-defcard strong{color:var(--navy)}
 
   /* ── honest framing panel ────────────────────────────────────── */
   .da-frame{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
@@ -145,27 +142,14 @@
 {{-- WHAT IS AN IDP --}}
 <section id="what">
   <div class="wrap">
-    <div class="da-split">
-      <div class="da-prose reveal">
-        <p class="eyebrow">The basics</p>
-        <h2 style="color:var(--navy);font-size:clamp(28px,3.4vw,38px);margin-bottom:18px">What is an International Driving Permit?</h2>
+    <div class="da-what reveal">
+      <p class="eyebrow">The basics</p>
+      <h2 style="color:var(--navy);font-size:clamp(28px,3.4vw,38px);margin-bottom:18px">What is an International Driving Permit?</h2>
+      <div class="da-prose">
         <p>An International Driving Permit (IDP) is an official document that translates your UK driving licence into other languages, so police and hire-car companies abroad can read it alongside your photocard licence. It doesn't replace your UK licence — you carry both together.</p>
         <p>Different countries recognise different IDP types, set by three international conventions. Some countries accept one type, some another, and a few accept more than one. Carrying the wrong type can mean being turned away at the car-hire desk or fined at the roadside — so getting the right one matters.</p>
       </div>
-      <div class="reveal">
-        <div class="da-carry">
-          <div class="da-doc is-lic">
-            <span class="dk">UK photocard</span>
-            <div><span class="dt">Your licence</span><div class="ds">The licence you already hold</div></div>
-          </div>
-          <div class="da-plus" aria-hidden="true">+</div>
-          <div class="da-doc is-idp">
-            <span class="dk">International Driving Permit</span>
-            <div><span class="dt">The translation</span><div class="ds">Reads alongside your licence abroad</div></div>
-          </div>
-        </div>
-        <p class="da-carry-note">You carry <strong>both together</strong> when you drive abroad — the IDP never replaces your UK licence.</p>
-      </div>
+      <div class="da-defcard">An IDP <strong>translates</strong> the licence you already hold — it never replaces it. You always carry your UK photocard <strong>and</strong> the IDP together.</div>
     </div>
   </div>
 </section>
