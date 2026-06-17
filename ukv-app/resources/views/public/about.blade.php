@@ -160,23 +160,19 @@
   /* ── How we help — steps use shared .steps class, override inner padding ─── */
   /* (no overrides needed — .steps / .step from ukv.css handles this) */
 
-  /* ── Testimonial quote ───────────────────────────────────────────────────── */
-  .ab-quote-section { position: relative; overflow: hidden; }
-  .ab-quote-section::before {
-    content: "\201C";
-    position: absolute;
-    top: -20px; left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--display);
-    font-size: 180px;
-    font-weight: 800;
-    color: var(--cta);
-    opacity: .06;
-    line-height: 1;
-    pointer-events: none;
-    z-index: 0;
+  /* ── Testimonials — trio of consented quote cards (mirrors home) ─────────── */
+  .tquotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+  .tq {
+    background: #fff; border: 1px solid var(--paper-edge); border-radius: 16px;
+    padding: 24px 22px; box-shadow: var(--shadow); margin: 0;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .ab-quote-section > .wrap { position: relative; z-index: 1; }
+  .tq:hover { transform: translateY(-3px); box-shadow: var(--lift-2); }
+  .tq .stars { color: var(--cta); letter-spacing: 3px; font-size: 14px; }
+  .tq blockquote { margin: 0; font-family: var(--display); font-weight: 600; font-size: 15.5px; line-height: 1.55; color: var(--ink); }
+  .tq figcaption { color: var(--stamp-text); font-weight: 700; font-size: 13px; margin-top: auto; }
+  @media (max-width: 760px) { .tquotes { grid-template-columns: 1fr; } }
 
   /* ── Transparency callout ────────────────────────────────────────────────── */
   .ab-callout {
@@ -345,11 +341,23 @@
   </div>
 </div></section>
 
-{{-- TESTIMONIAL --}}
-<section class="alt ab-quote-section"><div class="wrap quote reveal">
-  <p class="eyebrow">In our travellers' words</p>
-  <blockquote>"I half-expected a faceless form. Instead a real person rang me back, spotted a date I'd entered wrong, and walked me through it. Felt like having a friend who actually knows the rules."</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 48 48" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-stamp"></use></svg></span>— A UK traveller to India</div>
+{{-- TESTIMONIALS — trio of consented quote cards (real anonymised reviews, single source; mirrors home) --}}
+@php $aboutQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp
+<section class="alt"><div class="wrap">
+  <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 6px">
+    <p class="eyebrow">Trusted by UK travellers</p>
+    <h2>Real people, really sorted</h2>
+  </div>
+  <div class="tquotes">
+    @foreach ($aboutQuotes as $t)
+    <figure class="tq reveal">
+      <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
+      <blockquote>{{ $t['quote'] }}</blockquote>
+      <figcaption>— {{ $t['attribution'] }}</figcaption>
+    </figure>
+    @endforeach
+  </div>
+  <p style="text-align:center;margin-top:24px"><a class="rlink" style="font-weight:600" href="{{ url('/reviews') }}">Read more traveller reviews →</a></p>
 </div></section>
 
 {{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
