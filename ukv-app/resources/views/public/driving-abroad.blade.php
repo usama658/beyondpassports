@@ -16,7 +16,8 @@
     color:#fff;text-align:center;padding:64px 0;
   }
   .idp-hero .eyebrow{color:var(--soft)}
-  .idp-hero h1{color:#fff;max-width:20ch;margin:0 auto}
+  .idp-hero h1{color:#fff;max-width:16ch;margin:0 auto}
+  @media (min-width:760px){ .idp-hero h1{max-width:760px} }
   .idp-hero .lede{color:rgba(255,255,255,.85);max-width:54ch;margin:14px auto 0}
   .idp-types{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0 0}
   .idp-types .t{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
