@@ -67,16 +67,7 @@
 </main>
 
 <footer style="padding:0">
-  {{-- CTA band fused to the top of the footer (Footer 2) --}}
-  <section class="ft-cta"><div class="wrap">
-    <h2>Ready to travel?</h2>
-    <p>Start your application now, or message our UK team with any question.</p>
-    <div class="row">
-      <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
-    </div>
-  </div></section>
-
+  {{-- (CTA band removed — every page already ends with a .cta-band above the footer) --}}
   <div class="ft-main"><div class="wrap">
     <div class="cols">
       <div>
