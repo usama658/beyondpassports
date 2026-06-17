@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # Canonical host: force HTTPS + non-www -> https://beyondpassports.co.uk
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
