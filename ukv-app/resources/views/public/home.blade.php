@@ -27,9 +27,6 @@
   .hp-hero .eyebrow{color:var(--cta)}
   .hp-hero h1{color:var(--ink);font:700 clamp(32px,4.6vw,52px)/1.02 var(--display);letter-spacing:-.03em;margin:0 auto 16px}
   .hp-hero .lede{color:var(--muted);font-size:19px;line-height:1.5;max-width:52ch;margin:0 auto}
-  .hp-rating{display:inline-flex;gap:10px;align-items:center;margin:16px 0 0;font:700 14px var(--display);color:var(--stamp-text)}
-  .hp-rating b{color:var(--cta)}
-  .hp-rating .dot{color:var(--hint)}
   /* inline visa-check form bar */
   .hp-bar{display:flex;gap:12px;align-items:flex-end;background:#fff;border:1px solid var(--paper-edge);border-radius:18px;
     box-shadow:0 30px 64px -30px rgba(40,50,70,.45);padding:18px;max-width:780px;margin:28px auto 0;text-align:left}
@@ -38,13 +35,11 @@
   .hp-bar select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
   .hp-bar .btn{white-space:nowrap}
   .hp-barhint{color:var(--muted);font-size:12px;letter-spacing:.02em;margin:12px 0 0}
-  .hp-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 0}
-  .hp-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--ink)}
-  .hp-trust span b{color:var(--cta);font-weight:700}
-  .hp-thumbs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:24px 0 0}
-  .hp-thumbs a{width:68px;height:46px;border-radius:10px;overflow:hidden;display:block;box-shadow:0 8px 18px -10px rgba(40,50,70,.4)}
-  .hp-thumbs img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
-  .hp-thumbs a:hover img{transform:scale(1.08)}
+  /* popular destination name quick-links — flag-dot tags (D) */
+  .hp-names{display:flex;flex-wrap:wrap;gap:9px 11px;justify-content:center;align-items:center;margin:26px 0 0}
+  .hp-names a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--paper-edge);border-radius:10px;padding:8px 14px;font:600 14px var(--display);color:var(--ink);text-decoration:none;box-shadow:0 6px 16px -12px rgba(40,50,70,.5);transition:border-color .2s ease,color .2s ease}
+  .hp-names a .dot{width:7px;height:7px;border-radius:50%;background:var(--cta);flex:none}
+  .hp-names a:hover{color:var(--cta);border-color:var(--soft)}
   @media (max-width:720px){
     .hp-hero > .wrap{padding:44px 0 52px}
     .hp-bar{flex-direction:column;align-items:stretch}
@@ -132,16 +127,15 @@
 
 @section('content')
 
-{{-- HERO — "Editorial centred": big headline + inline visa-check form bar + trust/rating + thumbs --}}
+{{-- HERO — "Editorial centred": big headline + inline visa-check form bar + popular destination names --}}
 @php
-  // Destination thumbnails strip (photographed destinations only).
-  $hpThumbs = ($navDestinations ?? collect())->filter(fn ($d) => (bool) $d->image_path)->take(6);
+  // Popular destination quick-links (names, not images).
+  $hpDests = ($navDestinations ?? collect())->take(8);
 @endphp
 <section class="hp-hero"><div class="wrap">
   <p class="eyebrow">UK visas &middot; eVisas &middot; ETAs</p>
   <h1>Sorted, without the stress.</h1>
   <p class="lede">Tell us where you're going — we confirm exactly what you need and handle the paperwork.</p>
-  <div class="hp-rating"><span><b>★ 4.9</b> rated</span><span class="dot">·</span><span>12,000+ trips</span></div>
 
   {{-- inline visa-check form (real destination list + apply) --}}
   <form class="hp-bar" onsubmit="return false">
@@ -157,16 +151,10 @@
   </form>
   <p class="hp-barhint">No account needed · takes 30 seconds</p>
 
-  <div class="hp-trust">
-    <span><b>✓</b> UK-based team</span>
-    <span><b>✓</b> Clear fixed fees</span>
-    <span><b>✓</b> Every step tracked</span>
-  </div>
-
-  @if ($hpThumbs->count())
-  <div class="hp-thumbs" aria-hidden="true">
-    @foreach ($hpThumbs as $d)
-      <a href="{{ url('/visa/'.$d->slug) }}" title="{{ $d->name }}"><img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="" loading="lazy"></a>
+  @if ($hpDests->count())
+  <div class="hp-names">
+    @foreach ($hpDests as $d)
+      <a href="{{ url('/visa/'.$d->slug) }}"><span class="dot" aria-hidden="true"></span>{{ $d->name }}</a>
     @endforeach
   </div>
   @endif
