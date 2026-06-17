@@ -17,12 +17,9 @@ git -C "$REPO_TOP" reset --hard origin/master
 
 echo "== Composer (no-dev)"
 COMPOSER_BIN="$(command -v composer || true)"
-if [ -n "$COMPOSER_BIN" ]; then
-  "$PHP" -d memory_limit=-1 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
-else
-  [ -f composer.phar ] || curl -sS https://getcomposer.org/installer | "$PHP"
-  "$PHP" -d memory_limit=-1 composer.phar install --no-dev --optimize-autoloader --no-interaction
-fi
+[ -n "$COMPOSER_BIN" ] || { curl -sS https://getcomposer.org/installer | "$PHP"; COMPOSER_BIN="composer.phar"; }
+composer_install(){ "$PHP" -d memory_limit=-1 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction "$@"; }
+composer_install || { echo "retry ignoring ext-zip"; composer_install --ignore-platform-req=ext-zip; }
 
 echo "== Migrate + re-cache"
 "$PHP" artisan migrate --force
