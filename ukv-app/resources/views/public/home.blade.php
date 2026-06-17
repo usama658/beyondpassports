@@ -53,6 +53,20 @@
 @endpush
 
 
+@push('head')
+<style>
+  /* Destinations section — map-texture backdrop + centred heading (option G). #destinations
+     (ID) overrides the .alt white band; keeps the .alt borders to separate the section. */
+  #destinations{background:
+    radial-gradient(circle at 18% 30%, rgba(92,154,123,.10), transparent 42%),
+    radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
+    var(--paper)}
+  #destinations .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  #destinations > .wrap > p{text-align:center}
+</style>
+@endpush
+
 @section('content')
 
 {{-- HERO — "Editorial centred": big headline + inline visa-check form bar + trust/rating + thumbs --}}
