@@ -52,19 +52,19 @@
 <style>
   /* Destinations section — "split intro + 2×2 carousel" (E): heading/blurb/button left;
      right is a 2-row horizontal scroller showing 2×2 cards, paging through the rest. */
-  .dest-split{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center}
-  .dest-intro{align-self:center}
-  .dest-intro .lede{font-size:16px;margin:14px 0 0}
-  .dest-intro .btn{margin-top:20px}
-  .dest-nav{display:flex;justify-content:flex-end;gap:8px;margin:0 0 12px}
-  .dest-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--paper-edge);background:#fff;color:var(--cta);font:800 18px var(--display);cursor:pointer;line-height:1}
-  .dest-nav button:hover{box-shadow:0 0 0 3px rgba(199,93,56,.14)}
-  #destinations .dests{display:grid;grid-auto-flow:column;grid-template-rows:1fr;grid-template-columns:none;
-    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
-  #destinations .dests::-webkit-scrollbar{display:none}
-  #destinations .pass{height:250px}
-  @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
-  @media (max-width:520px){#destinations .dests{grid-auto-columns:calc(85%)}}
+  /* DESTINATIONS — map-texture backdrop + centred 3-up glass grid (option D) */
+  #destinations{background:
+    radial-gradient(circle at 18% 26%, rgba(92,154,123,.10), transparent 42%),
+    radial-gradient(circle at 82% 74%, rgba(199,93,56,.10), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
+    var(--paper)}
+  #destinations .sec-head{text-align:center;max-width:60ch;margin:0 auto}
+  #destinations .sec-head .lede{margin:12px auto 0;max-width:54ch}
+  #destinations .dests{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+  #destinations .pass{height:240px}
+  #destinations .dest-more{text-align:center;margin-top:28px}
+  @media (max-width:820px){#destinations .dests{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){#destinations .dests{grid-template-columns:1fr}}
 
   /* WHY section — warm stamp cards on a peach tint (option C) */
   #why{background:linear-gradient(180deg,#FBF6F1,var(--paper))}
@@ -180,49 +180,20 @@
   </div>
 </div></section>
 
-{{-- DESTINATIONS --}}
-<section id="destinations" class="alt"><div class="wrap">
-  <div class="dest-split">
-    <div class="dest-intro reveal">
-      <p class="eyebrow">Popular destinations</p>
-      <h2>Clear requirements, fixed fees</h2>
-      <p class="lede">Browse the places we prepare and check applications for — clear fixed fees, every step tracked.</p>
-      <a class="btn" href="{{ url('/destinations') }}">See all destinations →</a>
-    </div>
-    <div class="dest-carousel">
-      <div class="dest-nav"><button type="button" data-dest-dir="-1" aria-label="Previous destinations">‹</button><button type="button" data-dest-dir="1" aria-label="Next destinations">›</button></div>
-      <div class="dests" id="destScroller">
-      @foreach ($navDestinations as $d)
-      <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
-      @endforeach
-      </div>
-    </div>
+{{-- DESTINATIONS — map-texture backdrop + centred 3-up glass grid (D) --}}
+<section id="destinations"><div class="wrap">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Popular destinations</p>
+    <h2>Clear requirements, fixed fees</h2>
+    <p class="lede">Browse the places we prepare and check applications for — clear fixed fees, every step tracked.</p>
   </div>
+  <div class="dests">
+  @foreach ($navDestinations->take(6) as $d)
+    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
+  @endforeach
+  </div>
+  <div class="dest-more"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></div>
 </div></section>
-<script>
-  // Destinations carousel: auto-scrolls right; at the end, jumps back to the first and continues.
-  // Pauses on hover/focus; arrows nudge it manually. Reduced-motion = static + arrows only.
-  (function () {
-    var sc = document.getElementById('destScroller');
-    if (!sc) return;
-    document.querySelectorAll('[data-dest-dir]').forEach(function (b) {
-      b.addEventListener('click', function () { sc.scrollBy({ left: (sc.clientWidth + 18) * Number(b.dataset.destDir), behavior: 'smooth' }); });
-    });
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var paused = false, SPEED = 1.5;
-    function frame() {
-      if (!paused) {
-        var max = sc.scrollWidth - sc.clientWidth;
-        if (sc.scrollLeft >= max - 1) sc.scrollLeft = 0;   // reached end -> back to first
-        else sc.scrollLeft += SPEED;
-      }
-      requestAnimationFrame(frame);
-    }
-    ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { sc.addEventListener(e, function () { paused = true; }); });
-    ['mouseleave', 'focusout', 'touchend'].forEach(function (e) { sc.addEventListener(e, function () { paused = false; }); });
-    requestAnimationFrame(frame);
-  })();
-</script>
 
 {{-- WHY --}}
 <section id="why"><div class="wrap">
