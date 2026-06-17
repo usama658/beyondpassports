@@ -92,15 +92,15 @@
     .doc-checklist .dc-panel{background:#fff;border:1px solid #e6e8ea;border-radius:18px;padding:22px 28px;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
     .doc-checklist .dc-group{margin:0 0 20px}
     .doc-checklist .dc-group:last-child{margin-bottom:0}
-    .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#22282b;border-bottom:1px solid #e6e8ea;padding:0 0 7px;margin:0 0 12px}
+    .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#22282b;border-bottom:1px solid #e6e8ea;padding:0 0 9px;margin:0 0 14px}
     .doc-checklist .dc-sub{font-size:12px;font-weight:600;color:#697079;margin:14px 0 8px;letter-spacing:.01em}
     .doc-checklist ul.dc-list{list-style:none;margin:0;padding:0}
     .doc-checklist ul.dc-list li{position:relative;padding:0 0 0 32px;margin:0 0 14px}
     .doc-checklist ul.dc-list li:last-child{margin-bottom:0}
     .doc-checklist .dc-ic{position:absolute;left:0;top:1px;width:20px;height:20px;color:#C75D38}
     .doc-checklist ul.dc-list.is-recommended .dc-ic{color:#3f7259}
-    .doc-checklist .dc-label{display:block;font-weight:600;font-size:15px;color:#22282b;line-height:1.4}
-    .doc-checklist .dc-note{display:block;font-size:13px;color:#697079;margin-top:2px;line-height:1.5}
+    .doc-checklist .dc-label{display:block;font-weight:600;font-size:16.5px;color:#22282b;line-height:1.45}
+    .doc-checklist .dc-note{display:block;font-size:14px;color:#697079;margin-top:3px;line-height:1.55}
     .doc-checklist .dc-empty{font-size:14px;color:#697079;background:#f7fafb;border:1px dashed #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:14px 16px;margin:0}
   </style>
 
