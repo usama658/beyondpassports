@@ -31,16 +31,18 @@
   .da-prose p{color:#3a4248;margin:0 0 1em;font-size:16.5px;line-height:1.72}
   .da-prose p:last-child{margin-bottom:0}
 
-  /* ── IDP convention type chips ───────────────────────────────── */
-  .da-types{display:flex;flex-direction:column;gap:12px;margin:0}
-  .da-type{border:1px solid var(--paper-edge);border-radius:14px;background:var(--white);
-    padding:18px 20px;box-shadow:var(--lift-1);
-    transition:transform .25s ease,box-shadow .25s ease}
-  .da-type:hover{transform:translateY(-2px);box-shadow:var(--lift-2)}
-  .da-type .da-type-key{font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--stamp-text);margin:0 0 5px}
-  .da-type h3{font-size:17px;font-weight:700;color:var(--navy);margin:0 0 5px}
-  .da-type p{margin:0;font-size:14px;color:var(--muted)}
+  /* ── "carry both" visual — UK licence + IDP ──────────────────── */
+  .da-carry{display:flex;gap:14px;align-items:stretch}
+  .da-doc{flex:1;border-radius:16px;padding:22px;color:#fff;box-shadow:var(--lift-1);
+    min-height:170px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .da-doc::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(52deg,rgba(255,255,255,.04) 0 2px,transparent 2px 9px);pointer-events:none}
+  .da-doc.is-lic{background:linear-gradient(150deg,#41806a,var(--sage-t))}
+  .da-doc.is-idp{background:linear-gradient(150deg,#3a4654,var(--navy))}
+  .da-doc .dk{font:800 10px var(--display);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .da-doc .dt{font:800 18px var(--display);margin-top:auto}
+  .da-doc .ds{font-size:12.5px;opacity:.78;margin-top:4px}
+  .da-plus{display:flex;align-items:center;justify-content:center;font:800 26px var(--display);color:var(--cta);flex:0 0 auto}
+  .da-carry-note{text-align:center;color:var(--muted);font-size:13.5px;margin:14px 0 0}
 
   /* ── honest framing panel ────────────────────────────────────── */
   .da-frame{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
@@ -151,23 +153,18 @@
         <p>Different countries recognise different IDP types, set by three international conventions. Some countries accept one type, some another, and a few accept more than one. Carrying the wrong type can mean being turned away at the car-hire desk or fined at the roadside — so getting the right one matters.</p>
       </div>
       <div class="reveal">
-        <ul class="da-types">
-          <li class="da-type">
-            <p class="da-type-key">1949 Convention</p>
-            <h3>1949 IDP</h3>
-            <p>Accepted by many countries including the USA and parts of Asia and Africa.</p>
-          </li>
-          <li class="da-type">
-            <p class="da-type-key">1968 Convention</p>
-            <h3>1968 IDP</h3>
-            <p>The most widely used type across most of Europe and much of the world.</p>
-          </li>
-          <li class="da-type">
-            <p class="da-type-key">1926 Convention</p>
-            <h3>1926 IDP</h3>
-            <p>An older type still required by a small number of countries.</p>
-          </li>
-        </ul>
+        <div class="da-carry">
+          <div class="da-doc is-lic">
+            <span class="dk">UK photocard</span>
+            <div><span class="dt">Your licence</span><div class="ds">The licence you already hold</div></div>
+          </div>
+          <div class="da-plus" aria-hidden="true">+</div>
+          <div class="da-doc is-idp">
+            <span class="dk">International Driving Permit</span>
+            <div><span class="dt">The translation</span><div class="ds">Reads alongside your licence abroad</div></div>
+          </div>
+        </div>
+        <p class="da-carry-note">You carry <strong>both together</strong> when you drive abroad — the IDP never replaces your UK licence.</p>
       </div>
     </div>
   </div>
