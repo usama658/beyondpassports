@@ -65,7 +65,7 @@
   .dest-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--paper-edge);background:#fff;color:var(--cta);font:800 18px var(--display);cursor:pointer;line-height:1}
   .dest-nav button:hover{box-shadow:0 0 0 3px rgba(199,93,56,.14)}
   #destinations .dests{display:grid;grid-auto-flow:column;grid-template-rows:1fr;grid-template-columns:none;
-    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
+    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
   #destinations .dests::-webkit-scrollbar{display:none}
   #destinations .pass{height:250px}
   @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
@@ -145,8 +145,8 @@
   </div>
 </div></section>
 <script>
-  // Destinations carousel: continuous smooth glide (seamless loop via cloned cards),
-  // pauses on hover/focus; arrows nudge it manually. Reduced-motion = static + arrows only.
+  // Destinations carousel: auto-scrolls right; at the end, jumps back to the first and continues.
+  // Pauses on hover/focus; arrows nudge it manually. Reduced-motion = static + arrows only.
   (function () {
     var sc = document.getElementById('destScroller');
     if (!sc) return;
@@ -154,21 +154,18 @@
       b.addEventListener('click', function () { sc.scrollBy({ left: (sc.clientWidth + 18) * Number(b.dataset.destDir), behavior: 'smooth' }); });
     });
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // duplicate the cards so the track loops seamlessly
-    Array.prototype.slice.call(sc.children).forEach(function (c) {
-      var clone = c.cloneNode(true); clone.setAttribute('aria-hidden', 'true'); clone.tabIndex = -1; sc.appendChild(clone);
-    });
-    var paused = false, raf;
-    var loop = function () {
+    var paused = false, SPEED = 1.5;
+    function frame() {
       if (!paused) {
-        sc.scrollLeft += 1.1;                       // glide speed (px/frame)
-        if (sc.scrollLeft >= sc.scrollWidth / 2) sc.scrollLeft -= sc.scrollWidth / 2;  // seamless wrap
+        var max = sc.scrollWidth - sc.clientWidth;
+        if (sc.scrollLeft >= max - 1) sc.scrollLeft = 0;   // reached end -> back to first
+        else sc.scrollLeft += SPEED;
       }
-      raf = requestAnimationFrame(loop);
-    };
+      requestAnimationFrame(frame);
+    }
     ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { sc.addEventListener(e, function () { paused = true; }); });
     ['mouseleave', 'focusout', 'touchend'].forEach(function (e) { sc.addEventListener(e, function () { paused = false; }); });
-    requestAnimationFrame(loop);
+    requestAnimationFrame(frame);
   })();
 </script>
 
