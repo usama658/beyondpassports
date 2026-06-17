@@ -1,15 +1,17 @@
+# STAGING — site not ready. Discourage ALL indexing until launch.
+# At go-live: replace this with the launch block below + remove the
+# X-Robots-Tag noindex block in public/.htaccess.
 User-agent: *
-Allow: /
+Disallow: /
 
-# Private / transactional / authenticated areas — keep out of the index.
-Disallow: /admin
-Disallow: /admin/
-Disallow: /track
-Disallow: /checkout/
-Disallow: /confirmation/
-Disallow: /documents/
-Disallow: /stripe/
-Disallow: /apply
-
-# Update the host to your production domain after deploy.
-Sitemap: https://localhost/sitemap.xml
+# --- LAUNCH CONFIG (restore at go-live) ---
+# User-agent: *
+# Allow: /
+# Disallow: /admin
+# Disallow: /track
+# Disallow: /checkout/
+# Disallow: /confirmation/
+# Disallow: /documents/
+# Disallow: /stripe/
+# Disallow: /apply
+# Sitemap: https://beyondpassports.co.uk/sitemap.xml
