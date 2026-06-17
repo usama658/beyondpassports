@@ -64,19 +64,15 @@
     font-style: italic;
   }
 
-  /* Honest note block (below table + below balance) */
-  .cmp-honest {
-    max-width: 72ch;
-    margin-top: 28px;
-    background: var(--white);
-    border: 1px solid var(--paper-edge);
-    border-left: 4px solid var(--cta);
-    border-radius: 0 14px 14px 0;
-    padding: 16px 20px;
-    font-size: 14px;
-    color: var(--stamp-text);
-    line-height: 1.6;
-  }
+  /* Honest note block — navy straight-talk panel (pick B) */
+  .cmp-honest{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:28px 32px;margin-top:32px;box-shadow:0 26px 56px -36px rgba(40,50,70,.7)}
+  .cmp-honest::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 90% at 6% 12%,rgba(199,93,56,.30),transparent 60%),radial-gradient(45% 80% at 96% 90%,rgba(92,154,123,.26),transparent 62%)}
+  .cmp-honest .ch-in{position:relative;display:flex;gap:18px;align-items:flex-start}
+  .cmp-honest .ch-ic{flex:0 0 46px;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--soft)}
+  .cmp-honest .ch-ic svg{width:24px;height:24px}
+  .cmp-honest .ch-lab{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+  .cmp-honest p{margin:0;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.9)}
+  .cmp-honest p strong{color:#fff}
 
   /* ── Balanced two-up blocks ──────────────────────────────────────────────── */
   .cmp-balance {
@@ -218,7 +214,11 @@
       </div>
     </div>
   </div>
-  <p class="cmp-honest">Straight talk: applying yourself is always the cheapest option, and for many trips it's perfectly easy. We charge a service fee on top of the official fee — so only use us if the time saved and the extra checking are worth it to you. Neither route, and no express option, makes a government or embassy approve faster or guarantees any outcome.</p>
+  <div class="cmp-honest reveal"><div class="ch-in">
+    <span class="ch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+    <div><p class="ch-lab">Straight talk</p>
+    <p>Applying yourself is always the cheapest option, and for many trips it's perfectly easy. We charge a service fee <strong>on top</strong> of the official fee — so only use us if the time saved and the extra checking are worth it to you. Neither route, and no express option, makes a government or embassy approve faster or guarantees any outcome.</p></div>
+  </div></div>
 </div></section>
 
 {{-- BALANCED BLOCKS --}}
@@ -248,7 +248,11 @@
       </ul>
     </div>
   </div>
-  <p class="cmp-honest">If you read both columns and DIY clearly fits you better — do that. We'd rather you saved the money than paid us for something you don't need. Ask us and we'll tell you honestly.</p>
+  <div class="cmp-honest reveal"><div class="ch-in">
+    <span class="ch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+    <div><p class="ch-lab">No pressure</p>
+    <p>If you read both columns and DIY clearly fits you better — do that. We'd rather you saved the money than paid us for something you don't need. Ask us and we'll tell you honestly.</p></div>
+  </div></div>
 </div></section>
 
 {{-- HOW USING US WORKS --}}
