@@ -117,7 +117,7 @@
   .dmoney-hero .stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,25,.25) 28%,rgba(20,22,25,.85))}
   .dmoney-hero .inner{position:relative;z-index:2;padding:60px 0 32px}
   .dmoney-hero .eyebrow{color:var(--soft)}
-  .dmoney-hero h1{color:#fff;font:700 clamp(32px,4.6vw,52px)/1.04 var(--display);letter-spacing:-.02em;max-width:20ch;margin:0 0 14px}
+  .dmoney-hero h1{color:#fff;font:700 clamp(32px,4.6vw,52px)/1.04 var(--display);letter-spacing:-.02em;max-width:28ch;margin:0 0 14px}
   .dmoney-hero .lede{color:#dfe3e6;font-size:18px;line-height:1.5;max-width:48ch;margin:0 0 20px}
   .dmoney-facts{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
   .dmoney-facts>div{padding:18px 20px;border-left:1px solid rgba(255,255,255,.12)}
