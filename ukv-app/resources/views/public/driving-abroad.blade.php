@@ -85,8 +85,9 @@
   @media (max-width:680px){ .da-bring{grid-template-columns:1fr} }
 
   /* ── eligibility — can / can't contrast cards ────────────────── */
-  #who .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
   #who .da-split{align-items:center}
+  #who .da-prose .eyebrow{margin-bottom:8px}
+  #who .who-h2{font-size:clamp(26px,3vw,34px);color:var(--navy);margin:0 0 16px;letter-spacing:-.02em}
   .da-cc{display:grid;gap:14px}
   .da-cc-card{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);padding:22px 24px;box-shadow:var(--lift-1)}
   .da-cc-card.is-can{border-top:3px solid var(--sage-t)}
@@ -253,16 +254,14 @@
 {{-- WHO CAN GET ONE --}}
 <section id="who">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Eligibility</p>
-      <h2>Who can get an IDP?</h2>
-    </div>
     @php
       $whoTick = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       $whoCross = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
     @endphp
     <div class="da-split">
       <div class="da-prose reveal">
+        <p class="eyebrow">Eligibility</p>
+        <h2 class="who-h2">Who can get an IDP?</h2>
         <p>To get an International Driving Permit you must be <strong>18 or over</strong> and hold a <strong>full UK driving licence</strong> (photocard). The permit translates a licence you already hold — so a full, valid UK licence is the starting point.</p>
         <p>If your full licence covers the vehicle you'll drive abroad, you're good to go once you have the right IDP type for the country.</p>
       </div>
