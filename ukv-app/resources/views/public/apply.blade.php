@@ -58,7 +58,7 @@
   .ap-rail li.done{color:var(--stamp-text)}
   .ap-rail li.done::before{background:var(--stamp-text)}
   .ap-stepnav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px;border-top:1px solid var(--paper-edge);padding-top:20px}
-  .ap-stepnav .ap-count{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted);white-space:nowrap;margin-left:auto}
+  .ap-stepnav .ap-count{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted);white-space:nowrap;flex:1;text-align:center}
   .ap-stepnav .btn{width:auto;flex:0 0 auto}
   .ap-stepnav .ap-next{padding:12px 26px}
   .ap-stepnav .ap-back{background:transparent;color:var(--cta);border:1.5px solid var(--cta);padding:11px 20px}
