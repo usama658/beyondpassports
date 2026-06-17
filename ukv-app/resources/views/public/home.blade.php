@@ -72,9 +72,9 @@
   $hpThumbs = ($navDestinations ?? collect())->filter(fn ($d) => (bool) $d->image_path)->take(6);
 @endphp
 <section class="hp-hero"><div class="wrap">
-  <p class="eyebrow">Independent UK visa &amp; eVisa service</p>
-  <h1>UK visas, eVisas &amp; ETAs — sorted, without the stress.</h1>
-  <p class="lede">Tell us where you're going — we confirm exactly what you need, prepare and check it, and keep you updated until it's done.</p>
+  <p class="eyebrow">UK visas &middot; eVisas &middot; ETAs</p>
+  <h1>Sorted, without the stress.</h1>
+  <p class="lede">Tell us where you're going — we confirm exactly what you need and handle the paperwork.</p>
   <div class="hp-rating"><span><b>★ 4.9</b> rated</span><span class="dot">·</span><span>12,000+ trips</span></div>
 
   {{-- inline visa-check form (real destination list + apply) --}}
