@@ -136,22 +136,18 @@
   .da-pp-hint{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.55}
   .da-pp-hint a{color:var(--cta);font-weight:600}
 
-  /* ── FAQ — override global .faq for fuller styling on this page ─ */
-  .da-faqs{max-width:760px;margin:0 auto;display:grid;gap:14px}
-  .da-faq{border:1px solid var(--paper-edge);border-radius:14px;
-    background:var(--white);overflow:hidden;box-shadow:var(--lift-1)}
-  .da-faq summary{list-style:none;cursor:pointer;padding:18px 22px;
-    font-weight:700;font-size:17.5px;color:var(--navy);
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
-    transition:background .15s ease}
-  .da-faq summary:hover{background:var(--paper)}
-  .da-faq summary::-webkit-details-marker{display:none}
-  .da-faq summary::after{content:"+";font-size:22px;color:var(--cta);line-height:1;
-    font-weight:700;transition:transform .2s ease}
-  .da-faq[open] summary{background:var(--paper)}
-  .da-faq[open] summary::after{content:"–"}
-  .da-faq .da-a{padding:0 22px 20px;color:#3a4248;font-size:15.5px;line-height:1.65}
-  .da-faq .da-a p{margin:0}
+  /* ── FAQ — tinted panel accordion (mirrors money pages) ──────── */
+  .faq-e{background:var(--paper)}
+  .faq-e .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  .faq-e .faq-panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;padding:6px 30px;max-width:80ch;margin:0 auto;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .faqd{max-width:none}
+  .faqd details{border-bottom:1px solid var(--paper-edge);padding:18px 0}
+  .faqd details:last-child{border-bottom:0}
+  .faqd summary{font-family:var(--display);font-size:19px;color:var(--navy);font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faqd summary::-webkit-details-marker{display:none}
+  .faqd summary::after{content:"+";font-size:22px;color:var(--cta);flex:0 0 auto;font-weight:700;transition:transform .15s ease}
+  .faqd details[open] summary::after{content:"–"}
+  .faqd p{margin:12px 0 0;color:#3a4b55;font-size:16px;line-height:1.65}
 
   /* ── section-head centering override for FAQ ─────────────────── */
   .da-sec-center{text-align:center;max-width:none;margin-bottom:32px}
@@ -356,33 +352,30 @@
   </div>
 </section>
 
-{{-- FAQ --}}
-<section id="faq" class="alt">
-  <div class="wrap">
-    <div class="sec-head da-sec-center reveal">
-      <p class="eyebrow">Good to know</p>
-      <h2>Frequently asked questions</h2>
-    </div>
-    <div class="da-faqs">
-      <details class="da-faq reveal">
+{{-- FAQ — tinted panel accordion (mirrors money pages) --}}
+<section id="faq" class="faq-e"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Good to know</p><h2>Frequently asked questions</h2></div>
+  <div class="faq-panel reveal">
+    <div class="faqd">
+      <details>
         <summary>Is this a government service?</summary>
-        <div class="da-a"><p>No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p></div>
+        <p>No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p>
       </details>
-      <details class="da-faq reveal">
+      <details>
         <summary>Can you get the IDP for me?</summary>
-        <div class="da-a"><p>No — an IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time.</p></div>
+        <p>No — an IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time.</p>
       </details>
-      <details class="da-faq reveal">
+      <details>
         <summary>Which countries need which type?</summary>
-        <div class="da-a"><p>It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type — and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off.</p></div>
+        <p>It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type — and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off.</p>
       </details>
-      <details class="da-faq reveal">
+      <details>
         <summary>What if I only have a provisional licence?</summary>
-        <div class="da-a"><p>You can't get an IDP on a provisional licence. An IDP can only be issued against a <strong>full</strong> UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet — we'll tell you straight rather than send you on a wasted trip.</p></div>
+        <p>You can't get an IDP on a provisional licence. An IDP can only be issued against a <strong>full</strong> UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet — we'll tell you straight rather than send you on a wasted trip.</p>
       </details>
     </div>
   </div>
-</section>
+</div></section>
 
 {{-- CTA BAND --}}
 <section class="cta-band">
