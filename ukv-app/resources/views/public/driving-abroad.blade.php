@@ -71,15 +71,18 @@
   .da-honest p:last-child{margin:0}
   .da-honest strong{color:var(--ink)}
 
-  /* ── stamp checklist ─────────────────────────────────────────── */
-  .da-bring{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  /* ── bring checklist — distinct icon tiles, 2-up ─────────────── */
+  .da-bring{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .da-bring li{display:flex;gap:14px;align-items:flex-start;
     background:var(--white);border:1px solid var(--paper-edge);
-    border-radius:12px;padding:14px 16px;
-    box-shadow:0 2px 8px -4px rgba(40,50,70,.08)}
-  .da-bring li svg{flex:0 0 28px;height:28px;color:var(--stamp-text);margin-top:1px}
+    border-radius:14px;padding:18px 20px;box-shadow:var(--lift-1)}
+  .da-bring li .bi{flex:0 0 44px;width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(135deg,#eef5f2,#dff0eb);color:var(--sage-t);
+    display:flex;align-items:center;justify-content:center}
+  .da-bring li .bi svg{width:22px;height:22px}
   .da-bring li span{font-size:15px;color:#3a4248;line-height:1.55}
   .da-bring li strong{color:var(--ink)}
+  @media (max-width:680px){ .da-bring{grid-template-columns:1fr} }
 
   /* ── callout (provisional licence warning) ───────────────────── */
   .da-callout{display:flex;gap:16px;align-items:flex-start;
@@ -211,19 +214,19 @@
     </div>
     <ul class="da-bring reveal">
       <li>
-        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="8" cy="11" r="2" stroke="currentColor" stroke-width="1.7"/><path d="M13 9h5M13 13h5M6 15h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
         <span>Your <strong>full UK photocard driving licence</strong> (the holder must attend in person).</span>
       </li>
       <li>
-        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M8 6l1.5-2h5L16 6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
         <span>A recent <strong>passport-style photo</strong> for the permit.</span>
       </li>
       <li>
-        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="6" width="19" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg></span>
         <span>The <strong>official IDP fee</strong> to pay at the counter (separate from our service fee).</span>
       </li>
       <li>
-        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span>If your photocard shows an old address, a <strong>valid passport or other ID</strong> may be requested — we'll confirm.</span>
       </li>
     </ul>
