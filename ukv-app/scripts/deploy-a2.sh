@@ -16,7 +16,9 @@
 set -euo pipefail
 
 APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # …/ukv-app
-PHP="${PHP:-php}"
+PHP="${PHP:-}"
+[ -x "$PHP" ] || PHP=/opt/alt/php82/usr/bin/php
+[ -x "$PHP" ] || PHP="$(command -v php)"
 DOMAIN="${DOMAIN:-beyondpassports.co.uk}"
 ADMINEMAIL="${ADMINEMAIL:-you@${DOMAIN}}"
 DOCROOT="${DOCROOT:-$HOME/${DOMAIN}}"

@@ -7,7 +7,7 @@ name: Deploy to A2 (beyondpassports.co.uk)
 #     A2_USER     your cPanel username
 #     A2_PORT     7822            (A2 shared SSH port — NOT 22)
 #     A2_SSH_KEY  the PRIVATE key whose PUBLIC key is authorised in cPanel → SSH Access
-#     A2_PHP      (optional) php binary, e.g. /usr/local/bin/ea-php82
+#     A2_PHP      (optional) php binary; default /opt/alt/php82/usr/bin/php (A2 CloudLinux alt-php)
 # First deploy must already be done once via scripts/deploy-a2.sh.
 
 on:
@@ -23,15 +23,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: SSH deploy
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.A2_HOST }}
-          username: ${{ secrets.A2_USER }}
-          port: ${{ secrets.A2_PORT }}
-          key: ${{ secrets.A2_SSH_KEY }}
-          command_timeout: 15m
-          script: |
-            export PHP="${{ secrets.A2_PHP }}"
-            [ -z "$PHP" ] && export PHP=php
-            bash ~/beyondpassports/ukv-app/scripts/update-a2.sh
+      - name: SSH deploy (plain ssh — no third-party action, passes repo Actions policy)
+        env:
+          A2_HOST: ${{ secrets.A2_HOST }}
+          A2_USER: ${{ secrets.A2_USER }}
+          A2_PORT: ${{ secrets.A2_PORT }}
+          A2_SSH_KEY: ${{ secrets.A2_SSH_KEY }}
+          A2_PHP: ${{ secrets.A2_PHP }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$A2_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${A2_PORT:-7822}" -H "$A2_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh -i ~/.ssh/deploy_key -p "${A2_PORT:-7822}" -o StrictHostKeyChecking=accept-new \
+            "$A2_USER@$A2_HOST" "PHP='$A2_PHP' bash ~/beyondpassports/ukv-app/scripts/update-a2.sh"

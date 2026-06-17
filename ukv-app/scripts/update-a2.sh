@@ -4,7 +4,10 @@
 #   PHP=/usr/local/bin/ea-php82 bash update-a2.sh   # override php if needed
 set -euo pipefail
 APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # …/ukv-app
-PHP="${PHP:-php}"
+# PHP 8.2 detection: honour $PHP, else A2 CloudLinux alt-php, else PATH php
+PHP="${PHP:-}"
+[ -x "$PHP" ] || PHP=/opt/alt/php82/usr/bin/php
+[ -x "$PHP" ] || PHP="$(command -v php)"
 cd "$APP_DIR"
 
 echo "== Sync repo to origin/master"
