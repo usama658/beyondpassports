@@ -87,9 +87,9 @@
        some are standalone documents like confirmation/track). Uses literal colours, not vars. */
     .doc-checklist{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b}
     .doc-checklist .dc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#3f7259;margin:0 0 6px}
-    .doc-checklist .dc-title{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.01em;color:#22282b;margin:0 0 6px;line-height:1.2}
+    .doc-checklist .dc-title{font-size:clamp(28px,3.4vw,38px);font-weight:700;letter-spacing:-.02em;color:#22282b;margin:0 0 8px;line-height:1.1}
     .doc-checklist .dc-intro{font-size:14px;color:#697079;margin:0 0 18px;max-width:60ch}
-    .doc-checklist .dc-panel{background:#fff;border:1px solid #e6e8ea;border-radius:18px;padding:22px 28px;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+    .doc-checklist .dc-panel{background:#F4F5F6;border:1px solid #e6e8ea;border-radius:18px;padding:22px 28px}
     .doc-checklist .dc-group{margin:0 0 20px}
     .doc-checklist .dc-group:last-child{margin-bottom:0}
     .doc-checklist .dc-group-name{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#22282b;border-bottom:1px solid #e6e8ea;padding:0 0 7px;margin:0 0 12px}

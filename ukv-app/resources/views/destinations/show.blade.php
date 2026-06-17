@@ -271,7 +271,7 @@
 {{-- $docItems is computed in DestinationController::show via RequirementService::preview().
      Generic, destination-scoped preview — no order context. Renders nothing if empty. --}}
 @if (! empty($docItems))
-<section class="alt"><div class="wrap">
+<section><div class="wrap">
   <div class="reveal">
     @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
   </div>
