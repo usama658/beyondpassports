@@ -49,7 +49,8 @@
   .ap-prog .labels .lb.done{color:var(--stamp-text)}
   /* resume banner */
   .ap-resume{display:flex;align-items:center;gap:11px;background:#eaf3ef;border:1px solid #cfe6da;border-radius:10px;padding:11px 15px;font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--stamp-text);margin:0 0 18px}
-  .ap-resume .ap-resume-ic{flex:none;width:26px;height:26px;border-radius:50%;background:var(--stamp-text);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1}
+  .ap-resume .ap-resume-ic{flex:none;width:26px;height:26px;border-radius:50%;background:var(--stamp-text);color:#fff;display:inline-flex;align-items:center;justify-content:center}
+  .ap-resume .ap-resume-ic svg{width:15px;height:15px;display:block}
   .ap-resume button{margin-left:auto;background:transparent;border:0;color:var(--muted);font:600 12px var(--body);text-decoration:underline;cursor:pointer;padding:0}
   @media (max-width:560px){.ap-prog .labels .lb{font-size:9px}}
   /* stepped wizard (JS-on only) */
@@ -856,7 +857,7 @@
     if (resumed) {
       var banner = document.createElement('div');
       banner.className = 'ap-resume';
-      banner.innerHTML = '<span class="ap-resume-ic" aria-hidden="true">↻</span><span>Welcome back — we saved your answers on this device.</span>';
+      banner.innerHTML = '<span class="ap-resume-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg></span><span>Welcome back — we saved your answers on this device.</span>';
       var clr = document.createElement('button');
       clr.type = 'button'; clr.textContent = 'Start over';
       clr.addEventListener('click', function () {
