@@ -8,6 +8,19 @@
 <style>
   /* legal — page-scoped layout only. Palette/type/components from ukv.css. */
 
+  /* ── hero — centred + seal (pick C) ──────────────────────────── */
+  .lg-hero{background:var(--paper);padding:72px 0 60px;text-align:center}
+  .lg-hero .mh-grid{display:block}
+  .lg-hero .mh-copy{max-width:none}
+  .lg-hero .lg-seal{width:60px;height:60px;border-radius:16px;background:#fff;border:1px solid var(--paper-edge);
+    display:flex;align-items:center;justify-content:center;color:var(--cta);margin:0 auto 16px;box-shadow:0 12px 30px -20px rgba(40,50,70,.4)}
+  .lg-hero .lg-seal svg{width:30px;height:30px}
+  .lg-hero .lg-rule{width:46px;height:3px;background:var(--cta);border-radius:2px;margin:0 auto 16px}
+  .lg-hero .eyebrow{color:var(--cta)}
+  .lg-hero h1{color:var(--navy);max-width:16ch;margin:0 auto 16px}
+  .lg-hero .lede{margin:0 auto;color:#3a4248;max-width:64ch}
+  .lg-hero .draft-banner{margin:22px auto 0;text-align:left;max-width:80ch}
+
   /* ── two-column shell ────────────────────────────────────────── */
   .legal-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:52px;
     align-items:start;padding-top:12px}
@@ -94,10 +107,12 @@
 @section('content')
 
 {{-- PAGE TITLE HERO --}}
-<section class="mesh-hero mesh-hero--sm" id="top">
+<section class="lg-hero" id="top">
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy reveal">
+        <span class="lg-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span class="lg-rule"></span>
         <p class="eyebrow">Legal centre</p>
         <h1>Legal &amp; policies</h1>
         <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service — not a government website and not affiliated with gov.uk or any embassy.</p>
