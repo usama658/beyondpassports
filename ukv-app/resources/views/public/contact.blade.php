@@ -7,6 +7,44 @@
 <style>
   /* ── contact page — page-scoped styles only. Design system in ukv.css ──── */
 
+  /* ── Hero — copy + live status card ─────────────────────────────────────── */
+  .ct-hero {
+    background: linear-gradient(180deg, #EAF1F4, #F2F5F6 60%, var(--paper));
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  .ct-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .ct-hero-copy h1 { max-width: 16ch; }
+  .ct-hero-copy .lede { max-width: 52ch; }
+  .ct-statuscard {
+    background:
+      radial-gradient(360px 180px at 110% -10%, rgba(199,93,56,.30), transparent 60%),
+      radial-gradient(340px 180px at -10% 120%, rgba(92,154,123,.28), transparent 60%),
+      var(--navy);
+    color: #fff;
+    border-radius: 20px;
+    padding: 26px 28px;
+    box-shadow: var(--lift-2);
+  }
+  .ct-status-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 6px 13px;
+    font: 700 12px var(--display); margin-bottom: 16px;
+  }
+  .ct-status-pill .sdot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
+  .ct-status-pill.is-open { background: rgba(37,211,102,.16); border: 1px solid rgba(37,211,102,.4); color: #7be3a6; }
+  .ct-status-pill.is-open .sdot { background: #25D366; box-shadow: 0 0 0 3px rgba(37,211,102,.25); }
+  .ct-status-pill.is-closed { background: rgba(242,194,172,.14); border: 1px solid rgba(242,194,172,.36); color: var(--soft); }
+  .ct-status-pill.is-closed .sdot { background: var(--soft); }
+  .ct-statuscard .sc-lab { font: 700 10px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 4px; }
+  .ct-statuscard .sc-big { font: 800 23px var(--display); margin: 0 0 16px; letter-spacing: -.01em; }
+  .ct-statuscard .ct-actions { margin-top: 0; }
+  .ct-statuscard .ct-actions .btn { flex: 1; justify-content: center; padding: 13px 16px; font-size: 14.5px; }
+
   /* ── Hero accent strip ─────────────────────────────────────────────────── */
   .ct-hero-note {
     display: inline-flex;
@@ -234,6 +272,10 @@
   }
   .ct-reassure-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
+  @media (max-width: 860px) {
+    .ct-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .ct-hero-copy h1, .ct-hero-copy .lede { max-width: none; }
+  }
   @media (max-width: 760px) {
     .ct-methods { grid-template-columns: 1fr; }
     .ct-reassure { padding: 24px 20px; }
@@ -244,17 +286,26 @@
 
 @section('content')
 
-{{-- 1. HERO — phone is the primary channel --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
-  <p class="eyebrow">Talk to a human</p>
-  <h1>Questions? We're a phone call away.</h1>
-  <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
-  <div class="ct-actions">
-    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call us now</a>
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Message on WhatsApp</a>
+{{-- 1. HERO — copy + live status card (phone is the primary channel) --}}
+<section class="ct-hero"><div class="wrap"><div class="ct-hero-grid">
+  <div class="ct-hero-copy reveal">
+    <p class="eyebrow">Talk to a human</p>
+    <h1>Questions? We're a phone call away.</h1>
+    <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
+    <span class="ct-hero-note">Mon–Sat 9–6 UK time &nbsp;·&nbsp; independent service, not a government website</span>
   </div>
-  <span class="ct-hero-note">Mon–Sat 9–6 UK time &nbsp;·&nbsp; independent service, not a government website</span>
-</div></div></div></section>
+  <div class="ct-statuscard reveal" aria-label="Our team availability">
+    <span class="ct-status-pill is-closed" id="ct-status" role="status">
+      <span class="sdot" aria-hidden="true"></span><span id="ct-status-text">Mon–Sat 9–6 UK time</span>
+    </span>
+    <p class="sc-lab">Beyond Passports · UK team</p>
+    <p class="sc-big">Mon–Sat · 9–6 UK time</p>
+    <div class="ct-actions">
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn">Call now</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">WhatsApp</a>
+    </div>
+  </div>
+</div></div></section>
 
 {{-- 2. CONTACT METHODS --}}
 <section><div class="wrap">
@@ -362,6 +413,29 @@
 
 @push('head')
 <script>
+  // contact hero — live "Open now / Closed" status by real UK time (Mon–Sat 9–6).
+  // Honest: shows green "Open now" only inside hours, amber "Closed — leave a message" otherwise.
+  (function () {
+    var pill = document.getElementById('ct-status');
+    var text = document.getElementById('ct-status-text');
+    if (!pill || !text) return;
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London', weekday: 'short', hour: 'numeric', hour12: false
+      }).formatToParts(new Date());
+      var wd = '', hr = 0;
+      parts.forEach(function (p) {
+        if (p.type === 'weekday') wd = p.value;
+        if (p.type === 'hour') hr = parseInt(p.value, 10);
+      });
+      var isSunday = wd === 'Sun';
+      var open = !isSunday && hr >= 9 && hr < 18;
+      pill.classList.remove('is-open', 'is-closed');
+      pill.classList.add(open ? 'is-open' : 'is-closed');
+      text.textContent = open ? 'Open now — Mon–Sat 9–6 UK' : 'Closed now — leave a message';
+    } catch (e) { /* leave the server-rendered default */ }
+  })();
+
   // contact — callback form. Progressive enhancement: POSTs to /contact via fetch when JS is on
   // (keeps the inline success state, no page reload); falls back to a normal form POST if JS is
   // off or fetch fails. Client-side checks mirror the server rules (name + phone + consent).
