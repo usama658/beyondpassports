@@ -50,9 +50,10 @@
   .cmp-trow .lab{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
   .cmp-trow .val{display:flex;gap:9px;font-size:14.5px;line-height:1.5;color:#33454f}
   .cmp-trow .val svg{width:18px;height:18px;flex:0 0 18px;margin-top:1px}
-  .cmp-trow .val .tick{color:var(--sage-t)}
-  .cmp-trow .val .cross{color:var(--cta)}
-  .cmp-trow .val .neu{color:var(--muted)}
+  .cmp-trow .val span{color:#33454f}
+  .cmp-trow .val .tick{color:var(--stamp)}          /* brand sage — advantage */
+  .cmp-trow .val .cross{color:#9aa1a8}              /* neutral grey — limitation, not alarm */
+  .cmp-trow .val .neu{color:#c2c7cc}                /* light grey — trade-off */
   @media (max-width:860px){.cmp-cards{grid-template-columns:1fr}}
   /* Footnote in a cell */
   .cmp-note {
