@@ -188,7 +188,7 @@
 </section>
 
 {{-- FORM + OUTCOMES --}}
-<section style="padding-top:0"><div class="wrap">
+<section style="padding-top:44px"><div class="wrap">
   <div class="ap-grid">
 
     {{-- INTAKE FORM --}}
