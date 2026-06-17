@@ -32,104 +32,28 @@
   .cmp-scol .dash{color:rgba(255,255,255,.45)}
   @media (max-width:820px){.cmp-hero .mh-grid{grid-template-columns:1fr;gap:30px}}
 
-  /* ── Comparison table ────────────────────────────────────────────────────── */
-  .cmp-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border: 1px solid var(--paper-edge);
-    border-radius: 18px;
-    background: var(--white);
-    box-shadow: var(--lift-2);
-  }
-  table.cmp-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 640px;
-    font-size: 15.5px;
-  }
-  table.cmp-table caption {
-    text-align: left;
-    font-size: 13px;
-    color: var(--muted);
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--paper-edge);
-  }
-  table.cmp-table th,
-  table.cmp-table td {
-    padding: 20px 22px;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.6;
-    border-bottom: 1px solid var(--paper-edge);
-  }
-  /* Header row */
-  table.cmp-table thead tr {
-    background: var(--navy);
-  }
-  table.cmp-table thead th {
-    color: #fff;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: -.01em;
-  }
-  table.cmp-table thead th:first-child {
-    background: #171b1d;
-    color: rgba(255,255,255,.7);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-  }
-  /* "Beyond Passports" column header — terracotta accent */
-  table.cmp-table thead th:last-child {
-    position: relative;
-  }
-  table.cmp-table thead th:last-child::after {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--cta);
-  }
-  /* Row header cells */
-  table.cmp-table tbody th[scope=row] {
-    font-family: var(--display);
-    font-weight: 700;
-    color: var(--navy);
-    font-size: 15px;
-    width: 22%;
-    background: #f8f9fa;
-    vertical-align: middle;
-  }
-  /* DIY column */
-  table.cmp-table td:nth-child(2) { color: #33454f; }
-  /* Beyond Passports column — subtle sage tint */
-  table.cmp-table td:nth-child(3) {
-    color: var(--navy);
-    background: #f4f9f7;
-  }
-  /* Last row — no bottom border */
-  table.cmp-table tbody tr:last-child th,
-  table.cmp-table tbody tr:last-child td { border-bottom: 0; }
-  /* Hover state on rows */
-  table.cmp-table tbody tr { transition: background .12s ease; }
-  table.cmp-table tbody tr:hover td:nth-child(2) { background: #f6f8f9; }
-  table.cmp-table tbody tr:hover td:nth-child(3) { background: #eef6f2; }
-
-  /* Pill tags */
-  .cmp-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .cmp-tag--free { background: #e8f5e9; color: #2e6b38; }
-  .cmp-tag--fee  { background: #fff3e0; color: #8a5a14; }
+  /* ── Comparison — two route cards (pick B) ───────────────────────────────── */
+  .cmp-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .cmp-tcard{border:1px solid var(--paper-edge);border-radius:22px;overflow:hidden;background:var(--white);box-shadow:0 18px 46px -34px rgba(40,50,70,.5)}
+  .cmp-tcard.us{border-color:#eccab4;box-shadow:0 28px 60px -34px rgba(199,93,56,.45)}
+  @media (min-width:861px){.cmp-tcard.us{transform:translateY(-10px)}}
+  .cmp-thead{padding:26px 28px 22px;border-bottom:1px solid var(--paper-edge)}
+  .cmp-tcard.us .cmp-thead{background:linear-gradient(180deg,#fbeee6,var(--white))}
+  .cmp-thead .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .cmp-tcard.us .cmp-thead .k{color:var(--cta)}
+  .cmp-thead h3{font-family:var(--display);font-size:23px;margin:0 0 6px;letter-spacing:-.01em;color:var(--navy)}
+  .cmp-thead p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+  .cmp-rib{display:inline-block;background:var(--cta);color:#fff;font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 11px;margin-bottom:11px}
+  .cmp-tbody{padding:8px 28px 26px}
+  .cmp-trow{padding:16px 0;border-bottom:1px solid #eef0f1}
+  .cmp-trow:last-child{border-bottom:0}
+  .cmp-trow .lab{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  .cmp-trow .val{display:flex;gap:9px;font-size:14.5px;line-height:1.5;color:#33454f}
+  .cmp-trow .val svg{width:18px;height:18px;flex:0 0 18px;margin-top:1px}
+  .cmp-trow .val .tick{color:var(--sage-t)}
+  .cmp-trow .val .cross{color:var(--cta)}
+  .cmp-trow .val .neu{color:var(--muted)}
+  @media (max-width:860px){.cmp-cards{grid-template-columns:1fr}}
   /* Footnote in a cell */
   .cmp-note {
     display: block;
@@ -253,49 +177,45 @@
 {{-- COMPARISON TABLE --}}
 <section id="compare"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Side by side</p><h2>The honest comparison</h2></div>
-  <div class="cmp-scroll reveal" tabindex="0" role="region" aria-label="Comparison of applying yourself versus using Beyond Passports">
-    <table class="cmp-table">
-      <caption>Doing it yourself vs using Beyond Passports — scroll sideways on small screens.</caption>
-      <thead>
-        <tr>
-          <th scope="col">What matters</th>
-          <th scope="col">Do it yourself</th>
-          <th scope="col">Beyond Passports</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Cost</th>
-          <td><span class="cmp-tag cmp-tag--free">Cheapest</span><br>You pay only the official government or embassy fee — nothing extra. This is always the lower-cost route.</td>
-          <td><span class="cmp-tag cmp-tag--fee">Fee on top</span><br>You pay the same government fee <strong>plus</strong> our service fee on top, for the checking and support. We show both separately before you pay.</td>
-        </tr>
-        <tr>
-          <th scope="row">Time &amp; effort</th>
-          <td>You read the rules, fill the forms and gather documents yourself. Straightforward for confident travellers; fiddly if the rules are unclear.</td>
-          <td>We do the legwork and tell you exactly what to provide. Less of your time, but you hand over some control of the process.</td>
-        </tr>
-        <tr>
-          <th scope="row">Error-checking</th>
-          <td>You check your own application. Most people get it right — but a wrong date or name format can cause delays or a rejected form.</td>
-          <td>A real person reviews your details before submission, so common mistakes are caught early.</td>
-        </tr>
-        <tr>
-          <th scope="row">Support if something goes wrong</th>
-          <td>You rely on the authority's own help channels, which can be slow or hard to reach.</td>
-          <td>A UK team on the phone and WhatsApp helps you sort issues and resubmit if needed.</td>
-        </tr>
-        <tr>
-          <th scope="row">Speed of <em>your</em> paperwork</th>
-          <td>As fast as you can complete it. No middle step.</td>
-          <td>Express options speed up <strong>our</strong> handling and submission.<span class="cmp-note">Neither route changes the government's own decision time.</span></td>
-        </tr>
-        <tr>
-          <th scope="row">Who it suits</th>
-          <td>Confident travellers, simple applications, anyone who'd rather keep the cost down and has time to do it.</td>
-          <td>Busy people, complex or first-time applications, or anyone who'd rather have a person check it and answer questions.</td>
-        </tr>
-      </tbody>
-    </table>
+  @php
+    $tick  = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+    $cross = '<svg class="cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+    $neu   = '<svg class="neu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"/></svg>';
+  @endphp
+  <div class="cmp-cards reveal">
+    {{-- Route 1 — DIY --}}
+    <div class="cmp-tcard diy" role="region" aria-label="Doing it yourself">
+      <div class="cmp-thead">
+        <p class="k">Route 1</p>
+        <h3>Do it yourself</h3>
+        <p>Lowest cost. Best when your application is simple and you've time to do it.</p>
+      </div>
+      <div class="cmp-tbody">
+        <div class="cmp-trow"><p class="lab">Cost</p><div class="val">{!! $tick !!}<span>Only the official government or embassy fee — always the lower-cost route.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Time &amp; effort</p><div class="val">{!! $neu !!}<span>You read the rules, fill the forms and gather documents yourself.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $cross !!}<span>You check your own application — a wrong date or name can cause delays.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Support if something goes wrong</p><div class="val">{!! $cross !!}<span>The authority's own help channels, which can be slow or hard to reach.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Speed of <em>your</em> paperwork</p><div class="val">{!! $tick !!}<span>As fast as you can complete it. No middle step.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Who it suits</p><div class="val">{!! $neu !!}<span>Confident travellers and simple applications, if you'd rather keep the cost down.</span></div></div>
+      </div>
+    </div>
+    {{-- Route 2 — Beyond Passports --}}
+    <div class="cmp-tcard us" role="region" aria-label="Using Beyond Passports">
+      <div class="cmp-thead">
+        <span class="cmp-rib">Most support</span>
+        <p class="k">Route 2</p>
+        <h3>Beyond Passports</h3>
+        <p>A real person checks and submits it, with UK support if something goes wrong.</p>
+      </div>
+      <div class="cmp-tbody">
+        <div class="cmp-trow"><p class="lab">Cost</p><div class="val">{!! $cross !!}<span>The same government fee <strong>plus</strong> our service fee on top — shown separately before you pay.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Time &amp; effort</p><div class="val">{!! $tick !!}<span>We do the legwork and tell you exactly what to provide.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $tick !!}<span>A real person reviews your details before submission, catching common mistakes.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Support if something goes wrong</p><div class="val">{!! $tick !!}<span>A UK team on the phone and WhatsApp helps you sort issues and resubmit.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Speed of <em>your</em> paperwork</p><div class="val">{!! $tick !!}<span>Express speeds up <strong>our</strong> handling — not the government's own decision time.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Who it suits</p><div class="val">{!! $neu !!}<span>Busy people, first-time or complex applications, or anyone who wants it checked.</span></div></div>
+      </div>
+    </div>
   </div>
   <p class="cmp-honest">Straight talk: applying yourself is always the cheapest option, and for many trips it's perfectly easy. We charge a service fee on top of the official fee — so only use us if the time saved and the extra checking are worth it to you. Neither route, and no express option, makes a government or embassy approve faster or guarantees any outcome.</p>
 </div></section>
