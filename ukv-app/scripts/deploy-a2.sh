@@ -70,9 +70,12 @@ set_env UKV_OWNER_EMAIL "${ADMINEMAIL}"
 [ -n "${STRIPE_WEBHOOK_SECRET:-}" ] && set_env STRIPE_WEBHOOK_SECRET "${STRIPE_WEBHOOK_SECRET}" || true
 grep -q "^APP_KEY=base64" .env || "$PHP" artisan key:generate --force
 
-say "4/8  Migrate + seed"
+say "4/8  Migrate + seed (real data only — no demo, no faker/dev deps)"
 "$PHP" artisan migrate --force
-"$PHP" artisan db:seed --force
+for S in DestinationSeeder DocumentRequirementSeeder SupplyNodeSeeder TurkeyGoldGuidesSeeder; do
+  echo "  seeding $S"
+  "$PHP" artisan db:seed --class="$S" --force || echo "  ($S skipped/failed — continuing)"
+done
 
 say "5/8  Storage link + caches"
 "$PHP" artisan storage:link || true
