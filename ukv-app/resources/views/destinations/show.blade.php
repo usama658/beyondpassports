@@ -150,11 +150,16 @@
   .pricenote strong{color:var(--navy)}
   .pricenote p{margin:0 0 6px}
   .pricenote p:last-child{margin-bottom:0}
-  .reqs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 36px}
-  .req{display:flex;gap:14px;align-items:flex-start}
-  .req svg{flex:0 0 28px}
-  .req h3{font-size:16px;font-family:var(--body);font-weight:600;margin:2px 0 2px}
-  .req p{margin:0;font-size:14px;color:var(--muted)}
+  /* Requirements — sticky heading left, list right (option E) */
+  .reqs-split{display:grid;grid-template-columns:.72fr 1.28fr;gap:44px;align-items:start}
+  .reqs-intro .lede{font-size:16px;color:var(--muted);margin:14px 0 0;max-width:32ch}
+  .reqs{display:grid;gap:0}
+  .req{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 0;border-top:1px solid var(--paper-edge)}
+  .req:first-child{border-top:0;padding-top:0}
+  .req svg{flex:none;color:var(--cta)}
+  .req h3{font-size:16px;font-family:var(--body);font-weight:700;margin:0 0 2px}
+  .req p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+  @media (max-width:820px){.reqs-split{grid-template-columns:1fr;gap:24px}}
   .faqd{max-width:78ch}
   .faqd details{border-bottom:1px solid var(--paper-edge);padding:18px 0}
   .faqd summary{font-family:var(--display);font-size:19px;color:var(--navy);font-weight:500;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -256,10 +261,15 @@
   </div>
 </div></section>
 
-{{-- 5. REQUIREMENTS --}}
+{{-- 5. REQUIREMENTS — sticky heading + list (E) --}}
 <section class="alt"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Before you start</p><h2>What you'll need</h2></div>
-  <div class="reqs">
+  <div class="reqs-split reveal">
+    <div class="reqs-intro">
+      <p class="eyebrow">Before you start</p>
+      <h2>What you'll need</h2>
+      <p class="lede">Have these ready and your application moves faster — we'll confirm the exact list for your trip.</p>
+    </div>
+    <div class="reqs">
     @forelse ($docs as $doc)
       <div class="req reveal">
         <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
@@ -284,6 +294,7 @@
         <div><h3>Contact &amp; payment details</h3><p>An email for updates and a card to cover the service and government fees.</p></div>
       </div>
     @endforelse
+    </div>
   </div>
 </div></section>
 
