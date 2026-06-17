@@ -7,6 +7,24 @@
 <style>
   /* driving-abroad — page-scoped layout only. Palette/type/components from ukv.css. */
 
+  /* ── hero — navy mesh, centred, three convention type cards ───── */
+  .idp-hero{
+    background:
+      radial-gradient(620px 280px at 88% 0, rgba(199,93,56,.42), transparent 60%),
+      radial-gradient(560px 260px at 8% 100%, rgba(92,154,123,.34), transparent 60%),
+      var(--navy);
+    color:#fff;text-align:center;padding:64px 0;
+  }
+  .idp-hero .eyebrow{color:var(--soft)}
+  .idp-hero h1{color:#fff;max-width:20ch;margin:0 auto}
+  .idp-hero .lede{color:rgba(255,255,255,.85);max-width:54ch;margin:14px auto 0}
+  .idp-types{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0 0}
+  .idp-types .t{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:14px;padding:14px 22px;min-width:150px}
+  .idp-types .t b{display:block;font:800 18px var(--display);color:var(--soft)}
+  .idp-types .t span{font-size:12.5px;color:rgba(255,255,255,.72)}
+  .idp-hero .btn{margin-top:28px}
+
   /* ── two-column prose split ──────────────────────────────────── */
   .da-split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
   .da-prose p{color:#3a4248;margin:0 0 1em;font-size:16.5px;line-height:1.72}
@@ -107,23 +125,17 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm">
-  <div class="wrap">
-    <div class="mh-grid">
-      <div class="mh-copy reveal">
-        <p class="eyebrow">Driving abroad</p>
-        <h1>International Driving Permit&nbsp;— sorted the right way</h1>
-        <p class="lede">We confirm which IDP you need and prepare your paperwork, so your in-person collection goes smoothly first time.</p>
-        <div class="mh-trust">
-          <span><b>PayPoint</b> — in-person issuer</span>
-          <span><b>1949 / 1968 / 1926</b> — all types covered</span>
-          <span><b>Independent</b> — not a govt website</span>
-        </div>
-        <div style="margin-top:24px">
-          <a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a>
-        </div>
-      </div>
+<section class="idp-hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Driving abroad</p>
+    <h1>International Driving Permit&nbsp;— sorted the right way</h1>
+    <p class="lede">We confirm which IDP you need and prepare your paperwork, so your in-person collection goes smoothly first time.</p>
+    <div class="idp-types">
+      <div class="t"><b>1949</b><span>USA &amp; parts of Asia/Africa</span></div>
+      <div class="t"><b>1968</b><span>Most of Europe</span></div>
+      <div class="t"><b>1926</b><span>A few countries</span></div>
     </div>
+    <div><a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a></div>
   </div>
 </section>
 
