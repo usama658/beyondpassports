@@ -35,9 +35,11 @@
       var(--navy);
     color:#fff;padding:60px 0;
   }
+  .fc-hero{text-align:center}
   .fc-hero .eyebrow{color:var(--soft)}
-  .fc-hero h1{color:#fff;max-width:18ch}
-  .fc-hero .lede{color:rgba(255,255,255,.85);max-width:54ch}
+  .fc-hero h1{color:#fff;max-width:20ch;margin-inline:auto}
+  .fc-hero .lede{color:rgba(255,255,255,.85);max-width:56ch;margin-inline:auto}
+  .fc-hero .fc-trust{justify-content:center}
   /* ── hero trust pills (glass on dark) ─────────────────────────── */
   .fc-trust{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
   .fc-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);

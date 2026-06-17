@@ -53,7 +53,7 @@
        Scoped to .nearest-centre so it is safe on any surface. Literal colours, not vars. */
     .nearest-centre{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b}
     .nearest-centre .nc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#3f7259;margin:0 0 6px}
-    .nearest-centre .nc-title{font-size:20px;font-weight:600;color:#22282b;margin:0 0 16px;line-height:1.3}
+    .nearest-centre .nc-title{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;color:#22282b;margin:0 0 18px;line-height:1.12}
     /* empty state — centred soft-sky card with a pin (premium) */
     .nearest-centre .nc-empty{text-align:center;background:linear-gradient(180deg,#EAF1F4,#fff);border:1px solid #e6e8ea;border-radius:18px;padding:34px 26px;box-shadow:0 14px 36px -22px rgba(40,50,70,.32)}
     .nearest-centre .nc-empty .nc-empty-ic{width:54px;height:54px;border-radius:16px;background:#fff;border:1px solid #e6e8ea;color:#C75D38;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
