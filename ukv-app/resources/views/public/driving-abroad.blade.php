@@ -41,6 +41,27 @@
     font-size:15.5px;line-height:1.6;color:#3a4248;box-shadow:var(--lift-1)}
   .da-defcard strong{color:var(--navy)}
 
+  /* ── guided self-service — navy mesh band + glass do-cards ───── */
+  .idp-guide{
+    background:
+      radial-gradient(620px 280px at 88% 0, rgba(199,93,56,.34), transparent 60%),
+      radial-gradient(560px 260px at 8% 100%, rgba(92,154,123,.30), transparent 60%),
+      var(--navy);
+    color:#fff;
+  }
+  .idp-guide .eyebrow{color:var(--soft)}
+  .idp-guide .sec-head h2{color:#fff}
+  .ig-honest{max-width:64ch}
+  .ig-honest p{color:rgba(255,255,255,.85);font-size:15.5px;line-height:1.66;margin:0 0 .9em}
+  .ig-honest p:last-child{margin:0}
+  .ig-honest strong{color:var(--soft)}
+  .ig-glass{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  .ig-g{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:20px}
+  .ig-g svg{width:24px;height:24px;color:var(--soft)}
+  .ig-g p{margin:10px 0 0;font-size:14px;color:rgba(255,255,255,.86);line-height:1.5}
+  .ig-g strong{color:#fff}
+  @media (max-width:820px){ .ig-glass{grid-template-columns:1fr} }
+
   /* ── honest framing panel ────────────────────────────────────── */
   .da-frame{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
   .da-frame-col h3{font-size:19px;font-weight:700;color:var(--navy);margin:0 0 14px}
@@ -154,43 +175,34 @@
   </div>
 </section>
 
-{{-- GUIDED SELF-SERVICE FRAMING --}}
-<section class="alt" id="how-it-really-works">
+{{-- GUIDED SELF-SERVICE FRAMING — navy mesh band --}}
+@php
+  $igTick = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+@endphp
+<section class="idp-guide" id="how-it-really-works">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">How it really works</p>
       <h2>An IDP is collected in person — we make sure you're ready</h2>
     </div>
 
-    <div class="da-frame">
-      <div class="da-frame-col reveal">
-        <h3>The honest picture</h3>
-        <div class="da-honest">
-          <p>In the UK, an IDP is issued <strong>in person, over the counter, at a PayPoint store</strong> — and you collect it yourself the same day. It is <strong>not available online</strong>, and (since 2019) it is <strong>no longer issued by the Post Office</strong>.</p>
-          <p>We are <strong>not a government issuer</strong> and we cannot get the permit for you — it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
-        </div>
-      </div>
-      <div class="da-frame-col reveal">
-        <h3>What we do for you</h3>
-        <p style="color:#3a4248;font-size:15px;margin:0 0 16px">We take the guesswork out of the trip to PayPoint so it succeeds first time:</p>
-        <ul class="da-bring">
-          <li>
-            <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
-            <span>We <strong>confirm which IDP type</strong> (1949 / 1968 / 1926) your destination needs.</span>
-          </li>
-          <li>
-            <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
-            <span>We <strong>check your paperwork</strong> so nothing's missing or out of date.</span>
-          </li>
-          <li>
-            <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
-            <span>We tell you <strong>exactly what to bring and where to go</strong> — your nearest PayPoint store.</span>
-          </li>
-        </ul>
-      </div>
+    <div class="ig-honest reveal">
+      <p>In the UK, an IDP is issued <strong>in person, over the counter, at a PayPoint store</strong> — and you collect it yourself the same day. It is <strong>not available online</strong>, and (since 2019) it is <strong>no longer issued by the Post Office</strong>.</p>
+      <p>We are <strong>not a government issuer</strong> and we cannot get the permit for you — it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
     </div>
 
-    <div class="sec-head reveal" style="margin:52px 0 20px">
+    <div class="ig-glass reveal">
+      <div class="ig-g">{!! $igTick !!}<p>We <strong>confirm which IDP type</strong> (1949 / 1968 / 1926) your destination needs.</p></div>
+      <div class="ig-g">{!! $igTick !!}<p>We <strong>check your paperwork</strong> so nothing's missing or out of date.</p></div>
+      <div class="ig-g">{!! $igTick !!}<p>We tell you <strong>exactly what to bring and where to go</strong> — your nearest PayPoint store.</p></div>
+    </div>
+  </div>
+</section>
+
+{{-- WHAT TO BRING — light --}}
+<section class="alt" id="bring">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:20px">
       <h2 style="font-size:clamp(22px,2.6vw,28px)">What to bring to your PayPoint visit</h2>
     </div>
     <ul class="da-bring reveal">
