@@ -69,34 +69,28 @@
   .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
   .compliance strong{color:var(--ink)}
 
-  /* "what you get" reassurance row */
-  .dct-perks{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin:20px 0 0;
-    list-style:none;
-    padding:0;
-  }
-  .dct-perks li{
-    background:rgba(255,255,255,.7);
-    backdrop-filter:blur(6px);
-    border:1px solid var(--paper-edge);
-    border-radius:14px;
-    padding:16px 18px;
-    transition:box-shadow .2s ease,transform .2s ease;
-  }
-  .dct-perks li:hover{box-shadow:var(--lift-1);transform:translateY(-2px)}
-  .dct-perks .pk{
-    font-family:var(--body);
-    font-weight:700;
-    font-size:11px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--stamp-text);
-    margin:0 0 5px;
-  }
-  .dct-perks p{margin:0;font-size:13px;color:#33454f;line-height:1.5}
+  /* ── HERO — navy mesh (pick A) ── */
+  .dct-hero{position:relative;overflow:hidden;background:var(--navy);padding:72px 0 60px}
+  .dct-hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 84%,rgba(92,154,123,.42),transparent 62%)}
+  .dct-hero .wrap{position:relative;z-index:2}
+  .dct-hero .mh-grid{display:block}
+  .dct-hero .mh-copy{max-width:none}
+  .dct-hero .eyebrow{color:var(--soft)}
+  .dct-hero h1{color:#fff}
+  .dct-hero .lede{color:rgba(255,255,255,.82);max-width:60ch}
+
+  /* "what you get" — glass perk cards on navy */
+  .dct-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 0;list-style:none;padding:0}
+  .dct-perks li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:18px;
+    transition:box-shadow .2s ease,transform .2s ease}
+  .dct-perks li:hover{transform:translateY(-2px);box-shadow:0 16px 36px -24px rgba(0,0,0,.5)}
+  .dct-perks .t{width:38px;height:38px;border-radius:10px;background:rgba(242,194,172,.16);color:var(--soft);
+    display:flex;align-items:center;justify-content:center;margin:0 0 11px}
+  .dct-perks .t svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .dct-perks .pk{font-family:var(--body);font-weight:700;font-size:15px;color:#fff;margin:0 0 4px}
+  .dct-perks p{margin:0;font-size:13px;color:rgba(255,255,255,.72);line-height:1.5}
 
   /* submit button row */
   .dct-submit-row{margin-top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
@@ -113,7 +107,7 @@
 @section('content')
 
 {{-- ── HERO ── --}}
-<section class="mesh-hero mesh-hero--sm">
+<section class="dct-hero">
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy">
@@ -123,14 +117,17 @@
 
         <ul class="dct-perks reveal">
           <li>
+            <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
             <p class="pk">On screen, free</p>
             <p>Your full tailored list appears instantly — no contact details needed.</p>
           </li>
           <li>
+            <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
             <p class="pk">Yours to keep</p>
             <p>Get a saved link you can come back to and share with anyone travelling with you.</p>
           </li>
           <li>
+            <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
             <p class="pk">Confirmed by a human</p>
             <p>When you apply, our UK team confirms your exact list before anything is submitted.</p>
           </li>

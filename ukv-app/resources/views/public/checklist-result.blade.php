@@ -22,6 +22,16 @@
         : url('/apply');
     $sendAction   = url('/checklist/'.$request->token.'/send');
     $sentOk       = session('checklist_sent');
+
+    // Boarding-pass header facts (live from the snapshot + wizard inputs).
+    $inputs       = is_array($request->inputs) ? $request->inputs : [];
+    $docCount     = count($items);
+    $purposeMap   = ['tourist' => 'Tourism', 'business' => 'Business', 'study' => 'Study', 'other' => 'Travel'];
+    $entriesMap   = ['single' => 'single entry', 'multiple' => 'multiple entry'];
+    $tripPurpose  = $purposeMap[$inputs['trip_purpose'] ?? ''] ?? null;
+    $tripEntries  = $entriesMap[$inputs['visa_entries'] ?? ''] ?? null;
+    $tripFacts    = implode(' · ', array_filter([$tripPurpose, $tripEntries])) ?: 'Tailored to your trip';
+    $routeTo      = $destName !== 'your trip' ? \Illuminate\Support\Str::upper($destName) : 'YOUR TRIP';
 @endphp
 <!doctype html>
 <html lang="en-GB">
@@ -40,6 +50,39 @@
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 <style>
   /* checklist-result.blade.php — page-scoped layout. Palette/type/components from ukv.css. */
+
+  /* ── HERO — boarding-pass ticket (pick D) ── */
+  .crp-hero{background:linear-gradient(180deg,#eef1f3,var(--paper,#f4f5f6));padding:48px 0 40px}
+  .crp-pass{
+    max-width:840px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 232px;
+    background:var(--white,#fff);border:1px solid var(--paper-edge,#e6e8ea);
+    border-radius:18px;box-shadow:0 30px 70px -45px rgba(40,50,70,.55);overflow:hidden;
+  }
+  .crp-main{padding:30px 32px}
+  .crp-route{display:flex;align-items:center;gap:13px;margin:0 0 16px}
+  .crp-route .pt{font-size:13px;font-weight:800;letter-spacing:.05em;color:var(--navy)}
+  .crp-route .ln{flex:0 0 56px;height:2px;position:relative;
+    background:repeating-linear-gradient(90deg,var(--cta,#C75D38) 0 6px,transparent 6px 11px)}
+  .crp-route .ln svg{position:absolute;right:-7px;top:-7px;width:16px;height:16px;color:var(--cta,#C75D38)}
+  .crp-main .eyebrow{color:var(--cta,#C75D38)}
+  .crp-main h1{color:var(--navy,#22282b);font-size:clamp(26px,3.6vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin:0 0 12px}
+  .crp-main .lede{color:#46505a;font-size:15px;line-height:1.55;max-width:50ch;margin:0}
+  .crp-stub{position:relative;background:var(--navy,#22282b);color:#fff;padding:28px 26px;
+    display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .crp-stub::before{content:"";position:absolute;left:-9px;top:0;bottom:0;width:18px;z-index:3;
+    background:radial-gradient(circle at center,var(--paper,#f4f5f6) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
+  .crp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft,#F2C2AC);display:block;margin-bottom:3px}
+  .crp-stub .v{font-size:18px;font-weight:800;line-height:1.1}
+  .crp-stub .v small{font-size:12px;font-weight:600;color:rgba(255,255,255,.7)}
+  .crp-stub .v.sm{font-size:15px}
+  .crp-stub .ready{color:#7fc7a3}
+  @media (max-width:680px){
+    .crp-pass{grid-template-columns:1fr}
+    .crp-stub{flex-direction:row;flex-wrap:wrap;gap:20px 26px;padding:22px 26px}
+    .crp-stub::before{left:0;right:0;top:-9px;bottom:auto;width:auto;height:18px;
+      background:radial-gradient(circle at center,var(--paper,#f4f5f6) 0 6px,transparent 6.5px) 0 0/22px 18px repeat-x}
+  }
 
   /* ── Checklist panel ── */
   .cr-panel{
@@ -209,13 +252,23 @@
 <main id="main">
 
   {{-- ── HERO ── --}}
-  <section class="mesh-hero mesh-hero--sm">
+  <section class="crp-hero">
     <div class="wrap">
-      <div class="mh-grid">
-        <div class="mh-copy">
+      <div class="crp-pass reveal">
+        <div class="crp-main">
+          <div class="crp-route" aria-hidden="true">
+            <span class="pt">UK</span>
+            <span class="ln"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></span>
+            <span class="pt">{{ $routeTo }}</span>
+          </div>
           <p class="eyebrow">Your document checklist</p>
           <h1>What you'll need for {{ $destName }}</h1>
           <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
+        </div>
+        <div class="crp-stub">
+          <div><span class="l">Documents</span><span class="v">{{ $docCount }} <small>{{ \Illuminate\Support\Str::plural('item', $docCount) }}</small></span></div>
+          <div><span class="l">Trip</span><span class="v sm">{{ $tripFacts }}</span></div>
+          <div><span class="l">Status</span><span class="v sm ready">Ready &check;</span></div>
         </div>
       </div>
     </div>
