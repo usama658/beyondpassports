@@ -85,6 +85,15 @@
   #why .tick h3{color:#fff}
   #why .tick p{color:rgba(255,255,255,.82)}
   #why .tick .stamp{filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+
+  /* TESTIMONIALS — trio of consented quote cards (option D) */
+  .tquotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+  .tq{background:#fff;border:1px solid var(--paper-edge);border-radius:16px;padding:24px 22px;box-shadow:var(--shadow);margin:0;display:flex;flex-direction:column;gap:12px;transition:transform .25s ease,box-shadow .25s ease}
+  .tq:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+  .tq .stars{color:var(--cta);letter-spacing:3px;font-size:14px}
+  .tq blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .tq figcaption{color:var(--stamp-text);font-weight:700;font-size:13px;margin-top:auto}
+  @media (max-width:760px){.tquotes{grid-template-columns:1fr}}
 </style>
 @endpush
 
@@ -195,11 +204,23 @@
   </div>
 </div></section>
 
-{{-- TESTIMONIAL --}}
-<section class="alt"><div class="wrap quote reveal">
-  <p class="eyebrow">Trusted by UK travellers</p>
-  <blockquote>“They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.”</blockquote>
-  <div class="by"><span class="avatar"><svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-skyline"></use></svg></span>— A UK traveller to Egypt</div>
+{{-- TESTIMONIALS — trio of consented quote cards (real anonymised reviews, single source) --}}
+@php $homeQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp
+<section class="alt"><div class="wrap">
+  <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 6px">
+    <p class="eyebrow">Trusted by UK travellers</p>
+    <h2>Real people, really sorted</h2>
+  </div>
+  <div class="tquotes">
+    @foreach ($homeQuotes as $t)
+    <figure class="tq reveal">
+      <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
+      <blockquote>{{ $t['quote'] }}</blockquote>
+      <figcaption>— {{ $t['attribution'] }}</figcaption>
+    </figure>
+    @endforeach
+  </div>
+  <p style="text-align:center;margin-top:24px"><a class="rlink" style="font-weight:600" href="{{ url('/reviews') }}">Read more traveller reviews →</a></p>
 </div></section>
 
 {{-- APPOINTMENTS / NEAREST CENTRE --}}
