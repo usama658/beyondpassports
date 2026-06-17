@@ -65,10 +65,9 @@
   .dest-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--paper-edge);background:#fff;color:var(--cta);font:800 18px var(--display);cursor:pointer;line-height:1}
   .dest-nav button:hover{box-shadow:0 0 0 3px rgba(199,93,56,.14)}
   #destinations .dests{display:grid;grid-auto-flow:column;grid-template-rows:1fr;grid-template-columns:none;
-    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
+    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
   #destinations .dests::-webkit-scrollbar{display:none}
-  #destinations .pass{scroll-snap-align:start;height:250px}
+  #destinations .pass{height:250px}
   @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
   @media (max-width:520px){#destinations .dests{grid-auto-columns:calc(85%)}}
 </style>
@@ -146,25 +145,30 @@
   </div>
 </div></section>
 <script>
-  // Destinations carousel: arrows page the scroller; auto-advances, loops, pauses on hover/focus.
+  // Destinations carousel: continuous smooth glide (seamless loop via cloned cards),
+  // pauses on hover/focus; arrows nudge it manually. Reduced-motion = static + arrows only.
   (function () {
     var sc = document.getElementById('destScroller');
     if (!sc) return;
-    var step = function (dir) { sc.scrollBy({ left: (sc.clientWidth + 18) * dir, behavior: 'smooth' }); };
     document.querySelectorAll('[data-dest-dir]').forEach(function (b) {
-      b.addEventListener('click', function () { step(Number(b.dataset.destDir)); });
+      b.addEventListener('click', function () { sc.scrollBy({ left: (sc.clientWidth + 18) * Number(b.dataset.destDir), behavior: 'smooth' }); });
     });
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var timer = null;
-    var play = function () { timer = setInterval(function () {
-      // loop back to start when we reach (near) the end
-      if (sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4) sc.scrollTo({ left: 0, behavior: 'smooth' });
-      else step(1);
-    }, 4000); };
-    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
-    sc.addEventListener('mouseenter', stop); sc.addEventListener('mouseleave', play);
-    sc.addEventListener('focusin', stop); sc.addEventListener('focusout', play);
-    play();
+    // duplicate the cards so the track loops seamlessly
+    Array.prototype.slice.call(sc.children).forEach(function (c) {
+      var clone = c.cloneNode(true); clone.setAttribute('aria-hidden', 'true'); clone.tabIndex = -1; sc.appendChild(clone);
+    });
+    var paused = false, raf;
+    var loop = function () {
+      if (!paused) {
+        sc.scrollLeft += 0.5;                       // glide speed (px/frame)
+        if (sc.scrollLeft >= sc.scrollWidth / 2) sc.scrollLeft -= sc.scrollWidth / 2;  // seamless wrap
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { sc.addEventListener(e, function () { paused = true; }); });
+    ['mouseleave', 'focusout', 'touchend'].forEach(function (e) { sc.addEventListener(e, function () { paused = false; }); });
+    requestAnimationFrame(loop);
   })();
 </script>
 
