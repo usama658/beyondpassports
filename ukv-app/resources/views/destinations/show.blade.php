@@ -111,7 +111,7 @@
   .dhero .btn{margin-top:8px}
   .dhero .skyband{margin-top:36px}
   /* HERO + AT A GLANCE — full photo with welded navy fact strip (option C) */
-  .dmoney-hero{position:relative;color:#fff}
+  .dmoney-hero{position:relative;color:#fff;padding:0}
   .dmoney-hero .stage{position:relative;min-height:400px;display:flex;align-items:flex-end;background:var(--navy)}
   .dmoney-hero .stage .img{position:absolute;inset:0;background-size:cover;background-position:center}
   .dmoney-hero .stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,25,.25) 28%,rgba(20,22,25,.85))}
