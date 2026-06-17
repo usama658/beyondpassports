@@ -79,16 +79,17 @@
   }
   .gi-empty p { font-size: 17px; color: var(--muted); margin: 0 0 24px }
 
-  /* ---- COMPLIANCE -------------------------------------------------- */
-  .gi-compliance {
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid var(--paper-edge);
-    font-size: 12.5px;
-    line-height: 1.65;
-    color: var(--muted);
-    max-width: 72ch;
-  }
+  /* ---- COMPLIANCE — badge + text (pick C) -------------------------- */
+  .gi-compliance{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-top:48px;
+    background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 24px;
+    box-shadow:0 12px 32px -28px rgba(40,50,70,.5)}
+  .gi-compliance .gc-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    background:var(--navy);color:#fff;border-radius:13px;width:104px;height:104px;flex:0 0 104px;text-align:center;padding:10px}
+  .gi-compliance .gc-badge svg{width:26px;height:26px;color:var(--soft,#F2C2AC)}
+  .gi-compliance .gc-badge span{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;line-height:1.2}
+  .gi-compliance p{margin:0;font-size:13.5px;line-height:1.65;color:#3a4b55}
+  .gi-compliance strong{color:var(--navy)}
+  @media (max-width:560px){.gi-compliance{grid-template-columns:1fr;justify-items:start}}
 
   /* ---- DIVIDER between hubs + guides ------------------------------ */
   .gi-divider {
@@ -177,10 +178,13 @@
       </div>
     @endif
 
-    <p class="gi-compliance">
-      Beyond Passports is an independent service and is not a government website.
-      Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.
-    </p>
+    <div class="gi-compliance reveal">
+      <span class="gc-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>NOT A GOVT SITE</span>
+      </span>
+      <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
+    </div>
   </div>
 </section>
 
