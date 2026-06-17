@@ -84,6 +84,22 @@
   .da-bring li strong{color:var(--ink)}
   @media (max-width:680px){ .da-bring{grid-template-columns:1fr} }
 
+  /* ── eligibility — can / can't contrast cards ────────────────── */
+  #who .da-split{align-items:center}
+  .da-cc{display:grid;gap:14px}
+  .da-cc-card{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);padding:22px 24px;box-shadow:var(--lift-1)}
+  .da-cc-card.is-can{border-top:3px solid var(--sage-t)}
+  .da-cc-card.is-cant{border-top:3px solid var(--cta)}
+  .da-cc-card .cc-t{font:800 11px var(--display);letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+  .da-cc-card.is-can .cc-t{color:var(--sage-t)}
+  .da-cc-card.is-cant .cc-t{color:var(--cta)}
+  .da-cc-card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .da-cc-card li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:#3a4248;line-height:1.5}
+  .da-cc-card li svg{flex:0 0 22px;width:22px;height:22px;margin-top:1px}
+  .da-cc-card li strong{color:var(--ink)}
+  .da-cc-card.is-can li svg{color:var(--sage-t)}
+  .da-cc-card.is-cant li svg{color:#b5453a}
+
   /* ── callout (provisional licence warning) ───────────────────── */
   .da-callout{display:flex;gap:16px;align-items:flex-start;
     border:1px solid var(--paper-edge);border-left:4px solid var(--cta);
@@ -240,15 +256,29 @@
       <p class="eyebrow">Eligibility</p>
       <h2>Who can get an IDP?</h2>
     </div>
+    @php
+      $whoTick = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      $whoCross = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+    @endphp
     <div class="da-split">
       <div class="da-prose reveal">
         <p>To get an International Driving Permit you must be <strong>18 or over</strong> and hold a <strong>full UK driving licence</strong> (photocard). The permit translates a licence you already hold — so a full, valid UK licence is the starting point.</p>
         <p>If your full licence covers the vehicle you'll drive abroad, you're good to go once you have the right IDP type for the country.</p>
       </div>
-      <div class="reveal">
-        <div class="da-callout">
-          <svg viewBox="0 0 48 48" aria-hidden="true" style="width:28px;height:28px"><use href="#ukv-stamp"></use></svg>
-          <p><strong>Provisional licence holders cannot get an IDP.</strong> An IDP can only be issued against a full UK driving licence. If you only hold a provisional licence, you are not eligible — and we'll tell you that honestly rather than take you to a counter that will turn you away.</p>
+      <div class="da-cc reveal">
+        <div class="da-cc-card is-can">
+          <p class="cc-t">You can get one if</p>
+          <ul>
+            <li>{!! $whoTick !!}<span>You're <strong>18 or over</strong></span></li>
+            <li>{!! $whoTick !!}<span>You hold a <strong>full UK photocard licence</strong></span></li>
+            <li>{!! $whoTick !!}<span>It covers the vehicle you'll drive abroad</span></li>
+          </ul>
+        </div>
+        <div class="da-cc-card is-cant">
+          <p class="cc-t">You can't (yet) if</p>
+          <ul>
+            <li>{!! $whoCross !!}<span>You only hold a <strong>provisional licence</strong> — we'll tell you honestly rather than send you on a wasted trip.</span></li>
+          </ul>
         </div>
       </div>
     </div>
