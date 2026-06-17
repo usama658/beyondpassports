@@ -98,23 +98,25 @@
   #appointments form{margin-left:auto;margin-right:auto;justify-content:center}
   #appointments .hint{text-align:center}
 
-  /* TRUST BAR — under hero: one dark mesh band, stat row over trust-point row */
-  .tbar{padding:0;color:#fff;background:
-      radial-gradient(520px 220px at 14% 0%, rgba(199,93,56,.45), transparent 60%),
-      radial-gradient(520px 220px at 90% 100%, rgba(92,154,123,.42), transparent 60%),
-      var(--navy)}
-  .tbar .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:26px 0 22px}
-  .tbar .stats .n{font:800 clamp(24px,3vw,32px)/1 var(--display);color:#fff;letter-spacing:-.02em}
-  .tbar .stats .l{font:600 13px var(--display);color:var(--soft);margin-top:6px}
-  .tbar .stats>div+div{border-left:1px solid rgba(255,255,255,.16)}
-  .tbar .points{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:15px 0 20px;border-top:1px solid rgba(255,255,255,.14)}
-  .tbar .ti{display:flex;align-items:center;gap:9px;font:600 14px var(--display);color:#fff;white-space:nowrap}
-  .tbar .ti svg{width:20px;height:20px;color:var(--soft);flex:none}
-  .tbar .ti b{color:var(--soft);font-weight:800}
+  /* TRUST BAR — under hero: dark mesh micro-band (F) then warm stat band (B) */
+  .tbar-b,.tbar-f{padding:0}
+  .tbar-f{background:
+      radial-gradient(520px 200px at 12% 0%, rgba(199,93,56,.45), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+      var(--navy);color:#fff}
+  .tbar-f .row{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:16px 0}
+  .tbar-f .ti{display:flex;align-items:center;gap:9px;font:600 14px var(--display);color:#fff;white-space:nowrap}
+  .tbar-f .ti svg{width:20px;height:20px;color:var(--soft);flex:none}
+  .tbar-f .ti b{color:var(--soft);font-weight:800}
+  .tbar-b{background:linear-gradient(180deg,#FBF6F1,var(--paper));border-bottom:1px solid var(--paper-edge)}
+  .tbar-b .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:24px 0}
+  .tbar-b .n{font:800 clamp(24px,3vw,30px)/1 var(--display);color:var(--cta);letter-spacing:-.02em}
+  .tbar-b .l{font:600 13px var(--display);color:var(--muted);margin-top:6px}
+  .tbar-b .row>div+div{border-left:1px solid var(--paper-edge)}
   @media (max-width:760px){
-    .tbar .stats{grid-template-columns:1fr 1fr;gap:14px}
-    .tbar .stats>div:nth-child(odd){border-left:0}
-    .tbar .points{gap:16px 22px}
+    .tbar-b .row{grid-template-columns:1fr 1fr;gap:14px}
+    .tbar-b .row>div:nth-child(odd){border-left:0}
+    .tbar-f .row{gap:18px 22px}
   }
 </style>
 @endpush
@@ -154,21 +156,19 @@
   @endif
 </div></section>
 
-{{-- TRUST BAR — one dark mesh band: stat row over trust-point row --}}
-<section class="tbar"><div class="wrap">
-  <div class="stats">
-    <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
-    <div><div class="n">12,000+</div><div class="l">Trips sorted</div></div>
-    <div><div class="n">{{ ($navDestinations ?? collect())->count() }}</div><div class="l">Destinations &amp; growing</div></div>
-    <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
-  </div>
-  <div class="points">
-    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Secure <b>Stripe</b> payments</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span><b>Fixed</b> fees, shown up front</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Every step <b>tracked</b></span></span>
-  </div>
-</div></section>
+{{-- TRUST BAR — dark mesh trust-points band (F) then warm stat band (B) --}}
+<section class="tbar-f"><div class="wrap"><div class="row">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Secure <b>Stripe</b> payments</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span><b>Fixed</b> fees, shown up front</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Every step <b>tracked</b></span></span>
+</div></div></section>
+<section class="tbar-b"><div class="wrap"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">12,000+</div><div class="l">Trips sorted</div></div>
+  <div><div class="n">{{ ($navDestinations ?? collect())->count() }}</div><div class="l">Destinations &amp; growing</div></div>
+  <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
+</div></div></section>
 
 {{-- HOW --}}
 <section id="how"><div class="wrap">
