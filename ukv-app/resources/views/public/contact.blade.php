@@ -278,29 +278,32 @@
 
   .ct-callback .checker .btn { width: 100%; margin-top: 20px; padding: 15px; font-size: 16px; border-radius: 12px; }
 
-  /* ── Reassurance band ──────────────────────────────────────────────────── */
+  /* ── Reassurance band — navy mesh ───────────────────────────────────────── */
   .ct-reassure {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(135deg, #f7f9f8, var(--white));
-    border: 1px solid var(--paper-edge);
+    background:
+      radial-gradient(420px 200px at 10% 0, rgba(199,93,56,.40), transparent 60%),
+      radial-gradient(420px 200px at 92% 100%, rgba(92,154,123,.36), transparent 60%),
+      var(--navy);
     border-radius: 20px;
-    padding: 32px 36px;
-    box-shadow: var(--lift-1);
+    padding: 36px 40px;
+    box-shadow: var(--lift-2);
   }
   .ct-reassure p {
     margin: 0;
     font-size: clamp(18px, 2.2vw, 22px);
     font-family: var(--display);
     font-weight: 700;
-    color: var(--navy);
+    color: #fff;
     max-width: 34ch;
     line-height: 1.25;
     letter-spacing: -.015em;
   }
+  .ct-reassure .btn--ghost { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); color: #fff; }
   .ct-reassure-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
   @media (max-width: 860px) {
@@ -352,7 +355,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg>
       </span>
       <h3>Call us</h3>
-      <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">{{ config('ukv.phone') ?: 'Call us' }}</a></p>
+      <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">{{ config('ukv.phone') ?: 'Call our UK team' }}</a></p>
       <p class="ct-sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
       <span class="ct-hours">Mon–Sat &nbsp;9–6 UK time</span>
       <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn ct-call-btn">Call now</a>
@@ -364,7 +367,7 @@
       </span>
       <div class="ct-mbody">
         <h3>WhatsApp</h3>
-        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message us' }}</a></p>
+        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">{{ config('ukv.phone') ?: 'Message our UK team' }}</a></p>
         <p class="ct-sub">Quick questions, photos of a document, a fast reply on the go.</p>
         <span class="ct-hours">Replies Mon–Sat &nbsp;9–6 UK time</span>
       </div>
@@ -376,7 +379,7 @@
       </span>
       <div class="ct-mbody">
         <h3>Email</h3>
-        <p class="ct-detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}">{{ config('ukv.email') ?: 'hello@ukvisaco.example' }}</a></p>
+        <p class="ct-detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}">{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}</a></p>
         <p class="ct-sub">Best for sending documents or anything you want in writing.</p>
         <span class="ct-hours">Reply within one working day</span>
       </div>
