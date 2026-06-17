@@ -160,8 +160,11 @@
             @if ($distance !== null)
               <span class="nc-km" aria-label="{{ number_format((float) $distance, 1) }} kilometres away">{{ number_format((float) $distance, 1) }}<small>km away</small></span>
             @endif
-            @if ($contactHref !== null)
-              <a class="nc-railbtn {{ $booked ? 'is-pri' : 'is-ghost' }}"
+            @if ($booked)
+              {{-- We can book this centre — primary action is to book through us. --}}
+              <a class="nc-railbtn is-pri" href="{{ url('/apply') }}">Book through us</a>
+            @elseif ($contactHref !== null)
+              <a class="nc-railbtn is-ghost"
                  href="{{ $contactHref }}"
                  @if (str_starts_with($contactHref, 'http')) target="_blank" rel="noopener noreferrer" @endif>{{ $railLabel }}</a>
             @endif
