@@ -86,17 +86,23 @@ chmod -R 775 storage bootstrap/cache || true
 say "6/8  Admin user (idempotent)"
 "$PHP" artisan tinker --execute "\$e='${ADMINEMAIL}'; \App\Models\User::firstOrCreate(['email'=>\$e],['name'=>'Owner','password'=>bcrypt('${ADMINPASS:?set ADMINPASS}'),'role'=>'admin']);" || true
 
-say "7/8  Point apex web root at public/ (symlink, with backup)"
-PUB="$HOME/public_html"
+say "7/8  Point the ADDON-domain docroot at public/ (symlink, with backup)"
+# beyondpassports.co.uk is an ADDON domain — its docroot is separate from public_html
+# (public_html belongs to the MAIN domain). NEVER touch public_html here.
+DOCROOT="${DOCROOT:-$HOME/${DOMAIN}}"     # e.g. /home/outlabio/beyondpassports.co.uk
 TARGET="$APP_DIR/public"
-if [ -L "$PUB" ]; then
-  ln -sfn "$TARGET" "$PUB"
-elif [ -d "$PUB" ]; then
-  mv "$PUB" "${PUB}_backup_$(date +%s)"
-  ln -s "$TARGET" "$PUB"
+case "$DOCROOT" in
+  *public_html|*public_html/) echo "REFUSING: DOCROOT looks like the main public_html ($DOCROOT). Set DOCROOT to the addon dir."; exit 1;;
+esac
+if [ -L "$DOCROOT" ]; then
+  ln -sfn "$TARGET" "$DOCROOT"
+elif [ -d "$DOCROOT" ]; then
+  mv "$DOCROOT" "${DOCROOT}_backup_$(date +%s)"
+  ln -s "$TARGET" "$DOCROOT"
 else
-  ln -s "$TARGET" "$PUB"
+  ln -s "$TARGET" "$DOCROOT"
 fi
+echo "Docroot $DOCROOT -> $TARGET"
 
 say "8/8  Done"
 echo "Visit: https://${DOMAIN}    Admin: https://${DOMAIN}/admin  ($ADMINEMAIL)"

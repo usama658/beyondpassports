@@ -17,11 +17,9 @@ ns2.a2hosting.com
 ```
 (or the exact set in your A2 welcome email). Propagation up to 24–48h. Do this first — it runs in the background while you do the rest.
 
-## 1. Database — cPanel → MySQL® Databases
-1. Create DB `USER_bp`
-2. Create user `USER_bpapp` + strong password
-3. Add user → DB → **ALL PRIVILEGES**
-4. Keep the 3 values for `.env`.
+## 1. Database — ALREADY CREATED via API ✅
+- DB: `outlabio_bp`  ·  user: `outlabio_bpapp`  ·  privileges: ALL  (password given separately).
+- Isolated from the other sites on this account; nothing else touched.
 
 ## 2. PHP — cPanel → MultiPHP Manager
 Set **beyondpassports.co.uk → PHP 8.2** (or 8.3). Ensure extensions on (MultiPHP INI / Extensions):
@@ -83,23 +81,15 @@ chmod -R 775 storage bootstrap/cache
 php artisan tinker --execute "App\Models\User::create(['name'=>'Owner','email'=>'you@beyondpassports.co.uk','password'=>bcrypt('STRONGPASS'),'role'=>'admin']);"
 ```
 
-## 6. Serve apex from /public  (symlink — non-destructive, keeps a backup)
-The Laravel public dir must be the web root. On A2 the apex root is `~/public_html`.
-```bash
-cd ~
-mv public_html public_html_backup_$(date +%s)     # backs up whatever's there
-ln -s ~/beyondpassports/public public_html        # apex now serves the app
+## 6. Serve the ADDON domain from /public  (handled by deploy-a2.sh — do NOT touch public_html)
+`beyondpassports.co.uk` is an **addon domain**; its docroot is **`/home/outlabio/beyondpassports.co.uk`**
+(separate from `public_html`, which is the main site `outlab.io` — never touch it).
+`deploy-a2.sh` (step 7) backs up that docroot dir and symlinks it to the app's `public/`:
 ```
-Check `~/beyondpassports/public/.htaccess` exists (it does). Visit the site.
-**If A2 won't follow a symlinked docroot** (blank page / 403), use the copy-method fallback instead:
-```bash
-rm public_html                                     # remove the symlink
-mkdir ~/public_html
-cp -r ~/beyondpassports/public/. ~/public_html/
-# edit ~/public_html/index.php: change the two require paths from __DIR__.'/../'
-# to '/home/USER/beyondpassports/' (vendor/autoload.php and bootstrap/app.php)
+/home/outlabio/beyondpassports.co.uk  ->  /home/outlabio/beyondpassports/public
 ```
-(Symlink is preferred — updates are automatic. Copy-method needs re-copying `public/` after each deploy.)
+If A2 won't follow a symlinked docroot (blank/403), use the copy-method: copy `~/beyondpassports/public/.`
+into the docroot and edit its `index.php` require paths to `/home/outlabio/beyondpassports/`.
 
 ## 7. HTTPS — cPanel → SSL/TLS Status
 After DNS resolves, run **AutoSSL** for beyondpassports.co.uk (+ www). App forces HTTPS once `APP_URL` is `https`.
