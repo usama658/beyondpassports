@@ -55,15 +55,22 @@
 
 @push('head')
 <style>
-  /* Destinations section — map-texture backdrop + centred heading (option G). #destinations
-     (ID) overrides the .alt white band; keeps the .alt borders to separate the section. */
-  #destinations{background:
-    radial-gradient(circle at 18% 30%, rgba(92,154,123,.10), transparent 42%),
-    radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
-    repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
-    var(--paper)}
-  #destinations .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
-  #destinations > .wrap > p{text-align:center}
+  /* Destinations section — "split intro + 2×2 carousel" (E): heading/blurb/button left;
+     right is a 2-row horizontal scroller showing 2×2 cards, paging through the rest. */
+  .dest-split{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center}
+  .dest-intro{align-self:center}
+  .dest-intro .lede{font-size:16px;margin:14px 0 0}
+  .dest-intro .btn{margin-top:20px}
+  .dest-nav{display:flex;justify-content:flex-end;gap:8px;margin:0 0 12px}
+  .dest-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--paper-edge);background:#fff;color:var(--cta);font:800 18px var(--display);cursor:pointer;line-height:1}
+  .dest-nav button:hover{box-shadow:0 0 0 3px rgba(199,93,56,.14)}
+  #destinations .dests{display:grid;grid-auto-flow:column;grid-template-rows:1fr;grid-template-columns:none;
+    grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
+  #destinations .dests::-webkit-scrollbar{display:none}
+  #destinations .pass{scroll-snap-align:start;height:250px}
+  @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
+  @media (max-width:520px){#destinations .dests{grid-auto-columns:calc(85%)}}
 </style>
 @endpush
 
@@ -121,14 +128,45 @@
 
 {{-- DESTINATIONS --}}
 <section id="destinations" class="alt"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Popular destinations</p><h2>Clear requirements, fixed fees</h2></div>
-  <div class="dests">
-    @foreach ($navDestinations as $d)
-    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
-    @endforeach
+  <div class="dest-split">
+    <div class="dest-intro reveal">
+      <p class="eyebrow">Popular destinations</p>
+      <h2>Clear requirements, fixed fees</h2>
+      <p class="lede">Browse the places we prepare and check applications for — clear fixed fees, every step tracked.</p>
+      <a class="btn" href="{{ url('/destinations') }}">See all destinations →</a>
+    </div>
+    <div class="dest-carousel">
+      <div class="dest-nav"><button type="button" data-dest-dir="-1" aria-label="Previous destinations">‹</button><button type="button" data-dest-dir="1" aria-label="Next destinations">›</button></div>
+      <div class="dests" id="destScroller">
+      @foreach ($navDestinations as $d)
+      <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
+      @endforeach
+      </div>
+    </div>
   </div>
-  <p style="margin-top:26px"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></p>
 </div></section>
+<script>
+  // Destinations carousel: arrows page the scroller; auto-advances, loops, pauses on hover/focus.
+  (function () {
+    var sc = document.getElementById('destScroller');
+    if (!sc) return;
+    var step = function (dir) { sc.scrollBy({ left: (sc.clientWidth + 18) * dir, behavior: 'smooth' }); };
+    document.querySelectorAll('[data-dest-dir]').forEach(function (b) {
+      b.addEventListener('click', function () { step(Number(b.dataset.destDir)); });
+    });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var timer = null;
+    var play = function () { timer = setInterval(function () {
+      // loop back to start when we reach (near) the end
+      if (sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4) sc.scrollTo({ left: 0, behavior: 'smooth' });
+      else step(1);
+    }, 4000); };
+    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+    sc.addEventListener('mouseenter', stop); sc.addEventListener('mouseleave', play);
+    sc.addEventListener('focusin', stop); sc.addEventListener('focusout', play);
+    play();
+  })();
+</script>
 
 {{-- WHY --}}
 <section id="why"><div class="wrap">
