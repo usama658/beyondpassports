@@ -8,6 +8,30 @@
 <style>
   /* ── compare page — page-scoped styles only. Design system in ukv.css ───── */
 
+  /* ── Hero — navy mesh split + side-by-side scale (pick B) ────────────────── */
+  .cmp-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:92px 0 84px}
+  .cmp-hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(60% 80% at 12% 18%,rgba(199,93,56,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 82%,rgba(63,114,89,.42),transparent 62%),
+     radial-gradient(40% 60% at 70% 10%,rgba(242,194,172,.18),transparent 60%);}
+  .cmp-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.10),rgba(15,20,22,.35));}
+  .cmp-hero .wrap{position:relative;z-index:2}
+  .cmp-hero .mh-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .cmp-hero .eyebrow{color:var(--soft)}
+  .cmp-hero h1{color:#fff;max-width:15ch}
+  .cmp-hero .lede{color:rgba(255,255,255,.82);max-width:46ch}
+  .cmp-scale{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cmp-scol{border-radius:16px;padding:20px 18px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05)}
+  .cmp-scol.us{background:linear-gradient(180deg,rgba(199,93,56,.22),rgba(255,255,255,.05));border-color:rgba(242,194,172,.45)}
+  .cmp-scol .k{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 12px}
+  .cmp-scol.diy .k{color:rgba(255,255,255,.6)}
+  .cmp-scol p{margin:0 0 10px;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.85);display:flex;gap:8px}
+  .cmp-scol p:last-child{margin-bottom:0}
+  .cmp-scol p svg{width:15px;height:15px;flex:0 0 15px;margin-top:1px}
+  .cmp-scol .tick{color:#7fd6a8}
+  .cmp-scol .dash{color:rgba(255,255,255,.45)}
+  @media (max-width:820px){.cmp-hero .mh-grid{grid-template-columns:1fr;gap:30px}}
+
   /* ── Comparison table ────────────────────────────────────────────────────── */
   .cmp-scroll {
     overflow-x: auto;
@@ -196,12 +220,28 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
-  <p class="eyebrow">Honest comparison</p>
-  <h1>Apply yourself vs use Beyond Passports</h1>
-  <p class="lede">Both are valid. Here's the real trade-off — no spin.</p>
-</div></div></div></section>
+{{-- HERO — navy mesh split + side-by-side scale (pick B) --}}
+<section class="cmp-hero"><div class="wrap"><div class="mh-grid">
+  <div class="reveal">
+    <p class="eyebrow">Honest comparison</p>
+    <h1>Apply yourself, or let us handle it</h1>
+    <p class="lede">Both routes are valid. We lay out the real trade-off so you can choose — and tell you straight if doing it yourself suits you better.</p>
+  </div>
+  <div class="cmp-scale reveal">
+    <div class="cmp-scol diy">
+      <p class="k">Do it yourself</p>
+      <p><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Cheapest — official fee only</p>
+      <p><svg class="dash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"/></svg> You do the legwork</p>
+      <p><svg class="dash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"/></svg> You check it yourself</p>
+    </div>
+    <div class="cmp-scol us">
+      <p class="k">Beyond Passports</p>
+      <p><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> A person checks it</p>
+      <p><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> UK phone &amp; WhatsApp</p>
+      <p><svg class="dash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"/></svg> Service fee on top</p>
+    </div>
+  </div>
+</div></div></section>
 
 {{-- COMPARISON TABLE --}}
 <section id="compare"><div class="wrap">
