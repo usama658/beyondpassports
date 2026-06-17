@@ -7,14 +7,26 @@
 <style>
   /* apply.blade.php — page-scoped styles only. Palette/type/components from ukv.css. */
 
-  /* ── Hero ── */
-  .ap-hero-wrap{padding:64px 0 0;text-align:center}
-  .ap-hero-wrap h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:var(--navy);max-width:22ch;margin:0 auto .5em}
-  .ap-hero-wrap .lede{margin:0 auto 28px;max-width:52ch;color:var(--muted)}
-  /* trust row */
-  .ap-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 40px}
-  .ap-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.80);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:8px 16px;font-size:13px;color:var(--ink);font-weight:600}
-  .ap-trust span::before{content:"✓";display:inline-block;width:18px;height:18px;background:var(--stamp-text);color:#fff;border-radius:50%;font-size:10px;font-weight:800;line-height:18px;text-align:center;flex:0 0 18px}
+  /* ── Hero — dark mesh band, copy left + "~2 min" reassurance chip right (E) ── */
+  .ap-hero{padding:0;color:#fff;background:
+    radial-gradient(520px 220px at 14% 0%, rgba(199,93,56,.45), transparent 60%),
+    radial-gradient(520px 220px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+    var(--navy)}
+  .ap-hero > .wrap{padding:60px 24px}
+  .ap-hero .ap-hrow{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+  .ap-hero .eyebrow{color:var(--soft)}
+  .ap-hero h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.8vw,44px);line-height:1.05;letter-spacing:-.03em;color:#fff;margin:0 0 14px;max-width:18ch}
+  .ap-hero .lede{color:rgba(255,255,255,.84);font-size:17px;line-height:1.55;max-width:46ch;margin:0}
+  .ap-trust{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 0}
+  .ap-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 15px;font-family:var(--body);font-weight:600;font-size:13px;color:#fff}
+  .ap-trust span::before{content:"✓";display:inline-block;width:18px;height:18px;background:var(--soft);color:var(--navy);border-radius:50%;font-size:10px;font-weight:800;line-height:18px;text-align:center;flex:0 0 18px}
+  .ap-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:24px 26px;backdrop-filter:blur(8px)}
+  .ap-chip .big{font-family:var(--display);font-weight:800;font-size:34px;color:#fff;letter-spacing:-.02em;line-height:1}
+  .ap-chip .sub{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-top:6px}
+  .ap-chip ul{list-style:none;margin:16px 0 0;padding:0}
+  .ap-chip li{position:relative;padding:6px 0 6px 24px;color:rgba(255,255,255,.88);font-size:14px;line-height:1.45}
+  .ap-chip li::before{content:"✓";position:absolute;left:0;color:var(--soft);font-weight:800}
+  @media (max-width:820px){.ap-hero .ap-hrow{grid-template-columns:1fr;gap:28px}}
 
   /* ── Form container ── */
   .ap-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:780px;margin:0 auto}
@@ -115,17 +127,28 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm">
+{{-- HERO — dark mesh band + reassurance chip (E) --}}
+<section class="ap-hero">
   <div class="wrap">
-    <div class="ap-hero-wrap reveal">
-      <p class="eyebrow">Start your application</p>
-      <h1>Tell us your trip — we'll confirm exactly what you need.</h1>
-      <p class="lede">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
-      <div class="ap-trust">
-        <span>UK-based advisers</span>
-        <span>No payment until you approve</span>
-        <span>Every case hand-checked</span>
+    <div class="ap-hrow">
+      <div class="reveal">
+        <p class="eyebrow">Start your application</p>
+        <h1>Tell us your trip — we'll confirm exactly what you need.</h1>
+        <p class="lede">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
+        <div class="ap-trust">
+          <span>UK-based advisers</span>
+          <span>No payment until you approve</span>
+          <span>Every case hand-checked</span>
+        </div>
+      </div>
+      <div class="ap-chip reveal" aria-hidden="true">
+        <div class="big">~2 min</div>
+        <div class="sub">to complete</div>
+        <ul>
+          <li>No payment until you approve</li>
+          <li>Human-checked, not a bot</li>
+          <li>Not a government website</li>
+        </ul>
       </div>
     </div>
   </div>
