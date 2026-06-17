@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Process section — design ideas</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cta:#C75D38;--ink:#22282b;--muted:#697079;--sage:#5C9A7B;--sage-t:#3f7259;--paper:#F4F5F6;--edge:#e6e8ea;--white:#fff;--j:'Plus Jakarta Sans',system-ui,sans-serif;
+    --lift1:0 18px 44px -26px rgba(40,50,70,.3);--lift2:0 26px 56px -28px rgba(40,50,70,.4)}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--j);color:var(--ink);background:#eceef0}
+  .ph{max-width:1000px;margin:0 auto;padding:34px 22px 4px}
+  .ph h1{font-size:26px;letter-spacing:-.02em;margin:0 0 6px;font-weight:700}.ph p{color:var(--muted);margin:0;max-width:66ch}
+  .wrapx{max-width:1080px;margin:0 auto;padding:14px 20px}
+  .block{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;margin:22px 0;box-shadow:0 16px 44px -30px rgba(40,50,70,.4)}
+  .block.pick{outline:3px solid var(--cta);outline-offset:3px}
+  .stage{padding:40px 34px;background:var(--paper)}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;flex-wrap:wrap;border-top:1px solid var(--edge)}
+  .meta h4{font-size:17px;margin:0;font-weight:700}.meta p{font-size:13.5px;margin:3px 0 0;max-width:62ch;color:var(--muted)}
+  .num{display:inline-block;background:#fff;color:var(--cta);font-weight:800;border-radius:8px;padding:2px 9px;font-size:13px;margin-right:8px;border:1px solid var(--edge)}
+  .pickbtn{background:var(--cta);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:700 14px var(--j);cursor:pointer;white-space:nowrap}
+  .pickbtn.on{background:var(--sage)}
+  .sechead{text-align:center;margin:0 0 30px}
+  .sechead .eb{font:700 12px var(--j);letter-spacing:.18em;text-transform:uppercase;color:var(--cta);margin:0 0 8px}
+  .sechead h3{font:700 30px/1.05 var(--j);letter-spacing:-.02em;margin:0}
+  h5{margin:0;font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .desc{color:var(--muted);font-size:14.5px;line-height:1.55;margin:6px 0 0}
+
+  /* ===== A connected timeline (numbered circles on a line) ===== */
+  .A{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .A::before{content:"";position:absolute;top:26px;left:14%;right:14%;height:2px;background:linear-gradient(90deg,var(--cta),var(--sage))}
+  .A .step{text-align:center;position:relative}
+  .A .circ{width:54px;height:54px;border-radius:50%;background:var(--cta);color:#fff;font:800 20px var(--j);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 20px -8px rgba(199,93,56,.6);position:relative;z-index:2}
+  .A .desc{max-width:30ch;margin:6px auto 0}
+
+  /* ===== B ghost numbers + cards ===== */
+  .B{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .B .step{position:relative;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:26px 22px 22px;box-shadow:var(--lift1);overflow:hidden}
+  .B .ghost{position:absolute;top:-14px;right:6px;font:800 90px var(--j);color:rgba(199,93,56,.08);line-height:1;letter-spacing:-.04em}
+  .B .tag{display:inline-block;font:800 12px var(--j);color:var(--cta);letter-spacing:.1em;margin:0 0 8px}
+
+  /* ===== C icon cards + connector arrows ===== */
+  .C{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:14px}
+  .C .step{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:24px 20px;box-shadow:var(--lift1)}
+  .C .ic{width:46px;height:46px;border-radius:12px;background:rgba(199,93,56,.1);color:var(--cta);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 0 14px}
+  .C .step .n{font:800 12px var(--j);color:var(--sage-t);letter-spacing:.1em;margin:0 0 6px}
+  .C .arrow{color:var(--cta);font-size:22px;font-weight:800}
+  @media(max-width:720px){.C{grid-template-columns:1fr}.C .arrow{display:none}}
+
+  /* ===== D left-rail vertical timeline ===== */
+  .D{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:0;position:relative}
+  .D .step{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:0 0 26px;position:relative}
+  .D .step:not(:last-child)::before{content:"";position:absolute;left:26px;top:46px;bottom:-6px;width:2px;background:var(--edge)}
+  .D .circ{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--cta);color:var(--cta);font:800 19px var(--j);display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+  .D .bd{padding-top:4px}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:13px 22px;text-align:center;font:600 14px var(--j);z-index:60}
+  .sticky b{color:#F2C2AC}
+  @media(max-width:720px){.A,.B{grid-template-columns:1fr}.A::before{display:none}}
+</style>
+</head>
+<body>
+<div class="ph">
+  <h1>“Three simple steps” — design ideas</h1>
+  <p>Four premium treatments for the process section (also used on money pages / IDP). Pick one — tell me the letter.</p>
+</div>
+<div class="wrapx" id="list"></div>
+<div class="sticky" id="sticky">Pick a layout, then tell me the letter (e.g. “Steps B”).</div>
+
+<script>
+  var S=[['Tell us your trip','Pick your destination and answer a few questions. We confirm exactly what you need.','🧭'],
+         ['We prepare & check','Our team reviews your documents for errors before anything is submitted.','📋'],
+         ['Submit & track','We handle the submission and keep you updated until it\'s delivered.','📨']];
+  function head(){return '<div class="sechead"><p class="eb">The process</p><h3>Three simple steps</h3></div>';}
+  var V={
+   A:function(){var h='<div class="A">';S.forEach(function(s,i){h+='<div class="step"><div class="circ">'+(i+1)+'</div><h5>'+s[0]+'</h5><p class="desc">'+s[1]+'</p></div>';});return h+'</div>';},
+   B:function(){var h='<div class="B">';S.forEach(function(s,i){h+='<div class="step"><span class="ghost">0'+(i+1)+'</span><span class="tag">STEP 0'+(i+1)+'</span><h5>'+s[0]+'</h5><p class="desc">'+s[1]+'</p></div>';});return h+'</div>';},
+   C:function(){var h='<div class="C">';S.forEach(function(s,i){h+='<div class="step"><div class="ic">'+s[2]+'</div><p class="n">STEP 0'+(i+1)+'</p><h5>'+s[0]+'</h5><p class="desc">'+s[1]+'</p></div>';if(i<2)h+='<div class="arrow">→</div>';});return h+'</div>';},
+   D:function(){var h='<div class="D">';S.forEach(function(s,i){h+='<div class="step"><div class="circ">'+(i+1)+'</div><div class="bd"><h5>'+s[0]+'</h5><p class="desc">'+s[1]+'</p></div></div>';});return h+'</div>';}
+  };
+  var opts=[
+    ['A','Connected timeline','Numbered circles on a terracotta→sage line, content centred beneath. Clear left-to-right journey, airy.'],
+    ['B','Ghost-number cards','Elevated cards each with a big translucent 01/02/03 watermark + STEP tag. Premium, editorial, hover-lift.'],
+    ['C','Icon cards + arrows','Cards with an icon tile + STEP label, arrows showing the flow between them. Friendly, product-like.'],
+    ['D','Vertical timeline','Left rail with numbered nodes, content right. Calm, reads like a real sequence; great on mobile.']
+  ];
+  var html='';opts.forEach(function(o){
+    html+='<div class="block" id="b-'+o[0]+'"><div class="stage">'+head()+V[o[0]]()+'</div>'
+      +'<div class="meta"><div><h4><span class="num">'+o[0]+'</span>'+o[1]+'</h4><p>'+o[2]+'</p></div>'
+      +'<button class="pickbtn" data-k="'+o[0]+'">Pick '+o[0]+'</button></div></div>';
+  });
+  document.getElementById('list').innerHTML=html;
+  document.querySelectorAll('.pickbtn').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.pickbtn').forEach(function(x){x.classList.remove('on');x.textContent='Pick '+x.dataset.k;});
+    document.querySelectorAll('.block').forEach(function(c){c.classList.remove('pick');});
+    b.classList.add('on');b.textContent='✓ Picked';document.getElementById('b-'+b.dataset.k).classList.add('pick');
+    document.getElementById('sticky').innerHTML='Chosen: <b>Steps '+b.dataset.k+'</b> — tell me this in chat and I’ll apply it (+ the similar step sections).';
+  });});
+</script>
+</body></html>

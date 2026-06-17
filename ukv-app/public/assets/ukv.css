@@ -93,11 +93,22 @@ section{padding:72px 0}
 .quote blockquote{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.8vw,30px);line-height:1.3;color:var(--ink);margin:0}
 .quote .by{display:flex;align-items:center;gap:12px;font-family:var(--body);font-weight:600;font-size:13px;color:var(--stamp-text);margin-top:18px}
 .quote .by .avatar{flex:0 0 44px;height:44px;border-radius:50%;background:var(--stamp);overflow:hidden}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.step .num{font-family:var(--body);font-size:14px;color:var(--cta);font-weight:800}
-.step h3{font-size:20px;margin-top:8px}
-.step .rule{height:2px;background:linear-gradient(90deg,var(--cta),transparent);margin:10px 0 14px}
+/* steps — "boarding pass" ticket strip: one card, dashed perforations between steps,
+   "STEP" labels + big faded seat numbers (via CSS counter, no markup change). */
+.steps{display:flex;flex-wrap:nowrap;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--lift-2);overflow:hidden;counter-reset:step}
+.step{flex:1;min-width:0;padding:28px 26px;position:relative;counter-increment:step;text-align:left}
+.step + .step{border-left:2px dashed var(--paper-edge)}
+/* edge notches at the perforation (punch-out look) */
+.step + .step::before,.step + .step::after{content:"";position:absolute;left:-9px;width:16px;height:16px;border-radius:50%;background:var(--paper);z-index:1}
+.step + .step::before{top:-9px}
+.step + .step::after{bottom:-9px}
+/* big faded seat number */
+.step .num{position:absolute;top:18px;right:20px;font-family:var(--display);font-weight:800;font-size:42px;line-height:1;letter-spacing:-.03em;color:rgba(199,93,56,.12)}
+/* "STEP" label (kept terracotta); the .rule divider is retired in this layout */
+.step .rule{display:none}
+.step h3{font-size:19px;margin:0 0 4px}
+.step h3::before{content:"STEP";display:block;font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--cta);margin:0 0 8px}
+.step p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55;max-width:30ch}
 /* CTA band — gradient-mesh on ink, centred (matches the footer CTA for site-wide consistency) */
 .cta-band{position:relative;overflow:hidden;color:#fff;text-align:center;
   background:
