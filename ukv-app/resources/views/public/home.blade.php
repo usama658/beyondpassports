@@ -94,6 +94,18 @@
   .tq blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:15.5px;line-height:1.55;color:var(--ink)}
   .tq figcaption{color:var(--stamp-text);font-weight:700;font-size:13px;margin-top:auto}
   @media (max-width:760px){.tquotes{grid-template-columns:1fr}}
+
+  /* APPOINTMENTS — map-texture backdrop + centred finder + pin motif (option C) */
+  #appointments{background:
+    radial-gradient(circle at 18% 30%, rgba(92,154,123,.10), transparent 42%),
+    radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
+    var(--paper)}
+  #appointments .sec-head{text-align:center;max-width:62ch;margin-left:auto;margin-right:auto}
+  #appointments .sec-head p{margin-left:auto;margin-right:auto}
+  #appointments .pin{display:block;margin:0 auto 12px;color:var(--cta)}
+  #appointments form{margin-left:auto;margin-right:auto;justify-content:center}
+  #appointments .hint{text-align:center}
 </style>
 @endpush
 
@@ -226,6 +238,7 @@
 {{-- APPOINTMENTS / NEAREST CENTRE --}}
 <section id="appointments" class="alt"><div class="wrap reveal">
   <div class="sec-head">
+    <svg class="pin" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     <p class="eyebrow">In-person centres</p>
     @if (($slotSummary['available_count'] ?? 0) > 0)
       <h2>Appointments ready when you are</h2>
