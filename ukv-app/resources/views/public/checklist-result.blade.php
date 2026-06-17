@@ -279,69 +279,48 @@
        sections below are untouched; this bar just mirrors them as always-visible triggers. --}}
   @if (config('ukv.checklist.sticky_action_bar', true))
   <style>
-    .cr-actionbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--paper-edge,#e6e8ea);
-      box-shadow:0 2px 12px rgba(40,50,70,.07);
-    }
+    /* Sticky action bar — navy command bar (pick A), ties to the boarding-pass hero. */
+    .cr-actionbar{position:sticky;top:0;z-index:50;padding:12px 0 4px}
     .cr-actionbar .wrap{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:flex-end;
-      padding:10px 0;
-      flex-wrap:wrap;
+      display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+      background:var(--navy,#22282b);
+      border-radius:14px;
+      padding:11px 16px;
+      box-shadow:0 16px 40px -28px rgba(0,0,0,.7);
     }
     .cr-actionbar .ab-label{
-      margin-right:auto;
+      margin-right:auto;display:inline-flex;align-items:center;gap:9px;
       font-family:var(--body,'Plus Jakarta Sans',sans-serif);
-      font-weight:700;
-      font-size:11px;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:var(--stamp-text,#3f7259);
+      font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--soft,#F2C2AC);
     }
+    .cr-actionbar .ab-label svg{width:16px;height:16px;flex:0 0 16px}
     .cr-actionbar a{
-      font-size:13.5px;
-      font-weight:600;
-      padding:9px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      white-space:nowrap;
-      transition:box-shadow .15s,transform .1s;
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:10px;
+      text-decoration:none;white-space:nowrap;transition:background .15s,box-shadow .15s,transform .1s;
     }
+    .cr-actionbar a svg{width:16px;height:16px;flex:0 0 16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
     .cr-actionbar a:hover{transform:translateY(-1px)}
-    .cr-actionbar .ab-ghost{
-      border:1.5px solid var(--paper-edge,#e6e8ea);
-      color:var(--navy,#22282b);
-      background:#fff;
-    }
-    .cr-actionbar .ab-ghost:hover{border-color:#c4cace;box-shadow:var(--lift-1)}
-    .cr-actionbar .ab-primary{
-      background:var(--cta,#C75D38);
-      color:#fff;
-      font-weight:700;
-      border:1.5px solid transparent;
-    }
-    .cr-actionbar .ab-primary:hover{background:#b04e2c;box-shadow:0 0 0 3px rgba(199,93,56,.18)}
+    .cr-actionbar .ab-ghost{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff}
+    .cr-actionbar .ab-ghost:hover{background:rgba(255,255,255,.12)}
+    .cr-actionbar .ab-primary{background:var(--cta,#C75D38);color:#fff;font-weight:700;padding:10px 17px}
+    .cr-actionbar .ab-primary:hover{background:#b04e2c;box-shadow:0 0 0 3px rgba(199,93,56,.28)}
     @media (max-width:640px){
-      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6e8ea);border-bottom:0;box-shadow:0 -2px 14px rgba(40,50,70,.10)}
-      .cr-actionbar .wrap{justify-content:space-between;padding:8px 12px;gap:6px}
+      .cr-actionbar{position:fixed;top:auto;bottom:0;left:0;right:0;padding:0;z-index:60}
+      .cr-actionbar .wrap{border-radius:0;padding:8px 12px;gap:6px;justify-content:space-between;box-shadow:0 -2px 14px rgba(0,0,0,.3)}
       .cr-actionbar .ab-label{display:none}
-      .cr-actionbar a{flex:1;text-align:center;padding:10px 4px;font-size:12px}
-      main#main{padding-bottom:66px}
+      .cr-actionbar a{flex:1;justify-content:center;padding:10px 4px;font-size:12px}
+      .cr-actionbar a svg{display:none}
+      main#main{padding-bottom:70px}
     }
   </style>
   <div class="cr-actionbar"><div class="wrap">
-    <span class="ab-label">Your checklist</span>
-    <a class="ab-ghost" href="{{ url('/checklist/'.$request->token.'/print') }}" target="_blank" rel="noopener">&#8595; Save / PDF</a>
-    <a class="ab-ghost" href="#send">&#x2709; Email me</a>
-    <a class="ab-ghost" href="#share">&#8599; Share</a>
-    <a class="ab-primary" href="{{ $applyUrl }}">Start application &rarr;</a>
+    <span class="ab-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Your checklist</span>
+    <a class="ab-ghost" href="{{ url('/checklist/'.$request->token.'/print') }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Save / PDF</a>
+    <a class="ab-ghost" href="#send"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
+    <a class="ab-ghost" href="#share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5 8.6 10.5"/></svg>Share</a>
+    <a class="ab-primary" href="{{ $applyUrl }}">Start application <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div></div>
   @endif
 
