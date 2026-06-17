@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Heading font options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cta:#C75D38;--ink:#22282b;--muted:#697079;--sage:#5C9A7B;--sage-t:#3f7259;--paper:#F4F5F6;--edge:#e6e8ea;
+    --body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --jakarta:'Plus Jakarta Sans',sans-serif;--bricolage:'Bricolage Grotesque',sans-serif;--space:'Space Grotesk',sans-serif;--sora:'Sora',sans-serif;
+    --lift:0 24px 56px -30px rgba(40,50,70,.4)}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:#eceef0}
+  .ph{max-width:1000px;margin:0 auto;padding:34px 22px 4px}
+  .ph h1{font-size:26px;letter-spacing:-.02em;margin:0 0 6px}.ph p{color:var(--muted);margin:0;max-width:66ch}
+  .wrapx{max-width:1000px;margin:0 auto;padding:14px 20px}
+  .block{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;margin:22px 0;box-shadow:0 16px 44px -30px rgba(40,50,70,.4)}
+  .block.pick{outline:3px solid var(--cta);outline-offset:3px}
+  .stage{padding:34px 34px 30px;background:linear-gradient(180deg,#EAF1F4,#F2F5F6 45%,var(--paper))}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;flex-wrap:wrap;border-top:1px solid var(--edge)}
+  .meta h4{font-size:17px;margin:0;font-family:var(--body)}.meta p{font-size:13.5px;margin:3px 0 0;max-width:60ch;color:var(--muted);font-family:var(--body)}
+  .num{display:inline-block;background:var(--paper);color:var(--cta);font-weight:800;border-radius:8px;padding:2px 9px;font-size:13px;margin-right:8px}
+  .pickbtn{background:var(--cta);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:700 14px var(--body);cursor:pointer;white-space:nowrap}
+  .pickbtn.on{background:var(--sage)}
+
+  .eyebrow{font:700 12px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--cta);margin:0 0 10px}
+  .hl{font-weight:800;letter-spacing:-.03em;line-height:1.02;font-size:clamp(34px,5vw,52px);margin:0 0 18px}
+  .h2{font-weight:700;letter-spacing:-.02em;line-height:1.08;font-size:30px;margin:18px 0 4px}
+  .h3{font-weight:700;letter-spacing:-.02em;font-size:20px;margin:14px 0 2px}
+  .body{font-family:var(--body);color:var(--muted);font-size:16px;line-height:1.6;max-width:60ch;margin:6px 0 0}
+  /* font assignment per block */
+  .f-jakarta .hl,.f-jakarta .h2,.f-jakarta .h3{font-family:var(--jakarta)}
+  .f-bricolage .hl,.f-bricolage .h2,.f-bricolage .h3{font-family:var(--bricolage)}
+  .f-space .hl,.f-space .h2,.f-space .h3{font-family:var(--space)}
+  .f-sora .hl,.f-sora .h2,.f-sora .h3{font-family:var(--sora)}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:13px 22px;text-align:center;font:600 14px var(--body);z-index:60}
+  .sticky b{color:#F2C2AC}
+</style>
+</head>
+<body>
+<div class="ph">
+  <h1>Heading font options</h1>
+  <p>Each block shows a hero headline + section headings in a different display font, with Plus Jakarta body. Pick one — tell me the number.</p>
+</div>
+<div class="wrapx" id="list"></div>
+<div class="sticky" id="sticky">Pick a heading font, then tell me the number (e.g. “Font 2”).</div>
+
+<script>
+  var sample = function(){return ''
+   +'<p class="eyebrow">UK visas · eVisas · ETAs</p>'
+   +'<div class="hl">Sorted, without the stress.</div>'
+   +'<div class="h2">Clear requirements, fixed fees</div>'
+   +'<p class="body">We check, prepare and submit your application for a growing list of destinations, so you travel with confidence.</p>'
+   +'<div class="h3">We catch errors before they cost you</div>'
+   +'<p class="body">A human reviews every document before submission.</p>';};
+  var opts=[
+    ['1','f-jakarta','Plus Jakarta Sans (current)','Headings = body. Clean, cohesive, neutral. Safe baseline.'],
+    ['2','f-bricolage','Bricolage Grotesque','Warm, slightly quirky display with character. Premium editorial / boutique feel — distinct from the body.'],
+    ['3','f-space','Space Grotesk','Geometric display with personality + tight forms. Modern, tech-premium, confident.'],
+    ['4','f-sora','Sora','Clean geometric, a touch wider and softer. Neutral-premium, very legible at large sizes.']
+  ];
+  var html='';
+  opts.forEach(function(o){
+    html+='<div class="block" id="b-'+o[0]+'"><div class="stage '+o[1]+'">'+sample()+'</div>'
+      +'<div class="meta"><div><h4><span class="num">'+o[0]+'</span>'+o[2]+'</h4><p>'+o[3]+'</p></div>'
+      +'<button class="pickbtn" data-k="'+o[0]+'">Pick '+o[0]+'</button></div></div>';
+  });
+  document.getElementById('list').innerHTML=html;
+  document.querySelectorAll('.pickbtn').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.pickbtn').forEach(function(x){x.classList.remove('on');x.textContent='Pick '+x.dataset.k;});
+    document.querySelectorAll('.block').forEach(function(c){c.classList.remove('pick');});
+    b.classList.add('on');b.textContent='✓ Picked';document.getElementById('b-'+b.dataset.k).classList.add('pick');
+    var n={1:'Plus Jakarta',2:'Bricolage Grotesque',3:'Space Grotesk',4:'Sora'};
+    document.getElementById('sticky').innerHTML='Chosen: <b>'+n[b.dataset.k]+'</b> — tell me this in chat and I’ll apply it to every heading.';
+  });});
+</script>
+</body></html>

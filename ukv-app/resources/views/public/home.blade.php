@@ -25,7 +25,7 @@
     background:linear-gradient(180deg,#EAF1F4 0%, #F2F5F6 45%, var(--paper) 100%);}
   .hp-hero > .wrap{position:relative;z-index:2;padding:60px 0 72px}
   .hp-hero .eyebrow{color:var(--cta)}
-  .hp-hero h1{color:var(--ink);font:800 clamp(32px,4.6vw,52px)/1.02 var(--display);letter-spacing:-.03em;margin:0 auto 16px;max-width:20ch}
+  .hp-hero h1{color:var(--ink);font:700 clamp(32px,4.6vw,52px)/1.02 var(--display);letter-spacing:-.03em;margin:0 auto 16px;max-width:20ch}
   .hp-hero .lede{color:var(--muted);font-size:19px;line-height:1.5;max-width:52ch;margin:0 auto}
   .hp-rating{display:inline-flex;gap:10px;align-items:center;margin:16px 0 0;font:700 14px var(--display);color:var(--stamp-text)}
   .hp-rating b{color:var(--cta)}

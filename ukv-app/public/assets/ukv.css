@@ -23,7 +23,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 /* Headings — tight, punchy display type (matches the home-hero preview): Plus Jakarta 800,
    tighter tracking + leading site-wide. */
-h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.04;margin:0 0 .4em;letter-spacing:-.03em}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;margin:0 0 .4em;letter-spacing:-.03em}
 h2,h3{font-weight:700;line-height:1.08;letter-spacing:-.02em}
 a{color:var(--cta);text-decoration:none}
 img,svg{max-width:100%;display:block}
