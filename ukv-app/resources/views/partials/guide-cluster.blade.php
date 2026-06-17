@@ -47,6 +47,20 @@
     /* guide-cluster partial — self-contained, palette via ukv.css vars where present,
        literal fallbacks so it is safe on the navy + paper surfaces alike. */
     .guide-cluster .gc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin:0}
+    /* Featured layout (option F): big dark hero guide + a column of smaller cards. */
+    .guide-cluster .gc-wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:stretch}
+    .guide-cluster .gc-side{display:grid;gap:18px;align-content:stretch}
+    .guide-cluster a.gc-feat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;
+      text-decoration:none;color:#fff;border-radius:16px;padding:30px;overflow:hidden;
+      background:radial-gradient(520px 240px at 14% 0%,rgba(199,93,56,.5),transparent 60%),radial-gradient(480px 220px at 90% 100%,rgba(92,154,123,.45),transparent 60%),var(--navy,#22282b);
+      box-shadow:var(--lift2,0 24px 52px -24px rgba(40,50,70,.34));transition:transform .12s ease,box-shadow .15s ease}
+    .guide-cluster a.gc-feat:hover{transform:translateY(-3px)}
+    .guide-cluster a.gc-feat:focus-visible{outline:2px solid var(--soft,#F2C2AC);outline-offset:3px}
+    .guide-cluster a.gc-feat .gc-cat{color:var(--soft,#F2C2AC)}
+    .guide-cluster a.gc-feat h3{color:#fff;font-size:clamp(22px,2.4vw,28px);margin:10px 0 8px;line-height:1.12}
+    .guide-cluster a.gc-feat .gc-excerpt{color:rgba(255,255,255,.85);font-size:15px;margin:0 0 14px}
+    .guide-cluster a.gc-feat .gc-meta{color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.18);padding-top:11px}
+    @media (max-width:820px){.guide-cluster .gc-wrap{grid-template-columns:1fr}}
     .guide-cluster a.gc-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;
       background:var(--white,#fff);border:1px solid var(--paper-edge,#dfe6ea);border-radius:10px;overflow:hidden;
       transition:transform .12s ease,box-shadow .15s ease}
@@ -63,22 +77,32 @@
 
   @if ($heading)
     <div class="sec-head reveal" style="margin-bottom:18px">
-      <p class="eyebrow">{{ $country ? 'Guides for '.$country : 'Guides' }}</p>
+      <p class="eyebrow">Free travel guides</p>
       <h2 style="font-size:clamp(24px,3vw,30px);color:var(--navy)">{{ $heading }}</h2>
     </div>
   @endif
 
-  <div class="gc-grid">
+  <div class="gc-wrap">
     @foreach ($cluster as $guide)
-      <a class="gc-card reveal" href="{{ $guideUrl($guide) }}">
-        <div class="band"></div>
-        <div class="gc-body">
+      @if ($loop->first)
+        <a class="gc-feat reveal" href="{{ $guideUrl($guide) }}">
           <div class="gc-cat">{{ $guide->guide_type instanceof \App\Enums\GuideType ? $guide->guide_type->label() : 'Guide' }}</div>
           <h3>{{ $guide->title }}</h3>
           <p class="gc-excerpt">{{ $guide->excerpt }}</p>
           <div class="gc-meta">{{ $readTime($guide->body) }}</div>
-        </div>
-      </a>
+        </a>
+        <div class="gc-side">
+      @else
+        <a class="gc-card reveal" href="{{ $guideUrl($guide) }}">
+          <div class="band"></div>
+          <div class="gc-body">
+            <div class="gc-cat">{{ $guide->guide_type instanceof \App\Enums\GuideType ? $guide->guide_type->label() : 'Guide' }}</div>
+            <h3>{{ $guide->title }}</h3>
+            <div class="gc-meta">{{ $readTime($guide->body) }}</div>
+          </div>
+        </a>
+      @endif
     @endforeach
+    </div>
   </div>
 </div>
