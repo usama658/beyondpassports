@@ -51,6 +51,30 @@
   .ab-idcard .ic-row span { color: rgba(255,255,255,.72); }
   .ab-idcard .ic-row b { font-weight: 700; color: #fff; }
 
+  /* ── Trust bands (mirrors home) — dark mesh points (F) + warm stat counters (B) ── */
+  .tbar-b, .tbar-f { padding: 0; }
+  .tbar-f {
+    background:
+      radial-gradient(520px 200px at 12% 0%, rgba(199,93,56,.45), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+      var(--navy);
+    color: #fff;
+  }
+  .tbar-f .row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 16px 0; }
+  .tbar-f .ti { display: flex; align-items: center; gap: 9px; font: 600 14px var(--display); color: #fff; white-space: nowrap; }
+  .tbar-f .ti svg { width: 20px; height: 20px; color: var(--soft); flex: none; }
+  .tbar-f .ti b { color: var(--soft); font-weight: 800; }
+  .tbar-b { background: linear-gradient(180deg, #FBF6F1, var(--paper)); border-bottom: 1px solid var(--paper-edge); }
+  .tbar-b .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; padding: 24px 0; }
+  .tbar-b .n { font: 800 clamp(24px, 3vw, 30px)/1 var(--display); color: var(--cta); letter-spacing: -.02em; }
+  .tbar-b .l { font: 600 13px var(--display); color: var(--muted); margin-top: 6px; }
+  .tbar-b .row > div + div { border-left: 1px solid var(--paper-edge); }
+  @media (max-width: 760px) {
+    .tbar-b .row { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .tbar-b .row > div:nth-child(odd) { border-left: 0; }
+    .tbar-f .row { gap: 18px 22px; }
+  }
+
   /* ── Who we are — prose + "we are / we are not" contrast cards ───────────── */
   .ab-who-grid {
     display: grid;
@@ -223,6 +247,20 @@
   </div>
 </div></div></section>
 
+{{-- TRUST BANDS — dark mesh trust-points (F) then warm stat counters (B); mirrors home --}}
+<section class="tbar-f"><div class="wrap"><div class="row">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Secure <b>Stripe</b> payments</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span><b>Fixed</b> fees, shown up front</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Every step <b>tracked</b></span></span>
+</div></div></section>
+<section class="tbar-b"><div class="wrap"><div class="row" id="ab-counts">
+  <div><div class="n" data-count="4.9" data-suffix="★" data-dec="1">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n" data-count="12000" data-suffix="+">12,000+</div><div class="l">Trips sorted</div></div>
+  <div><div class="n" data-count="{{ ($navDestinations ?? collect())->count() }}">{{ ($navDestinations ?? collect())->count() }}</div><div class="l">Destinations &amp; growing</div></div>
+  <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
+</div></div></section>
+
 {{-- WHO WE ARE --}}
 @php
   $ccTick = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#3f7259" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -330,5 +368,42 @@
   <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
+
+<script>
+(function () {
+  var grid = document.getElementById('ab-counts');
+  if (!grid) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fmt = function (v, dec) {
+    return dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-GB');
+  };
+  var run = function (el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) return;
+    if (reduce) { el.textContent = fmt(target, dec) + suffix; return; }
+    var dur = 1100, start = null;
+    var step = function (ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased, dec) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(target, dec) + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        grid.querySelectorAll('.n[data-count]').forEach(run);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(grid);
+})();
+</script>
 
 @endsection
