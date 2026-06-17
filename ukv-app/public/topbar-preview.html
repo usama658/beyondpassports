@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Top bar options</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cta:#C75D38;--cta-d:#b04e2c;--ink:#22282b;--muted:#697079;--sage:#5C9A7B;--paper:#F4F5F6;--soft:#F2C2AC;--edge:#e6e8ea;--j:'Plus Jakarta Sans',system-ui,sans-serif}
+  *{box-sizing:border-box}body{margin:0;font-family:var(--j);color:var(--ink);background:#eceef0}
+  .ph{max-width:1000px;margin:0 auto;padding:34px 22px 4px}.ph h1{font-size:26px;margin:0 0 6px;font-weight:700}.ph p{color:var(--muted);margin:0}
+  .wrapx{max-width:1080px;margin:0 auto;padding:14px 20px}
+  .block{background:#fff;border:1px solid var(--edge);border-radius:16px;overflow:hidden;margin:20px 0;box-shadow:0 16px 44px -30px rgba(40,50,70,.4)}
+  .block.pick{outline:3px solid var(--cta);outline-offset:3px}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 20px;flex-wrap:wrap}
+  .meta h4{font-size:16px;margin:0;font-weight:700}.meta p{font-size:13px;margin:3px 0 0;color:var(--muted);max-width:60ch}
+  .num{display:inline-block;background:var(--paper);color:var(--cta);font-weight:800;border-radius:8px;padding:2px 9px;font-size:13px;margin-right:8px}
+  .pickbtn{background:var(--cta);color:#fff;border:0;border-radius:10px;padding:9px 16px;font:700 13.5px var(--j);cursor:pointer}.pickbtn.on{background:var(--sage)}
+  .inner{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:8px 18px;flex-wrap:wrap}
+  .note strong{font-weight:700}.links{display:inline-flex;align-items:center;gap:18px}.rate{font-weight:700}
+  /* 1 dark (current) */
+  .t1{background:var(--ink);color:#aeb4b9;font-size:12.5px;padding:8px 0}.t1 .note strong{color:#fff}.t1 a{color:var(--soft);text-decoration:none}.t1 .rate{color:#fff}
+  /* 2 terracotta accent */
+  .t2{background:var(--cta);color:#ffe9df;font-size:12.5px;padding:8px 0}.t2 .note strong{color:#fff}.t2 a{color:#fff;text-decoration:none}.t2 .rate{color:#fff}
+  /* 3 light/paper */
+  .t3{background:var(--paper);color:var(--muted);border-bottom:1px solid var(--edge);font-size:12.5px;padding:8px 0}.t3 .note strong{color:var(--ink)}.t3 a{color:var(--cta);text-decoration:none}.t3 .rate{color:var(--ink)}
+  /* 4 minimal centered (sage rating) */
+  .t4{background:var(--ink);color:#aeb4b9;font-size:12.5px;padding:8px 0}.t4 .inner{justify-content:center;gap:14px}.t4 .note strong{color:#fff}.t4 .rate{color:#9fe0c0}.t4 a{display:none}
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:13px 22px;text-align:center;font:600 14px var(--j);z-index:60}.sticky b{color:var(--soft)}
+</style></head><body>
+<div class="ph"><h1>Top bar — options</h1><p>Pick one — tell me the number. (1 is what's live now.)</p></div>
+<div class="wrapx" id="list"></div>
+<div class="sticky" id="sticky">Pick a top bar, then tell me the number (e.g. “Top bar 2”).</div>
+<script>
+  function bar(){return '<div class="inner"><span class="note">Independent service — <strong>not a government website</strong></span>'
+    +'<span class="links"><span class="rate">★ 4.9 rated</span><a href="#">Call us</a><a href="#">WhatsApp</a></span></div>';}
+  var opts=[
+   ['1','t1','Dark ink (current)','Deep-ink strip, note left, ★rating + Call/WhatsApp right. Quiet, premium, lets header breathe.'],
+   ['2','t2','Terracotta accent','Brand-terracotta strip. Bold, colourful, high attention — but competes with CTAs below.'],
+   ['3','t3','Light paper','Pale grey strip, ink text, terracotta links. Barely-there, minimal; merges into the header.'],
+   ['4','t4','Minimal centered','Dark, centred, just compliance + rating (no contact links). Cleanest; contact lives in header/footer.']
+  ];
+  var html='';opts.forEach(function(o){html+='<div class="block" id="b-'+o[0]+'"><div class="'+o[1]+'">'+bar()+'</div>'
+    +'<div class="meta"><div><h4><span class="num">'+o[0]+'</span>'+o[2]+'</h4><p>'+o[3]+'</p></div><button class="pickbtn" data-k="'+o[0]+'">Pick '+o[0]+'</button></div></div>';});
+  document.getElementById('list').innerHTML=html;
+  document.querySelectorAll('.pickbtn').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.pickbtn').forEach(function(x){x.classList.remove('on');x.textContent='Pick '+x.dataset.k;});
+    document.querySelectorAll('.block').forEach(function(c){c.classList.remove('pick');});
+    b.classList.add('on');b.textContent='✓ Picked';document.getElementById('b-'+b.dataset.k).classList.add('pick');
+    document.getElementById('sticky').innerHTML='Chosen: <b>Top bar '+b.dataset.k+'</b> — tell me in chat.';});});
+</script></body></html>
