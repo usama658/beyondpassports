@@ -66,20 +66,15 @@
   @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
   @media (max-width:520px){#destinations .dests{grid-auto-columns:calc(85%)}}
 
-  /* WHY section — dark mesh band + frosted-glass reassurance cards (option B) */
-  #why{position:relative;overflow:hidden;color:#fff;
-    background:
-      radial-gradient(640px 280px at 12% 0%, rgba(199,93,56,.5), transparent 60%),
-      radial-gradient(600px 260px at 92% 100%, rgba(92,154,123,.5), transparent 60%),
-      var(--navy)}
-  #why .eyebrow{color:#F2C2AC}
-  #why .sec-head h2{color:#fff}
-  #why .tick{background:rgba(255,255,255,.10);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);
-    border-radius:16px;padding:20px 22px;transition:transform .25s ease,background .25s ease}
-  #why .tick:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
-  #why .tick h3{color:#fff}
-  #why .tick p{color:rgba(255,255,255,.82)}
-  #why .tick .stamp{filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+  /* WHY section — warm stamp cards on a peach tint (option C) */
+  #why{background:linear-gradient(180deg,#FBF6F1,var(--paper))}
+  #why .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  #why .ticks{margin-top:30px}
+  #why .tick{background:#fff;border:1px solid var(--paper-edge);border-radius:16px;padding:22px;gap:14px;
+    box-shadow:0 10px 30px -22px rgba(40,50,70,.5);transition:transform .25s ease,box-shadow .25s ease}
+  #why .tick:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+  #why .tick .stamp{flex:0 0 44px;width:44px;height:44px;padding:9px;border-radius:11px;
+    background:rgba(92,154,123,.12);color:var(--stamp-text);box-sizing:border-box}
 
   /* TESTIMONIALS — trio of consented quote cards (option D) */
   .tquotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
