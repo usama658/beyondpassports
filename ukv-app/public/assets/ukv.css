@@ -103,7 +103,7 @@ section{padding:72px 0}
     radial-gradient(580px 260px at 92% 100%,rgba(92,154,123,.5),transparent 60%),
     var(--navy)}
 .cta-band .rule{height:3px;width:80px;background:var(--cta);margin:0 auto 20px}
-.cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px);max-width:20ch;margin-left:auto;margin-right:auto}
+.cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px)}
 .cta-band p{margin-left:auto;margin-right:auto}
 .cta-band .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;justify-content:center}
 /* footer */
