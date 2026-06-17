@@ -31,9 +31,12 @@
   .da-prose p{color:#3a4248;margin:0 0 1em;font-size:16.5px;line-height:1.72}
   .da-prose p:last-child{margin-bottom:0}
 
-  /* ── what-is — full-width prose + definition callout ─────────── */
-  .da-what{max-width:none}
-  .da-what .da-prose{max-width:74ch}
+  /* ── what-is — centred prose + definition callout ────────────── */
+  .da-what{max-width:none;text-align:center}
+  .da-what h2{max-width:none}
+  .da-what .da-prose{max-width:none}
+  .da-what .da-prose p{max-width:none}
+  .da-what .da-defcard{max-width:none}
   .da-defcard{text-align:left;background:linear-gradient(180deg,#FBF6F1,var(--white));
     border:1px solid var(--paper-edge);border-left:4px solid var(--cta);
     border-radius:0 14px 14px 0;padding:20px 24px;margin-top:24px;
