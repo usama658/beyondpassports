@@ -105,34 +105,33 @@
   }
   .ab-cc li svg { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; }
 
-  /* ── Values — elevated tick cards ───────────────────────────────────────── */
+  /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
   .ab-value {
     background: var(--white);
     border: 1px solid var(--paper-edge);
     border-radius: 18px;
     box-shadow: var(--lift-1);
-    padding: 28px 26px;
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
+    padding: 28px 22px;
+    text-align: center;
     transition: transform .25s ease, box-shadow .25s ease;
   }
   .ab-value:hover { transform: translateY(-3px); box-shadow: var(--lift-2); }
   .ab-value-icon {
-    flex: 0 0 48px;
     width: 48px; height: 48px;
+    margin: 0 auto 16px;
     border-radius: 14px;
     background: linear-gradient(135deg, #eef5f2, #dff0eb);
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+    color: #3f7259;
   }
+  .ab-value-icon svg { width: 24px; height: 24px; }
   .ab-value h3 { font-size: 18px; color: var(--navy); margin: 0 0 6px; }
-  .ab-value p  { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.55; }
+  .ab-value p  { margin: 0; font-size: 14.5px; color: var(--muted); line-height: 1.55; }
 
   /* ── How we help — steps use shared .steps class, override inner padding ─── */
   /* (no overrides needed — .steps / .step from ukv.css handles this) */
@@ -194,9 +193,14 @@
     .ab-hero-copy h1, .ab-hero-copy .lede { max-width: none; }
     .ab-who-grid { grid-template-columns: 1fr; gap: 28px; }
   }
+  @media (max-width: 900px) {
+    .ab-values { grid-template-columns: 1fr 1fr; }
+  }
   @media (max-width: 760px) {
-    .ab-values { grid-template-columns: 1fr; }
     .ab-callout { padding: 22px 20px; }
+  }
+  @media (max-width: 520px) {
+    .ab-values { grid-template-columns: 1fr; }
   }
 </style>
 @endpush
@@ -259,35 +263,35 @@
   <div class="ab-values">
 
     <div class="ab-value reveal">
-      <span class="ab-value-icon" aria-hidden="true">🎯</span>
-      <div>
-        <h3>Honesty</h3>
-        <p>If you don't actually need us, we'll tell you. We never promise approval — that decision isn't ours to make.</p>
-      </div>
+      <span class="ab-value-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 7l7-3 7 3M5 7l-2 6a4 4 0 0 0 8 0L9 7m6 0l7-3M19 7l2 6a4 4 0 0 1-8 0l2-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h3>Honesty</h3>
+      <p>If you don't actually need us, we'll tell you. We never promise approval — that decision isn't ours to make.</p>
     </div>
 
     <div class="ab-value reveal">
-      <span class="ab-value-icon" aria-hidden="true">✓</span>
-      <div>
-        <h3>Accuracy</h3>
-        <p>A real person checks every document before anything is submitted, so errors are caught before they cost you.</p>
-      </div>
+      <span class="ab-value-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h3>Accuracy</h3>
+      <p>A real person checks every document before anything is submitted, so errors are caught before they cost you.</p>
     </div>
 
     <div class="ab-value reveal">
-      <span class="ab-value-icon" aria-hidden="true">⬡</span>
-      <div>
-        <h3>Transparency</h3>
-        <p>Clear fees up front — our service fee shown separately from any government or embassy fee. No surprises.</p>
-      </div>
+      <span class="ab-value-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
+      </span>
+      <h3>Transparency</h3>
+      <p>Clear fees up front — our service fee shown separately from any government or embassy fee. No surprises.</p>
     </div>
 
     <div class="ab-value reveal">
-      <span class="ab-value-icon" aria-hidden="true">◎</span>
-      <div>
-        <h3>Care</h3>
-        <p>Real people on the phone and on WhatsApp — a UK team you can actually talk to when something matters.</p>
-      </div>
+      <span class="ab-value-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.3-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7-2.7c1 1 1 3.3 0 5.4-1.4 3-7 9.3-7 9.3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <h3>Care</h3>
+      <p>Real people on the phone and on WhatsApp — a UK team you can actually talk to when something matters.</p>
     </div>
 
   </div>
