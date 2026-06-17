@@ -41,26 +41,24 @@
     font-size:15.5px;line-height:1.6;color:#3a4248;box-shadow:var(--lift-1)}
   .da-defcard strong{color:var(--navy)}
 
-  /* ── guided self-service — navy mesh band + glass do-cards ───── */
-  .idp-guide{
-    background:
-      radial-gradient(620px 280px at 88% 0, rgba(199,93,56,.34), transparent 60%),
-      radial-gradient(560px 260px at 8% 100%, rgba(92,154,123,.30), transparent 60%),
-      var(--navy);
-    color:#fff;
-  }
-  .idp-guide .eyebrow{color:var(--soft)}
-  .idp-guide .sec-head h2{color:#fff}
-  .ig-honest{max-width:64ch}
-  .ig-honest p{color:rgba(255,255,255,.85);font-size:15.5px;line-height:1.66;margin:0 0 .9em}
-  .ig-honest p:last-child{margin:0}
-  .ig-honest strong{color:var(--soft)}
-  .ig-glass{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-  .ig-g{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:20px}
-  .ig-g svg{width:24px;height:24px;color:var(--soft)}
-  .ig-g p{margin:10px 0 0;font-size:14px;color:rgba(255,255,255,.86);line-height:1.5}
-  .ig-g strong{color:#fff}
-  @media (max-width:820px){ .ig-glass{grid-template-columns:1fr} }
+  /* ── guided self-service — availability rail + do tags ───────── */
+  .idp-guide{background:var(--paper)}
+  .ig-rail{display:flex;border:1px solid var(--paper-edge);border-radius:16px;overflow:hidden;box-shadow:var(--lift-1);margin-bottom:30px}
+  .ig-rung{flex:1;padding:22px 20px;background:var(--white);border-right:1px solid var(--paper-edge);display:flex;flex-direction:column;gap:8px}
+  .ig-rung:last-child{border-right:0}
+  .ig-rung.is-yes{background:linear-gradient(180deg,#eef5f1,var(--white))}
+  .ig-rung .lab{display:flex;align-items:center;gap:8px;font:800 15px var(--display);color:var(--navy)}
+  .ig-rung.is-yes .lab{color:var(--sage-t)}
+  .ig-rung .s{font-size:13px;color:var(--muted)}
+  .ig-rung svg{flex:0 0 20px;width:20px;height:20px}
+  .ig-rung .ic-no{color:#b5453a}.ig-rung .ic-yes{color:var(--sage-t)}
+  .ig-two{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+  .ig-note{font-size:15px;color:#3a4248;line-height:1.65;margin:0}.ig-note strong{color:var(--navy)}
+  .ig-tags{display:grid;gap:10px}
+  .ig-tag{display:flex;gap:11px;align-items:flex-start;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:13px 15px;font-size:14px;color:#3a4248;line-height:1.5;box-shadow:0 2px 8px -4px rgba(40,50,70,.08)}
+  .ig-tag svg{flex:0 0 20px;width:20px;height:20px;color:var(--sage-t);margin-top:1px}
+  .ig-tag strong{color:var(--ink)}
+  @media (max-width:820px){ .ig-rail{flex-direction:column}.ig-rung{border-right:0;border-bottom:1px solid var(--paper-edge)}.ig-rung:last-child{border-bottom:0}.ig-two{grid-template-columns:1fr} }
 
   /* ── honest framing panel ────────────────────────────────────── */
   .da-frame{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
@@ -178,6 +176,8 @@
 {{-- GUIDED SELF-SERVICE FRAMING — navy mesh band --}}
 @php
   $igTick = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $igCross = '<svg class="ic-no" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  $igCheck = '<svg class="ic-yes" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 @endphp
 <section class="idp-guide" id="how-it-really-works">
   <div class="wrap">
@@ -186,15 +186,19 @@
       <h2>An IDP is collected in person — we make sure you're ready</h2>
     </div>
 
-    <div class="ig-honest reveal">
-      <p>In the UK, an IDP is issued <strong>in person, over the counter, at a PayPoint store</strong> — and you collect it yourself the same day. It is <strong>not available online</strong>, and (since 2019) it is <strong>no longer issued by the Post Office</strong>.</p>
-      <p>We are <strong>not a government issuer</strong> and we cannot get the permit for you — it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
+    <div class="ig-rail reveal" aria-label="Where you can get an IDP">
+      <div class="ig-rung"><span class="lab">{!! $igCross !!}Online</span><span class="s">Not available</span></div>
+      <div class="ig-rung"><span class="lab">{!! $igCross !!}Post Office</span><span class="s">Stopped in 2019</span></div>
+      <div class="ig-rung is-yes"><span class="lab">{!! $igCheck !!}PayPoint</span><span class="s">In person, same day</span></div>
     </div>
 
-    <div class="ig-glass reveal">
-      <div class="ig-g">{!! $igTick !!}<p>We <strong>confirm which IDP type</strong> (1949 / 1968 / 1926) your destination needs.</p></div>
-      <div class="ig-g">{!! $igTick !!}<p>We <strong>check your paperwork</strong> so nothing's missing or out of date.</p></div>
-      <div class="ig-g">{!! $igTick !!}<p>We tell you <strong>exactly what to bring and where to go</strong> — your nearest PayPoint store.</p></div>
+    <div class="ig-two reveal">
+      <p class="ig-note">We are <strong>not a government issuer</strong> and we cannot get the permit for you — it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
+      <div class="ig-tags">
+        <div class="ig-tag">{!! $igTick !!}<span>We <strong>confirm which IDP type</strong> (1949 / 1968 / 1926) your destination needs.</span></div>
+        <div class="ig-tag">{!! $igTick !!}<span>We <strong>check your paperwork</strong> so nothing's missing or out of date.</span></div>
+        <div class="ig-tag">{!! $igTick !!}<span>We tell you <strong>exactly what to bring and where to go</strong> — your nearest PayPoint.</span></div>
+      </div>
     </div>
   </div>
 </section>
