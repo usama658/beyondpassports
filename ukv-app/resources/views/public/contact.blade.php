@@ -78,12 +78,15 @@
   }
   .ct-actions .btn { padding: 16px 28px; font-size: 16px; }
 
-  /* ── Contact method cards ──────────────────────────────────────────────── */
+  /* ── Contact method cards — call-first asymmetric ───────────────────────── */
   .ct-methods {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 18px;
   }
+  .ct-method--primary { grid-column: 1; grid-row: 1 / span 2; justify-content: center; }
+  .ct-method--wa { grid-column: 2; grid-row: 1; }
+  .ct-method--email { grid-column: 2; grid-row: 2; }
   .ct-method {
     background: var(--white);
     border: 1px solid var(--paper-edge);
@@ -147,6 +150,23 @@
     align-self: flex-start;
     letter-spacing: .02em;
   }
+
+  /* big navy call card (after base rules so it wins) */
+  .ct-methods .ct-method--primary {
+    background:
+      radial-gradient(360px 200px at 100% 0, rgba(199,93,56,.30), transparent 60%),
+      radial-gradient(340px 200px at 0 100%, rgba(92,154,123,.26), transparent 60%),
+      var(--navy);
+    color: #fff;
+  }
+  .ct-methods .ct-method--primary::before { display: none; }
+  .ct-methods .ct-method--primary .ct-ico { background: rgba(255,255,255,.12); color: var(--soft); width: 56px; height: 56px; flex: 0 0 56px; }
+  .ct-methods .ct-method--primary .ct-ico svg { width: 28px; height: 28px; }
+  .ct-methods .ct-method--primary h3 { color: #fff; font-size: 24px; }
+  .ct-methods .ct-method--primary .ct-detail { font-size: 22px; }
+  .ct-methods .ct-method--primary .ct-detail a { color: #fff; }
+  .ct-methods .ct-method--primary .ct-sub { color: rgba(255,255,255,.8); font-size: 15px; }
+  .ct-methods .ct-method--primary .ct-hours { background: rgba(255,255,255,.12); color: var(--soft); }
 
   /* ── Callback section ──────────────────────────────────────────────────── */
   .ct-callback-wrap { max-width: 660px; margin: 0 auto; }
@@ -278,6 +298,7 @@
   }
   @media (max-width: 760px) {
     .ct-methods { grid-template-columns: 1fr; }
+    .ct-method--primary, .ct-method--wa, .ct-method--email { grid-column: 1; grid-row: auto; }
     .ct-reassure { padding: 24px 20px; }
     .ct-reassure p { font-size: 18px; }
   }
