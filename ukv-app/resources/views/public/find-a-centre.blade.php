@@ -41,12 +41,12 @@
 
   /* card header band */
   .fc-finder .fc-stub{display:flex;justify-content:space-between;align-items:center;
-    background:var(--paper);color:var(--stamp-text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;padding:13px 24px;
-    border-bottom:1px solid var(--paper-edge)}
+    background:linear-gradient(100deg,var(--navy),#2e3740);color:#fff;font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;padding:14px 24px}
+  .fc-finder .fc-stub span:last-child{color:var(--soft)}
   .fc-finder .fc-stub-dot{width:8px;height:8px;border-radius:50%;
-    background:var(--cta);display:inline-block;margin-right:7px;
-    box-shadow:0 0 0 3px rgba(199,93,56,.18)}
+    background:var(--soft);display:inline-block;margin-right:7px;
+    box-shadow:0 0 0 3px rgba(242,194,172,.25)}
 
   .fc-finder .cbody{padding:28px 24px 24px}
   .fc-finder label{display:block;font-weight:700;font-size:13px;
@@ -104,6 +104,10 @@
   .fc-compliance strong{color:var(--ink)}
   .fc-compliance a{color:var(--cta);font-weight:600}
 
+  /* ── finder on soft-sky ground (pick C) ──────────────────────── */
+  .fc-form-sec{background:linear-gradient(180deg,#EAF1F4,var(--paper))}
+  .fc-ctitle{font:700 18px var(--display);color:var(--navy);text-align:center;margin:0 0 18px}
+
   /* ── section spacing ─────────────────────────────────────────── */
   .fc-section{padding:40px 0}
   .fc-section-sm{padding:24px 0}
@@ -138,12 +142,12 @@
 </section>
 
 {{-- FINDER FORM (GET — works with no JS) --}}
-<section class="fc-section">
+<section class="fc-section fc-form-sec">
   <div class="wrap">
     <form class="fc-finder reveal" method="GET" action="{{ url('/find-a-centre/search') }}" novalidate>
       <div class="fc-stub">
         <span><span class="fc-stub-dot" aria-hidden="true"></span>Centre finder</span>
-        <span style="font-weight:500;color:var(--muted);letter-spacing:.04em">Postcode search</span>
+        <span style="font-weight:600;letter-spacing:.04em">Postcode search</span>
       </div>
       <div class="cbody">
         <div class="fc-row">
