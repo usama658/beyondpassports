@@ -103,7 +103,7 @@ section{padding:72px 0}
     radial-gradient(580px 260px at 92% 100%,rgba(92,154,123,.5),transparent 60%),
     var(--navy)}
 .cta-band .rule{height:3px;width:80px;background:var(--cta);margin:0 auto 20px}
-.cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px)}
+.cta-band h2{color:#fff;font-size:clamp(28px,3.4vw,40px);max-width:20ch;margin-left:auto;margin-right:auto}
 .cta-band p{margin-left:auto;margin-right:auto}
 .cta-band .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;justify-content:center}
 /* footer */
@@ -199,8 +199,7 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
     linear-gradient(180deg,var(--paper-hi) 0%, var(--paper) 100%);}
 .mesh-hero > .wrap{position:relative;z-index:2;padding:72px 0 84px}
 .mesh-hero .eyebrow{color:var(--cta)}
-.mesh-hero h1{color:var(--ink);margin:0 0 16px;max-width:20ch}
-.mesh-hero--sm .mh-copy h1{max-width:24ch}
+.mesh-hero h1{color:var(--ink);margin:0 0 16px}
 .mesh-hero .lede{color:var(--muted);font-size:19px;line-height:1.55;max-width:48ch;margin:0 0 6px}
 .mh-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
 .mh-card{position:relative}
