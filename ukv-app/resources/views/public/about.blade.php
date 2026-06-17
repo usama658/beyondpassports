@@ -174,17 +174,30 @@
   .tq figcaption { color: var(--stamp-text); font-weight: 700; font-size: 13px; margin-top: auto; }
   @media (max-width: 760px) { .tquotes { grid-template-columns: 1fr; } }
 
-  /* ── Transparency callout ────────────────────────────────────────────────── */
+  /* ── Transparency callout — navy security-paper card + peach seal ────────── */
   .ab-callout {
-    max-width: 72ch;
-    background: var(--white);
-    border: 1px solid var(--paper-edge);
-    border-radius: 18px;
-    box-shadow: var(--lift-1);
-    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+    max-width: 760px;
+    border-radius: 20px;
+    padding: 36px 40px;
+    color: #e9ebee;
+    background:
+      radial-gradient(520px 240px at 10% -10%, rgba(199,93,56,.28), transparent 60%),
+      radial-gradient(520px 240px at 95% 110%, rgba(92,154,123,.24), transparent 60%),
+      repeating-linear-gradient(60deg, rgba(255,255,255,.02) 0 2px, transparent 2px 9px),
+      var(--navy);
+    box-shadow: var(--lift-2);
   }
-  .ab-callout p { font-size: 16px; line-height: 1.65; color: #33454f; margin: 0; }
+  .ab-callout p { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.82); margin: 0; max-width: 60ch; }
   .ab-callout p + p { margin-top: 16px; }
+  .ab-callout p strong { color: #fff; }
+  .ab-callout .ab-seal {
+    position: absolute; top: 24px; right: 26px;
+    width: 64px; height: 64px; color: var(--soft); opacity: .9;
+  }
+  .ab-callout .ab-seal svg { width: 100%; height: 100%; display: block; }
+  @media (max-width: 560px) { .ab-callout .ab-seal { position: static; margin: 0 0 14px; width: 52px; height: 52px; } }
 
   /* ── Stat chips row (hero accent) ───────────────────────────────────────── */
   .ab-chips {
@@ -364,6 +377,9 @@
 <section id="transparency"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Transparency</p><h2>The important bit, in plain English</h2></div>
   <div class="ab-callout reveal">
+    <span class="ab-seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
     <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities — we cannot guarantee any outcome.</p>
     <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only — it does not make a government or embassy decide any faster, and an ETA does not produce a physical document.</p>
   </div>
