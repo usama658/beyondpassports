@@ -167,6 +167,8 @@
   .ct-methods .ct-method--primary .ct-detail a { color: #fff; }
   .ct-methods .ct-method--primary .ct-sub { color: rgba(255,255,255,.8); font-size: 15px; }
   .ct-methods .ct-method--primary .ct-hours { background: rgba(255,255,255,.12); color: var(--soft); }
+  .ct-methods .ct-method--primary .ct-call-btn { align-self: flex-start; margin-top: 18px; padding: 13px 26px; }
+  .ct-methods .ct-method--primary .ct-sub { max-width: 32ch; }
   /* right-column cards: icon-left rows (matches preview), all text kept */
   .ct-methods .ct-method--wa,
   .ct-methods .ct-method--email { flex-direction: row; align-items: flex-start; gap: 16px; }
@@ -174,9 +176,12 @@
   .ct-methods .ct-method--email .ct-ico { margin-bottom: 0; }
   .ct-mbody { display: flex; flex-direction: column; gap: 6px; }
 
-  /* ── Callback section ──────────────────────────────────────────────────── */
-  .ct-callback-wrap { max-width: 660px; margin: 0 auto; }
-  .ct-callback-intro { text-align: center; max-width: 52ch; margin: 0 auto 28px; }
+  /* ── Callback section — form on soft-sky ground ─────────────────────────── */
+  .ct-form-sec { background: linear-gradient(180deg, #EAF1F4, var(--paper)); }
+  .ct-callback-wrap { max-width: 600px; margin: 0 auto; }
+  .ct-callback .checker { background: var(--white); border: 1px solid var(--paper-edge); box-shadow: var(--lift-2); }
+  .ct-callback .checker .cbody { padding: 32px 34px; }
+  .ct-callback-intro { text-align: center; max-width: 52ch; margin: 0 auto 24px; }
   .ct-callback-intro h2 { font-size: clamp(26px, 3.2vw, 36px); color: var(--navy); margin-bottom: 10px; }
   .ct-callback-intro p { color: var(--muted); margin: 0; }
 
@@ -348,8 +353,9 @@
       </span>
       <h3>Call us</h3>
       <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">{{ config('ukv.phone') ?: 'Call us' }}</a></p>
-      <p class="ct-sub">Our main line — best for anything you'd rather just talk through.</p>
+      <p class="ct-sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
       <span class="ct-hours">Mon–Sat &nbsp;9–6 UK time</span>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn ct-call-btn">Call now</a>
     </div>
 
     <div class="ct-method ct-method--wa">
@@ -380,18 +386,16 @@
 </div></section>
 
 {{-- 3. CALLBACK FORM (secondary; posts to POST /contact, progressively enhanced via fetch) --}}
-<section class="alt"><div class="wrap">
+<section class="ct-form-sec"><div class="wrap">
   <div class="ct-callback-wrap reveal">
-    <div class="ct-callback-intro">
-      <p class="eyebrow">Rather we call you?</p>
-      <h2>Request a callback</h2>
-      <p>Leave your number and the best time to reach you — we'll call when it suits you. No queue, no obligation.</p>
-    </div>
-
     <div class="ct-callback">
       <div class="checker">
-        <div class="stub"><span>Callback request</span><span>UK-based team</span></div>
         <div class="cbody">
+          <div class="ct-callback-intro">
+            <p class="eyebrow">Rather we call you?</p>
+            <h2>Request a callback</h2>
+            <p>Leave your number and the best time to reach you — we'll call when it suits you. No queue, no obligation.</p>
+          </div>
           <form id="callback-form" method="POST" action="{{ url('/contact') }}" novalidate>
             @csrf
             <label for="cb-name">Your name</label>
