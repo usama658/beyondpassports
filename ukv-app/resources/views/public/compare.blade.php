@@ -6,50 +6,190 @@
 
 @push('head')
 <style>
-  /* compare page — page-local layout only. Design system lives in assets/ukv.css */
-  .hero{padding:64px 0 40px}
-  .hero h1{font-size:clamp(34px,5vw,56px);color:var(--navy);letter-spacing:-.015em;max-width:20ch}
-  .hero p.lede{font-size:19px;max-width:48ch;color:#33454f;margin-top:14px}
+  /* ── compare page — page-scoped styles only. Design system in ukv.css ───── */
 
-  /* Comparison table — page-scoped, real table semantics */
-  .cmp{
-    --cmp-edge:var(--paper-edge);
-    --cmp-head:var(--navy);
-    --cmp-accent:var(--stamp);
-    --cmp-zebra:#f6f9fa;
-    --cmp-diy:#33454f;
-    --cmp-us:var(--navy);
+  /* ── Comparison table ────────────────────────────────────────────────────── */
+  .cmp-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--paper-edge);
+    border-radius: 18px;
+    background: var(--white);
+    box-shadow: var(--lift-2);
   }
-  .cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--cmp-edge);border-radius:14px;background:var(--white);box-shadow:var(--shadow)}
-  table.cmp-table{width:100%;border-collapse:collapse;min-width:640px;font-size:16px}
-  table.cmp-table caption{text-align:left;font-family:var(--mono);font-size:13px;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--cmp-edge)}
-  table.cmp-table th,table.cmp-table td{padding:18px 20px;text-align:left;vertical-align:top;line-height:1.55;border-bottom:1px solid var(--cmp-edge)}
-  table.cmp-table thead th{background:var(--cmp-head);color:#fff;font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
-  table.cmp-table thead th:first-child{background:#171b1d}
-  table.cmp-table tbody th[scope=row]{font-family:var(--display);font-weight:600;color:var(--navy);font-size:16px;width:22%;background:var(--cmp-zebra)}
-  table.cmp-table td:nth-child(2){color:var(--cmp-diy)}
-  table.cmp-table td:nth-child(3){color:var(--cmp-us);background:#f4f9f9}
-  table.cmp-table tbody tr:last-child th,table.cmp-table tbody tr:last-child td{border-bottom:0}
-  .cmp-tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:99px;margin-bottom:6px}
-  .cmp-tag--free{background:#eaf3ea;color:#2f6b3a}
-  .cmp-tag--fee{background:#f3eddb;color:#8a6a14}
-  .cmp-note{font-family:var(--mono);font-size:13px;color:var(--stamp);display:block;margin-top:6px}
+  table.cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 640px;
+    font-size: 15.5px;
+  }
+  table.cmp-table caption {
+    text-align: left;
+    font-size: 13px;
+    color: var(--muted);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  table.cmp-table th,
+  table.cmp-table td {
+    padding: 20px 22px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  /* Header row */
+  table.cmp-table thead tr {
+    background: var(--navy);
+  }
+  table.cmp-table thead th {
+    color: #fff;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -.01em;
+  }
+  table.cmp-table thead th:first-child {
+    background: #171b1d;
+    color: rgba(255,255,255,.7);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  /* "Beyond Passports" column header — terracotta accent */
+  table.cmp-table thead th:last-child {
+    position: relative;
+  }
+  table.cmp-table thead th:last-child::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--cta);
+  }
+  /* Row header cells */
+  table.cmp-table tbody th[scope=row] {
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 15px;
+    width: 22%;
+    background: #f8f9fa;
+    vertical-align: middle;
+  }
+  /* DIY column */
+  table.cmp-table td:nth-child(2) { color: #33454f; }
+  /* Beyond Passports column — subtle sage tint */
+  table.cmp-table td:nth-child(3) {
+    color: var(--navy);
+    background: #f4f9f7;
+  }
+  /* Last row — no bottom border */
+  table.cmp-table tbody tr:last-child th,
+  table.cmp-table tbody tr:last-child td { border-bottom: 0; }
+  /* Hover state on rows */
+  table.cmp-table tbody tr { transition: background .12s ease; }
+  table.cmp-table tbody tr:hover td:nth-child(2) { background: #f6f8f9; }
+  table.cmp-table tbody tr:hover td:nth-child(3) { background: #eef6f2; }
 
-  /* Balanced two-up blocks */
-  .balance{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
-  .balance .card{background:var(--white);border:1px solid var(--paper-edge);border-radius:14px;padding:26px 26px 28px}
-  .balance .card.diy{border-top:3px solid var(--muted)}
-  .balance .card.us{border-top:3px solid var(--stamp)}
-  .balance .card h3{font-family:var(--display);font-size:21px;color:var(--navy);margin:0 0 6px;letter-spacing:-.01em}
-  .balance .card .kicker{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 14px}
-  .balance .card ul{list-style:none;margin:0;padding:0}
-  .balance .card li{position:relative;padding-left:24px;font-size:16px;line-height:1.55;color:#33454f;margin:0 0 12px}
-  .balance .card li:last-child{margin-bottom:0}
-  .balance .card li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
-  .honest-note{max-width:70ch;margin-top:26px;font-family:var(--mono);font-size:14px;color:var(--stamp);background:var(--white);border:1px solid var(--paper-edge);border-left:3px solid var(--gold);padding:14px 16px;line-height:1.55}
+  /* Pill tags */
+  .cmp-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .cmp-tag--free { background: #e8f5e9; color: #2e6b38; }
+  .cmp-tag--fee  { background: #fff3e0; color: #8a5a14; }
+  /* Footnote in a cell */
+  .cmp-note {
+    display: block;
+    margin-top: 7px;
+    font-size: 13px;
+    color: var(--stamp-text);
+    font-style: italic;
+  }
 
-  @media (max-width:760px){
-    .balance{grid-template-columns:1fr}
+  /* Honest note block (below table + below balance) */
+  .cmp-honest {
+    max-width: 72ch;
+    margin-top: 28px;
+    background: var(--white);
+    border: 1px solid var(--paper-edge);
+    border-left: 4px solid var(--cta);
+    border-radius: 0 14px 14px 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--stamp-text);
+    line-height: 1.6;
+  }
+
+  /* ── Balanced two-up blocks ──────────────────────────────────────────────── */
+  .cmp-balance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .cmp-card {
+    background: var(--white);
+    border: 1px solid var(--paper-edge);
+    border-radius: 18px;
+    padding: 28px 28px 30px;
+    box-shadow: var(--lift-1);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .cmp-card:hover { transform: translateY(-3px); box-shadow: var(--lift-2); }
+  .cmp-card.diy { border-top: 4px solid var(--muted); }
+  .cmp-card.us  { border-top: 4px solid var(--stamp-text); }
+  .cmp-card h3 {
+    font-family: var(--display);
+    font-size: 21px;
+    color: var(--navy);
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .cmp-card .cmp-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 0 0 16px;
+    display: block;
+  }
+  .cmp-card.us .cmp-kicker { color: var(--stamp-text); }
+  .cmp-card ul { list-style: none; margin: 0; padding: 0; }
+  .cmp-card li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: #33454f;
+    margin: 0 0 13px;
+  }
+  .cmp-card li:last-child { margin-bottom: 0; }
+  .cmp-card li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 2px;
+    background: var(--muted);
+    transform: rotate(45deg);
+  }
+  .cmp-card.us li::before { background: var(--cta); }
+
+  /* ── FAQ accordion — inherit .faqs/.faq from ukv.css ────────────────────── */
+  /* (all base styles inherited, no overrides needed) */
+
+  @media (max-width: 760px) {
+    .cmp-balance { grid-template-columns: 1fr; }
   }
 </style>
 @endpush
@@ -57,14 +197,14 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
+<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy reveal">
   <p class="eyebrow">Honest comparison</p>
   <h1>Apply yourself vs use Beyond Passports</h1>
   <p class="lede">Both are valid. Here's the real trade-off — no spin.</p>
 </div></div></div></section>
 
 {{-- COMPARISON TABLE --}}
-<section id="compare"><div class="wrap cmp">
+<section id="compare"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Side by side</p><h2>The honest comparison</h2></div>
   <div class="cmp-scroll reveal" tabindex="0" role="region" aria-label="Comparison of applying yourself versus using Beyond Passports">
     <table class="cmp-table">
@@ -110,15 +250,15 @@
       </tbody>
     </table>
   </div>
-  <p class="honest-note">Straight talk: applying yourself is always the cheapest option, and for many trips it's perfectly easy. We charge a service fee on top of the official fee — so only use us if the time saved and the extra checking are worth it to you. Neither route, and no express option, makes a government or embassy approve faster or guarantees any outcome.</p>
+  <p class="cmp-honest">Straight talk: applying yourself is always the cheapest option, and for many trips it's perfectly easy. We charge a service fee on top of the official fee — so only use us if the time saved and the extra checking are worth it to you. Neither route, and no express option, makes a government or embassy approve faster or guarantees any outcome.</p>
 </div></section>
 
 {{-- BALANCED BLOCKS --}}
 <section id="when" class="alt"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Be honest with yourself</p><h2>When each route is the better choice</h2></div>
-  <div class="balance">
-    <div class="card diy reveal">
-      <p class="kicker">When DIY is the better choice</p>
+  <div class="cmp-balance">
+    <div class="cmp-card diy reveal">
+      <span class="cmp-kicker">When DIY is the better choice</span>
       <h3>Do it yourself if…</h3>
       <ul>
         <li>Your application is simple and you've done one before.</li>
@@ -128,8 +268,8 @@
         <li>You'd rather keep full control of every step yourself.</li>
       </ul>
     </div>
-    <div class="card us reveal">
-      <p class="kicker">When we're worth it</p>
+    <div class="cmp-card us reveal">
+      <span class="cmp-kicker">When we're worth it</span>
       <h3>Use Beyond Passports if…</h3>
       <ul>
         <li>You're short on time and would rather not navigate the forms.</li>
@@ -140,16 +280,16 @@
       </ul>
     </div>
   </div>
-  <p class="honest-note">If you read both columns and DIY clearly fits you better — do that. We'd rather you saved the money than paid us for something you don't need. Ask us and we'll tell you honestly.</p>
+  <p class="cmp-honest">If you read both columns and DIY clearly fits you better — do that. We'd rather you saved the money than paid us for something you don't need. Ask us and we'll tell you honestly.</p>
 </div></section>
 
 {{-- HOW USING US WORKS --}}
 <section id="how"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">If you choose us</p><h2>How using Beyond Passports works</h2></div>
-  <div class="steps">
-    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>We check</h3><p>Tell us your trip and passport. We confirm what you need — and say plainly if you'd be better off applying yourself.</p></div>
-    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>A real person reviews and prepares your documents, catching errors before anything goes near a government portal.</p></div>
-    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>We handle the submission and keep you updated until your authorisation comes through. The decision still rests with the authority.</p></div>
+  <div class="steps reveal">
+    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check</h3><p>Tell us your trip and passport. We confirm what you need — and say plainly if you'd be better off applying yourself.</p></div>
+    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>A real person reviews and prepares your documents, catching errors before anything goes near a government portal.</p></div>
+    <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>We handle the submission and keep you updated until your authorisation comes through. The decision still rests with the authority.</p></div>
   </div>
 </div></section>
 
@@ -177,7 +317,7 @@
   <div class="rule"></div>
   <h2>Decide what suits you — or ask us, we'll be honest</h2>
   <p style="max-width:50ch;color:#eef0f1">Happy to do it yourself? Brilliant — go for it. Want a person to check it and save you the hassle? Start your application, or message us first and we'll tell you straight whether you need us.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Ask us first on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--wa">Ask us first on WhatsApp</a></div>
 </div></section>
 
 {{-- FAQPage structured data --}}

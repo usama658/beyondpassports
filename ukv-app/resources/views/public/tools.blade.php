@@ -6,35 +6,51 @@
 @push('head')
 <style>
   /* tools.blade — page-scoped layout only. Palette/type/components inherited from ukv.css. */
-  .tools-hero{padding:48px 0 0;text-align:center}
-  .tools-hero h1{font-size:clamp(32px,4.8vw,52px);color:var(--navy);letter-spacing:-.015em;max-width:18ch;margin:0 auto .3em}
-  .tools-hero p.lede{font-size:18px;color:#33454f;max-width:54ch;margin:0 auto}
-  .hero-sky{margin:22px auto 6px;max-width:620px;background:var(--navy);border-radius:12px;overflow:hidden;height:104px}
-  .hero-sky svg{width:100%;height:100%}
-  /* two-column checker grid */
-  .checkers{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
-  .checker:focus-within{box-shadow:0 0 0 3px rgba(199,93,56,.20),var(--shadow)}
-  .checker .cbody form{margin:0}
-  .checker .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:12px 0 0;letter-spacing:.04em}
-  /* checker validation message (announced via aria-live) + invalid-control state. (audit P3) */
-  .checker .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:10px 12px;font-size:13.5px;margin:12px 0 0}
-  .checker .form-error.show{display:block}
-  .checker select[aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
-  /* result panel inside a checker */
-  .result{margin-top:16px;border:1px dashed var(--paper-edge);border-radius:8px;background:#f7fafb;padding:16px 16px 14px}
-  .result[aria-hidden="true"]{display:none}
-  .result .rtag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 6px;display:flex;align-items:center;gap:8px}
-  .result .rtag svg{flex:0 0 auto}
-  .result h3{font-family:var(--display);font-size:18px;color:var(--navy);margin:0 0 6px;line-height:1.2}
-  .result p{font-size:14px;color:#33454f;margin:0 0 10px;line-height:1.55}
-  .result .rlink{font-family:var(--body);font-size:14px;font-weight:600}
-  .result .rmicro{font-family:var(--mono);font-size:11px;color:var(--hint);margin:10px 0 0;letter-spacing:.03em}
-  /* honest note */
-  .honest{max-width:760px;margin:0 auto;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--gold);border-radius:10px;padding:20px 22px}
-  .honest p{margin:0;font-size:15px;color:#33454f;line-height:1.6}
-  .honest strong{color:var(--ink)}
+
+  /* ── Hero copy column ── */
+  .tl-hero-copy h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:var(--navy);max-width:20ch}
+  .tl-hero-copy .lede{color:var(--muted);max-width:50ch;margin:.6em 0 1.6em}
+  /* mini trust row */
+  .tl-trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .tl-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.80);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--ink);font-weight:600}
+  .tl-trust span::before{content:"✓";display:inline-block;width:16px;height:16px;background:var(--stamp-text);color:#fff;border-radius:50%;font-size:9px;font-weight:800;line-height:16px;text-align:center;flex:0 0 16px}
+
+  /* ── Two-checker grid ── */
+  .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
+
+  /* ── Checker card overrides ── */
+  .tl-checker .cbody{padding:26px 22px}
+  .tl-checker label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:16px 0 5px;letter-spacing:.01em}
+  .tl-checker label:first-of-type{margin-top:0}
+  .tl-checker select{margin-bottom:0}
+  .tl-checker .btn{width:100%;margin-top:18px;padding:14px 20px}
+  .tl-checker .hint{font-family:var(--body);font-size:12px;color:var(--muted);margin:10px 0 0;letter-spacing:.01em}
+  /* validation */
+  .tl-checker .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:8px;padding:10px 13px;font-size:13.5px;margin:12px 0 0}
+  .tl-checker .form-error.show{display:block}
+  .tl-checker select[aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
+
+  /* ── Result panel ── */
+  .tl-result{margin-top:18px;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:18px 18px 16px;box-shadow:var(--lift-1)}
+  .tl-result[aria-hidden="true"]{display:none}
+  .tl-result .rtag{font-family:var(--body);font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .tl-result .rtag svg{flex:0 0 auto}
+  .tl-result h3{font-family:var(--display);font-size:17px;color:var(--navy);margin:0 0 6px;line-height:1.25;letter-spacing:-.02em}
+  .tl-result p{font-size:14px;color:#33454f;margin:0 0 10px;line-height:1.55}
+  .tl-result .rlink{font-family:var(--body);font-size:14px;font-weight:700;color:var(--cta)}
+  .tl-result .rmicro{font-family:var(--body);font-size:11.5px;color:var(--muted);margin:10px 0 0;letter-spacing:.01em}
+
+  /* ── How-it-works section layout ── */
+  .tl-steps-wrap{max-width:920px;margin:0 auto}
+
+  /* ── Honest note ── */
+  .tl-honest{max-width:920px;margin:0 auto;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--stamp-text);border-radius:12px;padding:22px 26px}
+  .tl-honest p{margin:0;font-size:15px;color:#33454f;line-height:1.65}
+  .tl-honest strong{color:var(--ink)}
+
   @media (max-width:860px){
-    .checkers{grid-template-columns:1fr}
+    .tl-grid{grid-template-columns:1fr}
+    .tl-checker .cbody{padding:22px 18px}
   }
 </style>
 @endpush
@@ -42,21 +58,51 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
-  <p class="eyebrow">Free checkers</p>
-  <h1>Do I need a visa? Do I need an IDP?</h1>
-  <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay.</p>
-  <div class="hero-sky" aria-hidden="true">
-    <svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet"><use href="#ukv-skyline"></use></svg>
+<section class="mesh-hero">
+  <div class="wrap">
+    <div class="mh-grid">
+      <div class="mh-copy tl-hero-copy reveal">
+        <p class="eyebrow">Free checkers</p>
+        <h1>Do I need a visa? Do I need an IDP?</h1>
+        <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay.</p>
+        <div class="tl-trust">
+          <span>Free to use</span>
+          <span>General guidance, human-confirmed</span>
+          <span>Not a government website</span>
+        </div>
+      </div>
+      <div class="mh-card reveal" style="animation-delay:.08s">
+        {{-- Preview of the visa checker card in the hero --}}
+        <div class="checker tl-checker" style="box-shadow:var(--lift-3)">
+          <div class="stub"><span>Visa check</span><span>Instant result</span></div>
+          <div class="cbody">
+            <label style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:0 0 5px">Where are you going?</label>
+            <select disabled style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--muted)">
+              <option>Choose a destination…</option>
+            </select>
+            <label style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:16px 0 5px">Your passport</label>
+            <select disabled style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--muted)">
+              <option>Choose…</option>
+            </select>
+            <a href="#visa-card" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Check what I need →</a>
+            <p style="font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center">Free · general guidance · we confirm your exact rules</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div></div></div></section>
+</section>
 
 {{-- TWO CHECKERS --}}
 <section><div class="wrap">
-  <div class="checkers">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Use the checkers</p>
+    <h2>Find out what your trip requires</h2>
+  </div>
+  <div class="tl-grid">
 
     {{-- A) VISA CHECKER --}}
-    <div class="checker reveal" id="visa-card">
+    <div class="checker tl-checker reveal" id="visa-card">
       <div class="stub"><span>Visa check</span><span>By destination</span></div>
       <div class="cbody">
         <form id="visa-form" novalidate>
@@ -78,7 +124,7 @@
           <p class="form-error" id="visa-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
         </form>
 
-        <div class="result" id="visa-result" role="region" aria-label="Visa checker result" aria-hidden="true" tabindex="-1">
+        <div class="tl-result" id="visa-result" role="region" aria-label="Visa checker result" aria-hidden="true" tabindex="-1">
           <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa check</p>
           <h3 id="visa-result-title">—</h3>
           <p id="visa-result-body">—</p>
@@ -89,7 +135,7 @@
     </div>
 
     {{-- B) IDP CHECKER --}}
-    <div class="checker reveal" id="idp-card">
+    <div class="checker tl-checker reveal" id="idp-card" style="animation-delay:.06s">
       <div class="stub"><span>IDP check</span><span>Driving abroad</span></div>
       <div class="cbody">
         <form id="idp-form" novalidate>
@@ -112,7 +158,7 @@
           <p class="form-error" id="idp-error" role="alert" aria-live="assertive">Choose where you'll drive and your licence type to see your result.</p>
         </form>
 
-        <div class="result" id="idp-result" role="region" aria-label="IDP checker result" aria-hidden="true" tabindex="-1">
+        <div class="tl-result" id="idp-result" role="region" aria-label="IDP checker result" aria-hidden="true" tabindex="-1">
           <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> IDP check</p>
           <h3 id="idp-result-title">—</h3>
           <p id="idp-result-body">—</p>
@@ -128,16 +174,18 @@
 {{-- HOW THE CHECKER FLOW WORKS --}}
 <section class="alt"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">From check to sorted</p><h2>How it works after the checker</h2></div>
-  <div class="steps">
-    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Use the free checker for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
-    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares and double-checks the paperwork — for a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
-    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
+  <div class="tl-steps-wrap">
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Use the free checker for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
+      <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares and double-checks the paperwork — for a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
+      <div class="step reveal" style="animation-delay:.12s"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
+    </div>
   </div>
 </div></section>
 
 {{-- HONEST NOTE --}}
 <section><div class="wrap">
-  <div class="honest reveal">
+  <div class="tl-honest reveal">
     <p><strong>These checkers give general guidance for UK citizens.</strong> Your exact requirements depend on your nationality, residence and trip — we confirm them before you pay. Beyond Passports is an independent service and is not a government website. No approval is guaranteed.</p>
   </div>
 </div></section>
@@ -181,9 +229,7 @@
     function show(el) { el.setAttribute('aria-hidden', 'false'); }
     function hide(el) { el.setAttribute('aria-hidden', 'true'); }
 
-    // --- Validation announcement (WCAG 3.3.1 / 4.1.3 — audit P3) -----------------------
-    // On an empty submit, announce a message in an aria-live region and flag the empty
-    // control with aria-invalid="true" instead of silently moving focus.
+    // --- Validation announcement (WCAG 3.3.1 / 4.1.3) -----------------------
     function showFieldError(errEl) { if (errEl) errEl.classList.add('show'); }
     function hideFieldError(errEl) { if (errEl) errEl.classList.remove('show'); }
     function markInvalid(ctrl) {

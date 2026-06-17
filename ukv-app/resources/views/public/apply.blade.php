@@ -5,68 +5,91 @@
 
 @push('head')
 <style>
-  /* apply.blade.php — page-scoped form layout only. Palette/type/components inherited from ukv.css. */
-  .apply-hero{padding:48px 0 0}
-  .apply-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:760px;margin:0 auto}
-  .intro-route{margin:18px 0 4px}
-  /* form grid inside the boarding-pass body */
+  /* apply.blade.php — page-scoped styles only. Palette/type/components from ukv.css. */
+
+  /* ── Hero ── */
+  .ap-hero-wrap{padding:64px 0 0;text-align:center}
+  .ap-hero-wrap h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:var(--navy);max-width:22ch;margin:0 auto .5em}
+  .ap-hero-wrap .lede{margin:0 auto 28px;max-width:52ch;color:var(--muted)}
+  /* trust row */
+  .ap-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 40px}
+  .ap-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.80);backdrop-filter:blur(6px);border:1px solid var(--paper-edge);border-radius:999px;padding:8px 16px;font-size:13px;color:var(--ink);font-weight:600}
+  .ap-trust span::before{content:"✓";display:inline-block;width:18px;height:18px;background:var(--stamp-text);color:#fff;border-radius:50%;font-size:10px;font-weight:800;line-height:18px;text-align:center;flex:0 0 18px}
+
+  /* ── Form container ── */
+  .ap-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:780px;margin:0 auto}
+
+  /* ── Boarding-pass-styled form card overrides ── */
+  .ap-form-card .cbody{padding:32px 28px}
+
+  /* ── Form internals ── */
   .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .ukv-form .field{margin:14px 0 0}
   .ukv-form .field--full{grid-column:1 / -1}
   .ukv-form .field[hidden]{display:none}
   .ukv-form label{display:block;font-family:var(--body);font-weight:600;font-size:13px;color:#4a5b65;margin:0 0 5px;letter-spacing:.01em}
   .ukv-form .req{color:var(--cta)}
-  .ukv-form input,.ukv-form select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;background:var(--white);color:var(--ink)}
-  /* Page-local 45%-alpha focus ring removed — it was lower-contrast than, and overrode, the
-     canonical solid --cta ring in ukv.css. Rely on the shared ring now. (audit S5) */
-  /* Field error state (paired with aria-invalid set by JS on failed submit). (audit P2) */
+  .ukv-form input,.ukv-form select{width:100%;padding:12px 13px;border:1px solid var(--paper-edge);border-radius:10px;font:inherit;font-size:15px;background:var(--white);color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
+  .ukv-form input:hover,.ukv-form select:hover{border-color:#c8cdd2}
   .ukv-form [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
   .ukv-form .field-error{display:block;color:#8a2a22;font-size:12.5px;margin:5px 0 0;font-weight:600}
-  .ukv-form .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:5px 0 0;letter-spacing:.04em}
-  /* fieldset reset + group heading */
+  .ukv-form .hint{font-family:var(--body);font-size:12px;color:var(--muted);margin:5px 0 0;letter-spacing:.01em}
   .ukv-form fieldset{border:0;margin:0;padding:0}
-  .ukv-form .legend{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:26px 0 2px;border-top:1px dashed var(--paper-edge);padding-top:18px}
+  /* section dividers */
+  .ukv-form .legend{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text);margin:28px 0 2px;border-top:1px solid var(--paper-edge);padding-top:20px}
   .ukv-form .legend:first-of-type{border-top:0;padding-top:0;margin-top:8px}
-  /* consent row */
-  .consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0 0}
-  .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px}
-  .consent label{font-weight:400;font-size:13px;color:var(--muted);margin:0;line-height:1.5}
-  /* inline validation message */
-  .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:12px 14px;font-size:14px;margin:18px 0 0}
+  /* consent rows */
+  .consent{display:flex;gap:12px;align-items:flex-start;margin:20px 0 0;padding:14px 16px;background:#f8f9fa;border:1px solid var(--paper-edge);border-radius:10px}
+  .consent input[type="checkbox"]{width:18px;height:18px;flex:0 0 18px;margin-top:2px;accent-color:var(--cta)}
+  .consent label{font-weight:400;font-size:13px;color:#4a5b65;margin:0;line-height:1.55}
+  /* submit row */
+  .ap-submit-row{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:24px}
+  .ap-submit-row .btn{width:100%;max-width:320px;text-align:center;padding:16px 28px;font-size:17px}
+  .ap-submit-row .micro{font-size:12px;color:var(--muted);text-align:center}
+  /* inline error banner */
+  .form-error{display:none;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:8px;padding:12px 14px;font-size:14px;margin:18px 0 0}
   .form-error.show{display:block}
-  /* server-side validation summary (no-JS fallback) */
-  .server-errors{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:12px 16px;font-size:14px;margin:0 0 18px}
+  /* server validation */
+  .server-errors{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:8px;padding:12px 16px;font-size:14px;margin:0 0 18px}
   .server-errors ul{margin:6px 0 0;padding-left:20px}
-  /* compliance microcopy under the form */
-  .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
-  .compliance strong{color:var(--ink)}
-  /* outcome panels */
-  .outcome{max-width:760px;margin:0 auto}
+
+  /* ── Compliance strip ── */
+  .ap-compliance{font-size:12.5px;color:var(--muted);line-height:1.7;margin:0;padding:18px 22px;background:var(--white);border:1px solid var(--paper-edge);border-left:4px solid var(--stamp-text);border-radius:10px}
+  .ap-compliance strong{color:var(--ink)}
+
+  /* ── Outcome panels ── */
+  .outcome{max-width:780px;margin:0 auto}
   .outcome[aria-hidden="true"]{display:none}
-  .panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
-  .panel .phead{background:var(--navy);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:14px}
+  .panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .panel .phead{background:var(--navy);color:#fff;padding:22px 26px;display:flex;align-items:center;gap:16px}
   .panel .phead svg{flex:0 0 auto}
-  .panel .phead .ptag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin:0 0 3px}
-  .panel .phead h2{font-size:22px;color:#fff;margin:0}
-  .panel .pbody{padding:24px 22px}
+  .panel .phead .ptag{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--soft);text-transform:uppercase;margin:0 0 4px}
+  .panel .phead h2{font-size:21px;color:#fff;margin:0;letter-spacing:-.02em}
+  .panel .pbody{padding:28px 26px}
   .panel .pbody p{margin:0 0 14px;color:#33454f}
-  /* tier cards (standard lane) */
-  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 8px}
-  .tier{border:1px solid var(--paper-edge);border-radius:10px;padding:16px;text-align:center;background:#f7fafb}
-  .tier.is-featured{border-color:var(--cta);box-shadow:0 0 0 2px rgba(199,93,56,.22)}
-  .tier .tname{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text)}
-  .tier .tprice{font-family:var(--display);font-size:30px;font-weight:600;color:var(--navy);margin:6px 0 2px}
+  /* tier cards */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 12px}
+  .tier{border:1px solid var(--paper-edge);border-radius:14px;padding:18px 14px;text-align:center;background:#f8f9fa;transition:transform .15s ease,box-shadow .15s ease}
+  .tier:hover{transform:translateY(-2px);box-shadow:var(--lift-1)}
+  .tier.is-featured{border-color:var(--cta);background:var(--white);box-shadow:0 0 0 3px rgba(199,93,56,.14)}
+  .tier .tname{font-family:var(--body);font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
+  .tier .tprice{font-family:var(--display);font-size:32px;font-weight:800;color:var(--navy);margin:8px 0 4px;letter-spacing:-.03em}
   .tier .tdesc{font-size:12.5px;color:var(--muted)}
-  .tier .tbadge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;background:var(--gold);color:var(--navy);border-radius:99px;padding:2px 8px;margin-top:8px}
-  /* summary chip list in review panel */
-  .case-summary{list-style:none;margin:0 0 16px;padding:14px 16px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:8px;font-size:13.5px;color:#33454f}
-  .case-summary li{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
-  .case-summary .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--hint);text-transform:uppercase}
-  .case-summary .v{font-weight:600;text-align:right}
-  .micro-note{font-family:var(--mono);font-size:11px;color:var(--hint);margin:14px 0 0;letter-spacing:.03em}
-  @media (max-width:620px){
+  .tier .tbadge{display:inline-block;font-family:var(--body);font-weight:800;font-size:9.5px;letter-spacing:.08em;background:var(--cta);color:#fff;border-radius:99px;padding:3px 10px;margin-top:10px}
+  /* summary chip list */
+  .case-summary{list-style:none;margin:0 0 18px;padding:16px 18px;background:#f7fafb;border:1px solid var(--paper-edge);border-radius:10px;font-size:13.5px;color:#33454f}
+  .case-summary li{display:flex;justify-content:space-between;gap:16px;padding:5px 0}
+  .case-summary li + li{border-top:1px solid var(--paper-edge)}
+  .case-summary .k{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  .case-summary .v{font-weight:700;text-align:right}
+  .micro-note{font-family:var(--body);font-size:12px;color:var(--muted);margin:14px 0 0;letter-spacing:.01em}
+  /* doc-checklist preview */
+  .ap-doc-preview{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow);padding:26px 24px}
+
+  @media (max-width:680px){
     .ukv-form .grid2{grid-template-columns:1fr}
     .tiers{grid-template-columns:1fr}
+    .ap-form-card .cbody{padding:22px 18px}
   }
 </style>
 @endpush
@@ -92,30 +115,32 @@
 
 @section('content')
 
-{{-- INTRO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap">
-  <div class="apply-grid">
-    <div class="reveal" style="text-align:center">
+{{-- HERO --}}
+<section class="mesh-hero mesh-hero--sm">
+  <div class="wrap">
+    <div class="ap-hero-wrap reveal">
       <p class="eyebrow">Start your application</p>
-      <h1 style="font-size:clamp(32px,4.6vw,46px);color:var(--navy);letter-spacing:-.015em">Tell us your trip — we'll confirm exactly what you need.</h1>
-      <p class="lede" style="max-width:52ch;margin:0 auto">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
-      <div class="intro-route">
-        <svg viewBox="0 0 400 200" style="width:100%;max-height:120px;opacity:.85" aria-hidden="true"><use href="#ukv-route"></use></svg>
+      <h1>Tell us your trip — we'll confirm exactly what you need.</h1>
+      <p class="lede">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
+      <div class="ap-trust">
+        <span>UK-based advisers</span>
+        <span>No payment until you approve</span>
+        <span>Every case hand-checked</span>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-{{-- FORM (boarding-pass styled) --}}
+{{-- FORM + OUTCOMES --}}
 <section style="padding-top:0"><div class="wrap">
-  <div class="apply-grid">
+  <div class="ap-grid">
 
     {{-- INTAKE FORM --}}
-    <div class="checker reveal" id="form-card">
+    <div class="checker ap-form-card reveal" id="form-card">
       <div class="stub"><span>Application</span><span>New request</span></div>
       <div class="cbody">
 
-        {{-- Server-side validation summary: shown only on a no-JS POST that fails ApplyRequest. --}}
+        {{-- Server-side validation summary --}}
         @if ($errors->any())
           <div class="server-errors" role="alert">
             <strong>Please fix the following and try again:</strong>
@@ -267,19 +292,21 @@
 
           <div class="consent">
             <input type="checkbox" id="begin_now" name="begin_now" value="1" @checked(old('begin_now')) required aria-required="true">
-            <label for="begin_now">I ask Beyond Passports to <strong>begin work on my application straight away</strong>. I understand I have a 14-day right to cancel, but that if I cancel after work has started I’ll pay for what’s already done, and that once the service is fully performed I lose the right to cancel. See our <a href="{{ route('legal') }}#terms">cancellation &amp; refunds</a> policy.</label>
+            <label for="begin_now">I ask Beyond Passports to <strong>begin work on my application straight away</strong>. I understand I have a 14-day right to cancel, but that if I cancel after work has started I'll pay for what's already done, and that once the service is fully performed I lose the right to cancel. See our <a href="{{ route('legal') }}#terms">cancellation &amp; refunds</a> policy.</label>
           </div>
 
           <div class="form-error" id="form-error" role="alert" aria-live="assertive">Please complete every required field and tick both consent boxes.</div>
 
-          <button type="submit" class="btn">Continue →</button>
-          <p class="hint" style="text-align:center;margin-top:14px">No payment taken yet · we check your details before anything is submitted</p>
+          <div class="ap-submit-row">
+            <button type="submit" class="btn">Continue →</button>
+            <p class="micro">No payment taken yet &nbsp;·&nbsp; we check your details before anything is submitted</p>
+          </div>
         </form>
       </div>
     </div>
 
     {{-- COMPLIANCE STRIP --}}
-    <p class="compliance reveal">
+    <p class="ap-compliance reveal">
       <strong>Beyond Passports is an independent service and is not a government website.</strong>
       Our service fee is separate from, and additional to, any government or scheme fee.
       Express speeds <strong>our</strong> handling — it does not speed up or change the government's decision, and we cannot guarantee approval.
@@ -287,10 +314,8 @@
     </p>
 
     {{-- DOCUMENTS YOU'LL LIKELY NEED (Document Requirements Engine preview) --}}
-    {{-- Only shown when the visitor arrived with a recognised ?destination= param; otherwise
-         the generic apply landing stays focused on the form. Pure presentational include. --}}
     @if (! empty($docItems))
-      <div class="reveal" style="background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);padding:24px 22px">
+      <div class="ap-doc-preview reveal">
         @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
       </div>
     @endif
@@ -326,7 +351,7 @@
             </div>
           </div>
           <p class="micro-note">Tier fee is our service fee only and is separate from the government fee. Express speeds our handling, not the government's decision. No approval is guaranteed.</p>
-          <button type="button" class="btn" id="pay-btn">Continue to secure payment →</button>
+          <button type="button" class="btn" id="pay-btn" style="margin-top:4px">Continue to secure payment →</button>
           <button type="button" class="btn btn--ghost" id="edit-standard" style="margin-top:10px">← Edit my answers</button>
         </div>
       </div>
@@ -349,7 +374,7 @@
           </ul>
           <p>A UK-based adviser will review your answers, confirm precisely what you need and send a <strong>personalised quote</strong> — usually within one business day. No payment is taken until you've approved that quote.</p>
           <p class="micro-note">We quote after a human check because rules and price depend on your nationality and residence. Our service fee is separate from the government fee, and no approval can be guaranteed.</p>
-          <button type="button" class="btn" id="callback-btn">Request my callback →</button>
+          <button type="button" class="btn" id="callback-btn" style="margin-top:4px">Request my callback →</button>
           <button type="button" class="btn btn--ghost" id="edit-review" style="margin-top:10px">← Edit my answers</button>
         </div>
       </div>
@@ -458,19 +483,14 @@
              d.is_minor && d.prior_refusal && d.email && d.phone && d.consent && d.begin_now;
     }
 
-    // --- Per-field error identification (WCAG 3.3.1 / 4.1.3 — audit P2) -----------------
-    // Mirrors the track.blade.php pattern: each offending control gets aria-invalid="true"
-    // + aria-errormessage pointing at a per-field message; the generic #form-error banner
-    // (role=alert aria-live=assertive) still announces the summary.
+    // --- Per-field error identification (WCAG 3.3.1 / 4.1.3) -----------------
     function fieldError(ctrl) {
-      // The control's own per-field error <p>, created lazily and reused.
       var id = ctrl.id + '-error';
       var msg = document.getElementById(id);
       if (!msg) {
         msg = document.createElement('p');
         msg.id = id;
         msg.className = 'field-error';
-        // Place the message right after the control (before any existing .hint).
         ctrl.parentNode.insertBefore(msg, ctrl.nextSibling);
       }
       return msg;
@@ -479,7 +499,6 @@
       ctrl.setAttribute('aria-invalid', 'true');
       ctrl.setAttribute('aria-errormessage', ctrl.id + '-error');
       fieldError(ctrl).textContent = message;
-      // Clear the flag (and message) as soon as the visitor edits the field.
       var clear = function () {
         ctrl.removeAttribute('aria-invalid');
         var m = document.getElementById(ctrl.id + '-error');
@@ -498,14 +517,12 @@
         if (m) m.textContent = '';
       }
     }
-    // Flag every required control that is currently empty/invalid; return the first one.
     function flagInvalidFields() {
       clearAllInvalid();
       var controls = form.querySelectorAll('input[required], select[required]');
       var first = null;
       for (var i = 0; i < controls.length; i++) {
         var c = controls[i];
-        // Skip hidden (e.g. guardian field when not required).
         if (c.disabled || c.closest('[hidden]')) continue;
         var empty = c.type === 'checkbox' ? !c.checked : !String(c.value).trim();
         if (empty || !c.checkValidity()) {
@@ -574,8 +591,8 @@
       e.preventDefault();
       var d = collect();
       if (!valid(d)) {
-        showError(DEFAULT_ERR);                 // generic role=alert aria-live banner
-        var firstInvalid = flagInvalidFields(); // per-field aria-invalid + aria-errormessage
+        showError(DEFAULT_ERR);
+        var firstInvalid = flagInvalidFields();
         if (firstInvalid) firstInvalid.focus();
         return;
       }
@@ -603,9 +620,7 @@
       })
       .catch(function () {
         setSubmitting(false);
-        // Network/server error: nothing was submitted. Tell the traveller honestly and let
-        // them retry — do NOT route forward on a failed submit.
-        showError('We couldn’t reach our servers just now, so nothing has been submitted. Please check your connection and try again, or contact us to continue.');
+        showError('We couldn't reach our servers just now, so nothing has been submitted. Please check your connection and try again, or contact us to continue.');
       });
     });
 

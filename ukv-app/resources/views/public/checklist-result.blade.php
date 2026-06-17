@@ -40,48 +40,159 @@
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 <style>
   /* checklist-result.blade.php — page-scoped layout. Palette/type/components from ukv.css. */
-  .cr-hero{padding:48px 0 0}
-  .cr-grid{max-width:760px;margin:0 auto}
-  .cr-hero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 6px}
-  .cr-hero h1{font-size:clamp(30px,4.4vw,44px);color:var(--navy);letter-spacing:-.015em;margin:0 0 10px}
-  .cr-hero p.lede{font-size:17px;color:#33454f;max-width:54ch;margin:0}
-  .cr-panel{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);padding:26px 24px;margin:22px auto 0;max-width:760px}
-  /* "send me this" delivery offer */
-  .deliver{background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);padding:24px 24px;margin:22px auto 0;max-width:760px}
-  .deliver .dhead{display:flex;align-items:center;gap:12px;margin:0 0 6px}
-  .deliver h2{font-size:22px;color:var(--navy);margin:0}
-  .deliver .sub{font-size:14px;color:#33454f;margin:0 0 18px}
+
+  /* ── Checklist panel ── */
+  .cr-panel{
+    background:var(--white);
+    border:1px solid var(--paper-edge);
+    border-radius:18px;
+    box-shadow:var(--lift-2);
+    padding:30px 28px;
+    margin:0 auto;
+    max-width:760px;
+  }
+
+  /* ── "Send me this" delivery offer ── */
+  .deliver{
+    background:var(--white);
+    border:1px solid var(--paper-edge);
+    border-radius:18px;
+    box-shadow:var(--lift-1);
+    padding:28px 28px 24px;
+    margin:0 auto;
+    max-width:760px;
+  }
+  .deliver .dhead{display:flex;align-items:center;gap:14px;margin:0 0 6px}
+  .deliver h2{font-size:clamp(20px,2.6vw,24px);color:var(--navy);margin:0;letter-spacing:-.015em}
+  .deliver .sub{font-size:14px;color:#33454f;margin:0 0 20px;line-height:1.5}
+
   .deliver label{display:block;font-family:var(--body);font-weight:600;font-size:13px;color:#4a5b65;margin:0 0 5px;letter-spacing:.01em}
-  .deliver input[type=email],.deliver input[type=tel]{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:6px;font:inherit;font-size:15px;background:var(--white);color:var(--ink)}
+  .deliver input[type=email],
+  .deliver input[type=tel]{
+    width:100%;
+    padding:13px 14px;
+    border:1.5px solid var(--paper-edge);
+    border-radius:10px;
+    font:inherit;
+    font-size:15px;
+    background:var(--white);
+    color:var(--ink);
+    transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .deliver input[type=email]:hover,
+  .deliver input[type=tel]:hover{border-color:#c4cace}
+  .deliver input[type=email]:focus,
+  .deliver input[type=tel]:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+
   .deliver .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .deliver .field{margin:0 0 14px}
-  .deliver .channels{display:flex;flex-wrap:wrap;gap:14px;margin:6px 0 14px}
-  .deliver .chan{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#33454f;font-weight:500}
-  .deliver .chan input{width:18px;height:18px;flex:0 0 18px;margin-top:2px}
-  .deliver .consent{display:flex;gap:10px;align-items:flex-start;margin:6px 0 16px}
-  .deliver .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px}
+
+  .deliver .ch-label{
+    font-family:var(--body);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--stamp-text);
+    margin:8px 0 10px;
+  }
+  .deliver .channels{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 16px}
+  .deliver .chan{
+    display:flex;
+    gap:9px;
+    align-items:flex-start;
+    font-size:14px;
+    color:#33454f;
+    font-weight:500;
+    background:var(--paper);
+    border:1px solid var(--paper-edge);
+    border-radius:10px;
+    padding:10px 14px;
+    cursor:pointer;
+    transition:border-color .15s,box-shadow .15s;
+  }
+  .deliver .chan:has(input:checked){border-color:var(--cta);box-shadow:0 0 0 2px rgba(199,93,56,.15);background:#fff}
+  .deliver .chan input{width:18px;height:18px;flex:0 0 18px;margin-top:1px;accent-color:var(--cta)}
+
+  .deliver .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px;padding:14px 16px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px}
+  .deliver .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px;accent-color:var(--cta)}
   .deliver .consent label{font-weight:400;font-size:13px;color:var(--muted);margin:0;line-height:1.5}
-  .deliver .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:8px 0 0;letter-spacing:.04em}
-  .deliver [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
-  .server-errors{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:12px 16px;font-size:14px;margin:0 0 16px}
+  .deliver .hint{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+  .deliver [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.14)}
+
+  /* status messages */
+  .server-errors{
+    background:#fdeceb;
+    border:1px solid #f3c6c2;
+    color:#8a2a22;
+    border-radius:10px;
+    padding:14px 18px;
+    font-size:14px;
+    margin:0 0 18px;
+  }
   .server-errors ul{margin:6px 0 0;padding-left:20px}
-  .sent-ok{background:#eaf3f2;border:1px solid #bfe0db;color:#5C9A7B;border-radius:8px;padding:12px 16px;font-size:14px;margin:0 0 16px;font-weight:600}
-  /* share row */
-  .share{margin:22px auto 0;max-width:760px;background:#f7fafb;border:1px dashed var(--paper-edge);border-radius:12px;padding:18px 20px}
-  .share .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
+  .sent-ok{
+    background:#eaf3f2;
+    border:1px solid #bfe0db;
+    color:var(--stamp-text);
+    border-radius:10px;
+    padding:13px 16px;
+    font-size:14px;
+    margin:0 0 18px;
+    font-weight:600;
+  }
+
+  /* ── Share link panel ── */
+  .share{
+    margin:0 auto;
+    max-width:760px;
+    background:var(--white);
+    border:1px solid var(--paper-edge);
+    border-radius:18px;
+    box-shadow:var(--lift-1);
+    padding:22px 26px;
+  }
+  .share .k{
+    font-family:var(--body);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--stamp-text);
+    margin:0 0 10px;
+  }
   .share .url-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .share input{flex:1 1 280px;min-width:0;font-family:var(--mono);font-size:13px;padding:11px 12px;border:1px solid var(--paper-edge);border-radius:6px;background:var(--white);color:var(--ink)}
-  .share .note{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+  .share input{
+    flex:1 1 280px;
+    min-width:0;
+    font-family:var(--mono);
+    font-size:13px;
+    padding:12px 14px;
+    border:1.5px solid var(--paper-edge);
+    border-radius:10px;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .share input:focus{border-color:var(--cta);outline:none;box-shadow:0 0 0 3px rgba(199,93,56,.12)}
+  .share .note{font-size:13px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+  .share .action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+  /* compliance */
   .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
   .compliance strong{color:var(--ink)}
+
+  /* section spacing */
+  .cr-section{padding:20px 0}
+
   @media (max-width:620px){
     .deliver .grid2{grid-template-columns:1fr}
+    .cr-panel,.deliver,.share{padding:22px 18px}
   }
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
+<div class="topbar">Independent service — not a government website &middot; <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> &middot; <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
 <header class="site-head"><div class="wrap">
   <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <nav class="nav" aria-label="Primary">
@@ -97,26 +208,75 @@
 
 <main id="main">
 
-  {{-- HERO --}}
-  <section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
-    <p class="eyebrow">Your document checklist</p>
-    <h1>What you'll need for {{ $destName }}</h1>
-    <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
-  </div></div></div></section>
+  {{-- ── HERO ── --}}
+  <section class="mesh-hero mesh-hero--sm">
+    <div class="wrap">
+      <div class="mh-grid">
+        <div class="mh-copy">
+          <p class="eyebrow">Your document checklist</p>
+          <h1>What you'll need for {{ $destName }}</h1>
+          <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   {{-- STICKY QUICK-ACTION BAR — keeps save/email/share/apply reachable without deep scroll.
        Config-gated (ukv.checklist.sticky_action_bar): off => original scroll-only layout. The full
        sections below are untouched; this bar just mirrors them as always-visible triggers. --}}
   @if (config('ukv.checklist.sticky_action_bar', true))
   <style>
-    .cr-actionbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--paper-edge,#e6e8ea);box-shadow:0 2px 10px rgba(40,50,70,.06)}
-    .cr-actionbar .wrap{display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 0;flex-wrap:wrap}
-    .cr-actionbar .ab-label{margin-right:auto;font-family:var(--mono,'Plus Jakarta Sans',sans-serif);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6b7a83}
-    .cr-actionbar a{font-size:14px;padding:9px 14px;border-radius:8px;text-decoration:none;white-space:nowrap}
-    .cr-actionbar .ab-ghost{border:1px solid var(--paper-edge,#e6e8ea);color:var(--navy);background:#fff}
-    .cr-actionbar .ab-primary{background:var(--cta);color:#fff;font-weight:600}
+    .cr-actionbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--paper-edge,#e6e8ea);
+      box-shadow:0 2px 12px rgba(40,50,70,.07);
+    }
+    .cr-actionbar .wrap{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-end;
+      padding:10px 0;
+      flex-wrap:wrap;
+    }
+    .cr-actionbar .ab-label{
+      margin-right:auto;
+      font-family:var(--body,'Plus Jakarta Sans',sans-serif);
+      font-weight:700;
+      font-size:11px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--stamp-text,#3f7259);
+    }
+    .cr-actionbar a{
+      font-size:13.5px;
+      font-weight:600;
+      padding:9px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      white-space:nowrap;
+      transition:box-shadow .15s,transform .1s;
+    }
+    .cr-actionbar a:hover{transform:translateY(-1px)}
+    .cr-actionbar .ab-ghost{
+      border:1.5px solid var(--paper-edge,#e6e8ea);
+      color:var(--navy,#22282b);
+      background:#fff;
+    }
+    .cr-actionbar .ab-ghost:hover{border-color:#c4cace;box-shadow:var(--lift-1)}
+    .cr-actionbar .ab-primary{
+      background:var(--cta,#C75D38);
+      color:#fff;
+      font-weight:700;
+      border:1.5px solid transparent;
+    }
+    .cr-actionbar .ab-primary:hover{background:#b04e2c;box-shadow:0 0 0 3px rgba(199,93,56,.18)}
     @media (max-width:640px){
-      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6e8ea);border-bottom:0;box-shadow:0 -2px 12px rgba(40,50,70,.10)}
+      .cr-actionbar{position:fixed;top:auto;bottom:0;border-top:1px solid var(--paper-edge,#e6e8ea);border-bottom:0;box-shadow:0 -2px 14px rgba(40,50,70,.10)}
       .cr-actionbar .wrap{justify-content:space-between;padding:8px 12px;gap:6px}
       .cr-actionbar .ab-label{display:none}
       .cr-actionbar a{flex:1;text-align:center;padding:10px 4px;font-size:12px}
@@ -125,27 +285,27 @@
   </style>
   <div class="cr-actionbar"><div class="wrap">
     <span class="ab-label">Your checklist</span>
-    <a class="ab-ghost" href="{{ url('/checklist/'.$request->token.'/print') }}" target="_blank" rel="noopener">⤓ Save / PDF</a>
-    <a class="ab-ghost" href="#send">✉ Email me</a>
-    <a class="ab-ghost" href="#share">↗ Share</a>
-    <a class="ab-primary" href="{{ $applyUrl }}">Start application →</a>
+    <a class="ab-ghost" href="{{ url('/checklist/'.$request->token.'/print') }}" target="_blank" rel="noopener">&#8595; Save / PDF</a>
+    <a class="ab-ghost" href="#send">&#x2709; Email me</a>
+    <a class="ab-ghost" href="#share">&#8599; Share</a>
+    <a class="ab-primary" href="{{ $applyUrl }}">Start application &rarr;</a>
   </div></div>
   @endif
 
-  {{-- THE CHECKLIST (snapshotted items) --}}
-  <section><div class="wrap">
-    <div class="cr-panel">
+  {{-- ── THE CHECKLIST (snapshotted items) ── --}}
+  <section class="cr-section"><div class="wrap">
+    <div class="cr-panel reveal">
       @include('partials.doc-checklist', ['items' => $items, 'personalised' => true])
     </div>
   </div></section>
 
-  {{-- "SEND ME THIS" DELIVERY OFFER --}}
+  {{-- ── "SEND ME THIS" DELIVERY OFFER ── --}}
   {{-- Posts to POST /checklist/{token}/send (owned by the delivery agent). Fields:
        email, phone (nullable), channels[] (email|whatsapp|pdf|calendar), marketing_consent. --}}
-  <section><div class="wrap">
-    <div class="deliver" id="send">
+  <section class="cr-section"><div class="wrap">
+    <div class="deliver reveal" id="send">
       <div class="dhead">
-        <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
         <h2>Send me this checklist</h2>
       </div>
       <p class="sub">Want a copy to keep? We'll send your checklist plus the saved link — and a calendar reminder to start in good time, if you'd like one.</p>
@@ -179,7 +339,7 @@
           </div>
         </div>
 
-        <p style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:6px 0 8px">How should we send it?</p>
+        <p class="ch-label">How should we send it?</p>
         <div class="channels">
           <label class="chan"><input type="checkbox" name="channels[]" value="email" @checked(! old('channels') || in_array('email', (array) old('channels'), true))> Email</label>
           <label class="chan"><input type="checkbox" name="channels[]" value="whatsapp" @checked(in_array('whatsapp', (array) old('channels'), true))> WhatsApp</label>
@@ -192,41 +352,41 @@
           <label for="marketing_consent">Keep me posted with occasional tips and reminders about my trip. (Optional — sending the checklist doesn't need this, and you can unsubscribe any time.)</label>
         </div>
 
-        <button type="submit" class="btn">Send me my checklist →</button>
+        <button type="submit" class="btn">Send me my checklist &rarr;</button>
         <p class="hint">WhatsApp is opt-in and only used if you tick it and give a number. We send the checklist you asked for; marketing is separate and only with your consent above.</p>
       </form>
     </div>
   </div></section>
 
-  {{-- SHARE LINK --}}
-  <section><div class="wrap">
-    <div class="share" id="share">
+  {{-- ── SHARE LINK ── --}}
+  <section class="cr-section"><div class="wrap">
+    <div class="share reveal" id="share">
       <p class="k">Your saved link</p>
       <div class="url-row">
         <input type="text" value="{{ $shareUrl }}" readonly aria-label="Saved checklist link" onfocus="this.select()">
         <a href="https://wa.me/?text={{ urlencode('My document checklist for '.$destName.': '.$shareUrl) }}" class="btn btn--wa">Share on WhatsApp</a>
       </div>
       <p class="note">This page is your saved checklist — bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
-      <div class="url-row" style="margin-top:12px">
+      <div class="action-row">
         <a href="{{ url('/checklist/'.$request->token.'/print') }}" class="btn btn--ghost" target="_blank" rel="noopener">Download / print (PDF)</a>
         <a href="{{ url('/checklist/'.$request->token.'/calendar.ics') }}" class="btn btn--ghost">Add a reminder to my calendar</a>
       </div>
     </div>
   </div></section>
 
-  {{-- APPLY CTA --}}
+  {{-- ── APPLY CTA ── --}}
   <section class="cta-band"><div class="wrap reveal">
     <div class="rule"></div>
     <h2>Got your list — ready to apply?</h2>
     <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK-based team will confirm your exact requirements and check every document before anything is submitted.</p>
     <div class="row">
-      <a href="{{ $applyUrl }}" class="btn">Start my application →</a>
+      <a href="{{ $applyUrl }}" class="btn">Start my application &rarr;</a>
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
     </div>
   </div></section>
 
-  {{-- COMPLIANCE STRIP --}}
-  <section><div class="wrap">
+  {{-- ── COMPLIANCE STRIP ── --}}
+  <section style="padding:16px 0 40px"><div class="wrap">
     <p class="compliance">
       <strong>Beyond Passports is an independent service and is not a government website.</strong>
       This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
@@ -236,27 +396,32 @@
 
 </main>
 
-<footer><div class="wrap">
-  <div class="cols">
-    <div>
-      <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
-      <p style="max-width:34ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
+<footer style="padding:0">
+  <div class="ft-main"><div class="wrap">
+    <div class="cols" style="grid-template-columns:1fr 1fr 1fr;padding:32px 0 22px">
+      <div>
+        <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
+        <p style="max-width:34ch;font-size:14px;color:#aab0b5">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
+      </div>
+      <div>
+        <strong>Service</strong>
+        <a href="{{ url('/destinations') }}">Destinations</a>
+        <a href="{{ url('/document-checklist') }}">Document checklist</a>
+        <a href="{{ url('/apply') }}">Start an application</a>
+        <a href="{{ url('/track') }}">Track application</a>
+      </div>
+      <div>
+        <strong>Legal</strong>
+        <a href="{{ url('/legal') }}#privacy">Privacy</a>
+        <a href="{{ url('/legal') }}#terms">Terms</a>
+        <a href="{{ url('/legal') }}#disclaimer">Disclaimer</a>
+      </div>
     </div>
-    <div>
-      <strong>Service</strong><br>
-      <a href="{{ url('/destinations') }}">Destinations</a><br>
-      <a href="{{ url('/document-checklist') }}">Document checklist</a><br>
-      <a href="{{ url('/apply') }}">Start an application</a><br>
-      <a href="{{ url('/track') }}">Track application</a>
+    <div class="ft-bottom">
+      <span>&copy; Beyond Passports. Service fee separate from any government fee. No approval guarantee.</span>
+      <span>UK-based team &middot; &#9733; 4.9 rated</span>
     </div>
-    <div>
-      <strong>Legal</strong><br>
-      <a href="{{ url('/legal') }}#privacy">Privacy</a><br>
-      <a href="{{ url('/legal') }}#terms">Terms</a><br>
-      <a href="{{ url('/legal') }}#disclaimer">Disclaimer</a>
-    </div>
-  </div>
-</div>
+  </div></div>
 </footer>
 
 </body>
