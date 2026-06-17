@@ -52,7 +52,7 @@
   .ig-rung .s{font-size:13px;color:var(--muted)}
   .ig-rung svg{flex:0 0 20px;width:20px;height:20px}
   .ig-rung .ic-no{color:#b5453a}.ig-rung .ic-yes{color:var(--sage-t)}
-  .ig-two{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+  .ig-two{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
   .ig-note{font-size:15px;color:#3a4248;line-height:1.65;margin:0}.ig-note strong{color:var(--navy)}
   .ig-tags{display:grid;gap:10px}
   .ig-tag{display:flex;gap:11px;align-items:flex-start;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:13px 15px;font-size:14px;color:#3a4248;line-height:1.5;box-shadow:0 2px 8px -4px rgba(40,50,70,.08)}
