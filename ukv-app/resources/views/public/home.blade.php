@@ -70,6 +70,21 @@
   #destinations .pass{height:250px}
   @media (max-width:860px){.dest-split{grid-template-columns:1fr;gap:28px}.dest-intro{position:static}}
   @media (max-width:520px){#destinations .dests{grid-auto-columns:calc(85%)}}
+
+  /* WHY section — dark mesh band + frosted-glass reassurance cards (option B) */
+  #why{position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(640px 280px at 12% 0%, rgba(199,93,56,.5), transparent 60%),
+      radial-gradient(600px 260px at 92% 100%, rgba(92,154,123,.5), transparent 60%),
+      var(--navy)}
+  #why .eyebrow{color:#F2C2AC}
+  #why .sec-head h2{color:#fff}
+  #why .tick{background:rgba(255,255,255,.10);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;padding:20px 22px;transition:transform .25s ease,background .25s ease}
+  #why .tick:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
+  #why .tick h3{color:#fff}
+  #why .tick p{color:rgba(255,255,255,.82)}
+  #why .tick .stamp{filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
 </style>
 @endpush
 

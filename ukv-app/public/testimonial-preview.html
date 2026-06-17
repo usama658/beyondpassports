@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Testimonial section — premium previews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cta:#C75D38; --cta-d:#b04e2c; --ink:#22282b; --muted:#697079;
+  --sage:#5C9A7B; --sage-t:#3f7259; --paper:#F4F5F6; --edge:#e6e8ea; --soft:#F2C2AC;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink); background:var(--paper); line-height:1.55;
+  padding:0 0 120px;
+}
+h1,h2,h3,.disp{font-weight:700; letter-spacing:-.02em; margin:0}
+.wrap{max-width:1080px; margin:0 auto; padding:0 22px}
+
+/* page header */
+.pagehead{padding:48px 0 26px}
+.pagehead h1{font-size:34px; line-height:1.1}
+.pagehead p{color:var(--muted); margin:10px 0 0; max-width:660px}
+.pagehead .crumb{font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--cta); margin:0 0 12px}
+
+/* block container */
+.block{
+  background:#fff; border:1px solid var(--edge); border-radius:22px;
+  margin:0 0 30px; overflow:hidden;
+  box-shadow:0 1px 2px rgba(34,40,43,.04), 0 18px 40px -28px rgba(34,40,43,.28);
+}
+.block.pick{outline:3px solid var(--cta); outline-offset:-1px}
+.block .label{
+  display:flex; align-items:center; gap:10px;
+  padding:16px 22px; border-bottom:1px solid var(--edge); background:#fff;
+}
+.block .label .tag{
+  font-size:12px; font-weight:800; letter-spacing:.04em;
+  background:var(--ink); color:#fff; border-radius:999px; padding:5px 12px;
+}
+.block .label .name{font-weight:700}
+.render{padding:0}
+
+/* meta row */
+.meta{
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  padding:16px 22px; border-top:1px solid var(--edge); background:#fbfbfc;
+}
+.meta .letter{
+  width:34px;height:34px;flex:0 0 34px;border-radius:10px;
+  display:grid;place-items:center;font-weight:800;color:#fff;background:var(--cta);
+}
+.meta .desc{flex:1 1 260px; color:var(--muted); font-size:14.5px}
+.meta .desc b{color:var(--ink)}
+.pickbtn{
+  font-family:inherit; font-weight:700; font-size:15px; cursor:pointer;
+  border:0; border-radius:12px; padding:11px 20px; color:#fff;
+  background:var(--cta); transition:background .15s, transform .05s; white-space:nowrap;
+}
+.pickbtn:hover{background:var(--cta-d)}
+.pickbtn:active{transform:translateY(1px)}
+.pickbtn.on{background:var(--sage)}
+.pickbtn.on:hover{background:var(--sage-t)}
+
+/* shared testimonial atoms */
+.eyebrow{
+  font-size:12.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--cta);
+}
+.stars{display:inline-flex; gap:3px; line-height:1}
+.stars svg{width:22px;height:22px;display:block}
+.rating{font-weight:600; color:var(--muted); font-size:14.5px}
+.rating b{color:var(--ink); font-weight:700}
+.attrib{font-weight:600; color:var(--muted)}
+
+/* ============ A: centred tinted ============ */
+.t-a{
+  background:linear-gradient(180deg, var(--soft) 0%, var(--paper) 78%);
+  padding:64px 26px 70px; text-align:center;
+}
+.t-a .eyebrow{display:block; margin-bottom:18px}
+.t-a .stars{margin-bottom:22px}
+.t-a .q{
+  font-size:clamp(24px,3.4vw,38px); font-weight:700; letter-spacing:-.02em;
+  line-height:1.22; max-width:780px; margin:0 auto; color:var(--ink);
+}
+.t-a .attrib{display:block; margin:24px 0 6px; font-size:16px}
+.t-a .rating{display:block}
+
+/* ============ B: card + photo split ============ */
+.t-b{background:#fff; padding:54px 26px}
+.t-b .grid{
+  max-width:980px; margin:0 auto; display:grid; gap:26px;
+  grid-template-columns:1.05fr .95fr; align-items:stretch;
+}
+.t-b .card{
+  position:relative; background:var(--paper); border:1px solid var(--edge);
+  border-radius:20px; padding:38px 36px 34px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.t-b .qmark{
+  font-size:80px; line-height:.7; font-weight:800; color:var(--soft);
+  margin:0 0 6px; font-family:Georgia,'Times New Roman',serif;
+}
+.t-b .eyebrow{margin-bottom:14px}
+.t-b .stars{margin-bottom:18px}
+.t-b .q{font-size:22px; font-weight:600; letter-spacing:-.01em; line-height:1.4; color:var(--ink)}
+.t-b .attrib{margin-top:20px; font-size:15.5px}
+.t-b .rating{display:block; margin-top:4px}
+.t-b .photo{
+  border-radius:20px; min-height:340px;
+  background:#d9d2cc url('/assets/img/destinations/egypt.jpg') center/cover no-repeat;
+  position:relative; overflow:hidden; border:1px solid var(--edge);
+}
+.t-b .photo::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(34,40,43,0) 45%, rgba(34,40,43,.42) 100%);
+}
+.t-b .photo .cap{
+  position:absolute; left:18px; bottom:16px; z-index:2; color:#fff;
+  font-weight:700; font-size:14px; letter-spacing:.02em;
+  text-shadow:0 1px 8px rgba(0,0,0,.45);
+}
+
+/* ============ C: dark mesh band ============ */
+.t-c{
+  position:relative; background:var(--ink); color:#fff;
+  padding:70px 26px 74px; text-align:center; overflow:hidden;
+}
+.t-c::before{
+  content:""; position:absolute; inset:-20%;
+  background:
+    radial-gradient(46% 52% at 16% 22%, rgba(199,93,56,.55) 0%, rgba(199,93,56,0) 60%),
+    radial-gradient(44% 50% at 84% 30%, rgba(92,154,123,.5) 0%, rgba(92,154,123,0) 62%),
+    radial-gradient(54% 60% at 60% 92%, rgba(242,194,172,.28) 0%, rgba(242,194,172,0) 60%);
+  filter:saturate(1.05); pointer-events:none;
+}
+.t-c .inner{position:relative; z-index:1; max-width:820px; margin:0 auto}
+.t-c .eyebrow{color:var(--soft); display:block; margin-bottom:18px}
+.t-c .stars{margin-bottom:22px}
+.t-c .q{
+  font-size:clamp(24px,3.3vw,36px); font-weight:700; letter-spacing:-.02em;
+  line-height:1.25; color:#fff;
+}
+.t-c .attrib{display:block; margin:24px 0 6px; font-size:16px; color:var(--soft)}
+.t-c .rating{display:block; color:rgba(255,255,255,.78)}
+.t-c .rating b{color:#fff}
+
+/* ============ D: trio strip ============ */
+.t-d{background:var(--paper); padding:54px 26px 58px}
+.t-d .head{text-align:center; max-width:620px; margin:0 auto 30px}
+.t-d .head .eyebrow{display:block; margin-bottom:10px}
+.t-d .head h3{font-size:24px}
+.t-d .row{
+  max-width:1000px; margin:0 auto; display:grid; gap:20px;
+  grid-template-columns:repeat(3,1fr); align-items:stretch;
+}
+.t-d .tcard{
+  background:#fff; border:1px solid var(--edge); border-radius:18px;
+  padding:26px 24px 24px; display:flex; flex-direction:column;
+  box-shadow:0 14px 30px -26px rgba(34,40,43,.4);
+}
+.t-d .tcard .stars{margin-bottom:14px}
+.t-d .tcard .q{font-size:16.5px; font-weight:600; line-height:1.5; color:var(--ink); flex:1}
+.t-d .tcard .attrib{margin-top:18px; font-size:14px}
+.t-d .footnote{
+  text-align:center; color:var(--muted); font-size:12.5px; margin:24px auto 0; max-width:680px;
+}
+
+/* sticky bar */
+#sticky{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  background:var(--ink); color:#fff; text-align:center;
+  padding:14px 18px; font-size:15px; font-weight:600;
+  box-shadow:0 -8px 30px -18px rgba(0,0,0,.6);
+}
+#sticky b{color:var(--soft)}
+
+@media(max-width:760px){
+  .t-b .grid{grid-template-columns:1fr}
+  .t-b .photo{min-height:240px}
+  .t-d .row{grid-template-columns:1fr}
+  .pagehead h1{font-size:27px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="pagehead">
+    <p class="crumb">Beyond Passports · design preview</p>
+    <h1>Testimonial section — premium previews</h1>
+    <p>Four complete full-section design variations for the home testimonial / social-proof block, on the locked brand. Pick one — your choice is recorded.</p>
+  </header>
+
+  <!-- ============ BLOCK A ============ -->
+  <section class="block" id="b-A">
+    <div class="label"><span class="tag">A</span><span class="name">Centred quote (tinted)</span></div>
+    <div class="render">
+      <div class="t-a">
+        <span class="eyebrow">Trusted by UK travellers</span>
+        <span class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+        </span>
+        <p class="q">They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.</p>
+        <span class="attrib">— A UK traveller to Egypt</span>
+        <span class="rating"><b>4.9</b> · 12,000+ trips</span>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="letter">A</span>
+      <span class="desc"><b>Centred quote (tinted).</b> Soft peach→paper band, big centred display quote, stars above, attribution below. Calm and premium.</span>
+      <button class="pickbtn" data-k="A" onclick="pickChoice('A')">Pick A</button>
+    </div>
+  </section>
+
+  <!-- ============ BLOCK B ============ -->
+  <section class="block" id="b-B">
+    <div class="label"><span class="tag">B</span><span class="name">Quote card + photo split</span></div>
+    <div class="render">
+      <div class="t-b">
+        <div class="grid">
+          <div class="card">
+            <div class="qmark">&ldquo;</div>
+            <span class="eyebrow">Trusted by UK travellers</span>
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            </span>
+            <p class="q">They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.</p>
+            <span class="attrib">— A UK traveller to Egypt</span>
+            <span class="rating"><b>4.9</b> · 12,000+ trips</span>
+          </div>
+          <div class="photo" role="img" aria-label="Egypt destination">
+            <span class="cap">Egypt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="letter">B</span>
+      <span class="desc"><b>Quote card + photo split.</b> White band; rounded quote card with big opening-mark, stars and attribution beside an Egypt destination photo panel. Editorial.</span>
+      <button class="pickbtn" data-k="B" onclick="pickChoice('B')">Pick B</button>
+    </div>
+  </section>
+
+  <!-- ============ BLOCK C ============ -->
+  <section class="block" id="b-C">
+    <div class="label"><span class="tag">C</span><span class="name">Dark mesh band</span></div>
+    <div class="render">
+      <div class="t-c">
+        <div class="inner">
+          <span class="eyebrow">Trusted by UK travellers</span>
+          <span class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="#F5C451"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#F5C451"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#F5C451"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#F5C451"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#F5C451"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+          </span>
+          <p class="q">They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.</p>
+          <span class="attrib">— A UK traveller to Egypt</span>
+          <span class="rating"><b>4.9</b> · 12,000+ trips</span>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="letter">C</span>
+      <span class="desc"><b>Dark mesh band.</b> Terracotta→sage mesh on deep ink, large white quote, gold stars, attribution in soft peach. High-impact.</span>
+      <button class="pickbtn" data-k="C" onclick="pickChoice('C')">Pick C</button>
+    </div>
+  </section>
+
+  <!-- ============ BLOCK D ============ -->
+  <section class="block" id="b-D">
+    <div class="label"><span class="tag">D</span><span class="name">Trio strip</span></div>
+    <div class="render">
+      <div class="t-d">
+        <div class="head">
+          <span class="eyebrow">Trusted by UK travellers</span>
+          <h3>4.9 · 12,000+ trips sorted</h3>
+        </div>
+        <div class="row">
+          <div class="tcard">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            </span>
+            <p class="q">They spotted my passport was a month short of the validity Egypt needed — before I'd booked anything. Sorted the renewal, then the visa. Stress gone.</p>
+            <span class="attrib">— A UK traveller to Egypt</span>
+          </div>
+          <div class="tcard">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            </span>
+            <p class="q">Clear on exactly which entry rules applied to my Turkey trip, and what each step would cost up front. No guessing, no surprises.</p>
+            <span class="attrib">— A UK traveller to Turkey</span>
+          </div>
+          <div class="tcard">
+            <span class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#C75D38"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+            </span>
+            <p class="q">Booked a last-minute Thailand getaway and they walked me through the paperwork the same day. Calm, quick, and easy to follow.</p>
+            <span class="attrib">— A UK traveller to Thailand</span>
+          </div>
+        </div>
+        <p class="footnote">Note: the Turkey and Thailand quotes are placeholders pending real, consented reviews. The Egypt quote is the approved example.</p>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="letter">D</span>
+      <span class="desc"><b>Trio strip.</b> Three short testimonial cards in a row (Egypt, Turkey, Thailand) for social-proof density. Extra quotes are placeholders pending consented reviews.</span>
+      <button class="pickbtn" data-k="D" onclick="pickChoice('D')">Pick D</button>
+    </div>
+  </section>
+</div>
+
+<div id="sticky">Pick a testimonial variation — your choice is recorded.</div>
+
+<script>
+function pickChoice(letter){
+  fetch('/__pick?section=testimonial&pick='+encodeURIComponent(letter)).catch(function(){});
+  document.querySelectorAll('.pickbtn').forEach(function(x){x.classList.remove('on');x.textContent='Pick '+x.dataset.k;});
+  document.querySelectorAll('.block').forEach(function(c){c.classList.remove('pick');});
+  var b=document.querySelector('.pickbtn[data-k="'+letter+'"]'); if(b){b.classList.add('on');b.textContent='✓ Picked';}
+  var bl=document.getElementById('b-'+letter); if(bl)bl.classList.add('pick');
+  var s=document.getElementById('sticky'); if(s)s.innerHTML='Picked <b>Testimonial '+letter+'</b> — recorded.';
+}
+</script>
+</body>
+</html>

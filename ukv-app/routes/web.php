@@ -90,6 +90,19 @@ Route::get('/visa/{destination:slug}/{topic}', [GuideController::class, 'showCou
     ->name('guides.country');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
+// --- Local-only design-preview pick capture (dev loop; never registered in production) ---
+if (! app()->isProduction()) {
+    Route::get('/__pick', function (\Illuminate\Http\Request $request) {
+        file_put_contents(storage_path('design_pick.json'), json_encode([
+            'section' => $request->query('section'),
+            'pick' => $request->query('pick'),
+            'note' => $request->query('note'),
+            'ts' => time(),
+        ]));
+        return response()->json(['ok' => true]);
+    });
+}
+
 // --- Public status tracker ---
 Route::get('/track', [TrackController::class, 'show'])->name('track.show');
 Route::post('/track/lookup', [TrackController::class, 'lookup'])
