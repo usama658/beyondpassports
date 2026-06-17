@@ -8,6 +8,21 @@
 <style>
   /* legal — page-scoped layout only. Palette/type/components from ukv.css. */
 
+  /* ── hero — navy mesh (consistent with site) ─────────────────── */
+  .lg-hero{position:relative;overflow:hidden;background:var(--navy);padding:84px 0 76px}
+  .lg-hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 84%,rgba(92,154,123,.42),transparent 62%),
+     radial-gradient(40% 60% at 70% 8%,rgba(242,194,172,.16),transparent 60%)}
+  .lg-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.08),rgba(15,20,22,.32))}
+  .lg-hero .wrap{position:relative;z-index:2}
+  .lg-hero .eyebrow{color:var(--soft)}
+  .lg-hero h1{color:#fff}
+  .lg-hero .lede{color:rgba(255,255,255,.82);max-width:62ch}
+  .lg-hero .draft-banner{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9)}
+  .lg-hero .draft-banner strong{color:#fff}
+  .lg-hero .draft-banner svg{color:var(--soft)}
+
   /* ── two-column shell ────────────────────────────────────────── */
   .legal-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:52px;
     align-items:start;padding-top:12px}
@@ -89,7 +104,7 @@
 @section('content')
 
 {{-- PAGE TITLE HERO --}}
-<section class="mesh-hero mesh-hero--sm" id="top">
+<section class="lg-hero" id="top">
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy reveal">
