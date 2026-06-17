@@ -22,10 +22,7 @@
      gradient-mesh on near-white; big centred headline, the visa-check form as one inline bar
      (destination · passport · button), trust chips + ★rating + a row of destination thumbnails. */
   .hp-hero{position:relative;color:var(--ink);overflow:hidden;border-bottom:1px solid var(--paper-edge);text-align:center;
-    background:
-      radial-gradient(900px 380px at 50% -12%, rgba(199,93,56,.14), transparent 60%),
-      radial-gradient(680px 340px at 90% 120%, rgba(92,154,123,.16), transparent 60%),
-      linear-gradient(180deg,#FBFBFC 0%, var(--paper) 100%);}
+    background:linear-gradient(180deg,#EAF1F4 0%, #F2F5F6 45%, var(--paper) 100%);}
   .hp-hero > .wrap{position:relative;z-index:2;padding:60px 0 72px}
   .hp-hero .eyebrow{color:var(--cta)}
   .hp-hero h1{color:var(--ink);font-size:clamp(34px,5vw,56px);line-height:1.03;letter-spacing:-.03em;margin:0 auto 16px;max-width:20ch}
