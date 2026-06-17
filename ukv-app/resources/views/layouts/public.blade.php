@@ -13,8 +13,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {{-- Published copy of the coded design system (public/assets/ukv.css). --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
-<link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/bp-favicon.svg') }}">
-<style>.brand{display:inline-flex;align-items:center;gap:10px}.brand .bp-mark{flex:0 0 auto}</style>
 @stack('head')
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -29,7 +27,7 @@
   </span>
 </div></div>
 <header class="site-head"><div class="wrap">
-  <a href="{{ url('/') }}" class="brand" aria-label="Beyond Passports — home">@include('partials.brand-logo')</a>
+  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
   <nav class="nav" id="primary-nav" aria-label="Primary">
     {{-- Destinations mega-menu: photo cards (top destinations + "from" fee) --}}
@@ -80,7 +78,7 @@
   <div class="ft-main"><div class="wrap">
     <div class="cols">
       <div>
-        <div class="brand" style="color:#fff">@include('partials.brand-logo', ['dark' => true])</div>
+        <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
         <p style="max-width:30ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
         {{-- Consent-gated newsletter opt-in (works with no JS; flashes status on return) --}}
         <form method="POST" action="{{ route('subscribe.store') }}">
