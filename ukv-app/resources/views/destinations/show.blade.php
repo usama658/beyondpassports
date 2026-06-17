@@ -138,8 +138,8 @@
   .tier.feat li{color:#e4e7ea}
   .tier.feat li .chk{color:var(--soft)}
   .tier .badge{position:absolute;top:-12px;left:24px;background:var(--soft);color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:20px}
-  .tier .name{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 8px}
-  .tier .price{font-family:var(--display);font-size:42px;font-weight:600;color:var(--navy);line-height:1}
+  .tier .name{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
+  .tier .price{font-family:var(--display);font-size:42px;font-weight:800;letter-spacing:-.02em;color:var(--navy);line-height:1}
   .tier .price small{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.04em}
   .tier .sub{font-size:14px;color:var(--muted);margin:6px 0 18px}
   .tier ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
