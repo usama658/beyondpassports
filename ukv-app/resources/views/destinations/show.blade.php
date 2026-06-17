@@ -110,10 +110,23 @@
   .dhero .eyebrow{color:#F2C2AC}
   .dhero .btn{margin-top:8px}
   .dhero .skyband{margin-top:36px}
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .fact{background:var(--white);border:1px solid var(--paper-edge);border-radius:10px;padding:18px 18px}
-  .fact .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 6px}
-  .fact .v{font-family:var(--display);font-size:20px;color:var(--navy);font-weight:600;line-height:1.2}
+  /* HERO + AT A GLANCE — full photo with welded navy fact strip (option C) */
+  .dmoney-hero{position:relative;color:#fff}
+  .dmoney-hero .stage{position:relative;min-height:400px;display:flex;align-items:flex-end;background:var(--navy)}
+  .dmoney-hero .stage .img{position:absolute;inset:0;background-size:cover;background-position:center}
+  .dmoney-hero .stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,25,.25) 28%,rgba(20,22,25,.85))}
+  .dmoney-hero .inner{position:relative;z-index:2;padding:60px 0 32px}
+  .dmoney-hero .eyebrow{color:var(--soft)}
+  .dmoney-hero h1{color:#fff;font:700 clamp(32px,4.6vw,52px)/1.04 var(--display);letter-spacing:-.02em;max-width:20ch;margin:0 0 14px}
+  .dmoney-hero .lede{color:#dfe3e6;font-size:18px;line-height:1.5;max-width:48ch;margin:0 0 20px}
+  .dmoney-facts{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+  .dmoney-facts>div{padding:18px 20px;border-left:1px solid rgba(255,255,255,.12)}
+  .dmoney-facts>div:first-child{border-left:0}
+  .dmoney-facts .k{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 5px}
+  .dmoney-facts .v{font:700 17px var(--display);line-height:1.25}
+  .dmoney-facts .v small{display:block;font:400 11px var(--mono);color:#aab0b5;margin-top:3px}
+  @media (max-width:820px){.dmoney-facts{grid-template-columns:1fr 1fr}.dmoney-facts>div:nth-child(odd){border-left:0}}
+  @media (max-width:520px){.dmoney-facts{grid-template-columns:1fr}.dmoney-facts>div{border-left:0;border-top:1px solid rgba(255,255,255,.12)}}
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
   .tier{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:26px 24px;position:relative}
   .tier.feat{border-color:var(--gold);box-shadow:var(--shadow)}
@@ -152,40 +165,28 @@
 
 @section('content')
 
-{{-- 1. HERO --}}
-<section class="photo-hero"@if($destination->image_path) style="--hero-img:url('{{ asset(ltrim($destination->image_path, '/')) }}')"@endif><div class="wrap">
-  <p class="eyebrow">{{ $name }} · {{ $visaType }}</p>
-  <h1>{{ $visaLabel }}, prepared and checked by our UK team</h1>
-  <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
-  <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
-  <div class="glass-chip float-soft" style="margin-top:20px">
-    <span class="d">{{ $name }} {{ $visaType }}</span>
-    <div class="f">@if($standard !== null && (float)$standard > 0)from {{ $gbp($standard) }} · @endif★ 4.9</div>
+{{-- 1. HERO + AT A GLANCE — full photo with welded navy fact strip (C) --}}
+<section class="dmoney-hero">
+  <div class="stage">
+    @if($destination->image_path)<div class="img" style="background-image:url('{{ asset(ltrim($destination->image_path, '/')) }}')"></div>@endif
+    <div class="wrap"><div class="inner">
+      <p class="eyebrow">{{ $name }} · {{ $visaType }}</p>
+      <h1>{{ $visaLabel }}, prepared and checked by our UK team</h1>
+      <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
+      <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
+    </div></div>
   </div>
-</div></section>
-
-{{-- 2. AT A GLANCE --}}
-<section><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">At a glance</p><h2>The {{ $visaLabel }}, in short</h2></div>
-  <div class="facts">
-    <div class="fact reveal">
-      <p class="k">Validity</p>
-      <div class="v">{{ $maxStay ? 'Up to '.$maxStay.' days' : 'Varies by trip' }}</div>
-    </div>
-    <div class="fact reveal">
-      <p class="k">Type</p>
-      <div class="v">{{ $visaType }}</div>
-    </div>
-    <div class="fact reveal">
-      <p class="k">Typical processing</p>
-      <div class="v">A few business days <small style="font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:4px">our handling</small></div>
-    </div>
-    <div class="fact reveal">
-      <p class="k">Passport</p>
-      <div class="v">{{ $passport ? $passport.' months validity recommended' : 'Valid passport required' }}</div>
-    </div>
+  <div class="dmoney-facts">
+    <div><p class="k">Validity</p><div class="v">{{ $maxStay ? 'Up to '.$maxStay.' days' : 'Varies by trip' }}</div></div>
+    <div><p class="k">Type</p><div class="v">{{ $visaType }}</div></div>
+    <div><p class="k">Typical processing</p><div class="v">A few business days<small>our handling</small></div></div>
+    @if($standard !== null && (float)$standard > 0)
+      <div><p class="k">Service fee</p><div class="v">from {{ $gbp($standard) }}<small>separate from govt fee</small></div></div>
+    @else
+      <div><p class="k">Passport</p><div class="v">{{ $passport ? $passport.' months validity' : 'Valid passport' }}</div></div>
+    @endif
   </div>
-</div></section>
+</section>
 
 {{-- 3. PRICING --}}
 <section id="pricing" class="alt"><div class="wrap">
