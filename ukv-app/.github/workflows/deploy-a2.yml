@@ -34,4 +34,4 @@ jobs:
           script: |
             export PHP="${{ secrets.A2_PHP }}"
             [ -z "$PHP" ] && export PHP=php
-            bash ~/beyondpassports/scripts/update-a2.sh
+            bash ~/beyondpassports/ukv-app/scripts/update-a2.sh

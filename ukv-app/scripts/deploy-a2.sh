@@ -1,42 +1,39 @@
 #!/usr/bin/env bash
-# Beyond Passports — one-shot A2 staging deploy (test mode).
-# Run in cPanel → Terminal (or SSH). Idempotent: safe to re-run for updates.
+# Beyond Passports — one-shot A2 staging deploy (test mode). Layout-aware:
+# the Laravel app is the dir that contains this script's parent (…/ukv-app);
+# the git repo root may be one level up (monorepo). Run from anywhere.
 #
-# REQUIRED env vars (pass on the command line — do NOT hardcode secrets):
-#   GHTOKEN   GitHub fine-grained read-only token for usama658/beyondpassports
-#   DBNAME    cPanel DB name      (create first in cPanel → MySQL Databases)
-#   DBUSER    cPanel DB user
-#   DBPASS    DB password         (avoid | and & to keep sed happy)
-#   ADMINPASS password for the first admin (Owner) login
+# REQUIRED env vars:
+#   DBNAME DBUSER DBPASS      cPanel MySQL (already created: outlabio_bp / outlabio_bpapp)
+#   ADMINPASS                 password for the first admin (Owner) login
 # OPTIONAL:
-#   DOMAIN    default beyondpassports.co.uk
-#   ADMINEMAIL default you@<domain>
-#   STRIPE_KEY / STRIPE_SECRET / STRIPE_WEBHOOK_SECRET  (test keys; omit to fill later)
-#   APP_DIR   default $HOME/beyondpassports
-#   PHP       php binary (default: php)
-#
-# Example:
-#   GHTOKEN=github_pat_xxx DBNAME=usr_bp DBUSER=usr_bpapp DBPASS='s3cret' \
-#   ADMINPASS='StrongPass1' bash deploy-a2.sh
+#   DOMAIN     default beyondpassports.co.uk
+#   DOCROOT    default /home/<you>/<DOMAIN>     (the ADDON-domain docroot — never public_html)
+#   ADMINEMAIL default you@<DOMAIN>
+#   GHTOKEN    if set, refreshes the git remote URL so pulls work (private repo)
+#   STRIPE_KEY / STRIPE_SECRET / STRIPE_WEBHOOK_SECRET   (test keys; omit to fill later)
+#   PHP        php binary (default: php)
 set -euo pipefail
 
-DOMAIN="${DOMAIN:-beyondpassports.co.uk}"
-APP_DIR="${APP_DIR:-$HOME/beyondpassports}"
-ADMINEMAIL="${ADMINEMAIL:-you@${DOMAIN}}"
+APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # …/ukv-app
 PHP="${PHP:-php}"
-REPO="https://${GHTOKEN:?set GHTOKEN}@github.com/usama658/beyondpassports.git"
-
+DOMAIN="${DOMAIN:-beyondpassports.co.uk}"
+ADMINEMAIL="${ADMINEMAIL:-you@${DOMAIN}}"
+DOCROOT="${DOCROOT:-$HOME/${DOMAIN}}"
 say(){ printf '\n\033[1;36m== %s\033[0m\n' "$*"; }
-
-say "1/8  Clone or update repo  ($APP_DIR)"
-if [ -d "$APP_DIR/.git" ]; then
-  git -C "$APP_DIR" remote set-url origin "$REPO"
-  git -C "$APP_DIR" fetch --depth 1 origin master
-  git -C "$APP_DIR" reset --hard origin/master
-else
-  git clone --depth 1 -b master "$REPO" "$APP_DIR"
-fi
 cd "$APP_DIR"
+[ -f composer.json ] || { echo "composer.json not found in $APP_DIR — wrong location"; exit 1; }
+
+say "0/8  App dir: $APP_DIR"
+
+say "1/8  Update repo to latest master"
+REPO_TOP="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+if [ -n "$REPO_TOP" ]; then
+  [ -n "${GHTOKEN:-}" ] && git -C "$REPO_TOP" remote set-url origin "https://${GHTOKEN}@github.com/usama658/beyondpassports.git" || true
+  git -C "$REPO_TOP" fetch --depth 1 origin master && git -C "$REPO_TOP" reset --hard origin/master
+else
+  echo "(not a git checkout — skipping update)"
+fi
 
 say "2/8  Composer install (no-dev)"
 COMPOSER_BIN="$(command -v composer || true)"
@@ -86,25 +83,17 @@ chmod -R 775 storage bootstrap/cache || true
 say "6/8  Admin user (idempotent)"
 "$PHP" artisan tinker --execute "\$e='${ADMINEMAIL}'; \App\Models\User::firstOrCreate(['email'=>\$e],['name'=>'Owner','password'=>bcrypt('${ADMINPASS:?set ADMINPASS}'),'role'=>'admin']);" || true
 
-say "7/8  Point the ADDON-domain docroot at public/ (symlink, with backup)"
-# beyondpassports.co.uk is an ADDON domain — its docroot is separate from public_html
-# (public_html belongs to the MAIN domain). NEVER touch public_html here.
-DOCROOT="${DOCROOT:-$HOME/${DOMAIN}}"     # e.g. /home/outlabio/beyondpassports.co.uk
-TARGET="$APP_DIR/public"
+say "7/8  Point ADDON docroot at public/ (symlink, with backup) — never public_html"
 case "$DOCROOT" in
-  *public_html|*public_html/) echo "REFUSING: DOCROOT looks like the main public_html ($DOCROOT). Set DOCROOT to the addon dir."; exit 1;;
+  *public_html|*public_html/) echo "REFUSING: DOCROOT looks like main public_html ($DOCROOT)"; exit 1;;
 esac
-if [ -L "$DOCROOT" ]; then
-  ln -sfn "$TARGET" "$DOCROOT"
-elif [ -d "$DOCROOT" ]; then
-  mv "$DOCROOT" "${DOCROOT}_backup_$(date +%s)"
-  ln -s "$TARGET" "$DOCROOT"
-else
-  ln -s "$TARGET" "$DOCROOT"
-fi
+TARGET="$APP_DIR/public"
+if [ -L "$DOCROOT" ]; then ln -sfn "$TARGET" "$DOCROOT"
+elif [ -d "$DOCROOT" ]; then mv "$DOCROOT" "${DOCROOT}_backup_$(date +%s)"; ln -s "$TARGET" "$DOCROOT"
+else ln -s "$TARGET" "$DOCROOT"; fi
 echo "Docroot $DOCROOT -> $TARGET"
 
 say "8/8  Done"
 echo "Visit: https://${DOMAIN}    Admin: https://${DOMAIN}/admin  ($ADMINEMAIL)"
-echo "If the apex shows blank/403 (symlinked docroot blocked), use the copy-method in DEPLOY-A2-STAGING.md §6."
-echo "Still to do in cPanel: AutoSSL (SSL/TLS Status) + cron (schedule:run, see runbook §8)."
+echo "Next in cPanel: AutoSSL + cron (cd $APP_DIR && $PHP artisan schedule:run)."
+echo "If apex blank/403 (symlinked docroot blocked), use the copy-method in DEPLOY-A2-STAGING.md §6."
