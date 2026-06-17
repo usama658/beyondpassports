@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Destination cards — options</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cta:#C75D38;--ink:#22282b;--muted:#697079;--sage:#5C9A7B;--sage-t:#3f7259;--paper:#F4F5F6;--edge:#e6e8ea;--white:#fff;--hint:#8a9097;--j:'Plus Jakarta Sans',system-ui,sans-serif;
+    --lift1:0 18px 44px -26px rgba(40,50,70,.3);--lift2:0 24px 52px -24px rgba(40,50,70,.34)}
+  *{box-sizing:border-box}body{margin:0;font-family:var(--j);color:var(--ink);background:#eceef0}
+  .ph{max-width:1000px;margin:0 auto;padding:34px 22px 4px}.ph h1{font-size:26px;margin:0 0 6px;font-weight:700}.ph p{color:var(--muted);margin:0;max-width:66ch}
+  .wrapx{max-width:1080px;margin:0 auto;padding:14px 20px}
+  .block{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;margin:22px 0;box-shadow:0 16px 44px -30px rgba(40,50,70,.4)}
+  .block.pick{outline:3px solid var(--cta);outline-offset:3px}
+  .stage{padding:34px;background:var(--paper)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;flex-wrap:wrap;border-top:1px solid var(--edge)}
+  .meta h4{font-size:17px;margin:0;font-weight:700}.meta p{font-size:13.5px;margin:3px 0 0;max-width:62ch;color:var(--muted)}
+  .num{display:inline-block;background:#fff;color:var(--cta);font-weight:800;border-radius:8px;padding:2px 9px;font-size:13px;margin-right:8px;border:1px solid var(--edge)}
+  .pickbtn{background:var(--cta);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:700 14px var(--j);cursor:pointer}.pickbtn.on{background:var(--sage)}
+
+  /* A current: photo header + lower split + side fee stub */
+  .A .card{background:#fff;border:1px solid var(--edge);border-radius:16px;overflow:hidden;box-shadow:var(--lift1)}
+  .A .pic{height:120px;background:center/cover}
+  .A .low{display:flex}.A .main{padding:14px 16px;flex:1}.A .k{font:700 11px var(--j);color:var(--sage-t);letter-spacing:.1em;text-transform:uppercase}
+  .A .main h5{font-size:18px;margin:4px 0 2px}.A .t{font-size:13px;color:var(--muted)}
+  .A .stub{border-left:1px solid var(--edge);background:#fafbfb;min-width:92px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .A .fee{font:800 22px var(--j);color:var(--cta)}.A .lab{font:700 10px var(--j);color:var(--hint);letter-spacing:.08em}
+
+  /* B overlay: full photo, scrim, name on photo, price chip */
+  .B .card{position:relative;height:230px;border-radius:18px;overflow:hidden;box-shadow:var(--lift2);background:center/cover;cursor:pointer}
+  .B .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(20,18,16,.85))}
+  .B .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 16px 14px;color:#fff}
+  .B .k{font:700 11px var(--j);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+  .B .tx h5{font-size:19px;margin:3px 0 0;color:#fff}
+  .B .chip{position:absolute;top:12px;right:12px;z-index:2;background:rgba(255,255,255,.95);border-radius:999px;padding:5px 12px;font:800 13px var(--j);color:var(--cta)}
+
+  /* C clean: photo top, tidy footer row */
+  .C .card{background:#fff;border:1px solid var(--edge);border-radius:16px;overflow:hidden;box-shadow:var(--lift1)}
+  .C .pic{height:140px;background:center/cover}
+  .C .bd{padding:16px 18px}.C .k{font:700 11px var(--j);color:var(--sage-t);letter-spacing:.1em;text-transform:uppercase}
+  .C .bd h5{font-size:18px;margin:4px 0 8px}
+  .C .row{display:flex;justify-content:space-between;align-items:baseline}.C .fee{font:800 17px var(--j);color:var(--cta)}.C .go{font:700 13px var(--j);color:var(--cta)}
+
+  /* D magazine: tall photo, name bottom-left on photo, price pill, hover */
+  .D .card{position:relative;height:260px;border-radius:18px;overflow:hidden;box-shadow:var(--lift2);background:center/cover}
+  .D .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.05) 40%,rgba(20,18,16,.8))}
+  .D .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px;color:#fff}
+  .D .k{font:700 11px var(--j);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+  .D .tx h5{font-size:22px;margin:4px 0 8px;color:#fff;letter-spacing:-.01em}
+  .D .pill{display:inline-block;background:var(--cta);color:#fff;border-radius:999px;padding:6px 13px;font:800 13px var(--j)}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:13px 22px;text-align:center;font:600 14px var(--j);z-index:60}.sticky b{color:#F2C2AC}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<div class="ph"><h1>Destination cards — options</h1><p>Pick one — tell me the letter. (A is close to what's live now.)</p></div>
+<div class="wrapx" id="list"></div>
+<div class="sticky" id="sticky">Pick a card style, then tell me the letter (e.g. “Cards B”).</div>
+<script>
+  var D=[['Turkey','eVisa','£39','up to 90 days','/assets/img/destinations/turkey.jpg'],
+         ['Thailand','Visa-free','£35','up to 30 days','/assets/img/destinations/thailand.jpg'],
+         ['India','eVisa','£49','up to 30 days','/assets/img/destinations/india.jpg']];
+  var V={
+   A:function(){var h='<div class="grid A">';D.forEach(function(d){h+='<div class="card"><div class="pic" style="background-image:url(\''+d[4]+'\')"></div><div class="low"><div class="main"><div class="k">'+d[1]+'</div><h5>'+d[0]+'</h5><div class="t">UK citizens · '+d[3]+'</div></div><div class="stub"><div class="fee">'+d[2]+'</div><div class="lab">FROM</div></div></div></div>';});return h+'</div>';},
+   B:function(){var h='<div class="grid B">';D.forEach(function(d){h+='<div class="card" style="background-image:url(\''+d[4]+'\')"><span class="chip">from '+d[2]+'</span><div class="tx"><div class="k">'+d[1]+'</div><h5>'+d[0]+'</h5></div></div>';});return h+'</div>';},
+   C:function(){var h='<div class="grid C">';D.forEach(function(d){h+='<div class="card"><div class="pic" style="background-image:url(\''+d[4]+'\')"></div><div class="bd"><div class="k">'+d[1]+'</div><h5>'+d[0]+'</h5><div class="row"><span class="fee">from '+d[2]+'</span><span class="go">View →</span></div></div></div>';});return h+'</div>';},
+   D:function(){var h='<div class="grid D">';D.forEach(function(d){h+='<div class="card" style="background-image:url(\''+d[4]+'\')"><div class="tx"><div class="k">'+d[1]+'</div><h5>'+d[0]+'</h5><span class="pill">from '+d[2]+'</span></div></div>';});return h+'</div>';}
+  };
+  var opts=[
+   ['A','Photo + side price stub (current)','Photo header, name/type left, price in a side stub. Informative, boarding-pass-ish, safe.'],
+   ['B','Full-photo overlay','Whole card is the destination photo with a scrim; name on the image + a price chip. Immersive, premium travel feel.'],
+   ['C','Photo + clean footer','Photo on top, tidy footer row: from £ + “View →”. Minimal, modern, very legible.'],
+   ['D','Magazine poster','Tall full-photo card, big name bottom-left, terracotta price pill. Boldest / most editorial.']
+  ];
+  var html='';opts.forEach(function(o){html+='<div class="block" id="b-'+o[0]+'"><div class="stage">'+V[o[0]]()+'</div><div class="meta"><div><h4><span class="num">'+o[0]+'</span>'+o[1]+'</h4><p>'+o[2]+'</p></div><button class="pickbtn" data-k="'+o[0]+'">Pick '+o[0]+'</button></div></div>';});
+  document.getElementById('list').innerHTML=html;
+  document.querySelectorAll('.pickbtn').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.pickbtn').forEach(function(x){x.classList.remove('on');x.textContent='Pick '+x.dataset.k;});
+    document.querySelectorAll('.block').forEach(function(c){c.classList.remove('pick');});
+    b.classList.add('on');b.textContent='✓ Picked';document.getElementById('b-'+b.dataset.k).classList.add('pick');
+    document.getElementById('sticky').innerHTML='Chosen: <b>Cards '+b.dataset.k+'</b> — tell me in chat.';});});
+</script></body></html>

@@ -3,10 +3,6 @@
 @section('title', 'Visa & eVisa destinations for UK travellers | Beyond Passports')
 @section('description', 'Browse the destinations we prepare and check visa & eVisa applications for. Clear fixed service fees, fast handling, every step tracked. Independent service — not a government website.')
 
-@push('head')
-<style>.dests .pass .sky{height:160px;overflow:hidden;background:#e9edf0}.dests .pass .sky img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}.dests .pass:hover .sky img{transform:scale(1.05)}</style>
-@endpush
-
 @section('content')
 
 {{-- HERO --}}
