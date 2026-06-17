@@ -7,6 +7,8 @@
 :root{
   /* Warm-light palette. --cta + --gold both map to terracotta (buttons/accents). */
   --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#5C9A7B; --cta:#C75D38;
+  /* soft peach accent — used on dark surfaces (badges, eyebrows, labels on ink). */
+  --soft:#F2C2AC;
   /* sage text-on-light (deep sage) — passes 4.5:1 on paper/white. (WCAG 1.4.3) */
   --stamp-text:#3f7259;
   /* instructional-hint grey — passes 4.5:1 on white and the grey panels. (WCAG 1.4.3) */
