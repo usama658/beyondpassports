@@ -759,7 +759,7 @@
     var next = document.createElement('button');
     next.type = 'button'; next.className = 'btn ap-next'; next.textContent = 'Next →';
     nav.appendChild(back); nav.appendChild(count); nav.appendChild(next);
-    steps[last].appendChild(nav);
+    steps[last].parentNode.insertBefore(nav, steps[last].nextSibling);
 
     function render(scroll) {
       steps.forEach(function (s, i) { s.classList.toggle('is-active', i === cur); });
