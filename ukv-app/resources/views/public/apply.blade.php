@@ -33,17 +33,35 @@
 
   /* ── Boarding-pass-styled form card overrides ── */
   .ap-form-card .cbody{padding:32px 28px}
-  /* section-progress rail (E) */
-  .ap-cardrow{display:grid;grid-template-columns:212px 1fr}
-  .ap-rail{background:#f7fafb;border-right:1px solid var(--paper-edge)}
-  .ap-rail .sticky-inner{position:sticky;top:96px;padding:26px 22px}
-  .ap-rail-h{font-family:var(--body);font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-  .ap-rail ul{list-style:none;margin:0;padding:0}
-  .ap-rail li{font-family:var(--body);font-weight:600;font-size:13.5px;color:var(--muted);padding:10px 0 10px 24px;position:relative}
-  .ap-rail li::before{content:"";position:absolute;left:0;top:14px;width:9px;height:9px;border-radius:50%;background:var(--paper-edge);transition:background .2s ease,box-shadow .2s ease}
-  .ap-rail li.on{color:var(--cta)}
-  .ap-rail li.on::before{background:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.15)}
-  @media (max-width:760px){.ap-cardrow{grid-template-columns:1fr}.ap-rail{display:none}}
+  /* top numbered progress stepper (B) — shown only when JS steps the form */
+  .ap-prog{display:none}
+  .ukv-form.is-stepped .ap-prog{display:block;margin:0 0 24px}
+  .ap-prog .bar{display:flex;align-items:center}
+  .ap-prog .node{width:30px;height:30px;border-radius:50%;background:#eef2f3;border:2px solid var(--paper-edge);color:var(--muted);font-family:var(--body);font-weight:800;font-size:12px;line-height:26px;text-align:center;flex:none}
+  .ap-prog .node.done{background:#eaf3ef;border-color:var(--stamp-text);color:var(--stamp-text)}
+  .ap-prog .node.on{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.15)}
+  .ap-prog .seg{height:2px;flex:1;background:var(--paper-edge);margin:0 5px}
+  .ap-prog .seg.done{background:var(--stamp-text)}
+  .ap-prog .labels{display:flex;margin:9px 0 0}
+  .ap-prog .labels span{flex:1;text-align:center;font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.02em;color:var(--muted)}
+  .ap-prog .labels span.on{color:var(--cta)}
+  .ap-prog .labels span.done{color:var(--stamp-text)}
+  /* resume banner */
+  .ap-resume{display:flex;align-items:center;gap:9px;background:#eaf3ef;border:1px solid #cfe6da;border-radius:10px;padding:10px 14px;font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--stamp-text);margin:0 0 18px}
+  .ap-resume button{margin-left:auto;background:transparent;border:0;color:var(--muted);font:600 12px var(--body);text-decoration:underline;cursor:pointer;padding:0}
+  @media (max-width:560px){.ap-prog .labels span{font-size:9px}}
+  /* stepped wizard (JS-on only) */
+  .ukv-form.is-stepped .ap-step{display:none}
+  .ukv-form.is-stepped .ap-step.is-active{display:block;animation:apfade .25s ease}
+  @keyframes apfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .ap-rail.is-stepped li{cursor:pointer}
+  .ap-rail li.done{color:var(--stamp-text)}
+  .ap-rail li.done::before{background:var(--stamp-text)}
+  .ap-stepnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;border-top:1px solid var(--paper-edge);padding-top:20px}
+  .ap-stepnav .ap-count{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)}
+  .ap-stepnav .ap-next{padding:12px 24px}
+  .ap-stepnav .ap-back{background:transparent;color:var(--cta);border:1.5px solid var(--cta);padding:11px 20px}
+  @media (prefers-reduced-motion:reduce){.ukv-form.is-stepped .ap-step.is-active{animation:none}}
 
   /* ── Form internals ── */
   .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -172,19 +190,6 @@
     {{-- INTAKE FORM --}}
     <div class="checker ap-form-card reveal" id="form-card">
       <div class="stub"><span>Application</span><span>New request</span></div>
-      <div class="ap-cardrow">
-      <aside class="ap-rail" aria-hidden="true">
-        <div class="sticky-inner">
-          <p class="ap-rail-h">Sections</p>
-          <ul id="ap-rail-list">
-            <li data-target="sec-trip" class="on">Your trip</li>
-            <li data-target="sec-traveller">Traveller</li>
-            <li data-target="sec-passport">Passport</li>
-            <li data-target="sec-contact">How we reach you</li>
-            <li data-target="sec-service">Service level</li>
-          </ul>
-        </div>
-      </aside>
       <div class="cbody">
 
         {{-- Server-side validation summary --}}
@@ -350,7 +355,6 @@
           </div>
         </form>
       </div>
-      </div>{{-- /.ap-cardrow --}}
     </div>
 
     {{-- COMPLIANCE STRIP --}}
@@ -692,23 +696,184 @@
 
 @push('head')
 <script>
-  // Apply form — section-progress rail scroll-spy. Highlights the rail item for the
-  // legend currently nearest the top of the viewport. Purely visual; no form coupling.
+  // Apply form — one-section-at-a-time wizard with autosave/resume (progressive enhancement).
+  // JS off → normal long form that POSTs as usual. JS on → each legend + its fields becomes a
+  // step shown one at a time with a top progress stepper (B); Next gates on that step's
+  // required fields; the final step keeps the original consent + "Continue →" submit so the
+  // existing eligibility handler fires unchanged. Answers + current step are saved to this
+  // device (localStorage) so the visitor can leave and resume; cleared once a result shows.
   document.addEventListener('DOMContentLoaded', function () {
-    var list = document.getElementById('ap-rail-list');
-    if (!list) return;
-    var items = [].slice.call(list.querySelectorAll('li'));
-    var secs  = items.map(function (li) { return document.getElementById(li.getAttribute('data-target')); });
-    function spy() {
-      var idx = 0;
-      for (var i = 0; i < secs.length; i++) {
-        if (secs[i] && secs[i].getBoundingClientRect().top < 160) idx = i;
+    var form = document.getElementById('apply-form');
+    if (!form) return;
+    var legends = [].slice.call(form.querySelectorAll('.legend'));
+    if (legends.length < 2) return;
+    var card = document.getElementById('form-card');
+    var LABELS = ['Trip', 'Traveller', 'Passport', 'Contact', 'Service'];
+    var KEY = 'ukv_apply_draft_v1';
+    var MAX_AGE = 14 * 24 * 60 * 60 * 1000; // 14 days
+
+    // Group each legend + following siblings (until the next legend) into a step.
+    var steps = [];
+    legends.forEach(function (lg) {
+      var step = document.createElement('div');
+      step.className = 'ap-step';
+      lg.parentNode.insertBefore(step, lg);
+      var node = lg;
+      while (node) {
+        var nextNode = node.nextSibling;
+        if (node !== lg && node.classList && node.classList.contains('legend')) break;
+        step.appendChild(node);
+        node = nextNode;
+        if (node && node.classList && node.classList.contains('legend')) break;
       }
-      items.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
+      steps.push(step);
+    });
+    if (steps.length < 2) return;
+    form.classList.add('is-stepped');
+    var last = steps.length - 1;
+    var cur = 0;
+    var RM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    // ── Top progress stepper (B) ──
+    var prog = document.createElement('div');
+    prog.className = 'ap-prog';
+    var barHtml = '<div class="bar">';
+    for (var i = 0; i < steps.length; i++) {
+      barHtml += '<span class="node" data-i="' + i + '">' + (i + 1) + '</span>';
+      if (i < last) barHtml += '<span class="seg" data-i="' + i + '"></span>';
     }
-    window.addEventListener('scroll', spy, { passive: true });
-    window.addEventListener('resize', spy);
-    spy();
+    barHtml += '</div><div class="labels">' +
+      LABELS.slice(0, steps.length).map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</div>';
+    prog.innerHTML = barHtml;
+    steps[0].parentNode.insertBefore(prog, steps[0]);
+    var nodes  = [].slice.call(prog.querySelectorAll('.node'));
+    var segs   = [].slice.call(prog.querySelectorAll('.seg'));
+    var pLabels = [].slice.call(prog.querySelectorAll('.labels span'));
+
+    // ── Step nav (Back · count · Next) inside the last step ──
+    var nav = document.createElement('div');
+    nav.className = 'ap-stepnav';
+    var back = document.createElement('button');
+    back.type = 'button'; back.className = 'btn ap-back'; back.textContent = '← Back';
+    var count = document.createElement('span'); count.className = 'ap-count';
+    var next = document.createElement('button');
+    next.type = 'button'; next.className = 'btn ap-next'; next.textContent = 'Next →';
+    nav.appendChild(back); nav.appendChild(count); nav.appendChild(next);
+    steps[last].appendChild(nav);
+
+    function render(scroll) {
+      steps.forEach(function (s, i) { s.classList.toggle('is-active', i === cur); });
+      back.style.visibility = cur === 0 ? 'hidden' : 'visible';
+      next.style.display = cur === last ? 'none' : '';
+      count.textContent = 'Step ' + (cur + 1) + ' of ' + steps.length;
+      nodes.forEach(function (n, i) {
+        n.classList.toggle('done', i < cur); n.classList.toggle('on', i === cur);
+        n.textContent = i < cur ? '✓' : (i + 1);
+      });
+      segs.forEach(function (s, i) { s.classList.toggle('done', i < cur); });
+      pLabels.forEach(function (l, i) { l.classList.toggle('on', i === cur); l.classList.toggle('done', i < cur); });
+      nodes.forEach(function (n, i) { n.style.cursor = i <= cur ? 'pointer' : 'default'; });
+      if (scroll !== false && card) card.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
+    }
+
+    function stepValid() {
+      var controls = steps[cur].querySelectorAll('input[required], select[required]');
+      var firstBad = null;
+      for (var i = 0; i < controls.length; i++) {
+        var c = controls[i];
+        if (c.disabled || c.closest('[hidden]')) continue;
+        var empty = c.type === 'checkbox' ? !c.checked : !String(c.value).trim();
+        var bad = empty || !c.checkValidity();
+        if (bad) {
+          c.setAttribute('aria-invalid', 'true');
+          var id = c.id + '-error', msg = document.getElementById(id);
+          if (!msg) { msg = document.createElement('p'); msg.id = id; msg.className = 'field-error'; c.parentNode.insertBefore(msg, c.nextSibling); }
+          var label = form.querySelector('label[for="' + c.id + '"]');
+          msg.textContent = (label ? label.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field') + ' is required.';
+          if (!firstBad) firstBad = c;
+        } else {
+          c.removeAttribute('aria-invalid');
+          var m = document.getElementById(c.id + '-error'); if (m) m.textContent = '';
+        }
+      }
+      return firstBad;
+    }
+
+    next.addEventListener('click', function () { var bad = stepValid(); if (bad) { bad.focus(); return; } if (cur < last) { cur++; render(); save(); } });
+    back.addEventListener('click', function () { if (cur > 0) { cur--; render(); save(); } });
+    nodes.forEach(function (n) {
+      n.addEventListener('click', function () {
+        var i = +n.getAttribute('data-i');
+        if (i <= cur) { cur = i; render(); save(); }
+        else { var bad = stepValid(); if (!bad) { cur = Math.min(i, cur + 1); render(); save(); } else bad.focus(); }
+      });
+    });
+
+    // ── Autosave / resume (this device only) ──
+    function fieldEls() {
+      return [].slice.call(form.elements).filter(function (el) {
+        return el.name && el.name !== '_token' && el.type !== 'submit' && el.type !== 'button';
+      });
+    }
+    function save() {
+      try {
+        var data = { __step: cur, __ts: Date.now(), fields: {} };
+        fieldEls().forEach(function (el) {
+          data.fields[el.name] = el.type === 'checkbox' ? (el.checked ? 1 : 0) : el.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch (e) {}
+    }
+    function clearDraft() { try { localStorage.removeItem(KEY); } catch (e) {} }
+    function restore() {
+      var raw; try { raw = localStorage.getItem(KEY); } catch (e) { return false; }
+      if (!raw) return false;
+      var data; try { data = JSON.parse(raw); } catch (e) { clearDraft(); return false; }
+      if (!data || !data.__ts || (Date.now() - data.__ts) > MAX_AGE) { clearDraft(); return false; }
+      var any = false;
+      fieldEls().forEach(function (el) {
+        if (!(el.name in data.fields)) return;
+        var v = data.fields[el.name];
+        if (el.type === 'checkbox') { el.checked = !!v; }
+        else if (String(v).length) { el.value = v; any = true; }
+      });
+      // Let dependent UI (guardian reveal) react to restored selects.
+      ['is_minor', 'nationality', 'residence_country'].forEach(function (n) {
+        if (form[n]) form[n].dispatchEvent(new Event('change', { bubbles: true }));
+      });
+      if (typeof data.__step === 'number') cur = Math.max(0, Math.min(last, data.__step));
+      return any || cur > 0;
+    }
+
+    var resumed = restore();
+    if (resumed) {
+      var banner = document.createElement('div');
+      banner.className = 'ap-resume';
+      banner.innerHTML = '<span aria-hidden="true">↻</span><span>Welcome back — we saved your answers on this device.</span>';
+      var clr = document.createElement('button');
+      clr.type = 'button'; clr.textContent = 'Start over';
+      clr.addEventListener('click', function () {
+        clearDraft(); form.reset();
+        fieldEls().forEach(function (el) { el.removeAttribute('aria-invalid'); });
+        cur = 0; banner.remove(); render();
+      });
+      banner.appendChild(clr);
+      prog.parentNode.insertBefore(banner, prog);
+    }
+
+    form.addEventListener('input', save);
+    form.addEventListener('change', save);
+
+    // Clear the saved draft once a result panel is shown (successful submit).
+    ['outcome-standard', 'outcome-review'].forEach(function (id) {
+      var pane = document.getElementById(id);
+      if (!pane) return;
+      new MutationObserver(function () {
+        if (pane.getAttribute('aria-hidden') === 'false') clearDraft();
+      }).observe(pane, { attributes: true, attributeFilter: ['aria-hidden'] });
+    });
+
+    render(false);
   });
 </script>
 @endpush
