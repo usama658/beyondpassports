@@ -66,14 +66,19 @@
   .track-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);color:var(--ink);letter-spacing:-.015em;margin:0 0 12px}
   .track-hero p.lede{font-size:18px;color:#33454f;max-width:48ch;margin:0 auto}
 
-  .lookup{max-width:640px;margin:24px auto 0;text-align:left;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
-  .lookup .stub{display:flex;justify-content:space-between;background:var(--stamp);color:#fff;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.1em;padding:14px 22px}
-  .lookup .cbody{padding:24px 22px}
-  .lookup label{display:block;font-weight:600;font-size:14px;margin:0 0 8px}
-  .lookup .ref-input{width:100%;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:16px;padding:13px 14px;border:1px solid var(--paper-edge);border-radius:8px}
-  .lookup .ref-input:focus{outline:2px solid var(--cta);outline-offset:1px}
-  .lookup .hint{font-family:var(--mono);font-size:11px;color:var(--hint);margin:10px 0 0;letter-spacing:.04em}
-  .lookup .form-error{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:6px;padding:11px 13px;font-size:14px;margin:14px 0 0}
+  /* Navy tracker card (pick A) */
+  .lookup{position:relative;overflow:hidden;max-width:520px;margin:30px auto 0;text-align:left;background:var(--navy);border:0;border-radius:18px;box-shadow:0 30px 70px -42px rgba(0,0,0,.6)}
+  .lookup::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .lookup > *{position:relative;z-index:2}
+  .lookup .stub{display:flex;justify-content:space-between;align-items:center;background:transparent;color:#fff;font-family:var(--body);font-weight:700;font-size:13px;padding:14px 22px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .lookup .stub .live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#bfe6d2}
+  .lookup .stub .live i{width:8px;height:8px;border-radius:50%;background:#7fc7a3;box-shadow:0 0 0 4px rgba(127,199,163,.25)}
+  .lookup .cbody{padding:22px}
+  .lookup label{display:block;font-weight:700;font-size:13px;margin:0 0 8px;color:rgba(255,255,255,.85)}
+  .lookup .ref-input{width:100%;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:16px;padding:13px 14px;border:1px solid transparent;border-radius:11px;background:rgba(255,255,255,.96);color:var(--ink)}
+  .lookup .ref-input:focus{outline:2px solid var(--soft);outline-offset:1px}
+  .lookup .hint{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55);margin:10px 0 0;letter-spacing:.04em}
+  .lookup .form-error{background:rgba(192,57,43,.18);border:1px solid rgba(243,198,194,.4);color:#ffd9d4;border-radius:8px;padding:11px 13px;font-size:14px;margin:14px 0 0}
   .lookup button{margin-top:16px}
 
   .status{max-width:760px;margin:32px auto 0}
@@ -146,7 +151,7 @@
 
     <form class="lookup" method="POST" action="/track/lookup" novalidate>
       @csrf
-      <div class="stub"><span>Status tracker</span><span>Live</span></div>
+      <div class="stub"><span>Status tracker</span><span class="live"><i aria-hidden="true"></i> Live</span></div>
       <div class="cbody">
         <label for="ref">Your order reference</label>
         <input
