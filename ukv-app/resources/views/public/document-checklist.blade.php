@@ -132,8 +132,9 @@
   .dct-dots i{width:8px;height:8px;border-radius:50%;background:var(--paper-edge)}
   .dct-dots i.on{background:var(--cta);width:22px;border-radius:4px}
   /* in wizard mode the original submit row only shows on the last step */
-  .ukv-form.is-wizard .dct-submit-row{display:none}
-  .ukv-form.is-wizard.on-last .dct-submit-row{display:flex}
+  /* in wizard mode the primary button lives in the nav; keep only the sub-note line */
+  .ukv-form.is-wizard .dct-submit-row{display:flex;margin-top:14px}
+  .ukv-form.is-wizard .dct-submit-row > .btn{display:none}
 
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
@@ -403,7 +404,8 @@
         if (prog) prog.style.width = (n === 1 ? 50 : 100) + '%';
         dots.forEach(function (d, i) { d.classList.toggle('on', i === (n - 1)); });
         backBtn.disabled = (n === 1);
-        nextBtn.disabled = (n === 2);
+        // On the last step the primary button becomes the submit ("Show my checklist").
+        nextBtn.innerHTML = (n === 2) ? 'Show my checklist &rarr;' : 'Next: your situation &rarr;';
         form.classList.toggle('on-last', n === 2);
         var top = form.querySelector('.dct-step.active');
         if (top) top.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -417,7 +419,11 @@
         }
         return true;
       };
-      nextBtn.addEventListener('click', function () { if (guard()) show(2); });
+      nextBtn.addEventListener('click', function () {
+        if (cur === 1) { if (guard()) show(2); return; }
+        // step 2: submit the form (validation + submitting-state handled by the submit listener)
+        if (form.requestSubmit) { form.requestSubmit(); } else { form.submit(); }
+      });
       backBtn.addEventListener('click', function () { show(1); });
       tabs.forEach(function (t) {
         t.addEventListener('click', function () {
