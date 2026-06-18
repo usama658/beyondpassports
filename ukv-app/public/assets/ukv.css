@@ -377,3 +377,14 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .ft-main .cols .ft-cap a{display:inline-block;padding:11px 16px}
 .ft-main .cols .ft-consent a{display:inline;padding:0}
 @media (max-width:860px){.ft-main .cols{grid-template-columns:1fr 1fr}}
+
+/* ── Signature: travel-document system ───────────────────────────── */
+/* Passport-stamp tick — verified/checked states. */
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;
+  border:2.5px solid var(--stamp);color:var(--stamp-text);transform:rotate(-12deg);
+  font-family:var(--body);font-size:9px;font-weight:700;letter-spacing:.04em;text-align:center;line-height:1.1}
+/* MRZ micro-label — refs, dates (machine-readable flavour). */
+.mrz{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#8a97a1;
+  font-variant-numeric:tabular-nums;text-transform:uppercase}
+/* Tabular numerals for prices/fees so columns don't jitter. */
+.tnum{font-variant-numeric:tabular-nums}

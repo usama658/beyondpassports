@@ -34,7 +34,11 @@
   .hp-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
   .hp-bar select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
   .hp-bar .btn{white-space:nowrap}
+  /* signature passport-stamp accent on the form card's top-right corner */
+  .hp-bar{position:relative}
+  .hp-bar .stamp{position:absolute;top:-22px;right:-18px;background:#fff;z-index:3}
   .hp-barhint{color:var(--muted);font-size:12px;letter-spacing:.02em;margin:12px 0 0}
+  @media (max-width:520px){.hp-bar .stamp{display:none}}
   /* popular destination name quick-links — flag-dot tags (D) */
   .hp-names{display:flex;flex-wrap:wrap;gap:9px 11px;justify-content:center;align-items:center;margin:26px 0 0}
   .hp-names a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--paper-edge);border-radius:10px;padding:8px 14px;font:600 14px var(--display);color:var(--ink);text-decoration:none;box-shadow:0 6px 16px -12px rgba(40,50,70,.5);transition:border-color .2s ease,color .2s ease}
@@ -135,6 +139,7 @@
 
   {{-- inline visa-check form (real destination list + apply) --}}
   <form class="hp-bar" onsubmit="return false">
+    <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
     <div class="f">
       <label for="dest">Where are you going?</label>
       <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
