@@ -275,28 +275,48 @@
   .gs-body a:hover { color: var(--cta) }
 
   /* ---- QUICK-ANSWER CALLOUT --------------------------------------- */
+  /* Quick answer — navy mini-card (pick B) */
   .gs-callout {
-    background: var(--white);
-    border: 1px solid var(--paper-edge);
-    border-left: 4px solid var(--stamp);
-    border-radius: 14px;
-    padding: 24px 28px;
-    margin: 0 0 2em;
-    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    border: 0;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 12px 0 2em;
+    color: #fff;
+    box-shadow: 0 20px 50px -34px rgba(0,0,0,.6);
   }
+  .gs-callout::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(70% 80% at 92% 0, rgba(199,93,56,.30), transparent 60%),
+      radial-gradient(60% 70% at 0 100%, rgba(92,154,123,.28), transparent 62%);
+  }
+  .gs-callout > * { position: relative; z-index: 2 }
+  .gs-callout-head { display: flex; align-items: center; gap: 10px; margin: 0 0 8px }
+  .gs-callout-head .i {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: rgba(242,194,172,.16); color: var(--soft);
+    display: flex; align-items: center; justify-content: center; flex: 0 0 30px;
+  }
+  .gs-callout-head .i svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
   .gs-callout .gs-callout-label {
-    font-size: 10.5px;
+    font-family: var(--body);
+    font-size: 11px;
     font-weight: 800;
-    letter-spacing: .14em;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--stamp-text);
-    margin: 0 0 .7em;
+    color: var(--soft);
+    margin: 0;
   }
   .gs-callout p {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.65;
     margin: 0;
-    color: var(--ink);
+    color: rgba(255,255,255,.86);
   }
 
   /* ---- E-E-A-T BYLINE ---------------------------------------------- */
@@ -486,7 +506,10 @@
   {{-- QUICK ANSWER --}}
   @if ($guide->quick_answer)
     <div class="gs-callout">
-      <p class="gs-callout-label">Quick answer</p>
+      <div class="gs-callout-head">
+        <span class="i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+        <p class="gs-callout-label">Quick answer</p>
+      </div>
       <p>{!! $guide->quick_answer !!}</p>
     </div>
   @endif
