@@ -32,9 +32,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{{-- Canonical design system: gives this standalone page the shared header/footer styling. --}}
+<link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 <style>
-  /* Self-contained styles — warm-light "Sunset Coast" palette, matching assets/ukv.css.
-     Terracotta CTA, sage accent, cool-grey background, Plus Jakarta Sans throughout. */
+  /* Page-scoped layout for the tracker. Palette/type/components + the shared header
+     and footer all come from assets/ukv.css (loaded above). */
   :root{
     --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#5C9A7B;
     --stamp-text:#3f7259;
@@ -45,20 +47,10 @@
     --mono:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
   a{color:var(--cta)}
-  .skip-link{position:absolute;left:-9999px;top:0}
-  .skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;border-radius:6px;z-index:10}
-  .topbar{background:var(--navy);color:#cdd9e1;font-size:13px;text-align:center;padding:7px 12px}
-  .topbar a{color:#fff}
-  .site-head{background:var(--white);border-bottom:1px solid var(--paper-edge)}
-  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-  .brand{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);text-decoration:none}
-  .brand b{color:var(--cta)}
-  .nav a{margin-left:18px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px}
-  .btn{display:inline-block;background:var(--cta);color:#fff;text-decoration:none;border:0;border-radius:8px;padding:13px 22px;font-weight:600;font-size:15px;cursor:pointer;font-family:inherit}
-  .btn--ghost{background:transparent;color:var(--navy);border:1px solid var(--paper-edge)}
+  /* The shared topbar, header, footer, .wrap, .brand, .nav, .btn and skip-link are all
+     styled by assets/ukv.css (via partials.site-header / partials.site-footer) — no page
+     overrides here, so this page's chrome matches every other page exactly. */
 
   .track-hero{padding:56px 0 0}
   .track-grid{max-width:640px;margin:0 auto;text-align:center}
@@ -133,10 +125,6 @@
   .help .links .call{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff}
   .help .links .wa{background:#25D366;color:#0a3d23}
 
-  footer{background:var(--navy);color:#cdd9e1;margin-top:48px;padding:32px 0}
-  footer .brand{color:#fff}
-  footer p{max-width:34ch;font-size:14px}
-
   @media (max-width:620px){
     .now-next{grid-template-columns:1fr}
     .help{flex-direction:column;align-items:flex-start}
@@ -145,11 +133,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="topbar">Independent service — not a government website · <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> · <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
-<header class="site-head"><div class="wrap">
-  <a href="/" class="brand">Beyond <b>Passports</b></a>
-  <nav class="nav" aria-label="Primary"><a href="/#how">How it works</a><a href="/track" aria-current="page">Track</a></nav>
-</div></header>
+@include('partials.site-header')
 
 <main id="main">
 
@@ -289,10 +273,8 @@
 
 </main>
 
-<footer><div class="wrap">
-  <div class="brand">Beyond <b>Passports</b></div>
-  <p>Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
-</div></footer>
+@include('partials.site-footer')
+@include('partials.site-scripts')
 
 </body>
 </html>

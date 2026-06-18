@@ -1,0 +1,50 @@
+{{-- Canonical site topbar + header. Single source of truth — included by
+     layouts.public AND by the standalone pages (track, checklist-result) so the
+     header is identical everywhere. Styling lives in assets/ukv.css; the
+     navMenuDestinations data is supplied by a view composer bound to this partial
+     (see AppServiceProvider). --}}
+<div class="topbar"><div class="wrap tb-row">
+  <span class="tb-note">Independent service — <strong>not a government website</strong></span>
+  <span class="tb-links">
+    <span class="tb-rate">★ 4.9 rated</span>
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
+  </span>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
+  <nav class="nav" id="primary-nav" aria-label="Primary">
+    {{-- Destinations mega-menu: photo cards (top destinations + "from" fee) --}}
+    <details class="mega">
+      <summary class="mlink" role="button" aria-haspopup="true">Destinations <span class="ch" aria-hidden="true">▾</span></summary>
+      <div class="mega-panel"><div class="wrap">
+        <div class="mega-grid">
+          @foreach ($navMenuDestinations ?? [] as $d)
+          <a class="mega-card" href="{{ url('/visa/'.$d->slug) }}">
+            <div class="pic"@if ($d->image_path) style="background-image:url('{{ asset(ltrim($d->image_path, '/')) }}')"@endif></div>
+            <div class="tx"><b>{{ $d->name }} {{ $d->visa_type }}</b>@if ((float) $d->tier_standard_gbp > 0)<span>from £{{ number_format((float) $d->tier_standard_gbp, 0) }}</span>@endif</div>
+          </a>
+          @endforeach
+        </div>
+        <p class="mega-foot"><a class="rlink" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></p>
+      </div></div>
+    </details>
+    {{-- Tools mega-menu: the checkers + finders, with one-line descriptions --}}
+    <details class="mega">
+      <summary class="mlink" role="button" aria-haspopup="true">Tools <span class="ch" aria-hidden="true">▾</span></summary>
+      <div class="mega-panel"><div class="wrap">
+        <div class="mega-list">
+          <a class="mega-item" href="{{ url('/tools') }}"><b>Visa checker</b><span>Tell us your trip — we confirm exactly what you need.</span></a>
+          <a class="mega-item" href="{{ url('/document-checklist') }}"><b>Document checker</b><span>A personalised document checklist for your destination.</span></a>
+          <a class="mega-item" href="{{ url('/driving-abroad') }}"><b>Driving abroad (IDP)</b><span>Check if you need an International Driving Permit.</span></a>
+          <a class="mega-item" href="{{ url('/find-a-centre') }}"><b>Find a centre</b><span>Your nearest IDP / visa centre by postcode.</span></a>
+        </div>
+      </div></div>
+    </details>
+    <a href="{{ url('/guides') }}">Guides</a>
+    <a href="{{ url('/about') }}">About</a>
+    <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:8px 16px">Track</a>
+    <a href="{{ url('/apply') }}" class="btn" style="padding:8px 16px">Start application →</a>
+  </nav>
+</div></header>

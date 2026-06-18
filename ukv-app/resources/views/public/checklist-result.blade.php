@@ -253,24 +253,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="topbar"><div class="wrap tb-row">
-  <span class="tb-note">Independent service — <strong>not a government website</strong></span>
-  <span class="tb-links">
-    <span class="tb-rate">★ 4.9 rated</span>
-    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
-  </span>
-</div></div>
-<header class="site-head"><div class="wrap">
-  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
-  <nav class="nav" aria-label="Primary">
-    <a href="{{ url('/destinations') }}">Destinations</a>
-    <a href="{{ url('/tools') }}">Visa checker</a>
-    <a href="{{ url('/document-checklist') }}" aria-current="page">Checklist</a>
-    <a href="{{ url('/guides') }}">Guides</a>
-    <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:8px 16px">Track</a>
-  </nav>
-</div></header>
+@include('partials.site-header')
 
 @include('partials.svg-symbols')
 
@@ -478,33 +461,8 @@
 
 </main>
 
-<footer style="padding:0">
-  <div class="ft-main"><div class="wrap">
-    <div class="cols" style="grid-template-columns:1fr 1fr 1fr;padding:32px 0 22px">
-      <div>
-        <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
-        <p style="max-width:34ch;font-size:14px;color:#aab0b5">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
-      </div>
-      <div>
-        <strong>Service</strong>
-        <a href="{{ url('/destinations') }}">Destinations</a>
-        <a href="{{ url('/document-checklist') }}">Document checklist</a>
-        <a href="{{ url('/apply') }}">Start an application</a>
-        <a href="{{ url('/track') }}">Track application</a>
-      </div>
-      <div>
-        <strong>Legal</strong>
-        <a href="{{ url('/legal') }}#privacy">Privacy</a>
-        <a href="{{ url('/legal') }}#terms">Terms</a>
-        <a href="{{ url('/legal') }}#disclaimer">Disclaimer</a>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <span>&copy; Beyond Passports. Service fee separate from any government fee. No approval guarantee.</span>
-      <span>UK-based team &middot; &#9733; 4.9 rated</span>
-    </div>
-  </div></div>
-</footer>
+@include('partials.site-footer')
+@include('partials.site-scripts')
 
 <script>
   function copyShareLink(btn){

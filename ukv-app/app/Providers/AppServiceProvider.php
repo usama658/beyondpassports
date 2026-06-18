@@ -40,9 +40,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('slotSummary', app(\App\Services\SlotService::class)->summary());
         });
 
-        // Header mega-menu (shared layout): a small set of destinations with a photo + "from" fee
-        // for the Destinations dropdown panel. On every public page, so kept cheap (≤6 rows).
-        View::composer('layouts.public', function ($view) {
+        // Header mega-menu (shared partial): a small set of destinations with a photo + "from" fee
+        // for the Destinations dropdown panel. Bound to the header partial itself so it populates
+        // everywhere the header renders — the shared layout AND the standalone pages (track,
+        // checklist-result) that include partials.site-header directly. Kept cheap (≤6 rows).
+        View::composer('partials.site-header', function ($view) {
             $view->with('navMenuDestinations', \App\Models\Destination::query()
                 ->orderByRaw('image_path IS NULL') // photographed first
                 ->orderBy('name')

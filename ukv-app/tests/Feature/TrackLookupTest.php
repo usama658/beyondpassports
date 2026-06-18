@@ -64,11 +64,15 @@ final class TrackLookupTest extends TestCase
         $response = $this->post('/track/lookup', ['ref' => $order->order_ref]);
 
         $response->assertStatus(200);
-        // No name / email / destination / fees ever reach the tracker view.
+        // No name / email / fees ever reach the page at all.
         $response->assertDontSee('Wilhelmina', escape: false);
         $response->assertDontSee('Featherstonehaugh', escape: false);
         $response->assertDontSee('wilhelmina.secret@example.com', escape: false);
-        $response->assertDontSee('Secretland', escape: false);
+        // The destination name legitimately appears in the global destinations mega-menu
+        // (public catalog nav), so the leak check is scoped to the tracker output itself:
+        // TrackController must never pass the order's destination into the status view.
+        $main = \Illuminate\Support\Str::between($response->getContent(), '<main', '</main>');
+        $this->assertStringNotContainsString('Secretland', $main);
     }
 
     public function test_unknown_ref_returns_generic_not_found_without_pii_or_500(): void
@@ -81,7 +85,10 @@ final class TrackLookupTest extends TestCase
         $response->assertStatus(200); // generic page, not an error
         $response->assertDontSee('Wilhelmina', escape: false);
         $response->assertDontSee('wilhelmina.secret@example.com', escape: false);
-        $response->assertDontSee('Secretland', escape: false);
+        // Destination names live in the global mega-menu (public catalog); scope the
+        // not-found leak check to the tracker output, which must reveal nothing.
+        $main = \Illuminate\Support\Str::between($response->getContent(), '<main', '</main>');
+        $this->assertStringNotContainsString('Secretland', $main);
         // Generic miss copy is shown.
         $response->assertSee('find an application', escape: false);
     }
