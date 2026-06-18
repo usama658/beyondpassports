@@ -81,25 +81,33 @@
   .lookup .form-error{background:rgba(192,57,43,.18);border:1px solid rgba(243,198,194,.4);color:#ffd9d4;border-radius:8px;padding:11px 13px;font-size:14px;margin:14px 0 0}
   .lookup button{margin-top:16px}
 
-  .status{max-width:760px;margin:32px auto 0}
-  .status-mrz{background:var(--stamp);border-radius:12px 12px 0 0;padding:20px 22px}
-  .status-mrz .lab{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9;margin:0 0 6px}
-  .status-mrz .ref{font-family:var(--display);font-weight:800;font-size:clamp(18px,3.4vw,26px);color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
-  .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 12px 12px;box-shadow:var(--shadow);padding:26px 22px}
+  .status{max-width:640px;margin:32px auto 0}
+  /* Navy status header (pick C) */
+  .status-mrz{position:relative;overflow:hidden;background:var(--navy);border-radius:16px 16px 0 0;padding:24px 26px;color:#fff}
+  .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .status-mrz > *{position:relative;z-index:2}
+  .status-mrz .lab{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 4px}
+  .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
+  .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(199,93,56,.22);border:1px solid rgba(242,194,172,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
+  .status-mrz .pill.is-outcome{background:rgba(92,154,123,.2);border-color:rgba(127,199,163,.5);color:#bfe6d2}
+  .status-mrz .stage-now{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;margin:8px 0 0}
+  .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:26px}
 
-  .timeline{list-style:none;margin:4px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-  .stage{position:relative;text-align:center;padding:8px 6px 0}
-  .stage::before{content:"";position:absolute;top:30px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,var(--paper-edge) 0 6px,transparent 6px 12px);z-index:0}
-  .stage:first-child::before{display:none}
-  .stage.is-done::before,.stage.is-current::before{background:var(--stamp)}
-  .stage .dot{position:relative;z-index:1;width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:var(--hint);font-family:var(--mono);font-weight:700;font-size:16px}
-  .stage.is-done .dot{background:#eaf3f2;border-color:var(--stamp);color:var(--stamp)}
-  .stage.is-current .dot{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.22)}
+  /* Vertical timeline (pick C) */
+  .timeline{list-style:none;margin:4px 0 6px;padding:0;display:block}
+  .stage{position:relative;display:grid;grid-template-columns:30px 1fr;align-items:start;gap:14px;text-align:left;padding:0 0 20px}
+  .stage:last-child{padding-bottom:0}
+  .stage::before{content:"";position:absolute;left:14px;top:32px;bottom:-4px;width:2px;background:var(--paper-edge);z-index:0}
+  .stage:last-child::before{display:none}
+  .stage.is-done::before{background:var(--stamp)}
+  .stage .dot{position:relative;z-index:1;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:var(--hint);font-family:var(--mono);font-weight:700;font-size:13px}
+  .stage.is-done .dot{background:var(--stamp);border-color:var(--stamp);color:#fff}
+  .stage.is-current .dot{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.18)}
   .stage.is-outcome .dot{background:#fdeceb;border-color:#c0392b;color:#8a2a22}
-  .stage .name{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);font-weight:600}
-  .stage.is-current .name{color:var(--navy)}
-  .stage.is-done .name{color:var(--ink)}
-  .stage .when{display:block;font-family:var(--mono);font-size:10px;color:var(--hint);letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
+  .stage .name{display:block;font-size:15px;line-height:1.3;color:var(--muted);font-weight:600;padding-top:4px}
+  .stage.is-current .name{color:var(--navy);font-weight:700}
+  .stage.is-done .name{color:var(--ink);font-weight:700}
+  .stage .when{display:block;font-family:var(--mono);font-size:10.5px;color:var(--hint);letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
 
   .now-next{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 0}
   .nn{border:1px solid var(--paper-edge);border-radius:10px;padding:16px 18px;background:#f7fafb}
@@ -122,11 +130,6 @@
   footer p{max-width:34ch;font-size:14px}
 
   @media (max-width:620px){
-    .timeline{grid-template-columns:1fr;gap:0}
-    .stage{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:14px;text-align:left;padding:10px 0}
-    .stage::before{top:0;left:23px;width:2px;height:50%}
-    .stage:first-child::before{display:none}
-    .stage .dot{margin:0}
     .now-next{grid-template-columns:1fr}
     .help{flex-direction:column;align-items:flex-start}
   }
@@ -190,9 +193,20 @@
     <section><div class="wrap">
       <div class="status" role="region" aria-label="Application status" tabindex="-1">
 
+        @php
+          $ci = $result['current_index'];
+          $currentStage = $result['stages'][$ci]['label'] ?? 'In progress';
+          $isOutcomeHead = (bool) $result['outcome'];
+          $pillText = match ($result['outcome']) {
+              'rejected' => 'Decision received',
+              'refunded' => 'Closed',
+              default    => 'In progress',
+          };
+        @endphp
         <div class="status-mrz">
-          <p class="lab">Order reference</p>
-          <p class="ref">{{ $mrz($result['ref']) }}</p>
+          <p class="lab">Order reference &middot; {{ $result['ref'] }}</p>
+          <span class="pill {{ $isOutcomeHead ? 'is-outcome' : '' }}">{{ $pillText }}</span>
+          <p class="stage-now">{{ $currentStage }}</p>
         </div>
 
         <div class="status-card">
