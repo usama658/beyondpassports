@@ -223,9 +223,17 @@
   .share .note{font-size:13px;color:var(--muted);margin:12px 0 0;line-height:1.5}
   .share .action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 
-  /* compliance */
-  .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
-  .compliance strong{color:var(--ink)}
+  /* compliance — shield badge + text card (matches Guides page) */
+  .compliance{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin:0 auto;max-width:760px;
+    background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 24px;
+    box-shadow:0 12px 32px -28px rgba(40,50,70,.5)}
+  .compliance .gc-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    background:var(--navy);color:#fff;border-radius:13px;width:104px;height:104px;flex:0 0 104px;text-align:center;padding:10px}
+  .compliance .gc-badge svg{width:26px;height:26px;color:var(--soft)}
+  .compliance .gc-badge span{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;line-height:1.2}
+  .compliance p{margin:0;font-size:13px;line-height:1.65;color:#3a4b55}
+  .compliance strong{color:var(--navy)}
+  @media (max-width:560px){.compliance{grid-template-columns:1fr;justify-items:start}}
 
   /* section spacing */
   .cr-section{padding:20px 0}
@@ -436,13 +444,19 @@
     </div>
   </div></section>
 
-  {{-- ── COMPLIANCE STRIP ── --}}
+  {{-- ── COMPLIANCE STRIP — shield badge + text (pick A) ── --}}
   <section style="padding:16px 0 40px"><div class="wrap">
-    <p class="compliance">
-      <strong>Beyond Passports is an independent service and is not a government website.</strong>
-      This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
-      Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
-    </p>
+    <div class="compliance reveal">
+      <span class="gc-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>NOT A GOVT SITE</span>
+      </span>
+      <p>
+        <strong>Beyond Passports is an independent service and is not a government website.</strong>
+        This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
+        Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
+      </p>
+    </div>
   </div></section>
 
 </main>
