@@ -7,10 +7,18 @@
 @push('head')
 <style>
   /* reviews — page-local layout only. Design system lives in assets/ukv.css */
-  .hero{padding:64px 0 40px}
-  .hero h1{font-size:clamp(34px,5vw,56px);color:var(--navy);letter-spacing:-.015em;max-width:20ch}
-  .hero p.lede{font-size:19px;max-width:48ch;color:#33454f;margin-top:14px}
-  .hero .micro{font-family:var(--mono);font-size:12px;color:var(--stamp);margin-top:18px}
+
+  /* HERO — honest-promise split (pick C) */
+  .rv-hero{background:var(--white);padding:56px 0;border-bottom:1px solid var(--paper-edge)}
+  .rv-hero .eyebrow{color:var(--cta)}
+  .rv-hero h1{font-size:clamp(30px,4.2vw,48px);font-weight:800;letter-spacing:-.03em;color:var(--navy);line-height:1.05;margin:0;max-width:20ch}
+  .rv-hero h1 em{font-style:normal;color:var(--cta)}
+  .rv-hero .lede{font-size:17px;line-height:1.6;color:#46505a;max-width:54ch;margin:16px 0 0}
+  .rv-promise{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}
+  .rv-promise .p{display:inline-flex;align-items:center;gap:8px;background:#eef6f1;border:1px solid #cfe6db;border-radius:999px;padding:8px 15px;font-size:13px;font-weight:700;color:var(--stamp-text)}
+  .rv-promise .p svg{width:15px;height:15px;flex:0 0 15px;fill:none;stroke:var(--stamp);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .rv-hero .micro{font-family:var(--mono);font-size:12px;color:var(--muted);margin:18px 0 0;letter-spacing:.01em}
+
   .callout{max-width:70ch}
   .callout p{font-size:16px;line-height:1.6;color:#33454f;margin:0}
 </style>
@@ -22,13 +30,18 @@
 
 @section('content')
 
-{{-- HERO --}}
-<section class="mesh-hero mesh-hero--sm"><div class="wrap"><div class="mh-grid"><div class="mh-copy">
+{{-- HERO — honest-promise split (pick C) --}}
+<section class="rv-hero"><div class="wrap">
   <p class="eyebrow">Traveller reviews</p>
-  <h1>What UK travellers say about us.</h1>
-  <p class="lede">Real words from travellers we have helped — shared with their consent and anonymised for privacy. We never promise an approval; what we promise is careful checking and a UK team you can actually talk to.</p>
+  <h1>We won't promise an approval. <em>Here's what we do promise.</em></h1>
+  <p class="lede">Every decision is the authorities' to make. What our travellers keep telling us is simpler: we check carefully, we explain plainly, and a real UK team picks up.</p>
+  <div class="rv-promise">
+    <span class="p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Every document checked</span>
+    <span class="p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Plain-English answers</span>
+    <span class="p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A UK team you can reach</span>
+  </div>
   <p class="micro">Consented &amp; anonymised · independent service · not a government website</p>
-</div></div></div></section>
+</div></section>
 
 {{-- ALL TESTIMONIALS (shared partial, full list) --}}
 @include('partials.testimonials', [
