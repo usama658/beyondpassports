@@ -55,13 +55,13 @@
 @if ($next !== null)
     <div class="ukv-slots" role="status" aria-label="Appointment availability">
         <style>
-            /* centre-slots partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta). */
-            .ukv-slots{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:10px 0 0;padding:7px 12px;background:#f3f8f4;border:1px solid #d6e6da;border-left:3px solid #155E7A;border-radius:8px;line-height:1.45}
+            /* centre-slots partial — self-contained palette (ink/petrol/teal, self-hosted Outfit). */
+            .ukv-slots{font-family:"Outfit",system-ui,sans-serif;display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:10px 0 0;padding:7px 12px;background:#f3f8f4;border:1px solid #d6e6da;border-left:3px solid #155E7A;border-radius:8px;line-height:1.45}
             .ukv-slots .us-tick{color:#1F6E63;font-weight:700;margin-right:1px}
             .ukv-slots .us-label{font-size:13.5px;font-weight:600;color:#16222E}
             .ukv-slots .us-next{font-size:13.5px;color:#16222E}
             .ukv-slots .us-next strong{color:#16222E;font-weight:600;white-space:nowrap}
-            .ukv-slots .us-more{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11px;letter-spacing:.04em;color:#9c4a26;background:#faecdf;border-radius:999px;padding:1px 8px}
+            .ukv-slots .us-more{font-family:"Outfit",system-ui,sans-serif;font-size:11px;letter-spacing:.04em;color:#9c4a26;background:#faecdf;border-radius:999px;padding:1px 8px}
         </style>
         <span class="us-label"><span class="us-tick" aria-hidden="true">✓</span>Appointments available</span>
         <span class="us-next">— next: <strong>{{ $next->slot_at->format('j M, g:ia') }}</strong></span>

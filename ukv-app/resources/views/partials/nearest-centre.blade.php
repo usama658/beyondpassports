@@ -49,10 +49,10 @@
 
 <div class="nearest-centre" role="region" aria-label="{{ $heading }}">
   <style>
-    /* nearest-centre partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta).
+    /* nearest-centre partial — self-contained palette (ink/petrol/teal, self-hosted Outfit).
        Scoped to .nearest-centre so it is safe on any surface. Literal colours, not vars. */
-    .nearest-centre{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#16222E}
-    .nearest-centre .nc-head{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#1F6E63;margin:0 0 6px}
+    .nearest-centre{font-family:"Outfit",system-ui,sans-serif;color:#16222E}
+    .nearest-centre .nc-head{font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#1F6E63;margin:0 0 6px}
     .nearest-centre .nc-title{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;color:#16222E;margin:0 0 18px;line-height:1.12}
     /* empty state — centred soft-sky card with a pin (premium) */
     .nearest-centre .nc-empty{text-align:center;background:linear-gradient(180deg,#EAF1F4,#fff);border:1px solid #dde3ec;border-radius:18px;padding:34px 26px;box-shadow:0 14px 36px -22px rgba(40,50,70,.32)}
@@ -68,15 +68,15 @@
     .nearest-centre .nc-info{padding:20px 22px;min-width:0}
     .nearest-centre .nc-rail{background:#F4F6FA;border-left:1px solid #dde3ec;padding:18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;min-width:158px}
     .nearest-centre .nc-card.is-booked .nc-rail{background:linear-gradient(180deg,#fbeee6,#fff);border-left-color:#eccab4}
-    .nearest-centre .nc-km{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:19px;font-weight:800;color:#16222E;line-height:1.1}
+    .nearest-centre .nc-km{font-family:"Outfit",system-ui,sans-serif;font-size:19px;font-weight:800;color:#16222E;line-height:1.1}
     .nearest-centre .nc-km small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#697079;margin-top:3px}
-    .nearest-centre .nc-railbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;border-radius:10px;padding:10px 14px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:13px;text-decoration:none}
+    .nearest-centre .nc-railbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;border-radius:10px;padding:10px 14px;font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:13px;text-decoration:none}
     .nearest-centre .nc-railbtn.is-pri{background:#155E7A;color:#fff}
     .nearest-centre .nc-railbtn.is-ghost{background:#fff;border:1px solid #dde3ec;color:#16222E}
     .nearest-centre .nc-card-top{margin:0 0 10px}
     .nearest-centre .nc-name{font-size:17px;font-weight:700;color:#16222E;margin:0 0 10px;line-height:1.3}
     .nearest-centre .nc-badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
-    .nearest-centre .nc-badge{display:inline-flex;align-items:center;gap:5px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:#eef3f7;color:#16222E;border:1px solid #dde3ec}
+    .nearest-centre .nc-badge{display:inline-flex;align-items:center;gap:5px;font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:#eef3f7;color:#16222E;border:1px solid #dde3ec}
     .nearest-centre .nc-badge.is-type{background:#E2F1EE;color:#1F6E63;border-color:#cfe6e3}
     .nearest-centre .nc-badge.is-book{background:#faecdf;color:#9c4a26;border-color:#eccab4}
     .nearest-centre .nc-addr{display:flex;gap:7px;align-items:flex-start;font-size:14px;color:#697079;margin:0;line-height:1.5}

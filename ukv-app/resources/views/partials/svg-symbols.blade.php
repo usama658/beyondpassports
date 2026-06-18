@@ -32,7 +32,7 @@
   {{-- avatar monogram (testimonial) --}}
   <symbol id="ukv-monogram" viewBox="0 0 44 44">
     <rect width="44" height="44" fill="#16222E"/>
-    <text x="22" y="29" text-anchor="middle" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700" font-size="16" fill="#155E7A">UK</text>
+    <text x="22" y="29" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="16" fill="#155E7A">UK</text>
   </symbol>
 
   {{-- skylines (silhouettes on a navy band; viewBox 240x96, baseline y=96) --}}

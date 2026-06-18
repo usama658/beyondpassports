@@ -1,7 +1,7 @@
 {{--
     Order confirmation — renders the plain order reference (UKV-YYYY-NNNNNN) plus the
-    lane-specific next steps. Self-contained warm-light styling (terracotta/sage, Plus
-    Jakarta Sans) mirroring assets/ukv.css.
+    lane-specific next steps. Self-contained styling (Petrol/Teal, self-hosted Outfit)
+    mirroring assets/ukv.css.
 
     Expected variables:
       $order  App\Models\Order
@@ -23,10 +23,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Application received — {{ $order->order_ref }} | Beyond Passports</title>
     <meta name="robots" content="noindex,nofollow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
+        @font-face{font-family:'Outfit';src:url('/fonts/outfit-700.woff2') format('woff2');font-weight:700;font-display:swap}
         /* ── Confirmation page — self-contained premium warm-light design ──────────── */
         :root {
             --ink: #16222E; --navy: #16222E; --gold: #155E7A; --cta: #155E7A;
@@ -35,8 +34,8 @@
             --soft: #A9CCDA;
             --shadow: 0 18px 44px -26px rgba(40,50,70,.30);
             --lift-2: 0 26px 56px -28px rgba(40,50,70,.40);
-            --display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-            --body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+            --display: "Outfit", system-ui, sans-serif;
+            --body: "Outfit", system-ui, sans-serif;
         }
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }

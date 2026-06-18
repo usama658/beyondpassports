@@ -29,9 +29,6 @@
 <title>Track your application — UK visa &amp; eVisa status | Beyond Passports</title>
 <meta name="description" content="Track your Beyond Passports application with your order reference. See each stage from received to delivered. Independent service — not a government website.">
 <meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {{-- Canonical design system: gives this standalone page the shared header/footer styling. --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
 <style>
@@ -42,9 +39,9 @@
     --stamp-text:#1F6E63;
     --cta:#155E7A; --paper-edge:#dde3ec; --white:#fff; --muted:#697079; --hint:#697079;
     --shadow:0 18px 44px -26px rgba(40,50,70,.30);
-    --display:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
-    --body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
-    --mono:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --display:"Outfit",system-ui,sans-serif;
+    --body:"Outfit",system-ui,sans-serif;
+    --mono:"Outfit",ui-monospace,monospace;
   }
   *{box-sizing:border-box}
   a{color:var(--cta)}

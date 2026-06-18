@@ -24,9 +24,9 @@
               background:#ffffff;padding:{{ $compact ? '20px 22px' : '24px 26px' }};
               margin:{{ $compact ? '1.6em 0' : '28px 0 0' }};
               box-shadow:0 8px 30px rgba(40,50,70,.08);
-              font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+              font-family:"Outfit",system-ui,sans-serif;
               color:#16222E;line-height:1.6">
-    <p style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;
+    <p style="font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;
               text-transform:uppercase;color:#9c4a26;margin:0 0 8px">Optional · before you travel</p>
     <h2 style="font-size:19px;font-weight:600;color:#16222E;margin:0 0 8px;line-height:1.3">
         Travelling soon? Consider travel insurance

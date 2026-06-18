@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Page not found (404) — Beyond Passports</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Outfit';src:url('/fonts/outfit-700.woff2') format('woff2');font-weight:700;font-display:swap}
   :root{
     --navy:#16222E; --paper:#FBF6F1; --edge:#e7ddd1; --cta:#155E7A; --ink:#16222E;
     --muted:#6c7075; --sage:#1F6E63; --soft:#A9CCDA;
-    --j:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --j:"Outfit",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -97,13 +96,13 @@
         <defs><path id="arc-top" d="M100,100 m-74,0 a74,74 0 1,1 148,0" /><path id="arc-bot" d="M100,100 m74,0 a74,74 0 1,1 -148,0" /></defs>
         <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="3"/>
         <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <text font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="17" letter-spacing="6" fill="currentColor">
+        <text font-family="Outfit, sans-serif" font-weight="800" font-size="17" letter-spacing="6" fill="currentColor">
           <textPath href="#arc-top" startOffset="50%" text-anchor="middle">NO ENTRY</textPath>
         </text>
-        <text font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="12" letter-spacing="4" fill="currentColor">
+        <text font-family="Outfit, sans-serif" font-weight="700" font-size="12" letter-spacing="4" fill="currentColor">
           <textPath href="#arc-bot" startOffset="50%" text-anchor="middle">BEYOND PASSPORTS</textPath>
         </text>
-        <text x="100" y="116" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="currentColor">404</text>
+        <text x="100" y="116" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="currentColor">404</text>
         <text x="42" y="106" text-anchor="middle" font-size="16" fill="currentColor">✦</text>
         <text x="158" y="106" text-anchor="middle" font-size="16" fill="currentColor">✦</text>
       </svg>

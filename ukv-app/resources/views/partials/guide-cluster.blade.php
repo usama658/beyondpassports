@@ -43,12 +43,12 @@
     .guide-cluster .gc-hero{grid-column:span 2;grid-row:span 2;border:0;color:#fff;
       background:radial-gradient(460px 240px at 14% 0,rgba(21,94,122,.55),transparent 60%),
                  radial-gradient(420px 220px at 96% 100%,rgba(46,154,140,.45),transparent 60%),#16222E}
-    .guide-cluster .gc-cat{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2E9A8C}
+    .guide-cluster .gc-cat{font-family:"Outfit",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2E9A8C}
     .guide-cluster .gc-hero .gc-cat{color:#A9CCDA}
-    .guide-cluster .gc-tile h3{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.2;letter-spacing:-.01em;color:#16222E;margin:8px 0 0}
+    .guide-cluster .gc-tile h3{font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.2;letter-spacing:-.01em;color:#16222E;margin:8px 0 0}
     .guide-cluster .gc-hero h3{color:#fff;font-size:clamp(22px,2.4vw,27px);margin:10px 0 8px}
     .guide-cluster .gc-hero .gc-excerpt{color:rgba(255,255,255,.85);font-size:14.5px;line-height:1.5;margin:0 0 12px;max-width:46ch}
-    .guide-cluster .gc-meta{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;color:#697079;margin-top:10px}
+    .guide-cluster .gc-meta{font-family:"Outfit",system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;color:#697079;margin-top:10px}
     .guide-cluster .gc-hero .gc-meta{color:rgba(255,255,255,.72)}
     @media (max-width:820px){.guide-cluster .gc-bento{grid-template-columns:1fr 1fr}.guide-cluster .gc-hero{grid-row:auto}}
     @media (max-width:520px){.guide-cluster .gc-bento{grid-template-columns:1fr}.guide-cluster .gc-hero{grid-column:span 1}}
