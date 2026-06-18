@@ -280,7 +280,7 @@
   @if (config('ukv.checklist.sticky_action_bar', true))
   <style>
     /* Sticky action bar — navy command bar (pick A), ties to the boarding-pass hero. */
-    .cr-actionbar{position:sticky;top:0;z-index:50;padding:12px 0 4px}
+    .cr-actionbar{position:sticky;top:64px;z-index:40;padding:12px 0 4px}
     .cr-actionbar .wrap{
       display:flex;gap:8px;align-items:center;flex-wrap:wrap;
       background:var(--navy,#22282b);
