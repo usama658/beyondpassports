@@ -436,6 +436,41 @@
     margin-top: 4px;
   }
 
+  /* ---- TWO-COLUMN SHELL — article + sticky merged sidebar (pick B) ------ */
+  .gs-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start;padding:48px 0 8px}
+  .gs-shell .gs-body{max-width:none;margin:0}
+  .gs-rail{position:sticky;top:20px}
+  .gs-rail-panel{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);overflow:hidden;box-shadow:0 16px 40px -34px rgba(40,50,70,.5)}
+  /* navy checker header */
+  .gs-rail-cta{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:22px 22px}
+  .gs-rail-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.3),transparent 62%)}
+  .gs-rail-cta>*{position:relative;z-index:2}
+  .gs-rail-cta .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
+  .gs-rail-cta h3{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.01em;color:#fff;margin:0 0 8px}
+  .gs-rail-cta p{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.8);margin:0 0 14px}
+  .gs-rail-cta .rb{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;font-family:var(--body);font-weight:700;font-size:14px;border-radius:11px;padding:12px;text-decoration:none}
+  .gs-rail-cta .rb-primary{background:var(--cta);color:#fff}
+  .gs-rail-cta .rb-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;margin-top:8px}
+  .gs-rail-cta .rb svg{width:16px;height:16px;flex:0 0 16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  /* rail sections */
+  .gs-rail-sec{padding:18px 22px;border-top:1px solid var(--paper-edge)}
+  .gs-rail-sec .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 4px}
+  .gs-rail-sec ul{list-style:none;margin:0;padding:0}
+  .gs-rail-sec li a{display:block;padding:11px 0;border-top:1px solid var(--paper-edge);text-decoration:none}
+  .gs-rail-sec li:first-child a{border-top:0}
+  .gs-rail-sec li a b{display:block;font-size:14px;font-weight:700;color:var(--navy);line-height:1.3}
+  .gs-rail-sec li a .gs-rail-lab{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .gs-rail-sec li a:hover b{color:var(--cta)}
+  .gs-rail-comp .cbadge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
+  .gs-rail-comp .cbadge svg{width:13px;height:13px;flex:0 0 13px;fill:none;stroke:var(--sage);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .gs-rail-comp p{font-size:11.5px;line-height:1.55;color:var(--muted);margin:0 0 8px}
+  .gs-rail-comp p:last-child{margin-bottom:0}
+  .gs-rail-comp strong{color:var(--navy)}
+
+  @media (max-width: 980px){
+    .gs-shell{grid-template-columns:1fr;gap:32px;padding-top:36px}
+    .gs-rail{position:static}
+  }
   @media (max-width: 860px) {
     .gs-head { padding: 40px 0 48px }
     .gs-body p, .gs-body li { font-size: 17px }
@@ -500,106 +535,92 @@
   </div>
 </header>
 
-{{-- ARTICLE BODY --}}
-<div class="gs-body" itemprop="articleBody">
+{{-- ARTICLE BODY + STICKY SIDEBAR (pick B) --}}
+<div class="wrap gs-shell">
 
-  {{-- QUICK ANSWER --}}
-  @if ($guide->quick_answer)
-    <div class="gs-callout">
-      <div class="gs-callout-head">
-        <span class="i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
-        <p class="gs-callout-label">Quick answer</p>
-      </div>
-      <p>{!! $guide->quick_answer !!}</p>
-    </div>
-  @endif
+  <div class="gs-main">
+    <div class="gs-body" itemprop="articleBody">
 
-  {{-- BODY (trusted, reviewer-approved HTML from the model) --}}
-  {!! $guide->body !!}
-
-  {{-- E-E-A-T BYLINE --}}
-  @if ($reviewedAt && $guide->reviewed_by)
-    <div class="gs-byline">
-      <div class="gs-byline-icon" aria-hidden="true">✓</div>
-      <p class="gs-byline-text">
-        Reviewed <strong>{{ $reviewedAt->isoFormat('D MMMM YYYY') }}</strong>
-        by <strong>{{ $guide->reviewed_by }}</strong> — facts checked against the official source.
-      </p>
-    </div>
-  @endif
-
-</div>{{-- /.gs-body --}}
-
-{{-- LIVE DOCUMENT CHECKLIST — documents type only, never stale (RequirementService::preview) --}}
-@if ($type === GuideType::Documents && $destination)
-  @php
-    $docItems = app(RequirementService::class)->preview($destination);
-  @endphp
-  @if (! empty($docItems))
-    <div class="gs-checklist reveal">
-      @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
-    </div>
-  @endif
-@endif
-
-{{-- MANDATORY COMPLIANCE DISCLAIMER --}}
-<div class="wrap">
-  <div class="gs-disclaimer">
-    <p><strong>Beyond Passports is an independent service and is not a government website</strong> or affiliated with any government or official body.</p>
-    <p>This guide is general information only — exact requirements depend on your nationality, residence and trip, so always confirm the current rules at the official source before you travel.</p>
-    <p>Our service fee is <strong>separate from any government fee</strong>, which is shown clearly before you pay. We prepare and check your application for that fee.</p>
-    <p><strong>No service can guarantee a government decision.</strong> The outcome of any application is decided solely by the relevant authorities.</p>
-  </div>
-</div>
-
-{{-- INLINE CTA (DOWN: free checker → apply) --}}
-<div class="wrap">
-  <div class="gs-cta-inline reveal">
-    <h2>Not sure what your trip needs?</h2>
-    <p>Answer a few quick questions and our free checker shows whether your trip needs an ETA, a visa, or nothing at all.</p>
-    <div class="row">
-      <a href="{{ $checklistUrl }}" class="btn">Use our free checker →</a>
-      <a href="{{ $applyUrl }}" class="btn btn--ghost">Ready? Start your application</a>
-    </div>
-  </div>
-</div>
-
-{{-- HUB-AND-SPOKE LINKS --}}
-<div class="wrap">
-  <div class="gs-spokes">
-    <div class="sec-head gs-spokes-head reveal">
-      <p class="eyebrow">Keep reading</p>
-      <h2 style="font-size:clamp(22px,2.8vw,28px)">Related guides</h2>
-    </div>
-    <ul>
-      {{-- ACROSS: sibling cluster --}}
-      @foreach ($siblings as $sib)
-        <li>
-          <a href="{{ url('/visa/'.$destination->slug.'/'.($sib->guide_type instanceof GuideType ? $sib->guide_type->topicSlug() : GuideType::from($sib->guide_type)->topicSlug())) }}">{{ $sib->title }}</a>
-          <span class="gs-spokes-label">{{ $destination->name }} · {{ $sib->guide_type instanceof GuideType ? $sib->guide_type->label() : 'Guide' }}</span>
-        </li>
-      @endforeach
-
-      {{-- UP: country money-page hub --}}
-      @if ($moneyUrl)
-        <li>
-          <a href="{{ $moneyUrl }}">{{ $destination->name }} visa — prepared &amp; checked</a>
-          <span class="gs-spokes-label">Up to the {{ $destination->name }} hub</span>
-        </li>
+      {{-- QUICK ANSWER --}}
+      @if ($guide->quick_answer)
+        <div class="gs-callout">
+          <div class="gs-callout-head">
+            <span class="i" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+            <p class="gs-callout-label">Quick answer</p>
+          </div>
+          <p>{!! $guide->quick_answer !!}</p>
+        </div>
       @endif
 
-      {{-- DOWN: tools + all guides --}}
-      <li>
-        <a href="{{ $checklistUrl }}">Check what your trip needs</a>
-        <span class="gs-spokes-label">Free document &amp; visa checker</span>
-      </li>
-      <li>
-        <a href="{{ url('/guides') }}">All travel guides</a>
-        <span class="gs-spokes-label">Index</span>
-      </li>
-    </ul>
-  </div>
-</div>
+      {{-- BODY (trusted, reviewer-approved HTML from the model) --}}
+      {!! $guide->body !!}
+
+      {{-- E-E-A-T BYLINE --}}
+      @if ($reviewedAt && $guide->reviewed_by)
+        <div class="gs-byline">
+          <div class="gs-byline-icon" aria-hidden="true">✓</div>
+          <p class="gs-byline-text">
+            Reviewed <strong>{{ $reviewedAt->isoFormat('D MMMM YYYY') }}</strong>
+            by <strong>{{ $guide->reviewed_by }}</strong> — facts checked against the official source.
+          </p>
+        </div>
+      @endif
+
+    </div>{{-- /.gs-body --}}
+
+    {{-- LIVE DOCUMENT CHECKLIST — documents type only, never stale (RequirementService::preview) --}}
+    @if ($type === GuideType::Documents && $destination)
+      @php
+        $docItems = app(RequirementService::class)->preview($destination);
+      @endphp
+      @if (! empty($docItems))
+        <div class="gs-checklist reveal">
+          @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => false])
+        </div>
+      @endif
+    @endif
+  </div>{{-- /.gs-main --}}
+
+  {{-- STICKY MERGED SIDEBAR --}}
+  <aside class="gs-rail" aria-label="More from Beyond Passports">
+    <div class="gs-rail-panel reveal">
+
+      {{-- Checker CTA --}}
+      <div class="gs-rail-cta">
+        <p class="k">Not sure?</p>
+        <h3>What does your trip need?</h3>
+        <p>Answer a few quick questions — our free checker shows whether you need an ETA, a visa, or nothing at all.</p>
+        <a href="{{ $checklistUrl }}" class="rb rb-primary">Use the free checker <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="{{ $applyUrl }}" class="rb rb-ghost">Start an application</a>
+      </div>
+
+      {{-- Related guides --}}
+      <div class="gs-rail-sec">
+        <p class="k">Keep reading</p>
+        <ul>
+          @foreach ($siblings as $sib)
+            <li><a href="{{ url('/visa/'.$destination->slug.'/'.($sib->guide_type instanceof GuideType ? $sib->guide_type->topicSlug() : GuideType::from($sib->guide_type)->topicSlug())) }}"><b>{{ $sib->title }}</b><span class="gs-rail-lab">{{ $destination->name }} · {{ $sib->guide_type instanceof GuideType ? $sib->guide_type->label() : 'Guide' }}</span></a></li>
+          @endforeach
+          @if ($moneyUrl)
+            <li><a href="{{ $moneyUrl }}"><b>{{ $destination->name }} visa — prepared &amp; checked</b><span class="gs-rail-lab">Up to the {{ $destination->name }} hub</span></a></li>
+          @endif
+          <li><a href="{{ $checklistUrl }}"><b>Check what your trip needs</b><span class="gs-rail-lab">Free document &amp; visa checker</span></a></li>
+          <li><a href="{{ url('/guides') }}"><b>All travel guides</b><span class="gs-rail-lab">Index</span></a></li>
+        </ul>
+      </div>
+
+      {{-- Compliance --}}
+      <div class="gs-rail-sec gs-rail-comp">
+        <p class="cbadge"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>Not a govt site</p>
+        <p><strong>Beyond Passports is an independent service and is not a government website</strong> or affiliated with any official body.</p>
+        <p>General information only — exact requirements depend on your nationality, residence and trip, so confirm the current rules at the official source.</p>
+        <p>Our service fee is <strong>separate from any government fee</strong>. <strong>No service can guarantee a government decision</strong> — the outcome is decided solely by the relevant authorities.</p>
+      </div>
+
+    </div>
+  </aside>
+
+</div>{{-- /.gs-shell --}}
 
 </article>
 
