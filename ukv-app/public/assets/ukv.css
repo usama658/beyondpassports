@@ -31,7 +31,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-/* Headings — tight, punchy display type (matches the home-hero preview): Plus Jakarta 800,
+/* Headings — tight, punchy display type (matches the home-hero preview): Outfit 700,
    tighter tracking + leading site-wide. */
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;margin:0 0 .4em;letter-spacing:-.03em}
 h2,h3{font-weight:700;line-height:1.08;letter-spacing:-.02em}
@@ -383,8 +383,9 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .stamp{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;
   border:2.5px solid var(--stamp);color:var(--stamp-text);transform:rotate(-12deg);
   font-family:var(--body);font-size:9px;font-weight:700;letter-spacing:.04em;text-align:center;line-height:1.1}
-/* MRZ micro-label — refs, dates (machine-readable flavour). */
-.mrz{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#8a97a1;
+/* MRZ micro-label — refs, dates (machine-readable flavour). NB: `.mrz` is already a
+   visually-hidden-label utility elsewhere, so the signature label uses `.doc-mrz`. */
+.doc-mrz{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#6b7783;
   font-variant-numeric:tabular-nums;text-transform:uppercase}
 /* Tabular numerals for prices/fees so columns don't jitter. */
 .tnum{font-variant-numeric:tabular-nums}
