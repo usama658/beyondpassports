@@ -139,23 +139,26 @@
     color:var(--stamp-text);
     margin:8px 0 10px;
   }
-  .deliver .channels{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 16px}
+  .deliver .channels{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
   .deliver .chan{
     display:flex;
-    gap:9px;
-    align-items:flex-start;
-    font-size:14px;
-    color:#33454f;
-    font-weight:500;
-    background:var(--paper);
+    gap:11px;
+    align-items:center;
+    background:var(--white);
     border:1px solid var(--paper-edge);
-    border-radius:10px;
-    padding:10px 14px;
+    border-radius:12px;
+    padding:13px 14px;
     cursor:pointer;
     transition:border-color .15s,box-shadow .15s;
   }
+  .deliver .chan .t{width:34px;height:34px;border-radius:9px;background:#faecdf;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+  .deliver .chan .t svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .deliver .chan .tx{flex:1;min-width:0}
+  .deliver .chan .tx b{display:block;font-size:14px;font-weight:700;color:var(--navy);line-height:1.25}
+  .deliver .chan .tx span{font-size:11.5px;color:var(--muted)}
+  .deliver .chan input{width:20px;height:20px;flex:0 0 20px;margin:0;accent-color:var(--cta)}
   .deliver .chan:has(input:checked){border-color:var(--cta);box-shadow:0 0 0 2px rgba(199,93,56,.15);background:#fff}
-  .deliver .chan input{width:18px;height:18px;flex:0 0 18px;margin-top:1px;accent-color:var(--cta)}
+  @media (max-width:560px){.deliver .channels{grid-template-columns:1fr}}
 
   .deliver .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px;padding:14px 16px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px}
   .deliver .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px;accent-color:var(--cta)}
@@ -373,10 +376,26 @@
 
         <p class="ch-label">How should we send it?</p>
         <div class="channels">
-          <label class="chan"><input type="checkbox" name="channels[]" value="email" @checked(! old('channels') || in_array('email', (array) old('channels'), true))> Email</label>
-          <label class="chan"><input type="checkbox" name="channels[]" value="whatsapp" @checked(in_array('whatsapp', (array) old('channels'), true))> WhatsApp</label>
-          <label class="chan"><input type="checkbox" name="channels[]" value="pdf" @checked(in_array('pdf', (array) old('channels'), true))> Attach a PDF</label>
-          <label class="chan"><input type="checkbox" name="channels[]" value="calendar" @checked(in_array('calendar', (array) old('channels'), true))> Calendar reminder (.ics)</label>
+          <label class="chan">
+            <span class="t"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="tx"><b>Email</b><span>To your inbox</span></span>
+            <input type="checkbox" name="channels[]" value="email" @checked(! old('channels') || in_array('email', (array) old('channels'), true))>
+          </label>
+          <label class="chan">
+            <span class="t"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+            <span class="tx"><b>WhatsApp</b><span>If you add a number</span></span>
+            <input type="checkbox" name="channels[]" value="whatsapp" @checked(in_array('whatsapp', (array) old('channels'), true))>
+          </label>
+          <label class="chan">
+            <span class="t"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+            <span class="tx"><b>Attach a PDF</b><span>Printable copy</span></span>
+            <input type="checkbox" name="channels[]" value="pdf" @checked(in_array('pdf', (array) old('channels'), true))>
+          </label>
+          <label class="chan">
+            <span class="t"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <span class="tx"><b>Calendar reminder</b><span>.ics, start in time</span></span>
+            <input type="checkbox" name="channels[]" value="calendar" @checked(in_array('calendar', (array) old('channels'), true))>
+          </label>
         </div>
 
         <div class="consent">
