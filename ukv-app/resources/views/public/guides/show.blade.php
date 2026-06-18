@@ -313,10 +313,11 @@
     margin: 0;
   }
   .gs-callout p {
-    font-size: 16px;
-    line-height: 1.65;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
     margin: 0;
-    color: rgba(255,255,255,.86);
+    color: rgba(255,255,255,.9);
   }
 
   /* ---- E-E-A-T BYLINE ---------------------------------------------- */
