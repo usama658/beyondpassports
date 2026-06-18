@@ -52,6 +52,9 @@
     padding-top:20px;
   }
   .ukv-form .legend:first-of-type{border-top:0;padding-top:0;margin-top:8px}
+  /* step heading (replaces the small legend inside the wizard steps) */
+  .dct-shead{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin:0 0 4px}
+  .dct-ssub{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0 0 20px;max-width:54ch}
 
   /* server-side validation summary (no-JS fallback) */
   .server-errors{
@@ -203,7 +206,8 @@
             <div class="dct-prog" aria-hidden="true"><i></i></div>
 
             <div class="dct-step active" data-step="1">
-            <p class="legend">Your trip</p>
+            <p class="dct-shead">Tell us about your trip</p>
+            <p class="dct-ssub">Where you're going and roughly when — so we can flag timing and passport rules.</p>
             <div class="grid2">
               <div class="field">
                 <label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
@@ -246,7 +250,8 @@
             </div>{{-- /step 1 --}}
 
             <div class="dct-step" data-step="2">
-            <p class="legend">Your situation</p>
+            <p class="dct-shead">A few more details</p>
+            <p class="dct-ssub">Your situation helps us tailor the list — every field here is optional.</p>
             <div class="grid2">
               <div class="field">
                 <label for="residency_status">Residency status</label>
