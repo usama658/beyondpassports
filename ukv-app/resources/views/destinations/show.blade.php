@@ -119,14 +119,15 @@
   .dmoney-hero .eyebrow{color:var(--soft)}
   .dmoney-hero h1{color:#fff;font:700 clamp(32px,4.6vw,52px)/1.04 var(--display);letter-spacing:-.02em;max-width:none;margin:0 0 14px}
   .dmoney-hero .lede{color:#dfe3e6;font-size:18px;line-height:1.5;max-width:62ch;margin:0 0 20px}
-  .dmoney-facts{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
-  .dmoney-facts>div{padding:18px 20px;border-left:1px solid rgba(255,255,255,.12)}
-  .dmoney-facts>div:first-child{border-left:0}
+  .dmoney-facts{background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+  .dmoney-facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .dmoney-facts .wrap>div{padding:18px 22px;border-left:1px solid rgba(255,255,255,.12)}
+  .dmoney-facts .wrap>div:first-child{border-left:0;padding-left:0}
   .dmoney-facts .k{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 5px}
   .dmoney-facts .v{font:700 17px var(--display);line-height:1.25}
   .dmoney-facts .v small{display:block;font:400 11px var(--mono);color:#aab0b5;margin-top:3px}
-  @media (max-width:820px){.dmoney-facts{grid-template-columns:1fr 1fr}.dmoney-facts>div:nth-child(odd){border-left:0}}
-  @media (max-width:520px){.dmoney-facts{grid-template-columns:1fr}.dmoney-facts>div{border-left:0;border-top:1px solid rgba(255,255,255,.12)}}
+  @media (max-width:820px){.dmoney-facts .wrap{grid-template-columns:1fr 1fr}.dmoney-facts .wrap>div:nth-child(odd){border-left:0;padding-left:0}.dmoney-facts .wrap>div:nth-child(even){padding-right:0}}
+  @media (max-width:520px){.dmoney-facts .wrap{grid-template-columns:1fr}.dmoney-facts .wrap>div{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding-left:0;padding-right:0}}
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
   .tier{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:26px 24px;position:relative}
   /* Featured tier rendered dark (option C) */
@@ -194,7 +195,7 @@
       <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
     </div></div>
   </div>
-  <div class="dmoney-facts">
+  <div class="dmoney-facts"><div class="wrap">
     <div><p class="k">Validity</p><div class="v">{{ $maxStay ? 'Up to '.$maxStay.' days' : 'Varies by trip' }}</div></div>
     <div><p class="k">Type</p><div class="v">{{ $visaType }}</div></div>
     <div><p class="k">Typical processing</p><div class="v">A few business days<small>our handling</small></div></div>
@@ -203,7 +204,7 @@
     @else
       <div><p class="k">Passport</p><div class="v">{{ $passport ? $passport.' months validity' : 'Valid passport' }}</div></div>
     @endif
-  </div>
+  </div></div>
 </section>
 
 {{-- 3. PRICING --}}
