@@ -201,6 +201,17 @@
     color: var(--muted);
     box-shadow: 0 2px 6px -3px rgba(40,50,70,.12);
   }
+
+  /* split header — copy + "At a glance" facts card (pick C) */
+  .gs-head .gs-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:start;margin-top:8px}
+  @media (max-width:820px){.gs-head .gs-grid{grid-template-columns:1fr;gap:26px}}
+  .gs-facts{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 22px;box-shadow:0 16px 40px -32px rgba(40,50,70,.5)}
+  .gs-facts .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 12px}
+  .gs-facts .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--paper-edge);font-size:13.5px}
+  .gs-facts .row:first-of-type{border-top:0}
+  .gs-facts .row svg{width:16px;height:16px;color:var(--cta);flex:0 0 16px}
+  .gs-facts .row .lab{color:var(--muted)}
+  .gs-facts .row .val{margin-left:auto;color:var(--navy);font-weight:700;text-align:right}
   .gs-meta-chip b { color: var(--ink) }
 
   /* ---- ARTICLE BODY LAYOUT ----------------------------------------- */
@@ -431,25 +442,36 @@
       @endforeach
     </nav>
 
-    <p class="eyebrow">{{ $eyebrow }}</p>
-    <h1 itemprop="headline">{{ $guide->title }}</h1>
+    <div class="gs-grid">
+      <div>
+        <p class="eyebrow">{{ $eyebrow }}</p>
+        <h1 itemprop="headline">{{ $guide->title }}</h1>
+        <p class="gs-standfirst" itemprop="description">{{ $guide->excerpt }}</p>
+      </div>
 
-    {{-- Meta chips --}}
-    <div class="gs-meta">
-      @if ($published)
-        <span class="gs-meta-chip">
-          <svg aria-hidden="true" width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x=".5" y="1.5" width="12" height="10" rx="2" stroke="currentColor"/><path d="M4 .5v2M9 .5v2M.5 5h12" stroke="currentColor" stroke-linecap="round"/></svg>
-          <b>{{ $published->isoFormat('D MMM YYYY') }}</b>
-        </span>
-      @endif
-      <span class="gs-meta-chip">
-        <svg aria-hidden="true" width="13" height="13" fill="none" viewBox="0 0 13 13"><circle cx="6.5" cy="6.5" r="6" stroke="currentColor"/><path d="M6.5 3.5v3.2l2 2" stroke="currentColor" stroke-linecap="round"/></svg>
-        <b>{{ $readTime }}</b>
-      </span>
-      <span class="gs-meta-chip">Beyond Passports team</span>
+      {{-- At-a-glance facts card (pick C) --}}
+      <aside class="gs-facts" aria-label="At a glance">
+        <p class="k">At a glance</p>
+        <div class="row">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7v5l9 9 7-7-9-9H3z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>
+          <span class="lab">Topic</span><span class="val">{{ $type ? $type->label() : 'Guide' }}</span>
+        </div>
+        <div class="row">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span class="lab">Read time</span><span class="val">{{ $readTime }}</span>
+        </div>
+        @if ($published)
+        <div class="row">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span class="lab">{{ $reviewedAt ? 'Updated' : 'Published' }}</span><span class="val">{{ ($reviewedAt ?? $published)->isoFormat('D MMM YYYY') }}</span>
+        </div>
+        @endif
+        <div class="row">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span class="lab">Source</span><span class="val">{{ $reviewedAt ? 'Checked vs gov.uk' : 'Official sources' }}</span>
+        </div>
+      </aside>
     </div>
-
-    <p class="gs-standfirst" itemprop="description">{{ $guide->excerpt }}</p>
 
   </div>
 </header>
