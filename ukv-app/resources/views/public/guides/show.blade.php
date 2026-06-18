@@ -206,7 +206,7 @@
   .gs-head .gs-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:start;margin-top:8px}
   @media (max-width:820px){.gs-head .gs-grid{grid-template-columns:1fr;gap:26px}}
   /* balance the two columns: smaller title + standfirst than the full-width default */
-  .gs-head .gs-grid h1{font-size:clamp(28px,3.8vw,42px);max-width:18ch}
+  .gs-head .gs-grid h1{font-size:clamp(28px,3.8vw,42px);font-weight:700;max-width:18ch}
   .gs-head .gs-grid .gs-standfirst{font-size:17px;max-width:48ch}
   .gs-head .gs-grid .eyebrow{color:var(--cta);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
   .gs-facts{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 22px;box-shadow:0 16px 40px -32px rgba(40,50,70,.5)}
@@ -246,7 +246,7 @@
   }
   .gs-body h2 {
     font-size: clamp(24px, 3vw, 32px);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--navy);
     letter-spacing: -.02em;
     margin: 1.9em 0 .55em;
@@ -254,7 +254,7 @@
   }
   .gs-body h3 {
     font-size: 21px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--navy);
     letter-spacing: -.01em;
     margin: 1.5em 0 .45em;
@@ -437,7 +437,7 @@
   }
 
   /* ---- TWO-COLUMN SHELL — article + sticky merged sidebar (pick B) ------ */
-  .gs-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start;padding:48px 0 8px}
+  .gs-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start;padding:48px 0 64px}
   .gs-shell .gs-body{max-width:none;margin:0}
   .gs-rail{position:sticky;top:20px}
   .gs-rail-panel{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);overflow:hidden;box-shadow:0 16px 40px -34px rgba(40,50,70,.5)}
@@ -446,7 +446,7 @@
   .gs-rail-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.3),transparent 62%)}
   .gs-rail-cta>*{position:relative;z-index:2}
   .gs-rail-cta .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
-  .gs-rail-cta h3{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.01em;color:#fff;margin:0 0 8px}
+  .gs-rail-cta h3{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px}
   .gs-rail-cta p{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.8);margin:0 0 14px}
   .gs-rail-cta .rb{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;font-family:var(--body);font-weight:700;font-size:14px;border-radius:11px;padding:12px;text-decoration:none}
   .gs-rail-cta .rb-primary{background:var(--cta);color:#fff}
@@ -462,7 +462,7 @@
   .gs-rail-sec li a .gs-rail-lab{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
   .gs-rail-sec li a:hover b{color:var(--cta)}
   .gs-rail-comp .cbadge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
-  .gs-rail-comp .cbadge svg{width:13px;height:13px;flex:0 0 13px;fill:none;stroke:var(--sage);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .gs-rail-comp .cbadge svg{width:13px;height:13px;flex:0 0 13px;fill:none;stroke:var(--stamp);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .gs-rail-comp p{font-size:11.5px;line-height:1.55;color:var(--muted);margin:0 0 8px}
   .gs-rail-comp p:last-child{margin-bottom:0}
   .gs-rail-comp strong{color:var(--navy)}
