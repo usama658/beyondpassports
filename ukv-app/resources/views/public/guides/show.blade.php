@@ -205,11 +205,15 @@
   /* split header — copy + "At a glance" facts card (pick C) */
   .gs-head .gs-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:start;margin-top:8px}
   @media (max-width:820px){.gs-head .gs-grid{grid-template-columns:1fr;gap:26px}}
+  /* balance the two columns: smaller title + standfirst than the full-width default */
+  .gs-head .gs-grid h1{font-size:clamp(28px,3.8vw,42px);max-width:18ch}
+  .gs-head .gs-grid .gs-standfirst{font-size:17px;max-width:48ch}
+  .gs-head .gs-grid .eyebrow{color:var(--cta);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
   .gs-facts{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 22px;box-shadow:0 16px 40px -32px rgba(40,50,70,.5)}
-  .gs-facts .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 12px}
+  .gs-facts .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 12px}
   .gs-facts .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--paper-edge);font-size:13.5px}
   .gs-facts .row:first-of-type{border-top:0}
-  .gs-facts .row svg{width:16px;height:16px;color:var(--cta);flex:0 0 16px}
+  .gs-facts .row svg{width:16px;height:16px;flex:0 0 16px;fill:none;stroke:var(--cta);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .gs-facts .row .lab{color:var(--muted)}
   .gs-facts .row .val{margin-left:auto;color:var(--navy);font-weight:700;text-align:right}
   .gs-meta-chip b { color: var(--ink) }
