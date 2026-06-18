@@ -10,7 +10,7 @@
   /* ── Hero — dark mesh band, copy left + "~2 min" reassurance chip right (E) ── */
   .ap-hero{padding:0;color:#fff;background:
     radial-gradient(520px 220px at 14% 0%, rgba(199,93,56,.45), transparent 60%),
-    radial-gradient(520px 220px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+    radial-gradient(520px 220px at 92% 100%, rgba(47,143,134,.42), transparent 60%),
     var(--navy)}
   .ap-hero > .wrap{padding:60px 24px}
   .ap-hero .ap-hrow{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}

@@ -23,7 +23,7 @@
   .ab-idcard {
     background:
       radial-gradient(380px 180px at 110% -10%, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(360px 180px at -10% 120%, rgba(92,154,123,.28), transparent 60%),
+      radial-gradient(360px 180px at -10% 120%, rgba(47,143,134,.28), transparent 60%),
       var(--navy);
     color: #fff;
     border-radius: 18px;
@@ -56,7 +56,7 @@
   .tbar-f {
     background:
       radial-gradient(520px 200px at 12% 0%, rgba(199,93,56,.45), transparent 60%),
-      radial-gradient(520px 200px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(47,143,134,.42), transparent 60%),
       var(--navy);
     color: #fff;
   }
@@ -115,7 +115,7 @@
     text-transform: uppercase;
     margin: 0 0 12px;
   }
-  .ab-cc.is-are .cc-t { color: var(--sage-deep, #3f7259); }
+  .ab-cc.is-are .cc-t { color: var(--sage-deep, #226B64); }
   .ab-cc.is-not .cc-t { color: var(--cta); }
   .ab-cc ul { margin: 0; padding: 0; list-style: none; }
   .ab-cc li {
@@ -151,7 +151,7 @@
     border-radius: 14px;
     background: linear-gradient(135deg, #eef5f2, #dff0eb);
     display: flex; align-items: center; justify-content: center;
-    color: #3f7259;
+    color: #226B64;
   }
   .ab-value-icon svg { width: 24px; height: 24px; }
   .ab-value h3 { font-size: 18px; color: var(--navy); margin: 0 0 6px; }
@@ -184,7 +184,7 @@
     color: #e9ebee;
     background:
       radial-gradient(520px 240px at 10% -10%, rgba(199,93,56,.28), transparent 60%),
-      radial-gradient(520px 240px at 95% 110%, rgba(92,154,123,.24), transparent 60%),
+      radial-gradient(520px 240px at 95% 110%, rgba(47,143,134,.24), transparent 60%),
       repeating-linear-gradient(60deg, rgba(255,255,255,.02) 0 2px, transparent 2px 9px),
       var(--navy);
     box-shadow: var(--lift-2);
@@ -278,7 +278,7 @@
 
 {{-- WHO WE ARE --}}
 @php
-  $ccTick = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#3f7259" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $ccTick = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#226B64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   $ccCross = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#C75D38" stroke-width="2.2" stroke-linecap="round"/></svg>';
 @endphp
 <section id="who"><div class="wrap">

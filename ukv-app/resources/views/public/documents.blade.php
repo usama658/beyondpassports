@@ -89,7 +89,7 @@
 
   .form-ok{
     display:none;
-    background:#eaf3f2;
+    background:#E3F1EF;
     border:1px solid #b9ddd9;
     color:#0a5450;
     border-radius:10px;

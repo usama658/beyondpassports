@@ -54,7 +54,7 @@
      right is a 2-row horizontal scroller showing 2×2 cards, paging through the rest. */
   /* DESTINATIONS — map-texture backdrop + centred 3-up glass grid (option D) */
   #destinations{background:
-    radial-gradient(circle at 18% 26%, rgba(92,154,123,.10), transparent 42%),
+    radial-gradient(circle at 18% 26%, rgba(47,143,134,.10), transparent 42%),
     radial-gradient(circle at 82% 74%, rgba(199,93,56,.10), transparent 42%),
     repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
     var(--paper)}
@@ -74,7 +74,7 @@
     box-shadow:0 10px 30px -22px rgba(40,50,70,.5);transition:transform .25s ease,box-shadow .25s ease}
   #why .tick:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
   #why .tick .stamp{flex:0 0 44px;width:44px;height:44px;padding:9px;border-radius:11px;
-    background:rgba(92,154,123,.12);color:var(--stamp-text);box-sizing:border-box}
+    background:rgba(47,143,134,.12);color:var(--stamp-text);box-sizing:border-box}
 
   /* TESTIMONIALS — trio of consented quote cards (option D) */
   .tquotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
@@ -87,7 +87,7 @@
 
   /* APPOINTMENTS — map-texture backdrop + centred finder + pin motif (option C) */
   #appointments{background:
-    radial-gradient(circle at 18% 30%, rgba(92,154,123,.10), transparent 42%),
+    radial-gradient(circle at 18% 30%, rgba(47,143,134,.10), transparent 42%),
     radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
     repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
     var(--paper)}
@@ -102,7 +102,7 @@
   .tbar-b,.tbar-f{padding:0}
   .tbar-f{background:
       radial-gradient(520px 200px at 12% 0%, rgba(199,93,56,.45), transparent 60%),
-      radial-gradient(520px 200px at 92% 100%, rgba(92,154,123,.42), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(47,143,134,.42), transparent 60%),
       var(--navy);color:#fff}
   .tbar-f .row{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:16px 0}
   .tbar-f .ti{display:flex;align-items:center;gap:9px;font:600 14px var(--display);color:#fff;white-space:nowrap}

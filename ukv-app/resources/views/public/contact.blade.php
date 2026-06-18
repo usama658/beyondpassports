@@ -23,7 +23,7 @@
   .ct-statuscard {
     background:
       radial-gradient(360px 180px at 110% -10%, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(340px 180px at -10% 120%, rgba(92,154,123,.28), transparent 60%),
+      radial-gradient(340px 180px at -10% 120%, rgba(47,143,134,.28), transparent 60%),
       var(--navy);
     color: #fff;
     border-radius: 20px;
@@ -155,7 +155,7 @@
   .ct-methods .ct-method--primary {
     background:
       radial-gradient(360px 200px at 100% 0, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(340px 200px at 0 100%, rgba(92,154,123,.26), transparent 60%),
+      radial-gradient(340px 200px at 0 100%, rgba(47,143,134,.26), transparent 60%),
       var(--navy);
     color: #fff;
   }
@@ -272,7 +272,7 @@
 
   .form-error { display: none; background: #fdeceb; border: 1px solid #f3c6c2; color: #8a2a22; border-radius: 10px; padding: 12px 14px; font-size: 14px; margin: 16px 0 0; }
   .form-error.show { display: block; }
-  .form-ok   { display: none; background: #eaf3f2; border: 1px solid #b9ddd9; color: #0a5450; border-radius: 10px; padding: 16px 16px; font-size: 15px; margin: 16px 0 0; line-height: 1.5; }
+  .form-ok   { display: none; background: #E3F1EF; border: 1px solid #b9ddd9; color: #0a5450; border-radius: 10px; padding: 16px 16px; font-size: 15px; margin: 16px 0 0; line-height: 1.5; }
   .form-ok.show   { display: block; }
   .form-ok strong { color: #073f3c; }
 
@@ -287,7 +287,7 @@
     justify-content: space-between;
     background:
       radial-gradient(420px 200px at 10% 0, rgba(199,93,56,.40), transparent 60%),
-      radial-gradient(420px 200px at 92% 100%, rgba(92,154,123,.36), transparent 60%),
+      radial-gradient(420px 200px at 92% 100%, rgba(47,143,134,.36), transparent 60%),
       var(--navy);
     border-radius: 20px;
     padding: 36px 40px;

@@ -47,7 +47,7 @@
   .doc-body .updated{display:inline-flex;align-items:center;gap:7px;width:fit-content;
     background:#fff;border:1px solid #ead9c4;border-radius:999px;padding:5px 13px;
     font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--cta);margin:0 0 14px}
-  .doc-body .updated::before{content:"✓";color:var(--sage,#5C9A7B);font-weight:800}
+  .doc-body .updated::before{content:"✓";color:var(--sage,#2F8F86);font-weight:800}
 
   .legal-sec{position:relative;background:linear-gradient(180deg,#fbf7f2,#fff);
     border:1px solid #ead9c4;border-radius:18px;padding:32px 34px;

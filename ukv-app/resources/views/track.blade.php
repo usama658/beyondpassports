@@ -38,8 +38,8 @@
   /* Page-scoped layout for the tracker. Palette/type/components + the shared header
      and footer all come from assets/ukv.css (loaded above). */
   :root{
-    --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#5C9A7B;
-    --stamp-text:#3f7259;
+    --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#2F8F86;
+    --stamp-text:#226B64;
     --cta:#C75D38; --paper-edge:#e6e8ea; --white:#fff; --muted:#697079; --hint:#697079;
     --shadow:0 18px 44px -26px rgba(40,50,70,.30);
     --display:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
@@ -77,8 +77,8 @@
   .tp-stub::before{content:"";position:absolute;left:-9px;top:0;bottom:0;width:18px;z-index:3;background:radial-gradient(circle at center,var(--paper) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
   .tp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:4px}
   .tp-stub .v{font-size:16px;font-weight:800;line-height:1.18}
-  .tp-stub .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#bfe6d2}
-  .tp-stub .live i{width:9px;height:9px;border-radius:50%;background:#7fc7a3;box-shadow:0 0 0 4px rgba(127,199,163,.22)}
+  .tp-stub .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#84D2C9}
+  .tp-stub .live i{width:9px;height:9px;border-radius:50%;background:#84D2C9;box-shadow:0 0 0 4px rgba(132,210,201,.22)}
   @media (max-width:680px){
     .tp-pass{grid-template-columns:1fr}
     .tp-main{padding:26px 22px}
@@ -89,12 +89,12 @@
   .status{max-width:640px;margin:0 auto}
   /* Navy status header (pick C) */
   .status-mrz{position:relative;overflow:hidden;background:var(--navy);border-radius:16px 16px 0 0;padding:24px 26px;color:#fff}
-  .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
   .status-mrz > *{position:relative;z-index:2}
   .status-mrz .lab{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 4px}
   .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
   .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(199,93,56,.22);border:1px solid rgba(242,194,172,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
-  .status-mrz .pill.is-outcome{background:rgba(92,154,123,.2);border-color:rgba(127,199,163,.5);color:#bfe6d2}
+  .status-mrz .pill.is-outcome{background:rgba(47,143,134,.2);border-color:rgba(132,210,201,.5);color:#84D2C9}
   .status-mrz .stage-now{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;margin:8px 0 0}
   .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:26px}
 
@@ -128,7 +128,7 @@
 
   /* Navy help band (pick A) */
   .help{position:relative;overflow:hidden;max-width:640px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border:0;border-radius:16px;background:var(--navy);color:#fff;padding:22px 24px}
-  .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
   .help > *{position:relative;z-index:2}
   .help .help-t b{display:block;font-size:15px;font-weight:700;color:#fff}
   .help .help-t span{font-size:13px;color:rgba(255,255,255,.72)}

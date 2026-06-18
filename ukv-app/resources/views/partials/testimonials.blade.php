@@ -40,7 +40,7 @@
   @media (max-width:760px){.tm-wrap{grid-template-columns:1fr;gap:24px}}
 
   .tm-sum{position:sticky;top:84px;background:var(--navy);color:#fff;border-radius:16px;padding:26px 24px;overflow:hidden}
-  .tm-sum::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .tm-sum::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
   .tm-sum > *{position:relative;z-index:2}
   .tm-sum .eyebrow{color:var(--soft);margin:0 0 12px}
   .tm-sum h2{color:#fff;font-size:22px;letter-spacing:-.02em;margin:0 0 10px}

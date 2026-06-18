@@ -24,7 +24,7 @@
   .brand .url{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;font-size:11px;color:#697079}
   .meta{font-size:12px;color:#697079;margin:0 0 20px}
   .saved{font-size:12px;color:#697079;margin:0 0 18px}
-  .saved a{color:#5C9A7B;word-break:break-all}
+  .saved a{color:#2F8F86;word-break:break-all}
   .compliance{font-size:11px;color:#697079;background:#f7fafb;border:1px solid #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:12px 14px;margin:24px 0 0}
   .print-hint{font-size:12px;color:#22282b;background:#fff7e6;border:1px solid #f0dba8;border-radius:8px;padding:10px 14px;margin:0 0 22px}
   .print-btn{display:inline-block;margin-left:8px;padding:4px 10px;border:1px solid #C75D38;border-radius:6px;background:#C75D38;color:#fff;font-size:12px;cursor:pointer}

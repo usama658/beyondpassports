@@ -85,7 +85,7 @@
   .dct-hero{position:relative;overflow:hidden;background:var(--navy);padding:72px 0 60px}
   .dct-hero::before{content:"";position:absolute;inset:0;background:
      radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(92,154,123,.42),transparent 62%)}
+     radial-gradient(55% 75% at 88% 84%,rgba(47,143,134,.42),transparent 62%)}
   .dct-hero .wrap{position:relative;z-index:2}
   .dct-hero .mh-grid{display:block}
   .dct-hero .mh-copy{max-width:none}

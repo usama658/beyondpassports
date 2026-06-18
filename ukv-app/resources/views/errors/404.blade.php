@@ -11,7 +11,7 @@
 <style>
   :root{
     --navy:#22282b; --paper:#FBF6F1; --edge:#e7ddd1; --cta:#C75D38; --ink:#22282b;
-    --muted:#6c7075; --sage:#3f7259; --soft:#F2C2AC;
+    --muted:#6c7075; --sage:#226B64; --soft:#F2C2AC;
     --j:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box}
@@ -20,7 +20,7 @@
     margin:0;font-family:var(--j);color:#e8eaec;
     background:
       radial-gradient(680px 320px at 12% -8%, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(620px 300px at 92% 108%, rgba(92,154,123,.26), transparent 60%),
+      radial-gradient(620px 300px at 92% 108%, rgba(47,143,134,.26), transparent 60%),
       /* faint guilloché / security-paper weave on the navy cover */
       repeating-linear-gradient(60deg, rgba(255,255,255,.018) 0 2px, transparent 2px 9px),
       repeating-linear-gradient(-60deg, rgba(255,255,255,.018) 0 2px, transparent 2px 9px),

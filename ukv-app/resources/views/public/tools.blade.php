@@ -11,7 +11,7 @@
   .tl-hero{
     background:
       radial-gradient(640px 280px at 12% 0, rgba(199,93,56,.5), transparent 60%),
-      radial-gradient(600px 260px at 92% 100%, rgba(92,154,123,.5), transparent 60%),
+      radial-gradient(600px 260px at 92% 100%, rgba(47,143,134,.5), transparent 60%),
       var(--navy);
   }
   .tl-hero .eyebrow{color:var(--soft)}

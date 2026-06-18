@@ -66,7 +66,7 @@
 
   /* Honest note block — navy straight-talk panel (pick B) */
   .cmp-honest{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:28px 32px;margin-top:32px;box-shadow:0 26px 56px -36px rgba(40,50,70,.7)}
-  .cmp-honest::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 90% at 6% 12%,rgba(199,93,56,.30),transparent 60%),radial-gradient(45% 80% at 96% 90%,rgba(92,154,123,.26),transparent 62%)}
+  .cmp-honest::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 90% at 6% 12%,rgba(199,93,56,.30),transparent 60%),radial-gradient(45% 80% at 96% 90%,rgba(47,143,134,.26),transparent 62%)}
   .cmp-honest .ch-in{position:relative;display:flex;gap:18px;align-items:flex-start}
   .cmp-honest .ch-ic{flex:0 0 46px;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--soft)}
   .cmp-honest .ch-ic svg{width:24px;height:24px}

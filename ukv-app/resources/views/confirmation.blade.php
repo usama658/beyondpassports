@@ -30,7 +30,7 @@
         /* ── Confirmation page — self-contained premium warm-light design ──────────── */
         :root {
             --ink: #22282b; --navy: #22282b; --gold: #C75D38; --cta: #C75D38;
-            --sage: #5C9A7B; --stamp-text: #3f7259;
+            --sage: #2F8F86; --stamp-text: #226B64;
             --paper: #F4F5F6; --paper-edge: #e6e8ea; --white: #fff; --muted: #697079;
             --soft: #F2C2AC;
             --shadow: 0 18px 44px -26px rgba(40,50,70,.30);
@@ -100,7 +100,7 @@
             padding: 30px 32px 28px;
             background:
                 radial-gradient(520px 200px at 0% 50%, rgba(199,93,56,.36), transparent 60%),
-                radial-gradient(480px 200px at 100% 50%, rgba(92,154,123,.28), transparent 60%),
+                radial-gradient(480px 200px at 100% 50%, rgba(47,143,134,.28), transparent 60%),
                 var(--navy);
             color: #fff;
         }

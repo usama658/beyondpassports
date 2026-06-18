@@ -13,7 +13,7 @@
   .gi-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
   .gi-hero::before{content:"";position:absolute;inset:0;background:
      radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(92,154,123,.42),transparent 62%),
+     radial-gradient(55% 75% at 88% 84%,rgba(47,143,134,.42),transparent 62%),
      radial-gradient(40% 60% at 70% 8%,rgba(242,194,172,.16),transparent 60%)}
   .gi-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.08),rgba(15,20,22,.32))}
   .gi-hero > .wrap{position:relative;z-index:2;padding-top:84px;padding-bottom:80px}

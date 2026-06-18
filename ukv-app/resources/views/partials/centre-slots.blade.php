@@ -57,7 +57,7 @@
         <style>
             /* centre-slots partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta). */
             .ukv-slots{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:10px 0 0;padding:7px 12px;background:#f3f8f4;border:1px solid #d6e6da;border-left:3px solid #C75D38;border-radius:8px;line-height:1.45}
-            .ukv-slots .us-tick{color:#3f7259;font-weight:700;margin-right:1px}
+            .ukv-slots .us-tick{color:#226B64;font-weight:700;margin-right:1px}
             .ukv-slots .us-label{font-size:13.5px;font-weight:600;color:#22282b}
             .ukv-slots .us-next{font-size:13.5px;color:#22282b}
             .ukv-slots .us-next strong{color:#22282b;font-weight:600;white-space:nowrap}

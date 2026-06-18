@@ -42,8 +42,8 @@
     .guide-cluster .gc-tile:focus-visible{outline:2px solid #C75D38;outline-offset:3px}
     .guide-cluster .gc-hero{grid-column:span 2;grid-row:span 2;border:0;color:#fff;
       background:radial-gradient(460px 240px at 14% 0,rgba(199,93,56,.55),transparent 60%),
-                 radial-gradient(420px 220px at 96% 100%,rgba(92,154,123,.45),transparent 60%),#22282b}
-    .guide-cluster .gc-cat{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5C9A7B}
+                 radial-gradient(420px 220px at 96% 100%,rgba(47,143,134,.45),transparent 60%),#22282b}
+    .guide-cluster .gc-cat{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2F8F86}
     .guide-cluster .gc-hero .gc-cat{color:#F2C2AC}
     .guide-cluster .gc-tile h3{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:17px;line-height:1.2;letter-spacing:-.01em;color:#22282b;margin:8px 0 0}
     .guide-cluster .gc-hero h3{color:#fff;font-size:clamp(22px,2.4vw,27px);margin:10px 0 8px}

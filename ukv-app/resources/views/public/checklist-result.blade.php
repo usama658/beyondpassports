@@ -76,7 +76,7 @@
   .crp-stub .v{font-size:18px;font-weight:800;line-height:1.1}
   .crp-stub .v small{font-size:12px;font-weight:600;color:rgba(255,255,255,.7)}
   .crp-stub .v.sm{font-size:15px}
-  .crp-stub .ready{color:#7fc7a3}
+  .crp-stub .ready{color:#84D2C9}
   @media (max-width:680px){
     .crp-pass{grid-template-columns:1fr}
     .crp-stub{flex-direction:row;flex-wrap:wrap;gap:20px 26px;padding:22px 26px}
@@ -182,8 +182,8 @@
   }
   .server-errors ul{margin:6px 0 0;padding-left:20px}
   .sent-ok{
-    background:#eaf3f2;
-    border:1px solid #bfe0db;
+    background:#E3F1EF;
+    border:1px solid #BEE2DD;
     color:var(--stamp-text);
     border-radius:10px;
     padding:13px 16px;
@@ -202,7 +202,7 @@
     padding:26px 28px;color:#fff;
   }
   .share::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 60% at 0 100%,rgba(92,154,123,.3),transparent 62%)}
+    background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 60% at 0 100%,rgba(47,143,134,.3),transparent 62%)}
   .share > *{position:relative;z-index:2}
   .share .k{
     font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;

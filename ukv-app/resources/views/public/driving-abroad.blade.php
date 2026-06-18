@@ -11,7 +11,7 @@
   .idp-hero{
     background:
       radial-gradient(620px 280px at 88% 0, rgba(199,93,56,.42), transparent 60%),
-      radial-gradient(560px 260px at 8% 100%, rgba(92,154,123,.34), transparent 60%),
+      radial-gradient(560px 260px at 8% 100%, rgba(47,143,134,.34), transparent 60%),
       var(--navy);
     color:#fff;text-align:center;padding:64px 0;
   }

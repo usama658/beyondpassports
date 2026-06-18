@@ -98,7 +98,7 @@
     .doc-checklist ul.dc-list li{position:relative;padding:0 0 0 32px;margin:0 0 14px}
     .doc-checklist ul.dc-list li:last-child{margin-bottom:0}
     .doc-checklist .dc-ic{position:absolute;left:0;top:1px;width:20px;height:20px;color:#C75D38}
-    .doc-checklist ul.dc-list.is-recommended .dc-ic{color:#3f7259}
+    .doc-checklist ul.dc-list.is-recommended .dc-ic{color:#226B64}
     .doc-checklist .dc-label{display:block;font-weight:600;font-size:16.5px;color:#22282b;line-height:1.45}
     .doc-checklist .dc-note{display:block;font-size:14px;color:#697079;margin-top:3px;line-height:1.55}
     .doc-checklist .dc-empty{font-size:14px;color:#697079;background:#f7fafb;border:1px dashed #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:14px 16px;margin:0}
