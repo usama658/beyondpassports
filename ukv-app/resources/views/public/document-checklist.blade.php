@@ -97,6 +97,40 @@
   .dct-submit-row .btn{padding:15px 30px;font-size:16px;border-radius:12px}
   .dct-submit-row .sub-note{font-size:12.5px;color:var(--muted);line-height:1.4}
 
+  /* ---- TWO-STEP SEGMENTED WIZARD (pick C) — JS-enhanced; no-JS shows both steps ---- */
+  .dct-steps,.dct-prog,.dct-wnav{display:none}
+  .ukv-form.is-wizard .dct-steps{display:flex;margin:0 0 0}
+  .ukv-form.is-wizard .dct-prog{display:block}
+  .ukv-form.is-wizard .dct-wnav{display:flex}
+  .ukv-form.is-wizard .dct-step{display:none}
+  .ukv-form.is-wizard .dct-step.active{display:block}
+  .ukv-form.is-wizard .legend:first-of-type{margin-top:0}
+
+  .dct-steps{border:1px solid var(--paper-edge);border-radius:13px;overflow:hidden;background:var(--paper)}
+  .dct-steps .st{flex:1;display:flex;align-items:center;gap:11px;padding:14px 18px;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer}
+  .dct-steps .st+.st{border-left:1px solid var(--paper-edge)}
+  .dct-steps .st .d{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:0 0 28px;background:#fff;border:1.5px solid var(--paper-edge);color:var(--muted)}
+  .dct-steps .st.on .d{background:var(--cta);border-color:var(--cta);color:#fff}
+  .dct-steps .st.done .d{background:var(--stamp);border-color:var(--stamp);color:#fff}
+  .dct-steps .st .tt{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.2}
+  .dct-steps .st.on .tt{color:var(--navy)}
+  .dct-steps .st .ts{display:block;font-size:13.5px;font-weight:700;color:var(--navy);margin-top:2px}
+  .dct-steps .st:not(.on) .ts{color:var(--muted)}
+  .dct-prog{height:3px;background:var(--paper-edge);margin:0 0 22px;border-radius:3px;overflow:hidden}
+  .dct-prog i{display:block;height:100%;width:50%;background:var(--cta);transition:width .25s ease}
+
+  .dct-wnav{align-items:center;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid var(--paper-edge)}
+  .dct-wnav .dct-back{background:#fff;border:1px solid var(--paper-edge);color:var(--muted);font-family:inherit;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;cursor:pointer}
+  .dct-wnav .dct-back:hover{border-color:#c4cace;color:var(--navy)}
+  .dct-wnav .dct-next{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(199,93,56,.6)}
+  .dct-dots{display:flex;gap:7px}
+  .dct-dots i{width:8px;height:8px;border-radius:50%;background:var(--paper-edge)}
+  .dct-dots i.on{background:var(--cta);width:22px;border-radius:4px}
+  /* in wizard mode the original submit row only shows on the last step */
+  .ukv-form.is-wizard .dct-submit-row{display:none}
+  .ukv-form.is-wizard.on-last .dct-submit-row{display:flex}
+  .ukv-form.is-wizard.on-last .dct-next{display:none}
+
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
     .dct-perks{grid-template-columns:1fr}
@@ -161,6 +195,14 @@
           <form class="ukv-form" id="dct-form" method="POST" action="{{ url('/document-checklist') }}" novalidate>
             @csrf
 
+            {{-- Segmented step header + progress (shown only when JS enhances the form) --}}
+            <div class="dct-steps" role="tablist" aria-label="Checklist steps">
+              <button type="button" class="st on" data-go="1" aria-selected="true"><span class="d">1</span><span><span class="tt">Step 1</span><span class="ts">Your trip</span></span></button>
+              <button type="button" class="st" data-go="2"><span class="d">2</span><span><span class="tt">Step 2</span><span class="ts">Your situation</span></span></button>
+            </div>
+            <div class="dct-prog" aria-hidden="true"><i></i></div>
+
+            <div class="dct-step active" data-step="1">
             <p class="legend">Your trip</p>
             <div class="grid2">
               <div class="field">
@@ -201,7 +243,9 @@
                 </select>
               </div>
             </div>
+            </div>{{-- /step 1 --}}
 
+            <div class="dct-step" data-step="2">
             <p class="legend">Your situation</p>
             <div class="grid2">
               <div class="field">
@@ -260,6 +304,14 @@
                 </select>
                 <p class="hint">A prior refusal can change what's required. It does not mean we can't help.</p>
               </div>
+            </div>
+            </div>{{-- /step 2 --}}
+
+            {{-- Wizard nav (JS only): Back · dots · Next. Submit lives in the row below (last step). --}}
+            <div class="dct-wnav">
+              <button type="button" class="dct-back" data-back hidden>&larr; Back</button>
+              <span class="dct-dots" aria-hidden="true"><i class="on"></i><i></i></span>
+              <button type="button" class="dct-next" data-next>Next: your situation &rarr;</button>
             </div>
 
             <div class="dct-submit-row">
@@ -320,6 +372,54 @@
         submitBtn.textContent = 'Building your checklist…';
       }
     });
+
+    // ── Two-step segmented wizard (pick C) — progressive enhancement ──
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.dct-step'));
+    var tabs  = Array.prototype.slice.call(form.querySelectorAll('.dct-steps .st'));
+    var nextBtn = form.querySelector('[data-next]');
+    var backBtn = form.querySelector('[data-back]');
+    var prog  = form.querySelector('.dct-prog i');
+    var dots  = Array.prototype.slice.call(form.querySelectorAll('.dct-dots i'));
+    if (steps.length === 2 && nextBtn && backBtn) {
+      form.classList.add('is-wizard');
+      var cur = 1;
+      var show = function (n) {
+        cur = n;
+        steps.forEach(function (s) { s.classList.toggle('active', s.getAttribute('data-step') === String(n)); });
+        tabs.forEach(function (t) {
+          var i = Number(t.getAttribute('data-go'));
+          t.classList.toggle('on', i === n);
+          t.classList.toggle('done', i < n);
+          t.setAttribute('aria-selected', i === n ? 'true' : 'false');
+        });
+        if (prog) prog.style.width = (n === 1 ? 50 : 100) + '%';
+        dots.forEach(function (d, i) { d.classList.toggle('on', i === (n - 1)); });
+        backBtn.hidden = (n === 1);
+        form.classList.toggle('on-last', n === 2);
+        var top = form.querySelector('.dct-step.active');
+        if (top) top.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      };
+      var guard = function () {
+        if (!dest.value) {
+          dest.setAttribute('aria-invalid', 'true'); dest.focus();
+          var clear = function () { dest.removeAttribute('aria-invalid'); dest.removeEventListener('change', clear); };
+          dest.addEventListener('change', clear);
+          return false;
+        }
+        return true;
+      };
+      nextBtn.addEventListener('click', function () { if (guard()) show(2); });
+      backBtn.addEventListener('click', function () { show(1); });
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          var i = Number(t.getAttribute('data-go'));
+          if (i === 2 && !guard()) return;
+          show(i);
+        });
+      });
+      // If the server bounced with a destination error, start on step 1; else step 1 by default.
+      show(1);
+    }
   });
 </script>
 @endpush
