@@ -69,8 +69,17 @@
   .server-errors ul{margin:6px 0 0;padding-left:20px}
 
   /* compliance microcopy */
-  .compliance{font-size:12.5px;color:var(--muted);line-height:1.6;margin:16px auto 0;max-width:760px}
-  .compliance strong{color:var(--ink)}
+  /* compliance — shield badge + text card (pick A, matches Guides + result page) */
+  .compliance{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin:28px auto 0;max-width:760px;
+    background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 24px;
+    box-shadow:0 12px 32px -28px rgba(40,50,70,.5)}
+  .compliance .gc-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    background:var(--navy);color:#fff;border-radius:13px;width:104px;height:104px;flex:0 0 104px;text-align:center;padding:10px}
+  .compliance .gc-badge svg{width:26px;height:26px;color:var(--soft)}
+  .compliance .gc-badge span{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;line-height:1.2}
+  .compliance p{margin:0;font-size:13px;line-height:1.65;color:#3a4b55}
+  .compliance strong{color:var(--navy)}
+  @media (max-width:560px){.compliance{grid-template-columns:1fr;justify-items:start}}
 
   /* ── HERO — navy mesh (pick A) ── */
   .dct-hero{position:relative;overflow:hidden;background:var(--navy);padding:72px 0 60px}
@@ -132,9 +141,10 @@
   .dct-dots i{width:8px;height:8px;border-radius:50%;background:var(--paper-edge)}
   .dct-dots i.on{background:var(--cta);width:22px;border-radius:4px}
   /* in wizard mode the original submit row only shows on the last step */
-  /* in wizard mode the primary button lives in the nav; keep only the sub-note line */
-  .ukv-form.is-wizard .dct-submit-row{display:flex;margin-top:14px}
+  /* in wizard mode the primary button lives in the nav; keep only the sub-note line (centered) */
+  .ukv-form.is-wizard .dct-submit-row{display:flex;align-items:center;margin-top:14px}
   .ukv-form.is-wizard .dct-submit-row > .btn{display:none}
+  .ukv-form.is-wizard .dct-submit-row .sub-note{width:100%;text-align:center}
 
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
@@ -330,12 +340,18 @@
         </div>
       </div>
 
-      {{-- COMPLIANCE STRIP --}}
-      <p class="compliance reveal">
-        <strong>Beyond Passports is an independent service and is not a government website.</strong>
-        This checklist is general guidance to help you prepare — your exact requirements depend on your nationality, residence and full situation, and we confirm them before anything is submitted.
-        Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
-      </p>
+      {{-- COMPLIANCE STRIP — shield badge + text (pick A) --}}
+      <div class="compliance reveal">
+        <span class="gc-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>NOT A GOVT SITE</span>
+        </span>
+        <p>
+          <strong>Beyond Passports is an independent service and is not a government website.</strong>
+          This checklist is general guidance to help you prepare — your exact requirements depend on your nationality, residence and full situation, and we confirm them before anything is submitted.
+          Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
+        </p>
+      </div>
 
     </div>
   </div>
