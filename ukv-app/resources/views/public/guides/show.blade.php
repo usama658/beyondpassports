@@ -239,26 +239,26 @@
     padding: 0 24px;
   }
   .gs-body p {
-    font-size: 18px;
-    line-height: 1.78;
+    font-size: 17px;
+    line-height: 1.7;
     color: var(--ink);
-    margin: 0 0 1.25em;
+    margin: 0 0 1.2em;
   }
   .gs-body h2 {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(22px, 2.4vw, 27px);
     font-weight: 600;
     color: var(--navy);
-    letter-spacing: -.02em;
-    margin: 1.9em 0 .55em;
-    line-height: 1.15;
+    letter-spacing: -.015em;
+    margin: 1.8em 0 .5em;
+    line-height: 1.2;
   }
   .gs-body h3 {
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 600;
     color: var(--navy);
     letter-spacing: -.01em;
-    margin: 1.5em 0 .45em;
-    line-height: 1.2;
+    margin: 1.5em 0 .4em;
+    line-height: 1.25;
   }
   .gs-body ul,
   .gs-body ol {
@@ -266,8 +266,8 @@
     padding-left: 1.3em;
   }
   .gs-body li {
-    font-size: 18px;
-    line-height: 1.72;
+    font-size: 17px;
+    line-height: 1.62;
     margin: 0 0 .5em;
   }
   .gs-body strong { color: var(--navy) }
@@ -438,7 +438,7 @@
 
   /* ---- TWO-COLUMN SHELL — article + sticky merged sidebar (pick B) ------ */
   .gs-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start;padding:48px 0 64px}
-  .gs-shell .gs-body{max-width:none;margin:0}
+  .gs-shell .gs-body{max-width:none;margin:0;padding:0}
   .gs-rail{position:sticky;top:20px}
   .gs-rail-panel{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);overflow:hidden;box-shadow:0 16px 40px -34px rgba(40,50,70,.5)}
   /* navy checker header */
@@ -446,7 +446,7 @@
   .gs-rail-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.3),transparent 62%)}
   .gs-rail-cta>*{position:relative;z-index:2}
   .gs-rail-cta .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
-  .gs-rail-cta h3{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px}
+  .gs-rail-cta h3{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px}
   .gs-rail-cta p{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.8);margin:0 0 14px}
   .gs-rail-cta .rb{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;font-family:var(--body);font-weight:700;font-size:14px;border-radius:11px;padding:12px;text-decoration:none}
   .gs-rail-cta .rb-primary{background:var(--cta);color:#fff}
