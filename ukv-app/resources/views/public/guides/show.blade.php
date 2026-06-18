@@ -292,8 +292,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(70% 80% at 92% 0, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(60% 70% at 0 100%, rgba(47,143,134,.28), transparent 62%);
+      radial-gradient(70% 80% at 92% 0, rgba(21,94,122,.30), transparent 60%),
+      radial-gradient(60% 70% at 0 100%, rgba(46,154,140,.28), transparent 62%);
   }
   .gs-callout > * { position: relative; z-index: 2 }
   .gs-callout-head { display: flex; align-items: center; gap: 10px; margin: 0 0 8px }
@@ -444,7 +444,7 @@
   .gs-rail-panel{border:1px solid var(--paper-edge);border-radius:16px;background:var(--white);overflow:hidden;box-shadow:0 16px 40px -34px rgba(40,50,70,.5)}
   /* navy checker header */
   .gs-rail-cta{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:22px 22px}
-  .gs-rail-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.3),transparent 62%)}
+  .gs-rail-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.3),transparent 62%)}
   .gs-rail-cta>*{position:relative;z-index:2}
   .gs-rail-cta .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
   .gs-rail-cta h3{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px}

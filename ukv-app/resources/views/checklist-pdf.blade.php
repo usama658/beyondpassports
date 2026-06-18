@@ -17,17 +17,17 @@
 <style>
   :root { color-scheme: light; }
   *{box-sizing:border-box}
-  body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b;margin:0;padding:32px;background:#fff;line-height:1.5}
+  body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#16222E;margin:0;padding:32px;background:#fff;line-height:1.5}
   .sheet{max-width:760px;margin:0 auto}
-  .brand{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid #22282b;padding-bottom:12px;margin-bottom:8px}
-  .brand .logo{font-size:18px;font-weight:700;color:#22282b;letter-spacing:.01em}
+  .brand{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid #16222E;padding-bottom:12px;margin-bottom:8px}
+  .brand .logo{font-size:18px;font-weight:700;color:#16222E;letter-spacing:.01em}
   .brand .url{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;font-size:11px;color:#697079}
   .meta{font-size:12px;color:#697079;margin:0 0 20px}
   .saved{font-size:12px;color:#697079;margin:0 0 18px}
-  .saved a{color:#2F8F86;word-break:break-all}
-  .compliance{font-size:11px;color:#697079;background:#f7fafb;border:1px solid #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:12px 14px;margin:24px 0 0}
-  .print-hint{font-size:12px;color:#22282b;background:#fff7e6;border:1px solid #f0dba8;border-radius:8px;padding:10px 14px;margin:0 0 22px}
-  .print-btn{display:inline-block;margin-left:8px;padding:4px 10px;border:1px solid #C75D38;border-radius:6px;background:#C75D38;color:#fff;font-size:12px;cursor:pointer}
+  .saved a{color:#2E9A8C;word-break:break-all}
+  .compliance{font-size:11px;color:#697079;background:#f7fafb;border:1px solid #dde3ec;border-left:3px solid #155E7A;border-radius:8px;padding:12px 14px;margin:24px 0 0}
+  .print-hint{font-size:12px;color:#16222E;background:#fff7e6;border:1px solid #f0dba8;border-radius:8px;padding:10px 14px;margin:0 0 22px}
+  .print-btn{display:inline-block;margin-left:8px;padding:4px 10px;border:1px solid #155E7A;border-radius:6px;background:#155E7A;color:#fff;font-size:12px;cursor:pointer}
   @media print {
     body{padding:0}
     .print-hint{display:none}

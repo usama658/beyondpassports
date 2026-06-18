@@ -12,8 +12,8 @@
   /* ---- HERO — navy mesh split + popular topics (pick B) ------------- */
   .gi-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
   .gi-hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(47,143,134,.42),transparent 62%),
+     radial-gradient(60% 80% at 12% 16%,rgba(21,94,122,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 84%,rgba(46,154,140,.42),transparent 62%),
      radial-gradient(40% 60% at 70% 8%,rgba(242,194,172,.16),transparent 60%)}
   .gi-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.08),rgba(15,20,22,.32))}
   .gi-hero > .wrap{position:relative;z-index:2;padding-top:84px;padding-bottom:80px}
@@ -85,7 +85,7 @@
     box-shadow:0 12px 32px -28px rgba(40,50,70,.5)}
   .gi-compliance .gc-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
     background:var(--navy);color:#fff;border-radius:13px;width:104px;height:104px;flex:0 0 104px;text-align:center;padding:10px}
-  .gi-compliance .gc-badge svg{width:26px;height:26px;color:var(--soft,#F2C2AC)}
+  .gi-compliance .gc-badge svg{width:26px;height:26px;color:var(--soft,#A9CCDA)}
   .gi-compliance .gc-badge span{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;line-height:1.2}
   .gi-compliance p{margin:0;font-size:13.5px;line-height:1.65;color:#3a4b55}
   .gi-compliance strong{color:var(--navy)}

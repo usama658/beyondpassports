@@ -30,8 +30,8 @@
   /* ── hero — navy mesh (pick A) ────────────────────────────────── */
   .fc-hero{
     background:
-      radial-gradient(640px 280px at 12% 0, rgba(199,93,56,.5), transparent 60%),
-      radial-gradient(600px 260px at 92% 100%, rgba(47,143,134,.5), transparent 60%),
+      radial-gradient(640px 280px at 12% 0, rgba(21,94,122,.5), transparent 60%),
+      radial-gradient(600px 260px at 92% 100%, rgba(46,154,140,.5), transparent 60%),
       var(--navy);
     color:#fff;padding:60px 0;
   }
@@ -77,7 +77,7 @@
     text-transform:uppercase;font-size:16px}
   .fc-finder input.pc-input:focus,
   .fc-finder select:focus{border-color:var(--cta);
-    box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+    box-shadow:0 0 0 3px rgba(21,94,122,.14);outline:none}
 
   .fc-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
 

@@ -11,7 +11,7 @@
   /* ── Hero — navy mesh split + side-by-side scale (pick B) ────────────────── */
   .cmp-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:92px 0 84px}
   .cmp-hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(60% 80% at 12% 18%,rgba(199,93,56,.40),transparent 60%),
+     radial-gradient(60% 80% at 12% 18%,rgba(21,94,122,.40),transparent 60%),
      radial-gradient(55% 75% at 88% 82%,rgba(63,114,89,.42),transparent 62%),
      radial-gradient(40% 60% at 70% 10%,rgba(242,194,172,.18),transparent 60%);}
   .cmp-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.10),rgba(15,20,22,.35));}
@@ -22,7 +22,7 @@
   .cmp-hero .lede{color:rgba(255,255,255,.82);max-width:46ch}
   .cmp-scale{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .cmp-scol{border-radius:16px;padding:20px 18px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05)}
-  .cmp-scol.us{background:linear-gradient(180deg,rgba(199,93,56,.22),rgba(255,255,255,.05));border-color:rgba(242,194,172,.45)}
+  .cmp-scol.us{background:linear-gradient(180deg,rgba(21,94,122,.22),rgba(255,255,255,.05));border-color:rgba(242,194,172,.45)}
   .cmp-scol .k{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 12px}
   .cmp-scol.diy .k{color:rgba(255,255,255,.6)}
   .cmp-scol p{margin:0 0 10px;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.85);display:flex;gap:8px}
@@ -35,7 +35,7 @@
   /* ── Comparison — two route cards (pick B) ───────────────────────────────── */
   .cmp-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
   .cmp-tcard{border:1px solid var(--paper-edge);border-radius:22px;overflow:hidden;background:var(--white);box-shadow:0 18px 46px -34px rgba(40,50,70,.5)}
-  .cmp-tcard.us{border-color:#eccab4;box-shadow:0 28px 60px -34px rgba(199,93,56,.45)}
+  .cmp-tcard.us{border-color:#eccab4;box-shadow:0 28px 60px -34px rgba(21,94,122,.45)}
   @media (min-width:861px){.cmp-tcard.us{transform:translateY(-10px)}}
   .cmp-thead{padding:26px 28px 22px;border-bottom:1px solid var(--paper-edge)}
   .cmp-tcard.us .cmp-thead{background:linear-gradient(180deg,#fbeee6,var(--white))}
@@ -66,7 +66,7 @@
 
   /* Honest note block — navy straight-talk panel (pick B) */
   .cmp-honest{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:28px 32px;margin-top:32px;box-shadow:0 26px 56px -36px rgba(40,50,70,.7)}
-  .cmp-honest::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 90% at 6% 12%,rgba(199,93,56,.30),transparent 60%),radial-gradient(45% 80% at 96% 90%,rgba(47,143,134,.26),transparent 62%)}
+  .cmp-honest::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 90% at 6% 12%,rgba(21,94,122,.30),transparent 60%),radial-gradient(45% 80% at 96% 90%,rgba(46,154,140,.26),transparent 62%)}
   .cmp-honest .ch-in{position:relative;display:flex;gap:18px;align-items:flex-start}
   .cmp-honest .ch-ic{flex:0 0 46px;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--soft)}
   .cmp-honest .ch-ic svg{width:24px;height:24px}

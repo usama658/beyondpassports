@@ -52,36 +52,36 @@
   /* checklist-result.blade.php — page-scoped layout. Palette/type/components from ukv.css. */
 
   /* ── HERO — boarding-pass ticket (pick D) ── */
-  .crp-hero{background:linear-gradient(180deg,#eef1f3,var(--paper,#f4f5f6));padding:48px 0 40px}
+  .crp-hero{background:linear-gradient(180deg,#eef1f3,var(--paper,#F4F6FA));padding:48px 0 40px}
   .crp-pass{
     max-width:840px;margin:0 auto;
     display:grid;grid-template-columns:1fr 232px;
-    background:var(--white,#fff);border:1px solid var(--paper-edge,#e6e8ea);
+    background:var(--white,#fff);border:1px solid var(--paper-edge,#dde3ec);
     border-radius:18px;box-shadow:0 30px 70px -45px rgba(40,50,70,.55);overflow:hidden;
   }
   .crp-main{padding:30px 32px}
   .crp-route{display:flex;align-items:center;gap:13px;margin:0 0 16px}
   .crp-route .pt{font-size:13px;font-weight:800;letter-spacing:.05em;color:var(--navy)}
   .crp-route .ln{flex:0 0 56px;height:2px;position:relative;
-    background:repeating-linear-gradient(90deg,var(--cta,#C75D38) 0 6px,transparent 6px 11px)}
-  .crp-route .ln svg{position:absolute;right:-7px;top:-7px;width:16px;height:16px;color:var(--cta,#C75D38)}
-  .crp-main .eyebrow{color:var(--cta,#C75D38)}
-  .crp-main h1{color:var(--navy,#22282b);font-size:clamp(26px,3.6vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin:0 0 12px}
+    background:repeating-linear-gradient(90deg,var(--cta,#155E7A) 0 6px,transparent 6px 11px)}
+  .crp-route .ln svg{position:absolute;right:-7px;top:-7px;width:16px;height:16px;color:var(--cta,#155E7A)}
+  .crp-main .eyebrow{color:var(--cta,#155E7A)}
+  .crp-main h1{color:var(--navy,#16222E);font-size:clamp(26px,3.6vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin:0 0 12px}
   .crp-main .lede{color:#46505a;font-size:15px;line-height:1.55;max-width:50ch;margin:0}
-  .crp-stub{position:relative;background:var(--navy,#22282b);color:#fff;padding:28px 26px;
+  .crp-stub{position:relative;background:var(--navy,#16222E);color:#fff;padding:28px 26px;
     display:flex;flex-direction:column;justify-content:center;gap:16px}
   .crp-stub::before{content:"";position:absolute;left:-9px;top:0;bottom:0;width:18px;z-index:3;
-    background:radial-gradient(circle at center,var(--paper,#f4f5f6) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
-  .crp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft,#F2C2AC);display:block;margin-bottom:3px}
+    background:radial-gradient(circle at center,var(--paper,#F4F6FA) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
+  .crp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft,#A9CCDA);display:block;margin-bottom:3px}
   .crp-stub .v{font-size:18px;font-weight:800;line-height:1.1}
   .crp-stub .v small{font-size:12px;font-weight:600;color:rgba(255,255,255,.7)}
   .crp-stub .v.sm{font-size:15px}
-  .crp-stub .ready{color:#84D2C9}
+  .crp-stub .ready{color:#79CFC2}
   @media (max-width:680px){
     .crp-pass{grid-template-columns:1fr}
     .crp-stub{flex-direction:row;flex-wrap:wrap;gap:20px 26px;padding:22px 26px}
     .crp-stub::before{left:0;right:0;top:-9px;bottom:auto;width:auto;height:18px;
-      background:radial-gradient(circle at center,var(--paper,#f4f5f6) 0 6px,transparent 6.5px) 0 0/22px 18px repeat-x}
+      background:radial-gradient(circle at center,var(--paper,#F4F6FA) 0 6px,transparent 6.5px) 0 0/22px 18px repeat-x}
   }
 
   /* ── Checklist panel ── */
@@ -124,12 +124,12 @@
     color:var(--ink);
     transition:border-color .15s ease,box-shadow .15s ease;
   }
-  .deliver .dlv-submit{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:13px 24px;box-shadow:0 12px 26px -12px rgba(199,93,56,.6)}
+  .deliver .dlv-submit{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:13px 24px;box-shadow:0 12px 26px -12px rgba(21,94,122,.6)}
   .deliver .dlv-submit svg{width:17px;height:17px}
   .deliver input[type=email]:hover,
   .deliver input[type=tel]:hover{border-color:#c4cace}
   .deliver input[type=email]:focus,
-  .deliver input[type=tel]:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+  .deliver input[type=tel]:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14);outline:none}
 
   .deliver .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .deliver .field{margin:0 0 14px}
@@ -161,7 +161,7 @@
   .deliver .chan .tx b{display:block;font-size:14px;font-weight:700;color:var(--navy);line-height:1.25}
   .deliver .chan .tx span{font-size:11.5px;color:var(--muted)}
   .deliver .chan input{width:20px;height:20px;flex:0 0 20px;margin:0;accent-color:var(--cta)}
-  .deliver .chan:has(input:checked){border-color:var(--cta);box-shadow:0 0 0 2px rgba(199,93,56,.15);background:#fff}
+  .deliver .chan:has(input:checked){border-color:var(--cta);box-shadow:0 0 0 2px rgba(21,94,122,.15);background:#fff}
   @media (max-width:560px){.deliver .channels{grid-template-columns:1fr}}
 
   .deliver .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px;padding:14px 16px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px}
@@ -182,8 +182,8 @@
   }
   .server-errors ul{margin:6px 0 0;padding-left:20px}
   .sent-ok{
-    background:#E3F1EF;
-    border:1px solid #BEE2DD;
+    background:#E2F1EE;
+    border:1px solid #cfe6e0;
     color:var(--stamp-text);
     border-radius:10px;
     padding:13px 16px;
@@ -202,7 +202,7 @@
     padding:26px 28px;color:#fff;
   }
   .share::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 60% at 0 100%,rgba(47,143,134,.3),transparent 62%)}
+    background:radial-gradient(70% 70% at 90% 0,rgba(21,94,122,.32),transparent 60%),radial-gradient(60% 60% at 0 100%,rgba(46,154,140,.3),transparent 62%)}
   .share > *{position:relative;z-index:2}
   .share .k{
     font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
@@ -219,7 +219,7 @@
     background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:13.5px;
     border-radius:9px;padding:10px 15px;cursor:pointer;transition:background .15s;
   }
-  .share .copy:hover{background:#b04e2c}
+  .share .copy:hover{background:#0F4A61}
   .share .copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .share .action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
   .share .action-row a{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;text-decoration:none;transition:filter .15s,background .15s}
@@ -291,7 +291,7 @@
     .cr-actionbar{position:sticky;top:64px;z-index:40;padding:12px 0 4px}
     .cr-actionbar .wrap{
       display:flex;gap:8px;align-items:center;flex-wrap:wrap;
-      background:var(--navy,#22282b);
+      background:var(--navy,#16222E);
       border-radius:14px;
       padding:11px 16px;
       box-shadow:0 16px 40px -28px rgba(0,0,0,.7);
@@ -300,7 +300,7 @@
       margin-right:auto;display:inline-flex;align-items:center;gap:9px;
       font-family:var(--body,'Plus Jakarta Sans',sans-serif);
       font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-      color:var(--soft,#F2C2AC);
+      color:var(--soft,#A9CCDA);
     }
     .cr-actionbar .ab-label svg{width:16px;height:16px;flex:0 0 16px}
     .cr-actionbar a{
@@ -312,8 +312,8 @@
     .cr-actionbar a:hover{transform:translateY(-1px)}
     .cr-actionbar .ab-ghost{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff}
     .cr-actionbar .ab-ghost:hover{background:rgba(255,255,255,.12)}
-    .cr-actionbar .ab-primary{background:var(--cta,#C75D38);color:#fff;font-weight:700;padding:10px 17px}
-    .cr-actionbar .ab-primary:hover{background:#b04e2c;box-shadow:0 0 0 3px rgba(199,93,56,.28)}
+    .cr-actionbar .ab-primary{background:var(--cta,#155E7A);color:#fff;font-weight:700;padding:10px 17px}
+    .cr-actionbar .ab-primary:hover{background:#0F4A61;box-shadow:0 0 0 3px rgba(21,94,122,.28)}
     @media (max-width:640px){
       .cr-actionbar{position:fixed;top:auto;bottom:0;left:0;right:0;padding:0;z-index:60}
       .cr-actionbar .wrap{border-radius:0;padding:8px 12px;gap:6px;justify-content:space-between;box-shadow:0 -2px 14px rgba(0,0,0,.3)}

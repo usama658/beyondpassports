@@ -15,13 +15,13 @@
   .rv-hero h1 em{font-style:normal;color:var(--cta)}
   .rv-hero .lede{font-size:17px;line-height:1.6;color:#46505a;max-width:54ch;margin:16px 0 0}
   .rv-promise{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}
-  .rv-promise .p{display:inline-flex;align-items:center;gap:8px;background:#E3F1EF;border:1px solid #BEE2DD;border-radius:999px;padding:8px 15px;font-size:13px;font-weight:700;color:var(--stamp-text)}
+  .rv-promise .p{display:inline-flex;align-items:center;gap:8px;background:#E2F1EE;border:1px solid #cfe6e0;border-radius:999px;padding:8px 15px;font-size:13px;font-weight:700;color:var(--stamp-text)}
   .rv-promise .p svg{width:15px;height:15px;flex:0 0 15px;fill:none;stroke:var(--stamp);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .rv-hero .micro{font-family:var(--mono);font-size:12px;color:var(--muted);margin:18px 0 0;letter-spacing:.01em}
 
   /* About-these-reviews — navy shield panel (pick B) */
   .rv-about{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;box-shadow:0 24px 60px -42px rgba(0,0,0,.6)}
-  .rv-about::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
+  .rv-about::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.30),transparent 62%)}
   .rv-about > *{position:relative;z-index:2}
   .rv-about .shield{width:72px;height:72px;border-radius:16px;background:rgba(242,194,172,.16);color:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 72px}
   .rv-about .shield svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}

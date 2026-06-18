@@ -38,9 +38,9 @@
   /* Page-scoped layout for the tracker. Palette/type/components + the shared header
      and footer all come from assets/ukv.css (loaded above). */
   :root{
-    --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#2F8F86;
-    --stamp-text:#226B64;
-    --cta:#C75D38; --paper-edge:#e6e8ea; --white:#fff; --muted:#697079; --hint:#697079;
+    --ink:#16222E; --navy:#16222E; --paper:#F4F6FA; --gold:#155E7A; --stamp:#2E9A8C;
+    --stamp-text:#1F6E63;
+    --cta:#155E7A; --paper-edge:#dde3ec; --white:#fff; --muted:#697079; --hint:#697079;
     --shadow:0 18px 44px -26px rgba(40,50,70,.30);
     --display:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
     --body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
@@ -68,7 +68,7 @@
   .tp-main h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,42px);letter-spacing:-.02em;line-height:1.05;color:var(--ink);margin:0 0 8px}
   .tp-main .lede{font-size:15.5px;color:#33454f;margin:0 0 18px;max-width:46ch;line-height:1.55}
   .tp-look{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--paper-edge);border-radius:13px;padding:7px 7px 7px 16px;max-width:480px}
-  .tp-look:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14)}
+  .tp-look:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
   .tp-look .ref-input{flex:1;min-width:0;border:0;background:transparent;outline:none;font-family:var(--mono);font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
   .tp-look .btn{flex:0 0 auto;white-space:nowrap}
   .tp-hint{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:11px 0 0;letter-spacing:.02em}
@@ -77,8 +77,8 @@
   .tp-stub::before{content:"";position:absolute;left:-9px;top:0;bottom:0;width:18px;z-index:3;background:radial-gradient(circle at center,var(--paper) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
   .tp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:4px}
   .tp-stub .v{font-size:16px;font-weight:800;line-height:1.18}
-  .tp-stub .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#84D2C9}
-  .tp-stub .live i{width:9px;height:9px;border-radius:50%;background:#84D2C9;box-shadow:0 0 0 4px rgba(132,210,201,.22)}
+  .tp-stub .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#79CFC2}
+  .tp-stub .live i{width:9px;height:9px;border-radius:50%;background:#79CFC2;box-shadow:0 0 0 4px rgba(121,207,194,.22)}
   @media (max-width:680px){
     .tp-pass{grid-template-columns:1fr}
     .tp-main{padding:26px 22px}
@@ -89,12 +89,12 @@
   .status{max-width:640px;margin:0 auto}
   /* Navy status header (pick C) */
   .status-mrz{position:relative;overflow:hidden;background:var(--navy);border-radius:16px 16px 0 0;padding:24px 26px;color:#fff}
-  .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
+  .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.30),transparent 62%)}
   .status-mrz > *{position:relative;z-index:2}
   .status-mrz .lab{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 4px}
   .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
-  .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(199,93,56,.22);border:1px solid rgba(242,194,172,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
-  .status-mrz .pill.is-outcome{background:rgba(47,143,134,.2);border-color:rgba(132,210,201,.5);color:#84D2C9}
+  .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(21,94,122,.22);border:1px solid rgba(242,194,172,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
+  .status-mrz .pill.is-outcome{background:rgba(46,154,140,.2);border-color:rgba(121,207,194,.5);color:#79CFC2}
   .status-mrz .stage-now{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;margin:8px 0 0}
   .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:26px}
 
@@ -107,7 +107,7 @@
   .stage.is-done::before{background:var(--stamp)}
   .stage .dot{position:relative;z-index:1;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f5f6;border:2px solid var(--paper-edge);color:var(--hint);font-family:var(--mono);font-weight:700;font-size:13px}
   .stage.is-done .dot{background:var(--stamp);border-color:var(--stamp);color:#fff}
-  .stage.is-current .dot{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.18)}
+  .stage.is-current .dot{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(21,94,122,.18)}
   .stage.is-outcome .dot{background:#fdeceb;border-color:#c0392b;color:#8a2a22}
   .stage .name{display:block;font-size:15px;line-height:1.3;color:var(--muted);font-weight:600;padding-top:4px}
   .stage.is-current .name{color:var(--navy);font-weight:700}
@@ -128,7 +128,7 @@
 
   /* Navy help band (pick A) */
   .help{position:relative;overflow:hidden;max-width:640px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border:0;border-radius:16px;background:var(--navy);color:#fff;padding:22px 24px}
-  .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(47,143,134,.30),transparent 62%)}
+  .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.30),transparent 62%)}
   .help > *{position:relative;z-index:2}
   .help .help-t b{display:block;font-size:15px;font-weight:700;color:#fff}
   .help .help-t span{font-size:13px;color:rgba(255,255,255,.72)}
