@@ -253,7 +253,14 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="topbar">Independent service — not a government website &middot; <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a> &middot; <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a></div>
+<div class="topbar"><div class="wrap tb-row">
+  <span class="tb-note">Independent service — <strong>not a government website</strong></span>
+  <span class="tb-links">
+    <span class="tb-rate">★ 4.9 rated</span>
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
+  </span>
+</div></div>
 <header class="site-head"><div class="wrap">
   <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <nav class="nav" aria-label="Primary">
