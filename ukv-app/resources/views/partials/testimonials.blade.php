@@ -35,46 +35,68 @@
 @once
 @push('head')
 <style>
-  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-  .quote.quote--card{max-width:none;background:var(--white,#fff);border:1px solid var(--paper-edge,#e3e9ed);border-radius:12px;padding:26px 24px;display:flex;flex-direction:column;height:100%}
-  .quote.quote--card blockquote{font-size:clamp(18px,1.6vw,21px);line-height:1.4}
-  .quote.quote--card .rating{font-family:var(--mono);font-size:15px;color:var(--gold,#C75D38);margin-top:16px;letter-spacing:2px}
-  .quote.quote--card .by{margin-top:auto;padding-top:18px}
-  .quote.quote--card .by .avatar svg{width:100%;height:100%;display:block}
-  @media (max-width:860px){.quote-grid{grid-template-columns:1fr}}
+  /* Testimonials — summary rail + review rows (pick E) */
+  .tm-wrap{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:start}
+  @media (max-width:760px){.tm-wrap{grid-template-columns:1fr;gap:24px}}
+
+  .tm-sum{position:sticky;top:84px;background:var(--navy);color:#fff;border-radius:16px;padding:26px 24px;overflow:hidden}
+  .tm-sum::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .tm-sum > *{position:relative;z-index:2}
+  .tm-sum .eyebrow{color:var(--soft);margin:0 0 12px}
+  .tm-sum h2{color:#fff;font-size:22px;letter-spacing:-.02em;margin:0 0 10px}
+  .tm-sum p{font-size:13px;line-height:1.55;color:rgba(255,255,255,.78);margin:0}
+  @media (max-width:760px){.tm-sum{position:static}}
+
+  .tm-tiles{display:flex;gap:3px;margin:0 0 14px}
+  .tm-tiles i{width:22px;height:22px;background:var(--stamp);display:flex;align-items:center;justify-content:center;border-radius:3px}
+  .tm-tiles i svg{width:13px;height:13px;fill:#fff;stroke:none}
+
+  .tm-rows{display:flex;flex-direction:column}
+  .tm-row{padding:20px 0;border-bottom:1px solid var(--paper-edge);display:flex;flex-direction:column;gap:10px;margin:0}
+  .tm-row:first-child{padding-top:0}
+  .tm-row .tm-tiles{margin:0}.tm-row .tm-tiles i{width:18px;height:18px}.tm-row .tm-tiles i svg{width:11px;height:11px}
+  .tm-row blockquote{margin:0;font-size:clamp(16px,1.5vw,18px);line-height:1.5;color:var(--navy);font-weight:500}
+  .tm-row .meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;font-size:11.5px;font-weight:700}
+  .tm-row .verified{display:inline-flex;align-items:center;gap:6px;color:var(--stamp-text);letter-spacing:.03em}
+  .tm-row .verified svg{width:13px;height:13px;fill:none;stroke:var(--stamp);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .tm-row .who{color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
 </style>
 @endpush
 @endonce
 
 <section class="alt" aria-labelledby="testimonials-head"><div class="wrap">
-  <div class="sec-head reveal">
-    <p class="eyebrow">{{ $eyebrow }}</p>
-    <h2 id="testimonials-head">{{ $heading }}</h2>
-  </div>
+  <div class="tm-wrap">
 
-  <div class="quote-grid">
-    @foreach ($items as $t)
-      <figure class="quote quote--card reveal">
-        <blockquote>“{{ $t['quote'] }}”</blockquote>
-        @if (!empty($t['rating']))
-          @php $r = max(1, min(5, (int) $t['rating'])); @endphp
-          <div class="rating" role="img" aria-label="Rated {{ $r }} out of 5">
-            <span aria-hidden="true">{{ str_repeat('★', $r) }}{{ str_repeat('☆', 5 - $r) }}</span>
-          </div>
-        @endif
-        <figcaption class="by">
-          <span class="avatar">
-            <svg viewBox="0 0 44 44" role="img" aria-label="Beyond Passports traveller"><use href="#ukv-monogram"></use></svg>
-          </span>
-          <span>{{ $t['attribution'] }}</span>
-        </figcaption>
-      </figure>
-    @endforeach
-  </div>
+    {{-- Summary rail (no aggregate score — page intentionally avoids a rating dataset) --}}
+    <aside class="tm-sum reveal">
+      <p class="eyebrow">{{ $eyebrow }}</p>
+      <h2 id="testimonials-head">{{ $heading }}</h2>
+      <p>Every review here is shared with the traveller's consent and anonymised. We show their words — not a score we can't verify.</p>
+      @if ($showAll)
+        <p style="margin-top:16px"><a class="rlink" style="font-weight:700;color:var(--soft)" href="{{ url('/reviews') }}">Read more reviews →</a></p>
+      @endif
+    </aside>
 
-  @if ($showAll)
-    <p style="margin-top:26px">
-      <a class="rlink" style="font-weight:600" href="{{ url('/reviews') }}">Read more traveller reviews →</a>
-    </p>
-  @endif
+    {{-- Review rows --}}
+    <div class="tm-rows">
+      @foreach ($items as $t)
+        <figure class="tm-row reveal">
+          @if (!empty($t['rating']))
+            @php $r = max(1, min(5, (int) $t['rating'])); @endphp
+            <span class="tm-tiles" role="img" aria-label="Rated {{ $r }} out of 5">
+              @for ($s = 1; $s <= $r; $s++)
+                <i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5 4.7 1.4 7L12 18l-6.4 3 1.4-7-5-4.7 7-.8z"/></svg></i>
+              @endfor
+            </span>
+          @endif
+          <blockquote>“{{ $t['quote'] }}”</blockquote>
+          <figcaption class="meta">
+            <span class="verified"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Verified &middot; consented</span>
+            <span class="who">{{ $t['attribution'] }}</span>
+          </figcaption>
+        </figure>
+      @endforeach
+    </div>
+
+  </div>
 </div></section>
