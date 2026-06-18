@@ -19,8 +19,16 @@
   .rv-promise .p svg{width:15px;height:15px;flex:0 0 15px;fill:none;stroke:var(--stamp);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .rv-hero .micro{font-family:var(--mono);font-size:12px;color:var(--muted);margin:18px 0 0;letter-spacing:.01em}
 
-  .callout{max-width:70ch}
-  .callout p{font-size:16px;line-height:1.6;color:#33454f;margin:0}
+  /* About-these-reviews — navy shield panel (pick B) */
+  .rv-about{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;box-shadow:0 24px 60px -42px rgba(0,0,0,.6)}
+  .rv-about::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .rv-about > *{position:relative;z-index:2}
+  .rv-about .shield{width:72px;height:72px;border-radius:16px;background:rgba(242,194,172,.16);color:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 72px}
+  .rv-about .shield svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .rv-about .eyebrow{color:var(--soft);margin:0 0 6px}
+  .rv-about h2{font-size:22px;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
+  .rv-about p{margin:0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.82)}
+  @media (max-width:560px){.rv-about{grid-template-columns:1fr;text-align:left}}
 </style>
 @endpush
 
@@ -54,9 +62,13 @@
 
 {{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
 <section id="transparency"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">About these reviews</p><h2>Honest, anonymised, consented</h2></div>
-  <div class="callout reveal">
-    <p>Every review on this page is shared with the traveller’s permission and anonymised — we never publish full names or identifying details. Beyond Passports is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
+  <div class="rv-about reveal">
+    <span class="shield" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+    <div>
+      <p class="eyebrow">About these reviews</p>
+      <h2>Honest, anonymised, consented</h2>
+      <p>Every review on this page is shared with the traveller’s permission and anonymised — we never publish full names or identifying details. Beyond Passports is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
+    </div>
   </div>
 </div></section>
 
