@@ -105,7 +105,9 @@
     margin:0 auto;
     max-width:760px;
   }
-  .deliver .dhead{display:flex;align-items:center;gap:14px;margin:0 0 6px}
+  .deliver .dhead{display:flex;align-items:center;gap:13px;margin:0 0 6px}
+  .deliver .dhead .ic{width:42px;height:42px;border-radius:11px;background:#faecdf;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 42px}
+  .deliver .dhead .ic svg{width:21px;height:21px}
   .deliver h2{font-size:clamp(20px,2.6vw,24px);color:var(--navy);margin:0;letter-spacing:-.015em}
   .deliver .sub{font-size:14px;color:#33454f;margin:0 0 20px;line-height:1.5}
 
@@ -348,7 +350,7 @@
   <section class="cr-section"><div class="wrap">
     <div class="deliver reveal" id="send">
       <div class="dhead">
-        <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></span>
         <h2>Send me this checklist</h2>
       </div>
       <p class="sub">Want a copy to keep? We'll send your checklist plus the saved link — and a calendar reminder to start in good time, if you'd like one.</p>
@@ -433,19 +435,8 @@
     </div>
   </div></section>
 
-  {{-- ── APPLY CTA ── --}}
-  <section class="cta-band"><div class="wrap reveal">
-    <div class="rule"></div>
-    <h2>Got your list — ready to apply?</h2>
-    <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK-based team will confirm your exact requirements and check every document before anything is submitted.</p>
-    <div class="row">
-      <a href="{{ $applyUrl }}" class="btn">Start my application &rarr;</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
-    </div>
-  </div></section>
-
   {{-- ── COMPLIANCE STRIP — shield badge + text (pick A) ── --}}
-  <section style="padding:16px 0 40px"><div class="wrap">
+  <section style="padding:16px 0 32px"><div class="wrap">
     <div class="compliance reveal">
       <span class="gc-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -456,6 +447,17 @@
         This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
         Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
       </p>
+    </div>
+  </div></section>
+
+  {{-- ── APPLY CTA ── --}}
+  <section class="cta-band"><div class="wrap reveal">
+    <div class="rule"></div>
+    <h2>Got your list — ready to apply?</h2>
+    <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK-based team will confirm your exact requirements and check every document before anything is submitted.</p>
+    <div class="row">
+      <a href="{{ $applyUrl }}" class="btn">Start my application &rarr;</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
     </div>
   </div></section>
 
