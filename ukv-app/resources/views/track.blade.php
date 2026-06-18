@@ -90,7 +90,7 @@
   .status-mrz > *{position:relative;z-index:2}
   .status-mrz .lab{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 4px}
   .status-mrz .ref{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;letter-spacing:.04em;margin:0;word-break:break-all}
-  .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(21,94,122,.22);border:1px solid rgba(242,194,172,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
+  .status-mrz .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(21,94,122,.22);border:1px solid rgba(169,204,218,.5);color:var(--soft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:14px 0 0}
   .status-mrz .pill.is-outcome{background:rgba(46,154,140,.2);border-color:rgba(121,207,194,.5);color:#79CFC2}
   .status-mrz .stage-now{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;margin:8px 0 0}
   .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:26px}

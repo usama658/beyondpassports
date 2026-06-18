@@ -38,7 +38,7 @@
   .ct-status-pill .sdot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
   .ct-status-pill.is-open { background: rgba(37,211,102,.16); border: 1px solid rgba(37,211,102,.4); color: #7be3a6; }
   .ct-status-pill.is-open .sdot { background: #25D366; box-shadow: 0 0 0 3px rgba(37,211,102,.25); }
-  .ct-status-pill.is-closed { background: rgba(242,194,172,.14); border: 1px solid rgba(242,194,172,.36); color: var(--soft); }
+  .ct-status-pill.is-closed { background: rgba(169,204,218,.14); border: 1px solid rgba(169,204,218,.36); color: var(--soft); }
   .ct-status-pill.is-closed .sdot { background: var(--soft); }
   .ct-statuscard .sc-lab { font: 700 10px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 4px; }
   .ct-statuscard .sc-big { font: 800 23px var(--display); margin: 0 0 16px; letter-spacing: -.01em; }

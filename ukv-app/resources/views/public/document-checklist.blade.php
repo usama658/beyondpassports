@@ -98,7 +98,7 @@
   .dct-perks li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:18px;
     transition:box-shadow .2s ease,transform .2s ease}
   .dct-perks li:hover{transform:translateY(-2px);box-shadow:0 16px 36px -24px rgba(0,0,0,.5)}
-  .dct-perks .t{width:38px;height:38px;border-radius:10px;background:rgba(242,194,172,.16);color:var(--soft);
+  .dct-perks .t{width:38px;height:38px;border-radius:10px;background:rgba(169,204,218,.16);color:var(--soft);
     display:flex;align-items:center;justify-content:center;margin:0 0 11px}
   .dct-perks .t svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
   .dct-perks .pk{font-family:var(--body);font-weight:700;font-size:15px;color:#fff;margin:0 0 4px}

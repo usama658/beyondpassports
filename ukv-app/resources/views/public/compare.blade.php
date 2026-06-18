@@ -13,7 +13,7 @@
   .cmp-hero::before{content:"";position:absolute;inset:0;background:
      radial-gradient(60% 80% at 12% 18%,rgba(21,94,122,.40),transparent 60%),
      radial-gradient(55% 75% at 88% 82%,rgba(63,114,89,.42),transparent 62%),
-     radial-gradient(40% 60% at 70% 10%,rgba(242,194,172,.18),transparent 60%);}
+     radial-gradient(40% 60% at 70% 10%,rgba(169,204,218,.18),transparent 60%);}
   .cmp-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.10),rgba(15,20,22,.35));}
   .cmp-hero .wrap{position:relative;z-index:2}
   .cmp-hero .mh-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
@@ -22,7 +22,7 @@
   .cmp-hero .lede{color:rgba(255,255,255,.82);max-width:46ch}
   .cmp-scale{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .cmp-scol{border-radius:16px;padding:20px 18px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05)}
-  .cmp-scol.us{background:linear-gradient(180deg,rgba(21,94,122,.22),rgba(255,255,255,.05));border-color:rgba(242,194,172,.45)}
+  .cmp-scol.us{background:linear-gradient(180deg,rgba(21,94,122,.22),rgba(255,255,255,.05));border-color:rgba(169,204,218,.45)}
   .cmp-scol .k{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:0 0 12px}
   .cmp-scol.diy .k{color:rgba(255,255,255,.6)}
   .cmp-scol p{margin:0 0 10px;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.85);display:flex;gap:8px}
@@ -35,10 +35,10 @@
   /* ── Comparison — two route cards (pick B) ───────────────────────────────── */
   .cmp-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
   .cmp-tcard{border:1px solid var(--paper-edge);border-radius:22px;overflow:hidden;background:var(--white);box-shadow:0 18px 46px -34px rgba(40,50,70,.5)}
-  .cmp-tcard.us{border-color:#eccab4;box-shadow:0 28px 60px -34px rgba(21,94,122,.45)}
+  .cmp-tcard.us{border-color:#cfddea;box-shadow:0 28px 60px -34px rgba(21,94,122,.45)}
   @media (min-width:861px){.cmp-tcard.us{transform:translateY(-10px)}}
   .cmp-thead{padding:26px 28px 22px;border-bottom:1px solid var(--paper-edge)}
-  .cmp-tcard.us .cmp-thead{background:linear-gradient(180deg,#fbeee6,var(--white))}
+  .cmp-tcard.us .cmp-thead{background:linear-gradient(180deg,#eaf1f6,var(--white))}
   .cmp-thead .k{font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
   .cmp-tcard.us .cmp-thead .k{color:var(--cta)}
   .cmp-thead h3{font-family:var(--display);font-size:23px;margin:0 0 6px;letter-spacing:-.01em;color:var(--navy)}

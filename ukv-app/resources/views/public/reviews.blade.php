@@ -23,7 +23,7 @@
   .rv-about{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:18px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;box-shadow:0 24px 60px -42px rgba(0,0,0,.6)}
   .rv-about::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.30),transparent 62%)}
   .rv-about > *{position:relative;z-index:2}
-  .rv-about .shield{width:72px;height:72px;border-radius:16px;background:rgba(242,194,172,.16);color:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 72px}
+  .rv-about .shield{width:72px;height:72px;border-radius:16px;background:rgba(169,204,218,.16);color:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 72px}
   .rv-about .shield svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .rv-about .eyebrow{color:var(--soft);margin:0 0 6px}
   .rv-about h2{font-size:22px;letter-spacing:-.02em;color:#fff;margin:0 0 8px}

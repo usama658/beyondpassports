@@ -299,7 +299,7 @@
   .gs-callout-head { display: flex; align-items: center; gap: 10px; margin: 0 0 8px }
   .gs-callout-head .i {
     width: 30px; height: 30px; border-radius: 8px;
-    background: rgba(242,194,172,.16); color: var(--soft);
+    background: rgba(169,204,218,.16); color: var(--soft);
     display: flex; align-items: center; justify-content: center; flex: 0 0 30px;
   }
   .gs-callout-head .i svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }

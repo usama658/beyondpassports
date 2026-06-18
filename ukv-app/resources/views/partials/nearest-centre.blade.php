@@ -64,10 +64,10 @@
     /* result card — info + action rail (pick F) */
     .nearest-centre .nc-card{display:grid;grid-template-columns:1fr auto;gap:0;border:1px solid #dde3ec;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 10px 30px -24px rgba(40,50,70,.4);transition:transform .2s ease,box-shadow .2s ease}
     .nearest-centre .nc-card:hover{transform:translateY(-2px);box-shadow:0 18px 44px -26px rgba(40,50,70,.5)}
-    .nearest-centre .nc-card.is-booked{border-color:#eccab4}
+    .nearest-centre .nc-card.is-booked{border-color:#cfddea}
     .nearest-centre .nc-info{padding:20px 22px;min-width:0}
     .nearest-centre .nc-rail{background:#F4F6FA;border-left:1px solid #dde3ec;padding:18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;min-width:158px}
-    .nearest-centre .nc-card.is-booked .nc-rail{background:linear-gradient(180deg,#fbeee6,#fff);border-left-color:#eccab4}
+    .nearest-centre .nc-card.is-booked .nc-rail{background:linear-gradient(180deg,#eaf1f6,#fff);border-left-color:#cfddea}
     .nearest-centre .nc-km{font-family:"Outfit",system-ui,sans-serif;font-size:19px;font-weight:800;color:#16222E;line-height:1.1}
     .nearest-centre .nc-km small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#697079;margin-top:3px}
     .nearest-centre .nc-railbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;border-radius:10px;padding:10px 14px;font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:13px;text-decoration:none}
@@ -78,7 +78,7 @@
     .nearest-centre .nc-badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
     .nearest-centre .nc-badge{display:inline-flex;align-items:center;gap:5px;font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:#eef3f7;color:#16222E;border:1px solid #dde3ec}
     .nearest-centre .nc-badge.is-type{background:#E2F1EE;color:#1F6E63;border-color:#cfe6e3}
-    .nearest-centre .nc-badge.is-book{background:#faecdf;color:#9c4a26;border-color:#eccab4}
+    .nearest-centre .nc-badge.is-book{background:#E2F1EE;color:#9c4a26;border-color:#cfddea}
     .nearest-centre .nc-addr{display:flex;gap:7px;align-items:flex-start;font-size:14px;color:#697079;margin:0;line-height:1.5}
     .nearest-centre .nc-meta{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:0}
     .nearest-centre .nc-link{font-size:14px;font-weight:600;color:#155E7A;text-decoration:none}

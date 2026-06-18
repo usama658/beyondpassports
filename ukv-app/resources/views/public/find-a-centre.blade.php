@@ -59,7 +59,7 @@
   .fc-finder .fc-stub span:last-child{color:var(--soft)}
   .fc-finder .fc-stub-dot{width:8px;height:8px;border-radius:50%;
     background:var(--soft);display:inline-block;margin-right:7px;
-    box-shadow:0 0 0 3px rgba(242,194,172,.25)}
+    box-shadow:0 0 0 3px rgba(169,204,218,.25)}
 
   .fc-finder .cbody{padding:28px 24px 24px}
   .fc-finder label{display:block;font-weight:700;font-size:13px;

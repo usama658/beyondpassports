@@ -103,7 +103,7 @@
     max-width:760px;
   }
   .deliver .dhead{display:flex;align-items:center;gap:13px;margin:0 0 6px}
-  .deliver .dhead .ic{width:42px;height:42px;border-radius:11px;background:#faecdf;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 42px}
+  .deliver .dhead .ic{width:42px;height:42px;border-radius:11px;background:#E2F1EE;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 42px}
   .deliver .dhead .ic svg{width:21px;height:21px}
   .deliver h2{font-size:clamp(20px,2.6vw,24px);color:var(--navy);margin:0;letter-spacing:-.015em}
   .deliver .sub{font-size:14px;color:#33454f;margin:0 0 20px;line-height:1.5}
@@ -152,7 +152,7 @@
     cursor:pointer;
     transition:border-color .15s,box-shadow .15s;
   }
-  .deliver .chan .t{width:34px;height:34px;border-radius:9px;background:#faecdf;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+  .deliver .chan .t{width:34px;height:34px;border-radius:9px;background:#E2F1EE;color:var(--cta);display:flex;align-items:center;justify-content:center;flex:0 0 34px}
   .deliver .chan .t svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .deliver .chan .tx{flex:1;min-width:0}
   .deliver .chan .tx b{display:block;font-size:14px;font-weight:700;color:var(--navy);line-height:1.25}
