@@ -115,15 +115,17 @@
   .deliver input[type=email],
   .deliver input[type=tel]{
     width:100%;
-    padding:13px 14px;
-    border:1.5px solid var(--paper-edge);
-    border-radius:10px;
+    padding:12px 13px;
+    border:1px solid var(--paper-edge);
+    border-radius:11px;
     font:inherit;
-    font-size:15px;
+    font-size:14.5px;
     background:var(--white);
     color:var(--ink);
     transition:border-color .15s ease,box-shadow .15s ease;
   }
+  .deliver .dlv-submit{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:13px 24px;box-shadow:0 12px 26px -12px rgba(199,93,56,.6)}
+  .deliver .dlv-submit svg{width:17px;height:17px}
   .deliver input[type=email]:hover,
   .deliver input[type=tel]:hover{border-color:#c4cace}
   .deliver input[type=email]:focus,
@@ -413,7 +415,7 @@
           <label for="marketing_consent">Keep me posted with occasional tips and reminders about my trip. (Optional — sending the checklist doesn't need this, and you can unsubscribe any time.)</label>
         </div>
 
-        <button type="submit" class="btn">Send me my checklist &rarr;</button>
+        <button type="submit" class="btn dlv-submit">Send me my checklist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></button>
         <p class="hint">WhatsApp is opt-in and only used if you tick it and give a number. We send the checklist you asked for; marketing is separate and only with your consent above.</p>
       </form>
     </div>
