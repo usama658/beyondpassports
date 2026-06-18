@@ -127,13 +127,13 @@
   .dct-wnav .dct-back{background:#fff;border:1px solid var(--paper-edge);color:var(--muted);font-family:inherit;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;cursor:pointer}
   .dct-wnav .dct-back:hover{border-color:#c4cace;color:var(--navy)}
   .dct-wnav .dct-next{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(199,93,56,.6)}
+  .dct-wnav .dct-back[disabled],.dct-wnav .dct-next[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
   .dct-dots{display:flex;gap:7px}
   .dct-dots i{width:8px;height:8px;border-radius:50%;background:var(--paper-edge)}
   .dct-dots i.on{background:var(--cta);width:22px;border-radius:4px}
   /* in wizard mode the original submit row only shows on the last step */
   .ukv-form.is-wizard .dct-submit-row{display:none}
   .ukv-form.is-wizard.on-last .dct-submit-row{display:flex}
-  .ukv-form.is-wizard.on-last .dct-next{display:none}
 
   @media (max-width:620px){
     .ukv-form .grid2{grid-template-columns:1fr}
@@ -315,7 +315,7 @@
 
             {{-- Wizard nav (JS only): Back · dots · Next. Submit lives in the row below (last step). --}}
             <div class="dct-wnav">
-              <button type="button" class="dct-back" data-back hidden>&larr; Back</button>
+              <button type="button" class="dct-back" data-back disabled>&larr; Back</button>
               <span class="dct-dots" aria-hidden="true"><i class="on"></i><i></i></span>
               <button type="button" class="dct-next" data-next>Next: your situation &rarr;</button>
             </div>
@@ -402,7 +402,8 @@
         });
         if (prog) prog.style.width = (n === 1 ? 50 : 100) + '%';
         dots.forEach(function (d, i) { d.classList.toggle('on', i === (n - 1)); });
-        backBtn.hidden = (n === 1);
+        backBtn.disabled = (n === 1);
+        nextBtn.disabled = (n === 2);
         form.classList.toggle('on-last', n === 2);
         var top = form.querySelector('.dct-step.active');
         if (top) top.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
