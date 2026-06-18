@@ -102,14 +102,15 @@
 
   /* ---- TWO-STEP SEGMENTED WIZARD (pick C) — JS-enhanced; no-JS shows both steps ---- */
   .dct-steps,.dct-prog,.dct-wnav{display:none}
-  .ukv-form.is-wizard .dct-steps{display:flex;margin:0 0 0}
-  .ukv-form.is-wizard .dct-prog{display:block}
+  /* in wizard mode the segmented steps BECOME the card header (preview C has no green stub) */
+  #dct-card.is-wizard .stub{display:none}
+  .ukv-form.is-wizard .dct-steps{display:flex;margin:-22px -20px 0;border-radius:16px 16px 0 0}
+  .ukv-form.is-wizard .dct-prog{display:block;margin:0 -20px 22px}
   .ukv-form.is-wizard .dct-wnav{display:flex}
   .ukv-form.is-wizard .dct-step{display:none}
   .ukv-form.is-wizard .dct-step.active{display:block}
-  .ukv-form.is-wizard .legend:first-of-type{margin-top:0}
 
-  .dct-steps{border:1px solid var(--paper-edge);border-radius:13px;overflow:hidden;background:var(--paper)}
+  .dct-steps{border:0;border-bottom:1px solid var(--paper-edge);overflow:hidden;background:var(--paper)}
   .dct-steps .st{flex:1;display:flex;align-items:center;gap:11px;padding:14px 18px;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer}
   .dct-steps .st+.st{border-left:1px solid var(--paper-edge)}
   .dct-steps .st .d{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:0 0 28px;background:#fff;border:1.5px solid var(--paper-edge);color:var(--muted)}
@@ -387,6 +388,8 @@
     var dots  = Array.prototype.slice.call(form.querySelectorAll('.dct-dots i'));
     if (steps.length === 2 && nextBtn && backBtn) {
       form.classList.add('is-wizard');
+      var card = document.getElementById('dct-card');
+      if (card) card.classList.add('is-wizard');
       var cur = 1;
       var show = function (n) {
         cur = n;
