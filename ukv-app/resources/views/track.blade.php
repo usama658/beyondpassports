@@ -53,6 +53,9 @@
      overrides here, so this page's chrome matches every other page exactly. */
 
   .track-hero{padding:48px 0 10px}
+  /* Tracker content sections: ukv.css sets a global section{padding:72px 0} for marketing
+     pages — far too airy for this stacked status flow, so override to a tight rhythm. */
+  .track-sec{padding:20px 0}
   .eyebrow{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin:0 0 8px}
 
   /* Boarding-pass lookup (pick B) — matches the checklist-result hero */
@@ -83,7 +86,7 @@
     .tp-stub::before{left:0;right:0;top:-9px;bottom:auto;width:auto;height:18px;background:radial-gradient(circle at center,var(--paper) 0 6px,transparent 6.5px) 0 0/22px 18px repeat-x}
   }
 
-  .status{max-width:640px;margin:32px auto 0}
+  .status{max-width:640px;margin:0 auto}
   /* Navy status header (pick C) */
   .status-mrz{position:relative;overflow:hidden;background:var(--navy);border-radius:16px 16px 0 0;padding:24px 26px;color:#fff}
   .status-mrz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
@@ -119,12 +122,12 @@
   .reassure p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
   .reassure strong{color:var(--ink)}
 
-  .notfound{max-width:640px;margin:24px auto 0;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:10px;padding:18px 20px}
+  .notfound{max-width:640px;margin:0 auto;background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:10px;padding:18px 20px}
   .notfound p{margin:0 0 6px;font-size:15px}
   .notfound p:last-child{margin:0}
 
   /* Navy help band (pick A) */
-  .help{position:relative;overflow:hidden;max-width:640px;margin:32px auto 0;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border:0;border-radius:16px;background:var(--navy);color:#fff;padding:22px 24px}
+  .help{position:relative;overflow:hidden;max-width:640px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border:0;border-radius:16px;background:var(--navy);color:#fff;padding:22px 24px}
   .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
   .help > *{position:relative;z-index:2}
   .help .help-t b{display:block;font-size:15px;font-weight:700;color:#fff}
@@ -190,7 +193,7 @@
   </div></section>
 
   @if ($notFound)
-    <section><div class="wrap">
+    <section class="track-sec"><div class="wrap">
       <div class="notfound" role="status" aria-live="polite">
         <p>We couldn't find an application matching <strong>{{ $searchedRef }}</strong>.</p>
         <p>Please double-check the reference in your confirmation email — it looks like <code>UKV-2026-004821</code> — and try again. If you're still stuck, get in touch and we'll help.</p>
@@ -199,7 +202,7 @@
   @endif
 
   @if ($result)
-    <section><div class="wrap">
+    <section class="track-sec"><div class="wrap">
       <div class="status" role="region" aria-label="Application status" tabindex="-1">
 
         @php
@@ -268,8 +271,8 @@
          $docItems is the RequirementService::for() output for the matched order — document-type
          guidance only, no PII. Renders nothing when empty (the partial handles that). --}}
     @if (! empty($docItems))
-      <section><div class="wrap">
-        <div class="status" style="margin-top:24px">
+      <section class="track-sec" style="padding-top:0"><div class="wrap">
+        <div class="status">
           <div class="status-card" style="border-radius:12px;border-top:1px solid var(--paper-edge)">
             @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => true])
           </div>
@@ -278,7 +281,7 @@
     @endif
   @endif
 
-  <section><div class="wrap">
+  <section class="track-sec"><div class="wrap">
     <div class="help">
       <span class="help-t"><b>Can't find your reference?</b><span>It's in your confirmation email — or we'll look it up with you.</span></span>
       <div class="links">
