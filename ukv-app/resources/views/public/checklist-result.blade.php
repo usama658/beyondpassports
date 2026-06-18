@@ -192,40 +192,43 @@
     font-weight:600;
   }
 
-  /* ── Share link panel ── */
+  /* ── Share link panel — navy card (pick B, matches hero + bar) ── */
   .share{
-    margin:0 auto;
-    max-width:760px;
-    background:var(--white);
-    border:1px solid var(--paper-edge);
+    position:relative;overflow:hidden;
+    margin:0 auto;max-width:760px;
+    background:var(--navy);
     border-radius:18px;
-    box-shadow:var(--lift-1);
-    padding:22px 26px;
+    box-shadow:0 30px 70px -42px rgba(0,0,0,.7);
+    padding:26px 28px;color:#fff;
   }
+  .share::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(70% 70% at 90% 0,rgba(199,93,56,.32),transparent 60%),radial-gradient(60% 60% at 0 100%,rgba(92,154,123,.3),transparent 62%)}
+  .share > *{position:relative;z-index:2}
   .share .k{
-    font-family:var(--body);
-    font-weight:700;
-    font-size:11px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--stamp-text);
-    margin:0 0 10px;
+    font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--soft);margin:0 0 12px;display:flex;align-items:center;gap:9px;
   }
-  .share .url-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .share .k svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .share .url-row{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.95);border-radius:12px;padding:6px 6px 6px 14px}
   .share input{
-    flex:1 1 280px;
-    min-width:0;
-    font-family:var(--mono);
-    font-size:13px;
-    padding:12px 14px;
-    border:1.5px solid var(--paper-edge);
-    border-radius:10px;
-    background:var(--paper);
-    color:var(--ink);
+    flex:1;min-width:0;border:0;background:transparent;outline:none;
+    font-family:var(--mono);font-size:13px;color:var(--navy);
   }
-  .share input:focus{border-color:var(--cta);outline:none;box-shadow:0 0 0 3px rgba(199,93,56,.12)}
-  .share .note{font-size:13px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+  .share .copy{
+    flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+    background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:13.5px;
+    border-radius:9px;padding:10px 15px;cursor:pointer;transition:background .15s;
+  }
+  .share .copy:hover{background:#b04e2c}
+  .share .copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .share .action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .share .action-row a{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;text-decoration:none;transition:filter .15s,background .15s}
+  .share .action-row a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .share .btn--wa{background:#25D366;color:#0a3d23}
+  .share .btn--wa:hover{filter:brightness(.96)}
+  .share .btn--ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff}
+  .share .btn--ghost:hover{background:rgba(255,255,255,.14)}
+  .share .note{font-size:13px;color:rgba(255,255,255,.62);margin:14px 0 0;line-height:1.5}
 
   /* compliance — shield badge + text card (matches Guides page) */
   .compliance{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin:0 auto;max-width:760px;
@@ -424,16 +427,19 @@
   {{-- ── SHARE LINK ── --}}
   <section class="cr-section"><div class="wrap">
     <div class="share reveal" id="share">
-      <p class="k">Your saved link</p>
+      <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Your saved link</p>
       <div class="url-row">
-        <input type="text" value="{{ $shareUrl }}" readonly aria-label="Saved checklist link" onfocus="this.select()">
-        <a href="https://wa.me/?text={{ urlencode('My document checklist for '.$destName.': '.$shareUrl) }}" class="btn btn--wa">Share on WhatsApp</a>
+        <input type="text" id="share-url" value="{{ $shareUrl }}" readonly aria-label="Saved checklist link" onfocus="this.select()">
+        <button type="button" class="copy" onclick="copyShareLink(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy</span>
+        </button>
+      </div>
+      <div class="action-row">
+        <a href="https://wa.me/?text={{ urlencode('My document checklist for '.$destName.': '.$shareUrl) }}" class="btn--wa"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>Share on WhatsApp</a>
+        <a href="{{ url('/checklist/'.$request->token.'/print') }}" class="btn--ghost" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download / print (PDF)</a>
+        <a href="{{ url('/checklist/'.$request->token.'/calendar.ics') }}" class="btn--ghost"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add a reminder</a>
       </div>
       <p class="note">This page is your saved checklist — bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
-      <div class="action-row">
-        <a href="{{ url('/checklist/'.$request->token.'/print') }}" class="btn btn--ghost" target="_blank" rel="noopener">Download / print (PDF)</a>
-        <a href="{{ url('/checklist/'.$request->token.'/calendar.ics') }}" class="btn btn--ghost">Add a reminder to my calendar</a>
-      </div>
     </div>
   </div></section>
 
@@ -493,5 +499,17 @@
   </div></div>
 </footer>
 
+<script>
+  function copyShareLink(btn){
+    var input = document.getElementById('share-url');
+    var label = btn.querySelector('span');
+    var done = function(){ var t = label.textContent; label.textContent = 'Copied'; setTimeout(function(){ label.textContent = t; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(input.value).then(done, function(){ input.select(); document.execCommand('copy'); done(); });
+    } else {
+      input.select(); document.execCommand('copy'); done();
+    }
+  }
+</script>
 </body>
 </html>
