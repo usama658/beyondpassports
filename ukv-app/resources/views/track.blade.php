@@ -121,9 +121,17 @@
   .notfound p{margin:0 0 6px;font-size:15px}
   .notfound p:last-child{margin:0}
 
-  .help{max-width:760px;margin:32px auto 0;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:1px solid var(--paper-edge);border-radius:12px;background:var(--white);padding:18px 22px}
-  .help p{margin:0;font-size:15px;color:#33454f}
+  /* Navy help band (pick A) */
+  .help{position:relative;overflow:hidden;max-width:640px;margin:32px auto 0;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border:0;border-radius:16px;background:var(--navy);color:#fff;padding:22px 24px}
+  .help::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
+  .help > *{position:relative;z-index:2}
+  .help .help-t b{display:block;font-size:15px;font-weight:700;color:#fff}
+  .help .help-t span{font-size:13px;color:rgba(255,255,255,.72)}
   .help .links{display:flex;gap:10px;flex-wrap:wrap}
+  .help .links a{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;text-decoration:none}
+  .help .links a svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .help .links .call{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff}
+  .help .links .wa{background:#25D366;color:#0a3d23}
 
   footer{background:var(--navy);color:#cdd9e1;margin-top:48px;padding:32px 0}
   footer .brand{color:#fff}
@@ -271,10 +279,10 @@
 
   <section><div class="wrap">
     <div class="help">
-      <p>Can't find your reference? It's in your confirmation email.</p>
+      <span class="help-t"><b>Can't find your reference?</b><span>It's in your confirmation email — or we'll look it up with you.</span></span>
       <div class="links">
-        <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn btn--ghost">Call us</a>
-        <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--ghost">WhatsApp</a>
+        <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="call"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>Call us</a>
+        <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>
       </div>
     </div>
   </div></section>
