@@ -52,26 +52,36 @@
      styled by assets/ukv.css (via partials.site-header / partials.site-footer) — no page
      overrides here, so this page's chrome matches every other page exactly. */
 
-  .track-hero{padding:56px 0 0}
-  .track-grid{max-width:640px;margin:0 auto;text-align:center}
-  .eyebrow{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin:0 0 6px}
-  .track-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);color:var(--ink);letter-spacing:-.015em;margin:0 0 12px}
-  .track-hero p.lede{font-size:18px;color:#33454f;max-width:48ch;margin:0 auto}
+  .track-hero{padding:48px 0 10px}
+  .eyebrow{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin:0 0 8px}
 
-  /* Navy tracker card (pick A) */
-  .lookup{position:relative;overflow:hidden;max-width:520px;margin:30px auto 0;text-align:left;background:var(--navy);border:0;border-radius:18px;box-shadow:0 30px 70px -42px rgba(0,0,0,.6)}
-  .lookup::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 92% 0,rgba(199,93,56,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(92,154,123,.30),transparent 62%)}
-  .lookup > *{position:relative;z-index:2}
-  .lookup .stub{display:flex;justify-content:space-between;align-items:center;background:transparent;color:#fff;font-family:var(--body);font-weight:700;font-size:13px;padding:14px 22px;border-bottom:1px solid rgba(255,255,255,.12)}
-  .lookup .stub .live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#bfe6d2}
-  .lookup .stub .live i{width:8px;height:8px;border-radius:50%;background:#7fc7a3;box-shadow:0 0 0 4px rgba(127,199,163,.25)}
-  .lookup .cbody{padding:22px}
-  .lookup label{display:block;font-weight:700;font-size:13px;margin:0 0 8px;color:rgba(255,255,255,.85)}
-  .lookup .ref-input{width:100%;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:16px;padding:13px 14px;border:1px solid transparent;border-radius:11px;background:rgba(255,255,255,.96);color:var(--ink)}
-  .lookup .ref-input:focus{outline:2px solid var(--soft);outline-offset:1px}
-  .lookup .hint{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55);margin:10px 0 0;letter-spacing:.04em}
-  .lookup .form-error{background:rgba(192,57,43,.18);border:1px solid rgba(243,198,194,.4);color:#ffd9d4;border-radius:8px;padding:11px 13px;font-size:14px;margin:14px 0 0}
-  .lookup button{margin-top:16px}
+  /* Boarding-pass lookup (pick B) — matches the checklist-result hero */
+  .tp-pass{display:grid;grid-template-columns:1fr 256px;max-width:840px;margin:0 auto;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;box-shadow:0 30px 70px -45px rgba(40,50,70,.55);overflow:hidden}
+  .tp-main{padding:32px 34px}
+  .tp-route{display:flex;align-items:center;gap:13px;margin:0 0 14px}
+  .tp-route .pt{font-size:13px;font-weight:800;letter-spacing:.05em;color:var(--navy)}
+  .tp-route .ln{flex:0 0 64px;height:2px;position:relative;background:repeating-linear-gradient(90deg,var(--cta) 0 6px,transparent 6px 11px)}
+  .tp-route .ln svg{position:absolute;right:-7px;top:-8px;width:16px;height:16px;color:var(--cta);fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  .tp-main h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,42px);letter-spacing:-.02em;line-height:1.05;color:var(--ink);margin:0 0 8px}
+  .tp-main .lede{font-size:15.5px;color:#33454f;margin:0 0 18px;max-width:46ch;line-height:1.55}
+  .tp-look{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--paper-edge);border-radius:13px;padding:7px 7px 7px 16px;max-width:480px}
+  .tp-look:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14)}
+  .tp-look .ref-input{flex:1;min-width:0;border:0;background:transparent;outline:none;font-family:var(--mono);font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+  .tp-look .btn{flex:0 0 auto;white-space:nowrap}
+  .tp-hint{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:11px 0 0;letter-spacing:.02em}
+  .tp-error{background:#fdeceb;border:1px solid #f3c6c2;color:#8a2a22;border-radius:9px;padding:10px 13px;font-size:14px;margin:12px 0 0;max-width:480px}
+  .tp-stub{position:relative;background:var(--navy);color:#fff;padding:30px 26px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .tp-stub::before{content:"";position:absolute;left:-9px;top:0;bottom:0;width:18px;z-index:3;background:radial-gradient(circle at center,var(--paper) 0 6px,transparent 6.5px) 0 0/18px 22px repeat-y}
+  .tp-stub .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:4px}
+  .tp-stub .v{font-size:16px;font-weight:800;line-height:1.18}
+  .tp-stub .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#bfe6d2}
+  .tp-stub .live i{width:9px;height:9px;border-radius:50%;background:#7fc7a3;box-shadow:0 0 0 4px rgba(127,199,163,.22)}
+  @media (max-width:680px){
+    .tp-pass{grid-template-columns:1fr}
+    .tp-main{padding:26px 22px}
+    .tp-stub{flex-direction:row;flex-wrap:wrap;gap:18px 26px;padding:22px}
+    .tp-stub::before{left:0;right:0;top:-9px;bottom:auto;width:auto;height:18px;background:radial-gradient(circle at center,var(--paper) 0 6px,transparent 6.5px) 0 0/22px 18px repeat-x}
+  }
 
   .status{max-width:640px;margin:32px auto 0}
   /* Navy status header (pick C) */
@@ -137,37 +147,44 @@
 
 <main id="main">
 
-  <section class="track-hero mesh-hero mesh-hero--sm"><div class="wrap">
-    <div class="mh-grid"><div class="mh-copy track-grid">
-      <p class="eyebrow">Track your application</p>
-      <h1>Where's my visa?</h1>
-      <p class="lede">Enter the order reference from your confirmation email to see exactly where your application is — from our first check to delivery.</p>
-    </div></div>
-
-    <form class="lookup" method="POST" action="/track/lookup" novalidate>
+  <section class="track-hero"><div class="wrap">
+    <form class="tp-pass reveal" method="POST" action="/track/lookup" novalidate>
       @csrf
-      <div class="stub"><span>Status tracker</span><span class="live"><i aria-hidden="true"></i> Live</span></div>
-      <div class="cbody">
-        <label for="ref">Your order reference</label>
-        <input
-          type="text"
-          id="ref"
-          name="ref"
-          class="ref-input"
-          value="{{ old('ref', $searchedRef) }}"
-          placeholder="UKV-2026-004821"
-          autocomplete="off"
-          inputmode="text"
-          maxlength="32"
-          aria-describedby="ref-hint"
-          @error('ref') aria-invalid="true" aria-errormessage="ref-error" @enderror
-          required
-          aria-required="true">
-        <p class="hint" id="ref-hint">Format: UKV-YEAR-NUMBER · it's in your confirmation email</p>
+      <div class="tp-main">
+        <div class="tp-route" aria-hidden="true">
+          <span class="pt">UK</span>
+          <span class="ln"><svg viewBox="0 0 24 24"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></span>
+          <span class="pt">YOUR VISA</span>
+        </div>
+        <p class="eyebrow">Track your application</p>
+        <h1>Where's my visa?</h1>
+        <p class="lede">Pop in the reference from your confirmation email and we'll show you every stage, live.</p>
+        <div class="tp-look">
+          <input
+            type="text"
+            id="ref"
+            name="ref"
+            class="ref-input"
+            value="{{ old('ref', $searchedRef) }}"
+            placeholder="UKV-2026-004821"
+            autocomplete="off"
+            inputmode="text"
+            maxlength="32"
+            aria-label="Your order reference"
+            aria-describedby="ref-hint"
+            @error('ref') aria-invalid="true" aria-errormessage="ref-error" @enderror
+            required
+            aria-required="true">
+          <button type="submit" class="btn">Track →</button>
+        </div>
+        <p class="tp-hint" id="ref-hint">Format: UKV-YEAR-NUMBER · it's in your confirmation email</p>
         @error('ref')
-          <p class="form-error" id="ref-error" role="alert">{{ $message }}</p>
+          <p class="tp-error" id="ref-error" role="alert">{{ $message }}</p>
         @enderror
-        <button type="submit" class="btn">Track →</button>
+      </div>
+      <div class="tp-stub">
+        <div><span class="l">Live status</span><span class="v">Received → Delivered</span></div>
+        <div><span class="l">Tracking</span><span class="live"><i aria-hidden="true"></i> Any reference</span></div>
       </div>
     </form>
   </div></section>
