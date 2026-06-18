@@ -4,21 +4,29 @@
    NOTE: every CSS class name AND every custom-property NAME is unchanged from the
    previous (navy/gold) system — only VALUES + component styling changed, so all
    blades inherit the new look with no markup edits. */
+/* Self-hosted Outfit — no external CDN (renders behind privacy/ad blockers; removes a
+   Google Fonts IP transfer). All weights live in public/fonts. */
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Outfit';src:url('/fonts/outfit-800.woff2') format('woff2');font-weight:800;font-display:swap}
 :root{
-  /* Warm-light palette. --cta + --gold both map to terracotta (buttons/accents). */
-  --ink:#22282b; --navy:#22282b; --paper:#F4F5F6; --gold:#C75D38; --stamp:#2F8F86; --cta:#C75D38;
-  /* soft peach accent — used on dark surfaces (badges, eyebrows, labels on ink). */
-  --soft:#F2C2AC;
-  /* sage text-on-light (deep sage) — passes 4.5:1 on paper/white. (WCAG 1.4.3) */
-  --stamp-text:#226B64;
-  /* instructional-hint grey — passes 4.5:1 on white and the grey panels. (WCAG 1.4.3) */
-  --hint:#697079;
-  --paper-edge:#e6e8ea; --white:#fff;
-  /* body/label muted text — clears 4.5:1 on the grey paper background. (WCAG 1.4.3) */
-  --muted:#697079;
-  /* Plus Jakarta Sans across the board — display, body AND mono (mono flavour dropped). */
-  --display:"Plus Jakarta Sans",system-ui,sans-serif; --body:"Plus Jakarta Sans",system-ui,sans-serif; --mono:"Plus Jakarta Sans",system-ui,sans-serif;
-  --shadow:0 18px 44px -26px rgba(40,50,70,.30);
+  /* Institutional palette — Petrol & Steel. --cta + --gold both map to petrol. */
+  --ink:#16222E; --navy:#16222E; --paper:#F4F6FA; --gold:#155E7A; --stamp:#2E9A8C; --cta:#155E7A;
+  /* soft steel accent — on dark surfaces (badges, eyebrows, labels on ink). */
+  --soft:#A9CCDA;
+  /* teal accent text-on-light — passes 4.5:1 on paper/white. (WCAG 1.4.3) */
+  --stamp-text:#1F6E63;
+  /* teal-on-dark (live dots, eyebrows on ink). */
+  --on-dark:#79CFC2;
+  /* instructional-hint grey — passes 4.5:1 on white and grey panels. (WCAG 1.4.3) */
+  --hint:#5d6b76;
+  --paper-edge:#dde3ec; --white:#fff;
+  /* body/label muted text — clears 4.5:1 on the cool paper background. (WCAG 1.4.3) */
+  --muted:#5d6b76;
+  /* Outfit across the board — display, body AND mono (tabular numerals for refs/fees). */
+  --display:"Outfit",system-ui,sans-serif; --body:"Outfit",system-ui,sans-serif; --mono:"Outfit",ui-monospace,monospace;
+  --shadow:0 18px 44px -26px rgba(20,34,46,.34);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
