@@ -200,6 +200,9 @@
   <div class="dest-more"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></div>
 </div></section>
 
+{{-- HOW WE PREVENT REFUSALS --}}
+@include('partials.home-prevention-b')
+
 {{-- WHY --}}
 <section id="why"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Why travellers choose us</p><h2>We make sure it's right</h2></div>
