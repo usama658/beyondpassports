@@ -135,7 +135,7 @@
 <section class="hp-hero"><div class="wrap">
   <p class="eyebrow">UK visas &middot; eVisas &middot; ETAs</p>
   <h1>Sorted, without the stress.</h1>
-  <p class="lede">Tell us where you're going — we confirm exactly what you need and handle the paperwork.</p>
+  <p class="lede">Tell us where you're going. We confirm exactly what you need and get the paperwork right — so nothing avoidable trips it up. A real UK person checks every application before it's submitted.</p>
 
   {{-- inline visa-check form (real destination list + apply) --}}
   <form class="hp-bar" onsubmit="return false">
