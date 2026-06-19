@@ -567,6 +567,25 @@ Legally drafted version of *exactly* our compliance frame:
   to our solicitor sign-off (#130). **Our differentiator:** our *default* includes the re-prep (theirs
   charges for it), and we publish the ✅/❌ table in plain English on `/promise`, not just buried in T&C.
 
+## Page F — "Made a Mistake on Your eVisa Application?" + "Incorrect Information on Your Document"
+- **★ Pre-submission correction window:** *"If Sherpa is still reviewing your application, they're
+  happy to make the correction for you — just contact them as soon as possible."* Once submitted to
+  the government, *"most governments do not allow changes … which may require a new application."*
+- Changes self-service from "My Applications" **for a limited time** after order, then locked once
+  filed. Mistake after filing → falls back to the Reapply Protection (one free reapply).
+- **Steal:** the **"we can still fix it while we're reviewing"** moment = our human QA gate (#75) made
+  customer-visible — a reassurance ("nothing is submitted until we've checked it with you") that doubles
+  as a rejection-prevention message. Strong, honest, and we already have the gate.
+
+## Page G — "How can I cancel my order and get a refund?"
+- **★ Self-service refund gate keyed to submission state:** *"If you see the 'Cancel Application'
+  button … your order is still eligible for cancellation"*; not submitted → cancel + *"refunds are
+  issued automatically and reach most travellers in less than 7 days."* Once processing started → no
+  cancel button, contact support.
+- **Steal:** tie our **14-day cancellation right (#131) + refund flow (#72)** to a clear, visible
+  **submission-state gate** ("cancel any time before we submit") with a stated refund turnaround. Honest,
+  reduces support load, and pairs with the Consumer Contracts Regs we already implemented.
+
 ## Sherpa — verdict
 Weakest *consumer marketing* (it's a B2B company), but the **strongest offer terms + disclaimer
 drafting**. Two concrete templates to lift: (1) the **"one free reapplication" + bounded exclusion
