@@ -321,6 +321,12 @@ response-time SLA, no guarantee.**
 **Universal wedge:** both rivals collect/sense rejection but NOBODY owns it with a real silo +
 termed offer + named authority. Wide-open lane for Beyond Passports.
 
+### flypass rejection footprint (verified across all pages)
+- Home: one passing line *"Complete document verification to prevent rejection."* + the form field.
+- **No link** from home/nav/footer to the "Top Reasons… Rejected" blog post (orphaned, off the funnel).
+- Only funnel touchpoint = lead-form "Did your visa application get rejected before? Y/N".
+- **Zero reassurance/offer for refused applicants anywhere.** Confirms the wedge.
+
 ---
 
 # Master Steal / Beat / Avoid matrix (running)
