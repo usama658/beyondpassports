@@ -230,9 +230,51 @@ centrepiece → (3) hub + /why → (4) per-country /refused + money blocks → (
 
 ---
 
-# 2. flypassholidays.co.uk — PENDING
+# 2. flypassholidays.co.uk — IN PROGRESS
 
-*(to be added — UK-market, closest rival)*
+**What they are:** UK-based **Schengen-visa consultancy** (London, 167-169 Great Portland St) —
+doc prep + checks + appointment booking + post-approval support. Closest *model* match to Beyond
+Passports, but Europe/Schengen-focused (we're UK-outbound eVisa/ETA/IDP). **Aspiration-led
+("Your European Dream"), NOT rejection-led.** Carries a "private independent… not a government
+website" disclaimer (UK-compliant, like us).
+
+### Silo (real URLs)
+- Home · About `/about-us/` · Services hub `/services/` (→ 6 `/service/{slug}/`) · Countries hub
+  `/countries/` (→ 27 `/country/{slug}/`, generic Schengen template) · **Eligibility funnel
+  `/start-your-visa-journey/`** (primary CTA) · Contact `/contact-us/` · Blog `/blog/` ·
+  Quick Flight Booking · Trustpilot (ext).
+- **No visible legal/privacy/terms/refund** — compliance gap (we beat).
+- Shallow two-hub model (Services + Countries); conversion spine = nav CTA → eligibility funnel.
+
+### Pages torn down
+**Home:** hero "Your European Dream Starts Here"; "experts review… to ensure your application is
+**flawless**"; Services incl **"Error-free application forms guaranteed"** + Post-Approval Support
++ real-time tracking; 27-country grid; reviews (4 named 5★); **lead form asks "Prior visa
+rejection? Y/N"** but builds no angle on it. Best offer = "error-free forms guaranteed" (no remedy).
+
+**Eligibility funnel `/start-your-visa-journey/`:** single-page form. Fields incl **UK immigration
+status (Student/Graduate/Skilled Worker/Dependent/Settled/ILR/Global Business Mobility)**,
+departure UK airport, bank-statement Y/N, **"Did your visa application get rejected before?" Y/N**
+→ consultation. Acknowledges rejection "without stigma"; no offer attached.
+
+**Service `/service/application-form-filling-checks/`:** *"Error-free application forms guaranteed…
+avoiding common mistakes that lead to delays or rejections."* — **no remedy/escape clause** (hollow
+guarantee). "Download Our Document" lead magnet + Contact CTA.
+
+### Steal / beat / avoid (so far)
+- **Steal:** ① **UK immigration-status qualifier** in intake (Student/Graduate/Skilled Worker/ILR…)
+  → mirror in eligibility router (#113); ② "avoiding the mistakes that lead to delays or rejections"
+  QA framing **+ a real termed remedy** (Promise); ③ lead magnet (→ our doc-checklist tool, stronger);
+  ④ post-approval support + tracking as named services.
+- **★ Recurring wedge (BOTH UK + Brazil rivals):** everyone collects "prior rejection?" and NOBODY
+  sells on it. Branch that "Yes" → Re-Application Promise. Twice-confirmed opening.
+- **Beat:** no rejection content/cluster · no published terms · vague "guaranteed" with no remedy ·
+  hidden pricing · thin proof (Trustpilot badge, no score; no ABTA/ATOL) · aspiration- not anxiety-led.
+- **Avoid:** "guaranteed" with no defined remedy.
+
+### Pending pages
+`/country/france/` (per-country template) · `/about-us/` (authority?) · `/services/`+`/countries/`
+hubs (silo) · `/blog/` (rejection content?) · `/contact-us/` · legal (appears missing — confirm).
 
 ---
 
