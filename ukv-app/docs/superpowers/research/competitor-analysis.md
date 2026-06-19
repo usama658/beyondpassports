@@ -245,7 +245,7 @@ centrepiece → (3) hub + /why → (4) per-country /refused + money blocks → (
 
 ---
 
-# 2. flypassholidays.co.uk — IN PROGRESS
+# 2. flypassholidays.co.uk — COMPLETE
 
 **What they are:** UK-based **Schengen-visa consultancy** (London, 167-169 Great Portland St) —
 doc prep + checks + appointment booking + post-approval support. Closest *model* match to Beyond
