@@ -555,10 +555,57 @@ exactly. The upgrade: each spoke must *do something*, not just read.
    block (their price-change-log posture) + optionally own our own misses honestly. Cheap trust; don't
    over-build an audit log (YAGNI).
 
-### Content-population order (unchanged, now with Atlys's recipe baked in)
-Per refused/reason page: decoded-reason block (taxonomy #73) → our-check mapping → useful reapply
-guidance (disclose prior refusal, change-something) → checklist tool entry → Promise close + compliance
-strip. No unsourced stats; any number substantiable or omitted.
+### Voice — locked rules (sharpened by Atlys)
+| Rule | Do | Never |
+|---|---|---|
+| Order | name anxiety → **decode** → show our check → Promise (close) | lead with the offer |
+| Diagnose, don't sell | "here's what the officer meant" | "buy now, 95% approved" |
+| Numbers | substantiable or **omitted** | unsourced % (Atlys's whole weakness) |
+| Outcome | "what we control, we get right" | "guaranteed / rejection-proof / approval rate" |
+| Tools > prose | link the checklist/eligibility tool | wall of text |
+| The line we own | *"We don't publish approval rates — no honest service can promise the authority's decision. We publish what we control, and stand behind it."* | a pivot after it |
+
+### Content skeleton — the repeatable unit (every `/reasons/{reason}` + `/visa/{country}/refused`)
+Worked example, `/visa-refusals/reasons/insufficient-funds`:
+```
+H1   "Refused for insufficient funds? Here's what that actually means."
+
+[DECODE]            (Atlys "Reasons Decoded")
+   What the officer saw → plain-English translation. Often about EVIDENCE, not eligibility.
+[RECOVERABLE OR BLOCKING]
+   ✅ usually recoverable (evidence) · ❌ blocking only if genuinely ineligible
+[HOW WE STOP IT]    (taxonomy #73 → which check)
+   eligibility screen · document check (history/source) · human QA gate (#75)
+[REAPPLY GUIDANCE]  (honest, useful, free)
+   disclose the previous refusal · reapply only when something CHANGED · don't resubmit the same file
+[TOOL ENTRY]
+   → "See exactly what evidence your UK visa needs" [document-checklist #235]
+[PROMISE CLOSE]
+   prepared by us + refused for something we should have caught → re-prepare & re-submit free [/promise]
+[COMPLIANCE STRIP]
+   Independent service · not a government website · the decision is the authority's.
+```
+
+### How to populate — the engine (already built; do NOT hand-write pages)
+```
+SOURCE OF TRUTH                ENGINE                         OUTPUT
+taxonomy #73 ──────────────►  per reason: decode text,    ►  /visa-refusals/reasons/{reason}
+(reason + our_error/            recoverable/blocking,         /visa/{country}/refused
+ discretionary_covered/         which check stops it
+ excluded + the check)
+gov.uk verified data (#129) ►  Guide engine #242–245:     ►  published pages
+                                1 AI draft (#244)
+                                2 factuality validator
+                                3 compliance publish GATE  ◄── auto-blocks "approval rate" /
+                                4 "Reviewed {date}" (#245)      "% approved" / "guarantee" / invented stat
+```
+**Population order:** (1) fill **taxonomy #73** first — decode line + recoverable/blocking +
+classification + the check, per reason (single source). (2) Build the skeleton above once as the guide
+template. (3) Generate `/reasons/{reason}` from the taxonomy. (4) Generate `/visa/{country}/refused` =
+country data × skeleton. (5) Compliance gate runs on every publish (honesty enforced, not hoped).
+(6) Freshness stamp + AI change-detection (#138/#245).
+**Blocked until user supplies (spec §11):** named UK case-lead + verifiable credential (else "our UK
+case team", no fake credential); legal sign-off on Promise terms; any real number (else omit — default).
 
 ---
 
