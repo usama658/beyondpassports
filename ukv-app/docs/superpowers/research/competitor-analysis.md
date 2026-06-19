@@ -435,6 +435,58 @@ Country-specific (`/US`, `/KR`, `/CN`, `/AT`…). Section by section:
   previous rejection" + "reapply only when something changed" as genuinely useful, trust-building
   advice. **Avoid:** every unsourced %, the "99.2% prediction accuracy" pivot.
 
+## Page D — ★★ `/on-time-guaranteed` (the strategic goldmine — our exact philosophy, executed)
+This page is the blueprint for **how to make a credible promise without promising approval** —
+precisely our compliance frame, done well.
+- **Hero:** *"Based on your travel destination and the time of your application, we deliver your
+  visa exactly as promised, and we guarantee it."* Terms: miss the window → **"100% refund" plus
+  "the visa when it arrives."**
+- **★ The core move — guarantee the controllable, never the outcome:** they separate **delivery
+  timing** (logistics, finite, theirs to control) from **approval** (the authority's). They only
+  guarantee timing. *"They don't guarantee visa approval — only that if processed, it arrives on
+  their stated date."* Credibility = a data-driven date (historical patterns + PRO-team insight +
+  embassy holidays).
+- **★ Radical-transparency proof:** they **publicly list their own misses** — naming applicants and
+  by how much (*"missed deadlines by 2–23 minutes"*) with the reason (public-holiday oversight,
+  coordination). Owning failures *is* the trust lever.
+- **CTA (GEO play):** *"Ask AI about Atlys"* → links to ChatGPT/Claude/Perplexity/Gemini. Defers to
+  third-party validation = signals confidence, and seeds AI-search citations.
+- **★ Steal (this is the big one):** add a **turnaround/delivery promise** alongside the
+  Re-Application Promise — *"we submit a complete, checked file within X working days of receiving
+  your documents, or your service fee back."* 100% controllable, 100% honest, zero outcome claim.
+  It's the *positive* twin of the (defensive) refusal promise and matches our exact compliance line.
+  Also steal: own our misses publicly (a real, modest transparency log), and an "ask AI about us" CTA.
+  **Avoid:** over-promising a date we can't hold (only promise what ops can actually hit, #19 SLA).
+
+## Page E — `/transparency/price-change-log`
+- *"Every fee ever changed is right here."* / *"You never have to guess."* A public, timestamped
+  audit of every fee change **with the reason**. Turns what fintechs hide into a differentiator.
+- **Steal (light):** a small transparency block — "what we charge, what we never charge for, and we
+  publish any change." We don't have their fee churn, but the *posture* (no hidden fees, ever) is
+  cheap trust. **Don't** over-build a full audit log we don't need (YAGNI).
+
+## Page F — `/visa/{country}-visa` money page (e.g. `/visa/uk-visa`) — what they sell ON the buy page
+- Hero sells **speed + ease**, not rejection: *"UK Visa for Indians"* + repeated **"On Time
+  Guaranteed"** badge. Conversion block = friction-killer: *"Just 2 steps and we'll process your
+  visa!"* → passport upload *"Auto-filled, no manual errors"* → *"That's It!"*
+- Trust: *"E-Visa by"* + shield/checkmark; **20K+ reviews ("Wall of Love")**; office locations;
+  resume-application ("We found an existing application").
+- **★ Notable: NO rejection content on the money page.** Rejection lives in its **own silo**
+  (`/rejection-recovery`); money pages stay clean and sell speed/ease. Deliberate separation.
+- **Steal:** keep money pages focused on ease + the *positive* promise (turnaround badge), link
+  *out* to the rejection silo rather than cramming refusal fear onto the buy page; "2 steps,
+  auto-filled" friction-killer framing; resume-application. **Avoid:** "no manual errors" (absolute
+  claim) — say "we check every field" instead.
+
+## Page G — `/tools/visa-requirements` (free tool → funnel)
+- *"Do I need a visa? … We'll tell you whether you need a visa, what kind, how long it takes, and
+  what it costs."* Above fold: **"Free · No signup, no card · 5 sec."** Aggregates official sources,
+  refreshed daily, 200+ countries.
+- Funnel: free frictionless answer → identifies **high-friction** needs (embassy/e-visa) → paid
+  service is the logical next step. Same shape as our eligibility checker + checklist tool (#235).
+- **Steal:** lead generosity (free, no signup) + "answer in seconds"; route the high-friction
+  outcomes straight into apply. We already have the pieces — match their *frictionlessness*.
+
 ## Atlys — verdict
 The only competitor that **owns rejection as a product line**, and the bar we're measuring against.
 Three things make it strong, all transplantable *honestly*:
@@ -492,6 +544,16 @@ exactly. The upgrade: each spoke must *do something*, not just read.
    publish approval rates, because no honest service can promise the authority's decision. We publish
    what we actually control — and stand behind it."* This is differentiation *and* compliance in one
    sentence.
+6. **★ Add the positive twin: a Turnaround Promise.** The refusal promise is *defensive* (if it goes
+   wrong). Atlys's `/on-time-guaranteed` shows the *offensive* version — guarantee the **controllable**:
+   *"We submit a complete, checked file within X working days of receiving your documents — or your
+   service fee back."* Same compliance logic (controllable, not outcome), pair it with the Re-Application
+   Promise as the two halves of "what we control, we get right." Bound X to what ops can actually hit
+   (SLA engine #19). Badge it on money pages; keep money pages selling **ease + turnaround**, link *out*
+   to the rejection silo (Atlys keeps refusal off the buy page — copy that separation).
+7. **Transparency posture, cheaply.** A small "no hidden fees — what we charge, what we never charge for"
+   block (their price-change-log posture) + optionally own our own misses honestly. Cheap trust; don't
+   over-build an audit log (YAGNI).
 
 ### Content-population order (unchanged, now with Atlys's recipe baked in)
 Per refused/reason page: decoded-reason block (taxonomy #73) → our-check mapping → useful reapply
@@ -510,4 +572,7 @@ strip. No unsourced stats; any number substantiable or omitted.
 | Objection page | Brazil "Do you need a lawyer?" | honest "Do you need help with your UK visa?" |
 | Published terms | **Atlys** "our SOP is public, our logic is transparent" + published turnaround | `/promise` shows ✅/❌ table on-page + named turnaround; legal mirror at `/legal#re-application-promise` — our trust edge |
 | Honesty gap (offence) | Atlys admits "no service can guarantee approval" **then pivots** to "99.2% accuracy" | own the line with **no pivot**: "we don't publish approval rates… we publish what we control" |
+| Positive promise (controllable) | **Atlys `/on-time-guaranteed`** — guarantee delivery date, refund if late; publicly owns its misses | **Turnaround Promise**: complete checked file in X working days or service fee back; badge on money pages |
+| Money-page focus | **Atlys** money pages sell speed/ease ("2 steps, auto-filled"); rejection kept in its own silo | money pages = ease + Turnaround Promise, link *out* to rejection silo; "we check every field" |
+| Free tool funnel | **Atlys `/tools/visa-requirements`** ("free, no signup, 5 sec") → high-friction needs → paid | match frictionlessness on eligibility checker + checklist (#235) → route to apply |
 | Social proof | Brazil real Reddit threads | consented "refused elsewhere → we fixed it" + real forum cites |
