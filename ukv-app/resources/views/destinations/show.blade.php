@@ -107,7 +107,7 @@
   .dhero{background:var(--navy);color:#eef0f1;padding:64px 0 0;position:relative;overflow:hidden}
   .dhero h1{color:#fff;font-size:clamp(34px,4.8vw,54px);letter-spacing:-.015em;max-width:18ch}
   .dhero p.lede{font-size:19px;max-width:46ch;color:#d3d7da}
-  .dhero .eyebrow{color:#F2C2AC}
+  .dhero .eyebrow{color:#A9CCDA}
   .dhero .btn{margin-top:8px}
   .dhero .skyband{margin-top:36px}
   /* HERO + AT A GLANCE — full photo with welded navy fact strip (option C) */

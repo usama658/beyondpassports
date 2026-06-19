@@ -10,8 +10,8 @@
   /* ── hero — navy mesh, centred, three convention type cards ───── */
   .idp-hero{
     background:
-      radial-gradient(620px 280px at 88% 0, rgba(199,93,56,.42), transparent 60%),
-      radial-gradient(560px 260px at 8% 100%, rgba(47,143,134,.34), transparent 60%),
+      radial-gradient(620px 280px at 88% 0, rgba(21,94,122,.42), transparent 60%),
+      radial-gradient(560px 260px at 8% 100%, rgba(46,154,140,.34), transparent 60%),
       var(--navy);
     color:#fff;text-align:center;padding:64px 0;
   }
@@ -135,7 +135,7 @@
     font:inherit;font-size:15px;color:var(--ink);
     transition:border-color .15s ease,box-shadow .15s ease}
   .da-pp-form input[type=text]:focus{
-    border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+    border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14);outline:none}
   .da-pp-hint{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.55}
   .da-pp-hint a{color:var(--cta);font-weight:600}
 

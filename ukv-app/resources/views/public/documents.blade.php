@@ -38,7 +38,7 @@
   .checker.upload input[type=text]:focus,
   .checker.upload input[type=email]:focus,
   .checker.upload input[type=date]:focus,
-  .checker.upload select:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+  .checker.upload select:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14);outline:none}
 
   /* file input — dashed drop zone feel */
   .upload .file-input{
@@ -89,7 +89,7 @@
 
   .form-ok{
     display:none;
-    background:#E3F1EF;
+    background:#E2F1EE;
     border:1px solid #b9ddd9;
     color:#0a5450;
     border-radius:10px;

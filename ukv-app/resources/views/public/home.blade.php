@@ -34,7 +34,11 @@
   .hp-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
   .hp-bar select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
   .hp-bar .btn{white-space:nowrap}
+  /* signature passport-stamp accent on the form card's top-right corner */
+  .hp-bar{position:relative}
+  .hp-bar .stamp{position:absolute;top:-22px;right:-18px;background:#fff;z-index:3}
   .hp-barhint{color:var(--muted);font-size:12px;letter-spacing:.02em;margin:12px 0 0}
+  @media (max-width:520px){.hp-bar .stamp{display:none}}
   /* popular destination name quick-links — flag-dot tags (D) */
   .hp-names{display:flex;flex-wrap:wrap;gap:9px 11px;justify-content:center;align-items:center;margin:26px 0 0}
   .hp-names a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--paper-edge);border-radius:10px;padding:8px 14px;font:600 14px var(--display);color:var(--ink);text-decoration:none;box-shadow:0 6px 16px -12px rgba(40,50,70,.5);transition:border-color .2s ease,color .2s ease}
@@ -54,8 +58,8 @@
      right is a 2-row horizontal scroller showing 2×2 cards, paging through the rest. */
   /* DESTINATIONS — map-texture backdrop + centred 3-up glass grid (option D) */
   #destinations{background:
-    radial-gradient(circle at 18% 26%, rgba(47,143,134,.10), transparent 42%),
-    radial-gradient(circle at 82% 74%, rgba(199,93,56,.10), transparent 42%),
+    radial-gradient(circle at 18% 26%, rgba(46,154,140,.10), transparent 42%),
+    radial-gradient(circle at 82% 74%, rgba(21,94,122,.10), transparent 42%),
     repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
     var(--paper)}
   #destinations .sec-head{text-align:center;max-width:60ch;margin:0 auto}
@@ -74,7 +78,7 @@
     box-shadow:0 10px 30px -22px rgba(40,50,70,.5);transition:transform .25s ease,box-shadow .25s ease}
   #why .tick:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
   #why .tick .stamp{flex:0 0 44px;width:44px;height:44px;padding:9px;border-radius:11px;
-    background:rgba(47,143,134,.12);color:var(--stamp-text);box-sizing:border-box}
+    background:rgba(46,154,140,.12);color:var(--stamp-text);box-sizing:border-box}
 
   /* TESTIMONIALS — trio of consented quote cards (option D) */
   .tquotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
@@ -87,8 +91,8 @@
 
   /* APPOINTMENTS — map-texture backdrop + centred finder + pin motif (option C) */
   #appointments{background:
-    radial-gradient(circle at 18% 30%, rgba(47,143,134,.10), transparent 42%),
-    radial-gradient(circle at 82% 70%, rgba(199,93,56,.10), transparent 42%),
+    radial-gradient(circle at 18% 30%, rgba(46,154,140,.10), transparent 42%),
+    radial-gradient(circle at 82% 70%, rgba(21,94,122,.10), transparent 42%),
     repeating-linear-gradient(0deg, rgba(34,40,43,.03) 0 1px, transparent 1px 26px),
     var(--paper)}
   #appointments .sec-head{text-align:center;max-width:none}
@@ -101,8 +105,8 @@
   /* TRUST BAR — under hero: dark mesh micro-band (F) then warm stat band (B) */
   .tbar-b,.tbar-f{padding:0}
   .tbar-f{background:
-      radial-gradient(520px 200px at 12% 0%, rgba(199,93,56,.45), transparent 60%),
-      radial-gradient(520px 200px at 92% 100%, rgba(47,143,134,.42), transparent 60%),
+      radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
       var(--navy);color:#fff}
   .tbar-f .row{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:16px 0}
   .tbar-f .ti{display:flex;align-items:center;gap:9px;font:600 14px var(--display);color:#fff;white-space:nowrap}
@@ -135,6 +139,7 @@
 
   {{-- inline visa-check form (real destination list + apply) --}}
   <form class="hp-bar" onsubmit="return false">
+    <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
     <div class="f">
       <label for="dest">Where are you going?</label>
       <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>

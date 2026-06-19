@@ -47,12 +47,12 @@
   .doc-body .updated{display:inline-flex;align-items:center;gap:7px;width:fit-content;
     background:#fff;border:1px solid #ead9c4;border-radius:999px;padding:5px 13px;
     font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--cta);margin:0 0 14px}
-  .doc-body .updated::before{content:"✓";color:var(--sage,#2F8F86);font-weight:800}
+  .doc-body .updated::before{content:"✓";color:var(--sage,#2E9A8C);font-weight:800}
 
   .legal-sec{position:relative;background:linear-gradient(180deg,#fbf7f2,#fff);
     border:1px solid #ead9c4;border-radius:18px;padding:32px 34px;
     box-shadow:0 18px 46px -34px rgba(120,80,40,.45);scroll-margin-top:90px}
-  .legal-sec::after{content:"";position:absolute;inset:7px;border:1px dashed rgba(199,93,56,.24);border-radius:13px;pointer-events:none}
+  .legal-sec::after{content:"";position:absolute;inset:7px;border:1px dashed rgba(21,94,122,.24);border-radius:13px;pointer-events:none}
   .legal-sec > *{position:relative}
 
   .legal-sec h2{font-size:clamp(23px,3vw,30px);color:var(--navy);

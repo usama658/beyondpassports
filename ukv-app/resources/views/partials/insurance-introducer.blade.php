@@ -20,15 +20,15 @@
     $compact = $compact ?? false;
 @endphp
 <aside class="ukv-ins" role="complementary" aria-label="Travel insurance introduction"
-       style="border:1px solid #e6e8ea;border-left:4px solid #C75D38;border-radius:12px;
+       style="border:1px solid #dde3ec;border-left:4px solid #155E7A;border-radius:12px;
               background:#ffffff;padding:{{ $compact ? '20px 22px' : '24px 26px' }};
               margin:{{ $compact ? '1.6em 0' : '28px 0 0' }};
               box-shadow:0 8px 30px rgba(40,50,70,.08);
-              font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-              color:#22282b;line-height:1.6">
-    <p style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;
+              font-family:"Outfit",system-ui,sans-serif;
+              color:#16222E;line-height:1.6">
+    <p style="font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;
               text-transform:uppercase;color:#9c4a26;margin:0 0 8px">Optional · before you travel</p>
-    <h2 style="font-size:19px;font-weight:600;color:#22282b;margin:0 0 8px;line-height:1.3">
+    <h2 style="font-size:19px;font-weight:600;color:#16222E;margin:0 0 8px;line-height:1.3">
         Travelling soon? Consider travel insurance
     </h2>
     <p style="font-size:15px;color:#33454f;margin:0 0 14px;max-width:60ch">
@@ -39,7 +39,7 @@
 
     @if($hasPartner)
         <a href="{{ $partnerUrl }}" target="_blank" rel="noopener nofollow sponsored"
-           style="display:inline-block;background:#C75D38;color:#ffffff;text-decoration:none;
+           style="display:inline-block;background:#155E7A;color:#ffffff;text-decoration:none;
                   font-weight:600;font-size:15px;padding:12px 20px;border-radius:8px;margin:0 0 4px">
             See cover from {{ $partnerName }} &rarr;
         </a>

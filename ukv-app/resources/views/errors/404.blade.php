@@ -5,22 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Page not found (404) — Beyond Passports</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Outfit';src:url('/fonts/outfit-700.woff2') format('woff2');font-weight:700;font-display:swap}
   :root{
-    --navy:#22282b; --paper:#FBF6F1; --edge:#e7ddd1; --cta:#C75D38; --ink:#22282b;
-    --muted:#6c7075; --sage:#226B64; --soft:#F2C2AC;
-    --j:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --navy:#16222E; --paper:#FBF6F1; --edge:#e7ddd1; --cta:#155E7A; --ink:#16222E;
+    --muted:#6c7075; --sage:#1F6E63; --soft:#A9CCDA;
+    --j:"Outfit",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0;font-family:var(--j);color:#e8eaec;
     background:
-      radial-gradient(680px 320px at 12% -8%, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(620px 300px at 92% 108%, rgba(47,143,134,.26), transparent 60%),
+      radial-gradient(680px 320px at 12% -8%, rgba(21,94,122,.30), transparent 60%),
+      radial-gradient(620px 300px at 92% 108%, rgba(46,154,140,.26), transparent 60%),
       /* faint guilloché / security-paper weave on the navy cover */
       repeating-linear-gradient(60deg, rgba(255,255,255,.018) 0 2px, transparent 2px 9px),
       repeating-linear-gradient(-60deg, rgba(255,255,255,.018) 0 2px, transparent 2px 9px),
@@ -52,7 +51,7 @@
     animation:stamp-press .42s cubic-bezier(.2,1.3,.45,1) .25s both;
     opacity:.92;
   }
-  .stamp svg{width:100%;height:100%;display:block;filter:drop-shadow(0 1px 0 rgba(199,93,56,.25))}
+  .stamp svg{width:100%;height:100%;display:block;filter:drop-shadow(0 1px 0 rgba(21,94,122,.25))}
   @keyframes stamp-press{
     0%{opacity:0;transform:rotate(-9deg) scale(2)}
     60%{opacity:.92;transform:rotate(-9deg) scale(.92)}
@@ -65,7 +64,7 @@
     font-weight:700;font-size:13.5px;border-radius:10px;padding:11px 16px;
     transition:transform .12s ease, box-shadow .15s ease, background .15s ease;
   }
-  .routes a.primary{background:var(--cta);color:#fff;box-shadow:0 12px 24px -14px rgba(199,93,56,.8)}
+  .routes a.primary{background:var(--cta);color:#fff;box-shadow:0 12px 24px -14px rgba(21,94,122,.8)}
   .routes a.ghost{background:#fff;color:var(--ink);border:1px solid var(--edge)}
   .routes a:hover{transform:translateY(-2px)}
   .routes a:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
@@ -97,13 +96,13 @@
         <defs><path id="arc-top" d="M100,100 m-74,0 a74,74 0 1,1 148,0" /><path id="arc-bot" d="M100,100 m74,0 a74,74 0 1,1 -148,0" /></defs>
         <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="3"/>
         <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <text font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="17" letter-spacing="6" fill="currentColor">
+        <text font-family="Outfit, sans-serif" font-weight="800" font-size="17" letter-spacing="6" fill="currentColor">
           <textPath href="#arc-top" startOffset="50%" text-anchor="middle">NO ENTRY</textPath>
         </text>
-        <text font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="12" letter-spacing="4" fill="currentColor">
+        <text font-family="Outfit, sans-serif" font-weight="700" font-size="12" letter-spacing="4" fill="currentColor">
           <textPath href="#arc-bot" startOffset="50%" text-anchor="middle">BEYOND PASSPORTS</textPath>
         </text>
-        <text x="100" y="116" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="currentColor">404</text>
+        <text x="100" y="116" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="currentColor">404</text>
         <text x="42" y="106" text-anchor="middle" font-size="16" fill="currentColor">✦</text>
         <text x="158" y="106" text-anchor="middle" font-size="16" fill="currentColor">✦</text>
       </svg>

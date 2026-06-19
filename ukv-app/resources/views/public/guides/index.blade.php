@@ -12,9 +12,9 @@
   /* ---- HERO — navy mesh split + popular topics (pick B) ------------- */
   .gi-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
   .gi-hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(47,143,134,.42),transparent 62%),
-     radial-gradient(40% 60% at 70% 8%,rgba(242,194,172,.16),transparent 60%)}
+     radial-gradient(60% 80% at 12% 16%,rgba(21,94,122,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 84%,rgba(46,154,140,.42),transparent 62%),
+     radial-gradient(40% 60% at 70% 8%,rgba(169,204,218,.16),transparent 60%)}
   .gi-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,22,.08),rgba(15,20,22,.32))}
   .gi-hero > .wrap{position:relative;z-index:2;padding-top:84px;padding-bottom:80px}
   .gi-hero .gi-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
@@ -28,7 +28,7 @@
   .gi-topics a:hover{background:rgba(255,255,255,.08)}
   .gi-topics a:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
   .gi-topics .tl{display:flex;align-items:center;gap:13px;min-width:0}
-  .gi-topics .ti{width:36px;height:36px;border-radius:9px;background:rgba(242,194,172,.16);display:flex;align-items:center;justify-content:center;color:var(--soft);flex:0 0 36px}
+  .gi-topics .ti{width:36px;height:36px;border-radius:9px;background:rgba(169,204,218,.16);display:flex;align-items:center;justify-content:center;color:var(--soft);flex:0 0 36px}
   .gi-topics .ti svg{width:18px;height:18px}
   .gi-topics .tt{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
   .gi-topics .tc{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 2px}
@@ -85,7 +85,7 @@
     box-shadow:0 12px 32px -28px rgba(40,50,70,.5)}
   .gi-compliance .gc-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
     background:var(--navy);color:#fff;border-radius:13px;width:104px;height:104px;flex:0 0 104px;text-align:center;padding:10px}
-  .gi-compliance .gc-badge svg{width:26px;height:26px;color:var(--soft,#F2C2AC)}
+  .gi-compliance .gc-badge svg{width:26px;height:26px;color:var(--soft,#A9CCDA)}
   .gi-compliance .gc-badge span{font-family:var(--body);font-size:10.5px;font-weight:800;letter-spacing:.06em;line-height:1.2}
   .gi-compliance p{margin:0;font-size:13.5px;line-height:1.65;color:#3a4b55}
   .gi-compliance strong{color:var(--navy)}

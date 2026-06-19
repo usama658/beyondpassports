@@ -34,7 +34,7 @@
   .ukv-form input:hover,
   .ukv-form select:hover{border-color:#c4cace}
   .ukv-form input:focus,
-  .ukv-form select:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(199,93,56,.14);outline:none}
+  .ukv-form select:focus{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14);outline:none}
 
   .ukv-form [aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.14)}
   .ukv-form .hint{font-size:12px;color:var(--muted);margin:5px 0 0;line-height:1.45}
@@ -84,8 +84,8 @@
   /* ── HERO — navy mesh (pick A) ── */
   .dct-hero{position:relative;overflow:hidden;background:var(--navy);padding:72px 0 60px}
   .dct-hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(60% 80% at 12% 16%,rgba(199,93,56,.40),transparent 60%),
-     radial-gradient(55% 75% at 88% 84%,rgba(47,143,134,.42),transparent 62%)}
+     radial-gradient(60% 80% at 12% 16%,rgba(21,94,122,.40),transparent 60%),
+     radial-gradient(55% 75% at 88% 84%,rgba(46,154,140,.42),transparent 62%)}
   .dct-hero .wrap{position:relative;z-index:2}
   .dct-hero .mh-grid{display:block}
   .dct-hero .mh-copy{max-width:none}
@@ -98,7 +98,7 @@
   .dct-perks li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:18px;
     transition:box-shadow .2s ease,transform .2s ease}
   .dct-perks li:hover{transform:translateY(-2px);box-shadow:0 16px 36px -24px rgba(0,0,0,.5)}
-  .dct-perks .t{width:38px;height:38px;border-radius:10px;background:rgba(242,194,172,.16);color:var(--soft);
+  .dct-perks .t{width:38px;height:38px;border-radius:10px;background:rgba(169,204,218,.16);color:var(--soft);
     display:flex;align-items:center;justify-content:center;margin:0 0 11px}
   .dct-perks .t svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
   .dct-perks .pk{font-family:var(--body);font-weight:700;font-size:15px;color:#fff;margin:0 0 4px}
@@ -135,7 +135,7 @@
   .dct-wnav{align-items:center;justify-content:space-between;margin-top:22px;padding-top:20px;border-top:1px solid var(--paper-edge)}
   .dct-wnav .dct-back{background:#fff;border:1px solid var(--paper-edge);color:var(--muted);font-family:inherit;font-weight:700;font-size:14px;border-radius:11px;padding:11px 18px;cursor:pointer}
   .dct-wnav .dct-back:hover{border-color:#c4cace;color:var(--navy)}
-  .dct-wnav .dct-next{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(199,93,56,.6)}
+  .dct-wnav .dct-next{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:13px 22px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(21,94,122,.6)}
   .dct-wnav .dct-back[disabled],.dct-wnav .dct-next[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
   .dct-dots{display:flex;gap:7px}
   .dct-dots i{width:8px;height:8px;border-radius:50%;background:var(--paper-edge)}

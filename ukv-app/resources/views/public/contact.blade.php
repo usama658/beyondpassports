@@ -22,8 +22,8 @@
   .ct-hero-copy .lede { max-width: 52ch; }
   .ct-statuscard {
     background:
-      radial-gradient(360px 180px at 110% -10%, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(340px 180px at -10% 120%, rgba(47,143,134,.28), transparent 60%),
+      radial-gradient(360px 180px at 110% -10%, rgba(21,94,122,.30), transparent 60%),
+      radial-gradient(340px 180px at -10% 120%, rgba(46,154,140,.28), transparent 60%),
       var(--navy);
     color: #fff;
     border-radius: 20px;
@@ -38,7 +38,7 @@
   .ct-status-pill .sdot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
   .ct-status-pill.is-open { background: rgba(37,211,102,.16); border: 1px solid rgba(37,211,102,.4); color: #7be3a6; }
   .ct-status-pill.is-open .sdot { background: #25D366; box-shadow: 0 0 0 3px rgba(37,211,102,.25); }
-  .ct-status-pill.is-closed { background: rgba(242,194,172,.14); border: 1px solid rgba(242,194,172,.36); color: var(--soft); }
+  .ct-status-pill.is-closed { background: rgba(169,204,218,.14); border: 1px solid rgba(169,204,218,.36); color: var(--soft); }
   .ct-status-pill.is-closed .sdot { background: var(--soft); }
   .ct-statuscard .sc-lab { font: 700 10px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 4px; }
   .ct-statuscard .sc-big { font: 800 23px var(--display); margin: 0 0 16px; letter-spacing: -.01em; }
@@ -154,8 +154,8 @@
   /* big navy call card (after base rules so it wins) */
   .ct-methods .ct-method--primary {
     background:
-      radial-gradient(360px 200px at 100% 0, rgba(199,93,56,.30), transparent 60%),
-      radial-gradient(340px 200px at 0 100%, rgba(47,143,134,.26), transparent 60%),
+      radial-gradient(360px 200px at 100% 0, rgba(21,94,122,.30), transparent 60%),
+      radial-gradient(340px 200px at 0 100%, rgba(46,154,140,.26), transparent 60%),
       var(--navy);
     color: #fff;
   }
@@ -234,7 +234,7 @@
   .ct-callback .checker textarea:focus {
     outline: none;
     border-color: var(--cta);
-    box-shadow: 0 0 0 3px rgba(199,93,56,.14);
+    box-shadow: 0 0 0 3px rgba(21,94,122,.14);
   }
   .ct-callback textarea {
     width: 100%;
@@ -252,7 +252,7 @@
   .ct-callback textarea:focus {
     outline: none;
     border-color: var(--cta);
-    box-shadow: 0 0 0 3px rgba(199,93,56,.14);
+    box-shadow: 0 0 0 3px rgba(21,94,122,.14);
   }
   .ct-consent {
     display: flex;
@@ -272,7 +272,7 @@
 
   .form-error { display: none; background: #fdeceb; border: 1px solid #f3c6c2; color: #8a2a22; border-radius: 10px; padding: 12px 14px; font-size: 14px; margin: 16px 0 0; }
   .form-error.show { display: block; }
-  .form-ok   { display: none; background: #E3F1EF; border: 1px solid #b9ddd9; color: #0a5450; border-radius: 10px; padding: 16px 16px; font-size: 15px; margin: 16px 0 0; line-height: 1.5; }
+  .form-ok   { display: none; background: #E2F1EE; border: 1px solid #b9ddd9; color: #0a5450; border-radius: 10px; padding: 16px 16px; font-size: 15px; margin: 16px 0 0; line-height: 1.5; }
   .form-ok.show   { display: block; }
   .form-ok strong { color: #073f3c; }
 
@@ -286,8 +286,8 @@
     align-items: center;
     justify-content: space-between;
     background:
-      radial-gradient(420px 200px at 10% 0, rgba(199,93,56,.40), transparent 60%),
-      radial-gradient(420px 200px at 92% 100%, rgba(47,143,134,.36), transparent 60%),
+      radial-gradient(420px 200px at 10% 0, rgba(21,94,122,.40), transparent 60%),
+      radial-gradient(420px 200px at 92% 100%, rgba(46,154,140,.36), transparent 60%),
       var(--navy);
     border-radius: 20px;
     padding: 36px 40px;

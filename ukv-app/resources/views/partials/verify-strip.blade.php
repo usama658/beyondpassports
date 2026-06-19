@@ -39,16 +39,16 @@
 
 <aside class="verify-strip" role="note" aria-label="Fact verification">
   <style>
-    /* verify-strip partial — self-contained, warm-light palette (ink/terracotta/sage, Plus Jakarta). */
-    .verify-strip{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#22282b;background:#f7fafb;border:1px solid #e6e8ea;border-left:3px solid #C75D38;border-radius:8px;padding:14px 16px;margin:18px 0}
+    /* verify-strip partial — self-contained palette (ink/petrol/teal, self-hosted Outfit). */
+    .verify-strip{font-family:"Outfit",system-ui,sans-serif;color:#16222E;background:#f7fafb;border:1px solid #dde3ec;border-left:3px solid #155E7A;border-radius:8px;padding:14px 16px;margin:18px 0}
     .verify-strip .vs-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-    .verify-strip .vs-badge{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#226B64}
-    .verify-strip .vs-text{font-size:14px;color:#22282b;line-height:1.5;margin:0}
-    .verify-strip .vs-text strong{color:#22282b;font-weight:600}
+    .verify-strip .vs-badge{font-family:"Outfit",system-ui,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#1F6E63}
+    .verify-strip .vs-text{font-size:14px;color:#16222E;line-height:1.5;margin:0}
+    .verify-strip .vs-text strong{color:#16222E;font-weight:600}
     .verify-strip .vs-sources{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
     .verify-strip .vs-sources li{font-size:13px}
-    .verify-strip .vs-sources a{color:#226B64;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(63,114,89,.35)}
-    .verify-strip .vs-sources a:hover{border-bottom-color:#226B64}
+    .verify-strip .vs-sources a{color:#1F6E63;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(63,114,89,.35)}
+    .verify-strip .vs-sources a:hover{border-bottom-color:#1F6E63}
   </style>
 
   <div class="vs-head">

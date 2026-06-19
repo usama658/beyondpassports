@@ -9,8 +9,8 @@
 
   /* ── Hero — dark mesh band, copy left + "~2 min" reassurance chip right (E) ── */
   .ap-hero{padding:0;color:#fff;background:
-    radial-gradient(520px 220px at 14% 0%, rgba(199,93,56,.45), transparent 60%),
-    radial-gradient(520px 220px at 92% 100%, rgba(47,143,134,.42), transparent 60%),
+    radial-gradient(520px 220px at 14% 0%, rgba(21,94,122,.45), transparent 60%),
+    radial-gradient(520px 220px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
     var(--navy)}
   .ap-hero > .wrap{padding:60px 24px}
   .ap-hero .ap-hrow{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
@@ -39,7 +39,7 @@
   .ap-prog .bar{display:flex;align-items:center}
   .ap-prog .node{width:28px;height:28px;border-radius:50%;background:#eef2f3;border:2px solid var(--paper-edge);color:var(--muted);font-family:var(--body);font-weight:800;font-size:12px;line-height:24px;text-align:center;flex:none}
   .ap-prog .node.done{background:#eaf3ef;border-color:var(--stamp-text);color:var(--stamp-text)}
-  .ap-prog .node.on{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(199,93,56,.15)}
+  .ap-prog .node.on{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 0 0 4px rgba(21,94,122,.15)}
   .ap-prog .seg{height:2px;flex:1;background:var(--paper-edge);margin:0 5px}
   .ap-prog .seg.done{background:var(--stamp-text)}
   .ap-prog .labels{display:flex;align-items:flex-start;margin:9px 0 0}
@@ -116,7 +116,7 @@
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 12px}
   .tier{border:1px solid var(--paper-edge);border-radius:14px;padding:18px 14px;text-align:center;background:#f8f9fa;transition:transform .15s ease,box-shadow .15s ease}
   .tier:hover{transform:translateY(-2px);box-shadow:var(--lift-1)}
-  .tier.is-featured{border-color:var(--cta);background:var(--white);box-shadow:0 0 0 3px rgba(199,93,56,.14)}
+  .tier.is-featured{border-color:var(--cta);background:var(--white);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
   .tier .tname{font-family:var(--body);font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
   .tier .tprice{font-family:var(--display);font-size:32px;font-weight:800;color:var(--navy);margin:8px 0 4px;letter-spacing:-.03em}
   .tier .tdesc{font-size:12.5px;color:var(--muted)}
