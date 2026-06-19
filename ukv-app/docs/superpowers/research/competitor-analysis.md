@@ -192,6 +192,21 @@ Never a guarantee or approval %. Specific > clever. No invented stats.
 - **Avoid (compliance):** approval %/per-cause % unless substantiable; "rejection-proof"; untermed
   "money-back guarantee"; implying regulated legal advice (#130).
 
+### Deltas folded in from flypass teardown
+- **Silo (2 minor):** (a) country-hub **card-grid presentation** (flag + destination photo +
+  "Planning a trip to [Country]?") for `/destinations` + the `/refused` index; (b) **status-aware
+  eligibility** — add UK immigration status (Student / Graduate / Skilled Worker / Dependent / ILR /
+  Settled / Global Business Mobility) to the checker/router (#113). No structural change.
+- **Content copy register (honest models to copy):**
+  - Process line (flypass's cleanest, honest): *"Complete document verification to prevent rejection
+    — we review every document for accuracy and compliance before submission."* Use on /promise,
+    money-page blocks, QA section. Process, not promise.
+  - Pillar title (proven to rank): *"Top reasons [UK visa/eVisa] applications get refused"* →
+    `/visa-refusals/why` + per-country `/refused` (they bury it in one post; we make it the spine).
+  - Status-aware copy: speak to Student/Graduate/Skilled Worker/Dependent/ILR travellers.
+- **Confirmed (no change):** rejection spine, per-country programmatic model, named-authority About,
+  published Promise terms — all gaps both rivals leave open.
+
 ### Content-population plan (how we'll fill this in later — do AFTER competitor teardowns)
 
 Everything is data-driven off one source of truth.
