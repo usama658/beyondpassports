@@ -327,6 +327,17 @@ termed offer + named authority. Wide-open lane for Beyond Passports.
 - Only funnel touchpoint = lead-form "Did your visa application get rejected before? Y/N".
 - **Zero reassurance/offer for refused applicants anywhere.** Confirms the wedge.
 
+### Remaining pages (list now 100% covered)
+- **`/service/document-preparation-review/`:** *"Complete document verification to prevent rejection.
+  We provide customized checklists and review every paper for accuracy and embassy compliance before
+  submission."* — **cleanest, most HONEST rejection-prevention line in the whole teardown** (process,
+  no guarantee). Maps to our QA gate (#75) + checklist tool. **Best copy model found.** Lead magnet
+  "Download Our Document"; Contact CTA; no guarantee/refund.
+- **`/countries/` hub:** templated card grid (flag + destination photo + "Planning a trip to
+  [Country]?" + Read More) → `/country/{x}`; breadcrumbs. No rejection/pricing/guarantee. Generic.
+
+**flypass = COMPLETE (all priority pages + funnel torn down, section by section).**
+
 ---
 
 # Master Steal / Beat / Avoid matrix (running)
