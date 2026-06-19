@@ -12,9 +12,9 @@ competitor as we go.
 
 ## Teardown queue
 1. ✅ **getbrazilvisa.com** — niche, lawyer-led (COMPLETE, 9 pages)
-2. ⏳ **flypassholidays.co.uk** — UK-market, closest rival (NEXT)
-3. ⏳ Atlys — category leader, "AtlysProtect" auto-refund
-4. ⏳ Sherpa (joinsherpa.com) — rejection-protection add-on + deep help content
+2. ✅ **flypassholidays.co.uk** — UK-market, closest rival (COMPLETE)
+3. ✅ **Atlys** — category leader; TWO offers + data-rich `/rejection-recovery/{country}` silo (COMPLETE — rejection pages)
+4. ⏳ Sherpa (joinsherpa.com) — rejection-protection add-on + deep help content (NEXT)
 5. ⏳ iVisa.com — volume leader, guided-form + expert review
 6. ⏳ (optional) VisaHQ / Byevisa
 
@@ -355,12 +355,159 @@ termed offer + named authority. Wide-open lane for Beyond Passports.
 
 ---
 
+# 3. Atlys (atlys.com) — COMPLETE (rejection footprint)
+
+**Model in one line:** category leader runs **TWO** stacked safety-net mechanisms + the most
+**data-rich, country-specific rejection silo** of anyone — turns the refusal letter itself into
+the product. Radical-transparency framing. Where the others *sense* prior rejection, Atlys has
+built a whole **paid product** around it.
+
+**The two offers (don't conflate — they're separate):**
+1. **AtlysProtect** — auto-included, **no opt-in, no extra charge** on eligible routes. *"AtlysProtect
+   is included automatically for eligible destinations at no additional charge."* Rejection → *"you
+   receive a 100% refund of the total fee (government fee and Atlys service fee)."* Late delivery →
+   service fee waived. Pre-submission cancel → 100% in Atlys credits. Headline: *"Refund Clarity You
+   Can Count On"* / *"Every case is different, but your peace of mind shouldn't be."* Trust framing:
+   *"Our SOP is public. Our logic is transparent."* Refunds *"processed instantly."*
+2. **Rejection Recovery / "Approval Guarantee"** — a **separate PAID premium product** for people
+   *already* refused. US example: ₹35,399 Atlys "Approval Guarantee Fee" (incl 18% GST) + ₹18,200 govt
+   fee = ₹53,599 (~£500 total). Promise: ***"If your application is rejected again, we refund every
+   rupee — no questions asked."*** (full refund incl govt fee, on the *second* rejection under their
+   guidance.) Risk-reversal as a paid upsell.
+
+## Page A — Rejection Recovery hub `/rejection-recovery/{country}` (★ the masterclass)
+Country-specific (`/US`, `/KR`, `/CN`, `/AT`…). Section by section:
+- **Hero:** *"USA visa rejected for Indians."* Claim: *"We know how to get your visa approved. Data
+  across thousands of Atlys applications help identify exactly why visas get rejected, and what changed
+  when they got approved."* (authority + data). CTA **"Start Recovery."**
+- **Rejection Recovery (offer block):** *"If your application is rejected again, we refund every rupee
+  — no questions asked."* (risk-reversal). Full price stack shown (anchoring).
+- **★ Consulate-Specific Data:** *"We've identified consulate-specific patterns across India based on
+  which profiles get approved or rejected."* e.g. *"28% Rejections in New Delhi Consulate"* with
+  per-reason % and *"approval uplift if corrected (+65%)."* (specificity + social-proof-by-data).
+- **★ Rejection Reasons Decoded:** *"Your rejection letter often lists vague reasons for refusal.
+  We've translated them so you know exactly what to fix before reapplying."* — interprets 9 refusal
+  codes (214(b), 221(g)…) + suggested re-apply timelines. **This is taxonomy #73 turned into the
+  centrepiece customer-facing asset.**
+- **Financial Thresholds:** interactive calculator (trip → recommended min balance / holding period /
+  income ratio). (ease + removes guesswork — a *tool*, not copy.)
+- **Profile Thresholds:** approval-probability estimator (marital status, age, assets, income → %).
+- **Economic & Geopolitical Signals:** dashboard of macro factors (overstay rate, currency, return
+  likelihood) — "decisions are influenced by signals beyond your control" (removes shame).
+- **FAQ blocks:** reapplication timeline ("no mandatory wait, but reapply only when something
+  *materially changed*"); reasons & fixes (*"214(b) is the most common and most fixable refusal"* —
+  splits **recoverable vs blocking** grounds, refers blocking cases to a specialist lawyer); documents
+  & the "classic 3-question test" + **free mock-interview tool**.
+- **Funnel:** free diagnostic tools (calculators, decoded reasons, consulate data) → trust → paid
+  Recovery package → refund guarantee closes it.
+- **Steal:** country-specific `/refused` page; **"Reasons Decoded" = taxonomy made the hero asset**;
+  free diagnostic *tool* (not just prose) as the lead magnet; recoverable-vs-blocking honesty;
+  "reapply only when something changed" (sets honest expectations). **Avoid:** unsourced consulate %,
+  "+65% uplift", "Approval Guarantee" as a product *name* (implies outcome).
+
+## Page B — `/transparency/refunds-policy` (AtlysProtect terms)
+- *"Refund Clarity You Can Count On."* / *"AtlysProtect is included automatically… at no additional
+  charge. You don't need to opt in."* / rejection = *"100% refund of the total fee (government fee and
+  Atlys service fee)."*
+- Trust lever = **radical transparency**: *"Our SOP is public. Our logic is transparent."* Refund
+  timelines published to the hour (*"36 hours instead of 72"*). Testimonials framed as *"owning our
+  mistakes."*
+- **Steal:** publish the terms openly as a *trust* asset (we already plan `/legal#re-application-promise`
+  — go further: a friendly `/promise` *with the table visible*, not buried in legal); name a clear,
+  published turnaround. **Avoid:** refunding the government fee (their AtlysProtect does; our Promise
+  deliberately does not — that stays our honest boundary, see spec §2).
+
+## Page C — Pillar blog `/blog/visa-rejection`
+- Structure: stats overview → per-country deep dives (Schengen/US/UK/Canada) → appeal mechanics →
+  reapplication playbook → Atlys product pitch.
+- Per-country refusal-reason lists (verbatim Schengen top 5: *weak proof of intent to return /
+  insufficient or inconsistent financial proof / unclear travel purpose / travel-insurance errors /
+  incomplete documentation*). UK 7 reasons listed.
+- Stats cited **unsourced**: Schengen *"~15% … 1.65 lakh of 11 lakh (2024)"*; US B1/B2 *"27–30%"*;
+  US F-1 *"~41% FY2024"*; Canada study *"~74% 2025"*; UK visitor *"~9%."*
+- Recovery playbook: decode real reason → wait by category → target the specific weakness → **disclose
+  the previous rejection** → consider a different consulate → get external review before resubmission.
+- **Compliance tell:** closes honestly — *"Does using a visa service guarantee approval? No legitimate
+  service can…"* — **then pivots** to *"But Atlys offers ~99.2% delivery prediction accuracy and
+  money-back protection."* (The disclaimer is real; the pivot reinserts an implied-outcome number.)
+- **Steal:** the per-country refusal-reason list as the spine of each `/visa/{country}/refused`; the
+  honest "no service can guarantee approval" line (we say it and *mean* it, no pivot); "disclose the
+  previous rejection" + "reapply only when something changed" as genuinely useful, trust-building
+  advice. **Avoid:** every unsourced %, the "99.2% prediction accuracy" pivot.
+
+## Atlys — verdict
+The only competitor that **owns rejection as a product line**, and the bar we're measuring against.
+Three things make it strong, all transplantable *honestly*:
+1. **Country-specific rejection pages that are data/tool-rich, not copy-rich** — calculators, decoded
+   reason tables, FAQs. Reading one, you feel *diagnosed*, not sold to.
+2. **The refusal letter is the hook** — "Reasons Decoded" translates government boilerplate into
+   "here's what to fix." That's our taxonomy #73, customer-facing.
+3. **Published, named, time-bound safety net** framed as transparency, not a badge.
+
+Its exploitable weakness = **the honesty gap**: unsourced %s everywhere, "Approval Guarantee" as a
+product name, the "99.2%" pivot right after admitting no one can guarantee approval. **Our entire
+edge is closing that gap** — same diagnostic depth and safety net, but every number substantiated or
+omitted, the offer termed by *effort* not *outcome*, and the "no one can guarantee approval" line with
+no pivot behind it.
+
+---
+
+## ★ Beyond Passports — silo + content REFRESH (in light of Atlys)
+
+**What Atlys changes about our plan (deltas to fold into the spec):**
+
+### Silo — upgrade the `/refused` spokes from "pages" to "diagnostic tools"
+The locked silo (rejection spine: `/visa-refusals` hub → `/why` → `/reapply` → `/reasons/{reason}` →
+`/visa/{country}/refused` → `/promise`) is **right** — Atlys validates the country-specific spoke
+exactly. The upgrade: each spoke must *do something*, not just read.
+- **`/visa/{country}/refused`** gains, per Atlys's recipe (honest versions): (a) a **"refusal reasons
+  decoded"** block = taxonomy #73 mapped to "what this actually means → which of our checks catches it";
+  (b) the **"reapply only when something has changed"** + "disclose your previous refusal" guidance
+  (genuinely useful, builds trust, costs us nothing); (c) a soft entry to the **document-checklist tool
+  (#235)** as our honest equivalent of their calculators — a *tool*, not a wall of text.
+- **`/visa-refusals/reasons/{reason}`** = the customer-facing face of each taxonomy bucket: plain-English
+  "what the officer meant," "is this recoverable or blocking," "how we'd stop it next time." Mirrors
+  their recoverable-vs-blocking split — which maps cleanly onto our `our_error / discretionary_covered /
+  excluded` classification.
+- **New honest tool, not a fake calculator:** we do **not** ship an "approval probability estimator"
+  (that implies we predict the authority's decision — forbidden). Our equivalent is the existing
+  **eligibility checker + document-checklist** — "here's exactly what a strong file needs," not "here's
+  your odds." Same *felt* value (diagnosis + control), zero outcome claim.
+
+### Content — how it should read now (sharpened by Atlys)
+1. **Lead each refused page with the decoded reason, not the offer.** Atlys earns the sale by making you
+   feel understood first ("we translated your vague letter"). Order: *name the anxiety → decode the
+   reason → show the specific check → then the Promise.* The Promise is the close, not the hook.
+2. **Tools beat paragraphs.** Where Atlys has a calculator, we point to the checklist/eligibility tool.
+   Interactive > prose for the same trust at the buy moment.
+3. **Two-tier offer is validated — but we stay single & honest.** Atlys runs auto-included (AtlysProtect)
+   + paid premium (Recovery). We keep **one** included **Re-Application Promise** (no paid "guarantee"
+   upsell — naming a paid product "Approval Guarantee" is exactly the outcome-implication we refuse). A
+   future *insurance-style* govt-fee add-on stays out of scope (spec §10).
+4. **Publish the terms as a trust asset, visibly.** Atlys's biggest legit move is making the policy
+   *public and readable*. Our `/promise` shows the ✅/❌ table on the page (not just a legal link) + a
+   **named, published turnaround** ("a real UK person replies within X hours; if the Promise applies we
+   re-prepare within Y days").
+5. **Weaponise the honesty gap explicitly.** A short, classy line we can own that they can't: *"We don't
+   publish approval rates, because no honest service can promise the authority's decision. We publish
+   what we actually control — and stand behind it."* This is differentiation *and* compliance in one
+   sentence.
+
+### Content-population order (unchanged, now with Atlys's recipe baked in)
+Per refused/reason page: decoded-reason block (taxonomy #73) → our-check mapping → useful reapply
+guidance (disclose prior refusal, change-something) → checklist tool entry → Promise close + compliance
+strip. No unsourced stats; any number substantiable or omitted.
+
+---
+
 # Master Steal / Beat / Avoid matrix (running)
 | Lever | Best example so far | Our move |
 |---|---|---|
-| Safety-net offer | Atlys AtlysProtect (auto, 100% incl govt fee) > Brazil "free resubmit" (premium tier) | named **Re-Application Promise**, included, badged at every CTA |
-| Refusal-cause content | Brazil "6 mistakes that cause denials" | "real reasons refused → our check for each" (taxonomy #73), honest |
+| Safety-net offer | Atlys: auto-included AtlysProtect (100% incl govt fee) **+** separate paid "Approval Guarantee" recovery product | **one** named **Re-Application Promise**, included, badged at every CTA; no paid "guarantee" upsell, govt fee not refunded (honest boundary) |
+| Refusal-cause content | Brazil "6 mistakes that cause denials" + **Atlys "Rejection Reasons Decoded"** (translate the letter) | "real reasons refused → our check for each" (taxonomy #73) made the **hero asset**, honest |
+| Rejection silo depth | **Atlys** country-specific `/rejection-recovery/{CC}` — tools/calculators/decoded tables, not prose | `/visa/{country}/refused` spokes that *do* something: decoded reasons + checklist/eligibility **tool** (no "approval odds") |
 | Named authority | Brazil's Camila (OAB + registry link, "reads every page") | named UK case-lead + verifiable credential **[INPUT NEEDED]** |
 | Objection page | Brazil "Do you need a lawyer?" | honest "Do you need help with your UK visa?" |
-| Published terms | (nobody does it well) | real `/legal#re-application-promise` ✅/❌ — our trust edge |
+| Published terms | **Atlys** "our SOP is public, our logic is transparent" + published turnaround | `/promise` shows ✅/❌ table on-page + named turnaround; legal mirror at `/legal#re-application-promise` — our trust edge |
+| Honesty gap (offence) | Atlys admits "no service can guarantee approval" **then pivots** to "99.2% accuracy" | own the line with **no pivot**: "we don't publish approval rates… we publish what we control" |
 | Social proof | Brazil real Reddit threads | consented "refused elsewhere → we fixed it" + real forum cites |
