@@ -599,6 +599,53 @@ offer is structural: **included, not a paid non-refundable add-on.**
 
 **What Atlys + Sherpa change about our plan (deltas to fold into the spec):**
 
+### ★★ CONSOLIDATED SILO (final — after getbrazilvisa + flypass + Atlys + Sherpa)
+Structure is stable; no rival adds a new node. `▲` = Sherpa-driven detail; `◆` = Atlys-driven.
+```
+HOME  /
+│   Hero: positive + rejection-aware — "Most UK visa refusals are avoidable.
+│   We remove the avoidable ones — and stand behind our work."
+│   Re-Application Promise badge · ◆ Turnaround Promise badge · compliance strip
+│
+├─ ★ REJECTION SILO  (the point of sale — the spine; all 4 rivals validate it, none owns it)
+│   ├─ /visa-refusals                      ← HUB: "Visa refused — or worried it might be?"
+│   ├─ /visa-refusals/why                  ← why visas get refused (taxonomy #73)
+│   ├─ /visa-refusals/reapply              ← can you reapply / reconsideration
+│   │      ▲ calm procedural "here's exactly what happens next" tone (Sherpa help-desk)
+│   ├─ /visa-refusals/reasons/{reason}     ← ONE page per reason (◆ Atlys "Reasons Decoded")
+│   │      "what the officer meant → recoverable/blocking → which check stops it"
+│   └─ /visa/{country}/refused             ← per-destination spoke; DECODES + links the tool
+│          ▲ "Reviewed {date} · we monitor UK visa rule changes" freshness signal (Sherpa)
+│
+├─ ★ THE OFFER  (published, plain-English — our trust edge)
+│   ├─ /promise                            ← ✅/❌ table ON page · named turnaround · no pivot
+│   │      ▲ offer wording lifted from Sherpa ("one free re-preparation"), but INCLUDED
+│   └─ /legal#re-application-promise        ← ▲ termed clause + Sherpa-shaped disclaimer:
+│          "we do NOT guarantee approval · decisions are the authority's · liability cap"
+│
+├─ MONEY PAGES  /visa/{country}            ← sell EASE + TURNAROUND (◆ Atlys model)
+│      "2 steps, we check every field" · Turnaround Promise badge
+│      ▲ "nothing is submitted until we've checked it with you" (QA gate #75 visible)
+│      link OUT to rejection silo (keep refusal fear off the buy page)
+│
+├─ TOOLS  (free, frictionless)
+│   ├─ /document-checklist (#235)          ← our honest answer to ◆ Atlys calculators
+│   └─ eligibility checker                 ← "what a strong file needs" — NOT "your odds"
+│
+├─ AUTHORITY
+│   └─ /about                              ← named UK case-lead + verifiable credential [INPUT NEEDED]
+│
+├─ TRUST / TRANSPARENCY  (cheap, posture-only)
+│      ▲◆ "no hidden fees — what we charge, what we never charge for"
+│      ▲ "cancel any time before we submit — refund in X days" (Sherpa cancel gate + #131)
+│
+└─ REUSABLE MODULE  partials/promise-strip.blade.php
+       passport-stamp + one-line promise + link → /promise
+       on: home · every /visa/{country} · apply funnel (pre-pay) · reviews
+```
+**Still empty (our lane):** named + included + published-in-plain-English + honestly-disclaimed
+rejection offer backed by a named UK authority. No rival occupies it.
+
 ### Silo — upgrade the `/refused` spokes from "pages" to "diagnostic tools"
 The locked silo (rejection spine: `/visa-refusals` hub → `/why` → `/reapply` → `/reasons/{reason}` →
 `/visa/{country}/refused` → `/promise`) is **right** — Atlys validates the country-specific spoke
@@ -655,7 +702,7 @@ exactly. The upgrade: each spoke must *do something*, not just read.
    UK visa rule changes" (#138) on every guide/refused page — Sherpa's whole B2B trust pitch is data
    freshness, and we already have the machinery; we just under-show it.
 
-### Voice — locked rules (sharpened by Atlys)
+### Voice — locked rules (sharpened by Atlys + Sherpa)
 | Rule | Do | Never |
 |---|---|---|
 | Order | name anxiety → **decode** → show our check → Promise (close) | lead with the offer |
@@ -663,6 +710,7 @@ exactly. The upgrade: each spoke must *do something*, not just read.
 | Numbers | substantiable or **omitted** | unsourced % (Atlys's whole weakness) |
 | Outcome | "what we control, we get right" | "guaranteed / rejection-proof / approval rate" |
 | Tools > prose | link the checklist/eligibility tool | wall of text |
+| ▲ Denied tone (Sherpa) | calm, procedural — "here's exactly what happens next" | panic / shame |
 | The line we own | *"We don't publish approval rates — no honest service can promise the authority's decision. We publish what we control, and stand behind it."* | a pivot after it |
 
 ### Content skeleton — the repeatable unit (every `/reasons/{reason}` + `/visa/{country}/refused`)
@@ -682,9 +730,18 @@ H1   "Refused for insufficient funds? Here's what that actually means."
    → "See exactly what evidence your UK visa needs" [document-checklist #235]
 [PROMISE CLOSE]
    prepared by us + refused for something we should have caught → re-prepare & re-submit free [/promise]
+▲[FRESHNESS]        (Sherpa)
+   "Reviewed {date} · we monitor UK visa rule changes" (#245/#138)
 [COMPLIANCE STRIP]
    Independent service · not a government website · the decision is the authority's.
 ```
+
+### ▲ Legal copy template (Sherpa-shaped — for `/legal#re-application-promise`, solicitor sign-off #130)
+> *"We do NOT guarantee visa approval or any outcome. Final decisions are made by the immigration
+> authority. Our liability is limited to the service fee paid."* + ✅ covered / ❌ excluded list
+> (excluded = fraud · undisclosed ineligibility · missed deadline · applicant didn't supply a
+> requested doc · rule changed after submission). Mirror the plain-English ✅/❌ on `/promise`; the
+> legal page is the formal version, not the only place the terms appear.
 
 ### How to populate — the engine (already built; do NOT hand-write pages)
 ```
