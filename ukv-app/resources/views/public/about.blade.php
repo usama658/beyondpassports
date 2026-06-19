@@ -250,8 +250,8 @@
 <section class="ab-hero"><div class="wrap"><div class="ab-hero-grid">
   <div class="ab-hero-copy reveal">
     <p class="eyebrow">About us</p>
-    <h1>An independent UK team that makes visas simple.</h1>
-    <p class="lede">We're a private, UK-based service that checks, prepares and submits travel-document applications for British travellers heading abroad — so you don't have to second-guess the rules.</p>
+    <h1>We exist because most visa refusals shouldn't happen.</h1>
+    <p class="lede">Most refusals come from avoidable mistakes — unclear evidence, missing documents, the wrong details. We're a private, UK-based team that checks, prepares and submits your application, removing those avoidable causes before you ever submit.</p>
   </div>
   <div class="ab-idcard reveal" aria-label="Who we are at a glance">
     <p class="ic-k">Beyond Passports · who we are</p>
@@ -287,6 +287,7 @@
     <div class="ab-prose reveal">
       <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
       <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself — using us is optional.</p>
+      <p><strong>A real UK person checks every application before it's submitted — nothing is outsourced.</strong> The same team confirms you qualify, reviews your documents for the things that actually get applications refused, and runs a final check before anything reaches the authority.</p>
       <p class="ab-note">Our service fee is separate from, and additional to, any government or embassy fee. The official fee is set and collected by the relevant authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
     </div>
     <div class="ab-contrast reveal">
@@ -352,11 +353,11 @@
 
 {{-- HOW WE HELP --}}
 <section id="how"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">How we help</p><h2>Three simple steps</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">How we prevent refusals</p><h2>Three checks before you submit</h2></div>
   <div class="steps reveal">
-    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check</h3><p>Tell us your trip and passport. We confirm exactly what you need — and whether you need us at all.</p></div>
-    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>Our team reviews and prepares your documents, catching errors before anything goes near a government portal.</p></div>
-    <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>We handle the submission and keep you updated at every step until your authorisation comes through.</p></div>
+    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check eligibility</h3><p>Tell us your trip and passport. We confirm you actually qualify — and whether you need us at all — before you pay.</p></div>
+    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check documents</h3><p>Our UK team reviews your documents for history, source and consistency — the things that actually get applications refused.</p></div>
+    <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>Nothing is submitted until a real UK person has checked the whole file. Then we handle submission and keep you updated to completion.</p></div>
   </div>
 </div></section>
 
