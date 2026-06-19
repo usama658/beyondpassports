@@ -15,8 +15,10 @@ competitor as we go.
 2. ✅ **flypassholidays.co.uk** — UK-market, closest rival (COMPLETE)
 3. ✅ **Atlys** — category leader; TWO offers + data-rich `/rejection-recovery/{country}` silo (COMPLETE — rejection pages)
 4. ✅ **Sherpa** (joinsherpa.com) — B2B widget; best termed offer + cleanest no-guarantee disclaimer (COMPLETE)
-5. ⏳ iVisa.com — volume leader, guided-form + expert review (NEXT)
-6. ⏳ (optional) VisaHQ / Byevisa
+5. ✅ **iVisa.com** — volume leader; Denial Protection add-on + subscription; "99% approval rate" (COMPLETE)
+6. ⏸ (optional) VisaHQ / Byevisa — not pursued; 5 rivals give a saturated pattern
+
+**Teardown phase COMPLETE — all 5 priority competitors torn down section by section.**
 
 ## The grid (applied per section)
 Heading (verbatim) · strongest Claim (verbatim) · Lever (authority / social-proof /
@@ -595,6 +597,75 @@ offer is structural: **included, not a paid non-refundable add-on.**
 
 ---
 
+# 5. iVisa.com — COMPLETE (rejection footprint)
+
+**Model in one line:** **volume leader** — guided form-fill + AI-and-human expert review at scale
+(1.4M customers, 300+ specialists/15 countries), monetised three ways: per-application, a paid
+**Denial Protection** add-on, and an **iVisa Plus subscription** (a model no other rival has). Rejection
+cover is well-termed; the headline is **not** ("99% approval rate"). Sherpa's offer model at scale + Atlys's stat problem.
+
+**Pricing/offer model:** per-app service fee (speed tiers) · **Denial Protection** paid add-on (full
+refund on govt rejection, non-refundable fee) · **iVisa Plus** $79.99/yr (waives standard processing
+fees; Denial Protection NOT bundled).
+
+## Page A — ★ help "The iVisa Refund Policy" + "Denial Protection"
+- **Denial Protection** (paid checkout add-on): *"an add-on that **guarantees a full refund if your
+  application is rejected by the government**."* Refund includes *"government fees, service fees,
+  standard/rush processing fees, add-ons, and subscription fees"* — **broadest refund of any rival**.
+  *"regardless of the reason for rejection"*, *"processed automatically … does not require additional
+  requests."* **The Denial Protection fee itself is non-refundable.** Can't be added after ordering.
+- **Default refund (no add-on):** staged by processing state — 100%/75%/50% of the service fee before
+  government submission; *"No refund is given if your application is with the government."* Order > 3
+  months old = ineligible.
+- **Our-error reprocess:** *"if iVisa.com makes a mistake on your application, they will process it again
+  at no cost."* (= our Re-Application Promise, almost verbatim.)
+- **Steal:** the **state-based refund ladder** (100/75/50 by stage) is a clean, fair model for our
+  cancellation/refund surface (#72/#131) — more honest than a flat policy. The "our-mistake = free
+  reprocess" line confirms our Promise wording is industry-normal (defensible). **Avoid:** Denial
+  Protection *guaranteeing a full refund incl government fee* — we deliberately don't refund the govt
+  fee; and pitching it as a paid add-on (we include re-prep).
+
+## Page B — Home
+- *"AI + human experts check everything to ensure a smooth approval."* + **"99% approval rate"** +
+  *"300+ specialists across 15 countries"* + 24/7 (WhatsApp/chat). Trust = scale + human review.
+- **Steal:** the **human-expert-review framing** ("a real UK person checks every application") — credible,
+  honest, and our actual process (#75). **Avoid:** "99% approval rate" — the single most-repeated forbidden
+  claim across all rivals; our whole differentiator is refusing it.
+
+## Page C — Money page `/{country}` (e.g. `/united-kingdom`)
+- Hero: *"Apply … online now"* + *"skip the hassle"*. **Speed tiers**: UK ETA from $85.99 *"as fast as
+  15 minutes"*; Standard Visitor from $399.99 *"as fast as 30 days"*. Expert review: *"We review your whole
+  application to catch anything that might cause delays."*
+- Trust: 4.4/5 (70k+ Trustpilot), *"1.4M happy customers"*, *"10 years"*; **99%/98% approval rate** in
+  trust block; names main denial reason: *"Insufficient funds."*
+- **★ Strongest block = "Why choose iVisa?" comparison table** (DIY friction vs iVisa: simple forms, error
+  detection, expert support). Same DIY-vs-us lever as getbrazilvisa/flypass.
+- **Steal:** speed-tier clarity + "we review your whole application to catch anything"; the DIY-vs-us
+  comparison (honest version, no %); naming the top denial reason (→ links to our `/reasons/{reason}`).
+  **Avoid:** the approval-rate numbers.
+
+## Page D — Apply flow / checkout
+- Guided form-fill *"under 10 minutes"*; Denial Protection upsold at the *"Review Your Order"* step. Same
+  add-on friction as Sherpa. **Steal:** the <10-min frictionless framing. **Avoid:** the add-on upsell step
+  (we include the Promise — no checkout decision).
+
+## Page E — iVisa Plus (subscription — the only one of its kind)
+- *"Get unlimited e-Visas, health declarations, and embassy registrations without any standard fees."*
+  $79.99/yr (1) / $119.99/yr (family of 5). Waives standard processing fees; 50% off appointment visas;
+  prioritised support. **Denial Protection + expert review NOT bundled.**
+- **Read:** a frequent-traveller retention play, not a rejection lever. **Out of scope for us** (we're a
+  considered, often one-off UK service, not a volume eVisa subscription). Note it; don't chase it.
+
+## iVisa — verdict
+The scaled incumbent. Two honest lifts: (1) the **state-based refund ladder** (100/75/50 by processing
+stage) for our refund/cancellation surface; (2) the **human-expert-review framing** ("a real UK person
+checks every application"), which is our genuine process. Confirms our Promise wording is industry-normal.
+Its weakness is the loudest of all: **"99% approval rate"** front and centre — the exact claim we refuse,
+and the cleanest contrast for our "we don't publish approval rates" line. Subscription (Plus) is off-strategy
+for a considered UK service. No new silo node.
+
+---
+
 ## ★ Beyond Passports — silo + content REFRESH (in light of Atlys + Sherpa)
 
 **What Atlys + Sherpa change about our plan (deltas to fold into the spec):**
@@ -778,8 +849,45 @@ case team", no fake credential); legal sign-off on Promise terms; any real numbe
 | Offer terms drafting | **Sherpa** "one free reapplication" + tight exclusion list (paid non-refundable add-on) | same mechanic, **included not add-on**; lift their exclusion list into our ❌ + legal clause |
 | No-guarantee disclaimer | **Sherpa T&C** "we do NOT guarantee approval or any outcome · decisions are the authority's · liability capped" | lift verbatim-shape into `/legal#re-application-promise` (#130 solicitor sign-off) |
 | Freshness as trust | **Sherpa** "notified of every policy change hourly, curated from official sources" | surface "Reviewed {date}" (#245) + "we monitor UK rule changes" (#138) on every guide/refused page |
+| Refund fairness | **iVisa** state-based ladder (100/75/50 of service fee by processing stage) | adopt the staged ladder for our refund/cancellation surface (#72/#131) — fairer than flat |
+| Expert-review framing | **iVisa** "AI + 300 human specialists check everything" | "a real UK person checks every application before submission" (our QA gate #75) — honest, no % |
+| The forbidden stat | **iVisa** "99% approval rate" front-and-centre (also Atlys 99.2%, Brazil 95%) | refuse it; our line "we don't publish approval rates" is the clean contrast |
 | Honesty gap (offence) | Atlys admits "no service can guarantee approval" **then pivots** to "99.2% accuracy" | own the line with **no pivot**: "we don't publish approval rates… we publish what we control" |
 | Positive promise (controllable) | **Atlys `/on-time-guaranteed`** — guarantee delivery date, refund if late; publicly owns its misses | **Turnaround Promise**: complete checked file in X working days or service fee back; badge on money pages |
 | Money-page focus | **Atlys** money pages sell speed/ease ("2 steps, auto-filled"); rejection kept in its own silo | money pages = ease + Turnaround Promise, link *out* to rejection silo; "we check every field" |
 | Free tool funnel | **Atlys `/tools/visa-requirements`** ("free, no signup, 5 sec") → high-friction needs → paid | match frictionlessness on eligibility checker + checklist (#235) → route to apply |
 | Social proof | Brazil real Reddit threads | consented "refused elsewhere → we fixed it" + real forum cites |
+
+---
+
+# ★★ FINAL SYNTHESIS — all 5 competitors (teardown phase closed)
+
+**The universal pattern (true of all 5):**
+1. **Everyone has a rejection safety net** — Brazil (premium-tier free resubmit), Atlys (auto AtlysProtect
+   + paid Recovery), Sherpa (paid add-on), iVisa (paid Denial Protection). All term "our mistake = free
+   reprocess." **It's table stakes, not a differentiator** — what differs is *how* it's framed.
+2. **Everyone leans on a forbidden number** — 95% (Brazil), 99.2% (Atlys), 99% (iVisa). The two B2B-ish
+   players (Sherpa, flypass) are the most honest precisely because they sell less aggressively.
+3. **Nobody combines all four:** *named UK authority* + *included (not add-on)* + *published-in-plain-English
+   terms* + *honest (no approval %)*. Each rival has one or two; the full set is **empty**. That's our lane.
+
+**The 6 things we steal (honest versions):**
+| From | Steal |
+|---|---|
+| Atlys | country `/refused` pages that are **tools, not prose**; "Reasons Decoded" as hero; `/on-time-guaranteed` → our **Turnaround Promise**; money pages sell ease, refusal in its own silo |
+| Sherpa | **offer + disclaimer drafting** (one free re-prep, exclusion list, "we do NOT guarantee approval", liability cap); freshness-as-trust; correction-window + cancel-gate reassurance |
+| iVisa | **state-based refund ladder** (100/75/50); **human-expert-review** framing ("a real UK person checks every file") |
+| Brazil | **refusal-cause → our-check** content block; named, credentialed reviewer; DIY-vs-us comparison (no %) |
+| flypass | cleanest honest prevention line ("review every paper before submission") as copy model |
+
+**The 3 things we refuse (compliance = differentiator):** approval-rate %s · "guarantee approval" / product
+names implying outcome · any unsourced stat. Every page passes the compliance gate or doesn't ship.
+
+**Our positioning sentence (locked):** *"The only UK visa service that tells you exactly why applications
+get refused, removes those causes before submission, and — if we ever miss one — re-prepares and re-submits
+free. We don't publish approval rates. We publish what we control."*
+
+**Next (post-teardown):** brainstorm/spec is already written (`2026-06-19-rejection-proposition-design.md`);
+fold these 5-competitor deltas into it, then → writing-plans → build (taxonomy #73 fill → guide engine →
+`/promise` + `/visa-refusals` + spokes + module + about). Blockers unchanged: named case-lead, legal
+sign-off, real numbers (else omit).
