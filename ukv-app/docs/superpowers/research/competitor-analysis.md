@@ -121,6 +121,77 @@ disclaimers · bare apply page · static checker · thin interlinking.
 "money-back" · implying regulated legal advice.
 **Hard input needed:** a real named UK authority + credential.
 
+## ★ Beyond Passports — LOCKED silo + content (in light of getbrazilvisa)
+
+Derived directly from the getbrazilvisa teardown above. This is the rejection-led IA + content
+blueprint to build. (May be refined as more competitors are torn down.)
+
+### Locked silo (rejection spine)
+```
+HOME ◆  hero: "Most refusals are avoidable — yours won't be" + Promise badge + hub link
+│
+├─ ★ REJECTION HUB  /visa-refusals
+│   ├─ /visa-refusals/why                 why visas get refused (= taxonomy #73)  ← loss-aversion pillar
+│   ├─ /visa-refusals/reasons/{reason}    one page per cause → "and how we stop it"
+│   ├─ /visa-refusals/reapply             can you reapply / reconsideration
+│   ├─ ★ /visa-refusals/do-i-need-help    BOFU objection page (honest "you can DIY; here's what gets
+│   │        refused, and what we catch" + when-to-get-help matcher)  ← steal of their best page
+│   └─ ★ /visa/{country}/refused          per-country refusal spoke (geo long-tail; existing {topic} route)
+│
+├─ ◆ OUR PROMISE  /promise   (Re-Application Promise; published ✅/❌ terms — their gap = our edge)
+│        Promise badge funnels in from every page AND sits at /apply + /checkout
+│
+├─ Money ◆  /destinations · /visa/{country}   + "Worried about refusal?" block → /refused + Promise
+├─ Tools ◆  /tools (checker + honest eligibility gate, interactive) · /document-checklist ("catch the
+│            refusal causes before you apply") · /find-a-centre · /driving-abroad
+├─ Guides ◆ /guides · /guides/{slug}  → rejection cluster featured; every spoke bylined + "Reviewed {date}"
+├─ Trust ◆  /about (named UK case-lead + verifiable credential + "checks every file") · /compare
+│            ("DIY refusal-risk vs us") · /reviews ("refused elsewhere → we fixed it") ·
+│            /legal#re-application-promise (published terms) · /contact
+└─ Convert ◆ /apply (Promise badge at buy) · /checkout · /confirmation · /track (refused → Promise next-step)
+```
+**Funnel:** inform (`/refused`,`/why`) → reassure (`/promise`,`/do-i-need-help`) → convert (`/apply`).
+**New page types vs baseline silo:** `/visa-refusals/do-i-need-help`, per-country `/refused` (geo
+long-tail), honest eligibility gate in checker, Promise badge at apply/checkout, published terms,
+named-authority About.
+
+### Content blueprint (honest versions of their converters)
+Voice: name the anxiety → show control → back it with the Promise. "What we control, we get right."
+Never a guarantee or approval %. Specific > clever. No invented stats.
+
+- **Home hero:** *"Most visa refusals are avoidable. We make sure yours isn't one of them — and if
+  it's ever refused for something we should have caught, we re-prepare and re-submit it free."*
+  Trust pills: ✓ every document checked before submit · ✓ Re-Application Promise · ✓ UK team ·
+  ✓ not a government service. Promise badge beside CTA.
+- **`/promise`:** headline promise + honest line ("the decision is always the authority's") →
+  "why visas get refused" → "how we rejection-proof your application" (eligibility → AI check #99 →
+  human QA #75) → ✅/❌ table → "if it still happens" → compliance strip.
+- **★ Refusal-causes section (the centrepiece — steal of their "6 mistakes that cause denials"):**
+  two columns — each common cause (from taxonomy #73) → the exact check that catches it. Honest:
+  describe causes; only show a % if substantiable, else omit. Reused on `/promise`, hub, money pages.
+- **`/visa-refusals/do-i-need-help` (their best page, honest):** "You don't legally need an agent.
+  Here's what actually gets applications refused — and what we catch before submission." +
+  a "should you get help?" matcher (complex case / first-timer / tight timeline / prior refusal →
+  maps to eligibility lanes #113) + real public-forum quotes (attributed).
+- **Per-country `/refused`:** "Refused for a [Country] visa? Here's what to do." → common reasons
+  (honest) → can you reapply → how we'd handle yours → Promise + Apply. Bylined + "Reviewed {date}".
+- **Money-page block:** "Worried about a refusal? [Country] applications usually get refused for the
+  same few fixable reasons — we check for every one before we submit. Covered by our Re-Application
+  Promise." → /refused + /promise.
+- **`/about` (build the authority they fake):** "We exist because most visa refusals shouldn't
+  happen." + named UK case-lead, photo, role + verifiable credential/registration link, "personally
+  checks every application — nothing outsourced", how-we-work (the checks), real consented outcomes,
+  compliance strip. **[INPUT NEEDED: real name + credential.]**
+- **Reviews:** consented "refused elsewhere → we sorted it" stories ("Verified · consented", no score).
+- **CTA everywhere:** Re-Application Promise badge at the buy button (the move they forgot on /apply).
+
+### Beat / avoid (vs getbrazilvisa)
+- **Beat:** own the rejection content cluster (they have none); publish real Promise terms (they
+  don't); compliance disclaimers (they have none); Promise at checkout (they omit); interactive
+  checker (theirs is static).
+- **Avoid (compliance):** approval %/per-cause % unless substantiable; "rejection-proof"; untermed
+  "money-back guarantee"; implying regulated legal advice (#130).
+
 ---
 
 # 2. flypassholidays.co.uk — PENDING
