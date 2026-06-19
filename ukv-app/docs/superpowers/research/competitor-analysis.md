@@ -14,8 +14,8 @@ competitor as we go.
 1. ✅ **getbrazilvisa.com** — niche, lawyer-led (COMPLETE, 9 pages)
 2. ✅ **flypassholidays.co.uk** — UK-market, closest rival (COMPLETE)
 3. ✅ **Atlys** — category leader; TWO offers + data-rich `/rejection-recovery/{country}` silo (COMPLETE — rejection pages)
-4. ⏳ Sherpa (joinsherpa.com) — rejection-protection add-on + deep help content (NEXT)
-5. ⏳ iVisa.com — volume leader, guided-form + expert review
+4. ✅ **Sherpa** (joinsherpa.com) — B2B widget; best termed offer + cleanest no-guarantee disclaimer (COMPLETE)
+5. ⏳ iVisa.com — volume leader, guided-form + expert review (NEXT)
 6. ⏳ (optional) VisaHQ / Byevisa
 
 ## The grid (applied per section)
@@ -504,9 +504,81 @@ no pivot behind it.
 
 ---
 
-## ★ Beyond Passports — silo + content REFRESH (in light of Atlys)
+# 4. Sherpa (joinsherpa.com) — COMPLETE (rejection footprint)
 
-**What Atlys changes about our plan (deltas to fold into the spec):**
+**Model in one line:** primarily a **B2B white-label visa widget** for airlines/OTAs/agents
+(consumer apply is secondary at `apply.joinsherpa.com`). Thin consumer marketing, but the **best,
+tightest, most lawyer-shaped termed offer + the cleanest compliance disclaimer of all five rivals.**
+Its rejection content lives in the **help centre** (403 to bots — pulled via search snippets).
+
+**Pricing/offer model:** rejection cover = a **PAID add-on** ("Reapply & Rejection Protection"),
+**non-refundable fee**, opt-in at checkout. (Contrast: Atlys auto-included AtlysProtect; Brazil
+premium-tier; **us = included, no add-on**.)
+
+## Page A — ★ "What Is Reapply & Rejection Protection and Why Should You Use It?" (the offer sell page)
+- *"an add-on that entitles you to **one free reapplication** in case your application contains
+  errors or gets rejected."* Lever = **peace of mind** + loss-aversion (*"government fees are
+  non-refundable, and a new application may be required"*).
+- **Covered:** one free reapply if errors/rejected; if the **government doesn't allow reapply →
+  refund instead** (govt fee + Sherpa service fee).
+- **❌ Excluded:** visa no longer required/valid due to **policy change**; trip disrupted by **border
+  closures/restrictions**; anything that **isn't an individual rejection**; only covers the eVisa/eTA
+  in that transaction (not flights/hotels/tours).
+- **The add-on fee itself is non-refundable.** Reapply only **up to (not including) the travel date**.
+- **Steal:** the **"one free reapplication"** framing is almost verbatim our Re-Application Promise —
+  effort-based, bounded to one, with a refund fallback when reapply is impossible. Their exclusion
+  list (policy-change / not-an-individual-rejection / didn't-supply-docs) is a ready-made template for
+  our ❌ list + legal clause. **Beat:** we make it **included, not a paid non-refundable add-on** —
+  removes their biggest friction (paying extra for a safety net, then that fee being lost).
+
+## Page B — "What to Do If Your Application Is Denied" (rejection help + terms)
+- Help-desk tone: practical, calm, no shame; states the cover terms + next step. Confirms the same
+  bounds as Page A. **Steal:** the calm, procedural "here's exactly what happens next" tone for our
+  rejection email + `/visa-refusals/reapply` page (matches our taxonomy-driven next-step copy).
+
+## Page C — apply `/explore` checkout (add-on upsell)
+- Couldn't fetch (B2C app redirects bots). Known from terms: the Protection is offered **as a
+  checkout add-on** (opt-in, priced per route). **Note:** our model differs — **included by default,
+  badged not upsold** — so there's no checkout add-on step to copy; the learning is the *friction* an
+  add-on creates, which we avoid.
+
+## Page D — `/products/travel-requirements` (their tool = a TRUST-BY-FRESHNESS pitch)
+- *"aggregates millions of data points from thousands of sources"* across *"200+ countries"*; *"average
+  of **55 changes per hour**"* monitored; *"Our team is notified of all policy changes every hour"* and
+  *"manually confirms and curates"* from *"official government and trusted third-party sources."*
+- Their **entire trust pitch = data accuracy + freshness** (B2B buyers fear stale rules → trip
+  disruption). Partner logos (Skyscanner, G Adventures…) for credibility.
+- **Steal:** make **freshness a visible trust signal** — surface our "Reviewed {date}" (#245) + "we
+  monitor UK visa rule changes" (#138) on every guide/refused page. It's a trust lever we already have
+  the machinery for and currently under-show. **Avoid:** unverifiable volume stats ("55/hour") unless real.
+
+## Page E — ★★ `/legal/terms-conditions` (the compliance disclaimer goldmine — draft our `/legal` from this)
+Legally drafted version of *exactly* our compliance frame:
+- *"We do NOT: **Guarantee visa approval or any outcome**."*
+- *"Sherpa disclaims liability for any immigration outcomes, delays, rejections, or losses arising from
+  immigration authorities' decisions."*
+- *"**Final admission decisions are made by immigration authorities and border officials** … Sherpa is
+  not responsible for denied boarding, refusal of entry…"*
+- Default (no add-on): *"Service fees and government fees are **NON-REFUNDABLE regardless of outcome**."*
+  → the paid add-on is what *buys* the refund right. Clean two-tier logic.
+- Liability cap: *"THE GREATER OF (A) THE SERVICE FEES … OR (B) FIVE HUNDRED US DOLLARS."*
+- **Steal (big):** this is the template for our `/legal#re-application-promise` + disclaimer — "we do
+  NOT guarantee approval or any outcome / decisions are the authority's / liability cap." Ties directly
+  to our solicitor sign-off (#130). **Our differentiator:** our *default* includes the re-prep (theirs
+  charges for it), and we publish the ✅/❌ table in plain English on `/promise`, not just buried in T&C.
+
+## Sherpa — verdict
+Weakest *consumer marketing* (it's a B2B company), but the **strongest offer terms + disclaimer
+drafting**. Two concrete templates to lift: (1) the **"one free reapplication" + bounded exclusion
+list** for our Promise; (2) the **"we do NOT guarantee approval / decisions are the authority's /
+liability cap"** disclaimer for `/legal`. Plus the freshness-as-trust idea (Page D). Our beat on the
+offer is structural: **included, not a paid non-refundable add-on.**
+
+---
+
+## ★ Beyond Passports — silo + content REFRESH (in light of Atlys + Sherpa)
+
+**What Atlys + Sherpa change about our plan (deltas to fold into the spec):**
 
 ### Silo — upgrade the `/refused` spokes from "pages" to "diagnostic tools"
 The locked silo (rejection spine: `/visa-refusals` hub → `/why` → `/reapply` → `/reasons/{reason}` →
@@ -554,6 +626,15 @@ exactly. The upgrade: each spoke must *do something*, not just read.
 7. **Transparency posture, cheaply.** A small "no hidden fees — what we charge, what we never charge for"
    block (their price-change-log posture) + optionally own our own misses honestly. Cheap trust; don't
    over-build an audit log (YAGNI).
+8. **★ (Sherpa) Lift the disclaimer + offer terms verbatim-shape.** Sherpa's T&C is our ready legal
+   template: `/legal#re-application-promise` says *"we do NOT guarantee approval or any outcome · final
+   decisions are the authority's · liability capped at service fees paid"*; the Promise = *"one free
+   reapplication"* + Sherpa-style exclusion list (policy-change / not-an-individual-rejection /
+   didn't-supply-requested-docs). **Our beat:** included by default (not a paid non-refundable add-on)
+   + ✅/❌ in plain English on `/promise`, not buried in T&C. Ties to solicitor sign-off (#130).
+9. **★ (Sherpa) Make freshness a visible trust signal.** Surface "Reviewed {date}" (#245) + "we monitor
+   UK visa rule changes" (#138) on every guide/refused page — Sherpa's whole B2B trust pitch is data
+   freshness, and we already have the machinery; we just under-show it.
 
 ### Voice — locked rules (sharpened by Atlys)
 | Rule | Do | Never |
@@ -618,6 +699,9 @@ case team", no fake credential); legal sign-off on Promise terms; any real numbe
 | Named authority | Brazil's Camila (OAB + registry link, "reads every page") | named UK case-lead + verifiable credential **[INPUT NEEDED]** |
 | Objection page | Brazil "Do you need a lawyer?" | honest "Do you need help with your UK visa?" |
 | Published terms | **Atlys** "our SOP is public, our logic is transparent" + published turnaround | `/promise` shows ✅/❌ table on-page + named turnaround; legal mirror at `/legal#re-application-promise` — our trust edge |
+| Offer terms drafting | **Sherpa** "one free reapplication" + tight exclusion list (paid non-refundable add-on) | same mechanic, **included not add-on**; lift their exclusion list into our ❌ + legal clause |
+| No-guarantee disclaimer | **Sherpa T&C** "we do NOT guarantee approval or any outcome · decisions are the authority's · liability capped" | lift verbatim-shape into `/legal#re-application-promise` (#130 solicitor sign-off) |
+| Freshness as trust | **Sherpa** "notified of every policy change hourly, curated from official sources" | surface "Reviewed {date}" (#245) + "we monitor UK rule changes" (#138) on every guide/refused page |
 | Honesty gap (offence) | Atlys admits "no service can guarantee approval" **then pivots** to "99.2% accuracy" | own the line with **no pivot**: "we don't publish approval rates… we publish what we control" |
 | Positive promise (controllable) | **Atlys `/on-time-guaranteed`** — guarantee delivery date, refund if late; publicly owns its misses | **Turnaround Promise**: complete checked file in X working days or service fee back; badge on money pages |
 | Money-page focus | **Atlys** money pages sell speed/ease ("2 steps, auto-filled"); rejection kept in its own silo | money pages = ease + Turnaround Promise, link *out* to rejection silo; "we check every field" |
