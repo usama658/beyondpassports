@@ -289,9 +289,37 @@ no case studies. Unverified "proven track record / Trusted Experts" + 4 undated 
   brazil "money-back" badge) with **no published terms** → our **termed, published Re-Application
   Promise** differentiates against the whole field.
 
-### Pending pages
-`/services/`+`/countries/` hubs (silo logic) · `/blog/` (rejection content?) · `/contact-us/` ·
-legal (appears missing — confirm).
+**`/services/` hub:** intro "simple, fast, completely stress-free" → 6 stacked cards → Why-Choose-Us
+(no metrics) → testimonials → Contact. CTA = "Check Your Eligibility." No rejection/guarantee. Thin.
+
+**`/blog/`:** real, 6 posts (May 2023–May 2025), **org byline only** (no named author). **Includes
+one rejection post: "Top Reasons Schengen Visa Applications Get Rejected"** ("Incomplete or
+Incorrect Documentation" primary). Closing CTA: *"…Let our expertise pave the way for your Schengen
+visa approval."* (borderline outcome-implying). They know the topic ranks but treat it as one
+buried post, not a spine, with no termed offer.
+
+**`/contact-us/`:** phone/email/London address + basic form. **No company reg, no OISC/IAA, no
+response-time SLA, no guarantee.**
+
+### flypass — MASTER verdict
+- **Steal:** UK immigration-status qualifier in intake (Student/Graduate/Skilled Worker/ILR…); the
+  "Top Reasons Applications Get Rejected" topic **as a pillar → funnel to Promise**; "error-free /
+  every doc checked" QA framing + a real remedy; post-approval support + tracking; doc lead-magnet.
+- **Beat (large gaps):** no rejection cluster (one stray post) · anonymous About · no published
+  terms · vague "guaranteed" · hidden pricing · org-only bylines · no OISC/IAA shown · thin per-country.
+- **Avoid:** "High Approval Success Guaranteed" / "pave the way for approval" (outcome-implying).
+
+## Two-rival synthesis (getbrazilvisa + flypass)
+| | getbrazilvisa | flypass | Beyond Passports (win) |
+|---|---|---|---|
+| Rejection | causes-content + offer, no terms | 1 buried blog post | **full silo + termed Promise** |
+| Authority | named lawyer (verifiable) ✓ | anonymous ✗ | **named UK case-lead + credential** |
+| Published terms | none | none | **/legal#re-application-promise** |
+| Guarantee | untermed "money-back" | "High Approval Guaranteed" | **termed, honest, no %** |
+| "Prior rejection?" intake | — | asks, ignores it | **asks → branches to Promise** |
+
+**Universal wedge:** both rivals collect/sense rejection but NOBODY owns it with a real silo +
+termed offer + named authority. Wide-open lane for Beyond Passports.
 
 ---
 
