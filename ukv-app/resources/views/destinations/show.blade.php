@@ -269,6 +269,9 @@
 </div></section>
 @endif
 
+{{-- 4b. PREVENTION — "built to prevent refusals" (country-templated) --}}
+@include('partials.money-prevention')
+
 {{-- 5. HOW IT WORKS --}}
 <section id="how"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">What you get</p><h2>Three simple steps</h2></div>
