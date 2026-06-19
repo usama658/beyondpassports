@@ -192,6 +192,42 @@ Never a guarantee or approval %. Specific > clever. No invented stats.
 - **Avoid (compliance):** approval %/per-cause % unless substantiable; "rejection-proof"; untermed
   "money-back guarantee"; implying regulated legal advice (#130).
 
+### Content-population plan (how we'll fill this in later — do AFTER competitor teardowns)
+
+Everything is data-driven off one source of truth.
+
+**Step 0 — refusal-reason dataset (the unlock):** extend rejection-reason taxonomy (#73). Per
+reason: plain-English reason · promise-eligibility (`our_error` / `discretionary_covered` /
+`excluded`) · "how we stop it" (which check: eligibility / AI doc #99 / human QA #75). Powers the
+refusal-causes section, the `/reasons/{reason}` spokes, AND the Promise ops.
+
+**Step 1 — content recipe per page:**
+- Refusal-causes centrepiece ← taxonomy (#73): each cause → its check. Omit % unless real.
+- `/visa-refusals/why` + `/reasons/{reason}` ← taxonomy + gov.uk: generate via **guide engine
+  (#242–245)** → AI draft → factuality validator → verify vs gov.uk → compliance publish gate.
+- Per-country `/visa/{country}/refused` ← per-destination refusal dataset (common reasons for that
+  visa): one template + 8 destination rows; same guide-engine flow.
+- `/promise` + `/legal` terms ← locked policy; needs legal sign-off (#130).
+- `/do-i-need-help` ← eligibility lanes (#113) + real public-forum quotes.
+- `/about` ← real named case-lead + credential (USER INPUT — can't fabricate).
+- Reviews ← consented testimonials (#34/#35) — surface "refused elsewhere → fixed".
+- Money-page blocks ← per-destination dataset, one reusable partial auto-filled per country.
+
+**Step 2 — honest data only:** numbers only if substantiable from own order data (outcome loop
+#76 / success dashboard #30); else omit all %. Never copy competitors' figures. Testimonials real
++ consented only.
+
+**Step 3 — generate at scale:** reuse the guide engine (#242–245): AI-draft → factuality validator
+→ compliance publish gate (blocks "guarantee"/approval-% language) → "Reviewed {date}" freshness
+(#245). Per-country `/refused` + `/reasons/{reason}` are programmatic.
+
+**Population order:** (0) refusal dataset → (1) /promise + legal terms → (2) refusal-causes
+centrepiece → (3) hub + /why → (4) per-country /refused + money blocks → (5) /do-i-need-help →
+(6) /about + reviews → (7) CTA Promise badge sitewide.
+
+**Blocks (only the user can supply):** real named UK case-lead + credential; real numbers to cite
+(else omit); legal sign-off on Promise terms.
+
 ---
 
 # 2. flypassholidays.co.uk — PENDING
