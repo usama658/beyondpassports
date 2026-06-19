@@ -135,7 +135,7 @@
 <section class="hp-hero"><div class="wrap">
   <p class="eyebrow">UK visas &middot; eVisas &middot; ETAs</p>
   <h1>Sorted, without the stress.</h1>
-  <p class="lede">Tell us where you're going — we confirm exactly what you need and handle the paperwork.</p>
+  <p class="lede">Tell us where you're going. We confirm exactly what you need and get the paperwork right — so nothing avoidable trips it up. A real UK person checks every application before it's submitted.</p>
 
   {{-- inline visa-check form (real destination list + apply) --}}
   <form class="hp-bar" onsubmit="return false">
@@ -200,11 +200,14 @@
   <div class="dest-more"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></div>
 </div></section>
 
+{{-- HOW WE PREVENT REFUSALS --}}
+@include('partials.home-prevention-b')
+
 {{-- WHY --}}
 <section id="why"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Why travellers choose us</p><h2>We make sure it's right</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">Why travellers choose us</p><h2>More reasons to relax</h2></div>
   <div class="ticks">
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>We catch errors before they cost you</h3><p>A human checks every document before submission.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Every step tracked</h3><p>Follow your application's progress any time — we keep you updated at each stage.</p></div></div>
     <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>One clear fee, no surprises</h3><p>Our service fee is separate from the government fee — shown up front.</p></div></div>
     <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Express when you're short on time</h3><p>Express speeds our handling — not the government's decision.</p></div></div>
     <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest advice</h3><p>We'll tell you if you don't need us. No false promises on approval.</p></div></div>
