@@ -782,6 +782,7 @@ exactly. The upgrade: each spoke must *do something*, not just read.
 | Outcome | "what we control, we get right" | "guaranteed / rejection-proof / approval rate" |
 | Tools > prose | link the checklist/eligibility tool | wall of text |
 | ▲ Denied tone (Sherpa) | calm, procedural — "here's exactly what happens next" | panic / shame |
+| ● Review framing (iVisa) | "a real UK person checks every application" | "AI guarantees approval" / "99% approved" |
 | The line we own | *"We don't publish approval rates — no honest service can promise the authority's decision. We publish what we control, and stand behind it."* | a pivot after it |
 
 ### Content skeleton — the repeatable unit (every `/reasons/{reason}` + `/visa/{country}/refused`)
@@ -794,7 +795,7 @@ H1   "Refused for insufficient funds? Here's what that actually means."
 [RECOVERABLE OR BLOCKING]
    ✅ usually recoverable (evidence) · ❌ blocking only if genuinely ineligible
 [HOW WE STOP IT]    (taxonomy #73 → which check)
-   eligibility screen · document check (history/source) · human QA gate (#75)
+   eligibility screen · document check (history/source) · ● human QA gate — "a real UK person checks" (#75)
 [REAPPLY GUIDANCE]  (honest, useful, free)
    disclose the previous refusal · reapply only when something CHANGED · don't resubmit the same file
 [TOOL ENTRY]
@@ -806,6 +807,21 @@ H1   "Refused for insufficient funds? Here's what that actually means."
 [COMPLIANCE STRIP]
    Independent service · not a government website · the decision is the authority's.
 ```
+
+### ● Money-page content shape (iVisa touches — sell ease, link to the rejection silo)
+Money pages stay positive; refusal stays in its own silo. Per `/visa/{country}`:
+- ease + **Turnaround Promise** badge + ● **speed-tier clarity** (what each tier gets, plainly)
+- ● **honest DIY-vs-us comparison** (qualitative — "the avoidable mistakes are yours to catch alone;
+  with us a UK team checks every one" — **no approval %, no fabricated metric**)
+- ▲ *"nothing is submitted until we've checked it with you"* (QA gate #75 made visible)
+- ● **name the single most common denial reason** for that route (e.g. "insufficient funds") →
+  **link to its `/reasons/{reason}` page** (feeds the rejection silo, useful not fearful)
+- link OUT to the rejection silo; keep refusal fear off the buy page.
+
+### ● Trust-surface content (refund fairness — iVisa)
+- ● **state-based refund ladder shown plainly** (e.g. 100% before we start / partial once in prep /
+  govt fee never refundable once filed) — fairer + clearer than a flat policy; maps to #72/#131.
+- ▲ *"cancel any time before we submit — refund in X days."*
 
 ### ▲ Legal copy template (Sherpa-shaped — for `/legal#re-application-promise`, solicitor sign-off #130)
 > *"We do NOT guarantee visa approval or any outcome. Final decisions are made by the immigration
