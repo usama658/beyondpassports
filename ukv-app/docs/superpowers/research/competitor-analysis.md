@@ -272,9 +272,26 @@ guarantee). "Download Our Document" lead magnet + Contact CTA.
   hidden pricing · thin proof (Trustpilot badge, no score; no ABTA/ATOL) · aspiration- not anxiety-led.
 - **Avoid:** "guaranteed" with no defined remedy.
 
+**Per-country `/country/france/`:** highly templated (France in name only), 3-step process, funnels
+to eligibility. **"Why Choose Us → 'High Approval Success Guaranteed'"** — vague + the worst
+compliance offender seen (implied approval guarantee). No rejection content, no pricing, no proof.
+27 thin pages off one template. **We beat outright** with real per-country `/refused` spokes.
+
+**`/about-us/`:** **fully anonymous** — no founder/team names, no credentials, no OISC/IAA, no years,
+no case studies. Unverified "proven track record / Trusted Experts" + 4 undated testimonials +
+"not a government website" disclaimer. **E-E-A-T void = their biggest weakness.**
+
+### Strategic read (getbrazilvisa vs flypass)
+- getbrazilvisa = **named authority done well** (Camila, OAB, verifiable link). flypass = **authority
+  void** (anonymous). → **A named UK case-lead + verifiable credential About beats BOTH.** Clearest
+  single win in the teardown.
+- BOTH use a **vague "guaranteed"** (flypass "High Approval Success Guaranteed"/"error-free";
+  brazil "money-back" badge) with **no published terms** → our **termed, published Re-Application
+  Promise** differentiates against the whole field.
+
 ### Pending pages
-`/country/france/` (per-country template) · `/about-us/` (authority?) · `/services/`+`/countries/`
-hubs (silo) · `/blog/` (rejection content?) · `/contact-us/` · legal (appears missing — confirm).
+`/services/`+`/countries/` hubs (silo logic) · `/blog/` (rejection content?) · `/contact-us/` ·
+legal (appears missing — confirm).
 
 ---
 
