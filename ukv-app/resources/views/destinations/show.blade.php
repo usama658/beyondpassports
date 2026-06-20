@@ -181,6 +181,14 @@
   @media (max-width:860px){
     .facts,.tiers,.reqs{grid-template-columns:1fr}
   }
+  /* reviewer credit — the named UK person who checks this application */
+  .revcred{background:linear-gradient(180deg,#f3f9f7,#fff);border-bottom:1px solid var(--paper-edge)}
+  .revcred .wrap{display:flex;align-items:center;gap:14px;padding:16px 0}
+  .revcred img{width:50px;height:50px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 6px 16px -8px rgba(30,40,60,.5)}
+  .revcred .t b{font:700 15px var(--display);color:var(--navy)}
+  .revcred .t span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+  .revcred .chk{margin-left:auto;font:800 12px var(--display);color:var(--stamp-text);background:#e7f3ef;border-radius:999px;padding:6px 12px;white-space:nowrap}
+  @media (max-width:560px){.revcred .chk{display:none}}
 </style>
 <script type="application/ld+json">{!! json_encode($serviceLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 <script type="application/ld+json">{!! json_encode($faqLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
@@ -210,6 +218,16 @@
     @endif
   </div></div>
 </section>
+
+{{-- Reviewer credit: the named UK lead who personally checks each application --}}
+@php $revLead = collect(config('ukv.team', []))->firstWhere('lead', true) ?? collect(config('ukv.team', []))->first(); @endphp
+@if ($revLead)
+<section class="revcred"><div class="wrap">
+  @if (!empty($revLead['photo']))<img src="{{ asset(ltrim($revLead['photo'], '/')) }}" alt="{{ $revLead['name'] }}">@endif
+  <div class="t"><b>Checked by {{ $revLead['name'] }}</b><span>{{ $revLead['role'] ?? 'UK Case Lead' }} · personally reviews every application before it's submitted</span></div>
+  <span class="chk">✓ Human-checked</span>
+</div></section>
+@endif
 
 @if (\Illuminate\Support\Str::contains(strtolower((string) $visaType), 'etias'))
 {{-- ETIAS pre-launch honesty banner — ETIAS is not live until late 2026; UK citizens

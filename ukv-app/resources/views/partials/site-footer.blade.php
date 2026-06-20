@@ -8,6 +8,14 @@
       <div>
         <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
         <p style="max-width:30ch">Independent UK visa &amp; eVisa facilitation. Not a government website.</p>
+        @php $addr = config('ukv.address'); @endphp
+        @if ($addr && !empty($addr['line1']))
+        <p style="max-width:30ch;font-size:13px;line-height:1.55;color:#c7cfd6;margin-top:12px">
+          {{ $addr['company'] ?? 'Beyond Passports Ltd' }}<br>
+          {{ $addr['line1'] }}@if(!empty($addr['line2'])), {{ $addr['line2'] }}@endif<br>
+          {{ $addr['city'] ?? '' }} {{ $addr['postcode'] ?? '' }}@if(!empty($addr['company_no']))<br>Company no. {{ $addr['company_no'] }}@endif
+        </p>
+        @endif
         {{-- Consent-gated newsletter opt-in (works with no JS; flashes status on return) --}}
         <form method="POST" action="{{ route('subscribe.store') }}">
           @csrf

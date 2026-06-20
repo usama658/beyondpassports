@@ -33,6 +33,15 @@
     $modified  = $guide->reviewed_at ? Carbon::parse($guide->reviewed_at) : ($guide->updated_at ?? $published);
     $reviewedAt = $guide->reviewed_at ? Carbon::parse($guide->reviewed_at) : null;
 
+    // Byline reviewer: the guide's named reviewer if set, else the UK case lead from config.
+    // Photo/role resolved from the team list by name (falls back to the lead's own).
+    $team        = collect(config('ukv.team', []));
+    $lead        = $team->firstWhere('lead', true) ?? $team->first();
+    $reviewerName = $guide->reviewed_by ?: data_get($lead, 'name');
+    $reviewerCard = $team->firstWhere('name', $reviewerName) ?? $lead;
+    $reviewerPhoto = data_get($reviewerCard, 'photo');
+    $reviewerRole  = data_get($reviewerCard, 'role', 'UK Case Lead');
+
     // --- FAQ rows (cast to array on the model) ------------------------------------------
     $faqs = collect($guide->faq ?? [])
         ->map(fn ($f) => is_array($f) ? ['q' => $f['q'] ?? null, 'a' => $f['a'] ?? null] : null)
@@ -201,6 +210,15 @@
     color: var(--muted);
     box-shadow: 0 2px 6px -3px rgba(40,50,70,.12);
   }
+
+  /* author/reviewer byline under the standfirst (E-E-A-T) */
+  .gs-byline{display:flex;align-items:center;gap:11px;margin:18px 0 0}
+  .gs-byline img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 5px 14px -8px rgba(30,40,60,.5)}
+  .gs-byline .b1{font:700 13.5px var(--display);color:var(--ink)}
+  .gs-byline .b1 a{color:var(--stamp-text);text-decoration:none}
+  .gs-byline .b1 a:hover{text-decoration:underline}
+  .gs-byline .b2{font-size:12.5px;color:var(--muted);margin-top:1px}
+  .gs-byline .dot{color:var(--paper-edge)}
 
   /* split header — copy + "At a glance" facts card (pick C) */
   .gs-head .gs-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:start;margin-top:8px}
@@ -507,6 +525,15 @@
         <p class="eyebrow">{{ $eyebrow }}</p>
         <h1 itemprop="headline">{{ $guide->title }}</h1>
         <p class="gs-standfirst" itemprop="description">{{ $guide->excerpt }}</p>
+        @if ($reviewerName)
+        <div class="gs-byline">
+          @if ($reviewerPhoto)<img src="{{ asset(ltrim($reviewerPhoto, '/')) }}" alt="{{ $reviewerName }}">@endif
+          <div>
+            <div class="b1">{{ $reviewedAt ? 'Reviewed' : 'Written' }} by <a href="{{ url('/about') }}#where-we-are">{{ $reviewerName }}</a></div>
+            <div class="b2">{{ $reviewerRole }} <span class="dot">·</span> {{ $readTime }}@if ($reviewedAt || $published) <span class="dot">·</span> {{ $reviewedAt ? 'Updated' : 'Published' }} {{ ($reviewedAt ?? $published)->isoFormat('D MMM YYYY') }}@endif</div>
+          </div>
+        </div>
+        @endif
       </div>
 
       {{-- At-a-glance facts card (pick C) --}}

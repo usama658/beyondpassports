@@ -78,6 +78,38 @@
   }
   .ct-actions .btn { padding: 16px 28px; font-size: 16px; }
 
+  /* ── Combined "Ways to reach us" concierge panel (methods + callback) ───── */
+  .cc{background:#fff;border:1px solid var(--paper-edge);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(20,30,50,.55)}
+  .cc-top{background:linear-gradient(120deg,#16222E,#1d3a44);color:#fff;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .cc-top .eyebrow{color:var(--soft);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .cc-top h2{font:800 24px var(--display);margin:4px 0 0;color:#fff}
+  .cc-top .av{font:700 12.5px var(--display);color:#16222E;background:var(--soft);border-radius:999px;padding:7px 14px}
+  .cc-grid{display:grid;grid-template-columns:1fr 1fr}
+  .cc-methods{padding:6px 30px 24px;border-right:1px solid var(--paper-edge)}
+  .cc-m{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--paper-edge)}
+  .cc-m:first-child{border-top:0}
+  .cc-m .ico{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#eaf3f1;color:var(--stamp-text)}
+  .cc-m.primary .ico{background:var(--stamp);color:#fff}
+  .cc-m .ico svg{width:21px;height:21px}
+  .cc-m h3{font:700 15px var(--display);color:var(--ink);margin:0}
+  .cc-m .detail{font:700 15px var(--display);margin:3px 0 0}.cc-m .detail a{color:var(--cta);text-decoration:none}
+  .cc-m .sub{font-size:12.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
+  .cc-m .hrs{display:inline-block;font:700 11px var(--display);color:var(--stamp-text);background:#e7f3ef;border-radius:999px;padding:3px 9px;margin:8px 0 0}
+  .cc-m .callbtn{margin-top:10px;padding:9px 18px;font-size:13px}
+  .cc-form{padding:24px 30px 28px;background:linear-gradient(180deg,#fbfdfd,#fff)}
+  .cc-form .cc-fh{font:800 18px var(--display);color:var(--navy);margin:0}
+  .cc-form .cc-fh small{display:block;font:600 12.5px var(--display);color:var(--cta);margin-top:3px;letter-spacing:.02em;text-transform:uppercase}
+  .cc-form label{display:block;font:600 13px var(--display);color:var(--ink);margin:14px 0 5px}
+  .cc-form input,.cc-form select,.cc-form textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:1.5px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:14.5px;background:#fff;color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
+  .cc-form textarea{min-height:74px;resize:vertical}
+  .cc-form input:focus,.cc-form select:focus,.cc-form textarea:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
+  .cc-form .ct-consent{display:flex;gap:9px;align-items:flex-start;margin:14px 0 0;font-size:13px;color:#3a4b55}
+  .cc-form .ct-consent input{width:auto}
+  .cc-form .ct-privacy{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+  .cc-form .ct-privacy a{color:var(--cta)}
+  .cc-form .btn{margin-top:16px;width:100%}
+  @media(max-width:760px){.cc-grid{grid-template-columns:1fr}.cc-methods{border-right:0;border-bottom:1px solid var(--paper-edge)}}
+
   /* ── Contact method cards — call-first asymmetric ───────────────────────── */
   .ct-methods {
     display: grid;
@@ -316,6 +348,15 @@
     .ct-reassure { padding: 24px 20px; }
     .ct-reassure p { font-size: 18px; }
   }
+
+  /* Testimonials — same cards as About/Home (those define .tquotes page-locally, so copy here) */
+  .tquotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+  .tq { background:#fff; border:1px solid var(--paper-edge); border-radius:16px; padding:24px 22px; box-shadow:var(--shadow); margin:0; display:flex; flex-direction:column; gap:12px; transition:transform .25s ease, box-shadow .25s ease; }
+  .tq:hover { transform: translateY(-3px); box-shadow: var(--lift-2); }
+  .tq .stars { color: var(--cta); letter-spacing: 3px; font-size: 14px; }
+  .tq blockquote { margin: 0; font-family: var(--display); font-weight: 600; font-size: 15.5px; line-height: 1.55; color: var(--ink); }
+  .tq figcaption { color: var(--stamp-text); font-weight: 700; font-size: 13px; margin-top: auto; }
+  @media (max-width: 760px) { .tquotes { grid-template-columns: 1fr; } }
 </style>
 @endpush
 
@@ -344,95 +385,108 @@
 
 {{-- 2. CONTACT METHODS --}}
 <section><div class="wrap">
-  <div class="sec-head reveal" style="max-width:60ch;margin:0 auto 44px;text-align:center">
-    <p class="eyebrow">Ways to reach us</p>
-    <h2>Pick whatever's easiest</h2>
-  </div>
-  <div class="ct-methods reveal">
-
-    <div class="ct-method ct-method--primary">
-      <span class="ct-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg>
-      </span>
-      <h3>Call us</h3>
-      <p class="ct-detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
-      <p class="ct-sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
-      <span class="ct-hours">Mon–Sat &nbsp;9–6 UK time</span>
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn ct-call-btn">Call now</a>
+  {{-- Combined concierge panel: contact methods (left) + callback form (right) --}}
+  <div class="cc reveal">
+    <div class="cc-top">
+      <div><p class="eyebrow">Ways to reach us</p><h2>Pick whatever's easiest</h2></div>
+      <span class="av">● A real UK person · Mon–Sat 9–6</span>
     </div>
+    <div class="cc-grid">
 
-    <div class="ct-method ct-method--wa">
-      <span class="ct-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
-      </span>
-      <div class="ct-mbody">
-        <h3>WhatsApp</h3>
-        <p class="ct-detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
-        <p class="ct-sub">Quick questions, photos of a document, a fast reply on the go.</p>
-        <span class="ct-hours">Replies Mon–Sat &nbsp;9–6 UK time</span>
+      {{-- LEFT: the three contact methods --}}
+      <div class="cc-methods">
+        <div class="cc-m primary">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+          <div>
+            <h3>Call us</h3>
+            <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
+            <p class="sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
+            <span class="hrs">Mon–Sat 9–6 UK time</span><br>
+            <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">Call now</a>
+          </div>
+        </div>
+
+        <div class="cc-m">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></span>
+          <div>
+            <h3>WhatsApp</h3>
+            <p class="detail"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
+            <p class="sub">Quick questions, photos of a document, a fast reply on the go.</p>
+            <span class="hrs">Replies Mon–Sat 9–6 UK time</span>
+          </div>
+        </div>
+
+        <div class="cc-m">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <div>
+            <h3>Email</h3>
+            <p class="detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}">{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}</a></p>
+            <p class="sub">Best for sending documents or anything you want in writing.</p>
+            <span class="hrs">Reply within one working day</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="ct-method ct-method--email">
-      <span class="ct-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-      </span>
-      <div class="ct-mbody">
-        <h3>Email</h3>
-        <p class="ct-detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}">{{ config('ukv.email') ?: 'hello@beyondpassports.example' }}</a></p>
-        <p class="ct-sub">Best for sending documents or anything you want in writing.</p>
-        <span class="ct-hours">Reply within one working day</span>
+      {{-- RIGHT: callback form (posts to POST /contact, progressively enhanced via fetch) --}}
+      <div class="cc-form">
+        <p class="cc-fh">Rather we call you?<small>Request a callback</small></p>
+        <form id="callback-form" method="POST" action="{{ url('/contact') }}" novalidate>
+          @csrf
+          <label for="cb-name">Your name</label>
+          <input type="text" id="cb-name" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Jane Traveller" required aria-required="true">
+
+          <label for="cb-phone">Phone number</label>
+          <input type="tel" id="cb-phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 0000 000000" required aria-required="true">
+
+          <label for="cb-time">Best time to call</label>
+          <select id="cb-time" name="time">
+            <option value="anytime">Any time, Mon–Sat 9–6</option>
+            <option value="morning">Morning (9–12)</option>
+            <option value="afternoon">Afternoon (12–3)</option>
+            <option value="late">Late afternoon (3–6)</option>
+          </select>
+
+          <label for="cb-message">Your enquiry <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <textarea id="cb-message" name="message" placeholder="Where are you travelling, and roughly when?"></textarea>
+
+          <div class="ct-consent">
+            <input type="checkbox" id="cb-consent" name="consent" required aria-required="true">
+            <label for="cb-consent" style="margin:0;font-weight:500">I agree to be contacted about my enquiry.</label>
+          </div>
+          <p class="ct-privacy">We only use your details to respond to this enquiry. We never share them. See our <a href="{{ url('/legal') }}#privacy">Privacy notice</a>.</p>
+
+          {{-- Server-rendered states for the JS-off path; JS toggles the same nodes. --}}
+          <div class="form-error{{ $errors->any() ? ' show' : '' }}" id="cb-error" role="alert" aria-live="assertive">@if ($errors->any()){{ $errors->first() }}@endif</div>
+          <div class="form-ok{{ session('status') ? ' show' : '' }}" id="cb-ok" role="status" aria-live="polite">@if (session('status'))<strong>{{ session('status') }}</strong>@endif</div>
+
+          <button type="submit" class="btn">Request a callback</button>
+        </form>
       </div>
-    </div>
 
+    </div>
   </div>
 </div></section>
 
-{{-- 3. CALLBACK FORM (secondary; posts to POST /contact, progressively enhanced via fetch) --}}
-<section class="ct-form-sec"><div class="wrap">
-  <div class="ct-callback-wrap reveal">
-    <div class="ct-callback">
-      <div class="checker">
-        <div class="cbody">
-          <div class="ct-callback-intro">
-            <p class="eyebrow">Rather we call you?</p>
-            <h2>Request a callback</h2>
-          </div>
-          <form id="callback-form" method="POST" action="{{ url('/contact') }}" novalidate>
-            @csrf
-            <label for="cb-name">Your name</label>
-            <input type="text" id="cb-name" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Jane Traveller" required aria-required="true">
+{{-- The UK team + where we are — same section as the About page (config-driven) --}}
+@include('partials.about-team')
 
-            <label for="cb-phone">Phone number</label>
-            <input type="tel" id="cb-phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 0000 000000" required aria-required="true">
-
-            <label for="cb-time">Best time to call</label>
-            <select id="cb-time" name="time">
-              <option value="anytime">Any time, Mon–Sat 9–6</option>
-              <option value="morning">Morning (9–12)</option>
-              <option value="afternoon">Afternoon (12–3)</option>
-              <option value="late">Late afternoon (3–6)</option>
-            </select>
-
-            <label for="cb-message">Your enquiry <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-            <textarea id="cb-message" name="message" placeholder="Where are you travelling, and roughly when?"></textarea>
-
-            <div class="ct-consent">
-              <input type="checkbox" id="cb-consent" name="consent" required aria-required="true">
-              <label for="cb-consent">I agree to be contacted about my enquiry.</label>
-            </div>
-            <p class="ct-privacy">We only use your details to respond to this enquiry. We never share them. See our <a href="{{ url('/legal') }}#privacy">Privacy notice</a>.</p>
-
-            {{-- Server-rendered states for the JS-off path; JS toggles the same nodes. --}}
-            <div class="form-error{{ $errors->any() ? ' show' : '' }}" id="cb-error" role="alert" aria-live="assertive">@if ($errors->any()){{ $errors->first() }}@endif</div>
-            <div class="form-ok{{ session('status') ? ' show' : '' }}" id="cb-ok" role="status" aria-live="polite">@if (session('status'))<strong>{{ session('status') }}</strong>@endif</div>
-
-            <button type="submit" class="btn">Request a callback</button>
-          </form>
-        </div>
-      </div>
-    </div>
+{{-- TESTIMONIALS — same trio of consented review cards as the About page (single source) --}}
+@php $contactQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp
+<section class="alt"><div class="wrap">
+  <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 6px">
+    <p class="eyebrow">Trusted by UK travellers</p>
+    <h2>Real people, really sorted</h2>
   </div>
+  <div class="tquotes">
+    @foreach ($contactQuotes as $t)
+    <figure class="tq reveal">
+      <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
+      <blockquote>{{ $t['quote'] }}</blockquote>
+      <figcaption>— {{ $t['attribution'] }}</figcaption>
+    </figure>
+    @endforeach
+  </div>
+  <p style="text-align:center;margin-top:24px"><a class="rlink" style="font-weight:600" href="{{ url('/reviews') }}">Read more traveller reviews →</a></p>
 </div></section>
 
 {{-- 4. REASSURANCE BAND --}}
