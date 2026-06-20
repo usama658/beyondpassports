@@ -12,6 +12,10 @@
   .di-hero .eyebrow{color:var(--cta)}
   .di-hero h1{font:700 clamp(30px,4vw,46px)/1.04 var(--display);letter-spacing:-.03em;color:var(--ink);margin:0 auto 14px}
   .di-hero .lede{color:var(--muted);font-size:18px;line-height:1.5;max-width:54ch;margin:0 auto}
+  .di-search{display:flex;gap:10px;max-width:480px;margin:26px auto 0}
+  .di-search input{flex:1;padding:13px 16px;border:1px solid var(--paper-edge);border-radius:12px;font:inherit;font-size:15px;background:#fff;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .di-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
+  @media (max-width:520px){.di-search{flex-direction:column}}
   .sh-facts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px auto 0}
   .sh-facts span{background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;color:var(--stamp-text);box-shadow:0 12px 30px -26px rgba(40,50,70,.5)}
   .sh-note{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;margin:28px 0 4px;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)}
@@ -32,6 +36,10 @@
     <span>€20 · valid 3 years</span>
     <span>UK-based team</span>
   </div>
+  <form class="di-search" role="search" onsubmit="return false">
+    <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
+    <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
+  </form>
 </div></section>
 
 <section><div class="wrap">
@@ -43,16 +51,40 @@
   @if ($destinations->isEmpty())
     <p style="color:var(--muted);margin-top:24px">Schengen destinations are being added shortly.</p>
   @else
-    <div class="dests" style="margin-top:26px">
+    <div id="destGrid" class="dests" style="margin-top:26px">
       @foreach ($destinations as $destination)
         @include('partials.destination-card', ['destination' => $destination])
       @endforeach
     </div>
+    <p class="di-empty" id="destEmpty">No Schengen country matches that search — try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
 
   <div class="pricenote reveal" style="margin-top:32px;background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;font-size:14px;color:#3a4b55">
     <p style="margin:0"><strong style="color:var(--navy)">One ETIAS covers the whole Schengen Area.</strong> You don't need a separate authorisation per country. We are not a government website and cannot guarantee approval — the decision is always the authority's.</p>
   </div>
 </div></section>
+
+@if ($destinations->isNotEmpty())
+<script>
+  // Live client-side filter over the Schengen cards (mirrors the destinations index).
+  (function () {
+    var input = document.getElementById('destSearch');
+    var grid = document.getElementById('destGrid');
+    var empty = document.getElementById('destEmpty');
+    if (!input || !grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.pass'));
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function (c) {
+        var hit = !q || (c.getAttribute('data-name') || '').indexOf(q) !== -1;
+        c.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      if (empty) empty.style.display = shown ? 'none' : 'block';
+    });
+  })();
+</script>
+@endif
 
 @endsection
