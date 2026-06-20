@@ -276,11 +276,18 @@
       }
       clearInvalid(vForm.dest, vForm.pass);
       hideFieldError(vError);
-      if (pass === 'UK') {
-        var info = VISA[dest];
+      var info = VISA[dest];
+      if (pass === 'UK' && info) {
         vTitle.textContent = 'Most UK travellers need: ' + info.note + ' for ' + dest + '.';
         vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note +
                              '. We can prepare and check it for you — and confirm your exact rules first.';
+        vLink.textContent  = 'Start my application →';
+        vLink.setAttribute('href', APPLY_URL);
+        vLink.style.display = '';
+      } else if (pass === 'UK') {
+        // Destination not in the quick-guidance set — answer honestly, route to the team.
+        vTitle.textContent = "We'll confirm exactly what you need for " + dest + '.';
+        vBody.textContent  = 'Requirements vary by destination and trip. Tell us your plans and a UK adviser confirms your exact rules — then we prepare and check everything before you submit.';
         vLink.textContent  = 'Start my application →';
         vLink.setAttribute('href', APPLY_URL);
         vLink.style.display = '';
@@ -332,6 +339,17 @@
       }
 
       var rec = IDP[dest];
+      if (!rec) {
+        // Destination not in the quick-guidance set — answer honestly, route to the team.
+        iTitle.textContent = "We'll confirm whether you need an IDP for " + destName + '.';
+        iBody.textContent  = 'On a full UK licence, whether an International Driving Permit is required depends on the country and how long you are driving. Tell us your trip and we will confirm — and if you need one, we offer guided self-service: we prepare and check the paperwork, you collect it in person at a PayPoint.';
+        iLink.textContent = 'Get help with my IDP paperwork →';
+        iLink.setAttribute('href', IDP_URL);
+        iLink.style.display = '';
+        show(iResult);
+        iResult.focus({ preventScroll: true });
+        return;
+      }
       var convNote = 'When one is needed, ' + destName + ' typically recognises the ' + rec.conv + ' International Driving Permit.';
       if (rec.need) {
         iTitle.textContent = 'You will usually need an IDP for ' + destName + '.';
