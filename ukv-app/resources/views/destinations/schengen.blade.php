@@ -58,6 +58,10 @@
     <p><strong>ETIAS isn't required yet.</strong> Right now UK citizens travel to the Schengen Area <strong>visa-free</strong> for short stays — no ETIAS, no fee. ETIAS launches in late 2026. When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
   </div>
 
+  @if (! empty($activeRegion))
+    <p style="margin:26px 0 0;font-size:14px;color:var(--muted)">Showing <strong style="color:var(--navy)">{{ $activeRegion }}</strong> ({{ $destinations->count() }}) · <a href="{{ url('/visa/schengen') }}" style="color:var(--cta);font-weight:600">show all 29 →</a></p>
+  @endif
+
   @if ($destinations->isEmpty())
     <p style="color:var(--muted);margin-top:24px">Schengen destinations are being added shortly.</p>
   @else

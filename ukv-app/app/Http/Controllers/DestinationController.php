@@ -44,15 +44,24 @@ class DestinationController extends Controller
      * Schengen / ETIAS hub — reuses the destination boarding-pass card layout for every
      * ETIAS destination. (Regional grouping of the cards is a follow-up.)
      */
-    public function schengen(): View
+    public function schengen(\Illuminate\Http\Request $request): View
     {
+        // Optional region filter from the nav (?region=Western Europe). Validated against
+        // the regions that actually exist so a junk value just falls back to "all".
+        $regions = Destination::query()->where('visa_type', 'ETIAS')
+            ->whereNotNull('region')->distinct()->pluck('region');
+        $activeRegion = $request->query('region');
+        $activeRegion = $regions->contains($activeRegion) ? $activeRegion : null;
+
         $destinations = Destination::query()
             ->where('visa_type', 'ETIAS')
+            ->when($activeRegion, fn ($q) => $q->where('region', $activeRegion))
             ->orderBy('name')
             ->get();
 
         return view('destinations.schengen', [
             'destinations' => $destinations,
+            'activeRegion' => $activeRegion,
         ]);
     }
 

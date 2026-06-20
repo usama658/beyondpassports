@@ -331,6 +331,21 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .mega-item:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
 .mega-item b{display:block;font-size:15px;color:var(--ink)}
 .mega-item span{display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:500}
+/* grouped Destinations dropdown: Popular money pages (left) + Europe regions (right) */
+.mega-panel--wide{width:min(880px,94vw)}
+.mega-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:26px}
+.mega-colhead{font:800 11px var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.mega-eu{border-left:1px solid var(--paper-edge);padding-left:26px}
+.mega-euhead{display:flex;align-items:center;gap:8px;margin:0 0 12px}
+.mega-euhead .mega-colhead{margin:0}
+.mega-pill{font:800 10px var(--display);color:var(--stamp-text);background:#e7f3ef;border-radius:999px;padding:3px 9px}
+.mega-reg{display:flex;flex-direction:column;gap:8px}
+.mega-reg a{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--paper-edge);border-radius:11px;padding:11px 13px;text-decoration:none;background:#fff;transition:transform .2s ease,border-color .2s ease}
+.mega-reg a:hover{transform:translateX(3px);border-color:var(--soft)}
+.mega-reg b{font-size:13.5px;color:var(--ink)}
+.mega-reg .c{font-size:11px;color:var(--muted);font-weight:700}
+.mega-reg .hub{background:linear-gradient(180deg,#eef6f8,#fff);border-color:var(--soft)}
+.mega-reg .hub b{color:var(--cta)}
 
 /* hamburger (mobile only) */
 .nav-toggle{display:none;background:none;border:1px solid var(--paper-edge);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:18px;line-height:1;color:var(--ink)}
@@ -343,7 +358,10 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
   .mega{width:100%}
   .mega-panel{position:static;transform:none;width:auto;box-shadow:none;border:0;border-radius:0;animation:none}
   .mega-panel .wrap{padding:8px 0 4px}
+  .mega-panel--wide{width:auto}
   .mega-grid,.mega-list{grid-template-columns:1fr 1fr}
+  .mega-cols{grid-template-columns:1fr;gap:18px}
+  .mega-eu{border-left:0;padding-left:0;border-top:1px solid var(--paper-edge);padding-top:14px}
   .nav > a.btn--ghost{margin-left:0}              /* no indent in the stacked mobile menu */
   .nav .btn{margin-top:4px}
 }

@@ -15,19 +15,35 @@
   <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
   <nav class="nav" id="primary-nav" aria-label="Primary">
-    {{-- Destinations mega-menu: photo cards (top destinations + "from" fee) --}}
+    {{-- Destinations mega-menu: grouped — Popular money pages + Europe by region --}}
     <details class="mega">
       <summary class="mlink" role="button" aria-haspopup="true">Destinations <span class="ch" aria-hidden="true">▾</span></summary>
-      <div class="mega-panel"><div class="wrap">
-        <div class="mega-grid">
-          @foreach ($navMenuDestinations ?? [] as $d)
-          <a class="mega-card" href="{{ url('/visa/'.$d->slug) }}">
-            <div class="pic"@if ($d->image_path) style="background-image:url('{{ asset(ltrim($d->image_path, '/')) }}')"@endif></div>
-            <div class="tx"><b>{{ $d->name }} {{ $d->visa_type }}</b>@if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)<span>from £{{ number_format((float) $d->tier_standard_gbp, 0) }}</span>@elseif (! config('ukv.show_prices') && $d->max_stay_days)<span>up to {{ $d->max_stay_days }} days</span>@endif</div>
-          </a>
-          @endforeach
+      <div class="mega-panel mega-panel--wide"><div class="wrap">
+        <div class="mega-cols">
+          {{-- Popular: curated money pages as photo cards --}}
+          <div>
+            <p class="mega-colhead">Popular destinations</p>
+            <div class="mega-grid">
+              @foreach ($navMenuPopular ?? [] as $d)
+              <a class="mega-card" href="{{ url('/visa/'.$d->slug) }}">
+                <div class="pic"@if ($d->image_path) style="background-image:url('{{ asset(ltrim($d->image_path, '/')) }}')"@endif></div>
+                <div class="tx"><b>{{ $d->name }} {{ $d->visa_type }}</b>@if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)<span>from £{{ number_format((float) $d->tier_standard_gbp, 0) }}</span>@elseif (! config('ukv.show_prices') && $d->max_stay_days)<span>up to {{ $d->max_stay_days }} days</span>@endif</div>
+              </a>
+              @endforeach
+            </div>
+            <p class="mega-foot"><a class="rlink" href="{{ url('/destinations') }}">See all destinations @if(config('ukv.show_prices'))&amp; fixed fees @endif→</a></p>
+          </div>
+          {{-- Europe: Schengen / ETIAS regions linking to the filtered hub --}}
+          <div class="mega-eu">
+            <div class="mega-euhead"><p class="mega-colhead">Europe</p><span class="mega-pill">One ETIAS · 29</span></div>
+            <div class="mega-reg">
+              @foreach ($navMenuRegions ?? [] as $r)
+              <a href="{{ url('/visa/schengen').'?region='.urlencode($r['name']) }}"><b>{{ $r['name'] }}</b><span class="c">{{ $r['count'] }} &rarr;</span></a>
+              @endforeach
+              <a class="hub" href="{{ url('/visa/schengen') }}"><b>See the Europe hub &rarr;</b></a>
+            </div>
+          </div>
         </div>
-        <p class="mega-foot"><a class="rlink" href="{{ url('/destinations') }}">See all destinations @if(config('ukv.show_prices'))&amp; fixed fees @endif→</a></p>
       </div></div>
     </details>
     {{-- Tools mega-menu: the checkers + finders, with one-line descriptions --}}

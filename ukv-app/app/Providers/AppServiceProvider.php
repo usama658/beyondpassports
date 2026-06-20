@@ -40,16 +40,36 @@ class AppServiceProvider extends ServiceProvider
             $view->with('slotSummary', app(\App\Services\SlotService::class)->summary());
         });
 
-        // Header mega-menu (shared partial): a small set of destinations with a photo + "from" fee
-        // for the Destinations dropdown panel. Bound to the header partial itself so it populates
-        // everywhere the header renders — the shared layout AND the standalone pages (track,
-        // checklist-result) that include partials.site-header directly. Kept cheap (≤6 rows).
+        // Header mega-menu (shared partial): grouped Destinations dropdown —
+        //   • Popular: the curated money pages (non-ETIAS), photo cards.
+        //   • Europe: the Schengen/ETIAS countries grouped by region, each linking to the
+        //     filtered hub (/visa/schengen?region=…).
+        // Bound to the header partial so it populates everywhere the header renders (shared
+        // layout AND standalone pages that include partials.site-header directly).
         View::composer('partials.site-header', function ($view) {
-            $view->with('navMenuDestinations', \App\Models\Destination::query()
-                ->orderByRaw('image_path IS NULL') // photographed first
-                ->orderBy('name')
-                ->take(6)
-                ->get());
+            // Curated order for the "Popular" column — money pages lead, not alphabetical.
+            $popularOrder = ['turkey', 'india', 'egypt', 'uae', 'thailand', 'usa-esta'];
+            $popular = \App\Models\Destination::query()
+                ->where('visa_type', '!=', 'ETIAS')
+                ->whereIn('slug', $popularOrder)
+                ->get()
+                ->sortBy(fn ($d) => array_search($d->slug, $popularOrder))
+                ->values();
+
+            // Europe regions, fixed display order, with live counts (only non-empty regions).
+            $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
+            $counts = \App\Models\Destination::query()
+                ->where('visa_type', 'ETIAS')
+                ->selectRaw('region, count(*) as c')
+                ->groupBy('region')
+                ->pluck('c', 'region');
+            $regions = collect($regionOrder)
+                ->filter(fn ($r) => ($counts[$r] ?? 0) > 0)
+                ->map(fn ($r) => ['name' => $r, 'count' => (int) $counts[$r]])
+                ->values();
+
+            $view->with('navMenuPopular', $popular);
+            $view->with('navMenuRegions', $regions);
         });
     }
 }
