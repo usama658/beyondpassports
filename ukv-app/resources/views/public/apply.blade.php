@@ -676,7 +676,7 @@
       })
       .catch(function () {
         setSubmitting(false);
-        showError('We couldn't reach our servers just now, so nothing has been submitted. Please check your connection and try again, or contact us to continue.');
+        showError('We could not reach our servers just now, so nothing has been submitted. Please check your connection and try again, or contact us to continue.');
       });
     });
 
