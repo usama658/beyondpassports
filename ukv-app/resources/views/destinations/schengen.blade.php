@@ -6,15 +6,14 @@
 
 @push('head')
 <style>
-  /* schengen hub — page-local. Reuses the global .pass/.dests destination cards. */
-  .sh-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:64px 0 56px}
-  .sh-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 12% 16%,rgba(21,94,122,.42),transparent 60%),radial-gradient(55% 75% at 88% 84%,rgba(46,154,140,.4),transparent 62%)}
-  .sh-hero .wrap{position:relative;z-index:2}
-  .sh-hero .eyebrow{color:var(--soft)}
-  .sh-hero h1{color:#fff;max-width:18ch;margin:0 0 14px}
-  .sh-hero .lede{color:rgba(255,255,255,.85);max-width:56ch;margin:0 0 20px}
-  .sh-facts{display:flex;gap:10px;flex-wrap:wrap}
-  .sh-facts span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600}
+  /* schengen hub — reuses the destinations-index hero (.di-hero) + global .pass/.dests cards. */
+  .di-hero{background:linear-gradient(180deg,#EAF1F4 0%, #F2F5F6 60%, var(--paper) 100%);border-bottom:1px solid var(--paper-edge);text-align:center}
+  .di-hero > .wrap{padding:56px 0 48px}
+  .di-hero .eyebrow{color:var(--cta)}
+  .di-hero h1{font:700 clamp(30px,4vw,46px)/1.04 var(--display);letter-spacing:-.03em;color:var(--ink);margin:0 auto 14px}
+  .di-hero .lede{color:var(--muted);font-size:18px;line-height:1.5;max-width:54ch;margin:0 auto}
+  .sh-facts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px auto 0}
+  .sh-facts span{background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;color:var(--stamp-text);box-shadow:0 12px 30px -26px rgba(40,50,70,.5)}
   .sh-note{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;margin:28px 0 4px;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)}
   .sh-note svg{flex:none;width:22px;height:22px;stroke:#c8923a;stroke-width:2;fill:none;margin-top:1px}
   .sh-note p{margin:0;font-size:15px;line-height:1.6;color:#3a4b55}.sh-note strong{color:var(--navy)}
@@ -23,7 +22,7 @@
 
 @section('content')
 
-<section class="sh-hero"><div class="wrap">
+<section class="di-hero"><div class="wrap">
   <p class="eyebrow">Europe · Schengen Area</p>
   <h1>Travelling to Europe? Here's what you'll need</h1>
   <p class="lede">One ETIAS authorisation will cover all the Schengen countries. Pick your destination below — we prepare and check everything so your trip goes right.</p>

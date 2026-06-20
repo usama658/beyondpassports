@@ -34,6 +34,21 @@ varies (mostly CC-BY-SA / public domain) — confirm + record the exact licence 
 | poland | Main Square, Kraków | Wikipedia lead | INTERIM |
 | czechia | Charles Bridge | Wikipedia lead | INTERIM |
 | hungary | Hungarian Parliament Building | Wikipedia lead | INTERIM |
+| belgium | Grand-Place, Brussels | Wikipedia lead | INTERIM |
+| luxembourg | Luxembourg City | Wikipedia lead | INTERIM |
+| switzerland | Matterhorn | Wikipedia lead | INTERIM |
+| liechtenstein | Vaduz Castle | Wikipedia lead | INTERIM |
+| malta | Valletta | Wikipedia lead | INTERIM |
+| slovenia | Lake Bled | Wikipedia lead | INTERIM |
+| iceland | Hallgrímskirkja | Wikipedia lead | INTERIM |
+| norway | Geirangerfjord | Wikipedia lead | INTERIM |
+| finland | Helsinki Cathedral | Wikipedia lead | INTERIM |
+| estonia | Tallinn Old Town | Wikipedia lead | INTERIM |
+| latvia | Riga | Wikipedia lead | INTERIM |
+| lithuania | Vilnius Old Town | Wikipedia lead | INTERIM |
+| slovakia | Bratislava Castle | Wikipedia lead | INTERIM |
+| bulgaria | Alexander Nevsky Cathedral, Sofia | Wikipedia lead | INTERIM |
+| romania | Palace of the Parliament | Wikipedia lead | INTERIM |
 
 > Replace any image: drop a licence-VERIFIED `{slug}.jpg` (800×520, ≤300 KB) into
 > `public/assets/img/destinations/`, update its row to VERIFIED + source URL.

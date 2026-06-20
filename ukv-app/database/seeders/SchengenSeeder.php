@@ -34,20 +34,39 @@ final class SchengenSeeder extends Seeder
 
         // [name, slug, region]
         $countries = [
+            // Western Europe
             ['France', 'france', $west],
             ['Germany', 'germany', $west],
             ['Netherlands', 'netherlands', $west],
             ['Austria', 'austria', $west],
+            ['Belgium', 'belgium', $west],
+            ['Luxembourg', 'luxembourg', $west],
+            ['Switzerland', 'switzerland', $west],
+            ['Liechtenstein', 'liechtenstein', $west],
+            // Southern Europe
             ['Spain', 'spain', $south],
             ['Italy', 'italy', $south],
             ['Portugal', 'portugal', $south],
             ['Greece', 'greece', $south],
             ['Croatia', 'croatia', $south],
+            ['Malta', 'malta', $south],
+            ['Slovenia', 'slovenia', $south],
+            // Northern Europe
             ['Denmark', 'denmark', $north],
             ['Sweden', 'sweden', $north],
+            ['Iceland', 'iceland', $north],
+            ['Norway', 'norway', $north],
+            ['Finland', 'finland', $north],
+            // Central & Eastern Europe
             ['Poland', 'poland', $east],
             ['Czechia', 'czechia', $east],
             ['Hungary', 'hungary', $east],
+            ['Estonia', 'estonia', $east],
+            ['Latvia', 'latvia', $east],
+            ['Lithuania', 'lithuania', $east],
+            ['Slovakia', 'slovakia', $east],
+            ['Bulgaria', 'bulgaria', $east],
+            ['Romania', 'romania', $east],
         ];
 
         $docs = [
