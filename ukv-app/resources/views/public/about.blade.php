@@ -351,6 +351,9 @@
   </div>
 </div></section>
 
+{{-- TEAM + LOCATION (config-driven; design abt-d) --}}
+@include('partials.about-team')
+
 {{-- HOW WE HELP --}}
 <section id="how"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">How we prevent refusals</p><h2>Three checks before you submit</h2></div>

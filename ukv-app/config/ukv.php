@@ -39,4 +39,27 @@ return [
         'auto_hold_on_apply' => (bool) env('UKV_SLOTS_AUTO_HOLD', true),
         'hold_minutes' => (int) env('UKV_SLOTS_HOLD_MINUTES', 60),
     ],
+
+    // Public registered office / location — footer (sitewide), contact, about, legal + Organization
+    // schema. PLACEHOLDER until real details supplied; clearly marked so nothing fake-but-real ships.
+    // Leave any line blank to omit it.
+    'address' => [
+        'company' => env('UKV_COMPANY_NAME', 'Beyond Passports Ltd'),
+        'company_no' => env('UKV_COMPANY_NO', ''),                  // blank until real — no invented Companies House no.
+        'line1' => env('UKV_ADDR_LINE1', '1 Example Street'),       // PLACEHOLDER — swap for the real registered office
+        'line2' => env('UKV_ADDR_LINE2', ''),
+        'city' => env('UKV_ADDR_CITY', 'London'),
+        'postcode' => env('UKV_ADDR_POSTCODE', 'EC1A 1AA'),         // PLACEHOLDER postcode
+        'country' => env('UKV_ADDR_COUNTRY', 'United Kingdom'),
+    ],
+
+    // Public team — /about (full grid) + named-lead line on home + Organization schema. PLACEHOLDER
+    // people until real names/roles/credentials supplied. `lead` marks the case-lead.
+    // `photo` = public path or URL; blank → an initials monogram is shown. Current photos are
+    // royalty-free PLACEHOLDER portraits — replace with real, consented team photos.
+    'team' => [
+        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted — nothing outsourced.', 'lead' => true, 'photo' => 'https://randomuser.me/api/portraits/women/68.jpg'],
+        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency — the things that get applications refused.', 'lead' => false, 'photo' => 'https://randomuser.me/api/portraits/men/52.jpg'],
+        ['name' => 'Priya Sharma', 'role' => 'Client Support Lead', 'bio' => 'Keeps you updated at every step, from first check to delivered authorisation.', 'lead' => false, 'photo' => 'https://randomuser.me/api/portraits/women/44.jpg'],
+    ],
 ];
