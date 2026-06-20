@@ -48,6 +48,23 @@
   .abt .member .bio { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.58; }
   .abt .member.lead .bio { font-size: 15.5px; }
 
+  /* ── per-member contact pills (Variant A) ── */
+  .abt .member .contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--paper-edge); }
+  .abt .member .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--paper-edge); border-radius: 999px; padding: 7px 13px; color: var(--ink); background: #fbfcfe;
+    transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease; }
+  .abt .member .chip svg { width: 15px; height: 15px; stroke: var(--stamp-text); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke .16s ease; }
+  /* fill + lift the whole pill on hover/focus; icon flips to white */
+  .abt .member .chip:hover, .abt .member .chip:focus-visible { background: var(--stamp); border-color: var(--stamp); color: #fff;
+    transform: translateY(-2px); box-shadow: 0 12px 22px -12px rgba(46,154,140,.7); outline: none; }
+  .abt .member .chip:hover svg, .abt .member .chip:focus-visible svg { stroke: #fff; }
+  .abt .member .chip:active { transform: translateY(0); box-shadow: 0 6px 12px -9px rgba(46,154,140,.7); }
+  .abt .member .chip.wa { border-color: rgba(31,168,85,.4); color: #177a3e; }
+  .abt .member .chip.wa svg { stroke: #1FA855; }
+  .abt .member .chip.wa:hover, .abt .member .chip.wa:focus-visible { background: #1FA855; border-color: #1FA855; color: #fff;
+    box-shadow: 0 12px 22px -12px rgba(31,168,85,.75); }
+  .abt .member .chip.wa:hover svg, .abt .member .chip.wa:focus-visible svg { stroke: #fff; }
+
   /* ── split location card ── */
   .abt .loc {
     position: relative; margin-top: 24px; background: var(--white);
@@ -100,6 +117,9 @@
   // Build "{city} {postcode} · {country}" from non-empty pieces.
   $cityLine = trim(($addr['city'] ?? '') . ' ' . ($addr['postcode'] ?? ''));
   $cityCountry = array_filter([$cityLine, $addr['country'] ?? '']);
+
+  // Shared team WhatsApp (wa.me digits); blank → no WhatsApp pill.
+  $teamWa = preg_replace('/\D+/', '', (string) config('ukv.team_whatsapp', ''));
 @endphp
 
 <section class="abt"><div class="wrap">
@@ -125,11 +145,25 @@
       <p class="name">{{ $m['name'] ?? '' }}</p>
       <p class="role">{{ $m['role'] ?? '' }}</p>
       <p class="bio">{{ $m['bio'] ?? '' }}</p>
+      @if (!empty($m['email']) || $teamWa)
+        <div class="contact">
+          @if (!empty($m['email']))
+            <a class="chip" href="mailto:{{ $m['email'] }}">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email
+            </a>
+          @endif
+          @if ($teamWa)
+            <a class="chip wa" href="https://wa.me/{{ $teamWa }}" aria-label="WhatsApp {{ $m['name'] ?? 'the team' }}">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg>WhatsApp
+            </a>
+          @endif
+        </div>
+      @endif
     </article>
     @endforeach
   </div>
 
-  <div class="loc">
+  <div class="loc" id="where-we-are">
     <div class="loc-body reveal">
       <p class="loc-eyebrow">Where we are</p>
       <h3>A UK-based team you can reach</h3>
@@ -143,7 +177,7 @@
     </div>
     <div class="loc-map">
       <div class="map-frame">
-        <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map of our UK location" src="https://www.google.com/maps?q=EC1A%201AA,%20London&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>

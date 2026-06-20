@@ -351,9 +351,6 @@
   </div>
 </div></section>
 
-{{-- TEAM + LOCATION (config-driven; design abt-d) --}}
-@include('partials.about-team')
-
 {{-- HOW WE HELP --}}
 <section id="how"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">How we prevent refusals</p><h2>Three checks before you submit</h2></div>
@@ -363,6 +360,9 @@
     <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>Nothing is submitted until a real UK person has checked the whole file. Then we handle submission and keep you updated to completion.</p></div>
   </div>
 </div></section>
+
+{{-- TEAM + LOCATION (config-driven; design abt-d) --}}
+@include('partials.about-team')
 
 {{-- TESTIMONIALS — trio of consented quote cards (real anonymised reviews, single source; mirrors home) --}}
 @php $aboutQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp

@@ -104,7 +104,8 @@ class SecurityHeaders
             // routing, checker JS, reveal). A per-request nonce is the stricter future upgrade.
             "script-src 'self' 'unsafe-inline' https://js.stripe.com",
             "connect-src 'self' https://api.stripe.com",
-            "frame-src https://js.stripe.com https://hooks.stripe.com",
+            // google.com/maps: the /about location embed (interactive map, no API key).
+            "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com",
         ]);
     }
 

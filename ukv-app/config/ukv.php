@@ -57,9 +57,15 @@ return [
     // people until real names/roles/credentials supplied. `lead` marks the case-lead.
     // `photo` = public path or URL; blank → an initials monogram is shown. Current photos are
     // royalty-free PLACEHOLDER portraits — replace with real, consented team photos.
+    // `email` = per-member contact pill on /about; blank → no email pill. PLACEHOLDER addresses.
     'team' => [
-        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted — nothing outsourced.', 'lead' => true, 'photo' => 'https://randomuser.me/api/portraits/women/68.jpg'],
-        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency — the things that get applications refused.', 'lead' => false, 'photo' => 'https://randomuser.me/api/portraits/men/52.jpg'],
-        ['name' => 'Priya Sharma', 'role' => 'Client Support Lead', 'bio' => 'Keeps you updated at every step, from first check to delivered authorisation.', 'lead' => false, 'photo' => 'https://randomuser.me/api/portraits/women/44.jpg'],
+        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted — nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitfield.jpg', 'email' => 'sarah@beyondpassports.co.uk'],
+        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency — the things that get applications refused.', 'lead' => false, 'photo' => '/assets/img/team/james-okonkwo.jpg', 'email' => 'james@beyondpassports.co.uk'],
+        ['name' => 'Priya Sharma', 'role' => 'Client Support Lead', 'bio' => 'Keeps you updated at every step, from first check to delivered authorisation.', 'lead' => false, 'photo' => '/assets/img/team/priya-sharma.jpg', 'email' => 'priya@beyondpassports.co.uk'],
     ],
+
+    // Shared WhatsApp shown on each /about team card (wa.me digits, no +). PLACEHOLDER on the
+    // Ofcom reserved-for-drama range (07700 900xxx → not a real number); swap for the real line.
+    // Kept separate from the sitewide 'whatsapp' key above so a placeholder never leaks sitewide.
+    'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447700900123'),
 ];
