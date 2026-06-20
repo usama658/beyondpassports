@@ -46,6 +46,11 @@ return new class extends Migration
                 if ($key === '') {
                     continue; // skip labels that slugify to nothing
                 }
+                // document_key is varchar(80); long sentence-style labels (e.g. Schengen docs)
+                // slugify past that. Cap deterministically with a short hash to stay unique.
+                if (strlen($key) > 80) {
+                    $key = substr($key, 0, 71).'-'.substr(md5($label), 0, 8);
+                }
 
                 // Idempotency: a row for this document_key already scoped to this destination?
                 $exists = DocumentRequirement::query()
