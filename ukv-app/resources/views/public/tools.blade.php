@@ -74,7 +74,7 @@
       <div class="mh-copy tl-hero-copy reveal">
         <p class="eyebrow">Free checkers</p>
         <h1>Do I need a visa? Do I need an IDP?</h1>
-        <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay.</p>
+        <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay. The first step in not getting it wrong: start the right application, with the right documents.</p>
         <div class="tl-trust">
           <span>Free to use</span>
           <span>General guidance, human-confirmed</span>
@@ -187,7 +187,7 @@
   <div class="tl-steps-wrap">
     <div class="steps">
       <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Use the free checker for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
-      <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares and double-checks the paperwork — for a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
+      <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares the paperwork and checks it for the avoidable things that get applications refused — for a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
       <div class="step reveal" style="animation-delay:.12s"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
     </div>
   </div>

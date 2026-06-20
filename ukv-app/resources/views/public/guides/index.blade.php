@@ -118,7 +118,7 @@
       <div class="reveal">
         <p class="eyebrow">Visa guides</p>
         <h1>Plain-English guides for UK travellers</h1>
-        <p class="lede">eVisas, ETAs, passport rules, documents and processing times — written clearly so you can travel with confidence.</p>
+        <p class="lede">eVisas, ETAs, passport rules, documents and processing times — written clearly to help you sidestep the avoidable mistakes that get applications refused, and travel with confidence.</p>
       </div>
       @if ($heroTopics->isNotEmpty())
         <nav class="gi-topics reveal" aria-label="Popular guides">

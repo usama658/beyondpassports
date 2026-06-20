@@ -190,7 +190,7 @@
       <div class="cmp-tbody">
         <div class="cmp-trow"><p class="lab">Cost</p><div class="val">{!! $tick !!}<span>Only the official government or embassy fee — always the lower-cost route.</span></div></div>
         <div class="cmp-trow"><p class="lab">Time &amp; effort</p><div class="val">{!! $neu !!}<span>You read the rules, fill the forms and gather documents yourself.</span></div></div>
-        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $cross !!}<span>You check your own application — a wrong date or name can cause delays.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $cross !!}<span>You check your own application — a wrong date, name or unclear document is one of the avoidable things that get applications refused.</span></div></div>
         <div class="cmp-trow"><p class="lab">Support if something goes wrong</p><div class="val">{!! $cross !!}<span>The authority's own help channels, which can be slow or hard to reach.</span></div></div>
         <div class="cmp-trow"><p class="lab">Speed of <em>your</em> paperwork</p><div class="val">{!! $tick !!}<span>As fast as you can complete it. No middle step.</span></div></div>
         <div class="cmp-trow"><p class="lab">Who it suits</p><div class="val">{!! $neu !!}<span>Confident travellers and simple applications, if you'd rather keep the cost down.</span></div></div>
@@ -207,7 +207,7 @@
       <div class="cmp-tbody">
         <div class="cmp-trow"><p class="lab">Cost</p><div class="val">{!! $cross !!}<span>The same government fee <strong>plus</strong> our service fee on top — shown separately before you pay.</span></div></div>
         <div class="cmp-trow"><p class="lab">Time &amp; effort</p><div class="val">{!! $tick !!}<span>We do the legwork and tell you exactly what to provide.</span></div></div>
-        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $tick !!}<span>A real person reviews your details before submission, catching common mistakes.</span></div></div>
+        <div class="cmp-trow"><p class="lab">Error-checking</p><div class="val">{!! $tick !!}<span>A real person reviews your whole file before submission — removing the avoidable causes of refusal before it's submitted.</span></div></div>
         <div class="cmp-trow"><p class="lab">Support if something goes wrong</p><div class="val">{!! $tick !!}<span>A UK team on the phone and WhatsApp helps you sort issues and resubmit.</span></div></div>
         <div class="cmp-trow"><p class="lab">Speed of <em>your</em> paperwork</p><div class="val">{!! $tick !!}<span>Express speeds up <strong>our</strong> handling — not the government's own decision time.</span></div></div>
         <div class="cmp-trow"><p class="lab">Who it suits</p><div class="val">{!! $neu !!}<span>Busy people, first-time or complex applications, or anyone who wants it checked.</span></div></div>
@@ -242,7 +242,7 @@
       <ul>
         <li>You're short on time and would rather not navigate the forms.</li>
         <li>It's your first application, or the rules feel confusing.</li>
-        <li>The trip matters and you want a person to check before it's submitted.</li>
+        <li>The trip matters and you want a person to remove the avoidable causes of refusal before it's submitted.</li>
         <li>You want someone on the phone or WhatsApp if a problem comes up.</li>
         <li>The cost of our fee is worth the time and worry it saves you.</li>
       </ul>
@@ -260,7 +260,7 @@
   <div class="sec-head reveal"><p class="eyebrow">If you choose us</p><h2>How using Beyond Passports works</h2></div>
   <div class="steps reveal">
     <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check</h3><p>Tell us your trip and passport. We confirm what you need — and say plainly if you'd be better off applying yourself.</p></div>
-    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>A real person reviews and prepares your documents, catching errors before anything goes near a government portal.</p></div>
+    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare</h3><p>A real person reviews your documents for the things that actually get applications refused — history, source and consistency — before anything goes near a government portal.</p></div>
     <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>We handle the submission and keep you updated until your authorisation comes through. The decision still rests with the authority.</p></div>
   </div>
 </div></section>

@@ -17,7 +17,18 @@
   .mprev .eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
   .mprev .head h2{margin:0 0 14px;font-size:clamp(28px,3.4vw,40px);line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
   .mprev .head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
-  .mprev .checks{margin:38px 0 6px;border-top:1px solid var(--paper-edge)}
+  /* separate "why refused" card (problem → solution) */
+  .mprev .rcard{position:relative;background:linear-gradient(180deg,#fbfcfe,var(--white));border:1px solid var(--paper-edge);border-left:4px solid #c8702f;border-radius:16px;padding:34px 40px;margin-bottom:16px;box-shadow:0 1px 2px rgba(22,34,46,.05),0 24px 50px -40px rgba(22,34,46,.4)}
+  .mprev .rcard .eyebrow{color:#b5663a}
+  .mprev .rcard .eyebrow::before{background:#c8702f}
+  .mprev .rcard h2{margin:0 0 18px;font-size:clamp(23px,2.9vw,30px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+  .mprev .rl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin:0;padding:0;list-style:none}
+  .mprev .rl-grid li{display:flex;align-items:flex-start;gap:11px;font-size:15px;line-height:1.5;color:#33454f}
+  .mprev .rl-grid li svg{flex:0 0 20px;width:20px;height:20px;margin-top:1px;stroke:#c8702f;stroke-width:2.3;fill:none;stroke-linecap:round}
+  .mprev .rl-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14.5px;font-weight:700;color:var(--cta);text-decoration:none}
+  @media(max-width:620px){.mprev .rl-grid{grid-template-columns:1fr}}
+  @media(max-width:760px){.mprev .rcard{padding:28px 22px}}
+  .mprev .checks{margin:30px 0 6px;border-top:1px solid var(--paper-edge)}
   .mprev .row{display:flex;align-items:flex-start;gap:20px;padding:24px 4px;border-bottom:1px solid var(--paper-edge)}
   .mprev .medallion{flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--white);border:2px solid var(--stamp);box-shadow:0 8px 18px -9px rgba(46,154,140,.55), 0 0 0 6px rgba(46,154,140,.07)}
   .mprev .medallion svg{width:24px;height:24px;stroke:var(--stamp-text);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -38,12 +49,25 @@
 @endpush
 
 <section class="mprev"><div class="wrap">
-  <div class="filecard reveal">
+  <div class="rcard reveal">
+    <p class="eyebrow">Why {{ $name }} applications get refused</p>
+    <h2>Most refusals come from a few avoidable things</h2>
+    <ul class="rl-grid">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Unclear or insufficient funds evidence</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Passport validity too short{{ $passport ? ' ('.$passport.' months for '.$name.')' : ' for entry' }}</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Inconsistent dates, names or details</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Missing or wrong supporting documents</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Applying for the wrong visa type</li>
+    </ul>
+    <a class="rl-link" href="#mprev-checks">None of these are bad luck — see how we remove each ↓</a>
+  </div>
+
+  <div class="filecard reveal" id="mprev-checks">
     <div class="stamp-accent" aria-hidden="true">Checked &amp; Ready</div>
     <div class="head">
       <p class="eyebrow">Built to prevent refusals</p>
-      <h2>Most {{ $name }} refusals come down to a few fixable things</h2>
-      <p>{{ $name }} applications usually get refused for the same avoidable reasons — unclear funds evidence, missing documents, inconsistent details. We check for every one before we submit, and a real UK person reviews the whole file.</p>
+      <h2>We remove each of those before you submit</h2>
+      <p>A real UK person reviews your whole {{ $name }} file against the current rules — funds, validity, consistency and documents — before anything is submitted.</p>
     </div>
 
     <div class="checks">

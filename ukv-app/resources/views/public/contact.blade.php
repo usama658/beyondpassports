@@ -326,7 +326,7 @@
   <div class="ct-hero-copy reveal">
     <p class="eyebrow">Talk to a human</p>
     <h1>Questions? We're a phone call away.</h1>
-    <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, with no obligation.</p>
+    <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next — including the avoidable things that get applications refused — with no obligation.</p>
     <span class="ct-hero-note">Mon–Sat 9–6 UK time &nbsp;·&nbsp; independent service, not a government website</span>
   </div>
   <div class="ct-statuscard reveal" aria-label="Our team availability">

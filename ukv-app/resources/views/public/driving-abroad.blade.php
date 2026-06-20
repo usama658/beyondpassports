@@ -181,7 +181,7 @@
   <div class="wrap reveal">
     <p class="eyebrow">Driving abroad</p>
     <h1>International Driving Permit&nbsp;— sorted the right way</h1>
-    <p class="lede">We confirm which IDP you need and prepare your paperwork, so your in-person collection goes smoothly first time.</p>
+    <p class="lede">We confirm which IDP you need and prepare your paperwork — removing the avoidable reasons a trip gets wasted (wrong type, missing documents) so your in-person collection goes right first time.</p>
     <div class="idp-types">
       <div class="t"><b>1949</b><span>USA &amp; parts of Asia/Africa</span></div>
       <div class="t"><b>1968</b><span>Most of Europe</span></div>
