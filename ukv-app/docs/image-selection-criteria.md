@@ -4,6 +4,15 @@ The standard for every destination photo used on cards, the nav mega-menu, and m
 heroes. Apply it before adding any image. One consistent bar keeps the grid cohesive and
 keeps us legally clean.
 
+## 0. Source reliability (lesson learned)
+- **Do NOT use random keyword/tag services** (e.g. loremflickr) — they return *any* photo tagged
+  with the word, not the iconic subject, so you get amateur/wrong shots and unknown licences.
+- **Use curated sources** where the *subject is guaranteed*: a landmark's **Wikipedia lead image**
+  (`/api/rest_v1/page/summary/{Landmark}` → `originalimage`), or **Unsplash/Pexels** (API, free
+  commercial licence). Pick the **landmark page**, not the country page (e.g. `Taj_Mahal`, not `India`).
+- **Always verify the rendered crop in a browser**, not just the downloaded file — a great photo
+  can still crop badly in the card.
+
 ## 1. Licensing — the hard gate (check first)
 - **Only royalty-free, commercial-use, no-attribution-required** sources: Unsplash, Pexels,
   Pixabay (all CC0-style). Wikimedia Commons is OK **only** for CC0 / CC-BY with attribution recorded.

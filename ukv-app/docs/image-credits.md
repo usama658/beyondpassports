@@ -1,48 +1,39 @@
 # Destination image credits
 
-Per `image-selection-criteria.md`, every destination photo records its source + licence here.
+Per `image-selection-criteria.md`, every destination photo records its source here.
 
-## Status legend
-- **VERIFIED** — clean, named source + confirmed commercial licence (Unsplash/Pexels/Pixabay CC0, or recorded CC-BY).
-- **INTERIM** — placeholder pulled via a keyword stock service; licence not individually confirmed. **Must be replaced with a VERIFIED iconic image before go-live (#300).**
+## Method (locked)
+Each image is the **iconic landmark's Wikipedia lead image** (`/api/rest_v1/page/summary/{Landmark}`
+→ `originalimage`), centre-cropped to **800×520** with PHP GD (ImageMagick isn't installed here).
+Reliable + iconic + size-correct. Status **INTERIM** = Wikipedia/Commons file, licence per-file
+varies (mostly CC-BY-SA / public domain) — confirm + record the exact licence URL before go-live (#300).
 
-## Original 8 (SEO-targeted destinations) — refreshed to iconic 2026-06-20
-Re-pulled via loremflickr with iconic-landmark queries (800×520), replacing the earlier
-non-iconic stock. Same INTERIM licence caveat as Schengen — replace with VERIFIED before go-live.
+## Originals (8) + Schengen (14) — refreshed 2026-06-20
 
-| Slug | Iconic subject (query) | Source | Status |
-|------|------------------------|--------|--------|
-| turkey | Hagia Sophia, Istanbul | loremflickr | INTERIM |
-| egypt | Pyramids of Giza | loremflickr | INTERIM |
-| india | Taj Mahal | loremflickr | INTERIM |
-| thailand | Bangkok temple | loremflickr | INTERIM |
-| vietnam | Ha Long Bay | loremflickr | INTERIM |
-| uae | Burj Khalifa, Dubai | loremflickr | INTERIM |
-| usa-esta | Statue of Liberty, New York | loremflickr | INTERIM |
-| australia-eta | Sydney Opera House | loremflickr | INTERIM |
+| Slug | Iconic landmark | Source | Status |
+|------|-----------------|--------|--------|
+| turkey | Hagia Sophia | Wikipedia lead | INTERIM |
+| egypt | Giza pyramid complex | Wikipedia lead | INTERIM |
+| india | Taj Mahal | Wikipedia lead | INTERIM |
+| thailand | Wat Arun | Wikipedia lead | INTERIM |
+| vietnam | Ha Long Bay | Wikipedia lead | INTERIM |
+| uae | Burj Khalifa | Wikipedia lead | INTERIM |
+| usa-esta | Statue of Liberty | Wikipedia lead | INTERIM |
+| australia-eta | Sydney Opera House | Wikipedia lead | INTERIM |
+| france | Eiffel Tower | loremflickr (reverted per request) | INTERIM |
+| germany | Brandenburg Gate | Wikipedia lead | INTERIM |
+| netherlands | Canals of Amsterdam | Wikipedia lead | INTERIM |
+| austria | Hallstatt | Wikipedia lead | INTERIM |
+| spain | Alhambra | Wikipedia lead | INTERIM |
+| italy | Colosseum | Wikipedia lead | INTERIM |
+| portugal | Belém Tower | Wikipedia lead | INTERIM |
+| greece | Parthenon | Wikipedia lead | INTERIM |
+| croatia | Dubrovnik | Wikipedia lead | INTERIM |
+| denmark | Nyhavn | Wikipedia lead | INTERIM |
+| sweden | Stockholm | Wikipedia lead | INTERIM |
+| poland | Main Square, Kraków | Wikipedia lead | INTERIM |
+| czechia | Charles Bridge | Wikipedia lead | INTERIM |
+| hungary | Hungarian Parliament Building | Wikipedia lead | INTERIM |
 
-## Schengen (14) — added 2026-06-20
-Pulled via loremflickr keyword search (iconic-landmark query per country), 800×520, saved `{slug}.jpg`.
-loremflickr serves Flickr images of **varying licences** — these are **INTERIM placeholders** for the
-noindex/staging build. Replace each with a licence-VERIFIED iconic shot (Unsplash/Pexels) before go-live.
-
-| Slug | Iconic subject (query) | Source | Status |
-|------|------------------------|--------|--------|
-| france | Eiffel Tower, Paris | loremflickr | INTERIM |
-| germany | Brandenburg Gate, Berlin | loremflickr | INTERIM |
-| netherlands | Amsterdam canals | loremflickr | INTERIM |
-| austria | Vienna architecture | loremflickr | INTERIM |
-| spain | Sagrada Família, Barcelona | loremflickr | INTERIM |
-| italy | Colosseum, Rome | loremflickr | INTERIM |
-| portugal | Lisbon tram | loremflickr | INTERIM |
-| greece | Santorini | loremflickr | INTERIM |
-| croatia | Dubrovnik | loremflickr | INTERIM |
-| denmark | Nyhavn, Copenhagen | loremflickr | INTERIM |
-| sweden | Stockholm | loremflickr | INTERIM |
-| poland | Kraków old town | loremflickr | INTERIM |
-| czechia | Charles Bridge, Prague | loremflickr | INTERIM |
-| hungary | Hungarian Parliament, Budapest | loremflickr | INTERIM |
-
-> To replace: drop a VERIFIED `{slug}.jpg` (≥1600px source, ≤300 KB, sRGB) into
-> `public/assets/img/destinations/`, update the row to VERIFIED + real source URL, re-run
-> `php artisan db:seed --class=DestinationImageSeeder`.
+> Replace any image: drop a licence-VERIFIED `{slug}.jpg` (800×520, ≤300 KB) into
+> `public/assets/img/destinations/`, update its row to VERIFIED + source URL.
