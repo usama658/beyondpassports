@@ -165,7 +165,7 @@
 <section class="tbar-f"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Secure <b>Stripe</b> payments</span></span>
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span><b>Fixed</b> fees, shown up front</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span>@if (config('ukv.show_prices')) <b>Fixed</b> fees, shown up front @else <b>Clear</b> fee, confirmed before you pay @endif</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Every step <b>tracked</b></span></span>
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row">
@@ -189,15 +189,23 @@
 <section id="destinations"><div class="wrap">
   <div class="sec-head reveal">
     <p class="eyebrow">Popular destinations</p>
-    <h2>Clear requirements, fixed fees</h2>
-    <p class="lede">Browse the places we prepare and check applications for — clear fixed fees, every step tracked.</p>
+    <h2>Clear requirements{{ config('ukv.show_prices') ? ', fixed fees' : ', checked before you submit' }}</h2>
+    <p class="lede">Browse the places we prepare and check applications for — {{ config('ukv.show_prices') ? 'clear fixed fees, every step tracked' : 'every step tracked, every detail checked' }}.</p>
   </div>
   <div class="dests">
   @foreach ($navDestinations->take(6) as $d)
-    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">@if ((float) $d->tier_standard_gbp > 0)<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>@else<div class="fee">Free</div><div class="lab">GUIDE</div>@endif</div></div></a>
+    <a class="pass reveal" href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">
+@if (! config('ukv.show_prices'))
+<div class="fee">View&nbsp;→</div><div class="lab">Details</div>
+@elseif ((float) $d->tier_standard_gbp > 0)
+<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>
+@else
+<div class="fee">Free</div><div class="lab">GUIDE</div>
+@endif
+</div></div></a>
   @endforeach
   </div>
-  <div class="dest-more"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations &amp; fixed fees →</a></div>
+  <div class="dest-more"><a class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations @if(config('ukv.show_prices'))&amp; fixed fees @endif→</a></div>
 </div></section>
 
 {{-- HOW WE PREVENT REFUSALS --}}

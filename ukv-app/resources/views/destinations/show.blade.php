@@ -50,7 +50,7 @@
         ],
         [
             'q' => 'What does your fee cover, and is the government fee included?',
-            'a' => "Our fee covers our preparation, checking, submission and support. The {$name} government charges its own separate fee".($gbp($govtFee) ? " ({$gbp($govtFee)})" : '').", which is shown clearly before you pay. The two are always kept separate.",
+            'a' => "Our fee covers our preparation, checking, submission and support. The {$name} government charges its own separate fee".(config('ukv.show_prices') && $gbp($govtFee) ? " ({$gbp($govtFee)})" : '').", which is shown clearly before you pay. The two are always kept separate.",
         ],
         [
             'q' => 'What happens if my application is refused?',
@@ -142,6 +142,10 @@
   .tier .name{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
   .tier .price{font-family:var(--display);font-size:42px;font-weight:800;letter-spacing:-.02em;color:var(--navy);line-height:1}
   .tier .price small{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.04em}
+  /* prices-off: "fee on request" line in place of the amount */
+  .tier .qline{font-family:var(--display);font-size:20px;font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+  .tier .qline small{display:block;font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--muted);margin-top:5px;letter-spacing:.02em}
+  .tier.feat .qline{color:#fff}.tier.feat .qline small{color:#aab0b5}
   .tier .sub{font-size:14px;color:var(--muted);margin:6px 0 18px}
   .tier ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
   .tier li{position:relative;padding-left:26px;margin-bottom:10px;font-size:15px;color:var(--ink)}
@@ -199,7 +203,7 @@
     <div><p class="k">Validity</p><div class="v">{{ $maxStay ? 'Up to '.$maxStay.' days' : 'Varies by trip' }}</div></div>
     <div><p class="k">Type</p><div class="v">{{ $visaType }}</div></div>
     <div><p class="k">Typical processing</p><div class="v">A few business days<small>our handling</small></div></div>
-    @if($standard !== null && (float)$standard > 0)
+    @if(config('ukv.show_prices') && $standard !== null && (float)$standard > 0)
       <div><p class="k">Service fee</p><div class="v">from {{ $gbp($standard) }}<small>separate from govt fee</small></div></div>
     @else
       <div><p class="k">Passport</p><div class="v">{{ $passport ? $passport.' months validity' : 'Valid passport' }}</div></div>
@@ -209,12 +213,16 @@
 
 {{-- 3. PRICING --}}
 <section id="pricing" class="alt"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Clear fixed service fees</p><h2>Choose your level of service</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">{{ config('ukv.show_prices') ? 'Clear fixed service fees' : 'Choose your level of service' }}</p><h2>{{ config('ukv.show_prices') ? 'Choose your level of service' : 'Three service levels' }}</h2></div>
   <div class="tiers">
     {{-- Standard --}}
     <div class="tier reveal">
       <p class="name">Standard</p>
-      <div class="price">{{ $gbp($standard) ?? '—' }} <small>service fee</small></div>
+      @if (config('ukv.show_prices'))
+        <div class="price">{{ $gbp($standard) ?? '—' }} <small>service fee</small></div>
+      @else
+        <div class="qline">Standard fee — on request<small>our base service · separate from the govt fee</small></div>
+      @endif
       <p class="sub">Everything you need, done right.</p>
       <ul>
         <li><span class="chk">✓</span>Document &amp; eligibility check</li>
@@ -222,13 +230,17 @@
         <li><span class="chk">✓</span>Submitted &amp; tracked to completion</li>
         <li><span class="chk">✓</span>Email support</li>
       </ul>
-      <a href="{{ $applyUrl }}&tier=standard" class="btn btn--ghost">Choose Standard</a>
+      <a href="{{ $applyUrl }}&tier=standard" class="btn btn--ghost">{{ config('ukv.show_prices') ? 'Choose Standard' : 'Get my Standard quote →' }}</a>
     </div>
     {{-- Express (featured) --}}
     <div class="tier feat reveal">
       <span class="badge">Most popular</span>
       <p class="name">Express</p>
-      <div class="price">{{ $gbp($express) ?? '—' }} <small>service fee</small></div>
+      @if (config('ukv.show_prices'))
+        <div class="price">{{ $gbp($express) ?? '—' }} <small>service fee</small></div>
+      @else
+        <div class="qline">Express fee — on request<small>priority handling · separate from the govt fee</small></div>
+      @endif
       <p class="sub">When you're short on time.</p>
       <ul>
         <li><span class="chk">✓</span>Everything in Standard</li>
@@ -236,12 +248,16 @@
         <li><span class="chk">✓</span>Faster preparation &amp; submission</li>
         <li><span class="chk">✓</span>WhatsApp + email support</li>
       </ul>
-      <a href="{{ $applyUrl }}&tier=express" class="btn">Choose Express</a>
+      <a href="{{ $applyUrl }}&tier=express" class="btn">{{ config('ukv.show_prices') ? 'Choose Express' : 'Get my Express quote →' }}</a>
     </div>
     {{-- Premium --}}
     <div class="tier reveal">
       <p class="name">Premium</p>
-      <div class="price">{{ $gbp($premium) ?? '—' }} <small>service fee</small></div>
+      @if (config('ukv.show_prices'))
+        <div class="price">{{ $gbp($premium) ?? '—' }} <small>service fee</small></div>
+      @else
+        <div class="qline">Premium fee — on request<small>full hands-on support · separate from the govt fee</small></div>
+      @endif
       <p class="sub">Full hands-on support.</p>
       <ul>
         <li><span class="chk">✓</span>Everything in Express</li>
@@ -249,11 +265,11 @@
         <li><span class="chk">✓</span>Phone support &amp; document help</li>
         <li><span class="chk">✓</span>Re-check &amp; re-submit if needed</li>
       </ul>
-      <a href="{{ $applyUrl }}&tier=premium" class="btn btn--ghost">Choose Premium</a>
+      <a href="{{ $applyUrl }}&tier=premium" class="btn btn--ghost">{{ config('ukv.show_prices') ? 'Choose Premium' : 'Get my Premium quote →' }}</a>
     </div>
   </div>
   <div class="pricenote reveal">
-    <p><strong>Our service fee is separate from the {{ $name }} government fee.</strong> The government charges its own fee{{ $gbp($govtFee) ? ' (currently '.$gbp($govtFee).')' : '' }} for the {{ $visaType }}, which you'll see clearly before you pay anything.</p>
+    <p><strong>Our service fee is separate from the {{ $name }} government fee.</strong> The government charges its own fee{{ config('ukv.show_prices') && $gbp($govtFee) ? ' (currently '.$gbp($govtFee).')' : '' }} for the {{ $visaType }}, which you'll see clearly before you pay anything.</p>
     <p><strong>Express speeds our handling — it does not change the government's decision or its processing time.</strong> We cannot guarantee approval; the outcome is always decided by the {{ $name }} authorities.</p>
   </div>
 </div></section>

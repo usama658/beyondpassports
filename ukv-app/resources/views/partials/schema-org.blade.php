@@ -57,12 +57,14 @@
       'name'        => $destination->name . ' Visa Preparation & Checking',
       'provider'    => ['@id' => rtrim(config('app.url'), '/') . '/#organization'],
       'areaServed'  => 'GB',
-      'offers'      => [
+      'offers'      => array_filter([
           '@type'         => 'Offer',
-          'price'         => (string) $destination->tier_standard_gbp,
-          'priceCurrency' => 'GBP',
+          // Omit price when marketing prices are hidden (config('ukv.show_prices') = false)
+          // so structured data never advertises a price the page itself doesn't show.
+          'price'         => config('ukv.show_prices') ? (string) $destination->tier_standard_gbp : null,
+          'priceCurrency' => config('ukv.show_prices') ? 'GBP' : null,
           'url'           => url('/visa/' . $destination->slug),
-      ],
+      ], fn ($v) => $v !== null),
   ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
   </script>
 

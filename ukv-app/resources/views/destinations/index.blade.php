@@ -27,7 +27,7 @@
 <section class="di-hero"><div class="wrap">
   <p class="eyebrow">Destinations</p>
   <h1>Where are you travelling?</h1>
-  <p class="lede">Pick your destination to see exactly what's needed, our fixed service fees, and how we prepare and check your application before it's submitted.</p>
+  <p class="lede">Pick your destination to see exactly what's needed{{ config('ukv.show_prices') ? ', our fixed service fees,' : '' }} and how we prepare and check your application before it's submitted.</p>
   <form class="di-search" role="search" onsubmit="return false">
     <input type="search" id="destSearch" placeholder="Search a destination…" aria-label="Search destinations" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
@@ -51,8 +51,13 @@
               <p class="t">Prepared &amp; checked by our UK team</p>
             </div>
             <div class="stub">
-              <span class="fee">@if (! is_null($fromFee)) £{{ rtrim(rtrim(number_format((float) $fromFee, 2), '0'), '.') }} @else — @endif</span>
-              <span class="lab">{{ ! is_null($fromFee) ? 'from / service' : 'service fee' }}</span>
+              @if (config('ukv.show_prices'))
+                <span class="fee">@if (! is_null($fromFee)) £{{ rtrim(rtrim(number_format((float) $fromFee, 2), '0'), '.') }} @else — @endif</span>
+                <span class="lab">{{ ! is_null($fromFee) ? 'from / service' : 'service fee' }}</span>
+              @else
+                <span class="fee">View&nbsp;→</span>
+                <span class="lab">details</span>
+              @endif
             </div>
           </div>
         </a>

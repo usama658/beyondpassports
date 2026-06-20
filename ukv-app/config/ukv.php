@@ -10,6 +10,12 @@ return [
     // Owner/ops digest recipient (daily pending-actions email).
     'owner_email' => env('UKV_OWNER_EMAIL', ''),
 
+    // Show service-fee PRICES on marketing surfaces (home/destination cards, header mega-menu,
+    // money-page tier amounts, Offer schema). When false, those become "fee — on request" /
+    // "View" and the tier buttons become quote CTAs. The apply-step price and the order receipt
+    // are ALWAYS shown (consumer law) and are not affected. Flip with: php artisan ukv:prices on|off
+    'show_prices' => (bool) env('UKV_SHOW_PRICES', true),
+
     // Public contact details — surfaced site-wide (topbar, footer, contact page, CTAs).
     'phone' => env('UKV_PHONE', ''),            // human-readable display, e.g. +44 20 1234 5678
     'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
