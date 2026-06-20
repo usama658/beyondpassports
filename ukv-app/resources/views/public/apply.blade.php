@@ -136,6 +136,29 @@
     .tiers{grid-template-columns:1fr}
     .ap-form-card .cbody{padding:22px 18px}
   }
+  /* callback confirmation modal (Variant B — minimal premium) */
+  .cbm{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:18px;
+    background:rgba(10,16,24,.6);backdrop-filter:blur(2px)}
+  .cbm.is-open{display:flex}
+  .cbm .box{background:#fff;border-radius:22px;width:min(440px,100%);box-shadow:0 50px 100px -30px rgba(0,0,0,.55);
+    padding:28px 30px 26px;animation:cbm-in .18s ease}
+  @keyframes cbm-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .cbm .r1{display:flex;gap:14px;align-items:center;margin:0 0 16px}
+  .cbm .ic{flex:none;width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#e7f3ef,#d6efe7);display:grid;place-items:center}
+  .cbm .ic svg{width:26px;height:26px;stroke:var(--stamp-text);stroke-width:3;fill:none}
+  .cbm .r1 .eyebrow{font:800 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text);margin:0}
+  .cbm .r1 h2{font:800 19px var(--display);color:var(--navy);margin:3px 0 0}
+  .cbm .lead{font-size:14.5px;color:#33454f;line-height:1.6;margin:0 0 14px}
+  .cbm .refbar{display:flex;justify-content:space-between;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;margin:0 0 16px;gap:12px}
+  .cbm .refbar .l{font:700 10px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .cbm .refbar .v{font:800 15px var(--mono);letter-spacing:.04em;word-break:break-all}
+  .cbm .refbar .copy{flex:none;font:700 11px var(--display);color:var(--navy);background:var(--soft);border:0;border-radius:8px;padding:7px 11px;cursor:pointer}
+  .cbm .refbar .copy.done{background:#bfe3d6}
+  .cbm .sla{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:0 0 18px}
+  .cbm .sla svg{flex:none;width:16px;height:16px;stroke:var(--cta);stroke-width:2;fill:none}
+  .cbm .acts{display:flex;gap:9px}
+  .cbm .acts .btn{flex:1;text-align:center}
+  .cbm .micro{font-size:11.5px;color:var(--muted);margin:14px 0 0;text-align:center}
 </style>
 @endpush
 
@@ -439,6 +462,27 @@
   </div>
 </div></section>
 
+{{-- Callback confirmation modal (shown after "Request my callback") --}}
+<div class="cbm" id="cb-modal" role="dialog" aria-modal="true" aria-labelledby="cbm-title" aria-hidden="true">
+  <div class="box">
+    <div class="r1">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <div><p class="eyebrow">Callback requested</p><h2 id="cbm-title">Your case is with our UK team</h2></div>
+    </div>
+    <p class="lead">Thanks — a UK-based adviser will call you back, usually within <strong>one business day</strong>. No payment is taken until you've approved your quote.</p>
+    <div class="refbar">
+      <div><div class="l">Your case reference</div><div class="v" id="cbm-ref">—</div></div>
+      <button class="copy" type="button" id="cbm-copy">Copy</button>
+    </div>
+    <div class="sla"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Typical callback: within 1 business day, Mon–Sat 9–6</div>
+    <div class="acts">
+      <a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp us</a>
+      <a class="btn btn--ghost" href="{{ url('/track') }}" id="cbm-track">Track my case</a>
+    </div>
+    <p class="micro">Keep your reference to track progress · not a government website.</p>
+  </div>
+</div>
+
 {{-- CTA BAND --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
@@ -689,11 +733,37 @@
       window.location = CHECKOUT_URL + '/' + encodeURIComponent(lastOrderRef);
     });
 
-    // MANUAL-REVIEW lane → the case is already lodged by /apply; confirm the callback.
+    // MANUAL-REVIEW lane → the case is already lodged by /apply; confirm the callback in a modal.
+    var cbModal = document.getElementById('cb-modal');
+    var cbRef   = document.getElementById('cbm-ref');
+    var cbCopy  = document.getElementById('cbm-copy');
+    var cbTrack = document.getElementById('cbm-track');
+
+    function openCb() {
+      if (cbRef) cbRef.textContent = lastOrderRef || '—';
+      if (cbTrack && lastOrderRef) cbTrack.href = '{{ url('/track') }}?ref=' + encodeURIComponent(lastOrderRef);
+      cbModal.classList.add('is-open');
+      cbModal.setAttribute('aria-hidden', 'false');
+      if (cbCopy) cbCopy.focus();
+    }
+    function closeCb() {
+      cbModal.classList.remove('is-open');
+      cbModal.setAttribute('aria-hidden', 'true');
+    }
+
     document.getElementById('callback-btn').addEventListener('click', function () {
       if (!lastOrderRef) return;
-      alert('Thanks — your case (' + lastOrderRef + ') is with our UK team. A UK-based adviser will call you back, usually within one business day.');
+      openCb();
     });
+    if (cbCopy) {
+      cbCopy.addEventListener('click', function () {
+        var done = function () { cbCopy.textContent = 'Copied'; cbCopy.classList.add('done'); setTimeout(function () { cbCopy.textContent = 'Copy'; cbCopy.classList.remove('done'); }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(lastOrderRef).then(done, done); } else { done(); }
+      });
+    }
+    // close on backdrop click or Esc
+    cbModal.addEventListener('click', function (e) { if (e.target === cbModal) closeCb(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cbModal.classList.contains('is-open')) closeCb(); });
   });
 </script>
 @endpush
