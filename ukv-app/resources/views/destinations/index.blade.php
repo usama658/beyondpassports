@@ -16,7 +16,17 @@
   #destGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
   #destGrid .pass{height:240px}
   .di-empty{display:none;color:var(--muted);margin-top:18px}
+  /* trust band — same treatment as the home page (.tbar-f) */
+  .tbar-f{padding:0;background:
+      radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
+      var(--navy);color:#fff}
+  .tbar-f .row{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:16px 0}
+  .tbar-f .ti{display:flex;align-items:center;gap:9px;font:600 14px var(--display);color:#fff;white-space:nowrap}
+  .tbar-f .ti svg{width:20px;height:20px;color:var(--soft);flex:none}
+  .tbar-f .ti b{color:var(--soft);font-weight:800}
   @media (max-width:860px){#destGrid{grid-template-columns:1fr 1fr}}
+  @media (max-width:760px){.tbar-f .row{gap:18px 22px}}
   @media (max-width:520px){#destGrid{grid-template-columns:1fr}.di-search{flex-direction:column}}
 </style>
 @endpush
@@ -34,7 +44,13 @@
   </form>
 </div></section>
 
-{{-- DESTINATION CARDS --}}
+{{-- TRUST BAND — generic, home-page treatment --}}
+<section class="tbar-f"><div class="wrap"><div class="row">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Secure <b>Stripe</b> payments</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Every step <b>tracked</b></span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18" fill="none" stroke="currentColor" stroke-width="2"/></svg><span><b>{{ $destinations->count() }}</b> destinations &amp; growing</span></span>
+</div></div></section>
 <section><div class="wrap">
   @if ($destinations->isEmpty())
     <p style="color:var(--muted)">We're adding destinations shortly. In the meantime, <a href="{{ url('/track') }}">track an existing application</a> or get in touch.</p>
