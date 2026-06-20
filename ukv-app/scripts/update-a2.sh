@@ -21,8 +21,13 @@ COMPOSER_BIN="$(command -v composer || true)"
 composer_install(){ "$PHP" -d memory_limit=-1 "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction "$@"; }
 composer_install || { echo "retry ignoring ext-zip"; composer_install --ignore-platform-req=ext-zip; }
 
-echo "== Migrate + re-cache"
+echo "== Migrate"
 "$PHP" artisan migrate --force
+
+echo "== Seed production reference data (idempotent)"
+"$PHP" artisan db:seed --class=ProductionSeeder --force
+
+echo "== Re-cache"
 "$PHP" artisan config:cache
 "$PHP" artisan route:cache
 "$PHP" artisan view:cache
