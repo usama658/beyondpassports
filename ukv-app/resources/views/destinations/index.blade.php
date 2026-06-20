@@ -54,6 +54,9 @@
               @if (config('ukv.show_prices'))
                 <span class="fee">@if (! is_null($fromFee)) £{{ rtrim(rtrim(number_format((float) $fromFee, 2), '0'), '.') }} @else — @endif</span>
                 <span class="lab">{{ ! is_null($fromFee) ? 'from / service' : 'service fee' }}</span>
+              @elseif ($destination->max_stay_days)
+                <span class="fee">{{ $destination->max_stay_days }}</span>
+                <span class="lab">days max</span>
               @else
                 <span class="fee">View&nbsp;→</span>
                 <span class="lab">details</span>

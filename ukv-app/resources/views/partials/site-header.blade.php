@@ -23,7 +23,7 @@
           @foreach ($navMenuDestinations ?? [] as $d)
           <a class="mega-card" href="{{ url('/visa/'.$d->slug) }}">
             <div class="pic"@if ($d->image_path) style="background-image:url('{{ asset(ltrim($d->image_path, '/')) }}')"@endif></div>
-            <div class="tx"><b>{{ $d->name }} {{ $d->visa_type }}</b>@if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)<span>from £{{ number_format((float) $d->tier_standard_gbp, 0) }}</span>@endif</div>
+            <div class="tx"><b>{{ $d->name }} {{ $d->visa_type }}</b>@if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)<span>from £{{ number_format((float) $d->tier_standard_gbp, 0) }}</span>@elseif (! config('ukv.show_prices') && $d->max_stay_days)<span>up to {{ $d->max_stay_days }} days</span>@endif</div>
           </a>
           @endforeach
         </div>
