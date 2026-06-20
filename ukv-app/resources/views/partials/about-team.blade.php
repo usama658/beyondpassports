@@ -15,7 +15,15 @@
     border-radius: 18px; padding: 34px 30px 30px;
     box-shadow: 0 1px 2px rgba(22,34,46,.05), 0 24px 48px -38px rgba(22,34,46,.4);
     display: flex; flex-direction: column; align-items: flex-start;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
+  /* whole-card hover: lift, teal border, deeper shadow, photo zoom */
+  .abt .member:hover {
+    transform: translateY(-6px); border-color: rgba(46,154,140,.55);
+    box-shadow: 0 2px 4px rgba(22,34,46,.06), 0 38px 64px -34px rgba(46,154,140,.5);
+  }
+  .abt .photo img { transition: transform .35s ease; }
+  .abt .member:hover .photo img { transform: scale(1.06); }
   .abt .member.lead {
     border: 1px solid rgba(46,154,140,.55);
     box-shadow: 0 1px 2px rgba(22,34,46,.06), 0 28px 54px -34px rgba(46,154,140,.45);
