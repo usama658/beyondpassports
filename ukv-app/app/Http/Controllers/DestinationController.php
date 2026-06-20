@@ -41,6 +41,22 @@ class DestinationController extends Controller
     }
 
     /**
+     * Schengen / ETIAS hub — reuses the destination boarding-pass card layout for every
+     * ETIAS destination. (Regional grouping of the cards is a follow-up.)
+     */
+    public function schengen(): View
+    {
+        $destinations = Destination::query()
+            ->where('visa_type', 'ETIAS')
+            ->orderBy('name')
+            ->get();
+
+        return view('destinations.schengen', [
+            'destinations' => $destinations,
+        ]);
+    }
+
+    /**
      * Single destination money page, bound by slug.
      *
      * Bind in the route as {destination:slug} so the URL is /visa/turkey, not /visa/7.
