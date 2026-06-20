@@ -86,15 +86,20 @@
         <div class="checker tl-checker" style="box-shadow:var(--lift-3)">
           <div class="stub"><span>Visa check</span><span>Instant result</span></div>
           <div class="cbody">
-            <label style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:0 0 5px">Where are you going?</label>
-            <select disabled style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--muted)">
-              <option>Choose a destination…</option>
+            <label for="h-dest" style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:0 0 5px">Where are you going?</label>
+            <select id="h-dest" style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--ink)">
+              <option value="">Choose a destination…</option>
+              @foreach ($navDestinations as $d)
+              <option value="{{ $d->name }}">{{ $d->name }}</option>
+              @endforeach
             </select>
-            <label style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:16px 0 5px">Your passport</label>
-            <select disabled style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--muted)">
-              <option>Choose…</option>
+            <label for="h-pass" style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:16px 0 5px">Your passport</label>
+            <select id="h-pass" style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--ink)">
+              <option value="">Choose…</option>
+              <option value="UK">United Kingdom</option>
+              <option value="Other">Other nationality</option>
             </select>
-            <a href="#visa-card" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Check what I need →</a>
+            <button type="button" id="h-go" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Check what I need →</button>
             <p style="font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center">Free · general guidance · we confirm your exact rules</p>
           </div>
         </div>
@@ -302,6 +307,21 @@
       show(vResult);
       vResult.focus({ preventScroll: true });
     });
+
+    // --- HERO card mirrors into the main visa checker ------------------------
+    var hDest = document.getElementById('h-dest');
+    var hPass = document.getElementById('h-pass');
+    var hGo   = document.getElementById('h-go');
+    if (hGo && hDest && hPass) {
+      hGo.addEventListener('click', function () {
+        if (hDest.value) vForm.dest.value = hDest.value;
+        if (hPass.value) vForm.pass.value = hPass.value;
+        document.getElementById('visa-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // run the real checker (works whether or not selections were made)
+        if (typeof vForm.requestSubmit === 'function') vForm.requestSubmit();
+        else vForm.dispatchEvent(new Event('submit', { cancelable: true }));
+      });
+    }
 
     // --- IDP CHECKER ---------------------------------------------------------
     var iForm   = document.getElementById('idp-form');
