@@ -211,6 +211,19 @@
   </div></div>
 </section>
 
+@if (\Illuminate\Support\Str::contains(strtolower((string) $visaType), 'etias'))
+{{-- ETIAS pre-launch honesty banner — ETIAS is not live until late 2026; UK citizens
+     currently travel visa-free. Keeps the page truthful before the scheme starts. --}}
+<section style="padding:0"><div class="wrap" style="padding-top:22px">
+  <div style="display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#c8923a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+    <p style="margin:0;font-size:15px;line-height:1.6;color:#3a4b55">
+      <strong style="color:var(--navy)">ETIAS isn't required yet.</strong> Right now UK citizens travel to {{ $name }} <strong>visa-free</strong> for short stays — no ETIAS, no fee. ETIAS launches in late 2026 (€20, valid 3 years, 90 days in any 180). When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span>
+    </p>
+  </div>
+</div></section>
+@endif
+
 {{-- 3. PRICING --}}
 <section id="pricing" class="alt"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">{{ config('ukv.show_prices') ? 'Clear fixed service fees' : 'Choose your level of service' }}</p><h2>{{ config('ukv.show_prices') ? 'Choose your level of service' : 'Three service levels' }}</h2></div>

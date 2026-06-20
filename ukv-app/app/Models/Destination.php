@@ -15,6 +15,7 @@ class Destination extends Model
         'slug',
         'image_path',
         'visa_type',
+        'region',
         'required_for_uk',
         'max_stay_days',
         'govt_fee_gbp',
