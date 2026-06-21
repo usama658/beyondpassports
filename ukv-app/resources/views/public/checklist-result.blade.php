@@ -352,7 +352,7 @@
         @if (! empty($peek['categories']))
           <p style="color:var(--muted);font-size:13.5px;margin:0 0 16px">Covers: {{ implode(' · ', $peek['categories']) }}</p>
         @endif
-        @if ($peek['teaser'])
+        @if ($peek['teaser'] && $peek['count'] > 1)
           <div style="display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-top:1px dashed var(--paper-edge)">
             <span style="color:var(--stamp);font-weight:800">✓</span>
             <span><b style="color:var(--navy)">{{ $peek['teaser']['label'] }}</b>
