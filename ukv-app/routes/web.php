@@ -66,6 +66,18 @@ Route::get('/checkout/{order:order_ref}', [CheckoutController::class, 'create'])
 // --- Stripe webhook (CSRF-exempt via bootstrap/app.php) ---
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
+// Stripe config status (no secrets exposed) — confirms whether the server picked up keys.
+Route::get('/health/stripe', function () {
+    $secret = (string) config('services.stripe.secret');
+    return response()->json([
+        'secret_configured' => $secret !== '',
+        'secret_mode' => str_starts_with($secret, 'sk_live_') ? 'live'
+            : (str_starts_with($secret, 'sk_test_') ? 'test'
+            : (str_starts_with($secret, 'rk_') ? 'restricted' : ($secret === '' ? 'none' : 'other'))),
+        'webhook_secret_configured' => (string) config('services.stripe.webhook_secret') !== '',
+    ]);
+})->name('health.stripe');
+
 // --- Confirmation / thank-you ---
 Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
     // Document Requirements Engine: pass the personalised checklist (for()) to the view.
