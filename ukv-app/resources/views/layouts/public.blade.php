@@ -26,6 +26,8 @@
 @yield('content')
 </main>
 
+@include('partials.wa-float')
+
 @include('partials.site-footer')
 
 @include('partials.site-scripts')

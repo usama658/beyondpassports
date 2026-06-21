@@ -45,4 +45,14 @@ final class ChatCtaTest extends TestCase
 
         $this->assertStringContainsString('https://wa.me/440000000000', $html);
     }
+
+    public function test_floating_button_present_on_layout_page(): void
+    {
+        $this->get('/')->assertOk()->assertSee('data-wa-float', false);
+    }
+
+    public function test_floating_button_present_on_standalone_track_page(): void
+    {
+        $this->get('/track')->assertOk()->assertSee('data-wa-float', false);
+    }
 }
