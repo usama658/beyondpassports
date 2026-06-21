@@ -172,6 +172,8 @@ class ChecklistController extends Controller
      */
     public function calendar(ChecklistRequest $checklistRequest, IcsService $ics): Response
     {
+        abort_unless($checklistRequest->isPaid(), 403);
+
         $checklistRequest->loadMissing('destination');
         $inputs = is_array($checklistRequest->inputs) ? $checklistRequest->inputs : [];
 
@@ -197,6 +199,8 @@ class ChecklistController extends Controller
      */
     public function printable(ChecklistRequest $checklistRequest, ChecklistPdfService $pdf): Response
     {
+        abort_unless($checklistRequest->isPaid(), 403);
+
         $checklistRequest->loadMissing('destination');
 
         return $pdf->renderPrintable($checklistRequest);
