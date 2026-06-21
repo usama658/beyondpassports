@@ -31,7 +31,11 @@ final class ChecklistRequestPaymentTest extends TestCase
     {
         $dest = $this->makeDestination();
 
-        return ChecklistRequest::create(array_merge([
+        // Extract paid_at since it's no longer mass-assignable
+        $paidAt = $attrs['paid_at'] ?? null;
+        unset($attrs['paid_at']);
+
+        $r = ChecklistRequest::create(array_merge([
             'destination_id' => $dest->id,
             'inputs' => [],
             'items' => [
@@ -40,6 +44,13 @@ final class ChecklistRequestPaymentTest extends TestCase
                 ['document_key' => 'bank', 'label' => 'Bank statements', 'note' => 'last 3 months', 'category' => 'Finance', 'mandatory' => false],
             ],
         ], $attrs));
+
+        // Set paid_at via forceFill if provided
+        if ($paidAt !== null) {
+            $r->forceFill(['paid_at' => $paidAt])->save();
+        }
+
+        return $r;
     }
 
     public function test_is_paid_reflects_paid_at(): void

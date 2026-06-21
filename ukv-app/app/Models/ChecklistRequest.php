@@ -21,7 +21,6 @@ class ChecklistRequest extends Model
         'tier',
         'amount_gbp',
         'currency',
-        'paid_at',
         'stripe_session_id',
         'immediate_delivery_consent',
         'consent_at',
