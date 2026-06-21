@@ -360,7 +360,14 @@
   <div class="rule"></div>
   <h2>Ready for {{ $name }}? Let's get it sorted.</h2>
   <p style="max-width:48ch;color:#eef0f1">Start your {{ $visaLabel }} now, or message our UK team with any question first.</p>
-  <div class="row"><a href="#pricing" class="btn">Start my {{ $name }} application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
+  <div class="row">
+    <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
+    @include('partials.wa-cta', [
+        'message' => "Hi Beyond Passports — I'd like help with my documents for {$name}.",
+        'label' => 'Ask about '.$name.' on WhatsApp',
+        'variant' => 'ghost',
+    ])
+  </div>
 </div></section>
 
 @endsection

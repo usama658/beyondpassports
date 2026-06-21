@@ -55,4 +55,24 @@ final class ChatCtaTest extends TestCase
     {
         $this->get('/track')->assertOk()->assertSee('data-wa-float', false);
     }
+
+    public function test_destination_money_page_has_destination_specific_chat_cta(): void
+    {
+        $d = \App\Models\Destination::create([
+            'name' => 'Turkey',
+            'slug' => 'turkey',
+            'visa_type' => 'evisa',
+            'govt_fee_gbp' => 20.00,
+            'tier_standard_gbp' => 39.00,
+            'tier_express_gbp' => 59.00,
+            'tier_premium_gbp' => 89.00,
+            'passport_validity_months' => 6,
+        ]);
+
+        $html = $this->get('/visa/turkey')->assertOk()->getContent();
+
+        // wa.me link whose prefilled text names the destination (urlencoded → '+').
+        $this->assertStringContainsString('wa.me/', $html);
+        $this->assertStringContainsString('documents+for+Turkey', $html);
+    }
 }
