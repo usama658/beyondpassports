@@ -25,6 +25,7 @@
   /* ── Two-checker grid ── */
   .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
   /* unified trip checker — horizontal bar (home .hp-bar style) */
+  .tl-head{text-align:center;max-width:60ch;margin:0 auto 28px}
   .tl-barwrap{max-width:880px;margin:0 auto}
   .tl-bar{display:flex;gap:12px;align-items:flex-end;background:#fff;border:1px solid var(--paper-edge);border-radius:18px;
     box-shadow:0 30px 64px -30px rgba(40,50,70,.45);padding:18px;position:relative}
@@ -130,9 +131,9 @@
   </div>
 </section>
 
-{{-- TWO CHECKERS --}}
+{{-- UNIFIED TRIP CHECKER --}}
 <section><div class="wrap">
-  <div class="sec-head reveal">
+  <div class="sec-head reveal tl-head">
     <p class="eyebrow">Use the checkers</p>
     <h2>Find out what your trip requires</h2>
   </div>
