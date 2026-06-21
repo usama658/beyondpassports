@@ -10,6 +10,28 @@
 
   /* ── Wizard centering grid ── */
   .dct-grid{display:grid;grid-template-columns:1fr;gap:28px;max-width:760px;margin:22px auto 0}
+  /* gated checklist — free WhatsApp banner + paid tiers */
+  .dct-free{max-width:920px;margin:0 auto 26px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    background:linear-gradient(110deg,#eafaf2,#f3fbf7);border:1px solid #bfe3d6;border-radius:18px;padding:22px 26px}
+  .dct-free .l b{font:800 17px var(--display);color:var(--navy)}
+  .dct-free .l p{margin:4px 0 0;font-size:13.5px;color:#3a4b55;max-width:48ch}
+  .dct-free .l .tag{display:inline-block;font:800 10px var(--display);letter-spacing:.1em;text-transform:uppercase;color:#1da851;background:#d6f0e2;border-radius:999px;padding:3px 9px;margin:0 0 8px}
+  .dct-wa{display:inline-flex;align-items:center;gap:9px;border:0;border-radius:12px;padding:14px 22px;font:800 15px var(--display);color:#fff;background:#25D366;text-decoration:none;white-space:nowrap;box-shadow:0 12px 26px -12px rgba(37,211,102,.7)}
+  .dct-wa:hover{background:#1da851}
+  .dct-wa svg{width:20px;height:20px;fill:currentColor}
+  .dct-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:0 auto}
+  .dct-tier{background:#fff;border:1px solid var(--paper-edge);border-radius:16px;padding:24px 20px;display:flex;flex-direction:column;box-shadow:0 14px 36px -28px rgba(40,50,70,.5);position:relative}
+  .dct-tier.feat{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
+  .dct-tier .badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font:800 10px var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--cta);color:#fff;border-radius:999px;padding:4px 12px;white-space:nowrap}
+  .dct-tier .name{font:800 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0}
+  .dct-tier .qline{font:800 17px var(--display);color:var(--navy);margin:8px 0 2px}
+  .dct-tier .qline small{display:block;font:400 12px var(--mono,monospace);color:var(--muted);margin-top:4px}
+  .dct-tier .sub{font-size:13px;color:var(--muted);margin:8px 0 12px}
+  .dct-tier ul{list-style:none;padding:0;margin:0 0 16px;flex:1}
+  .dct-tier li{font-size:13px;color:#3a4b55;display:flex;gap:8px;margin:7px 0}
+  .dct-tier .chk{color:var(--stamp);font-weight:800}
+  .dct-tier .btn{width:100%;text-align:center}
+  @media(max-width:760px){.dct-tiers{grid-template-columns:1fr}.dct-free{flex-direction:column;align-items:flex-start}}
 
   /* ── Form layout ── */
   .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -189,8 +211,64 @@
 {{-- ── WIZARD ── --}}
 <section style="padding-top:0">
   <div class="wrap">
+    {{-- GATED: free WhatsApp path + paid service tiers --}}
+    <div class="dct-free reveal">
+      <div class="l">
+        <span class="tag">Free</span>
+        <b>Just need a quick answer?</b>
+        <p>Message our UK team on WhatsApp — a real person, no payment, general guidance for your trip.</p>
+      </div>
+      <a class="dct-wa" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ urlencode('Hi Beyond Passports — I would like help with my document checklist for an upcoming trip.') }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> Ask free on WhatsApp →
+      </a>
+    </div>
+
+    <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 18px">
+      <p class="eyebrow">Your document checklist</p>
+      <h2>Get the exact documents for your trip</h2>
+      <p class="lede">Choose a service level and our UK team prepares &amp; checks your full list before anything is submitted.</p>
+    </div>
+
+    <div class="dct-tiers">
+      <div class="dct-tier reveal">
+        <p class="name">Standard</p>
+        <div class="qline">Standard fee — on request<small>full checklist · prepared &amp; checked</small></div>
+        <p class="sub">Your complete document list, done right.</p>
+        <ul>
+          <li><span class="chk">✓</span>Personalised document checklist</li>
+          <li><span class="chk">✓</span>Checked by our UK team</li>
+          <li><span class="chk">✓</span>PDF + email + calendar reminders</li>
+        </ul>
+        <a href="{{ url('/apply') }}?tier=standard" class="btn btn--ghost">Get my Standard quote →</a>
+      </div>
+      <div class="dct-tier feat reveal">
+        <span class="badge">Most popular</span>
+        <p class="name">Express</p>
+        <div class="qline">Express fee — on request<small>priority handling</small></div>
+        <p class="sub">When you're short on time.</p>
+        <ul>
+          <li><span class="chk">✓</span>Everything in Standard</li>
+          <li><span class="chk">✓</span>Priority preparation</li>
+          <li><span class="chk">✓</span>WhatsApp + email support</li>
+        </ul>
+        <a href="{{ url('/apply') }}?tier=express" class="btn">Get my Express quote →</a>
+      </div>
+      <div class="dct-tier reveal">
+        <p class="name">Premium</p>
+        <div class="qline">Premium fee — on request<small>full hands-on support</small></div>
+        <p class="sub">We handle everything, end to end.</p>
+        <ul>
+          <li><span class="chk">✓</span>Everything in Express</li>
+          <li><span class="chk">✓</span>Dedicated case handler</li>
+          <li><span class="chk">✓</span>Submission + tracking</li>
+        </ul>
+        <a href="{{ url('/apply') }}?tier=premium" class="btn btn--ghost">Get my Premium quote →</a>
+      </div>
+    </div>
+
     <div class="dct-grid">
 
+      @if (false) {{-- legacy free wizard — gated behind tiers above --}}
       <div class="checker reveal" id="dct-card">
         <div class="stub"><span>Document checklist</span><span>Free &middot; no sign-up</span></div>
         <div class="cbody">
@@ -339,6 +417,7 @@
 
         </div>
       </div>
+      @endif
 
       {{-- COMPLIANCE STRIP — shield badge + text (pick A) --}}
       <div class="compliance reveal">
@@ -361,7 +440,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Know what you need — then let's sort it</h2>
-  <p style="max-width:52ch;color:#cdd9e1">Get your checklist free, then start your application when you're ready. A UK-based team checks every case before anything is submitted.</p>
+  <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents — or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
   <div class="row">
     <a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a>
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
