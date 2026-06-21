@@ -163,7 +163,7 @@ left blank — blank simply turns that feature off (the app degrades gracefully)
 | `UKV_DOC_RETENTION_DAYS` | `90` | GDPR: days after order closure before uploaded docs are purged |
 | `UKV_PHONE` | `+44 20 1234 5678` | **(optional)** display number; blank = placeholder |
 | `UKV_PHONE_E164` | `+442012345678` | **(optional)** for `tel:` links |
-| `UKV_WHATSAPP` | `442012345678` | **(optional)** wa.me number, digits only |
+| `UKV_WHATSAPP` | `442012345678` | wa.me number, digits only. **Powers the home hero "Chat to our UK team" form + every wa.me link. Blank → `440000000000` placeholder = dead chat. Set the real WhatsApp business number before launch.** |
 | `UKV_EMAIL` | `hello@yourdomain.com` | **(optional)** public enquiries address |
 
 ### Document-checklist tool (UKV_CHECKLIST_*) — all optional, sensible defaults
@@ -463,4 +463,5 @@ before deleting.
 - [ ] Full smoke test passed in test mode (Phase 8)
 - [ ] ICO + HubSpot rotation + GDPR/VAT/OISC sign-offs (Phase 9, #215/#181/#124/#125/#130)
 - [ ] 2FA enforced on admin (#197)
+- [ ] **Real WhatsApp number set** (`UKV_WHATSAPP`) — home hero chat form + all wa.me links; blank = `440000000000` dead-chat placeholder
 - [ ] DNS cutover + verified + WordPress retired (Phase 10, #189)
