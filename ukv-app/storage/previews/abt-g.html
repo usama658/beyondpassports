@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant G (Magazine editorial spread)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:90px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- editorial masthead ---- */
+.masthead{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;
+  padding-bottom:22px;margin-bottom:54px;border-bottom:2px solid var(--ink)}
+.masthead .lead-eyebrow{display:flex;align-items:baseline;gap:18px}
+.issue-no{font-size:62px;font-weight:800;line-height:.8;letter-spacing:-.04em;color:var(--ink);
+  font-feature-settings:"tnum"}
+.masthead .label{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--stamp-text)}
+.masthead .label small{display:block;color:var(--muted);font-weight:600;letter-spacing:.16em;margin-top:6px}
+.masthead h2{margin:0;text-align:right;max-width:430px;font-size:clamp(24px,2.8vw,34px);
+  line-height:1.08;font-weight:800;letter-spacing:-.02em}
+
+/* ---- feature spread ---- */
+.feature{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;margin-bottom:30px}
+.feature-portrait{position:relative}
+.feature-portrait .frame{position:relative;border-radius:8px;overflow:hidden;
+  box-shadow:0 40px 80px -50px rgba(22,34,46,.7);aspect-ratio:4/5;background:#dfe6ee}
+.feature-portrait .frame img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02)}
+.feature-portrait .stamp{position:absolute;bottom:-18px;left:-18px;background:var(--stamp);color:#fff;
+  font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:9px 14px;border-radius:6px;
+  transform:rotate(-5deg);box-shadow:0 14px 28px -14px rgba(46,154,140,.8),inset 0 0 0 2px rgba(255,255,255,.18)}
+.feature-body .kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 22px}
+.feature-body .kicker::after{content:"";display:block;width:46px;height:2px;background:var(--stamp);margin-top:14px;opacity:.7}
+.pullquote{margin:0 0 26px;font-size:clamp(28px,3.6vw,44px);line-height:1.06;font-weight:800;letter-spacing:-.025em}
+.pullquote .q{color:var(--stamp);font-size:1.1em;vertical-align:-.12em}
+.feature-body .byline{font-size:18px;font-weight:800;letter-spacing:-.01em;margin:0 0 3px}
+.feature-body .byrole{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0}
+
+/* ---- contributors ---- */
+.contributors{margin-top:54px;padding-top:34px;border-top:1px solid var(--paper-edge)}
+.contributors .col-head{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin:0 0 22px}
+.contrib-row{display:flex;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--paper-edge)}
+.contrib-row:last-child{border-bottom:0}
+.contrib-photo{width:66px;height:66px;border-radius:50%;overflow:hidden;flex:none;
+  box-shadow:0 0 0 1px var(--paper-edge),0 14px 26px -16px rgba(22,34,46,.5)}
+.contrib-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.contrib-meta{min-width:230px;flex:none}
+.contrib-meta .cname{font-size:17px;font-weight:800;letter-spacing:-.01em;margin:0 0 2px}
+.contrib-meta .crole{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text);margin:0}
+.contrib-bio{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+
+/* ---- where we work plate ---- */
+.plate{margin-top:64px}
+.plate .plate-eyebrow{display:flex;align-items:baseline;gap:18px;margin-bottom:20px}
+.plate .plate-eyebrow .pno{font-size:34px;font-weight:800;line-height:.8;letter-spacing:-.03em}
+.plate .plate-eyebrow .ptxt{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--stamp-text)}
+.plate-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:stretch}
+.plate-frame{position:relative;border-radius:8px;overflow:hidden;min-height:330px;
+  box-shadow:0 40px 80px -52px rgba(22,34,46,.7);border:8px solid var(--white);outline:1px solid var(--paper-edge)}
+.plate-frame iframe{border:0;width:100%;height:100%;display:block;min-height:314px}
+.plate-cap{position:absolute;left:0;bottom:0;right:0;padding:14px 18px;
+  background:linear-gradient(0deg,rgba(22,34,46,.82),rgba(22,34,46,0));
+  color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.plate-cap b{font-weight:800;color:var(--on-dark)}
+.plate-info{display:flex;flex-direction:column;justify-content:center;padding:6px 0}
+.plate-info h3{margin:0 0 18px;font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.address{font-style:normal;font-size:16px;line-height:1.7}
+.address .company{font-weight:800}
+.address .ph{color:var(--muted)}
+.hours{margin-top:20px;display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--stamp-text);
+  border:1px solid rgba(46,154,140,.4);border-radius:999px;padding:8px 15px;align-self:flex-start}
+.hours .dot{width:8px;height:8px;border-radius:50%;background:var(--stamp)}
+
+@media(max-width:880px){
+  .wrap{padding:0 26px}.abt{padding:58px 0}
+  .masthead{flex-direction:column;align-items:flex-start;gap:18px}
+  .masthead h2{text-align:left}
+  .feature{grid-template-columns:1fr;gap:40px}
+  .feature-portrait{max-width:360px}
+  .contrib-row{flex-wrap:wrap;gap:14px}
+  .contrib-meta{min-width:0}
+  .contrib-bio{flex-basis:100%}
+  .plate-grid{grid-template-columns:1fr}
+  .plate-frame{min-height:280px}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+
+    <header class="masthead">
+      <div class="lead-eyebrow">
+        <span class="issue-no">01</span>
+        <span class="label">The team<small>Real people checking your application</small></span>
+      </div>
+      <h2>A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</h2>
+    </header>
+
+    <div class="feature">
+      <div class="feature-portrait">
+        <div class="frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" loading="lazy" alt="Sarah Whitfield"></div>
+        <span class="stamp">Case lead</span>
+      </div>
+      <div class="feature-body">
+        <p class="kicker">Meet the lead</p>
+        <blockquote class="pullquote"><span class="q">&ldquo;</span>Personally checks every application before it&rsquo;s submitted &mdash; nothing outsourced.<span class="q">&rdquo;</span></blockquote>
+        <p class="byline">Sarah Whitfield</p>
+        <p class="byrole">UK Case Lead</p>
+      </div>
+    </div>
+
+    <div class="contributors">
+      <p class="col-head">With contributions from</p>
+
+      <div class="contrib-row">
+        <div class="contrib-photo"><img src="https://randomuser.me/api/portraits/men/52.jpg" loading="lazy" alt="James Okonkwo"></div>
+        <div class="contrib-meta">
+          <p class="cname">James Okonkwo</p>
+          <p class="crole">Senior Document Reviewer</p>
+        </div>
+        <p class="contrib-bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+      </div>
+
+      <div class="contrib-row">
+        <div class="contrib-photo"><img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" alt="Priya Sharma"></div>
+        <div class="contrib-meta">
+          <p class="cname">Priya Sharma</p>
+          <p class="crole">Client Support Lead</p>
+        </div>
+        <p class="contrib-bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+      </div>
+    </div>
+
+    <div class="plate">
+      <div class="plate-eyebrow"><span class="pno">02</span><span class="ptxt">Where we are</span></div>
+      <div class="plate-grid">
+        <div class="plate-frame">
+          <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%"></iframe>
+          <div class="plate-cap">Where we work &mdash; <b>Central London</b></div>
+        </div>
+        <div class="plate-info">
+          <h3>A UK-based team you can reach</h3>
+          <address class="address">
+            <span class="company">Beyond Passports Ltd</span><br>
+            <span class="ph">1 Example Street</span><br>
+            London EC1A 1AA &middot; United Kingdom
+          </address>
+          <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

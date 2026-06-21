@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant H (Elevated glass cards on gradient mesh)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:84px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- gradient mesh panel ---- */
+.mesh{position:relative;border-radius:28px;overflow:hidden;padding:64px 56px 70px;
+  background:
+    radial-gradient(120% 130% at 8% 0%, rgba(46,154,140,.28), transparent 55%),
+    radial-gradient(110% 120% at 100% 12%, rgba(21,94,122,.34), transparent 58%),
+    radial-gradient(140% 140% at 70% 110%, rgba(121,207,194,.30), transparent 60%),
+    linear-gradient(150deg,#15333f 0%, #16222E 60%, #102a36 100%);
+  box-shadow:0 50px 110px -60px rgba(16,34,46,.85)}
+.mesh::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 60% at 50% 0%,rgba(255,255,255,.06),transparent 70%)}
+.mesh>*{position:relative;z-index:1}
+
+.head{max-width:640px;margin:0 0 44px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--on-dark);opacity:.7}
+.head h2{margin:0 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em;color:#fff}
+.head p{margin:0;color:rgba(233,242,246,.8);font-size:17px;line-height:1.62}
+
+/* ---- glass cards ---- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.glass{position:relative;border-radius:22px;padding:36px 30px 32px;
+  background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.28);
+  display:flex;flex-direction:column;align-items:center;text-align:center}
+.glass.lead{background:linear-gradient(160deg,rgba(121,207,194,.30),rgba(46,154,140,.10));
+  border:1px solid rgba(121,207,194,.5)}
+.lead-chip{position:absolute;top:18px;right:18px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#063e37;background:var(--on-dark);border-radius:999px;padding:5px 11px;box-shadow:0 6px 16px -6px rgba(121,207,194,.9)}
+.gphoto{width:96px;height:96px;border-radius:50%;overflow:hidden;margin-bottom:20px;
+  box-shadow:0 16px 34px -16px rgba(0,0,0,.7), 0 0 0 4px rgba(255,255,255,.10)}
+.glass.lead .gphoto{width:112px;height:112px;box-shadow:0 18px 38px -16px rgba(46,154,140,.9), 0 0 0 4px var(--on-dark)}
+.gphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.glass .name{margin:0 0 4px;font-size:18px;font-weight:800;letter-spacing:-.01em;color:#fff}
+.glass.lead .name{font-size:21px}
+.glass .role{margin:0 0 16px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark)}
+.glass .bio{margin:0;color:rgba(233,242,246,.84);font-size:14.5px;line-height:1.58}
+.glass.lead .bio{font-size:15px}
+
+/* ---- glass map frame ---- */
+.loc{margin-top:26px;position:relative;border-radius:22px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.22);padding:14px;
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.26)}
+.loc .loc-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark);margin:6px 6px 16px}
+.loc .loc-eyebrow::before{content:"";width:22px;height:1px;background:var(--on-dark);opacity:.7}
+.map-shell{position:relative;border-radius:16px;overflow:hidden;min-height:360px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.map-shell iframe{border:0;width:100%;height:100%;display:block;min-height:360px}
+.addr-chip{position:absolute;left:18px;bottom:18px;max-width:300px;
+  background:rgba(22,34,46,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 20px;color:#fff;
+  box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+.addr-chip h3{margin:0 0 10px;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.address{font-style:normal;font-size:14px;line-height:1.6;color:rgba(233,242,246,.92)}
+.address .company{font-weight:800;color:#fff}
+.address .ph{color:rgba(233,242,246,.72)}
+.hours{margin-top:14px;display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;color:#063e37;
+  background:var(--on-dark);border-radius:999px;padding:7px 13px}
+.hours .dot{width:7px;height:7px;border-radius:50%;background:#063e37}
+
+@media(max-width:880px){
+  .wrap{padding:0 20px}.abt{padding:54px 0}
+  .mesh{padding:44px 26px 50px;border-radius:22px}
+  .team{grid-template-columns:1fr;gap:18px}
+  .glass.lead .gphoto{width:96px;height:96px}
+  .map-shell{min-height:300px}.map-shell iframe{min-height:300px}
+  .addr-chip{left:14px;right:14px;bottom:14px;max-width:none}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+    <div class="mesh">
+
+      <div class="head">
+        <p class="eyebrow">The team</p>
+        <h2>Real people checking your application</h2>
+        <p>Your application isn&rsquo;t passed through software and forgotten. A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</p>
+      </div>
+
+      <div class="team">
+        <article class="glass lead">
+          <span class="lead-chip">Case lead</span>
+          <div class="gphoto"><img src="https://randomuser.me/api/portraits/women/68.jpg" loading="lazy" alt="Sarah Whitfield"></div>
+          <p class="name">Sarah Whitfield</p>
+          <p class="role">UK Case Lead</p>
+          <p class="bio">Personally checks every application before it&rsquo;s submitted &mdash; nothing outsourced.</p>
+        </article>
+
+        <article class="glass">
+          <div class="gphoto"><img src="https://randomuser.me/api/portraits/men/52.jpg" loading="lazy" alt="James Okonkwo"></div>
+          <p class="name">James Okonkwo</p>
+          <p class="role">Senior Document Reviewer</p>
+          <p class="bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+        </article>
+
+        <article class="glass">
+          <div class="gphoto"><img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" alt="Priya Sharma"></div>
+          <p class="name">Priya Sharma</p>
+          <p class="role">Client Support Lead</p>
+          <p class="bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+        </article>
+      </div>
+
+      <div class="loc">
+        <p class="loc-eyebrow">Where we are</p>
+        <div class="map-shell">
+          <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%"></iframe>
+          <div class="addr-chip">
+            <h3>A UK-based team you can reach</h3>
+            <address class="address">
+              <span class="company">Beyond Passports Ltd</span><br>
+              <span class="ph">1 Example Street</span><br>
+              London EC1A 1AA &middot; United Kingdom
+            </address>
+            <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

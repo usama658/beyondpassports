@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant F (Bento: team tiles + map tile)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:84px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- section head ---- */
+.head{max-width:680px;margin:0 0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head h2{margin:0 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
+
+/* ---- bento grid ---- */
+.bento{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-auto-rows:1fr;gap:20px}
+.tile{position:relative;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 24px 48px -38px rgba(22,34,46,.4);overflow:hidden}
+
+/* lead tile spans two rows on the left */
+.tile-lead{grid-row:span 2;display:flex;flex-direction:column;padding:34px 32px;
+  border:1px solid rgba(46,154,140,.5);
+  box-shadow:0 1px 2px rgba(22,34,46,.06),0 28px 54px -34px rgba(46,154,140,.45)}
+.tile-lead::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--stamp),var(--cta))}
+.lead-tag{position:absolute;top:26px;right:26px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--stamp-text);border:1.5px solid rgba(46,154,140,.45);border-radius:7px;padding:5px 9px;transform:rotate(-4deg);
+  box-shadow:inset 0 0 0 3px rgba(46,154,140,.08);background:var(--white)}
+.tile-lead .photo{width:108px;height:108px;border-radius:50%;overflow:hidden;border:2px solid var(--stamp);
+  box-shadow:0 12px 24px -12px rgba(46,154,140,.6), 0 0 0 6px rgba(46,154,140,.07);margin-bottom:4px}
+.tile-lead .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tile-lead .name{margin:22px 0 4px;font-size:23px;font-weight:800;letter-spacing:-.02em}
+.tile-lead .role{margin:0 0 16px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
+.tile-lead .bio{margin:0;color:var(--muted);font-size:16px;line-height:1.6}
+
+/* member tiles */
+.tile-m{display:flex;flex-direction:column;padding:28px 28px}
+.tile-m .photo{width:58px;height:58px;border-radius:50%;overflow:hidden;border:2px solid var(--stamp);
+  box-shadow:0 8px 18px -10px rgba(46,154,140,.55), 0 0 0 5px rgba(46,154,140,.07)}
+.tile-m .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tile-m .name{margin:16px 0 3px;font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+.tile-m .role{margin:0 0 11px;font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--stamp-text)}
+.tile-m .bio{margin:0;color:var(--muted);font-size:13.5px;line-height:1.52}
+
+/* map tile spans the remaining two columns of the second row */
+.tile-map{grid-column:span 2;position:relative;min-height:240px;display:flex;flex-direction:column}
+.tile-map .map-frame{position:relative;flex:1;min-height:200px}
+.tile-map iframe{border:0;width:100%;height:100%;display:block}
+.map-caption{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 24px;
+  border-top:1px solid var(--paper-edge);background:var(--white)}
+.map-caption .loc-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);margin:0}
+.map-caption .addr{font-size:13.5px;color:var(--ink);line-height:1.4}
+.map-caption .addr b{font-weight:800}
+.map-caption .hours{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);
+  border:1px solid rgba(46,154,140,.4);border-radius:999px;padding:6px 13px}
+.map-caption .hours .dot{width:7px;height:7px;border-radius:50%;background:var(--stamp)}
+
+@media(max-width:880px){
+  .wrap{padding:0 26px}.abt{padding:60px 0}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .tile-lead{grid-row:auto}
+  .tile-map{grid-column:auto;min-height:300px}
+  .tile-map .map-frame{min-height:240px}
+  .map-caption .hours{margin-left:0}
+  .lead-tag{position:static;display:inline-block;transform:none;margin-bottom:14px;align-self:flex-start}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The team</p>
+      <h2>Real people checking your application</h2>
+      <p>Your application isn't passed through software and forgotten. A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</p>
+    </div>
+
+    <div class="bento">
+      <article class="tile tile-lead">
+        <span class="lead-tag">Case lead</span>
+        <div class="photo"><img src="https://randomuser.me/api/portraits/women/68.jpg" loading="lazy" alt="Sarah Whitfield"></div>
+        <p class="name">Sarah Whitfield</p>
+        <p class="role">UK Case Lead</p>
+        <p class="bio">Personally checks every application before it's submitted &mdash; nothing outsourced.</p>
+      </article>
+
+      <article class="tile tile-m">
+        <div class="photo"><img src="https://randomuser.me/api/portraits/men/52.jpg" loading="lazy" alt="James Okonkwo"></div>
+        <p class="name">James Okonkwo</p>
+        <p class="role">Senior Document Reviewer</p>
+        <p class="bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+      </article>
+
+      <article class="tile tile-m">
+        <div class="photo"><img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" alt="Priya Sharma"></div>
+        <p class="name">Priya Sharma</p>
+        <p class="role">Client Support Lead</p>
+        <p class="bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+      </article>
+
+      <article class="tile tile-map">
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%"></iframe>
+        </div>
+        <div class="map-caption">
+          <p class="loc-eyebrow">Where we are</p>
+          <p class="addr"><b>Beyond Passports Ltd</b> · 1 Example Street, London EC1A 1AA · United Kingdom</p>
+          <span class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</body>
+</html>

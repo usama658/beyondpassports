@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team contact — previews 2</title>
+<style>
+  :root{
+    --ink:#16222E;--navy:#16222E;--stamp:#2E9A8C;--cta:#155E7A;--stamp-text:#1F6E63;
+    --paper-edge:#dde3ec;--white:#fff;--muted:#5d6b76;--paper:#F4F6FA;--wa:#1FA855;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .lbl{max-width:1080px;margin:54px auto 0;padding:0 28px}
+  .lbl span{display:inline-block;background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:7px}
+  .lbl .note{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+  .abt{padding:42px 0 16px}
+  .head{max-width:680px;margin-bottom:34px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+  .head h2{margin:0 0 12px;font-size:34px;line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+  .head p{margin:0;color:var(--muted);font-size:16px;line-height:1.6}
+  svg.ic{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+  /* ===== D — roster rows ===== */
+  .d .roster{display:flex;flex-direction:column;gap:14px}
+  .d .row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;background:var(--white);
+    border:1px solid var(--paper-edge);border-radius:16px;padding:22px 26px;
+    box-shadow:0 1px 2px rgba(22,34,46,.05),0 24px 46px -42px rgba(22,34,46,.4)}
+  .d .row.lead{border-color:rgba(46,154,140,.4)}
+  .d .av{width:66px;height:66px;border-radius:50%;overflow:hidden;background:#e8edf3;border:1px solid var(--paper-edge)}
+  .d .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .d .who .nm{font-size:18px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .d .who .pill{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);border:1.5px solid var(--stamp);border-radius:999px;padding:3px 9px}
+  .d .who .rl{margin:3px 0 5px;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--stamp-text)}
+  .d .who .bo{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5;max-width:440px}
+  .d .acts{display:flex;gap:9px}
+  .d .acts a{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;border:1px solid var(--paper-edge);background:#fbfcfe;text-decoration:none;transition:.15s}
+  .d .acts a:hover{border-color:var(--stamp);transform:translateY(-1px)}
+  .d .acts a svg{width:18px;height:18px;stroke:var(--stamp-text)}
+  .d .acts a.wa svg{stroke:#1FA855}
+  @media(max-width:760px){.d .row{grid-template-columns:auto 1fr;gap:16px}.d .acts{grid-column:1/-1;justify-content:flex-start}}
+
+  /* ===== E — unified contact panel ===== */
+  .e .panel{display:grid;grid-template-columns:1.1fr 1fr;background:var(--white);border:1px solid var(--paper-edge);
+    border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -42px rgba(22,34,46,.42)}
+  .e .left{padding:40px 40px 36px}
+  .e .left h3{margin:0 0 8px;font-size:24px;font-weight:800;letter-spacing:-.02em}
+  .e .left p{margin:0 0 24px;color:var(--muted);font-size:15px;line-height:1.55}
+  .e .people{display:flex;flex-direction:column;gap:14px}
+  .e .p{display:flex;align-items:center;gap:14px}
+  .e .p .av{width:48px;height:48px;border-radius:50%;overflow:hidden;background:#e8edf3;border:1px solid var(--paper-edge);flex:none}
+  .e .p .av img{width:100%;height:100%;object-fit:cover}
+  .e .p .nm{font-size:15px;font-weight:700}
+  .e .p .ml{font-size:13px;color:var(--stamp-text);text-decoration:none}
+  .e .right{padding:40px 38px;background:linear-gradient(150deg,#0f3b34,#155E7A);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .e .right .lab{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .e .right .big{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:-6px 0 2px}
+  .e .right a.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 20px;border-radius:11px;box-shadow:0 14px 28px -14px rgba(31,168,85,.7)}
+  .e .right a.btn svg{width:19px;height:19px;fill:#fff}
+  .e .right a.mailrow{display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:14.5px;font-weight:600;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
+  .e .right a.mailrow svg{width:17px;height:17px;stroke:#fff}
+  @media(max-width:760px){.e .panel{grid-template-columns:1fr}}
+
+  /* ===== F — premium dark cards ===== */
+  .f .team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .f .card{position:relative;background:linear-gradient(170deg,#1a2a36,#101b25);border-radius:18px;padding:30px 26px;color:#fff;
+    border:1px solid rgba(255,255,255,.07);box-shadow:0 30px 60px -38px rgba(0,0,0,.6)}
+  .f .card::before{content:"";position:absolute;inset:0 0 auto;height:3px;border-radius:18px 18px 0 0;background:linear-gradient(90deg,var(--stamp),var(--cta))}
+  .f .card.lead{border-color:rgba(46,154,140,.5)}
+  .f .tag{position:absolute;top:18px;right:18px;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7fe3d3;border:1px solid rgba(46,154,140,.5);border-radius:999px;padding:4px 10px}
+  .f .av{width:78px;height:78px;border-radius:50%;overflow:hidden;border:2px solid rgba(46,154,140,.5)}
+  .f .av img{width:100%;height:100%;object-fit:cover}
+  .f .nm{margin:18px 0 3px;font-size:18px;font-weight:800;letter-spacing:-.01em}
+  .f .rl{margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#6fd8c7}
+  .f .bo{margin:0 0 18px;color:rgba(255,255,255,.66);font-size:13.5px;line-height:1.55}
+  .f .acts{display:flex;gap:9px;border-top:1px solid rgba(255,255,255,.1);padding-top:16px}
+  .f .acts a{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;text-decoration:none;color:#dfe7ec;
+    border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 13px;transition:.15s}
+  .f .acts a:hover{border-color:var(--stamp);color:#fff}
+  .f .acts a svg{width:14px;height:14px;stroke:#7fe3d3}
+  .f .acts a.wa svg{stroke:#3ddc84}
+  @media(max-width:880px){.f .team{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<!-- ===== D ===== -->
+<div class="lbl"><span>Variant D — roster rows</span><div class="note">Full-width directory rows: photo · name/role/bio · contact buttons. Premium, formal, scales to more people.</div></div>
+<section class="abt d"><div class="wrap">
+  <div class="head"><p class="eyebrow">The team</p><h2>Real people checking your application</h2><p>A small UK-based team reviews every file by hand — reach any of them directly.</p></div>
+  <div class="roster">
+    <div class="row lead"><div class="av"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""></div>
+      <div class="who"><div class="nm">Sarah Whitfield <span class="pill">Case lead</span></div><div class="rl">UK Case Lead</div><p class="bo">Personally checks every application before it is submitted — nothing outsourced.</p></div>
+      <div class="acts"><a href="mailto:sarah@beyondpassports.co.uk" title="Email"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a class="wa" href="https://wa.me/447700900123" title="WhatsApp"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg></a></div></div>
+    <div class="row"><div class="av"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt=""></div>
+      <div class="who"><div class="nm">James Okonkwo</div><div class="rl">Senior Document Reviewer</div><p class="bo">Reviews funds evidence, validity and consistency — the things that get applications refused.</p></div>
+      <div class="acts"><a href="mailto:james@beyondpassports.co.uk" title="Email"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a class="wa" href="https://wa.me/447700900123" title="WhatsApp"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg></a></div></div>
+    <div class="row"><div class="av"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""></div>
+      <div class="who"><div class="nm">Priya Sharma</div><div class="rl">Client Support Lead</div><p class="bo">Keeps you updated at every step, from first check to delivered authorisation.</p></div>
+      <div class="acts"><a href="mailto:priya@beyondpassports.co.uk" title="Email"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a class="wa" href="https://wa.me/447700900123" title="WhatsApp"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg></a></div></div>
+  </div>
+</div></section>
+
+<!-- ===== E ===== -->
+<div class="lbl"><span>Variant E — unified contact panel</span><div class="note">People list on the left, one shared team inbox + WhatsApp CTA on the right. Compact, conversion-focused.</div></div>
+<section class="abt e"><div class="wrap">
+  <div class="head"><p class="eyebrow">The team</p><h2>Real people checking your application</h2><p>A small UK-based team reviews every file by hand.</p></div>
+  <div class="panel">
+    <div class="left">
+      <h3>Who you'll deal with</h3><p>The same people, start to finish — not a call centre.</p>
+      <div class="people">
+        <div class="p"><div class="av"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""></div><div><div class="nm">Sarah Whitfield · <span style="font-weight:600;color:var(--muted)">UK Case Lead</span></div><a class="ml" href="mailto:sarah@beyondpassports.co.uk">sarah@beyondpassports.co.uk</a></div></div>
+        <div class="p"><div class="av"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt=""></div><div><div class="nm">James Okonkwo · <span style="font-weight:600;color:var(--muted)">Document Reviewer</span></div><a class="ml" href="mailto:james@beyondpassports.co.uk">james@beyondpassports.co.uk</a></div></div>
+        <div class="p"><div class="av"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""></div><div><div class="nm">Priya Sharma · <span style="font-weight:600;color:var(--muted)">Client Support</span></div><a class="ml" href="mailto:priya@beyondpassports.co.uk">priya@beyondpassports.co.uk</a></div></div>
+      </div>
+    </div>
+    <div class="right">
+      <div><div class="lab">Fastest way to reach us</div><div class="big">WhatsApp the team</div></div>
+      <a class="btn" href="https://wa.me/447700900123"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>+44 7700 900123</a>
+      <a class="mailrow" href="mailto:hello@beyondpassports.co.uk"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@beyondpassports.co.uk</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== F ===== -->
+<div class="lbl"><span>Variant F — premium dark cards</span><div class="note">Dark, high-contrast cards with teal accents + contact chips. Boldest, most "premium agency".</div></div>
+<section class="abt f"><div class="wrap">
+  <div class="head"><p class="eyebrow">The team</p><h2>Real people checking your application</h2><p>A small UK-based team reviews every file by hand — and you can reach them directly.</p></div>
+  <div class="team">
+    <div class="card lead"><span class="tag">Case lead</span><div class="av"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""></div>
+      <div class="nm">Sarah Whitfield</div><div class="rl">UK Case Lead</div><p class="bo">Personally checks every application before it is submitted — nothing outsourced.</p>
+      <div class="acts"><a href="mailto:sarah@beyondpassports.co.uk"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a><a class="wa" href="https://wa.me/447700900123"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg>WhatsApp</a></div></div>
+    <div class="card"><div class="av"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt=""></div>
+      <div class="nm">James Okonkwo</div><div class="rl">Senior Document Reviewer</div><p class="bo">Reviews funds evidence, validity and consistency — the things that get applications refused.</p>
+      <div class="acts"><a href="mailto:james@beyondpassports.co.uk"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a><a class="wa" href="https://wa.me/447700900123"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg>WhatsApp</a></div></div>
+    <div class="card"><div class="av"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""></div>
+      <div class="nm">Priya Sharma</div><div class="rl">Client Support Lead</div><p class="bo">Keeps you updated at every step, from first check to delivered authorisation.</p>
+      <div class="acts"><a href="mailto:priya@beyondpassports.co.uk"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a><a class="wa" href="https://wa.me/447700900123"><svg class="ic" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 21l1.9-5.5a8.5 8.5 0 1 1 16.1-4z"/></svg>WhatsApp</a></div></div>
+  </div>
+</div></section>
+
+<div style="height:70px"></div>
+</body></html>

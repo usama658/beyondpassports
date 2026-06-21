@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Money-section A (Inset file-check card)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.msec{padding:80px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* The inset framed document card */
+.filecard{
+  position:relative;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:16px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -38px rgba(22,34,46,.45);
+  padding:54px 56px 44px;overflow:hidden;
+}
+/* subtle teal hairline at the very top edge */
+.filecard::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,var(--stamp),var(--cta));opacity:.9;
+}
+/* passport-stamp corner accent */
+.stamp-accent{
+  position:absolute;top:30px;right:36px;
+  border:2px solid rgba(46,154,140,.45);color:var(--stamp-text);
+  border-radius:9px;padding:8px 14px;transform:rotate(-6deg);
+  font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  box-shadow:inset 0 0 0 3px rgba(46,154,140,.08);opacity:.85;
+}
+
+.head{max-width:680px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head h2{margin:0 0 14px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
+
+/* ticked check rows */
+.checks{margin:38px 0 6px;border-top:1px solid var(--paper-edge)}
+.row{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:24px 4px;border-bottom:1px solid var(--paper-edge);
+}
+.medallion{
+  flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;
+  background:var(--white);border:2px solid var(--stamp);
+  box-shadow:0 8px 18px -9px rgba(46,154,140,.55), 0 0 0 6px rgba(46,154,140,.07);
+}
+.medallion svg{width:24px;height:24px;stroke:var(--stamp-text);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.row-text h3{margin:2px 0 6px;font-size:18px;font-weight:700;letter-spacing:-.01em}
+.row-text p{margin:0;color:var(--muted);font-size:15px;line-height:1.55;max-width:560px}
+
+/* CTA row */
+.foot{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  margin-top:34px;
+}
+.foot .note{color:var(--muted);font-size:13.5px;max-width:340px}
+.cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:14px 24px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 14px 26px -14px rgba(21,94,122,.8)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--stamp-text);border-color:rgba(46,154,140,.4)}
+.btn-ghost:hover{border-color:var(--stamp-text)}
+
+@media(max-width:760px){
+  .wrap{padding:0 22px}.msec{padding:54px 0}
+  .filecard{padding:40px 26px 34px}
+  .stamp-accent{display:none}
+  .foot{flex-direction:column;align-items:stretch}
+  .cta{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="msec">
+  <div class="wrap">
+    <div class="filecard">
+      <div class="stamp-accent">Checked &amp; Ready</div>
+      <div class="head">
+        <p class="eyebrow">Built to prevent refusals</p>
+        <h2>Most Turkey refusals come down to a few fixable things</h2>
+        <p>Turkey applications usually get refused for the same avoidable reasons — unclear funds evidence, missing documents, inconsistent details. We check for every one before we submit, and a real UK person reviews the whole file.</p>
+      </div>
+
+      <div class="checks">
+        <div class="row">
+          <div class="medallion">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="row-text">
+            <h3>Eligibility</h3>
+            <p>We confirm you qualify before you pay.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="medallion">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+          </div>
+          <div class="row-text">
+            <h3>Documents</h3>
+            <p>Checked for history, source and consistency.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="medallion">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="row-text">
+            <h3>Pre-submission QA</h3>
+            <p>A real UK person reviews the whole file before it's submitted.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <p class="note">We remove the avoidable causes of refusal. Process, not promises.</p>
+        <div class="cta">
+          <a class="btn btn-ghost" href="#">See the Turkey document checklist &#8594;</a>
+          <a class="btn btn-primary" href="#">Start my Turkey application &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant E (Security checkpoint / shield)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--navy);color:#eaf3f4}
+
+.band-e{position:relative;padding:104px 0;overflow:hidden}
+/* scanning grid texture */
+.band-e::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(121,207,194,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(121,207,194,.06) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(120% 80% at 22% 30%,#000 35%,transparent 78%);
+  mask-image:radial-gradient(120% 80% at 22% 30%,#000 35%,transparent 78%);
+}
+.band-e::after{
+  content:"";position:absolute;left:-10%;top:-30%;width:60%;height:160%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(46,154,140,.28),transparent 70%);filter:blur(8px);
+}
+.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 64px}
+
+.grid-e{display:grid;grid-template-columns:minmax(300px,420px) minmax(0,1fr);gap:72px;align-items:center}
+
+/* shield motif */
+.shieldwrap{position:relative;display:grid;place-items:center;min-height:380px}
+.ring{position:absolute;width:340px;height:340px;border-radius:50%;border:1px solid rgba(121,207,194,.22)}
+.ring.r2{width:280px;height:280px;border-style:dashed;border-color:rgba(121,207,194,.18)}
+.ring.r3{width:210px;height:210px;border-color:rgba(121,207,194,.3)}
+.shield{position:relative;width:188px;height:222px;filter:drop-shadow(0 26px 50px rgba(0,0,0,.5))}
+.shield svg{width:100%;height:100%}
+.shield .plate{fill:url(#g1);stroke:rgba(121,207,194,.55);stroke-width:2}
+.shield .tick{fill:none;stroke:#bff3e9;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.scanline{position:absolute;left:50%;top:50%;width:206px;height:2px;transform:translate(-50%,-50%);
+  background:linear-gradient(90deg,transparent,var(--on-dark),transparent);opacity:.8;
+  animation:scan 3.4s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translate(-50%,-86px)}50%{transform:translate(-50%,86px)}}
+@media(prefers-reduced-motion:reduce){.scanline{animation:none}}
+
+/* content side */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark);margin:0 0 18px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--on-dark);opacity:.7}
+.head h2{margin:0 0 14px;font-size:clamp(30px,3.9vw,50px);line-height:1.04;font-weight:800;letter-spacing:-.025em;color:#fff}
+.head p{margin:0 0 30px;color:var(--soft);font-size:18px;line-height:1.6;max-width:48ch}
+
+/* clearance list — security gates */
+.clearance{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:12px}
+.gate{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;
+  padding:16px 20px;border-radius:13px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(121,207,194,.16);
+  backdrop-filter:blur(2px);
+}
+.gate .tick{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:rgba(46,154,140,.18);border:1.5px solid var(--stamp);
+}
+.gate .tick svg{width:18px;height:18px;stroke:var(--on-dark);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gate .txt b{display:block;font-size:16.5px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.gate .txt span{display:block;margin-top:3px;font-size:13.5px;line-height:1.5;color:var(--soft)}
+.gate .status{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark);white-space:nowrap}
+
+.note{margin:0 0 26px;font-size:13.5px;color:var(--soft);max-width:52ch}
+.note b{color:#cfeee8;font-weight:700}
+
+.cta-e{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:14px 26px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 16px 30px -16px rgba(0,0,0,.7)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--on-dark);border-color:rgba(121,207,194,.4)}
+.btn-ghost:hover{border-color:var(--on-dark)}
+
+@media(max-width:920px){
+  .wrap{padding:0 28px}.band-e{padding:64px 0}
+  .grid-e{grid-template-columns:1fr;gap:40px}
+  .shieldwrap{min-height:300px;order:-1}
+  .ring{width:280px;height:280px}.ring.r2{width:228px;height:228px}.ring.r3{width:176px;height:176px}
+}
+@media(max-width:560px){
+  .gate{grid-template-columns:auto minmax(0,1fr);gap:14px}
+  .gate .status{grid-column:2;justify-self:start}
+  .cta-e{flex-direction:column;align-items:stretch}.btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="band-e">
+  <div class="wrap">
+    <div class="grid-e">
+      <div class="shieldwrap" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <div class="shield">
+          <svg viewBox="0 0 120 142">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1d3340"/>
+                <stop offset="1" stop-color="#11202b"/>
+              </linearGradient>
+            </defs>
+            <path class="plate" d="M60 4 110 22 V70 C110 104 88 126 60 138 C32 126 10 104 10 70 V22 Z"/>
+            <path class="tick" d="M40 71 L55 87 L83 53"/>
+          </svg>
+        </div>
+        <div class="scanline"></div>
+      </div>
+
+      <div>
+        <div class="head">
+          <p class="eyebrow">Cleared before submission</p>
+          <h2>Every file passes our checkpoint first.</h2>
+          <p>Four checks your application must clear — like passing security gates — before a real UK person ever sends it.</p>
+        </div>
+
+        <ul class="clearance">
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Eligibility check first</b><span>We confirm you qualify before you pay — nationality, residence, status and trip.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Documents checked — AI + a real UK person</b><span>Funds evidence, validity and consistency — the things that actually get applications refused.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Pre-submission QA gate</b><span>Nothing is submitted until a real UK person checks the whole file with you.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>We learn from every outcome</b><span>Each result sharpens our checks, so the next application is stronger.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+        </ul>
+
+        <p class="note"><b>We remove the avoidable causes of refusal.</b> Process, not promises — every file is checked by a real UK person before it goes anywhere.</p>
+
+        <div class="cta-e">
+          <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+          <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

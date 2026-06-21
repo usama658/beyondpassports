@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant C (Boarding-pass flightpath)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.band-c{padding:92px 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 56px}
+
+.head-c{text-align:center;max-width:760px;margin:0 auto 14px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before,.eyebrow::after{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head-c h2{margin:0 0 12px;font-size:clamp(30px,3.7vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.head-c p{margin:0;color:var(--muted);font-size:18px;line-height:1.6}
+
+/* boarding-pass card with perforation edge */
+.pass{
+  position:relative;margin-top:48px;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:20px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 24px 50px -34px rgba(22,34,46,.4);
+  overflow:hidden;
+}
+/* top accent strip + stamp */
+.pass-top{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:22px 38px;background:var(--navy);color:var(--white);
+}
+.pass-top .route{display:flex;align-items:center;gap:14px;font-weight:700;letter-spacing:.04em}
+.pass-top .route span{color:var(--on-dark);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.pass-top .route .arrow{color:var(--soft);opacity:.7}
+.stamp{
+  border:2px solid rgba(121,207,194,.6);color:var(--on-dark);
+  border-radius:8px;padding:6px 13px;transform:rotate(-5deg);
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  box-shadow:inset 0 0 0 2px rgba(121,207,194,.12);
+}
+
+/* perforation between top and body */
+.perf{
+  position:relative;height:0;border-top:2px dashed var(--paper-edge);
+}
+.perf::before,.perf::after{
+  content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--paper-edge);
+}
+.perf::before{left:-13px}.perf::after{right:-13px}
+
+/* flightpath body */
+.flight{position:relative;padding:54px 44px 50px}
+/* the dotted flight-path line */
+.flight::before{
+  content:"";position:absolute;left:9%;right:9%;top:88px;height:2px;
+  background-image:linear-gradient(90deg,var(--stamp) 38%,transparent 0);
+  background-size:14px 2px;background-repeat:repeat-x;opacity:.55;
+}
+.nodes{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.node{text-align:center;display:flex;flex-direction:column;align-items:center}
+.dot{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+  background:var(--white);border:2px solid var(--stamp);color:var(--stamp-text);
+  box-shadow:0 8px 18px -8px rgba(46,154,140,.5), 0 0 0 7px rgba(46,154,140,.07);
+  position:relative;
+}
+.dot svg{width:28px;height:28px;stroke:var(--stamp-text);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.dot.done{background:var(--stamp);border-color:var(--stamp)}
+.dot.done svg{stroke:#fff}
+.node .step{margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text)}
+.node h3{margin:7px 0 8px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.node p{margin:0;color:var(--muted);font-size:14px;line-height:1.55;max-width:230px}
+
+/* CTA row inside pass footer */
+.pass-foot{
+  border-top:1px dashed var(--paper-edge);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:26px 44px;background:#fbfdff;
+}
+.pass-foot .note{color:var(--muted);font-size:13.5px;max-width:360px}
+.cta-c{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:14px 24px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 14px 26px -14px rgba(21,94,122,.8)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--stamp-text);border-color:rgba(46,154,140,.4)}
+.btn-ghost:hover{border-color:var(--stamp-text)}
+
+@media(max-width:980px){
+  .wrap{padding:0 28px}.band-c{padding:64px 0}
+  .flight::before{display:none}
+  .nodes{grid-template-columns:1fr 1fr;gap:34px}
+  .pass-foot,.pass-top{padding-left:26px;padding-right:26px}
+  .flight{padding:40px 26px}
+}
+@media(max-width:560px){
+  .nodes{grid-template-columns:1fr}
+  .pass-foot{flex-direction:column;align-items:stretch}
+  .cta-c{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="band-c">
+  <div class="wrap">
+    <div class="head-c">
+      <p class="eyebrow">The prevention flightpath</p>
+      <h2>How we prevent refusals — start to ready.</h2>
+      <p>Every application follows the same route. Four checks, one real UK person, no surprises at the gate.</p>
+    </div>
+
+    <div class="pass">
+      <div class="pass-top">
+        <div class="route">
+          <span>Application</span>
+          <span class="arrow">&#9992;</span>
+          <span>Checks</span>
+          <span class="arrow">&#9992;</span>
+          <span>Ready to submit</span>
+        </div>
+        <div class="stamp">Checked &amp; Ready</div>
+      </div>
+      <div class="perf"></div>
+
+      <div class="flight">
+        <div class="nodes">
+          <div class="node">
+            <div class="dot">
+              <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <span class="step">Step 01</span>
+            <h3>Eligibility check first</h3>
+            <p>We confirm you qualify before you pay — nationality, residence, status and trip.</p>
+          </div>
+
+          <div class="node">
+            <div class="dot">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+            </div>
+            <span class="step">Step 02</span>
+            <h3>Documents checked</h3>
+            <p>AI and a real UK person review funds, validity and consistency — what actually gets applications refused.</p>
+          </div>
+
+          <div class="node">
+            <div class="dot">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <span class="step">Step 03</span>
+            <h3>Pre-submission QA gate</h3>
+            <p>Nothing is submitted until a real UK person has checked the whole file with you.</p>
+          </div>
+
+          <div class="node">
+            <div class="dot done">
+              <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12V6"/><path d="M3 12h6"/></svg>
+            </div>
+            <span class="step">Step 04</span>
+            <h3>We learn from every outcome</h3>
+            <p>Each result sharpens our checks, so the next application is stronger.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pass-foot">
+        <p class="note">We remove the avoidable causes of refusal. Process, not promises — every file is checked by a real UK person.</p>
+        <div class="cta-c">
+          <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+          <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

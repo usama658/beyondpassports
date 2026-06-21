@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Price toggle — ON vs OFF</title>
+<style>
+  :root{--ink:#16222E;--navy:#16222E;--stamp:#2E9A8C;--cta:#155E7A;--stamp-text:#1F6E63;
+    --paper-edge:#dde3ec;--white:#fff;--muted:#5d6b76;--paper:#F4F6FA;--soft:#A9CCDA;--mono:'Outfit';--display:'Outfit';}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .lbl{max-width:1080px;margin:48px auto 0;padding:0 28px}
+  .lbl span{display:inline-block;color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:7px}
+  .lbl .on{background:#1F6E63}.lbl .off{background:#16222E}
+  .lbl .note{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cta);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 20px;border-radius:11px;width:100%}
+  .btn--ghost{background:transparent;color:var(--cta);border:1.5px solid var(--cta)}
+
+  /* tier cards */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;margin-top:8px}
+  .tier{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;padding:26px 24px;position:relative}
+  .tier.feat{background:var(--navy);border-color:var(--navy)}
+  .tier.feat .name{color:var(--soft)}.tier.feat .price,.tier.feat .qline{color:#fff}.tier.feat .sub{color:#cfd4d8}.tier.feat li{color:#e4e7ea}.tier.feat li .chk{color:var(--soft)}
+  .tier .badge{position:absolute;top:-12px;left:24px;background:var(--soft);color:var(--navy);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:20px}
+  .tier .name{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
+  .tier .price{font-size:42px;font-weight:800;letter-spacing:-.02em;color:var(--navy);line-height:1}
+  .tier .price small{font-size:13px;color:var(--muted);font-weight:400}
+  .tier .qline{font-size:20px;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+  .tier .qline small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:4px;letter-spacing:0}
+  .tier .sub{font-size:14px;color:var(--muted);margin:6px 0 18px}
+  .tier ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
+  .tier li{position:relative;padding-left:26px;margin-bottom:10px;font-size:15px;color:var(--ink)}
+  .tier li .chk{position:absolute;left:3px;top:1px;color:var(--stamp);font-weight:700;font-size:13px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 8px}
+  .sec-head h2{margin:0 0 18px;font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+
+  /* destination card */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .pass{display:block;background:var(--white);border:1px solid var(--paper-edge);border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:0 18px 40px -34px rgba(40,50,70,.5)}
+  .sky{height:96px;background:linear-gradient(120deg,#dce6ee,#eef3f7)}
+  .lower{display:flex;justify-content:space-between;align-items:flex-end;padding:16px 18px;gap:10px}
+  .main .k{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text)}
+  .main h3{margin:3px 0 2px;font-size:18px;color:var(--navy)}
+  .main .t{font-size:12.5px;color:var(--muted)}
+  .stub{text-align:right;flex:none}
+  .stub .fee{font-size:22px;font-weight:800;color:var(--navy);line-height:1}
+  .stub .lab{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stub.view .fee{font-size:15px;color:var(--cta)}
+  .row3{display:flex;gap:10px;margin-top:14px}
+  @media(max-width:760px){.tiers,.cards{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<!-- MONEY TIERS -->
+<div class="lbl"><span class="on">Prices ON — current</span><div class="note">Money page · "Choose your level of service" tier cards as they are today.</div></div>
+<section class="wrap"><div class="sec-head"><p class="eyebrow">Clear fixed service fees</p><h2>Choose your level of service</h2></div>
+  <div class="tiers">
+    <div class="tier"><p class="name">Standard</p><div class="price">£39 <small>service fee</small></div><p class="sub">Everything you need, done right.</p>
+      <ul><li><span class="chk">✓</span>Document &amp; eligibility check</li><li><span class="chk">✓</span>Prepared by our UK team</li><li><span class="chk">✓</span>Submitted &amp; tracked</li></ul>
+      <a class="btn btn--ghost">Choose Standard</a></div>
+    <div class="tier feat"><span class="badge">Most popular</span><p class="name">Express</p><div class="price">£59 <small>service fee</small></div><p class="sub">When you're short on time.</p>
+      <ul><li><span class="chk">✓</span>Everything in Standard</li><li><span class="chk">✓</span>Priority handling</li><li><span class="chk">✓</span>WhatsApp + email support</li></ul>
+      <a class="btn">Choose Express</a></div>
+    <div class="tier"><p class="name">Premium</p><div class="price">£89 <small>service fee</small></div><p class="sub">Full hands-on support.</p>
+      <ul><li><span class="chk">✓</span>Everything in Express</li><li><span class="chk">✓</span>Dedicated case handler</li><li><span class="chk">✓</span>Re-check &amp; re-submit</li></ul>
+      <a class="btn btn--ghost">Choose Premium</a></div>
+  </div>
+</section>
+
+<div class="lbl"><span class="off">Prices OFF — quote on request</span><div class="note">Number removed; tier becomes a features-only service picker. Button → "Get a quote". Real price shows at the apply step (kept for consumer law).</div></div>
+<section class="wrap"><div class="sec-head"><p class="eyebrow">Choose your level of service</p><h2>Three service levels</h2></div>
+  <div class="tiers">
+    <div class="tier"><p class="name">Standard</p><div class="qline">Standard fee — on request<small>our base service · separate from the govt fee</small></div><p class="sub">Everything you need, done right.</p>
+      <ul><li><span class="chk">✓</span>Document &amp; eligibility check</li><li><span class="chk">✓</span>Prepared by our UK team</li><li><span class="chk">✓</span>Submitted &amp; tracked</li></ul>
+      <a class="btn btn--ghost">Get my Standard quote →</a></div>
+    <div class="tier feat"><span class="badge">Most popular</span><p class="name">Express</p><div class="qline">Express fee — on request<small>priority handling · separate from the govt fee</small></div><p class="sub">When you're short on time.</p>
+      <ul><li><span class="chk">✓</span>Everything in Standard</li><li><span class="chk">✓</span>Priority handling</li><li><span class="chk">✓</span>WhatsApp + email support</li></ul>
+      <a class="btn">Get my Express quote →</a></div>
+    <div class="tier"><p class="name">Premium</p><div class="qline">Premium fee — on request<small>full hands-on support · separate from the govt fee</small></div><p class="sub">Full hands-on support.</p>
+      <ul><li><span class="chk">✓</span>Everything in Express</li><li><span class="chk">✓</span>Dedicated case handler</li><li><span class="chk">✓</span>Re-check &amp; re-submit</li></ul>
+      <a class="btn btn--ghost">Get my Premium quote →</a></div>
+  </div>
+</section>
+
+<!-- DESTINATION CARDS -->
+<div class="lbl"><span class="on">Prices ON — current</span><div class="note">Home / destinations grid card stub.</div></div>
+<section class="wrap"><div class="cards">
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>Turkey</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub"><div class="fee">£39</div><div class="lab">FROM</div></div></div></a>
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">ETA</div><h3>USA</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub"><div class="fee">£49</div><div class="lab">FROM</div></div></div></a>
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>India</h3><div class="t">UK citizens · up to 30 days</div></div><div class="stub"><div class="fee">£45</div><div class="lab">FROM</div></div></div></a>
+</div></section>
+
+<div class="lbl"><span class="off">Prices OFF</span><div class="note">Fee chip → "View details" call-to-action. Card link unchanged.</div></div>
+<section class="wrap"><div class="cards">
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>Turkey</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub view"><div class="fee">View →</div><div class="lab">Details</div></div></div></a>
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">ETA</div><h3>USA</h3><div class="t">UK citizens · up to 90 days</div></div><div class="stub view"><div class="fee">View →</div><div class="lab">Details</div></div></div></a>
+  <a class="pass"><div class="sky"></div><div class="lower"><div class="main"><div class="k">eVisa</div><h3>India</h3><div class="t">UK citizens · up to 30 days</div></div><div class="stub view"><div class="fee">View →</div><div class="lab">Details</div></div></div></a>
+</div></section>
+
+<div style="height:70px"></div>
+</body></html>

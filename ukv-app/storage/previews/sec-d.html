@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant D (Editorial magazine)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--white);color:var(--ink)}
+
+.band-d{padding:104px 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 64px}
+
+/* editorial masthead */
+.masthead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;padding-bottom:30px;border-bottom:2px solid var(--ink)}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 22px}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--stamp)}
+.masthead h2{margin:0;font-size:clamp(38px,5.6vw,76px);line-height:.98;font-weight:800;letter-spacing:-.035em;max-width:14ch}
+.masthead .lede{margin:0;color:var(--muted);font-size:17px;line-height:1.65;max-width:30ch;padding-bottom:6px}
+
+/* vertical numbered timeline */
+.timeline{margin:0;padding:0;list-style:none}
+.entry{
+  display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:48px;
+  padding:46px 0;border-bottom:1px solid var(--paper-edge);position:relative;
+}
+.entry:last-of-type{border-bottom:0}
+.numeral{
+  font-size:clamp(58px,7vw,104px);line-height:.8;font-weight:800;letter-spacing:-.04em;
+  color:var(--paper);-webkit-text-stroke:1.5px var(--soft);
+}
+.entry .body{max-width:62ch}
+.kicker{display:block;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--stamp-text);margin-bottom:12px}
+.entry h3{margin:0 0 10px;font-size:clamp(22px,2.6vw,30px);line-height:1.12;font-weight:800;letter-spacing:-.02em}
+.entry p{margin:0;color:var(--muted);font-size:17px;line-height:1.68}
+
+/* pull quote */
+.pull{
+  margin:14px 0 6px;padding:54px 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  text-align:center;
+}
+.pull blockquote{margin:0 auto;max-width:20ch;font-size:clamp(28px,4vw,46px);line-height:1.12;font-weight:800;letter-spacing:-.025em}
+.pull blockquote em{color:var(--stamp-text);font-style:normal}
+.pull .cite{display:block;margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* cta */
+.cta-d{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:54px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:15px 28px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 16px 30px -16px rgba(21,94,122,.85)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--stamp-text);border-color:rgba(46,154,140,.45)}
+.btn-ghost:hover{border-color:var(--stamp-text)}
+
+@media(max-width:900px){
+  .wrap{padding:0 28px}.band-d{padding:64px 0}
+  .masthead{grid-template-columns:1fr;gap:20px;align-items:start}
+  .masthead .lede{max-width:46ch;padding-bottom:0}
+  .entry{grid-template-columns:1fr;gap:8px;padding:34px 0}
+  .numeral{font-size:62px}
+  .pull{padding:40px 0}
+}
+</style>
+</head>
+<body>
+<section class="band-d">
+  <div class="wrap">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">The prevention method</p>
+        <h2>Refusals are prevented, not appealed.</h2>
+      </div>
+      <p class="lede">Four deliberate checks, one real UK person, and nothing left to chance before you submit.</p>
+    </header>
+
+    <ol class="timeline">
+      <li class="entry">
+        <div class="numeral">01</div>
+        <div class="body">
+          <span class="kicker">Before you pay</span>
+          <h3>Eligibility check first</h3>
+          <p>We confirm you actually qualify before you pay a penny — nationality, residence, status and the purpose of your trip. If the route is wrong, you find out now, not at the gate.</p>
+        </div>
+      </li>
+      <li class="entry">
+        <div class="numeral">02</div>
+        <div class="body">
+          <span class="kicker">Two sets of eyes</span>
+          <h3>Documents checked — AI and a real UK person</h3>
+          <p>Your funds evidence, document validity and the consistency of your story are reviewed by software and then by a real UK person — the exact things that quietly get applications refused.</p>
+        </div>
+      </li>
+      <li class="entry">
+        <div class="numeral">03</div>
+        <div class="body">
+          <span class="kicker">The gate</span>
+          <h3>Pre-submission QA gate</h3>
+          <p>Nothing is submitted until a real UK person has gone through the whole file with you. No silent send, no guesswork — a deliberate stop before anything reaches the Home Office.</p>
+        </div>
+      </li>
+      <li class="entry">
+        <div class="numeral">04</div>
+        <div class="body">
+          <span class="kicker">Always sharpening</span>
+          <h3>We learn from every outcome</h3>
+          <p>Every result feeds back into our checks, so each application we prepare is stronger than the last.</p>
+        </div>
+      </li>
+    </ol>
+
+    <figure class="pull">
+      <blockquote>We remove the <em>avoidable causes</em> before you submit.</blockquote>
+      <span class="cite">Beyond Passports · the prevention method</span>
+    </figure>
+
+    <div class="cta-d">
+      <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+      <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

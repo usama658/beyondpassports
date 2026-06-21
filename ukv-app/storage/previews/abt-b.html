@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant B (Lead spotlight + team strip + side location)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:84px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- section head ---- */
+.head{max-width:680px;margin:0 0 42px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head h2{margin:0 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
+
+/* ---- editorial layout: spotlight left, strip right ---- */
+.editorial{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:start}
+
+/* lead spotlight */
+.spotlight{
+  position:relative;background:var(--white);border:1px solid rgba(46,154,140,.5);
+  border-radius:18px;padding:44px 44px 42px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(22,34,46,.06),0 30px 60px -36px rgba(46,154,140,.42);
+}
+.spotlight::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:linear-gradient(180deg,var(--stamp),var(--cta));
+}
+.lead-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--stamp-text);border:1.5px solid rgba(46,154,140,.45);
+  border-radius:7px;padding:6px 11px;margin-bottom:24px;
+  box-shadow:inset 0 0 0 3px rgba(46,154,140,.08);
+}
+.spotlight .avatar{
+  width:96px;height:96px;border-radius:50%;display:grid;place-items:center;
+  font-size:38px;font-weight:800;color:var(--stamp-text);
+  background:rgba(46,154,140,.1);border:2px solid var(--stamp);
+  box-shadow:0 10px 22px -10px rgba(46,154,140,.55), 0 0 0 8px rgba(46,154,140,.06);
+}
+.spotlight .name{margin:24px 0 5px;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.spotlight .role{margin:0 0 18px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
+.spotlight .bio{margin:0;color:var(--muted);font-size:17px;line-height:1.6;max-width:420px}
+
+/* compact team strip */
+.strip{display:flex;flex-direction:column;gap:18px}
+.scard{
+  display:flex;align-items:flex-start;gap:18px;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:14px;padding:24px 24px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 20px 40px -38px rgba(22,34,46,.4);
+}
+.scard .avatar{
+  flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  font-size:21px;font-weight:800;color:var(--stamp-text);
+  background:rgba(46,154,140,.1);border:2px solid var(--stamp);
+  box-shadow:0 6px 14px -8px rgba(46,154,140,.5), 0 0 0 5px rgba(46,154,140,.06);
+}
+.scard .name{margin:0 0 3px;font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+.scard .role{margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--stamp-text)}
+.scard .bio{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+
+/* ---- location card beneath ---- */
+.loc{
+  position:relative;margin-top:24px;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:16px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -40px rgba(22,34,46,.42);
+  display:flex;align-items:center;gap:36px;padding:38px 46px;flex-wrap:wrap;
+}
+.loc-pin{
+  flex:none;width:88px;height:88px;border-radius:18px;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--navy),#0f1922);position:relative;overflow:hidden;
+}
+.loc-pin::before{
+  content:"";position:absolute;inset:0;opacity:.18;
+  background-image:linear-gradient(var(--on-dark) 1px,transparent 0),linear-gradient(90deg,var(--on-dark) 1px,transparent 0);
+  background-size:18px 18px;
+}
+.loc-pin svg{position:relative;z-index:2;width:46px;height:46px;stroke:var(--on-dark);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.loc-body{flex:1;min-width:240px}
+.loc-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 10px}
+.loc-eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.loc-body h3{margin:0 0 14px;font-size:clamp(20px,2.2vw,26px);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.address{font-style:normal;color:var(--ink);font-size:15.5px;line-height:1.62}
+.address .company{font-weight:800}
+.address .ph{color:var(--muted)}
+.hours{margin-top:14px;display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--stamp-text);
+  border:1px solid rgba(46,154,140,.4);border-radius:999px;padding:8px 15px}
+.hours .dot{width:8px;height:8px;border-radius:50%;background:var(--stamp)}
+
+@media(max-width:880px){
+  .wrap{padding:0 26px}.abt{padding:60px 0}
+  .editorial{grid-template-columns:1fr;gap:20px}
+  .spotlight{padding:36px 28px}
+  .spotlight .name{font-size:23px}
+  .loc{padding:30px 28px;gap:24px}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The team</p>
+      <h2>Real people checking your application</h2>
+      <p>A small UK-based team handles your file from first check to delivered authorisation &mdash; led by one person who personally signs off every submission.</p>
+    </div>
+
+    <div class="editorial">
+      <article class="spotlight">
+        <span class="lead-tag">Your case lead</span>
+        <div class="avatar">N</div>
+        <p class="name">Sarah Whitfield</p>
+        <p class="role">UK Case Lead</p>
+        <p class="bio">Personally checks every application before it's submitted &mdash; nothing outsourced.</p>
+      </article>
+
+      <div class="strip">
+        <article class="scard">
+          <div class="avatar">N</div>
+          <div>
+            <p class="name">James Okonkwo</p>
+            <p class="role">Senior Document Reviewer</p>
+            <p class="bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+          </div>
+        </article>
+
+        <article class="scard">
+          <div class="avatar">N</div>
+          <div>
+            <p class="name">Priya Sharma</p>
+            <p class="role">Client Support Lead</p>
+            <p class="bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="loc">
+      <div class="loc-pin">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.6"/></svg>
+      </div>
+      <div class="loc-body">
+        <p class="loc-eyebrow">Where we are</p>
+        <h3>A UK-based team you can reach</h3>
+        <address class="address">
+          <span class="company">Beyond Passports Ltd</span> &middot; <span class="ph">1 Example Street</span>, London EC1A 1AA · United Kingdom
+        </address>
+        <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

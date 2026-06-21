@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schengen hub — preview</title>
+<style>
+  :root{--ink:#16222E;--navy:#16222E;--stamp:#2E9A8C;--cta:#155E7A;--stamp-text:#1F6E63;
+    --paper-edge:#dde3ec;--white:#fff;--muted:#5d6b76;--paper:#F4F6FA;--soft:#A9CCDA;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:11px}
+  .btn--glass{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff}
+
+  /* hero — navy mesh */
+  .sh-hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:70px 0 60px}
+  .sh-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 12% 16%,rgba(21,94,122,.42),transparent 60%),radial-gradient(55% 75% at 88% 84%,rgba(46,154,140,.4),transparent 62%)}
+  .sh-hero .wrap{position:relative;z-index:2}
+  .sh-hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin:0 0 14px}
+  .sh-hero h1{font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-.03em;margin:0 0 14px;max-width:18ch;line-height:1.06}
+  .sh-hero .lede{font-size:18px;line-height:1.6;color:rgba(255,255,255,.85);max-width:56ch;margin:0 0 22px}
+  .sh-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .sh-facts span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600}
+
+  /* not-live banner */
+  .sh-note{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;margin:26px 0 0;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)}
+  .sh-note svg{flex:none;width:22px;height:22px;stroke:#c8923a;stroke-width:2;fill:none;margin-top:1px}
+  .sh-note p{margin:0;font-size:15px;line-height:1.6;color:#3a4b55}.sh-note strong{color:var(--navy)}
+
+  /* region groups */
+  .sh-region{padding:46px 0 0}
+  .sh-region h2{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--navy);margin:0 0 4px}
+  .sh-region .rsub{margin:0 0 20px;color:var(--muted);font-size:14.5px}
+  .sh-region .rsub::before{content:"";display:inline-block;width:26px;height:2px;background:var(--stamp);vertical-align:middle;margin-right:10px;border-radius:2px}
+  .sh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .sh-card{display:flex;flex-direction:column;justify-content:space-between;gap:14px;background:var(--white);border:1px solid var(--paper-edge);border-radius:14px;padding:18px 18px;text-decoration:none;color:var(--ink);box-shadow:0 14px 34px -34px rgba(40,50,70,.5);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .sh-card:hover{transform:translateY(-4px);border-color:rgba(46,154,140,.5);box-shadow:0 26px 50px -34px rgba(46,154,140,.45)}
+  .sh-card .k{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text)}
+  .sh-card .nm{font-size:18px;font-weight:800;letter-spacing:-.01em;margin:4px 0 0}
+  .sh-card .meta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);border-top:1px solid var(--paper-edge);padding-top:12px}
+  .sh-card .arrow{color:var(--cta);font-weight:700}
+  @media(max-width:860px){.sh-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.sh-grid{grid-template-columns:1fr}}
+
+  .sh-cta{margin:56px 0 0;background:linear-gradient(120deg,#0f3b34,#155E7A);border-radius:20px;padding:38px 40px;color:#fff;text-align:center}
+  .sh-cta h2{margin:0 0 8px;font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .sh-cta p{margin:0 auto 20px;max-width:52ch;color:rgba(255,255,255,.85);font-size:15.5px;line-height:1.6}
+  .sh-cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .pad{height:70px}
+</style></head>
+<body>
+
+<section class="sh-hero"><div class="wrap">
+  <p class="eyebrow">Europe · Schengen Area</p>
+  <h1>Travelling to Europe? Here's what you'll need</h1>
+  <p class="lede">One authorisation (ETIAS) will cover all 29 Schengen countries. Pick your destination below — we prepare and check everything so your trip goes right.</p>
+  <div class="sh-facts">
+    <span>29 countries, one ETIAS</span>
+    <span>90 days in any 180</span>
+    <span>€20 · valid 3 years</span>
+    <span>UK-based team</span>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="sh-note">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+    <p><strong>ETIAS isn't required yet.</strong> Right now UK citizens travel to the Schengen Area <strong>visa-free</strong> for short stays — no ETIAS, no fee. ETIAS launches in late 2026. When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
+  </div>
+
+  <!-- WESTERN -->
+  <section class="sh-region"><h2>Western Europe</h2><p class="rsub">4 countries</p>
+    <div class="sh-grid">
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">France</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Germany</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Netherlands</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Austria</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+    </div>
+  </section>
+
+  <!-- SOUTHERN -->
+  <section class="sh-region"><h2>Southern Europe</h2><p class="rsub">5 countries</p>
+    <div class="sh-grid">
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Spain</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Italy</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Portugal</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Greece</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Croatia</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+    </div>
+  </section>
+
+  <!-- NORTHERN -->
+  <section class="sh-region"><h2>Northern Europe</h2><p class="rsub">2 countries</p>
+    <div class="sh-grid">
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Denmark</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Sweden</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+    </div>
+  </section>
+
+  <!-- CENTRAL & EASTERN -->
+  <section class="sh-region"><h2>Central &amp; Eastern Europe</h2><p class="rsub">3 countries</p>
+    <div class="sh-grid">
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Poland</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Czechia</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+      <a class="sh-card"><div><span class="k">ETIAS</span><div class="nm">Hungary</div></div><div class="meta"><span>up to 90 days</span><span class="arrow">→</span></div></a>
+    </div>
+  </section>
+
+  <div class="sh-cta">
+    <h2>Heading to Europe soon?</h2>
+    <p>Check what your trip needs now, and we'll prepare your ETIAS the moment it opens — with a real UK person checking every detail.</p>
+    <div class="row"><a class="btn" href="#">Check what I need →</a><a class="btn btn--glass" href="#">Register interest</a></div>
+  </div>
+  <div class="pad"></div>
+</div>
+
+</body></html>

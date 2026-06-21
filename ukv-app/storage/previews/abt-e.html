@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant E (Editorial lead portrait + roster + full-width map)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:84px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- section head ---- */
+.head{max-width:680px;margin:0 0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head h2{margin:0 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
+
+/* ---- editorial lead ---- */
+.lead-feature{
+  display:grid;grid-template-columns:300px 1fr;gap:42px;align-items:center;
+  background:var(--white);border:1px solid rgba(46,154,140,.4);border-radius:22px;
+  padding:40px;position:relative;overflow:hidden;
+  box-shadow:0 1px 2px rgba(22,34,46,.06),0 30px 60px -42px rgba(46,154,140,.5);
+}
+.lead-feature::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--stamp),var(--cta))}
+.lead-portrait{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1;
+  border:1px solid var(--paper-edge);box-shadow:0 22px 44px -26px rgba(22,34,46,.55)}
+.lead-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.lead-info .lead-tag{display:inline-flex;align-items:center;gap:8px;
+  font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);
+  border:1.5px solid rgba(46,154,140,.45);border-radius:7px;padding:6px 11px;margin:0 0 16px;
+  box-shadow:inset 0 0 0 3px rgba(46,154,140,.08)}
+.lead-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--stamp)}
+.lead-info .name{margin:0 0 4px;font-size:28px;font-weight:800;letter-spacing:-.02em}
+.lead-info .role{margin:0 0 16px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
+.lead-info .bio{margin:0;color:var(--muted);font-size:17px;line-height:1.6;max-width:46ch}
+
+/* ---- roster two-up ---- */
+.roster{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.rmember{display:flex;gap:18px;align-items:center;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:16px;padding:24px 26px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 22px 44px -38px rgba(22,34,46,.4)}
+.rphoto{flex:none;width:66px;height:66px;border-radius:50%;overflow:hidden;border:2px solid var(--stamp);
+  box-shadow:0 8px 18px -10px rgba(46,154,140,.55), 0 0 0 5px rgba(46,154,140,.07)}
+.rphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.rmember .name{margin:0 0 3px;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.rmember .role{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--stamp-text)}
+.rmember .bio{margin:0;color:var(--muted);font-size:13.5px;line-height:1.52}
+
+/* ---- full-width map block ---- */
+.loc{position:relative;margin-top:30px;border-radius:22px;overflow:hidden;
+  border:1px solid var(--paper-edge);
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -40px rgba(22,34,46,.42)}
+.map-wide{position:relative;height:420px}
+.map-wide iframe{border:0;width:100%;height:100%;display:block}
+.loc-overlay{
+  position:absolute;left:34px;bottom:34px;z-index:2;max-width:360px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(6px);
+  border:1px solid var(--paper-edge);border-radius:16px;padding:30px 32px;
+  box-shadow:0 24px 50px -28px rgba(22,34,46,.55)}
+.loc-overlay .loc-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 12px}
+.loc-overlay .loc-eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.loc-overlay h3{margin:0 0 14px;font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.address{font-style:normal;color:var(--ink);font-size:15.5px;line-height:1.6}
+.address .company{font-weight:800}
+.address .ph{color:var(--muted)}
+.hours{margin-top:16px;display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:var(--stamp-text);
+  border:1px solid rgba(46,154,140,.4);border-radius:999px;padding:7px 14px}
+.hours .dot{width:8px;height:8px;border-radius:50%;background:var(--stamp)}
+
+@media(max-width:880px){
+  .wrap{padding:0 26px}.abt{padding:60px 0}
+  .lead-feature{grid-template-columns:1fr;gap:28px;padding:28px}
+  .lead-portrait{max-width:240px}
+  .lead-info .name{font-size:24px}
+  .roster{grid-template-columns:1fr}
+  .map-wide{height:340px}
+  .loc-overlay{position:static;max-width:none;border-radius:0;border-left:0;border-right:0;border-bottom:0;backdrop-filter:none;background:var(--white)}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The team</p>
+      <h2>Real people checking your application</h2>
+      <p>Your application isn't passed through software and forgotten. A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</p>
+    </div>
+
+    <div class="lead-feature">
+      <div class="lead-portrait"><img src="https://randomuser.me/api/portraits/women/68.jpg" loading="lazy" alt="Sarah Whitfield"></div>
+      <div class="lead-info">
+        <span class="lead-tag"><span class="dot"></span>Case lead</span>
+        <p class="name">Sarah Whitfield</p>
+        <p class="role">UK Case Lead</p>
+        <p class="bio">Personally checks every application before it's submitted &mdash; nothing outsourced.</p>
+      </div>
+    </div>
+
+    <div class="roster">
+      <article class="rmember">
+        <div class="rphoto"><img src="https://randomuser.me/api/portraits/men/52.jpg" loading="lazy" alt="James Okonkwo"></div>
+        <div>
+          <p class="name">James Okonkwo</p>
+          <p class="role">Senior Document Reviewer</p>
+          <p class="bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+        </div>
+      </article>
+      <article class="rmember">
+        <div class="rphoto"><img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" alt="Priya Sharma"></div>
+        <div>
+          <p class="name">Priya Sharma</p>
+          <p class="role">Client Support Lead</p>
+          <p class="bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="loc">
+      <div class="map-wide">
+        <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%"></iframe>
+      </div>
+      <div class="loc-overlay">
+        <p class="loc-eyebrow">Where we are</p>
+        <h3>A UK-based team you can reach</h3>
+        <address class="address">
+          <span class="company">Beyond Passports Ltd</span><br>
+          <span class="ph">1 Example Street</span><br>
+          London EC1A 1AA · United Kingdom
+        </address>
+        <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

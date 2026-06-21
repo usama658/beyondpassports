@@ -33,6 +33,31 @@
   .dct-tier .btn{width:100%;text-align:center}
   @media(max-width:760px){.dct-tiers{grid-template-columns:1fr}.dct-free{flex-direction:column;align-items:flex-start}}
 
+  /* ── GATE (revealed after step 1) — step-1 summary + lock panel + tiers + free chat ── */
+  .dct-sum{margin:0 0 18px;border:1px solid var(--paper-edge);border-radius:13px;padding:16px 18px;background:var(--paper)}
+  .dct-sum .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .dct-sum .ttl{font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text)}
+  .dct-sum .edit{font:700 13px var(--display);color:var(--cta);background:none;border:0;cursor:pointer}
+  .dct-sum .vals{margin:10px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .dct-sum .chip{font-size:12.5px;color:#3a4b55;background:#fff;border:1px solid var(--paper-edge);border-radius:8px;padding:6px 11px}
+  .dct-sum .chip b{color:var(--navy)}
+  .gate{border:1px solid var(--paper-edge);border-radius:16px;overflow:hidden}
+  .gate-top{background:linear-gradient(180deg,#0f2330,#16222e);color:#fff;padding:26px 24px;text-align:center}
+  .gate-top .lk{width:46px;height:46px;border-radius:12px;background:rgba(169,204,218,.16);color:var(--soft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+  .gate-top .lk svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2}
+  .gate-top h3{color:#fff;font-size:21px;margin:0 0 6px}
+  .gate-top p{margin:0 auto;max-width:46ch;font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.55}
+  .gate-body{padding:22px 20px;background:#fff}
+  /* free WhatsApp path — shown FIRST, centered card */
+  .gate-free{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;
+    background:linear-gradient(110deg,#eafaf2,#f3fbf7);border:1px solid #bfe3d6;border-radius:14px;padding:20px 22px}
+  .gate-free .tag{display:inline-block;font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#1da851;background:#d6f0e2;border-radius:999px;padding:3px 9px;margin:0 0 7px}
+  .gate-free b{font:800 15px var(--display);color:var(--navy)}
+  .gate-free p{margin:3px auto 0;font-size:13px;color:#3a4b55;max-width:44ch}
+  .gate-or{display:flex;align-items:center;gap:14px;margin:20px 2px 18px}
+  .gate-or::before,.gate-or::after{content:"";flex:1;height:1px;background:var(--paper-edge)}
+  .gate-or span{font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
   /* ── Form layout ── */
   .ukv-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .ukv-form .field{margin:14px 0 0}
@@ -182,25 +207,25 @@
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy">
-        <p class="eyebrow">Free document checklist</p>
+        <p class="eyebrow">Your document checklist</p>
         <h1>See exactly which documents you need.</h1>
-        <p class="lede">Answer a few quick questions about your trip and get your tailored checklist on screen — free, with nothing to pay and no sign-up. Keep it, share it, or have it sent to you.</p>
+        <p class="lede">Tell us about your trip and we'll build your checklist. Our UK team prepares and checks your exact documents before anything's submitted — or ask a quick question free on WhatsApp.</p>
 
         <ul class="dct-perks reveal">
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
-            <p class="pk">On screen, free</p>
-            <p>Your full tailored list appears instantly — no contact details needed.</p>
-          </li>
-          <li>
-            <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
-            <p class="pk">Yours to keep</p>
-            <p>Get a saved link you can come back to and share with anyone travelling with you.</p>
+            <p class="pk">Tailored to your trip</p>
+            <p>Built around your destination and dates — not a generic list.</p>
           </li>
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
-            <p class="pk">Confirmed by a human</p>
-            <p>When you apply, our UK team confirms your exact list before anything is submitted.</p>
+            <p class="pk">Checked by a human</p>
+            <p>A real UK person prepares and verifies your exact documents before submission.</p>
+          </li>
+          <li>
+            <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></span>
+            <p class="pk">Free quick answers</p>
+            <p>Just need to ask something? Message our UK team on WhatsApp — no payment.</p>
           </li>
         </ul>
       </div>
@@ -211,64 +236,8 @@
 {{-- ── WIZARD ── --}}
 <section style="padding-top:0">
   <div class="wrap">
-    {{-- GATED: free WhatsApp path + paid service tiers --}}
-    <div class="dct-free reveal">
-      <div class="l">
-        <span class="tag">Free</span>
-        <b>Just need a quick answer?</b>
-        <p>Message our UK team on WhatsApp — a real person, no payment, general guidance for your trip.</p>
-      </div>
-      <a class="dct-wa" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ urlencode('Hi Beyond Passports — I would like help with my document checklist for an upcoming trip.') }}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> Ask free on WhatsApp →
-      </a>
-    </div>
-
-    <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 18px">
-      <p class="eyebrow">Your document checklist</p>
-      <h2>Get the exact documents for your trip</h2>
-      <p class="lede">Choose a service level and our UK team prepares &amp; checks your full list before anything is submitted.</p>
-    </div>
-
-    <div class="dct-tiers">
-      <div class="dct-tier reveal">
-        <p class="name">Standard</p>
-        <div class="qline">Standard fee — on request<small>full checklist · prepared &amp; checked</small></div>
-        <p class="sub">Your complete document list, done right.</p>
-        <ul>
-          <li><span class="chk">✓</span>Personalised document checklist</li>
-          <li><span class="chk">✓</span>Checked by our UK team</li>
-          <li><span class="chk">✓</span>PDF + email + calendar reminders</li>
-        </ul>
-        <a href="{{ url('/apply') }}?tier=standard" class="btn btn--ghost">Get my Standard quote →</a>
-      </div>
-      <div class="dct-tier feat reveal">
-        <span class="badge">Most popular</span>
-        <p class="name">Express</p>
-        <div class="qline">Express fee — on request<small>priority handling</small></div>
-        <p class="sub">When you're short on time.</p>
-        <ul>
-          <li><span class="chk">✓</span>Everything in Standard</li>
-          <li><span class="chk">✓</span>Priority preparation</li>
-          <li><span class="chk">✓</span>WhatsApp + email support</li>
-        </ul>
-        <a href="{{ url('/apply') }}?tier=express" class="btn">Get my Express quote →</a>
-      </div>
-      <div class="dct-tier reveal">
-        <p class="name">Premium</p>
-        <div class="qline">Premium fee — on request<small>full hands-on support</small></div>
-        <p class="sub">We handle everything, end to end.</p>
-        <ul>
-          <li><span class="chk">✓</span>Everything in Express</li>
-          <li><span class="chk">✓</span>Dedicated case handler</li>
-          <li><span class="chk">✓</span>Submission + tracking</li>
-        </ul>
-        <a href="{{ url('/apply') }}?tier=premium" class="btn btn--ghost">Get my Premium quote →</a>
-      </div>
-    </div>
-
     <div class="dct-grid">
 
-      @if (false) {{-- legacy free wizard — gated behind tiers above --}}
       <div class="checker reveal" id="dct-card">
         <div class="stub"><span>Document checklist</span><span>Free &middot; no sign-up</span></div>
         <div class="cbody">
@@ -291,7 +260,7 @@
             {{-- Segmented step header + progress (shown only when JS enhances the form) --}}
             <div class="dct-steps" role="tablist" aria-label="Checklist steps">
               <button type="button" class="st on" data-go="1" aria-selected="true"><span class="d">1</span><span><span class="tt">Step 1</span><span class="ts">Your trip</span></span></button>
-              <button type="button" class="st" data-go="2"><span class="d">2</span><span><span class="tt">Step 2</span><span class="ts">Your situation</span></span></button>
+              <button type="button" class="st" data-go="2"><span class="d">2</span><span><span class="tt">Step 2</span><span class="ts">Your checklist</span></span></button>
             </div>
             <div class="dct-prog" aria-hidden="true"><i></i></div>
 
@@ -339,85 +308,88 @@
             </div>
             </div>{{-- /step 1 --}}
 
+            {{-- STEP 2 = the gate. Step 1 collapses to an editable summary; the full
+                 checklist is unlocked by choosing a service level, or ask free on WhatsApp. --}}
             <div class="dct-step" data-step="2">
-            <p class="dct-shead">A few more details</p>
-            <p class="dct-ssub">Your situation helps us tailor the list — every field here is optional.</p>
-            <div class="grid2">
-              <div class="field">
-                <label for="residency_status">Residency status</label>
-                <select id="residency_status" name="residency_status">
-                  <option value="">No preference</option>
-                  <option value="citizen" @selected(old('residency_status') === 'citizen')>Citizen</option>
-                  <option value="permanent" @selected(old('residency_status') === 'permanent')>Settled / permanent resident</option>
-                  <option value="visa_holder" @selected(old('residency_status') === 'visa_holder')>Visa holder</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="employment_status">Employment status</label>
-                <select id="employment_status" name="employment_status">
-                  <option value="">No preference</option>
-                  <option value="employed" @selected(old('employment_status') === 'employed')>Employed</option>
-                  <option value="self_employed" @selected(old('employment_status') === 'self_employed')>Self-employed</option>
-                  <option value="student" @selected(old('employment_status') === 'student')>Student</option>
-                  <option value="retired" @selected(old('employment_status') === 'retired')>Retired</option>
-                  <option value="unemployed" @selected(old('employment_status') === 'unemployed')>Not currently working</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="accommodation_type">Where you'll stay</label>
-                <select id="accommodation_type" name="accommodation_type">
-                  <option value="">No preference</option>
-                  <option value="hotel" @selected(old('accommodation_type') === 'hotel')>Hotel / paid accommodation</option>
-                  <option value="host" @selected(old('accommodation_type') === 'host')>Staying with family / friends</option>
-                  <option value="own" @selected(old('accommodation_type') === 'own')>My own property</option>
-                  <option value="other" @selected(old('accommodation_type') === 'other')>Other</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="funding_source">Who's funding the trip</label>
-                <select id="funding_source" name="funding_source">
-                  <option value="">No preference</option>
-                  <option value="self" @selected(old('funding_source') === 'self')>Funding it myself</option>
-                  <option value="sponsor" @selected(old('funding_source') === 'sponsor')>A sponsor (family / friend)</option>
-                  <option value="employer" @selected(old('funding_source') === 'employer')>My employer</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="is_minor">Is the traveller a minor (under 18)?</label>
-                <select id="is_minor" name="is_minor">
-                  <option value="">No preference</option>
-                  <option value="no" @selected(old('is_minor') === 'no')>No</option>
-                  <option value="yes" @selected(old('is_minor') === 'yes')>Yes</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="prior_refusal">Any previous visa refusal (any country)?</label>
-                <select id="prior_refusal" name="prior_refusal">
-                  <option value="">No preference</option>
-                  <option value="no" @selected(old('prior_refusal') === 'no')>No</option>
-                  <option value="yes" @selected(old('prior_refusal') === 'yes')>Yes</option>
-                </select>
-                <p class="hint">A prior refusal can change what's required. It does not mean we can't help.</p>
-              </div>
-            </div>
-            </div>{{-- /step 2 --}}
 
-            {{-- Wizard nav (JS only): Back · dots · Next. Submit lives in the row below (last step). --}}
+              <div class="dct-sum">
+                <div class="row">
+                  <span class="ttl">Your trip</span>
+                  <button type="button" class="edit" data-edit>Edit &#8635;</button>
+                </div>
+                <div class="vals" id="dct-sum-vals">
+                  <span class="chip">Destination <b>—</b></span>
+                </div>
+              </div>
+
+              <div class="gate">
+                <div class="gate-top">
+                  <span class="lk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+                  <h3>Unlock your full checklist</h3>
+                  <p>Ask us anything free on WhatsApp — or have our UK team prepare &amp; check your exact documents before anything is submitted.</p>
+                </div>
+                <div class="gate-body">
+                  <div class="gate-free">
+                    <div>
+                      <span class="tag">Free</span>
+                      <b>Just need a quick answer?</b>
+                      <p>Message our UK team — a real person, no payment, general guidance for your trip.</p>
+                    </div>
+                    <a class="dct-wa" id="dct-free-wa" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ urlencode('Hi Beyond Passports — I would like help with my document checklist for an upcoming trip.') }}" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> Ask free on WhatsApp →
+                    </a>
+                  </div>
+
+                  <div class="gate-or" aria-hidden="true"><span>or have us do it for you</span></div>
+
+                  <div class="dct-tiers">
+                    <div class="dct-tier">
+                      <p class="name">Standard</p>
+                      <div class="qline">On request<small>full checklist &middot; checked</small></div>
+                      <ul>
+                        <li><span class="chk">&#10003;</span>Personalised document list</li>
+                        <li><span class="chk">&#10003;</span>Checked by our UK team</li>
+                        <li><span class="chk">&#10003;</span>PDF + email + reminders</li>
+                      </ul>
+                      <a href="{{ url('/apply') }}?tier=standard" class="btn btn--ghost gate-tier" data-tier="standard">Choose Standard</a>
+                    </div>
+                    <div class="dct-tier feat">
+                      <span class="badge">Most popular</span>
+                      <p class="name">Express</p>
+                      <div class="qline">On request<small>priority handling</small></div>
+                      <ul>
+                        <li><span class="chk">&#10003;</span>Everything in Standard</li>
+                        <li><span class="chk">&#10003;</span>Priority preparation</li>
+                        <li><span class="chk">&#10003;</span>WhatsApp + email support</li>
+                      </ul>
+                      <a href="{{ url('/apply') }}?tier=express" class="btn gate-tier" data-tier="express">Choose Express</a>
+                    </div>
+                    <div class="dct-tier">
+                      <p class="name">Premium</p>
+                      <div class="qline">On request<small>hands-on, end to end</small></div>
+                      <ul>
+                        <li><span class="chk">&#10003;</span>Everything in Express</li>
+                        <li><span class="chk">&#10003;</span>Dedicated case handler</li>
+                        <li><span class="chk">&#10003;</span>Submission + tracking</li>
+                      </ul>
+                      <a href="{{ url('/apply') }}?tier=premium" class="btn btn--ghost gate-tier" data-tier="premium">Choose Premium</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>{{-- /step 2 = gate --}}
+
+            {{-- Wizard nav (JS only): Back · dots · Next. On the gate step, only Back shows. --}}
             <div class="dct-wnav">
               <button type="button" class="dct-back" data-back disabled>&larr; Back</button>
               <span class="dct-dots" aria-hidden="true"><i class="on"></i><i></i></span>
-              <button type="button" class="dct-next" data-next>Next: your situation &rarr;</button>
-            </div>
-
-            <div class="dct-submit-row">
-              <button type="submit" class="btn">Show my checklist &rarr;</button>
-              <p class="sub-note">Free &middot; no sign-up &middot; your tailored list appears on the next screen</p>
+              <button type="button" class="dct-next" data-next>See my checklist &rarr;</button>
             </div>
           </form>
 
         </div>
       </div>
-      @endif
 
       {{-- COMPLIANCE STRIP — shield badge + text (pick A) --}}
       <div class="compliance reveal">
@@ -451,37 +423,51 @@
 
 @push('head')
 <script>
-  // document-checklist.blade.php — progressive enhancement only. The form works with a plain
-  // same-origin POST (@csrf in markup); JS just adds a friendly "destination required" guard
-  // + a submitting state. The SERVER (POST /document-checklist) is authoritative.
+  // document-checklist.blade.php — progressive enhancement only. Step 1 (the trip) is free.
+  // Clicking "See my checklist" reveals the gate (step 2): choose a service level to unlock
+  // the full list, or ask free on WhatsApp. No-JS users see step 1 + the gate (links work).
   document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('dct-form');
     if (!form) return;
     var dest = document.getElementById('destination');
-    var submitBtn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', function (e) {
-      if (!dest.value) {
-        e.preventDefault();
-        dest.setAttribute('aria-invalid', 'true');
-        dest.focus();
-        var clear = function () { dest.removeAttribute('aria-invalid'); dest.removeEventListener('change', clear); };
-        dest.addEventListener('change', clear);
-        return;
-      }
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Building your checklist…';
-      }
-    });
-
-    // ── Two-step segmented wizard (pick C) — progressive enhancement ──
+    // ── Two-step segmented wizard — step 1 free, step 2 = paywall gate ──
     var steps = Array.prototype.slice.call(form.querySelectorAll('.dct-step'));
     var tabs  = Array.prototype.slice.call(form.querySelectorAll('.dct-steps .st'));
     var nextBtn = form.querySelector('[data-next]');
     var backBtn = form.querySelector('[data-back]');
+    var editBtn = form.querySelector('[data-edit]');
     var prog  = form.querySelector('.dct-prog i');
     var dots  = Array.prototype.slice.call(form.querySelectorAll('.dct-dots i'));
+
+    // Fill the gate's "Your trip" summary + carry trip context into the unlock links.
+    var labelFor = function (sel) {
+      var el = document.getElementById(sel);
+      if (!el || !el.value) return '';
+      return el.options ? el.options[el.selectedIndex].text : el.value;
+    };
+    var syncGate = function () {
+      var vals = document.getElementById('dct-sum-vals');
+      if (vals) {
+        var chips = [];
+        if (dest.value) chips.push('<span class="chip">Destination <b>' + dest.value + '</b></span>');
+        var purpose = labelFor('trip_purpose'); if (purpose) chips.push('<span class="chip">Purpose <b>' + purpose + '</b></span>');
+        var travel = document.getElementById('travel_date'); if (travel && travel.value) chips.push('<span class="chip">Travel <b>' + travel.value + '</b></span>');
+        vals.innerHTML = chips.join('') || '<span class="chip">Your trip details</span>';
+      }
+      // carry destination into the tier links + free-chat message
+      var d = dest.value || '';
+      form.querySelectorAll('.gate-tier').forEach(function (a) {
+        var base = '{{ url('/apply') }}?tier=' + a.getAttribute('data-tier');
+        a.href = d ? base + '&destination=' + encodeURIComponent(d) : base;
+      });
+      var wa = document.getElementById('dct-free-wa');
+      if (wa && d) {
+        var msg = 'Hi Beyond Passports — I would like help with my document checklist for ' + d + '.';
+        wa.href = 'https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text=' + encodeURIComponent(msg);
+      }
+    };
+
     if (steps.length === 2 && nextBtn && backBtn) {
       form.classList.add('is-wizard');
       var card = document.getElementById('dct-card');
@@ -489,6 +475,7 @@
       var cur = 1;
       var show = function (n) {
         cur = n;
+        if (n === 2) syncGate();
         steps.forEach(function (s) { s.classList.toggle('active', s.getAttribute('data-step') === String(n)); });
         tabs.forEach(function (t) {
           var i = Number(t.getAttribute('data-go'));
@@ -499,8 +486,8 @@
         if (prog) prog.style.width = (n === 1 ? 50 : 100) + '%';
         dots.forEach(function (d, i) { d.classList.toggle('on', i === (n - 1)); });
         backBtn.disabled = (n === 1);
-        // On the last step the primary button becomes the submit ("Show my checklist").
-        nextBtn.innerHTML = (n === 2) ? 'Show my checklist &rarr;' : 'Next: your situation &rarr;';
+        // The gate carries its own CTAs — hide Next once unlocked, keep Back.
+        nextBtn.style.display = (n === 2) ? 'none' : '';
         form.classList.toggle('on-last', n === 2);
         var top = form.querySelector('.dct-step.active');
         if (top) top.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -514,12 +501,9 @@
         }
         return true;
       };
-      nextBtn.addEventListener('click', function () {
-        if (cur === 1) { if (guard()) show(2); return; }
-        // step 2: submit the form (validation + submitting-state handled by the submit listener)
-        if (form.requestSubmit) { form.requestSubmit(); } else { form.submit(); }
-      });
+      nextBtn.addEventListener('click', function () { if (guard()) show(2); });
       backBtn.addEventListener('click', function () { show(1); });
+      if (editBtn) editBtn.addEventListener('click', function () { show(1); });
       tabs.forEach(function (t) {
         t.addEventListener('click', function () {
           var i = Number(t.getAttribute('data-go'));
@@ -527,7 +511,6 @@
           show(i);
         });
       });
-      // If the server bounced with a destination error, start on step 1; else step 1 by default.
       show(1);
     }
   });

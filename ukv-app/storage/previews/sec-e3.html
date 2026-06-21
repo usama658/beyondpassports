@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant E3 (Scanner panel)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--navy);color:#eaf3f4}
+
+.band{position:relative;padding:104px 0;overflow:hidden;background:radial-gradient(130% 100% at 80% 10%,#1d3340 0%,#16222E 60%)}
+.band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(121,207,194,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(121,207,194,.06) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(120% 80% at 78% 30%,#000 35%,transparent 78%);
+  mask-image:radial-gradient(120% 80% at 78% 30%,#000 35%,transparent 78%);
+}
+.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 64px}
+.grid{display:grid;grid-template-columns:minmax(320px,440px) minmax(0,1fr);gap:72px;align-items:center}
+
+/* ===== scanner panel ===== */
+.scanner{position:relative;display:grid;place-items:center;min-height:440px}
+.device{
+  position:relative;width:330px;border-radius:20px;padding:20px;
+  background:linear-gradient(180deg,#22394a,#162531);
+  border:1px solid rgba(121,207,194,.28);
+  box-shadow:0 36px 70px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.device .bezel{
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.device .led{width:9px;height:9px;border-radius:50%;background:var(--stamp);box-shadow:0 0 8px var(--on-dark);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.device .bezel small{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark)}
+.device .bezel .right{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+
+/* the scanned document */
+.doc{position:relative;background:#fff;border-radius:10px;padding:22px 20px;overflow:hidden;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.doc .docttl{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.doc .docttl .crest{width:30px;height:30px;border-radius:7px;background:linear-gradient(180deg,#234050,#11202b);display:grid;place-items:center}
+.doc .docttl .crest svg{width:15px;height:15px;stroke:var(--on-dark);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.doc .docttl b{font-size:12.5px;color:var(--ink);font-weight:800;letter-spacing:-.01em}
+.doc .docttl span{display:block;font-size:9.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+
+.row{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid #eef1f6}
+.row:first-of-type{border-top:none}
+.row .check{
+  width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:#eef4f3;border:1.5px solid #cfe3df;transition:.3s;
+}
+.row .check svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.4);transition:.3s}
+.row.done .check{background:radial-gradient(circle at 35% 30%,#3fc0ad,#1f6e63);border-color:transparent}
+.row.done .check svg{opacity:1;transform:scale(1)}
+.row .label{flex:1;height:9px;border-radius:5px;background:#e8edf3}
+.row .label.s{width:60%}
+.row .label.m{width:80%}
+
+/* the moving scanline over the doc */
+.beam{
+  position:absolute;left:0;right:0;height:46px;pointer-events:none;z-index:3;
+  background:linear-gradient(180deg,transparent,rgba(46,154,140,.10) 40%,rgba(63,192,173,.55) 50%,rgba(46,154,140,.10) 60%,transparent);
+  box-shadow:0 0 18px rgba(63,192,173,.4);
+  animation:beam 3.6s ease-in-out infinite}
+@keyframes beam{0%{top:-46px}50%{top:calc(100% - 0px)}100%{top:-46px}}
+
+.device .verdict{
+  margin-top:14px;display:flex;align-items:center;justify-content:center;gap:9px;
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark);
+  background:rgba(46,154,140,.14);border:1px solid rgba(46,154,140,.34);border-radius:10px;padding:11px;
+}
+.device .verdict svg{width:15px;height:15px;stroke:var(--on-dark);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){.beam{animation:none;top:40%}.device .led{animation:none}}
+
+/* ===== content side (clearance list) ===== */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark);margin:0 0 18px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--on-dark);opacity:.7}
+.head h2{margin:0 0 14px;font-size:clamp(30px,3.9vw,50px);line-height:1.04;font-weight:800;letter-spacing:-.025em;color:#fff}
+.head p.sub{margin:0 0 30px;color:var(--soft);font-size:18px;line-height:1.6;max-width:48ch}
+
+.clearance{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px}
+.gate{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;
+  padding:16px 20px;border-radius:13px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(121,207,194,.16);
+  backdrop-filter:blur(2px);transition:border-color .18s,background .18s;
+}
+.gate:hover{border-color:rgba(121,207,194,.4);background:rgba(255,255,255,.06)}
+.gate .tick{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:rgba(46,154,140,.18);border:1.5px solid var(--stamp);
+}
+.gate .tick svg{width:18px;height:18px;stroke:var(--on-dark);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gate .txt b{display:block;font-size:16.5px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.gate .txt span{display:block;margin-top:3px;font-size:13.5px;line-height:1.5;color:var(--soft)}
+.gate .status{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark);white-space:nowrap}
+
+.note{margin:0 0 26px;font-size:13.5px;color:var(--soft);max-width:52ch}
+.note b{color:#cfeee8;font-weight:700}
+
+.cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:14px 26px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 16px 30px -16px rgba(0,0,0,.7)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--on-dark);border-color:rgba(121,207,194,.4)}
+.btn-ghost:hover{border-color:var(--on-dark)}
+
+@media(max-width:920px){
+  .wrap{padding:0 28px}.band{padding:64px 0}
+  .grid{grid-template-columns:1fr;gap:44px}
+  .scanner{min-height:auto;order:-1}
+}
+@media(max-width:560px){
+  .device{width:100%;max-width:330px}
+  .gate{grid-template-columns:auto minmax(0,1fr);gap:14px}
+  .gate .status{grid-column:2;justify-self:start}
+  .cta{flex-direction:column;align-items:stretch}.btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="band">
+  <div class="wrap">
+    <div class="grid">
+      <div class="scanner" aria-hidden="true">
+        <div class="device">
+          <div class="bezel">
+            <span class="led"></span>
+            <small>Scanning</small>
+            <span class="right">UK file &middot; live check</span>
+          </div>
+          <div class="doc">
+            <div class="beam"></div>
+            <div class="docttl">
+              <span class="crest"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></span>
+              <div><b>Application file</b><span>Pre-submission review</span></div>
+            </div>
+            <div class="row done"><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="label m"></span></div>
+            <div class="row done"><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="label s"></span></div>
+            <div class="row done"><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="label m"></span></div>
+            <div class="row done"><span class="check"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="label s"></span></div>
+          </div>
+          <div class="verdict"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Checked &amp; ready</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="head">
+          <p class="eyebrow">Cleared before submission</p>
+          <h2>We scan every file before it&rsquo;s submitted.</h2>
+          <p class="sub">Four checks your application must clear &mdash; AI plus a real UK person &mdash; before anything is sent.</p>
+        </div>
+
+        <ul class="clearance">
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Eligibility check first</b><span>We confirm you qualify before you pay &mdash; nationality, residence, status and trip.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Documents checked &mdash; AI + a real UK person</b><span>Funds evidence, validity and consistency &mdash; the things that actually get applications refused.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>Pre-submission QA gate</b><span>Nothing is submitted until a real UK person checks the whole file with you.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+          <li class="gate">
+            <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+            <span class="txt"><b>We learn from every outcome</b><span>Each result sharpens our checks, so the next application is stronger.</span></span>
+            <span class="status">Cleared</span>
+          </li>
+        </ul>
+
+        <p class="note"><b>We remove the avoidable causes of refusal.</b> Process, not promises &mdash; every file is checked by a real UK person before it goes anywhere.</p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+          <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

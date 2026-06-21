@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Variant D (Photo team cards + map panel)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+
+.abt{padding:84px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ---- section head ---- */
+.head{max-width:680px;margin:0 0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.head h2{margin:0 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.07;font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;color:var(--muted);font-size:17px;line-height:1.62}
+
+/* ---- team cards (photo) ---- */
+.team{display:grid;grid-template-columns:1.18fr 1fr 1fr;gap:22px;align-items:stretch}
+.member{
+  position:relative;background:var(--white);border:1px solid var(--paper-edge);
+  border-radius:18px;padding:34px 30px 30px;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 24px 48px -38px rgba(22,34,46,.4);
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.member.lead{
+  border:1px solid rgba(46,154,140,.55);
+  box-shadow:0 1px 2px rgba(22,34,46,.06),0 28px 54px -34px rgba(46,154,140,.45);
+}
+.member.lead::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:18px 18px 0 0;
+  background:linear-gradient(90deg,var(--stamp),var(--cta));
+}
+.lead-tag{
+  position:absolute;top:26px;right:26px;
+  font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--stamp-text);border:1.5px solid rgba(46,154,140,.45);
+  border-radius:7px;padding:5px 9px;transform:rotate(-4deg);
+  box-shadow:inset 0 0 0 3px rgba(46,154,140,.08);background:var(--white);
+}
+.photo{
+  width:84px;height:84px;border-radius:50%;overflow:hidden;
+  border:2px solid var(--stamp);
+  box-shadow:0 10px 22px -12px rgba(46,154,140,.6), 0 0 0 6px rgba(46,154,140,.07);
+}
+.member.lead .photo{width:100px;height:100px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.member .name{margin:20px 0 4px;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.member.lead .name{font-size:21px}
+.member .role{margin:0 0 14px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text)}
+.member .bio{margin:0;color:var(--muted);font-size:14.5px;line-height:1.58}
+.member.lead .bio{font-size:15.5px}
+
+/* ---- split location card ---- */
+.loc{
+  position:relative;margin-top:24px;background:var(--white);
+  border:1px solid var(--paper-edge);border-radius:18px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -40px rgba(22,34,46,.42);
+  display:grid;grid-template-columns:1fr 1.25fr;
+}
+.loc-body{padding:46px 48px;align-self:center}
+.loc-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px}
+.loc-eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+.loc-body h3{margin:0 0 18px;font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.address{font-style:normal;color:var(--ink);font-size:16px;line-height:1.65}
+.address .company{font-weight:800}
+.address .ph{color:var(--muted)}
+.hours{margin-top:18px;display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--stamp-text);
+  border:1px solid rgba(46,154,140,.4);border-radius:999px;padding:8px 15px}
+.hours .dot{width:8px;height:8px;border-radius:50%;background:var(--stamp)}
+.loc-map{position:relative;min-height:340px;padding:14px;background:linear-gradient(160deg,#eef2f7,#e3e9f1)}
+.map-frame{position:relative;width:100%;height:100%;min-height:312px;border-radius:14px;overflow:hidden;
+  border:1px solid var(--paper-edge);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 18px 36px -28px rgba(22,34,46,.5)}
+.map-frame iframe{border:0;width:100%;height:100%;display:block}
+
+@media(max-width:880px){
+  .wrap{padding:0 26px}.abt{padding:60px 0}
+  .team{grid-template-columns:1fr;gap:18px}
+  .member.lead .photo{width:84px;height:84px}
+  .member.lead .name{font-size:19px}
+  .loc{grid-template-columns:1fr}
+  .loc-body{padding:36px 28px}
+  .loc-map{min-height:280px}
+  .map-frame{min-height:252px}
+  .lead-tag{position:static;display:inline-block;transform:none;margin-bottom:14px;align-self:flex-start}
+}
+</style>
+</head>
+<body>
+<section class="abt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The team</p>
+      <h2>Real people checking your application</h2>
+      <p>Your application isn't passed through software and forgotten. A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</p>
+    </div>
+
+    <div class="team">
+      <article class="member lead">
+        <span class="lead-tag">Case lead</span>
+        <div class="photo"><img src="https://randomuser.me/api/portraits/women/68.jpg" loading="lazy" alt="Sarah Whitfield"></div>
+        <p class="name">Sarah Whitfield</p>
+        <p class="role">UK Case Lead</p>
+        <p class="bio">Personally checks every application before it's submitted &mdash; nothing outsourced.</p>
+      </article>
+
+      <article class="member">
+        <div class="photo"><img src="https://randomuser.me/api/portraits/men/52.jpg" loading="lazy" alt="James Okonkwo"></div>
+        <p class="name">James Okonkwo</p>
+        <p class="role">Senior Document Reviewer</p>
+        <p class="bio">Reviews funds evidence, validity and consistency &mdash; the things that get applications refused.</p>
+      </article>
+
+      <article class="member">
+        <div class="photo"><img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" alt="Priya Sharma"></div>
+        <p class="name">Priya Sharma</p>
+        <p class="role">Client Support Lead</p>
+        <p class="bio">Keeps you updated at every step, from first check to delivered authorisation.</p>
+      </article>
+    </div>
+
+    <div class="loc">
+      <div class="loc-body">
+        <p class="loc-eyebrow">Where we are</p>
+        <h3>A UK-based team you can reach</h3>
+        <address class="address">
+          <span class="company">Beyond Passports Ltd</span><br>
+          <span class="ph">1 Example Street</span><br>
+          London EC1A 1AA · United Kingdom
+        </address>
+        <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+      </div>
+      <div class="loc-map">
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=London%2C%20UK&z=12&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

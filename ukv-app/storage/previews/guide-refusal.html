@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guide preview — Why visa applications get refused</title>
+<style>
+  :root{--ink:#16222E;--navy:#16222E;--stamp:#2E9A8C;--cta:#155E7A;--stamp-text:#1F6E63;
+    --paper-edge:#dde3ec;--white:#fff;--muted:#5d6b76;--paper:#F4F6FA;--soft:#A9CCDA;--gold:#c8923a;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  .lbl{max-width:1000px;margin:34px auto 0;padding:0 28px}
+  .lbl span{display:inline-block;background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:7px}
+  .lbl .note{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+
+  .gs-head{background:linear-gradient(180deg,#EAF1F4,#F2F5F6 60%,var(--paper));border-bottom:1px solid var(--paper-edge);padding:48px 0 56px;margin-top:24px}
+  .crumb{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 24px}
+  .crumb a{color:var(--stamp-text);text-decoration:none}
+  .gs-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:start}
+  .eyebrow{color:var(--cta);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .gs-head h1{font-size:clamp(28px,3.8vw,42px);font-weight:700;letter-spacing:-.02em;color:var(--navy);max-width:18ch;line-height:1.1;margin:10px 0 0}
+  .standfirst{font-size:17px;line-height:1.6;color:#33454f;max-width:48ch;margin:18px 0 0}
+  .facts{background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;padding:20px 22px;box-shadow:0 16px 40px -32px rgba(40,50,70,.5)}
+  .facts .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);margin:0 0 12px}
+  .facts .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--paper-edge);font-size:13.5px}
+  .facts .row:first-of-type{border-top:0}
+  .facts .lab{color:var(--muted)}.facts .val{margin-left:auto;color:var(--navy);font-weight:700}
+
+  .body{max-width:70ch;margin:48px auto 0;padding:0 24px}
+  .callout{position:relative;overflow:hidden;background:var(--navy);border-radius:16px;padding:22px 24px;margin:0 0 2em;color:#fff;box-shadow:0 20px 50px -34px rgba(0,0,0,.6)}
+  .callout::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 92% 0,rgba(21,94,122,.30),transparent 60%),radial-gradient(60% 70% at 0 100%,rgba(46,154,140,.28),transparent 62%)}
+  .callout>*{position:relative;z-index:2}
+  .callout .cl-lab{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 8px;display:flex;align-items:center;gap:9px}
+  .callout .cl-lab svg{width:17px;height:17px;stroke:var(--soft);stroke-width:2;fill:none}
+  .callout p{font-size:18px;line-height:1.6;margin:0;color:rgba(255,255,255,.92)}
+  .body p{font-size:17px;line-height:1.7;color:var(--ink);margin:0 0 1.2em}
+  .body h2{font-size:25px;font-weight:600;color:var(--navy);letter-spacing:-.015em;margin:1.8em 0 .5em}
+  .body strong{color:var(--navy)}
+  .reason{border:1px solid var(--paper-edge);border-radius:14px;background:var(--white);padding:20px 22px;margin:0 0 14px;box-shadow:0 2px 10px -6px rgba(40,50,70,.12)}
+  .reason h3{margin:0 0 6px;font-size:18px;color:var(--navy);display:flex;align-items:center;gap:10px}
+  .reason h3 .n{flex:0 0 26px;width:26px;height:26px;border-radius:7px;background:#fbeee4;color:#b5663a;font-size:13px;font-weight:800;display:grid;place-items:center}
+  .reason p{margin:0;font-size:15px;line-height:1.6;color:#3a4b55}
+  .reason .fix{margin:10px 0 0;font-size:14px;font-weight:600;color:var(--stamp-text);display:flex;align-items:flex-start;gap:8px}
+  .reason .fix svg{flex:0 0 17px;width:17px;height:17px;stroke:var(--stamp);stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+
+  .cta-inline{max-width:70ch;margin:36px auto 0;padding:30px 34px;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;box-shadow:0 18px 44px -36px rgba(22,34,46,.4)}
+  .cta-inline h2{font-size:24px;font-weight:700;color:var(--navy);margin:0 0 .4em;letter-spacing:-.02em}
+  .cta-inline p{font-size:16px;color:#33454f;margin:0 0 18px;max-width:52ch;line-height:1.6}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:11px}
+  .disc{max-width:70ch;margin:30px auto 60px;padding:0 24px;font-size:13px;color:var(--muted);line-height:1.6}
+  @media(max-width:820px){.gs-grid{grid-template-columns:1fr;gap:24px}}
+</style></head>
+<body>
+
+<div class="lbl"><span>Guide preview — evergreen refusal article</span><div class="note">New article in the guides hub: "Why visa applications get refused — and how to avoid it." Uses the live article layout (sky header + at-a-glance card + navy quick-answer + numbered reason cards + inline CTA). Education-first, prevention-framed, links down to apply.</div></div>
+
+<header class="gs-head"><div class="wrap">
+  <nav class="crumb"><a href="#">Home</a> / <a href="#">Guides</a> / Why applications get refused</nav>
+  <div class="gs-grid">
+    <div>
+      <p class="eyebrow">Guide</p>
+      <h1>Why visa applications get refused — and how to avoid it</h1>
+      <p class="standfirst">Most refusals come from a short list of avoidable mistakes. Here's what actually triggers them, and how to keep each one off your application.</p>
+    </div>
+    <aside class="facts">
+      <p class="k">At a glance</p>
+      <div class="row"><span class="lab">Topic</span><span class="val">Refusals</span></div>
+      <div class="row"><span class="lab">Read time</span><span class="val">6 min read</span></div>
+      <div class="row"><span class="lab">Source</span><span class="val">Checked vs gov.uk</span></div>
+    </aside>
+  </div>
+</div></header>
+
+<div class="body">
+  <div class="callout">
+    <p class="cl-lab"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Quick answer</p>
+    <p>Most visa refusals aren't bad luck. They come from a handful of avoidable problems — unclear funds, short passport validity, inconsistent details, missing documents or the wrong visa type. Get those right and you remove the most common reasons to be refused.</p>
+  </div>
+
+  <p>A refusal is costly — lost fees, lost time, and a refusal on record that you may have to declare next time. The good news: the vast majority trace back to the same short list, and every item on it is something you can control <strong>before</strong> you submit.</p>
+
+  <h2>The five avoidable reasons applications get refused</h2>
+
+  <div class="reason"><h3><span class="n">1</span>Unclear or insufficient funds evidence</h3>
+    <p>Statements that don't clearly show you can support your trip — or that look inconsistent with your application — are one of the most common refusal triggers.</p>
+    <p class="fix"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Show clear, recent, consistent evidence that matches your stated trip.</p></div>
+
+  <div class="reason"><h3><span class="n">2</span>Passport validity too short</h3>
+    <p>Many countries require six months' validity beyond your travel dates. A passport that's too close to expiry gets applications rejected outright.</p>
+    <p class="fix"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Check your expiry against the destination's rule before you apply.</p></div>
+
+  <div class="reason"><h3><span class="n">3</span>Inconsistent dates, names or details</h3>
+    <p>A name spelled differently from your passport, or dates that don't line up across the form and documents, reads as a red flag.</p>
+    <p class="fix"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Match every detail to your passport, exactly, and cross-check before submitting.</p></div>
+
+  <div class="reason"><h3><span class="n">4</span>Missing or wrong supporting documents</h3>
+    <p>Each destination has its own document list. Leaving one out — or supplying the wrong version — is an easy, avoidable refusal.</p>
+    <p class="fix"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Work from a current, destination-specific checklist, not a generic one.</p></div>
+
+  <div class="reason"><h3><span class="n">5</span>Applying for the wrong visa type</h3>
+    <p>Tourist vs business, single vs multiple entry, eVisa vs ETA — choosing the wrong one means starting over, or worse.</p>
+    <p class="fix"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Confirm the exact visa your trip and nationality need before you pay.</p></div>
+
+  <div class="cta-inline">
+    <h2>We remove these before you submit</h2>
+    <p>A real UK person checks your whole file against the current rules — funds, validity, consistency, documents and visa type — so the avoidable reasons to be refused are gone before it's submitted.</p>
+    <a class="btn" href="#">Start my application →</a>
+  </div>
+
+  <p class="disc">Beyond Passports is an independent service and is not a government website. General information only — exact requirements depend on your nationality, residence and trip, and no service can guarantee a government decision. Confirm current rules at the official source.</p>
+</div>
+
+</body></html>

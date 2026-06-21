@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant E2 (Clearance lanes)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--navy);color:#eaf3f4}
+
+.band{position:relative;padding:104px 0;overflow:hidden;background:linear-gradient(180deg,#16222E 0%,#1a2a38 100%)}
+.band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(rgba(121,207,194,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(121,207,194,.06) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 0%,#000 35%,transparent 82%);
+  mask-image:radial-gradient(120% 90% at 50% 0%,#000 35%,transparent 82%);
+}
+.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 64px}
+
+/* header */
+.head{text-align:center;max-width:62ch;margin:0 auto 12px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--on-dark);margin:0 0 18px}
+.eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--on-dark);opacity:.6}
+.head h2{margin:0 0 14px;font-size:clamp(30px,4vw,52px);line-height:1.04;font-weight:800;letter-spacing:-.026em;color:#fff}
+.head p{margin:0 auto 0;color:var(--soft);font-size:18px;line-height:1.6;max-width:52ch}
+
+/* lanes track */
+.track{position:relative;margin:54px 0 30px}
+/* connecting line behind the gates */
+.track::before{
+  content:"";position:absolute;top:50px;left:8%;right:8%;height:3px;z-index:0;
+  background:linear-gradient(90deg,rgba(121,207,194,.15),rgba(121,207,194,.45),rgba(121,207,194,.15));
+}
+/* travelling pulse along the track */
+.track::after{
+  content:"";position:absolute;top:48px;left:8%;width:60px;height:7px;border-radius:7px;z-index:1;
+  background:radial-gradient(closest-side,var(--on-dark),transparent);opacity:.9;
+  animation:travel 6s ease-in-out infinite}
+@keyframes travel{0%{left:8%}50%{left:calc(92% - 60px)}100%{left:8%}}
+@media(prefers-reduced-motion:reduce){.track::after{animation:none}}
+
+.lanes{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.lane{
+  position:relative;border-radius:16px;padding:26px 22px 24px;
+  background:var(--paper);border:1px solid var(--paper-edge);color:var(--ink);
+  box-shadow:0 24px 50px -28px rgba(0,0,0,.7);
+  transition:transform .18s,box-shadow .18s;
+}
+.lane:hover{transform:translateY(-5px);box-shadow:0 30px 56px -26px rgba(0,0,0,.8)}
+/* lane number / gate pillar */
+.gateno{
+  position:absolute;top:-13px;left:22px;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--navy);color:var(--on-dark);padding:5px 12px;border-radius:20px;border:1px solid rgba(121,207,194,.35);
+}
+/* big check medallion */
+.medal{
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:14px 0 16px;
+  background:radial-gradient(circle at 35% 30%,#3fc0ad,#1f6e63);
+  box-shadow:0 10px 22px -8px rgba(31,110,99,.7),inset 0 0 0 4px rgba(255,255,255,.18);
+}
+.medal svg{width:26px;height:26px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lane b{display:block;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.25;margin-bottom:9px}
+.lane span.desc{display:block;font-size:13px;line-height:1.55;color:var(--muted)}
+/* cleared status bar */
+.cleared{
+  display:inline-flex;align-items:center;gap:7px;margin-top:16px;
+  font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp-text);
+  background:rgba(46,154,140,.12);border:1px solid rgba(46,154,140,.3);border-radius:20px;padding:5px 12px;
+}
+.cleared::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--stamp);box-shadow:0 0 0 3px rgba(46,154,140,.22)}
+
+.note{text-align:center;margin:8px auto 28px;font-size:14px;color:var(--soft);max-width:60ch}
+.note b{color:#cfeee8;font-weight:700}
+
+.cta{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:15px 28px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 18px 34px -16px rgba(0,0,0,.7)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--on-dark);border-color:rgba(121,207,194,.4)}
+.btn-ghost:hover{border-color:var(--on-dark)}
+
+@media(max-width:1020px){
+  .lanes{grid-template-columns:repeat(2,1fr);gap:26px}
+  .track::before,.track::after{display:none}
+}
+@media(max-width:920px){.wrap{padding:0 28px}.band{padding:72px 0}}
+@media(max-width:560px){
+  .lanes{grid-template-columns:1fr}
+  .cta{flex-direction:column;align-items:stretch}.btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Cleared before submission</p>
+      <h2>Four lanes. Your file clears every one.</h2>
+      <p>Like passing through security, your application moves through four checkpoints &mdash; and a real UK person signs it off before it&rsquo;s submitted.</p>
+    </div>
+
+    <div class="track">
+      <div class="lanes">
+        <div class="lane">
+          <span class="gateno">Lane 1</span>
+          <div class="medal"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+          <b>Eligibility check first</b>
+          <span class="desc">We confirm you qualify before you pay &mdash; nationality, residence, status and trip.</span>
+          <span class="cleared">Cleared</span>
+        </div>
+        <div class="lane">
+          <span class="gateno">Lane 2</span>
+          <div class="medal"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+          <b>Documents checked &mdash; AI + a real UK person</b>
+          <span class="desc">Funds evidence, validity and consistency &mdash; the things that actually get applications refused.</span>
+          <span class="cleared">Cleared</span>
+        </div>
+        <div class="lane">
+          <span class="gateno">Lane 3</span>
+          <div class="medal"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+          <b>Pre-submission QA gate</b>
+          <span class="desc">Nothing is submitted until a real UK person checks the whole file with you.</span>
+          <span class="cleared">Cleared</span>
+        </div>
+        <div class="lane">
+          <span class="gateno">Lane 4</span>
+          <div class="medal"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+          <b>We learn from every outcome</b>
+          <span class="desc">Each result sharpens our checks, so the next application is stronger.</span>
+          <span class="cleared">Cleared</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="note"><b>We remove the avoidable causes of refusal.</b> Process, not promises &mdash; every file is checked by a real UK person before it goes anywhere.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+      <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

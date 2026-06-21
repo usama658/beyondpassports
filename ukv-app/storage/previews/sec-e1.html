@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prevent refusals — Variant E1 (Hero shield seal)</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:400 800;font-display:swap;src:url('file:///C:/Users/mumya/OneDrive/Desktop/Claude%20Projects/UK%20VIsa/ukv-app/public/fonts/outfit-400.woff2') format('woff2');}
+:root{--navy:#16222E;--ink:#16222E;--cta:#155E7A;--cta-hover:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--on-dark:#79CFC2;--soft:#A9CCDA;--paper:#F4F6FA;--paper-edge:#dde3ec;--muted:#5d6b76;--white:#fff;}
+*{box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;margin:0;background:var(--navy);color:#eaf3f4}
+
+.band{position:relative;padding:116px 0 104px;overflow:hidden;background:radial-gradient(140% 110% at 50% -10%,#1d3340 0%,#16222E 55%,#11202b 100%)}
+/* faint scanning grid */
+.band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(rgba(121,207,194,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(121,207,194,.06) 1px,transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(120% 80% at 50% 18%,#000 30%,transparent 80%);
+  mask-image:radial-gradient(120% 80% at 50% 18%,#000 30%,transparent 80%);
+}
+/* central glow behind seal */
+.band::after{
+  content:"";position:absolute;left:50%;top:24%;width:680px;height:680px;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(46,154,140,.30),transparent 70%);filter:blur(10px);
+}
+.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 64px;text-align:center}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--on-dark);margin:0 0 20px}
+.eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--on-dark);opacity:.6}
+.head h2{margin:0 auto 16px;font-size:clamp(32px,4.4vw,56px);line-height:1.03;font-weight:800;letter-spacing:-.028em;color:#fff;max-width:18ch}
+.head .sub{margin:0 auto 4px;color:var(--soft);font-size:18px;line-height:1.6;max-width:54ch}
+
+/* ===== hero seal ===== */
+.sealwrap{position:relative;display:grid;place-items:center;height:430px;margin:30px 0 18px}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(121,207,194,.22)}
+.ring.r1{width:430px;height:430px;border-color:rgba(121,207,194,.16)}
+.ring.r2{width:360px;height:360px;border-style:dashed;border-color:rgba(121,207,194,.18);animation:spin 60s linear infinite}
+.ring.r3{width:300px;height:300px;border-color:rgba(121,207,194,.30)}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* curved text seal ring */
+.sealtext{position:absolute;width:330px;height:330px;animation:spin 48s linear infinite reverse}
+.sealtext text{fill:var(--on-dark);font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;font-family:'Outfit',sans-serif}
+/* the shield */
+.shield{position:relative;width:210px;height:250px;filter:drop-shadow(0 30px 56px rgba(0,0,0,.55))}
+.shield svg{width:100%;height:100%}
+.shield .plate{fill:url(#plate);stroke:rgba(121,207,194,.6);stroke-width:2}
+.shield .emboss{fill:none;stroke:rgba(121,207,194,.22);stroke-width:2}
+.shield .tick{fill:none;stroke:#bff3e9;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(121,207,194,.55))}
+.scanline{position:absolute;left:50%;top:50%;width:230px;height:2px;transform:translate(-50%,-50%);
+  background:linear-gradient(90deg,transparent,var(--on-dark),transparent);opacity:.85;
+  animation:scan 3.4s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translate(-50%,-96px)}50%{transform:translate(-50%,96px)}}
+@media(prefers-reduced-motion:reduce){.scanline,.ring.r2,.sealtext{animation:none}}
+
+/* ===== check chips ===== */
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:6px auto 30px;max-width:1040px;text-align:left}
+.chip{
+  position:relative;padding:22px 20px 20px;border-radius:15px;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid rgba(121,207,194,.18);
+  backdrop-filter:blur(3px);
+  transition:transform .18s,border-color .18s;
+}
+.chip:hover{transform:translateY(-4px);border-color:rgba(121,207,194,.4)}
+.chip .tick{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px;
+  background:rgba(46,154,140,.18);border:1.5px solid var(--stamp);
+}
+.chip .tick svg{width:19px;height:19px;stroke:var(--on-dark);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.chip b{display:block;font-size:15.5px;font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.25;margin-bottom:8px}
+.chip span{display:block;font-size:13px;line-height:1.55;color:var(--soft)}
+.chip .status{position:absolute;top:18px;right:18px;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark);opacity:.8}
+
+.note{margin:0 auto 28px;font-size:14px;color:var(--soft);max-width:60ch}
+.note b{color:#cfeee8;font-weight:700}
+
+.cta{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;border-radius:11px;padding:15px 28px;transition:.15s;border:1px solid transparent}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 18px 34px -16px rgba(0,0,0,.7)}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--on-dark);border-color:rgba(121,207,194,.4)}
+.btn-ghost:hover{border-color:var(--on-dark)}
+
+@media(max-width:1020px){.chips{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:920px){.wrap{padding:0 28px}.band{padding:72px 0 64px}}
+@media(max-width:560px){
+  .sealwrap{height:340px}
+  .ring.r1{width:330px;height:330px}.ring.r2{width:272px;height:272px}.ring.r3{width:228px;height:228px}
+  .sealtext{width:252px;height:252px}.shield{width:166px;height:198px}
+  .chips{grid-template-columns:1fr}
+  .cta{flex-direction:column;align-items:stretch}.btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Cleared before submission</p>
+    <div class="head">
+      <h2>Your application carries our seal — checked and ready.</h2>
+      <p class="sub">Four checks every file must pass before a real UK person submits it.</p>
+    </div>
+
+    <div class="sealwrap" aria-hidden="true">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <svg class="sealtext" viewBox="0 0 330 330">
+        <defs>
+          <path id="seal-arc-top" d="M 45 165 A 120 120 0 0 1 285 165"/>
+          <path id="seal-arc-bot" d="M 55 165 A 110 110 0 0 0 275 165"/>
+        </defs>
+        <text><textPath href="#seal-arc-top" startOffset="50%" text-anchor="middle">Checked &#183; Verified &#183; Ready</textPath></text>
+        <text><textPath href="#seal-arc-bot" startOffset="50%" text-anchor="middle">Beyond Passports &#183; UK Visa</textPath></text>
+      </svg>
+      <div class="shield">
+        <svg viewBox="0 0 120 142">
+          <defs>
+            <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#234050"/>
+              <stop offset="1" stop-color="#0f1d27"/>
+            </linearGradient>
+          </defs>
+          <path class="plate" d="M60 4 110 22 V70 C110 104 88 126 60 138 C32 126 10 104 10 70 V22 Z"/>
+          <path class="emboss" d="M60 14 100 28 V70 C100 98 82 117 60 128 C38 117 20 98 20 70 V28 Z"/>
+          <path class="tick" d="M40 71 L55 87 L83 53"/>
+        </svg>
+      </div>
+      <div class="scanline"></div>
+    </div>
+
+    <div class="chips">
+      <div class="chip">
+        <span class="status">Cleared</span>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+        <b>Eligibility check first</b>
+        <span>We confirm you qualify before you pay &mdash; nationality, residence, status and trip.</span>
+      </div>
+      <div class="chip">
+        <span class="status">Cleared</span>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+        <b>Documents checked &mdash; AI + a real UK person</b>
+        <span>Funds evidence, validity and consistency &mdash; the things that actually get applications refused.</span>
+      </div>
+      <div class="chip">
+        <span class="status">Cleared</span>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+        <b>Pre-submission QA gate</b>
+        <span>Nothing is submitted until a real UK person checks the whole file with you.</span>
+      </div>
+      <div class="chip">
+        <span class="status">Cleared</span>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
+        <b>We learn from every outcome</b>
+        <span>Each result sharpens our checks, so the next application is stronger.</span>
+      </div>
+    </div>
+
+    <p class="note"><b>We remove the avoidable causes of refusal.</b> Process, not promises &mdash; every file is checked by a real UK person before it goes anywhere.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="#">Start my application &#8594;</a>
+      <a class="btn btn-ghost" href="#">Worried about refusal? See how &#8594;</a>
+    </div>
+  </div>
+</section>
+</body>
+</html>

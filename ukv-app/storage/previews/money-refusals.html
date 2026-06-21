@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money page — refusal reasons previews</title>
+<style>
+  :root{--ink:#16222E;--navy:#16222E;--stamp:#2E9A8C;--cta:#155E7A;--stamp-text:#1F6E63;
+    --paper-edge:#dde3ec;--white:#fff;--muted:#5d6b76;--paper:#F4F6FA;--soft:#A9CCDA;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+  .lbl{max-width:1000px;margin:54px auto 0;padding:0 28px}
+  .lbl span{display:inline-block;background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:7px}
+  .lbl .note{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+
+  /* ===== shared filecard (mirrors live .mprev) ===== */
+  .mprev{padding:18px 0}
+  .filecard{position:relative;background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;
+    box-shadow:0 1px 2px rgba(22,34,46,.05),0 30px 60px -38px rgba(22,34,46,.45);padding:48px 50px 40px;overflow:hidden}
+  .filecard::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--stamp),var(--cta));opacity:.9}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 16px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--stamp);opacity:.7}
+  .head h2{margin:0 0 14px;font-size:34px;line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+  .head p{margin:0;color:var(--muted);font-size:16.5px;line-height:1.62;max-width:680px}
+
+  /* refusal list */
+  .refusals{margin:30px 0 4px}
+  .rl-lab{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+  .rl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin:0;padding:0;list-style:none}
+  .rl-grid li{display:flex;align-items:flex-start;gap:11px;font-size:15px;line-height:1.5;color:#33454f}
+  .rl-grid li svg{flex:0 0 20px;width:20px;height:20px;margin-top:1px;stroke:#9aa1a8;stroke-width:2.3;fill:none;stroke-linecap:round}
+  .rl-after{margin:20px 0 0;font-size:15px;font-weight:600;color:var(--stamp-text);display:flex;align-items:center;gap:9px}
+  .rl-after svg{flex:0 0 18px;width:18px;height:18px;stroke:var(--stamp);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* existing 3 checks (shown faded for context) */
+  .checks{margin:30px 0 6px;border-top:1px solid var(--paper-edge)}
+  .crow{display:flex;align-items:flex-start;gap:20px;padding:22px 4px;border-bottom:1px solid var(--paper-edge)}
+  .medallion{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);border:2px solid var(--stamp);box-shadow:0 8px 18px -9px rgba(46,154,140,.55)}
+  .medallion svg{width:22px;height:22px;stroke:var(--stamp-text);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .crow h3{margin:2px 0 5px;font-size:17px;font-weight:700;color:var(--navy)}
+  .crow p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5;max-width:560px}
+  .context-tag{font-size:11px;color:var(--muted);font-style:italic;opacity:.7;margin:6px 0 0}
+
+  /* ===== Variant 2 — separate tinted callout card ===== */
+  .rcard{position:relative;background:linear-gradient(180deg,#fbfcfe,var(--white));border:1px solid var(--paper-edge);
+    border-left:4px solid #c8702f;border-radius:14px;padding:34px 38px;box-shadow:0 18px 44px -36px rgba(22,34,46,.4)}
+  .rcard .eyebrow{color:#b5663a}.rcard .eyebrow::before{background:#c8702f}
+  .rcard h2{margin:0 0 18px;font-size:27px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+  .rcard .rl-grid li svg{stroke:#c8702f}
+  .arrow-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:15px;font-weight:700;color:var(--cta);text-decoration:none}
+
+  .gap{height:14px}
+  @media(max-width:620px){.rl-grid{grid-template-columns:1fr}.filecard{padding:34px 24px}.rcard{padding:26px 22px}}
+</style></head>
+<body>
+
+<!-- ============ VARIANT 1 — folded into the prevention card ============ -->
+<div class="lbl"><span>Variant 1 — inline in the prevention card</span><div class="note">The refusal-reasons list sits inside the existing "Built to prevent refusals" card, right above the 3 checks. One tight narrative: here's what trips applications up → here's how we check each.</div></div>
+<section class="mprev"><div class="wrap">
+  <div class="filecard">
+    <div class="head">
+      <p class="eyebrow">Built to prevent refusals</p>
+      <h2>Most Turkey refusals come down to a few fixable things</h2>
+      <p>Refusals usually aren't bad luck — they come from the same avoidable problems. Here's what trips Turkey applications up, and how we check for each before we submit.</p>
+    </div>
+
+    <div class="refusals">
+      <span class="rl-lab">What gets Turkey applications refused</span>
+      <ul class="rl-grid">
+        <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Unclear or insufficient funds evidence</li>
+        <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Passport validity too short for entry</li>
+        <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Inconsistent dates, names or details</li>
+        <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Missing or wrong supporting documents</li>
+        <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Applying for the wrong visa type</li>
+      </ul>
+      <p class="rl-after"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>We check for every one of these before your file is submitted.</p>
+    </div>
+
+    <div class="checks">
+      <div class="crow"><div class="medallion"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><h3>Eligibility for the e-Visa</h3><p>We confirm you qualify before you pay.</p></div></div>
+      <div class="crow"><div class="medallion"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
+        <div><h3>Turkey documents</h3><p>We check each one for history, source and consistency.</p></div></div>
+      <p class="context-tag">…(existing 3-check rows continue as today)</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ VARIANT 2 — separate "problem" card before the prevention card ============ -->
+<div class="lbl"><span>Variant 2 — separate refusals card (problem → solution)</span><div class="note">A standalone amber-accented "why applications get refused" card sits ABOVE the prevention card. Names the problem first, then the prevention card answers it. Strongest visual separation; reads as an educational beat.</div></div>
+<section class="mprev"><div class="wrap">
+  <div class="rcard">
+    <p class="eyebrow">Why Turkey applications get refused</p>
+    <h2>Most refusals come from five avoidable things</h2>
+    <ul class="rl-grid">
+      <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Unclear or insufficient funds evidence</li>
+      <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Passport validity too short for entry</li>
+      <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Inconsistent dates, names or details</li>
+      <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Missing or wrong supporting documents</li>
+      <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Applying for the wrong visa type</li>
+    </ul>
+    <a class="arrow-link" href="#">None of these are bad luck — see how we remove each ↓</a>
+  </div>
+  <div class="gap"></div>
+  <div class="filecard">
+    <div class="head">
+      <p class="eyebrow">Built to prevent refusals</p>
+      <h2>We remove each of those before you submit</h2>
+      <p>A real UK person reviews your whole Turkey file against the current rules — funds, validity, consistency and documents — before anything is submitted.</p>
+    </div>
+    <div class="checks">
+      <div class="crow"><div class="medallion"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><h3>Eligibility for the e-Visa</h3><p>We confirm you qualify before you pay.</p></div></div>
+      <p class="context-tag">…(existing 3-check rows continue as today)</p>
+    </div>
+  </div>
+</div></section>
+
+<div style="height:70px"></div>
+</body></html>
