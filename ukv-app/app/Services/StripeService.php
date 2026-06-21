@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Log;
  * "money received" marker rather than the `paid` pipeline ENTRY stage (orders are created at
  * `paid`). The webhook in this service is the sole writer of `paid_at`.
  */
-final class StripeService
+class StripeService
 {
     public function __construct(
         private readonly PricingService $pricing,

@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Services\ChecklistPdfService;
 use App\Services\ChecklistService;
 use App\Services\IcsService;
+use App\Services\StripeService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -96,6 +97,44 @@ class ChecklistController extends Controller
         ]);
 
         return redirect()->route('checklist.show', ['checklistRequest' => $checklist->token]);
+    }
+
+    /**
+     * Take the chosen tier + immediate-delivery consent, snapshot the price server-side,
+     * and start a Stripe Checkout session for the instant checklist. Already-paid requests
+     * skip straight to the (now full) result. paid_at is written only by the webhook.
+     */
+    public function checkout(Request $request, ChecklistRequest $checklistRequest, StripeService $stripe): RedirectResponse
+    {
+        $validated = $request->validate([
+            'tier' => ['required', 'in:standard,express,premium'],
+            'consent' => ['accepted'],
+            'email' => ['nullable', 'email', 'max:160'],
+        ]);
+
+        if ($checklistRequest->isPaid()) {
+            return redirect()->route('checklist.show', ['checklistRequest' => $checklistRequest->token]);
+        }
+
+        $checklistRequest->loadMissing('destination');
+        abort_if($checklistRequest->destination === null, 404);
+
+        $amount = app(\App\Services\ChecklistPricing::class)
+            ->priceFor($checklistRequest->destination, $validated['tier']);
+
+        $checklistRequest->fill([
+            'tier' => $validated['tier'],
+            'amount_gbp' => $amount,
+            'currency' => 'gbp',
+            'immediate_delivery_consent' => true,
+            'consent_at' => now(),
+        ]);
+        if (! empty($validated['email'])) {
+            $checklistRequest->email = $validated['email'];
+        }
+        $checklistRequest->save();
+
+        return redirect()->away($stripe->createChecklistSession($checklistRequest));
     }
 
     /**
