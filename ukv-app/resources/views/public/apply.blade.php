@@ -179,6 +179,11 @@
             $docItems = app(\App\Services\RequirementService::class)->preview($previewDest);
         }
     }
+    // Arriving from the document-checklist gate (?tier=standard|express|premium) preselects
+    // the service tier; falls back to standard. Invalid values are ignored.
+    $tierParam = in_array(request()->query('tier'), ['standard', 'express', 'premium'], true)
+        ? request()->query('tier')
+        : 'standard';
 @endphp
 
 @section('content')
@@ -241,7 +246,7 @@
               <select id="destination" name="destination" required aria-required="true">
                 <option value="">Choose a destination…</option>
                 @foreach ($navDestinations as $d)
-                  <option value="{{ $d->name }}" @selected(old('destination') === $d->name)>{{ $d->name }}</option>
+                  <option value="{{ $d->name }}" @selected(old('destination', $previewDest?->name) === $d->name)>{{ $d->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -356,9 +361,9 @@
             <div class="field field--full">
               <label for="tier">Choose your service tier</label>
               <select id="tier" name="tier">
-                <option value="standard" @selected(old('tier', 'standard') === 'standard')>Standard — full check &amp; submission at our usual pace</option>
-                <option value="express" @selected(old('tier') === 'express')>Express — we prioritise our handling</option>
-                <option value="premium" @selected(old('tier') === 'premium')>Premium — top of the queue + priority support</option>
+                <option value="standard" @selected(old('tier', $tierParam) === 'standard')>Standard — full check &amp; submission at our usual pace</option>
+                <option value="express" @selected(old('tier', $tierParam) === 'express')>Express — we prioritise our handling</option>
+                <option value="premium" @selected(old('tier', $tierParam) === 'premium')>Premium — top of the queue + priority support</option>
               </select>
               <p class="hint">This is our service fee only. Express speeds our handling, not the government's decision. No approval is guaranteed.</p>
             </div>
