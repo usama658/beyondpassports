@@ -404,6 +404,7 @@
       @if (session('pay_unavailable'))
         <div role="status" style="max-width:760px;margin:0 auto 14px;background:#fff7e6;border:1px solid #f0d9a8;border-radius:12px;padding:14px 18px;font-size:14px;color:#6b4e10">
           <strong>Card payment is being switched on.</strong> Meanwhile, message our UK team free on WhatsApp above — we'll sort your checklist right away.
+          @if (session('pay_error'))<br><small style="color:#9a6a00">[diagnostic] {{ session('pay_error') }}</small>@endif
         </div>
       @endif
 
