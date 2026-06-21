@@ -140,14 +140,28 @@ class ChecklistController extends Controller
     /**
      * Render a saved checklist by its public token. noindex (per-user / thin) — set in the
      * view via partials.seo-meta. Unknown token -> 404 (implicit route-model binding).
+     *
+     * Paid-aware: reads $paid from isPaid() OR a valid Stripe session_id query param.
+     * The session_id path is read-only — show() must NOT write paid_at (webhook does).
      */
-    public function show(ChecklistRequest $checklistRequest): View
+    public function show(ChecklistRequest $checklistRequest, Request $request, StripeService $stripe): View
     {
         $checklistRequest->loadMissing('destination');
+
+        $sessionId = (string) $request->query('session_id', '');
+        $paid = $checklistRequest->isPaid()
+            || ($sessionId !== '' && $stripe->isChecklistSessionPaid($checklistRequest->token, $sessionId));
+
+        $tierCards = $checklistRequest->destination !== null
+            ? app(\App\Services\ChecklistPricing::class)->cards($checklistRequest->destination)
+            : [];
 
         return view('public.checklist-result', [
             'request'     => $checklistRequest,
             'destination' => $checklistRequest->destination,
+            'paid'        => $paid,
+            'peek'        => $checklistRequest->peek(),
+            'tierCards'   => $tierCards,
         ]);
     }
 

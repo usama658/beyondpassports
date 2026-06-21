@@ -14,6 +14,14 @@
      * can emit its own noindex robots meta without touching the shared layout.
      */
     $items        = $request->items ?? [];
+    $paid         = $paid ?? true;
+    $peek         = $peek ?? ['count' => count($items), 'categories' => [], 'teaser' => null];
+    $tierCards    = $tierCards ?? [];
+    $tierMeta     = [
+        'standard' => ['name' => 'Standard', 'feat' => false, 'lines' => ['Personalised document list', 'Checked against your trip', 'Saved shareable link']],
+        'express'  => ['name' => 'Express',  'feat' => true,  'lines' => ['Everything in Standard', 'Downloadable PDF pack', 'Calendar reminders + emailed copy']],
+        'premium'  => ['name' => 'Premium',  'feat' => false, 'lines' => ['Everything in Express', 'Document templates & samples', 'Family checklist + 1:1 WhatsApp review']],
+    ];
     $destName     = $destination?->name ?? 'your trip';
     $destSlug     = $destination?->slug;
     $shareUrl     = url('/checklist/'.$request->token);
@@ -32,6 +40,8 @@
     $tripEntries  = $entriesMap[$inputs['visa_entries'] ?? ''] ?? null;
     $tripFacts    = implode(' · ', array_filter([$tripPurpose, $tripEntries])) ?: 'Tailored to your trip';
     $routeTo      = $destName !== 'your trip' ? \Illuminate\Support\Str::upper($destName) : 'YOUR TRIP';
+    $waNum        = config('ukv.whatsapp') ?: '440000000000';
+    $waHref       = 'https://wa.me/'.$waNum.'?text='.urlencode('Hi Beyond Passports — I would like help with my document checklist for '.$destName.'.');
 @endphp
 <!doctype html>
 <html lang="en-GB">
@@ -282,7 +292,7 @@
   {{-- STICKY QUICK-ACTION BAR — keeps save/email/share/apply reachable without deep scroll.
        Config-gated (ukv.checklist.sticky_action_bar): off => original scroll-only layout. The full
        sections below are untouched; this bar just mirrors them as always-visible triggers. --}}
-  @if (config('ukv.checklist.sticky_action_bar', true))
+  @if ($paid && config('ukv.checklist.sticky_action_bar', true))
   <style>
     /* Sticky action bar — navy command bar (pick A), ties to the boarding-pass hero. */
     .cr-actionbar{position:sticky;top:64px;z-index:40;padding:12px 0 4px}
@@ -329,16 +339,87 @@
   </div></div>
   @endif
 
-  {{-- ── THE CHECKLIST (snapshotted items) ── --}}
+  {{-- ── THE CHECKLIST — full when paid, redacted peek + gate when unpaid ── --}}
   <section class="cr-section"><div class="wrap">
-    <div class="cr-panel reveal">
-      @include('partials.doc-checklist', ['items' => $items, 'personalised' => true])
-    </div>
+    @if ($paid)
+      <div class="cr-panel reveal">
+        @include('partials.doc-checklist', ['items' => $items, 'personalised' => true])
+      </div>
+    @else
+      {{-- PEEK: server-side redaction — count + categories + ONE teaser. No other labels. --}}
+      <div class="cr-panel reveal" style="position:relative">
+        <p class="ch-label" style="margin-top:0">Your {{ $destName }} checklist · {{ $peek['count'] }} items</p>
+        @if (! empty($peek['categories']))
+          <p style="color:var(--muted);font-size:13.5px;margin:0 0 16px">Covers: {{ implode(' · ', $peek['categories']) }}</p>
+        @endif
+        @if ($peek['teaser'])
+          <div style="display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-top:1px dashed var(--paper-edge)">
+            <span style="color:var(--stamp);font-weight:800">✓</span>
+            <span><b style="color:var(--navy)">{{ $peek['teaser']['label'] }}</b>
+            @if ($peek['teaser']['note'])<span style="display:block;font-size:12.5px;color:var(--muted)">{{ $peek['teaser']['note'] }}</span>@endif</span>
+          </div>
+        @endif
+        @for ($i = 1; $i < min($peek['count'], 6); $i++)
+          <div style="display:flex;gap:11px;align-items:center;padding:12px 0;border-top:1px dashed var(--paper-edge);filter:blur(0)">
+            <span style="color:var(--paper-edge);font-weight:800">●</span>
+            <span style="height:13px;flex:1;max-width:{{ 60 - ($i*6) }}%;background:var(--paper-edge);border-radius:7px"></span>
+          </div>
+        @endfor
+        <p style="font-size:12.5px;color:var(--muted);margin:16px 0 0">Unlock the full list below — it appears here instantly.</p>
+      </div>
+
+      {{-- FREE WhatsApp path first (centered), then "or unlock instantly", then tiers --}}
+      <div class="cr-panel reveal" style="text-align:center;margin-top:18px">
+        <p class="ch-label" style="justify-content:center">Free</p>
+        <b style="font:800 17px var(--display);color:var(--navy)">Just need a quick answer?</b>
+        <p style="font-size:13px;color:#3a4b55;max-width:44ch;margin:4px auto 14px">Message our UK team — a real person, no payment, general guidance for your trip.</p>
+        <a href="{{ $waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;border-radius:11px;padding:13px 22px;font:800 14px var(--display);color:#fff;background:#25D366;text-decoration:none">Ask free on WhatsApp →</a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;margin:20px 2px;max-width:760px;margin-inline:auto">
+        <span style="flex:1;height:1px;background:var(--paper-edge)"></span>
+        <span style="font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">or unlock the full checklist instantly</span>
+        <span style="flex:1;height:1px;background:var(--paper-edge)"></span>
+      </div>
+
+      @if ($errors->any())
+        <div class="server-errors" role="alert" style="max-width:760px;margin:0 auto 14px">
+          <strong>Please fix the following:</strong>
+          <ul>@foreach ($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul>
+        </div>
+      @endif
+
+      <form method="POST" action="{{ url('/checklist/'.$request->token.'/checkout') }}" class="cr-panel reveal" style="max-width:760px;margin:0 auto" id="dct-pay">
+        @csrf
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          @foreach (['standard','express','premium'] as $key)
+            @continue(! isset($tierCards[$key]))
+            <label style="border:1px solid {{ $tierMeta[$key]['feat'] ? 'var(--cta)' : 'var(--paper-edge)' }};border-radius:14px;padding:18px 16px;display:block;cursor:pointer;text-align:left">
+              <input type="radio" name="tier" value="{{ $key }}" @checked($key==='express') style="accent-color:var(--cta)">
+              <span style="display:block;font:800 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:8px 0 2px">{{ $tierMeta[$key]['name'] }}</span>
+              <span style="display:block;font:800 20px var(--display);color:var(--navy)">£{{ rtrim(rtrim(number_format($tierCards[$key], 2), '0'), '.') }}</span>
+              <span style="display:block;font-size:12px;color:var(--muted);margin-top:8px">
+                @foreach ($tierMeta[$key]['lines'] as $line)✓ {{ $line }}<br>@endforeach
+              </span>
+            </label>
+          @endforeach
+        </div>
+
+        <label style="display:flex;gap:10px;align-items:flex-start;margin:16px 0;padding:14px 16px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px;font-size:13px;color:var(--muted)">
+          <input type="checkbox" name="consent" value="1" style="margin-top:3px;accent-color:var(--cta)" @error('consent') aria-invalid="true" @enderror>
+          <span>I want my checklist <strong>delivered immediately</strong> and understand that, because it's digital content provided at once, I <strong>lose my 14-day right to cancel</strong>. No refund once the list is unlocked.</span>
+        </label>
+
+        <button type="submit" class="btn" style="width:100%;padding:15px;font-size:16px">Unlock my full checklist →</button>
+        <p style="font-size:12px;color:var(--muted);text-align:center;margin:12px 0 0">Service fee only — separate from any government fee. No approval guaranteed.</p>
+      </form>
+    @endif
   </div></section>
 
   {{-- ── "SEND ME THIS" DELIVERY OFFER ── --}}
   {{-- Posts to POST /checklist/{token}/send (owned by the delivery agent). Fields:
        email, phone (nullable), channels[] (email|whatsapp|pdf|calendar), marketing_consent. --}}
+  @if ($paid)
   <section class="cr-section"><div class="wrap">
     <div class="deliver reveal" id="send">
       <div class="dhead">
@@ -410,8 +491,10 @@
       </form>
     </div>
   </div></section>
+  @endif
 
   {{-- ── SHARE LINK ── --}}
+  @if ($paid)
   <section class="cr-section"><div class="wrap">
     <div class="share reveal" id="share">
       <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Your saved link</p>
@@ -429,6 +512,7 @@
       <p class="note">This page is your saved checklist — bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
     </div>
   </div></section>
+  @endif
 
   {{-- ── COMPLIANCE STRIP — shield badge + text (pick A) ── --}}
   <section style="padding:16px 0 32px"><div class="wrap">
