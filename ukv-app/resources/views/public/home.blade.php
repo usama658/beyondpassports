@@ -137,20 +137,37 @@
   <h1>Sorted, without the stress.</h1>
   <p class="lede">Tell us where you're going. We confirm exactly what you need and get the paperwork right — so nothing avoidable trips it up. A real UK person checks every application before it's submitted.</p>
 
-  {{-- inline visa-check form (real destination list + apply) --}}
+  {{-- inline visa-check form → opens a WhatsApp chat with the trip pre-filled --}}
   <form class="hp-bar" onsubmit="return false">
     <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
     <div class="f">
       <label for="dest">Where are you going?</label>
-      <select id="dest"><option>Choose a destination…</option>@foreach ($navDestinations as $d)<option>{{ $d->name }}</option>@endforeach</select>
+      <select id="dest"><option value="">Choose a destination…</option>@foreach ($navDestinations as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
     </div>
     <div class="f">
       <label for="nat">Your passport</label>
-      <select id="nat"><option>United Kingdom</option><option>Other — we'll confirm your rules</option></select>
+      <select id="nat"><option value="a UK">United Kingdom</option><option value="a non-UK">Other — we'll confirm your rules</option></select>
     </div>
-    <button class="btn" type="button" onclick="location.href='{{ url('/apply') }}'">Check what I need →</button>
+    <button class="btn" type="button" id="hp-chat">Chat to our UK team →</button>
   </form>
-  <p class="hp-barhint">No account needed · takes 30 seconds</p>
+  <p class="hp-barhint">A real UK person replies · usually within minutes, Mon–Sat 9–6</p>
+  <script>
+    (function () {
+      var WA = @json(config('ukv.whatsapp') ?: '440000000000');
+      var btn = document.getElementById('hp-chat');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var dest = document.getElementById('dest');
+        var nat = document.getElementById('nat');
+        var place = dest && dest.value ? dest.value : '';
+        var pass = nat && nat.value ? nat.value : 'a UK';
+        var msg = place
+          ? 'Hi Beyond Passports — I am travelling to ' + place + ' on ' + pass + ' passport. What do I need?'
+          : 'Hi Beyond Passports — I would like help working out what I need for my trip.';
+        window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      });
+    })();
+  </script>
 
   @if ($hpDests->count())
   <div class="hp-names">
