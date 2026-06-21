@@ -148,7 +148,7 @@
       <label for="nat">Your passport</label>
       <select id="nat"><option value="a UK">United Kingdom</option><option value="a non-UK">Other — we'll confirm your rules</option></select>
     </div>
-    <button class="btn" type="button" id="hp-chat">Chat to our UK team →</button>
+    <button class="btn" type="button" id="hp-chat">Get my answer on WhatsApp →</button>
   </form>
   <p class="hp-barhint">A real UK person replies · usually within minutes, Mon–Sat 9–6</p>
   <script>
