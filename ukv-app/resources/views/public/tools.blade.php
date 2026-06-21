@@ -99,8 +99,8 @@
               <option value="UK">United Kingdom</option>
               <option value="Other">Other nationality</option>
             </select>
-            <button type="button" id="h-go" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Check what I need →</button>
-            <p style="font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center">Free · general guidance · we confirm your exact rules</p>
+            <button type="button" id="h-go" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Chat to our UK team →</button>
+            <p style="font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center">A real UK person replies · we confirm your exact rules</p>
           </div>
         </div>
       </div>
@@ -308,18 +308,19 @@
       vResult.focus({ preventScroll: true });
     });
 
-    // --- HERO card mirrors into the main visa checker ------------------------
+    // --- HERO card → opens a WhatsApp chat with the trip pre-filled ----------
     var hDest = document.getElementById('h-dest');
     var hPass = document.getElementById('h-pass');
     var hGo   = document.getElementById('h-go');
+    var WA    = @json(config('ukv.whatsapp') ?: '440000000000');
     if (hGo && hDest && hPass) {
       hGo.addEventListener('click', function () {
-        if (hDest.value) vForm.dest.value = hDest.value;
-        if (hPass.value) vForm.pass.value = hPass.value;
-        document.getElementById('visa-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // run the real checker (works whether or not selections were made)
-        if (typeof vForm.requestSubmit === 'function') vForm.requestSubmit();
-        else vForm.dispatchEvent(new Event('submit', { cancelable: true }));
+        var place = hDest.value ? hDest.value : '';
+        var pass = hPass.value === 'Other' ? 'a non-UK' : 'a UK';
+        var msg = place
+          ? 'Hi Beyond Passports — I am travelling to ' + place + ' on ' + pass + ' passport. What do I need?'
+          : 'Hi Beyond Passports — I would like help working out what I need for my trip.';
+        window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
     }
 
