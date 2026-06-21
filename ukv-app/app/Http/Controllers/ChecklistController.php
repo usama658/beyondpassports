@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Services\ChecklistPdfService;
 use App\Services\ChecklistService;
 use App\Services\IcsService;
+use App\Services\StripeService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -99,16 +100,68 @@ class ChecklistController extends Controller
     }
 
     /**
+     * Take the chosen tier + immediate-delivery consent, snapshot the price server-side,
+     * and start a Stripe Checkout session for the instant checklist. Already-paid requests
+     * skip straight to the (now full) result. paid_at is written only by the webhook.
+     */
+    public function checkout(Request $request, ChecklistRequest $checklistRequest, StripeService $stripe): RedirectResponse
+    {
+        $validated = $request->validate([
+            'tier' => ['required', 'in:standard,express,premium'],
+            'consent' => ['accepted'],
+            'email' => ['nullable', 'email', 'max:160'],
+        ]);
+
+        if ($checklistRequest->isPaid()) {
+            return redirect()->route('checklist.show', ['checklistRequest' => $checklistRequest->token]);
+        }
+
+        $checklistRequest->loadMissing('destination');
+        abort_if($checklistRequest->destination === null, 404);
+
+        $amount = app(\App\Services\ChecklistPricing::class)
+            ->priceFor($checklistRequest->destination, $validated['tier']);
+
+        $checklistRequest->fill([
+            'tier' => $validated['tier'],
+            'amount_gbp' => $amount,
+            'currency' => 'gbp',
+            'immediate_delivery_consent' => true,
+            'consent_at' => now(),
+        ]);
+        if (! empty($validated['email'])) {
+            $checklistRequest->email = $validated['email'];
+        }
+        $checklistRequest->save();
+
+        return redirect()->away($stripe->createChecklistSession($checklistRequest));
+    }
+
+    /**
      * Render a saved checklist by its public token. noindex (per-user / thin) — set in the
      * view via partials.seo-meta. Unknown token -> 404 (implicit route-model binding).
+     *
+     * Paid-aware: reads $paid from isPaid() OR a valid Stripe session_id query param.
+     * The session_id path is read-only — show() must NOT write paid_at (webhook does).
      */
-    public function show(ChecklistRequest $checklistRequest): View
+    public function show(ChecklistRequest $checklistRequest, Request $request, StripeService $stripe): View
     {
         $checklistRequest->loadMissing('destination');
+
+        $sessionId = (string) $request->query('session_id', '');
+        $paid = $checklistRequest->isPaid()
+            || ($sessionId !== '' && $stripe->isChecklistSessionPaid($checklistRequest->token, $sessionId));
+
+        $tierCards = $checklistRequest->destination !== null
+            ? app(\App\Services\ChecklistPricing::class)->cards($checklistRequest->destination)
+            : [];
 
         return view('public.checklist-result', [
             'request'     => $checklistRequest,
             'destination' => $checklistRequest->destination,
+            'paid'        => $paid,
+            'peek'        => $checklistRequest->peek(),
+            'tierCards'   => $tierCards,
         ]);
     }
 
@@ -119,6 +172,8 @@ class ChecklistController extends Controller
      */
     public function calendar(ChecklistRequest $checklistRequest, IcsService $ics): Response
     {
+        abort_unless($checklistRequest->isPaid(), 403);
+
         $checklistRequest->loadMissing('destination');
         $inputs = is_array($checklistRequest->inputs) ? $checklistRequest->inputs : [];
 
@@ -144,6 +199,8 @@ class ChecklistController extends Controller
      */
     public function printable(ChecklistRequest $checklistRequest, ChecklistPdfService $pdf): Response
     {
+        abort_unless($checklistRequest->isPaid(), 403);
+
         $checklistRequest->loadMissing('destination');
 
         return $pdf->renderPrintable($checklistRequest);

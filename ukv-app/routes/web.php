@@ -42,6 +42,8 @@ Route::post('/document-checklist', [ChecklistController::class, 'result'])
     ->middleware('throttle:contact')
     ->name('checklist.result');
 Route::get('/checklist/{checklistRequest}', [ChecklistController::class, 'show'])->name('checklist.show');
+Route::post('/checklist/{checklistRequest}/checkout', [ChecklistController::class, 'checkout'])
+    ->name('checklist.checkout');
 // Instant, no-contact downloads (value-first): printable PDF + calendar reminder.
 Route::get('/checklist/{checklistRequest}/print', [ChecklistController::class, 'printable'])->name('checklist.print');
 Route::get('/checklist/{checklistRequest}/calendar.ics', [ChecklistController::class, 'calendar'])->name('checklist.calendar');

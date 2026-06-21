@@ -8,7 +8,9 @@ use App\Enums\EventChannel;
 use App\Enums\EventType;
 use App\Enums\OrderStatus;
 use App\Enums\OrderTier;
+use App\Models\ChecklistRequest;
 use App\Models\Order;
+use App\Services\ChecklistPricing;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 
@@ -29,7 +31,7 @@ use Illuminate\Support\Facades\Log;
  * "money received" marker rather than the `paid` pipeline ENTRY stage (orders are created at
  * `paid`). The webhook in this service is the sole writer of `paid_at`.
  */
-final class StripeService
+class StripeService
 {
     public function __construct(
         private readonly PricingService $pricing,
@@ -150,6 +152,16 @@ final class StripeService
         /** @var \Stripe\Checkout\Session $session */
         $session = $event->data->object;
 
+        // Checklist purchases carry metadata.type='checklist' and are resolved by token.
+        if (($session->metadata->type ?? null) === 'checklist') {
+            $token = (string) ($session->metadata->token ?? $session->client_reference_id ?? '');
+            if ($token !== '') {
+                $this->markChecklistPaidByToken($token, $session->id ?? null, $session->customer_email ?? null);
+            }
+
+            return;
+        }
+
         $order = $this->resolveOrderFromSession($session);
         if ($order === null) {
             Log::warning('Stripe webhook: could not resolve order from session.', [
@@ -160,6 +172,111 @@ final class StripeService
         }
 
         $this->markOrderPaid($order, $session);
+    }
+
+    /**
+     * Build a Stripe Checkout Session for an instant CHECKLIST purchase. Charges the chosen
+     * tier's per-destination service fee. metadata.type='checklist' routes the webhook to the
+     * checklist path. Throws if the request has no tier / destination / resolvable price.
+     */
+    public function createChecklistSession(ChecklistRequest $request): string
+    {
+        $destination = $request->destination;
+        if ($destination === null) {
+            throw new \InvalidArgumentException("Checklist {$request->token} has no destination.");
+        }
+
+        $tier = (string) $request->tier;
+        if ($tier === '') {
+            throw new \InvalidArgumentException("Checklist {$request->token} has no tier.");
+        }
+
+        $amount = app(ChecklistPricing::class)->priceFor($destination, $tier);
+        if ($amount <= 0) {
+            throw new \InvalidArgumentException("Tier '{$tier}' is not priced for this destination.");
+        }
+
+        $session = $this->client()->checkout->sessions->create([
+            'mode' => 'payment',
+            'line_items' => [[
+                'quantity' => 1,
+                'price_data' => [
+                    'currency' => 'gbp',
+                    'unit_amount' => (int) round($amount * 100),
+                    'product_data' => [
+                        'name' => sprintf(
+                            '%s document checklist — %s',
+                            $destination->name ?? 'Trip',
+                            ucfirst($tier),
+                        ),
+                    ],
+                ],
+            ]],
+            'metadata' => [
+                'type' => 'checklist',
+                'checklist_id' => (string) $request->getKey(),
+                'token' => (string) $request->token,
+                'tier' => $tier,
+            ],
+            'client_reference_id' => (string) $request->token,
+            'success_url' => url('/checklist/'.$request->token).'?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => url('/checklist/'.$request->token),
+        ]);
+
+        return (string) $session->url;
+    }
+
+    /**
+     * Read-only check used on the Stripe success return so the buyer sees the list instantly,
+     * even before the webhook lands. NO database write. True iff the session is paid and its
+     * metadata.token matches.
+     */
+    public function isChecklistSessionPaid(string $token, string $sessionId): bool
+    {
+        if ($sessionId === '' || (string) config('services.stripe.secret') === '') {
+            return false;
+        }
+
+        try {
+            $session = $this->client()->checkout->sessions->retrieve($sessionId);
+        } catch (\Throwable $e) {
+            Log::warning('Checklist session retrieve failed.', ['error' => $e->getMessage()]);
+
+            return false;
+        }
+
+        $metaToken = $session->metadata->token ?? null;
+
+        return ($session->payment_status ?? null) === 'paid' && $metaToken === $token;
+    }
+
+    /**
+     * Idempotently mark a checklist paid (sole writer of paid_at on the checklist path).
+     * DB-only — safe to call from tests without the Stripe SDK. Dispatches post-pay delivery.
+     */
+    public function markChecklistPaidByToken(string $token, ?string $sessionId, ?string $email): void
+    {
+        $request = ChecklistRequest::query()->where('token', $token)->first();
+        if ($request === null) {
+            Log::warning('Stripe webhook: checklist not found for token.', ['token' => $token]);
+
+            return;
+        }
+
+        if ($request->paid_at !== null) {
+            return; // idempotent
+        }
+
+        $request->paid_at = \Illuminate\Support\Carbon::now();
+        $request->stripe_session_id = $sessionId;
+        if ($email !== null && $email !== '' && $request->email === null) {
+            $request->email = $email;
+        }
+        $request->save();
+
+        if (class_exists(\App\Jobs\DeliverPaidChecklist::class)) {
+            \App\Jobs\DeliverPaidChecklist::dispatch($request->id);
+        }
     }
 
     /**
