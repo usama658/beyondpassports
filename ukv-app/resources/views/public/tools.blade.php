@@ -277,8 +277,8 @@
     var dLink  = document.getElementById('tr-drive-link');
 
     function waHref(msg) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg); }
-    function asChat(link, msg) {
-      link.textContent = 'Get my answer on WhatsApp →';
+    function asChat(link, msg, label) {
+      link.textContent = label;
       link.setAttribute('href', waHref(msg));
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener');
@@ -297,12 +297,12 @@
         vTitle.textContent = 'Your requirements depend on your nationality.';
         vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live — we will confirm them for you.';
       }
-      asChat(vLink, 'Hi Beyond Passports — I am travelling to ' + dest + ' on ' + (pass === 'UK' ? 'a UK' : 'a non-UK') + ' passport. What do I need for my visa?');
+      asChat(vLink, 'Hi Beyond Passports — I am travelling to ' + dest + ' on ' + (pass === 'UK' ? 'a UK' : 'a non-UK') + ' passport. What do I need for my visa?', 'Sort my ' + dest + ' visa on WhatsApp →');
     }
 
     function fillDrive(dest, lic) {
       var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
-      asChat(dLink, 'Hi Beyond Passports — I will be driving in ' + destName + ' on a UK licence. Do I need an IDP, and can you help with the paperwork?');
+      asChat(dLink, 'Hi Beyond Passports — I will be driving in ' + destName + ' on a UK licence. Do I need an IDP, and can you help with the paperwork?', 'Sort my IDP for ' + destName + ' on WhatsApp →');
       if (lic === 'provisional') {
         dTitle.textContent = 'You cannot get an IDP on a provisional licence.';
         dBody.textContent  = 'An International Driving Permit is only issued to holders of a full UK driving licence. With a provisional you are not eligible, and most countries (including ' + destName + ') will not let you drive on a provisional. You would need to pass your full UK test first.';
