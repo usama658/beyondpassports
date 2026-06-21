@@ -24,14 +24,28 @@
 
   /* ── Two-checker grid ── */
   .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
-  /* unified single checker */
-  .tl-grid--one{grid-template-columns:1fr;max-width:560px}
-  .tl-two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-  .tl-opt{font-weight:500;color:var(--muted);font-size:11.5px}
+  /* unified trip checker — horizontal bar (home .hp-bar style) */
+  .tl-barwrap{max-width:880px;margin:0 auto}
+  .tl-bar{display:flex;gap:12px;align-items:flex-end;background:#fff;border:1px solid var(--paper-edge);border-radius:18px;
+    box-shadow:0 30px 64px -30px rgba(40,50,70,.45);padding:18px;position:relative}
+  .tl-bar .f{flex:1;min-width:0}
+  .tl-bar .f--dest{flex:1.5}
+  .tl-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
+  .tl-opt{font-weight:500;color:var(--muted);font-size:11px}
+  .tl-bar select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .tl-bar .btn{white-space:nowrap}
+  .tl-bar select[aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 1px #c0392b}
+  .tl-stamp{position:absolute;top:-20px;right:-16px;z-index:3;width:56px;height:56px;border-radius:50%;background:#fff;
+    border:2px solid var(--stamp);color:var(--stamp-text);display:grid;place-items:center;font:800 9px var(--display);text-align:center;line-height:1.15;
+    box-shadow:0 10px 24px -12px rgba(40,50,70,.5)}
+  .tl-barhint{text-align:center;margin-top:12px}
+  .tl-barerr{display:none;max-width:560px;margin:12px auto 0}
+  .tl-barerr.show{display:block}
+  .tl-result{max-width:880px;margin:18px auto 0}
   .tl-seg{padding-top:16px;margin-top:16px;border-top:1px solid var(--paper-edge)}
   .tl-seg:first-child{padding-top:0;margin-top:0;border-top:0}
   .tl-seg[hidden]{display:none}
-  @media (max-width:520px){.tl-two{grid-template-columns:1fr}}
+  @media (max-width:680px){.tl-bar{flex-direction:column;align-items:stretch}.tl-stamp{display:none}}
 
   /* ── Checker card overrides ── */
   /* navy stub header (pick B) */
@@ -122,61 +136,55 @@
     <p class="eyebrow">Use the checkers</p>
     <h2>Find out what your trip requires</h2>
   </div>
-  <div class="tl-grid tl-grid--one">
-
-    {{-- UNIFIED TRIP CHECKER — visa + driving in one --}}
-    <div class="checker tl-checker reveal" id="trip-card">
-      <div class="stub"><span>Trip checker</span><span>Visa + driving in one</span></div>
-      <div class="cbody">
-        <form id="trip-form" novalidate>
-          <label for="t-dest">Where are you going?</label>
-          <select id="t-dest" name="dest">
-            <option value="">Choose a destination…</option>
-            @foreach ($navDestinations as $d)
-            <option value="{{ $d->name }}">{{ $d->name }}</option>
-            @endforeach
-          </select>
-          <div class="tl-two">
-            <div>
-              <label for="t-pass">Your passport</label>
-              <select id="t-pass" name="pass">
-                <option value="">Choose…</option>
-                <option value="UK">United Kingdom</option>
-                <option value="Other">Other nationality</option>
-              </select>
-            </div>
-            <div>
-              <label for="t-lic">Will you drive? <span class="tl-opt">(optional)</span></label>
-              <select id="t-lic" name="lic">
-                <option value="">Not driving</option>
-                <option value="full">Full UK licence</option>
-                <option value="provisional">Provisional licence</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn">Check my trip →</button>
-          <p class="hint">Free · general guidance · we confirm your exact rules</p>
-          <p class="form-error" id="trip-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
-        </form>
-
-        <div class="tl-result" id="trip-result" role="region" aria-label="Trip checker result" aria-hidden="true" tabindex="-1">
-          <div class="tl-seg" id="tr-visa">
-            <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa / entry</p>
-            <h3 id="tr-visa-title">—</h3>
-            <p id="tr-visa-body">—</p>
-            <a class="rlink" id="tr-visa-link" href="{{ url('/apply') }}">Start my application →</a>
-          </div>
-          <div class="tl-seg" id="tr-drive" hidden>
-            <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Driving / IDP</p>
-            <h3 id="tr-drive-title">—</h3>
-            <p id="tr-drive-body">—</p>
-            <a class="rlink" id="tr-drive-link" href="{{ url('/driving-abroad') }}">Get help with my IDP paperwork →</a>
-          </div>
-          <p class="rmicro">General guidance for UK citizens / licence holders. Your exact rules depend on your nationality, residence and trip — we confirm them before you pay.</p>
-        </div>
+  {{-- UNIFIED TRIP CHECKER — horizontal bar (visa + driving in one) --}}
+  <div class="tl-barwrap">
+    <form id="trip-form" class="tl-bar reveal" novalidate>
+      <span class="tl-stamp" aria-hidden="true">CHECK<br>&amp; GO</span>
+      <div class="f f--dest">
+        <label for="t-dest">Where are you going?</label>
+        <select id="t-dest" name="dest">
+          <option value="">Choose a destination…</option>
+          @foreach ($navDestinations as $d)
+          <option value="{{ $d->name }}">{{ $d->name }}</option>
+          @endforeach
+        </select>
       </div>
-    </div>
+      <div class="f">
+        <label for="t-pass">Your passport</label>
+        <select id="t-pass" name="pass">
+          <option value="">Choose…</option>
+          <option value="UK">United Kingdom</option>
+          <option value="Other">Other nationality</option>
+        </select>
+      </div>
+      <div class="f">
+        <label for="t-lic">Will you drive? <span class="tl-opt">(optional)</span></label>
+        <select id="t-lic" name="lic">
+          <option value="">Not driving</option>
+          <option value="full">Full UK licence</option>
+          <option value="provisional">Provisional licence</option>
+        </select>
+      </div>
+      <button type="submit" class="btn">Check my trip →</button>
+    </form>
+    <p class="hint tl-barhint">Free · general guidance · we confirm your exact rules</p>
+    <p class="form-error tl-barerr" id="trip-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
 
+    <div class="tl-result" id="trip-result" role="region" aria-label="Trip checker result" aria-hidden="true" tabindex="-1">
+      <div class="tl-seg" id="tr-visa">
+        <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa / entry</p>
+        <h3 id="tr-visa-title">—</h3>
+        <p id="tr-visa-body">—</p>
+        <a class="rlink" id="tr-visa-link" href="{{ url('/apply') }}">Start my application →</a>
+      </div>
+      <div class="tl-seg" id="tr-drive" hidden>
+        <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Driving / IDP</p>
+        <h3 id="tr-drive-title">—</h3>
+        <p id="tr-drive-body">—</p>
+        <a class="rlink" id="tr-drive-link" href="{{ url('/driving-abroad') }}">Get help with my IDP paperwork →</a>
+      </div>
+      <p class="rmicro">General guidance for UK citizens / licence holders. Your exact rules depend on your nationality, residence and trip — we confirm them before you pay.</p>
+    </div>
   </div>
 </div></section>
 
