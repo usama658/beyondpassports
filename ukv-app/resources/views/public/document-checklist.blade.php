@@ -340,7 +340,7 @@
                     </a>
                   </div>
 
-                  <div class="gate-or" aria-hidden="true"><span>or have us do it for you</span></div>
+                  <div class="gate-or" aria-hidden="true"><span>or let us handle it</span></div>
 
                   <div class="dct-tiers">
                     <div class="dct-tier">
