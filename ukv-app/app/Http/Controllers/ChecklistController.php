@@ -143,7 +143,22 @@ class ChecklistController extends Controller
         }
         $checklistRequest->save();
 
-        return redirect()->away($stripe->createChecklistSession($checklistRequest));
+        // Never 500 the buyer if Stripe rejects the session create — degrade to the friendly
+        // notice and log the reason (the free WhatsApp path stays available).
+        try {
+            return redirect()->away($stripe->createChecklistSession($checklistRequest));
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('Checklist checkout: Stripe session create failed.', [
+                'token' => $checklistRequest->token,
+                'tier' => $checklistRequest->tier,
+                'error' => $e->getMessage(),
+            ]);
+
+            return redirect()
+                ->route('checklist.show', ['checklistRequest' => $checklistRequest->token])
+                ->with('pay_unavailable', true)
+                ->with('pay_error', $e->getMessage());
+        }
     }
 
     /**
