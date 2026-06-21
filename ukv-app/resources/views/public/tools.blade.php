@@ -278,7 +278,7 @@
 
     function waHref(msg) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg); }
     function asChat(link, msg) {
-      link.textContent = 'Chat to our UK team →';
+      link.textContent = 'Get my answer on WhatsApp →';
       link.setAttribute('href', waHref(msg));
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener');
