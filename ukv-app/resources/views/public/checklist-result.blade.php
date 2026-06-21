@@ -401,6 +401,12 @@
         <span style="flex:1;height:1px;background:var(--paper-edge)"></span>
       </div>
 
+      @if (session('pay_unavailable'))
+        <div role="status" style="max-width:760px;margin:0 auto 14px;background:#fff7e6;border:1px solid #f0d9a8;border-radius:12px;padding:14px 18px;font-size:14px;color:#6b4e10">
+          <strong>Card payment is being switched on.</strong> Meanwhile, message our UK team free on WhatsApp above — we'll sort your checklist right away.
+        </div>
+      @endif
+
       @if ($errors->any())
         <div class="server-errors" role="alert" style="max-width:760px;margin:0 auto 14px">
           <strong>Please fix the following:</strong>

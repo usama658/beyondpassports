@@ -116,6 +116,15 @@ class ChecklistController extends Controller
             return redirect()->route('checklist.show', ['checklistRequest' => $checklistRequest->token]);
         }
 
+        // Graceful fallback: if Stripe isn't configured on this environment, don't 500 trying
+        // to open a Checkout Session. Send them back to the result page with a friendly notice
+        // (the free WhatsApp path stays available). Nothing is saved — they can retry once keys land.
+        if ((string) config('services.stripe.secret') === '') {
+            return redirect()
+                ->route('checklist.show', ['checklistRequest' => $checklistRequest->token])
+                ->with('pay_unavailable', true);
+        }
+
         $checklistRequest->loadMissing('destination');
         abort_if($checklistRequest->destination === null, 404);
 

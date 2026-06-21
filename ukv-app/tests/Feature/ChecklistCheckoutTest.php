@@ -75,4 +75,23 @@ final class ChecklistCheckoutTest extends TestCase
         $this->post("/checklist/{$r->token}/checkout", ['tier' => 'standard', 'consent' => '1'])
             ->assertRedirect("/checklist/{$r->token}");
     }
+
+    public function test_checkout_without_stripe_key_falls_back_gracefully(): void
+    {
+        config(['services.stripe.secret' => '']);
+        $r = $this->request();
+
+        $mock = Mockery::mock(StripeService::class);
+        $mock->shouldNotReceive('createChecklistSession');
+        $this->app->instance(StripeService::class, $mock);
+
+        $this->post("/checklist/{$r->token}/checkout", ['tier' => 'express', 'consent' => '1'])
+            ->assertRedirect("/checklist/{$r->token}")
+            ->assertSessionHas('pay_unavailable', true);
+
+        // Nothing persisted — they can retry once keys land.
+        $r->refresh();
+        $this->assertNull($r->tier);
+        $this->assertNull($r->paid_at);
+    }
 }
