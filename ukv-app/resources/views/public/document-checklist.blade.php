@@ -24,7 +24,8 @@
   .dct-tier.feat{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
   .dct-tier .badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font:800 10px var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--cta);color:#fff;border-radius:999px;padding:4px 12px;white-space:nowrap}
   .dct-tier .name{font:800 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);margin:0}
-  .dct-tier .qline{font:800 17px var(--display);color:var(--navy);margin:8px 0 2px}
+  .dct-tier .qline{font:800 18px var(--display);color:var(--navy);margin:8px 0 2px}
+  .dct-tier .qline .from{font:700 11px var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-right:5px}
   .dct-tier .qline small{display:block;font:400 12px var(--mono,monospace);color:var(--muted);margin-top:4px}
   .dct-tier .sub{font-size:13px;color:var(--muted);margin:8px 0 12px}
   .dct-tier ul{list-style:none;padding:0;margin:0 0 16px;flex:1}
@@ -345,7 +346,7 @@
                   <div class="dct-tiers">
                     <div class="dct-tier">
                       <p class="name">Standard</p>
-                      <div class="qline">On request<small>full checklist &middot; checked</small></div>
+                      <div class="qline"><span class="from">from</span>&pound;35<small>full checklist &middot; checked</small></div>
                       <ul>
                         <li><span class="chk">&#10003;</span>Personalised document list</li>
                         <li><span class="chk">&#10003;</span>Checked by our UK team</li>
@@ -356,7 +357,7 @@
                     <div class="dct-tier feat">
                       <span class="badge">Most popular</span>
                       <p class="name">Express</p>
-                      <div class="qline">On request<small>priority handling</small></div>
+                      <div class="qline"><span class="from">from</span>&pound;55<small>priority handling</small></div>
                       <ul>
                         <li><span class="chk">&#10003;</span>Everything in Standard</li>
                         <li><span class="chk">&#10003;</span>Priority preparation</li>
@@ -366,7 +367,7 @@
                     </div>
                     <div class="dct-tier">
                       <p class="name">Premium</p>
-                      <div class="qline">On request<small>hands-on, end to end</small></div>
+                      <div class="qline"><span class="from">from</span>&pound;85<small>hands-on, end to end</small></div>
                       <ul>
                         <li><span class="chk">&#10003;</span>Everything in Express</li>
                         <li><span class="chk">&#10003;</span>Dedicated case handler</li>
