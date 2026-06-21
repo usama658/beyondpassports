@@ -275,28 +275,33 @@
     var dBody  = document.getElementById('tr-drive-body');
     var dLink  = document.getElementById('tr-drive-link');
 
+    function waHref(msg) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg); }
+    function asChat(link, msg) {
+      link.textContent = 'Chat to our UK team →';
+      link.setAttribute('href', waHref(msg));
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener');
+      link.style.display = '';
+    }
+
     function fillVisa(dest, pass) {
       var info = VISA[dest];
       if (pass === 'UK' && info) {
         vTitle.textContent = 'Most UK travellers need: ' + info.note + ' for ' + dest + '.';
         vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note + '. We can prepare and check it for you — and confirm your exact rules first.';
-        vLink.textContent  = 'Start my application →'; vLink.setAttribute('href', APPLY_URL);
       } else if (pass === 'UK') {
         vTitle.textContent = "We'll confirm exactly what you need for " + dest + '.';
         vBody.textContent  = 'Requirements vary by destination and trip. Tell us your plans and a UK adviser confirms your exact rules — then we prepare and check everything before you submit.';
-        vLink.textContent  = 'Start my application →'; vLink.setAttribute('href', APPLY_URL);
       } else {
         vTitle.textContent = 'Your requirements depend on your nationality.';
-        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live — we will confirm them for you. Request a callback and a UK adviser will check your case.';
-        vLink.textContent  = 'Request a callback →'; vLink.setAttribute('href', APPLY_URL);
+        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live — we will confirm them for you.';
       }
+      asChat(vLink, 'Hi Beyond Passports — I am travelling to ' + dest + ' on ' + (pass === 'UK' ? 'a UK' : 'a non-UK') + ' passport. What do I need for my visa?');
     }
 
     function fillDrive(dest, lic) {
       var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
-      dLink.textContent = 'Get help with my IDP paperwork →';
-      dLink.setAttribute('href', IDP_URL);
-      dLink.style.display = '';
+      asChat(dLink, 'Hi Beyond Passports — I will be driving in ' + destName + ' on a UK licence. Do I need an IDP, and can you help with the paperwork?');
       if (lic === 'provisional') {
         dTitle.textContent = 'You cannot get an IDP on a provisional licence.';
         dBody.textContent  = 'An International Driving Permit is only issued to holders of a full UK driving licence. With a provisional you are not eligible, and most countries (including ' + destName + ') will not let you drive on a provisional. You would need to pass your full UK test first.';
