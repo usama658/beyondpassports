@@ -24,6 +24,14 @@
 
   /* ── Two-checker grid ── */
   .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;max-width:920px;margin:0 auto}
+  /* unified single checker */
+  .tl-grid--one{grid-template-columns:1fr;max-width:560px}
+  .tl-two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  .tl-opt{font-weight:500;color:var(--muted);font-size:11.5px}
+  .tl-seg{padding-top:16px;margin-top:16px;border-top:1px solid var(--paper-edge)}
+  .tl-seg:first-child{padding-top:0;margin-top:0;border-top:0}
+  .tl-seg[hidden]{display:none}
+  @media (max-width:520px){.tl-two{grid-template-columns:1fr}}
 
   /* ── Checker card overrides ── */
   /* navy stub header (pick B) */
@@ -114,71 +122,57 @@
     <p class="eyebrow">Use the checkers</p>
     <h2>Find out what your trip requires</h2>
   </div>
-  <div class="tl-grid">
+  <div class="tl-grid tl-grid--one">
 
-    {{-- A) VISA CHECKER --}}
-    <div class="checker tl-checker reveal" id="visa-card">
-      <div class="stub"><span>Visa check</span><span>By destination</span></div>
+    {{-- UNIFIED TRIP CHECKER — visa + driving in one --}}
+    <div class="checker tl-checker reveal" id="trip-card">
+      <div class="stub"><span>Trip checker</span><span>Visa + driving in one</span></div>
       <div class="cbody">
-        <form id="visa-form" novalidate>
-          <label for="v-dest">Where are you going?</label>
-          <select id="v-dest" name="dest">
+        <form id="trip-form" novalidate>
+          <label for="t-dest">Where are you going?</label>
+          <select id="t-dest" name="dest">
             <option value="">Choose a destination…</option>
             @foreach ($navDestinations as $d)
             <option value="{{ $d->name }}">{{ $d->name }}</option>
             @endforeach
           </select>
-          <label for="v-pass">Your passport</label>
-          <select id="v-pass" name="pass">
-            <option value="">Choose…</option>
-            <option value="UK">United Kingdom</option>
-            <option value="Other">Other nationality</option>
-          </select>
-          <button type="submit" class="btn">Check what I need →</button>
+          <div class="tl-two">
+            <div>
+              <label for="t-pass">Your passport</label>
+              <select id="t-pass" name="pass">
+                <option value="">Choose…</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Other">Other nationality</option>
+              </select>
+            </div>
+            <div>
+              <label for="t-lic">Will you drive? <span class="tl-opt">(optional)</span></label>
+              <select id="t-lic" name="lic">
+                <option value="">Not driving</option>
+                <option value="full">Full UK licence</option>
+                <option value="provisional">Provisional licence</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn">Check my trip →</button>
           <p class="hint">Free · general guidance · we confirm your exact rules</p>
-          <p class="form-error" id="visa-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
+          <p class="form-error" id="trip-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
         </form>
 
-        <div class="tl-result" id="visa-result" role="region" aria-label="Visa checker result" aria-hidden="true" tabindex="-1">
-          <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa check</p>
-          <h3 id="visa-result-title">—</h3>
-          <p id="visa-result-body">—</p>
-          <a class="rlink" id="visa-result-link" href="{{ url('/apply') }}">See details &amp; fixed fees →</a>
-          <p class="rmicro">General guidance for UK citizens. Your exact rules depend on your nationality, residence and trip.</p>
-        </div>
-      </div>
-    </div>
-
-    {{-- B) IDP CHECKER --}}
-    <div class="checker tl-checker reveal" id="idp-card" style="animation-delay:.06s">
-      <div class="stub"><span>IDP check</span><span>Driving abroad</span></div>
-      <div class="cbody">
-        <form id="idp-form" novalidate>
-          <label for="i-dest">Where will you drive?</label>
-          <select id="i-dest" name="dest">
-            <option value="">Choose a destination…</option>
-            @foreach ($navDestinations as $d)
-            <option value="{{ $d->name }}">{{ $d->name }}</option>
-            @endforeach
-          </select>
-          <label for="i-lic">Your UK licence</label>
-          <select id="i-lic" name="lic">
-            <option value="">Choose…</option>
-            <option value="photocard">Photocard — full licence</option>
-            <option value="paper">Paper — full licence</option>
-            <option value="provisional">Provisional licence</option>
-          </select>
-          <button type="submit" class="btn">Check IDP →</button>
-          <p class="hint">Free · IDPs are issued in person at PayPoint</p>
-          <p class="form-error" id="idp-error" role="alert" aria-live="assertive">Choose where you'll drive and your licence type to see your result.</p>
-        </form>
-
-        <div class="tl-result" id="idp-result" role="region" aria-label="IDP checker result" aria-hidden="true" tabindex="-1">
-          <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> IDP check</p>
-          <h3 id="idp-result-title">—</h3>
-          <p id="idp-result-body">—</p>
-          <a class="rlink" id="idp-result-link" href="{{ url('/driving-abroad') }}">Get help with my IDP paperwork →</a>
-          <p class="rmicro">General guidance for UK licence holders. An IDP is collected in person — we prepare and check, you collect.</p>
+        <div class="tl-result" id="trip-result" role="region" aria-label="Trip checker result" aria-hidden="true" tabindex="-1">
+          <div class="tl-seg" id="tr-visa">
+            <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa / entry</p>
+            <h3 id="tr-visa-title">—</h3>
+            <p id="tr-visa-body">—</p>
+            <a class="rlink" id="tr-visa-link" href="{{ url('/apply') }}">Start my application →</a>
+          </div>
+          <div class="tl-seg" id="tr-drive" hidden>
+            <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Driving / IDP</p>
+            <h3 id="tr-drive-title">—</h3>
+            <p id="tr-drive-body">—</p>
+            <a class="rlink" id="tr-drive-link" href="{{ url('/driving-abroad') }}">Get help with my IDP paperwork →</a>
+          </div>
+          <p class="rmicro">General guidance for UK citizens / licence holders. Your exact rules depend on your nationality, residence and trip — we confirm them before you pay.</p>
         </div>
       </div>
     </div>
@@ -259,53 +253,85 @@
       for (var i = 0; i < arguments.length; i++) arguments[i].removeAttribute('aria-invalid');
     }
 
-    // --- VISA CHECKER --------------------------------------------------------
-    var vForm   = document.getElementById('visa-form');
-    var vResult = document.getElementById('visa-result');
-    var vTitle  = document.getElementById('visa-result-title');
-    var vBody   = document.getElementById('visa-result-body');
-    var vLink   = document.getElementById('visa-result-link');
-    var vError  = document.getElementById('visa-error');
+    // --- UNIFIED TRIP CHECKER (visa + optional driving in one) ---------------
+    var tForm  = document.getElementById('trip-form');
+    var tResult = document.getElementById('trip-result');
+    var tError = document.getElementById('trip-error');
+    // visa segment
+    var vTitle = document.getElementById('tr-visa-title');
+    var vBody  = document.getElementById('tr-visa-body');
+    var vLink  = document.getElementById('tr-visa-link');
+    // driving segment
+    var driveSeg = document.getElementById('tr-drive');
+    var dTitle = document.getElementById('tr-drive-title');
+    var dBody  = document.getElementById('tr-drive-body');
+    var dLink  = document.getElementById('tr-drive-link');
 
-    vForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var dest = vForm.dest.value;
-      var pass = vForm.pass.value;
-      if (!dest || !pass) {
-        hide(vResult);
-        clearInvalid(vForm.dest, vForm.pass);
-        markInvalid(dest ? vForm.pass : vForm.dest);
-        showFieldError(vError);
-        (dest ? vForm.pass : vForm.dest).focus();
-        return;
-      }
-      clearInvalid(vForm.dest, vForm.pass);
-      hideFieldError(vError);
+    function fillVisa(dest, pass) {
       var info = VISA[dest];
       if (pass === 'UK' && info) {
         vTitle.textContent = 'Most UK travellers need: ' + info.note + ' for ' + dest + '.';
-        vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note +
-                             '. We can prepare and check it for you — and confirm your exact rules first.';
-        vLink.textContent  = 'Start my application →';
-        vLink.setAttribute('href', APPLY_URL);
-        vLink.style.display = '';
+        vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note + '. We can prepare and check it for you — and confirm your exact rules first.';
+        vLink.textContent  = 'Start my application →'; vLink.setAttribute('href', APPLY_URL);
       } else if (pass === 'UK') {
-        // Destination not in the quick-guidance set — answer honestly, route to the team.
         vTitle.textContent = "We'll confirm exactly what you need for " + dest + '.';
         vBody.textContent  = 'Requirements vary by destination and trip. Tell us your plans and a UK adviser confirms your exact rules — then we prepare and check everything before you submit.';
-        vLink.textContent  = 'Start my application →';
-        vLink.setAttribute('href', APPLY_URL);
-        vLink.style.display = '';
+        vLink.textContent  = 'Start my application →'; vLink.setAttribute('href', APPLY_URL);
       } else {
         vTitle.textContent = 'Your requirements depend on your nationality.';
-        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest +
-                             ' depend on your nationality and where you live — we will confirm them for you. Request a callback and a UK adviser will check your case.';
-        vLink.textContent  = 'Request a callback →';
-        vLink.setAttribute('href', APPLY_URL);
-        vLink.style.display = '';
+        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live — we will confirm them for you. Request a callback and a UK adviser will check your case.';
+        vLink.textContent  = 'Request a callback →'; vLink.setAttribute('href', APPLY_URL);
       }
-      show(vResult);
-      vResult.focus({ preventScroll: true });
+    }
+
+    function fillDrive(dest, lic) {
+      var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
+      dLink.textContent = 'Get help with my IDP paperwork →';
+      dLink.setAttribute('href', IDP_URL);
+      dLink.style.display = '';
+      if (lic === 'provisional') {
+        dTitle.textContent = 'You cannot get an IDP on a provisional licence.';
+        dBody.textContent  = 'An International Driving Permit is only issued to holders of a full UK driving licence. With a provisional you are not eligible, and most countries (including ' + destName + ') will not let you drive on a provisional. You would need to pass your full UK test first.';
+        dLink.style.display = 'none';
+        return;
+      }
+      var rec = IDP[dest];
+      if (!rec) {
+        dTitle.textContent = "We'll confirm whether you need an IDP for " + destName + '.';
+        dBody.textContent  = 'On a full UK licence, whether an International Driving Permit is required depends on the country and how long you are driving. Tell us your trip and we will confirm — and if you need one, we offer guided self-service: we prepare and check the paperwork, you collect it in person at a PayPoint.';
+        return;
+      }
+      if (rec.need) {
+        dTitle.textContent = 'You will usually need an IDP for ' + destName + '.';
+        dBody.textContent  = 'On a full UK licence, an International Driving Permit (' + rec.conv + ') is typically required to drive in ' + destName + '. An IDP is obtained in person at a PayPoint — we offer guided self-service: we prepare and check your paperwork, and you collect it yourself in person.';
+      } else {
+        dTitle.textContent = 'You usually do not need an IDP for ' + destName + '.';
+        dBody.textContent  = 'On a full UK licence, an International Driving Permit is generally not required for short visits to ' + destName + ' (check car-hire and local rules). When one is needed, ' + destName + ' typically recognises the ' + rec.conv + ' permit. If you do need one, it is obtained in person at a PayPoint — we prepare and check the paperwork, you collect it yourself.';
+      }
+    }
+
+    tForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var dest = tForm.dest.value;
+      var pass = tForm.pass.value;
+      var lic  = tForm.lic.value;
+      if (!dest || !pass) {
+        hide(tResult);
+        clearInvalid(tForm.dest, tForm.pass);
+        markInvalid(dest ? tForm.pass : tForm.dest);
+        showFieldError(tError);
+        (dest ? tForm.pass : tForm.dest).focus();
+        return;
+      }
+      clearInvalid(tForm.dest, tForm.pass);
+      hideFieldError(tError);
+
+      fillVisa(dest, pass);
+      if (lic) { fillDrive(dest, lic); driveSeg.hidden = false; }
+      else { driveSeg.hidden = true; }
+
+      show(tResult);
+      tResult.focus({ preventScroll: true });
     });
 
     // --- HERO card → opens a WhatsApp chat with the trip pre-filled ----------
@@ -323,71 +349,6 @@
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
     }
-
-    // --- IDP CHECKER ---------------------------------------------------------
-    var iForm   = document.getElementById('idp-form');
-    var iResult = document.getElementById('idp-result');
-    var iTitle  = document.getElementById('idp-result-title');
-    var iBody   = document.getElementById('idp-result-body');
-    var iLink   = document.getElementById('idp-result-link');
-    var iError  = document.getElementById('idp-error');
-
-    iForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var dest = iForm.dest.value;
-      var lic  = iForm.lic.value;
-      if (!dest || !lic) {
-        hide(iResult);
-        clearInvalid(iForm.dest, iForm.lic);
-        markInvalid(dest ? iForm.lic : iForm.dest);
-        showFieldError(iError);
-        (dest ? iForm.lic : iForm.dest).focus();
-        return;
-      }
-      clearInvalid(iForm.dest, iForm.lic);
-      hideFieldError(iError);
-      var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
-
-      if (lic === 'provisional') {
-        iTitle.textContent = 'You cannot get an IDP on a provisional licence.';
-        iBody.textContent  = 'An International Driving Permit can only be issued to holders of a full UK driving licence. ' +
-                             'With a provisional licence you are not eligible for an IDP, and most countries (including ' + destName +
-                             ') will not let you drive on a provisional. You would need to pass your full UK test first.';
-        iLink.style.display = 'none';
-        show(iResult);
-        iResult.focus({ preventScroll: true });
-        return;
-      }
-
-      var rec = IDP[dest];
-      if (!rec) {
-        // Destination not in the quick-guidance set — answer honestly, route to the team.
-        iTitle.textContent = "We'll confirm whether you need an IDP for " + destName + '.';
-        iBody.textContent  = 'On a full UK licence, whether an International Driving Permit is required depends on the country and how long you are driving. Tell us your trip and we will confirm — and if you need one, we offer guided self-service: we prepare and check the paperwork, you collect it in person at a PayPoint.';
-        iLink.textContent = 'Get help with my IDP paperwork →';
-        iLink.setAttribute('href', IDP_URL);
-        iLink.style.display = '';
-        show(iResult);
-        iResult.focus({ preventScroll: true });
-        return;
-      }
-      var convNote = 'When one is needed, ' + destName + ' typically recognises the ' + rec.conv + ' International Driving Permit.';
-      if (rec.need) {
-        iTitle.textContent = 'You will usually need an IDP for ' + destName + '.';
-        iBody.textContent  = 'On a full UK licence, an International Driving Permit (' + rec.conv + ') is typically required to drive in ' + destName +
-                             '. An IDP is obtained in person at a PayPoint — we offer guided self-service: we prepare and check your paperwork, and you collect the IDP yourself in person.';
-      } else {
-        iTitle.textContent = 'You usually do not need an IDP for ' + destName + '.';
-        iBody.textContent  = 'On a full UK licence, an International Driving Permit is generally not required for short visits to ' + destName +
-                             ' (check car-hire and local rules). ' + convNote +
-                             ' If you do need one, it is obtained in person at a PayPoint — we offer guided self-service: we prepare and check the paperwork, you collect it yourself.';
-      }
-      iLink.textContent = 'Get help with my IDP paperwork →';
-      iLink.setAttribute('href', IDP_URL);
-      iLink.style.display = '';
-      show(iResult);
-      iResult.focus({ preventScroll: true });
-    });
   });
 </script>
 @endpush
