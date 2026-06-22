@@ -41,14 +41,14 @@
     $tripFacts    = implode(' · ', array_filter([$tripPurpose, $tripEntries])) ?: 'Tailored to your trip';
     $routeTo      = $destName !== 'your trip' ? \Illuminate\Support\Str::upper($destName) : 'YOUR TRIP';
     $waNum        = config('ukv.whatsapp') ?: '440000000000';
-    $waHref       = 'https://wa.me/'.$waNum.'?text='.urlencode('Hi Beyond Passports — I would like help with my document checklist for '.$destName.'.');
+    $waHref       = 'https://wa.me/'.$waNum.'?text='.urlencode('Hi Beyond Passports, I would like help with my document checklist for '.$destName.'.');
 @endphp
 <!doctype html>
 <html lang="en-GB">
 <head>
 @include('partials.seo-meta', [
     'title'       => 'Your document checklist for '.$destName.' | Beyond Passports',
-    'description' => 'Your tailored document checklist. Keep it, share it, or have it sent to you. Independent service — not a government website.',
+    'description' => 'Your tailored document checklist. Keep it, share it, or have it sent to you. Independent service, not a government website.',
     'canonical'   => $shareUrl,
     'noindex'     => true,
 ])
@@ -292,7 +292,7 @@
           </div>
           <p class="eyebrow">Your document checklist</p>
           <h1>What you'll need for {{ $destName }}</h1>
-          <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below — and when you're ready, we'll confirm your exact requirements before you apply.</p>
+          <p class="lede">Here's your tailored list, free and yours to keep. Bookmark this page or send it to yourself below. When you're ready, we'll confirm your exact requirements before you apply.</p>
         </div>
         <div class="crp-stub">
           <div><span class="l">Documents</span><span class="v">{{ $docCount }} <small>{{ \Illuminate\Support\Str::plural('item', $docCount) }}</small></span></div>
@@ -379,7 +379,7 @@
             <span style="height:13px;flex:1;max-width:{{ 60 - ($i*6) }}%;background:var(--paper-edge);border-radius:7px"></span>
           </div>
         @endfor
-        <p style="font-size:12.5px;color:var(--muted);margin:16px 0 0">Unlock the full list below — it appears here instantly.</p>
+        <p style="font-size:12.5px;color:var(--muted);margin:16px 0 0">Get the full list below. It appears here instantly.</p>
       </div>
 
       {{-- FREE WhatsApp path (premium dark-green banner — pops against the white tiers below) --}}
@@ -387,7 +387,7 @@
         <div>
           <span class="cr-free-pill">Free</span>
           <b>Just need a quick answer?</b>
-          <p>A real UK person on WhatsApp — no payment, general guidance for your trip.</p>
+          <p>A real UK person on WhatsApp. No payment, general guidance for your trip.</p>
         </div>
         <a href="{{ $waHref }}" target="_blank" rel="noopener" class="cr-free-wa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -397,13 +397,13 @@
 
       <div style="display:flex;align-items:center;gap:14px;margin:20px 2px;max-width:760px;margin-inline:auto">
         <span style="flex:1;height:1px;background:var(--paper-edge)"></span>
-        <span style="font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">or unlock the full checklist instantly</span>
+        <span style="font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">or get the full checklist instantly</span>
         <span style="flex:1;height:1px;background:var(--paper-edge)"></span>
       </div>
 
       @if (session('pay_unavailable'))
         <div role="status" style="max-width:760px;margin:0 auto 14px;background:#fff7e6;border:1px solid #f0d9a8;border-radius:12px;padding:14px 18px;font-size:14px;color:#6b4e10">
-          <strong>Card payment is being switched on.</strong> Meanwhile, message our UK team free on WhatsApp above — we'll sort your checklist right away.
+          <strong>Card payment is being switched on.</strong> Meanwhile, message our UK team free on WhatsApp above and we'll sort your checklist right away.
         </div>
       @endif
 
@@ -432,11 +432,11 @@
 
         <label style="display:flex;gap:10px;align-items:flex-start;margin:16px 0;padding:14px 16px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px;font-size:13px;color:var(--muted)">
           <input type="checkbox" name="consent" value="1" style="margin-top:3px;accent-color:var(--cta)" @error('consent') aria-invalid="true" @enderror>
-          <span>I want my checklist <strong>delivered immediately</strong> and understand that, because it's digital content provided at once, I <strong>lose my 14-day right to cancel</strong>. No refund once the list is unlocked.</span>
+          <span>I want my checklist <strong>delivered immediately</strong> and understand that, because it's digital content provided at once, I <strong>lose my 14-day right to cancel</strong>. No refund once the list is shown.</span>
         </label>
 
-        <button type="submit" class="btn" style="width:100%;padding:15px;font-size:16px">Unlock my full checklist →</button>
-        <p style="font-size:12px;color:var(--muted);text-align:center;margin:12px 0 0">Service fee only — separate from any government fee. No approval guaranteed.</p>
+        <button type="submit" class="btn" style="width:100%;padding:15px;font-size:16px">Get my full checklist →</button>
+        <p style="font-size:12px;color:var(--muted);text-align:center;margin:12px 0 0">Service fee only, separate from any government fee. No approval guaranteed.</p>
       </form>
     @endif
   </div></section>
@@ -451,10 +451,10 @@
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></span>
         <h2>Send me this checklist</h2>
       </div>
-      <p class="sub">Want a copy to keep? We'll send your checklist plus the saved link — and a calendar reminder to start in good time, if you'd like one.</p>
+      <p class="sub">Want a copy to keep? We'll send your checklist plus the saved link, and a calendar reminder to start in good time, if you'd like one.</p>
 
       @if ($sentOk)
-        <p class="sent-ok" role="status">Thanks — we're sending your checklist now. Check your inbox shortly.</p>
+        <p class="sent-ok" role="status">Thanks. We're sending your checklist now. Check your inbox shortly.</p>
       @endif
 
       @if ($errors->any())
@@ -508,7 +508,7 @@
 
         <div class="consent">
           <input type="checkbox" id="marketing_consent" name="marketing_consent" value="1" @checked(old('marketing_consent'))>
-          <label for="marketing_consent">Keep me posted with occasional tips and reminders about my trip. (Optional — sending the checklist doesn't need this, and you can unsubscribe any time.)</label>
+          <label for="marketing_consent">Keep me posted with occasional tips and reminders about my trip. (Optional: sending the checklist doesn't need this, and you can unsubscribe any time.)</label>
         </div>
 
         <button type="submit" class="btn dlv-submit">Send me my checklist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></button>
@@ -534,7 +534,7 @@
         <a href="{{ url('/checklist/'.$request->token.'/print') }}" class="btn--ghost" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Download / print (PDF)</a>
         <a href="{{ url('/checklist/'.$request->token.'/calendar.ics') }}" class="btn--ghost"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add a reminder</a>
       </div>
-      <p class="note">This page is your saved checklist — bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
+      <p class="note">This page is your saved checklist. Bookmark it or share it with anyone travelling with you. It won't appear in search results.</p>
     </div>
   </div></section>
   @endif
@@ -548,7 +548,7 @@
       </span>
       <p>
         <strong>Beyond Passports is an independent service and is not a government website.</strong>
-        This checklist is general guidance based on the answers you gave — your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
+        This checklist is general guidance based on the answers you gave. Your exact requirements depend on your nationality, residence and full situation, which we confirm before anything is submitted.
         Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
       </p>
     </div>
@@ -557,7 +557,7 @@
   {{-- ── APPLY CTA ── --}}
   <section class="cta-band"><div class="wrap reveal">
     <div class="rule"></div>
-    <h2>Got your list — ready to apply?</h2>
+    <h2>Got your list. Ready to apply?</h2>
     <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK-based team will confirm your exact requirements and check every document before anything is submitted.</p>
     <div class="row">
       <a href="{{ $applyUrl }}" class="btn">Start my application &rarr;</a>

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Upload your documents — secure post-payment upload | Beyond Passports')
-@section('description', 'Already paid? Upload the documents we asked for using your order reference and email. Secure file upload — PDF, JPG or PNG. Independent service, not a government website.')
+@section('title', 'Upload your documents: secure post-payment upload | Beyond Passports')
+@section('description', 'Already paid? Upload the documents we asked for using your order reference and email. Secure file upload: PDF, JPG or PNG. Independent service, not a government website.')
 
 {{-- Status lookup-style action page: do not index. --}}
 @push('head')
@@ -165,7 +165,7 @@
         <div class="mh-trust">
           <span><b>Secure</b> HTTPS upload</span>
           <span><b>Confirmed</b> on receipt</span>
-          <span><b>Private</b> — team use only</span>
+          <span><b>Private</b>, team use only</span>
         </div>
       </div>
     </div>
@@ -196,7 +196,7 @@
               style="text-transform:uppercase"
               required
               aria-required="true">
-            <p class="field-hint">It's in your confirmation email — looks like <code>UKV-2026-004821</code>.</p>
+            <p class="field-hint">It's in your confirmation email. It looks like <code>UKV-2026-004821</code>.</p>
 
             <label for="email">Email on your application</label>
             <input
@@ -209,7 +209,7 @@
               maxlength="255"
               required
               aria-required="true">
-            <p class="field-hint">Must match the email you used when you paid — this is how we confirm it's you.</p>
+            <p class="field-hint">Must match the email you used when you paid. This is how we confirm it's you.</p>
 
             <label for="file">Choose your document</label>
             <input
@@ -224,7 +224,7 @@
             <p class="field-hint" id="file-hint">PDF, JPG or PNG. Clear, in-focus scans or photos work best.</p>
 
             <div class="compliance">
-              <p><strong>Keep yourself safe:</strong> only upload the documents we've asked you for. Never type your passport number, card details or other sensitive numbers into the boxes above — those fields are for your reference and email only. If anything feels off, stop and call us before sending.</p>
+              <p><strong>Keep yourself safe:</strong> only upload the documents we've asked you for. Never type your passport number, card details or other sensitive numbers into the boxes above. Those fields are for your reference and email only. If anything feels off, stop and call us before sending.</p>
             </div>
 
             <p class="privacy-note">Files are sent over a secure connection and stored privately, used only to handle your application. See our <a href="{{ url('/legal') }}#privacy">Privacy notice</a>.</p>
@@ -274,7 +274,7 @@
       <div class="checker upload">
         <div class="stub"><span>Your application details</span><span>Optional</span></div>
         <div class="cbody">
-          <p style="font-size:15px;margin:0 0 18px;color:#33454f;line-height:1.55">A few quick details about your trip help us tailor the exact document checklist below to your case. Everything here is optional — answer what you can.</p>
+          <p style="font-size:15px;margin:0 0 18px;color:#33454f;line-height:1.55">A few quick details about your trip help us tailor the exact document checklist below to your case. Everything here is optional, so answer what you can.</p>
 
           <form id="detail-form" method="POST" action="{{ url('/documents/details') }}" novalidate>
             @csrf
@@ -349,8 +349,8 @@
             <label for="payer_is_applicant">Are you the person paying for the trip?</label>
             <select id="payer_is_applicant" name="payer_is_applicant" class="ref-input">
               <option value="">Prefer not to say</option>
-              <option value="yes" @selected($payerChoice === 'yes')>Yes — I'm paying</option>
-              <option value="no" @selected($payerChoice === 'no')>No — someone else is paying</option>
+              <option value="yes" @selected($payerChoice === 'yes')>Yes, I'm paying</option>
+              <option value="no" @selected($payerChoice === 'no')>No, someone else is paying</option>
             </select>
 
             <label for="return_date">Your planned return date</label>
@@ -429,7 +429,7 @@
       err.innerHTML = '';
       var accepted = (data && data.accepted) || [];
       var rejected = (data && data.rejected) || [];
-      var html = '<strong>Thanks — we’ve received your upload.</strong>';
+      var html = '<strong>Thanks. We’ve received your upload.</strong>';
       if (accepted.length) {
         html += '<ul>';
         accepted.forEach(function (f) { html += '<li>Received: ' + escapeHtml(f.name) + '</li>'; });
@@ -438,7 +438,7 @@
       if (rejected.length) {
         html += '<ul class="file-rejects">';
         rejected.forEach(function (f) {
-          html += '<li>Couldn’t accept ' + escapeHtml(f.name) + ' — ' + escapeHtml(f.error) + '</li>';
+          html += '<li>Couldn’t accept ' + escapeHtml(f.name) + ': ' + escapeHtml(f.error) + '</li>';
         });
         html += '</ul>';
       }
@@ -452,7 +452,7 @@
     form.addEventListener('submit', function (e) {
       if (!ref.value.trim()) {
         e.preventDefault();
-        showError('Please enter your order reference — it’s in your confirmation email.', ref);
+        showError('Please enter your order reference. It’s in your confirmation email.', ref);
         return;
       }
       if (!email.value.trim()) {
@@ -498,17 +498,17 @@
             if (d.rejected && d.rejected.length) {
               m += '<ul class="file-rejects">';
               d.rejected.forEach(function (f) {
-                m += '<li>' + escapeHtml(f.name) + ' — ' + escapeHtml(f.error) + '</li>';
+                m += '<li>' + escapeHtml(f.name) + ': ' + escapeHtml(f.error) + '</li>';
               });
               m += '</ul>';
             }
             showError(m);
           } else {
-            showError('Sorry — something went wrong uploading that. Please try again, or call or WhatsApp us.');
+            showError('Sorry, something went wrong uploading that. Please try again, or call or WhatsApp us.');
           }
         })
         .catch(function () {
-          showError('Sorry — we couldn’t send that file. Please try again, or call or WhatsApp us.');
+          showError('Sorry, we couldn’t send that file. Please try again, or call or WhatsApp us.');
         })
         .finally(function () { if (submit) { submit.disabled = false; } });
     });

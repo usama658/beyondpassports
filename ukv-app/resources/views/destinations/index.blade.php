@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Visa & eVisa destinations for UK travellers | Beyond Passports')
-@section('description', 'Browse the destinations we prepare and check visa & eVisa applications for. Clear fixed service fees, fast handling, every step tracked. Independent service — not a government website.')
+@section('description', 'Browse the destinations we prepare and check visa & eVisa applications for. Clear fixed service fees, fast handling, every step tracked. Independent service, not a government website.')
 
 @push('head')
 <style>
@@ -53,19 +53,19 @@
 </div></div></section>
 <section><div class="wrap">
   @if ($destinations->isEmpty())
-    <p style="color:var(--muted)">We're adding destinations shortly. In the meantime, <a href="{{ url('/track') }}">track an existing application</a> or get in touch.</p>
+    <p style="color:var(--muted)">We're adding destinations shortly. In the meantime, you can <a href="{{ url('/track') }}">track an existing application</a> or get in touch.</p>
   @else
     <div id="destGrid" class="dests">
       @foreach ($destinations as $destination)
         @include('partials.destination-card', ['destination' => $destination])
       @endforeach
     </div>
-    <p class="di-empty" id="destEmpty">No destinations match that search — try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
+    <p class="di-empty" id="destEmpty">No destinations match that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
 
   <div class="pricenote reveal" style="margin-top:32px;background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;font-size:14px;color:#3a4b55">
     <p style="margin:0 0 6px"><strong style="color:var(--navy)">Our service fee is separate from any government fee.</strong> Each destination's government charges its own fee, shown clearly before you pay anything.</p>
-    <p style="margin:0">We prepare, check and submit your application — we are not a government website and cannot guarantee approval. The decision is always the destination authority's.</p>
+    <p style="margin:0">We prepare, check and submit your application. We are not a government website and cannot guarantee approval. The decision is always the destination authority's.</p>
   </div>
 </div></section>
 

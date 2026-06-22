@@ -4,7 +4,7 @@
      navMenuDestinations data is supplied by a view composer bound to this partial
      (see AppServiceProvider). --}}
 <div class="topbar"><div class="wrap tb-row">
-  <span class="tb-note">Independent service — <strong>not a government website</strong></span>
+  <span class="tb-note">Independent service. <strong>Not a government website</strong></span>
   <span class="tb-links">
     <span class="tb-rate">★ 4.9 rated</span>
     <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
@@ -51,7 +51,7 @@
       <summary class="mlink" role="button" aria-haspopup="true">Tools <span class="ch" aria-hidden="true">▾</span></summary>
       <div class="mega-panel"><div class="wrap">
         <div class="mega-list">
-          <a class="mega-item" href="{{ url('/tools') }}"><b>Visa checker</b><span>Tell us your trip — we confirm exactly what you need.</span></a>
+          <a class="mega-item" href="{{ url('/tools') }}"><b>Visa checker</b><span>Tell us your trip and we confirm exactly what you need.</span></a>
           <a class="mega-item" href="{{ url('/document-checklist') }}"><b>Document checker</b><span>A personalised document checklist for your destination.</span></a>
           <a class="mega-item" href="{{ url('/driving-abroad') }}"><b>Driving abroad (IDP)</b><span>Check if you need an International Driving Permit.</span></a>
           <a class="mega-item" href="{{ url('/find-a-centre') }}"><b>Find a centre</b><span>Your nearest IDP / visa centre by postcode.</span></a>

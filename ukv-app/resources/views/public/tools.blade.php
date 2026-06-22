@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Free checkers — Do I need a visa or an IDP? | Beyond Passports')
-@section('description', 'Free UK travel checkers from Beyond Passports. Find out whether you need a visa, eVisa or ETA, and whether you need an International Driving Permit (IDP) for your trip. Independent service — not a government website.')
+@section('title', 'Free checkers: Do I need a visa or an IDP? | Beyond Passports')
+@section('description', 'Free UK travel checkers from Beyond Passports. Find out whether you need a visa, eVisa or ETA, and whether you need an International Driving Permit (IDP) for your trip. Independent service, not a government website.')
 
 @push('head')
 <style>
@@ -97,7 +97,7 @@
       <div class="mh-copy tl-hero-copy reveal">
         <p class="eyebrow">Free checkers</p>
         <h1>Do I need a visa? Do I need an IDP?</h1>
-        <p class="lede">Two quick checkers for UK travellers — general guidance in seconds, with a real human to confirm your exact requirements before you pay. The first step in not getting it wrong: start the right application, with the right documents.</p>
+        <p class="lede">Two quick checkers for UK travellers: general guidance in seconds, with a real visa specialist to confirm your exact requirements before you pay. The first step in not getting it wrong is to start the right application, with the right documents.</p>
         <div class="tl-trust">
           <span>Free to use</span>
           <span>General guidance, human-confirmed</span>
@@ -174,17 +174,17 @@
     <div class="tl-result" id="trip-result" role="region" aria-label="Trip checker result" aria-hidden="true" tabindex="-1">
       <div class="tl-seg" id="tr-visa">
         <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa / entry</p>
-        <h3 id="tr-visa-title">—</h3>
-        <p id="tr-visa-body">—</p>
+        <h3 id="tr-visa-title">…</h3>
+        <p id="tr-visa-body">…</p>
         <a class="rlink" id="tr-visa-link" href="{{ url('/apply') }}">Start my application →</a>
       </div>
       <div class="tl-seg" id="tr-drive" hidden>
         <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Driving / IDP</p>
-        <h3 id="tr-drive-title">—</h3>
-        <p id="tr-drive-body">—</p>
+        <h3 id="tr-drive-title">…</h3>
+        <p id="tr-drive-body">…</p>
         <a class="rlink" id="tr-drive-link" href="{{ url('/driving-abroad') }}">Get help with my IDP paperwork →</a>
       </div>
-      <p class="rmicro">General guidance for UK citizens / licence holders. Your exact rules depend on your nationality, residence and trip — we confirm them before you pay.</p>
+      <p class="rmicro">General guidance for UK citizens / licence holders. Your exact rules depend on your nationality, residence and trip. We confirm them before you pay.</p>
     </div>
   </div>
 </div></section>
@@ -195,7 +195,7 @@
   <div class="tl-steps-wrap">
     <div class="steps">
       <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Use the free checker for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
-      <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares the paperwork and checks it for the avoidable things that get applications refused — for a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
+      <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares the paperwork and checks it for the avoidable things that get applications refused. For a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
       <div class="step reveal" style="animation-delay:.12s"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
     </div>
   </div>
@@ -204,14 +204,14 @@
 {{-- HONEST NOTE --}}
 <section><div class="wrap">
   <div class="tl-honest reveal">
-    <p><strong>These checkers give general guidance for UK citizens.</strong> Your exact requirements depend on your nationality, residence and trip — we confirm them before you pay. Beyond Passports is an independent service and is not a government website. No approval is guaranteed.</p>
+    <p><strong>These checkers give general guidance for UK citizens.</strong> Your exact requirements depend on your nationality, residence and trip. We confirm them before you pay. Beyond Passports is an independent service and is not a government website. No approval is guaranteed.</p>
   </div>
 </div></section>
 
 {{-- CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
-  <h2>Checked it — now let's sort it</h2>
+  <h2>Checked it? Now let's sort it</h2>
   <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
@@ -289,20 +289,20 @@
       var info = VISA[dest];
       if (pass === 'UK' && info) {
         vTitle.textContent = 'Most UK travellers need: ' + info.note + ' for ' + dest + '.';
-        vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note + '. We can prepare and check it for you — and confirm your exact rules first.';
+        vBody.textContent  = 'Based on a UK passport for tourism, the usual requirement is ' + info.note + '. We can prepare and check it for you, and confirm your exact rules first.';
       } else if (pass === 'UK') {
         vTitle.textContent = "We'll confirm exactly what you need for " + dest + '.';
-        vBody.textContent  = 'Requirements vary by destination and trip. Tell us your plans and a UK adviser confirms your exact rules — then we prepare and check everything before you submit.';
+        vBody.textContent  = 'Requirements vary by destination and trip. Tell us your plans and a UK visa specialist confirms your exact rules, then we prepare and check everything before you submit.';
       } else {
         vTitle.textContent = 'Your requirements depend on your nationality.';
-        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live — we will confirm them for you.';
+        vBody.textContent  = 'Because you are not travelling on a UK passport, your requirements for ' + dest + ' depend on your nationality and where you live. We will confirm them for you.';
       }
-      asChat(vLink, 'Hi Beyond Passports — I am travelling to ' + dest + ' on ' + (pass === 'UK' ? 'a UK' : 'a non-UK') + ' passport. What do I need for my visa?', 'Sort my ' + dest + ' visa on WhatsApp →');
+      asChat(vLink, 'Hi Beyond Passports, I am travelling to ' + dest + ' on ' + (pass === 'UK' ? 'a UK' : 'a non-UK') + ' passport. What do I need for my visa?', 'Sort my ' + dest + ' visa on WhatsApp →');
     }
 
     function fillDrive(dest, lic) {
       var destName = dest.replace(' (ESTA)', '').replace(' (eTA)', '');
-      asChat(dLink, 'Hi Beyond Passports — I will be driving in ' + destName + ' on a UK licence. Do I need an IDP, and can you help with the paperwork?', 'Sort my IDP for ' + destName + ' on WhatsApp →');
+      asChat(dLink, 'Hi Beyond Passports, I will be driving in ' + destName + ' on a UK licence. Do I need an IDP, and can you help with the paperwork?', 'Sort my IDP for ' + destName + ' on WhatsApp →');
       if (lic === 'provisional') {
         dTitle.textContent = 'You cannot get an IDP on a provisional licence.';
         dBody.textContent  = 'An International Driving Permit is only issued to holders of a full UK driving licence. With a provisional you are not eligible, and most countries (including ' + destName + ') will not let you drive on a provisional. You would need to pass your full UK test first.';
@@ -312,15 +312,15 @@
       var rec = IDP[dest];
       if (!rec) {
         dTitle.textContent = "We'll confirm whether you need an IDP for " + destName + '.';
-        dBody.textContent  = 'On a full UK licence, whether an International Driving Permit is required depends on the country and how long you are driving. Tell us your trip and we will confirm — and if you need one, we offer guided self-service: we prepare and check the paperwork, you collect it in person at a PayPoint.';
+        dBody.textContent  = 'On a full UK licence, whether an International Driving Permit is required depends on the country and how long you are driving. Tell us your trip and we will confirm. If you need one, we offer guided self-service: we prepare and check the paperwork, you collect it in person at a PayPoint.';
         return;
       }
       if (rec.need) {
         dTitle.textContent = 'You will usually need an IDP for ' + destName + '.';
-        dBody.textContent  = 'On a full UK licence, an International Driving Permit (' + rec.conv + ') is typically required to drive in ' + destName + '. An IDP is obtained in person at a PayPoint — we offer guided self-service: we prepare and check your paperwork, and you collect it yourself in person.';
+        dBody.textContent  = 'On a full UK licence, an International Driving Permit (' + rec.conv + ') is typically required to drive in ' + destName + '. An IDP is obtained in person at a PayPoint. We offer guided self-service: we prepare and check your paperwork, and you collect it yourself in person.';
       } else {
         dTitle.textContent = 'You usually do not need an IDP for ' + destName + '.';
-        dBody.textContent  = 'On a full UK licence, an International Driving Permit is generally not required for short visits to ' + destName + ' (check car-hire and local rules). When one is needed, ' + destName + ' typically recognises the ' + rec.conv + ' permit. If you do need one, it is obtained in person at a PayPoint — we prepare and check the paperwork, you collect it yourself.';
+        dBody.textContent  = 'On a full UK licence, an International Driving Permit is generally not required for short visits to ' + destName + ' (check car-hire and local rules). When one is needed, ' + destName + ' typically recognises the ' + rec.conv + ' permit. If you do need one, it is obtained in person at a PayPoint: we prepare and check the paperwork, you collect it yourself.';
       }
     }
 
@@ -358,8 +358,8 @@
         var place = hDest.value ? hDest.value : '';
         var pass = hPass.value === 'Other' ? 'a non-UK' : 'a UK';
         var msg = place
-          ? 'Hi Beyond Passports — I am travelling to ' + place + ' on ' + pass + ' passport. What do I need?'
-          : 'Hi Beyond Passports — I would like help working out what I need for my trip.';
+          ? 'Hi Beyond Passports, I am travelling to ' + place + ' on ' + pass + ' passport. What do I need?'
+          : 'Hi Beyond Passports, I would like help working out what I need for my trip.';
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
     }

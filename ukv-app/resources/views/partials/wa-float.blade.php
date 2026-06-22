@@ -1,7 +1,7 @@
 {{-- Site-wide floating WhatsApp button. Chat = the universal capture channel. --}}
 <div class="wa-float" data-wa-float>
     @include('partials.wa-cta', [
-        'message' => "Hi Beyond Passports — I'd like some help with my trip.",
+        'message' => "Hi Beyond Passports, I'd like some help with my trip.",
         'label' => 'Chat to a real UK person',
         'variant' => 'floating',
     ])

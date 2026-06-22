@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@yield('title', 'UK visa & eVisa facilitation | Beyond Passports')</title>
-<meta name="description" content="@yield('description', 'Independent UK team that prepares and checks your visa or eVisa application. Clear fixed service fees, fast handling, every step tracked. Not a government website.')">
+<title>@yield('title', 'Travel visa & eVisa help for UK travellers | Beyond Passports')</title>
+<meta name="description" content="@yield('description', 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.')">
 @hasSection('canonical')
 <link rel="canonical" href="@yield('canonical')">
 @endif

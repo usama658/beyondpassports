@@ -98,7 +98,7 @@
     <div class="nc-empty"><span class="nc-empty-ic">{!! $ncPin !!}</span><p>Enter a postcode above to see the centres nearest to you. We'll show the closest first, and flag any where we can book your appointment for you.</p></div>
   @elseif ($results->isEmpty())
     {{-- Searched, nothing located nearby. --}}
-    <div class="nc-empty"><span class="nc-empty-ic">{!! $ncPin !!}</span><p><strong>No centres found nearby.</strong> Good news — most UK travel documents are now online: an <strong>eVisa</strong> or <strong>ETA</strong> needs no in-person visit at all. Tell us your destination and we'll confirm exactly what you need.</p></div>
+    <div class="nc-empty"><span class="nc-empty-ic">{!! $ncPin !!}</span><p><strong>No centres found nearby.</strong> Most travel documents are now online: an <strong>eVisa</strong> or <strong>ETA</strong> needs no in-person visit at all. Tell us your destination and we'll confirm exactly what you need.</p></div>
   @else
     <ul class="nc-list">
       @foreach ($results as $r)
@@ -147,7 +147,7 @@
             @endif
 
             @if ($tkey === 'paypoint' && $contactHref === null)
-              <p class="nc-pp" style="margin:8px 0 0">IDPs are issued in person — <a href="{{ $paypointLocator }}" target="_blank" rel="noopener noreferrer">find a PayPoint near you</a>.</p>
+              <p class="nc-pp" style="margin:8px 0 0">IDPs are issued in person. <a href="{{ $paypointLocator }}" target="_blank" rel="noopener noreferrer">Find a PayPoint near you</a>.</p>
             @elseif (! $contactHref && is_string($contact) && $contact !== '')
               <p class="nc-pp" style="margin:8px 0 0">{{ $contact }}</p>
             @endif

@@ -59,7 +59,7 @@
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Missing or wrong supporting documents</li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Applying for the wrong visa type</li>
     </ul>
-    <a class="rl-link" href="#mprev-checks">None of these are bad luck — see how we remove each ↓</a>
+    <a class="rl-link" href="#mprev-checks">None of these are bad luck. See how we remove each ↓</a>
   </div>
 
   <div class="filecard reveal" id="mprev-checks">
@@ -67,26 +67,26 @@
     <div class="head">
       <p class="eyebrow">Built to prevent refusals</p>
       <h2>We remove each of those before you submit</h2>
-      <p>A real UK person reviews your whole {{ $name }} file against the current rules — funds, validity, consistency and documents — before anything is submitted.</p>
+      <p>A named UK visa specialist reviews your whole {{ $name }} file against the current rules (funds, validity, consistency and documents) before anything is submitted.</p>
     </div>
 
     <div class="checks">
       <div class="row">
         <div class="medallion"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="row-text"><h3>Eligibility for the {{ $visaLabel }}</h3><p>We confirm you qualify for {{ $name }}'s {{ $visaType }} — your nationality, trip and purpose — before you pay.</p></div>
+        <div class="row-text"><h3>Eligibility for the {{ $visaLabel }}</h3><p>We confirm you qualify for {{ $name }}'s {{ $visaType }} (your nationality, trip and purpose) before you pay.</p></div>
       </div>
       <div class="row">
         <div class="medallion"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
-        <div class="row-text"><h3>{{ $name }} documents</h3><p>{{ $name }} has its own document rules{{ $passport ? ' (including '.$passport.' months\' passport validity)' : '' }} — we check each one for history, source and consistency before submission.</p></div>
+        <div class="row-text"><h3>{{ $name }} documents</h3><p>{{ $name }} has its own document rules{{ $passport ? ' (including '.$passport.' months\' passport validity)' : '' }}. We check each one for history, source and consistency before submission.</p></div>
       </div>
       <div class="row">
         <div class="medallion"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="row-text"><h3>Pre-submission QA</h3><p>A real UK person reviews your whole {{ $name }} file against the current {{ $visaType }} rules before it's submitted.</p></div>
+        <div class="row-text"><h3>Pre-submission QA</h3><p>A named UK visa specialist reviews your whole {{ $name }} file against the current {{ $visaType }} rules before it's submitted.</p></div>
       </div>
     </div>
 
     <div class="foot">
-      <p class="note">We remove the avoidable causes of refusal. Process, not promises — the decision is always the authority's.</p>
+      <p class="note">We remove the avoidable causes of refusal. Process, not promises: the decision is always the authority's.</p>
       <div class="cta">
         <a class="btn btn--ghost" href="{{ url('/document-checklist') }}">See the {{ $name }} document checklist →</a>
         <a class="btn" href="{{ $applyUrl }}">Start my {{ $name }} application →</a>

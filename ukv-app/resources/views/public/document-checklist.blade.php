@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Document checklist — see exactly what you need for your trip | Beyond Passports')
-@section('description', "Free document checklist for your UK visa, eVisa or ETA trip. Answer a few questions and get your tailored list on screen instantly — keep it, share it or have it sent to you. Independent service — not a government website.")
+@section('title', 'Document checklist: see exactly what you need for your trip | Beyond Passports')
+@section('description', "Free document checklist for your Schengen visa, eVisa or ETIAS trip. Answer a few questions and get your tailored list on screen instantly. Keep it, share it or have it sent to you. Independent service, not a government website.")
 
 @push('head')
 <style>
@@ -162,13 +162,13 @@
       <div class="mh-copy">
         <p class="eyebrow">Your document checklist</p>
         <h1>See exactly which documents you need.</h1>
-        <p class="lede">Tell us about your trip and we'll build your checklist. Unlock the full list instantly, or ask a quick question free on WhatsApp.</p>
+        <p class="lede">Tell us about your trip and we'll build your checklist. See the full list instantly, or ask a quick question free on WhatsApp.</p>
 
         <ul class="dct-perks reveal">
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
             <p class="pk">Tailored to your trip</p>
-            <p>Built around your destination and dates — not a generic list.</p>
+            <p>Built around your destination and dates, not a generic list.</p>
           </li>
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
@@ -178,7 +178,7 @@
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></span>
             <p class="pk">Free quick answers</p>
-            <p>Just need to ask something? Message our UK team on WhatsApp — no payment.</p>
+            <p>Just need to ask something? Message our UK team on WhatsApp. No payment.</p>
           </li>
         </ul>
       </div>
@@ -219,7 +219,7 @@
 
             <div class="dct-step active" data-step="1">
             <p class="dct-shead">Tell us about your trip</p>
-            <p class="dct-ssub">Where you're going and roughly when — so we can flag timing and passport rules.</p>
+            <p class="dct-ssub">Where you're going and roughly when, so we can flag timing and passport rules.</p>
             <div class="grid2">
               <div class="field">
                 <label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
@@ -248,7 +248,7 @@
               <div class="field">
                 <label for="return_date">Approximate return date</label>
                 <input type="date" id="return_date" name="return_date" value="{{ old('return_date') }}">
-                <p class="hint">Optional — used to gauge length of stay.</p>
+                <p class="hint">Optional. Used to gauge length of stay.</p>
               </div>
               <div class="field">
                 <label for="visa_entries">Entries needed</label>
@@ -263,7 +263,7 @@
 
             <div class="dct-step" data-step="2">
             <p class="dct-shead">A few more details</p>
-            <p class="dct-ssub">Your situation helps us tailor the list — every field here is optional.</p>
+            <p class="dct-ssub">Your situation helps us tailor the list. Every field here is optional.</p>
             <div class="grid2">
               <div class="field">
                 <label for="residency_status">Residency status</label>
@@ -348,7 +348,7 @@
         </span>
         <p>
           <strong>Beyond Passports is an independent service and is not a government website.</strong>
-          This checklist is general guidance to help you prepare — your exact requirements depend on your nationality, residence and full situation, and we confirm them before anything is submitted.
+          This checklist is general guidance to help you prepare. Your exact requirements depend on your nationality, residence and full situation, and we confirm them before anything is submitted.
           Any service fee is separate from, and additional to, any government or scheme fee. No approval is guaranteed.
         </p>
       </div>
@@ -360,8 +360,8 @@
 {{-- CTA BAND --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
-  <h2>Know what you need — then let's sort it</h2>
-  <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents — or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
+  <h2>Know what you need, then let's sort it</h2>
+  <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents, or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
   <div class="row">
     <a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a>
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>

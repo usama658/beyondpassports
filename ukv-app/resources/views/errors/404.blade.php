@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Page not found (404) — Beyond Passports</title>
+<title>Page not found (404): Beyond Passports</title>
 <style>
   @font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
   @font-face{font-family:'Outfit';src:url('/fonts/outfit-700.woff2') format('woff2');font-weight:700;font-display:swap}
@@ -110,7 +110,7 @@
 
     <div class="vp-body">
       <h1>This page didn't make it through.</h1>
-      <p>The link you followed isn't in our system — it may have moved, or the address has a typo. Let's get you back on route.</p>
+      <p>The link you followed isn't in our system. It may have moved, or the address has a typo. Let's get you back on track.</p>
       <div class="routes">
         <a class="primary" href="{{ url('/') }}">Back to home</a>
         <a class="ghost" href="{{ url('/destinations') }}">Browse destinations</a>
@@ -120,7 +120,7 @@
     </div>
 
     <div class="mrz" aria-hidden="true">P&lt;GBRBEYOND&lt;&lt;PASSPORTS&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;404&lt;&lt;ROUTE&lt;NOT&lt;FOUND&lt;&lt;&lt;&lt;&lt;</div>
-    <p class="vp-foot">Beyond Passports is an independent service — not a government website. Lost? <a href="{{ url('/contact') }}">We're happy to help</a>.</p>
+    <p class="vp-foot">Beyond Passports is an independent service, not a government website. Lost? <a href="{{ url('/contact') }}">We're happy to help</a>.</p>
   </main>
 </body>
 </html>

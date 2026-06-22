@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Application received — {{ $order->order_ref }} | Beyond Passports</title>
+    <title>Application received: {{ $order->order_ref }} | Beyond Passports</title>
     <meta name="robots" content="noindex,nofollow">
     <style>
         @font-face{font-family:'Outfit';src:url('/fonts/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -351,7 +351,7 @@
     {{-- Brand bar --}}
     <div class="cnf-brand">
         <a href="/">Beyond <b>Passports</b></a>
-        <span class="cnf-brand-note">Independent service — not a government website</span>
+        <span class="cnf-brand-note">Independent service, not a government website</span>
     </div>
 
     {{-- Main card --}}
@@ -360,7 +360,7 @@
         {{-- Hero banner --}}
         <div class="cnf-banner">
             <p class="cnf-eyebrow">Application received</p>
-            <h1>Thank you — we have your&nbsp;details.</h1>
+            <h1>Thank you. We have your&nbsp;details.</h1>
             <p class="cnf-sub">We'll be in touch at every step. Keep the reference below safe.</p>
             <div class="cnf-banner-check" aria-hidden="true">&#x2714;</div>
         </div>
@@ -378,7 +378,7 @@
             <div class="cnf-ref-block">
                 <p class="cnf-ref-label">Your reference</p>
                 <div class="cnf-ref-val">{{ $order->order_ref }}</div>
-                <p class="cnf-ref-note">Keep this safe — you'll need it to track your application or talk to our team.</p>
+                <p class="cnf-ref-note">Keep this safe. You'll need it to track your application or talk to our team.</p>
             </div>
 
             {{-- Next steps --}}
@@ -388,7 +388,7 @@
                     <ol class="cnf-steps">
                         <li>Complete secure payment for your chosen service tier
                             @if($order->total !== null)(total <strong>£{{ number_format((float) $order->total, 2) }}</strong>, service fee + government fee)@endif.</li>
-                        <li>Upload your documents — we'll tell you exactly what's needed.</li>
+                        <li>Upload your documents. We'll tell you exactly what's needed.</li>
                         <li>Our UK team checks everything and submits on your behalf, keeping every step tracked.</li>
                     </ol>
                 </div>
@@ -403,7 +403,7 @@
                 <p class="cnf-steps-head">Next steps</p>
                 <div class="cnf-steps-wrap">
                     <ol class="cnf-steps">
-                        <li>A UK-based adviser reviews your answers — usually within one business day.</li>
+                        <li>A UK visa specialist reviews your answers, usually within one business day.</li>
                         <li>We confirm exactly what your case requires and send a <strong>personalised quote</strong>.</li>
                         <li>Nothing is charged until you approve that quote.</li>
                     </ol>
@@ -426,7 +426,7 @@
             <p class="cnf-compliance">
                 Beyond Passports is an independent service and is not a government website. Our service
                 fee is separate from, and additional to, any government or scheme fee. Express
-                speeds our handling — it does not speed up or change the government's decision,
+                speeds our handling. It does not speed up or change the government's decision,
                 and we cannot guarantee approval.
             </p>
 

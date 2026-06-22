@@ -108,7 +108,7 @@
   <h2 class="dc-title">{{ $heading }}</h2>
 
   @if (empty($items))
-    <p class="dc-empty">We'll confirm your exact documents after you apply — once we know your destination and your situation, we'll tell you precisely what to prepare.</p>
+    <p class="dc-empty">We'll confirm your exact documents after you apply. Once we know your destination and your situation, we'll tell you precisely what to prepare.</p>
   @else
     <p class="dc-intro">
       @if ($personalised)

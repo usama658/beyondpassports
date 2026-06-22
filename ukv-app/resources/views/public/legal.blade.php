@@ -1,14 +1,14 @@
 @extends('layouts.public')
 
-@section('title', 'Legal & policies — Privacy, Terms, Complaints, Disclaimer | Beyond Passports')
-@section('description', 'Beyond Passports legal centre: privacy policy, terms of service, complaints procedure and disclaimer. Independent UK visa & eVisa facilitation — not a government website; our service fee is separate from government fees and we cannot guarantee visa approval.')
+@section('title', 'Legal & policies: Privacy, Terms, Complaints, Disclaimer | Beyond Passports')
+@section('description', 'Beyond Passports legal centre: privacy policy, terms of service, complaints procedure and disclaimer. Independent visa and eVisa facilitation. We are not a government website, our service fee is separate from government fees, and we cannot guarantee visa approval.')
 @section('canonical', url('/legal'))
 
 @push('head')
 <style>
-  /* legal — page-scoped layout only. Palette/type/components from ukv.css. */
+  /* legal: page-scoped layout only. Palette/type/components from ukv.css. */
 
-  /* ── hero — centred + seal (pick C) ──────────────────────────── */
+  /* ── hero: centred + seal (pick C) ──────────────────────────── */
   .lg-hero{background:var(--paper);padding:72px 0 60px;text-align:center}
   .lg-hero .mh-grid{display:block}
   .lg-hero .mh-copy{max-width:none}
@@ -41,7 +41,7 @@
     border-left-color:var(--cta);color:var(--navy);font-weight:700;
     box-shadow:0 2px 8px -4px rgba(40,50,70,.10)}
 
-  /* ── document body — security-paper doc cards (pick H) ───────── */
+  /* ── document body: security-paper doc cards (pick H) ───────── */
   .doc-body{max-width:760px;display:flex;flex-direction:column;gap:20px}
   /* "Last updated" rendered as a sage official stamp chip */
   .doc-body .updated{display:inline-flex;align-items:center;gap:7px;width:fit-content;
@@ -115,10 +115,10 @@
         <span class="lg-rule"></span>
         <p class="eyebrow">Legal centre</p>
         <h1>Legal &amp; policies</h1>
-        <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service — not a government website and not affiliated with gov.uk or any embassy.</p>
+        <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service. We are not a government website and not affiliated with gov.uk or any embassy.</p>
         <div class="draft-banner" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
-          <p><strong>Draft for review — have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
+          <p><strong>Draft for review. Have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
         </div>
       </div>
     </div>
@@ -148,37 +148,38 @@
         <article class="legal-sec" id="privacy" aria-labelledby="privacy-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="privacy-h">Privacy Policy</h2>
-          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
+          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
 
           <p>This policy explains what personal data Beyond Passports collects when you use our visa, eVisa, ETA and IDP-guidance facilitation service, why we collect it, how long we keep it, and the rights you have over it. The <strong>data controller</strong> is Beyond Passports, company registration number <strong>[to complete]</strong>, registered at <strong>[to complete]</strong>. For any privacy question, email <a href="mailto:privacy@ukvisaco.example">privacy@ukvisaco.example</a> <strong>[to complete]</strong>.</p>
 
           <h3>What data we collect</h3>
           <ul class="plain">
-            <li><strong>Identity &amp; contact details</strong> — your name, email address, phone number and billing address.</li>
-            <li><strong>Passport &amp; travel details</strong> — passport number, nationality, date and place of birth, travel dates, destination and trip purpose.</li>
-            <li><strong>Documents you upload</strong> — passport scans, photographs and any supporting documents needed for your application.</li>
-            <li><strong>Order &amp; payment information</strong> — your order reference, the service options you chose, and payment confirmation (card details are handled by our payment processor, Stripe, and are not stored by us).</li>
-            <li><strong>Technical data</strong> — limited device, browser and usage information needed to operate and secure the site.</li>
+            <li><strong>Identity &amp; contact details</strong>: your name, email address, phone number and billing address.</li>
+            <li><strong>Passport &amp; travel details</strong>: passport number, nationality, date and place of birth, travel dates, destination and trip purpose.</li>
+            <li><strong>Documents you upload</strong>: passport scans, photographs and any supporting documents needed for your application.</li>
+            <li><strong>Order &amp; payment information</strong>: your order reference, the service options you chose, and payment confirmation (card details are handled by our payment processor, Stripe, and are not stored by us).</li>
+            <li><strong>Technical data</strong>: limited device, browser and usage information needed to operate and secure the site.</li>
           </ul>
 
           <h3>Why we collect it and our lawful basis</h3>
-          <p>We process your data primarily to <strong>perform our contract</strong> with you (UK GDPR Article 6(1)(b)) — checking, preparing and submitting your application and keeping you updated. Where we process special-category or sensitive details contained in travel documents, or pass them to an authority, we rely on your <strong>explicit consent</strong> (Article 9(2)(a)), which you may withdraw at any time. We also process limited data to meet legal obligations (such as tax and accounting) and for our legitimate interests in securing, supporting and improving the service.</p>
+          <p>We process your data primarily to <strong>perform our contract</strong> with you (UK GDPR Article 6(1)(b)): checking, preparing and submitting your application and keeping you updated. Where we process special-category or sensitive details contained in travel documents, or pass them to an authority, we rely on your <strong>explicit consent</strong> (Article 9(2)(a)), which you may withdraw at any time. We also process limited data to meet legal obligations (such as tax and accounting) and for our legitimate interests in securing, supporting and improving the service.</p>
 
           <h3>How long we keep it (retention &amp; auto-purge)</h3>
-          <p>We keep data only as long as needed to deliver your order and meet our legal duties. Sensitive passport scans, photographs and supporting documents are <strong>automatically purged approximately 90 days after your order is closed</strong> (completed or cancelled). Basic order and accounting records — order reference, fee paid and dates — are retained for the period required by UK tax and consumer law (generally up to six years), then deleted.</p>
+          <p>We keep data only as long as needed to deliver your order and meet our legal duties. Sensitive passport scans, photographs and supporting documents are <strong>automatically purged approximately 90 days after your order is closed</strong> (completed or cancelled). Basic order and accounting records (order reference, fee paid and dates) are retained for the period required by UK tax and consumer law (generally up to six years), then deleted.</p>
 
           <h3>Sub-processors</h3>
           <p>We share data only with carefully selected providers acting on our instructions under a data-processing agreement:</p>
           <ul class="plain">
-            <li><strong>Stripe</strong> — payment processing.</li>
-            <li><strong>HubSpot</strong> — CRM, to manage your case and our communications with you.</li>
-            <li><strong>Email provider</strong> — to send order confirmations, updates and replies.</li>
-            <li><strong>Hosting provider</strong> — to run and secure this website and store your data.</li>
-            <li><strong>Anthropic</strong> — AI assistance used to help check and prepare application content. We do not use your data to train third-party AI models.</li>
+            <li><strong>Stripe</strong>: payment processing.</li>
+            <li><strong>HubSpot</strong>: CRM, to manage your case and our communications with you.</li>
+            <li><strong>Email provider</strong>: to send order confirmations, updates and replies.</li>
+            <li><strong>Hosting provider</strong>: to run and secure this website and store your data.</li>
+            <li><strong>Anthropic</strong>: AI assistance used to help check and prepare application content. We do not use your data to train third-party AI models.</li>
+            <li><strong>Trustpilot</strong>: independent reviews. After your order is delivered we send your name and email to Trustpilot so it can invite you to leave a review. You can opt out of review invitations at any time.</li>
           </ul>
 
           <h3>Cross-border transfers</h3>
-          <p>Some of our sub-processors (for example Stripe, HubSpot and Anthropic) may process data in the <strong>United States</strong>. Where data is transferred outside the UK, we rely on appropriate safeguards — such as the UK International Data Transfer Agreement (IDTA), the UK Extension to the EU-US Data Privacy Framework, or equivalent contractual protections — so your data continues to receive an essentially equivalent level of protection.</p>
+          <p>Some of our sub-processors (for example Stripe, HubSpot, Anthropic and Trustpilot) may process data in the <strong>United States</strong>. Where data is transferred outside the UK, we rely on appropriate safeguards, such as the UK International Data Transfer Agreement (IDTA), the UK Extension to the EU-US Data Privacy Framework, or equivalent contractual protections, so your data continues to receive an essentially equivalent level of protection.</p>
 
           <h3>Your rights</h3>
           <p>You have the right to access, correct, erase, restrict or object to our processing of your data, to data portability, and to withdraw consent where processing is consent-based. To exercise any of these, contact us at <a href="mailto:privacy@ukvisaco.example">privacy@ukvisaco.example</a> and we will respond within one month, as required by law.</p>
@@ -193,7 +194,7 @@
         <article class="legal-sec" id="terms" aria-labelledby="terms-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="terms-h">Terms of Service</h2>
-          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
+          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
 
           <p>These terms govern your use of Beyond Passports's service. Beyond Passports is operated by <strong>[to complete]</strong> (company registration number <strong>[to complete]</strong>), and you can reach us at <strong>[to complete]</strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
 
@@ -212,7 +213,7 @@
           <p>We are not responsible for delays, refusals or losses caused by inaccurate or late information supplied by you.</p>
 
           <h3>No guarantee of approval</h3>
-          <p><strong>All decisions on visas, eVisas and travel authorisations are made solely by the relevant government or official authority.</strong> We cannot and do not guarantee that any application will be approved, nor the time a decision will take. Any "express" or "priority" option speeds <strong>our handling only</strong> — it does not speed or influence the authority's decision.</p>
+          <p><strong>All decisions on visas, eVisas and travel authorisations are made solely by the relevant government or official authority.</strong> We cannot and do not guarantee that any application will be approved, nor the time a decision will take. Any "express" or "priority" option speeds <strong>our handling only</strong>. It does not speed or influence the authority's decision.</p>
 
           <h3>Cancellation &amp; refunds</h3>
           <p>Under the <strong>Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013</strong> you have a <strong>14-day right to cancel</strong> from the day you place your order, for a full refund of our service fee. <strong>Important exception:</strong> if you ask us to <strong>begin work within the 14-day period and acknowledge that you do so</strong>, you will pay for the work reasonably carried out up to the point you cancel; and once the service has been <strong>fully performed</strong> with your consent (for example, once your application has been submitted to the authority), you lose the right to cancel under these Regulations. Government and official fees that have already been paid to a third party on your behalf are generally non-refundable to us. To cancel, email <a href="mailto:complaints@ukvisaco.example">complaints@ukvisaco.example</a> with your order reference; our refund policy and any deductions are summarised at checkout and in your confirmation email.</p>
@@ -230,7 +231,7 @@
         <article class="legal-sec" id="complaints" aria-labelledby="complaints-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="complaints-h">Complaints Procedure</h2>
-          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
+          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
 
           <p>We want every customer to be happy with our service. If something has gone wrong, we'd like the chance to put it right.</p>
 
@@ -253,15 +254,15 @@
         <article class="legal-sec" id="disclaimer" aria-labelledby="disclaimer-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="disclaimer-h">Disclaimer</h2>
-          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder — review with a solicitor before launch]</span></div>
+          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
 
           <p><strong>Beyond Passports is an independent service. We are not affiliated with, endorsed by, or connected to gov.uk, the UK government, any embassy, consulate or official authority.</strong> Official applications can be made directly with the relevant authority, usually for the government fee alone.</p>
 
           <p>The information on this website is provided as <strong>general guidance only</strong> and does not constitute legal or immigration advice. Visa and travel-authorisation requirements <strong>depend on your nationality, country of residence and individual circumstances</strong>, and they change frequently.</p>
 
-          <p>Before you travel or apply, always <strong>verify requirements with official sources</strong> — the destination government's official website, your nearest embassy or consulate, and gov.uk for UK-specific guidance. We are not liable for decisions you make in reliance on general information published here.</p>
+          <p>Before you travel or apply, always <strong>verify requirements with official sources</strong>: the destination government's official website, your nearest embassy or consulate, and gov.uk for UK-specific guidance. We are not liable for decisions you make in reliance on general information published here.</p>
 
-          <p><strong>No guarantee of outcome.</strong> Visa, eVisa and travel-authorisation decisions are made solely by the relevant authority; we cannot guarantee any approval. Some authorisations, such as an ETA, do not produce a physical document. Any <strong>"express" or "priority" option speeds our own handling only</strong> — preparing and submitting your application faster. It does <strong>not</strong> speed up, influence or change the government's processing time or decision.</p>
+          <p><strong>No guarantee of outcome.</strong> Visa, eVisa and travel-authorisation decisions are made solely by the relevant authority; we cannot guarantee any approval. Some authorisations, such as an ETA, do not produce a physical document. Any <strong>"express" or "priority" option speeds our own handling only</strong>, preparing and submitting your application faster. It does <strong>not</strong> speed up, influence or change the government's processing time or decision.</p>
 
           <a class="back-top" href="#top">↑ Back to top</a>
         </article>
@@ -276,7 +277,7 @@
   <div class="wrap reveal">
     <div class="rule"></div>
     <h2>Questions before you start?</h2>
-    <p style="max-width:50ch;color:#eef0f1">Talk to a real person about how our service works, what's included, and the fees — no obligation. Independent service, not a government website.</p>
+    <p style="max-width:50ch;color:#eef0f1">Talk to a real person about how our service works, what's included, and the fees, with no obligation. Independent service, not a government website.</p>
     <div class="row">
       <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>

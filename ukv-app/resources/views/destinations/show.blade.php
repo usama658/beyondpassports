@@ -38,15 +38,15 @@
     $faqs = [
         [
             'q' => "Do I actually need a {$visaLabel}?",
-            'a' => "It depends on your nationality, passport and trip. Tell us your details and we'll confirm whether you need one before you pay — and we'll tell you honestly if you don't.",
+            'a' => "It depends on your nationality, passport and trip. Tell us your details and we'll confirm whether you need one before you pay, and we'll tell you honestly if you don't.",
         ],
         [
             'q' => 'How long does it take?',
-            'a' => "We prioritise Express cases within our team, but the government sets its own processing time, which we can't control or shorten. Express speeds our handling only — not the official decision.",
+            'a' => "We prioritise Express cases within our team, but the government sets its own processing time, which we can't control or shorten. Express speeds our handling only, not the official decision.",
         ],
         [
             'q' => 'Is this the official government website?',
-            'a' => "No. Beyond Passports is an independent service — we are not a government website and not affiliated with any government. We prepare, check and submit your application on your behalf for a separate service fee.",
+            'a' => "No. Beyond Passports is an independent service. We are not a government website and not affiliated with any government. We prepare, check and submit your application on your behalf for a separate service fee.",
         ],
         [
             'q' => 'What does your fee cover, and is the government fee included?',
@@ -54,7 +54,7 @@
         ],
         [
             'q' => 'What happens if my application is refused?',
-            'a' => "The outcome of any application is decided solely by the {$name} authorities — we cannot guarantee approval. We focus on getting your application accurate and complete to give it the best chance, and we're upfront with you throughout.",
+            'a' => "The outcome of any application is decided solely by the {$name} authorities, so we cannot guarantee approval. We focus on getting your application accurate and complete to give it the best chance, and we're upfront with you throughout.",
         ],
     ];
 
@@ -96,7 +96,7 @@
     ];
 @endphp
 
-@section('title', $visaLabel.' for UK travellers — Prepared & Checked | Beyond Passports')
+@section('title', $visaLabel.' for UK travellers: Prepared & Checked | Beyond Passports')
 @section('description', 'Apply for your '.$visaLabel.' with an independent UK team that prepares and checks every application. Clear fixed service fees, fast handling, every step tracked. Not a government website.')
 @section('canonical', url('/visa/'.$destination->slug))
 
@@ -236,7 +236,7 @@
   <div style="display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)">
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#c8923a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
     <p style="margin:0;font-size:15px;line-height:1.6;color:#3a4b55">
-      <strong style="color:var(--navy)">ETIAS isn't required yet.</strong> Right now UK citizens travel to {{ $name }} <strong>visa-free</strong> for short stays — no ETIAS, no fee. ETIAS launches in late 2026 (€20, valid 3 years, 90 days in any 180). When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span>
+      <strong style="color:var(--navy)">ETIAS isn't required yet.</strong> Right now UK citizens travel to {{ $name }} <strong>visa-free</strong> for short stays, with no ETIAS and no fee. ETIAS launches in late 2026 (€20, valid 3 years, 90 days in any 180). When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span>
     </p>
   </div>
 </div></section>
@@ -252,7 +252,7 @@
       @if (config('ukv.show_prices'))
         <div class="price">{{ $gbp($standard) ?? '—' }} <small>service fee</small></div>
       @else
-        <div class="qline">Standard fee — on request<small>our base service · separate from the govt fee</small></div>
+        <div class="qline">Standard fee: on request<small>our base service · separate from the govt fee</small></div>
       @endif
       <p class="sub">Everything you need, done right.</p>
       <ul>
@@ -270,7 +270,7 @@
       @if (config('ukv.show_prices'))
         <div class="price">{{ $gbp($express) ?? '—' }} <small>service fee</small></div>
       @else
-        <div class="qline">Express fee — on request<small>priority handling · separate from the govt fee</small></div>
+        <div class="qline">Express fee: on request<small>priority handling · separate from the govt fee</small></div>
       @endif
       <p class="sub">When you're short on time.</p>
       <ul>
@@ -287,7 +287,7 @@
       @if (config('ukv.show_prices'))
         <div class="price">{{ $gbp($premium) ?? '—' }} <small>service fee</small></div>
       @else
-        <div class="qline">Premium fee — on request<small>full hands-on support · separate from the govt fee</small></div>
+        <div class="qline">Premium fee: on request<small>full hands-on support · separate from the govt fee</small></div>
       @endif
       <p class="sub">Full hands-on support.</p>
       <ul>
@@ -301,7 +301,7 @@
   </div>
   <div class="pricenote reveal">
     <p><strong>Our service fee is separate from the {{ $name }} government fee.</strong> The government charges its own fee{{ config('ukv.show_prices') && $gbp($govtFee) ? ' (currently '.$gbp($govtFee).')' : '' }} for the {{ $visaType }}, which you'll see clearly before you pay anything.</p>
-    <p><strong>Express speeds our handling — it does not change the government's decision or its processing time.</strong> We cannot guarantee approval; the outcome is always decided by the {{ $name }} authorities.</p>
+    <p><strong>Express speeds our handling. It does not change the government's decision or its processing time.</strong> We cannot guarantee approval; the outcome is always decided by the {{ $name }} authorities.</p>
   </div>
 </div></section>
 
@@ -363,7 +363,7 @@
   <div class="row">
     <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
     @include('partials.wa-cta', [
-        'message' => "Hi Beyond Passports — I'd like help with my documents for {$name}.",
+        'message' => "Hi Beyond Passports, I'd like help with my documents for {$name}.",
         'label' => 'Ask about '.$name.' on WhatsApp',
         'variant' => 'ghost',
     ])

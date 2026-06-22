@@ -124,7 +124,7 @@
             'description' => $guide->excerpt,
             'step'     => [
                 ['@type' => 'HowToStep', 'position' => 1, 'name' => 'Confirm what you need', 'text' => 'Check your nationality, passport and trip against the current entry rules for your destination.'],
-                ['@type' => 'HowToStep', 'position' => 2, 'name' => 'Prepare your documents', 'text' => 'Gather the documents on your checklist — passport, photo and trip details — before you start.'],
+                ['@type' => 'HowToStep', 'position' => 2, 'name' => 'Prepare your documents', 'text' => 'Gather the documents on your checklist (passport, photo and trip details) before you start.'],
                 ['@type' => 'HowToStep', 'position' => 3, 'name' => 'Complete and submit', 'text' => 'Enter your details accurately and submit your application, then keep your reference to track it.'],
             ],
         ];
@@ -589,7 +589,7 @@
           <div class="gs-byline-icon" aria-hidden="true">✓</div>
           <p class="gs-byline-text">
             Reviewed <strong>{{ $reviewedAt->isoFormat('D MMMM YYYY') }}</strong>
-            by <strong>{{ $guide->reviewed_by }}</strong> — facts checked against the official source.
+            by <strong>{{ $guide->reviewed_by }}</strong>. Facts checked against the official source.
           </p>
         </div>
       @endif
@@ -617,7 +617,7 @@
       <div class="gs-rail-cta">
         <p class="k">Not sure?</p>
         <h3>What does your trip need?</h3>
-        <p>Answer a few quick questions — our free checker shows whether you need an ETA, a visa, or nothing at all.</p>
+        <p>Answer a few quick questions. Our free checker shows whether you need an ETA, a visa, or nothing at all.</p>
         <a href="{{ $checklistUrl }}" class="rb rb-primary">Use the free checker <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="{{ $applyUrl }}" class="rb rb-ghost">Start an application</a>
       </div>
@@ -630,7 +630,7 @@
             <li><a href="{{ url('/visa/'.$destination->slug.'/'.($sib->guide_type instanceof GuideType ? $sib->guide_type->topicSlug() : GuideType::from($sib->guide_type)->topicSlug())) }}"><b>{{ $sib->title }}</b><span class="gs-rail-lab">{{ $destination->name }} · {{ $sib->guide_type instanceof GuideType ? $sib->guide_type->label() : 'Guide' }}</span></a></li>
           @endforeach
           @if ($moneyUrl)
-            <li><a href="{{ $moneyUrl }}"><b>{{ $destination->name }} visa — prepared &amp; checked</b><span class="gs-rail-lab">Up to the {{ $destination->name }} hub</span></a></li>
+            <li><a href="{{ $moneyUrl }}"><b>{{ $destination->name }} visa: prepared &amp; checked</b><span class="gs-rail-lab">Up to the {{ $destination->name }} hub</span></a></li>
           @endif
           <li><a href="{{ $checklistUrl }}"><b>Check what your trip needs</b><span class="gs-rail-lab">Free document &amp; visa checker</span></a></li>
           <li><a href="{{ url('/guides') }}"><b>All travel guides</b><span class="gs-rail-lab">Index</span></a></li>
@@ -641,8 +641,8 @@
       <div class="gs-rail-sec gs-rail-comp">
         <p class="cbadge"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>Not a govt site</p>
         <p><strong>Beyond Passports is an independent service and is not a government website</strong> or affiliated with any official body.</p>
-        <p>General information only — exact requirements depend on your nationality, residence and trip, so confirm the current rules at the official source.</p>
-        <p>Our service fee is <strong>separate from any government fee</strong>. <strong>No service can guarantee a government decision</strong> — the outcome is decided solely by the relevant authorities.</p>
+        <p>General information only. Exact requirements depend on your nationality, residence and trip, so confirm the current rules at the official source.</p>
+        <p>Our service fee is <strong>separate from any government fee</strong>. <strong>No service can guarantee a government decision</strong>. The outcome is decided solely by the relevant authorities.</p>
       </div>
 
     </div>
@@ -656,7 +656,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application — our UK-based team removes the avoidable causes of refusal before it's submitted.</p>
+  <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application. Our UK-based team removes the avoidable causes of refusal before it's submitted.</p>
   <div class="row">
     <a href="{{ $applyUrl }}" class="btn">Start my application →</a>
     <a href="{{ $checklistUrl }}" class="btn btn--glass">Check what I need</a>

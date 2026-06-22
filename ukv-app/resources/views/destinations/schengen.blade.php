@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Area & ETIAS for UK travellers | Beyond Passports')
-@section('description', 'Travelling to Europe? One ETIAS will cover all Schengen countries from late 2026 — 90 days in any 180, valid 3 years. Pick your destination; we prepare and check everything. Independent service, not a government website.')
+@section('description', 'Travelling to Europe? One ETIAS will cover all Schengen countries from late 2026: 90 days in any 180, valid 3 years. Pick your destination; we prepare and check everything. Independent service, not a government website.')
 @section('canonical', url('/visa/schengen'))
 
 @push('head')
@@ -37,7 +37,7 @@
 <section class="di-hero"><div class="wrap">
   <p class="eyebrow">Europe · Schengen Area</p>
   <h1>Travelling to Europe? Here's what you'll need</h1>
-  <p class="lede">One ETIAS authorisation will cover all the Schengen countries. Pick your destination below — we prepare and check everything so your trip goes right.</p>
+  <p class="lede">One ETIAS authorisation will cover all the Schengen countries. Pick your destination below, and we prepare and check everything so your trip goes right.</p>
   <form class="di-search" role="search" onsubmit="return false">
     <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
@@ -55,7 +55,7 @@
 <section><div class="wrap">
   <div class="sh-note reveal">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
-    <p><strong>ETIAS isn't required yet.</strong> Right now UK citizens travel to the Schengen Area <strong>visa-free</strong> for short stays — no ETIAS, no fee. ETIAS launches in late 2026. When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
+    <p><strong>ETIAS isn't required yet.</strong> Right now UK citizens travel to the Schengen Area <strong>visa-free</strong> for short stays, with no ETIAS and no fee. ETIAS launches in late 2026. When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
   </div>
 
   @if (! empty($activeRegion))
@@ -70,11 +70,11 @@
         @include('partials.destination-card', ['destination' => $destination])
       @endforeach
     </div>
-    <p class="di-empty" id="destEmpty">No Schengen country matches that search — try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
+    <p class="di-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
 
   <div class="pricenote reveal" style="margin-top:32px;background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;font-size:14px;color:#3a4b55">
-    <p style="margin:0"><strong style="color:var(--navy)">One ETIAS covers the whole Schengen Area.</strong> You don't need a separate authorisation per country. We are not a government website and cannot guarantee approval — the decision is always the authority's.</p>
+    <p style="margin:0"><strong style="color:var(--navy)">One ETIAS covers the whole Schengen Area.</strong> You don't need a separate authorisation per country. We are not a government website and cannot guarantee approval. The decision is always the authority's.</p>
   </div>
 </div></section>
 

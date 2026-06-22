@@ -33,6 +33,8 @@
   .hpv-b .checklist h3{font-family:var(--display);font-size:16px;font-weight:700;color:var(--ink);
     letter-spacing:-.01em;line-height:1.25;margin:0 0 3px}
   .hpv-b .checklist p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+  .hpv-b .checklist .ck{display:block;font:800 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text);margin-bottom:3px}
+  .hpv-b .checklist .stop{display:inline-block;margin-top:9px;font:700 11.5px var(--display);color:#B4654A;background:rgba(180,101,74,.1);padding:4px 9px;border-radius:7px}
 </style>
 @endpush
 
@@ -40,8 +42,8 @@
   <div class="split">
     <div class="lead reveal">
       <p class="eyebrow">How we prevent refusals</p>
-      <h2>We remove the avoidable causes of refusal — before you submit.</h2>
-      <p class="promise">A refusal usually means something fixable was missed. Our checks catch those things while there's still time to put them right.</p>
+      <h2>Four checks between you and a refusal.</h2>
+      <p class="promise">A refusal usually means something fixable slipped through. We catch it while there's still time to put it right.</p>
       <div class="cta-row">
         <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
         <a href="{{ url('/apply') }}" class="rlink">Worried about refusal? See how →</a>
@@ -53,19 +55,19 @@
       <ul>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div><h3>Eligibility checked first</h3><p>We confirm you qualify before you pay — nationality, residence, status and trip purpose.</p></div>
+          <div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">Stops a wasted fee</span></div>
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div><h3>Documents checked — AI plus a real UK person</h3><p>Funds evidence, validity and consistency — the details that trip applications up.</p></div>
+          <div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div>
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p></div>
+          <div><span class="ck">Check 3</span><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p><span class="stop">Stops gaps slipping in</span></div>
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p></div>
+          <div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Stops repeat mistakes</span></div>
         </li>
       </ul>
     </div>

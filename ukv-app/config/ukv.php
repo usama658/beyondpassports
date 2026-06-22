@@ -74,4 +74,19 @@ return [
     // Ofcom reserved-for-drama range (07700 900xxx → not a real number); swap for the real line.
     // Kept separate from the sitewide 'whatsapp' key above so a placeholder never leaks sitewide.
     'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447700900123'),
+
+    // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
+    // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
+    // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.
+    'trustpilot' => [
+        'business_unit_id' => env('UKV_TRUSTPILOT_BUSINESS_UNIT_ID', '6a399ad3747eb53086311900'), // Beyond Passports business unit
+        'template_id'      => env('UKV_TRUSTPILOT_TEMPLATE_ID', '5419b6ffb0d04a076446a9af'), // default: Micro Combo; swap for your chosen TrustBox
+        'domain'           => env('UKV_TRUSTPILOT_DOMAIN', 'beyondpassports.co.uk'),         // your verified review domain
+        'profile_url'      => env('UKV_TRUSTPILOT_PROFILE_URL', ''),                         // public review-collection link (optional CTA)
+        // Automatic Feedback BCC: Trustpilot's unique invite alias. BCC'd ONLY on the
+        // post-delivery ReviewRequest email, so a genuine review invite fires when an order
+        // is delivered. Blank = off. (This sends the customer's email + name to Trustpilot,
+        // a US sub-processor; ensure the privacy policy lists Trustpilot.)
+        'invite_bcc'       => env('UKV_TRUSTPILOT_INVITE_BCC', 'beyondpassports.co.uk+bfd39d893d@invite.trustpilot.com'),
+    ],
 ];

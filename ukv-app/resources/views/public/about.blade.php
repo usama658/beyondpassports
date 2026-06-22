@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'About Us — Independent UK Visa & eVisa Service | Beyond Passports')
+@section('title', 'About Us: Independent UK Visa & eVisa Service | Beyond Passports')
 @section('description', 'Beyond Passports is an independent, UK-based visa, eVisa, ETA and IDP facilitation service for British travellers. Not a government website. Clear fees, human checks, honest advice.')
 
 @push('head')
@@ -251,7 +251,7 @@
   <div class="ab-hero-copy reveal">
     <p class="eyebrow">About us</p>
     <h1>We exist because most visa refusals shouldn't happen.</h1>
-    <p class="lede">Most refusals come from avoidable mistakes — unclear evidence, missing documents, the wrong details. We're a private, UK-based team that checks, prepares and submits your application, removing those avoidable causes before you ever submit.</p>
+    <p class="lede">Most refusals come from avoidable mistakes: unclear evidence, missing documents, the wrong details. We're a private, UK-based team that checks, prepares and submits your application, removing those avoidable causes before you ever submit.</p>
   </div>
   <div class="ab-idcard reveal" aria-label="Who we are at a glance">
     <p class="ic-k">Beyond Passports · who we are</p>
@@ -285,9 +285,9 @@
   <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>A private service, not a public office</h2></div>
   <div class="ab-who-grid">
     <div class="ab-prose reveal">
-      <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs) — checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
-      <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself — using us is optional.</p>
-      <p><strong>A real UK person checks every application before it's submitted — nothing is outsourced.</strong> The same team confirms you qualify, reviews your documents for the things that actually get applications refused, and runs a final check before anything reaches the authority.</p>
+      <p>Beyond Passports is an independent, UK-based visa &amp; eVisa facilitation service for British travellers going abroad. We help with eVisas, electronic travel authorisations (ETAs) and International Driving Permits (IDPs), checking your details, preparing your paperwork and guiding you through submission so small mistakes don't turn into cancelled trips.</p>
+      <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with gov.uk, any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly with the relevant authority yourself; using us is optional.</p>
+      <p><strong>A real UK person checks every application before it's submitted. Nothing is outsourced.</strong> The same team confirms you qualify, reviews your documents for the things that actually get applications refused, and runs a final check before anything reaches the authority.</p>
       <p class="ab-note">Our service fee is separate from, and additional to, any government or embassy fee. The official fee is set and collected by the relevant authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
     </div>
     <div class="ab-contrast reveal">
@@ -296,7 +296,7 @@
         <ul>
           <li>{!! $ccTick !!}An independent, UK-based service</li>
           <li>{!! $ccTick !!}Real human document checks</li>
-          <li>{!! $ccTick !!}Optional — your choice to use</li>
+          <li>{!! $ccTick !!}Optional, your choice to use</li>
         </ul>
       </div>
       <div class="ab-cc is-not">
@@ -321,7 +321,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 7l7-3 7 3M5 7l-2 6a4 4 0 0 0 8 0L9 7m6 0l7-3M19 7l2 6a4 4 0 0 1-8 0l2-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
       <h3>Honesty</h3>
-      <p>If you don't actually need us, we'll tell you. We never promise approval — that decision isn't ours to make.</p>
+      <p>If you don't actually need us, we'll tell you. We never promise approval. That decision isn't ours to make.</p>
     </div>
 
     <div class="ab-value reveal">
@@ -337,7 +337,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
       </span>
       <h3>Transparency</h3>
-      <p>Clear fees up front — our service fee shown separately from any government or embassy fee. No surprises.</p>
+      <p>Clear fees up front: our service fee shown separately from any government or embassy fee. No surprises.</p>
     </div>
 
     <div class="ab-value reveal">
@@ -345,7 +345,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.3-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7-2.7c1 1 1 3.3 0 5.4-1.4 3-7 9.3-7 9.3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
       <h3>Care</h3>
-      <p>Real people on the phone and on WhatsApp — a UK team you can actually talk to when something matters.</p>
+      <p>Real people on the phone and on WhatsApp. A UK team you can actually talk to when something matters.</p>
     </div>
 
   </div>
@@ -355,8 +355,8 @@
 <section id="how"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">How we prevent refusals</p><h2>Three checks before you submit</h2></div>
   <div class="steps reveal">
-    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check eligibility</h3><p>Tell us your trip and passport. We confirm you actually qualify — and whether you need us at all — before you pay.</p></div>
-    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check documents</h3><p>Our UK team reviews your documents for history, source and consistency — the things that actually get applications refused.</p></div>
+    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check eligibility</h3><p>Tell us your trip and passport. We confirm you actually qualify, and whether you need us at all, before you pay.</p></div>
+    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check documents</h3><p>Our UK team reviews your documents for history, source and consistency: the things that actually get applications refused.</p></div>
     <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>Nothing is submitted until a real UK person has checked the whole file. Then we handle submission and keep you updated to completion.</p></div>
   </div>
 </div></section>
@@ -376,7 +376,7 @@
     <figure class="tq reveal">
       <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
       <blockquote>{{ $t['quote'] }}</blockquote>
-      <figcaption>— {{ $t['attribution'] }}</figcaption>
+      <figcaption>{{ $t['attribution'] }}</figcaption>
     </figure>
     @endforeach
   </div>
@@ -390,8 +390,8 @@
     <span class="ab-seal" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </span>
-    <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities — we cannot guarantee any outcome.</p>
-    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only — it does not make a government or embassy decide any faster, and an ETA does not produce a physical document.</p>
+    <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities, and we cannot guarantee any outcome.</p>
+    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a government or embassy decide any faster, and an ETA does not produce a physical document.</p>
   </div>
 </div></section>
 
@@ -399,7 +399,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
+  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question, even just to check whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
 

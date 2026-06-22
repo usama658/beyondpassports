@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Find your nearest visa centre or PayPoint | Beyond Passports')
-@section('description', 'Find your nearest UK visa application centre, PayPoint (for IDPs), embassy or courier drop-off by postcode. We flag centres where we can book your appointment. Independent service — not a government website.')
+@section('description', 'Find your nearest visa application centre, PayPoint (for IDPs), embassy or courier drop-off by postcode. We flag centres where we can book your appointment. Independent service, not a government website.')
 
 @php
     /**
@@ -141,7 +141,7 @@
   <div class="wrap reveal">
     <p class="eyebrow">Find a centre</p>
     <h1>Find your nearest centre</h1>
-    <p class="lede">Enter your postcode to see visa application centres, PayPoint IDP issuers, embassies and courier drop-offs — closest first. We flag any where we can book your appointment for you.</p>
+    <p class="lede">Enter your postcode to see visa application centres, PayPoint IDP issuers, embassies and courier drop-offs, closest first. We flag any where we can book your appointment for you.</p>
     <div class="fc-trust">
       <span><b>✓</b> Sorted by distance</span>
       <span><b>✓</b> All types in one search</span>
@@ -231,7 +231,7 @@
 <section class="fc-section-sm" style="padding-top:0">
   <div class="wrap">
     <div class="fc-compliance reveal">
-      <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Distances are straight-line estimates — always confirm opening hours and booking with the centre before you travel. International Driving Permits (IDPs) are issued in person at PayPoint; for the full list of PayPoint locations, use the <a href="https://www.paypoint.com/en-gb/consumers/store-locator" target="_blank" rel="noopener noreferrer">official PayPoint store locator</a>. Most UK travel documents (eVisa&nbsp;/ ETA) need no in-person visit at all.</p>
+      <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Distances are straight-line estimates. Always confirm opening hours and booking with the centre before you travel. International Driving Permits (IDPs) are issued in person at PayPoint; for the full list of PayPoint locations, use the <a href="https://www.paypoint.com/en-gb/consumers/store-locator" target="_blank" rel="noopener noreferrer">official PayPoint store locator</a>. Most travel documents (eVisa&nbsp;/ ETA) need no in-person visit at all.</p>
     </div>
   </div>
 </section>

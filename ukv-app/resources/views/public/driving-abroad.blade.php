@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'International Driving Permit (IDP) — sorted the right way | Beyond Passports')
-@section('description', 'Need an International Driving Permit to drive abroad? We confirm which IDP type you need (1949/1968/1926), prepare and check your paperwork, and tell you exactly what to bring to your in-person PayPoint visit. Independent service — not a government website; the IDP is issued in person at PayPoint, not by us.')
+@section('title', 'International Driving Permit (IDP), sorted the right way | Beyond Passports')
+@section('description', 'Need an International Driving Permit to drive abroad? We confirm which IDP type you need (1949/1968/1926), prepare and check your paperwork, and tell you exactly what to bring to your in-person PayPoint visit. Independent service, not a government website. The IDP is issued in person at PayPoint, not by us.')
 
 @push('head')
 <style>
@@ -165,10 +165,10 @@
   "@@context": "https://schema.org",
   "@@type": "FAQPage",
   "mainEntity": [
-    {"@@type":"Question","name":"Is this a government service?","acceptedAnswer":{"@@type":"Answer","text":"No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there."}},
-    {"@@type":"Question","name":"Can you get the IDP for me?","acceptedAnswer":{"@@type":"Answer","text":"No — an IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time."}},
-    {"@@type":"Question","name":"Which countries need which type?","acceptedAnswer":{"@@type":"Answer","text":"It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type — and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off."}},
-    {"@@type":"Question","name":"What if I only have a provisional licence?","acceptedAnswer":{"@@type":"Answer","text":"You can't get an IDP on a provisional licence. An IDP can only be issued against a full UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet — we'll tell you straight rather than send you on a wasted trip."}}
+    {"@@type":"Question","name":"Is this a government service?","acceptedAnswer":{"@@type":"Answer","text":"No. Beyond Passports is an independent service, not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there."}},
+    {"@@type":"Question","name":"Can you get the IDP for me?","acceptedAnswer":{"@@type":"Answer","text":"No. An IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time."}},
+    {"@@type":"Question","name":"Which countries need which type?","acceptedAnswer":{"@@type":"Answer","text":"It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type, and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off."}},
+    {"@@type":"Question","name":"What if I only have a provisional licence?","acceptedAnswer":{"@@type":"Answer","text":"You can't get an IDP on a provisional licence. An IDP can only be issued against a full UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet. We'll tell you straight rather than send you on a wasted trip."}}
   ]
 }
 </script>
@@ -180,8 +180,8 @@
 <section class="idp-hero">
   <div class="wrap reveal">
     <p class="eyebrow">Driving abroad</p>
-    <h1>International Driving Permit&nbsp;— sorted the right way</h1>
-    <p class="lede">We confirm which IDP you need and prepare your paperwork — removing the avoidable reasons a trip gets wasted (wrong type, missing documents) so your in-person collection goes right first time.</p>
+    <h1>International Driving Permit, sorted the right way</h1>
+    <p class="lede">We confirm which IDP you need and prepare your paperwork, removing the avoidable reasons a trip gets wasted (wrong type, missing documents) so your in-person collection goes right first time.</p>
     <div class="idp-types">
       <div class="t"><b>1949</b><span>USA &amp; parts of Asia/Africa</span></div>
       <div class="t"><b>1968</b><span>Most of Europe</span></div>
@@ -198,10 +198,10 @@
       <p class="eyebrow">The basics</p>
       <h2 style="color:var(--navy);font-size:clamp(28px,3.4vw,38px);margin-bottom:18px">What is an International Driving Permit?</h2>
       <div class="da-prose">
-        <p>An International Driving Permit (IDP) is an official document that translates your UK driving licence into other languages, so police and hire-car companies abroad can read it alongside your photocard licence. It doesn't replace your UK licence — you carry both together.</p>
-        <p>Different countries recognise different IDP types, set by three international conventions. Some countries accept one type, some another, and a few accept more than one. Carrying the wrong type can mean being turned away at the car-hire desk or fined at the roadside — so getting the right one matters.</p>
+        <p>An International Driving Permit (IDP) is an official document that translates your UK driving licence into other languages, so police and hire-car companies abroad can read it alongside your photocard licence. It doesn't replace your UK licence; you carry both together.</p>
+        <p>Different countries recognise different IDP types, set by three international conventions. Some countries accept one type, some another, and a few accept more than one. Carrying the wrong type can mean being turned away at the car-hire desk or fined at the roadside, so getting the right one matters.</p>
       </div>
-      <div class="da-defcard">An IDP <strong>translates</strong> the licence you already hold — it never replaces it. You always carry your UK photocard <strong>and</strong> the IDP together.</div>
+      <div class="da-defcard">An IDP <strong>translates</strong> the licence you already hold; it never replaces it. You always carry your UK photocard <strong>and</strong> the IDP together.</div>
     </div>
   </div>
 </section>
@@ -216,7 +216,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">How it really works</p>
-      <h2>An IDP is collected in person — we make sure you're ready</h2>
+      <h2>An IDP is collected in person, and we make sure you're ready</h2>
     </div>
 
     <div class="ig-rail reveal" aria-label="Where you can get an IDP">
@@ -226,11 +226,11 @@
     </div>
 
     <div class="ig-two reveal">
-      <p class="ig-note">We are <strong>not a government issuer</strong> and we cannot get the permit for you — it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
+      <p class="ig-note">We are <strong>not a government issuer</strong> and we cannot get the permit for you; it must be issued in person to the licence holder. What we sell is <strong>guidance and document checking</strong>, with our service fee shown separately from the small official IDP fee you pay at PayPoint.</p>
       <div class="ig-tags">
         <div class="ig-tag">{!! $igTick !!}<span>We <strong>confirm which IDP type</strong> (1949 / 1968 / 1926) your destination needs.</span></div>
         <div class="ig-tag">{!! $igTick !!}<span>We <strong>check your paperwork</strong> so nothing's missing or out of date.</span></div>
-        <div class="ig-tag">{!! $igTick !!}<span>We tell you <strong>exactly what to bring and where to go</strong> — your nearest PayPoint.</span></div>
+        <div class="ig-tag">{!! $igTick !!}<span>We tell you <strong>exactly what to bring and where to go</strong>: your nearest PayPoint.</span></div>
       </div>
     </div>
   </div>
@@ -257,7 +257,7 @@
       </li>
       <li>
         <span class="bi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span>If your photocard shows an old address, a <strong>valid passport or other ID</strong> may be requested — we'll confirm.</span>
+        <span>If your photocard shows an old address, a <strong>valid passport or other ID</strong> may be requested. We'll confirm.</span>
       </li>
     </ul>
   </div>
@@ -274,7 +274,7 @@
       <div class="da-prose reveal">
         <p class="eyebrow">Eligibility</p>
         <h2 class="who-h2">Who can get an IDP?</h2>
-        <p>To get an International Driving Permit you must be <strong>18 or over</strong> and hold a <strong>full UK driving licence</strong> (photocard). The permit translates a licence you already hold — so a full, valid UK licence is the starting point.</p>
+        <p>To get an International Driving Permit you must be <strong>18 or over</strong> and hold a <strong>full UK driving licence</strong> (photocard). The permit translates a licence you already hold, so a full, valid UK licence is the starting point.</p>
         <p>If your full licence covers the vehicle you'll drive abroad, you're good to go once you have the right IDP type for the country.</p>
       </div>
       <div class="da-cc reveal">
@@ -289,7 +289,7 @@
         <div class="da-cc-card is-cant">
           <p class="cc-t">You can't (yet) if</p>
           <ul>
-            <li>{!! $whoCross !!}<span>You only hold a <strong>provisional licence</strong> — we'll tell you honestly rather than send you on a wasted trip.</span></li>
+            <li>{!! $whoCross !!}<span>You only hold a <strong>provisional licence</strong>. We'll tell you honestly rather than send you on a wasted trip.</span></li>
           </ul>
         </div>
       </div>
@@ -337,7 +337,7 @@
           <p class="eyebrow">Step 2, made easy</p>
         </div>
         <h2>Find your nearest PayPoint</h2>
-        <p>Enter your postcode and we'll show the closest PayPoint stores that issue the IDP in person — so you don't have to go hunting.</p>
+        <p>Enter your postcode and we'll show the closest PayPoint stores that issue the IDP in person, so you don't have to go hunting.</p>
       </div>
       <div class="da-find-card reveal">
         <form class="da-pp-form" method="GET" action="{{ route('centre.search') }}">
@@ -348,7 +348,7 @@
         </form>
         <div class="da-pp-hint">
           <a href="{{ url('/find-a-centre?type=paypoint') }}">Or use my location on the full finder →</a><br>
-          <span>The IDP is issued in person at PayPoint — we prepare and check your paperwork; we don't issue the permit ourselves.</span>
+          <span>The IDP is issued in person at PayPoint. We prepare and check your paperwork; we don't issue the permit ourselves.</span>
         </div>
       </div>
     </div>
@@ -362,19 +362,19 @@
     <div class="faqd">
       <details>
         <summary>Is this a government service?</summary>
-        <p>No. Beyond Passports is an independent service — not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p>
+        <p>No. Beyond Passports is an independent service, not a government website and not a government issuer. We provide guidance and document checking. The IDP itself is an official document issued at PayPoint stores; our service fee is separate from the official IDP fee you pay there.</p>
       </details>
       <details>
         <summary>Can you get the IDP for me?</summary>
-        <p>No — an IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time.</p>
+        <p>No. An IDP must be issued in person to you, the licence holder, at a PayPoint store. We can't collect it on your behalf. What we do is confirm which IDP type you need, check and prepare your paperwork, and tell you exactly what to bring and where to go so your visit succeeds first time.</p>
       </details>
       <details>
         <summary>Which countries need which type?</summary>
-        <p>It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type — and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off.</p>
+        <p>It depends on the country. There are three IDP types, tied to the 1949, 1968 and 1926 conventions. Most of Europe and many other countries use the 1968 type; the USA and several others use the 1949 type; a small number still require the older 1926 type, and some destinations accept more than one. Tell us where you're driving and we'll confirm the exact type (or types) you need before you set off.</p>
       </details>
       <details>
         <summary>What if I only have a provisional licence?</summary>
-        <p>You can't get an IDP on a provisional licence. An IDP can only be issued against a <strong>full</strong> UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet — we'll tell you straight rather than send you on a wasted trip.</p>
+        <p>You can't get an IDP on a provisional licence. An IDP can only be issued against a <strong>full</strong> UK driving licence, because it translates a licence you already hold. If you only have a provisional, you're not eligible yet. We'll tell you straight rather than send you on a wasted trip.</p>
       </details>
     </div>
   </div>

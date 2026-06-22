@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Traveller Reviews — What UK Travellers Say | Beyond Passports')
-@section('description', 'Anonymised, consented reviews from UK travellers we have helped with eVisas, ETAs and IDPs. Independent UK service — not a government website. No approval guarantees.')
+@section('title', 'Traveller Reviews: What UK Travellers Say | Beyond Passports')
+@section('description', 'Anonymised, consented reviews from UK travellers we have helped with eVisas, ETAs and IDPs. Independent UK service, not a government website. No approval guarantees.')
 @section('canonical', url('/reviews'))
 
 @push('head')
@@ -67,7 +67,7 @@
     <div>
       <p class="eyebrow">About these reviews</p>
       <h2>Honest, anonymised, consented</h2>
-      <p>Every review on this page is shared with the traveller’s permission and anonymised — we never publish full names or identifying details. Beyond Passports is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
+      <p>Every review on this page is shared with the traveller’s permission and anonymised. We never publish full names or identifying details. Beyond Passports is an independent commercial service, not a government website. Visa and travel-authorisation decisions are made solely by the relevant authorities, and a good experience with us is not a promise of any particular outcome for you.</p>
     </div>
   </div>
 </div></section>
@@ -76,7 +76,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let’s get you travelling</h2>
-  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question — even just to check whether you need us.</p>
+  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question, even just to check whether you need us.</p>
   <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
 

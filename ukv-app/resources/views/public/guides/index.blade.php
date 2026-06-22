@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Visa guides for UK travellers — plain-English help | Beyond Passports')
-@section('description', 'Plain-English visa guides for UK travellers — eVisas, ETAs, passport-validity rules, documents and processing times. Independent service, not a government website. General info only; requirements depend on your nationality and residence.')
+@section('title', 'Visa guides for UK travellers: plain-English help | Beyond Passports')
+@section('description', 'Plain-English visa guides for UK travellers: eVisas, ETAs, passport-validity rules, documents and processing times. Independent service, not a government website. General info only; requirements depend on your nationality and residence.')
 
 @section('canonical', url('/guides'))
 
@@ -118,7 +118,7 @@
       <div class="reveal">
         <p class="eyebrow">Visa guides</p>
         <h1>Plain-English guides for UK travellers</h1>
-        <p class="lede">eVisas, ETAs, passport rules, documents and processing times — written clearly to help you sidestep the avoidable mistakes that get applications refused, and travel with confidence.</p>
+        <p class="lede">eVisas, ETAs, passport rules, documents and processing times, written clearly to help you avoid the mistakes that get applications refused.</p>
       </div>
       @if ($heroTopics->isNotEmpty())
         <nav class="gi-topics reveal" aria-label="Popular guides">
@@ -173,7 +173,7 @@
       @include('partials.guide-cluster', ['cluster' => $evergreen])
     @else
       <div class="gi-empty">
-        <p>New guides are on the way — in the meantime, our free checker can tell you exactly what your trip needs.</p>
+        <p>New guides are on the way. In the meantime, our free checker can tell you exactly what your trip needs.</p>
         <a href="{{ url('/tools') }}" class="btn">Check what I need →</a>
       </div>
     @endif
@@ -183,7 +183,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
         <span>NOT A GOVT SITE</span>
       </span>
-      <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Guides are general information only — exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
+      <p><strong>Beyond Passports is an independent service and is not a government website.</strong> Guides are general information only. Exact requirements depend on your nationality, residence and trip, so always confirm at the official source before you travel.</p>
     </div>
   </div>
 </section>

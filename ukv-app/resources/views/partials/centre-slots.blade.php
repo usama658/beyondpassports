@@ -64,7 +64,7 @@
             .ukv-slots .us-more{font-family:"Outfit",system-ui,sans-serif;font-size:11px;letter-spacing:.04em;color:#9c4a26;background:#E2F1EE;border-radius:999px;padding:1px 8px}
         </style>
         <span class="us-label"><span class="us-tick" aria-hidden="true">✓</span>Appointments available</span>
-        <span class="us-next">— next: <strong>{{ $next->slot_at->format('j M, g:ia') }}</strong></span>
+        <span class="us-next">next: <strong>{{ $next->slot_at->format('j M, g:ia') }}</strong></span>
         @if ($more > 0)
             <span class="us-more">+{{ $more }} more</span>
         @endif

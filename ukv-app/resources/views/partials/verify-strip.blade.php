@@ -2,7 +2,7 @@
     Public self-verification trust strip — Module A (guide engine SEO silo).
 
     PURE PRESENTATIONAL. No DB / service calls here. Pass a Destination model in.
-    Renders: "Facts last reviewed {date} — confirm current rules at the official source →"
+    Renders: "Facts last reviewed {date}. Always confirm current rules at the official source →"
     plus inline links to each official source from $destination->sources.
 
     Expected variables:
@@ -55,9 +55,9 @@
     <span class="vs-badge">Verify</span>
     <p class="vs-text">
       @if ($reviewedLabel)
-        Facts last reviewed <strong>{{ $reviewedLabel }}</strong> —
+        Facts last reviewed <strong>{{ $reviewedLabel }}</strong>.
       @endif
-      always confirm current rules at the official source
+      Always confirm current rules at the official source
       @if (empty($sources))
         before you travel.
       @else

@@ -1,9 +1,9 @@
 {{--
-    Travel-insurance INTRODUCER (FCA-safe signpost — NOT a product Beyond Passports sells/arranges).
+    Travel-insurance INTRODUCER (FCA-safe signpost, NOT a product Beyond Passports sells/arranges).
 
     Beyond Passports is not an insurer and takes no charge here. This is an optional introduction to an
     FCA-authorised travel-insurance partner. If no partner is configured, we show a neutral
-    "ask us" note instead of a dead link — never invent a provider or imply we arrange cover.
+    "ask us" note instead of a dead link. Never invent a provider or imply we arrange cover.
 
     Styling is self-contained (scoped, inline) so this renders correctly both inside the
     standalone confirmation.blade.php HTML document and within the design-system guides page.
@@ -32,7 +32,7 @@
         Travelling soon? Consider travel insurance
     </h2>
     <p style="font-size:15px;color:#33454f;margin:0 0 14px;max-width:60ch">
-        A visa or ETA covers permission to travel — it isn't insurance. Many travellers choose a
+        A visa or ETA covers permission to travel; it isn't insurance. Many travellers choose a
         travel-insurance policy for medical cover, cancellations and lost baggage. It's entirely
         your choice, and not required for your application.
     </p>
@@ -50,7 +50,7 @@
         </p>
     @endif
 
-    {{-- FCA-required disclosure — keep verbatim; do not soften. --}}
+    {{-- FCA-required disclosure: keep verbatim; do not soften. --}}
     <p style="font-size:12.5px;color:#5d6f79;margin:14px 0 0;line-height:1.6">
         Beyond Passports is not an insurer and does not provide insurance advice. This is an introduction
         to {{ $partnerLabel }}, an FCA-authorised provider; we may receive a referral fee. Cover

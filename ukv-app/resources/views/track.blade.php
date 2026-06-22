@@ -26,8 +26,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Track your application — UK visa &amp; eVisa status | Beyond Passports</title>
-<meta name="description" content="Track your Beyond Passports application with your order reference. See each stage from received to delivered. Independent service — not a government website.">
+<title>Track your application: Schengen visa, ETIAS &amp; eVisa status | Beyond Passports</title>
+<meta name="description" content="Track your Beyond Passports application with your order reference. See each stage from received to delivered. Independent service, not a government website.">
 <meta name="robots" content="noindex,nofollow">
 {{-- Canonical design system: gives this standalone page the shared header/footer styling. --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
@@ -193,7 +193,7 @@
     <section class="track-sec"><div class="wrap">
       <div class="notfound" role="status" aria-live="polite">
         <p>We couldn't find an application matching <strong>{{ $searchedRef }}</strong>.</p>
-        <p>Please double-check the reference in your confirmation email — it looks like <code>UKV-2026-004821</code> — and try again. If you're still stuck, get in touch and we'll help.</p>
+        <p>Please double-check the reference in your confirmation email (it looks like <code>UKV-2026-004821</code>) and try again. If you're still stuck, get in touch and we'll help.</p>
       </div>
     </div></section>
   @endif
@@ -258,7 +258,7 @@
           </div>
 
           <div class="reassure">
-            <p><strong>Government processing time is set by the destination's authorities</strong> — not by us, and express speeds our handling only, not their decision. We'll notify you the moment there's an update.</p>
+            <p><strong>Government processing time is set by the destination's authorities</strong>, not by us. Express speeds our handling only, not their decision. We'll notify you the moment there's an update.</p>
           </div>
         </div>
       </div>
@@ -280,7 +280,7 @@
 
   <section class="track-sec"><div class="wrap">
     <div class="help">
-      <span class="help-t"><b>Can't find your reference?</b><span>It's in your confirmation email — or we'll look it up with you.</span></span>
+      <span class="help-t"><b>Can't find your reference?</b><span>It's in your confirmation email, or we'll look it up with you.</span></span>
       <div class="links">
         <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="call"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>Call us</a>
         <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>

@@ -56,7 +56,7 @@
     <p class="saved">Saved online (share or revisit any time): <a href="{{ $savedLink }}">{{ $savedLink }}</a></p>
 
     <p class="compliance">
-      Independent service — not a government website. Our service fee is separate from any government fee.
+      Independent service, not a government website. Our service fee is separate from any government fee.
       Express tiers speed up our handling, not the government's decision. Always confirm the latest requirements
       with the official source linked in each item before you travel.
     </p>

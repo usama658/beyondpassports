@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Contact us — talk to a real UK-based person | Beyond Passports')
-@section('description', 'Questions about your UK outbound visa? Call us and a real, UK-based person answers — Mon–Sat 9–6. WhatsApp for quick questions, email for documents, or request a callback. Independent service — not a government website.')
+@section('title', 'Contact us: talk to a real UK-based person | Beyond Passports')
+@section('description', 'Questions about your trip abroad? Call us and a real, UK-based person answers, Mon–Sat 9–6. WhatsApp for quick questions, email for documents, or request a callback. Independent service, not a government website.')
 
 @push('head')
 <style>
@@ -367,7 +367,7 @@
   <div class="ct-hero-copy reveal">
     <p class="eyebrow">Talk to a human</p>
     <h1>Questions? We're a phone call away.</h1>
-    <p class="lede">Call us and a real, UK-based person picks up — no bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next — including the avoidable things that get applications refused — with no obligation.</p>
+    <p class="lede">Call us and a real, UK-based person picks up. No bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, including the avoidable things that get applications refused, with no obligation.</p>
     <span class="ct-hero-note">Mon–Sat 9–6 UK time &nbsp;·&nbsp; independent service, not a government website</span>
   </div>
   <div class="ct-statuscard reveal" aria-label="Our team availability">
@@ -400,7 +400,7 @@
           <div>
             <h3>Call us</h3>
             <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
-            <p class="sub">Our main line — best for anything you'd rather just talk through. A real, UK-based person picks up — no bots, no overseas call centres.</p>
+            <p class="sub">Our main line, best for anything you'd rather just talk through. A real, UK-based person picks up. No bots, no overseas call centres.</p>
             <span class="hrs">Mon–Sat 9–6 UK time</span><br>
             <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">Call now</a>
           </div>
@@ -482,7 +482,7 @@
     <figure class="tq reveal">
       <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
       <blockquote>{{ $t['quote'] }}</blockquote>
-      <figcaption>— {{ $t['attribution'] }}</figcaption>
+      <figcaption>{{ $t['attribution'] }}</figcaption>
     </figure>
     @endforeach
   </div>
@@ -523,7 +523,7 @@
       var open = !isSunday && hr >= 9 && hr < 18;
       pill.classList.remove('is-open', 'is-closed');
       pill.classList.add(open ? 'is-open' : 'is-closed');
-      text.textContent = open ? 'Open now — Mon–Sat 9–6 UK' : 'Closed now — leave a message';
+      text.textContent = open ? 'Open now, Mon–Sat 9–6 UK' : 'Closed now, leave a message';
     } catch (e) { /* leave the server-rendered default */ }
   })();
 
@@ -595,16 +595,16 @@
         })
         .then(function (r) {
           if (r.status >= 200 && r.status < 300 && r.data && r.data.ok) {
-            showSuccess(r.data.message || 'Thanks — your callback is booked.');
+            showSuccess(r.data.message || 'Thanks, your callback is booked.');
           } else if (r.status === 422 && r.data && r.data.errors) {
             var firstKey = Object.keys(r.data.errors)[0];
             showError(r.data.errors[firstKey][0]);
           } else {
-            showError('Sorry — something went wrong. Please call or WhatsApp us instead.');
+            showError('Sorry, something went wrong. Please call or WhatsApp us instead.');
           }
         })
         .catch(function () {
-          showError('Sorry — we could not send that. Please call or WhatsApp us instead.');
+          showError('Sorry, we could not send that. Please call or WhatsApp us instead.');
         })
         .finally(function () { if (submit) { submit.disabled = false; } });
     });

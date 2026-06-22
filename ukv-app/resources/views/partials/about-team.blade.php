@@ -134,7 +134,7 @@
   <div class="head reveal">
     <p class="eyebrow">The team</p>
     <h2>Real people checking your application</h2>
-    <p>Your application isn't passed through software and forgotten. A small UK-based team reviews every file by hand &mdash; the same people, start to finish.</p>
+    <p>Your application isn't passed through software and forgotten. A small UK-based team reviews every file by hand: the same people, start to finish.</p>
   </div>
 
   <div class="team">

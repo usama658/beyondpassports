@@ -20,7 +20,7 @@
     'name'     => $siteName,
     'url'      => $base . '/',
     'logo'     => asset('images/logo.png'),
-    'description' => 'Independent UK visa preparation and checking service. Not a government website.',
+    'description' => 'Independent UK service that prepares and checks travel document applications for people travelling abroad. Not a government website.',
     'sameAs'   => [
         // 'https://www.linkedin.com/company/your-handle',
         // 'https://twitter.com/your-handle',

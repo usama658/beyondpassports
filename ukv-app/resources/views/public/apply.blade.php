@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Start your application — UK visas, eVisas & ETAs | Beyond Passports')
-@section('description', "Begin your UK visa or eVisa application with Beyond Passports. Tell us your trip and we'll check exactly what you need. Independent service — not a government website. Service fee separate from the government fee.")
+@section('title', 'Start your application: travel visas, eVisas & ETAs | Beyond Passports')
+@section('description', "Begin your travel visa or eVisa application with Beyond Passports. Tell us your trip and we'll check exactly what you need. Independent service, not a government website. Service fee separate from the government fee.")
 
 @push('head')
 <style>
@@ -194,10 +194,10 @@
     <div class="ap-hrow">
       <div class="reveal">
         <p class="eyebrow">Start your application</p>
-        <h1>Tell us your trip — we'll confirm exactly what you need.</h1>
+        <h1>Tell us your trip and we'll confirm exactly what you need.</h1>
         <p class="lede">Answer a few questions about your travel. We check your details, prepare your paperwork and keep every step tracked. Takes about two minutes.</p>
         <div class="ap-trust">
-          <span>UK-based advisers</span>
+          <span>UK-based visa specialists</span>
           <span>No payment until you approve</span>
           <span>Every case hand-checked</span>
         </div>
@@ -271,7 +271,7 @@
                 <option value="single" @selected(old('visa_entries') === 'single')>Single entry</option>
                 <option value="multiple" @selected(old('visa_entries') === 'multiple')>Multiple entry</option>
               </select>
-              <p class="hint">Optional — we'll advise if your trip needs more.</p>
+              <p class="hint">Optional. We'll advise if your trip needs more.</p>
             </div>
           </div>
 
@@ -308,7 +308,7 @@
             </div>
             <div class="field">
               <label for="dual_nationality">Dual nationality (if any)</label>
-              <input type="text" id="dual_nationality" name="dual_nationality" value="{{ old('dual_nationality') }}" placeholder="Optional — e.g. Irish">
+              <input type="text" id="dual_nationality" name="dual_nationality" value="{{ old('dual_nationality') }}" placeholder="Optional, e.g. Irish">
             </div>
             <div class="field">
               <label for="is_minor">Is the traveller a minor (under 18)? <span class="req" aria-hidden="true">*</span></label>
@@ -331,7 +331,7 @@
                 <option value="no" @selected(old('prior_refusal') === 'no')>No</option>
                 <option value="yes" @selected(old('prior_refusal') === 'yes')>Yes</option>
               </select>
-              <p class="hint">We ask because a prior refusal can change what's required. It does not mean we can't help.</p>
+              <p class="hint">We ask because a prior refusal can change what's required. It does not mean we cannot help.</p>
             </div>
           </div>
 
@@ -340,7 +340,7 @@
             <div class="field">
               <label for="passport_expiry">Passport expiry date</label>
               <input type="date" id="passport_expiry" name="passport_expiry" value="{{ old('passport_expiry') }}">
-              <p class="hint">Optional now — we'll confirm validity rules for your destination.</p>
+              <p class="hint">Optional now. We'll confirm validity rules for your destination.</p>
             </div>
           </div>
 
@@ -361,9 +361,9 @@
             <div class="field field--full">
               <label for="tier">Choose your service tier</label>
               <select id="tier" name="tier">
-                <option value="standard" @selected(old('tier', $tierParam) === 'standard')>Standard — full check &amp; submission at our usual pace</option>
-                <option value="express" @selected(old('tier', $tierParam) === 'express')>Express — we prioritise our handling</option>
-                <option value="premium" @selected(old('tier', $tierParam) === 'premium')>Premium — top of the queue + priority support</option>
+                <option value="standard" @selected(old('tier', $tierParam) === 'standard')>Standard: full check &amp; submission at our usual pace</option>
+                <option value="express" @selected(old('tier', $tierParam) === 'express')>Express: we prioritise our handling</option>
+                <option value="premium" @selected(old('tier', $tierParam) === 'premium')>Premium: top of the queue, plus priority support</option>
               </select>
               <p class="hint">This is our service fee only. Express speeds our handling, not the government's decision. No approval is guaranteed.</p>
             </div>
@@ -393,7 +393,7 @@
     <p class="ap-compliance reveal">
       <strong>Beyond Passports is an independent service and is not a government website.</strong>
       Our service fee is separate from, and additional to, any government or scheme fee.
-      Express speeds <strong>our</strong> handling — it does not speed up or change the government's decision, and we cannot guarantee approval.
+      Express speeds <strong>our</strong> handling. It does not speed up or change the government's decision, and we cannot guarantee approval.
       For non-standard cases, we confirm the exact requirements and give you a personalised quote after a quick human check.
     </p>
 
@@ -411,11 +411,11 @@
           <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg>
           <div>
             <p class="ptag">Standard service · eligible</p>
-            <h2>You're on our standard service — continue to payment</h2>
+            <h2>You're on our standard service: continue to payment</h2>
           </div>
         </div>
         <div class="pbody">
-          <p>Good news — based on your answers, your application follows our standard, fixed-fee route. We've recorded your chosen tier; review it below and continue when ready.</p>
+          <p>Good news: based on your answers, your application follows our standard, fixed-fee route. We've recorded your chosen tier. Review it below and continue when ready.</p>
           <div class="tiers">
             <div class="tier" data-tier="standard">
               <div class="tname">Standard</div>
@@ -452,11 +452,11 @@
           </div>
         </div>
         <div class="pbody">
-          <p>Thanks — we've got your details. For your situation, the exact requirements and the correct fee depend on your nationality and where you live, so we confirm them by hand rather than show a one-size-fits-all price.</p>
+          <p>Thanks, we have your details. For your situation, the exact requirements and the correct fee depend on your nationality and where you live, so we confirm them by hand rather than show a one-size-fits-all price.</p>
           <ul class="case-summary" id="review-summary" aria-label="Your answers">
             {{-- filled by JS --}}
           </ul>
-          <p>A UK-based adviser will review your answers, confirm precisely what you need and send a <strong>personalised quote</strong> — usually within one business day. No payment is taken until you've approved that quote.</p>
+          <p>A UK-based visa specialist will review your answers, confirm precisely what you need and send a <strong>personalised quote</strong>, usually within one business day. No payment is taken until you've approved that quote.</p>
           <p class="micro-note">We quote after a human check because rules and price depend on your nationality and residence. Our service fee is separate from the government fee, and no approval can be guaranteed.</p>
           <button type="button" class="btn" id="callback-btn" style="margin-top:4px">Request my callback →</button>
           <button type="button" class="btn btn--ghost" id="edit-review" style="margin-top:10px">← Edit my answers</button>
@@ -474,7 +474,7 @@
       <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
       <div><p class="eyebrow">Callback requested</p><h2 id="cbm-title">Your case is with our UK team</h2></div>
     </div>
-    <p class="lead">Thanks — a UK-based adviser will call you back, usually within <strong>one business day</strong>. No payment is taken until you've approved your quote.</p>
+    <p class="lead">Thanks. A UK-based visa specialist will call you back, usually within <strong>one business day</strong>. No payment is taken until you've approved your quote.</p>
     <div class="refbar">
       <div><div class="l">Your case reference</div><div class="v" id="cbm-ref">—</div></div>
       <button class="copy" type="button" id="cbm-copy">Copy</button>
@@ -492,7 +492,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Real people checking real applications</h2>
-  <p style="max-width:52ch;color:#cdd9e1">A UK-based team reviews every case before anything is submitted. We're an independent service — not a government website — and we'll always tell you honestly what you need.</p>
+  <p style="max-width:52ch;color:#cdd9e1">A UK-based team reviews every case before anything is submitted. We're an independent service, not a government website, and we'll always tell you honestly what you need.</p>
   <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
 </div></section>
 
@@ -932,7 +932,7 @@
     if (resumed) {
       var banner = document.createElement('div');
       banner.className = 'ap-resume';
-      banner.innerHTML = '<span class="ap-resume-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg></span><span>Welcome back — we saved your answers on this device.</span>';
+      banner.innerHTML = '<span class="ap-resume-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg></span><span>Welcome back. We saved your answers on this device.</span>';
       var clr = document.createElement('button');
       clr.type = 'button'; clr.textContent = 'Start over';
       clr.addEventListener('click', function () {
