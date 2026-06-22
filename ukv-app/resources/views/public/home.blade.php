@@ -255,37 +255,179 @@
     <div class="it"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>No appointment in time</b><p>Slots vanish in minutes. The next one lands after you fly.</p></div></div>
     <div class="it"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><div><b>Refused once already</b><p>A second no is harder. The reapplication has to fix the real reason.</p></div></div>
   </div>
-  <div class="card reveal">
+  @push('head')
+  <style>
+    #joined .card .rk-prog{height:5px;border-radius:999px;background:var(--paper-edge);overflow:hidden;margin:14px 0 16px}
+    #joined .card .rk-prog span{display:block;height:100%;width:0;background:var(--cta);transition:width .25s ease}
+    #joined .card .rk-step{display:none}
+    #joined .card .rk-step.active{display:block;animation:rkfade .2s ease}
+    @keyframes rkfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    #joined .card .rk-q{font:700 16px/1.35 var(--display);color:var(--ink);margin:0 0 12px}
+    #joined .card .rk-opts{display:flex;flex-direction:column;gap:8px}
+    #joined .card .rk-opt{text-align:left;background:#fff;border:1px solid var(--paper-edge);border-radius:11px;padding:13px 15px;font:600 14.5px var(--display);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+    #joined .card .rk-opt:hover{border-color:var(--soft)}
+    #joined .card .rk-opt.sel{border-color:var(--cta);background:rgba(21,94,122,.06)}
+    #joined .card .rk-nav{display:flex;gap:10px;margin-top:16px}
+    #joined .card .rk-nav .btn{flex:1;justify-content:center}
+    #joined .card .rk-band{display:inline-block;font:800 12px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:10px}
+    #joined .card .rk-band.low{background:rgba(46,154,140,.14);color:var(--stamp-text)}
+    #joined .card .rk-band.med{background:rgba(180,101,74,.12);color:#B4654A}
+    #joined .card .rk-band.high{background:rgba(180,60,60,.12);color:#b23b3b}
+    #joined .card .rk-gap{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--paper-edge)}
+    #joined .card .rk-gap:first-of-type{border-top:0}
+    #joined .card .rk-gap b{display:block;font:800 14px var(--display);color:var(--ink)}
+    #joined .card .rk-gap span{font-size:13px;color:var(--muted)}
+    #joined .card .rk-timing{margin:14px 0 0;padding:11px 13px;border-radius:10px;background:var(--paper);font:600 13.5px var(--display);color:var(--ink)}
+  </style>
+  @endpush
+  <div class="card reveal" id="rk">
     <span class="pill">Free · 60 seconds · no sign-up</span>
     <h3>Will your visa pass? Check before you submit.</h3>
-    <p class="sub">See the gaps that get Schengen visas refused, and whether your travel date is still realistic.</p>
-    <form onsubmit="return false">
-      <label for="rk-dest">Where are you going?</label>
-      <select id="rk-dest"><option value="">Choose a destination…</option>@foreach ($navDestinations as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
-      <label for="rk-date">When do you travel?</label>
-      <input id="rk-date" type="date">
-      <button class="btn" type="button" id="rk-go">Start my free check →</button>
+    <p class="sub" id="rk-sub">Answer 6 quick questions. We show the gaps that get Schengen visas refused, and whether your travel date is realistic.</p>
+
+    <div class="rk-prog" aria-hidden="true"><span id="rk-bar"></span></div>
+    <form id="rk-form" onsubmit="return false">
+      <div class="rk-step active" data-step="0">
+        <label for="rk-dest">Where are you going?</label>
+        <select id="rk-dest"><option value="">Choose a destination…</option>@foreach ($navDestinations as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
+        <label for="rk-date" style="margin-top:12px">When do you travel?</label>
+        <input id="rk-date" type="date">
+      </div>
+
+      <div class="rk-step" data-step="1">
+        <p class="rk-q">Do you have recent bank statements showing enough funds for the trip (roughly £80 to £100 a day, plus a buffer)?</p>
+        <div class="rk-opts" data-q="funds"><button type="button" class="rk-opt" data-w="0">Yes, ready</button><button type="button" class="rk-opt" data-w="1">Not sure</button><button type="button" class="rk-opt" data-w="1">No</button></div>
+      </div>
+      <div class="rk-step" data-step="2">
+        <p class="rk-q">Travel insurance: at least £25,000 medical cover, valid across all Schengen countries, for your full dates?</p>
+        <div class="rk-opts" data-q="insurance"><button type="button" class="rk-opt" data-w="0">Yes</button><button type="button" class="rk-opt" data-w="1">Not sure</button><button type="button" class="rk-opt" data-w="1">No / not yet</button></div>
+      </div>
+      <div class="rk-step" data-step="3">
+        <p class="rk-q">Your passport: issued under 10 years ago, valid for 3+ months after you return, and with 2 blank pages?</p>
+        <div class="rk-opts" data-q="passport"><button type="button" class="rk-opt" data-w="0">Yes, all three</button><button type="button" class="rk-opt" data-w="1">Not sure</button><button type="button" class="rk-opt" data-w="1">No</button></div>
+      </div>
+      <div class="rk-step" data-step="4">
+        <p class="rk-q">Can you show ties to the UK (job or study letter, return ticket, proof of home)?</p>
+        <div class="rk-opts" data-q="ties"><button type="button" class="rk-opt" data-w="0">Yes</button><button type="button" class="rk-opt" data-w="1">Some of it</button><button type="button" class="rk-opt" data-w="1">No</button></div>
+      </div>
+      <div class="rk-step" data-step="5">
+        <p class="rk-q">Have you been refused a visa before (any country)?</p>
+        <div class="rk-opts" data-q="refused"><button type="button" class="rk-opt" data-w="0">No</button><button type="button" class="rk-opt" data-w="2">Yes</button></div>
+      </div>
+
+      <div class="rk-step" data-step="6" id="rk-result"></div>
+
+      <div class="rk-nav">
+        <button type="button" class="btn btn--ghost" id="rk-back" style="display:none">← Back</button>
+        <button type="button" class="btn" id="rk-next">Start my free check →</button>
+      </div>
     </form>
-    <p class="micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
+    <p class="micro" id="rk-micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
     @include('partials.trustpilot', ['template' => 'micro', 'margin' => '14px 0 0'])
   </div>
 </div></div>
   <script>
     (function () {
       var WA = @json(config('ukv.whatsapp') ?: '440000000000');
-      var btn = document.getElementById('rk-go');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var dest = document.getElementById('rk-dest');
-        var date = document.getElementById('rk-date');
-        var place = dest && dest.value ? dest.value : '';
-        var when = date && date.value ? date.value : '';
-        var msg = 'Hi Beyond Passports, I would like a free readiness check for my Schengen application.'
-          + (place ? ' Travelling to ' + place + '.' : '')
-          + (when ? ' Travel date ' + when + '.' : '')
-          + ' Will it pass, and can I get an appointment in time?';
-        window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      var root = document.getElementById('rk');
+      if (!root) return;
+      var steps = root.querySelectorAll('.rk-step');
+      var bar = document.getElementById('rk-bar');
+      var nextBtn = document.getElementById('rk-next');
+      var backBtn = document.getElementById('rk-back');
+      var sub = document.getElementById('rk-sub');
+      var micro = document.getElementById('rk-micro');
+      var RESULT = steps.length - 1;          // index of result step
+      var QCOUNT = steps.length - 2;          // number of question steps (excludes step0 + result)
+      var i = 0;
+      var answers = {};                        // q -> weight
+
+      var QS = [
+        { q:'funds',     gap:'Funds evidence',   fix:'Bank statements that clearly cover your trip.' },
+        { q:'insurance', gap:'Travel insurance', fix:'£25k+ medical, all Schengen, your full dates.' },
+        { q:'passport',  gap:'Passport validity',fix:'Under 10 years old, valid 3 months after return, 2 blank pages.' },
+        { q:'ties',      gap:'Ties to the UK',   fix:'Job or study letter, return ticket, proof of home.' },
+        { q:'refused',   gap:'Previous refusal', fix:'We find the real reason and fix it before you reapply.' }
+      ];
+
+      function show(n) {
+        i = n;
+        steps.forEach(function (s, idx) { s.classList.toggle('active', idx === n); });
+        bar.style.width = Math.round((n / RESULT) * 100) + '%';
+        backBtn.style.display = (n > 0 && n < RESULT) ? '' : 'none';
+        if (n === 0) { nextBtn.style.display = ''; nextBtn.textContent = 'Start my free check →'; }
+        else if (n < RESULT) { nextBtn.style.display = 'none'; }     // question steps auto-advance
+        else { nextBtn.style.display = 'none'; }
+        if (n === RESULT) { sub.style.display = 'none'; micro.style.display = 'none'; }
+        else { sub.style.display = ''; micro.style.display = ''; }
+      }
+
+      // option click → record + advance
+      root.querySelectorAll('.rk-opts').forEach(function (grp) {
+        grp.querySelectorAll('.rk-opt').forEach(function (opt) {
+          opt.addEventListener('click', function () {
+            grp.querySelectorAll('.rk-opt').forEach(function (o){ o.classList.remove('sel'); });
+            opt.classList.add('sel');
+            answers[grp.dataset.q] = parseInt(opt.dataset.w, 10) || 0;
+            setTimeout(function(){ (i + 1 >= RESULT) ? finish() : show(i + 1); }, 160);
+          });
+        });
       });
+
+      nextBtn.addEventListener('click', function () { if (i === 0) show(1); });
+      backBtn.addEventListener('click', function () { if (i > 0) show(i - 1); });
+
+      function daysUntil(v){ if(!v) return null; var d=new Date(v+'T00:00:00'), n=new Date(); n.setHours(0,0,0,0); return Math.round((d-n)/864e5); }
+
+      function finish() {
+        var dest = (document.getElementById('rk-dest')||{}).value || '';
+        var date = (document.getElementById('rk-date')||{}).value || '';
+        var total = 0, gaps = [];
+        QS.forEach(function (it) { var w = answers[it.q] || 0; total += w; if (w > 0) gaps.push(it); });
+
+        var band, blurb;
+        if (total === 0)      { band='low';  blurb='Looks solid. Worth a final hand-check before you submit.'; }
+        else if (total <= 2)  { band='med';  blurb='A couple of gaps that commonly cause refusals. Fixable now.'; }
+        else                  { band='high'; blurb='Several refusal triggers here. Get these sorted before you submit.'; }
+
+        var label = band==='low' ? 'Low risk' : band==='med' ? 'Some gaps' : 'High risk';
+
+        // timing
+        var dy = daysUntil(date), timing='';
+        if (dy !== null) {
+          if (dy < 28)      timing = 'Travel in ' + dy + ' days: tight. Appointments go fast, start now.';
+          else if (dy < 56) timing = 'Travel in ' + dy + ' days: workable, but do not wait to book.';
+          else              timing = 'Travel in ' + dy + ' days: comfortable timing if you start soon.';
+        }
+
+        var html = '<span class="rk-band '+band+'">'+label+'</span>'
+          + '<h3 style="margin:0 0 6px">'+(dest? 'Your '+dest+' check' : 'Your readiness check')+'</h3>'
+          + '<p class="sub" style="margin:0 0 12px">'+blurb+'</p>';
+        if (gaps.length) {
+          html += gaps.map(function(g){ return '<div class="rk-gap"><div><b>'+g.gap+'</b><span>'+g.fix+'</span></div></div>'; }).join('');
+        } else {
+          html += '<div class="rk-gap"><div><b>No obvious gaps flagged</b><span>The common refusal triggers look covered.</span></div></div>';
+        }
+        if (timing) html += '<div class="rk-timing">'+timing+'</div>';
+
+        var msg = 'Hi Beyond Passports, I did the free readiness check.'
+          + (dest? ' Destination: '+dest+'.' : '')
+          + (date? ' Travel date: '+date+'.' : '')
+          + ' Result: '+label+'.'
+          + (gaps.length? ' To fix: '+gaps.map(function(g){return g.gap;}).join(', ')+'.' : '')
+          + ' Can you help me get this right before I submit?';
+        var href = 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+
+        html += '<a class="btn wa" style="display:block;text-align:center;margin-top:16px;background:#25D366" href="'+href+'" target="_blank" rel="noopener">Get a specialist to fix this · free →</a>'
+          + '<p class="micro" style="margin-top:10px">A readiness indicator, not an approval prediction. The embassy decides. <a href="#" id="rk-restart">Start over</a></p>';
+
+        document.getElementById('rk-result').innerHTML = html;
+        show(RESULT);
+        var rs = document.getElementById('rk-restart');
+        if (rs) rs.addEventListener('click', function(e){ e.preventDefault(); answers={}; root.querySelectorAll('.rk-opt.sel').forEach(function(o){o.classList.remove('sel');}); show(0); });
+      }
+
+      show(0);
     })();
   </script>
 </section>
