@@ -20,7 +20,7 @@ return [
     'phone' => env('UKV_PHONE', ''),            // human-readable display, e.g. +44 20 1234 5678
     'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
     'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
-    'email' => env('UKV_EMAIL', ''),            // public enquiries inbox
+    'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
 
     // Travel-insurance INTRODUCER (FCA-safe signpost only). Beyond Passports does NOT sell or arrange
     // insurance and takes no charge — this is an optional affiliate link to an FCA-authorised
