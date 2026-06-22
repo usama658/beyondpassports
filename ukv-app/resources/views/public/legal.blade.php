@@ -181,6 +181,9 @@
           <h3>Cross-border transfers</h3>
           <p>Some of our sub-processors (for example Stripe, HubSpot, Anthropic and Trustpilot) may process data in the <strong>United States</strong>. Where data is transferred outside the UK, we rely on appropriate safeguards, such as the UK International Data Transfer Agreement (IDTA), the UK Extension to the EU-US Data Privacy Framework, or equivalent contractual protections, so your data continues to receive an essentially equivalent level of protection.</p>
 
+          <h3 id="cookies">Cookies</h3>
+          <p>We use a small number of <strong>essential cookies</strong> to run this site (for example to keep your session secure). These do not need consent. With your permission we also load <strong>third-party cookies from Trustpilot</strong>, so we can show genuine customer reviews. We ask before loading these: when you first visit, you can <strong>Accept all</strong> or <strong>Reject non-essential</strong>, and we remember your choice. If you reject, no Trustpilot cookies are set. You can change your mind by clearing this site's cookies in your browser, which brings the banner back.</p>
+
           <h3>Your rights</h3>
           <p>You have the right to access, correct, erase, restrict or object to our processing of your data, to data portability, and to withdraw consent where processing is consent-based. To exercise any of these, contact us at <a href="mailto:privacy@ukvisaco.example">privacy@ukvisaco.example</a> and we will respond within one month, as required by law.</p>
 

@@ -61,3 +61,4 @@
     </div>
   </div></div>
 </footer>
+@include('partials.cookie-consent')
