@@ -437,6 +437,7 @@
           <p class="micro-note">Tier fee is our service fee only and is separate from the government fee. Express speeds our handling, not the government's decision. No approval is guaranteed.</p>
           <button type="button" class="btn" id="pay-btn" style="margin-top:4px">Continue to secure payment →</button>
           <button type="button" class="btn btn--ghost" id="edit-standard" style="margin-top:10px">← Edit my answers</button>
+          @include('partials.trustpilot', ['template' => 'micro', 'margin' => '16px 0 0'])
         </div>
       </div>
     </div>

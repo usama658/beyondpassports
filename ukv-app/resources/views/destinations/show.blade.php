@@ -205,6 +205,7 @@
       <h1>{{ $visaLabel }}, prepared and checked by our UK team</h1>
       <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
       <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
+      @include('partials.trustpilot', ['template' => 'micro', 'align' => 'left', 'margin' => '16px 0 0'])
     </div></div>
   </div>
   <div class="dmoney-facts"><div class="wrap">

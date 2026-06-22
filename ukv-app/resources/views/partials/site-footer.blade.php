@@ -8,6 +8,7 @@
       <div>
         <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
         <p style="max-width:30ch">Independent UK-based visa &amp; eVisa facilitation for travel abroad. Not a government website.</p>
+        @include('partials.trustpilot', ['template' => 'micro', 'align' => 'left', 'margin' => '14px 0 4px'])
         @php $addr = config('ukv.address'); @endphp
         @if ($addr && !empty($addr['line1']))
         <p style="max-width:30ch;font-size:13px;line-height:1.55;color:#c7cfd6;margin-top:12px">
