@@ -6,7 +6,7 @@
 <div class="topbar"><div class="wrap tb-row">
   <span class="tb-note">Independent service. <strong>Not a government website</strong></span>
   <span class="tb-links">
-    <span class="tb-rate">★ 4.9 rated</span>
+    <span class="tb-rate">@include('partials.trustpilot', ['template' => 'micro', 'width' => '180px', 'height' => '20px', 'margin' => '0'])</span>
     <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
   </span>

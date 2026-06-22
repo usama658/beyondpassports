@@ -18,6 +18,7 @@
     $tpTemplateId = $tpKey ? ($tpTemplates[$tpKey] ?? $tpKey) : $tp['template_id'];
     $tpAlign  = $align ?? 'center';
     $tpHeight = $height ?? '24px';
+    $tpWidth  = $width ?? '100%';
     $tpMargin = $margin ?? '18px 0';
 @endphp
 @if (! empty($tp['business_unit_id']))
@@ -30,7 +31,7 @@
         <div class="trustpilot-widget" data-locale="en-GB"
              data-template-id="{{ $tpTemplateId }}"
              data-businessunit-id="{{ $tp['business_unit_id'] }}"
-             data-style-height="{{ $tpHeight }}" data-style-width="100%" data-theme="light">
+             data-style-height="{{ $tpHeight }}" data-style-width="{{ $tpWidth }}" data-theme="light">
             <a href="https://uk.trustpilot.com/review/{{ $tp['domain'] }}" target="_blank" rel="noopener">Trustpilot</a>
         </div>
     </div>

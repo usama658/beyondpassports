@@ -57,7 +57,7 @@
     </div>
     <div class="ft-bottom">
       <span>© Beyond Passports. Service fee separate from any government fee. Express speeds our handling, not the government’s decision. No approval guarantee.</span>
-      <span>UK-based team · ★ 4.9 rated</span>
+      <span>UK-based team</span>
     </div>
   </div></div>
 </footer>
