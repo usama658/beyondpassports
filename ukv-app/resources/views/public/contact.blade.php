@@ -476,6 +476,7 @@
           {{-- Server-rendered states for the JS-off path; JS toggles the same nodes. --}}
           <div class="form-error{{ $errors->any() ? ' show' : '' }}" id="cb-error" role="alert" aria-live="assertive">@if ($errors->any()){{ $errors->first() }}@endif</div>
           <div class="form-ok{{ session('status') ? ' show' : '' }}" id="cb-ok" role="status" aria-live="polite">@if (session('status'))<strong>{{ session('status') }}</strong>@endif</div>
+          @if (session('status'))@include('partials.track-event', ['teEvent' => 'Lead', 'teGa' => 'generate_lead', 'teParams' => ['content_name' => 'contact_callback']])@endif
 
           <button type="submit" class="btn">Request a callback</button>
         </form>

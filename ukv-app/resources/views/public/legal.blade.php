@@ -176,13 +176,22 @@
             <li><strong>Hosting provider</strong>: to run and secure this website and store your data.</li>
             <li><strong>Anthropic</strong>: AI assistance used to help check and prepare application content. We do not use your data to train third-party AI models.</li>
             <li><strong>Trustpilot</strong>: independent reviews. After your order is delivered we send your name and email to Trustpilot so it can invite you to leave a review. You can opt out of review invitations at any time.</li>
+            <li><strong>Google (Analytics 4 &amp; Tag Manager)</strong>: website analytics, to understand how the site is used and improve it. Loaded only if you accept cookies.</li>
+            <li><strong>Microsoft (Clarity)</strong>: anonymised usage analytics and session statistics, including aggregated heatmaps and replays with text and inputs masked. Loaded only if you accept cookies.</li>
+            <li><strong>Meta (Facebook Pixel)</strong>: measures the effectiveness of our advertising and may be used for marketing audiences. Loaded only if you accept cookies.</li>
           </ul>
 
           <h3>Cross-border transfers</h3>
-          <p>Some of our sub-processors (for example Stripe, HubSpot, Anthropic and Trustpilot) may process data in the <strong>United States</strong>. Where data is transferred outside the UK, we rely on appropriate safeguards, such as the UK International Data Transfer Agreement (IDTA), the UK Extension to the EU-US Data Privacy Framework, or equivalent contractual protections, so your data continues to receive an essentially equivalent level of protection.</p>
+          <p>Some of our sub-processors (for example Stripe, HubSpot, Anthropic, Trustpilot, Google, Microsoft and Meta) may process data in the <strong>United States</strong>. Where data is transferred outside the UK, we rely on appropriate safeguards, such as the UK International Data Transfer Agreement (IDTA), the UK Extension to the EU-US Data Privacy Framework, or equivalent contractual protections, so your data continues to receive an essentially equivalent level of protection.</p>
 
           <h3 id="cookies">Cookies</h3>
-          <p>We use a small number of <strong>essential cookies</strong> to run this site (for example to keep your session secure). These do not need consent. With your permission we also load <strong>third-party cookies from Trustpilot</strong>, so we can show genuine customer reviews. We ask before loading these: when you first visit, you can <strong>Accept all</strong> or <strong>Reject non-essential</strong>, and we remember your choice. If you reject, no Trustpilot cookies are set. You can change your mind by clearing this site's cookies in your browser, which brings the banner back.</p>
+          <p>We use a small number of <strong>essential cookies</strong> to run this site (for example to keep your session secure). These do not need consent. With your permission we also load <strong>non-essential third-party cookies</strong> for:</p>
+          <ul class="plain">
+            <li><strong>Reviews</strong> — Trustpilot, to show genuine customer reviews.</li>
+            <li><strong>Analytics</strong> — Google Analytics 4 and Microsoft Clarity, to understand how the site is used (Clarity may record anonymised sessions with text and inputs masked).</li>
+            <li><strong>Marketing</strong> — Meta (Facebook) Pixel, to measure advertising.</li>
+          </ul>
+          <p>We ask before loading any of these: when you first visit, you can <strong>Accept all</strong> or <strong>Reject non-essential</strong>, and we remember your choice. If you reject, none of these cookies or scripts are set. You can change your mind by clearing this site's cookies in your browser, which brings the banner back.</p>
 
           <h3>Your rights</h3>
           <p>You have the right to access, correct, erase, restrict or object to our processing of your data, to data portability, and to withdraw consent where processing is consent-based. To exercise any of these, contact us at <a href="mailto:privacy@beyondpassports.co.uk">privacy@beyondpassports.co.uk</a> and we will respond within one month, as required by law.</p>

@@ -444,5 +444,18 @@
 
 </div>{{-- /.cnf-outer --}}
 
+{{-- Cookie consent (also loads the consent-gated analytics libs here, since this is a
+     standalone page that doesn't pull the shared footer). --}}
+@include('partials.cookie-consent')
+
+{{-- Purchase conversion — only when the order is actually paid. value = order total, GBP. --}}
+@if ($order->paid_at && $order->total !== null)
+@include('partials.track-event', [
+    'teEvent'  => 'Purchase',
+    'teGa'     => 'purchase',
+    'teParams' => ['value' => round((float) $order->total, 2), 'currency' => 'GBP', 'transaction_id' => $order->order_ref],
+])
+@endif
+
 </body>
 </html>

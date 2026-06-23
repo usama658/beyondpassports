@@ -567,6 +567,9 @@
 
 </main>
 
+{{-- Lead conversion — visitor reached a generated document checklist (free tool). --}}
+@include('partials.track-event', ['teEvent' => 'Lead', 'teGa' => 'generate_lead', 'teParams' => ['content_name' => 'document_checklist']])
+
 @include('partials.wa-float')
 
 @include('partials.site-footer')

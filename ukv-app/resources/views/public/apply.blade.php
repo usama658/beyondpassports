@@ -509,6 +509,10 @@
   document.addEventListener('DOMContentLoaded', function () {
     var form      = document.getElementById('apply-form');
     if (!form) return;
+    // Conversion: entering the paid funnel. Fires only if consent loaded the analytics libs.
+    form.addEventListener('submit', function () {
+      try { if (window.fbq) fbq('track', 'InitiateCheckout'); if (window.gtag) gtag('event', 'begin_checkout'); } catch (e) {}
+    }, { capture: true });
     var formCard  = document.getElementById('form-card');
     var errBox    = document.getElementById('form-error');
     var paneStd   = document.getElementById('outcome-standard');
