@@ -528,7 +528,7 @@ class OrderResource extends Resource
                         .' and BCC the Trustpilot invite alias. Only send to genuine customers who used the service.')
                     ->visible(fn (Order $record): bool => ! empty($record->email))
                     ->action(function (Order $record): void {
-                        $sent = app(EmailService::class)->sendReviewRequest($record);
+                        $sent = app(EmailService::class)->resendReviewRequest($record);
                         Notification::make()
                             ->title($sent ? 'Review request sent' : 'Review request not sent')
                             ->body($sent

@@ -83,6 +83,25 @@ final class EmailService
         return $this->dispatch($order, self::EVENT_REVIEW_REQUEST, new ReviewRequest($order));
     }
 
+    /**
+     * Force-resend the review request, BYPASSING the once-only idempotency guard.
+     * For the admin "Resend review request" action (e.g. the first attempt logged
+     * before SMTP was configured). Empty-recipient guard still applies; the audit
+     * row is best-effort (record() swallows the unique-constraint duplicate).
+     */
+    public function resendReviewRequest(Order $order): bool
+    {
+        $to = trim((string) ($order->email ?? ''));
+        if ($to === '') {
+            return false;
+        }
+        $mailable = new ReviewRequest($order);
+        Mail::to($to)->queue($mailable);
+        $this->record($order, self::EVENT_REVIEW_REQUEST, $to, $mailable->envelope()->subject ?? self::EVENT_REVIEW_REQUEST);
+
+        return true;
+    }
+
     /** refunded — refund processed (status → refunded). */
     public function sendRefunded(Order $order): bool
     {
