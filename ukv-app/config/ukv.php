@@ -86,6 +86,10 @@ return [
         'pinterest' => env('UKV_SOCIAL_PINTEREST', ''),
     ],
 
+    // Pinterest domain-verify token (Settings > Claim > add HTML tag). Renders the
+    // <meta name="p:domain_verify"> tag in the site head when set.
+    'pinterest_verify' => env('UKV_PINTEREST_VERIFY', '1d5c7b9df2ba8448ade05e212387a705'),
+
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.

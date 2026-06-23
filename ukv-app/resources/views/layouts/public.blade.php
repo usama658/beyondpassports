@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+@if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
 <title>@yield('title', 'Travel visa & eVisa help for UK travellers | Beyond Passports')</title>
 <meta name="description" content="@yield('description', 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.')">
 @hasSection('canonical')
