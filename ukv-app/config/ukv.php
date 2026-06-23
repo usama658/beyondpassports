@@ -75,6 +75,17 @@ return [
     // Kept separate from the sitewide 'whatsapp' key above so a placeholder never leaks sitewide.
     'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447700900123'),
 
+    // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
+    // as the account is created; blank entries are skipped. Env overrides per key.
+    'social' => [
+        'facebook'  => env('UKV_SOCIAL_FACEBOOK', 'https://www.facebook.com/people/Beyond-Passports/61591144445879/'),
+        'instagram' => env('UKV_SOCIAL_INSTAGRAM', ''),
+        'tiktok'    => env('UKV_SOCIAL_TIKTOK', ''),
+        'youtube'   => env('UKV_SOCIAL_YOUTUBE', ''),
+        'linkedin'  => env('UKV_SOCIAL_LINKEDIN', ''),
+        'pinterest' => env('UKV_SOCIAL_PINTEREST', ''),
+    ],
+
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.

@@ -21,10 +21,7 @@
     'url'      => $base . '/',
     'logo'     => asset('images/logo.png'),
     'description' => 'Independent UK service that prepares and checks travel document applications for people travelling abroad. Not a government website.',
-    'sameAs'   => [
-        // 'https://www.linkedin.com/company/your-handle',
-        // 'https://twitter.com/your-handle',
-    ],
+    'sameAs'   => array_values(array_filter(config('ukv.social', []))),
 ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
 </script>
 
