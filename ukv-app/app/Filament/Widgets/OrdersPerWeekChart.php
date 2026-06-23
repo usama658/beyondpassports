@@ -39,7 +39,7 @@ class OrdersPerWeekChart extends ChartWidget
 
         Order::query()
             ->where('created_at', '>=', $start)
-            ->select(['created_at'])
+            ->select(['id', 'created_at']) // id required: chunkById paginates by it
             ->chunkById(1000, function ($chunk) use (&$buckets): void {
                 foreach ($chunk as $order) {
                     if ($order->created_at === null) {

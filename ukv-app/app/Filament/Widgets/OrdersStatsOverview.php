@@ -75,7 +75,7 @@ class OrdersStatsOverview extends StatsOverviewWidget
         $slaBreached = 0;
         Order::query()
             ->whereNotIn('status', $closed)
-            ->select(['tier', 'created_at'])
+            ->select(['id', 'tier', 'created_at']) // id required: chunkById paginates by it
             ->chunkById(500, function ($chunk) use (&$slaBreached, $now): void {
                 foreach ($chunk as $order) {
                     $hours = $this->slaHoursFor($order->tier);
