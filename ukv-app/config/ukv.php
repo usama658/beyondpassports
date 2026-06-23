@@ -85,6 +85,7 @@ return [
         'linkedin'  => env('UKV_SOCIAL_LINKEDIN', ''),
         'pinterest' => env('UKV_SOCIAL_PINTEREST', 'https://www.pinterest.com/beyondpassports/'),
         'reddit'    => env('UKV_SOCIAL_REDDIT', 'https://www.reddit.com/r/beyondpassports/'),
+        'quora'     => env('UKV_SOCIAL_QUORA', 'https://www.quora.com/profile/Beyond-Passports'),
     ],
 
     // Pinterest domain-verify token (Settings > Claim > add HTML tag). Renders the
