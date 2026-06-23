@@ -343,6 +343,7 @@
             .cnf-ref-block .cnf-ref-val { font-size: 26px; }
         }
     </style>
+@include('partials.meta-pixel')
 </head>
 <body>
 

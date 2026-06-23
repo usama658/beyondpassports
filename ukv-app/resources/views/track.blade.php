@@ -31,6 +31,7 @@
 <meta name="robots" content="noindex,nofollow">
 {{-- Canonical design system: gives this standalone page the shared header/footer styling. --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
+@include('partials.meta-pixel')
 <style>
   /* Page-scoped layout for the tracker. Palette/type/components + the shared header
      and footer all come from assets/ukv.css (loaded above). */

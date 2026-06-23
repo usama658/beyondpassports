@@ -55,6 +55,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
+@include('partials.meta-pixel')
 <style>
   /* checklist-result.blade.php — page-scoped layout. Palette/type/components from ukv.css. */
 
