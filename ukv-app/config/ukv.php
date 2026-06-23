@@ -52,10 +52,10 @@ return [
     'address' => [
         'company' => env('UKV_COMPANY_NAME', 'Beyond Passports Ltd'),
         'company_no' => env('UKV_COMPANY_NO', ''),                  // blank until real — no invented Companies House no.
-        'line1' => env('UKV_ADDR_LINE1', '1 Example Street'),       // PLACEHOLDER — swap for the real registered office
+        'line1' => env('UKV_ADDR_LINE1', ''),       // blank until real registered office (address block hides while empty)
         'line2' => env('UKV_ADDR_LINE2', ''),
-        'city' => env('UKV_ADDR_CITY', 'London'),
-        'postcode' => env('UKV_ADDR_POSTCODE', 'EC1A 1AA'),         // PLACEHOLDER postcode
+        'city' => env('UKV_ADDR_CITY', ''),
+        'postcode' => env('UKV_ADDR_POSTCODE', ''), // blank until real
         'country' => env('UKV_ADDR_COUNTRY', 'United Kingdom'),
     ],
 
