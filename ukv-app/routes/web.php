@@ -78,6 +78,26 @@ Route::get('/health/stripe', function () {
     ]);
 })->name('health.stripe');
 
+// Mail + queue config status (no secrets) — confirms whether prod can actually send,
+// and whether queued jobs are flowing or piling up in failed_jobs.
+Route::get('/health/mail', function () {
+    $mailer = (string) config('mail.default');
+    $smtp = (array) config('mail.mailers.smtp', []);
+    $pending = $failed = null;
+    try { $pending = \DB::table('jobs')->count(); } catch (\Throwable $e) {}
+    try { $failed = \DB::table('failed_jobs')->count(); } catch (\Throwable $e) {}
+    return response()->json([
+        'mailer' => $mailer,
+        'smtp_host_configured' => ! empty($smtp['host']),
+        'smtp_username_configured' => ! empty($smtp['username']),
+        'smtp_port' => $smtp['port'] ?? null,
+        'from_address' => config('mail.from.address'),
+        'queue_connection' => config('queue.default'),
+        'jobs_pending' => $pending,
+        'jobs_failed' => $failed,
+    ]);
+})->name('health.mail');
+
 // --- Confirmation / thank-you ---
 Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
     // Document Requirements Engine: pass the personalised checklist (for()) to the view.
