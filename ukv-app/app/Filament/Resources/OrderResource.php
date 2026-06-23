@@ -13,6 +13,7 @@ use App\Enums\TripPurpose;
 use App\Filament\Concerns\AuthorizesByRole;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
+use App\Services\EmailService;
 use App\Services\LoyaltyService;
 use App\Services\OrderService;
 use Filament\Forms\Components\DatePicker;
@@ -513,6 +514,27 @@ class OrderResource extends Resource
                             ->title('Review-incentive code issued')
                             ->body("Code {$discount->code} (£".number_format((float) $discount->amount, 2).' off the next order).')
                             ->success()
+                            ->send();
+                    }),
+
+                Action::make('resendReviewRequest')
+                    ->label('Resend review request')
+                    ->icon('heroicon-o-star')
+                    ->color('warning')
+                    ->requiresConfirmation()
+                    ->modalHeading('Resend review request')
+                    ->modalDescription(fn (Order $record): string => 'Email the review request to '
+                        .($record->email ?: 'this order')
+                        .' and BCC the Trustpilot invite alias. Only send to genuine customers who used the service.')
+                    ->visible(fn (Order $record): bool => ! empty($record->email))
+                    ->action(function (Order $record): void {
+                        $sent = app(EmailService::class)->sendReviewRequest($record);
+                        Notification::make()
+                            ->title($sent ? 'Review request sent' : 'Review request not sent')
+                            ->body($sent
+                                ? "Emailed {$record->email} (Trustpilot invite BCC'd)."
+                                : 'Send was skipped or failed — check mail config and logs.')
+                            ->{$sent ? 'success' : 'danger'}()
                             ->send();
                     }),
             ]);
