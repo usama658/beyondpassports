@@ -124,7 +124,10 @@ class SecurityHeaders
             "img-src 'self' data: blob:",
             "font-src 'self' data:",
             "style-src 'self' 'unsafe-inline'",
-            "script-src 'self' 'unsafe-inline' blob:",
+            // 'unsafe-eval' is REQUIRED by Filament's Alpine.js — it evaluates x-data /
+            // x-show expressions via new Function(); without it Alpine never boots and the
+            // panel renders blank (content stays hidden under x-cloak). Scoped to /admin* only.
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:",
             "worker-src 'self' blob:",
             "connect-src 'self'",
         ]);
