@@ -21,15 +21,6 @@
             'reddit'    => '<path d="M22 12.1a2.1 2.1 0 0 0-3.6-1.5 10.3 10.3 0 0 0-5.3-1.7l.9-4.2 2.9.6a1.5 1.5 0 1 0 .2-1l-3.3-.7a.5.5 0 0 0-.6.4l-1 4.6a10.4 10.4 0 0 0-5.4 1.7A2.1 2.1 0 1 0 3.6 14a4 4 0 0 0 0 .6c0 3 3.6 5.5 8.1 5.5s8.1-2.5 8.1-5.5a4 4 0 0 0 0-.6 2.1 2.1 0 0 0 1.2-1.9zM7.5 13.5a1.3 1.3 0 1 1 2.6 0 1.3 1.3 0 0 1-2.6 0zm7.2 3.6a4.6 4.6 0 0 1-5.4 0 .4.4 0 1 1 .5-.6 3.8 3.8 0 0 0 4.4 0 .4.4 0 0 1 .6.6zm-.3-2.3a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/>',
           ];
         @endphp
-        @if (! empty($social))
-        <div class="ft-social" style="display:flex;gap:12px;margin:14px 0 4px">
-          @foreach ($social as $k => $url)
-            <a href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ ucfirst($k) }}" style="display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:9px;background:rgba(255,255,255,.1);color:#fff">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">{!! $socialIcons[$k] ?? '' !!}</svg>
-            </a>
-          @endforeach
-        </div>
-        @endif
         @php $addr = config('ukv.address'); @endphp
         @if ($addr && !empty($addr['line1']))
         <p style="max-width:30ch;font-size:13px;line-height:1.55;color:#c7cfd6;margin-top:12px">
@@ -51,6 +42,24 @@
           @error('email')<p class="ft-err">{{ $message }}</p>@enderror
           @error('consent')<p class="ft-err">{{ $message }}</p>@enderror
         </form>
+        @if (! empty($social))
+        <div class="ft-social">
+          @foreach ($social as $k => $url)
+            <a class="ft-soc" href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ ucfirst($k) }}">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">{!! $socialIcons[$k] ?? '' !!}</svg>
+            </a>
+          @endforeach
+        </div>
+        @once
+        <style>
+          .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+          .ft-soc{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:9px;
+            background:rgba(255,255,255,.1);color:#fff;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
+          .ft-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(21,94,122,.8)}
+          .ft-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+        </style>
+        @endonce
+        @endif
       </div>
       <div>
         <strong>Service</strong>
