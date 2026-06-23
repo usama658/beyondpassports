@@ -52,11 +52,13 @@
         </div>
         @once
         <style>
-          .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
-          .ft-soc{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:9px;
+          .ft-main .cols .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+          /* higher specificity than ".ft-main .cols a{display:block;padding}" in ukv.css so icons stay flex-centered boxes */
+          .ft-main .cols a.ft-soc{display:inline-flex;width:36px;height:36px;padding:0;align-items:center;justify-content:center;border-radius:9px;
             background:rgba(255,255,255,.1);color:#fff;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
-          .ft-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(21,94,122,.8)}
-          .ft-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+          .ft-main .cols a.ft-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(21,94,122,.8)}
+          .ft-main .cols a.ft-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+          .ft-main .cols a.ft-soc svg{display:block}
         </style>
         @endonce
         @endif
