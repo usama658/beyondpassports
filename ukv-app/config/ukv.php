@@ -79,7 +79,7 @@ return [
     // as the account is created; blank entries are skipped. Env overrides per key.
     'social' => [
         'facebook'  => env('UKV_SOCIAL_FACEBOOK', 'https://www.facebook.com/people/Beyond-Passports/61591144445879/'),
-        'instagram' => env('UKV_SOCIAL_INSTAGRAM', ''),
+        'instagram' => env('UKV_SOCIAL_INSTAGRAM', 'https://www.instagram.com/beyondpassportsuk/'),
         'tiktok'    => env('UKV_SOCIAL_TIKTOK', ''),
         'youtube'   => env('UKV_SOCIAL_YOUTUBE', ''),
         'linkedin'  => env('UKV_SOCIAL_LINKEDIN', ''),
