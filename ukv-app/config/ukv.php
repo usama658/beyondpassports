@@ -92,6 +92,11 @@ return [
     // <meta name="p:domain_verify"> tag in the site head when set.
     'pinterest_verify' => env('UKV_PINTEREST_VERIFY', '1d5c7b9df2ba8448ade05e212387a705'),
 
+    // Google Search Console site-verification token (GSC > HTML tag method). Renders
+    // <meta name="google-site-verification"> in the site head — consent-independent, so
+    // it works where the consent-gated GTM verification cannot. Blank = tag omitted.
+    'google_site_verification' => env('UKV_GOOGLE_SITE_VERIFICATION', '1jOX6QKbeuTbBQyMBqPocBKt_JkTT0rAGwdBgZ6kIR8'),
+
     // Google Tag Manager container ID. NON-ESSENTIAL (analytics/marketing) — loaded
     // ONLY after the visitor accepts cookies (UK PECR), inside the cookie-consent
     // partial's loadAcceptedScripts(). Blank = GTM never loads. Configure GA4/ads tags
