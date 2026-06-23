@@ -103,6 +103,14 @@ return [
     // INSIDE the GTM container to also respect Consent Mode.
     'gtm_id' => env('UKV_GTM_ID', 'GTM-5DMLL4HR'),
 
+    // Analytics + marketing tags. ALL NON-ESSENTIAL — loaded ONLY after cookie
+    // consent (UK PECR) in the cookie-consent partial's loadAcceptedScripts().
+    // Blank any one to disable it. Set up direct (not via GTM) so no GTM-tag config
+    // is needed; GTM stays available for anything added later.
+    'ga4_id'        => env('UKV_GA4_ID', 'G-KR93N3DF55'),       // Google Analytics 4 Measurement ID
+    'clarity_id'    => env('UKV_CLARITY_ID', 'xbfqfhmnvp'),     // Microsoft Clarity project ID
+    'meta_pixel_id' => env('UKV_META_PIXEL_ID', '1780802003331250'), // Meta (Facebook) Pixel / dataset ID
+
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.

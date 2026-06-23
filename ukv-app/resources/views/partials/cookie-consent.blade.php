@@ -49,6 +49,20 @@
     // Google Tag Manager (non-essential — analytics/marketing). Consent-gated.
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ config('ukv.gtm_id') }}');
 @endif
+@if (config('ukv.ga4_id'))
+    // Google Analytics 4 (non-essential — analytics). Consent-gated.
+    (function(){var g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id={{ config('ukv.ga4_id') }}';document.head.appendChild(g);})();
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ config('ukv.ga4_id') }}');
+@endif
+@if (config('ukv.clarity_id'))
+    // Microsoft Clarity (non-essential — analytics). Consent-gated.
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','{{ config('ukv.clarity_id') }}');
+@endif
+@if (config('ukv.meta_pixel_id'))
+    // Meta (Facebook) Pixel (non-essential — marketing). Consent-gated.
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','{{ config('ukv.meta_pixel_id') }}');fbq('track','PageView');
+@endif
   }
   var banner=document.getElementById('ck-consent');
   var choice=get(NAME);
