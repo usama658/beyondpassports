@@ -9,6 +9,10 @@
     <span class="tb-rate">@include('partials.trustpilot', ['template' => 'micro', 'width' => '180px', 'height' => '20px', 'margin' => '0'])</span>
     <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
+    @if (array_filter(config('ukv.social', [])))
+      <span class="tb-div" aria-hidden="true"></span>
+      <span class="tb-social">@include('partials.social-row', ['cls' => 'tb-soc', 'size' => 14])</span>
+    @endif
   </span>
 </div></div>
 <header class="site-head"><div class="wrap">

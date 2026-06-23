@@ -72,7 +72,14 @@ button,a,.btn,summary{touch-action:manipulation}
 /* Links: terracotta-tinted light for ≥4.5:1 on ink, ≥24px target. (WCAG 1.4.3 + 2.5.8) */
 .topbar a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
 .topbar a:hover{text-decoration:underline}
-@media (max-width:600px){.topbar .tb-row{justify-content:center}.tb-note{width:100%;text-align:center}.tb-links{gap:14px}}
+/* topbar social icons (white chips on the teal bar) */
+.tb-div{display:inline-block;width:1px;height:16px;background:rgba(255,255,255,.28)}
+.tb-social{display:inline-flex;align-items:center;gap:9px}
+.tb-soc{display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:6px;color:#fff;background:rgba(255,255,255,.12);min-height:0;transition:background .16s ease,transform .16s ease}
+.tb-soc:hover{background:rgba(255,255,255,.28);transform:translateY(-1px);text-decoration:none}
+.tb-soc svg{display:block}
+/* phones: socials drop, Call/WhatsApp/Trustpilot keep priority; footer carries socials there */
+@media (max-width:600px){.topbar .tb-row{justify-content:center}.tb-note{width:100%;text-align:center}.tb-links{gap:14px}.tb-social,.tb-div{display:none}}
 /* header */
 .site-head{position:sticky;top:0;z-index:50;background:rgba(244,245,246,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--paper-edge)}
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}

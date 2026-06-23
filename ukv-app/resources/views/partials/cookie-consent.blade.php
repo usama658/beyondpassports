@@ -9,7 +9,8 @@
   <div class="ck-inner">
     <p class="ck-text">
       We use a few cookies to run this site and, with your permission, third-party cookies
-      (Trustpilot) to show reviews. See our <a href="{{ url('/legal') }}#cookies">cookie &amp; privacy notice</a>.
+      (Trustpilot reviews and Google Analytics) to show reviews and understand how the site is used.
+      See our <a href="{{ url('/legal') }}#cookies">cookie &amp; privacy notice</a>.
     </p>
     <div class="ck-actions">
       <button type="button" class="ck-btn ck-reject" id="ck-reject">Reject non-essential</button>
@@ -44,6 +45,10 @@
     var s=document.createElement('script');
     s.async=true; s.src='https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
     document.head.appendChild(s);
+@if (config('ukv.gtm_id'))
+    // Google Tag Manager (non-essential — analytics/marketing). Consent-gated.
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ config('ukv.gtm_id') }}');
+@endif
   }
   var banner=document.getElementById('ck-consent');
   var choice=get(NAME);

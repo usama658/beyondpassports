@@ -92,6 +92,12 @@ return [
     // <meta name="p:domain_verify"> tag in the site head when set.
     'pinterest_verify' => env('UKV_PINTEREST_VERIFY', '1d5c7b9df2ba8448ade05e212387a705'),
 
+    // Google Tag Manager container ID. NON-ESSENTIAL (analytics/marketing) — loaded
+    // ONLY after the visitor accepts cookies (UK PECR), inside the cookie-consent
+    // partial's loadAcceptedScripts(). Blank = GTM never loads. Configure GA4/ads tags
+    // INSIDE the GTM container to also respect Consent Mode.
+    'gtm_id' => env('UKV_GTM_ID', 'GTM-5DMLL4HR'),
+
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.
