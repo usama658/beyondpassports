@@ -84,6 +84,7 @@ return [
         'youtube'   => env('UKV_SOCIAL_YOUTUBE', 'https://www.youtube.com/@beyondpassports'),
         'linkedin'  => env('UKV_SOCIAL_LINKEDIN', ''),
         'pinterest' => env('UKV_SOCIAL_PINTEREST', 'https://www.pinterest.com/beyondpassports/'),
+        'reddit'    => env('UKV_SOCIAL_REDDIT', 'https://www.reddit.com/r/beyondpassports/'),
     ],
 
     // Pinterest domain-verify token (Settings > Claim > add HTML tag). Renders the
