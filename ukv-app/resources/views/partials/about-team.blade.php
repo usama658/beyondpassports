@@ -89,6 +89,14 @@
   .abt .hours { margin-top: 18px; display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 700; color: var(--stamp-text);
     border: 1px solid rgba(46,154,140,.4); border-radius: 999px; padding: 8px 15px; }
   .abt .hours .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--stamp); }
+  .abt .follow-work { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--paper-edge); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .abt .follow-work .fw-lab { font: 800 14px var(--display); color: var(--ink); }
+  .abt .follow-work .fw-lab span { display: block; font: 400 13px var(--display); color: var(--muted); margin-top: 2px; }
+  .abt .follow-work .fw-row { display: flex; gap: 9px; margin-left: auto; }
+  .abt .follow-work .fw-soc { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 10px; background: var(--white); border: 1px solid var(--paper-edge); color: var(--ink); transition: transform .18s ease, border-color .18s ease, color .18s ease; }
+  .abt .follow-work .fw-soc:hover { border-color: var(--stamp); color: var(--stamp-text); transform: translateY(-2px); }
+  .abt .follow-work .fw-soc:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+  .abt .follow-work .fw-soc svg { display: block; }
   .abt .loc-map { position: relative; min-height: 340px; padding: 14px; background: linear-gradient(160deg, #eef2f7, #e3e9f1); }
   .abt .map-frame { position: relative; width: 100%; height: 100%; min-height: 312px; border-radius: 14px; overflow: hidden;
     border: 1px solid var(--paper-edge); box-shadow: inset 0 0 0 1px rgba(255,255,255,.6), 0 18px 36px -28px rgba(22,34,46,.5); }
@@ -105,6 +113,7 @@
     .abt .loc-map { min-height: 280px; }
     .abt .map-frame { min-height: 252px; }
     .abt .lead-tag { position: static; display: inline-block; transform: none; margin-bottom: 14px; align-self: flex-start; }
+    .abt .follow-work .fw-row { margin-left: 0; }
   }
 </style>
 @endpush
@@ -182,6 +191,13 @@
         @if (!empty($cityCountry)){{ implode(' · ', $cityCountry) }}@endif
       </address>
       <div class="hours"><span class="dot"></span>UK-based team &middot; Mon&ndash;Sat</div>
+      {{-- Follow our work — quiet line, only when socials configured and not suppressed by host page --}}
+      @if (($showFollow ?? true) && array_filter(config('ukv.social', [])))
+      <div class="follow-work">
+        <span class="fw-lab">Follow our work<span>Visa-rule changes and traveller stories</span></span>
+        <span class="fw-row">@include('partials.social-row', ['cls' => 'fw-soc', 'size' => 18])</span>
+      </div>
+      @endif
     </div>
     <div class="loc-map">
       <div class="map-frame">

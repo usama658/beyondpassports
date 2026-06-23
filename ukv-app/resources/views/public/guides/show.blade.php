@@ -394,6 +394,18 @@
   }
 
   /* ---- INLINE CTA -------------------------------------------------- */
+  .gs-follow { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 28px 0 4px; padding: 18px 22px;
+    background: #f4f8f7; border: 1px solid var(--paper-edge); border-radius: 14px; }
+  .gs-follow-t b { font: 800 14.5px var(--display); color: var(--ink); }
+  .gs-follow-t span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .gs-follow-row { display: flex; gap: 8px; margin-left: auto; }
+  .gs-follow .gs-soc { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border-radius: 10px;
+    background: var(--white); border: 1px solid var(--paper-edge); color: var(--stamp-text);
+    transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease; }
+  .gs-follow .gs-soc:hover { background: var(--stamp); border-color: var(--stamp); color: #fff; transform: translateY(-2px); }
+  .gs-follow .gs-soc:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+  .gs-follow .gs-soc svg { display: block; }
+  @media (max-width: 560px) { .gs-follow-row { margin-left: 0; } }
   .gs-cta-inline {
     max-width: 70ch;
     margin: 40px auto;
@@ -595,6 +607,14 @@
       @endif
 
     </div>{{-- /.gs-body --}}
+
+    {{-- Found this useful? — follow strip catches readers at peak (mid-research) intent --}}
+    @if (array_filter(config('ukv.social', [])))
+    <div class="gs-follow reveal">
+      <div class="gs-follow-t"><b>Found this useful?</b><span>Follow for visa-rule updates before they catch travellers out.</span></div>
+      <div class="gs-follow-row">@include('partials.social-row', ['cls' => 'gs-soc', 'size' => 18])</div>
+    </div>
+    @endif
 
     {{-- LIVE DOCUMENT CHECKLIST — documents type only, never stale (RequirementService::preview) --}}
     @if ($type === GuideType::Documents && $destination)

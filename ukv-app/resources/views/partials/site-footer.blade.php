@@ -43,6 +43,7 @@
           @error('consent')<p class="ft-err">{{ $message }}</p>@enderror
         </form>
         @if (! empty($social))
+        <p class="ft-social-lab">@if (session('subscribe_status'))You're subscribed — follow us too, that's where time-sensitive updates land first.@else Follow us @endif</p>
         <div class="ft-social">
           @foreach ($social as $k => $url)
             <a class="ft-soc" href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ ucfirst($k) }}">
@@ -52,7 +53,8 @@
         </div>
         @once
         <style>
-          .ft-main .cols .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+          .ft-social-lab{font-size:13px;color:#c7cfd6;margin:18px 0 8px;max-width:34ch;line-height:1.5}
+          .ft-main .cols .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 4px}
           /* higher specificity than ".ft-main .cols a{display:block;padding}" in ukv.css so icons stay flex-centered boxes */
           .ft-main .cols a.ft-soc{display:inline-flex;width:36px;height:36px;padding:0;align-items:center;justify-content:center;border-radius:9px;
             background:rgba(255,255,255,.1);color:#fff;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}

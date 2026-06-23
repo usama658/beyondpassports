@@ -108,7 +108,16 @@
   .cc-form .ct-privacy{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.5}
   .cc-form .ct-privacy a{color:var(--cta)}
   .cc-form .btn{margin-top:16px;width:100%}
-  @media(max-width:760px){.cc-grid{grid-template-columns:1fr}.cc-methods{border-right:0;border-bottom:1px solid var(--paper-edge)}}
+  /* Follow-us strip — sits under the three contact methods, same column */
+  .cc-follow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0 0;margin-top:6px;border-top:1px solid var(--paper-edge)}
+  .cc-follow .cf-lab{font:800 14px var(--display);color:var(--ink)}
+  .cc-follow .cf-sub{font-size:12.5px;color:var(--muted)}
+  .cc-follow .cf-row{display:flex;gap:8px;margin-left:auto}
+  .cc-follow .cf-soc{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:9px;background:#eaf3f1;color:var(--stamp-text);transition:transform .18s ease,background .18s ease,color .18s ease}
+  .cc-follow .cf-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px)}
+  .cc-follow .cf-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+  .cc-follow .cf-soc svg{display:block}
+  @media(max-width:760px){.cc-grid{grid-template-columns:1fr}.cc-methods{border-right:0;border-bottom:1px solid var(--paper-edge)}.cc-follow .cf-row{margin-left:0}}
 
   /* ── Contact method cards — call-first asymmetric ───────────────────────── */
   .ct-methods {
@@ -425,6 +434,15 @@
             <span class="hrs">Reply within one working day</span>
           </div>
         </div>
+
+        {{-- Follow-us strip — seamless 4th row under the contact methods --}}
+        @if (array_filter(config('ukv.social', [])))
+        <div class="cc-follow">
+          <span class="cf-lab">Follow us</span>
+          <span class="cf-sub">Visa-rule updates &amp; tips</span>
+          <div class="cf-row">@include('partials.social-row', ['cls' => 'cf-soc', 'size' => 18])</div>
+        </div>
+        @endif
       </div>
 
       {{-- RIGHT: callback form (posts to POST /contact, progressively enhanced via fetch) --}}
@@ -467,8 +485,9 @@
   </div>
 </div></section>
 
-{{-- The UK team + where we are — same section as the About page (config-driven) --}}
-@include('partials.about-team')
+{{-- The UK team + where we are — same section as the About page (config-driven).
+     showFollow=false: Contact already has a follow strip in the methods panel above. --}}
+@include('partials.about-team', ['showFollow' => false])
 
 {{-- TESTIMONIALS — same trio of consented review cards as the About page (single source) --}}
 @php $contactQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp

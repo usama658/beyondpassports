@@ -94,6 +94,14 @@
   .status-mrz .pill.is-outcome{background:rgba(46,154,140,.2);border-color:rgba(121,207,194,.5);color:#79CFC2}
   .status-mrz .stage-now{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;margin:8px 0 0}
   .status-card{background:var(--white);border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:26px}
+  .tk-follow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px dashed var(--paper-edge)}
+  .tk-follow .tkf-lab{font-size:13px;color:var(--muted)}
+  .tk-follow .tkf-row{display:flex;gap:8px;margin-left:auto}
+  .tk-follow .tkf-soc{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:8px;background:#eaf3f1;color:var(--stamp-text);transition:transform .18s ease,background .18s ease,color .18s ease}
+  .tk-follow .tkf-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px)}
+  .tk-follow .tkf-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+  .tk-follow .tkf-soc svg{display:block}
+  @media(max-width:560px){.tk-follow .tkf-row{margin-left:0}}
 
   /* Vertical timeline (pick C) */
   .timeline{list-style:none;margin:4px 0 6px;padding:0;display:block}
@@ -260,6 +268,14 @@
           <div class="reassure">
             <p><strong>Government processing time is set by the destination's authorities</strong>, not by us. Express speeds our handling only, not their decision. We'll notify you the moment there's an update.</p>
           </div>
+
+          {{-- While you wait — follow for updates (warmest audience: a live customer) --}}
+          @if (array_filter(config('ukv.social', [])))
+          <div class="tk-follow">
+            <span class="tkf-lab">While you wait, follow for updates &amp; tips</span>
+            <span class="tkf-row">@include('partials.social-row', ['cls' => 'tkf-soc', 'size' => 16])</span>
+          </div>
+          @endif
         </div>
       </div>
     </div></section>
