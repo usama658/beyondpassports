@@ -109,10 +109,10 @@
   .cc-form .ct-privacy a{color:var(--cta)}
   .cc-form .btn{margin-top:16px;width:100%}
   /* Follow-us strip — sits under the three contact methods, same column */
-  .cc-follow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0 0;margin-top:6px;border-top:1px solid var(--paper-edge)}
+  .cc-follow{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:16px 0 0;margin-top:6px;border-top:1px solid var(--paper-edge)}
   .cc-follow .cf-lab{font:800 14px var(--display);color:var(--ink)}
   .cc-follow .cf-sub{font-size:12.5px;color:var(--muted)}
-  .cc-follow .cf-row{display:flex;gap:8px;margin-left:auto}
+  .cc-follow .cf-row{display:flex;gap:8px;justify-content:center;margin-top:4px}
   .cc-follow .cf-soc{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:9px;background:#eaf3f1;color:var(--stamp-text);transition:transform .18s ease,background .18s ease,color .18s ease}
   .cc-follow .cf-soc:hover{background:var(--cta);color:#fff;transform:translateY(-2px)}
   .cc-follow .cf-soc:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
