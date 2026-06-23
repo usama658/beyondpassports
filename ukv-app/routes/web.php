@@ -98,6 +98,21 @@ Route::get('/health/mail', function () {
     ]);
 })->name('health.mail');
 
+// TEMPORARY token-guarded test-mail sender — verifies prod SMTP delivery before
+// firing real customer mail. Remove after launch. Sends a plain message only.
+Route::get('/health/mail-test', function (\Illuminate\Http\Request $request) {
+    abort_unless($request->query('token') === 'bp-mailtest-7Kq9', 404);
+    $to = (string) $request->query('to', '');
+    abort_unless(filter_var($to, FILTER_VALIDATE_EMAIL), 422, 'bad email');
+    try {
+        \Mail::raw('Beyond Passports — test email. If you received this, live email sending works. Please ignore.',
+            fn ($m) => $m->to($to)->subject('Beyond Passports — email test'));
+        return response()->json(['sent_to' => $to, 'mailer' => config('mail.default'), 'ok' => true]);
+    } catch (\Throwable $e) {
+        return response()->json(['ok' => false, 'error' => $e->getMessage()], 500);
+    }
+})->name('health.mailtest');
+
 // --- Confirmation / thank-you ---
 Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
     // Document Requirements Engine: pass the personalised checklist (for()) to the view.
