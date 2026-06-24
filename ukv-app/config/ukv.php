@@ -128,6 +128,18 @@ return [
         // Trustpilot Automatic Feedback (invitejs) integration key — loads tp.min.js sitewide
         // and registers the site so review invitations can fire. Blank = script not loaded.
         'invite_js_key'    => env('UKV_TRUSTPILOT_INVITE_JS_KEY', 'CuZ3elh5rTHgYmZL'),
+
+        // ── Manual rating mirror (custom Trustpilot-style widget) ────────────────
+        // Type your REAL Trustpilot figures here to show the stars + score widget.
+        // Leave blank and the site shows the "Review us on Trustpilot" CTA instead.
+        // Update by hand whenever your Trustpilot profile changes (manual sync).
+        // ONLY enter true figures — fake ratings are illegal (DMCCA 2024).
+        'rating'        => env('UKV_TRUSTPILOT_RATING', ''),         // e.g. 4.9 (out of 5)
+        'reviews_count' => env('UKV_TRUSTPILOT_REVIEWS_COUNT', ''),  // e.g. 27
+        // Optional: a few real, verbatim reviews to feature (cards). Keep them genuine.
+        //   ['name' => 'Aisha K.', 'stars' => 5, 'title' => 'Visa sorted fast',
+        //    'text' => 'They checked everything and...', 'date' => 'Jun 2026']
+        'reviews'       => [],
     ],
 
     // ── Services catalogue ────────────────────────────────────────────────────
