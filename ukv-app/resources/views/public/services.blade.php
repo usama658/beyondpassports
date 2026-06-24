@@ -29,7 +29,8 @@
   .sv-hcard { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 20px; }
   .sv-hcard h3 { margin: 0 0 3px; font-size: 17px; color: #fff; }
   .sv-hcard > p { margin: 0 0 12px; color: rgba(255,255,255,.72); font-size: 14px; }
-  .sv-hcard .btn { width: 100%; justify-content: center; margin-bottom: 8px; }
+  .sv-hbtns { display: flex; gap: 10px; }
+  .sv-hcard .btn { flex: 1; justify-content: center; padding-left: 14px; padding-right: 14px; }
   .btn--wa { background: #25D366; border: 0; color: #fff; }
   .btn--wa:hover { background: #1da851; }
   .sv-hsteps { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
@@ -181,8 +182,10 @@
   <div class="sv-hcard">
     <h3>Start here</h3>
     <p>Message our UK team. No account needed.</p>
-    <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn btn--wa">{!! $waGlyph !!} Chat on WhatsApp</a>
-    <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
+    <div class="sv-hbtns">
+      <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn btn--wa">{!! $waGlyph !!} WhatsApp us</a>
+      <a href="{{ url('/tools') }}" class="btn btn--ghost">Free check</a>
+    </div>
     <div class="sv-hsteps">
       <span><b>1</b> Pick a service</span>
       <span><b>2</b> Message us</span>
