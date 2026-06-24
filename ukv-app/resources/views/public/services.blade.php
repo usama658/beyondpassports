@@ -21,6 +21,21 @@
   .sv-hero .lede { max-width: 54ch; color: rgba(255,255,255,.82); }
   .sv-hero .row { margin-top: 24px; }
   .sv-hero .btn--ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+
+  /* Hero split + start-here card */
+  .sv-hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
+  .sv-hero-copy h1 { max-width: 16ch; }
+  .sv-hero-copy .lede { margin-bottom: 0; }
+  .sv-hcard { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 26px; }
+  .sv-hcard h3 { margin: 0 0 4px; font-size: 18px; color: #fff; }
+  .sv-hcard > p { margin: 0 0 16px; color: rgba(255,255,255,.72); font-size: 14px; }
+  .sv-hcard .btn { width: 100%; justify-content: center; margin-bottom: 10px; }
+  .btn--wa { background: #25D366; border: 0; color: #fff; }
+  .btn--wa:hover { background: #1da851; }
+  .sv-hsteps { margin-top: 14px; display: flex; flex-direction: column; gap: 9px; }
+  .sv-hsteps span { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.82); }
+  .sv-hsteps b { background: rgba(255,255,255,.14); width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; flex: none; }
+  @media (max-width: 820px) { .sv-hero-grid { grid-template-columns: 1fr; gap: 28px; } }
   /* Trust bar — dark mesh band under hero (matches home .tbar-f) */
   .tbar-f { padding: 0; background:
       radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
@@ -31,15 +46,6 @@
   .tbar-f .ti svg { width: 20px; height: 20px; color: var(--soft); flex: none; }
   .tbar-f .ti b { color: var(--soft); font-weight: 800; }
   @media (max-width: 560px) { .tbar-f .row { gap: 14px 22px; } }
-
-  /* How-easy micro steps */
-  .sv-mini { background: var(--paper); border-bottom: 1px solid var(--paper-edge); }
-  .sv-mini-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px; padding: 9px 0; }
-  .sv-mini .s { display: flex; align-items: center; gap: 8px; padding: 3px 14px; }
-  .sv-mini .n { width: 21px; height: 21px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 12px; display: grid; place-items: center; flex: none; }
-  .sv-mini .t { font-weight: 700; font-size: 14px; }
-  .sv-mini .sep { color: var(--soft); font-size: 15px; }
-  @media (max-width: 480px) { .sv-mini .sep { display: none; } .sv-mini-row { gap: 0; } }
 
   /* Layout — sticky stepper + content */
   .sv-layout { display: grid; grid-template-columns: 250px 1fr; gap: 52px; align-items: start; padding: 56px 0 20px; }
@@ -78,8 +84,16 @@
   .sv-card .sv-chip { align-self: flex-start; }
   .sv-card h3 { margin: 0; font-size: 16.5px; line-height: 1.3; }
   .sv-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
-  .sv-card .sv-go { display: inline-flex; align-items: center; gap: 7px; margin-top: 2px; font-size: 13px; font-weight: 700; color: #1da851; }
-  .sv-go .wa-g { width: 15px; height: 15px; fill: currentColor; flex: none; }
+  .sv-card { padding-bottom: 62px; }
+  .sv-card .sv-fab { position: absolute; right: 18px; bottom: 16px; }
+
+  /* WhatsApp chat button: round, grows into a pill on hover (shared by cards + rows) */
+  .sv-fab { display: inline-flex; align-items: center; height: 38px; width: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; overflow: hidden; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); transition: width .22s ease; }
+  .sv-fab .wa-g { width: 19px; height: 19px; fill: currentColor; flex: none; margin: 0 9.5px; }
+  .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity .16s; padding-right: 15px; }
+  a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { width: 150px; }
+  a.sv-card:hover .sv-fab .l, a.sv-row:hover .sv-fab .l { opacity: 1; }
+  @media (hover: none) { .sv-fab { width: 150px; } .sv-fab .l { opacity: 1; } }
   .sv-silo-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 700; color: #1da851; transition: gap .15s; }
   .sv-silo-cta:hover { gap: 12px; }
   .sv-silo-cta .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
@@ -95,9 +109,7 @@
   .sv-rail { align-self: stretch; min-height: 42px; border-radius: 4px; background: var(--stamp); }
   .sv-row h3 { margin: 0 0 5px; font-size: 16.5px; font-weight: 700; }
   .sv-row p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: 60ch; line-height: 1.5; }
-  .sv-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(37,211,102,.4); display: grid; place-items: center; color: #1da851; flex: none; transition: .15s; }
-  .sv-arrow .wa-g { width: 17px; height: 17px; fill: currentColor; }
-  a.sv-row:hover .sv-arrow { background: #25D366; border-color: #25D366; color: #fff; }
+  .sv-row .sv-fab { align-self: center; }
 
   /* Status chips */
   .sv-chip { font-size: 10.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; border: 1px solid transparent; }
@@ -145,31 +157,31 @@
   $waGlyph = '<svg viewBox="0 0 24 24" aria-hidden="true" class="wa-g"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
 @endphp
 
-{{-- Hero --}}
-<section class="sv-hero"><div class="wrap">
-  <p class="eyebrow">Our services</p>
-  <h1>Visa and travel services, all in one place</h1>
-  <p class="lede">Tell us where you are going. We sort the visa, the documents and the appointment so your trip goes ahead. Tap any service below to chat with our UK team.</p>
-  <div class="row">
-    <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a>
-    <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
+{{-- Hero — split with "start here" card --}}
+<section class="sv-hero"><div class="wrap"><div class="sv-hero-grid">
+  <div class="sv-hero-copy">
+    <p class="eyebrow">Our services</p>
+    <h1>Visa and travel services, all in one place</h1>
+    <p class="lede">Tell us where you are going. We sort the visa, the documents and the appointment so your trip goes ahead.</p>
   </div>
-</div></section>
+  <div class="sv-hcard">
+    <h3>Start here</h3>
+    <p>Message our UK team. No account needed.</p>
+    <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn btn--wa">{!! $waGlyph !!} Chat on WhatsApp</a>
+    <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
+    <div class="sv-hsteps">
+      <span><b>1</b> Pick a service</span>
+      <span><b>2</b> Message us</span>
+      <span><b>3</b> We sort it</span>
+    </div>
+  </div>
+</div></div></section>
 
 {{-- Trust bar — dark mesh band (matches home .tbar-f) --}}
 <section class="tbar-f"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Independent</b> UK team</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>Not</b> a government website</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from any government fee</span></span>
-</div></div></section>
-
-{{-- How-easy micro steps --}}
-<section class="sv-mini"><div class="wrap"><div class="sv-mini-row">
-  <span class="s"><span class="n">1</span><span class="t">Pick a service</span></span>
-  <span class="sep" aria-hidden="true">&rarr;</span>
-  <span class="s"><span class="n">2</span><span class="t">Message us</span></span>
-  <span class="sep" aria-hidden="true">&rarr;</span>
-  <span class="s"><span class="n">3</span><span class="t">We sort it</span></span>
 </div></div></section>
 
 {{-- Stepper + catalogue --}}
@@ -206,7 +218,7 @@
           <a class="sv-card" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
             <h3>{{ $item['title'] }}</h3>
             <p>{{ $item['desc'] }}</p>
-            <span class="sv-go">{!! $waGlyph !!} Chat to start</span>
+            <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
           </a>
         @endforeach
       </div>
@@ -219,7 +231,7 @@
               <h3>{{ $item['title'] }}</h3>
               <p>{{ $item['desc'] }}</p>
             </div>
-            <span class="sv-arrow">{!! $waGlyph !!}</span>
+            <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
           </a>
         @endforeach
       </div>
