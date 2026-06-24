@@ -133,6 +133,21 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from the embassy fee</span></span>
 </div></div></section>
 
+{{-- WHAT A SCHENGEN VISA COVERS — navy passport card, before the destinations grid --}}
+<section id="sg-covers"><div class="wrap">
+  <div class="sg-card reveal">
+    <span class="sg-card-stamp" aria-hidden="true">SCHENGEN<br>AREA</span>
+    <p class="eyebrow">The basics</p>
+    <h2>What a Schengen visa covers</h2>
+    <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
+    <div class="sg-card-facts">
+      <div class="f"><div class="n">29 countries</div><div class="l">whole Schengen Area</div></div>
+      <div class="f"><div class="n">90 / 180 days</div><div class="l">short-stay limit</div></div>
+      <div class="f"><div class="n">1 application</div><div class="l">via your main destination</div></div>
+    </div>
+  </div>
+</div></section>
+
 {{-- BROWSE — searchable Schengen country grid (boarding-pass cards) --}}
 <section id="sg-browse"><div class="wrap">
   <div class="sec-head reveal">
@@ -168,21 +183,6 @@
     </div>
     <p class="sg-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
-</div></section>
-
-{{-- WHAT A SCHENGEN VISA COVERS (below the destinations grid) --}}
-<section id="sg-covers"><div class="wrap">
-  <div class="sg-card reveal">
-    <span class="sg-card-stamp" aria-hidden="true">SCHENGEN<br>AREA</span>
-    <p class="eyebrow">The basics</p>
-    <h2>What a Schengen visa covers</h2>
-    <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
-    <div class="sg-card-facts">
-      <div class="f"><div class="n">29 countries</div><div class="l">whole Schengen Area</div></div>
-      <div class="f"><div class="n">90 / 180 days</div><div class="l">short-stay limit</div></div>
-      <div class="f"><div class="n">1 application</div><div class="l">via your main destination</div></div>
-    </div>
-  </div>
 </div></section>
 
 {{-- 4) WHAT WE DO — six-service stamp grid (.ticks / .tick / #ukv-stamp) --}}
