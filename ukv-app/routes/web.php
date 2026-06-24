@@ -26,7 +26,7 @@ Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.pa
 Route::get('/find-a-centre/search', [CentreController::class, 'search'])
     ->middleware('throttle:contact')
     ->name('centre.search');
-Route::view('/driving-abroad', 'public.driving-abroad')->name('idp');
+Route::get('/driving-abroad', fn () => redirect('/services', 301))->name('idp');
 Route::view('/about', 'public.about')->name('about');
 Route::view('/contact', 'public.contact')->name('contact');
 Route::view('/legal', 'public.legal')->name('legal');

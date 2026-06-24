@@ -167,8 +167,8 @@ return [
             'cta' => ['label' => 'See destinations', 'url' => '/destinations'],
             'items' => [
                 ['title' => 'Schengen visa', 'desc' => 'We prepare and submit your full Schengen visa.', 'status' => 'available', 'url' => '/destinations'],
-                ['title' => 'eVisa & ETA', 'desc' => 'Online visas for Turkey, India and more.', 'status' => 'available', 'url' => '/destinations'],
-                ['title' => 'Other countries', 'desc' => 'Visas for countries outside Europe too.', 'status' => 'on-request', 'url' => '/contact'],
+                ['title' => 'Tourist & visitor', 'desc' => 'For holidays and visiting friends and family in Europe.', 'status' => 'available', 'url' => '/destinations'],
+                ['title' => 'Business & short work trips', 'desc' => 'Meetings, conferences and short trips across the Schengen Area.', 'status' => 'available', 'url' => '/destinations'],
                 ['title' => 'Group & family', 'desc' => 'Travelling together? We handle the whole group.', 'status' => 'on-request', 'url' => '/contact'],
             ],
         ],
@@ -234,32 +234,9 @@ return [
                 ['title' => 'Refused before?', 'desc' => 'We fix the reason and reapply.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
-        [
-            'key'   => 'authorisations',
-            'layout' => 'cards',
-            'label' => 'Other travel authorisations',
-            'url'   => '/travel-authorisation',
-            'intro' => 'Not a visa, but you still need it to travel.',
-            'kicker' => 'Travel permits',
-            'cta' => ['label' => 'Ask what I need', 'url' => '/tools'],
-            'items' => [
-                ['title' => 'ETIAS (Europe)', 'desc' => 'The new EU travel permit.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'ETA (other countries)', 'desc' => 'Travel permits for other countries.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'ESTA (USA)', 'desc' => 'The US travel permit.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'Other e-visas', 'desc' => 'Online visas worldwide.', 'status' => 'coming-soon', 'url' => null],
-            ],
-        ],
-        [
-            'key'   => 'driving',
-            'label' => 'Driving abroad',
-            'url'   => '/driving-abroad',
-            'intro' => 'Hire a car abroad without the right permit and you may be uninsured. We sort the right one.',
-            'kicker' => 'Stay insured abroad',
-            'cta' => ['label' => 'Check the IDP rules', 'url' => '/driving-abroad'],
-            'items' => [
-                ['title' => 'International Driving Permit (IDP)', 'desc' => 'We confirm the exact IDP type for your destination and licence: 1949, 1968 or both.', 'status' => 'available', 'url' => '/driving-abroad'],
-            ],
-        ],
+        // ── Schengen-only pivot (2026-06-24): removed non-Schengen silos
+        //    'authorisations' (ETIAS/ETA/ESTA/e-visas) and 'driving' (IDP) from the
+        //    public catalogue. Recover from git history when restoring other destinations.
         [
             'key'   => 'essentials',
             'label' => 'Travel essentials',

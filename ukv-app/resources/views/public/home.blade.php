@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'UK Visas, eVisas & ETAs — Sorted Without the Stress | Beyond Passports')
-@section('description', 'Independent UK visa & eVisa service. We check, prepare and submit your application for a growing list of destinations — UK-based team, clear fixed fees, every step tracked. Not a government website.')
+@section('title', 'Schengen Visas — Sorted Without the Stress | Beyond Passports')
+@section('description', 'Independent UK Schengen visa service. We check, prepare and submit your Schengen application. UK-based team, clear fixed fees, every step tracked. Not a government website.')
 
 @push('head')
 <script type="application/ld+json">
@@ -10,7 +10,7 @@
   "@@type": "Organization",
   "name": "Beyond Passports",
   "url": "{{ url('/') }}",
-  "description": "Independent UK visa & eVisa facilitation service. Not a government website.",
+  "description": "Independent UK Schengen visa facilitation service. Not a government website.",
   "areaServed": "GB"
 }
 </script>
@@ -32,7 +32,8 @@
     box-shadow:0 30px 64px -30px rgba(40,50,70,.45);padding:18px;max-width:780px;margin:28px auto 0;text-align:left}
   .hp-bar .f{flex:1;min-width:0}
   .hp-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
-  .hp-bar select{width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .hp-bar select,.hp-bar input{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .hp-bar input[readonly]{background:var(--paper);color:var(--muted);cursor:default}
   .hp-bar .btn{white-space:nowrap}
   /* signature passport-stamp accent on the form card's top-right corner */
   .hp-bar{position:relative}
@@ -130,11 +131,14 @@
 
 {{-- HERO — "Editorial centred": big headline + inline visa-check form bar + popular destination names --}}
 @php
+  // Schengen-only pivot: the public site surfaces only Schengen / ETIAS destinations.
+  // The composer still supplies the full $navDestinations list (reversible) — we filter here.
+  $schengenDests = ($navDestinations ?? collect())->where('visa_type', 'ETIAS')->values();
   // Popular destination quick-links (names, not images).
-  $hpDests = ($navDestinations ?? collect())->take(8);
+  $hpDests = $schengenDests->take(8);
 @endphp
 <section class="hp-hero"><div class="wrap">
-  <p class="eyebrow">Schengen visas &middot; ETIAS &middot; eVisas &middot; driving permits</p>
+  <p class="eyebrow">Schengen visas</p>
   @push('head')<style>@media(max-width:640px){.hp-hero .h1-break{display:none}}</style>@endpush
   <h1>Don't lose the trip to a refused visa <br class="h1-break">or a missing appointment.</h1>
   <p class="lede">A real UK specialist gets your Schengen visa right, and books the appointment. Every document checked by hand before you submit, and you can talk to them any time.</p>
@@ -144,11 +148,11 @@
     <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
     <div class="f">
       <label for="dest">Where are you going?</label>
-      <select id="dest"><option value="">Choose a destination…</option>@foreach ($navDestinations as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
+      <input id="dest" type="text" value="the Schengen Area (Europe)" readonly>
     </div>
     <div class="f">
       <label for="nat">Your passport</label>
-      <select id="nat"><option value="a UK">United Kingdom</option><option value="a non-UK">Other — we'll confirm your rules</option></select>
+      <select id="nat"><option value="a UK">United Kingdom</option><option value="a non-UK">Other (we'll confirm your rules)</option></select>
     </div>
     <button class="btn" type="button" id="hp-chat">See what I need · free →</button>
   </form>
@@ -173,13 +177,9 @@
       var btn = document.getElementById('hp-chat');
       if (!btn) return;
       btn.addEventListener('click', function () {
-        var dest = document.getElementById('dest');
         var nat = document.getElementById('nat');
-        var place = dest && dest.value ? dest.value : '';
         var pass = nat && nat.value ? nat.value : 'a UK';
-        var msg = place
-          ? 'Hi Beyond Passports — I am travelling to ' + place + ' on ' + pass + ' passport. What do I need?'
-          : 'Hi Beyond Passports — I would like help working out what I need for my trip.';
+        var msg = 'Hi Beyond Passports, I am applying for a Schengen visa on ' + pass + ' passport. What do I need?';
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
     })();
@@ -217,7 +217,7 @@
 <section class="tbar-b"><div class="wrap"><div class="row">
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
   <div><div class="n">12,000+</div><div class="l">Trips sorted</div></div>
-  <div><div class="n">{{ ($navDestinations ?? collect())->count() }}</div><div class="l">Destinations &amp; growing</div></div>
+  <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
   <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
 </div></div></section>
 
@@ -289,7 +289,7 @@
     <form id="rk-form" onsubmit="return false">
       <div class="rk-step active" data-step="0">
         <label for="rk-dest">Where are you going?</label>
-        <select id="rk-dest"><option value="">Choose a destination…</option>@foreach ($navDestinations as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
+        <select id="rk-dest"><option value="">Choose a destination…</option>@foreach ($schengenDests as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
         <label for="rk-date" style="margin-top:12px">When do you travel?</label>
         <input id="rk-date" type="date">
       </div>
@@ -452,7 +452,7 @@
   // Region tabs are driven by the real `region` column (set by SchengenSeeder).
   $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
   $regionCounts = [];
-  foreach ($navDestinations as $d) {
+  foreach ($schengenDests as $d) {
     $r = $d->region ?: 'Worldwide';
     $regionCounts[$r] = ($regionCounts[$r] ?? 0) + 1;
   }
@@ -497,7 +497,7 @@
     @endforeach
   </div>
   <div class="dests" id="dests">
-  @foreach ($navDestinations as $d)
+  @foreach ($schengenDests as $d)
     <a class="pass reveal" data-region="{{ $d->region ?: 'Worldwide' }}" @if ($loop->index < 6) data-pop="1" @endif href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">
 @if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)
 <div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>
@@ -620,7 +620,7 @@
       <p style="max-width:58ch;color:var(--muted);margin-top:12px">Enter your postcode to find the one nearest you.</p>
     @else
       <h2>Find your nearest centre</h2>
-      <p style="max-width:58ch;color:var(--muted)">For visas or IDPs that need an in-person visit, enter your postcode and we'll show the closest centre — so you don't have to go hunting.</p>
+      <p style="max-width:58ch;color:var(--muted)">Schengen visas need an in-person biometric appointment. Enter your postcode and we'll show the closest centre, so you don't have to go hunting.</p>
     @endif
   </div>
   <form method="GET" action="{{ route('centre.search') }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;max-width:520px">
@@ -628,7 +628,7 @@
            style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge);border-radius:8px;font:inherit;font-size:15px">
     <button type="submit" class="btn">Find nearest →</button>
   </form>
-  <p class="hint" style="margin-top:10px"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Most visas are online (eVisa/ETA) and need no appointment.</p>
+  <p class="hint" style="margin-top:10px"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Every Schengen visa needs a biometric appointment at a visa centre.</p>
 </div></section>
 
 {{-- CTA — hidden for now (per request) --}}

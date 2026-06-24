@@ -70,8 +70,13 @@ class DestinationController extends Controller
      *
      * Bind in the route as {destination:slug} so the URL is /visa/turkey, not /visa/7.
      */
-    public function show(Destination $destination, RequirementService $requirements): View
+    public function show(Destination $destination, RequirementService $requirements)
     {
+        // Schengen-only pivot (2026-06-24): non-Schengen money pages 301 -> /destinations. Reversible.
+        if ($destination->visa_type !== 'ETIAS') {
+            return redirect('/destinations', 301);
+        }
+
         // Document Requirements Engine: a generic "documents you'll likely need" preview for
         // this destination. No order yet — preview() evaluates rules scoped to the destination
         // with no traveller-specific context (tourist-adult baseline).

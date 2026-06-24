@@ -69,7 +69,7 @@
       <div>
         <strong>Service</strong>
         <a href="{{ url('/services') }}">All services</a>
-        <a href="{{ url('/destinations') }}">Destinations</a>
+        <a href="{{ url('/destinations') }}">Schengen visa</a>
         <a href="{{ url('/apply') }}">Start an application</a>
         <a href="{{ url('/track') }}">Track application</a>
       </div>
@@ -77,7 +77,6 @@
         <strong>Free tools &amp; guides</strong>
         <a href="{{ url('/tools') }}">Visa checker</a>
         <a href="{{ url('/document-checklist') }}">Document checker</a>
-        <a href="{{ url('/driving-abroad') }}">Driving abroad (IDP)</a>
         <a href="{{ url('/find-a-centre') }}">Find a centre</a>
         <a href="{{ url('/guides') }}">Visa guides &amp; stories</a>
         <a href="{{ url('/reviews') }}">Traveller reviews</a>

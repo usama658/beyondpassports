@@ -38,7 +38,6 @@ class SitemapController extends Controller
             ['/services', 'weekly', '0.9'],
             ['/destinations', 'weekly', '0.8'],
             ['/tools', 'monthly', '0.7'],
-            ['/driving-abroad', 'monthly', '0.7'],
             ['/guides', 'weekly', '0.6'],
             ['/document-checklist', 'monthly', '0.7'],
             ['/find-a-centre', 'monthly', '0.6'],
@@ -73,10 +72,15 @@ class SitemapController extends Controller
         }
 
         // One money page per destination.
+        // Schengen-only pivot (2026-06-24): skip non-Schengen (non-ETIAS) destinations so their
+        // /visa/{slug} money pages and /visa/{slug}/{topic} guides stay out of the sitemap. Reversible.
         Destination::query()
             ->whereNotNull('slug')
             ->orderBy('name')
             ->each(function (Destination $destination) use (&$urls, $base) {
+                if ($destination->visa_type !== 'ETIAS') {
+                    return;
+                }
                 $urls[] = [
                     'loc' => $base . '/visa/' . $destination->slug,
                     'lastmod' => optional($destination->updated_at)->toDateString(),
@@ -89,10 +93,14 @@ class SitemapController extends Controller
         Guide::query()
             ->published()
             ->whereNotNull('destination_id')
-            ->with('destination:id,slug')
+            ->with('destination:id,slug,visa_type')
             ->get()
             ->each(function (Guide $guide) use (&$urls, $base) {
                 if (! $guide->destination?->slug || ! $guide->guide_type) {
+                    return;
+                }
+                // Schengen-only pivot (2026-06-24): skip nested guides for non-Schengen destinations.
+                if ($guide->destination->visa_type !== 'ETIAS') {
                     return;
                 }
                 $urls[] = [
