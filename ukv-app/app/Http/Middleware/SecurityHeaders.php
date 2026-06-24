@@ -104,7 +104,7 @@ class SecurityHeaders
             // routing, checker JS, reveal). A per-request nonce is the stricter future upgrade.
             // Consent-loaded third parties (cookie-consent partial): Trustpilot reviews widget,
             // Google Tag Manager + GA4, Microsoft Clarity, Meta Pixel.
-            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
+            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://invitejs.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
             "connect-src 'self' https://api.stripe.com https://widget.trustpilot.com https://*.trustpilot.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.facebook.com",
             // google.com/maps: the /about location embed; widget.trustpilot.com: TrustBox iframe.
             "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com https://widget.trustpilot.com",

@@ -124,6 +124,9 @@ return [
         // is delivered. Blank = off. (This sends the customer's email + name to Trustpilot,
         // a US sub-processor; ensure the privacy policy lists Trustpilot.)
         'invite_bcc'       => env('UKV_TRUSTPILOT_INVITE_BCC', 'beyondpassports.co.uk+bfd39d893d@invite.trustpilot.com'),
+        // Trustpilot Automatic Feedback (invitejs) integration key — loads tp.min.js sitewide
+        // and registers the site so review invitations can fire. Blank = script not loaded.
+        'invite_js_key'    => env('UKV_TRUSTPILOT_INVITE_JS_KEY', 'CuZ3elh5rTHgYmZL'),
     ],
 
     // ── Services catalogue ────────────────────────────────────────────────────

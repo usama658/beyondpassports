@@ -34,5 +34,6 @@
 @include('partials.site-footer')
 
 @include('partials.site-scripts')
+@include('partials.trustpilot-invite')
 </body>
 </html>
