@@ -32,8 +32,8 @@
   .sv-hcard .btn { width: 100%; justify-content: center; margin-bottom: 8px; }
   .btn--wa { background: #25D366; border: 0; color: #fff; }
   .btn--wa:hover { background: #1da851; }
-  .sv-hsteps { margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
-  .sv-hsteps span { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.82); }
+  .sv-hsteps { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .sv-hsteps span { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: rgba(255,255,255,.82); }
   .sv-hsteps b { background: rgba(255,255,255,.14); width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; flex: none; }
   @media (max-width: 820px) { .sv-hero-grid { grid-template-columns: 1fr; gap: 28px; } }
   /* Trust bar — dark mesh band under hero (matches home .tbar-f) */
