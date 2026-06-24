@@ -32,6 +32,8 @@
   .sv-hbtns { display: flex; gap: 10px; }
   .sv-hcard .btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; padding: 11px 12px; }
   .sv-hbtns .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
+  .cta-band .row .btn { display: inline-flex; align-items: center; gap: 8px; }
+  .cta-band .row .wa-g { width: 18px; height: 18px; fill: currentColor; flex: none; }
   .btn--wa { background: #25D366; border: 0; color: #fff; }
   .btn--wa:hover { background: #1da851; }
   .sv-hsteps { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
