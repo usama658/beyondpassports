@@ -104,9 +104,13 @@
   .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; padding-right: 16px; }
   a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { opacity: 1; transform: none; pointer-events: auto; }
   @media (hover: none) { .sv-fab { opacity: 1; transform: none; pointer-events: auto; } }
-  .sv-silo-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 700; color: #1da851; transition: gap .15s; }
-  .sv-silo-cta:hover { gap: 12px; }
-  .sv-silo-cta .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
+  .sv-silo-cta { display: inline-flex; align-items: center; gap: 11px; margin-top: 18px; color: var(--ink); }
+  .sv-silo-cta-ic { width: 38px; height: 38px; border-radius: 11px; background: #25D366; color: #fff; display: grid; place-items: center; flex: none; box-shadow: 0 10px 22px -12px rgba(37,211,102,.8); transition: background .15s, transform .15s; }
+  .sv-silo-cta .wa-g { width: 18px; height: 18px; fill: currentColor; }
+  .sv-silo-cta:hover .sv-silo-cta-ic { background: #1da851; transform: translateY(-1px); }
+  .sv-silo-cta-tx { display: flex; flex-direction: column; line-height: 1.15; }
+  .sv-silo-cta-tx b { font-size: 14px; font-weight: 800; }
+  .sv-silo-cta-tx small { font-size: 11.5px; font-weight: 600; color: var(--ink-soft); }
   /* WhatsApp glyph inside hero / CTA buttons */
   .btn .wa-g { width: 17px; height: 17px; fill: currentColor; flex: none; margin-right: 2px; vertical-align: -3px; }
 
@@ -224,7 +228,10 @@
         </div>
         @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
         @if ($isCards)
-          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat about this</a>
+          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">
+            <span class="sv-silo-cta-ic">{!! $waGlyph !!}</span>
+            <span class="sv-silo-cta-tx"><b>Chat about this</b><small>Reply in minutes on WhatsApp</small></span>
+          </a>
         @endif
       </div>
       <div class="sv-silo-body">
@@ -252,7 +259,10 @@
           @endforeach
         </div>
         @unless ($isCards)
-          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat to us about {{ \Illuminate\Support\Str::lower($cat['label']) }}</a>
+          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">
+            <span class="sv-silo-cta-ic">{!! $waGlyph !!}</span>
+            <span class="sv-silo-cta-tx"><b>Chat about this</b><small>Reply in minutes on WhatsApp</small></span>
+          </a>
         @endunless
         @endif
       </div>
