@@ -23,7 +23,6 @@
     {{-- Schengen-only: simple top-nav link (mega-menu removed; recoverable from git). --}}
     <a href="{{ url('/destinations') }}">Schengen visa</a>
     <a href="{{ url('/services') }}">Services</a>
-    <a href="{{ url('/guides') }}">Guides</a>
     <a href="{{ url('/about') }}">About</a>
     <a href="{{ url('/contact') }}" class="btn btn--ghost" style="padding:8px 16px">Contact</a>
     <a href="{{ url('/apply') }}" class="btn" style="padding:8px 16px">Start application →</a>

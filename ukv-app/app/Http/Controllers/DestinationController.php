@@ -31,7 +31,9 @@ class DestinationController extends Controller
      */
     public function index(): View
     {
+        // Schengen-only: the /destinations hub lists the Schengen countries (searchable grid).
         $destinations = Destination::query()
+            ->where('visa_type', 'Schengen')
             ->orderBy('name')
             ->get();
 

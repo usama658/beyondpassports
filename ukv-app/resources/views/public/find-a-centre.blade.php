@@ -147,6 +147,7 @@
       <span><b>✓</b> All types in one search</span>
       <span><b>✓</b> Nothing stored</span>
     </div>
+    @include('partials.trustpilot-cta', ['align' => 'center', 'theme' => 'dark', 'margin' => '16px 0 0'])
   </div>
 </section>
 

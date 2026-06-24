@@ -116,6 +116,7 @@
         <p class="eyebrow">Legal centre</p>
         <h1>Legal &amp; policies</h1>
         <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service. We are not a government website and not affiliated with gov.uk or any embassy.</p>
+        <div style="display:flex;justify-content:center;margin:14px 0 4px">@include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '0'])</div>
         <div class="draft-banner" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
           <p><strong>Draft for review. Have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>

@@ -49,6 +49,13 @@
   .sg-chips .dot{width:7px;height:7px;border-radius:50%;background:var(--cta);flex:none}
   .sg-chips .more{color:var(--muted);box-shadow:none;background:transparent;border-style:dashed}
 
+  /* BROWSE — searchable Schengen country grid */
+  #sg-browse .sec-head{text-align:center;max-width:60ch;margin:0 auto}
+  .sg-search{display:flex;gap:10px;max-width:480px;margin:24px auto 0}
+  .sg-search input{flex:1;padding:13px 16px;border:1px solid var(--paper-edge);border-radius:12px;font:inherit;font-size:15px;background:#fff;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .sg-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
+  @media (max-width:520px){.sg-search{flex-direction:column}}
+
   /* WHAT WE DO — warm stamp-card grid (matches home "What we do") */
   #sg-do{background:linear-gradient(180deg,#FBF6F1,var(--paper))}
   #sg-do .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
@@ -109,15 +116,29 @@
     <h2>What a Schengen visa covers</h2>
     <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
   </div>
-  <ul class="sg-chips">
-    <li><span class="dot" aria-hidden="true"></span>France</li>
-    <li><span class="dot" aria-hidden="true"></span>Spain</li>
-    <li><span class="dot" aria-hidden="true"></span>Italy</li>
-    <li><span class="dot" aria-hidden="true"></span>Germany</li>
-    <li><span class="dot" aria-hidden="true"></span>Greece</li>
-    <li><span class="dot" aria-hidden="true"></span>Netherlands</li>
-    <li class="more">and 23 more</li>
-  </ul>
+</div></section>
+
+{{-- BROWSE — searchable Schengen country grid (boarding-pass cards) --}}
+<section id="sg-browse"><div class="wrap">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Browse</p>
+    <h2>Pick your main destination</h2>
+    <p class="lede" style="margin:12px auto 0;max-width:56ch">Search the 29 Schengen countries. You apply through your main-destination country and one visa covers the whole Area.</p>
+  </div>
+  <form class="sg-search" role="search" onsubmit="return false">
+    <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
+    <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
+  </form>
+  @if ($destinations->isEmpty())
+    <p style="text-align:center;color:var(--muted);margin-top:24px">Schengen destinations are being added shortly.</p>
+  @else
+    <div id="destGrid" class="dests" style="margin-top:26px">
+      @foreach ($destinations as $destination)
+        @include('partials.destination-card', ['destination' => $destination])
+      @endforeach
+    </div>
+    <p class="sg-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
+  @endif
 </div></section>
 
 {{-- 4) WHAT WE DO — six-service stamp grid (.ticks / .tick / #ukv-stamp) --}}
@@ -175,5 +196,28 @@
   <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your Schengen application needs, or run the free checker first.</p>
   <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Run the free checker</a></div>
 </div></section>
+
+@if ($destinations->isNotEmpty())
+<script>
+  // Live client-side filter over the Schengen country cards.
+  (function () {
+    var input = document.getElementById('destSearch');
+    var grid = document.getElementById('destGrid');
+    var empty = document.getElementById('destEmpty');
+    if (!input || !grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.pass'));
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function (c) {
+        var hit = !q || (c.getAttribute('data-name') || '').indexOf(q) !== -1;
+        c.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      if (empty) empty.style.display = shown ? 'none' : 'block';
+    });
+  })();
+</script>
+@endif
 
 @endsection
