@@ -166,7 +166,7 @@
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Refusals prevented</span>
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>A real UK specialist, by name</span>
   </div>
-  @include('partials.trustpilot', ['template' => 'micro', 'margin' => '18px 0 0'])
+  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '18px 0 0'])
   <script>
     (function () {
       var WA = @json(config('ukv.whatsapp') ?: '440000000000');
@@ -323,7 +323,7 @@
       </div>
     </form>
     <p class="micro" id="rk-micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
-    @include('partials.trustpilot', ['template' => 'micro', 'margin' => '14px 0 0'])
+    @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
 </div></div>
   <script>
