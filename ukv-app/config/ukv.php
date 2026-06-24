@@ -134,8 +134,8 @@ return [
         // Leave blank and the site shows the "Review us on Trustpilot" CTA instead.
         // Update by hand whenever your Trustpilot profile changes (manual sync).
         // ONLY enter true figures — fake ratings are illegal (DMCCA 2024).
-        'rating'        => env('UKV_TRUSTPILOT_RATING', ''),         // e.g. 4.9 (out of 5)
-        'reviews_count' => env('UKV_TRUSTPILOT_REVIEWS_COUNT', ''),  // e.g. 27
+        'rating'        => env('UKV_TRUSTPILOT_RATING', '3.7'),       // out of 5 (real, manual)
+        'reviews_count' => env('UKV_TRUSTPILOT_REVIEWS_COUNT', '1'),  // real count (manual)
         // Optional: a few real, verbatim reviews to feature (cards). Keep them genuine.
         //   ['name' => 'Aisha K.', 'stars' => 5, 'title' => 'Visa sorted fast',
         //    'text' => 'They checked everything and...', 'date' => 'Jun 2026']
