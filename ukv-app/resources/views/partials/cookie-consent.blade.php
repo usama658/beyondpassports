@@ -41,10 +41,7 @@
   var loaded=false;
   function loadAcceptedScripts(){
     if(loaded) return; loaded=true;
-    // Trustpilot TrustBox bootstrap (non-essential — reviews)
-    var s=document.createElement('script');
-    s.async=true; s.src='https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
-    document.head.appendChild(s);
+    // Trustpilot bootstrap now loads ungated in partials/trustpilot (reviews show without consent).
 @if (config('ukv.gtm_id'))
     // Google Tag Manager (non-essential — analytics/marketing). Consent-gated.
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ config('ukv.gtm_id') }}');

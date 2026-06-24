@@ -22,9 +22,11 @@
     $tpMargin = $margin ?? '18px 0';
 @endphp
 @if (! empty($tp['business_unit_id']))
-    {{-- NB: the Trustpilot bootstrap script is NOT loaded here. It is injected by
-         partials/cookie-consent only after the visitor accepts cookies (UK PECR).
-         These widget divs sit inert until then; Trustpilot initialises them on load. --}}
+    {{-- Trustpilot bootstrap loads ungated (reviews show without cookie consent).
+         @once so it is injected a single time even with multiple widgets on a page. --}}
+    @once
+        <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    @endonce
     <div class="tp-wrap" style="text-align:{{ $tpAlign }};margin:{{ $tpMargin }}">
         <div class="trustpilot-widget" data-locale="en-GB"
              data-template-id="{{ $tpTemplateId }}"
