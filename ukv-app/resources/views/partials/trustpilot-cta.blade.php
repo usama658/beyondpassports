@@ -51,7 +51,7 @@
   .ft-main .cols a.tpc:hover{color:#fff}
 
   /* Rating widget (Trustpilot-style) */
-  .tpr{display:inline-flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}
+  .tpr{display:inline-flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:8px;text-decoration:none;color:var(--ink)}
   .tpr-word{font:800 14px var(--display);letter-spacing:.01em}
   .tpr-stars{position:relative;display:inline-block;line-height:0}
   .tpr-row{display:inline-flex;gap:3px;white-space:nowrap}
