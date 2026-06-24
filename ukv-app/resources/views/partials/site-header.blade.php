@@ -62,6 +62,7 @@
         </div>
       </div></div>
     </details>
+    <a href="{{ url('/services') }}">Services</a>
     <a href="{{ url('/guides') }}">Guides</a>
     <a href="{{ url('/about') }}">About</a>
     <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:8px 16px">Track</a>

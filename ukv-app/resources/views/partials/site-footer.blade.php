@@ -68,6 +68,7 @@
       </div>
       <div>
         <strong>Service</strong>
+        <a href="{{ url('/services') }}">All services</a>
         <a href="{{ url('/destinations') }}">Destinations</a>
         <a href="{{ url('/tools') }}">Visa checker</a>
         <a href="{{ url('/apply') }}">Start an application</a>

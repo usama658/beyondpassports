@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // --- Public site (the content silo) ---
 Route::view('/', 'public.home')->name('home');
+Route::view('/services', 'public.services')->name('services'); // full-catalogue hub (config('ukv.services'))
 Route::view('/tools', 'public.tools')->name('tools');
 // Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
 Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.page');

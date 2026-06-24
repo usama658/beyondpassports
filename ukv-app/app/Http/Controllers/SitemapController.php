@@ -35,6 +35,7 @@ class SitemapController extends Controller
         // Static public pages: [path, changefreq, priority]
         $static = [
             ['/', 'weekly', '1.0'],
+            ['/services', 'weekly', '0.9'],
             ['/destinations', 'weekly', '0.8'],
             ['/tools', 'monthly', '0.7'],
             ['/driving-abroad', 'monthly', '0.7'],

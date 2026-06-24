@@ -125,4 +125,174 @@ return [
         // a US sub-processor; ensure the privacy policy lists Trustpilot.)
         'invite_bcc'       => env('UKV_TRUSTPILOT_INVITE_BCC', 'beyondpassports.co.uk+bfd39d893d@invite.trustpilot.com'),
     ],
+
+    // ── Services catalogue ────────────────────────────────────────────────────
+    // Drives the /services hub (public.services). Mirrors the locked 14-silo SEO
+    // map (docs/seo-silo-map.md): every service we offer or plan to offer, grouped
+    // by silo, each tagged with an honest availability status so nothing reads as
+    // "live" before it is. Edit here — the page renders straight from this array.
+    //
+    //   status: 'available'    → built + bookable now (link goes to the live page)
+    //           'coming-soon'  → planned, not live yet (shown, no false promise)
+    //           'on-request'   → we help case-by-case; contact us
+    //   url:    internal path for the service/hub, or null (falls back to /contact)
+    //
+    // Compliance: no approval/refund guarantee anywhere; "express" speeds our
+    // handling not the government's decision; service fee is separate from any
+    // government fee; insurance is signposted via an FCA-authorised partner only.
+    'services' => [
+        [
+            'key'   => 'destinations',
+            'label' => 'Destinations & visa preparation',
+            'url'   => '/destinations',
+            'intro' => 'Checked, prepared and submitted — for the place you are actually going.',
+            'items' => [
+                ['title' => 'Schengen visa preparation', 'desc' => 'Documents checked, forms prepared, application submitted.', 'status' => 'available', 'url' => '/destinations'],
+                ['title' => 'eVisa & ETA facilitation', 'desc' => 'Turkey, India and more — the online authorisations, done right.', 'status' => 'available', 'url' => '/destinations'],
+                ['title' => 'Worldwide / non-Schengen visas', 'desc' => 'Other destinations handled case by case.', 'status' => 'on-request', 'url' => '/contact'],
+                ['title' => 'Group & family applications', 'desc' => 'One coordinated submission for everyone travelling.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'visa-types',
+            'label' => 'By visa type',
+            'url'   => '/visa/schengen',
+            'intro' => 'The right category for your trip — get this wrong and it is a refusal.',
+            'items' => [
+                ['title' => 'Tourist & visitor', 'desc' => 'Holidays, sightseeing, visiting friends.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Business', 'desc' => 'Meetings, conferences, trade events.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Family visit', 'desc' => 'Visiting relatives, with the right invitation evidence.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Short study, medical & cultural', 'desc' => 'Courses, treatment, events under 90 days.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Airport transit', 'desc' => 'When a transit visa is required to change planes.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Long-stay & multi-entry', 'desc' => 'Frequent travel and stays beyond a single visit.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'appointments',
+            'label' => 'Appointments',
+            'url'   => '/appointments',
+            'intro' => 'The slot, the centre, the soonest date — sorted.',
+            'items' => [
+                ['title' => 'Appointment booking', 'desc' => 'VFS / embassy slots booked for you.', 'status' => 'available', 'url' => '/find-a-centre'],
+                ['title' => 'Find your nearest centre', 'desc' => 'Closest visa / IDP centre by postcode.', 'status' => 'available', 'url' => '/find-a-centre'],
+                ['title' => 'Express appointments', 'desc' => 'Soonest available slots (speeds handling, not the decision).', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'By city', 'desc' => 'London, Manchester, Edinburgh, Birmingham.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'documents',
+            'label' => 'Documents',
+            'url'   => '/documents',
+            'intro' => 'The paperwork that decides it — built, checked, evidenced.',
+            'items' => [
+                ['title' => 'Free document checklist', 'desc' => 'A personalised list for your destination.', 'status' => 'available', 'url' => '/document-checklist'],
+                ['title' => 'Document review & pre-check', 'desc' => 'Human and AI check before you submit.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Cover-letter service', 'desc' => 'A clear, persuasive letter for your application.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Financial-evidence guidance', 'desc' => 'Bank statements and proof of funds, done properly.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Document authentication / legalisation', 'desc' => 'Apostille and legalisation handled case by case.', 'status' => 'on-request', 'url' => '/contact'],
+            ],
+        ],
+        [
+            'key'   => 'refusals',
+            'label' => 'Refusals & prevention',
+            'url'   => '/visa-refused',
+            'intro' => 'Spot the weak points before the embassy does.',
+            'featured' => true,
+            'items' => [
+                ['title' => 'Refusal-risk check', 'desc' => 'See where an application is weak before you apply.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Refused before? Reapply support', 'desc' => 'Understand the refusal and rebuild a stronger case.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'authorisations',
+            'label' => 'Other travel authorisations',
+            'url'   => '/travel-authorisation',
+            'intro' => 'Not a visa, still required — the online permits travellers miss.',
+            'items' => [
+                ['title' => 'ETIAS guidance', 'desc' => 'The EU travel authorisation, when it goes live.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'ETA (other countries)', 'desc' => 'Electronic travel authorisations beyond the UK.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'ESTA (USA)', 'desc' => 'US visa-waiver authorisation.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Other e-visas', 'desc' => 'Online visas for destinations worldwide.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'driving',
+            'label' => 'Driving abroad',
+            'url'   => '/driving-abroad',
+            'intro' => 'The right permit for where you drive and the licence you hold.',
+            'items' => [
+                ['title' => 'International Driving Permit (IDP)', 'desc' => 'The correct IDP type for your destination.', 'status' => 'available', 'url' => '/driving-abroad'],
+            ],
+        ],
+        [
+            'key'   => 'essentials',
+            'label' => 'Travel essentials',
+            'url'   => '/travel-essentials',
+            'intro' => 'The rest of what a clean entry needs.',
+            'items' => [
+                ['title' => 'Travel insurance', 'desc' => 'Schengen-compliant cover via an FCA-authorised partner. We do not sell it or take a charge.', 'status' => 'on-request', 'url' => '/contact'],
+                ['title' => 'Entry requirements beyond the visa', 'desc' => 'Vaccinations, transit rules, onward tickets.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'tools',
+            'label' => 'Free tools',
+            'url'   => '/tools',
+            'intro' => 'Use these now, no account, no card.',
+            'items' => [
+                ['title' => 'Visa checker', 'desc' => 'Tell us your trip; we confirm what you need.', 'status' => 'available', 'url' => '/tools'],
+                ['title' => 'Document checklist', 'desc' => 'A personalised checklist in seconds.', 'status' => 'available', 'url' => '/document-checklist'],
+                ['title' => 'Status tracker', 'desc' => 'Track your application end to end.', 'status' => 'available', 'url' => '/track'],
+                ['title' => '90/180-day calculator & estimators', 'desc' => 'Schengen day-count, fee and timing estimates, photo check.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'guides',
+            'label' => 'Guides & stories',
+            'url'   => '/guides',
+            'intro' => 'Plain-English help, country by country.',
+            'items' => [
+                ['title' => 'Country guides & how-tos', 'desc' => 'Step-by-step guides and traveller stories.', 'status' => 'available', 'url' => '/guides'],
+                ['title' => 'Glossary & FAQ', 'desc' => 'Visa jargon, explained simply.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'nationality',
+            'label' => 'For your nationality',
+            'url'   => '/destinations',
+            'intro' => 'Schengen from the UK on any passport.',
+            'featured' => true,
+            'items' => [
+                ['title' => 'UK residents on a non-UK passport', 'desc' => 'Tailored help for Indian, Pakistani, Nigerian, Bangladeshi, South African, Filipino and Ghanaian passport holders living in the UK.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'which-embassy',
+            'label' => 'Which embassy do I apply through?',
+            'url'   => '/destinations',
+            'intro' => 'Apply through the wrong country and it is refused — we get this right.',
+            'items' => [
+                ['title' => 'Main-destination & first-entry rule', 'desc' => 'Which consulate to apply to, including multi-country trips.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+        [
+            'key'   => 'pricing',
+            'label' => 'Pricing & how it works',
+            'url'   => '/compare',
+            'intro' => 'One fixed service fee, shown before you pay.',
+            'items' => [
+                ['title' => 'Apply yourself vs with us', 'desc' => 'A clear side-by-side comparison.', 'status' => 'available', 'url' => '/compare'],
+                ['title' => 'What is included & government fees explained', 'desc' => 'Our service fee is separate from any government fee.', 'status' => 'available', 'url' => '/compare'],
+            ],
+        ],
+        [
+            'key'   => 'partners',
+            'label' => 'For travel agents & business',
+            'url'   => '/contact',
+            'intro' => 'White-label and referral for agencies and corporate travel desks.',
+            'items' => [
+                ['title' => 'Partner & referral programme', 'desc' => 'Add visa handling to your agency or corporate travel desk.', 'status' => 'coming-soon', 'url' => null],
+            ],
+        ],
+    ],
 ];
