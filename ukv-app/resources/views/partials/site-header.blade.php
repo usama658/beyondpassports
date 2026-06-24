@@ -4,7 +4,6 @@
      navMenuDestinations data is supplied by a view composer bound to this partial
      (see AppServiceProvider). --}}
 <div class="topbar"><div class="wrap tb-row">
-  <span class="tb-note">Independent service. <strong>Not a government website</strong></span>
   <span class="tb-links">
     {{-- Trustpilot rating (real figures, manual sync). Custom compact single-line widget. --}}
     <span class="tb-tp">@include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '0'])</span>
