@@ -87,13 +87,11 @@
   .sv-card { padding-bottom: 62px; }
   .sv-card .sv-fab { position: absolute; right: 18px; bottom: 16px; }
 
-  /* WhatsApp chat button: round, grows into a pill on hover (shared by cards + rows) */
-  .sv-fab { display: inline-flex; align-items: center; height: 38px; width: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; overflow: hidden; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); transition: width .22s ease; }
-  .sv-fab .wa-g { width: 19px; height: 19px; fill: currentColor; flex: none; margin: 0 9.5px; }
-  .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity .16s; padding-right: 15px; }
-  a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { width: 150px; }
-  a.sv-card:hover .sv-fab .l, a.sv-row:hover .sv-fab .l { opacity: 1; }
-  @media (hover: none) { .sv-fab { width: 150px; } .sv-fab .l { opacity: 1; } }
+  /* WhatsApp chat button: always-visible pill (shared by cards + rows) */
+  .sv-fab { display: inline-flex; align-items: center; height: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); transition: background .15s, transform .15s; }
+  .sv-fab .wa-g { width: 19px; height: 19px; fill: currentColor; flex: none; margin: 0 8px 0 12px; }
+  .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; padding-right: 16px; }
+  a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { background: #1da851; transform: translateY(-1px); }
   .sv-silo-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 700; color: #1da851; transition: gap .15s; }
   .sv-silo-cta:hover { gap: 12px; }
   .sv-silo-cta .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
