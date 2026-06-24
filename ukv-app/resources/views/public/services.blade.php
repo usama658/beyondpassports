@@ -287,6 +287,17 @@
 </div></section>
 
 {{-- Why us (shared .ticks design, matches home "What we do") --}}
+<style>
+  #why{background:linear-gradient(180deg,#FBF6F1,var(--paper))}
+  #why .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+  #why .sec-head .lede{margin:12px auto 0;max-width:52ch}
+  #why .ticks{margin-top:30px}
+  #why .tick{background:#fff;border:1px solid var(--paper-edge);border-radius:16px;padding:22px;gap:14px;
+    box-shadow:0 10px 30px -22px rgba(40,50,70,.5);transition:transform .25s ease,box-shadow .25s ease}
+  #why .tick:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+  #why .tick .stamp{flex:0 0 44px;width:44px;height:44px;padding:9px;border-radius:11px;
+    background:rgba(46,154,140,.12);color:var(--stamp-text);box-sizing:border-box}
+</style>
 <section id="why"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Why choose us</h2><p class="lede">We do the hard parts, keep it simple, and tell you the truth.</p></div>
   <div class="ticks">
