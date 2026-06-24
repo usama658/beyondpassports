@@ -292,7 +292,7 @@
     <p style="max-width:50ch;color:#eef0f1">Talk to a real person about how our service works, what's included, and the fees, with no obligation. Independent service, not a government website.</p>
     <div class="row">
       <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
     </div>
   </div>
 </section>

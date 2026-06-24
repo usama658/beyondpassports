@@ -122,7 +122,7 @@
               <option value="UK">United Kingdom</option>
               <option value="Other">Other nationality</option>
             </select>
-            <button type="button" id="h-go" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">Get my answer on WhatsApp →</button>
+            <button type="button" id="h-go" class="btn" style="display:block;width:100%;text-align:center;margin-top:18px;padding:14px 20px;box-sizing:border-box">@include('partials.wa-glyph')Get my answer on WhatsApp →</button>
             <p style="font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center">A real UK person replies · we confirm your exact rules</p>
           </div>
         </div>
@@ -213,7 +213,7 @@
   <div class="rule"></div>
   <h2>Checked it? Now let's sort it</h2>
   <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

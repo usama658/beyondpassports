@@ -386,8 +386,8 @@
     <p class="sc-lab">Beyond Passports · UK team</p>
     <p class="sc-big">Mon–Sat · 9–6 UK time</p>
     <div class="ct-actions">
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">Call now</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa">WhatsApp</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">@include('partials.call-glyph')Call now</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa">@include('partials.wa-glyph')WhatsApp</a>
     </div>
   </div>
 </div></div></section>
@@ -411,7 +411,7 @@
             <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
             <p class="sub">Our main line, best for anything you'd rather just talk through. A real, UK-based person picks up. No bots, no overseas call centres.</p>
             <span class="hrs">Mon–Sat 9–6 UK time</span><br>
-            <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">Call now</a>
+            <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">@include('partials.call-glyph')Call now</a>
           </div>
         </div>
 

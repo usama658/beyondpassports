@@ -66,6 +66,9 @@ button,a,.btn,summary{touch-action:manipulation}
 /* Utility top bar — split: compliance note left, rating + contact right (within content width). */
 .topbar{background:#0F4A61;color:rgba(255,255,255,.9);font-family:var(--body);font-size:12.5px;padding:7px 0}
 .topbar .tb-row{display:flex;justify-content:center;align-items:center;gap:8px 18px;flex-wrap:wrap}
+/* Shared inline glyphs for WhatsApp / Call links + buttons (partials.wa-glyph / call-glyph) */
+.wa-g,.call-g{width:1em;height:1em;fill:currentColor;display:inline-block;vertical-align:-0.14em;margin-right:.45em;flex:none}
+.btn .wa-g,.btn .call-g{width:17px;height:17px;vertical-align:-3px}
 .tb-note strong{color:#fff;font-weight:700}
 .tb-links{display:inline-flex;align-items:center;gap:18px}
 .tb-rate{color:#fff;font-weight:700;letter-spacing:.01em}

@@ -8,8 +8,8 @@
     {{-- Trustpilot rating (real figures, manual sync). Custom compact single-line widget. --}}
     <span class="tb-tp">@include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '0'])</span>
     <span class="tb-div" aria-hidden="true"></span>
-    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">@include('partials.call-glyph')Call us</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">@include('partials.wa-glyph')WhatsApp</a>
     @if (array_filter(config('ukv.social', [])))
       <span class="tb-div" aria-hidden="true"></span>
       <span class="tb-social">@include('partials.social-row', ['cls' => 'tb-soc', 'size' => 14])</span>

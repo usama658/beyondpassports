@@ -166,7 +166,7 @@
             @elseif ($contactHref !== null)
               <a class="nc-railbtn is-ghost"
                  href="{{ $contactHref }}"
-                 @if (str_starts_with($contactHref, 'http')) target="_blank" rel="noopener noreferrer" @endif>{{ $railLabel }}</a>
+                 @if (str_starts_with($contactHref, 'http')) target="_blank" rel="noopener noreferrer" @endif>@if (str_starts_with($contactHref, 'tel:'))@include('partials.call-glyph')@endif{{ $railLabel }}</a>
             @endif
           </div>
         </li>

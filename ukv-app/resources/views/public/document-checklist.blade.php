@@ -364,7 +364,7 @@
   <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents, or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
   <div class="row">
     <a href="{{ url('/apply') }}" class="btn">Start my application &rarr;</a>
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">Chat on WhatsApp</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
   </div>
 </div></section>
 
