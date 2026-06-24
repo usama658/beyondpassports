@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Our Services: UK Visa, eVisa, ETA & IDP Help | Beyond Passports')
-@section('description', 'Every Beyond Passports service in one place — Schengen and eVisa preparation, appointments, documents, refusal prevention, driving permits and free tools. Independent UK team. Not a government website.')
+@section('description', 'Every Beyond Passports service in one place: Schengen and eVisa preparation, appointments, documents, refusal prevention, driving permits and free tools. Independent UK team. Not a government website.')
 
 @push('head')
 <style>
@@ -46,11 +46,8 @@
     letter-spacing: .08em; text-transform: uppercase; color: var(--stamp-text);
     border: 1px solid var(--stamp); border-radius: 999px; padding: 3px 10px;
   }
-  .sv-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--stamp-text); margin: 0 0 8px; }
   .sv-side h2 { margin: 0 0 10px; font-size: 27px; line-height: 1.15; letter-spacing: -.01em; }
   .sv-side .sv-intro { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 40ch; }
-  .sv-count { margin-top: 18px; font-size: 13px; color: var(--ink-soft); display: flex; gap: 9px; align-items: center; }
-  .sv-count b { font-size: 28px; color: var(--ink); font-weight: 800; line-height: 1; }
 
   .sv-list { display: flex; flex-direction: column; }
   .sv-row { display: grid; grid-template-columns: 5px 1fr auto; align-items: center; gap: 20px; padding: 22px 4px; border-top: 1px solid var(--paper-edge); transition: padding .15s; }
@@ -126,7 +123,7 @@
 {{-- Hero --}}
 <section class="sv-hero"><div class="wrap">
   <p class="eyebrow">Everything we do, in one place</p>
-  <h1>One UK team for the whole journey — from "do I need a visa?" to passport back in your hand</h1>
+  <h1>One UK team for the whole journey, from "do I need a visa?" to passport back in your hand</h1>
   <p class="lede">Travel-visa and eVisa preparation built around one goal: removing the avoidable reasons applications get refused. Take a single service, or hand us the whole journey.</p>
   <div class="row">
     <a href="{{ url('/tools') }}" class="btn">Check what my trip needs &rarr;</a>
@@ -150,7 +147,7 @@
 
 {{-- Intro --}}
 <section><div class="wrap" style="max-width:720px">
-  <p class="lede" style="margin:0">Most visa problems are avoidable — unclear funds, missing documents, the wrong embassy, a weak travel story. Every service below exists to catch those <strong>before</strong> they cost you the fee, the slot, or the trip.</p>
+  <p class="lede" style="margin:0">Most visa problems are avoidable: unclear funds, missing documents, the wrong embassy, a weak travel story. Every service below exists to catch those <strong>before</strong> they cost you the fee, the slot, or the trip.</p>
 </div></section>
 
 {{-- Category blocks — editorial rows --}}
@@ -158,10 +155,8 @@
 <section class="sv-cat @if($loop->even) alt @endif" id="{{ $cat['key'] }}"><div class="wrap">
   <div class="sv-side">
     @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
-    <p class="sv-eyebrow">Silo {{ sprintf('%02d', $loop->iteration) }}</p>
     <h2>{{ $cat['label'] }}</h2>
     @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
-    <p class="sv-count"><b>{{ count($cat['items']) }}</b> {{ \Illuminate\Support\Str::plural('service', count($cat['items'])) }} in this area</p>
   </div>
   <div class="sv-list">
     @foreach ($cat['items'] as $item)
@@ -192,7 +187,7 @@
   <div class="sec-head"><p class="eyebrow">How it works</p><h2>Three steps, whichever service you take</h2></div>
   <div class="sv-steps">
     <div class="sv-step"><div class="n">1</div><h3>Tell us your trip</h3><p>Use the free checker or a quick form. No card, no account.</p></div>
-    <div class="sv-step"><div class="n">2</div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment — the things that get people refused.</p></div>
+    <div class="sv-step"><div class="n">2</div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment, the things that get people refused.</p></div>
     <div class="sv-step"><div class="n">3</div><h3>You travel</h3><p>Trackable every step, with tracked passport return.</p></div>
   </div>
   <div class="row" style="margin-top:22px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
@@ -213,12 +208,12 @@
 <section id="faq"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">Questions</p><h2>Before you start</h2></div>
   <div class="sv-faq">
-    <details><summary>Can I use one service or do I have to take everything?</summary><p>Either. Pick exactly what you need — one service, several, or the whole journey.</p></details>
+    <details><summary>Can I use one service or do I have to take everything?</summary><p>Either. Pick exactly what you need: one service, several, or the whole journey.</p></details>
     <details><summary>Is the checker really free?</summary><p>Yes. No card, no account. It tells you what your trip needs in about a minute.</p></details>
-    <details><summary>Can you guarantee my visa?</summary><p>No — the embassy makes the decision. What we do is remove the avoidable reasons they say no.</p></details>
+    <details><summary>Can you guarantee my visa?</summary><p>No. The embassy makes the decision. What we do is remove the avoidable reasons they say no.</p></details>
     <details><summary>What does it cost?</summary><p>A clear fixed service fee, shown before you pay. It is separate from any government or embassy fee, which is set by the authorities.</p></details>
-    <details><summary>I'm not a British citizen — can you still help?</summary><p>Yes. We help UK residents travelling on any passport.</p></details>
-    <details><summary>A service is marked "Coming soon" — what now?</summary><p>Message us. We can often still help, or we'll tell you when it goes live.</p></details>
+    <details><summary>I'm not a British citizen, can you still help?</summary><p>Yes. We help UK residents travelling on any passport.</p></details>
+    <details><summary>A service is marked "Coming soon", what now?</summary><p>Message us. We can often still help, or we'll tell you when it goes live.</p></details>
   </div>
 </div></section>
 

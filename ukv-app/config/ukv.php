@@ -65,8 +65,8 @@ return [
     // royalty-free PLACEHOLDER portraits — replace with real, consented team photos.
     // `email` = per-member contact pill on /about; blank → no email pill. PLACEHOLDER addresses.
     'team' => [
-        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted — nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitfield.jpg', 'email' => 'sarah@beyondpassports.co.uk'],
-        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency — the things that get applications refused.', 'lead' => false, 'photo' => '/assets/img/team/james-okonkwo.jpg', 'email' => 'james@beyondpassports.co.uk'],
+        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted, nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitfield.jpg', 'email' => 'sarah@beyondpassports.co.uk'],
+        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency, the things that get applications refused.', 'lead' => false, 'photo' => '/assets/img/team/james-okonkwo.jpg', 'email' => 'james@beyondpassports.co.uk'],
         ['name' => 'Priya Sharma', 'role' => 'Client Support Lead', 'bio' => 'Keeps you updated at every step, from first check to delivered authorisation.', 'lead' => false, 'photo' => '/assets/img/team/priya-sharma.jpg', 'email' => 'priya@beyondpassports.co.uk'],
     ],
 
@@ -145,10 +145,10 @@ return [
             'key'   => 'destinations',
             'label' => 'Destinations & visa preparation',
             'url'   => '/destinations',
-            'intro' => 'We prepare the whole application for where you are actually going — not a template, not a guess.',
+            'intro' => 'We prepare the whole application for where you are actually going, not a template, not a guess.',
             'items' => [
-                ['title' => 'Schengen visa preparation', 'desc' => 'We build and submit your full Schengen application — funds, forms and cover letter checked against the rules before it reaches the consulate.', 'status' => 'available', 'url' => '/destinations'],
-                ['title' => 'eVisa & ETA facilitation', 'desc' => 'Turkey, India and more — we complete the online authorisation correctly the first time, so a small slip does not cost you boarding.', 'status' => 'available', 'url' => '/destinations'],
+                ['title' => 'Schengen visa preparation', 'desc' => 'We build and submit your full Schengen application. Funds, forms and cover letter checked against the rules before it reaches the consulate.', 'status' => 'available', 'url' => '/destinations'],
+                ['title' => 'eVisa & ETA facilitation', 'desc' => 'Turkey, India and more. We complete the online authorisation correctly the first time, so a small slip does not cost you boarding.', 'status' => 'available', 'url' => '/destinations'],
                 ['title' => 'Worldwide / non-Schengen visas', 'desc' => 'Heading further afield? Tell us where and we scope and handle the visa for you, case by case.', 'status' => 'on-request', 'url' => '/contact'],
                 ['title' => 'Group & family applications', 'desc' => 'Travelling as a family or group? We link every applicant into one managed case so nobody is left behind.', 'status' => 'on-request', 'url' => '/contact'],
             ],
@@ -159,12 +159,12 @@ return [
             'url'   => '/visa/schengen',
             'intro' => 'Pick the wrong category and you are refused before anyone reads your file. We match your trip to the right one.',
             'items' => [
-                ['title' => 'Tourist & visitor', 'desc' => 'Holidays, sightseeing or visiting friends — prepared as a clean, low-risk visitor application.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Tourist & visitor', 'desc' => 'Holidays, sightseeing or visiting friends, prepared as a clean, low-risk visitor application.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Business', 'desc' => 'Meetings, conferences and trade events, with the invitation and employer evidence consulates expect.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'Family visit', 'desc' => 'Visiting relatives abroad — with the invitation, sponsorship and proof-of-ties evidence that carries weight.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Family visit', 'desc' => 'Visiting relatives abroad, with the invitation, sponsorship and proof-of-ties evidence that carries weight.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Short study, medical & cultural', 'desc' => 'Courses, treatment or events under 90 days, documented for the exact purpose of your trip.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Airport transit', 'desc' => 'Just changing planes? We confirm whether you need a transit visa and prepare it if you do.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'Long-stay & multi-entry', 'desc' => 'Travelling often or staying longer — we build the case for multi-entry and longer-validity visas.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Long-stay & multi-entry', 'desc' => 'Travelling often or staying longer. We build the case for multi-entry and longer-validity visas.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
@@ -175,8 +175,8 @@ return [
             'items' => [
                 ['title' => 'Appointment booking', 'desc' => 'We secure your VFS or embassy slot and make sure you walk in with everything in order.', 'status' => 'available', 'url' => '/find-a-centre'],
                 ['title' => 'Find your nearest centre', 'desc' => 'Enter your postcode and we point you to the closest visa or IDP centre.', 'status' => 'available', 'url' => '/find-a-centre'],
-                ['title' => 'Express appointments', 'desc' => 'Need to go sooner? We hunt the earliest slots — this speeds the appointment, not the consulate decision.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'By city', 'desc' => 'London, Manchester, Edinburgh or Birmingham — local appointment help wherever you are.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Express appointments', 'desc' => 'Need to go sooner? We hunt the earliest slots. This speeds the appointment, not the consulate decision.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'By city', 'desc' => 'London, Manchester, Edinburgh or Birmingham. Local appointment help wherever you are.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
@@ -185,21 +185,21 @@ return [
             'url'   => '/documents',
             'intro' => 'Most refusals come down to documents. This is where we earn our fee.',
             'items' => [
-                ['title' => 'Free document checklist', 'desc' => 'A personalised checklist for your exact destination and trip — free, in under a minute.', 'status' => 'available', 'url' => '/document-checklist'],
-                ['title' => 'Document review & pre-check', 'desc' => 'We check every document, by human and AI, against the rules before you submit — catching the gaps that cause refusals.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Free document checklist', 'desc' => 'A personalised checklist for your exact destination and trip. Free, in under a minute.', 'status' => 'available', 'url' => '/document-checklist'],
+                ['title' => 'Document review & pre-check', 'desc' => 'We check every document, by human and AI, against the rules before you submit, catching the gaps that cause refusals.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Cover-letter service', 'desc' => 'A clear, persuasive cover letter that tells your travel story the way a caseworker wants to read it.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'Financial-evidence guidance', 'desc' => 'Bank statements and proof of funds presented properly — one of the biggest reasons applications get knocked back.', 'status' => 'coming-soon', 'url' => null],
-                ['title' => 'Document authentication / legalisation', 'desc' => 'Apostille and legalisation arranged when documents need to be officially recognised abroad.', 'status' => 'on-request', 'url' => '/contact'],
+                ['title' => 'Financial-evidence guidance', 'desc' => 'Bank statements and proof of funds presented properly, one of the biggest reasons applications get knocked back.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Document authentication & legalisation', 'desc' => 'Apostille and legalisation arranged when documents need to be officially recognised abroad.', 'status' => 'on-request', 'url' => '/contact'],
             ],
         ],
         [
             'key'   => 'refusals',
             'label' => 'Refusals & prevention',
             'url'   => '/visa-refused',
-            'intro' => 'A refusal is costly and it follows you. We stop it before it happens — and help you recover if it already has.',
+            'intro' => 'A refusal is costly and it follows you. We stop it before it happens, and help you recover if it already has.',
             'featured' => true,
             'items' => [
-                ['title' => 'Refusal-risk check', 'desc' => 'We pressure-test your application and show you exactly where it is weak — before the consulate does.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Refusal-risk check', 'desc' => 'We pressure-test your application and show you exactly where it is weak, before the consulate does.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Refused before? Reapply support', 'desc' => 'We read your refusal letter, fix the real reason and rebuild a stronger case for the next attempt.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
@@ -209,7 +209,7 @@ return [
             'url'   => '/travel-authorisation',
             'intro' => 'Not a visa, but skip it and you do not fly. We track the ones travellers forget.',
             'items' => [
-                ['title' => 'ETIAS guidance', 'desc' => 'The EU travel authorisation — we prepare you the moment it goes live.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'ETIAS guidance', 'desc' => 'The EU travel authorisation. We prepare you the moment it goes live.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'ETA (other countries)', 'desc' => 'Electronic travel authorisations for countries that now require one before arrival.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'ESTA (USA)', 'desc' => 'The US visa-waiver authorisation, completed correctly so a typo does not ground you.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Other e-visas', 'desc' => 'Online visas for destinations worldwide, handled end to end.', 'status' => 'coming-soon', 'url' => null],
@@ -221,7 +221,7 @@ return [
             'url'   => '/driving-abroad',
             'intro' => 'Hire a car abroad without the right permit and you may be uninsured. We sort the right one.',
             'items' => [
-                ['title' => 'International Driving Permit (IDP)', 'desc' => 'We confirm the exact IDP type for your destination and licence — 1949, 1968 or both.', 'status' => 'available', 'url' => '/driving-abroad'],
+                ['title' => 'International Driving Permit (IDP)', 'desc' => 'We confirm the exact IDP type for your destination and licence: 1949, 1968 or both.', 'status' => 'available', 'url' => '/driving-abroad'],
             ],
         ],
         [
@@ -230,15 +230,15 @@ return [
             'url'   => '/travel-essentials',
             'intro' => 'The bits beyond the visa that still get people turned away at the border.',
             'items' => [
-                ['title' => 'Travel insurance', 'desc' => 'Schengen-compliant cover that meets the medical-cover rule, via an FCA-authorised partner. We do not sell it or take a cut — we just point you to it.', 'status' => 'on-request', 'url' => '/contact'],
-                ['title' => 'Entry requirements beyond the visa', 'desc' => 'Vaccinations, transit rules and onward tickets — the conditions a visa alone does not cover.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Travel insurance', 'desc' => 'Schengen-compliant cover that meets the medical-cover rule, via an FCA-authorised partner. We do not sell it or take a cut. We just point you to it.', 'status' => 'on-request', 'url' => '/contact'],
+                ['title' => 'Entry requirements beyond the visa', 'desc' => 'Vaccinations, transit rules and onward tickets, the conditions a visa alone does not cover.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
             'key'   => 'tools',
             'label' => 'Free tools',
             'url'   => '/tools',
-            'intro' => 'Start here. No account, no card — just answers.',
+            'intro' => 'Start here. No account, no card, just answers.',
             'items' => [
                 ['title' => 'Visa checker', 'desc' => 'Tell us your trip and we confirm exactly what you need in about a minute.', 'status' => 'available', 'url' => '/tools'],
                 ['title' => 'Document checklist', 'desc' => 'A personalised document list for your destination, instantly.', 'status' => 'available', 'url' => '/document-checklist'],
@@ -253,7 +253,7 @@ return [
             'intro' => 'Plain-English answers from people who do this every day.',
             'items' => [
                 ['title' => 'Country guides & how-tos', 'desc' => 'Step-by-step guides and real traveller stories for each destination.', 'status' => 'available', 'url' => '/guides'],
-                ['title' => 'Glossary & FAQ', 'desc' => 'Visa jargon decoded, and the questions everyone asks — answered simply.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Glossary & FAQ', 'desc' => 'Visa jargon decoded, and the questions everyone asks, answered simply.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
@@ -263,7 +263,7 @@ return [
             'intro' => 'British passport or not, we get UK residents to Europe.',
             'featured' => true,
             'items' => [
-                ['title' => 'UK residents on a non-UK passport', 'desc' => 'Applying for Schengen from the UK on an Indian, Pakistani, Nigerian, Bangladeshi, South African, Filipino or Ghanaian passport — handled with the extra evidence your case needs.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'UK residents on a non-UK passport', 'desc' => 'Applying for Schengen from the UK on an Indian, Pakistani, Nigerian, Bangladeshi, South African, Filipino or Ghanaian passport, handled with the extra evidence your case needs.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
@@ -272,7 +272,7 @@ return [
             'url'   => '/destinations',
             'intro' => 'Apply to the wrong country\'s consulate and it is an automatic refusal. We get this right.',
             'items' => [
-                ['title' => 'Main-destination & first-entry rule', 'desc' => 'We work out which consulate you must apply to — including tricky multi-country trips.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Main-destination & first-entry rule', 'desc' => 'We work out which consulate you must apply to, including tricky multi-country trips.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
         [
@@ -282,7 +282,7 @@ return [
             'intro' => 'One fixed service fee, shown before you pay. No surprises.',
             'items' => [
                 ['title' => 'Apply yourself vs with us', 'desc' => 'A straight side-by-side so you can see exactly what you are paying for.', 'status' => 'available', 'url' => '/compare'],
-                ['title' => 'What is included & government fees explained', 'desc' => 'Everything our fee covers — and why the government fee is always separate and set by the authorities.', 'status' => 'available', 'url' => '/compare'],
+                ['title' => 'What is included & government fees explained', 'desc' => 'Everything our fee covers, and why the government fee is always separate and set by the authorities.', 'status' => 'available', 'url' => '/compare'],
             ],
         ],
         [
@@ -291,7 +291,7 @@ return [
             'url'   => '/contact',
             'intro' => 'Add visa handling to your business without building a team.',
             'items' => [
-                ['title' => 'Partner & referral programme', 'desc' => 'White-label or refer — give your clients visa support and earn from every booking.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Partner & referral programme', 'desc' => 'White-label or refer. Give your clients visa support and earn from every booking.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],
     ],
