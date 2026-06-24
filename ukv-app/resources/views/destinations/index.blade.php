@@ -18,7 +18,7 @@
   /* Hero — soft-sky split: copy left, white "Start here" action card right */
   .sg-hero{background:linear-gradient(180deg,#EAF1F4 0%, #F2F5F6 55%, var(--paper) 100%);
     border-bottom:1px solid var(--paper-edge)}
-  .sg-hero > .wrap{padding:50px 0 46px}
+  .sg-hero > .wrap{padding:34px 0 32px}
   .sg-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
   .sg-hero .eyebrow{color:var(--cta)}
   .sg-hero h1{font:700 clamp(30px,4.2vw,46px)/1.05 var(--display);letter-spacing:-.03em;color:var(--ink);margin:0 0 16px;max-width:15ch}
@@ -34,6 +34,12 @@
   .sg-hcard .btn--wa{background:#25D366;border:0;color:#fff}
   .sg-hcard .btn--wa:hover{background:#1da851}
   .sg-hcard .btn--ghost{background:#fff;border:1px solid var(--paper-edge);color:var(--ink)}
+  /* Trustpilot rating fits the narrow card: smaller stars, centred, tidy wrap */
+  .sg-hcard .tpr{justify-content:center;gap:6px 9px}
+  .sg-hcard .tpr .tpr-box{width:18px;height:18px}
+  .sg-hcard .tpr .tpr-box svg{width:12px;height:12px}
+  .sg-hcard .tpr .tpr-word{font-size:13px}
+  .sg-hcard .tpr .tpr-meta,.sg-hcard .tpr .tpr-logo{font-size:12px}
   @media (max-width:760px){.sg-hero-grid{grid-template-columns:1fr;gap:26px}}
 
   /* Trust band — dark mesh band (matches home / services .tbar-f) */
