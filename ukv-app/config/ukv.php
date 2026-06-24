@@ -19,6 +19,8 @@ return [
     // Public contact details — surfaced site-wide (topbar, footer, contact page, CTAs).
     'phone' => env('UKV_PHONE', ''),            // human-readable display, e.g. +44 20 1234 5678
     'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
+    'phone_de' => env('UKV_PHONE_DE', ''),          // Germany display number, e.g. +49 30 1234567
+    'phone_de_e164' => env('UKV_PHONE_DE_E164', ''),// Germany tel: link, e.g. +49301234567
     'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
 
