@@ -15,18 +15,26 @@
 <style>
   /* Schengen hub — page-scoped only (sg- prefix). Reuses the site design system in ukv.css. */
 
-  /* Hero — soft-sky centred band (matches home/destinations hero treatment) */
+  /* Hero — soft-sky split: copy left, white "Start here" action card right */
   .sg-hero{background:linear-gradient(180deg,#EAF1F4 0%, #F2F5F6 55%, var(--paper) 100%);
-    border-bottom:1px solid var(--paper-edge);text-align:center}
-  .sg-hero > .wrap{padding:48px 0 44px}
+    border-bottom:1px solid var(--paper-edge)}
+  .sg-hero > .wrap{padding:50px 0 46px}
+  .sg-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
   .sg-hero .eyebrow{color:var(--cta)}
-  .sg-hero h1{font:700 clamp(30px,4.4vw,48px)/1.04 var(--display);letter-spacing:-.03em;color:var(--ink);margin:0 auto 16px;max-width:18ch}
-  .sg-hero .lede{color:var(--muted);font-size:18px;line-height:1.5;max-width:54ch;margin:0 auto}
-  .sg-hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .sg-hero .btn{display:inline-flex;align-items:center;gap:8px}
-  .sg-hero .btn--wa{background:#25D366;border:0;color:#fff}
-  .sg-hero .btn--wa:hover{background:#1da851}
+  .sg-hero h1{font:700 clamp(30px,4.2vw,46px)/1.05 var(--display);letter-spacing:-.03em;color:var(--ink);margin:0 0 16px;max-width:15ch}
+  .sg-hero .lede{color:var(--muted);font-size:18px;line-height:1.5;max-width:46ch;margin:0}
   .btn .wa-g{width:17px;height:17px;fill:currentColor;flex:none;vertical-align:-3px}
+  /* Start-here card */
+  .sg-hcard{background:#fff;border:1px solid var(--paper-edge);border-radius:18px;padding:24px;
+    box-shadow:0 30px 64px -34px rgba(40,50,70,.5)}
+  .sg-hcard h3{font:800 17px var(--display);color:var(--ink);margin:0 0 4px}
+  .sg-hcard > p{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+  .sg-hcard .acts{display:flex;flex-direction:column;gap:12px}
+  .sg-hcard .btn{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .sg-hcard .btn--wa{background:#25D366;border:0;color:#fff}
+  .sg-hcard .btn--wa:hover{background:#1da851}
+  .sg-hcard .btn--ghost{background:#fff;border:1px solid var(--paper-edge);color:var(--ink)}
+  @media (max-width:760px){.sg-hero-grid{grid-template-columns:1fr;gap:26px}}
 
   /* Trust band — dark mesh band (matches home / services .tbar-f) */
   .tbar-f{padding:0;background:
@@ -115,16 +123,22 @@
 @section('content')
 
 {{-- 1) HERO — soft-sky centred, WhatsApp + free-checker CTAs --}}
-<section class="sg-hero"><div class="wrap">
-  <p class="eyebrow">Schengen visa</p>
-  <h1>Your Schengen visa, sorted from the UK</h1>
-  <p class="lede">One visa for most of Europe, prepared and checked by a real UK team. We review every document, complete the forms and book your appointment, so a small mistake does not cost you the trip.</p>
-  <div class="row">
-    <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat on WhatsApp</a>
-    <a class="btn btn--ghost" href="{{ url('/tools') }}">Run the free checker</a>
+<section class="sg-hero"><div class="wrap"><div class="sg-hero-grid">
+  <div>
+    <p class="eyebrow">Schengen visa · Europe</p>
+    <h1>Your Schengen visa, sorted from the UK</h1>
+    <p class="lede">One visa for most of Europe, prepared and checked by a real UK team. We review every document, complete the forms and book your appointment, so a small mistake does not cost you the trip.</p>
   </div>
-  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '20px 0 0'])
-</div></section>
+  <div class="sg-hcard">
+    <h3>Start here</h3>
+    <p>Message our UK team. No account needed.</p>
+    <div class="acts">
+      <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} WhatsApp us</a>
+      <a class="btn btn--ghost" href="{{ url('/tools') }}">Run the free checker</a>
+    </div>
+    @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
+  </div>
+</div></div></section>
 
 {{-- 2) TRUST BAND — dark mesh band (.tbar-f), 3 compliance points --}}
 <section class="tbar-f"><div class="wrap"><div class="row">
