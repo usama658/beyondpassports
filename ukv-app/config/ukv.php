@@ -115,8 +115,9 @@ return [
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.
     'trustpilot' => [
-        'business_unit_id' => env('UKV_TRUSTPILOT_BUSINESS_UNIT_ID', '6a399ad3747eb53086311900'), // Beyond Passports business unit
-        'template_id'      => env('UKV_TRUSTPILOT_TEMPLATE_ID', '5419b6ffb0d04a076446a9af'), // default: Micro Combo; swap for your chosen TrustBox
+        'business_unit_id' => env('UKV_TRUSTPILOT_BUSINESS_UNIT_ID', '6a399ad11e7ab73189428ce3'), // Beyond Passports business unit
+        'template_id'      => env('UKV_TRUSTPILOT_TEMPLATE_ID', '56278e9abfbbba0bdcd568bc'), // Review Collector (the box enabled on this unit)
+        'review_token'     => env('UKV_TRUSTPILOT_REVIEW_TOKEN', '4da63923-ed36-4abf-ac4c-18f0db428119'), // required by the Review Collector template
         'domain'           => env('UKV_TRUSTPILOT_DOMAIN', 'beyondpassports.co.uk'),         // your verified review domain
         'profile_url'      => env('UKV_TRUSTPILOT_PROFILE_URL', ''),                         // public review-collection link (optional CTA)
         // Automatic Feedback BCC: Trustpilot's unique invite alias. BCC'd ONLY on the

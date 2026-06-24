@@ -17,7 +17,8 @@
     $tpKey = $template ?? null;
     $tpTemplateId = $tpKey ? ($tpTemplates[$tpKey] ?? $tpKey) : $tp['template_id'];
     $tpAlign  = $align ?? 'center';
-    $tpHeight = $height ?? '24px';
+    $tpHeight = $height ?? '52px';
+    $tpToken  = $tp['review_token'] ?? null;
     $tpWidth  = $width ?? '100%';
     $tpMargin = $margin ?? '18px 0';
 @endphp
@@ -31,6 +32,7 @@
         <div class="trustpilot-widget" data-locale="en-GB"
              data-template-id="{{ $tpTemplateId }}"
              data-businessunit-id="{{ $tp['business_unit_id'] }}"
+             @if($tpToken) data-token="{{ $tpToken }}" @endif
              data-style-height="{{ $tpHeight }}" data-style-width="{{ $tpWidth }}" data-theme="light">
             <a href="https://uk.trustpilot.com/review/{{ $tp['domain'] }}" target="_blank" rel="noopener">Trustpilot</a>
         </div>
