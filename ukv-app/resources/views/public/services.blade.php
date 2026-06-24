@@ -87,13 +87,12 @@
   .sv-card { padding-bottom: 62px; }
   .sv-card .sv-fab { position: absolute; right: 18px; bottom: 16px; }
 
-  /* WhatsApp chat button: round, grows into a pill on hover (shared by cards + rows) */
-  .sv-fab { display: inline-flex; align-items: center; height: 38px; width: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; overflow: hidden; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); transition: width .22s ease; }
-  .sv-fab .wa-g { width: 19px; height: 19px; fill: currentColor; flex: none; margin: 0 9.5px; }
-  .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity .16s; padding-right: 15px; }
-  a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { width: 150px; }
-  a.sv-card:hover .sv-fab .l, a.sv-row:hover .sv-fab .l { opacity: 1; }
-  @media (hover: none) { .sv-fab { width: 150px; } .sv-fab .l { opacity: 1; } }
+  /* WhatsApp chat pill: hidden, appears only when the tile is hovered (shared by cards + rows) */
+  .sv-fab { display: inline-flex; align-items: center; height: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); opacity: 0; transform: translateY(4px); transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
+  .sv-fab .wa-g { width: 19px; height: 19px; fill: currentColor; flex: none; margin: 0 8px 0 12px; }
+  .sv-fab .l { font-weight: 800; font-size: 13px; white-space: nowrap; padding-right: 16px; }
+  a.sv-card:hover .sv-fab, a.sv-row:hover .sv-fab { opacity: 1; transform: none; pointer-events: auto; }
+  @media (hover: none) { .sv-fab { opacity: 1; transform: none; pointer-events: auto; } }
   .sv-silo-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 700; color: #1da851; transition: gap .15s; }
   .sv-silo-cta:hover { gap: 12px; }
   .sv-silo-cta .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
@@ -257,14 +256,16 @@
   <div style="text-align:center;margin-top:28px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
 </div></section>
 
-{{-- Why us (shared .ticks design, matches home "What we do") --}}
-<section id="why"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Why choose us</h2><p class="lede">We do the hard parts, keep it simple, and tell you the truth.</p></div>
+{{-- What we do (shared .ticks design, identical to home) --}}
+<section id="what"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">What we do</p><h2>Everything your Schengen application needs</h2><p class="lede">End-to-end help, from eligibility to the embassy door.</p></div>
   <div class="ticks">
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>We help avoid refusals</h3><p>We catch the mistakes that get people refused.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>One clear fee</h3><p>Shown upfront. Separate from the government fee.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest advice</h3><p>No one can promise a visa. We never pretend otherwise.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Real UK team</h3><p>Talk to real people on phone and WhatsApp.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Eligibility check</h3><p>We confirm you can apply, and on the right visa, before you spend anything.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Document review</h3><p>Every document checked by hand against the current embassy rules.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Form completion</h3><p>We fill and check the application so small errors do not creep in.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Appointment booking</h3><p>We find a biometric slot in time for your travel date.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Submission &amp; follow-up</h3><p>We track your application and keep you posted at every step.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Refused before?</h3><p>We work out why and fix it before you reapply.</p></div></div>
   </div>
 </div></section>
 

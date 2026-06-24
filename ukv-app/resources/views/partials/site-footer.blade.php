@@ -70,15 +70,20 @@
         <strong>Service</strong>
         <a href="{{ url('/services') }}">All services</a>
         <a href="{{ url('/destinations') }}">Destinations</a>
-        <a href="{{ url('/tools') }}">Visa checker</a>
         <a href="{{ url('/apply') }}">Start an application</a>
         <a href="{{ url('/track') }}">Track application</a>
+      </div>
+      <div>
+        <strong>Free tools</strong>
+        <a href="{{ url('/tools') }}">Visa checker</a>
+        <a href="{{ url('/document-checklist') }}">Document checker</a>
+        <a href="{{ url('/driving-abroad') }}">Driving abroad (IDP)</a>
+        <a href="{{ url('/find-a-centre') }}">Find a centre</a>
       </div>
       <div>
         <strong>Guides</strong>
         <a href="{{ url('/guides') }}">Visa guides &amp; stories</a>
         <a href="{{ url('/reviews') }}">Traveller reviews</a>
-        <a href="{{ url('/driving-abroad') }}">Driving abroad (IDP)</a>
         <a href="{{ url('/compare') }}">Apply yourself vs us</a>
       </div>
       <div>

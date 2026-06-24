@@ -50,18 +50,7 @@
         </div>
       </div></div>
     </details>
-    {{-- Tools mega-menu: the checkers + finders, with one-line descriptions --}}
-    <details class="mega">
-      <summary class="mlink" role="button" aria-haspopup="true">Tools <span class="ch" aria-hidden="true">▾</span></summary>
-      <div class="mega-panel"><div class="wrap">
-        <div class="mega-list">
-          <a class="mega-item" href="{{ url('/tools') }}"><b>Visa checker</b><span>Tell us your trip and we confirm exactly what you need.</span></a>
-          <a class="mega-item" href="{{ url('/document-checklist') }}"><b>Document checker</b><span>A personalised document checklist for your destination.</span></a>
-          <a class="mega-item" href="{{ url('/driving-abroad') }}"><b>Driving abroad (IDP)</b><span>Check if you need an International Driving Permit.</span></a>
-          <a class="mega-item" href="{{ url('/find-a-centre') }}"><b>Find a centre</b><span>Your nearest IDP / visa centre by postcode.</span></a>
-        </div>
-      </div></div>
-    </details>
+    {{-- Tools moved to the footer; mega-menu design saved as partials/nav-mega for reuse. --}}
     <a href="{{ url('/services') }}">Services</a>
     <a href="{{ url('/guides') }}">Guides</a>
     <a href="{{ url('/about') }}">About</a>
