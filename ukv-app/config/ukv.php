@@ -143,6 +143,7 @@ return [
     'services' => [
         [
             'key'   => 'destinations',
+            'layout' => 'cards',
             'label' => 'Destinations & visa preparation',
             'url'   => '/destinations',
             'intro' => 'We prepare the whole application for where you are actually going, not a template, not a guess.',
@@ -155,6 +156,7 @@ return [
         ],
         [
             'key'   => 'visa-types',
+            'layout' => 'cards',
             'label' => 'By visa type',
             'url'   => '/visa/schengen',
             'intro' => 'Pick the wrong category and you are refused before anyone reads your file. We match your trip to the right one.',
@@ -169,6 +171,7 @@ return [
         ],
         [
             'key'   => 'appointments',
+            'layout' => 'cards',
             'label' => 'Appointments',
             'url'   => '/appointments',
             'intro' => 'The slot is half the battle. We find it, book it and get you ready for the day.',
@@ -181,6 +184,7 @@ return [
         ],
         [
             'key'   => 'documents',
+            'layout' => 'cards',
             'label' => 'Documents',
             'url'   => '/documents',
             'intro' => 'Most refusals come down to documents. This is where we earn our fee.',
@@ -205,6 +209,7 @@ return [
         ],
         [
             'key'   => 'authorisations',
+            'layout' => 'cards',
             'label' => 'Other travel authorisations',
             'url'   => '/travel-authorisation',
             'intro' => 'Not a visa, but skip it and you do not fly. We track the ones travellers forget.',
@@ -236,6 +241,7 @@ return [
         ],
         [
             'key'   => 'tools',
+            'layout' => 'cards',
             'label' => 'Free tools',
             'url'   => '/tools',
             'intro' => 'Start here. No account, no card, just answers.',

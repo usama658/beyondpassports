@@ -64,6 +64,20 @@
   .sv-arrow svg { width: 16px; height: 16px; }
   a.sv-row:hover .sv-arrow { background: var(--stamp); border-color: var(--stamp); color: #fff; }
 
+  /* Signature-card layout (categories with layout = cards) */
+  .sv-cat--cards .wrap { display: block; }
+  .sv-cat--cards .sv-side { position: static; margin-bottom: 24px; }
+  .sv-cat--cards .sv-side .sv-intro { max-width: 60ch; }
+  .sv-cardgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .sv-card { position: relative; display: flex; flex-direction: column; gap: 9px; padding: 22px; background: #fff; border: 1px solid var(--paper-edge); border-radius: 14px; box-shadow: var(--lift-1); overflow: hidden; transition: transform .16s, box-shadow .16s, border-color .16s; }
+  .sv-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: linear-gradient(var(--stamp), var(--cta)); opacity: 0; transition: opacity .16s; }
+  a.sv-card:hover { transform: translateY(-3px); box-shadow: var(--lift-2); border-color: var(--stamp); }
+  a.sv-card:hover::before { opacity: 1; }
+  .sv-card .sv-chip { align-self: flex-start; }
+  .sv-card h3 { margin: 0; font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+  .sv-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); flex: 1; line-height: 1.5; }
+  .sv-card .sv-go { margin-top: 2px; font-size: 13px; font-weight: 700; color: var(--stamp-text); }
+
   /* Status chips */
   .sv-chip {
     font-size: 10.5px; font-weight: 800;
@@ -150,14 +164,37 @@
   <p class="lede" style="margin:0">Most visa problems are avoidable: unclear funds, missing documents, the wrong embassy, a weak travel story. Every service below exists to catch those <strong>before</strong> they cost you the fee, the slot, or the trip.</p>
 </div></section>
 
-{{-- Category blocks — editorial rows --}}
+{{-- Category blocks — editorial rows by default, signature cards where layout=cards --}}
 @foreach ($catalogue as $cat)
-<section class="sv-cat @if($loop->even) alt @endif" id="{{ $cat['key'] }}"><div class="wrap">
+  @php $isCards = ($cat['layout'] ?? 'rows') === 'cards'; @endphp
+<section class="sv-cat @if($isCards) sv-cat--cards @endif @if($loop->even) alt @endif" id="{{ $cat['key'] }}"><div class="wrap">
   <div class="sv-side">
     @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
     <h2>{{ $cat['label'] }}</h2>
     @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
   </div>
+
+  @if ($isCards)
+  <div class="sv-cardgrid">
+    @foreach ($cat['items'] as $item)
+      @php
+        $href = $item['url'] ?? null;
+        $isLink = in_array($item['status'], ['available', 'on-request'], true) && $href;
+        $tag = $isLink ? 'a' : 'div';
+      @endphp
+      <{{ $tag }} class="sv-card" @if($isLink) href="{{ url($href) }}" @endif>
+        <span class="sv-chip sv-chip--{{ $item['status'] }}">{{ $statusLabels[$item['status']] ?? $item['status'] }}</span>
+        <h3>{{ $item['title'] }}</h3>
+        <p>{{ $item['desc'] }}</p>
+        @if ($item['status'] === 'available' && $href)
+          <span class="sv-go">Open &rarr;</span>
+        @elseif ($item['status'] === 'on-request' && $href)
+          <span class="sv-go">Ask us &rarr;</span>
+        @endif
+      </{{ $tag }}>
+    @endforeach
+  </div>
+  @else
   <div class="sv-list">
     @foreach ($cat['items'] as $item)
       @php
@@ -179,6 +216,7 @@
       </{{ $tag }}>
     @endforeach
   </div>
+  @endif
 </div></section>
 @endforeach
 
