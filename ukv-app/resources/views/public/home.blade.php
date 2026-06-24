@@ -582,7 +582,7 @@
   <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 6px">
     <p class="eyebrow">Trusted by UK travellers</p>
     <h2>Real people, really sorted</h2>
-    @include('partials.trustpilot')
+    <div style="display:flex;justify-content:center;margin-top:10px">@include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '0'])</div>
   </div>
   <div class="tquotes">
     @foreach ($homeQuotes as $t)
