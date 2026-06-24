@@ -76,6 +76,16 @@
   .sv-silo .sv-star { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--stamp-text); border: 1px solid var(--stamp); border-radius: 999px; padding: 3px 10px; }
   .sv-silo .sv-intro { margin: 8px 0 22px; color: var(--ink-soft); font-size: 15.5px; max-width: 62ch; }
 
+  /* Split card silo: sticky header left, cards right */
+  .sv-silo--split { display: grid; grid-template-columns: .8fr 2fr; gap: 36px; align-items: start; }
+  .sv-silo--split .sv-silo-head { position: sticky; top: 88px; }
+  .sv-silo--split .sv-intro { margin: 8px 0 0; max-width: 34ch; }
+  .sv-silo--split .sv-silo-cta { margin-top: 16px; }
+  .sv-silo--split .sv-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 1100px) { .sv-silo--split .sv-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .sv-silo--split { grid-template-columns: 1fr; gap: 16px; } .sv-silo--split .sv-silo-head { position: static; } .sv-silo--split .sv-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .sv-silo--split .sv-grid { grid-template-columns: 1fr; } }
+
   .sv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .sv-card { position: relative; display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1px solid var(--paper-edge); border-radius: 14px; padding: 20px; box-shadow: var(--lift-1); overflow: hidden; transition: transform .16s, box-shadow .16s, border-color .16s; }
   .sv-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: linear-gradient(var(--stamp), var(--cta)); opacity: 0; transition: opacity .16s; }
@@ -204,39 +214,48 @@
 
   <div class="sv-content">
     @foreach ($catalogue as $cat)
-    <section class="sv-silo" id="{{ $cat['key'] }}">
-      <div class="sv-head">
-        @if (!empty($cat['kicker']))<p class="sv-kicker">{{ $cat['kicker'] }}</p>@endif
-        <h2>{{ $cat['label'] }}</h2>
-        @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
+    @php $isCards = ($cat['layout'] ?? 'rows') === 'cards'; @endphp
+    <section class="sv-silo @if($isCards) sv-silo--split @endif" id="{{ $cat['key'] }}">
+      <div class="sv-silo-head">
+        <div class="sv-head">
+          @if (!empty($cat['kicker']))<p class="sv-kicker">{{ $cat['kicker'] }}</p>@endif
+          <h2>{{ $cat['label'] }}</h2>
+          @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
+        </div>
+        @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
+        @if ($isCards)
+          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat about this</a>
+        @endif
       </div>
-      @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
-      @php $isCards = ($cat['layout'] ?? 'rows') === 'cards'; @endphp
-      @if ($isCards)
-      <div class="sv-grid">
-        @foreach ($cat['items'] as $item)
-          <a class="sv-card" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
-            <h3>{{ $item['title'] }}</h3>
-            <p>{{ $item['desc'] }}</p>
-            <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
-          </a>
-        @endforeach
-      </div>
-      @else
-      <div class="sv-list">
-        @foreach ($cat['items'] as $item)
-          <a class="sv-row" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
-            <span class="sv-rail"></span>
-            <div>
+      <div class="sv-silo-body">
+        @if ($isCards)
+        <div class="sv-grid">
+          @foreach ($cat['items'] as $item)
+            <a class="sv-card" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
               <h3>{{ $item['title'] }}</h3>
               <p>{{ $item['desc'] }}</p>
-            </div>
-            <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
-          </a>
-        @endforeach
+              <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
+            </a>
+          @endforeach
+        </div>
+        @else
+        <div class="sv-list">
+          @foreach ($cat['items'] as $item)
+            <a class="sv-row" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
+              <span class="sv-rail"></span>
+              <div>
+                <h3>{{ $item['title'] }}</h3>
+                <p>{{ $item['desc'] }}</p>
+              </div>
+              <span class="sv-fab">{!! $waGlyph !!}<span class="l">Chat to start</span></span>
+            </a>
+          @endforeach
+        </div>
+        @unless ($isCards)
+          <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat to us about {{ \Illuminate\Support\Str::lower($cat['label']) }}</a>
+        @endunless
+        @endif
       </div>
-      @endif
-      <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat to us about {{ \Illuminate\Support\Str::lower($cat['label']) }}</a>
     </section>
     @endforeach
   </div>
