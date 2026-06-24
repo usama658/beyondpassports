@@ -138,9 +138,9 @@
 
 {{-- Hero --}}
 <section class="sv-hero"><div class="wrap">
-  <p class="eyebrow">Everything we do, in one place</p>
-  <h1>One UK team for the whole journey, from "do I need a visa?" to passport back in your hand</h1>
-  <p class="lede">Travel-visa and eVisa preparation built around one goal: removing the avoidable reasons applications get refused. Take a single service, or hand us the whole journey.</p>
+  <p class="eyebrow">Our services</p>
+  <h1>Visa and travel services, all in one place</h1>
+  <p class="lede">Tell us where you are going. We sort the visa, the documents and the appointment so your trip goes ahead. Tap any service below to chat with our UK team.</p>
   <div class="row">
     <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a>
     <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
@@ -154,16 +154,11 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from any government fee</span></span>
 </div></div></section>
 
-{{-- Intro --}}
-<section><div class="wrap" style="max-width:760px">
-  <p class="lede" style="margin:0">Most visa problems are avoidable: unclear funds, missing documents, the wrong embassy, a weak travel story. Every service below exists to catch those <strong>before</strong> they cost you the fee, the slot, or the trip.</p>
-</div></section>
-
 {{-- Stepper + catalogue --}}
 <div class="wrap"><div class="sv-layout">
 
-  <aside class="sv-step" aria-label="Service areas">
-    <p class="lbl">The journey</p>
+  <aside class="sv-step" aria-label="Our services">
+    <p class="lbl">Our services</p>
     @foreach ($catalogue as $cat)
       <a class="item @if($loop->first) on @endif" href="#{{ $cat['key'] }}" data-target="{{ $cat['key'] }}">
         <span class="dot">{{ $loop->iteration }}</span>
@@ -234,12 +229,12 @@
 
 {{-- Why us (shared .ticks design, matches home "What we do") --}}
 <section id="why"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Prevention-led, not just paperwork</h2><p class="lede">We remove the avoidable reasons applications get refused, and we are honest about what we cannot promise.</p></div>
+  <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Why choose us</h2><p class="lede">We do the hard parts, keep it simple, and tell you the truth.</p></div>
   <div class="ticks">
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Prevention-led</h3><p>We remove the avoidable reasons for refusal. Most agents just file it.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Transparent fixed fee</h3><p>Separate from the government fee, and shown upfront.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest</h3><p>No one can guarantee a government decision, and we never pretend otherwise.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>UK-based team</h3><p>Real people on phone and WhatsApp.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>We help avoid refusals</h3><p>We catch the mistakes that get people refused.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>One clear fee</h3><p>Shown upfront. Separate from the government fee.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest advice</h3><p>No one can promise a visa. We never pretend otherwise.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Real UK team</h3><p>Talk to real people on phone and WhatsApp.</p></div></div>
   </div>
 </div></section>
 
