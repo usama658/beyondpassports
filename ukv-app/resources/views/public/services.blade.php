@@ -34,11 +34,11 @@
 
   /* How-easy micro steps */
   .sv-mini { background: var(--paper); border-bottom: 1px solid var(--paper-edge); }
-  .sv-mini-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px; padding: 18px 0; }
-  .sv-mini .s { display: flex; align-items: center; gap: 10px; padding: 6px 18px; }
-  .sv-mini .n { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 13px; display: grid; place-items: center; flex: none; }
-  .sv-mini .t { font-weight: 700; font-size: 15px; }
-  .sv-mini .sep { color: var(--soft); font-size: 18px; }
+  .sv-mini-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px; padding: 9px 0; }
+  .sv-mini .s { display: flex; align-items: center; gap: 8px; padding: 3px 14px; }
+  .sv-mini .n { width: 21px; height: 21px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 12px; display: grid; place-items: center; flex: none; }
+  .sv-mini .t { font-weight: 700; font-size: 14px; }
+  .sv-mini .sep { color: var(--soft); font-size: 15px; }
   @media (max-width: 480px) { .sv-mini .sep { display: none; } .sv-mini-row { gap: 0; } }
 
   /* Layout — sticky stepper + content */
