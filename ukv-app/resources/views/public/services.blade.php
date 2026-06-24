@@ -46,8 +46,11 @@
     letter-spacing: .08em; text-transform: uppercase; color: var(--stamp-text);
     border: 1px solid var(--stamp); border-radius: 999px; padding: 3px 10px;
   }
+  .sv-kicker { margin: 0 0 8px; font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--stamp-text); }
   .sv-side h2 { margin: 0 0 10px; font-size: 27px; line-height: 1.15; letter-spacing: -.01em; }
   .sv-side .sv-intro { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 40ch; }
+  .sv-side-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; font-size: 14px; font-weight: 700; color: var(--cta); transition: gap .15s; }
+  .sv-side-cta:hover { gap: 11px; }
 
   .sv-list { display: flex; flex-direction: column; }
   .sv-row { display: grid; grid-template-columns: 5px 1fr auto; align-items: center; gap: 20px; padding: 22px 4px; border-top: 1px solid var(--paper-edge); transition: padding .15s; }
@@ -170,8 +173,12 @@
 <section class="sv-cat @if($isCards) sv-cat--cards @endif @if($loop->even) alt @endif" id="{{ $cat['key'] }}"><div class="wrap">
   <div class="sv-side">
     @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
+    @if (!empty($cat['kicker']))<p class="sv-kicker">{{ $cat['kicker'] }}</p>@endif
     <h2>{{ $cat['label'] }}</h2>
     @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
+    @if (!empty($cat['cta']['url']))
+      <a class="sv-side-cta" href="{{ url($cat['cta']['url']) }}">{{ $cat['cta']['label'] }} <span aria-hidden="true">&rarr;</span></a>
+    @endif
   </div>
 
   @if ($isCards)
