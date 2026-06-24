@@ -159,7 +159,7 @@ return [
         [
             'key'   => 'visa-types',
             'layout' => 'cards',
-            'label' => 'By visa type',
+            'label' => 'Which visa do I need?',
             'url'   => '/visa/schengen',
             'intro' => 'Not sure which visa you need? We pick the right one.',
             'kicker' => 'Pick the right visa',
