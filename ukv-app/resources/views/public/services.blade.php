@@ -128,7 +128,9 @@
 
 @php
   $statusLabels = ['available' => 'Available', 'coming-soon' => 'Coming soon', 'on-request' => 'On request'];
-  $catalogue = config('ukv.services', []);
+  // Phase 1: show only the top 6 silos; the rest are kept in config and revealed later.
+  // To show more, raise the limit or remove the array_slice.
+  $catalogue = array_slice(config('ukv.services', []), 0, 6);
 @endphp
 
 {{-- Hero --}}
