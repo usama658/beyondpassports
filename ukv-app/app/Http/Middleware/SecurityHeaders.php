@@ -97,15 +97,17 @@ class SecurityHeaders
             "object-src 'none'",
             "frame-ancestors 'self'",
             "form-action 'self' https://checkout.stripe.com",
-            "img-src 'self' data:",
+            "img-src 'self' data: https: ",
             "font-src 'self' data:",
             "style-src 'self' 'unsafe-inline'",
             // 'unsafe-inline' needed: the public pages carry inline <script> (apply funnel
             // routing, checker JS, reveal). A per-request nonce is the stricter future upgrade.
-            "script-src 'self' 'unsafe-inline' https://js.stripe.com",
-            "connect-src 'self' https://api.stripe.com",
-            // google.com/maps: the /about location embed (interactive map, no API key).
-            "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com",
+            // Consent-loaded third parties (cookie-consent partial): Trustpilot reviews widget,
+            // Google Tag Manager + GA4, Microsoft Clarity, Meta Pixel.
+            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
+            "connect-src 'self' https://api.stripe.com https://widget.trustpilot.com https://*.trustpilot.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.facebook.com",
+            // google.com/maps: the /about location embed; widget.trustpilot.com: TrustBox iframe.
+            "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com https://widget.trustpilot.com",
         ]);
     }
 
