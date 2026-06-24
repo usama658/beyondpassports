@@ -286,16 +286,14 @@
   <div style="text-align:center;margin-top:28px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
 </div></section>
 
-{{-- What we do (shared .ticks design, identical to home) --}}
-<section id="what"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">What we do</p><h2>Everything your Schengen application needs</h2><p class="lede">End-to-end help, from eligibility to the embassy door.</p></div>
+{{-- Why us (shared .ticks design, matches home "What we do") --}}
+<section id="why"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Why choose us</h2><p class="lede">We do the hard parts, keep it simple, and tell you the truth.</p></div>
   <div class="ticks">
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Eligibility check</h3><p>We confirm you can apply, and on the right visa, before you spend anything.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Document review</h3><p>Every document checked by hand against the current embassy rules.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Form completion</h3><p>We fill and check the application so small errors do not creep in.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Appointment booking</h3><p>We find a biometric slot in time for your travel date.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Submission &amp; follow-up</h3><p>We track your application and keep you posted at every step.</p></div></div>
-    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Refused before?</h3><p>We work out why and fix it before you reapply.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>We help avoid refusals</h3><p>We catch the mistakes that get people refused.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>One clear fee</h3><p>Shown upfront. Separate from the government fee.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest advice</h3><p>No one can promise a visa. We never pretend otherwise.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Real UK team</h3><p>Talk to real people on phone and WhatsApp.</p></div></div>
   </div>
 </div></section>
 
