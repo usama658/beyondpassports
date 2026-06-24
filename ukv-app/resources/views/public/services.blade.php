@@ -127,7 +127,7 @@
 <section class="sv-hero"><div class="wrap">
   <p class="eyebrow">Everything we do, in one place</p>
   <h1>One UK team for the whole journey — from "do I need a visa?" to passport back in your hand</h1>
-  <p class="lede">Travel-visa and eVisa preparation built to remove the avoidable reasons applications get refused. Take one service, or hand us the lot.</p>
+  <p class="lede">Travel-visa and eVisa preparation built around one goal: removing the avoidable reasons applications get refused. Take a single service, or hand us the whole journey.</p>
   <div class="row">
     <a href="{{ url('/tools') }}" class="btn">Check what my trip needs &rarr;</a>
     <a href="{{ url('/contact') }}" class="btn btn--ghost">Message our UK team</a>
