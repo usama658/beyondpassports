@@ -15,24 +15,24 @@
       var(--navy);
     color: #fff;
   }
-  .sv-hero .wrap { padding-top: 70px; padding-bottom: 58px; }
+  .sv-hero .wrap { padding-top: 46px; padding-bottom: 40px; }
   .sv-hero .eyebrow { color: var(--soft); }
   .sv-hero h1 { max-width: 19ch; color: #fff; }
   .sv-hero .lede { max-width: 54ch; color: rgba(255,255,255,.82); }
-  .sv-hero .row { margin-top: 24px; }
+  .sv-hero .row { margin-top: 18px; }
   .sv-hero .btn--ghost { border-color: rgba(255,255,255,.4); color: #fff; }
 
   /* Hero split + start-here card */
   .sv-hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
   .sv-hero-copy h1 { max-width: 16ch; }
   .sv-hero-copy .lede { margin-bottom: 0; }
-  .sv-hcard { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 26px; }
-  .sv-hcard h3 { margin: 0 0 4px; font-size: 18px; color: #fff; }
-  .sv-hcard > p { margin: 0 0 16px; color: rgba(255,255,255,.72); font-size: 14px; }
-  .sv-hcard .btn { width: 100%; justify-content: center; margin-bottom: 10px; }
+  .sv-hcard { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 20px; }
+  .sv-hcard h3 { margin: 0 0 3px; font-size: 17px; color: #fff; }
+  .sv-hcard > p { margin: 0 0 12px; color: rgba(255,255,255,.72); font-size: 14px; }
+  .sv-hcard .btn { width: 100%; justify-content: center; margin-bottom: 8px; }
   .btn--wa { background: #25D366; border: 0; color: #fff; }
   .btn--wa:hover { background: #1da851; }
-  .sv-hsteps { margin-top: 14px; display: flex; flex-direction: column; gap: 9px; }
+  .sv-hsteps { margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
   .sv-hsteps span { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.82); }
   .sv-hsteps b { background: rgba(255,255,255,.14); width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; flex: none; }
   @media (max-width: 820px) { .sv-hero-grid { grid-template-columns: 1fr; gap: 28px; } }
