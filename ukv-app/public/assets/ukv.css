@@ -65,7 +65,7 @@ button,a,.btn,summary{touch-action:manipulation}
 .mrz{display:none}
 /* Utility top bar — split: compliance note left, rating + contact right (within content width). */
 .topbar{background:#0F4A61;color:rgba(255,255,255,.9);font-family:var(--body);font-size:12.5px;padding:7px 0}
-.topbar .tb-row{display:flex;justify-content:space-between;align-items:center;gap:8px 18px;flex-wrap:wrap}
+.topbar .tb-row{display:flex;justify-content:center;align-items:center;gap:8px 18px;flex-wrap:wrap}
 .tb-note strong{color:#fff;font-weight:700}
 .tb-links{display:inline-flex;align-items:center;gap:18px}
 .tb-rate{color:#fff;font-weight:700;letter-spacing:.01em}
