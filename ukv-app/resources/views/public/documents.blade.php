@@ -385,7 +385,8 @@
     <div class="help-band reveal">
       <p>Not sure which documents to send, or can't find your reference? We'll help.</p>
       <div class="links">
-        <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn btn--ghost" style="padding:13px 22px">@include('partials.call-glyph')Call us</a>
+        <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}" class="btn btn--ghost" style="padding:13px 22px">@include('partials.call-glyph')Call UK</a>
+        <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn btn--ghost" style="padding:13px 22px">@include('partials.call-glyph')Call Germany</a>
         <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--ghost" style="padding:13px 22px">@include('partials.wa-glyph')WhatsApp</a>
         <a href="{{ url('/track') }}" class="btn btn--ghost" style="padding:13px 22px">Track application</a>
       </div>

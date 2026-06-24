@@ -96,6 +96,8 @@
   .cc-m .sub{font-size:12.5px;color:var(--muted);margin:5px 0 0;line-height:1.5}
   .cc-m .hrs{display:inline-block;font:700 11px var(--display);color:var(--stamp-text);background:#e7f3ef;border-radius:999px;padding:3px 9px;margin:8px 0 0}
   .cc-m .callbtn{margin-top:10px;padding:9px 18px;font-size:13px}
+  .ct-callrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .ct-callrow .callbtn{margin-top:0}
   .cc-form{padding:24px 30px 28px;background:linear-gradient(180deg,#fbfdfd,#fff)}
   .cc-form .cc-fh{font:800 18px var(--display);color:var(--navy);margin:0}
   .cc-form .cc-fh small{display:block;font:600 12.5px var(--display);color:var(--cta);margin-top:3px;letter-spacing:.02em;text-transform:uppercase}
@@ -387,7 +389,8 @@
     <p class="sc-lab">Beyond Passports · UK team</p>
     <p class="sc-big">Mon–Sat · 9–6 UK time</p>
     <div class="ct-actions">
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">@include('partials.call-glyph')Call now</a>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">@include('partials.call-glyph')Call UK</a>
+      <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn">@include('partials.call-glyph')Call Germany</a>
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa">@include('partials.wa-glyph')WhatsApp</a>
     </div>
   </div>
@@ -409,10 +412,14 @@
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92Z"/></svg></span>
           <div>
             <h3>Call us</h3>
-            <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
-            <p class="sub">Our main line, best for anything you'd rather just talk through. A real, UK-based person picks up. No bots, no overseas call centres.</p>
+            <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">UK {{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
+            <p class="detail"><a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">Germany {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a></p>
+            <p class="sub">UK and Germany lines, best for anything you'd rather just talk through. A real person picks up. No bots, no overseas call centres.</p>
             <span class="hrs">Mon–Sat 9–6 UK time</span><br>
-            <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">@include('partials.call-glyph')Call now</a>
+            <div class="ct-callrow">
+              <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">@include('partials.call-glyph')Call UK</a>
+              <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn callbtn">@include('partials.call-glyph')Call Germany</a>
+            </div>
           </div>
         </div>
 
