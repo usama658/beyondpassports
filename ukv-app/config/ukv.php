@@ -150,7 +150,7 @@ return [
                 ['title' => 'Schengen visa preparation', 'desc' => 'Documents checked, forms prepared, application submitted.', 'status' => 'available', 'url' => '/destinations'],
                 ['title' => 'eVisa & ETA facilitation', 'desc' => 'Turkey, India and more — the online authorisations, done right.', 'status' => 'available', 'url' => '/destinations'],
                 ['title' => 'Worldwide / non-Schengen visas', 'desc' => 'Other destinations handled case by case.', 'status' => 'on-request', 'url' => '/contact'],
-                ['title' => 'Group & family applications', 'desc' => 'One coordinated submission for everyone travelling.', 'status' => 'coming-soon', 'url' => null],
+                ['title' => 'Group & family applications', 'desc' => 'One coordinated case for everyone travelling — we link and manage each traveller together.', 'status' => 'on-request', 'url' => '/contact'],
             ],
         ],
         [
