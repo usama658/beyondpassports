@@ -36,33 +36,41 @@
   }
   .sv-chips a:hover { border-color: var(--stamp); color: var(--stamp); }
 
-  /* Category block */
+  /* Category block — editorial rows */
   .sv-cat { scroll-margin-top: 86px; }
   .sv-cat + .sv-cat { border-top: 1px solid var(--paper-edge); }
-  .sv-cat-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
-  .sv-cat-head h2 { margin: 0; }
-  .sv-cat-head .sv-star {
-    font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--stamp); border: 1px solid var(--stamp); border-radius: 999px; padding: 3px 9px;
+  .sv-cat .wrap { display: grid; grid-template-columns: .8fr 2fr; gap: 44px; align-items: start; }
+  .sv-side { position: sticky; top: 86px; }
+  .sv-side .sv-star {
+    display: inline-block; margin-bottom: 12px; font-size: 11px; font-weight: 800;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--stamp-text);
+    border: 1px solid var(--stamp); border-radius: 999px; padding: 3px 10px;
   }
-  .sv-cat-head p { margin: 0; color: var(--ink-soft); flex-basis: 100%; max-width: 60ch; }
+  .sv-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--stamp-text); margin: 0 0 8px; }
+  .sv-side h2 { margin: 0 0 10px; font-size: 27px; line-height: 1.15; letter-spacing: -.01em; }
+  .sv-side .sv-intro { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 40ch; }
+  .sv-count { margin-top: 18px; font-size: 13px; color: var(--ink-soft); display: flex; gap: 9px; align-items: center; }
+  .sv-count b { font-size: 28px; color: var(--ink); font-weight: 800; line-height: 1; }
 
-  /* Service cards */
-  .sv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .sv-card {
-    display: flex; flex-direction: column; gap: 8px;
-    padding: 20px; border: 1px solid var(--paper-edge); border-radius: 14px;
-    background: #fff; box-shadow: var(--lift-1); transition: .15s;
-  }
-  a.sv-card:hover { transform: translateY(-2px); box-shadow: var(--lift-2); border-color: var(--stamp); }
-  .sv-card h3 { margin: 0; font-size: 16px; line-height: 1.3; }
-  .sv-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); flex: 1; }
-  .sv-card .sv-go { font-size: 13px; font-weight: 700; color: var(--stamp); margin-top: 4px; }
+  .sv-list { display: flex; flex-direction: column; }
+  .sv-row { display: grid; grid-template-columns: 5px 1fr auto; align-items: center; gap: 20px; padding: 22px 4px; border-top: 1px solid var(--paper-edge); transition: padding .15s; }
+  .sv-row:first-child { border-top: 0; }
+  a.sv-row { color: inherit; }
+  a.sv-row:hover { padding-left: 14px; }
+  .sv-rail { align-self: stretch; min-height: 44px; border-radius: 4px; background: var(--paper-edge); }
+  .sv-rail--available  { background: var(--stamp); }
+  .sv-rail--coming-soon { background: #caa644; }
+  .sv-rail--on-request { background: var(--cta); }
+  .sv-row h3 { margin: 0 0 5px; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .sv-row p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: 56ch; line-height: 1.5; }
+  .sv-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--paper-edge); display: grid; place-items: center; color: var(--stamp-text); flex: none; transition: .15s; }
+  .sv-arrow svg { width: 16px; height: 16px; }
+  a.sv-row:hover .sv-arrow { background: var(--stamp); border-color: var(--stamp); color: #fff; }
 
   /* Status chips */
   .sv-chip {
-    align-self: flex-start; font-size: 10.5px; font-weight: 800;
-    letter-spacing: .07em; text-transform: uppercase;
+    font-size: 10.5px; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
     padding: 3px 8px; border-radius: 6px; border: 1px solid transparent;
   }
   .sv-chip--available  { color: #1f6b4f; background: rgba(92,154,123,.14); border-color: rgba(92,154,123,.35); }
@@ -94,8 +102,17 @@
   .sv-faq details[open] summary::after { content: '–'; }
   .sv-faq p { margin: 12px 0 0; color: var(--ink-soft); font-size: 14.5px; }
 
-  @media (max-width: 900px) { .sv-grid, .sv-steps { grid-template-columns: repeat(2, 1fr); } .sv-why { grid-template-columns: 1fr; } }
-  @media (max-width: 560px) { .sv-grid, .sv-steps { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) {
+    .sv-cat .wrap { grid-template-columns: 1fr; gap: 24px; }
+    .sv-side { position: static; }
+    .sv-side .sv-intro { max-width: none; }
+    .sv-steps { grid-template-columns: repeat(2, 1fr); }
+    .sv-why { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .sv-steps { grid-template-columns: 1fr; }
+    .sv-row { gap: 14px; }
+  }
 </style>
 @endpush
 
@@ -136,30 +153,33 @@
   <p class="lede" style="margin:0">Most visa problems are avoidable — unclear funds, missing documents, the wrong embassy, a weak travel story. Every service below exists to catch those <strong>before</strong> they cost you the fee, the slot, or the trip.</p>
 </div></section>
 
-{{-- Category blocks --}}
+{{-- Category blocks — editorial rows --}}
 @foreach ($catalogue as $cat)
 <section class="sv-cat @if($loop->even) alt @endif" id="{{ $cat['key'] }}"><div class="wrap">
-  <div class="sv-cat-head">
-    <h2>{{ $cat['label'] }}</h2>
+  <div class="sv-side">
     @if (!empty($cat['featured']))<span class="sv-star">Most important</span>@endif
-    @if (!empty($cat['intro']))<p>{{ $cat['intro'] }}</p>@endif
+    <p class="sv-eyebrow">Silo {{ sprintf('%02d', $loop->iteration) }}</p>
+    <h2>{{ $cat['label'] }}</h2>
+    @if (!empty($cat['intro']))<p class="sv-intro">{{ $cat['intro'] }}</p>@endif
+    <p class="sv-count"><b>{{ count($cat['items']) }}</b> {{ \Illuminate\Support\Str::plural('service', count($cat['items'])) }} in this area</p>
   </div>
-  <div class="sv-grid">
+  <div class="sv-list">
     @foreach ($cat['items'] as $item)
       @php
         $href = $item['url'] ?? null;
-        $isLink = $item['status'] === 'available' && $href;
-        $tag = $isLink ? 'a' : ($item['status'] === 'on-request' ? 'a' : 'div');
-        $cardHref = $isLink ? $href : ($item['status'] === 'on-request' ? ($href ?? '/contact') : null);
+        $isLink = in_array($item['status'], ['available', 'on-request'], true) && $href;
+        $tag = $isLink ? 'a' : 'div';
       @endphp
-      <{{ $tag }} class="sv-card" @if($cardHref) href="{{ url($cardHref) }}" @endif>
-        <span class="sv-chip sv-chip--{{ $item['status'] }}">{{ $statusLabels[$item['status']] ?? $item['status'] }}</span>
-        <h3>{{ $item['title'] }}</h3>
-        <p>{{ $item['desc'] }}</p>
+      <{{ $tag }} class="sv-row" @if($isLink) href="{{ url($href) }}" @endif>
+        <span class="sv-rail sv-rail--{{ $item['status'] }}"></span>
+        <div>
+          <h3>{{ $item['title'] }} <span class="sv-chip sv-chip--{{ $item['status'] }}">{{ $statusLabels[$item['status']] ?? $item['status'] }}</span></h3>
+          <p>{{ $item['desc'] }}</p>
+        </div>
         @if ($isLink)
-          <span class="sv-go">Open &rarr;</span>
-        @elseif ($item['status'] === 'on-request')
-          <span class="sv-go">Ask us &rarr;</span>
+          <span class="sv-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        @else
+          <span aria-hidden="true"></span>
         @endif
       </{{ $tag }}>
     @endforeach
