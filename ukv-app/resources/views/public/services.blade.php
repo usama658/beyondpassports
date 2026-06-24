@@ -32,6 +32,15 @@
   .tbar-f .ti b { color: var(--soft); font-weight: 800; }
   @media (max-width: 560px) { .tbar-f .row { gap: 14px 22px; } }
 
+  /* How-easy micro steps */
+  .sv-mini { background: var(--paper); border-bottom: 1px solid var(--paper-edge); }
+  .sv-mini-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px; padding: 18px 0; }
+  .sv-mini .s { display: flex; align-items: center; gap: 10px; padding: 6px 18px; }
+  .sv-mini .n { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 13px; display: grid; place-items: center; flex: none; }
+  .sv-mini .t { font-weight: 700; font-size: 15px; }
+  .sv-mini .sep { color: var(--soft); font-size: 18px; }
+  @media (max-width: 480px) { .sv-mini .sep { display: none; } .sv-mini-row { gap: 0; } }
+
   /* Layout — sticky stepper + content */
   .sv-layout { display: grid; grid-template-columns: 250px 1fr; gap: 52px; align-items: start; padding: 56px 0 20px; }
 
@@ -152,6 +161,15 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Independent</b> UK team</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>Not</b> a government website</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from any government fee</span></span>
+</div></div></section>
+
+{{-- How-easy micro steps --}}
+<section class="sv-mini"><div class="wrap"><div class="sv-mini-row">
+  <span class="s"><span class="n">1</span><span class="t">Pick a service</span></span>
+  <span class="sep" aria-hidden="true">&rarr;</span>
+  <span class="s"><span class="n">2</span><span class="t">Message us</span></span>
+  <span class="sep" aria-hidden="true">&rarr;</span>
+  <span class="s"><span class="n">3</span><span class="t">We sort it</span></span>
 </div></div></section>
 
 {{-- Stepper + catalogue --}}
