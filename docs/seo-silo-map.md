@@ -1,5 +1,15 @@
 # Beyond Passports — comprehensive SEO silo & service map
 
+> **⚠️ ACTIVE PIVOT (2026-06-24): SCHENGEN-ONLY.** The public site now focuses solely on Schengen
+> visas. Non-Schengen content is being **unpublished (404/redirect)**: all non-Schengen destinations
+> (Turkey, Egypt, India, USA/ESTA, Australia, Thailand, UAE, Vietnam), the IDP / driving-abroad silo,
+> and other travel authorisations (ETIAS/ETA/ESTA/e-visas). `/destinations` becomes the **Schengen
+> visa page**. This is a deliberate temporary narrowing — the silos/destinations below are retained
+> in this doc and in code (config/seeder) so we can restore other destinations later on request.
+> Silos still in scope: Schengen destinations, visa types, appointments, documents, refusals,
+> tools, guides, nationalities, embassy-rule, pricing, B2B. Out of scope for now: #6 travel
+> authorisations, #7 driving/IDP, #8 travel essentials (non-Schengen parts).
+
 **Compiled:** 2026-06-24 · Maps every service surfaced in `competitors.md` (yours + 12 rivals) into a hub-and-spoke information architecture.
 **Model:** prevention-led, Schengen-led, UK outbound facilitation (NOT UK immigration advice). Each silo = one pillar/hub page + topical spokes that interlink only within the silo, all linking up to the hub; hubs cross-link sparingly.
 **Legend:** ✅ live · 🟡 partial/exists in part · 🔴 to build · ⭐ Beyond Passports differentiator vs rivals.
