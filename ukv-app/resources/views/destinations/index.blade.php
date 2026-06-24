@@ -63,6 +63,23 @@
   .sg-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
   @media (max-width:520px){.sg-search{flex-direction:column}}
 
+  /* WHAT A SCHENGEN VISA COVERS — navy passport card (Variant C) */
+  #sg-covers .sg-card{position:relative;overflow:hidden;border-radius:22px;padding:40px 44px;color:#fff;
+    background:radial-gradient(520px 240px at 8% -10%,rgba(21,94,122,.5),transparent 60%),
+      radial-gradient(520px 240px at 96% 110%,rgba(46,154,140,.42),transparent 60%),var(--navy);
+    box-shadow:0 40px 80px -50px rgba(20,30,50,.7)}
+  #sg-covers .sg-card .eyebrow{color:var(--soft)}
+  #sg-covers .sg-card h2{color:#fff;margin:0 0 14px}
+  #sg-covers .sg-card .lede{color:rgba(255,255,255,.82);max-width:62ch;font-size:17px;line-height:1.6}
+  #sg-covers .sg-card-stamp{position:absolute;top:28px;right:30px;width:62px;height:62px;border-radius:14px;
+    border:2px solid rgba(169,204,218,.5);display:grid;place-items:center;color:var(--soft);transform:rotate(-8deg);
+    font:800 10px var(--display);text-align:center;letter-spacing:.08em;opacity:.85;line-height:1.25}
+  #sg-covers .sg-card-facts{display:flex;flex-wrap:wrap;gap:6px 34px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
+  #sg-covers .sg-card-facts .f{padding:6px 0}
+  #sg-covers .sg-card-facts .n{font:800 22px var(--display);color:#fff}
+  #sg-covers .sg-card-facts .l{font-size:12.5px;color:rgba(255,255,255,.7);margin-top:2px}
+  @media (max-width:560px){#sg-covers .sg-card{padding:30px 24px}#sg-covers .sg-card-stamp{display:none}}
+
   /* WHAT WE DO — warm stamp-card grid (matches home "What we do") */
   #sg-do{background:linear-gradient(180deg,#FBF6F1,var(--paper))}
   #sg-do .sec-head{text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
@@ -155,10 +172,16 @@
 
 {{-- WHAT A SCHENGEN VISA COVERS (below the destinations grid) --}}
 <section id="sg-covers"><div class="wrap">
-  <div class="sec-head reveal">
+  <div class="sg-card reveal">
+    <span class="sg-card-stamp" aria-hidden="true">SCHENGEN<br>AREA</span>
     <p class="eyebrow">The basics</p>
     <h2>What a Schengen visa covers</h2>
     <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
+    <div class="sg-card-facts">
+      <div class="f"><div class="n">29 countries</div><div class="l">whole Schengen Area</div></div>
+      <div class="f"><div class="n">90 / 180 days</div><div class="l">short-stay limit</div></div>
+      <div class="f"><div class="n">1 application</div><div class="l">via your main destination</div></div>
+    </div>
   </div>
 </div></section>
 
