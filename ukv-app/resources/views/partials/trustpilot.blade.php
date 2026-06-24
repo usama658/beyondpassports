@@ -17,7 +17,7 @@
     $tpKey = $template ?? null;
     $tpTemplateId = $tpKey ? ($tpTemplates[$tpKey] ?? $tpKey) : $tp['template_id'];
     $tpAlign  = $align ?? 'center';
-    $tpHeight = $height ?? '52px';
+    $tpHeight = $height ?? '24px';
     $tpToken  = $tp['review_token'] ?? null;
     $tpWidth  = $width ?? '100%';
     $tpMargin = $margin ?? '18px 0';
