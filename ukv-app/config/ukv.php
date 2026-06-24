@@ -222,6 +222,7 @@ return [
         ],
         [
             'key'   => 'refusals',
+            'layout' => 'cards',
             'label' => 'Refusals & prevention',
             'url'   => '/visa-refused',
             'intro' => 'Refused before, or worried you might be? We can help.',
