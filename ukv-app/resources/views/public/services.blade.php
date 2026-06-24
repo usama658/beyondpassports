@@ -60,11 +60,15 @@
   a.sv-card:hover { transform: translateY(-3px); box-shadow: var(--lift-2); border-color: var(--stamp); }
   a.sv-card:hover::before { opacity: 1; }
   .sv-card .sv-chip { align-self: flex-start; }
-  .sv-card h3 { margin: 4px 0 0; font-size: 16.5px; line-height: 1.3; }
+  .sv-card h3 { margin: 0; font-size: 16.5px; line-height: 1.3; }
   .sv-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
-  .sv-card .sv-go { margin-top: 2px; font-size: 13px; font-weight: 700; color: var(--stamp-text); }
-  .sv-silo-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; font-size: 14px; font-weight: 700; color: var(--cta); transition: gap .15s; }
-  .sv-silo-cta:hover { gap: 11px; }
+  .sv-card .sv-go { display: inline-flex; align-items: center; gap: 7px; margin-top: 2px; font-size: 13px; font-weight: 700; color: #1da851; }
+  .sv-go .wa-g { width: 15px; height: 15px; fill: currentColor; flex: none; }
+  .sv-silo-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 700; color: #1da851; transition: gap .15s; }
+  .sv-silo-cta:hover { gap: 12px; }
+  .sv-silo-cta .wa-g { width: 16px; height: 16px; fill: currentColor; flex: none; }
+  /* WhatsApp glyph inside hero / CTA buttons */
+  .btn .wa-g { width: 17px; height: 17px; fill: currentColor; flex: none; margin-right: 2px; vertical-align: -3px; }
 
   /* Editorial-row layout (categories with layout = rows) */
   .sv-list { display: flex; flex-direction: column; }
@@ -72,15 +76,12 @@
   .sv-row:first-child { border-top: 0; }
   a.sv-row { color: inherit; }
   a.sv-row:hover { padding-left: 12px; }
-  .sv-rail { align-self: stretch; min-height: 42px; border-radius: 4px; background: var(--paper-edge); }
-  .sv-rail--available  { background: var(--stamp); }
-  .sv-rail--coming-soon { background: #caa644; }
-  .sv-rail--on-request { background: var(--cta); }
-  .sv-row h3 { margin: 0 0 5px; font-size: 16.5px; font-weight: 700; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .sv-rail { align-self: stretch; min-height: 42px; border-radius: 4px; background: var(--stamp); }
+  .sv-row h3 { margin: 0 0 5px; font-size: 16.5px; font-weight: 700; }
   .sv-row p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: 60ch; line-height: 1.5; }
-  .sv-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--paper-edge); display: grid; place-items: center; color: var(--stamp-text); flex: none; transition: .15s; }
-  .sv-arrow svg { width: 16px; height: 16px; }
-  a.sv-row:hover .sv-arrow { background: var(--stamp); border-color: var(--stamp); color: #fff; }
+  .sv-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(37,211,102,.4); display: grid; place-items: center; color: #1da851; flex: none; transition: .15s; }
+  .sv-arrow .wa-g { width: 17px; height: 17px; fill: currentColor; }
+  a.sv-row:hover .sv-arrow { background: #25D366; border-color: #25D366; color: #fff; }
 
   /* Status chips */
   .sv-chip { font-size: 10.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; border: 1px solid transparent; }
@@ -88,38 +89,29 @@
   .sv-chip--coming-soon { color: #8a6d1f; background: rgba(202,166,68,.16); border-color: rgba(202,166,68,.4); }
   .sv-chip--on-request { color: #155e7a; background: rgba(21,94,122,.12); border-color: rgba(21,94,122,.3); }
 
-  /* How it works */
-  .sv-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .sv-stepc { padding: 22px; border: 1px solid var(--paper-edge); border-radius: 14px; background: #fff; }
-  .sv-stepc .n { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; margin-bottom: 12px; }
-  .sv-stepc h3 { margin: 0 0 6px; font-size: 16px; }
-  .sv-stepc p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+  /* How it works + Why us reuse shared .steps / .ticks from ukv.css */
 
-  /* Why-us */
-  .sv-why { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .sv-why div { padding: 18px 20px; border-left: 3px solid var(--stamp); background: #fff; border-radius: 0 10px 10px 0; box-shadow: var(--lift-1); }
-  .sv-why h3 { margin: 0 0 4px; font-size: 15px; }
-  .sv-why p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
-
-  /* FAQ */
-  .sv-faq { max-width: 760px; }
-  .sv-faq details { border-bottom: 1px solid var(--paper-edge); padding: 16px 0; }
-  .sv-faq summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-  .sv-faq summary::-webkit-details-marker { display: none; }
-  .sv-faq summary::after { content: '+'; color: var(--stamp); font-weight: 800; }
-  .sv-faq details[open] summary::after { content: '\2013'; }
-  .sv-faq p { margin: 12px 0 0; color: var(--ink-soft); font-size: 14.5px; }
+  /* FAQ — tinted panel accordion (matches driving-abroad / money pages) */
+  .faq-e { background: var(--paper); }
+  .faq-e .sec-head { text-align: center; max-width: 60ch; margin-left: auto; margin-right: auto; }
+  .faq-panel { background: var(--white); border: 1px solid var(--paper-edge); border-radius: 18px; padding: 6px 30px; max-width: 80ch; margin: 0 auto; box-shadow: 0 16px 40px -30px rgba(40,50,70,.5); }
+  .faqd { max-width: none; }
+  .faqd details { border-bottom: 1px solid var(--paper-edge); padding: 18px 0; }
+  .faqd details:last-child { border-bottom: 0; }
+  .faqd summary { font-family: var(--display); font-size: 19px; color: var(--navy); font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faqd summary::-webkit-details-marker { display: none; }
+  .faqd summary::after { content: "+"; font-size: 22px; color: var(--cta); flex: 0 0 auto; font-weight: 700; transition: transform .15s ease; }
+  .faqd details[open] summary::after { content: "\2013"; }
+  .faqd p { margin: 12px 0 0; color: #3a4b55; font-size: 16px; line-height: 1.65; }
 
   @media (max-width: 900px) {
     .sv-layout { grid-template-columns: 1fr; gap: 28px; padding-top: 36px; }
     .sv-step { position: static; }
     .sv-step .panel { display: none; }
-    .sv-steps { grid-template-columns: repeat(2, 1fr); }
-    .sv-why { grid-template-columns: 1fr; }
     .sv-hero h1 { font-size: 34px; }
   }
   @media (max-width: 560px) {
-    .sv-grid, .sv-steps { grid-template-columns: 1fr; }
+    .sv-grid { grid-template-columns: 1fr; }
   }
 </style>
 @endpush
@@ -131,6 +123,10 @@
   // Phase 1: show only the top 6 silos; the rest are kept in config and revealed later.
   // To show more, raise the limit or remove the array_slice.
   $catalogue = array_slice(config('ukv.services', []), 0, 6);
+  // Every service routes to the WhatsApp chat (number set in config('ukv.whatsapp')).
+  $waNumber = config('ukv.whatsapp') ?: '440000000000';
+  $waFor = fn (string $title): string => 'https://wa.me/'.$waNumber.'?text='.rawurlencode("Hi Beyond Passports, I'd like help with: ".$title);
+  $waGlyph = '<svg viewBox="0 0 24 24" aria-hidden="true" class="wa-g"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
 @endphp
 
 {{-- Hero --}}
@@ -139,8 +135,8 @@
   <h1>One UK team for the whole journey, from "do I need a visa?" to passport back in your hand</h1>
   <p class="lede">Travel-visa and eVisa preparation built around one goal: removing the avoidable reasons applications get refused. Take a single service, or hand us the whole journey.</p>
   <div class="row">
-    <a href="{{ url('/tools') }}" class="btn">Check what my trip needs &rarr;</a>
-    <a href="{{ url('/contact') }}" class="btn btn--ghost">Message our UK team</a>
+    <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a>
+    <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
   </div>
   <div class="sv-trust">
     <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Independent UK team</span>
@@ -185,96 +181,80 @@
       @if ($isCards)
       <div class="sv-grid">
         @foreach ($cat['items'] as $item)
-          @php
-            $href = $item['url'] ?? null;
-            $isLink = in_array($item['status'], ['available', 'on-request'], true) && $href;
-            $tag = $isLink ? 'a' : 'div';
-          @endphp
-          <{{ $tag }} class="sv-card" @if($isLink) href="{{ url($href) }}" @endif>
-            <span class="sv-chip sv-chip--{{ $item['status'] }}">{{ $statusLabels[$item['status']] ?? $item['status'] }}</span>
+          <a class="sv-card" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
             <h3>{{ $item['title'] }}</h3>
             <p>{{ $item['desc'] }}</p>
-            @if ($item['status'] === 'available' && $href)
-              <span class="sv-go">Open &rarr;</span>
-            @elseif ($item['status'] === 'on-request' && $href)
-              <span class="sv-go">Ask us &rarr;</span>
-            @endif
-          </{{ $tag }}>
+            <span class="sv-go">{!! $waGlyph !!} Chat to start</span>
+          </a>
         @endforeach
       </div>
       @else
       <div class="sv-list">
         @foreach ($cat['items'] as $item)
-          @php
-            $href = $item['url'] ?? null;
-            $isLink = in_array($item['status'], ['available', 'on-request'], true) && $href;
-            $tag = $isLink ? 'a' : 'div';
-          @endphp
-          <{{ $tag }} class="sv-row" @if($isLink) href="{{ url($href) }}" @endif>
-            <span class="sv-rail sv-rail--{{ $item['status'] }}"></span>
+          <a class="sv-row" href="{{ $waFor($item['title']) }}" target="_blank" rel="noopener">
+            <span class="sv-rail"></span>
             <div>
-              <h3>{{ $item['title'] }} <span class="sv-chip sv-chip--{{ $item['status'] }}">{{ $statusLabels[$item['status']] ?? $item['status'] }}</span></h3>
+              <h3>{{ $item['title'] }}</h3>
               <p>{{ $item['desc'] }}</p>
             </div>
-            @if ($isLink)
-              <span class="sv-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            @else
-              <span aria-hidden="true"></span>
-            @endif
-          </{{ $tag }}>
+            <span class="sv-arrow">{!! $waGlyph !!}</span>
+          </a>
         @endforeach
       </div>
       @endif
-      @if (!empty($cat['cta']['url']))
-        <a class="sv-silo-cta" href="{{ url($cat['cta']['url']) }}">{{ $cat['cta']['label'] }} <span aria-hidden="true">&rarr;</span></a>
-      @endif
+      <a class="sv-silo-cta" href="{{ $waFor($cat['label']) }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat to us about {{ \Illuminate\Support\Str::lower($cat['label']) }}</a>
     </section>
     @endforeach
   </div>
 
 </div></div>
 
-{{-- How it works --}}
+{{-- How it works (shared .steps design, matches home) --}}
 <section id="how" class="alt"><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">How it works</p><h2>Three steps, whichever service you take</h2></div>
-  <div class="sv-steps">
-    <div class="sv-stepc"><div class="n">1</div><h3>Tell us your trip</h3><p>Use the free checker or a quick form. No card, no account.</p></div>
-    <div class="sv-stepc"><div class="n">2</div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment, the things that get people refused.</p></div>
-    <div class="sv-stepc"><div class="n">3</div><h3>You travel</h3><p>Trackable every step, with tracked passport return.</p></div>
+  <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 36px">
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps, whichever service you take</h2>
   </div>
-  <div class="row" style="margin-top:22px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
+  <div class="steps">
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Use the free checker or a quick form. No card, no account.</p></div>
+    <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment, the things that get people refused.</p></div>
+    <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>You travel</h3><p>Trackable every step, with tracked passport return.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:28px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
 </div></section>
 
-{{-- Why us --}}
-<section><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">Why us</p><h2>Prevention-led, not just paperwork</h2></div>
-  <div class="sv-why">
-    <div><h3>Prevention-led</h3><p>We remove the avoidable reasons for refusal. Most agents just file it.</p></div>
-    <div><h3>Transparent fixed fee</h3><p>Separate from the government fee, and shown upfront.</p></div>
-    <div><h3>Honest</h3><p>No one can guarantee a government decision, and we never pretend otherwise.</p></div>
-    <div><h3>UK-based team</h3><p>Real people on phone and WhatsApp.</p></div>
+{{-- Why us (shared .ticks design, matches home "What we do") --}}
+<section id="why"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Why us</p><h2>Prevention-led, not just paperwork</h2><p class="lede">We remove the avoidable reasons applications get refused, and we are honest about what we cannot promise.</p></div>
+  <div class="ticks">
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Prevention-led</h3><p>We remove the avoidable reasons for refusal. Most agents just file it.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Transparent fixed fee</h3><p>Separate from the government fee, and shown upfront.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>Honest</h3><p>No one can guarantee a government decision, and we never pretend otherwise.</p></div></div>
+    <div class="tick reveal"><svg class="stamp" width="38" height="38" viewBox="0 0 48 48" role="img" aria-label="Checked"><use href="#ukv-stamp"></use></svg><div><h3>UK-based team</h3><p>Real people on phone and WhatsApp.</p></div></div>
   </div>
 </div></section>
 
-{{-- FAQ --}}
-<section id="faq" class="alt"><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">Questions</p><h2>Before you start</h2></div>
-  <div class="sv-faq">
-    <details><summary>Can I use one service or do I have to take everything?</summary><p>Either. Pick exactly what you need: one service, several, or the whole journey.</p></details>
-    <details><summary>Is the checker really free?</summary><p>Yes. No card, no account. It tells you what your trip needs in about a minute.</p></details>
-    <details><summary>Can you guarantee my visa?</summary><p>No. The embassy makes the decision. What we do is remove the avoidable reasons they say no.</p></details>
-    <details><summary>What does it cost?</summary><p>A clear fixed service fee, shown before you pay. It is separate from any government or embassy fee, which is set by the authorities.</p></details>
-    <details><summary>I'm not a British citizen, can you still help?</summary><p>Yes. We help UK residents travelling on any passport.</p></details>
-    <details><summary>A service is marked "Coming soon", what now?</summary><p>Message us. We can often still help, or we'll tell you when it goes live.</p></details>
+{{-- FAQ — tinted panel accordion (matches driving-abroad / money pages) --}}
+<section id="faq" class="faq-e"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>Before you start</h2></div>
+  <div class="faq-panel reveal">
+    <div class="faqd">
+      <details><summary>Can I use one service or do I have to take everything?</summary><p>Either. Pick exactly what you need: one service, several, or the whole journey.</p></details>
+      <details><summary>Is the checker really free?</summary><p>Yes. No card, no account. It tells you what your trip needs in about a minute.</p></details>
+      <details><summary>Can you guarantee my visa?</summary><p>No. The embassy makes the decision. What we do is remove the avoidable reasons they say no.</p></details>
+      <details><summary>What does it cost?</summary><p>A clear fixed service fee, shown before you pay. It is separate from any government or embassy fee, which is set by the authorities.</p></details>
+      <details><summary>I'm not a British citizen, can you still help?</summary><p>Yes. We help UK residents travelling on any passport.</p></details>
+      <details><summary>How do I get started?</summary><p>Message our UK team on WhatsApp with your trip, or run the free checker first. We'll tell you exactly what you need and what it costs before you commit.</p></details>
+    </div>
   </div>
 </div></section>
 
 {{-- Final CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
-  <h2>Not sure where to start?</h2>
-  <p style="max-width:48ch;color:#eef0f1">Run the free 60-second checker and we'll tell you exactly what your trip needs.</p>
-  <div class="row"><a href="{{ url('/tools') }}" class="btn">Check what my trip needs &rarr;</a><a href="{{ url('/contact') }}" class="btn btn--glass">Message our UK team</a></div>
+  <h2>Tell us about your trip</h2>
+  <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your trip needs, or run the free checker first.</p>
+  <div class="row"><a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Run the free checker</a></div>
 </div></section>
 
 {{-- Scroll-spy: highlight the active silo in the stepper --}}
