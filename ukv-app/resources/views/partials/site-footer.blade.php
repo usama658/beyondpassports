@@ -8,7 +8,7 @@
       <div>
         <div class="brand" style="color:#fff">Beyond <b>Passports</b></div>
         <p style="max-width:30ch">Independent UK-based visa &amp; eVisa facilitation for travel abroad. Not a government website.</p>
-        @include('partials.trustpilot', ['template' => 'micro', 'align' => 'left', 'margin' => '14px 0 4px'])
+        @include('partials.trustpilot', ['align' => 'left', 'theme' => 'dark', 'margin' => '14px 0 4px'])
         @php
           $social = array_filter(config('ukv.social', []));
           $socialIcons = [

@@ -6,7 +6,8 @@
 <div class="topbar"><div class="wrap tb-row">
   <span class="tb-note">Independent service. <strong>Not a government website</strong></span>
   <span class="tb-links">
-    <span class="tb-rate">@include('partials.trustpilot', ['template' => 'micro', 'width' => '180px', 'height' => '20px', 'margin' => '0'])</span>
+    {{-- Trustpilot rating box removed from the topbar: the unit has no rating TrustBox yet,
+         only a Review Collector, which does not fit a compact topbar strip. --}}
     <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">Call us</a>
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">WhatsApp</a>
     @if (array_filter(config('ukv.social', [])))

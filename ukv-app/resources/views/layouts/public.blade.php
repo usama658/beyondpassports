@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{-- Trustpilot TrustBox bootstrap (in <head> per Trustpilot's guidance; ungated so reviews show). --}}
+@if (config('ukv.trustpilot.business_unit_id'))<script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>@endif
 @if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
 @if (config('ukv.google_site_verification'))<meta name="google-site-verification" content="{{ config('ukv.google_site_verification') }}">@endif
 @include('partials.meta-pixel')

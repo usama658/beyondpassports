@@ -19,21 +19,18 @@
     $tpAlign  = $align ?? 'center';
     $tpHeight = $height ?? '24px';
     $tpToken  = $tp['review_token'] ?? null;
+    $tpTheme  = $theme ?? 'light';
     $tpWidth  = $width ?? '100%';
     $tpMargin = $margin ?? '18px 0';
 @endphp
 @if (! empty($tp['business_unit_id']))
-    {{-- Trustpilot bootstrap loads ungated (reviews show without cookie consent).
-         @once so it is injected a single time even with multiple widgets on a page. --}}
-    @once
-        <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-    @endonce
+    {{-- Bootstrap is loaded once in the layout <head>; widgets here init on load. --}}
     <div class="tp-wrap" style="text-align:{{ $tpAlign }};margin:{{ $tpMargin }}">
         <div class="trustpilot-widget" data-locale="en-GB"
              data-template-id="{{ $tpTemplateId }}"
              data-businessunit-id="{{ $tp['business_unit_id'] }}"
              @if($tpToken) data-token="{{ $tpToken }}" @endif
-             data-style-height="{{ $tpHeight }}" data-style-width="{{ $tpWidth }}" data-theme="light">
+             data-style-height="{{ $tpHeight }}" data-style-width="{{ $tpWidth }}" data-theme="{{ $tpTheme }}">
             <a href="https://uk.trustpilot.com/review/{{ $tp['domain'] }}" target="_blank" rel="noopener">Trustpilot</a>
         </div>
     </div>
