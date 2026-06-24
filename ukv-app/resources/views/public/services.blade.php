@@ -94,9 +94,8 @@
   .sv-card .sv-chip { align-self: flex-start; }
   .sv-card h3 { margin: 0; font-size: 16.5px; line-height: 1.3; }
   .sv-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
-  .sv-card { transition: padding .18s ease, transform .16s, box-shadow .16s, border-color .16s; }
-  .sv-card .sv-fab { position: absolute; right: 16px; top: 50%; margin-top: -19px; }
-  a.sv-card:hover { padding-right: 166px; }
+  .sv-card { padding-bottom: 60px; }
+  .sv-card .sv-fab { position: absolute; left: 20px; bottom: 16px; }
 
   /* WhatsApp chat pill: hidden, appears only when the tile is hovered (shared by cards + rows) */
   .sv-fab { display: inline-flex; align-items: center; height: 38px; flex: none; background: #25D366; color: #fff; border-radius: 999px; box-shadow: 0 10px 22px -12px rgba(37,211,102,.85); opacity: 0; transform: translateY(4px); transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
