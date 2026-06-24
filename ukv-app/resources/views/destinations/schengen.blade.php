@@ -42,6 +42,7 @@
     <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
   </form>
+  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '20px 0 0'])
 </div></section>
 
 {{-- TRUST BAND — Schengen short-stay visa facts, home-page treatment --}}

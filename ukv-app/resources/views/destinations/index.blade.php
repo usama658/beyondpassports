@@ -92,6 +92,7 @@
     <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} Chat on WhatsApp</a>
     <a class="btn btn--ghost" href="{{ url('/tools') }}">Run the free checker</a>
   </div>
+  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '20px 0 0'])
 </div></section>
 
 {{-- 2) TRUST BAND — dark mesh band (.tbar-f), 3 compliance points --}}

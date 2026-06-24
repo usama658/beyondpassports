@@ -103,6 +103,7 @@
           <span>General guidance, human-confirmed</span>
           <span>Not a government website</span>
         </div>
+        @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '20px 0 0'])
       </div>
       <div class="mh-card reveal" style="animation-delay:.08s">
         {{-- Preview of the visa checker card in the hero --}}

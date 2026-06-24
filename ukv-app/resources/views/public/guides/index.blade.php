@@ -119,6 +119,7 @@
         <p class="eyebrow">Visa guides</p>
         <h1>Plain-English guides for UK travellers</h1>
         <p class="lede">eVisas, ETAs, passport rules, documents and processing times, written clearly to help you avoid the mistakes that get applications refused.</p>
+        @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '18px 0 0'])
       </div>
       @if ($heroTopics->isNotEmpty())
         <nav class="gi-topics reveal" aria-label="Popular guides">

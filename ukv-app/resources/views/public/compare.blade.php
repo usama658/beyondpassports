@@ -154,6 +154,7 @@
     <p class="eyebrow">Honest comparison</p>
     <h1>Apply yourself, or let us handle it</h1>
     <p class="lede">Both routes are valid. We lay out the real trade-off so you can choose, and tell you straight if doing it yourself suits you better.</p>
+    @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '18px 0 0'])
   </div>
   <div class="cmp-scale reveal">
     <div class="cmp-scol diy">

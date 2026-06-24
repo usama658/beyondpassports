@@ -252,6 +252,7 @@
     <p class="eyebrow">About us</p>
     <h1>We exist because most visa refusals shouldn't happen.</h1>
     <p class="lede">Most refusals come from avoidable mistakes: unclear evidence, missing documents, the wrong details. We're a private, UK-based team that checks, prepares and submits your application, removing those avoidable causes before you ever submit.</p>
+    @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
   </div>
   <div class="ab-idcard reveal" aria-label="Who we are at a glance">
     <p class="ic-k">Beyond Passports · who we are</p>

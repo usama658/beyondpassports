@@ -181,6 +181,7 @@
             <p>Just need to ask something? Message our UK team on WhatsApp. No payment.</p>
           </li>
         </ul>
+        @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '24px 0 0'])
       </div>
     </div>
   </div>
