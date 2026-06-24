@@ -230,14 +230,14 @@
 </div></section>
 @endif
 
-@if (\Illuminate\Support\Str::contains(strtolower((string) $visaType), 'etias'))
-{{-- ETIAS pre-launch honesty banner — ETIAS is not live until late 2026; UK citizens
-     currently travel visa-free. Keeps the page truthful before the scheme starts. --}}
+@if (\Illuminate\Support\Str::contains(strtolower((string) $visaType), ['schengen', 'etias']))
+{{-- Schengen short-stay visa honesty banner — British passport holders are visa-free
+     (ETIAS from late 2026); this page serves visa-required nationals. Keeps it truthful. --}}
 <section style="padding:0"><div class="wrap" style="padding-top:22px">
   <div style="display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,#fff8ef,#fffdf9);border:1px solid var(--paper-edge);border-left:4px solid #c8923a;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px -26px rgba(40,50,70,.4)">
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#c8923a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
     <p style="margin:0;font-size:15px;line-height:1.6;color:#3a4b55">
-      <strong style="color:var(--navy)">ETIAS isn't required yet.</strong> Right now UK citizens travel to {{ $name }} <strong>visa-free</strong> for short stays, with no ETIAS and no fee. ETIAS launches in late 2026 (€20, valid 3 years, 90 days in any 180). When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span>
+      <strong style="color:var(--navy)">This page is about the Schengen short-stay visa for {{ $name }}.</strong> British passport holders travel <strong>visa-free</strong> for short stays (ETIAS applies from late 2026) and do not need this visa. It is for travellers whose nationality requires a Schengen short-stay visa, including UK residents applying on a non-UK passport. We prepare and check the application and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the consulate's.</span>
     </p>
   </div>
 </div></section>

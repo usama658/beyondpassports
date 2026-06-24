@@ -78,7 +78,7 @@ class SitemapController extends Controller
             ->whereNotNull('slug')
             ->orderBy('name')
             ->each(function (Destination $destination) use (&$urls, $base) {
-                if ($destination->visa_type !== 'ETIAS') {
+                if ($destination->visa_type !== 'Schengen') {
                     return;
                 }
                 $urls[] = [
@@ -100,7 +100,7 @@ class SitemapController extends Controller
                     return;
                 }
                 // Schengen-only pivot (2026-06-24): skip nested guides for non-Schengen destinations.
-                if ($guide->destination->visa_type !== 'ETIAS') {
+                if ($guide->destination->visa_type !== 'Schengen') {
                     return;
                 }
                 $urls[] = [

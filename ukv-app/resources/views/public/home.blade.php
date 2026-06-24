@@ -133,7 +133,7 @@
 @php
   // Schengen-only pivot: the public site surfaces only Schengen / ETIAS destinations.
   // The composer still supplies the full $navDestinations list (reversible) — we filter here.
-  $schengenDests = ($navDestinations ?? collect())->where('visa_type', 'ETIAS')->values();
+  $schengenDests = ($navDestinations ?? collect())->where('visa_type', 'Schengen')->values();
   // Popular destination quick-links (names, not images).
   $hpDests = $schengenDests->take(8);
 @endphp

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Area & ETIAS for UK travellers | Beyond Passports')
-@section('description', 'Travelling to Europe? One ETIAS will cover all Schengen countries from late 2026: 90 days in any 180, valid 3 years. Pick your destination; we prepare and check everything. Independent service, not a government website.')
+@section('title', 'Schengen visa from the UK | Beyond Passports')
+@section('description', 'We prepare and submit your Schengen short-stay visa. One application covers the whole Schengen Area, 90 days in any 180. Pick your destination; we prepare and check everything. Independent service, not a government website.')
 @section('canonical', url('/visa/schengen'))
 
 @push('head')
@@ -16,7 +16,7 @@
   .di-search input{flex:1;padding:13px 16px;border:1px solid var(--paper-edge);border-radius:12px;font:inherit;font-size:15px;background:#fff;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
   .di-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
   @media (max-width:520px){.di-search{flex-direction:column}}
-  /* trust band — same treatment as the home page (.tbar-f), ETIAS facts */
+  /* trust band — same treatment as the home page (.tbar-f), Schengen visa facts */
   .tbar-f{padding:0;background:
       radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
       radial-gradient(520px 200px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
@@ -36,26 +36,26 @@
 
 <section class="di-hero"><div class="wrap">
   <p class="eyebrow">Europe · Schengen Area</p>
-  <h1>Travelling to Europe? Here's what you'll need</h1>
-  <p class="lede">One ETIAS authorisation will cover all the Schengen countries. Pick your destination below, and we prepare and check everything so your trip goes right.</p>
+  <h1>Schengen short-stay visa, prepared and submitted by us</h1>
+  <p class="lede">We prepare and submit your Schengen short-stay visa. One application covers the whole Schengen Area, 90 days in any 180. Pick your main destination below, and we prepare and check everything so your trip goes right.</p>
   <form class="di-search" role="search" onsubmit="return false">
     <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
   </form>
 </div></section>
 
-{{-- TRUST BAND — ETIAS facts, home-page treatment --}}
+{{-- TRUST BAND — Schengen short-stay visa facts, home-page treatment --}}
 <section class="tbar-f"><div class="wrap"><div class="row">
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18" stroke="currentColor" stroke-width="2"/></svg><span><b>One ETIAS</b>, many countries</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18" stroke="currentColor" stroke-width="2"/></svg><span><b>One Schengen visa</b>, whole Area</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"/></svg><span><b>90 days</b> in any 180</span></span>
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 12 3h7v7l-9 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg><span><b>€20</b> · valid 3 years</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Prepared and checked</b> before you pay</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0 7 2 7-2v10l-7 2-7-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK-based</b> team</span></span>
 </div></div></section>
 
 <section><div class="wrap">
   <div class="sh-note reveal">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
-    <p><strong>ETIAS isn't required yet.</strong> Right now UK citizens travel to the Schengen Area <strong>visa-free</strong> for short stays, with no ETIAS and no fee. ETIAS launches in late 2026. When it opens we'll prepare and check yours, and confirm the rules before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
+    <p><strong>British passport holders do not need a Schengen visa.</strong> You travel visa-free for short stays (ETIAS applies from late 2026). These pages are for travellers whose nationality needs a Schengen short-stay visa, including UK residents applying on a non-UK passport. A single Schengen visa, applied for through your main-destination country, covers the whole Area. We confirm the rules and check everything before you pay. <span style="color:var(--muted)">Not a government website · the decision is the authority's.</span></p>
   </div>
 
   @if (! empty($activeRegion))
@@ -74,7 +74,7 @@
   @endif
 
   <div class="pricenote reveal" style="margin-top:32px;background:#f7fafb;border:1px solid var(--paper-edge);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;font-size:14px;color:#3a4b55">
-    <p style="margin:0"><strong style="color:var(--navy)">One ETIAS covers the whole Schengen Area.</strong> You don't need a separate authorisation per country. We are not a government website and cannot guarantee approval. The decision is always the authority's.</p>
+    <p style="margin:0"><strong style="color:var(--navy)">One Schengen visa covers the whole Schengen Area.</strong> You apply through your main-destination country (where you spend the most time, or your first entry point), and you don't need a separate visa per country. We are not a government website and cannot guarantee approval. The decision is always the authority's.</p>
   </div>
 </div></section>
 

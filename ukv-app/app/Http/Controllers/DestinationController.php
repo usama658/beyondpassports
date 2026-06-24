@@ -48,13 +48,13 @@ class DestinationController extends Controller
     {
         // Optional region filter from the nav (?region=Western Europe). Validated against
         // the regions that actually exist so a junk value just falls back to "all".
-        $regions = Destination::query()->where('visa_type', 'ETIAS')
+        $regions = Destination::query()->where('visa_type', 'Schengen')
             ->whereNotNull('region')->distinct()->pluck('region');
         $activeRegion = $request->query('region');
         $activeRegion = $regions->contains($activeRegion) ? $activeRegion : null;
 
         $destinations = Destination::query()
-            ->where('visa_type', 'ETIAS')
+            ->where('visa_type', 'Schengen')
             ->when($activeRegion, fn ($q) => $q->where('region', $activeRegion))
             ->orderBy('name')
             ->get();
@@ -73,7 +73,7 @@ class DestinationController extends Controller
     public function show(Destination $destination, RequirementService $requirements)
     {
         // Schengen-only pivot (2026-06-24): non-Schengen money pages 301 -> /destinations. Reversible.
-        if ($destination->visa_type !== 'ETIAS') {
+        if ($destination->visa_type !== 'Schengen') {
             return redirect('/destinations', 301);
         }
 

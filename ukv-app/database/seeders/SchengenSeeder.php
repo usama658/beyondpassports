@@ -8,17 +8,19 @@ use App\Models\Destination;
 use Illuminate\Database\Seeder;
 
 /**
- * Schengen Area destinations, grouped by region, for the ETIAS silo.
+ * Schengen short-stay (Type C) visa destinations, grouped by region. visa_type = 'Schengen'
+ * is the marker the public site gates on (home grid, /visa/schengen hub, money pages, sitemap).
  *
- * COMPLIANCE / ACCURACY (verified 2026-06-20 from EU + secondary sources):
- *   - ETIAS is NOT yet live. It launches Q4 2026 and is not mandatory until ~April 2027
- *     (6-month transitional period). RIGHT NOW UK citizens travel to the Schengen Area
- *     VISA-FREE — no ETIAS, no government fee. So required_for_uk = false and
- *     govt_fee_gbp = 0 reflect TODAY'S reality; the page copy/banner explains ETIAS is coming.
- *   - When live: ETIAS will cost EUR 20 (free under-18 / over-70), valid 3 years or until the
- *     passport expires, multiple entries, short stays of 90 days in any 180.
+ * COMPLIANCE / ACCURACY:
+ *   - British passport holders DO NOT need a Schengen visa: visa-free 90/180, with ETIAS from
+ *     late 2026. So required_for_uk = false. These pages serve VISA-REQUIRED nationals, including
+ *     UK residents applying on a non-UK passport. Page copy states this plainly; we never imply a
+ *     British passport holder needs a paid visa.
+ *   - Schengen short-stay visa fee is uniform: EUR 90 adult (EUR 45 child 6-11). govt_fee_gbp = 77
+ *     is the EUR 90 GBP approximation — VERIFY the fee + FX immediately before taking live payment.
  *   - Schengen short-stay passport rule: valid for at least 3 months beyond intended departure,
  *     issued within the last 10 years -> passport_validity_months = 3.
+ *   - Standard consular processing ~15 calendar days (can be longer in peak season).
  *   - Service-fee tiers are a commercial placeholder, hidden while UKV_SHOW_PRICES=false.
  *
  * Re-run safe (updateOrCreate on slug). Run after DestinationSeeder + the region migration.
@@ -70,10 +72,13 @@ final class SchengenSeeder extends Seeder
         ];
 
         $docs = [
-            'Passport valid for at least 3 months beyond your departure from the Schengen Area, issued within the last 10 years',
-            'Proof of accommodation and onward / return travel',
-            'Evidence of sufficient funds for your stay',
-            'From late 2026: an approved ETIAS travel authorisation (EUR 20; valid 3 years; 90 days in any 180)',
+            'Completed Schengen short-stay (Type C) visa application form',
+            'Passport valid for at least 3 months beyond your departure, issued within the last 10 years, with 2 blank pages',
+            'Two recent passport-style photos to Schengen specification',
+            'Travel medical insurance covering the whole Schengen Area, minimum EUR 30,000',
+            'Proof of accommodation and round-trip travel booking for the whole stay',
+            'Evidence of sufficient funds for your stay (recent bank statements)',
+            'Proof of UK residence / immigration status (for non-British passport holders applying from the UK)',
         ];
 
         foreach ($countries as [$name, $slug, $region]) {
@@ -81,16 +86,19 @@ final class SchengenSeeder extends Seeder
                 ['slug' => $slug],
                 [
                     'name' => $name,
-                    'visa_type' => 'ETIAS',
+                    'visa_type' => 'Schengen',
                     'region' => $region,
-                    // Visa-free for UK citizens TODAY; ETIAS only required from late 2026.
+                    // 'required_for_uk' = does a BRITISH passport holder need a visa: no (visa-free,
+                    // ETIAS from late 2026). These pages serve visa-required nationals (incl. UK
+                    // residents on a non-UK passport). Page copy makes that audience clear.
                     'required_for_uk' => false,
                     'max_stay_days' => 90,            // 90 days in any 180-day period
-                    'govt_fee_gbp' => 0.00,           // visa-free now; ETIAS EUR 20 applies from late 2026
-                    'tier_standard_gbp' => 39.00,     // placeholder service fee (hidden while prices off)
-                    'tier_express_gbp' => 59.00,
-                    'tier_premium_gbp' => 89.00,
+                    'govt_fee_gbp' => 77.00,          // Schengen short-stay visa fee EUR 90 ≈ £77 (uniform; VERIFY + FX before live)
+                    'tier_standard_gbp' => 49.00,     // placeholder service fee (hidden while prices off)
+                    'tier_express_gbp' => 69.00,
+                    'tier_premium_gbp' => 99.00,
                     'passport_validity_months' => 3,  // Schengen short-stay rule
+                    'processing_days' => 15,          // standard Schengen consular processing (15 calendar days typical)
                     'required_docs' => $docs,
                 ]
             );

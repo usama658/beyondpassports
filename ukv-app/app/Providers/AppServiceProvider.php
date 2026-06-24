@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
             // Curated order for the "Popular" column — money pages lead, not alphabetical.
             $popularOrder = ['turkey', 'india', 'egypt', 'uae', 'thailand', 'usa-esta'];
             $popular = \App\Models\Destination::query()
-                ->where('visa_type', '!=', 'ETIAS')
+                ->where('visa_type', '!=', 'Schengen')
                 ->whereIn('slug', $popularOrder)
                 ->get()
                 ->sortBy(fn ($d) => array_search($d->slug, $popularOrder))
@@ -59,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
             // Europe regions, fixed display order, with live counts (only non-empty regions).
             $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
             $counts = \App\Models\Destination::query()
-                ->where('visa_type', 'ETIAS')
+                ->where('visa_type', 'Schengen')
                 ->selectRaw('region, count(*) as c')
                 ->groupBy('region')
                 ->pluck('c', 'region');
