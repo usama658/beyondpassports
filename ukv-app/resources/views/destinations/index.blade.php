@@ -49,9 +49,16 @@
   .sg-chips .dot{width:7px;height:7px;border-radius:50%;background:var(--cta);flex:none}
   .sg-chips .more{color:var(--muted);box-shadow:none;background:transparent;border-style:dashed}
 
-  /* BROWSE — searchable Schengen country grid */
+  /* BROWSE — searchable Schengen country grid + region tabs (mirrors home #destinations) */
   #sg-browse .sec-head{text-align:center;max-width:60ch;margin:0 auto}
-  .sg-search{display:flex;gap:10px;max-width:480px;margin:24px auto 0}
+  .sg-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .sg-tab{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;white-space:nowrap;background:#fff;border:1px solid var(--paper-edge);color:var(--ink);
+    border-radius:999px;padding:9px 16px;font:700 14px var(--display);cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease}
+  .sg-tab .c{font-size:12px;font-weight:800;color:var(--muted)}
+  .sg-tab:hover{border-color:var(--soft);color:var(--cta)}
+  .sg-tab.active{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.6)}
+  .sg-tab.active .c{color:rgba(255,255,255,.82)}
+  .sg-search{display:flex;gap:10px;max-width:480px;margin:18px auto 0}
   .sg-search input{flex:1;padding:13px 16px;border:1px solid var(--paper-edge);border-radius:12px;font:inherit;font-size:15px;background:#fff;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
   .sg-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
   @media (max-width:520px){.sg-search{flex-direction:column}}
@@ -109,15 +116,6 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from the embassy fee</span></span>
 </div></div></section>
 
-{{-- 3) WHAT A SCHENGEN VISA COVERS --}}
-<section id="sg-covers"><div class="wrap">
-  <div class="sec-head reveal">
-    <p class="eyebrow">The basics</p>
-    <h2>What a Schengen visa covers</h2>
-    <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
-  </div>
-</div></section>
-
 {{-- BROWSE — searchable Schengen country grid (boarding-pass cards) --}}
 <section id="sg-browse"><div class="wrap">
   <div class="sec-head reveal">
@@ -125,6 +123,20 @@
     <h2>Pick your main destination</h2>
     <p class="lede" style="margin:12px auto 0;max-width:56ch">Search the 29 Schengen countries. You apply through your main-destination country and one visa covers the whole Area.</p>
   </div>
+  @php
+    $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
+    $regionCounts = [];
+    foreach ($destinations as $d) { $r = $d->region ?: 'Other'; $regionCounts[$r] = ($regionCounts[$r] ?? 0) + 1; }
+    $regionsPresent = collect($regionOrder)->filter(fn ($r) => ! empty($regionCounts[$r]))->values();
+  @endphp
+  @if ($destinations->isNotEmpty())
+  <div class="sg-tabs" id="sgTabs">
+    <button type="button" class="sg-tab active" data-region="all">All <span class="c">{{ $destinations->count() }}</span></button>
+    @foreach ($regionsPresent as $rk)
+      <button type="button" class="sg-tab" data-region="{{ $rk }}">{{ str_replace(' Europe', '', $rk) }} <span class="c">{{ $regionCounts[$rk] }}</span></button>
+    @endforeach
+  </div>
+  @endif
   <form class="sg-search" role="search" onsubmit="return false">
     <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
@@ -139,6 +151,15 @@
     </div>
     <p class="sg-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
+</div></section>
+
+{{-- WHAT A SCHENGEN VISA COVERS (below the destinations grid) --}}
+<section id="sg-covers"><div class="wrap">
+  <div class="sec-head reveal">
+    <p class="eyebrow">The basics</p>
+    <h2>What a Schengen visa covers</h2>
+    <p class="lede">One short-stay visa lets you travel across the whole Schengen Area, 29 European countries, for up to 90 days in any 180-day period. It is for tourism, visiting family or friends, and most business trips. You apply to one embassy, then move freely between the countries once you are in.</p>
+  </div>
 </div></section>
 
 {{-- 4) WHAT WE DO — six-service stamp grid (.ticks / .tick / #ukv-stamp) --}}
@@ -199,23 +220,36 @@
 
 @if ($destinations->isNotEmpty())
 <script>
-  // Live client-side filter over the Schengen country cards.
+  // Region tabs + live search, combined, over the Schengen country cards.
   (function () {
     var input = document.getElementById('destSearch');
     var grid = document.getElementById('destGrid');
     var empty = document.getElementById('destEmpty');
-    if (!input || !grid) return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('#sgTabs .sg-tab'));
+    if (!grid) return;
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.pass'));
-    input.addEventListener('input', function () {
-      var q = input.value.trim().toLowerCase();
+    var region = 'all';
+    function apply() {
+      var q = (input && input.value.trim().toLowerCase()) || '';
       var shown = 0;
       cards.forEach(function (c) {
-        var hit = !q || (c.getAttribute('data-name') || '').indexOf(q) !== -1;
+        var regOk = region === 'all' || (c.getAttribute('data-region') || '') === region;
+        var nameOk = !q || (c.getAttribute('data-name') || '').indexOf(q) !== -1;
+        var hit = regOk && nameOk;
         c.style.display = hit ? '' : 'none';
         if (hit) shown++;
       });
       if (empty) empty.style.display = shown ? 'none' : 'block';
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabs.forEach(function (x) { x.classList.remove('active'); });
+        t.classList.add('active');
+        region = t.getAttribute('data-region');
+        apply();
+      });
     });
+    if (input) input.addEventListener('input', apply);
   })();
 </script>
 @endif

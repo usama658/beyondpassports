@@ -2,7 +2,7 @@
      classes (ukv.css). Price slot honours config('ukv.show_prices'); falls back to max-stay
      then "View". Shared by the destinations index and the Schengen hub. --}}
 @php $fromFee = $destination->tier_standard_gbp; @endphp
-<a class="pass reveal" href="{{ url('/visa/'.$destination->slug) }}" data-name="{{ strtolower($destination->name) }}" style="text-decoration:none;color:inherit">
+<a class="pass reveal" href="{{ url('/visa/'.$destination->slug) }}" data-name="{{ strtolower($destination->name) }}" data-region="{{ $destination->region ?? '' }}" style="text-decoration:none;color:inherit">
   <div class="sky">@if ($destination->image_path)<img src="{{ asset(ltrim($destination->image_path, '/')) }}" alt="{{ $destination->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $destination->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div>
   <div class="lower">
     <div class="main">
