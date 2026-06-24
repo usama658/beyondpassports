@@ -21,9 +21,16 @@
   .sv-hero .lede { max-width: 54ch; color: rgba(255,255,255,.82); }
   .sv-hero .row { margin-top: 24px; }
   .sv-hero .btn--ghost { border-color: rgba(255,255,255,.4); color: #fff; }
-  .sv-trust { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); font-size: 13.5px; color: rgba(255,255,255,.75); }
-  .sv-trust span { display: inline-flex; align-items: center; gap: 8px; }
-  .sv-trust svg { width: 16px; height: 16px; color: #7fe0cf; flex: none; }
+  /* Trust bar — dark mesh band under hero (matches home .tbar-f) */
+  .tbar-f { padding: 0; background:
+      radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
+      radial-gradient(520px 200px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
+      var(--navy); color: #fff; border-top: 1px solid rgba(255,255,255,.10); }
+  .tbar-f .row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 16px 0; }
+  .tbar-f .ti { display: flex; align-items: center; gap: 9px; font: 600 14px var(--display); color: #fff; white-space: nowrap; }
+  .tbar-f .ti svg { width: 20px; height: 20px; color: var(--soft); flex: none; }
+  .tbar-f .ti b { color: var(--soft); font-weight: 800; }
+  @media (max-width: 560px) { .tbar-f .row { gap: 14px 22px; } }
 
   /* Layout — sticky stepper + content */
   .sv-layout { display: grid; grid-template-columns: 250px 1fr; gap: 52px; align-items: start; padding: 56px 0 20px; }
@@ -138,12 +145,14 @@
     <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a>
     <a href="{{ url('/tools') }}" class="btn btn--ghost">Run the free checker</a>
   </div>
-  <div class="sv-trust">
-    <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Independent UK team</span>
-    <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Not a government website</span>
-    <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Service fee separate from any government fee</span>
-  </div>
 </div></section>
+
+{{-- Trust bar — dark mesh band (matches home .tbar-f) --}}
+<section class="tbar-f"><div class="wrap"><div class="row">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Independent</b> UK team</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>Not</b> a government website</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Service fee <b>separate</b> from any government fee</span></span>
+</div></div></section>
 
 {{-- Intro --}}
 <section><div class="wrap" style="max-width:760px">
