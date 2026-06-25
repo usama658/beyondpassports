@@ -123,6 +123,39 @@
   /* Final CTA WhatsApp button glyph */
   .cta-band .row .btn{display:inline-flex;align-items:center;gap:8px}
   .cta-band .row .wa-g{width:18px;height:18px;fill:currentColor;flex:none}
+
+  /* ── Appointment availability board (region-grouped tiles) ──────────────── */
+  #sg-appts .sec-head{text-align:center;max-width:62ch;margin:0 auto}
+  #sg-appts .sec-head .lede{margin:12px auto 0;max-width:58ch}
+  #sg-appts .ap-note{display:inline-flex;align-items:center;gap:9px;margin:16px auto 0;font-size:12.5px;color:var(--muted);
+    background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px}
+  #sg-appts .ap-note .d{width:8px;height:8px;border-radius:50%;background:var(--stamp);flex:none;box-shadow:0 0 0 4px rgba(92,154,123,.16)}
+  #sg-appts .ap-region{margin-top:30px}
+  #sg-appts .ap-region h3{font:800 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:#8997a0;margin:0 0 14px;display:flex;align-items:center;gap:12px}
+  #sg-appts .ap-region h3::after{content:"";flex:1;height:1px;background:var(--paper-edge)}
+  #sg-appts .ap-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media (max-width:820px){#sg-appts .ap-tiles{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){#sg-appts .ap-tiles{grid-template-columns:1fr}}
+  #sg-appts .ap-tile{display:block;text-decoration:none;background:#fff;border:1px solid var(--paper-edge);border-radius:15px;
+    padding:16px 17px;box-shadow:0 12px 30px -26px rgba(40,50,70,.5);transition:transform .18s,box-shadow .18s}
+  #sg-appts .ap-tile:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+  #sg-appts .ap-tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;gap:10px}
+  #sg-appts .ap-tile h4{font:800 16px var(--display);color:var(--ink);margin:0}
+  #sg-appts .ap-st{display:inline-flex;align-items:center;gap:6px;font:800 10px var(--display);letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
+  #sg-appts .ap-st .dot{width:6px;height:6px;border-radius:50%}
+  #sg-appts .ap-st.ok{background:rgba(46,154,140,.14);color:#1F6E63}#sg-appts .ap-st.ok .dot{background:#2E9A8C}
+  #sg-appts .ap-st.lim{background:rgba(200,146,58,.16);color:#946100}#sg-appts .ap-st.lim .dot{background:#c8923a}
+  #sg-appts .ap-st.ask{background:rgba(21,94,122,.12);color:var(--cta)}#sg-appts .ap-st.ask .dot{background:var(--cta)}
+  #sg-appts .ap-bar{height:6px;border-radius:999px;background:#e7edf0;overflow:hidden}
+  #sg-appts .ap-bar>i{display:block;height:100%;border-radius:999px}
+  #sg-appts .ap-bar>i.ok{background:linear-gradient(90deg,#2E9A8C,#5C9A7B)}
+  #sg-appts .ap-bar>i.lim{background:linear-gradient(90deg,#c8923a,#e0b15f)}
+  #sg-appts .ap-bar>i.ask{background:repeating-linear-gradient(90deg,#cdd7dc 0 6px,transparent 6px 12px)}
+  #sg-appts .ap-dt{font:700 14px var(--display);color:var(--ink);margin-top:11px}
+  #sg-appts .ap-lb{font-size:11px;color:var(--muted);margin-top:3px}
+  #sg-appts .ap-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:28px;font-size:12px;color:var(--muted)}
+  #sg-appts .ap-legend span{display:inline-flex;align-items:center;gap:7px}
+  #sg-appts .ap-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 </style>
 @endpush
 
@@ -153,6 +186,54 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Registered in <b>UK &amp; Germany</b></span></span>
 </div></div></section>
+
+{{-- APPOINTMENT AVAILABILITY — region-grouped tiles, real SlotService data (honest "ask" when none) --}}
+<section id="sg-appts"><div class="wrap">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Appointments</p>
+    <h2>Where slots are opening now</h2>
+    <p class="lede">For most Schengen visas the biometric appointment is the real bottleneck, not the visa. Here is a recent snapshot by country, soonest first. Start early so you do not miss your window.</p>
+    <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
+  </div>
+
+  @foreach ($byRegion as $region => $group)
+    @if($region)
+    <div class="ap-region">
+      <h3>{{ $region }}</h3>
+      <div class="ap-tiles">
+        @foreach ($group as $d)
+          @php
+            $a = $availability[$d->id] ?? ['status' => 'ask', 'next_slot_at' => null, 'count_30d' => 0];
+            $status = $a['status'];
+            $label = ['ok' => 'Available', 'lim' => 'Limited', 'ask' => 'Ask us'][$status];
+            $width = $status === 'ok' ? min(100, max(60, $a['count_30d'] * 8)) : ($status === 'lim' ? min(55, max(18, $a['count_30d'] * 7)) : 100);
+          @endphp
+          <a class="ap-tile" href="{{ url('/visa/'.$d->slug) }}">
+            <div class="ap-tp">
+              <h4>{{ $d->name }}</h4>
+              <span class="ap-st {{ $status }}"><span class="dot"></span>{{ $label }}</span>
+            </div>
+            <div class="ap-bar"><i class="{{ $status }}" style="width:{{ $width }}%"></i></div>
+            @if($a['next_slot_at'])
+              <div class="ap-dt">{{ $a['next_slot_at']->format('j M Y') }}</div>
+              <div class="ap-lb">Next available</div>
+            @else
+              <div class="ap-dt">On request</div>
+              <div class="ap-lb">We check live for you</div>
+            @endif
+          </a>
+        @endforeach
+      </div>
+    </div>
+    @endif
+  @endforeach
+
+  <div class="ap-legend">
+    <span><i style="background:#2E9A8C"></i>Available</span>
+    <span><i style="background:#c8923a"></i>Limited</span>
+    <span><i style="background:#155E7A"></i>Ask us, we check live</span>
+  </div>
+</div></section>
 
 {{-- WHAT A SCHENGEN VISA COVERS — navy passport card, before the destinations grid --}}
 <section id="sg-covers"><div class="wrap">

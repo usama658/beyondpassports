@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Destination;
 use App\Services\GuideService;
 use App\Services\RequirementService;
+use App\Services\SlotService;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -29,7 +30,7 @@ class DestinationController extends Controller
     /**
      * Destinations hub — boarding-pass cards for every published destination.
      */
-    public function index(): View
+    public function index(SlotService $slots): View
     {
         // Schengen-only: the /destinations hub lists the Schengen countries (searchable grid).
         $destinations = Destination::query()
@@ -37,8 +38,22 @@ class DestinationController extends Controller
             ->orderBy('name')
             ->get();
 
+        // Honest, per-destination appointment availability (real seeded slots only; "ask" when none).
+        $availability = $slots->availabilityByDestination('Schengen');
+
+        // Region-grouped, soonest-slot-first within each region, for the appointment board.
+        $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
+        $byRegion = $destinations
+            ->sortBy(fn ($d) => optional($availability[$d->id]['next_slot_at'] ?? null)?->timestamp ?? PHP_INT_MAX)
+            ->groupBy('region')
+            ->sortBy(fn ($group, $region) => array_search($region, $regionOrder, true) === false
+                ? PHP_INT_MAX
+                : array_search($region, $regionOrder, true));
+
         return view('destinations.index', [
             'destinations' => $destinations,
+            'availability' => $availability,
+            'byRegion' => $byRegion,
         ]);
     }
 
