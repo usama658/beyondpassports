@@ -346,7 +346,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.3-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7-2.7c1 1 1 3.3 0 5.4-1.4 3-7 9.3-7 9.3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
       <h3>Care</h3>
-      <p>Real people on the phone and on WhatsApp. A UK team you can actually talk to when something matters.</p>
+      <p>Real people on the phone and on WhatsApp. UK and Germany teams you can actually talk to when something matters.</p>
     </div>
 
   </div>
