@@ -117,6 +117,7 @@ Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->
 
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
+Route::get('/schengen-visa-consultancy', [DestinationController::class, 'schengenLanding'])->name('schengen.landing');
 Route::get('/visa/schengen', [DestinationController::class, 'schengen'])->name('destinations.schengen');
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
 // Nested country guide (spoke) — constrained to the 15 known topic slugs so it never shadows

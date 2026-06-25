@@ -58,6 +58,36 @@ class DestinationController extends Controller
     }
 
     /**
+     * Conversion landing page for the "Schengen visa consultancy" keyword (separate from the
+     * /destinations browse hub). Reuses the honest availability board + reviews; built to convert
+     * paid/organic traffic searching for Schengen visa help.
+     */
+    public function schengenLanding(AvailabilityService $availability): View
+    {
+        $destinations = Destination::query()
+            ->where('visa_type', 'Schengen')
+            ->orderBy('name')
+            ->get();
+
+        $avail = $availability->byDestination('Schengen');
+
+        $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
+        $byRegion = $destinations
+            ->sortBy(fn ($d) => optional($avail[$d->id]['next_available_on'] ?? null)?->timestamp ?? PHP_INT_MAX)
+            ->groupBy('region')
+            ->sortBy(fn ($group, $region) => array_search($region, $regionOrder, true) === false
+                ? PHP_INT_MAX
+                : array_search($region, $regionOrder, true));
+
+        return view('public.schengen-visa', [
+            'destinations' => $destinations,
+            'availability' => $avail,
+            'byRegion' => $byRegion,
+            'reviews' => array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3),
+        ]);
+    }
+
+    /**
      * Schengen / ETIAS hub — reuses the destination boarding-pass card layout for every
      * ETIAS destination. (Regional grouping of the cards is a follow-up.)
      */
