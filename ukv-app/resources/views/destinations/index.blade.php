@@ -156,6 +156,28 @@
   #sg-appts .ap-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:28px;font-size:12px;color:var(--muted)}
   #sg-appts .ap-legend span{display:inline-flex;align-items:center;gap:7px}
   #sg-appts .ap-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+  /* ── Why applications get refused (reason / fix rows) ──────────────────── */
+  #sg-refused .sec-head{text-align:center;max-width:62ch;margin:0 auto}
+  #sg-refused .sec-head .lede{margin:12px auto 0;max-width:56ch}
+  #sg-refused .rf-rows{display:flex;flex-direction:column;gap:14px;margin:30px auto 0;max-width:90ch}
+  #sg-refused .rf-row{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid var(--paper-edge);
+    border-radius:16px;overflow:hidden;box-shadow:0 12px 30px -26px rgba(40,50,70,.5);transition:transform .2s ease,box-shadow .2s ease}
+  #sg-refused .rf-row:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+  #sg-refused .rf-cell{padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  #sg-refused .rf-bad{background:linear-gradient(180deg,#FBF3F1,#fff);border-right:1px solid var(--paper-edge)}
+  #sg-refused .rf-glyph{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;margin-top:1px}
+  #sg-refused .rf-bad .rf-glyph{background:rgba(190,70,55,.12);color:#B3402E}
+  #sg-refused .rf-fix .rf-glyph{background:rgba(46,154,140,.14);color:#1F6E63}
+  #sg-refused .rf-glyph svg{width:15px;height:15px}
+  #sg-refused .rf-k{font:800 11px var(--display);letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+  #sg-refused .rf-bad .rf-k{color:#B3402E}
+  #sg-refused .rf-fix .rf-k{color:var(--stamp-text,#1F6E63)}
+  #sg-refused .rf-t{font:600 15px/1.45 var(--display);color:var(--ink);margin:0}
+  #sg-refused .rf-fix .rf-t{color:#3a4b55;font-weight:500}
+  #sg-refused .rf-cta{text-align:center;margin-top:30px}
+  @media (max-width:680px){#sg-refused .rf-row{grid-template-columns:1fr}
+    #sg-refused .rf-bad{border-right:0;border-bottom:1px solid var(--paper-edge)}}
 </style>
 @endpush
 
@@ -209,20 +231,23 @@
       <div class="ap-tiles">
         @foreach ($group as $d)
           @php
-            $a = $availability[$d->id] ?? ['status' => 'ask', 'next_slot_at' => null, 'count_30d' => 0];
+            $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null, 'confirmed_at' => null];
             $status = $a['status'];
             $label = ['ok' => 'Available', 'lim' => 'Limited', 'ask' => 'Ask us'][$status];
-            $width = $status === 'ok' ? min(100, max(60, $a['count_30d'] * 8)) : ($status === 'lim' ? min(55, max(18, $a['count_30d'] * 7)) : 100);
+            $width = ['ok' => '82%', 'lim' => '34%', 'ask' => '100%'][$status];
           @endphp
           <a class="ap-tile" href="{{ url('/visa/'.$d->slug) }}">
             <div class="ap-tp">
               <h4>{{ $d->name }}</h4>
               <span class="ap-st {{ $status }}"><span class="dot"></span>{{ $label }}</span>
             </div>
-            <div class="ap-bar"><i class="{{ $status }}" style="width:{{ $width }}%"></i></div>
-            @if($a['next_slot_at'])
-              <div class="ap-dt">{{ $a['next_slot_at']->format('j M Y') }}</div>
+            <div class="ap-bar"><i class="{{ $status }}" style="width:{{ $width }}"></i></div>
+            @if($a['next_available_on'])
+              <div class="ap-dt">{{ $a['next_available_on']->format('j M Y') }}</div>
               <div class="ap-lb">Next available</div>
+              @if($a['confirmed_at'])
+                <div class="ap-lb">as of {{ $a['confirmed_at']->format('j M') }}</div>
+              @endif
             @else
               <div class="ap-dt">On request</div>
               <div class="ap-lb">We check live for you</div>
@@ -304,6 +329,42 @@
     </div>
     <p class="sg-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
+</div></section>
+
+{{-- WHY APPLICATIONS GET REFUSED — honest reason / fix rows, before "What we do" --}}
+@php
+  $refusedReasons = [
+    ['reason' => 'Applying through the wrong country', 'fix' => 'Apply through your main destination, or first point of entry if your trip is split evenly, not whichever centre has the easiest appointments.'],
+    ['reason' => 'Reusing documents from an old or refused application', 'fix' => 'Reassess and update every document so it reflects your current trip and dates.'],
+    ['reason' => 'Inconsistent information across documents', 'fix' => 'A clear cover letter, with names, dates and figures that match across the whole file.'],
+    ['reason' => 'Weak proof of ties to the UK', 'fix' => 'Evidence tailored to what each consulate expects: employment, study, family or property.'],
+    ['reason' => 'Unexplained funds added just before applying', 'fix' => 'Bank history that matches your normal income, with any large deposit clearly explained and evidenced.'],
+    ['reason' => 'Booking non-refundable travel before the decision', 'fix' => 'Hold refundable or reservation-only bookings until the visa is granted.'],
+  ];
+@endphp
+<section id="sg-refused"><div class="wrap">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Prevention</p>
+    <h2>Why Schengen visa applications get refused</h2>
+    <p class="lede">Most refusals come down to a handful of avoidable mistakes. Here is what tends to go wrong, and what to do instead.</p>
+  </div>
+  <div class="rf-rows">
+    @foreach ($refusedReasons as $r)
+      <div class="rf-row reveal">
+        <div class="rf-cell rf-bad">
+          <span class="rf-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <div><p class="rf-k">Why it fails</p><p class="rf-t">{{ $r['reason'] }}</p></div>
+        </div>
+        <div class="rf-cell rf-fix">
+          <span class="rf-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><p class="rf-k">What to do instead</p><p class="rf-t">{{ $r['fix'] }}</p></div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+  <div class="rf-cta">
+    <a class="btn" href="{{ url('/tools') }}">Check your eligibility</a>
+  </div>
 </div></section>
 
 {{-- 4) WHAT WE DO — six-service stamp grid (.ticks / .tick / #ukv-stamp) --}}

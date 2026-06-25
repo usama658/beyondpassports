@@ -6,6 +6,7 @@ use App\Enums\SupplyNodeType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class SupplyNode extends Model
 {
@@ -38,6 +39,12 @@ class SupplyNode extends Model
     public function destinations(): BelongsToMany
     {
         return $this->belongsToMany(Destination::class);
+    }
+
+    /** Published marketing availability snapshot for this centre (drives the public board). */
+    public function availability(): HasOne
+    {
+        return $this->hasOne(CentreAvailability::class);
     }
 
     /** Only nodes with usable coordinates (geocoded) — the finder operates on these. */

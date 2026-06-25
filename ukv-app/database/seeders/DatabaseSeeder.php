@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             DestinationSeeder::class,
             DocumentRequirementSeeder::class,
             SupplyNodeSeeder::class,
+            SchengenCentreSeeder::class,
             DemoOrderSeeder::class,
         ]);
     }

@@ -29,6 +29,7 @@ final class ProductionSeeder extends Seeder
             DestinationImageSeeder::class,   // image_path for any slug whose .jpg exists
             DocumentRequirementSeeder::class,// per-destination required docs
             SupplyNodeSeeder::class,         // centres / couriers / suppliers
+            SchengenCentreSeeder::class,     // one bookable centre per Schengen country (board)
             TurkeyGoldGuidesSeeder::class,   // published guides
         ]);
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\CentreSlot;
-use App\Models\Destination;
 use App\Models\Order;
 use App\Models\SupplyNode;
 use Illuminate\Support\Carbon;
@@ -189,74 +188,5 @@ final class SlotService
             'next_slot_at' => $soonest ? Carbon::parse($soonest) : null,
             'centre_count' => $base()->distinct('supply_node_id')->count('supply_node_id'),
         ];
-    }
-
-    /**
-     * Per-destination appointment availability for the public /destinations board.
-     *
-     * For each destination of the given visa type, aggregates the available, bookable slots
-     * at the centres linked to that destination (plus any global "we book here" centres). Returns
-     * the soonest upcoming slot and how many slots fall in the next 30 days, plus an honest status:
-     *   - ok  : 8+ slots in the next 30 days (good availability)
-     *   - lim : a slot exists but tight (1-7 in window, or the next one is further out)
-     *   - ask : nothing on file -> we confirm live with the centre ("on request")
-     *
-     * Everything is derived from real seeded slots; with no slots seeded every destination is `ask`,
-     * so the surface never shows a fabricated date or count.
-     *
-     * @return array<int, array{next_slot_at:?Carbon, count_30d:int, status:string}>
-     */
-    public function availabilityByDestination(string $visaType = 'Schengen'): array
-    {
-        $in30 = Carbon::now()->addDays(30)->toDateTimeString();
-
-        // Per-node aggregate: soonest upcoming slot + count within the next 30 days.
-        $perNode = CentreSlot::query()
-            ->available()
-            ->whereHas('supplyNode', fn ($q) => $q->where('we_book_here', true))
-            ->selectRaw('supply_node_id, MIN(slot_at) as next_at, SUM(CASE WHEN slot_at <= ? THEN 1 ELSE 0 END) as cnt30', [$in30])
-            ->groupBy('supply_node_id')
-            ->get()
-            ->keyBy('supply_node_id');
-
-        // Global "we book here" centres apply to every destination.
-        $globalNext = null;
-        $globalCnt = 0;
-        $globalIds = SupplyNode::query()->where('we_book_here', true)->where('is_global', true)->pluck('id');
-        foreach ($globalIds as $gid) {
-            if ($row = $perNode->get($gid)) {
-                $globalCnt += (int) $row->cnt30;
-                if ($row->next_at && (! $globalNext || $row->next_at < $globalNext)) {
-                    $globalNext = $row->next_at;
-                }
-            }
-        }
-
-        $out = [];
-        $destinations = Destination::query()->where('visa_type', $visaType)
-            ->with('supplyNodes:id')->get(['id']);
-
-        foreach ($destinations as $destination) {
-            $next = $globalNext;
-            $cnt = $globalCnt;
-            foreach ($destination->supplyNodes as $node) {
-                if ($row = $perNode->get($node->getKey())) {
-                    $cnt += (int) $row->cnt30;
-                    if ($row->next_at && (! $next || $row->next_at < $next)) {
-                        $next = $row->next_at;
-                    }
-                }
-            }
-
-            $status = $next === null ? 'ask' : ($cnt >= 8 ? 'ok' : 'lim');
-
-            $out[$destination->getKey()] = [
-                'next_slot_at' => $next ? Carbon::parse($next) : null,
-                'count_30d' => $cnt,
-                'status' => $status,
-            ];
-        }
-
-        return $out;
     }
 }

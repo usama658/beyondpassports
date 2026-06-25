@@ -19,3 +19,7 @@ Artisan::command('inspire', function () {
 
 // Release expired appointment-slot holds back to the available pool.
 \Illuminate\Support\Facades\Schedule::command('slots:release-expired')->everyFiveMinutes();
+
+// Public appointment board: derive snapshots from real bookings + tidy long-dead snapshots.
+\Illuminate\Support\Facades\Schedule::command('availability:derive')->dailyAt('06:30');
+\Illuminate\Support\Facades\Schedule::command('availability:sweep')->dailyAt('06:45');
