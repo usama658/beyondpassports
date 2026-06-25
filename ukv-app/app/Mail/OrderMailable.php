@@ -35,7 +35,10 @@ abstract class OrderMailable extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public function __construct(public readonly Order $order)
+    // NOTE: not `readonly` — Laravel's SerializesModels restores this property when a queued
+    // mailable is unserialized, and PHP forbids re-initialising a readonly promoted property
+    // from the child class scope (fatal "Cannot initialize readonly property ... from scope").
+    public function __construct(public Order $order)
     {
     }
 
