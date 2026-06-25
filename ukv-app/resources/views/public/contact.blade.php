@@ -44,6 +44,16 @@
   .ct-statuscard .sc-big { font: 800 23px var(--display); margin: 0 0 16px; letter-spacing: -.01em; }
   .ct-statuscard .ct-actions { margin-top: 0; }
   .ct-statuscard .ct-actions .btn { flex: 1; justify-content: center; padding: 13px 16px; font-size: 14.5px; }
+  /* Two-team rows */
+  .ct-team { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .ct-team:first-of-type { border-top: 0; }
+  .ct-team-who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .ct-fl { flex: none; width: 30px; height: 20px; border-radius: 4px; background: rgba(255,255,255,.16); display: inline-grid; place-items: center; font: 800 10px var(--display); color: #fff; }
+  .ct-team-who b { font: 700 14px var(--display); color: #fff; }
+  .ct-team-who small { display: block; color: rgba(255,255,255,.66); font-size: 12px; margin-top: 1px; }
+  .ct-teambtn { flex: none; padding: 9px 18px; font-size: 13px; background: var(--soft); color: #16222e; border: 0; }
+  .ct-teambtn:hover { background: #fff; }
+  .ct-wabtn { display: flex; width: 100%; justify-content: center; margin-top: 16px; }
 
   /* ── Hero accent strip ─────────────────────────────────────────────────── */
   .ct-hero-note {
@@ -386,13 +396,16 @@
     <span class="ct-status-pill is-closed" id="ct-status" role="status">
       <span class="sdot" aria-hidden="true"></span><span id="ct-status-text">Mon–Sat 9–6 UK time</span>
     </span>
-    <p class="sc-lab">Beyond Passports · UK team</p>
-    <p class="sc-big">Mon–Sat · 9–6 UK time</p>
-    <div class="ct-actions">
-      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn">@include('partials.call-glyph')Call UK</a>
-      <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn">@include('partials.call-glyph')Call Germany</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa">@include('partials.wa-glyph')WhatsApp</a>
+    <div class="ct-team">
+      <span class="ct-team-who"><span class="ct-fl">UK</span><span><b>UK team</b><small>{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</small></span></span>
+      <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn ct-teambtn">@include('partials.call-glyph')Call</a>
     </div>
+    <div class="ct-team">
+      <span class="ct-team-who"><span class="ct-fl">DE</span><span><b>Germany team</b><small>{{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</small></span></span>
+      <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn ct-teambtn">@include('partials.call-glyph')Call</a>
+    </div>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa ct-wabtn">@include('partials.wa-glyph')Message on WhatsApp</a>
+    @include('partials.trustpilot-cta', ['align' => 'center', 'theme' => 'dark', 'margin' => '14px 0 0'])
   </div>
 </div></div></section>
 
