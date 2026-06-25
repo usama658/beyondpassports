@@ -390,7 +390,6 @@
     <h1>Questions? We're a phone call away.</h1>
     <p class="lede">Call us and a real, UK-based person picks up. No bots, no call centres overseas. We'll talk through your trip, your visa and what we'd do next, including the avoidable things that get applications refused, with no obligation.</p>
     <span class="ct-hero-note">Mon–Sat 9–6 UK time &nbsp;·&nbsp; independent service, not a government website</span>
-    @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
   </div>
   <div class="ct-statuscard reveal" aria-label="Our team availability">
     <span class="ct-status-pill is-closed" id="ct-status" role="status">
