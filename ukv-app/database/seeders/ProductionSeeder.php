@@ -30,7 +30,8 @@ final class ProductionSeeder extends Seeder
             DocumentRequirementSeeder::class,// per-destination required docs
             SupplyNodeSeeder::class,         // centres / couriers / suppliers
             SchengenCentreSeeder::class,     // one bookable centre per Schengen country (board)
-            SampleAvailabilitySeeder::class, // TEMP illustrative board data (decays in 7d; remove once ops own it)
+            // SampleAvailabilitySeeder::class — ran once (commit b999b1a) to populate the board;
+            // disabled so it does not auto-refresh. Snapshots decay in 7d; ops own data from here.
             TurkeyGoldGuidesSeeder::class,   // published guides
         ]);
     }
