@@ -76,7 +76,7 @@
     flex-wrap: wrap;
     margin-top: 28px;
   }
-  .ct-actions .btn { padding: 16px 28px; font-size: 16px; }
+  .ct-actions .btn { padding: 16px 24px; font-size: 16px; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; }
 
   /* ── Combined "Ways to reach us" concierge panel (methods + callback) ───── */
   .cc{background:#fff;border:1px solid var(--paper-edge);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(20,30,50,.55)}
