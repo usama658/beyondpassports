@@ -256,10 +256,10 @@
   </div>
   <div class="ab-idcard reveal" aria-label="Who we are at a glance">
     <p class="ic-k">Beyond Passports · who we are</p>
-    <div class="ic-row"><span>Based</span><b>United Kingdom</b></div>
+    <div class="ic-row"><span>Focus</span><b>Schengen visas</b></div>
+    <div class="ic-row"><span>Teams</span><b>UK &amp; Germany</b></div>
     <div class="ic-row"><span>Team hours</span><b>Mon–Sat 9–6</b></div>
-    <div class="ic-row"><span>Status</span><b>Independent service</b></div>
-    <div class="ic-row"><span>Not</span><b>a government website</b></div>
+    <div class="ic-row"><span>Status</span><b>Independent, not a government site</b></div>
   </div>
 </div></div></section>
 
