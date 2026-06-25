@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Beyond Passports">
+  <rect width="64" height="64" rx="13" fill="#16222e"/>
+  <!-- simplified mark: wing + globe (no book detail at small size) -->
+  <path d="M40 36 Q24 30 8 16 Q22 30 38 30 Z" fill="#a9ccda"/>
+  <path d="M42 41 Q28 38 14 28 Q30 39 40 36 Z" fill="#fff"/>
+  <circle cx="44" cy="34" r="10" fill="none" stroke="#a9ccda" stroke-width="2.4"/>
+  <path d="M44 24 v20 M34 34 h20" stroke="#a9ccda" stroke-width="1.6"/>
+  <circle cx="44" cy="34" r="2.4" fill="#5C9A7B"/>
+</svg>
