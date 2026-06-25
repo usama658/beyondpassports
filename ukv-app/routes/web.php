@@ -145,3 +145,14 @@ Route::get('/track', [TrackController::class, 'show'])->name('track.show');
 Route::post('/track/lookup', [TrackController::class, 'lookup'])
     ->middleware('throttle:tracker')
     ->name('track.lookup');
+
+// --- TEMP guarded log reader (debug 500; remove after). Key-guarded, read-only. ---
+Route::get('/__bp-log', function (\Illuminate\Http\Request $r) {
+    abort_unless($r->query('key') === 'lg-7x2c9-bp', 403);
+    $f = storage_path('logs/laravel.log');
+    if (! is_file($f)) {
+        return 'no log file';
+    }
+    $lines = array_slice(file($f), -160);
+    return response('<pre>'.e(implode('', $lines)).'</pre>');
+});
