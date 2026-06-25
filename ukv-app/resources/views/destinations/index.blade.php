@@ -130,9 +130,9 @@
   #sg-appts .ap-note{display:inline-flex;align-items:center;gap:9px;margin:16px auto 0;font-size:12.5px;color:var(--muted);
     background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:8px 15px}
   #sg-appts .ap-note .d{width:8px;height:8px;border-radius:50%;background:var(--stamp);flex:none;box-shadow:0 0 0 4px rgba(92,154,123,.16)}
-  #sg-appts .ap-region{margin-top:30px}
-  #sg-appts .ap-region h3{font:800 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:#8997a0;margin:0 0 14px;display:flex;align-items:center;gap:12px}
-  #sg-appts .ap-region h3::after{content:"";flex:1;height:1px;background:var(--paper-edge)}
+  #sg-appts .sg-tabs{margin-top:24px}
+  #sg-appts .ap-panel{display:none;margin-top:22px}
+  #sg-appts .ap-panel.active{display:block}
   #sg-appts .ap-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   @media (max-width:820px){#sg-appts .ap-tiles{grid-template-columns:1fr 1fr}}
   @media (max-width:480px){#sg-appts .ap-tiles{grid-template-columns:1fr}}
@@ -196,10 +196,16 @@
     <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
   </div>
 
-  @foreach ($byRegion as $region => $group)
-    @if($region)
-    <div class="ap-region">
-      <h3>{{ $region }}</h3>
+  @php $apptRegions = $byRegion->filter(fn ($g, $r) => ! empty($r)); @endphp
+  @if ($apptRegions->isNotEmpty())
+  <div class="sg-tabs" id="apptTabs" role="tablist">
+    @foreach ($apptRegions as $region => $group)
+      <button type="button" class="sg-tab @if($loop->first) active @endif" role="tab" data-region="{{ $region }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ str_replace(' Europe', '', $region) }} <span class="c">{{ $group->count() }}</span></button>
+    @endforeach
+  </div>
+
+  @foreach ($apptRegions as $region => $group)
+    <div class="ap-panel @if($loop->first) active @endif" data-region="{{ $region }}">
       <div class="ap-tiles">
         @foreach ($group as $d)
           @php
@@ -225,8 +231,8 @@
         @endforeach
       </div>
     </div>
-    @endif
   @endforeach
+  @endif
 
   <div class="ap-legend">
     <span><i style="background:#2E9A8C"></i>Available</span>
@@ -234,6 +240,20 @@
     <span><i style="background:#155E7A"></i>Ask us, we check live</span>
   </div>
 </div></section>
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('#apptTabs .sg-tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('#sg-appts .ap-panel'));
+    if (!tabs.length) return;
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var region = t.getAttribute('data-region');
+        tabs.forEach(function (x) { var on = x === t; x.classList.toggle('active', on); x.setAttribute('aria-selected', on ? 'true' : 'false'); });
+        panels.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-region') === region); });
+      });
+    });
+  })();
+</script>
 
 {{-- WHAT A SCHENGEN VISA COVERS — navy passport card, before the destinations grid --}}
 <section id="sg-covers"><div class="wrap">
@@ -265,9 +285,8 @@
   @endphp
   @if ($destinations->isNotEmpty())
   <div class="sg-tabs" id="sgTabs">
-    <button type="button" class="sg-tab active" data-region="all">All <span class="c">{{ $destinations->count() }}</span></button>
     @foreach ($regionsPresent as $rk)
-      <button type="button" class="sg-tab" data-region="{{ $rk }}">{{ str_replace(' Europe', '', $rk) }} <span class="c">{{ $regionCounts[$rk] }}</span></button>
+      <button type="button" class="sg-tab @if($loop->first) active @endif" data-region="{{ $rk }}">{{ str_replace(' Europe', '', $rk) }} <span class="c">{{ $regionCounts[$rk] }}</span></button>
     @endforeach
   </div>
   @endif
@@ -353,12 +372,13 @@
     var tabs = Array.prototype.slice.call(document.querySelectorAll('#sgTabs .sg-tab'));
     if (!grid) return;
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.pass'));
-    var region = 'all';
+    var active = document.querySelector('#sgTabs .sg-tab.active');
+    var region = (active && active.getAttribute('data-region')) || 'all';
     function apply() {
       var q = (input && input.value.trim().toLowerCase()) || '';
       var shown = 0;
       cards.forEach(function (c) {
-        var regOk = region === 'all' || (c.getAttribute('data-region') || '') === region;
+        var regOk = q !== '' || region === 'all' || (c.getAttribute('data-region') || '') === region;
         var nameOk = !q || (c.getAttribute('data-name') || '').indexOf(q) !== -1;
         var hit = regOk && nameOk;
         c.style.display = hit ? '' : 'none';
@@ -375,6 +395,7 @@
       });
     });
     if (input) input.addEventListener('input', apply);
+    apply();
   })();
 </script>
 @endif
