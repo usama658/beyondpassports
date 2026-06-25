@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'About Us: Independent UK Visa & eVisa Service | Beyond Passports')
+@section('title', 'About Us: Independent Schengen Visa Service, UK & Germany | Beyond Passports')
 @section('description', 'Beyond Passports is an independent Schengen visa consultancy with teams in the UK and Germany. Not a government website. Clear fees, real human checks, honest advice.')
 
 @push('head')
@@ -271,10 +271,10 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Registered in <b>UK &amp; Germany</b></span></span>
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row" id="ab-counts">
-  <div><div class="n" data-count="4.9" data-suffix="★" data-dec="1">4.9★</div><div class="l">Average rating</div></div>
-  <div><div class="n" data-count="12000" data-suffix="+">12,000+</div><div class="l">Trips sorted</div></div>
-  <div><div class="n" data-count="{{ ($navDestinations ?? collect())->count() }}">{{ ($navDestinations ?? collect())->count() }}</div><div class="l">Destinations &amp; growing</div></div>
-  <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
+  <div><div class="n" data-count="29">29</div><div class="l">Schengen countries covered</div></div>
+  <div><div class="n">2</div><div class="l">Teams, UK &amp; Germany</div></div>
+  <div><div class="n">100%</div><div class="l">Files human-checked before submission</div></div>
+  <div><div class="n">Mon&ndash;Sat</div><div class="l">Support, 9&ndash;6</div></div>
 </div></div></section>
 
 {{-- WHO WE ARE --}}
@@ -393,7 +393,7 @@
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </span>
     <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities, and we cannot guarantee any outcome.</p>
-    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a government or embassy decide any faster, and an ETA does not produce a physical document.</p>
+    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a consulate or visa centre decide any faster, and it does not change the appointment slots they have available.</p>
   </div>
 </div></section>
 
