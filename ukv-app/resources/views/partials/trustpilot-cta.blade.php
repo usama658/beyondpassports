@@ -21,12 +21,11 @@
 @if ($hasRating)
   <a class="tpr {{ $tpcDark ? 'tpr--dark' : '' }}" href="{{ $tpcUrl }}" target="_blank" rel="noopener"
      aria-label="Rated {{ $rating }} out of 5 on Trustpilot from {{ $count }} reviews">
-    <span class="tpr-word">{{ $word }}</span>
     <span class="tpr-stars">
       <span class="tpr-row tpr-bg">{!! str_repeat('<i class="tpr-box">'.$starSvg.'</i>', 5) !!}</span>
       <span class="tpr-row tpr-fg" style="width:{{ $pct }}%">{!! str_repeat('<i class="tpr-box">'.$starSvg.'</i>', 5) !!}</span>
     </span>
-    <span class="tpr-meta"><b>TrustScore {{ rtrim(rtrim(number_format($rating,1),'0'),'.') }}</b>@if($count) <span class="tpr-sep">|</span> {{ $count }} {{ (int)$count === 1 ? 'review' : 'reviews' }} @endif</span>
+    <span class="tpr-meta"><b>TrustScore {{ rtrim(rtrim(number_format($rating,1),'0'),'.') }}</b></span>
     <span class="tpr-logo">{!! $starSvg !!} Trustpilot</span>
   </a>
 @else
