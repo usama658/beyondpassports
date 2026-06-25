@@ -250,8 +250,8 @@
 <section class="ab-hero"><div class="wrap"><div class="ab-hero-grid">
   <div class="ab-hero-copy reveal">
     <p class="eyebrow">About us</p>
-    <h1>Schengen visas, done right by people who do this every day.</h1>
-    <p class="lede">Most Schengen refusals come from avoidable mistakes: unclear evidence, missing documents, the wrong details, applying to the wrong consulate. Our UK and Germany teams check, prepare and submit your application, removing those avoidable causes before you ever submit. Real people you can call, not bots or overseas call centres.</p>
+    <h1>An independent Schengen visa team, in the UK and Germany.</h1>
+    <p class="lede">Beyond Passports is a private visa consultancy. We prepare, check and submit Schengen applications, catching the avoidable mistakes that get people refused.</p>
     @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
   </div>
   <div class="ab-idcard reveal" aria-label="Who we are at a glance">
