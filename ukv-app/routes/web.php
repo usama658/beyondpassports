@@ -31,6 +31,9 @@ Route::view('/about', 'public.about')->name('about');
 Route::view('/contact', 'public.contact')->name('contact');
 Route::view('/legal', 'public.legal')->name('legal');
 Route::view('/compare', 'public.compare')->name('compare');
+// Standalone paid-traffic landing page (Speed/outcome). Orphaned by design:
+// noindex, NOT in nav/footer, NOT in SitemapController. Reachable by URL only.
+Route::view('/schengen-visa-agent', 'public.lp-speed')->name('lp.speed');
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
