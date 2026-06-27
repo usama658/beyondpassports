@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{-- Brand v2 favicons / icons --}}
+<link rel="icon" href="{{ asset('assets/brand/favicon.svg') }}" type="image/svg+xml">
+<link rel="icon" href="{{ asset('assets/brand/favicon.ico') }}" sizes="any">
+<link rel="apple-touch-icon" href="{{ asset('assets/brand/apple-touch-icon.png') }}">
+<meta name="theme-color" content="#155E7A">
 {{-- Trustpilot TrustBox bootstrap (in <head> per Trustpilot's guidance; ungated so reviews show). --}}
 @if (config('ukv.trustpilot.business_unit_id'))<script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>@endif
 @if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
