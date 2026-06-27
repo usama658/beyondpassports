@@ -424,6 +424,8 @@ h1,h2,h3,h4{color:var(--ink)}
 /* trustpilot row */
 .tprow .tp .tlog,.tprow .stars{color:#16222E !important}
 .teamline,.teamline .tlchip{color:#46535f !important;border-color:rgba(20,34,46,.18) !important}
+/* topbar is petrol (dark) -> its teamline chips must stay light */
+.tbpetrol .teamline,.tbpetrol .teamline .tlchip{color:rgba(255,255,255,.9) !important;border-color:rgba(255,255,255,.3) !important}
 /* ===== CTA buttons: site .btn system (radius 12, weight 700, Outfit) ===== */
 .btn{border-radius:12px !important;font-weight:700 !important;font-family:'Outfit',system-ui,sans-serif !important}
 /* primary WhatsApp CTAs -> petrol fill + WA icon (hero "C") */
