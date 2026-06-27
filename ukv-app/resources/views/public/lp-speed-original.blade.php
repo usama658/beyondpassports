@@ -393,7 +393,6 @@ h1,h2,h3,h4{color:var(--ink)}
 .tbp .tflag{width:24px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .tbp .tverify{padding:6px 0 6px 24px;border-left:1px solid rgba(20,34,46,.12);color:#155E7A;font-size:.85rem;font-weight:700}
 .tbp-hero{margin:22px auto 0;max-width:980px}
-.tbpetrol{background:#fff !important;border-bottom:1px solid rgba(20,34,46,.12) !important}
 @media(max-width:760px){.tbp{flex-direction:column}.tbp .tcell,.tbp .tverify{border-right:0;border-left:0;border-bottom:1px solid rgba(20,34,46,.12);padding:10px 0;width:100%;justify-content:center;text-align:center}.tbp .tcell:last-child,.tbp .tverify:last-child{border-bottom:0}}
 
 /* track-record panel -> photographic bg with light scrim (own rule beats group white) */
