@@ -14,7 +14,7 @@
   </span>
 </div></div>
 <header class="site-head"><div class="wrap">
-  <a href="{{ url('/') }}" class="brand">Beyond <b>Passports</b></a>
+  <a href="{{ url('/') }}" class="brand" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2.svg') }}" alt="Beyond Passports" width="150" height="38" style="display:block;height:38px;width:auto"></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
   <nav class="nav" id="primary-nav" aria-label="Primary">
     {{-- Schengen-only: simple top-nav link (mega-menu removed; recoverable from git). --}}
