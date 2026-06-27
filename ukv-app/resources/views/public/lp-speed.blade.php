@@ -405,6 +405,8 @@ h1,h2,h3,h4{color:var(--ink)}
 .ralert .c{border-left:3px solid #C0463D !important}
 .ralert .ic{color:#C0463D !important}
 .fmeter .num{color:#fff !important;background:#C0463D !important}
+/* how-it-works step nodes -> petrol filled + white number (site primary) */
+.htw .num{background:#155E7A !important;color:#fff !important}
 .fmeter .bar span{background:#C0463D !important}
 /* tags */
 .tag.go,.pd.go{color:#1F6E63 !important;background:rgba(46,154,140,.12) !important}
