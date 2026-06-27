@@ -438,8 +438,10 @@ h1,h2,h3,h4{color:var(--ink)}
 .prow .pchk{background:#25D366 !important;color:#06310f !important;box-shadow:none !important;border-radius:10px !important;font-weight:700 !important}
 .prow .pchk .wi{fill:#06310f !important}
 /* final CTA panel (petrol) -> white button */
-.ctapanel .btn-wa{background:#fff !important;color:#155E7A !important}
+.ctapanel .btn-wa{background:#fff !important;color:#155E7A !important;transition:transform .12s ease,box-shadow .18s ease,background .18s ease !important}
 .ctapanel .btn-wa .wi{fill:#155E7A !important}
+.ctapanel .btn-wa:hover{background:#EAF2F5 !important;transform:translateY(-2px) !important;box-shadow:0 14px 30px -12px rgba(0,0,0,.45) !important}
+.ctapanel .btn-wa:active{transform:translateY(0) !important}
 /* CTA panel stays dark petrol -> text must be LIGHT (beats the global muted rule) */
 .ctapanel h2{color:#ffffff !important}
 .ctapanel .lead,.ctapanel p{color:#dff0f5 !important}
