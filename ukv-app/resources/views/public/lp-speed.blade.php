@@ -411,6 +411,8 @@ h1,h2,h3,h4{color:var(--ink)}
 .fmeter .num{color:#fff !important;background:#C0463D !important}
 /* how-it-works step nodes -> petrol filled + white number (site primary) */
 .htw .num{background:#155E7A !important;color:#fff !important}
+/* card foot inherits page-footer .foot padding:54px 0 -> reset to a thin divider */
+.htw .card .foot{padding:14px 0 0 !important;border-top:1px solid rgba(20,34,46,.10) !important;margin-top:14px !important}
 .fmeter .bar span{background:#C0463D !important}
 /* tags */
 .tag.go,.pd.go{color:#1F6E63 !important;background:rgba(46,154,140,.12) !important}
