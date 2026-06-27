@@ -380,19 +380,19 @@ h1,h2,h3,h4{color:var(--ink)}
 .nummini .m:first-child{padding-top:0}
 .nummini .m:last-child{border-bottom:0;padding-bottom:0}
 .nummini .mf{font:800 40px/1 'Outfit',sans-serif;letter-spacing:-.03em;color:#16222E;-webkit-text-fill-color:#16222E}
-.nummini .mf .mu{font:600 .85rem/1 'Outfit',sans-serif;color:#5d6b76;-webkit-text-fill-color:#5d6b76;margin-left:8px}
+.nummini .mf .mu{font:600 .85rem/1 'Outfit',sans-serif;color:#5d6b76;-webkit-text-fill-color:#5d6b76;margin-left:8px;letter-spacing:normal}
 .nummini .ml{font-size:14px;color:#5d6b76;margin-top:8px}
 @media(max-width:760px){.numgrid{grid-template-columns:1fr;gap:22px}.numhero{border-right:0;border-bottom:1px solid rgba(20,34,46,.12);padding-right:0;padding-bottom:22px}}
 /* trust strip (T1 white pill) */
-.tbp{display:flex !important;align-items:center !important;justify-content:center !important;gap:0 !important;background:#fff !important;border:1px solid rgba(20,34,46,.12) !important;border-radius:16px !important;padding:16px 22px !important;box-shadow:0 14px 34px -26px rgba(20,34,46,.4) !important;flex-wrap:wrap}
-.tbp .tcell{display:flex;align-items:center;gap:9px;padding:6px 24px;border-right:1px solid rgba(20,34,46,.12);font:600 15px 'Outfit',sans-serif;color:#16222E}
+.tbp{display:flex !important;align-items:center !important;justify-content:center !important;gap:0 !important;background:#fff !important;border:1px solid rgba(20,34,46,.12) !important;border-radius:16px !important;padding:16px 22px !important;box-shadow:0 14px 34px -26px rgba(20,34,46,.4) !important;flex-wrap:nowrap}
+.tbp .tcell{display:flex;align-items:center;gap:9px;padding:6px 20px;border-right:1px solid rgba(20,34,46,.12);font:600 15px 'Outfit',sans-serif;color:#16222E}
 .tbp .tcell:first-child{padding-left:0}
 .tbp .tcell b{font-weight:800}
 .tbp .tcell .ti{width:20px;height:20px;color:#2E9A8C;flex:none}
 .tbp .tcell .tn{font:800 20px 'Outfit',sans-serif;color:#155E7A;letter-spacing:-.02em}
 .tbp .tflag{width:24px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .tbp .tverify{padding:6px 0 6px 24px;border-left:1px solid rgba(20,34,46,.12);color:#155E7A;font-size:.85rem;font-weight:700}
-.tbp-hero{margin:22px auto 0;max-width:760px}
+.tbp-hero{margin:22px auto 0;max-width:980px}
 @media(max-width:760px){.tbp{flex-direction:column}.tbp .tcell,.tbp .tverify{border-right:0;border-left:0;border-bottom:1px solid rgba(20,34,46,.12);padding:10px 0;width:100%;justify-content:center;text-align:center}.tbp .tcell:last-child,.tbp .tverify:last-child{border-bottom:0}}
 
 /* track-record panel -> photographic bg with light scrim (own rule beats group white) */
