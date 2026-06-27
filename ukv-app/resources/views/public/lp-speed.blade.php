@@ -362,6 +362,7 @@ h1,h2,h3,h4{color:var(--ink)}
   background:#ffffff !important;border:1px solid rgba(20,34,46,.12) !important;color:#16222E !important;
   box-shadow:0 14px 34px -24px rgba(20,34,46,.30)}
 .faqgrid .c p,.htw .card p,.chat p,.card p{color:#46535f !important}
+.callout,.callout p{color:#46535f !important}.callout b{color:#16222E !important}
 /* stats numbers */
 .stat .big{background:none !important;-webkit-text-fill-color:#16222E !important;color:#16222E !important}
 .stat .big.go{ -webkit-text-fill-color:#1F6E63 !important;color:#1F6E63 !important}
@@ -427,10 +428,18 @@ h1,h2,h3,h4{color:var(--ink)}
 /* pricing: featured plan stays WhatsApp green, others ghost */
 .ptbl tfoot .btn-wa{background:#25D366 !important;color:#06310f !important;padding:11px 18px !important}
 .ptbl tfoot .btn-wa .wi{fill:#06310f !important}
-/* nav CTA -> petrol filled */
-.navcta{background:#155E7A !important;color:#fff !important;border-radius:12px !important;font-weight:700 !important;padding:10px 18px !important}
+/* nav CTA -> petrol filled (a.navcta beats the generic .nav a ink colour) */
+.navcta{background:#155E7A !important;border-radius:12px !important;font-weight:700 !important;padding:10px 18px !important}
+.nav a.navcta{color:#fff !important}
+/* wait-times board "Check" pills -> flat site WhatsApp green */
+.prow .pchk{background:#25D366 !important;color:#06310f !important;box-shadow:none !important;border-radius:10px !important;font-weight:700 !important}
+.prow .pchk .wi{fill:#06310f !important}
 /* final CTA panel (petrol) -> white button */
 .ctapanel .btn-wa{background:#fff !important;color:#155E7A !important}
 .ctapanel .btn-wa .wi{fill:#155E7A !important}
+/* CTA panel stays dark petrol -> text must be LIGHT (beats the global muted rule) */
+.ctapanel h2{color:#ffffff !important}
+.ctapanel .lead,.ctapanel p{color:#dff0f5 !important}
+.ctapanel .sub,.ctapanel .note{color:rgba(255,255,255,.78) !important}
 </style>
 </body></html>
