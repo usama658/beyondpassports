@@ -33,18 +33,14 @@ Route::view('/legal', 'public.legal')->name('legal');
 Route::view('/compare', 'public.compare')->name('compare');
 // Standalone paid-traffic landing page (Speed/outcome). Orphaned by design:
 // noindex, NOT in nav/footer, NOT in SitemapController. Reachable by URL only.
+// Paid-traffic landing pages (site-theme light). Orphaned: noindex, NOT in nav/footer/sitemap.
 Route::view('/schengen-visa-agent', 'public.lp-speed')->name('lp.speed');
-// Original dark-premium version of the Speed LP, kept separately (same noindex/orphan rules).
+// Original dark-premium version of the Speed LP, kept on request.
 Route::view('/schengen-visa-agent-premium', 'public.lp-speed-original')->name('lp.speed.original');
-// LP set A-D — each a site-theme light page (slug) + original dark-premium (slug-premium). All noindex, orphaned.
 Route::view('/schengen-visa-refusal-risk', 'public.lp-fear')->name('lp-fear');
-Route::view('/schengen-visa-refusal-risk-premium', 'public.lp-fear-original')->name('lp-fear.original');
 Route::view('/schengen-visa-appointment', 'public.lp-appointments')->name('lp-appointments');
-Route::view('/schengen-visa-appointment-premium', 'public.lp-appointments-original')->name('lp-appointments.original');
 Route::view('/honest-schengen-visa-service', 'public.lp-trust')->name('lp-trust');
-Route::view('/honest-schengen-visa-service-premium', 'public.lp-trust-original')->name('lp-trust.original');
 Route::view('/schengen-visa-refused', 'public.lp-refused')->name('lp-refused');
-Route::view('/schengen-visa-refused-premium', 'public.lp-refused-original')->name('lp-refused.original');
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
