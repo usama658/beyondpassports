@@ -403,7 +403,8 @@ h1,h2,h3,h4{color:var(--ink)}
   background:rgba(21,94,122,.08) !important;border:1px solid rgba(21,94,122,.22) !important;color:#155E7A !important}
 /* refused alert + fear meter accents */
 .ralert .c{border-left:3px solid #C0463D !important}
-.ralert .ic,.fmeter .num{color:#C0463D !important}
+.ralert .ic{color:#C0463D !important}
+.fmeter .num{color:#fff !important;background:#C0463D !important}
 .fmeter .bar span{background:#C0463D !important}
 /* tags */
 .tag.go,.pd.go{color:#1F6E63 !important;background:rgba(46,154,140,.12) !important}
