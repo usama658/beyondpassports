@@ -387,10 +387,14 @@ h1,h2,h3,h4{color:var(--ink)}
 .prow{border-color:rgba(20,34,46,.08) !important}
 .prow .pco{color:#16222E !important}
 .phead,.bh,.thead{color:#16222E !important}
-/* trust-bar authority row */
-.tbadge{background:#ffffff !important;border:1px solid rgba(20,34,46,.12) !important}
+/* trust-bar Option C: single white panel, OISC badge left (divider) + divided stats right */
+.tbwrap{background:#ffffff !important;border:1px solid rgba(20,34,46,.12) !important;border-radius:18px !important;padding:22px 26px !important;box-shadow:0 14px 34px -26px rgba(20,34,46,.3) !important;align-items:center !important}
+.tbadge{background:transparent !important;border:0 !important;border-right:1px solid rgba(20,34,46,.12) !important;border-radius:0 !important;padding:0 24px 0 0 !important}
 .tbadge b{color:#16222E !important}
-.tbstats .s .num,.tbstats .num{background:none !important;-webkit-text-fill-color:#155E7A !important;color:#155E7A !important}
+.tbadge .sh{background:rgba(21,94,122,.1) !important;border:0 !important;color:#155E7A !important}
+.tbstats .s{background:transparent !important;border:0 !important;border-left:1px solid rgba(20,34,46,.12) !important;border-radius:0 !important;box-shadow:none !important;text-align:left !important;padding:6px 0 6px 18px !important}
+.tbstats .s:first-child{border-left:0 !important;padding-left:0 !important}
+.tbstats .s .num,.tbstats .num{background:none !important;-webkit-text-fill-color:#155E7A !important;color:#155E7A !important;font-size:1.7rem !important}
 .tbstats .lab{color:#5d6b76 !important}
 /* nav pills + brand (kill inline white "Beyond") */
 .nav .pill,.nav{background:transparent !important}
