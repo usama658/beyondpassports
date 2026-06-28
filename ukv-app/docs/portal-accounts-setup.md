@@ -19,8 +19,8 @@ add phone, turn on 2FA if offered, then tick done.
 
 | Operator | Covers | Sign-up URL | Account email | 2FA | Done |
 |---|---|---|---|---|---|
-| **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | hello@… | ☐ | ☐ |
-| **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | hello@… | ☐ | ☐ |
+| **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | hello@… | ☐ | ✅ |
+| **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | hello@… | ☐ | ✅ |
 | **BLS International** | Spain | https://uk.blsspainglobal.com | hello@… | ☐ | ☐ |
 | **GVCW** | Greece | https://uk-gr.gvcworld.eu/en | hello@… | ☐ | ☐ |
 | **e-Konsulat** | Poland | https://secure.e-konsulat.gov.pl/ | hello@… | ☐ | ☐ |
