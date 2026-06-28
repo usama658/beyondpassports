@@ -60,3 +60,41 @@ Spain (BLS), and the four embassy-direct ones (Luxembourg, Poland, Romania, Slov
 
 Bands: `good` = plenty free soon · `limited` = few/further out · `ask`/blank = none or unknown
 (board shows "contact us").
+
+## Portal account setup checklist
+
+No public APIs — every check/booking is manual and logged in. CAPTCHAs block automation.
+
+### How many emails?
+- **1 shared ops mailbox** is enough to start — e.g. `appointments@beyondpassports.co.uk`. Register
+  every operator/agent account against it and receive all confirmations there.
+- **~7 operator logins** hang off that one inbox (see list below).
+- For a **booking made for a specific client** where the operator has **no agent account**, use the
+  **client's own email** (they get the confirmation; cleaner under GDPR), with the ops inbox CC'd.
+  Don't create throwaway per-applicant inboxes.
+- Avoid `+alias` addresses — several portals reject them.
+
+So: **1 ops inbox + ~7 portal accounts**, plus client emails per booking as needed.
+
+### Accounts to register (≈7 + 1 email-only)
+For each: register with the ops email, set a strong password (password manager — never in repo/chat),
+add phone, enable 2FA if offered, and **ask whether an agent / business / corporate account exists**
+(lets one login manage many applicants — biggest time-saver).
+
+- [ ] **VFS Global** — one account covers most countries (Austria, Bulgaria, Croatia, Czechia,
+  Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta,
+  Netherlands, Norway, Portugal, Slovenia, Sweden). Ask VFS for corporate/agent access.
+- [ ] **TLScontact** — Germany, France, Belgium, Switzerland. Supports group/family applications.
+  France needs a france-visas.gouv.fr reference first; Germany has a waiting-list queue (from 01.06.2026).
+- [ ] **BLS International** — Spain (uk.blsspainglobal.com). Appointment-only, cashless.
+- [ ] **GVCW** — Greece (uk-gr.gvcworld.eu).
+- [ ] **e-Konsulat** — Poland (govt portal). London consulate closed 13–31 Aug 2026.
+- [ ] **eViza** — Romania (govt portal).
+- [ ] **ezov.mzv.sk** — Slovakia (govt e-application, then email for appointment).
+- [ ] **Luxembourg** — no portal: email the consulate to book (`Londres.consulat@mae.etat.lu`).
+
+### Before booking for a client
+- [ ] Signed letter of authority / consent to act + to enter their data (GDPR — you're a processor).
+- [ ] Applicant details ready (name, passport no., travel dates) — slots usually appear only after
+  you start an application and pick country + centre + visa type.
+- [ ] Record the operator booking reference on the order (Admin → Appointments).
