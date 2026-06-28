@@ -28,6 +28,7 @@ final class ProductionSeeder extends Seeder
             SchengenSeeder::class,           // 29 Schengen / ETIAS countries + region
             DestinationImageSeeder::class,   // image_path for any slug whose .jpg exists
             DocumentRequirementSeeder::class,// per-destination required docs
+            SchengenDocumentRequirementSeeder::class, // Schengen conditional checklist (student/employed/sponsored + balance)
             SupplyNodeSeeder::class,         // centres / couriers / suppliers
             SchengenCentreSeeder::class,     // one bookable centre per Schengen country (board)
             // SampleAvailabilitySeeder::class — ran once (commit b999b1a) to populate the board;
