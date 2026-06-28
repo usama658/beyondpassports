@@ -28,7 +28,18 @@ add phone, turn on 2FA if offered, then tick done.
 | **ezov.mzv.sk** | Slovakia | https://ezov.mzv.sk | hello@… | ☐ | ☐ |
 | Luxembourg | (no portal) | email `Londres.consulat@mae.etat.lu` to book | — | — | ☐ |
 
-(Account emails can all be the one ops inbox, or per-operator addresses if your host allows — your call.)
+(Account emails can all be the one ops inbox `hello@`, or per-operator **forwarders** that land in `hello@`.)
+
+### Optional — per-operator forwarders (all land in hello@, no extra mailbox/login)
+cPanel → Email → **Forwarders → Add Forwarder**: address `vfs`, forward to `hello@beyondpassports.co.uk`.
+Repeat for `tls bls gvcw pl ro sk`. Or via SSH (per address):
+
+```
+uapi Email add_forwarder domain=beyondpassports.co.uk email=vfs fwdopt=fwd fwdemail=hello@beyondpassports.co.uk
+```
+
+A forwarder receives the portal's verification mail (delivered to hello@) — the portal login itself is
+the address + the portal password, so no separate mailbox is needed.
 
 ## Step 2 — request agent / business accounts (the scale unlock)
 A normal account books one applicant at a time. An agent/B2B account lets one login manage many
