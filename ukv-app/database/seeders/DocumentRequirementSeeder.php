@@ -112,7 +112,7 @@ class DocumentRequirementSeeder extends Seeder
                 'label'        => 'Sponsor letter',
                 'note'         => 'A letter from whoever is funding your trip, confirming they will cover your costs, with their relationship to you.',
                 'category'     => 'funding',
-                'conditions'   => ['funding_source' => ['sponsored']],
+                'conditions'   => ['funding_source' => ['sponsor', 'employer']],
                 'mandatory'    => true,
                 'sort_order'   => 50,
             ],
@@ -121,7 +121,7 @@ class DocumentRequirementSeeder extends Seeder
                 'label'        => "Sponsor's recent bank statements",
                 'note'         => "Recent statements (usually the last 3 months) showing your sponsor has the funds to support your trip.",
                 'category'     => 'funding',
-                'conditions'   => ['funding_source' => ['sponsored']],
+                'conditions'   => ['funding_source' => ['sponsor', 'employer']],
                 'mandatory'    => true,
                 'sort_order'   => 51,
             ],
@@ -167,5 +167,12 @@ class DocumentRequirementSeeder extends Seeder
                 ],
             );
         }
+
+        // Remove the legacy rows whose condition used funding_source 'sponsored' — that value is
+        // never emitted by the wizard (it sends self|sponsor|employer), so those rows never fired.
+        // The corrected rows above now carry the right condition.
+        DocumentRequirement::query()
+            ->whereJsonContains('conditions->funding_source', 'sponsored')
+            ->delete();
     }
 }
