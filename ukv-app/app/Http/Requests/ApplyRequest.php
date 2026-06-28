@@ -94,6 +94,9 @@ class ApplyRequest extends FormRequest
             // --- Contact ---
             'email' => ['required', 'email', 'max:190'],
             'phone' => ['required', 'string', 'max:40'],
+            // UK postcode — used to book the nearest application centre for the destination
+            // country. Required for UK residents (the only ones we book UK in-person centres for).
+            'postcode' => ['nullable', 'required_if:residence_country,UK', 'string', 'max:12'],
 
             // --- Consent (must be ticked) ---
             'consent' => ['accepted'],

@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use App\Models\CentreSlot;
+use App\Models\Destination;
+use App\Models\Order;
 use App\Models\SupplyNode;
 use App\Services\SlotService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 /**
@@ -202,5 +205,76 @@ final class SlotServiceTest extends TestCase
         $this->assertSame(1, $r['cleaned']);
         $this->assertNull(CentreSlot::find($stale->id), 'Stale available slot should be removed.');
         $this->assertNotNull(CentreSlot::find($booked->id), 'Past booked slots are history, not swept.');
+    }
+
+    private int $destSeq = 0;
+
+    private function dest(): Destination
+    {
+        $this->destSeq++;
+
+        return Destination::create([
+            'name' => 'Dest '.$this->destSeq,
+            'slug' => 'dest-'.$this->destSeq,
+            'visa_type' => 'Schengen',
+            'govt_fee_gbp' => 0,
+            'tier_standard_gbp' => 39,
+            'tier_express_gbp' => 59,
+            'tier_premium_gbp' => 89,
+            'passport_validity_months' => 6,
+        ]);
+    }
+
+    private function order(Destination $dest, ?string $postcode = null): Order
+    {
+        return Order::create([
+            'name' => 'Test', 'email' => 'a@example.com',
+            'destination_id' => $dest->getKey(), 'destination_name' => $dest->name,
+            'status' => 'paid', 'postcode' => $postcode,
+        ]);
+    }
+
+    public function test_hold_for_order_picks_nearest_in_country_centre(): void
+    {
+        // Postcode resolves to Manchester.
+        Http::fake(['*' => Http::response(['result' => ['latitude' => 53.4808, 'longitude' => -2.2426]], 200)]);
+
+        $dest = $this->dest();
+        $london = $this->makeNode(['node_key' => 'c-london', 'lat' => 51.5074, 'lng' => -0.1278]);
+        $manchester = $this->makeNode(['node_key' => 'c-manchester', 'lat' => 53.4808, 'lng' => -2.2426]);
+        $dest->supplyNodes()->attach([$london->getKey(), $manchester->getKey()]);
+
+        // London slot is SOONER, but Manchester is NEARER — nearest centre must win.
+        $this->makeSlot($london, ['slot_at' => Carbon::now()->addDay()]);
+        $this->makeSlot($manchester, ['slot_at' => Carbon::now()->addDays(2)]);
+
+        $held = $this->service()->holdForOrder($this->order($dest, 'M3 3HF'));
+
+        $this->assertNotNull($held);
+        $this->assertSame($manchester->getKey(), $held->supply_node_id, 'Should hold the nearest (Manchester) centre.');
+        $this->assertSame('held', $held->fresh()->status);
+    }
+
+    public function test_hold_for_order_stays_in_destination_country_and_works_without_postcode(): void
+    {
+        $destA = $this->dest();
+        $destB = $this->dest();
+        $nodeA = $this->makeNode(['node_key' => 'ca']);
+        $nodeB = $this->makeNode(['node_key' => 'cb']);
+        $destA->supplyNodes()->attach($nodeA->getKey());
+        $destB->supplyNodes()->attach($nodeB->getKey());
+
+        // Only destB has a slot. An order for destA must NOT poach another country's slot.
+        $this->makeSlot($nodeB);
+        $this->assertNull(
+            $this->service()->holdForOrder($this->order($destA)),
+            'No slot at the destination-country centre must return null, never another country.'
+        );
+
+        // Give destA its own slot -> held even without a postcode (DB-order fallback).
+        $this->makeSlot($nodeA);
+        $held = $this->service()->holdForOrder($this->order($destA));
+        $this->assertNotNull($held);
+        $this->assertSame($nodeA->getKey(), $held->supply_node_id);
     }
 }

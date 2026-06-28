@@ -65,8 +65,11 @@ final class HoldOnApplyTest extends TestCase
 
     public function test_holds_soonest_slot_for_in_person_destination(): void
     {
+        $dest = $this->destination('Biometric visa');
         $slot = $this->centreWithSlot();
-        $order = $this->orderFor($this->destination('Biometric visa'));
+        // The centre must serve this destination's country (holdForOrder is country-scoped).
+        $slot->supplyNode->destinations()->attach($dest->getKey());
+        $order = $this->orderFor($dest);
 
         $held = app(SlotService::class)->holdForOrder($order, 60);
 

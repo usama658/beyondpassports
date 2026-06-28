@@ -88,6 +88,8 @@ final class OrderService
             // Phone is persisted to its own column (M-4) AND retained in the opening event
             // meta below, so agents can find a callback number without digging the event log.
             $order->phone = $this->clean($data['phone'] ?? null);
+            // UK postcode — drives nearest-centre selection at booking (SlotService::holdForOrder).
+            $order->postcode = $this->clean($data['postcode'] ?? null);
 
             // --- Destination snapshot (id + display-name snapshot, per MEMORY convention) ---
             $order->destination_id = $destination?->getKey();

@@ -19,7 +19,7 @@ class Order extends Model
 {
     protected $fillable = [
         // identity / customer
-        'order_ref', 'name', 'email', 'phone', 'passport_number', 'hubspot_deal_id',
+        'order_ref', 'name', 'email', 'phone', 'postcode', 'passport_number', 'hubspot_deal_id',
         // destination + pricing
         'destination_id', 'destination_name', 'tier', 'service_fee', 'govt_fee', 'total', 'paid_at',
         // pipeline

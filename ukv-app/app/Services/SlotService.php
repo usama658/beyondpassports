@@ -26,6 +26,8 @@ final class SlotService
 {
     public function __construct(
         private readonly CentreFinderService $finder,
+        private readonly PostcodeService $postcodes,
+        private readonly GeoService $geo,
     ) {}
 
     /**
@@ -103,13 +105,25 @@ final class SlotService
     }
 
     /**
-     * Hold-on-apply: tentatively reserve the soonest available slot at a "we book here" centre for
-     * an order whose destination needs an IN-PERSON appointment. Returns the held slot, or null.
+     * Hold-on-apply: tentatively reserve the soonest available slot at the centre NEAREST the
+     * applicant for an order whose destination needs an IN-PERSON appointment. Returns the held
+     * slot, or null.
+     *
+     * Centre selection:
+     *  1. restrict to "we book here" centres linked to the order's destination country;
+     *  2. rank them nearest-first by Haversine distance from the applicant's UK postcode
+     *     (geocoded via PostcodeService); un-geocoded centres, or no usable postcode, fall back to
+     *     DB order;
+     *  3. hold the soonest available slot at the first centre that has one.
      *
      * No-op (null) when: the destination's visa is online / at-destination (eVisa, ETA, visa-free,
-     * visa-on-arrival — no UK centre needed), the destination is unknown, or no slot is free. The
-     * short hold auto-releases via slots:release-expired if the customer doesn't proceed, so an
-     * abandoned application never strands inventory.
+     * visa-on-arrival — no UK centre needed), the destination is unknown, the destination has no
+     * bookable centre, or none have a free slot. The short hold auto-releases via
+     * slots:release-expired if the customer doesn't proceed, so an abandoned application never
+     * strands inventory.
+     *
+     * Note: a few operators (Greece, Hungary, France) ALLOCATE the centre by postcode rather than
+     * letting you pick — there "nearest" is a sensible default that ops confirm against the portal.
      */
     public function holdForOrder(Order $order, ?int $minutes = null): ?CentreSlot
     {
@@ -118,19 +132,51 @@ final class SlotService
             return null;
         }
 
-        $slot = CentreSlot::query()
-            ->available()
-            ->whereHas('supplyNode', fn ($q) => $q->where('we_book_here', true))
-            ->orderBy('slot_at')
-            ->first();
+        // Centres that handle THIS destination's country and that we book at.
+        $centres = SupplyNode::query()
+            ->where('we_book_here', true)
+            ->whereHas('destinations', fn ($q) => $q->whereKey($destination->getKey()))
+            ->get();
 
-        if ($slot === null) {
+        if ($centres->isEmpty()) {
             return null;
+        }
+
+        // Rank nearest-first to the applicant's postcode; un-geocoded centres last.
+        $coords = $order->postcode ? $this->postcodes->lookup($order->postcode) : null;
+        if ($coords !== null) {
+            $centres = $centres
+                ->sortBy(function (SupplyNode $c) use ($coords): float {
+                    if ($c->lat === null || $c->lng === null) {
+                        return PHP_FLOAT_MAX;
+                    }
+
+                    return $this->geo->haversineKm(
+                        (float) $coords['lat'],
+                        (float) $coords['lng'],
+                        (float) $c->lat,
+                        (float) $c->lng
+                    );
+                })
+                ->values();
         }
 
         $minutes ??= (int) config('ukv.slots.hold_minutes', 60);
 
-        return $this->hold($slot, $order, $minutes) ? $slot : null;
+        // Walk centres nearest-first; hold the soonest available slot at the first one with any.
+        foreach ($centres as $centre) {
+            $slot = CentreSlot::query()
+                ->where('supply_node_id', $centre->id)
+                ->available()
+                ->orderBy('slot_at')
+                ->first();
+
+            if ($slot !== null && $this->hold($slot, $order, $minutes)) {
+                return $slot;
+            }
+        }
+
+        return null;
     }
 
     /** Online / at-destination visa types need no UK in-person appointment. Blank/unknown => safe (no hold). */

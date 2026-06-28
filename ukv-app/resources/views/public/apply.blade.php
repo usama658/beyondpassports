@@ -355,6 +355,11 @@
               <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
               <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 …" required aria-required="true">
             </div>
+            <div class="field">
+              <label for="postcode">UK postcode</label>
+              <input type="text" id="postcode" name="postcode" value="{{ old('postcode') }}" autocomplete="postal-code" placeholder="e.g. SW1A 1AA" maxlength="12" aria-describedby="postcode-hint">
+              <small id="postcode-hint" class="hint">So we book the application centre nearest you.</small>
+            </div>
           </div>
 
           <p class="legend" id="sec-service">Service level</p>
@@ -581,6 +586,7 @@
         passport_expiry:   form.passport_expiry.value,
         email:             form.email.value.trim(),
         phone:             form.phone.value.trim(),
+        postcode:          form.postcode ? form.postcode.value.trim() : '',
         tier:              form.tier.value || 'standard',
         consent:           form.consent.checked ? 1 : 0,
         begin_now:         form.begin_now.checked ? 1 : 0

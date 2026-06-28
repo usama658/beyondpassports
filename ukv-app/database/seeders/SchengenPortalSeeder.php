@@ -57,14 +57,16 @@ class SchengenPortalSeeder extends Seeder
     {
         $updated = 0;
         foreach (self::MAP as $slug => [$operator, $url, $note]) {
-            $node = SupplyNode::where('node_key', 'schengen-centre-'.$slug)->first();
-            if (! $node) {
-                continue;
+            // Match the country's London node AND any city variants (schengen-centre-{slug}[-city]).
+            $nodes = SupplyNode::where('node_key', 'schengen-centre-'.$slug)
+                ->orWhere('node_key', 'like', 'schengen-centre-'.$slug.'-%')
+                ->get();
+            foreach ($nodes as $node) {
+                $node->contact = $url;
+                $node->notes = 'Operator: '.$operator.' | '.$note;
+                $node->save();
+                $updated++;
             }
-            $node->contact = $url;
-            $node->notes = 'Operator: '.$operator.' | '.$note;
-            $node->save();
-            $updated++;
         }
 
         $this->command?->info("SchengenPortalSeeder: stamped {$updated} centre(s) with operator + booking URL.");
