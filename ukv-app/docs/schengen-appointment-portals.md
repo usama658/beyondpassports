@@ -65,16 +65,30 @@ Bands: `good` = plenty free soon · `limited` = few/further out · `ask`/blank =
 
 No public APIs — every check/booking is manual and logged in. CAPTCHAs block automation.
 
-### How many emails?
-- **1 shared ops mailbox** is enough to start — e.g. `appointments@beyondpassports.co.uk`. Register
-  every operator/agent account against it and receive all confirmations there.
-- **~7 operator logins** hang off that one inbox (see list below).
-- For a **booking made for a specific client** where the operator has **no agent account**, use the
-  **client's own email** (they get the confirmation; cleaner under GDPR), with the ops inbox CC'd.
-  Don't create throwaway per-applicant inboxes.
-- Avoid `+alias` addresses — several portals reject them.
+### How many emails? → One mailbox + a catch-all (unlimited addresses)
 
-So: **1 ops inbox + ~7 portal accounts**, plus client emails per booking as needed.
+Do NOT use client emails (too slow) and do NOT rely on `+aliases` (portals reject them). Instead set
+up a **catch-all** on a dedicated subdomain so you get unlimited *real, distinct* addresses that all
+land in one inbox.
+
+- **1 operator inbox** — `appointments@beyondpassports.co.uk` — for the ~7 operator/agent accounts
+  + general notifications.
+- **1 catch-all subdomain** — e.g. `@bk.beyondpassports.co.uk` (or `@apply...`). Every address on it
+  (`anything@bk.beyondpassports.co.uk`) auto-routes to one mailbox. Gives a unique address per
+  booking with zero per-mailbox cost and no alias rejection.
+- **One unique address per booking**, encoding the order ref for traceability:
+  `ord-UKV-2026-100245@bk.beyondpassports.co.uk`. Use it for that applicant's portal account; the
+  confirmation lands in the shared catch-all inbox.
+
+So: **1 operator inbox + 1 catch-all subdomain = unlimited booking emails**, no client emails needed.
+
+**Setup (cPanel):** Email → Default Address (or Domains → add subdomain `bk`, then set its default
+address) → "Forward to / deliver to" your ops mailbox. Use a **subdomain**, not the main domain, so
+catch-all spam stays off `@beyondpassports.co.uk`. Keep all portal passwords in a password manager,
+keyed by the booking address.
+
+GDPR note: still your processing — record consent/LOA per order as before; the email mechanism
+doesn't change that.
 
 ### Accounts to register (≈7 + 1 email-only)
 For each: register with the ops email, set a strong password (password manager — never in repo/chat),
