@@ -65,30 +65,25 @@ Bands: `good` = plenty free soon · `limited` = few/further out · `ask`/blank =
 
 No public APIs — every check/booking is manual and logged in. CAPTCHAs block automation.
 
-### How many emails? → One mailbox + a catch-all (unlimited addresses)
+### How many emails? → One per operator (~7), reused for all applicants
 
-Do NOT use client emails (too slow) and do NOT rely on `+aliases` (portals reject them). Instead set
-up a **catch-all** on a dedicated subdomain so you get unlimited *real, distinct* addresses that all
-land in one inbox.
+No client emails (too slow), no catch-all/unlimited, no `+aliases`. You do **not** need an email per
+booking — one shared operator account handles many applicants.
 
-- **1 operator inbox** — `appointments@beyondpassports.co.uk` — for the ~7 operator/agent accounts
-  + general notifications.
-- **1 catch-all subdomain** — e.g. `@bk.beyondpassports.co.uk` (or `@apply...`). Every address on it
-  (`anything@bk.beyondpassports.co.uk`) auto-routes to one mailbox. Gives a unique address per
-  booking with zero per-mailbox cost and no alias rejection.
-- **One unique address per booking**, encoding the order ref for traceability:
-  `ord-UKV-2026-100245@bk.beyondpassports.co.uk`. Use it for that applicant's portal account; the
-  confirmation lands in the shared catch-all inbox.
+- **~7 fixed mailboxes — one per operator** (VFS, TLScontact, BLS, GVCW, Poland, Romania, Slovakia),
+  e.g. `vfs@beyondpassports.co.uk`, `tls@…`, `bls@…`. Luxembourg = email-only, reuse the ops inbox.
+- **Reuse the account for every applicant**: VFS and TLScontact allow many applications/applicants
+  under one login (group/family, or just start a new application per client). One login = all clients.
+- **Get the agent / business account** where offered (VFS corporate, TLScontact group) — built for
+  exactly this volume; keeps it to one login per operator.
+- **Fallback (rare):** if one operator hard-blocks reusing an email across different applicants, keep
+  a **small fixed pool of 3–5 mailboxes** for that operator only and rotate as bookings complete.
+  Size the pool to concurrent in-flight bookings, not total clients.
 
-So: **1 operator inbox + 1 catch-all subdomain = unlimited booking emails**, no client emails needed.
+So: **~7 mailboxes total** (one per operator) — fixed, not unlimited, not per-client.
 
-**Setup (cPanel):** Email → Default Address (or Domains → add subdomain `bk`, then set its default
-address) → "Forward to / deliver to" your ops mailbox. Use a **subdomain**, not the main domain, so
-catch-all spam stays off `@beyondpassports.co.uk`. Keep all portal passwords in a password manager,
-keyed by the booking address.
-
-GDPR note: still your processing — record consent/LOA per order as before; the email mechanism
-doesn't change that.
+Keep all portal passwords in a password manager. GDPR: still your processing — record consent/LOA
+per order regardless of which mailbox is used.
 
 ### Accounts to register (≈7 + 1 email-only)
 For each: register with the ops email, set a strong password (password manager — never in repo/chat),
