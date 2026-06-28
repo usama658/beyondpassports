@@ -169,6 +169,64 @@ final class SlotService
     }
 
     /**
+     * Provision future available slots across all "we book here" centres (ops inventory).
+     *
+     * Creates one slot per time in $times on each weekday for the next $weeks weeks (5 weekdays
+     * per week), skipping weekends and any slot that already exists — idempotent, so it is safe to
+     * re-run / extend the window. Optionally clears stale past-dated available slots first. Returns
+     * counts for ops visibility.
+     *
+     * NB: this is inventory the team controls. For Schengen destinations booked on external portals,
+     * provisioned counts must reflect real bookable availability before public/paid traffic (DMCCA).
+     *
+     * @param  list<string>  $times  HH:MM slot times to create on each weekday
+     * @return array{centres:int, created:int, cleaned:int}
+     */
+    public function provision(int $weeks = 4, array $times = ['09:00', '10:30', '13:00', '14:30'], bool $cleanPast = true): array
+    {
+        $cleaned = 0;
+        if ($cleanPast) {
+            $cleaned = CentreSlot::query()
+                ->where('status', 'available')
+                ->where('slot_at', '<', now())
+                ->delete();
+        }
+
+        $centres = SupplyNode::query()->where('we_book_here', true)->get();
+        $weekdaysToFill = max(1, $weeks) * 5;
+        $created = 0;
+
+        foreach ($centres as $centre) {
+            $day = Carbon::tomorrow();
+            $filled = 0;
+            while ($filled < $weekdaysToFill) {
+                if ($day->isWeekday()) {
+                    foreach ($times as $time) {
+                        [$h, $m] = array_pad(explode(':', $time), 2, '0');
+                        $at = (clone $day)->setTime((int) $h, (int) $m, 0);
+                        $exists = CentreSlot::query()
+                            ->where('supply_node_id', $centre->id)
+                            ->where('slot_at', $at)
+                            ->exists();
+                        if (! $exists) {
+                            CentreSlot::create([
+                                'supply_node_id' => $centre->id,
+                                'slot_at' => $at,
+                                'status' => 'available',
+                            ]);
+                            $created++;
+                        }
+                    }
+                    $filled++;
+                }
+                $day->addDay();
+            }
+        }
+
+        return ['centres' => $centres->count(), 'created' => $created, 'cleaned' => $cleaned];
+    }
+
+    /**
      * Aggregate availability for the home teaser: upcoming available slots at "we book here"
      * centres, the soonest slot, and how many distinct centres have availability. Zeros/null when
      * nothing is available, so the home band falls back to a plain finder CTA (no fake counts).

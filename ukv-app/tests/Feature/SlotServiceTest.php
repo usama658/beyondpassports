@@ -165,4 +165,42 @@ final class SlotServiceTest extends TestCase
         $this->assertSame(1, $farItem['available_count']);
         $this->assertNotNull($farItem['next_slot']);
     }
+
+    public function test_provision_fills_weekday_slots_for_bookable_centres_only_and_is_idempotent(): void
+    {
+        $bookable = $this->makeNode(['node_key' => 'centre-book', 'we_book_here' => true]);
+        $notBookable = $this->makeNode(['node_key' => 'centre-nobook', 'we_book_here' => false]);
+
+        $r = $this->service()->provision(weeks: 1, times: ['09:00', '13:00']);
+
+        // 1 week = 5 weekdays * 2 times = 10 slots, bookable centre only.
+        $this->assertSame(1, $r['centres']);
+        $this->assertSame(10, $r['created']);
+        $this->assertSame(10, CentreSlot::where('supply_node_id', $bookable->id)->count());
+        $this->assertSame(0, CentreSlot::where('supply_node_id', $notBookable->id)->count());
+
+        // All created slots are future-dated weekdays.
+        foreach (CentreSlot::where('supply_node_id', $bookable->id)->get() as $slot) {
+            $this->assertTrue($slot->slot_at->isFuture());
+            $this->assertTrue($slot->slot_at->isWeekday());
+        }
+
+        // Re-running the same window creates nothing new (idempotent).
+        $r2 = $this->service()->provision(weeks: 1, times: ['09:00', '13:00']);
+        $this->assertSame(0, $r2['created']);
+        $this->assertSame(10, CentreSlot::where('supply_node_id', $bookable->id)->count());
+    }
+
+    public function test_provision_clears_stale_past_available_slots_by_default(): void
+    {
+        $node = $this->makeNode(['node_key' => 'centre-clean', 'we_book_here' => true]);
+        $stale = $this->makeSlot($node, ['slot_at' => Carbon::now()->subDays(2)]);
+        $booked = $this->makeSlot($node, ['status' => 'booked', 'slot_at' => Carbon::now()->subDay()]);
+
+        $r = $this->service()->provision(weeks: 1, times: ['09:00']);
+
+        $this->assertSame(1, $r['cleaned']);
+        $this->assertNull(CentreSlot::find($stale->id), 'Stale available slot should be removed.');
+        $this->assertNotNull(CentreSlot::find($booked->id), 'Past booked slots are history, not swept.');
+    }
 }
