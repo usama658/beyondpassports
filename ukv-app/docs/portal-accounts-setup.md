@@ -19,13 +19,13 @@ add phone, turn on 2FA if offered, then tick done.
 
 | Operator | Covers | Sign-up URL | Account email | 2FA | Done |
 |---|---|---|---|---|---|
-| **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | vfs@… | ☐ | ☐ |
-| **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | tls@… | ☐ | ☐ |
-| **BLS International** | Spain | https://uk.blsspainglobal.com | bls@… | ☐ | ☐ |
-| **GVCW** | Greece | https://uk-gr.gvcworld.eu/en | gvcw@… | ☐ | ☐ |
-| **e-Konsulat** | Poland | https://secure.e-konsulat.gov.pl/ | pl@… | ☐ | ☐ |
-| **eViza** | Romania | https://eviza.mae.ro/ | ro@… | ☐ | ☐ |
-| **ezov.mzv.sk** | Slovakia | https://ezov.mzv.sk | sk@… | ☐ | ☐ |
+| **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | hello@… | ☐ | ☐ |
+| **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | hello@… | ☐ | ☐ |
+| **BLS International** | Spain | https://uk.blsspainglobal.com | hello@… | ☐ | ☐ |
+| **GVCW** | Greece | https://uk-gr.gvcworld.eu/en | hello@… | ☐ | ☐ |
+| **e-Konsulat** | Poland | https://secure.e-konsulat.gov.pl/ | hello@… | ☐ | ☐ |
+| **eViza** | Romania | https://eviza.mae.ro/ | hello@… | ☐ | ☐ |
+| **ezov.mzv.sk** | Slovakia | https://ezov.mzv.sk | hello@… | ☐ | ☐ |
 | Luxembourg | (no portal) | email `Londres.consulat@mae.etat.lu` to book | — | — | ☐ |
 
 (Account emails can all be the one ops inbox, or per-operator addresses if your host allows — your call.)
