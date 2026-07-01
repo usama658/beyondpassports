@@ -299,7 +299,7 @@
         <div class="rk-opts" data-q="funds"><button type="button" class="rk-opt" data-w="0">Yes, ready</button><button type="button" class="rk-opt" data-w="1">Not sure</button><button type="button" class="rk-opt" data-w="1">No</button></div>
       </div>
       <div class="rk-step" data-step="2">
-        <p class="rk-q">Travel insurance: at least £25,000 medical cover, valid across all Schengen countries, for your full dates?</p>
+        <p class="rk-q">Travel insurance: at least {{ App\Support\SiteStats::insuranceMin() }} medical cover, valid across all Schengen countries, for your full dates?</p>
         <div class="rk-opts" data-q="insurance"><button type="button" class="rk-opt" data-w="0">Yes</button><button type="button" class="rk-opt" data-w="1">Not sure</button><button type="button" class="rk-opt" data-w="1">No / not yet</button></div>
       </div>
       <div class="rk-step" data-step="3">

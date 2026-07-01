@@ -22,6 +22,6 @@
     <a href="{{ url('/services') }}">Services</a>
     <a href="{{ url('/about') }}">About</a>
     <a href="{{ url('/contact') }}" class="btn btn--ghost" style="padding:8px 16px">Contact</a>
-    <a href="{{ url('/apply') }}" class="btn" style="padding:8px 16px">Start application →</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ urlencode('Hi Beyond Passports, I would like to check my eligibility for a Schengen visa.') }}" target="_blank" rel="noopener" class="btn" style="padding:8px 16px">Check eligibility →</a>
   </nav>
 </div></header>

@@ -21,7 +21,7 @@
     <div class="bpc-cols">
       <div class="bpc-col-brand">
         <a href="{{ url('/') }}" class="bpc-ftbrand" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2-reversed.svg') }}" alt="Beyond Passports" width="170" height="44"></a>
-        <p class="bpc-ftlede">Independent UK-based visa &amp; eVisa facilitation for travel abroad. Not a government website.</p>
+        <p class="bpc-ftlede">Independent UK-based visa &amp; eVisa facilitation for travel abroad, since {{ App\Support\SiteStats::foundedYear() }}. Not a government website.</p>
         @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '14px 0 4px'])
         @if ($bpcAddr && !empty($bpcAddr['line1']))
         <p class="bpc-ftaddr">

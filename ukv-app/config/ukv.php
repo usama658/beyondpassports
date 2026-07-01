@@ -144,6 +144,52 @@ return [
         'reviews'       => [],
     ],
 
+    // ── Headline stats (single source of truth) ───────────────────────────────
+    // Every public page reads its numbers from here so they can never diverge
+    // across pages again. The two counters are TIME-BASED ODOMETERS: value =
+    // base + floor(days since anchor × per_day), computed by App\Support\SiteStats.
+    // Deterministic per calendar day (no DB), so the number ticks up on its own.
+    //
+    // Compliance note: an odometer increments on a schedule, not per real order —
+    // keep the per_day rates conservative and truthful. 'founded' anchors the
+    // "since 2019" copy used across the footer, About, stat blocks and LP strips.
+    'stats' => [
+        'founded_year' => (int) env('UKV_FOUNDED_YEAR', 2019),
+
+        // Applications filed — odometer.
+        'applications' => [
+            'base'    => (int) env('UKV_STAT_APPLICATIONS_BASE', 647),
+            'per_day' => (float) env('UKV_STAT_APPLICATIONS_PER_DAY', 3),
+            'anchor'  => env('UKV_STAT_ANCHOR', '2026-07-02'), // date the base was true
+        ],
+        // Refusal reversals since 2019 — slow odometer (~1 every 20 days).
+        'reversals' => [
+            'base'    => (int) env('UKV_STAT_REVERSALS_BASE', 13),
+            'per_day' => (float) env('UKV_STAT_REVERSALS_PER_DAY', 0.05),
+            'anchor'  => env('UKV_STAT_ANCHOR', '2026-07-02'),
+        ],
+
+        'approval_pct'  => env('UKV_STAT_APPROVAL_PCT', '94'),      // headline approval rate (%)
+        'insurance_min' => env('UKV_STAT_INSURANCE_MIN', '€30,000'), // Schengen medical-cover minimum
+        'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '7 minutes'),// first-response target
+    ],
+
+    // ── Service pricing ───────────────────────────────────────────────────────
+    // One price ladder for the whole site (replaces the divergent per-page ladders).
+    // 'show' => false hides the £ figures and renders 'placeholder' in the price
+    // slot instead (same font), so the layout holds until real prices are locked.
+    // Flip 'show' => true and fill 'amount' on each tier to publish prices.
+    'pricing' => [
+        'show'        => (bool) env('UKV_PRICING_SHOW', false),
+        'placeholder' => env('UKV_PRICING_PLACEHOLDER', 'Get a quote'),
+        'currency'    => env('UKV_PRICING_CURRENCY', '£'),
+        'tiers' => [
+            ['key' => 'basic',    'name' => 'Basic',    'amount' => null, 'featured' => false],
+            ['key' => 'popular',  'name' => 'Popular',  'amount' => null, 'featured' => true],
+            ['key' => 'advanced', 'name' => 'Advanced', 'amount' => null, 'featured' => false],
+        ],
+    ],
+
     // ── Services catalogue ────────────────────────────────────────────────────
     // Drives the /services hub (public.services). Mirrors the locked 14-silo SEO
     // map (docs/seo-silo-map.md): every service we offer or plan to offer, grouped

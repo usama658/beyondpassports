@@ -286,7 +286,7 @@
   <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>A private service, not a public office</h2></div>
   <div class="ab-who-grid">
     <div class="ab-prose reveal">
-      <p>Beyond Passports is an independent Schengen visa consultancy with teams in the UK and Germany. We check your details, prepare your paperwork and guide you through submission, so small mistakes don't turn into a refused application or a cancelled trip.</p>
+      <p>Founded in {{ App\Support\SiteStats::foundedYear() }}, Beyond Passports is an independent Schengen visa consultancy with teams in the UK and Germany. We check your details, prepare your paperwork and guide you through submission, so small mistakes don't turn into a refused application or a cancelled trip.</p>
       <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly yourself; using us is optional.</p>
       <p><strong>A real person checks every application before it's submitted. Nothing is outsourced.</strong> Our UK and Germany teams confirm you qualify, review your documents for the things that actually get applications refused, and run a final check before anything reaches the consulate.</p>
       <p class="ab-note">Our service fee is separate from, and additional to, the consulate or embassy fee. The official fee is set and collected by the authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
