@@ -71,4 +71,17 @@ final class SiteStats
     {
         return (int) config('ukv.stats.founded_year', 2019);
     }
+
+    /**
+     * WhatsApp deep-link for the primary "Check eligibility" CTA — single source so every
+     * CTA lands in the same chat with the same prefilled message. Falls back to a placeholder
+     * number until UKV_WHATSAPP is set (same fallback the topbar/wa-cta use).
+     */
+    public static function chatUrl(?string $message = null): string
+    {
+        $number = config('ukv.whatsapp') ?: '440000000000';
+        $text   = $message ?? 'Hi Beyond Passports, I would like to check my eligibility for a Schengen visa.';
+
+        return 'https://wa.me/'.$number.'?text='.rawurlencode($text);
+    }
 }

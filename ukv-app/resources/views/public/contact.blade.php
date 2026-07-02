@@ -535,7 +535,7 @@
     <p>Prefer to start now? Check your visa or begin an application.</p>
     <div class="ct-reassure-links">
       <a href="{{ url('/tools') }}" class="btn btn--ghost">Check your visa</a>
-      <a href="{{ url('/apply') }}" class="btn">Start an application &rarr;</a>
+      <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a>
     </div>
   </div>
 </div></section>

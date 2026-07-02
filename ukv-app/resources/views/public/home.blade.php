@@ -216,7 +216,7 @@
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row">
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
-  <div><div class="n">12,000+</div><div class="l">Trips sorted</div></div>
+  <div><div class="n">{{ App\Support\SiteStats::applications() }}+</div><div class="l">Applications filed since {{ App\Support\SiteStats::foundedYear() }}</div></div>
   <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
   <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
 </div></div></section>
@@ -637,7 +637,7 @@
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
   <p style="max-width:48ch;color:rgba(255,255,255,.85)">Start your application now, or message our UK team with any question.</p>
-  <div class="row"><a href="{{ url('/apply') }}" class="btn">Start my application →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 @endif
 

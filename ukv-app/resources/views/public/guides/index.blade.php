@@ -195,7 +195,7 @@
   <h2>Ready when you are</h2>
   <p style="max-width:48ch;color:#eef0f1">Read up, then let our UK team confirm exactly what your trip needs.</p>
   <div class="row">
-    <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
+    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a>
     <a href="{{ url('/tools') }}" class="btn btn--glass">Check what I need</a>
   </div>
 </div></section>
