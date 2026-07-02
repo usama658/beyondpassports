@@ -479,6 +479,7 @@
   </div>
   <div class="rf-cta">
     <a class="btn" href="{{ url('/tools') }}">Check your eligibility</a>
+    @include('partials.consult-cta')
   </div>
 </div></section>
 

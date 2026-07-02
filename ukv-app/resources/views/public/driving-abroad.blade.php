@@ -389,6 +389,7 @@
     <div class="row">
       <a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a>
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+      @include('partials.consult-cta')
     </div>
   </div>
 </section>

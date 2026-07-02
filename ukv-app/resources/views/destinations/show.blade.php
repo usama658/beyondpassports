@@ -205,6 +205,7 @@
       <h1>{{ $visaLabel }}, prepared and checked by our UK team</h1>
       <p class="lede">Skip the guesswork. We confirm exactly what you need, check every detail before submission, and keep you updated until it's done.</p>
       <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
+    @include('partials.consult-cta')
       @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '16px 0 0'])
     </div></div>
   </div>
@@ -363,6 +364,7 @@
   <p style="max-width:48ch;color:#eef0f1">Start your {{ $visaLabel }} now, or message our UK team with any question first.</p>
   <div class="row">
     <a href="#pricing" class="btn">Start my {{ $name }} application →</a>
+    @include('partials.consult-cta')
     @include('partials.wa-cta', [
         'message' => "Hi Beyond Passports, I'd like help with my documents for {$name}.",
         'label' => 'Ask about '.$name.' on WhatsApp',
