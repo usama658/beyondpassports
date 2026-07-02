@@ -561,8 +561,8 @@
     <h2>Got your list. Ready to apply?</h2>
     <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK &amp; Germany team will confirm your exact requirements and check every document before anything is submitted.</p>
     <div class="row">
-      <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility &rarr;</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+      <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, here is my document checklist, can you check it?') }}" target="_blank" rel="noopener" class="btn">Check eligibility &rarr;</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, here is my document checklist, can you check it?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
       @include('partials.consult-cta')
     </div>
   </div></section>

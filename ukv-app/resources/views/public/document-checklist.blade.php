@@ -364,8 +364,8 @@
   <h2>Know what you need, then let's sort it</h2>
   <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents, or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
   <div class="row">
-    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+    <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about my Schengen documents.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my Schengen documents.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
   </div>
 </div></section>
 

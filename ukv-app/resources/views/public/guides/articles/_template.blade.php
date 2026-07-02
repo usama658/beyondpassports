@@ -24,7 +24,7 @@
     <li><a href="{{ url('/tools') }}">Run our free checker</a> to see what your trip is likely to need.</li>
     <li>Browse our <a href="{{ url('/destinations') }}">destinations</a> for the current category and typical requirements.</li>
     <li>If driving is part of your trip, see our <a href="{{ url('/driving-abroad') }}">driving-abroad (IDP) guidance</a>.</li>
-    <li>Read up first, then <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a> when you're ready and we'll check it for errors.</li>
+    <li>Read up first, then <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about this guide.') }}" target="_blank" rel="noopener">Check eligibility →</a> when you're ready and we'll check it for errors.</li>
   </ul>
 
   <p>For more background, the <a href="{{ url('/guides/eta-vs-visa-difference') }}">ETA vs visa explainer</a> and our checklist of <a href="{{ url('/guides/documents-before-you-apply') }}">documents to prepare before you apply</a> are good companions to this guide.</p>

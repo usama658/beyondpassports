@@ -535,7 +535,7 @@
     <p>Prefer to start now? Check your visa or begin an application.</p>
     <div class="ct-reassure-links">
       <a href="{{ url('/tools') }}" class="btn btn--ghost">Check your visa</a>
-      <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
+      <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
     </div>
   </div>
 </div></section>

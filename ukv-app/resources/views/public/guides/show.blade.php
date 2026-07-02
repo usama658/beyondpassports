@@ -678,7 +678,7 @@
   <h2>Let's get you travelling</h2>
   <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application. Our UK &amp; Germany team removes the avoidable causes of refusal before it's submitted.</p>
   <div class="row">
-    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a>
+    <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about this visa guide.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a>
     <a href="{{ $checklistUrl }}" class="btn btn--glass">Check what I need</a>
     @include('partials.consult-cta')
   </div>
