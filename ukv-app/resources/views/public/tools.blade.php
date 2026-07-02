@@ -177,7 +177,7 @@
         <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Visa / entry</p>
         <h3 id="tr-visa-title">…</h3>
         <p id="tr-visa-body">…</p>
-        <a class="rlink" id="tr-visa-link" href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
+        <a class="rlink" id="tr-visa-link" href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a> @include('partials.consult-cta')
       </div>
       <div class="tl-seg" id="tr-drive" hidden>
         <p class="rtag"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><use href="#ukv-stamp"></use></svg> Driving / IDP</p>
@@ -214,7 +214,7 @@
   <div class="rule"></div>
   <h2>Checked it? Now let's sort it</h2>
   <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK &amp; Germany team checks every case before anything is submitted.</p>
-  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection
