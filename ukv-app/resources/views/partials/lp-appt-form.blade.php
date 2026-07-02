@@ -5,9 +5,9 @@
 @php $bpcWa = config('ukv.whatsapp') ?: '440000000000'; @endphp
 <form class="bpc-af" onsubmit="return bpcAppt(this)" novalidate>
   <span class="bpc-af-stamp">FREE</span>
-  <p class="bpc-af-eyebrow">Check your eligibility</p>
-  <h2 class="bpc-af-h">Start on WhatsApp</h2>
-  <p class="bpc-af-sub">Name + number. A UK &amp; Germany advisor checks your case and finds the soonest slot.</p>
+  <p class="bpc-af-eyebrow">Book your appointment</p>
+  <h2 class="bpc-af-h">Check your eligibility, free</h2>
+  <p class="bpc-af-sub">Just your name and number. A UK &amp; Germany advisor spots what could get you refused, then holds the soonest slot before it goes.</p>
   <label class="bpc-af-l" for="bpc-af-name">Your name</label>
   <input class="bpc-af-i" id="bpc-af-name" name="n" type="text" placeholder="e.g. Aisha Khan" autocomplete="name">
   <label class="bpc-af-l" for="bpc-af-phone">Mobile number</label>
