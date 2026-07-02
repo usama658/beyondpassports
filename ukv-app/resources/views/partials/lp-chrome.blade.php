@@ -15,7 +15,7 @@
 </div></div>
 <header class="bpc-head"><div class="bpc-wrap">
   <a href="{{ url('/') }}" class="bpc-brand" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2.svg') }}" alt="Beyond Passports" width="150" height="38"></a>
-  <button class="bpc-navtoggle" type="button" aria-expanded="false" aria-controls="bpc-nav" aria-label="Open menu" onclick="var n=document.getElementById('bpc-nav'),o=n.classList.toggle('bpc-open');this.setAttribute('aria-expanded',o)">☰</button>
+  <button class="bpc-navtoggle" type="button" aria-expanded="false" aria-controls="bpc-nav" aria-label="Open menu" onclick="var n=document.getElementById('bpc-nav'),o=n.classList.toggle('bpc-open');this.setAttribute('aria-expanded',o)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   <nav class="bpc-nav" id="bpc-nav" aria-label="Primary">
     <a href="{{ url('/destinations') }}">Schengen visa</a>
     <a href="{{ url('/services') }}">Services</a>
