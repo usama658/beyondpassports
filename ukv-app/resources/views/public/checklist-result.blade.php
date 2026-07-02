@@ -559,7 +559,7 @@
   <section class="cta-band"><div class="wrap reveal">
     <div class="rule"></div>
     <h2>Got your list. Ready to apply?</h2>
-    <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK-based team will confirm your exact requirements and check every document before anything is submitted.</p>
+    <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK &amp; Germany team will confirm your exact requirements and check every document before anything is submitted.</p>
     <div class="row">
       <a href="{{ $applyUrl }}" class="btn">Start my application &rarr;</a>
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>

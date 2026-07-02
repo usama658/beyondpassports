@@ -676,7 +676,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application. Our UK-based team removes the avoidable causes of refusal before it's submitted.</p>
+  <p style="max-width:48ch;color:#eef0f1">Check what your trip needs, or start your application. Our UK &amp; Germany team removes the avoidable causes of refusal before it's submitted.</p>
   <div class="row">
     <a href="{{ $applyUrl }}" class="btn">Start my application →</a>
     <a href="{{ $checklistUrl }}" class="btn btn--glass">Check what I need</a>

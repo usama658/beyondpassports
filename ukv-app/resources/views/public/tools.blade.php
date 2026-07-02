@@ -213,7 +213,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Checked it? Now let's sort it</h2>
-  <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK-based team checks every case before anything is submitted.</p>
+  <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK &amp; Germany team checks every case before anything is submitted.</p>
   <div class="row"><a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 

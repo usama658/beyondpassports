@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visas — Sorted Without the Stress | Beyond Passports')
-@section('description', 'Independent UK Schengen visa service. We check, prepare and submit your Schengen application. UK-based team, clear fixed fees, every step tracked. Not a government website.')
+@section('description', 'Independent UK Schengen visa service. We check, prepare and submit your Schengen application. Registered in UK & Germany, clear fixed fees, every step tracked. Not a government website.')
 
 @push('head')
 <script type="application/ld+json">
@@ -218,7 +218,7 @@
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
   <div><div class="n">{{ App\Support\SiteStats::applications() }}+</div><div class="l">Applications filed since {{ App\Support\SiteStats::foundedYear() }}</div></div>
   <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
-  <div><div class="n">UK</div><div class="l">Based team &amp; support</div></div>
+  <div><div class="n">UK·DE</div><div class="l">Registered in UK &amp; Germany</div></div>
 </div></div></section>
 
 {{-- PROBLEM + READINESS CHECK — joined: fears on the left, the check that answers them on the right --}}
