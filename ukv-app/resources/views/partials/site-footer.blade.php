@@ -84,7 +84,7 @@
       </div>
       <div>
         <strong>Company &amp; legal</strong>
-        <a href="{{ url('/about') }}">About us</a>
+        <a href="{{ url('/about') }}">Who we are</a>
         <a href="{{ url('/contact') }}">Contact</a>
         <a href="{{ url('/legal') }}#privacy">Privacy</a>
         <a href="{{ url('/legal') }}#terms">Terms</a>

@@ -19,7 +19,7 @@
   <nav class="bpc-nav" id="bpc-nav" aria-label="Primary">
     <a href="{{ url('/destinations') }}">Schengen visa</a>
     <a href="{{ url('/services') }}">Services</a>
-    <a href="{{ url('/about') }}">About</a>
+    <a href="{{ url('/about') }}">Who we are</a>
     <a href="{{ url('/contact') }}" class="bpc-btn bpc-btn--ghost">Contact</a>
     <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="bpc-btn">Check eligibility →</a>
   </nav>
