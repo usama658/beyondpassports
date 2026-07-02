@@ -55,6 +55,9 @@
   .bpc-btn:hover{color:#fff}
   .bpc-btn--ghost{background:transparent;color:var(--bpc-cta);border:1.5px solid var(--bpc-cta)}
   .bpc-btn--ghost:hover{color:var(--bpc-cta)}
+  /* restore button text colours: `.bpc-nav a{color:ink}` (0,1,1) outranks `.bpc-btn` (0,1,0) */
+  .bpc-nav a.bpc-btn{color:#fff}
+  .bpc-nav a.bpc-btn--ghost{color:var(--bpc-cta)}
   .bpc-navtoggle{display:none;background:none;border:1px solid var(--bpc-edge);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:18px;line-height:1;color:var(--bpc-ink)}
   @media (max-width:860px){.bpc-tbrow{justify-content:center;gap:6px 16px}.bpc-tblinks{flex-wrap:wrap;justify-content:center}}
   @media (max-width:900px){
