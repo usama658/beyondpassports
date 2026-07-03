@@ -78,11 +78,13 @@
   .tr-faqd details[open] summary::after{content:"\2013"}
   .tr-faqd p{margin:12px 0 0;color:#3a4b55;font-size:16px;line-height:1.65}
   /* cta form on the .cta-band */
-  .tr-ctaform{display:flex;gap:12px;max-width:640px;margin:24px auto 0;flex-wrap:wrap}
-  .tr-ctaform input{flex:1;min-width:180px;padding:15px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;font:500 15px var(--display)}
+  .tr-ctaform{display:flex;gap:12px;max-width:660px;margin:24px auto 0;flex-wrap:wrap;align-items:stretch}
+  .tr-ctaform input{flex:1 1 140px;min-width:0;padding:15px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;font:500 15px var(--display)}
   .tr-ctaform input::placeholder{color:#c4d3dc}
   .tr-ctaform .btn{flex:0 0 auto;white-space:nowrap}
   .tr-form .btn{white-space:nowrap}
+  /* stack only on real mobile */
+  @media(max-width:560px){.tr-ctaform{flex-direction:column}.tr-ctaform .btn{width:100%}}
   .tr-ctafnote{margin:12px 0 0;color:#93a4ae;font-size:12.5px}
   .tr-ctaconsult{margin:16px 0 0;color:#c4d3dc;font-size:14.5px}
   .tr-ctaconsult a{color:var(--on-dark);font-weight:700;text-decoration:none}
@@ -114,7 +116,7 @@
     <div class="fs">Just your name and number. A UK and Germany advisor spots what could get you refused, then holds the soonest slot before it goes.</div>
     <label for="tr-name">Your name</label><input id="tr-name" type="text" autocomplete="name" placeholder="Full name">
     <label for="tr-phone">Phone number</label><input id="tr-phone" type="tel" autocomplete="tel" placeholder="Mobile number">
-    <a class="btn" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt>{!! $waIcon !!} Check my eligibility</a>
+    <a class="btn" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt>{!! $waIcon !!} Check eligibility</a>
     <p class="fnote">No payment. No obligation.</p>
   </div>
 </div></div></section>
@@ -192,7 +194,7 @@
   <div class="tr-ctaform">
     <input id="tr-cta-name" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
     <input id="tr-cta-phone" type="tel" autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
-    <a class="btn btn--glass" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt="cta">{!! $waIcon !!} Check my eligibility</a>
+    <a class="btn btn--glass" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt="cta">{!! $waIcon !!} Check eligibility</a>
   </div>
   <p class="tr-ctafnote">No payment. No obligation.</p>
   <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Book a free consultation.</a></p>
