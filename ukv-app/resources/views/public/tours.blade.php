@@ -81,6 +81,8 @@
   .tr-ctaform{display:flex;gap:12px;max-width:640px;margin:24px auto 0;flex-wrap:wrap}
   .tr-ctaform input{flex:1;min-width:180px;padding:15px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;font:500 15px var(--display)}
   .tr-ctaform input::placeholder{color:#c4d3dc}
+  .tr-ctaform .btn{flex:0 0 auto;white-space:nowrap}
+  .tr-form .btn{white-space:nowrap}
   .tr-ctafnote{margin:12px 0 0;color:#93a4ae;font-size:12.5px}
   .tr-ctaconsult{margin:16px 0 0;color:#c4d3dc;font-size:14.5px}
   .tr-ctaconsult a{color:var(--on-dark);font-weight:700;text-decoration:none}
