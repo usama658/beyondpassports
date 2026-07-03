@@ -84,7 +84,7 @@ return [
         'instagram' => env('UKV_SOCIAL_INSTAGRAM', 'https://www.instagram.com/beyondpassportsuk/'),
         'tiktok'    => env('UKV_SOCIAL_TIKTOK', 'https://www.tiktok.com/@beyond.passports'),
         'youtube'   => env('UKV_SOCIAL_YOUTUBE', 'https://www.youtube.com/@beyondpassports'),
-        'linkedin'  => env('UKV_SOCIAL_LINKEDIN', ''),
+        'linkedin'  => env('UKV_SOCIAL_LINKEDIN', 'https://www.linkedin.com/in/beyond-passports'),
         'pinterest' => env('UKV_SOCIAL_PINTEREST', 'https://www.pinterest.com/beyondpassports/'),
         'reddit'    => env('UKV_SOCIAL_REDDIT', 'https://www.reddit.com/r/beyondpassports/'),
         'quora'     => env('UKV_SOCIAL_QUORA', 'https://www.quora.com/profile/Beyond-Passports'),

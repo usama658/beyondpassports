@@ -60,6 +60,9 @@
     // Granting consent now releases the queued PageView + any later events. (UK PECR)
     if(window.fbq){ fbq('consent','grant'); }
 @endif
+    // LinkedIn profile badge (non-essential — sets LinkedIn cookies). Consent-gated;
+    // only fetched when a badge is actually on the page (e.g. the About page).
+    if(document.querySelector('.LI-profile-badge')){var li=document.createElement('script');li.async=true;li.defer=true;li.src='https://platform.linkedin.com/badges/js/profile.js';document.head.appendChild(li);}
   }
   var banner=document.getElementById('ck-consent');
   var choice=get(NAME);

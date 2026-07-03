@@ -254,12 +254,13 @@
     <p class="lede">Beyond Passports is a private visa consultancy. We prepare, check and submit Schengen applications, catching the avoidable mistakes that get people refused.</p>
     @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
   </div>
-  <div class="ab-idcard reveal" aria-label="Who we are at a glance">
-    <p class="ic-k">Beyond Passports · who we are</p>
-    <div class="ic-row"><span>Focus</span><b>Schengen visas</b></div>
-    <div class="ic-row"><span>Teams</span><b>UK &amp; Germany</b></div>
-    <div class="ic-row"><span>Team hours</span><b>Mon–Sat 9–6</b></div>
-    <div class="ic-row"><span>Status</span><b>Independent, not a government site</b></div>
+  <div class="ab-idcard reveal" aria-label="Beyond Passports on LinkedIn" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center">
+    <p class="ic-k" style="margin:0">Beyond Passports · who we are</p>
+    {{-- LinkedIn profile badge. profile.js upgrades this to the rich card, and it sets
+         LinkedIn cookies — so the script is consent-gated in partials.cookie-consent
+         (loads only after the visitor accepts). Until then the fallback link shows:
+         no third-party request, PECR-safe. --}}
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="beyond-passports-46389641b" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/beyond-passports-46389641b?trk=profile-badge" target="_blank" rel="noopener">Beyond Passports on LinkedIn</a></div>
   </div>
 </div></div></section>
 
