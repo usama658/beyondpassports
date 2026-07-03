@@ -69,6 +69,7 @@
       <div>
         <strong>Service</strong>
         <a href="{{ url('/services') }}">All services</a>
+        <a href="{{ url('/plan-a-trip') }}">{{ config('ukv.tours.nav_label', 'Plan a trip') }}</a>
         <a href="{{ url('/destinations') }}">Schengen visa</a>
         <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
         <a href="{{ url('/track') }}">Track application</a>
