@@ -45,6 +45,8 @@
   .tr-form label{display:block;font:700 11px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
   .tr-form input{width:100%;padding:13px 14px;border:1px solid var(--paper-edge);border-radius:11px;font:500 15px var(--display);margin:0 0 12px;background:#fbfdfd;color:var(--ink)}
   .tr-form .btn{width:100%;margin-top:4px}
+  /* ukv.css sets svg{display:block}; make button icon+label sit on one line */
+  .tr-form .btn,.tr-ctaform .btn,.tr-card .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
   .tr-form .fnote{text-align:center;color:var(--muted);font-size:12.5px;margin:12px 0 0}
   /* how — reuse global .steps; keep on paper */
   .tr-how .reassure{text-align:center;margin:30px 0 0;font:700 15px var(--display);color:var(--cta)}
