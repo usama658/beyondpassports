@@ -190,6 +190,31 @@ return [
         ],
     ],
 
+    // ── Tour packages ("Plan a trip") ─────────────────────────────────────────
+    // Drives /plan-a-trip (public.tours). Visa-led holiday packages: we prepare the
+    // Schengen visa + book the appointment first, then wrap flights + hotels.
+    //
+    // COMPLIANCE (do not remove):
+    //   'enquiry_only' => true keeps every package CTA as a WhatsApp enquiry (no
+    //   priced checkout). Selling FLIGHT-INCLUSIVE packages needs an ATOL licence
+    //   (CAA) and organiser insolvency protection under the Package Travel Regs
+    //   2018. Until both are in place, leave 'enquiry_only' => true — the page
+    //   generates leads only, it does not complete a sale. Prices are never shown.
+    //   'img' is a CSS background (gradient placeholder); swap for a real photo URL
+    //   under /assets when photography is ready.
+    'tours' => [
+        'nav_label'    => 'Plan a trip',
+        'enquiry_only' => (bool) env('UKV_TOURS_ENQUIRY_ONLY', true),
+        'packages' => [
+            ['name' => 'Paris Long Weekend',     'where' => 'France',                        'days' => '4 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)',                 'img' => 'linear-gradient(135deg,#485563,#29323c)'],
+            ['name' => 'Italy Highlights',       'where' => 'Rome · Florence · Venice',       'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)',                 'img' => 'linear-gradient(135deg,#8e2de2,#4a1042)'],
+            ['name' => 'Greek Islands Escape',   'where' => 'Greece',                         'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#0D5EAF,#fff)',                                      'img' => 'linear-gradient(135deg,#1c92d2,#2b5876)'],
+            ['name' => 'Amsterdam & the Rhine',  'where' => 'Netherlands + Germany',          'days' => '6 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)',                'img' => 'linear-gradient(135deg,#134e5e,#71b280)'],
+            ['name' => 'Spain & Portugal',       'where' => 'Spain + Portugal',               'days' => '10 days', 'flagship' => false, 'flag' => 'linear-gradient(180deg,#AA151B 40%,#F1BF00 40% 60%,#AA151B 60%)',             'img' => 'linear-gradient(135deg,#c04848,#480048)'],
+            ['name' => 'Best of Western Europe', 'where' => 'France · Switzerland · Italy',    'days' => '14 days', 'flagship' => true,  'flag' => 'linear-gradient(90deg,#0055A4,#fff,#CE2B37)',                                'img' => 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)'],
+        ],
+    ],
+
     // ── Services catalogue ────────────────────────────────────────────────────
     // Drives the /services hub (public.services). Mirrors the locked 14-silo SEO
     // map (docs/seo-silo-map.md): every service we offer or plan to offer, grouped

@@ -36,6 +36,7 @@ class SitemapController extends Controller
         $static = [
             ['/', 'weekly', '1.0'],
             ['/services', 'weekly', '0.9'],
+            ['/plan-a-trip', 'weekly', '0.8'],
             ['/schengen-visa-consultancy', 'weekly', '0.9'],
             ['/destinations', 'weekly', '0.8'],
             ['/tools', 'monthly', '0.7'],
