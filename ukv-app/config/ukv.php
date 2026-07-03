@@ -205,13 +205,16 @@ return [
     'tours' => [
         'nav_label'    => 'Plan a trip',
         'enquiry_only' => (bool) env('UKV_TOURS_ENQUIRY_ONLY', true),
+        // 'img' layers the destination photo over a colour-matched gradient fallback
+        // (shown if the photo ever fails to load). Photos are self-hosted, Unsplash-
+        // licensed (free commercial use); swap for owned/bought shots any time.
         'packages' => [
-            ['name' => 'Paris Long Weekend',     'where' => 'France',                        'days' => '4 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)',                 'img' => 'linear-gradient(135deg,#485563,#29323c)'],
-            ['name' => 'Italy Highlights',       'where' => 'Rome · Florence · Venice',       'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)',                 'img' => 'linear-gradient(135deg,#8e2de2,#4a1042)'],
-            ['name' => 'Greek Islands Escape',   'where' => 'Greece',                         'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#0D5EAF,#fff)',                                      'img' => 'linear-gradient(135deg,#1c92d2,#2b5876)'],
-            ['name' => 'Amsterdam & the Rhine',  'where' => 'Netherlands + Germany',          'days' => '6 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)',                'img' => 'linear-gradient(135deg,#134e5e,#71b280)'],
-            ['name' => 'Spain & Portugal',       'where' => 'Spain + Portugal',               'days' => '10 days', 'flagship' => false, 'flag' => 'linear-gradient(180deg,#AA151B 40%,#F1BF00 40% 60%,#AA151B 60%)',             'img' => 'linear-gradient(135deg,#c04848,#480048)'],
-            ['name' => 'Best of Western Europe', 'where' => 'France · Switzerland · Italy',    'days' => '14 days', 'flagship' => true,  'flag' => 'linear-gradient(90deg,#0055A4,#fff,#CE2B37)',                                'img' => 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)'],
+            ['name' => 'Paris Long Weekend',     'where' => 'France',                        'days' => '4 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)',                 'img' => "url('/assets/tours/paris.jpg') center/cover no-repeat, linear-gradient(135deg,#485563,#29323c)"],
+            ['name' => 'Italy Highlights',       'where' => 'Rome · Florence · Venice',       'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)',                 'img' => "url('/assets/tours/italy.jpg') center/cover no-repeat, linear-gradient(135deg,#8e2de2,#4a1042)"],
+            ['name' => 'Greek Islands Escape',   'where' => 'Greece',                         'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#0D5EAF,#fff)',                                      'img' => "url('/assets/tours/greece.jpg') center/cover no-repeat, linear-gradient(135deg,#1c92d2,#2b5876)"],
+            ['name' => 'Amsterdam & the Rhine',  'where' => 'Netherlands + Germany',          'days' => '6 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)',                'img' => "url('/assets/tours/amsterdam.jpg') center/cover no-repeat, linear-gradient(135deg,#134e5e,#71b280)"],
+            ['name' => 'Spain & Portugal',       'where' => 'Spain + Portugal',               'days' => '10 days', 'flagship' => false, 'flag' => 'linear-gradient(180deg,#AA151B 40%,#F1BF00 40% 60%,#AA151B 60%)',             'img' => "url('/assets/tours/spain-portugal.jpg') center/cover no-repeat, linear-gradient(135deg,#c04848,#480048)"],
+            ['name' => 'Best of Western Europe', 'where' => 'France · Switzerland · Italy',    'days' => '14 days', 'flagship' => true,  'flag' => 'linear-gradient(90deg,#0055A4,#fff,#CE2B37)',                                'img' => "url('/assets/tours/western-europe.jpg') center/cover no-repeat, linear-gradient(135deg,#0f2027,#203a43,#2c5364)"],
         ],
     ],
 
