@@ -20,9 +20,12 @@ deterministic half; this protocol enforces the skill-assisted half.
 ### Step 0 — Refresh inputs (before the cron output is trusted)
 | Trigger | Skill / tool | Quality gate |
 |---|---|---|
+| **Every batch** (current-affairs) | **WebSearch** (official + gov.uk) + LinkedIn-trend check | rewrite `storage/app/content-research/signals.json` with the *verified* headline + fact + `verified` date. This is what makes newsjacks current-affairs-grounded, not stale — the command merges a signal over any matching keyword (real fact replaces the vague angle + a rank boost). Signals >45 days old are auto-ignored. |
 | Keyword bank is >30 days old | **semrush-keyword-research** or Ahrefs MCP | update `config/content_research.php` + bump `refreshed` date |
-| Rule change suspected | **google-trends** + WebSearch | any EES/ETIAS/Chancenkarte shift → update bank `fresh` flags |
+| Rule change suspected | **google-trends** + WebSearch | any EES/ETIAS/Chancenkarte shift → update `signals.json` (primary) + bank `fresh` flags |
 | New competitor angle | **seo-competitor-pages** / **firecrawl-lead-research** | log gaps as candidate topics |
+
+> **signals.json is the live-trends bridge.** The server cron can't WebSearch; Claude refreshes this file each batch and the deterministic command reads it. No refresh = newsjacks fall back to the (dated) bank angles and go stale. Refresh it first, every batch.
 
 ### Step 1 — Generate topic list
 | Trigger | Command | Quality gate |

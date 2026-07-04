@@ -51,10 +51,18 @@ final class ContentResearchSecondary extends Command
         $refreshed = (string) config('content_research.refreshed', 'unknown');
         $this->line("Keyword bank snapshot: {$refreshed}");
 
+        // Live current-affairs signals (Claude-refreshed each batch via WebSearch).
+        // A topic whose keyword matches a signal takes the verified headline + fact
+        // and a rank boost — this is what keeps newsjacks current, not stale.
+        [$signals, $signalDate] = $this->loadSignals();
+        if ($signals) {
+            $this->line("Live signals verified: {$signalDate} (".count($signals).' active)');
+        }
+
         $topics = collect($bank)
             ->when($product, fn ($c) => $c->where('product', $product))
             ->filter(fn ($k) => (int) ($k['kd'] ?? 100) <= $maxKd)
-            ->map(function (array $k) {
+            ->map(function (array $k) use ($signals) {
                 $uk     = (int) ($k['uk'] ?? 0);
                 $global = (int) ($k['global'] ?? 0);
                 $kd     = (int) ($k['kd'] ?? 50);
@@ -74,8 +82,20 @@ final class ContentResearchSecondary extends Command
                 $score = (int) round(($vol * $diff * $fit) / 100);
                 if ($fresh) $score += 40; // newsjack boost
 
+                $title = (string) ($k['angle'] ?? $k['term']);
+                $note  = $fresh ? 'NEWSJACK — verify current rules before posting' : 'Evergreen';
+
+                // Overlay a live signal if this keyword matches one: real verified
+                // headline + fact replace the stale angle, plus a current-affairs boost.
+                if ($sig = $this->matchSignal((string) $k['term'], $signals)) {
+                    $title  = $sig['headline'];
+                    $note   = $sig['fact'];
+                    $fresh  = true;
+                    $score += (int) ($sig['boost'] ?? 80);
+                }
+
                 return [
-                    'title'    => (string) ($k['angle'] ?? $k['term']),
+                    'title'    => $title,
                     'term'     => (string) $k['term'],
                     'product'  => (string) ($k['product'] ?? ''),
                     'campaign' => (string) ($k['campaign'] ?? 'refusals'),
@@ -84,6 +104,7 @@ final class ContentResearchSecondary extends Command
                     'uk'       => $uk,
                     'kd'       => $kd,
                     'fresh'    => $fresh,
+                    'note'     => $note,
                     'score'    => $score,
                 ];
             })
@@ -111,7 +132,7 @@ final class ContentResearchSecondary extends Command
                  : ($t['campaign'] === 'move-to-europe' ? 'Eligibility check' : 'Free checklist');
             $src = strtolower($t['platform']);
             $link = "{$base}/{$t['landing']}?utm_source={$src}&utm_medium=social&utm_campaign={$t['campaign']}";
-            $note = $t['fresh'] ? 'NEWSJACK — verify current rules before posting' : 'Evergreen';
+            $note = (string) ($t['note'] ?? ($t['fresh'] ? 'NEWSJACK — verify current rules before posting' : 'Evergreen'));
             fputcsv($fh, [
                 '', 'Idea', $t['platform'], $t['campaign'], 'Carousel', $t['title'],
                 $t['product'], $cta, $link, $t['score'], $t['term'], $t['uk'], $t['kd'], $note,
@@ -127,5 +148,45 @@ final class ContentResearchSecondary extends Command
             ])->all());
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Load Claude-refreshed live signals (storage/app/content-research/signals.json).
+     * Returns [signals[], verifiedDate]. Signals older than 45 days are ignored
+     * (stale current-affairs is worse than none) — refresh them each batch.
+     */
+    private function loadSignals(): array
+    {
+        $path = storage_path('app/content-research/signals.json');
+        if (! is_file($path)) return [[], null];
+
+        $data = json_decode((string) file_get_contents($path), true);
+        if (! is_array($data) || empty($data['signals'])) return [[], null];
+
+        $verified = (string) ($data['verified'] ?? '');
+        if ($verified !== '') {
+            try {
+                if (Carbon::parse($verified)->diffInDays(Carbon::now()) > 45) {
+                    $this->warn("Live signals are stale ({$verified}) — refresh signals.json before trusting newsjacks.");
+                    return [[], $verified];
+                }
+            } catch (\Throwable) { /* unparseable date: treat as usable but flag */ }
+        }
+
+        return [array_values($data['signals']), $verified];
+    }
+
+    /** First signal whose `match` token appears in the keyword term, or null. */
+    private function matchSignal(string $term, array $signals): ?array
+    {
+        $t = Str::lower($term);
+        foreach ($signals as $sig) {
+            foreach ((array) ($sig['match'] ?? []) as $needle) {
+                if ($needle !== '' && str_contains($t, Str::lower((string) $needle))) {
+                    return $sig;
+                }
+            }
+        }
+        return null;
     }
 }
