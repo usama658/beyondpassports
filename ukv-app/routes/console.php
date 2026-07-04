@@ -23,3 +23,10 @@ Artisan::command('inspire', function () {
 // Public appointment board: derive snapshots from real bookings + tidy long-dead snapshots.
 \Illuminate\Support\Facades\Schedule::command('availability:derive')->dailyAt('06:30');
 \Illuminate\Support\Facades\Schedule::command('availability:sweep')->dailyAt('06:45');
+
+// --- Content research (docs/content-research-automation.md) ---
+// Batch-day topic list: merge primary (our data) + secondary (Ahrefs bank) into
+// one ranked CSV. Runs the 1st of each month so the plan is always ready; result
+// lands in storage/app/content-research/topics-DATE.csv.
+\Illuminate\Support\Facades\Schedule::command('content:research --limit=30')
+    ->monthlyOn(1, '05:30')->withoutOverlapping();
