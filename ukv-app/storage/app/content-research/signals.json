@@ -5,8 +5,8 @@
     {
       "tag": "etias",
       "match": ["etias"],
-      "headline": "ETIAS starts Q4 2026: a EUR 20 travel authorisation for UK passports, not a visa",
-      "fact": "ETIAS is an online travel authorisation for visa-exempt UK passport holders. EUR 20, valid 3 years, launching Oct-Dec 2026 with a 6-month grace period before it is mandatory (into ~April 2027). It is not a visa. Only the official EU site is legitimate; anyone selling it now is a scam.",
+      "headline": "ETIAS starts Q4 2026: a €20 travel authorisation, not a visa",
+      "fact": "€20. Valid 3 years. Launches Oct-Dec 2026 for visa-exempt UK passports. Not a visa, an online pre-clearance.",
       "source": "https://www.gov.uk/guidance/eu-entryexit-system",
       "trend": "LinkedIn: heavily posted by ABTA, Grayling, national interior ministries as an authority explainer",
       "boost": 130
