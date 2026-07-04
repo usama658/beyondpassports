@@ -1,0 +1,24 @@
+{
+  "_doc": "Live current-affairs signals for content:research. Claude refreshes this each batch (Step 0) via WebSearch + LinkedIn-trend check, then the command merges it: a topic whose keyword matches a signal takes the verified headline as its title and the verified fact as its Notes (real copy, not a flag), plus a rank boost. This is what makes posts current-affairs-grounded instead of stale-bank. Verify + re-date every batch — rules and dates move.",
+  "verified": "2026-07-05",
+  "signals": [
+    {
+      "tag": "etias",
+      "match": ["etias"],
+      "headline": "ETIAS starts Q4 2026: a EUR 20 travel authorisation for UK passports, not a visa",
+      "fact": "ETIAS is an online travel authorisation for visa-exempt UK passport holders. EUR 20, valid 3 years, launching Oct-Dec 2026 with a 6-month grace period before it is mandatory (into ~April 2027). It is not a visa. Only the official EU site is legitimate; anyone selling it now is a scam.",
+      "source": "https://www.gov.uk/guidance/eu-entryexit-system",
+      "trend": "LinkedIn: heavily posted by ABTA, Grayling, national interior ministries as an authority explainer",
+      "boost": 130
+    },
+    {
+      "tag": "ees",
+      "match": ["ees", "entry exit"],
+      "headline": "EES is already live: the biometric Schengen border replaced passport stamps on 10 April 2026",
+      "fact": "The EU Entry/Exit System became fully operational across all 29 Schengen countries on 10 April 2026 (progressive rollout began 12 October 2025). Fingerprints and a facial scan on first entry; over 45 million crossings logged. No traveller sign-up, but expect longer queues while it beds in.",
+      "source": "https://home-affairs.ec.europa.eu/news/entryexit-system-will-become-fully-operational-10-april-2026-2026-03-30_en",
+      "trend": "LinkedIn: ABTA + travel associations posting timeline explainers",
+      "boost": 95
+    }
+  ]
+}
