@@ -126,25 +126,32 @@ final class ContentCarousels extends Command
         // headless paint of the radial-gradients doesn't flush in time.
         // A solid full-bleed backdrop DIV (always paints in headless, unlike a
         // body background-color) guarantees the slide is never white.
-        $wrap = fn (string $baseBg, string $textCol, string $body) =>
-            "<!doctype html><meta charset='utf-8'><body style='margin:0;width:1080px;height:1350px;{$font};{$textCol};box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding:96px;position:relative;overflow:hidden'>"
+        // Content sits in a relative z-index:1 layer so it always paints ABOVE the
+        // full-bleed backdrop (a positioned z-index:0 backdrop otherwise covers
+        // static text — that blanked slide 2). Big top/bottom padding keeps the
+        // vertically-centred block clear of the brand label + footer.
+        $wrap = fn (string $baseBg, string $textCol, string $body, string $overlay = '') =>
+            "<!doctype html><meta charset='utf-8'><body style='margin:0;width:1080px;height:1350px;{$font};{$textCol};box-sizing:border-box;position:relative;overflow:hidden'>"
             . "<div style='position:absolute;inset:0;background:{$baseBg};z-index:0'></div>"
-            . "<div style='position:absolute;top:64px;left:96px;font:800 26px/1 sans-serif;letter-spacing:-.02em;z-index:2'>Beyond&nbsp;Passports</div>"
-            . $body
-            . "<div style='position:absolute;bottom:60px;left:96px;font:600 22px sans-serif;opacity:.75;z-index:2'>Registered in the UK &amp; Germany</div>"
+            . $overlay
+            . "<div style='position:absolute;top:88px;left:96px;font:800 26px/1 sans-serif;letter-spacing:-.02em;z-index:2'>Beyond&nbsp;Passports</div>"
+            // content anchored absolutely between brand and footer — headless ignores
+            // flex-centering + body padding, so place it explicitly.
+            . "<div style='position:absolute;top:360px;left:96px;right:96px;z-index:1'>".$body."</div>"
+            . "<div style='position:absolute;bottom:80px;left:96px;font:600 22px sans-serif;opacity:.75;z-index:2'>Registered in the UK &amp; Germany</div>"
             . "</body>";
 
-        // dark mesh = ink base + gradient overlay divs (paint reliably as elements)
+        // dark mesh = full-bleed gradient overlay at body level (z-index:0, over the
+        // solid backdrop, behind the z-index:1 content layer).
         $meshOverlay =
             "<div style='position:absolute;inset:0;background:radial-gradient(700px 380px at 12% 0%,rgba(21,94,122,.6),transparent 60%),radial-gradient(700px 380px at 92% 100%,rgba(46,154,140,.55),transparent 60%);z-index:0'></div>";
 
-        $rel = "position:relative;z-index:1";
-
         // Slide 1 — hook (dark mesh)
-        $s1 = $wrap($ink, 'color:#fff', $meshOverlay
-            . "<div style='{$rel};width:56px;height:4px;background:{$teal};margin:0 0 28px'></div>"
-            . "<h1 style='{$rel};font:800 76px/1.05 sans-serif;letter-spacing:-.03em;margin:0;max-width:16ch;color:#fff'>".e($t['title'])."</h1>"
-            . "<p style='{$rel};font:600 30px sans-serif;color:{$soft};margin:34px 0 0'>Why it happens, and how we prevent it.</p>");
+        $s1 = $wrap($ink, 'color:#fff',
+            "<div style='width:56px;height:4px;background:{$teal};margin:0 0 28px'></div>"
+            . "<h1 style='font:800 76px/1.05 sans-serif;letter-spacing:-.03em;margin:0;max-width:16ch;color:#fff'>".e($t['title'])."</h1>"
+            . "<p style='font:600 30px sans-serif;color:{$soft};margin:34px 0 0'>Why it happens, and how we prevent it.</p>",
+            $meshOverlay);
 
         // Slide 2 — body (paper). Use the research note only if it's real copy,
         // not a flag ("NEWSJACK…") or empty; otherwise a strong product default.
@@ -159,11 +166,12 @@ final class ContentCarousels extends Command
 
         // Slide 3 — CTA (dark mesh)
         $ctaLabel = $t['cta'] ?: 'Free checklist';
-        $s3 = $wrap($ink, 'color:#fff', $meshOverlay
-            . "<div style='{$rel};width:56px;height:4px;background:{$teal};margin:0 0 28px'></div>"
-            . "<h2 style='{$rel};font:800 66px/1.05 sans-serif;letter-spacing:-.03em;margin:0;max-width:15ch;color:#fff'>Check your eligibility, free.</h2>"
-            . "<p style='{$rel};font:600 30px sans-serif;color:{$soft};margin:30px 0 40px;max-width:24ch'>We spot what could get you refused, then handle it. No payment until after your free check.</p>"
-            . "<div style='{$rel};display:inline-block;background:#25D366;color:#fff;font:800 32px sans-serif;padding:22px 40px;border-radius:16px'>".e($ctaLabel)." &rarr;</div>");
+        $s3 = $wrap($ink, 'color:#fff',
+            "<div style='width:56px;height:4px;background:{$teal};margin:0 0 28px'></div>"
+            . "<h2 style='font:800 66px/1.05 sans-serif;letter-spacing:-.03em;margin:0;max-width:15ch;color:#fff'>Check your eligibility, free.</h2>"
+            . "<p style='font:600 30px sans-serif;color:{$soft};margin:30px 0 40px;max-width:24ch'>We spot what could get you refused, then handle it. No payment until after your free check.</p>"
+            . "<div style='display:inline-block;background:#25D366;color:#fff;font:800 32px sans-serif;padding:22px 40px;border-radius:16px'>".e($ctaLabel)." &rarr;</div>",
+            $meshOverlay);
 
         return [$s1, $s2, $s3];
     }
