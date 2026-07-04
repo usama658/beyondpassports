@@ -53,6 +53,7 @@ final class ContentCarousels extends Command
         $browser = $this->findBrowser();
         $rendered = 0;
         $htmlOnly = 0;
+        $issues = [];
 
         foreach ($topics as $t) {
             $slug = Str::slug(Str::limit($t['title'], 48, ''));
@@ -67,7 +68,14 @@ final class ContentCarousels extends Command
 
                 if ($browser) {
                     $this->shot($browser, $hf, $pf);
-                    is_file($pf) ? $rendered++ : $htmlOnly++;
+                    if (is_file($pf)) {
+                        $rendered++;
+                        foreach ($this->probe($pf) as $w) {
+                            $issues[] = "{$slug}/slide-{$n} — {$w}";
+                        }
+                    } else {
+                        $htmlOnly++;
+                    }
                 } else {
                     $htmlOnly++;
                 }
@@ -80,7 +88,61 @@ final class ContentCarousels extends Command
             $browser ? '' : ' — no browser found; HTML only, render on a box with Chrome'
         ));
 
+        // Self-QA: report any slide that failed the legibility probe. This is what
+        // catches blank slides + low-contrast text (black-on-dark) without a human
+        // eyeballing every render.
+        if ($issues) {
+            $this->newLine();
+            $this->warn('Legibility QA flagged '.count($issues).' region(s) — re-check these before posting:');
+            foreach ($issues as $msg) {
+                $this->line('  ✗ '.$msg);
+            }
+            return self::FAILURE;
+        }
+        if ($browser && $rendered) {
+            $this->line('Legibility QA: all text regions pass contrast.');
+        }
+
         return self::SUCCESS;
+    }
+
+    /**
+     * Post-render legibility probe (GD). Samples the fixed text regions (brand,
+     * headline/body, footer) of a rendered slide and measures the luminance spread
+     * inside each. Near-zero spread = text is invisible: either a blank region
+     * (nothing painted) or same-colour-as-background (the black-on-dark bug). This
+     * is the architecture's self-check — a machine catching what the eye did.
+     */
+    private function probe(string $png): array
+    {
+        if (! function_exists('imagecreatefrompng')) return []; // GD absent: skip, don't block
+        $im = @imagecreatefrompng($png);
+        if (! $im) return [];
+
+        // Fixed layout zones (match slides(): brand top:88, content top:360, footer bottom:80).
+        $zones = [
+            'brand'   => [96, 80, 460, 130],
+            'content' => [96, 360, 984, 980],
+            'footer'  => [96, 1250, 640, 1300],
+        ];
+        $warns = [];
+        foreach ($zones as $name => [$x0, $y0, $x1, $y1]) {
+            $min = 255.0; $max = 0.0;
+            for ($y = $y0; $y < $y1; $y += 5) {
+                for ($x = $x0; $x < $x1; $x += 5) {
+                    $rgb = imagecolorat($im, $x, $y);
+                    $lum = 0.2126 * (($rgb >> 16) & 255) + 0.7152 * (($rgb >> 8) & 255) + 0.0722 * ($rgb & 255);
+                    if ($lum < $min) $min = $lum;
+                    if ($lum > $max) $max = $lum;
+                }
+            }
+            // <40 luminance spread = text indistinguishable from its background.
+            if (($max - $min) < 40) {
+                $warns[] = sprintf('%s text illegible (Δlum %d — blank or low-contrast)', $name, (int) round($max - $min));
+            }
+        }
+        imagedestroy($im);
+        return $warns;
     }
 
     /** Newest topics CSV in content-research. */
@@ -134,11 +196,13 @@ final class ContentCarousels extends Command
             "<!doctype html><meta charset='utf-8'><body style='margin:0;width:1080px;height:1350px;{$font};{$textCol};box-sizing:border-box;position:relative;overflow:hidden'>"
             . "<div style='position:absolute;inset:0;background:{$baseBg};z-index:0'></div>"
             . $overlay
-            . "<div style='position:absolute;top:88px;left:96px;font:800 26px/1 sans-serif;letter-spacing:-.02em;z-index:2'>Beyond&nbsp;Passports</div>"
+            // Brand + footer set colour explicitly ({$textCol}) — inheritance from the
+            // body onto absolutely-positioned children rendered dark in headless.
+            . "<div style='position:absolute;top:88px;left:96px;font:800 26px/1 sans-serif;letter-spacing:-.02em;{$textCol};z-index:2'>Beyond&nbsp;Passports</div>"
             // content anchored absolutely between brand and footer — headless ignores
             // flex-centering + body padding, so place it explicitly.
             . "<div style='position:absolute;top:360px;left:96px;right:96px;z-index:1'>".$body."</div>"
-            . "<div style='position:absolute;bottom:80px;left:96px;font:600 22px sans-serif;opacity:.75;z-index:2'>Registered in the UK &amp; Germany</div>"
+            . "<div style='position:absolute;bottom:80px;left:96px;font:600 22px sans-serif;opacity:.7;{$textCol};z-index:2'>Registered in the UK &amp; Germany</div>"
             . "</body>";
 
         // dark mesh = full-bleed gradient overlay at body level (z-index:0, over the
