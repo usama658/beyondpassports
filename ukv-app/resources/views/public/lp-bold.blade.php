@@ -52,7 +52,7 @@
 .lpb .form input:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
 .lpb .form .cons{display:flex;gap:7px;align-items:flex-start;margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.4}
 .lpb .form .cons input{width:15px;height:15px;flex:none;margin-top:2px}
-.lpb .ref .stamp{display:inline-block;border:2.5px solid #f0a58f;color:#f0a58f;font-weight:800;letter-spacing:.16em;font-size:13px;padding:6px 14px;border-radius:7px;transform:rotate(-5deg);margin:0 0 16px;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(240,165,143,.14)}
+.lpb .ref .refstamp{display:inline-block;white-space:nowrap;border:2.5px solid #f0a58f;color:#f0a58f;font-weight:800;letter-spacing:.16em;font-size:13px;padding:6px 14px;border-radius:7px;transform:rotate(-5deg);margin:0 0 16px;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(240,165,143,.14)}
 .lpb .ref .rl{height:7px;border-radius:3px;background:rgba(255,255,255,.14);margin:8px 0}.lpb .ref .rl.s{width:60%}.lpb .ref .rl.m{width:85%}
 .lpb .ref .btn{margin-top:18px}
 .lpb .ref .rlink{display:block;margin-top:12px;color:#f0a58f;font-weight:700;font-size:13px}
@@ -109,7 +109,7 @@
 .lpb .letter .rl{height:8px;border-radius:3px;background:#e7e3d8;margin:9px 0}
 .lpb .letter .rl.s{width:64%}.lpb .letter .rl.m{width:88%}.lpb .letter .rl.l{width:96%}
 .lpb .letter .hl{background:rgba(192,73,47,.1);border-left:3px solid var(--red);padding:9px 12px;margin:14px 0;border-radius:4px;color:#5c3026;font-weight:600;font-size:12.5px;line-height:1.45}
-.lpb .letter .stamp{position:absolute;top:20px;right:18px;transform:rotate(8deg);border:2.5px solid var(--red);color:var(--red);font-weight:800;letter-spacing:.16em;font-size:14px;padding:6px 14px;border-radius:7px;opacity:.85;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(192,73,47,.12)}
+.lpb .letter .refstamp{position:absolute;top:20px;right:18px;white-space:nowrap;transform:rotate(8deg);border:2.5px solid var(--red);color:var(--red);font-weight:800;letter-spacing:.16em;font-size:14px;padding:6px 14px;border-radius:7px;opacity:.85;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(192,73,47,.12)}
 .lpb .letter .lfoot{border-top:1px solid #e6e2d8;margin-top:16px;padding-top:12px;color:#9aa0a3;font-size:11px}
 .lpb .lnote{padding:16px;background:#fff;border:1px solid var(--edge);border-radius:12px;color:var(--muted);font-size:14px;line-height:1.55;margin-top:16px}.lpb .lnote b{color:var(--ink)}
 .lpb .dec .selh{font-size:18px;margin:0 0 3px}
@@ -208,7 +208,7 @@
       </form>
     </div>
     <div class="lane ref">
-      <span class="stamp">Refused</span>
+      <span class="refstamp">Refused</span>
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p class="ld">The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
@@ -270,7 +270,7 @@
   <div class="grid">
     <div class="side">
       <div class="letter">
-        <div class="stamp">Refused</div>
+        <div class="refstamp">Refused</div>
         <div class="lh"><b>CONSULATE — VISA SECTION</b><span>Annex VI</span></div>
         <div class="rl l"></div><div class="rl m"></div><div class="rl s"></div>
         <div class="hl">Ground 2: "The justification for the purpose and conditions of the intended stay was not reliable."</div>
