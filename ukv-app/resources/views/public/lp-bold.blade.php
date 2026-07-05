@@ -194,7 +194,7 @@
       <p class="ld">Tell us your situation. We reply within 24 hours and turn you away if it's not one we can help with.</p>
       <form class="form" id="lpbCaseForm">
         <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
-        <button class="btn wa" type="submit"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.9 11.9 0 1 1 4.45 4.45L.057 24z"/></svg>Get my free case check</button>
+        <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
         <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
       </form>
     </div>
@@ -314,7 +314,7 @@
     <div class="fcard"><p class="fq"><span class="qg">Q.</span>Why WhatsApp instead of a form?</p><p class="fa">A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we'd rather just talk.</p></div>
     <div class="fcard key wide"><p class="fq"><span class="qg">Q.</span>Can you guarantee approval?</p><p class="fa"><b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer's real questions, and no contradictions to flag. That's what moves the odds. The outcome is never ours to promise.</p></div>
     <div class="fcard"><p class="fq"><span class="qg">Q.</span>I've never heard of Beyond Passports. Why you?</p><p class="fa">Fair. Don't trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.</p></div>
-    <div class="fcard wacard"><p class="fq" style="justify-content:center">Still have a question?</p><p class="fa" style="margin-bottom:14px">We answer in real time — send it over.</p><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.9 11.9 0 1 1 4.45 4.45L.057 24z"/></svg>Ask on WhatsApp</a></div>
+    <div class="fcard wacard"><p class="fq" style="justify-content:center">Still have a question?</p><p class="fa" style="margin-bottom:14px">We answer in real time — send it over.</p><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
   </div>
 </div></section>
 
@@ -330,7 +330,7 @@
     <p class="k">Free case check</p>
     <h3>Start in one message.</h3>
     <p class="d">Tell us your situation. We reply within 24 hours and say honestly if we can help.</p>
-    <a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20case%20check%20on%20my%20Schengen%20visa."><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.9 11.9 0 1 1 4.45 4.45L.057 24z"/></svg>Start with a free case check</a>
+    <a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20case%20check%20on%20my%20Schengen%20visa.">@include('partials.wa-glyph')Start with a free case check</a>
     <div class="re"><span><b>No cost.</b> No commitment.</span><span>cases@beyondpassports.co.uk</span></div>
   </div>
 </div></section>
