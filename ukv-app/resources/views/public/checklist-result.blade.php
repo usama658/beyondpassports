@@ -40,7 +40,7 @@
     $tripEntries  = $entriesMap[$inputs['visa_entries'] ?? ''] ?? null;
     $tripFacts    = implode(' · ', array_filter([$tripPurpose, $tripEntries])) ?: 'Tailored to your trip';
     $routeTo      = $destName !== 'your trip' ? \Illuminate\Support\Str::upper($destName) : 'YOUR TRIP';
-    $waNum        = config('ukv.whatsapp') ?: '440000000000';
+    $waNum        = config('ukv.whatsapp') ?: '447882747584';
     $waHref       = 'https://wa.me/'.$waNum.'?text='.urlencode('Hi Beyond Passports, I would like help with my document checklist for '.$destName.'.');
 @endphp
 <!doctype html>
@@ -562,7 +562,7 @@
     <p style="max-width:52ch;color:#cdd9e1">Start your application and our UK &amp; Europe team will confirm your exact requirements and check every document before anything is submitted.</p>
     <div class="row">
       <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, here is my document checklist, can you check it?') }}" target="_blank" rel="noopener" class="btn">Check eligibility &rarr;</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, here is my document checklist, can you check it?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my document checklist, can you check it?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
       @include('partials.consult-cta')
     </div>
   </div></section>

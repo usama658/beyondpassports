@@ -2,7 +2,7 @@
      Prices hidden (config ukv.pricing.show=false → placeholder); each tier CTA opens WhatsApp
      with a tier-relevant query. Fee disclaimer footer stays honest (embassy fee separate). --}}
 @php
-  $bpcWa = config('ukv.whatsapp') ?: '440000000000';
+  $bpcWa = config('ukv.whatsapp') ?: '447882747584';
   $bpcQuote = config('ukv.pricing.placeholder', 'Get a quote');
   $bpcWaLink = fn($q) => 'https://wa.me/'.$bpcWa.'?text='.rawurlencode('Hi Beyond Passports, '.$q);
   $bpcTiers = [

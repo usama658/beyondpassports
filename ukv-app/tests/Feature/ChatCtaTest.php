@@ -37,13 +37,13 @@ final class ChatCtaTest extends TestCase
         $this->assertStringNotContainsString('?text=', $html);
     }
 
-    public function test_wa_cta_falls_back_to_placeholder_number_when_unset(): void
+    public function test_wa_cta_falls_back_to_real_number_when_unset(): void
     {
         config(['ukv.whatsapp' => '']);
 
         $html = view('partials.wa-cta', ['label' => 'Chat'])->render();
 
-        $this->assertStringContainsString('https://wa.me/440000000000', $html);
+        $this->assertStringContainsString('https://wa.me/447882747584', $html);
     }
 
     public function test_floating_button_present_on_layout_page(): void

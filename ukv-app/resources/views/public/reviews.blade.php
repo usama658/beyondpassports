@@ -78,7 +78,7 @@
   <div class="rule"></div>
   <h2>Let’s get you travelling</h2>
   <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question, even just to check whether you need us.</p>
-  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like to start my Schengen visa.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, I would like to start my Schengen visa.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like to start my Schengen visa.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I would like to start my Schengen visa.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

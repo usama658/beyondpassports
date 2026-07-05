@@ -388,7 +388,7 @@
     <p style="max-width:50ch;color:#eef0f1">Check whether you need an IDP and which type, then we'll prepare your paperwork so your in-person PayPoint visit goes right first time. Independent service, not a government website.</p>
     <div class="row">
       <a href="{{ url('/tools') }}" class="btn">Check if I need an IDP →</a>
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
       @include('partials.consult-cta')
     </div>
   </div>

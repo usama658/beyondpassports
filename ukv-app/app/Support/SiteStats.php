@@ -79,7 +79,7 @@ final class SiteStats
      */
     public static function chatUrl(?string $message = null): string
     {
-        $number = config('ukv.whatsapp') ?: '440000000000';
+        $number = config('ukv.whatsapp') ?: '447882747584';
         $text   = $message ?? 'Hi Beyond Passports, I would like to check my eligibility for a Schengen visa.';
 
         return 'https://wa.me/'.$number.'?text='.rawurlencode($text);

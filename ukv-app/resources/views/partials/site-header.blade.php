@@ -8,9 +8,9 @@
   {{-- Trustpilot rating (real figures, manual sync) — centred. --}}
   <span class="tb-tp">@include('partials.trustpilot-cta', ['align' => 'center', 'theme' => 'dark', 'margin' => '0'])</span>
   <span class="tb-links">
-    <a href="tel:{{ config('ukv.phone_e164') ?: '+440000000000' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+447882747584' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
     @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')<b>Europe Team:</b>&nbsp;{{ config('ukv.phone_de') ?: '+49' }}</a>@endif
-    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">@include('partials.wa-glyph')WhatsApp</a>
+    <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}">@include('partials.wa-glyph')WhatsApp</a>
   </span>
 </div></div>
 <header class="site-head"><div class="wrap">

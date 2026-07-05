@@ -488,7 +488,7 @@
     </div>
     <div class="sla"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Typical callback: within 1 business day, Mon–Sat 9–6</div>
     <div class="acts">
-      <a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}">@include('partials.wa-glyph')WhatsApp us</a>
+      <a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}">@include('partials.wa-glyph')WhatsApp us</a>
       <a class="btn btn--ghost" href="{{ url('/track') }}" id="cbm-track">Track my case</a>
     </div>
     <p class="micro">Keep your reference to track progress · not a government website.</p>
@@ -500,7 +500,7 @@
   <div class="rule"></div>
   <h2>Real people checking real applications</h2>
   <p style="max-width:52ch;color:#cdd9e1">A UK &amp; Europe team reviews every case before anything is submitted. We're an independent service, not a government website, and we'll always tell you honestly what you need.</p>
-  <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection

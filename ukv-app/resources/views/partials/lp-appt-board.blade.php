@@ -2,7 +2,7 @@
      Self-contained (bpc-bd- prefix). Each country card's "Book now" opens WhatsApp with a
      per-country booking query. Honest board: manual wait times, "updated daily". --}}
 @php
-  $bpcWa = config('ukv.whatsapp') ?: '440000000000';
+  $bpcWa = config('ukv.whatsapp') ?: '447882747584';
   $bpcBoard = [
     ['co'=>'Germany','ce'=>'London, TLScontact','wt'=>'5 working days','s'=>'Fast','c'=>'fast','fl'=>'linear-gradient(180deg,#000 33%,#D00 33% 66%,#FFCE00 66%)'],
     ['co'=>'Spain','ce'=>'BLS London','wt'=>'10 to 20 days','s'=>'Open','c'=>'go','fl'=>'linear-gradient(180deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)'],

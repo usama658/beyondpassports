@@ -173,7 +173,7 @@
   @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '18px 0 0'])
   <script>
     (function () {
-      var WA = @json(config('ukv.whatsapp') ?: '440000000000');
+      var WA = @json(config('ukv.whatsapp') ?: '447882747584');
       var btn = document.getElementById('hp-chat');
       if (!btn) return;
       btn.addEventListener('click', function () {
@@ -328,7 +328,7 @@
 </div></div>
   <script>
     (function () {
-      var WA = @json(config('ukv.whatsapp') ?: '440000000000');
+      var WA = @json(config('ukv.whatsapp') ?: '447882747584');
       var root = document.getElementById('rk');
       if (!root) return;
       var steps = root.querySelectorAll('.rk-step');
@@ -444,7 +444,7 @@
     <div class="step reveal" id="step-02"><div class="num">02</div><div class="rule"></div><h3>Document checklist</h3><p>A personalised document checklist for your circumstances, every item checked by hand.</p></div>
     <div class="step reveal" id="step-03"><div class="num">03</div><div class="rule"></div><h3>Booking support</h3><p>Expert guidance through the appointment booking process and your next steps.</p></div>
   </div>
-  <div style="text-align:center;margin-top:28px"><a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ urlencode('Hi Beyond Passports, I would like to start my Schengen application.') }}" target="_blank" rel="noopener">@include('partials.wa-glyph')Start your journey →</a></div>
+  <div style="text-align:center;margin-top:28px"><a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ urlencode('Hi Beyond Passports, I would like to start my Schengen application.') }}" target="_blank" rel="noopener">@include('partials.wa-glyph')Start your journey →</a></div>
 </div></section>
 
 {{-- DESTINATIONS — map-texture backdrop + centred 3-up glass grid (D), region-tab filtered --}}
@@ -637,7 +637,7 @@
   <div class="rule"></div>
   <h2>Let's get you travelling</h2>
   <p style="max-width:48ch;color:rgba(255,255,255,.85)">Start your application now, or message our UK team with any question.</p>
-  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like help with my Schengen visa.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, I would like help with my Schengen visa.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like help with my Schengen visa.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I would like help with my Schengen visa.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 @endif
 

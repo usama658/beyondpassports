@@ -214,7 +214,7 @@
   <div class="rule"></div>
   <h2>Checked it? Now let's sort it</h2>
   <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK &amp; Europe team checks every case before anything is submitted.</p>
-  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '440000000000' }}?text={{ rawurlencode('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 
 @endsection
@@ -353,7 +353,7 @@
     var hDest = document.getElementById('h-dest');
     var hPass = document.getElementById('h-pass');
     var hGo   = document.getElementById('h-go');
-    var WA    = @json(config('ukv.whatsapp') ?: '440000000000');
+    var WA    = @json(config('ukv.whatsapp') ?: '447882747584');
     if (hGo && hDest && hPass) {
       hGo.addEventListener('click', function () {
         var place = hDest.value ? hDest.value : '';
