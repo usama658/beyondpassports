@@ -42,6 +42,7 @@ Route::view('/schengen-visa-refusal-risk', 'public.lp-fear')->name('lp-fear');
 Route::view('/schengen-visa-appointment', 'public.lp-appointments')->name('lp-appointments');
 Route::view('/honest-schengen-visa-service', 'public.lp-trust')->name('lp-trust');
 Route::view('/schengen-visa-refused', 'public.lp-refused')->name('lp-refused');
+Route::view('/schengen-visa-help', 'public.lp-bold')->name('lp-bold'); // Bold LP: dual-lane hero + case-file sections
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
