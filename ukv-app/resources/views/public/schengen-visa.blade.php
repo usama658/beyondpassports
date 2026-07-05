@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Consultancy for UK Residents | Beyond Passports')
-@section('description', 'Independent Schengen visa consultancy for UK residents. Our UK and Germany teams prepare, check and submit your application, catching the mistakes that get people refused. Not a government website.')
+@section('description', 'Independent Schengen visa consultancy for UK residents. Our UK and Europe teams prepare, check and submit your application, catching the mistakes that get people refused. Not a government website.')
 @section('canonical', url('/schengen-visa-consultancy'))
 
 @php
@@ -37,7 +37,7 @@
     '@type' => 'Service',
     'name' => 'Schengen visa consultancy',
     'serviceType' => 'Schengen visa application facilitation',
-    'description' => 'Independent UK and Germany consultancy that prepares, checks and submits Schengen visa applications for UK residents. Service fee separate from the government fee. Not a government website.',
+    'description' => 'Independent UK and Europe consultancy that prepares, checks and submits Schengen visa applications for UK residents. Service fee separate from the government fee. Not a government website.',
     'areaServed' => 'United Kingdom',
     'provider' => [
       '@type' => 'Organization',
@@ -290,7 +290,7 @@
   <div class="reveal">
     <p class="eyebrow">Schengen visa consultancy</p>
     <h1>Schengen visa consultancy for UK residents</h1>
-    <p class="lede">An independent UK and Germany team that prepares, checks and submits your application, catching the small mistakes that get people refused. We are with you from the first eligibility check to the appointment door.</p>
+    <p class="lede">An independent UK and Europe team that prepares, checks and submits your application, catching the small mistakes that get people refused. We are with you from the first eligibility check to the appointment door.</p>
   </div>
   <div class="sgc-hcard reveal">
     <h3>Start here</h3>
@@ -308,7 +308,7 @@
 <section class="tbar-f"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK &amp; Germany</b> teams</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>UK &amp; Europe</b> teams</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
 </div></div></section>
 
@@ -554,7 +554,7 @@
 <section id="sgc-contact"><div class="wrap">
   <div class="sgc-head reveal">
     <p class="eyebrow">Talk to a human</p>
-    <h2>Speak to our UK or Germany team</h2>
+    <h2>Speak to our UK or Europe team</h2>
     <p class="lede">A real person picks up. Tell us about your trip and we will tell you exactly what your application needs.</p>
   </div>
   <div class="sgc-contact-card reveal">
@@ -566,7 +566,7 @@
       <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn sgc-teambtn">@include('partials.call-glyph')Call</a>
     </div>
     <div class="sgc-team">
-      <span class="sgc-team-who"><span class="sgc-fl">DE</span><span><b>Germany team</b><small>{{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</small></span></span>
+      <span class="sgc-team-who"><span class="sgc-fl">DE</span><span><b>Europe team</b><small>{{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</small></span></span>
       <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn sgc-teambtn">@include('partials.call-glyph')Call</a>
     </div>
     <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn sgc-wabtn">{!! $waGlyph !!} Message on WhatsApp</a>
@@ -577,14 +577,14 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Start your Schengen application</h2>
-  <p style="max-width:50ch;color:#eef0f1">Check your eligibility free, or message our UK and Germany team on WhatsApp and we will tell you exactly what your Schengen application needs.</p>
+  <p style="max-width:50ch;color:#eef0f1">Check your eligibility free, or message our UK and Europe team on WhatsApp and we will tell you exactly what your Schengen application needs.</p>
   <div class="row">
     <a href="{{ url('/tools') }}" class="btn">Check your eligibility</a>
     <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn btn--glass">{!! $waGlyph !!} Chat on WhatsApp</a>
   </div>
   <div class="sgc-cta-phones">
     <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">@include('partials.call-glyph')UK {{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a>
-    <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')Germany {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a>
+    <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a>
   </div>
   <p class="sgc-disclaimer">Beyond Passports is an independent consultancy, not a government website. We cannot guarantee any visa outcome; the consulate makes the decision. Express speeds our handling only, not the consulate decision. Our service fee is separate from the government visa fee.</p>
 </div></section>

@@ -202,7 +202,7 @@ final class ContentCarousels extends Command
             // content anchored absolutely between brand and footer — headless ignores
             // flex-centering + body padding, so place it explicitly.
             . "<div style='position:absolute;top:360px;left:96px;right:96px;z-index:1'>".$body."</div>"
-            . "<div style='position:absolute;bottom:80px;left:96px;font:600 22px sans-serif;opacity:.7;{$textCol};z-index:2'>Registered in the UK &amp; Germany</div>"
+            . "<div style='position:absolute;bottom:80px;left:96px;font:600 22px sans-serif;opacity:.7;{$textCol};z-index:2'>Registered in the UK &amp; Europe</div>"
             . "</body>";
 
         // dark mesh = full-bleed gradient overlay at body level (z-index:0, over the

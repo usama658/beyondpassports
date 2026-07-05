@@ -8,7 +8,7 @@
      no prices, no checkout, no visa/approval guarantee. --}}
 
 @section('title', 'Plan a trip — Europe tours with the Schengen visa built in | Beyond Passports')
-@section('description', 'Visa-led European tour packages. We prepare the Schengen visa and book the appointment first, then wrap flights and hotels. Registered in the UK and Germany. No payment until after your free risk check.')
+@section('description', 'Visa-led European tour packages. We prepare the Schengen visa and book the appointment first, then wrap flights and hotels. Registered in the UK and Europe. No payment until after your free risk check.')
 
 @php
   $tours   = config('ukv.tours.packages', []);
@@ -102,7 +102,7 @@
     <p class="eyebrow">Flights, hotels and the Schengen visa. One booking.</p>
     <h1>Book the trip.<br>We clear the visa.</h1>
     <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with flights and hotels. You just pack.</p>
-    <div class="tr-htrust">✦ Registered in the UK and Germany · advisor usually replies within {{ $sla }}</div>
+    <div class="tr-htrust">✦ Registered in the UK and Europe · advisor usually replies within {{ $sla }}</div>
     <div class="tr-chips">
       <span class="tr-chip"><b>✓</b> Flights included</span>
       <span class="tr-chip"><b>✓</b> Hotels + transfers</span>
@@ -111,7 +111,7 @@
   </div>
   <div class="tr-form">
     <div class="fl">Check your eligibility, free</div>
-    <div class="fs">Just your name and number. A UK and Germany advisor spots what could get you refused, then holds the soonest slot before it goes.</div>
+    <div class="fs">Just your name and number. A UK and Europe advisor spots what could get you refused, then holds the soonest slot before it goes.</div>
     <label for="tr-name">Your name</label><input id="tr-name" type="text" autocomplete="name" placeholder="Full name">
     <label for="tr-phone">Phone number</label><input id="tr-phone" type="tel" autocomplete="tel" placeholder="Mobile number">
     <a class="btn" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt>{!! $waIcon !!} Check my eligibility</a>
@@ -164,7 +164,7 @@
     <p class="tr-sub">Our own records. We do not promise outcomes. We make the case as strong as it can be.</p>
   </div>
   <div class="tr-stats"><div class="row">
-    <div><div class="n">UK &amp; DE</div><div class="l">Registered in the United Kingdom and Germany</div></div>
+    <div><div class="n">UK &amp; EU</div><div class="l">Registered in the United Kingdom and Europe</div></div>
     <div><div class="n">{{ $apps }}</div><div class="l">Applications prepared and counting</div></div>
     <div><div class="n">{{ $revs }}</div><div class="l">Previously refused cases turned around</div></div>
     <div><div class="n">{{ $ins }}</div><div class="l">Minimum travel insurance per traveller</div></div>
