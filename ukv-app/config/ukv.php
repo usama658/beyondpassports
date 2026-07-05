@@ -21,6 +21,9 @@ return [
     'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
     'phone_de' => env('UKV_PHONE_DE', '+49 30 0000 0000'),   // Germany display — PLACEHOLDER until real number set
     'phone_de_e164' => env('UKV_PHONE_DE_E164', '+4930000000'),// Germany tel: link — PLACEHOLDER
+    // Master toggle for the DE/Europe phone line site-wide. OFF until a real number
+    // is live; set UKV_SHOW_DE_PHONE=true to surface it everywhere again.
+    'show_de_phone' => filter_var(env('UKV_SHOW_DE_PHONE', false), FILTER_VALIDATE_BOOLEAN),
     'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
 

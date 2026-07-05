@@ -565,10 +565,12 @@
       <span class="sgc-team-who"><span class="sgc-fl">UK</span><span><b>UK team</b><small>{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</small></span></span>
       <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn sgc-teambtn">@include('partials.call-glyph')Call</a>
     </div>
+    @if(config('ukv.show_de_phone'))
     <div class="sgc-team">
       <span class="sgc-team-who"><span class="sgc-fl">DE</span><span><b>Europe team</b><small>{{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</small></span></span>
       <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn sgc-teambtn">@include('partials.call-glyph')Call</a>
     </div>
+    @endif
     <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn sgc-wabtn">{!! $waGlyph !!} Message on WhatsApp</a>
   </div>
 </div></section>
@@ -584,7 +586,7 @@
   </div>
   <div class="sgc-cta-phones">
     <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">@include('partials.call-glyph')UK {{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a>
-    <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a>
+    @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a>@endif
   </div>
   <p class="sgc-disclaimer">Beyond Passports is an independent consultancy, not a government website. We cannot guarantee any visa outcome; the consulate makes the decision. Express speeds our handling only, not the consulate decision. Our service fee is separate from the government visa fee.</p>
 </div></section>

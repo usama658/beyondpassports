@@ -398,10 +398,12 @@
       <span class="ct-team-who"><span class="ct-fl">UK</span><span><b>UK team</b><small>{{ config('ukv.phone') ?: '+44 20 7946 0000' }}</small></span></span>
       <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn ct-teambtn">@include('partials.call-glyph')Call</a>
     </div>
+    @if(config('ukv.show_de_phone'))
     <div class="ct-team">
       <span class="ct-team-who"><span class="ct-fl">DE</span><span><b>Europe team</b><small>{{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</small></span></span>
       <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn ct-teambtn">@include('partials.call-glyph')Call</a>
     </div>
+    @endif
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '442079460000' }}" class="btn btn--wa ct-wabtn">@include('partials.wa-glyph')Message on WhatsApp</a>
     @include('partials.trustpilot-cta', ['align' => 'center', 'theme' => 'dark', 'margin' => '14px 0 0'])
   </div>
@@ -424,12 +426,12 @@
           <div>
             <h3>Call us</h3>
             <p class="detail"><a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}">UK {{ config('ukv.phone') ?: '+44 20 7946 0000' }}</a></p>
-            <p class="detail"><a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a></p>
-            <p class="sub">UK and Europe lines, best for anything you'd rather just talk through. A real person picks up. No bots, no overseas call centres.</p>
+            @if(config('ukv.show_de_phone'))<p class="detail"><a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a></p>@endif
+            <p class="sub">A real person picks up. No bots, no overseas call centres. Best for anything you'd rather just talk through.</p>
             <span class="hrs">Mon–Sat 9–6 UK time</span><br>
             <div class="ct-callrow">
               <a href="tel:{{ config('ukv.phone_e164') ?: '+442079460000' }}" class="btn callbtn">@include('partials.call-glyph')Call UK</a>
-              <a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn callbtn">@include('partials.call-glyph')Call Europe</a>
+              @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}" class="btn callbtn">@include('partials.call-glyph')Call Europe</a>@endif
             </div>
           </div>
         </div>
