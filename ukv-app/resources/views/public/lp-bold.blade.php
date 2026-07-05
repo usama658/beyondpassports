@@ -54,6 +54,9 @@
 .lpb .ref .rl{height:7px;border-radius:3px;background:rgba(255,255,255,.14);margin:8px 0}.lpb .ref .rl.s{width:60%}.lpb .ref .rl.m{width:85%}
 .lpb .ref .btn{margin-top:18px}
 .lpb .ref .rlink{display:block;margin-top:12px;color:#f0a58f;font-weight:700;font-size:13px}
+.lpb .reflist{list-style:none;margin:16px 0 6px;padding:0}
+.lpb .reflist li{position:relative;padding:5px 0 5px 26px;color:#d7e2e6;font-size:13.5px;line-height:1.4}
+.lpb .reflist li::before{content:"✓";position:absolute;left:0;top:5px;color:#f0a58f;font-weight:800}
 .lpb .halt{text-align:center;color:var(--muted);font-size:13.5px;margin:22px 0 0}.lpb .halt b{color:var(--ink)}
 .lpb .sitrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0 0}
 .lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:13px 15px;transition:transform .12s,box-shadow .12s}
@@ -203,7 +206,11 @@
       <p class="ltag">Already been refused?</p>
       <h3>Start refusal recovery</h3>
       <p class="ld">The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
-      <div class="rl m"></div><div class="rl s"></div><div class="rl m"></div>
+      <ul class="reflist">
+        <li>We read the exact refusal ground on your letter</li>
+        <li>Rebuild the file so it can't be flagged again</li>
+        <li>Or tell you straight if it isn't recoverable</li>
+      </ul>
       <a class="btn" style="background:#f0a58f;color:#3a1a12" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
       <a class="rlink" href="#refusal">Or see how we decode a refusal letter ↓</a>
     </div>
