@@ -17,14 +17,14 @@ return [
     'show_prices' => (bool) env('UKV_SHOW_PRICES', true),
 
     // Public contact details — surfaced site-wide (topbar, footer, contact page, CTAs).
-    'phone' => env('UKV_PHONE', ''),            // human-readable display, e.g. +44 20 1234 5678
-    'phone_e164' => env('UKV_PHONE_E164', ''),  // for tel: links, e.g. +442012345678
+    'phone' => env('UKV_PHONE', '+44 7882 747584'),      // human-readable display
+    'phone_e164' => env('UKV_PHONE_E164', '+447882747584'),  // for tel: links
     'phone_de' => env('UKV_PHONE_DE', '+49 30 0000 0000'),   // Germany display — PLACEHOLDER until real number set
     'phone_de_e164' => env('UKV_PHONE_DE_E164', '+4930000000'),// Germany tel: link — PLACEHOLDER
     // Master toggle for the DE/Europe phone line site-wide. OFF until a real number
     // is live; set UKV_SHOW_DE_PHONE=true to surface it everywhere again.
     'show_de_phone' => filter_var(env('UKV_SHOW_DE_PHONE', false), FILTER_VALIDATE_BOOLEAN),
-    'whatsapp' => env('UKV_WHATSAPP', ''),      // wa.me number (digits only), e.g. 442012345678
+    'whatsapp' => env('UKV_WHATSAPP', '447882747584'),   // wa.me number (digits only)
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
 
     // Travel-insurance INTRODUCER (FCA-safe signpost only). Beyond Passports does NOT sell or arrange
