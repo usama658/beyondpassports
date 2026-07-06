@@ -88,30 +88,31 @@
 .lpb .sit .d{color:var(--muted);font-size:15.5px;line-height:1.45;margin:0}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
-/* BOARD — scarcity heat cards (light, colour-coded) */
+/* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
-.lpb .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.lpb .hot{--c:#c0492f;--cbg:#fdecea;--cbd:#f2c4bb}
-.lpb .tight{--c:#b5791f;--cbg:#fdf5e8;--cbd:#f0dcb8}
-.lpb .open{--c:#1F6E63;--cbg:#e7f4ef;--cbd:#bfe3d8}
-.lpb .hc{background:var(--cbg);border:1px solid var(--cbd);border-left:5px solid var(--c);border-radius:16px;padding:22px}
-.lpb .hc .r1{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 0 4px}
-.lpb .hc .cty{font-size:20px;font-weight:800}
-.lpb .hc .pill{font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);background:#fff;border:1px solid var(--cbd);padding:5px 9px;border-radius:999px;white-space:nowrap}
-.lpb .hc .st{color:var(--muted);font-size:13.5px;line-height:1.45;min-height:38px;margin:6px 0 14px}
-.lpb .hc .meter{height:8px;border-radius:5px;background:#fff;border:1px solid var(--cbd);overflow:hidden;margin:0 0 12px}
-.lpb .hc .meter i{display:block;height:100%;background:var(--c)}
-.lpb .hc .foot{display:flex;justify-content:space-between;align-items:center}
-.lpb .hc .slots{font-family:var(--mono);font-weight:800;font-size:30px;color:var(--c);line-height:1}
-.lpb .hc .slots small{font-size:12px;font-weight:700;color:var(--muted);font-family:var(--display)}
-.lpb .hc .av{color:var(--muted);font-size:13px;text-align:right}.lpb .hc .av b{color:var(--ink);display:block;font-size:15px}
-.lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px}
+.lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
+.lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
+.lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
+.lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
+.lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lpb .hc .cty{color:#fff;font-size:18px;font-weight:800}
+.lpb .hc .pill{font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.lpb .hc .bd2{background:var(--cbg);padding:16px 18px}
+.lpb .hc .lab{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 3px}
+.lpb .hc .date{font-size:19px;font-weight:800;margin:0 0 12px}
+.lpb .hc .slots{display:flex;align-items:baseline;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:9px 12px}
+.lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:20px;color:var(--c)}
+.lpb .hc .slots small{font-size:12px;color:var(--muted)}
+.lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px;align-items:center}
 .lpb .blegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .lpb .bd .bfoot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
 .lpb .bd .bfoot .btn{width:auto;min-width:230px}
 .lpb .bd .skip{margin:0 0 10px}.lpb .bd .skip a{color:var(--cta);font-weight:600}
+@media(max-width:1080px){.lpb .bgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.lpb .bgrid{grid-template-columns:1fr}}
 /* DECODER — redacted letter + selector */
 .lpb .dec .top{max-width:60ch;margin:0 0 34px}.lpb .dec .top h2{margin:0 0 12px}
 .lpb .dec .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
@@ -276,21 +277,34 @@
 {{-- RISK "Before you apply" ledger — drafted out for now. To restore:
      @include('partials.lp-draft-risk-ledger') --}}
 
-{{-- BOARD — scarcity heat cards. Colour = typical demand, illustrative (not a live feed). --}}
+{{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <p class="trans skip"><a href="#refusal">Not looking for appointments? Skip to refusal recovery →</a></p>
-  <div class="btop"><div><p class="eyebrow">Typical availability</p><h2 class="h2">Appointment availability this week</h2><p class="intro">Every Schengen application needs an in-person appointment. Colour shows how tight each country typically is right now — for most, the next slot is weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early — for the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bgrid">
-    <div class="hc hot"><div class="r1"><span class="cty">France</span><span class="pill">Very tight</span></div><p class="st">Slots appear and vanish within minutes.</p><div class="meter"><i style="width:94%"></i></div><div class="foot"><div class="slots">12<small> this week</small></div><div class="av">Our avg<b>3–7 days</b></div></div></div>
-    <div class="hc hot"><div class="r1"><span class="cty">Italy</span><span class="pill">Very tight</span></div><p class="st">Regularly no availability for weeks.</p><div class="meter"><i style="width:97%"></i></div><div class="foot"><div class="slots">08<small> this week</small></div><div class="av">Our avg<b>5–10 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Spain</span><span class="pill">Tight</span></div><p class="st">High demand, very limited same-month.</p><div class="meter"><i style="width:86%"></i></div><div class="foot"><div class="slots">06<small> this week</small></div><div class="av">Our avg<b>5–9 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Greece</span><span class="pill">Tight</span></div><p class="st">Limited UK allocation, seasonal demand.</p><div class="meter"><i style="width:84%"></i></div><div class="foot"><div class="slots">05<small> this week</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Netherlands</span><span class="pill">Tight</span></div><p class="st">Short windows that fill within hours.</p><div class="meter"><i style="width:88%"></i></div><div class="foot"><div class="slots">07<small> this week</small></div><div class="av">Our avg<b>3–6 days</b></div></div></div>
-    <div class="hc open"><div class="r1"><span class="cty">Germany</span><span class="pill">Some slots</span></div><p class="st">Released in unpredictable batches.</p><div class="meter"><i style="width:74%"></i></div><div class="foot"><div class="slots">09<small> this week</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
+    @php
+      $appts = [
+        ['France','tight','Limited','30 Jun 2026',8],
+        ['Sweden','open','Available','26 Jun 2026',8],
+        ['Poland','none','Very limited','15 Jul 2026',5],
+        ['Spain','open','Available','30 Jun 2026',30],
+        ['Greece','tight','Limited','1 Aug 2026',30],
+        ['Netherlands','none','Very limited','25 Jul 2026',7],
+        ['Iceland','open','Available','10 Jul 2026',8],
+        ['Switzerland','open','Available','15 Jul 2026',9],
+        ['Denmark','open','Available','1 Jul 2026',7],
+        ['Finland','open','Available','5 Jul 2026',8],
+        ['Belgium','open','Available','1 Jul 2026',9],
+        ['Germany','open','Available','15 Jul 2026',9],
+      ];
+    @endphp
+    @foreach($appts as [$cty,$cls,$st,$date,$slots])
+    <div class="hc {{ $cls }}"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></div>
+    @endforeach
   </div>
-  <div class="blegend"><span><i style="background:#c0492f"></i>Very tight</span><span><i style="background:#b5791f"></i>Tight</span><span><i style="background:#1F6E63"></i>Some slots</span><span>· every Schengen country covered — ask us about yours</span></div>
-  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — some slots can't wait.</span>
-    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Secure my appointment →</a></div>
+  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed — we confirm your real next slot on WhatsApp</span></div>
+  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — the tight countries can't wait.</span>
+    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
 
 {{-- DECODER — redacted letter + selector --}}
