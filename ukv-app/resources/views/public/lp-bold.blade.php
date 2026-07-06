@@ -192,13 +192,13 @@
 .lpb .faq .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;align-items:start;max-width:1000px;margin:0 auto}
 .lpb .faq .fcard{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(20,34,46,.4);transition:box-shadow .16s}
 .lpb .faq .fcard.open{box-shadow:0 30px 60px -32px rgba(20,34,46,.45)}
-.lpb .faq .fq{display:flex;align-items:center;gap:13px;padding:20px 22px;cursor:pointer;font-weight:700;font-size:18.5px;line-height:1.32;margin:0}
-.lpb .faq .qg{width:31px;height:31px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.lpb .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:700;font-size:20px;line-height:1.34;margin:0}
+.lpb .faq .qg{width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
 .lpb .faq .fcard.open .qg{background:var(--stamp);color:#fff}
 .lpb .faq .fcard.key .qg{background:#fdecea;color:var(--red)}.lpb .faq .fcard.key.open .qg{background:var(--red);color:#fff}
-.lpb .faq .pm{margin-left:auto;color:var(--cta);font-size:26px;line-height:.7;flex:none;transition:transform .18s}.lpb .faq .fcard.open .pm{transform:rotate(45deg)}
-.lpb .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.lpb .faq .fcard.open .fa{max-height:460px}
-.lpb .faq .fa .fain{padding:0 22px 22px 66px;color:var(--muted);font-size:16px;line-height:1.62}.lpb .faq .fa .fain b{color:var(--ink)}
+.lpb .faq .pm{margin-left:auto;color:var(--cta);font-size:28px;line-height:.7;flex:none;transition:transform .18s}.lpb .faq .fcard.open .pm{transform:rotate(45deg)}
+.lpb .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.lpb .faq .fcard.open .fa{max-height:520px}
+.lpb .faq .fa .fain{padding:0 24px 24px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.lpb .faq .fa .fain b{color:var(--ink)}
 .lpb .faq .fcta{max-width:1000px;margin:26px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 20px 44px -30px rgba(20,34,46,.4)}
 .lpb .faq .fcta .t b{font-size:17px}.lpb .faq .fcta .t span{display:block;color:var(--muted);font-size:14.5px;margin-top:2px}
 .lpb .faq .wabtn{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none;font-size:16px}
