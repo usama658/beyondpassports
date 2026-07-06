@@ -184,20 +184,25 @@
 .lpb .founder .ph{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#155E7A,#2E9A8C);flex:none}
 .lpb .founder b{display:block;font-size:16px}.lpb .founder span{color:var(--muted);font-size:13px}
 /* FAQ — two-up open cards */
+/* FAQ — two-column accordion on soft gray (all open by default) */
+.lpb .faq{background:radial-gradient(1000px 500px at 50% -10%,#eef2f7,#E7ECF2)}
 .lpb .faq .feye{justify-content:center}
 .lpb .faq .fhead{text-align:center;max-width:30ch;margin:0 auto 6px}
-.lpb .faq .fsub{text-align:center;color:var(--muted);font-size:15px;margin:0 auto 30px;max-width:52ch}
-.lpb .faq .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.lpb .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:24px;box-shadow:0 12px 30px -26px rgba(20,34,46,.5)}
-.lpb .faq .fcard.key{border-color:var(--stamp);background:linear-gradient(180deg,#f6fbf9,#fff)}
-.lpb .faq .fcard.wide{grid-column:1/-1}
-.lpb .faq .fq{font-weight:700;font-size:17px;line-height:1.28;margin:0 0 10px;display:flex;gap:10px;align-items:flex-start}
-.lpb .faq .qg{color:var(--cta);font-weight:800;font-size:15px;flex:none}
-.lpb .faq .fcard.key .qg{color:var(--stamp-text)}
-.lpb .faq .fa{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0}.lpb .faq .fa b{color:var(--ink)}
-.lpb .faq .wacard{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--paper)}
-.lpb .faq .wabtn{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;font-weight:700;padding:12px 20px;border-radius:11px;text-decoration:none}
-.lpb .faq .wabtn svg{width:16px;height:16px;fill:#fff}
+.lpb .faq .fsub{text-align:center;color:var(--muted);font-size:16px;margin:0 auto 30px;max-width:52ch}
+.lpb .faq .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;align-items:start;max-width:1000px;margin:0 auto}
+.lpb .faq .fcard{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(20,34,46,.4);transition:box-shadow .16s}
+.lpb .faq .fcard.open{box-shadow:0 30px 60px -32px rgba(20,34,46,.45)}
+.lpb .faq .fq{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;font-weight:700;font-size:17px;line-height:1.3;margin:0}
+.lpb .faq .qg{width:28px;height:28px;border-radius:8px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.lpb .faq .fcard.open .qg{background:var(--stamp);color:#fff}
+.lpb .faq .fcard.key .qg{background:#fdecea;color:var(--red)}.lpb .faq .fcard.key.open .qg{background:var(--red);color:#fff}
+.lpb .faq .pm{margin-left:auto;color:var(--cta);font-size:23px;line-height:.7;flex:none;transition:transform .18s}.lpb .faq .fcard.open .pm{transform:rotate(45deg)}
+.lpb .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.lpb .faq .fcard.open .fa{max-height:420px}
+.lpb .faq .fa .fain{padding:0 20px 20px 60px;color:var(--muted);font-size:15.5px;line-height:1.6}.lpb .faq .fa .fain b{color:var(--ink)}
+.lpb .faq .fcta{max-width:1000px;margin:26px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 20px 44px -30px rgba(20,34,46,.4)}
+.lpb .faq .fcta .t b{font-size:17px}.lpb .faq .fcta .t span{display:block;color:var(--muted);font-size:14.5px;margin-top:2px}
+.lpb .faq .wabtn{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none;font-size:16px}
+.lpb .faq .wabtn svg{width:18px;height:18px;fill:#fff}
 /* URGENCY — split + action card */
 .lpb .band{background:radial-gradient(760px 420px at 12% 0%,rgba(21,94,122,.55),transparent 62%),radial-gradient(760px 440px at 92% 100%,rgba(46,154,140,.42),transparent 60%),var(--ink2);color:#fff}
 .lpb .band .wrap{padding:64px 28px;max-width:1140px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
@@ -376,20 +381,27 @@
   </div>
 </div></section>
 
-{{-- FAQ — two-up open cards --}}
-<section class="sec alt faq" id="faq"><div class="wrap">
+{{-- FAQ — two-column accordion on gray (all open by default) --}}
+<section class="sec faq" id="faq"><div class="wrap">
   <p class="eyebrow feye">Straight answers</p>
   <h2 class="h2 fhead">Questions you should be asking</h2>
   <p class="fsub">If it's not here, ask us on WhatsApp — we answer in real time, not two business days later.</p>
   <div class="fgrid">
-    <div class="fcard"><p class="fq"><span class="qg">Q.</span>What do you actually do that I can't do myself?</p><p class="fa">You can do it all yourself — centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don't spend weeks refreshing a page.</p></div>
-    <div class="fcard"><p class="fq"><span class="qg">Q.</span>How quickly can you get me an appointment?</p><p class="fa">It depends on the country and season — some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won't promise a date we can't control; tell us your window and we'll be straight.</p></div>
-    <div class="fcard"><p class="fq"><span class="qg">Q.</span>What does this cost?</p><p class="fa">Our service fee is separate from the consulate's visa fee, paid to the government directly. We quote after the free case check — no fixed upsell, no hidden extras. Simpler than expected, you pay less.</p></div>
-    <div class="fcard"><p class="fq"><span class="qg">Q.</span>Why WhatsApp instead of a form?</p><p class="fa">A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we'd rather just talk.</p></div>
-    <div class="fcard key wide"><p class="fq"><span class="qg">Q.</span>Can you guarantee approval?</p><p class="fa"><b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer's real questions, and no contradictions to flag. That's what moves the odds. The outcome is never ours to promise.</p></div>
-    <div class="fcard"><p class="fq"><span class="qg">Q.</span>I've never heard of Beyond Passports. Why you?</p><p class="fa">Fair. Don't trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.</p></div>
-    <div class="fcard wacard"><p class="fq" style="justify-content:center">Still have a question?</p><p class="fa" style="margin-bottom:14px">We answer in real time — send it over.</p><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+    @php
+      $faqs = [
+        ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself — centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
+        ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season — some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
+        ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check — no fixed upsell, no hidden extras.'],
+        ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
+        ['q'=>'Can you guarantee approval?','a'=>'<b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
+        ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
+      ];
+    @endphp
+    @foreach($faqs as $f)
+    <div class="fcard open{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span>{{ $f['q'] }}<span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
+    @endforeach
   </div>
+  <div class="fcta"><div class="t"><b>Still have a question?</b><span>We answer in real time — send it over.</span></div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
 </div></section>
 
 {{-- URGENCY — split + action card --}}
@@ -412,6 +424,7 @@
 </div>
 
 <script>
+document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
 (function(){
   // Destination searchable select
   var COUNTRIES=["Austria","Belgium","Bulgaria","Croatia","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Iceland","Italy","Latvia","Liechtenstein","Lithuania","Luxembourg","Malta","Netherlands","Norway","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden","Switzerland"];
