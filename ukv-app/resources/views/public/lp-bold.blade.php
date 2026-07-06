@@ -90,23 +90,23 @@
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
-.lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
+.lpb .bd .intro{color:var(--muted);font-size:18px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
 .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
 .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
 .lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
-.lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.lpb .hc .cty{color:#fff;font-size:18px;font-weight:800}
-.lpb .hc .pill{font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
-.lpb .hc .bd2{background:var(--cbg);padding:16px 18px}
-.lpb .hc .lab{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 3px}
-.lpb .hc .date{font-size:19px;font-weight:800;margin:0 0 12px}
-.lpb .hc .slots{display:flex;align-items:baseline;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:9px 12px}
-.lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:20px;color:var(--c)}
-.lpb .hc .slots small{font-size:12px;color:var(--muted)}
-.lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px;align-items:center}
+.lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lpb .hc .cty{color:#fff;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.lpb .hc .pill{font-weight:800;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.lpb .hc .bd2{background:var(--cbg);padding:18px 20px}
+.lpb .hc .lab{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 4px}
+.lpb .hc .date{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:0 0 14px}
+.lpb .hc .slots{display:flex;align-items:baseline;gap:9px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:11px;padding:11px 14px}
+.lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:27px;color:var(--c)}
+.lpb .hc .slots small{font-size:14px;color:var(--muted)}
+.lpb .blegend{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;color:var(--muted);font-size:14.5px;align-items:center}
 .lpb .blegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .lpb .bd .bfoot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
 .lpb .bd .bfoot .btn{width:auto;min-width:230px}
@@ -254,32 +254,8 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Registered in <b>UK &amp; Europe</b></span></span>
 </div></div></section>
 
-{{-- SECTION 2 — start where you are --}}
-<section class="sec sec2"><div class="wrap">
-  <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
-  <p class="s2sub">Already refused, mid-process, or just need someone to handle it — pick the path that fits.</p>
-  <div class="grid2">
-    <div class="ref2">
-      <span class="refstamp">Refused</span>
-      <p class="ltag">Refusal recovery</p>
-      <h3>Start refusal recovery</h3>
-      <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
-    </div>
-    <div class="chips">
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
-    </div>
-  </div>
-</div></section>
-
-{{-- RISK "Before you apply" ledger — drafted out for now. To restore:
-     @include('partials.lp-draft-risk-ledger') --}}
-
 {{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <p class="trans skip"><a href="#refusal">Not looking for appointments? Skip to refusal recovery →</a></p>
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early — for the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bgrid">
     @php
@@ -306,6 +282,29 @@
   <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — the tight countries can't wait.</span>
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
+
+{{-- SECTION 2 — start where you are --}}
+<section class="sec sec2"><div class="wrap">
+  <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
+  <p class="s2sub">Already refused, mid-process, or just need someone to handle it — pick the path that fits.</p>
+  <div class="grid2">
+    <div class="ref2">
+      <span class="refstamp">Refused</span>
+      <p class="ltag">Refusal recovery</p>
+      <h3>Start refusal recovery</h3>
+      <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
+    </div>
+    <div class="chips">
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
+    </div>
+  </div>
+</div></section>
+
+{{-- RISK "Before you apply" ledger — drafted out for now. To restore:
+     @include('partials.lp-draft-risk-ledger') --}}
 
 {{-- DECODER — redacted letter + selector --}}
 <section class="sec alt dec" id="refusal"><div class="wrap">
