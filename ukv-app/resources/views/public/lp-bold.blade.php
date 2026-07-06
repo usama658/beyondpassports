@@ -398,7 +398,7 @@
       ];
     @endphp
     @foreach($faqs as $f)
-    <div class="fcard open{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span>{{ $f['q'] }}<span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
+    <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span>{{ $f['q'] }}<span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
     @endforeach
   </div>
   <div class="fcta"><div class="t"><b>Still have a question?</b><span>We answer in real time — send it over.</span></div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
