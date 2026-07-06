@@ -88,26 +88,30 @@
 .lpb .lrow .tag{display:inline-block;font-weight:800;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-text);background:#eaf4f1;padding:5px 10px;border-radius:6px;margin:0 0 12px}
 .lpb .lrow h3{font-size:23px;letter-spacing:-.02em;margin:0 0 9px}
 .lpb .lrow .rc p{color:var(--muted);font-size:15.5px;line-height:1.6;margin:0}
-/* BOARD — departures (dark) */
-.lpb .bd{background:var(--ink2);color:#fff}
-.lpb .bd .eyebrow{color:var(--on-dark)}.lpb .bd .h2{color:#fff}
-.lpb .bd .intro{color:#b9ccd3;max-width:62ch;margin:12px 0 28px;font-size:16px}
-.lpb .board{background:#0a141a;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;box-shadow:var(--sh2)}
-.lpb .bh{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.1)}
-.lpb .bd .live{display:inline-flex;align-items:center;gap:8px;color:var(--on-dark);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.lpb .bd .upd{color:rgba(255,255,255,.45);font-size:12px}
-.lpb .ch,.lpb .brow{display:grid;grid-template-columns:1.2fr 2.2fr .9fr 1fr;gap:16px;align-items:center}
-.lpb .ch{padding:11px 24px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.08)}
-.lpb .brow{padding:15px 24px;border-bottom:1px solid rgba(255,255,255,.055)}
-.lpb .brow .cty{color:#fff;font-weight:700;font-size:16px}
-.lpb .brow .st{color:rgba(255,255,255,.58);font-size:13.5px}
-.lpb .brow .sl{font-family:var(--mono);font-weight:800;font-size:23px;color:var(--amber);text-align:right;font-variant-numeric:tabular-nums;letter-spacing:.02em}
-.lpb .brow .av{color:rgba(255,255,255,.72);font-size:13.5px;text-align:right;font-variant-numeric:tabular-nums}
-.lpb .rt{text-align:right}
-.lpb .toggle{text-align:center;color:var(--on-dark);font-weight:700;font-size:14px;padding:14px;background:rgba(255,255,255,.02)}
-.lpb .bd .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
-.lpb .bd .em{color:#a9c2ca}.lpb .bd .em b{color:#fff}.lpb .bd .btn{background:var(--stamp);width:auto;min-width:230px}
-.lpb .bd .skip{margin:0 0 10px}.lpb .bd .skip a{color:var(--on-dark);font-weight:600}
+/* BOARD — scarcity heat cards (light, colour-coded) */
+.lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
+.lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
+.lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
+.lpb .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lpb .hot{--c:#c0492f;--cbg:#fdecea;--cbd:#f2c4bb}
+.lpb .tight{--c:#b5791f;--cbg:#fdf5e8;--cbd:#f0dcb8}
+.lpb .open{--c:#1F6E63;--cbg:#e7f4ef;--cbd:#bfe3d8}
+.lpb .hc{background:var(--cbg);border:1px solid var(--cbd);border-left:5px solid var(--c);border-radius:16px;padding:22px}
+.lpb .hc .r1{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 0 4px}
+.lpb .hc .cty{font-size:20px;font-weight:800}
+.lpb .hc .pill{font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);background:#fff;border:1px solid var(--cbd);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.lpb .hc .st{color:var(--muted);font-size:13.5px;line-height:1.45;min-height:38px;margin:6px 0 14px}
+.lpb .hc .meter{height:8px;border-radius:5px;background:#fff;border:1px solid var(--cbd);overflow:hidden;margin:0 0 12px}
+.lpb .hc .meter i{display:block;height:100%;background:var(--c)}
+.lpb .hc .foot{display:flex;justify-content:space-between;align-items:center}
+.lpb .hc .slots{font-family:var(--mono);font-weight:800;font-size:30px;color:var(--c);line-height:1}
+.lpb .hc .slots small{font-size:12px;font-weight:700;color:var(--muted);font-family:var(--display)}
+.lpb .hc .av{color:var(--muted);font-size:13px;text-align:right}.lpb .hc .av b{color:var(--ink);display:block;font-size:15px}
+.lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px}
+.lpb .blegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.lpb .bd .bfoot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
+.lpb .bd .bfoot .btn{width:auto;min-width:230px}
+.lpb .bd .skip{margin:0 0 10px}.lpb .bd .skip a{color:var(--cta);font-weight:600}
 /* DECODER — redacted letter + selector */
 .lpb .dec .top{max-width:60ch;margin:0 0 34px}.lpb .dec .top h2{margin:0 0 12px}
 .lpb .dec .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
@@ -205,9 +209,7 @@
   .lpb .band .wrap{gap:26px}
   .lpb .lrow{grid-template-columns:56px 1fr;gap:16px}.lpb .lrow .idx{font-size:40px}
   .lpb .dec .side{position:static}
-  .lpb .bd .ch{display:none}
-  .lpb .brow{grid-template-columns:1fr auto;gap:4px 12px;padding:14px 18px}
-  .lpb .brow .st{grid-column:1}.lpb .brow .sl{grid-row:1/3;align-self:center}.lpb .brow .av{grid-column:1;color:rgba(255,255,255,.5)}
+  .lpb .bgrid{grid-template-columns:1fr 1fr}
   .lpb .faq .fgrid{grid-template-columns:1fr}.lpb .faq .fcard.wide{grid-column:auto}
   .lpb .fmeter .row{grid-template-columns:42px 1fr}.lpb .fmeter .bar{display:none}
   .lpb .sec{padding:56px 0}.lpb .hero{padding:28px 0 44px}
@@ -281,25 +283,21 @@
   <div class="ctarow"><a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20want%20to%20talk%20through%20my%20Schengen%20application%20before%20I%20submit%20anything.">Talk to us before you submit anything</a><span class="em"><b>WhatsApp</b> preferred · <b>Email:</b> cases@beyondpassports.co.uk</span></div>
 </div></section>
 
-{{-- BOARD — departures (dark). Numbers illustrative of typical demand, not a live feed. --}}
-<section class="sec bd" id="appointments"><div class="wrap">
+{{-- BOARD — scarcity heat cards. Colour = typical demand, illustrative (not a live feed). --}}
+<section class="sec alt bd" id="appointments"><div class="wrap">
   <p class="trans skip"><a href="#refusal">Not looking for appointments? Skip to refusal recovery →</a></p>
-  <p class="eyebrow">Typical availability</p>
-  <h2 class="h2">Appointment availability this week</h2>
-  <p class="intro">Every Schengen application needs an in-person appointment — for most countries the next slot is weeks or months away. Here's what we typically see across the highest-demand countries for UK applicants.</p>
-  <div class="board">
-    <div class="bh"><span class="live"><span class="dot"></span>This week</span><span class="upd">Typical demand · we check every country daily</span></div>
-    <div class="ch"><span>Country</span><span>What we're seeing</span><span class="rt">This wk</span><span class="rt">Our avg</span></div>
-    <div class="brow"><span class="cty">France</span><span class="st">Slots appear and vanish within minutes</span><span class="sl">12</span><span class="av">3–7 days</span></div>
-    <div class="brow"><span class="cty">Italy</span><span class="st">Regularly no availability for weeks</span><span class="sl">08</span><span class="av">5–10 days</span></div>
-    <div class="brow"><span class="cty">Spain</span><span class="st">High demand, very limited same-month</span><span class="sl">06</span><span class="av">5–9 days</span></div>
-    <div class="brow"><span class="cty">Germany</span><span class="st">Released in unpredictable batches</span><span class="sl">09</span><span class="av">4–8 days</span></div>
-    <div class="brow"><span class="cty">Greece</span><span class="st">Limited UK allocation, seasonal demand</span><span class="sl">05</span><span class="av">4–8 days</span></div>
-    <div class="brow"><span class="cty">Netherlands</span><span class="st">Short windows that fill within hours</span><span class="sl">07</span><span class="av">3–6 days</span></div>
-    <div class="toggle">Every Schengen country covered · ask us about yours</div>
+  <div class="btop"><div><p class="eyebrow">Typical availability</p><h2 class="h2">Appointment availability this week</h2><p class="intro">Every Schengen application needs an in-person appointment. Colour shows how tight each country typically is right now — for most, the next slot is weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="bgrid">
+    <div class="hc hot"><div class="r1"><span class="cty">France</span><span class="pill">Very tight</span></div><p class="st">Slots appear and vanish within minutes.</p><div class="meter"><i style="width:94%"></i></div><div class="foot"><div class="slots">12<small> this wk</small></div><div class="av">Our avg<b>3–7 days</b></div></div></div>
+    <div class="hc hot"><div class="r1"><span class="cty">Italy</span><span class="pill">Very tight</span></div><p class="st">Regularly no availability for weeks.</p><div class="meter"><i style="width:97%"></i></div><div class="foot"><div class="slots">08<small> this wk</small></div><div class="av">Our avg<b>5–10 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Spain</span><span class="pill">Tight</span></div><p class="st">High demand, very limited same-month.</p><div class="meter"><i style="width:86%"></i></div><div class="foot"><div class="slots">06<small> this wk</small></div><div class="av">Our avg<b>5–9 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Greece</span><span class="pill">Tight</span></div><p class="st">Limited UK allocation, seasonal demand.</p><div class="meter"><i style="width:84%"></i></div><div class="foot"><div class="slots">05<small> this wk</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Netherlands</span><span class="pill">Tight</span></div><p class="st">Short windows that fill within hours.</p><div class="meter"><i style="width:88%"></i></div><div class="foot"><div class="slots">07<small> this wk</small></div><div class="av">Our avg<b>3–6 days</b></div></div></div>
+    <div class="hc open"><div class="r1"><span class="cty">Germany</span><span class="pill">Some slots</span></div><p class="st">Released in unpredictable batches.</p><div class="meter"><i style="width:74%"></i></div><div class="foot"><div class="slots">09<small> this wk</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
   </div>
-  <div class="foot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — some slots can't wait.</span>
-    <span style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Secure my appointment</a><span class="em">Tell us your travel dates.</span></span></div>
+  <div class="blegend"><span><i style="background:#c0492f"></i>Very tight</span><span><i style="background:#b5791f"></i>Tight</span><span><i style="background:#1F6E63"></i>Some slots</span><span>· every Schengen country covered — ask us about yours</span></div>
+  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — some slots can't wait.</span>
+    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Secure my appointment →</a></div>
 </div></section>
 
 {{-- DECODER — redacted letter + selector --}}
