@@ -158,24 +158,27 @@
 .lpb .fear .fcta .btn{width:auto;min-width:280px;background:#25D366}
 /* TRUST — dark console + light verify */
 .lpb .tr .grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:var(--sh2);border:1px solid var(--edge)}
-.lpb .tr .dark{background:radial-gradient(600px 400px at 15% 0%,rgba(21,94,122,.5),transparent 62%),var(--ink2);color:#fff;padding:38px 34px}
-.lpb .tr .dark .eyebrow{color:var(--on-dark)}
-.lpb .tr .dark h2{color:#fff;font-size:26px;max-width:18ch;margin:0 0 8px}
-.lpb .tr .dark .sub{color:#b9ccd3;font-size:14.5px;margin:0 0 26px;max-width:40ch}
-.lpb .tr .stp{display:grid;grid-template-columns:auto 1fr;gap:15px;padding-bottom:20px;position:relative}
-.lpb .tr .stp:not(:last-of-type)::before{content:"";position:absolute;left:16px;top:38px;bottom:0;width:2px;background:rgba(255,255,255,.14)}
-.lpb .tr .stp .n{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid var(--on-dark);color:var(--on-dark);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:1}
-.lpb .tr .stp h3{color:#fff;font-size:15.5px;margin:5px 0 5px}.lpb .tr .stp p{color:#a9c0c8;font-size:13px;line-height:1.5;margin:0}
-.lpb .tr .statline{margin-top:8px;display:flex;align-items:baseline;gap:10px;border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
-.lpb .tr .statline b{font-size:28px;font-weight:800;color:var(--on-dark)}.lpb .tr .statline span{color:rgba(255,255,255,.75);font-size:13px}
-.lpb .tr .lite{background:#fff;padding:38px 34px}
-.lpb .tr .lite h3{font-size:18px;margin:0 0 3px}.lpb .tr .lite .sub{color:var(--muted);font-size:13.5px;margin:0 0 8px}
-.lpb .vlink{display:flex;align-items:flex-start;gap:13px;padding:15px 0;border-bottom:1px solid var(--edge);color:inherit}
+.lpb .tr .thead{text-align:center;max-width:56ch;margin:0 auto 34px}
+.lpb .tr .thead .eyebrow{justify-content:center}
+.lpb .tr .thead h2{font-size:clamp(27px,3.4vw,40px);letter-spacing:-.03em}
+.lpb .tr .thead .sub{color:var(--muted);font-size:17px;margin:14px 0 0}
+.lpb .tr .dark{background:radial-gradient(600px 400px at 15% 0%,rgba(21,94,122,.5),transparent 62%),var(--ink2);color:#fff;padding:42px 38px}
+.lpb .tr .dark h3.dh{color:#fff;font-size:20px;margin:0 0 5px;letter-spacing:-.01em}
+.lpb .tr .dark .dsub{color:#b9ccd3;font-size:15px;margin:0 0 28px}
+.lpb .tr .stp{display:grid;grid-template-columns:auto 1fr;gap:16px;padding-bottom:22px;position:relative}
+.lpb .tr .stp:not(:last-of-type)::before{content:"";position:absolute;left:18px;top:42px;bottom:0;width:2px;background:rgba(255,255,255,.14)}
+.lpb .tr .stp .n{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid var(--on-dark);color:var(--on-dark);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:1}
+.lpb .tr .stp h3{color:#fff;font-size:18px;margin:6px 0 6px}.lpb .tr .stp p{color:#a9c0c8;font-size:15px;line-height:1.55;margin:0}
+.lpb .tr .statline{margin-top:8px;display:flex;align-items:baseline;gap:12px;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.lpb .tr .statline b{font-size:32px;font-weight:800;color:var(--on-dark)}.lpb .tr .statline span{color:rgba(255,255,255,.78);font-size:14.5px}
+.lpb .tr .lite{background:#fff;padding:42px 38px}
+.lpb .tr .lite h3.lh{font-size:20px;margin:0 0 4px}.lpb .tr .lite .lsub{color:var(--muted);font-size:15px;margin:0 0 10px}
+.lpb .vlink{display:flex;align-items:flex-start;gap:14px;padding:17px 0;border-bottom:1px solid var(--edge);color:inherit}
 .lpb .vlink:last-of-type{border-bottom:0}
-.lpb .vlink .tick{width:24px;height:24px;border-radius:7px;background:#e7f3ee;color:var(--stamp-text);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none;margin-top:1px}
-.lpb .vlink h4{font-size:15px;margin:0 0 3px;display:flex;align-items:center;gap:6px;color:var(--ink)}
-.lpb .vlink h4 .ext{color:var(--cta);font-size:12px;font-weight:700}
-.lpb .vlink p{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0}
+.lpb .vlink .tick{width:26px;height:26px;border-radius:8px;background:#e7f3ee;color:var(--stamp-text);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;margin-top:1px}
+.lpb .vlink h4{font-size:16.5px;margin:0 0 3px;display:flex;align-items:center;gap:7px;color:var(--ink);flex-wrap:wrap}
+.lpb .vlink h4 .ext{color:var(--cta);font-size:13px;font-weight:700}
+.lpb .vlink p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
 .lpb .vlink:hover h4 .ext{text-decoration:underline}
 .lpb .founder{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--edge);border-radius:15px;padding:16px 20px;margin-top:16px}
 .lpb .founder .ph{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#155E7A,#2E9A8C);flex:none}
@@ -348,11 +351,14 @@
 
 {{-- TRUST — dark console + light verify --}}
 <section class="sec tr" id="trust"><div class="wrap">
+  <div class="thead">
+    <p class="eyebrow">How it works</p>
+    <h2 class="h2" style="margin:0 auto;max-width:22ch">Here's exactly what happens when you message us.</h2>
+    <p class="sub">No forms, no account, no upsells. Competence first.</p>
+  </div>
   <div class="grid">
     <div class="dark">
-      <p class="eyebrow">How it works</p>
-      <h2>Here's exactly what happens when you message us.</h2>
-      <p class="sub">No forms, no account, no upsells. Competence first.</p>
+      <h3 class="dh">Four steps. No surprises.</h3><p class="dsub">Same process for every case, every time.</p>
       <div class="stp"><span class="n">1</span><div><h3>You message us</h3><p>WhatsApp or email, in your own words. No booking system, no account.</p></div></div>
       <div class="stp"><span class="n">2</span><div><h3>We review — free, within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
       <div class="stp"><span class="n">3</span><div><h3>We tell you honestly if we can help</h3><p>If we can, we explain what we'd do and what it costs. If we can't, we tell you why.</p></div></div>
@@ -360,7 +366,7 @@
       <div class="statline"><b>24hr</b><span>We aim to reply to every case check within one working day.</span></div>
     </div>
     <div class="lite">
-      <h3>Don't take our word for it.</h3><p class="sub">Verify us independently — or ask us and we'll hand you the reference:</p>
+      <h3 class="lh">Don't take our word for it.</h3><p class="lsub">Verify us independently — or ask us and we'll hand you the reference:</p>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20Companies%20House%20registration%20number%20so%20I%20can%20verify%20Beyond%20Passports%3F"><span class="tick">✓</span><div><h4>Company registration <span class="ext">Ask for our number ↗</span></h4><p>Search "Beyond Passports" on Companies House at gov.uk. Registered UK company; number publicly listed.</p></div></a>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20ICO%20registration%20number%20so%20I%20can%20check%20the%20ICO%20register%3F"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Ask for our ICO ref ↗</span></h4><p>Registered with the Information Commissioner's Office. Verify on the ICO register.</p></div></a>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20send%20me%20the%20official%20document%20checklist%20for%20my%20Schengen%20destination%3F"><span class="tick">✓</span><div><h4>Destination requirements <span class="ext">Ask us for the checklist ↗</span></h4><p>Check the official embassy checklist; we cover every item plus what they don't tell you matters.</p></div></a>
