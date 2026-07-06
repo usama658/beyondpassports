@@ -10,12 +10,13 @@
 /* ===== Bold LP — page-scoped under .lpb (avoids ukv.css class collisions) ===== */
 .lpb{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366;--amber:#E9B872;--red:#c0492f;
   --display:"Outfit",system-ui,sans-serif;--mono:ui-monospace,"Outfit",monospace;--sh:0 18px 44px -26px rgba(20,34,46,.34);--sh2:0 30px 66px -30px rgba(20,34,46,.42);
-  background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--display);-webkit-font-smoothing:antialiased}
+  background:var(--paper);color:var(--ink);font:400 18px/1.62 var(--display);-webkit-font-smoothing:antialiased}
 .lpb *{box-sizing:border-box}
-.lpb h1,.lpb h2,.lpb h3,.lpb h4{font-weight:700;line-height:1.05;letter-spacing:-.025em;margin:0}
+.lpb h1,.lpb h2,.lpb h3,.lpb h4{font-weight:800;line-height:1.12;letter-spacing:-.02em;margin:0}
+.lpb .hl{color:var(--stamp-text)}.lpb .hl-r{color:var(--red)}
 .lpb a{color:var(--cta);text-decoration:none}
 .lpb .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
-.lpb .eyebrow{font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.lpb .eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px;display:flex;align-items:center;gap:9px}
 .lpb .eyebrow::before{content:"";width:26px;height:2px;background:var(--stamp)}
 .lpb .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--cta);color:#fff;font-weight:700;padding:15px 24px;border-radius:12px;font-size:16px;box-shadow:var(--sh);width:100%;border:0;cursor:pointer}
 .lpb .btn:hover{background:var(--cta-d)}
@@ -31,40 +32,53 @@
 .lpb .urgent{display:inline-flex;align-items:center;gap:9px;background:#fdf3e7;border:1px solid #f0d9b8;color:#8a5a1a;font-size:14.5px;font-weight:600;padding:12px 18px;border-radius:12px}
 .lpb .ctarow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
 .lpb .ctarow .btn{width:auto;min-width:230px}
-/* HERO — dual-lane */
-.lpb .hero{padding:36px 0 46px}
-.lpb .heyebrow{justify-content:center;color:var(--stamp-text);margin-bottom:6px}
-.lpb .hhead{text-align:center;max-width:22ch;margin:0 auto 6px;font-size:clamp(30px,4vw,46px);letter-spacing:-.035em}
-.lpb .hsub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 30px}
-.lpb .lanes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.lpb .lane{border-radius:20px;padding:30px;box-shadow:var(--sh2)}
-.lpb .fresh{background:#fff;border:1px solid var(--edge)}
-.lpb .ref{background:radial-gradient(500px 340px at 85% 0%,rgba(192,73,47,.28),transparent 60%),var(--ink2);color:#fff}
-.lpb .lane .ltag{font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px}
-.lpb .fresh .ltag{color:var(--stamp-text)}.lpb .ref .ltag{color:#f0a58f}
-.lpb .lane h3{font-size:23px;margin:0 0 6px}.lpb .ref h3{color:#fff}
-.lpb .lane .ld{font-size:14.5px;line-height:1.5;margin:0 0 18px}.lpb .fresh .ld{color:var(--muted)}.lpb .ref .ld{color:#cfd9dd}
-.lpb .form label{display:block;font-size:12.5px;font-weight:600;margin:0 0 5px;color:var(--ink)}
-.lpb .form .row{display:flex;gap:10px;margin:0 0 10px}.lpb .form .fld{flex:1}
-.lpb .form input[type=text]{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:11px 12px;color:var(--ink);font:600 15px var(--display)}
+/* HERO — 2-col split w/ form */
+.lpb .hero{padding:46px 0 46px;background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%)}
+.lpb .hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
+.lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.02em;max-width:16ch;margin:14px 0 0}
+.lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
+.lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
+.lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
+.lpb .formcard .fl{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
+.lpb .formcard .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
+.lpb .form .row{display:flex;gap:12px;margin:0 0 12px}.lpb .form .fld{flex:1}
+.lpb .form label{display:block;font-size:15px;font-weight:700;margin:0 0 6px;color:var(--ink)}
+.lpb .form input[type=text]{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:14px 15px;color:var(--ink);font:600 17px var(--display)}
 .lpb .form input:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
-.lpb .form .cons{display:flex;gap:7px;align-items:flex-start;margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.4}
-.lpb .form .cons input{width:15px;height:15px;flex:none;margin-top:2px}
-.lpb .ref .refstamp{display:inline-block;white-space:nowrap;border:2.5px solid #f0a58f;color:#f0a58f;font-weight:800;letter-spacing:.16em;font-size:13px;padding:6px 14px;border-radius:7px;transform:rotate(-5deg);margin:0 0 16px;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(240,165,143,.14)}
-.lpb .ref .rl{height:7px;border-radius:3px;background:rgba(255,255,255,.14);margin:8px 0}.lpb .ref .rl.s{width:60%}.lpb .ref .rl.m{width:85%}
-.lpb .ref .btn{margin-top:18px}
-.lpb .ref .rlink{display:block;margin-top:12px;color:#f0a58f;font-weight:700;font-size:13px}
-.lpb .reflist{list-style:none;margin:16px 0 6px;padding:0}
-.lpb .reflist li{position:relative;padding:5px 0 5px 26px;color:#d7e2e6;font-size:13.5px;line-height:1.4}
-.lpb .reflist li::before{content:"✓";position:absolute;left:0;top:5px;color:#f0a58f;font-weight:800}
-.lpb .halt{text-align:center;color:var(--muted);font-size:13.5px;margin:22px 0 0}.lpb .halt b{color:var(--ink)}
-.lpb .sitrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0 0}
-.lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:13px 15px;transition:transform .12s,box-shadow .12s}
+.lpb .form .cons{display:flex;gap:8px;align-items:flex-start;margin:13px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
+.lpb .form .cons input{width:16px;height:16px;flex:none;margin-top:2px}
+.lpb .halt{color:var(--muted);font-size:14.5px;margin:18px 0 0}.lpb .halt b{color:var(--ink)}
+.lpb .combo{position:relative;margin:0 0 12px}
+.lpb .cbwrap{position:relative}
+.lpb .cbwrap::after{content:"▾";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;pointer-events:none}
+.lpb .cb-input{padding-right:34px!important;cursor:pointer}
+.lpb .cb-list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--edge);border-radius:12px;box-shadow:var(--sh2);max-height:230px;overflow:auto;padding:6px;display:none;list-style:none;margin:0}
+.lpb .cb-list.open{display:block}
+.lpb .cb-list li{padding:10px 12px;border-radius:8px;font-size:16.5px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lpb .cb-list li:hover{background:#eef4f6;color:var(--cta)}
+.lpb .cb-list li .fc{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
+.lpb .cb-list li.none{color:var(--muted);font-weight:500;cursor:default}.lpb .cb-list li.none:hover{background:transparent}
+/* TRUST BAR */
+.lpb .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),var(--ink2);color:#dbe8ea;padding:16px 0}
+.lpb .tbar-f .trow{display:flex;justify-content:center;gap:38px;flex-wrap:wrap}
+.lpb .tbar-f .ti{display:inline-flex;align-items:center;gap:9px;font-size:16px}
+.lpb .tbar-f .ti b{color:#fff}.lpb .tbar-f .ti svg{width:20px;height:20px;color:var(--on-dark)}
+/* SECTION 2 — start where you are */
+.lpb .sec2 .head{text-align:center;max-width:26ch;margin:0 auto 6px;font-size:clamp(28px,3.4vw,38px)}
+.lpb .sec2 .s2sub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 26px}
+.lpb .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.lpb .ref2{position:relative;background:radial-gradient(500px 340px at 85% 0%,rgba(192,73,47,.28),transparent 60%),var(--ink2);color:#fff;border-radius:20px;padding:28px;box-shadow:var(--sh2)}
+.lpb .ref2 .refstamp{display:inline-block;white-space:nowrap;border:2.5px solid #f0a58f;color:#f0a58f;font-weight:800;letter-spacing:.16em;font-size:13px;padding:6px 14px;border-radius:7px;transform:rotate(-5deg);margin:0 0 14px;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(240,165,143,.14)}
+.lpb .ref2 .ltag{font-weight:800;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#f0a58f;margin:0 0 8px}
+.lpb .ref2 h3{color:#fff;font-size:24px;margin:0 0 8px}.lpb .ref2 p{color:#cfd9dd;font-size:16.5px;line-height:1.55;margin:0 0 16px}
+.lpb .ref2 .btn{background:#f0a58f;color:#3a1a12}
+.lpb .chips{display:flex;flex-direction:column;gap:11px}
+.lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:14px 16px;transition:transform .12s,box-shadow .12s}
 .lpb .sit:hover{transform:translateY(-2px);box-shadow:var(--sh)}
 .lpb .sit .tx{min-width:0}
-.lpb .sit .st{font-weight:800;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--stamp-text);display:block;margin:0 0 2px}
-.lpb .sit .q{font-weight:700;font-size:14.5px;line-height:1.2;margin:0 0 2px}
-.lpb .sit .d{color:var(--muted);font-size:12px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin:0}
+.lpb .sit .st{font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);display:block;margin:0 0 4px}
+.lpb .sit .q{font-weight:700;font-size:17.5px;margin:0 0 4px}
+.lpb .sit .d{color:var(--muted);font-size:15.5px;line-height:1.45;margin:0}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
 /* RISK — ledger */
 .lpb .ledger{border-top:2px solid var(--ink);margin:32px 0 8px}
@@ -169,7 +183,8 @@
 .lpb .band .ucard .re{display:flex;justify-content:center;gap:16px;margin:14px 0 0;color:#a9c2ca;font-size:12.5px;flex-wrap:wrap}
 .lpb .band .ucard .re b{color:#fff}
 @media(max-width:860px){
-  .lpb .lanes,.lpb .sitrow,.lpb .dec .grid,.lpb .tr .grid,.lpb .band .wrap{grid-template-columns:1fr}
+  .lpb .hgrid,.lpb .grid2,.lpb .dec .grid,.lpb .tr .grid,.lpb .band .wrap{grid-template-columns:1fr}
+  .lpb .tbar-f .trow{gap:18px}
   .lpb .band .wrap{gap:26px}
   .lpb .lrow{grid-template-columns:56px 1fr;gap:16px}.lpb .lrow .idx{font-size:40px}
   .lpb .dec .side{position:static}
@@ -185,42 +200,53 @@
 @section('content')
 <div class="lpb">
 
-{{-- HERO — dual-lane --}}
-<section class="hero"><div class="wrap">
-  <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
-  <h1 class="hhead">Your visa application has one chance. Most people waste it.</h1>
-  <p class="hsub">We know why. Start where you are — we'll say honestly if it's a case we can help with.</p>
-  <div class="lanes">
-    <div class="lane fresh">
-      <p class="ltag">Applying now · first time or unsure</p>
-      <h3>Get a free case check</h3>
-      <p class="ld">Tell us your situation. We reply within 24 hours and turn you away if it's not one we can help with.</p>
-      <form class="form" id="lpbCaseForm">
-        <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
-        <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
-        <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
-      </form>
+{{-- HERO — 2-col split w/ form --}}
+<section class="hero"><div class="wrap"><div class="hgrid">
+  <div class="hleft">
+    <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
+    <h1>Your visa application has <span class="hl">one chance</span>. Most people <span class="hl-r">waste it</span>.</h1>
+    <p class="hsub">We know why. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <p class="halt">Prefer to type it yourself? <b>WhatsApp</b> or <a href="mailto:cases@beyondpassports.co.uk">cases@beyondpassports.co.uk</a></p>
+  </div>
+  <form class="formcard form" id="lpbCaseForm" autocomplete="off">
+    <p class="fl"><span class="dot"></span>Free case check · reply within 24 hours</p>
+    <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
+    <div class="combo" id="lpbDest">
+      <label for="lpb-dest">Destination</label>
+      <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…"></div>
+      <ul class="cb-list" id="lpbDestList"></ul>
     </div>
-    <div class="lane ref">
+    <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
+    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
+  </form>
+</div></div></section>
+
+{{-- TRUST BAR --}}
+<section class="tbar-f"><div class="wrap"><div class="trow">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Registered in <b>UK &amp; Europe</b></span></span>
+</div></div></section>
+
+{{-- SECTION 2 — start where you are --}}
+<section class="sec sec2"><div class="wrap">
+  <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
+  <p class="s2sub">Already refused, mid-process, or just need someone to handle it — pick the path that fits.</p>
+  <div class="grid2">
+    <div class="ref2">
       <span class="refstamp">Refused</span>
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
-      <p class="ld">The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
-      <ul class="reflist">
-        <li>We read the exact refusal ground on your letter</li>
-        <li>Rebuild the file so it can't be flagged again</li>
-        <li>Or tell you straight if it isn't recoverable</li>
-      </ul>
-      <a class="btn" style="background:#f0a58f;color:#3a1a12" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
-      <a class="rlink" href="#refusal">Or see how we decode a refusal letter ↓</a>
+      <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
+    </div>
+    <div class="chips">
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
+      <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
     </div>
   </div>
-  <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
-  </div>
-  <p class="halt">Prefer to type it yourself? <b>WhatsApp</b> or <a href="mailto:cases@beyondpassports.co.uk">cases@beyondpassports.co.uk</a></p>
 </div></section>
 
 {{-- RISK — case-file ledger --}}
@@ -349,12 +375,29 @@ document.querySelectorAll('.lpb .acc .h').forEach(function(h){h.addEventListener
   var a=h.parentElement,open=a.classList.contains('open');a.classList.toggle('open');
   var pm=h.querySelector('.pm');if(pm)pm.textContent=open?'+':'–';
 });});
-(function(){var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
-  e.preventDefault();
-  var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim();
-  var msg="Hi, I'd like a free case check on my Schengen visa.";
-  if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
-  window.open('{{ $wa }}?text='+encodeURIComponent(msg),'_blank');
-});})();
+(function(){
+  // Destination searchable select
+  var COUNTRIES=["Austria","Belgium","Bulgaria","Croatia","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Iceland","Italy","Latvia","Liechtenstein","Lithuania","Luxembourg","Malta","Netherlands","Norway","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden","Switzerland"];
+  var CODES={Austria:"AT",Belgium:"BE",Bulgaria:"BG",Croatia:"HR",Czechia:"CZ",Denmark:"DK",Estonia:"EE",Finland:"FI",France:"FR",Germany:"DE",Greece:"GR",Hungary:"HU",Iceland:"IS",Italy:"IT",Latvia:"LV",Liechtenstein:"LI",Lithuania:"LT",Luxembourg:"LU",Malta:"MT",Netherlands:"NL",Norway:"NO",Poland:"PL",Portugal:"PT",Romania:"RO",Slovakia:"SK",Slovenia:"SI",Spain:"ES",Sweden:"SE",Switzerland:"CH"};
+  var inp=document.getElementById('lpb-dest'),list=document.getElementById('lpbDestList'),combo=document.getElementById('lpbDest');
+  if(inp&&list){
+    function render(q){q=(q||'').toLowerCase();list.innerHTML='';
+      var items=COUNTRIES.filter(function(c){return c.toLowerCase().indexOf(q)>-1}).map(function(c){return {n:c,c:CODES[c]}});
+      [{n:"Not sure yet",c:"—"},{n:"Multiple countries",c:"—"}].forEach(function(e){if(e.n.toLowerCase().indexOf(q)>-1)items.push(e)});
+      if(!items.length){list.innerHTML='<li class="none">No match — type your destination</li>';return;}
+      items.forEach(function(o){var li=document.createElement('li');li.innerHTML='<span>'+o.n+'</span><span class="fc">'+o.c+'</span>';li.onmousedown=function(ev){ev.preventDefault();inp.value=o.n;list.classList.remove('open');};list.appendChild(li);});}
+    inp.addEventListener('focus',function(){render(inp.value);list.classList.add('open');});
+    inp.addEventListener('input',function(){render(inp.value);list.classList.add('open');});
+    document.addEventListener('click',function(e){if(combo&&!combo.contains(e.target))list.classList.remove('open');});
+  }
+  var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
+    var msg="Hi, I'd like a free case check on my Schengen visa.";
+    if(d)msg+=' My destination is '+d+'.';
+    if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
+    window.open('{{ $wa }}?text='+encodeURIComponent(msg),'_blank');
+  });
+})();
 </script>
 @endsection
