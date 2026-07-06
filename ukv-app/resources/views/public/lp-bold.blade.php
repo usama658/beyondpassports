@@ -80,14 +80,7 @@
 .lpb .sit .q{font-weight:700;font-size:17.5px;margin:0 0 4px}
 .lpb .sit .d{color:var(--muted);font-size:15.5px;line-height:1.45;margin:0}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
-/* RISK — ledger */
-.lpb .ledger{border-top:2px solid var(--ink);margin:32px 0 8px}
-.lpb .lrow{display:grid;grid-template-columns:110px 1fr;gap:34px;padding:30px 0;border-bottom:1px solid var(--edge);align-items:start}
-.lpb .lrow .idx{font-size:64px;font-weight:800;letter-spacing:-.04em;color:#fbfcfe;-webkit-text-stroke:1.5px var(--soft);line-height:.8}
-.lpb .lrow .rc{max-width:64ch}
-.lpb .lrow .tag{display:inline-block;font-weight:800;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-text);background:#eaf4f1;padding:5px 10px;border-radius:6px;margin:0 0 12px}
-.lpb .lrow h3{font-size:23px;letter-spacing:-.02em;margin:0 0 9px}
-.lpb .lrow .rc p{color:var(--muted);font-size:15.5px;line-height:1.6;margin:0}
+/* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — scarcity heat cards (light, colour-coded) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
@@ -207,7 +200,6 @@
   .lpb .hgrid,.lpb .grid2,.lpb .dec .grid,.lpb .tr .grid,.lpb .band .wrap{grid-template-columns:1fr}
   .lpb .tbar-f .trow{gap:18px}
   .lpb .band .wrap{gap:26px}
-  .lpb .lrow{grid-template-columns:56px 1fr;gap:16px}.lpb .lrow .idx{font-size:40px}
   .lpb .dec .side{position:static}
   .lpb .bgrid{grid-template-columns:1fr 1fr}
   .lpb .faq .fgrid{grid-template-columns:1fr}.lpb .faq .fcard.wide{grid-column:auto}
@@ -269,31 +261,20 @@
   </div>
 </div></section>
 
-{{-- RISK — case-file ledger --}}
-<section class="sec alt" id="risk-cards"><div class="wrap">
-  <p class="eyebrow">Before you apply</p>
-  <h2 class="h2" style="max-width:22ch">Three things that decide your application before an officer opens it</h2>
-  <p class="trans" style="max-width:60ch;margin:12px 0 0">You're here because something about your application feels uncertain. Here's why that instinct is right.</p>
-  <div class="ledger">
-    <div class="lrow"><div class="idx">01</div><div class="rc"><span class="tag">The record</span><h3>Every refusal is shared by all 27 states</h3><p>No preview, no draft round. You find out weeks later in a rejection letter — and the refusal is already on your record, visible to every Schengen country for five years through VIS.</p></div></div>
-    <div class="lrow"><div class="idx">02</div><div class="rc"><span class="tag">The counter</span><h3>The questions are not small talk</h3><p>Staff note inconsistencies. If your dates don't match your booking, or your letter says business but your invitation says tourism, it's written down. You never see that note. The officer does.</p></div></div>
-    <div class="lrow"><div class="idx">03</div><div class="rc"><span class="tag">The funds</span><h3>A healthy balance won't prove what they need</h3><p>Officers look for patterns, not balances. Sudden deposits raise questions. Irregular income raises questions. They're not checking whether you have money — they're checking whether you'll come back.</p></div></div>
-  </div>
-  <p class="trans" style="margin:22px 0 0">These aren't edge cases. They're the most common reasons applications fail — and every one is preventable with the right preparation.</p>
-  <div class="ctarow"><a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20want%20to%20talk%20through%20my%20Schengen%20application%20before%20I%20submit%20anything.">Talk to us before you submit anything</a><span class="em"><b>WhatsApp</b> preferred · <b>Email:</b> cases@beyondpassports.co.uk</span></div>
-</div></section>
+{{-- RISK "Before you apply" ledger — drafted out for now. To restore:
+     @include('partials.lp-draft-risk-ledger') --}}
 
 {{-- BOARD — scarcity heat cards. Colour = typical demand, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <p class="trans skip"><a href="#refusal">Not looking for appointments? Skip to refusal recovery →</a></p>
   <div class="btop"><div><p class="eyebrow">Typical availability</p><h2 class="h2">Appointment availability this week</h2><p class="intro">Every Schengen application needs an in-person appointment. Colour shows how tight each country typically is right now — for most, the next slot is weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bgrid">
-    <div class="hc hot"><div class="r1"><span class="cty">France</span><span class="pill">Very tight</span></div><p class="st">Slots appear and vanish within minutes.</p><div class="meter"><i style="width:94%"></i></div><div class="foot"><div class="slots">12<small> this wk</small></div><div class="av">Our avg<b>3–7 days</b></div></div></div>
-    <div class="hc hot"><div class="r1"><span class="cty">Italy</span><span class="pill">Very tight</span></div><p class="st">Regularly no availability for weeks.</p><div class="meter"><i style="width:97%"></i></div><div class="foot"><div class="slots">08<small> this wk</small></div><div class="av">Our avg<b>5–10 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Spain</span><span class="pill">Tight</span></div><p class="st">High demand, very limited same-month.</p><div class="meter"><i style="width:86%"></i></div><div class="foot"><div class="slots">06<small> this wk</small></div><div class="av">Our avg<b>5–9 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Greece</span><span class="pill">Tight</span></div><p class="st">Limited UK allocation, seasonal demand.</p><div class="meter"><i style="width:84%"></i></div><div class="foot"><div class="slots">05<small> this wk</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
-    <div class="hc tight"><div class="r1"><span class="cty">Netherlands</span><span class="pill">Tight</span></div><p class="st">Short windows that fill within hours.</p><div class="meter"><i style="width:88%"></i></div><div class="foot"><div class="slots">07<small> this wk</small></div><div class="av">Our avg<b>3–6 days</b></div></div></div>
-    <div class="hc open"><div class="r1"><span class="cty">Germany</span><span class="pill">Some slots</span></div><p class="st">Released in unpredictable batches.</p><div class="meter"><i style="width:74%"></i></div><div class="foot"><div class="slots">09<small> this wk</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
+    <div class="hc hot"><div class="r1"><span class="cty">France</span><span class="pill">Very tight</span></div><p class="st">Slots appear and vanish within minutes.</p><div class="meter"><i style="width:94%"></i></div><div class="foot"><div class="slots">12<small> this week</small></div><div class="av">Our avg<b>3–7 days</b></div></div></div>
+    <div class="hc hot"><div class="r1"><span class="cty">Italy</span><span class="pill">Very tight</span></div><p class="st">Regularly no availability for weeks.</p><div class="meter"><i style="width:97%"></i></div><div class="foot"><div class="slots">08<small> this week</small></div><div class="av">Our avg<b>5–10 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Spain</span><span class="pill">Tight</span></div><p class="st">High demand, very limited same-month.</p><div class="meter"><i style="width:86%"></i></div><div class="foot"><div class="slots">06<small> this week</small></div><div class="av">Our avg<b>5–9 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Greece</span><span class="pill">Tight</span></div><p class="st">Limited UK allocation, seasonal demand.</p><div class="meter"><i style="width:84%"></i></div><div class="foot"><div class="slots">05<small> this week</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
+    <div class="hc tight"><div class="r1"><span class="cty">Netherlands</span><span class="pill">Tight</span></div><p class="st">Short windows that fill within hours.</p><div class="meter"><i style="width:88%"></i></div><div class="foot"><div class="slots">07<small> this week</small></div><div class="av">Our avg<b>3–6 days</b></div></div></div>
+    <div class="hc open"><div class="r1"><span class="cty">Germany</span><span class="pill">Some slots</span></div><p class="st">Released in unpredictable batches.</p><div class="meter"><i style="width:74%"></i></div><div class="foot"><div class="slots">09<small> this week</small></div><div class="av">Our avg<b>4–8 days</b></div></div></div>
   </div>
   <div class="blegend"><span><i style="background:#c0492f"></i>Very tight</span><span><i style="background:#b5791f"></i>Tight</span><span><i style="background:#1F6E63"></i>Some slots</span><span>· every Schengen country covered — ask us about yours</span></div>
   <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — some slots can't wait.</span>
