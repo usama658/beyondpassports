@@ -311,10 +311,6 @@
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
   <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:22ch">What our clients say after we caught it.</h2><p class="rsub">Real cases, honestly told — the kind of detail a review catches before an officer does.</p></div>
-  <div class="rplat">
-    <div class="pcard"><span class="pico g">G</span><div><div class="pname">Google Reviews</div><div class="pstar">★★★★★</div><div class="pscore">4.9</div><div class="pcount">Verified reviews load once connected</div></div></div>
-    <div class="pcard"><span class="pico tp">Tp</span><div><div class="pname">Trustpilot</div><div class="pstar">★★★★★</div><div class="pscore">4.8</div><div class="pcount">Verified reviews load once connected</div></div></div>
-  </div>
   <div class="rgrid">
     @php
       $reviews = [
