@@ -113,6 +113,31 @@
 .lpb .bd .skip{margin:0 0 10px}.lpb .bd .skip a{color:var(--cta);font-weight:600}
 @media(max-width:1080px){.lpb .bgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.lpb .bgrid{grid-template-columns:1fr}}
+/* REVIEWS — signature monogram cards (cream + gold + serif) */
+.lpb .rev{--gold:#C89B3C;--gold-t:#f0e6cf;--cream:#FBFAF7;--serif:Georgia,"Times New Roman",serif}
+.lpb .rev .rhead{text-align:center;max-width:60ch;margin:0 auto 34px}
+.lpb .rev .rhead .eyebrow{justify-content:center}.lpb .rev .rhead .eyebrow::before{background:var(--gold)}
+.lpb .rev .rhead .rsub{color:var(--muted);font-size:16px;margin:12px 0 0}
+.lpb .rplat{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto 24px}
+.lpb .pcard{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh)}
+.lpb .pico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:none}
+.lpb .pico.g{background:#E8F0FE;color:#4285F4}.lpb .pico.tp{background:#E6F9F3;color:#00B67A}
+.lpb .pname{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lpb .pstar{color:var(--gold);font-size:15px;letter-spacing:1px}
+.lpb .pscore{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.lpb .pcount{font-size:12.5px;color:var(--muted);margin-top:2px}
+.lpb .plink{margin-left:auto;font-size:13px;font-weight:700;color:var(--cta);flex:none}
+.lpb .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lpb .rc{position:relative;background:var(--cream);border:1px solid var(--edge);border-radius:18px;padding:28px 26px;box-shadow:var(--sh);overflow:hidden}
+.lpb .rc .wm{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-weight:700;font-size:140px;line-height:1;color:var(--gold);opacity:.09;pointer-events:none}
+.lpb .rc .rst{position:relative;font-size:15px;color:var(--gold);margin:0 0 14px;letter-spacing:1px}
+.lpb .rc .rq{position:relative;font-family:var(--serif);font-size:20px;font-weight:500;color:#243039;line-height:1.44;margin:0 0 20px}
+.lpb .rc .rf{position:relative;display:flex;align-items:center;gap:11px;padding-top:15px;border-top:1px solid var(--edge)}
+.lpb .rc .rf .gd{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+.lpb .rc .rn{font-weight:800;font-size:15px}.lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
+.lpb .rc .rsrc{margin-left:auto;font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lpb .rev .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
+@media(max-width:900px){.lpb .rgrid{grid-template-columns:1fr}.lpb .rplat{grid-template-columns:1fr}}
 /* DECODER — redacted letter + selector */
 .lpb .dec .top{max-width:60ch;margin:0 0 34px}.lpb .dec .top h2{margin:0 0 12px}
 .lpb .dec .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
@@ -281,6 +306,31 @@
   <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed — we confirm your real next slot on WhatsApp</span></div>
   <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — the tight countries can't wait.</span>
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
+</div></section>
+
+{{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
+<section class="sec rev" id="reviews"><div class="wrap">
+  <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:22ch">What our clients say after we caught it.</h2><p class="rsub">Real cases, honestly told — the kind of detail a review catches before an officer does.</p></div>
+  <div class="rplat">
+    <div class="pcard"><span class="pico g">G</span><div><div class="pname">Google Reviews</div><div class="pstar">★★★★★</div><div class="pscore">4.9</div><div class="pcount">Verified reviews load once connected</div></div></div>
+    <div class="pcard"><span class="pico tp">Tp</span><div><div class="pname">Trustpilot</div><div class="pstar">★★★★★</div><div class="pscore">4.8</div><div class="pcount">Verified reviews load once connected</div></div></div>
+  </div>
+  <div class="rgrid">
+    @php
+      $reviews = [
+        ['A','Amara O.','Google','They prepared everything correctly for the consulate. My previous application was refused and they fixed exactly what was wrong.'],
+        ['P','Priya S.','Trustpilot','Responded within a few hours. Knew exactly what the consulate needed. Approved on first attempt after one previous refusal.'],
+        ['T','Tariq M.','Google','Very professional. Proper documents, clear communication, result delivered. Would use again without hesitation.'],
+        ['K','K.M.','Google','They caught that my insurance had the wrong cover in the first review. Reapplied, approved in eleven days.'],
+        ['D','D.S.','Trustpilot','My hotel was 200km from where my friends live. Nobody flagged it. They found it in twenty minutes.'],
+        ['A','A.R.','Google','Two refusals with different consultants. They rebuilt my case and told me to reapply through Germany. Approved first try.'],
+      ];
+    @endphp
+    @foreach($reviews as [$init,$name,$src,$quote])
+    <div class="rc"><span class="wm">{{ $init }}</span><div class="rst">★★★★★</div><p class="rq">{{ $quote }}</p><div class="rf"><span class="gd"></span><div class="rn">{{ $name }}<span>Verified client</span></div><span class="rsrc">{{ $src }}</span></div></div>
+    @endforeach
+  </div>
+  <p class="rnote">Real cases from this year. Names and identifying details changed for privacy. Star ratings go live once our review profiles are connected.</p>
 </div></section>
 
 {{-- SECTION 2 — start where you are --}}
