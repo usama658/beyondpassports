@@ -389,16 +389,16 @@
   <div class="fgrid">
     @php
       $faqs = [
-        ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself — centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
-        ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season — some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
-        ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check — no fixed upsell, no hidden extras.'],
-        ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
-        ['q'=>'Can you guarantee approval?','a'=>'<b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
-        ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
+        ['q'=>'What do you actually do that I <span class="hl">can’t do myself</span>?','a'=>'You can do it all yourself — centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
+        ['q'=>'How quickly can you get me an <span class="hl">appointment</span>?','a'=>'It depends on the country and season — some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
+        ['q'=>'What does this <span class="hl">cost</span>?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check — no fixed upsell, no hidden extras.'],
+        ['q'=>'Why <span class="hl">WhatsApp</span> instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
+        ['q'=>'Can you <span class="hl-r">guarantee approval</span>?','a'=>'<b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
+        ['q'=>'I’ve never heard of Beyond Passports. <span class="hl">Why you?</span>','a'=>'Fair. Don’t trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
       ];
     @endphp
     @foreach($faqs as $f)
-    <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span>{{ $f['q'] }}<span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
+    <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span><span>{!! $f['q'] !!}</span><span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
     @endforeach
   </div>
   <div class="fcta"><div class="t"><b>Still have a question?</b><span>We answer in real time — send it over.</span></div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
