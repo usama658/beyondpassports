@@ -31,13 +31,11 @@
 .lpb .urgent{display:inline-flex;align-items:center;gap:9px;background:#fdf3e7;border:1px solid #f0d9b8;color:#8a5a1a;font-size:14.5px;font-weight:600;padding:12px 18px;border-radius:12px}
 .lpb .ctarow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
 .lpb .ctarow .btn{width:auto;min-width:230px}
-/* HERO — dual-lane w/ photo */
-.lpb .hero{position:relative;padding:52px 0 54px;isolation:isolate;overflow:hidden}
-.lpb .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url('{{ asset('assets/img/lp/hero.jpg') }}') center 28%/cover no-repeat}
-.lpb .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,18,24,.86) 0%,rgba(9,18,24,.6) 40%,rgba(244,246,250,.5) 80%,var(--paper) 100%)}
-.lpb .heyebrow{justify-content:center;color:var(--on-dark);margin-bottom:6px}
-.lpb .hhead{text-align:center;max-width:22ch;margin:0 auto 6px;font-size:clamp(30px,4vw,46px);letter-spacing:-.035em;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.4)}
-.lpb .hsub{text-align:center;color:#e6eef1;font-size:18px;max-width:52ch;margin:12px auto 30px;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+/* HERO — dual-lane */
+.lpb .hero{padding:36px 0 46px}
+.lpb .heyebrow{justify-content:center;color:var(--stamp-text);margin-bottom:6px}
+.lpb .hhead{text-align:center;max-width:22ch;margin:0 auto 6px;font-size:clamp(30px,4vw,46px);letter-spacing:-.035em}
+.lpb .hsub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 30px}
 .lpb .lanes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .lpb .lane{border-radius:20px;padding:30px;box-shadow:var(--sh2)}
 .lpb .fresh{background:#fff;border:1px solid var(--edge)}
@@ -76,10 +74,8 @@
 .lpb .lrow .tag{display:inline-block;font-weight:800;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-text);background:#eaf4f1;padding:5px 10px;border-radius:6px;margin:0 0 12px}
 .lpb .lrow h3{font-size:23px;letter-spacing:-.02em;margin:0 0 9px}
 .lpb .lrow .rc p{color:var(--muted);font-size:15.5px;line-height:1.6;margin:0}
-/* BOARD — departures (dark) w/ photo */
-.lpb .bd{position:relative;color:#fff;isolation:isolate;overflow:hidden}
-.lpb .bd::before{content:"";position:absolute;inset:0;z-index:-2;background:url('{{ asset('assets/img/lp/board.jpg') }}') center/cover no-repeat}
-.lpb .bd::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,18,24,.93),rgba(9,18,24,.88)),radial-gradient(700px 400px at 85% 0%,rgba(21,94,122,.4),transparent 60%)}
+/* BOARD — departures (dark) */
+.lpb .bd{background:var(--ink2);color:#fff}
 .lpb .bd .eyebrow{color:var(--on-dark)}.lpb .bd .h2{color:#fff}
 .lpb .bd .intro{color:#b9ccd3;max-width:62ch;margin:12px 0 28px;font-size:16px}
 .lpb .board{background:#0a141a;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;box-shadow:var(--sh2)}
@@ -158,10 +154,8 @@
 .lpb .faq .wacard{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--paper)}
 .lpb .faq .wabtn{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;font-weight:700;padding:12px 20px;border-radius:11px;text-decoration:none}
 .lpb .faq .wabtn svg{width:16px;height:16px;fill:#fff}
-/* URGENCY — split + action card w/ photo */
-.lpb .band{position:relative;color:#fff;isolation:isolate;overflow:hidden}
-.lpb .band::before{content:"";position:absolute;inset:0;z-index:-2;background:url('{{ asset('assets/img/lp/band.jpg') }}') center 40%/cover no-repeat}
-.lpb .band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,18,24,.9),rgba(9,18,24,.82)),radial-gradient(760px 440px at 92% 100%,rgba(46,154,140,.34),transparent 60%)}
+/* URGENCY — split + action card */
+.lpb .band{background:radial-gradient(760px 420px at 12% 0%,rgba(21,94,122,.55),transparent 62%),radial-gradient(760px 440px at 92% 100%,rgba(46,154,140,.42),transparent 60%),var(--ink2);color:#fff}
 .lpb .band .wrap{padding:64px 28px;max-width:1140px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
 .lpb .band .eyebrow{color:var(--on-dark)}
 .lpb .band h2{font-size:clamp(28px,3.4vw,40px);color:#fff;margin:14px 0 16px;max-width:16ch}
