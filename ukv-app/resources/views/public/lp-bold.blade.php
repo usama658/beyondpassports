@@ -139,13 +139,15 @@
 .lpb .rev .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
 @media(max-width:900px){.lpb .rgrid{grid-template-columns:1fr}.lpb .rplat{grid-template-columns:1fr}}
 /* DECODER "Refusal recovery" — drafted out, see partials/lp-draft-decoder.blade.php */
-/* FEAR — VIS severity meter (exact refusal-risk design) */
-.lpb .fear{background:#0A1628;color:#ECF2FB}
+/* FEAR — VIS severity meter (exact refusal-risk design) + photographic bg */
+.lpb .fear{position:relative;color:#ECF2FB;background:#0A1628 url('{{ asset('assets/img/lp/fear-passport-map.jpg') }}') center/cover no-repeat;overflow:hidden}
+.lpb .fear::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.82),rgba(10,22,40,.92));z-index:1}
+.lpb .fear>.wrap{position:relative;z-index:2}
 .lpb .fear .flabel{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FF5A5A;margin-bottom:18px}
 .lpb .fear .fsh{max-width:60ch;margin:0 auto 40px;text-align:center}
 .lpb .fear .fsh h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;line-height:1.12;letter-spacing:-.02em}
 .lpb .fear .fsh h2 .hl{color:#39B89C}
-.lpb .fmeter .row{display:grid;grid-template-columns:54px 1fr 120px;gap:20px;align-items:center;padding:18px 22px;background:linear-gradient(180deg,#13284c,#0d1c36);border:1px solid rgba(255,255,255,.09);border-radius:14px;margin-bottom:12px}
+.lpb .fmeter .row{display:grid;grid-template-columns:54px 1fr 120px;gap:20px;align-items:center;padding:18px 22px;background:linear-gradient(180deg,rgba(19,40,76,.86),rgba(13,28,54,.86));border:1px solid rgba(255,255,255,.12);border-radius:14px;margin-bottom:12px;backdrop-filter:blur(3px)}
 .lpb .fmeter .num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:#FF5A5A}
 .lpb .fmeter .row h3{font-weight:700;font-size:1.05rem;color:#fff;margin:0}
 .lpb .fmeter .row p{color:#9DB1CE;font-size:.93rem;margin:4px 0 0}
