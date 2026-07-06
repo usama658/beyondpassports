@@ -129,18 +129,23 @@
 .lpb .acc .b{padding:0 18px 18px;color:var(--muted);font-size:14px;line-height:1.6;display:none}
 .lpb .acc.open .b{display:block}
 .lpb .acc .b .lab{color:var(--ink);font-weight:700;display:block;margin:11px 0 2px}
-/* FEAR — VIS mechanism */
-.lpb .fear .top{max-width:60ch;margin:0 0 8px}
-.lpb .fear .top .eyebrow{color:var(--red)}
-.lpb .fear .top .eyebrow::before{background:var(--red)}
-.lpb .fsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:30px 0 28px}
-.lpb .fstep{position:relative}
-.lpb .fstep .fn{font-size:52px;font-weight:800;letter-spacing:-.04em;color:#fbeae7;-webkit-text-stroke:1.5px #e6a89b;line-height:.8;margin:0 0 12px}
-.lpb .fstep h3{font-size:18px;margin:0 0 7px}
-.lpb .fstep p{color:var(--muted);font-size:15px;line-height:1.55;margin:0}
-.lpb .fnote{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff;border:1px solid var(--edge);border-left:4px solid var(--red);border-radius:14px;padding:22px 26px;box-shadow:var(--sh)}
-.lpb .fnote p{color:var(--muted);font-size:15.5px;line-height:1.55;margin:0;max-width:64ch}.lpb .fnote p b{color:var(--ink)}
-.lpb .fnote .btn{width:auto;min-width:250px;background:var(--cta)}
+/* FEAR — VIS severity meter (exact refusal-risk design) */
+.lpb .fear{background:#0A1628;color:#ECF2FB}
+.lpb .fear .flabel{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FF5A5A;margin-bottom:18px}
+.lpb .fear .fsh{max-width:60ch;margin:0 auto 40px;text-align:center}
+.lpb .fear .fsh h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+.lpb .fear .fsh h2 .hl{color:#39B89C}
+.lpb .fmeter .row{display:grid;grid-template-columns:54px 1fr 120px;gap:20px;align-items:center;padding:18px 22px;background:linear-gradient(180deg,#13284c,#0d1c36);border:1px solid rgba(255,255,255,.09);border-radius:14px;margin-bottom:12px}
+.lpb .fmeter .num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:#FF5A5A}
+.lpb .fmeter .row h3{font-weight:700;font-size:1.05rem;color:#fff;margin:0}
+.lpb .fmeter .row p{color:#9DB1CE;font-size:.93rem;margin:4px 0 0}
+.lpb .fmeter .bar{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.lpb .fmeter .bar span{display:block;height:100%;background:linear-gradient(90deg,#ff9a9a,#FF5A5A)}
+.lpb .fmeter .row:nth-child(1) .bar span{width:25%}.lpb .fmeter .row:nth-child(2) .bar span{width:50%}.lpb .fmeter .row:nth-child(3) .bar span{width:75%}.lpb .fmeter .row:nth-child(4) .bar span{width:100%}
+.lpb .fear .callout{background:rgba(255,90,90,.10);border:1px solid rgba(255,90,90,.3);border-left:4px solid #FF5A5A;border-radius:14px;padding:20px 24px;margin:24px 0}
+.lpb .fear .callout p{color:#c9d6e8;font-size:1rem;line-height:1.6;margin:0}.lpb .fear .callout p b{color:#fff}
+.lpb .fear .fcta{display:flex;justify-content:center;margin-top:24px}
+.lpb .fear .fcta .btn{width:auto;min-width:280px;background:#25D366}
 /* TRUST — dark console + light verify */
 .lpb .tr .grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:var(--sh2);border:1px solid var(--edge)}
 .lpb .tr .dark{background:radial-gradient(600px 400px at 15% 0%,rgba(21,94,122,.5),transparent 62%),var(--ink2);color:#fff;padding:38px 34px}
@@ -204,7 +209,7 @@
   .lpb .brow{grid-template-columns:1fr auto;gap:4px 12px;padding:14px 18px}
   .lpb .brow .st{grid-column:1}.lpb .brow .sl{grid-row:1/3;align-self:center}.lpb .brow .av{grid-column:1;color:rgba(255,255,255,.5)}
   .lpb .faq .fgrid{grid-template-columns:1fr}.lpb .faq .fcard.wide{grid-column:auto}
-  .lpb .fsteps{grid-template-columns:1fr 1fr}.lpb .fnote{flex-direction:column;align-items:flex-start}
+  .lpb .fmeter .row{grid-template-columns:42px 1fr}.lpb .fmeter .bar{display:none}
   .lpb .sec{padding:56px 0}.lpb .hero{padding:28px 0 44px}
 }
 </style>
@@ -324,19 +329,17 @@
   </div>
 </div></section>
 
-{{-- FEAR — VIS mechanism --}}
+{{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
 <section class="sec fear" id="vis-risk"><div class="wrap">
-  <div class="top"><p class="eyebrow">The fear mechanism</p><h2 class="h2">The Visa Information System remembers everything.</h2></div>
-  <div class="fsteps">
-    <div class="fstep"><div class="fn">1</div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div>
-    <div class="fstep"><div class="fn">2</div><h3>27 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div>
-    <div class="fstep"><div class="fn">3</div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div>
-    <div class="fstep"><div class="fn">4</div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div>
+  <div class="fsh"><div class="flabel">The fear mechanism</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
+  <div class="fmeter">
+    <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">2</div><div><h3>27 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
-  <div class="fnote">
-    <p>We reviewed <b>600+ refusal letters</b> last year. Over half were preventable — wrong bank statements, missing employer letters, itineraries that didn't add up. The kind of thing a 30-minute review would have caught.</p>
-    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">Send us your documents for a free risk check</a>
-  </div>
+  <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Send us your documents for a free risk check</a></div>
 </div></section>
 
 {{-- TRUST — dark console + light verify --}}
