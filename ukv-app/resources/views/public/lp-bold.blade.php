@@ -47,7 +47,14 @@
 .lpb .form input:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
 .lpb .form .cons{display:flex;gap:8px;align-items:flex-start;margin:13px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
 .lpb .form .cons input{width:16px;height:16px;flex:none;margin-top:2px}
-.lpb .halt{color:var(--muted);font-size:14.5px;margin:18px 0 0}.lpb .halt b{color:var(--ink)}
+.lpb .halt{color:var(--muted);font-size:14.5px;margin:16px 0 0}.lpb .halt b{color:var(--ink)}
+.lpb .tp{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:20px 0 0}
+.lpb .tp-logo{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15.5px;color:var(--ink)}
+.lpb .tp-logo .s{width:19px;height:19px;fill:#00B67A}
+.lpb .tp-stars{display:inline-flex;gap:3px}
+.lpb .tp-stars i{width:23px;height:23px;background:#00B67A;display:inline-flex;align-items:center;justify-content:center;border-radius:3px}
+.lpb .tp-stars i svg{width:15px;height:15px;fill:#fff}
+.lpb .tp-note{color:var(--muted);font-size:12.5px;flex-basis:100%;margin:2px 0 0}
 .lpb .combo{position:relative;margin:0 0 12px}
 .lpb .cbwrap{position:relative}
 .lpb .cbwrap::after{content:"▾";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;pointer-events:none}
@@ -216,8 +223,13 @@
 <section class="hero"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
-    <h1>Your visa application has <span class="hl">one chance</span>. Most people <span class="hl-r">waste it</span>.</h1>
-    <p class="hsub">We know why. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
+    <p class="hsub">We know why applications get refused. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <div class="tp">
+      <span class="tp-logo"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>Trustpilot</span>
+      <span class="tp-stars">@for($i=0;$i<5;$i++)<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></i>@endfor</span>
+      <span class="tp-note">Live rating loads from Trustpilot once the Business Unit ID is connected.</span>
+    </div>
     <p class="halt">Prefer to type it yourself? <b>WhatsApp</b> or <a href="mailto:cases@beyondpassports.co.uk">cases@beyondpassports.co.uk</a></p>
   </div>
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
