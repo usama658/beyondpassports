@@ -90,23 +90,23 @@
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
-.lpb .bd .intro{color:var(--muted);font-size:18px;max-width:60ch;margin:12px 0 0}
+.lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
 .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
 .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
 .lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
-.lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.lpb .hc .cty{color:#fff;font-size:22px;font-weight:800;letter-spacing:-.01em}
-.lpb .hc .pill{font-weight:800;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:5px 11px;border-radius:999px;white-space:nowrap}
-.lpb .hc .bd2{background:var(--cbg);padding:18px 20px}
-.lpb .hc .lab{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 4px}
-.lpb .hc .date{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:0 0 14px}
-.lpb .hc .slots{display:flex;align-items:baseline;gap:9px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:11px;padding:11px 14px}
-.lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:27px;color:var(--c)}
-.lpb .hc .slots small{font-size:14px;color:var(--muted)}
-.lpb .blegend{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;color:var(--muted);font-size:14.5px;align-items:center}
+.lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lpb .hc .cty{color:#fff;font-size:18px;font-weight:800}
+.lpb .hc .pill{font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.lpb .hc .bd2{background:var(--cbg);padding:16px 18px}
+.lpb .hc .lab{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 3px}
+.lpb .hc .date{font-size:19px;font-weight:800;margin:0 0 12px}
+.lpb .hc .slots{display:flex;align-items:baseline;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:9px 12px}
+.lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:20px;color:var(--c)}
+.lpb .hc .slots small{font-size:12px;color:var(--muted)}
+.lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px;align-items:center}
 .lpb .blegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .lpb .bd .bfoot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
 .lpb .bd .bfoot .btn{width:auto;min-width:230px}
