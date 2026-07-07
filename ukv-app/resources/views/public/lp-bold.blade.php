@@ -7,11 +7,14 @@
 
 @push('head')
 <style>
+/* stop page-wide horizontal overflow (e.g. topbar strip on mobile) pushing content off-screen */
+html,body{overflow-x:clip;max-width:100%}
 /* ===== Bold LP — page-scoped under .lpb (avoids ukv.css class collisions) ===== */
 .lpb{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366;--amber:#E9B872;--red:#c0492f;
   --display:"Outfit",system-ui,sans-serif;--mono:ui-monospace,"Outfit",monospace;--sh:0 18px 44px -26px rgba(20,34,46,.34);--sh2:0 30px 66px -30px rgba(20,34,46,.42);
-  background:var(--paper);color:var(--ink);font:400 18px/1.62 var(--display);-webkit-font-smoothing:antialiased}
-.lpb *{box-sizing:border-box}
+  background:var(--paper);color:var(--ink);font:400 18px/1.62 var(--display);-webkit-font-smoothing:antialiased;overflow-x:clip}
+.lpb *{box-sizing:border-box;min-width:0}
+.lpb h1,.lpb h2,.lpb h3{overflow-wrap:break-word}
 .lpb h1,.lpb h2,.lpb h3,.lpb h4{font-weight:800;line-height:1.12;letter-spacing:-.02em;margin:0}
 .lpb .hl{color:var(--stamp-text)}.lpb .hl-r{color:var(--red)}
 .lpb a{color:var(--cta);text-decoration:none}
@@ -212,8 +215,9 @@
 .lpb .faq .bp .bot{padding:24px 32px 30px}
 .lpb .faq .bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:15px;margin:0 0 11px}
 .lpb .faq .bp .tick .c{width:23px;height:23px;border-radius:6px;background:rgba(121,207,194,.16);color:var(--on-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
-.lpb .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#062b14;font-weight:700;padding:15px 22px;border-radius:12px;text-decoration:none;font-size:16px;margin-top:8px}
-.lpb .faq .bp .wabtn svg{width:18px;height:18px;fill:#062b14}
+.lpb .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font-weight:700;padding:15px 22px;border-radius:12px;text-decoration:none;font-size:16px;margin-top:8px}
+.lpb .faq .bp .wabtn,.lpb .faq .bp .wabtn:hover{color:#fff}
+.lpb .faq .bp .wabtn svg,.lpb .faq .bp .wabtn .wa-g{width:18px;height:18px;fill:#fff}
 @media(max-width:900px){.lpb .faq .fsplit{grid-template-columns:1fr}}
 /* URGENCY — split + action card */
 .lpb .band{background:radial-gradient(760px 420px at 12% 0%,rgba(21,94,122,.55),transparent 62%),radial-gradient(760px 440px at 92% 100%,rgba(46,154,140,.42),transparent 60%),var(--ink2);color:#fff}
@@ -238,6 +242,12 @@
   .lpb .faq .fsplit{grid-template-columns:1fr}
   .lpb .fmeter .row{grid-template-columns:42px 1fr}.lpb .fmeter .bar{display:none}
   .lpb .sec{padding:56px 0}.lpb .hero{padding:28px 0 44px}
+}
+@media(max-width:560px){
+  .lpb .form .row{flex-direction:column;gap:12px}
+  .lpb .formcard{padding:22px}
+  .lpb .formcard .fl{flex-wrap:wrap}
+  .lpb .form input[type=text]{font-size:16px}
 }
 /* HOVER — interactive lift/press across cards, tiles, buttons */
 @media(hover:hover){

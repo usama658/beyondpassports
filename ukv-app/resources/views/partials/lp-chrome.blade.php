@@ -60,6 +60,14 @@
   .bpc-nav a.bpc-btn--ghost{color:var(--bpc-cta)}
   .bpc-navtoggle{display:none;background:none;border:1px solid var(--bpc-edge);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:18px;line-height:1;color:var(--bpc-ink)}
   @media (max-width:860px){.bpc-tbrow{justify-content:center;gap:6px 16px}.bpc-tblinks{flex-wrap:wrap;justify-content:center}}
+  @media (max-width:560px){
+    .bpc-wrap{padding:0 16px}
+    .bpc-tp{flex:1 1 100%;text-align:center}
+    .bpc-tp>div{text-align:center!important}
+    .tpr{justify-content:center}
+    .bpc-tblinks{flex:1 1 100%;gap:8px 18px}
+    .bpc-tblinks a{font-size:12px}
+  }
   @media (max-width:900px){
     .bpc-navtoggle{display:inline-flex;align-items:center}
     .bpc-head .bpc-wrap{position:relative;flex-wrap:wrap}
