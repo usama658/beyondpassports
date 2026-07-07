@@ -239,6 +239,29 @@
   .lpb .fmeter .row{grid-template-columns:42px 1fr}.lpb .fmeter .bar{display:none}
   .lpb .sec{padding:56px 0}.lpb .hero{padding:28px 0 44px}
 }
+/* HOVER — interactive lift/press across cards, tiles, buttons */
+@media(hover:hover){
+  /* buttons: lift + deeper shadow */
+  .lpb .btn,.lpb .wa,.lpb .faq .wabtn,.lpb .sit .chev{transition:transform .14s ease,box-shadow .16s ease,background .15s ease}
+  .lpb .btn:hover,.lpb .wa:hover,.lpb .faq .wabtn:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+  .lpb .btn:active,.lpb .wa:active,.lpb .faq .wabtn:active{transform:translateY(0)}
+  /* cards & tiles: lift + shadow + subtle border warm */
+  .lpb .hc,.lpb .rc,.lpb .faq .fcard,.lpb .formcard,.lpb .ref2,.lpb .faq .bp,.lpb .band .ucard,.lpb .pcard{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
+  .lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+  .lpb .faq .fcard:hover{border-color:var(--stamp);box-shadow:var(--sh)}
+  /* verify links + step chips */
+  .lpb .vlink{transition:transform .14s ease}
+  .lpb .vlink:hover{transform:translateX(3px)}
+  .lpb .vlink:hover .tick{background:var(--stamp);color:#fff;transition:background .15s ease,color .15s ease}
+  /* combobox list rows already hover; trust-bar icons pop */
+  .lpb .tbar-f .ti{transition:color .15s ease}.lpb .tbar-f .ti:hover b{color:var(--on-dark)}
+  /* review source label + monogram cards */
+  .lpb .rc:hover .wm{opacity:.16;transition:opacity .2s ease}
+}
+@media(prefers-reduced-motion:reduce){
+  .lpb *{transition:none!important}
+  .lpb .btn:hover,.lpb .wa:hover,.lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover,.lpb .vlink:hover{transform:none!important}
+}
 </style>
 @endpush
 
