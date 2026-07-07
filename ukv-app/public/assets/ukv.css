@@ -394,7 +394,7 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .ft-cta .btn--glass{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.32);color:#fff}
 .ft-cta .btn--glass:hover{background:rgba(255,255,255,.22)}
 .ft-main{background:#1b2024}
-.ft-main .cols{grid-template-columns:2.4fr 1fr 1fr 1fr;display:grid;gap:40px;padding:40px 0 26px;align-items:start}
+.ft-main .cols{grid-template-columns:2.4fr minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);display:grid;gap:40px;padding:40px 0 26px;align-items:start}
 .ft-cap{display:flex;gap:8px;margin-top:12px;max-width:340px}
 .ft-cap input[type=email]{flex:1;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:14px}
 .ft-cap input::placeholder{color:#8d949a}
@@ -410,7 +410,8 @@ h1{font-size:clamp(34px,5vw,56px);letter-spacing:-.025em}
 .ft-main .cols a{display:block;padding:4px 0}
 .ft-main .cols .ft-cap a{display:inline-block;padding:11px 16px}
 .ft-main .cols .ft-consent a{display:inline;padding:0}
-@media (max-width:860px){.ft-main .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.ft-main .cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 30px}}
+@media (max-width:560px){.ft-main .cols{grid-template-columns:1fr;gap:26px}.ft-cap{max-width:none}}
 
 /* ── Signature: travel-document system ───────────────────────────── */
 /* Passport-stamp tick — verified/checked states. */

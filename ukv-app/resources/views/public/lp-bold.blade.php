@@ -247,6 +247,8 @@ html,body{overflow-x:clip;max-width:100%}
 }
 @media(max-width:560px){
   .lpb .form .row{flex-direction:column;gap:12px}
+  /* full-bleed hero form to the viewport edges on mobile */
+  .lpb .hero .formcard{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;border-radius:0;border-left:0;border-right:0;padding:22px 20px}
   .lpb .formcard{padding:22px}
   .lpb .formcard .fl{flex-wrap:wrap}
   .lpb .form input[type=text]{font-size:16px}
