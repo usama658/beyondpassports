@@ -99,7 +99,9 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
 .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
 .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
-.lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
+.lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh);display:block;text-decoration:none;color:inherit;transition:transform .16s ease,box-shadow .18s ease}
+.lpb a.hc:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
+@media(hover:hover){.lpb a.hc:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(20,34,46,.5)}}
 .lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .lpb .hc .cty{color:#fff;font-size:18px;font-weight:800}
 .lpb .hc .pill{font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
@@ -356,7 +358,8 @@ html,body{overflow-x:clip;max-width:100%}
       ];
     @endphp
     @foreach($appts as [$cty,$cls,$st,$date,$slots])
-    <div class="hc {{ $cls }}"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></div>
+    @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$cty} (next slot shown {$date}). My travel dates are: "; @endphp
+    <a class="hc {{ $cls }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $cty }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
   <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed — we confirm your real next slot on WhatsApp</span></div>
