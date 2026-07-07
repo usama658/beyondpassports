@@ -245,6 +245,8 @@
   .lpb .btn,.lpb .wa,.lpb .faq .wabtn,.lpb .sit .chev{transition:transform .14s ease,box-shadow .16s ease,background .15s ease}
   .lpb .btn:hover,.lpb .wa:hover,.lpb .faq .wabtn:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
   .lpb .btn:active,.lpb .wa:active,.lpb .faq .wabtn:active{transform:translateY(0)}
+  /* green buttons on dark (fear CTA, boarding pass) — brighten + green glow */
+  .lpb .fear .fcta .btn:hover,.lpb .faq .bp .wabtn:hover{background:#2ee06e;box-shadow:0 16px 34px -14px rgba(37,211,102,.6)}
   /* cards & tiles: lift + shadow + subtle border warm */
   .lpb .hc,.lpb .rc,.lpb .faq .fcard,.lpb .formcard,.lpb .ref2,.lpb .faq .bp,.lpb .band .ucard,.lpb .pcard{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
   .lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .faq .bp:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
