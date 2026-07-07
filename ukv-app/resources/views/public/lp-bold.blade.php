@@ -257,12 +257,16 @@
   .lpb .tbar-f .ti{transition:color .15s ease}.lpb .tbar-f .ti:hover b{color:var(--on-dark)}
   /* review source label + monogram cards */
   .lpb .rc:hover .wm{opacity:.16;transition:opacity .2s ease}
-  /* fear meter rows — lift, brighten border, glow the bar */
-  .lpb .fmeter .row{transition:transform .16s ease,border-color .15s ease,box-shadow .18s ease}
-  .lpb .fmeter .row:hover{transform:translateY(-3px);border-color:rgba(255,90,90,.45);box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
-  .lpb .fmeter .row .num,.lpb .fmeter .bar span{transition:transform .16s ease,box-shadow .18s ease}
-  .lpb .fmeter .row:hover .num{transform:scale(1.08);box-shadow:0 0 0 5px rgba(255,90,90,.18)}
-  .lpb .fmeter .row:hover .bar span{box-shadow:0 0 12px rgba(255,90,90,.55)}
+  /* fear meter rows — lift, brighten bg + border, glow the bar */
+  .lpb .fmeter .row{cursor:default;transition:transform .16s ease,border-color .15s ease,box-shadow .18s ease,background .18s ease}
+  .lpb .fmeter .row:hover{transform:translateY(-4px) scale(1.01);background:linear-gradient(180deg,rgba(27,52,92,.95),rgba(18,36,68,.95));border-color:rgba(255,90,90,.55);box-shadow:0 26px 50px -24px rgba(0,0,0,.7)}
+  .lpb .fmeter .row .num,.lpb .fmeter .bar span,.lpb .fmeter .row h3{transition:transform .16s ease,box-shadow .18s ease,color .15s ease}
+  .lpb .fmeter .row:hover .num{transform:scale(1.12);box-shadow:0 0 0 6px rgba(255,90,90,.22)}
+  .lpb .fmeter .row:hover .bar span{box-shadow:0 0 14px rgba(255,90,90,.7)}
+  .lpb .fmeter .row:hover h3{color:#fff}
+  /* fear callout box */
+  .lpb .fear .callout{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
+  .lpb .fear .callout:hover{transform:translateY(-3px);border-color:rgba(255,90,90,.5);box-shadow:0 22px 44px -26px rgba(0,0,0,.6)}
   /* Start-where-you-are chips (already lift) + ref2 card covered above */
   .lpb .sit{transition:transform .14s ease,box-shadow .16s ease,border-color .15s ease}
   .lpb .sit:hover{transform:translateY(-3px);box-shadow:var(--sh);border-left-color:var(--stamp)}
