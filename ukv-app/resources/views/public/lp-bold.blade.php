@@ -247,7 +247,11 @@
   .lpb .btn:active,.lpb .wa:active,.lpb .faq .wabtn:active{transform:translateY(0)}
   /* cards & tiles: lift + shadow + subtle border warm */
   .lpb .hc,.lpb .rc,.lpb .faq .fcard,.lpb .formcard,.lpb .ref2,.lpb .faq .bp,.lpb .band .ucard,.lpb .pcard{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
-  .lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+  .lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .faq .bp:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+  /* refusal card — pronounced lift + salmon glow, stamp tilts */
+  .lpb .ref2:hover{transform:translateY(-6px);box-shadow:0 40px 80px -34px rgba(192,73,47,.55);outline:1px solid rgba(240,165,143,.4);outline-offset:-1px}
+  .lpb .ref2 .refstamp{transition:transform .18s ease}
+  .lpb .ref2:hover .refstamp{transform:rotate(-5deg) scale(1.06)}
   .lpb .faq .fcard:hover{border-color:var(--stamp);box-shadow:var(--sh)}
   /* verify links + step chips */
   .lpb .vlink{transition:transform .14s ease}
