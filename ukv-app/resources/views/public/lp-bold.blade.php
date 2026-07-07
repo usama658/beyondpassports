@@ -257,10 +257,25 @@
   .lpb .tbar-f .ti{transition:color .15s ease}.lpb .tbar-f .ti:hover b{color:var(--on-dark)}
   /* review source label + monogram cards */
   .lpb .rc:hover .wm{opacity:.16;transition:opacity .2s ease}
+  /* fear meter rows — lift, brighten border, glow the bar */
+  .lpb .fmeter .row{transition:transform .16s ease,border-color .15s ease,box-shadow .18s ease}
+  .lpb .fmeter .row:hover{transform:translateY(-3px);border-color:rgba(255,90,90,.45);box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
+  .lpb .fmeter .row .num,.lpb .fmeter .bar span{transition:transform .16s ease,box-shadow .18s ease}
+  .lpb .fmeter .row:hover .num{transform:scale(1.08);box-shadow:0 0 0 5px rgba(255,90,90,.18)}
+  .lpb .fmeter .row:hover .bar span{box-shadow:0 0 12px rgba(255,90,90,.55)}
+  /* Start-where-you-are chips (already lift) + ref2 card covered above */
+  .lpb .sit{transition:transform .14s ease,box-shadow .16s ease,border-color .15s ease}
+  .lpb .sit:hover{transform:translateY(-3px);box-shadow:var(--sh);border-left-color:var(--stamp)}
+  .lpb .sit:hover .chev{background:var(--cta);color:#fff;transform:translateX(2px);transition:background .15s ease,color .15s ease,transform .15s ease}
+  /* how-it-works steps — nudge, brighten badge + heading */
+  .lpb .tr .stp{border-radius:12px;transition:transform .14s ease}
+  .lpb .tr .stp:hover{transform:translateX(4px)}
+  .lpb .tr .stp .n{transition:background .15s ease,color .15s ease,box-shadow .16s ease}
+  .lpb .tr .stp:hover .n{background:var(--on-dark);color:var(--ink2);box-shadow:0 0 0 4px rgba(121,207,194,.18)}
 }
 @media(prefers-reduced-motion:reduce){
   .lpb *{transition:none!important}
-  .lpb .btn:hover,.lpb .wa:hover,.lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover,.lpb .vlink:hover{transform:none!important}
+  .lpb .btn:hover,.lpb .wa:hover,.lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover,.lpb .vlink:hover,.lpb .fmeter .row:hover,.lpb .sit:hover,.lpb .tr .stp:hover{transform:none!important}
 }
 </style>
 @endpush
