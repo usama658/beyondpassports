@@ -400,7 +400,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send my refusal letter for a free review →</a>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter free →</a>
     </div>
     <div class="chips">
       <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
@@ -426,7 +426,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
   <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Send us your documents for a free risk check</a></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents free →</a></div>
 </div></section>
 
 {{-- TRUST — dark console + light verify --}}
@@ -447,10 +447,10 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
     <div class="lite">
       <h3 class="lh">Don't take our word for it.</h3><p class="lsub">Verify us independently — or ask us and we'll hand you the reference:</p>
-      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20Companies%20House%20registration%20number%20so%20I%20can%20verify%20Beyond%20Passports%3F"><span class="tick">✓</span><div><h4>Company registration <span class="ext">Ask for our number ↗</span></h4><p>Search "Beyond Passports" on Companies House at gov.uk. Registered UK company; number publicly listed.</p></div></a>
-      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20ICO%20registration%20number%20so%20I%20can%20check%20the%20ICO%20register%3F"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Ask for our ICO ref ↗</span></h4><p>Registered with the Information Commissioner's Office. Verify on the ICO register.</p></div></a>
-      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20send%20me%20the%20official%20document%20checklist%20for%20my%20Schengen%20destination%3F"><span class="tick">✓</span><div><h4>Destination requirements <span class="ext">Ask us for the checklist ↗</span></h4><p>Check the official embassy checklist; we cover every item plus what they don't tell you matters.</p></div></a>
-      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20what%20appointment%20availability%20are%20you%20seeing%20for%20my%20Schengen%20country%3F"><span class="tick">✓</span><div><h4>Appointment availability <span class="ext">Ask what we can get ↗</span></h4><p>See what's on the booking site yourself, then ask us what we can get.</p></div></a>
+      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20Companies%20House%20registration%20number%20so%20I%20can%20verify%20Beyond%20Passports%3F"><span class="tick">✓</span><div><h4>Company registration <span class="ext">Get our company number →</span></h4><p>Search "Beyond Passports" on Companies House at gov.uk. Registered UK company; number publicly listed.</p></div></a>
+      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20ICO%20registration%20number%20so%20I%20can%20check%20the%20ICO%20register%3F"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Get our ICO number →</span></h4><p>Registered with the Information Commissioner's Office. Verify on the ICO register.</p></div></a>
+      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20send%20me%20the%20official%20document%20checklist%20for%20my%20Schengen%20destination%3F"><span class="tick">✓</span><div><h4>Destination requirements <span class="ext">Get your checklist →</span></h4><p>Check the official embassy checklist; we cover every item plus what they don't tell you matters.</p></div></a>
+      <a class="vlink" href="{{ $wa }}?text=Hi%2C%20what%20appointment%20availability%20are%20you%20seeing%20for%20my%20Schengen%20country%3F"><span class="tick">✓</span><div><h4>Appointment availability <span class="ext">Ask about slots →</span></h4><p>See what's on the booking site yourself, then ask us what we can get.</p></div></a>
       <div class="founder"><span class="ph"></span><div><b>Beyond Passports</b><span>UK case team · Schengen visa specialists</span></div></div>
     </div>
   </div>
