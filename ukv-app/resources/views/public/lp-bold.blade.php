@@ -238,6 +238,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .band .ucard .re b{color:#fff}
 @media(max-width:860px){
   .lpb .hgrid,.lpb .grid2,.lpb .dec .grid,.lpb .tr .grid,.lpb .band .wrap{grid-template-columns:1fr}
+  .lpb .tr .statline{flex-direction:column;align-items:flex-start;gap:4px}
   .lpb .tbar-f .trow{gap:18px}
   .lpb .band .wrap{gap:26px}
   .lpb .dec .side{position:static}
