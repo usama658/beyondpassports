@@ -77,6 +77,16 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sec2 .head{text-align:center;max-width:26ch;margin:0 auto 6px;font-size:clamp(28px,3.4vw,38px)}
 .lpb .sec2 .s2sub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 26px}
 .lpb .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.lpb .chklist{background:#fff;border:1px solid var(--edge);border-radius:18px;padding:6px 24px;box-shadow:var(--sh)}
+.lpb .chklist ul{margin:0;padding:0;list-style:none}
+.lpb .chklist li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--edge)}
+.lpb .chklist li:last-child{border-bottom:0}
+.lpb .chklist .tick{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:rgba(46,154,140,.13);color:var(--stamp-text);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.lpb .chklist .tick svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.lpb .chklist .ck{display:block;font:800 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-text);margin-bottom:3px}
+.lpb .chklist h3{font-size:16px;font-weight:800;color:var(--ink);line-height:1.25;margin:0 0 3px}
+.lpb .chklist p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+.lpb .chklist .stop{display:inline-block;margin-top:9px;font:700 11.5px var(--display);color:#B4654A;background:rgba(180,101,74,.1);padding:4px 9px;border-radius:7px}
 .lpb .ref2{position:relative;background:radial-gradient(500px 340px at 85% 0%,rgba(192,73,47,.28),transparent 60%),var(--ink2);color:#fff;border-radius:20px;padding:28px;box-shadow:var(--sh2)}
 .lpb .ref2 .refstamp{display:inline-block;white-space:nowrap;border:2.5px solid #f0a58f;color:#f0a58f;font-weight:800;letter-spacing:.16em;font-size:13px;padding:6px 14px;border-radius:7px;transform:rotate(-5deg);margin:0 0 14px;text-transform:uppercase;box-shadow:inset 0 0 0 2px rgba(240,165,143,.14)}
 .lpb .ref2 .ltag{font-weight:800;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#f0a58f;margin:0 0 8px}
@@ -414,6 +424,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- SECTION 2 — start where you are --}}
 <section class="sec sec2"><div class="wrap">
+  <p class="eyebrow" style="justify-content:center">How we work</p>
   <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
   <p class="s2sub">Already refused, mid-process, or just need someone to handle it. Pick the path that fits.</p>
   <div class="grid2">
@@ -424,10 +435,13 @@ html,body{overflow-x:clip;max-width:100%}
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
       <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter free →</a>
     </div>
-    <div class="chips">
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
-      <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
+    <div class="chklist">
+      <ul>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">Stops a wasted fee</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p><span class="stop">Stops gaps slipping in</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Stops repeat mistakes</span></div></li>
+      </ul>
     </div>
   </div>
 </div></section>
