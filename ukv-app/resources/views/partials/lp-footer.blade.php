@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="bpc-ftbottom">
-      <span>© Beyond Passports. Service fee separate from any government fee. Express speeds our handling, not the government’s decision. No approval guarantee.</span>
+      <span>© Beyond Passports. Independent service, not the government. Our fee is separate from the visa fee, and approval is always the embassy's to decide, never guaranteed.</span>
       @include('partials.uk-eu-flags',['size'=>14]) <span>Registered in UK &amp; Europe</span>
     </div>
   </div></div>
