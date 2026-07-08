@@ -138,6 +138,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:20px;color:var(--c)}
 .lpb .hc .slots small{font-size:12px;color:var(--muted)}
 .lpb .blegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px;align-items:center}
+.lpb .bpre{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin:0 0 18px}
+.lpb .bpre .blegend{margin-top:0}
 .lpb .blegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .lpb .bd .bfoot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:24px}
 .lpb .bd .bfoot .btn{width:auto;min-width:230px}
@@ -380,6 +382,10 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early. For the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="bpre">
+    <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
+    <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
+  </div>
   <div class="bgrid">
     @php
       $appts = [
@@ -402,8 +408,7 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="hc {{ $cls }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $cty }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
-  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
-  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
+  <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
 
