@@ -212,13 +212,13 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Registered in <b>UK &amp; Europe</b></span></span>
+  <span class="ti">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></span>
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row">
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
-  <div><div class="n">{{ App\Support\SiteStats::applications() }}+</div><div class="l">Applications filed since {{ App\Support\SiteStats::foundedYear() }}</div></div>
+  <div><div class="n">{{ App\Support\SiteStats::applications() }}</div><div class="l">Applications filed in {{ App\Support\SiteStats::yearsActive() }} years</div></div>
   <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
-  <div><div class="n">UK·EU</div><div class="l">Registered in UK &amp; Europe</div></div>
+  <div><div class="n">@include('partials.uk-eu-flags',['size'=>28])</div><div class="l">Registered in UK &amp; Europe</div></div>
 </div></div></section>
 
 {{-- PROBLEM + READINESS CHECK — joined: fears on the left, the check that answers them on the right --}}

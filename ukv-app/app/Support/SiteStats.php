@@ -72,6 +72,12 @@ final class SiteStats
         return (int) config('ukv.stats.founded_year', 2019);
     }
 
+    /** Whole years in operation since the founding year, e.g. 7. Never below 1. */
+    public static function yearsActive(): int
+    {
+        return max(1, (int) CarbonImmutable::now()->year - self::foundedYear());
+    }
+
     /**
      * WhatsApp deep-link for the primary "Check eligibility" CTA — single source so every
      * CTA lands in the same chat with the same prefilled message. Falls back to a placeholder

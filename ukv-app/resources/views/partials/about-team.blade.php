@@ -143,7 +143,7 @@
   <div class="head reveal">
     <p class="eyebrow">The team</p>
     <h2>Real people checking your application</h2>
-    <p>Your application isn't passed through software and forgotten. A small UK &amp; Europe team reviews every file by hand: the same people, start to finish.</p>
+    <p>Your application isn't passed through software and forgotten. Registered in the UK &amp; Europe, we review every file by hand: the same people, start to finish.</p>
   </div>
 
   <div class="team">
@@ -183,14 +183,14 @@
   <div class="loc" id="where-we-are">
     <div class="loc-body reveal">
       <p class="loc-eyebrow">Where we are</p>
-      <h3>A UK &amp; Europe team you can reach</h3>
+      <h3>Registered in UK &amp; Europe, and easy to reach</h3>
       <address class="address">
         @if (!empty($addr['company']))<span class="company">{{ $addr['company'] }}</span><br>@endif
         @if (!empty($addr['line1'])){{ $addr['line1'] }}<br>@endif
         @if (!empty($addr['line2'])){{ $addr['line2'] }}<br>@endif
         @if (!empty($cityCountry)){{ implode(' · ', $cityCountry) }}@endif
       </address>
-      <div class="hours"><span class="dot"></span>UK &amp; Europe team &middot; Mon&ndash;Sat</div>
+      <div class="hours"><span class="dot"></span>UK &amp; Europe registered &middot; Mon&ndash;Sat</div>
       {{-- Follow our work — quiet line, only when socials configured and not suppressed by host page --}}
       @if (($showFollow ?? true) && array_filter(config('ukv.social', [])))
       <div class="follow-work">

@@ -213,7 +213,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Checked it? Now let's sort it</h2>
-  <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK &amp; Europe team checks every case before anything is submitted.</p>
+  <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A UK &amp; Europe registered service checks every case before anything is submitted.</p>
   <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 

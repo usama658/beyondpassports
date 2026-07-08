@@ -102,7 +102,7 @@
     <p class="eyebrow">Flights, hotels and the Schengen visa. One booking.</p>
     <h1>Book the trip.<br>We clear the visa.</h1>
     <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with flights and hotels. You just pack.</p>
-    <div class="tr-htrust">✦ Registered in the UK and Europe · advisor usually replies within {{ $sla }}</div>
+    <div class="tr-htrust">✦ Registered in the UK and Europe · we usually reply within {{ $sla }}</div>
     <div class="tr-chips">
       <span class="tr-chip"><b>✓</b> Flights included</span>
       <span class="tr-chip"><b>✓</b> Hotels + transfers</span>
@@ -111,7 +111,7 @@
   </div>
   <div class="tr-form">
     <div class="fl">Check your eligibility, free</div>
-    <div class="fs">Just your name and number. A UK and Europe advisor spots what could get you refused, then holds the soonest slot before it goes.</div>
+    <div class="fs">Just your name and number. A UK and Europe registered service spots what could get you refused, then holds the soonest slot before it goes.</div>
     <label for="tr-name">Your name</label><input id="tr-name" type="text" autocomplete="name" placeholder="Full name">
     <label for="tr-phone">Phone number</label><input id="tr-phone" type="tel" autocomplete="tel" placeholder="Mobile number">
     <a class="btn" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt>{!! $waIcon !!} Check my eligibility</a>

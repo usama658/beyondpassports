@@ -95,7 +95,7 @@
     </div>
     <div class="ft-bottom">
       <span>© Beyond Passports. Service fee separate from any government fee. Express speeds our handling, not the government’s decision. No approval guarantee.</span>
-      <span>Registered in UK &amp; Europe</span>
+      @include('partials.uk-eu-flags',['size'=>14]) <span>Registered in UK &amp; Europe</span>
     </div>
   </div></div>
 </footer>
