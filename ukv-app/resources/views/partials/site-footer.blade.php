@@ -95,7 +95,7 @@
     </div>
     <div class="ft-bottom">
       <span>© Beyond Passports. Independent, not the government. Fee separate from the visa fee. Approval never guaranteed.</span>
-      @include('partials.uk-eu-flags',['size'=>14]) <span>Registered in UK &amp; Europe</span>
+      <span style="display:inline-flex;align-items:center;gap:7px">@include('partials.uk-eu-flags',['size'=>14])Registered in UK &amp; Europe</span>
     </div>
   </div></div>
 </footer>
