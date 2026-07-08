@@ -38,7 +38,7 @@ html,body{overflow-x:clip;max-width:100%}
 /* HERO — 2-col split w/ form */
 .lpb .hero{padding:64px 0 58px;background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%)}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
-.lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.02em;max-width:16ch;margin:14px 0 0}
+.lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:16ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
 .lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
