@@ -382,7 +382,7 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="hc {{ $cls }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $cty }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
-  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed. We confirm your real next slot on WhatsApp</span></div>
+  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
   <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
