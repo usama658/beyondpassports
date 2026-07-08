@@ -90,7 +90,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sit .q{font-weight:700;font-size:17.5px;margin:0 0 4px}
 .lpb .sit .d{color:var(--muted);font-size:15.5px;line-height:1.45;margin:0}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
-.lpb .pathband{padding:22px 0 30px;background:var(--paper)}
+.lpb .pathband{padding:4px 0 44px;background:var(--paper)}
 .lpb .pathhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
 .lpb .pathhead .k{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text)}
 .lpb .pathhead .s{color:var(--muted);font-size:14px}
