@@ -92,6 +92,16 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ref2 .ltag{font-weight:800;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#f0a58f;margin:0 0 8px}
 .lpb .ref2 h3{color:#fff;font-size:24px;margin:0 0 8px}.lpb .ref2 p{color:#cfd9dd;font-size:16.5px;line-height:1.55;margin:0 0 16px}
 .lpb .ref2 .btn{background:#f0a58f;color:#3a1a12}
+.lpb .ref2 .goldrule{height:1px;background:linear-gradient(90deg,transparent,rgba(200,155,60,.55),transparent);margin:22px 0 16px}
+.lpb .ref2 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lpb .ref2 .tiles .t{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1.15;border-top:2px solid #C89B3C}
+.lpb .ref2 .tiles .t img{width:100%;height:100%;object-fit:cover;display:block}
+.lpb .ref2 .tiles .t .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(6,14,20,.86))}
+.lpb .ref2 .tiles .t .nm{position:absolute;left:9px;right:9px;bottom:8px;z-index:2}
+.lpb .ref2 .tiles .t .nm b{display:block;font-size:12.5px;color:#fff;line-height:1.15}
+.lpb .ref2 .tiles .t .nm span{display:block;font-size:10px;color:#E7CE93;line-height:1.2;margin-top:2px}
+.lpb .ref2 .tcap{color:#c7d2d8;font-size:12.5px;text-align:center;margin:12px 0 0}
+.lpb .ref2 .tcap b{color:#fff}
 .lpb .chips{display:flex;flex-direction:column;gap:11px}
 .lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:14px 16px;transition:transform .12s,box-shadow .12s}
 .lpb .sit:hover{transform:translateY(-2px);box-shadow:var(--sh)}
@@ -434,6 +444,16 @@ html,body{overflow-x:clip;max-width:100%}
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
       <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter free →</a>
+      @php $rteam = collect(config('ukv.team', []))->filter(fn ($m) => !empty($m['photo']))->take(3); @endphp
+      @if ($rteam->count())
+      <div class="goldrule"></div>
+      <div class="tiles">
+        @foreach ($rteam as $m)
+        <div class="t"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div></div>
+        @endforeach
+      </div>
+      <p class="tcap"><b>The people on your case.</b> Named, not a call centre.</p>
+      @endif
     </div>
     <div class="chklist">
       <ul>
