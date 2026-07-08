@@ -166,7 +166,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .rc{position:relative;background:var(--cream);border:1px solid var(--edge);border-radius:18px;padding:28px 26px;box-shadow:var(--sh);overflow:hidden}
 .lpb .rc .wm{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-weight:700;font-size:140px;line-height:1;color:var(--gold);opacity:.09;pointer-events:none}
 .lpb .rc .rst{position:relative;font-size:15px;color:var(--gold);margin:0 0 14px;letter-spacing:1px}
-.lpb .rc .rq{position:relative;font-family:var(--serif);font-size:20px;font-weight:500;color:#243039;line-height:1.44;margin:0 0 20px}
+.lpb .rc .rq{position:relative;font-family:var(--serif);font-size:18px;font-weight:500;color:#243039;line-height:1.5;margin:0 0 20px}
 .lpb .rc .rf{position:relative;display:flex;align-items:center;gap:11px;padding-top:15px;border-top:1px solid var(--edge)}
 .lpb .rc .rf .gd{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
 .lpb .rc .rn{font-weight:800;font-size:15px}.lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
