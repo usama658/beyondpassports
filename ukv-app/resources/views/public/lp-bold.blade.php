@@ -77,7 +77,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sec2 .head{text-align:center;max-width:26ch;margin:0 auto 6px;font-size:clamp(28px,3.4vw,38px)}
 .lpb .sec2 .s2sub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 26px}
 .lpb .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.lpb .chklist{background:#fff;border:1px solid var(--edge);border-radius:18px;padding:6px 24px;box-shadow:var(--sh)}
+.lpb .chklist{position:relative;background:#fff;border:1px solid var(--edge);border-radius:18px;padding:6px 24px;box-shadow:var(--sh)}
+.lpb .chklist .stamp{position:absolute;top:-22px;right:-18px;background:var(--paper);border-radius:50%;z-index:2}
 .lpb .chklist ul{margin:0;padding:0;list-style:none}
 .lpb .chklist li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--edge)}
 .lpb .chklist li:last-child{border-bottom:0}
@@ -461,6 +462,7 @@ html,body{overflow-x:clip;max-width:100%}
       @endif
     </div>
     <div class="chklist">
+      <svg class="stamp" width="60" height="60" viewBox="0 0 48 48" role="img" aria-label="Checked &amp; ready"><use href="#ukv-stamp"></use></svg>
       <ul>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">Stops a wasted fee</span></div></li>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div></li>
