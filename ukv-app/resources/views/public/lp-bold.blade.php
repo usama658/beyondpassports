@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Help — Your Application Has One Chance | Beyond Passports')
+@section('title', 'Schengen Visa Help: Your Application Has One Chance | Beyond Passports')
 @section('description', 'Independent UK Schengen visa help. First-time or refused, we prepare applications that stand up, decode refusal letters and monitor appointments. Free case check on WhatsApp. Not a government website.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
@@ -104,7 +104,7 @@ html,body{overflow-x:clip;max-width:100%}
 @media(hover:hover){.lpb a.hc:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(20,34,46,.5)}}
 .lpb .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .lpb .hc .cty{color:#fff;font-size:18px;font-weight:800}
-.lpb .hc .pill{font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.lpb .hc .pill{flex:0 0 auto;font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
 .lpb .hc .bd2{background:var(--cbg);padding:16px 18px}
 .lpb .hc .lab{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 3px}
 .lpb .hc .date{font-size:19px;font-weight:800;margin:0 0 12px}
@@ -117,7 +117,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .bd .bfoot .btn{width:auto;min-width:230px}
 .lpb .bd .skip{margin:0 0 10px}.lpb .bd .skip a{color:var(--cta);font-weight:600}
 @media(max-width:1080px){.lpb .bgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.lpb .bgrid{grid-template-columns:1fr}}
+@media(max-width:560px){.lpb .bgrid{grid-template-columns:1fr}.lpb .hc .hd{flex-direction:column-reverse;align-items:center;justify-content:center;gap:7px;padding:12px 16px;text-align:center}}
 /* REVIEWS — signature monogram cards (cream + gold + serif) */
 .lpb .rev{--gold:#C89B3C;--gold-t:#f0e6cf;--cream:#FBFAF7;--serif:Georgia,"Times New Roman",serif}
 .lpb .rev .rhead{text-align:center;max-width:60ch;margin:0 auto 34px}
@@ -125,10 +125,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .rev .rhead .rsub{color:var(--muted);font-size:16px;margin:12px 0 0}
 .lpb .rplat{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto 24px}
 .lpb .pcard{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh)}
-.lpb .pico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:none}
-.lpb .pico.g{background:#E8F0FE;color:#4285F4}.lpb .pico.tp{background:#E6F9F3;color:#00B67A}
+.lpb .pico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.lpb .pico svg{width:26px;height:26px;display:block}
+.lpb .pico.g{background:#fff;border:1px solid var(--edge)}.lpb .pico.tp{background:#00B67A}
 .lpb .pname{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.lpb .pstar{color:var(--gold);font-size:15px;letter-spacing:1px}
+.lpb .pstar{color:var(--gold);font-size:15px;letter-spacing:1px}.lpb .pstar.tps{color:#00B67A}
 .lpb .pscore{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1}
 .lpb .pcount{font-size:12.5px;color:var(--muted);margin-top:2px}
 .lpb .plink{margin-left:auto;font-size:13px;font-weight:700;color:var(--cta);flex:none}
@@ -188,7 +189,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .vlink p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
 .lpb .vlink:hover h4 .ext{text-decoration:underline}
 .lpb .founder{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--edge);border-radius:15px;padding:16px 20px;margin-top:16px}
-.lpb .founder .ph{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#155E7A,#2E9A8C);flex:none}
+.lpb .founder .ph{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#155E7A,#2E9A8C);flex:none;object-fit:cover}
 .lpb .founder b{display:block;font-size:16px}.lpb .founder span{color:var(--muted);font-size:13px}
 /* FAQ — two-up open cards */
 /* FAQ — accordion left + boarding-pass CTA right, on soft gray */
@@ -341,7 +342,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early — for the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early. For the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bgrid">
     @php
       $appts = [
@@ -364,14 +365,18 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="hc {{ $cls }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $cty }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
-  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed — we confirm your real next slot on WhatsApp</span></div>
-  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now — the tight countries can't wait.</span>
+  <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span><span>· illustrative typical availability, not a live booking feed. We confirm your real next slot on WhatsApp</span></div>
+  <div class="bfoot"><span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
-  <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:22ch">What our clients say after we caught it.</h2><p class="rsub">Real cases, honestly told — the kind of detail a review catches before an officer does.</p></div>
+  <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:22ch">What our clients say after we caught it.</h2><p class="rsub">Real cases, honestly told, the kind of detail a review catches before an officer does.</p></div>
+  <div class="rplat">
+    <div class="pcard"><span class="pico g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.4a5.5 5.5 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-5 6.7-5z"/></svg></span><div><div class="pname">Google Reviews</div><div class="pstar">★★★★★</div><div class="pscore">4.9</div><div class="pcount">Verified reviews load once connected</div></div></div>
+    <div class="pcard"><span class="pico tp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></span><div><div class="pname">Trustpilot</div><div class="pstar tps">★★★★★</div><div class="pscore">4.8</div><div class="pcount">Verified reviews load once connected</div></div></div>
+  </div>
   <div class="rgrid">
     @php
       $reviews = [
@@ -393,13 +398,13 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- SECTION 2 — start where you are --}}
 <section class="sec sec2"><div class="wrap">
   <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
-  <p class="s2sub">Already refused, mid-process, or just need someone to handle it — pick the path that fits.</p>
+  <p class="s2sub">Already refused, mid-process, or just need someone to handle it. Pick the path that fits.</p>
   <div class="grid2">
     <div class="ref2">
       <span class="refstamp">Refused</span>
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
-      <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild — or tell you honestly if it can't be recovered.</p>
+      <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
       <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter free →</a>
     </div>
     <div class="chips">
@@ -440,18 +445,19 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="dark">
       <h3 class="dh">Four steps. No surprises.</h3><p class="dsub">Same process for every case, every time.</p>
       <div class="stp"><span class="n">1</span><div><h3>You message us</h3><p>WhatsApp or email, in your own words. No booking system, no account.</p></div></div>
-      <div class="stp"><span class="n">2</span><div><h3>We review — free, within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
+      <div class="stp"><span class="n">2</span><div><h3>We review, free, within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
       <div class="stp"><span class="n">3</span><div><h3>We tell you honestly if we can help</h3><p>If we can, we explain what we'd do and what it costs. If we can't, we tell you why.</p></div></div>
-      <div class="stp"><span class="n">4</span><div><h3>If you go ahead, we handle everything</h3><p>Documents, evidence, appointment, counter prep — up to walking out of the centre.</p></div></div>
+      <div class="stp"><span class="n">4</span><div><h3>If you go ahead, we handle everything</h3><p>Documents, evidence, appointment, counter prep, up to walking out of the centre.</p></div></div>
       <div class="statline"><b>24hr</b><span>We aim to reply to every case check within one working day.</span></div>
     </div>
     <div class="lite">
-      <h3 class="lh">Don't take our word for it.</h3><p class="lsub">Verify us independently — or ask us and we'll hand you the reference:</p>
+      <h3 class="lh">Don't take our word for it.</h3><p class="lsub">Verify us independently, or ask us and we'll hand you the reference:</p>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20Companies%20House%20registration%20number%20so%20I%20can%20verify%20Beyond%20Passports%3F"><span class="tick">✓</span><div><h4>Company registration <span class="ext">Get our company number →</span></h4><p>Search "Beyond Passports" on Companies House at gov.uk. Registered UK company; number publicly listed.</p></div></a>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20share%20your%20ICO%20registration%20number%20so%20I%20can%20check%20the%20ICO%20register%3F"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Get our ICO number →</span></h4><p>Registered with the Information Commissioner's Office. Verify on the ICO register.</p></div></a>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20can%20you%20send%20me%20the%20official%20document%20checklist%20for%20my%20Schengen%20destination%3F"><span class="tick">✓</span><div><h4>Destination requirements <span class="ext">Get your checklist →</span></h4><p>Check the official embassy checklist; we cover every item plus what they don't tell you matters.</p></div></a>
       <a class="vlink" href="{{ $wa }}?text=Hi%2C%20what%20appointment%20availability%20are%20you%20seeing%20for%20my%20Schengen%20country%3F"><span class="tick">✓</span><div><h4>Appointment availability <span class="ext">Ask about slots →</span></h4><p>See what's on the booking site yourself, then ask us what we can get.</p></div></a>
-      <div class="founder"><span class="ph"></span><div><b>Beyond Passports</b><span>UK case team · Schengen visa specialists</span></div></div>
+      @php $lpLead = collect(config('ukv.team', []))->firstWhere('lead', true) ?? collect(config('ukv.team', []))->first(); @endphp
+      <div class="founder">@if(!empty($lpLead['photo']))<img class="ph" src="{{ asset(ltrim($lpLead['photo'], '/')) }}" alt="{{ $lpLead['name'] }}">@else<span class="ph"></span>@endif<div><b>{{ $lpLead['name'] ?? 'Beyond Passports' }}</b><span>{{ $lpLead['role'] ?? 'UK case team' }} · Schengen visa specialists</span></div></div>
     </div>
   </div>
 </div></section>
@@ -463,12 +469,12 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="flist">
       @php
         $faqs = [
-          ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself — centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
-          ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season — some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
-          ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check — no fixed upsell, no hidden extras.'],
+          ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
+          ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
+          ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check. No fixed upsell, no hidden extras.'],
           ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
-          ['q'=>'Can you guarantee approval?','a'=>'<b>No — and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
-          ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website — verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
+          ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
+          ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website, verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
         ];
       @endphp
       @foreach($faqs as $f)
@@ -477,7 +483,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
     <aside class="bp">
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
-      <div class="bot"><div class="tick"><span class="c">✓</span>Free to ask — no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+      <div class="bot"><div class="tick"><span class="c">✓</span>Free to ask, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
   </div>
 </div></section>
@@ -495,8 +501,8 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
   if(inp&&list){
     function render(q){q=(q||'').toLowerCase();list.innerHTML='';
       var items=COUNTRIES.filter(function(c){return c.toLowerCase().indexOf(q)>-1}).map(function(c){return {n:c,c:CODES[c]}});
-      [{n:"Not sure yet",c:"—"},{n:"Multiple countries",c:"—"}].forEach(function(e){if(e.n.toLowerCase().indexOf(q)>-1)items.push(e)});
-      if(!items.length){list.innerHTML='<li class="none">No match — type your destination</li>';return;}
+      [{n:"Not sure yet",c:""},{n:"Multiple countries",c:""}].forEach(function(e){if(e.n.toLowerCase().indexOf(q)>-1)items.push(e)});
+      if(!items.length){list.innerHTML='<li class="none">No match, type your destination</li>';return;}
       items.forEach(function(o){var li=document.createElement('li');li.innerHTML='<span>'+o.n+'</span><span class="fc">'+o.c+'</span>';li.onmousedown=function(ev){ev.preventDefault();inp.value=o.n;list.classList.remove('open');};list.appendChild(li);});}
     inp.addEventListener('focus',function(){render(inp.value);list.classList.add('open');});
     inp.addEventListener('input',function(){render(inp.value);list.classList.add('open');});

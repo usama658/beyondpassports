@@ -70,9 +70,11 @@ return [
     // royalty-free PLACEHOLDER portraits — replace with real, consented team photos.
     // `email` = per-member contact pill on /about; blank → no email pill. PLACEHOLDER addresses.
     'team' => [
-        ['name' => 'Sarah Whitfield', 'role' => 'UK Case Lead', 'bio' => 'Personally checks every application before it is submitted, nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitfield.jpg', 'email' => 'sarah@beyondpassports.co.uk'],
-        ['name' => 'James Okonkwo', 'role' => 'Senior Document Reviewer', 'bio' => 'Reviews funds evidence, validity and consistency, the things that get applications refused.', 'lead' => false, 'photo' => '/assets/img/team/james-okonkwo.jpg', 'email' => 'james@beyondpassports.co.uk'],
-        ['name' => 'Priya Sharma', 'role' => 'Client Support Lead', 'bio' => 'Keeps you updated at every step, from first check to delivered authorisation.', 'lead' => false, 'photo' => '/assets/img/team/priya-sharma.jpg', 'email' => 'priya@beyondpassports.co.uk'],
+        ['name' => 'Sarah Whitmore', 'role' => 'Lead Visa Consultant', 'bio' => 'Personally checks every application before it is submitted, nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitmore.png', 'email' => 'sarah@beyondpassports.co.uk'],
+        ['name' => 'Imran Malik', 'role' => 'Refusal-Recovery Specialist', 'bio' => 'Decodes refusal letters, finds the real trigger, and rebuilds the file, or tells you honestly when it cannot be recovered.', 'lead' => false, 'photo' => '/assets/img/team/imran-malik.png', 'email' => 'imran@beyondpassports.co.uk'],
+        ['name' => 'Chloe Adams', 'role' => 'Appointments & Client Coordinator', 'bio' => 'Monitors slots across all 27 states daily and keeps you updated at every step.', 'lead' => false, 'photo' => '/assets/img/team/chloe-adams.png', 'email' => 'chloe@beyondpassports.co.uk'],
+        // Hidden for now — asset + profile kept (photo: david-hartley.png, docs/team-profiles.md). Uncomment to restore.
+        // ['name' => 'David Hartley', 'role' => 'Senior Case Reviewer', 'bio' => 'Final review before submission, the wrong bank statement or missing letter caught before an officer sees it.', 'lead' => false, 'photo' => '/assets/img/team/david-hartley.png', 'email' => 'david@beyondpassports.co.uk'],
     ],
 
     // Shared WhatsApp shown on each /about team card (wa.me digits, no +). PLACEHOLDER on the
