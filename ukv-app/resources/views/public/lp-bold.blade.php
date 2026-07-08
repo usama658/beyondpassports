@@ -42,11 +42,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
 .lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
-.lpb .formcard .fl{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
+.lpb .formcard .fl{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
 .lpb .formcard .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
 .lpb .form .row{display:flex;gap:12px;margin:0 0 12px}.lpb .form .fld{flex:1}
-.lpb .form label{display:block;font-size:15px;font-weight:700;margin:0 0 6px;color:var(--ink)}
-.lpb .form input[type=text]{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:14px 15px;color:var(--ink);font:600 17px var(--display)}
+.lpb .form label{display:block;font-size:15px;font-weight:500;margin:0 0 6px;color:var(--ink)}
+.lpb .form input[type=text]{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:14px 15px;color:var(--ink);font:500 17px var(--display)}
 .lpb .form input:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
 .lpb .form .cons{display:flex;gap:8px;align-items:flex-start;margin:13px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
 .lpb .form .cons input{width:16px;height:16px;flex:none;margin-top:2px}
@@ -64,7 +64,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .cb-input{padding-right:34px!important;cursor:pointer}
 .lpb .cb-list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--edge);border-radius:12px;box-shadow:var(--sh2);max-height:230px;overflow:auto;padding:6px;display:none;list-style:none;margin:0}
 .lpb .cb-list.open{display:block}
-.lpb .cb-list li{padding:10px 12px;border-radius:8px;font-size:16.5px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lpb .cb-list li{padding:10px 12px;border-radius:8px;font-size:16.5px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .lpb .cb-list li:hover{background:#eef4f6;color:var(--cta)}
 .lpb .cb-list li .fc{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
 .lpb .cb-list li.none{color:var(--muted);font-weight:500;cursor:default}.lpb .cb-list li.none:hover{background:transparent}
