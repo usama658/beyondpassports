@@ -36,7 +36,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ctarow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
 .lpb .ctarow .btn{width:auto;min-width:230px}
 /* HERO — 2-col split w/ form */
-.lpb .hero{padding:46px 0 46px;background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%)}
+.lpb .hero{padding:64px 0 58px;background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%)}
 .lpb .hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
 .lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.02em;max-width:16ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
@@ -90,6 +90,12 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sit .q{font-weight:700;font-size:17.5px;margin:0 0 4px}
 .lpb .sit .d{color:var(--muted);font-size:15.5px;line-height:1.45;margin:0}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.lpb .pathband{padding:22px 0 30px;background:var(--paper)}
+.lpb .pathhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+.lpb .pathhead .k{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text)}
+.lpb .pathhead .s{color:var(--muted);font-size:14px}
+.lpb .sitrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.lpb .sitrow{grid-template-columns:1fr}}
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
@@ -332,6 +338,16 @@ html,body{overflow-x:clip;max-width:100%}
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
 </div></div></section>
+
+{{-- PATHS — horizontal "start where you are" chips, before the trust bar --}}
+<section class="pathband"><div class="wrap">
+  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 24 hours</span></div>
+  <div class="sitrow">
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
+  </div>
+</div></section>
 
 {{-- TRUST BAR --}}
 <section class="tbar-f"><div class="wrap"><div class="trow">
