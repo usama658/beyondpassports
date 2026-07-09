@@ -176,7 +176,7 @@ html,body{overflow-x:clip;max-width:100%}
 /* DECODER "Refusal recovery" — drafted out, see partials/lp-draft-decoder.blade.php */
 /* FEAR — VIS severity meter (exact refusal-risk design) + photographic bg */
 .lpb .fear{position:relative;color:#ECF2FB;background:#0A1628 url('{{ asset('assets/img/lp/fear-passport-map.jpg') }}') center/cover no-repeat;overflow:hidden}
-.lpb .fear::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.82),rgba(10,22,40,.92));z-index:1}
+.lpb .fear::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,20,38,.94),rgba(9,20,38,.975));z-index:1}
 .lpb .fear>.wrap{position:relative;z-index:2}
 .lpb .fear .flabel{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FF5A5A;margin-bottom:18px}
 .lpb .fear .fsh{max-width:60ch;margin:0 auto 40px;text-align:center}
