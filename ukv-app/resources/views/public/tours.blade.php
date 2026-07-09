@@ -143,7 +143,7 @@
     @foreach ($tours as $p)
       <div class="tr-card">
         <div class="bg" style="background:{{ $p['img'] }}"></div><div class="scrim"></div>
-        <span class="vis">{{ $p['flagship'] ? '★ Flagship' : 'Visa + appointment' }}</span>
+        <span class="vis">{{ $p['flagship'] ? '★ Flagship' : 'Visa + flights + hotels' }}</span>
         <span class="day">{{ $p['days'] }}</span>
         <div class="in">
           <div class="co"><span class="tr-flag" style="background:{{ $p['flag'] }}"></span>{{ $p['where'] }}</div>
