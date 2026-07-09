@@ -18,7 +18,7 @@
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
   <nav class="nav" id="primary-nav" aria-label="Primary">
     {{-- Schengen-only: simple top-nav link (mega-menu removed; recoverable from git). --}}
-    <a href="{{ url('/destinations') }}">Schengen visa</a>
+    <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
     <a href="{{ url('/tour-packages') }}">{{ config('ukv.tours.nav_label', 'Plan a trip') }}</a>
     <a href="{{ url('/about') }}">Who we are</a>
     <a href="{{ url('/contact') }}" class="btn btn--ghost" style="padding:8px 16px">Contact</a>

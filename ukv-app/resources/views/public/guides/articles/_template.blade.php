@@ -22,7 +22,7 @@
   <p>You don't have to piece it together alone. The quickest route is to check your specific trip, then have a real person review the details before anything is submitted:</p>
   <ul>
     <li><a href="{{ url('/tools') }}">Run our free checker</a> to see what your trip is likely to need.</li>
-    <li>Browse our <a href="{{ url('/destinations') }}">destinations</a> for the current category and typical requirements.</li>
+    <li>Browse our <a href="{{ url('/schengen-visa') }}">destinations</a> for the current category and typical requirements.</li>
     <li>If driving is part of your trip, see our <a href="{{ url('/driving-abroad') }}">driving-abroad (IDP) guidance</a>.</li>
     <li>Read up first, then <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about this guide.') }}" target="_blank" rel="noopener">Check eligibility →</a> when you're ready and we'll check it for errors.</li>
   </ul>

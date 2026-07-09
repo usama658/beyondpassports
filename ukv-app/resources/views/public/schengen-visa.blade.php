@@ -534,7 +534,7 @@
   </ul>
   @endif
   <div class="cov-cta">
-    <a class="btn btn--ghost" href="{{ url('/destinations') }}">Browse all destinations &rarr;</a>
+    <a class="btn btn--ghost" href="{{ url('/schengen-visa') }}">Browse all destinations &rarr;</a>
   </div>
 </div></section>
 

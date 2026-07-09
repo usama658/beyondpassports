@@ -27,7 +27,7 @@
     <li><strong>eVisas:</strong> destinations such as Turkey, Egypt and India commonly use an online visa you apply for in advance.</li>
     <li><strong>Visa-free (with conditions):</strong> some destinations let UK citizens enter for short stays without applying in advance, but entry rules and limits still apply.</li>
   </ul>
-  <p>These are general patterns and they change. Browse your <a href="{{ url('/destinations') }}">destination guide</a> and always confirm the current rule for your specific passport before you book.</p>
+  <p>These are general patterns and they change. Browse your <a href="{{ url('/schengen-visa') }}">destination guide</a> and always confirm the current rule for your specific passport before you book.</p>
 
   <h2>How to be sure for your trip</h2>
   <p>The honest answer is that there's no shortcut around checking your exact situation. To get it right:</p>

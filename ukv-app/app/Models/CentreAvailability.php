@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
 /**
  * Published availability snapshot for one bookable centre (supply node).
  *
- * Drives the public /destinations appointment board via AvailabilityService. This is the
+ * Drives the public /schengen-visa appointment board via AvailabilityService. This is the
  * MARKETING surface, kept separate from CentreSlot (real held inventory against orders).
  *
  * Honesty by construction: status() decays at read time. Once expires_at passes, or when no

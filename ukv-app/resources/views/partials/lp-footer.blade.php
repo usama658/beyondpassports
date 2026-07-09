@@ -61,7 +61,7 @@
       <div class="bpc-col">
         <strong>Service</strong>
         <a href="{{ url('/services') }}">All services</a>
-        <a href="{{ url('/destinations') }}">Schengen visa</a>
+        <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
         <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
         <a href="{{ url('/track') }}">Track application</a>
       </div>

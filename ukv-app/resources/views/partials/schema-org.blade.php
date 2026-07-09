@@ -42,7 +42,7 @@
   HOW A DESTINATION PAGE ADDS Service + FAQPage SCHEMA
   ───────────────────────────────────────────────────────────────────────────
   Do NOT add this here. Put it in the per-destination view (e.g.
-  resources/views/destinations/show.blade.php), inside a @push('schema') stack
+  resources/views/schengen-visa/show.blade.php), inside a @push('schema') stack
   that the layout @stacks right after this include. Example:
 
   @push('schema')

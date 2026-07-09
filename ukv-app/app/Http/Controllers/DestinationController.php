@@ -19,7 +19,7 @@ use Illuminate\Contracts\View\View;
  * reference at frontend/destination.html (the Turkey eVisa money page).
  *
  * Routes to register (NOT wired here — routes/web.php is owned elsewhere):
- *   GET /destinations            -> index()
+ *   GET /schengen-visa            -> index()
  *   GET /visa/{destination:slug} -> show()    (route-model binding key: slug)
  *
  * Compliance copy (independent service / govt fee separate / express = our handling /
@@ -32,7 +32,7 @@ class DestinationController extends Controller
      */
     public function index(AvailabilityService $availability): View
     {
-        // Schengen-only: the /destinations hub lists the Schengen countries (searchable grid).
+        // Schengen-only: the /schengen-visa hub lists the Schengen countries (searchable grid).
         $destinations = Destination::query()
             ->where('visa_type', 'Schengen')
             ->orderBy('name')
@@ -59,7 +59,7 @@ class DestinationController extends Controller
 
     /**
      * Conversion landing page for the "Schengen visa consultancy" keyword (separate from the
-     * /destinations browse hub). Reuses the honest availability board + reviews; built to convert
+     * /schengen-visa browse hub). Reuses the honest availability board + reviews; built to convert
      * paid/organic traffic searching for Schengen visa help.
      */
     public function schengenLanding(AvailabilityService $availability): View
@@ -119,9 +119,9 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination, RequirementService $requirements)
     {
-        // Schengen-only pivot (2026-06-24): non-Schengen money pages 301 -> /destinations. Reversible.
+        // Schengen-only pivot (2026-06-24): non-Schengen money pages 301 -> /schengen-visa. Reversible.
         if ($destination->visa_type !== 'Schengen') {
-            return redirect('/destinations', 301);
+            return redirect('/schengen-visa', 301);
         }
 
         // Document Requirements Engine: a generic "documents you'll likely need" preview for

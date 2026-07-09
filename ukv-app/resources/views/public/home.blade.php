@@ -463,7 +463,7 @@
   // "See all" target: Schengen regions deep-link to the filtered hub; others to the full list.
   $regionUrl = fn ($r) => in_array($r, $regionOrder, true)
       ? url('/visa/schengen').'?region='.urlencode($r)
-      : url('/destinations');
+      : url('/schengen-visa');
 @endphp
 @push('head')
 <style>
@@ -491,7 +491,7 @@
     <p class="lede">Pick your destination. Every document reviewed by hand before you submit.</p>
   </div>
   <div class="dtabs" id="dtabs">
-    <button type="button" class="dtab active" data-region="all" data-url="{{ url('/destinations') }}" data-label="destinations"><span class="tk"><svg viewBox="0 0 24 24"><path d="m5 13 4 4 10-10"/></svg></span>Popular</button>
+    <button type="button" class="dtab active" data-region="all" data-url="{{ url('/schengen-visa') }}" data-label="destinations"><span class="tk"><svg viewBox="0 0 24 24"><path d="m5 13 4 4 10-10"/></svg></span>Popular</button>
     @foreach ($regionsPresent as $rk)
       <button type="button" class="dtab" data-region="{{ $rk }}" data-url="{{ $regionUrl($rk) }}" data-label="{{ $rk }}"><span class="tk"><svg viewBox="0 0 24 24"><path d="m5 13 4 4 10-10"/></svg></span>{{ str_replace(' Europe', '', $rk) }} <span class="c">{{ $regionCounts[$rk] }}</span></button>
     @endforeach
@@ -503,7 +503,7 @@
   @endforeach
   </div>
   <p class="dest-empty" id="dest-empty">More destinations in this region coming soon.</p>
-  <div class="dest-more"><a id="dest-see-all" class="rlink" style="font-weight:600" href="{{ url('/destinations') }}">See all destinations @if(config('ukv.show_prices'))&amp; fixed fees @endif→</a></div>
+  <div class="dest-more"><a id="dest-see-all" class="rlink" style="font-weight:600" href="{{ url('/schengen-visa') }}">See all destinations @if(config('ukv.show_prices'))&amp; fixed fees @endif→</a></div>
   <script>
     (function () {
       var tabs = document.querySelectorAll('#dtabs .dtab');

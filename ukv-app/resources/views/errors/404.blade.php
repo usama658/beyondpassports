@@ -113,7 +113,7 @@
       <p>The link you followed isn't in our system. It may have moved, or the address has a typo. Let's get you back on track.</p>
       <div class="routes">
         <a class="primary" href="{{ url('/') }}">Back to home</a>
-        <a class="ghost" href="{{ url('/destinations') }}">Browse destinations</a>
+        <a class="ghost" href="{{ url('/schengen-visa') }}">Browse destinations</a>
         <a class="ghost" href="{{ url('/track') }}">Track an application</a>
         <a class="ghost" href="{{ url('/contact') }}">Talk to our team</a>
       </div>

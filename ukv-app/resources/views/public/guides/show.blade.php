@@ -83,7 +83,7 @@
     // BreadcrumbList: home > destinations > country > guide  (country crumbs only when relevant)
     $crumbs = [['name' => 'Home', 'url' => url('/')]];
     if ($isCountry) {
-        $crumbs[] = ['name' => 'Destinations', 'url' => url('/destinations')];
+        $crumbs[] = ['name' => 'Destinations', 'url' => url('/schengen-visa')];
         $crumbs[] = ['name' => $destination->name, 'url' => url('/visa/'.$destination->slug)];
         $crumbs[] = ['name' => $type->label(), 'url' => $guideUrl];
     } else {

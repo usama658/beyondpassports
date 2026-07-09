@@ -18,6 +18,6 @@
 
   <h2>What to do if you're cutting it fine</h2>
   <p>If your passport doesn't clear the buffer, the safest move is to renew it before you commit to travel dates, because a renewal takes time you may not have closer to departure. Plan around the renewal, not the other way round.</p>
-  <p>Checking this early is the single cheapest insurance there is. Once you know your passport is good, you can <a href="{{ url('/tools') }}">use our free checker</a> to see what else your trip needs, browse <a href="{{ url('/destinations') }}">destination requirements</a>, or read our guide to the <a href="{{ url('/guides/documents-before-you-apply') }}">documents to prepare before you apply</a>.</p>
+  <p>Checking this early is the single cheapest insurance there is. Once you know your passport is good, you can <a href="{{ url('/tools') }}">use our free checker</a> to see what else your trip needs, browse <a href="{{ url('/schengen-visa') }}">destination requirements</a>, or read our guide to the <a href="{{ url('/guides/documents-before-you-apply') }}">documents to prepare before you apply</a>.</p>
 
   <p class="inline-note">Beyond Passports is an independent service and not a government website. We help you check requirements and prepare accurately. We can't change a passport rule or guarantee any government decision.</p>

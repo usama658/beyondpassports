@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
 /**
- * Marketing-side appointment availability for the public /destinations board.
+ * Marketing-side appointment availability for the public /schengen-visa board.
  *
  * Reads published CentreAvailability snapshots (NOT real held inventory — that is CentreSlot/
  * SlotService). The snapshot's own status()/isStale() are the single source of truth: a stale or

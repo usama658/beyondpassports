@@ -128,7 +128,8 @@ Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
 Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->middleware('throttle:10,1')->name('documents.detail'); // post-pay document-detail capture (Document Requirements Engine)
 
 // --- Public destination money pages (DB-driven, SEO) ---
-Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
+Route::get('/schengen-visa', [DestinationController::class, 'index'])->name('destinations.index');
+Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → canonical Schengen visa page
 Route::get('/schengen-visa-consultancy', [DestinationController::class, 'schengenLanding'])->name('schengen.landing');
 Route::get('/visa/schengen', [DestinationController::class, 'schengen'])->name('destinations.schengen');
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');

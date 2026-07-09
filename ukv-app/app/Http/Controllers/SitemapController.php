@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
  *
  * Lists only public, indexable URLs:
  *   - Home (/)
- *   - Destinations index (/destinations)
+ *   - Destinations index (/schengen-visa)
  *   - One money page per Destination (/visa/{slug})
  *
  * Intentionally EXCLUDED (private / transactional / noindex):
@@ -38,7 +38,7 @@ class SitemapController extends Controller
             ['/services', 'weekly', '0.9'],
             ['/tour-packages', 'weekly', '0.8'],
             ['/schengen-visa-consultancy', 'weekly', '0.9'],
-            ['/destinations', 'weekly', '0.8'],
+            ['/schengen-visa', 'weekly', '0.8'],
             ['/tools', 'monthly', '0.7'],
             ['/guides', 'weekly', '0.6'],
             ['/document-checklist', 'monthly', '0.7'],
