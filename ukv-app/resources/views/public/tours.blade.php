@@ -104,6 +104,20 @@
   .tr-ctaconsult a{color:var(--on-dark);font-weight:700;text-decoration:none}
   @media(max-width:900px){.tr-hgrid{grid-template-columns:1fr}.tr-cin{grid-template-columns:1fr 1fr}}
   @media(max-width:760px){.tr-cin{grid-template-columns:1fr}.tr-stats .row{grid-template-columns:1fr 1fr}.tr-stats .row>div+div{border-left:0}}
+  /* interactive tiles — how-it-works steps + stat cells (hover-capable only) */
+  @media (hover:hover){
+    .tr-how .steps .step{transition:background .2s ease}
+    .tr-how .steps .step:hover{background:rgba(46,154,140,.07)}
+    .tr-how .steps .step .num{transition:transform .18s ease,color .18s ease}
+    .tr-how .steps .step:hover .num{transform:scale(1.08);color:var(--stamp,#2E9A8C)}
+    .tr-how .steps .step h3{transition:color .18s ease}
+    .tr-how .steps .step:hover h3{color:var(--cta)}
+    .tr-stats .row>div{transition:background .2s ease}
+    .tr-stats .row>div:hover{background:rgba(21,94,122,.05)}
+    .tr-stats .row>div .n{transition:transform .18s ease}
+    .tr-stats .row>div:hover .n{transform:scale(1.06)}
+  }
+  @media (prefers-reduced-motion:reduce){.tr-how .steps .step,.tr-how .steps .step .num,.tr-stats .row>div,.tr-stats .row>div .n{transition:none!important}}
 </style>
 @endpush
 
