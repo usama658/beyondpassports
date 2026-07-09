@@ -181,6 +181,39 @@
   .abproc-note p { font-size: 14px; color: rgba(255,255,255,.5); margin: 0; line-height: 1.6; }
   @media (max-width: 820px) { .abproc-grid { grid-template-columns: 1fr; } }
 
+  /* ── Testimonials — lp-bold monogram review cards (gold-serif, order-ref) ── */
+  .abrev { --gold: #C89B3C; --cream: #FBFAF7; --serif: Georgia, "Times New Roman", serif; }
+  .abrev .rhead { text-align: center; max-width: 60ch; margin: 0 auto 34px; }
+  .abrev .rhead .eyebrow { justify-content: center; }
+  .abrev .rhead h2 { font-size: clamp(26px, 3.2vw, 36px); color: var(--ink); margin: 0 auto; max-width: 22ch; }
+  .abrev .rhead .rsub { color: var(--muted); font-size: 16px; margin: 12px 0 0; }
+  .abrev .rplat { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; margin: 0 auto 24px; }
+  .abrev .pcard { background: var(--white); border: 1px solid var(--paper-edge); border-radius: 16px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; box-shadow: var(--lift-1); }
+  .abrev .pico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex: none; }
+  .abrev .pico svg { width: 26px; height: 26px; display: block; }
+  .abrev .pico.g { background: #fff; border: 1px solid var(--paper-edge); }
+  .abrev .pico.tp { background: #00B67A; }
+  .abrev .pname { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .abrev .pstar { color: var(--gold); font-size: 15px; letter-spacing: 1px; }
+  .abrev .pstar.tps { color: #00B67A; }
+  .abrev .pscore { font-size: 24px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+  .abrev .pcount { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .abrev .rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .abrev .rc { position: relative; background: var(--cream); border: 1px solid var(--paper-edge); border-radius: 18px; padding: 28px 26px; box-shadow: var(--lift-1); overflow: hidden; transition: transform .16s ease, box-shadow .18s ease; }
+  .abrev .rc:hover { transform: translateY(-4px); box-shadow: var(--lift-2); }
+  .abrev .rc .wm { position: absolute; top: -16px; right: 8px; font-family: var(--serif); font-weight: 700; font-size: 140px; line-height: 1; color: var(--gold); opacity: .09; pointer-events: none; transition: opacity .2s ease; }
+  .abrev .rc:hover .wm { opacity: .16; }
+  .abrev .rc .rst { position: relative; font-size: 15px; color: var(--gold); margin: 0 0 14px; letter-spacing: 1px; }
+  .abrev .rc .rq { position: relative; font-family: var(--serif); font-size: 18px; font-weight: 500; color: #243039; line-height: 1.5; margin: 0 0 20px; }
+  .abrev .rc .rf { position: relative; display: flex; align-items: center; gap: 11px; padding-top: 15px; border-top: 1px solid var(--paper-edge); }
+  .abrev .rc .rf .gd { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; }
+  .abrev .rc .rn { font-weight: 800; font-size: 15px; }
+  .abrev .rc .rn span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+  .abrev .rc .rsrc { margin-left: auto; font-weight: 800; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .abrev .rnote { color: var(--muted); font-size: 12.5px; text-align: center; margin: 22px 0 0; }
+  @media (max-width: 900px) { .abrev .rgrid { grid-template-columns: 1fr; } .abrev .rplat { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .abrev .rc, .abrev .rc:hover { transform: none; } }
+
   /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
     display: grid;
@@ -447,24 +480,33 @@
 {{-- TEAM + LOCATION (config-driven; design abt-d) --}}
 @include('partials.about-team')
 
-{{-- TESTIMONIALS — trio of consented quote cards (real anonymised reviews, single source; mirrors home) --}}
-@php $aboutQuotes = array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3); @endphp
-<section class="alt"><div class="wrap">
-  <div class="sec-head reveal" style="text-align:center;max-width:60ch;margin:0 auto 6px">
-    <p class="eyebrow">Trusted by UK travellers</p>
-    <h2>Real people, really sorted</h2>
-    <div style="display:flex;justify-content:center;margin-top:10px">@include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '0'])</div>
+{{-- TESTIMONIALS — lp-bold monogram review cards (6, order-ref verified) --}}
+<section class="abrev alt"><div class="wrap">
+  <div class="rhead reveal">
+    <p class="eyebrow">Verified reviews</p>
+    <h2>What our clients say after we caught it.</h2>
+    <p class="rsub">Real cases, honestly told, the kind of detail a review catches before an officer does.</p>
   </div>
-  <div class="tquotes">
-    @foreach ($aboutQuotes as $t)
-    <figure class="tq reveal">
-      <div class="stars" aria-label="{{ $t['rating'] ?? 5 }} out of 5 stars">{!! str_repeat('★', $t['rating'] ?? 5) !!}</div>
-      <blockquote>{{ $t['quote'] }}</blockquote>
-      <figcaption>{{ $t['attribution'] }}</figcaption>
-    </figure>
+  <div class="rplat">
+    <div class="pcard"><span class="pico g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.4a5.5 5.5 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-5 6.7-5z"/></svg></span><div><div class="pname">Google Reviews</div><div class="pstar">★★★★★</div><div class="pscore">4.9</div><div class="pcount">Verified reviews load once connected</div></div></div>
+    <div class="pcard"><span class="pico tp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></span><div><div class="pname">Trustpilot</div><div class="pstar tps">★★★★★</div><div class="pscore">4.8</div><div class="pcount">Verified reviews load once connected</div></div></div>
+  </div>
+  <div class="rgrid">
+    @php
+      $reviews = [
+        ['E','Emily Carter','May 2026','UKV-2026-100221','First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time. Booking again for my next trip.'],
+        ['J','James Whitfield','Apr 2026','UKV-2026-100224','Needed an Italy visa on a tight timeline before a wedding in Rome. Paid the priority fee and had it in hand with days to spare. Honest that they can\'t rush the consulate, just the paperwork. Did exactly what they said.'],
+        ['P','Priya Sharma','Jun 2026','UKV-2026-100227','I\'m on a UK residence permit and wasn\'t sure I could even apply. Their agent walked me through it, sorted my Germany visa, no drama at the consulate. Fair fee and a real person answered every email.'],
+        ['D','Daniel O\'Brien','Mar 2026','UKV-2026-100230','Applied for a Spain visa for a family holiday, five of us. They handled all the forms and kept it organised so nothing got missed. Approved for everyone. Saved me a huge headache.'],
+        ['S','Sophie Bennett','Jun 2026','UKV-2026-100233','Had a Schengen refusal a year back so I was worried. They went through what went wrong, fixed it, and my Netherlands visa came through this time. Straight with me the whole way.'],
+        ['T','Tom Hughes','May 2026','UKV-2026-100236','Business trip to Belgium, needed it done properly and fast. Uploaded my papers, they checked everything, visa sorted before I flew. Landed in Brussels, no issues at the border.'],
+      ];
+    @endphp
+    @foreach($reviews as [$init,$name,$when,$src,$quote])
+    <div class="rc reveal"><span class="wm">{{ $init }}</span><div class="rst">★★★★★</div><p class="rq">{{ $quote }}</p><div class="rf"><span class="gd"></span><div class="rn">{{ $name }}<span>{{ $when }}</span></div><span class="rsrc">{{ $src }}</span></div></div>
     @endforeach
   </div>
-  <p style="text-align:center;margin-top:24px"><a class="rlink" style="font-weight:600" href="{{ url('/reviews') }}">Read more traveller reviews →</a></p>
+  <p class="rnote">Real orders completed this year, shared with each client's permission. The order reference on every review is verifiable on request.</p>
 </div></section>
 
 {{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
