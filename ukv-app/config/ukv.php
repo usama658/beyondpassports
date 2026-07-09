@@ -208,7 +208,7 @@ return [
     //   'img' is a CSS background (gradient placeholder); swap for a real photo URL
     //   under /assets when photography is ready.
     'tours' => [
-        'nav_label'    => 'Plan a trip',
+        'nav_label'    => 'Tour Packages',
         'enquiry_only' => (bool) env('UKV_TOURS_ENQUIRY_ONLY', true),
         // 'img' layers the destination photo over a colour-matched gradient fallback
         // (shown if the photo ever fails to load). Photos are self-hosted, Unsplash-
