@@ -14,12 +14,45 @@
   }
   .ab-hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 48px;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
     align-items: center;
   }
-  .ab-hero-copy h1 { max-width: 18ch; }
-  .ab-hero-copy .lede { max-width: 50ch; }
+  .ab-hero-copy h1 { max-width: 20ch; font-size: clamp(32px, 4.4vw, 50px); }
+  .ab-hero-copy .lede { max-width: 46ch; margin-bottom: 16px; }
+  .ab-hero-copy .callout {
+    font-size: 15px; color: #33454f; line-height: 1.6;
+    background: var(--white); border: 1px solid var(--paper-edge);
+    border-left: 3px solid var(--stamp); border-radius: 0 8px 8px 0;
+    padding: 12px 16px; margin: 0 0 26px;
+  }
+  .ab-hero-copy .h-btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 10px; }
+  .ab-hero-copy .h-btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-weight: 700; padding: 13px 22px; border-radius: 12px;
+    text-decoration: none; font-size: 15.5px; border: 0;
+    transition: transform .1s, box-shadow .15s;
+  }
+  .ab-hero-copy .h-btn.wa { background: #25D366; color: #06301a; }
+  .ab-hero-copy .h-btn.wa svg { width: 18px; height: 18px; fill: #06301a; }
+  .ab-hero-copy .h-btn.wa:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(37,211,102,.7); }
+  .ab-hero-copy .h-btn.ghost { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); }
+  .ab-hero-copy .h-btn.ghost:hover { box-shadow: rgba(21,94,122,.14) 0 0 0 3px; }
+  .ab-hero-copy .friction { font-size: 13px; color: var(--muted, #5d6b76); margin: 0 0 18px; }
+  /* navy portrait frame + glass founder badge (hero right) */
+  .ab-frame {
+    background: var(--navy); border-radius: 18px; overflow: hidden;
+    aspect-ratio: 4/5; position: relative; box-shadow: var(--lift-2);
+  }
+  .ab-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .ab-fbadge {
+    position: absolute; bottom: 20px; left: 20px; right: 20px;
+    background: rgba(22,34,46,.88); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 12px;
+    padding: 14px 18px; color: #fff;
+  }
+  .ab-fbadge strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .ab-fbadge span { font-size: 13px; color: var(--soft); }
   .ab-idcard {
     background:
       radial-gradient(380px 180px at 110% -10%, rgba(21,94,122,.30), transparent 60%),
@@ -230,6 +263,7 @@
   @media (max-width: 860px) {
     .ab-hero-grid { grid-template-columns: 1fr; gap: 30px; }
     .ab-hero-copy h1, .ab-hero-copy .lede { max-width: none; }
+    .ab-frame { max-width: 380px; }
     .ab-who-grid { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 900px) {
@@ -248,19 +282,30 @@
 
 {{-- HERO --}}
 <section class="ab-hero"><div class="wrap"><div class="ab-hero-grid">
+  @php
+    $lead = collect(config('ukv.team'))->firstWhere('lead', true);
+    $waHero = 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi, I would like a free case review of my Schengen application. ');
+  @endphp
   <div class="ab-hero-copy reveal">
-    <p class="eyebrow">About us</p>
-    <h1>An independent Schengen visa service, registered in the UK and Europe.</h1>
-    <p class="lede">Beyond Passports is a private visa consultancy. We prepare, check and submit Schengen applications, catching the avoidable mistakes that get people refused.</p>
-    @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
+    <p class="eyebrow">Who we are</p>
+    <h1>The people who check your file before the consulate does.</h1>
+    <p class="lede">Beyond Passports is a Schengen visa consultancy. With offices in the UK and Germany, we have prepared thousands of applications since {{ App\Support\SiteStats::foundedYear() }}. Every one reviewed by a real person before it reached the consulate.</p>
+    <p class="callout">Applying with a passport that faces higher consulate scrutiny? The document list is longer and the margin for error is smaller. That is exactly what we prepare for.</p>
+    <div class="h-btns">
+      <a href="{{ $waHero }}" target="_blank" rel="noopener" class="h-btn wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.8 6.5L3 29l7.2-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3z"/></svg>WhatsApp our adviser</a>
+      <a href="{{ url('/contact') }}" class="h-btn ghost">Send us your case</a>
+    </div>
+    <p class="friction">Free case review. No commitment. We will tell you honestly if we can help. Usually within a few hours.</p>
+    @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '0'])
   </div>
-  <div class="ab-idcard reveal" aria-label="Beyond Passports on LinkedIn" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center">
-    <p class="ic-k" style="margin:0">Beyond Passports · who we are</p>
-    {{-- LinkedIn profile badge. profile.js upgrades this to the rich card, and it sets
-         LinkedIn cookies — so the script is consent-gated in partials.cookie-consent
-         (loads only after the visitor accepts). Until then the fallback link shows:
-         no third-party request, PECR-safe. --}}
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="beyond-passports-46389641b" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/beyond-passports-46389641b?trk=profile-badge" target="_blank" rel="noopener">Beyond Passports on LinkedIn</a></div>
+  <div class="reveal">
+    <div class="ab-frame">
+      <img src="{{ $lead['photo'] ?? '/assets/img/team/sarah-whitmore.png' }}" alt="{{ $lead['name'] ?? 'Sarah Whitmore' }}, {{ $lead['role'] ?? 'Lead Visa Consultant' }}">
+      <div class="ab-fbadge">
+        <strong>{{ $lead['name'] ?? 'Sarah Whitmore' }}</strong>
+        <span>{{ $lead['role'] ?? 'Lead Visa Consultant' }}, reviews every file before submission</span>
+      </div>
+    </div>
   </div>
 </div></div></section>
 
@@ -284,21 +329,21 @@
   $ccCross = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#155E7A" stroke-width="2.2" stroke-linecap="round"/></svg>';
 @endphp
 <section id="who"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>A private service, not a public office</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>Built on a standard that does not change</h2></div>
   <div class="ab-who-grid">
     <div class="ab-prose reveal">
-      <p>Founded in {{ App\Support\SiteStats::foundedYear() }}, Beyond Passports is an independent Schengen visa consultancy registered in the UK and Europe. We check your details, prepare your paperwork and guide you through submission, so small mistakes don't turn into a refused application or a cancelled trip.</p>
-      <p>We are <strong>not</strong> a government body, and we are <strong>not</strong> affiliated with any embassy, consulate or official authority. We're a private company you can <em>choose</em> to use to save time and avoid errors. You can always apply directly yourself; using us is optional.</p>
-      <p><strong>A real person checks every application before it's submitted. Nothing is outsourced.</strong> Registered in the UK and Europe, we confirm you qualify, review your documents for the things that actually get applications refused, and run a final check before anything reaches the consulate.</p>
+      <p>Visa consultancies exist in every corner of the internet. Most collect enquiries and reply with a template. We built Beyond Passports to be the opposite: a consultancy where a qualified person reads your documents, checks your history and tells you honestly whether your file is ready to submit.</p>
+      <p>We charge a flat fee. A real person reviews every document before it is submitted. If we cannot improve your chances, we say so before you pay. That is the whole model, and it does not change from one case to the next.</p>
       <p class="ab-note">Our service fee is separate from, and additional to, the consulate or embassy fee. The official fee is set and collected by the authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
     </div>
     <div class="ab-contrast reveal">
       <div class="ab-cc is-are">
         <p class="cc-t">We are</p>
         <ul>
-          <li>{!! $ccTick !!}Independent, registered in UK &amp; Europe</li>
-          <li>{!! $ccTick !!}Real human document checks</li>
-          <li>{!! $ccTick !!}Optional, your choice to use</li>
+          <li>{!! $ccTick !!}Offices in the UK and Germany</li>
+          <li>{!! $ccTick !!}Human document checks on every case</li>
+          <li>{!! $ccTick !!}Optional to use, your choice</li>
+          <li>{!! $ccTick !!}Professionally insured</li>
         </ul>
       </div>
       <div class="ab-cc is-not">
