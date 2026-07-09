@@ -11,8 +11,8 @@
       <p class="t">Prepared &amp; checked by our UK team</p>
     </div>
     <div class="stub">
-      <span class="fee">Chat&nbsp;→</span>
-      <span class="lab">WhatsApp</span>
+      <div class="fee">Chat&nbsp;→</div>
+      <div class="lab">WhatsApp</div>
     </div>
   </div>
 </a>
