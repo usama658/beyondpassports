@@ -498,17 +498,8 @@
   </div>
   <div class="dests" id="dests">
   @foreach ($schengenDests as $d)
-    <a class="pass reveal" data-region="{{ $d->region ?: 'Worldwide' }}" @if ($loop->index < 6) data-pop="1" @endif href="{{ url('/visa/'.$d->slug) }}"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub">
-@if (config('ukv.show_prices') && (float) $d->tier_standard_gbp > 0)
-<div class="fee">£{{ number_format((float) $d->tier_standard_gbp, 0) }}</div><div class="lab">FROM</div>
-@elseif (config('ukv.show_prices'))
-<div class="fee">Free</div><div class="lab">GUIDE</div>
-@elseif ($d->max_stay_days)
-<div class="fee">{{ $d->max_stay_days }}</div><div class="lab">DAYS MAX</div>
-@else
-<div class="fee">View&nbsp;→</div><div class="lab">Details</div>
-@endif
-</div></div></a>
+    @php $dWa = 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode("Hi, I'd like help with my Schengen visa for {$d->name}. "); @endphp
+    <a class="pass reveal" data-region="{{ $d->region ?: 'Worldwide' }}" @if ($loop->index < 6) data-pop="1" @endif href="{{ $dWa }}" target="_blank" rel="noopener" aria-label="Ask about a {{ $d->name }} Schengen visa on WhatsApp"><div class="sky">@if ($d->image_path)<img src="{{ asset(ltrim($d->image_path, '/')) }}" alt="{{ $d->name }}" loading="lazy">@else<svg viewBox="0 0 240 96" preserveAspectRatio="xMidYMax meet" role="img" aria-label="{{ $d->name }} skyline"><use href="#ukv-skyline"></use></svg>@endif</div><div class="lower"><div class="main"><div class="k">{{ $d->visa_type }}</div><h3>{{ $d->name }}</h3><div class="t">UK citizens{{ $d->max_stay_days ? ' · up to '.$d->max_stay_days.' days' : '' }}</div></div><div class="stub"><div class="fee">Chat&nbsp;→</div><div class="lab">WHATSAPP</div></div></div></a>
   @endforeach
   </div>
   <p class="dest-empty" id="dest-empty">More destinations in this region coming soon.</p>
