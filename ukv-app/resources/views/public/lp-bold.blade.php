@@ -332,6 +332,18 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb *{transition:none!important}
   .lpb .btn:hover,.lpb .wa:hover,.lpb .hc:hover,.lpb .rc:hover,.lpb .formcard:hover,.lpb .ref2:hover,.lpb .faq .bp:hover,.lpb .vlink:hover,.lpb .fmeter .row:hover,.lpb .sit:hover,.lpb .tr .stp:hover{transform:none!important}
 }
+/* CENTRES — nearest-centre finder (mirrors home #appointments, LP-scoped) */
+.lpb .centres{background:radial-gradient(820px 340px at 50% -12%,#eaf1f4,var(--paper));text-align:center;border-top:1px solid var(--edge)}
+.lpb .centres .pin{width:34px;height:34px;color:var(--stamp);margin:0 auto 12px;display:block}
+.lpb .centres .eyebrow{justify-content:center}
+.lpb .centres .h2{max-width:none;margin:0 auto}
+.lpb .centres .cintro{color:var(--muted);font-size:17px;line-height:1.55;max-width:56ch;margin:14px auto 0}
+.lpb .centres .cfind{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:520px;margin:24px auto 0}
+.lpb .centres .cfind input{flex:1;min-width:220px;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:15px 16px;font:500 17px var(--display);color:var(--ink)}
+.lpb .centres .cfind input:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
+.lpb .centres .cfind .btn{width:auto;min-width:170px}
+.lpb .centres .chint{color:var(--muted);font-size:14px;line-height:1.55;margin:16px auto 0;max-width:60ch}
+.lpb .centres .chint a{font-weight:600;color:var(--cta)}
 </style>
 @endpush
 
@@ -546,6 +558,18 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
 </div></section>
 
+{{-- CENTRES — nearest-centre finder (from home), sits just before the footer --}}
+<section class="sec centres" id="centres"><div class="wrap">
+  <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+  <p class="eyebrow">In-person centres</p>
+  <h2 class="h2">Find your nearest centre</h2>
+  <p class="cintro">Schengen visas need an in-person biometric appointment. Enter your postcode and we'll show the closest centre, so you don't have to go hunting.</p>
+  <form class="cfind" method="GET" action="{{ route('centre.search') }}">
+    <input type="text" name="postcode" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" required aria-label="Your postcode">
+    <button type="submit" class="btn">Find nearest →</button>
+  </form>
+  <p class="chint"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Every Schengen visa needs a biometric appointment at a visa centre.</p>
+</div></section>
 
 </div>
 
