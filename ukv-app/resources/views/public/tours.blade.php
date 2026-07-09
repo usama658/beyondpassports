@@ -76,7 +76,7 @@
   .tr-card:hover .bg,.tr-card:focus-within .bg{transform:scale(1.06)}
   .tr-card:hover .scrim,.tr-card:focus-within .scrim{background:linear-gradient(180deg,rgba(12,20,30,.2),rgba(9,20,32,.95))}
   .tr-card:hover .tr-incl,.tr-card:focus-within .tr-incl{max-height:220px;opacity:1;margin:0 0 14px;padding:14px}
-  @media (prefers-reduced-motion:reduce){.tr-card,.tr-card .bg,.tr-card .scrim,.tr-card .tr-incl{transition:none}.tr-card:hover,.tr-card:focus-within{transform:none}}
+  @media (prefers-reduced-motion:reduce){.tr-card,.tr-card .bg,.tr-card .scrim,.tr-card .tr-incl{transition:none}}
   .tr-pkfoot{text-align:center;margin:34px 0 0;color:var(--muted);font-size:14.5px}
   /* proof — 5-col white stat band */
   .tr-stats{background:#fff;border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
