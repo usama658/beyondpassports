@@ -53,8 +53,8 @@
   /* packages — overlay cards */
   .tr-cin{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .tr-card{position:relative;height:400px;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;box-shadow:0 30px 60px -34px rgba(20,34,46,.6)}
-  .tr-card .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-  .tr-card .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 24%,rgba(12,20,30,.55) 60%,rgba(12,20,30,.93))}
+  .tr-card .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease}
+  .tr-card .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 24%,rgba(12,20,30,.55) 60%,rgba(12,20,30,.93));transition:background .3s ease}
   .tr-card .day{position:absolute;top:15px;right:15px;font:800 12px var(--display);color:var(--ink);background:rgba(255,255,255,.95);padding:6px 12px;border-radius:999px}
   .tr-card .vis{position:absolute;top:15px;left:15px;font:800 11px var(--display);color:#fff;background:rgba(21,94,122,.95);padding:6px 12px;border-radius:999px}
   .tr-card .in{position:relative;padding:22px;text-align:left}
@@ -62,6 +62,22 @@
   .tr-card h3{margin:0 0 14px;font:800 22px/1.1 var(--display);letter-spacing:-.02em;color:#fff}
   .tr-card .btn{width:100%;background:#25D366}
   .tr-card .btn:hover{background:#1da851}
+  /* C3 — gold-hairline glass "what's included", revealed on hover/focus/tap */
+  .tr-card .tr-incl{max-height:0;overflow:hidden;opacity:0;margin:0;background:rgba(11,26,38,.5);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.14);border-radius:12px;transition:max-height .42s ease,opacity .3s ease,margin .3s ease,padding .3s ease;padding:0 14px}
+  .tr-card .tr-incl .ey{margin:0 0 9px;font:800 10px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C89B3C;display:flex;align-items:center;gap:9px}
+  .tr-card .tr-incl .ey::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(200,155,60,.7),transparent)}
+  .tr-card .tr-incl ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .tr-card .tr-incl li{display:flex;align-items:center;gap:10px;font:500 13.5px var(--display);color:#eef3f6}
+  .tr-card .tr-incl li .ck{flex:none;display:grid;place-items:center;color:var(--stamp,#2E9A8C)}
+  .tr-card .tr-incl li .ck svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4}
+  .tr-card:hover .bg,.tr-card:focus-within .bg{transform:scale(1.06)}
+  .tr-card:hover .scrim,.tr-card:focus-within .scrim{background:linear-gradient(180deg,rgba(12,20,30,.2),rgba(9,20,32,.95))}
+  .tr-card:hover .tr-incl,.tr-card:focus-within .tr-incl{max-height:220px;opacity:1;margin:0 0 14px;padding:14px}
+  @media (hover:none){ /* touch: always show the checklist, no hover needed */
+    .tr-card .tr-incl{max-height:220px;opacity:1;margin:0 0 14px;padding:14px}
+  }
+  @media (prefers-reduced-motion:reduce){.tr-card .bg,.tr-card .scrim,.tr-card .tr-incl{transition:none}}
   .tr-pkfoot{text-align:center;margin:34px 0 0;color:var(--muted);font-size:14.5px}
   /* proof — 5-col white stat band */
   .tr-stats{background:#fff;border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
@@ -148,6 +164,9 @@
         <div class="in">
           <div class="co"><span class="tr-flag" style="background:{{ $p['flag'] }}"></span>{{ $p['where'] }}</div>
           <h3>{{ $p['name'] }}</h3>
+          @if (! empty($p['bens']))
+          <div class="tr-incl"><p class="ey">What's included</p><ul>@foreach ($p['bens'] as $b)<li><span class="ck"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{ $b }}</li>@endforeach</ul></div>
+          @endif
           <a class="btn" href="{{ $bookMsg($p) }}" target="_blank" rel="noopener">{!! $waIcon !!} Book this trip →</a>
         </div>
       </div>
