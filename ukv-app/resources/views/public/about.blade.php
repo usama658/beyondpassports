@@ -162,6 +162,25 @@
   }
   .ab-cc li svg { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; }
 
+  /* ── How we prevent refusals — three checks (dark petrol band) ──────────── */
+  .abproc { background: var(--navy); padding: 80px 0; position: relative; overflow: hidden; }
+  .abproc::before { content: ""; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: rgba(46,154,140,.06); pointer-events: none; }
+  .abproc .abproc-in { position: relative; }
+  .abproc-hd { max-width: 60ch; margin: 0 0 36px; }
+  .abproc-ey { font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 .6em; display: block; }
+  .abproc-hd h2 { font-size: clamp(28px, 3.4vw, 38px); color: #fff; margin: 0; letter-spacing: -.02em; line-height: 1.08; }
+  .abproc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 0 16px; }
+  .abproc-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 32px 28px; }
+  .abproc-n { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 14px; display: block; }
+  .abproc-card h3 { font-size: 19px; color: #fff; margin: 0 0 10px; letter-spacing: -.01em; }
+  .abproc-card p { color: rgba(255,255,255,.62); font-size: 15px; margin: 0; line-height: 1.55; }
+  .abproc-bar { background: rgba(46,154,140,.12); border: 1px solid rgba(46,154,140,.25); border-radius: 12px; padding: 20px 28px; margin: 0 0 12px; }
+  .abproc-bar p { font-size: 17px; font-weight: 600; color: #fff; margin: 0; }
+  .abproc-bar strong { color: var(--soft); }
+  .abproc-note { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: 16px 22px; }
+  .abproc-note p { font-size: 14px; color: rgba(255,255,255,.5); margin: 0; line-height: 1.6; }
+  @media (max-width: 820px) { .abproc-grid { grid-template-columns: 1fr; } }
+
   /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
     display: grid;
@@ -358,6 +377,33 @@
   </div>
 </div></section>
 
+{{-- HOW WE PREVENT REFUSALS — three checks (dark petrol band) --}}
+<section id="how" class="abproc"><div class="wrap abproc-in">
+  <div class="abproc-hd">
+    <span class="abproc-ey">How we prevent refusals</span>
+    <h2>Three checks before you submit</h2>
+  </div>
+  <div class="abproc-grid">
+    <div class="abproc-card reveal">
+      <span class="abproc-n">01</span>
+      <h3>We check eligibility</h3>
+      <p>Tell us your trip and passport. We confirm you actually qualify, and whether you need us at all, before you pay.</p>
+    </div>
+    <div class="abproc-card reveal">
+      <span class="abproc-n">02</span>
+      <h3>We prepare and check documents</h3>
+      <p>Our UK team reviews your documents for history, source and consistency: the things that actually get applications refused.</p>
+    </div>
+    <div class="abproc-card reveal">
+      <span class="abproc-n">03</span>
+      <h3>We submit and track</h3>
+      <p>Nothing is submitted until a real UK person has checked the whole file. Then we track it through to decision.</p>
+    </div>
+  </div>
+  <div class="abproc-bar reveal"><p>If we cannot help, we say so upfront. <strong>No charge.</strong></p></div>
+  <div class="abproc-note reveal"><p>If an application is refused after submission, we review what happened and advise on the strongest path forward. We do not disappear after a decision.</p></div>
+</div></section>
+
 {{-- WHAT WE STAND FOR --}}
 <section id="values" class="alt"><div class="wrap">
   <div class="sec-head reveal"><p class="eyebrow">What we stand for</p><h2>Four things we never compromise on</h2></div>
@@ -395,16 +441,6 @@
       <p>Real people on the phone and on WhatsApp. People you can actually talk to when something matters, registered in the UK and Europe.</p>
     </div>
 
-  </div>
-</div></section>
-
-{{-- HOW WE HELP --}}
-<section id="how"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">How we prevent refusals</p><h2>Three checks before you submit</h2></div>
-  <div class="steps reveal">
-    <div class="step"><div class="num">01</div><div class="rule"></div><h3>We check eligibility</h3><p>Tell us your trip and passport. We confirm you actually qualify, and whether you need us at all, before you pay.</p></div>
-    <div class="step"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check documents</h3><p>Our UK team reviews your documents for history, source and consistency: the things that actually get applications refused.</p></div>
-    <div class="step"><div class="num">03</div><div class="rule"></div><h3>We submit &amp; track</h3><p>Nothing is submitted until a real UK person has checked the whole file. Then we handle submission and keep you updated to completion.</p></div>
   </div>
 </div></section>
 
