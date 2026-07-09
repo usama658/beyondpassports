@@ -52,7 +52,7 @@
   .tr-how .reassure{text-align:center;margin:30px 0 0;font:700 15px var(--display);color:var(--cta)}
   /* packages — overlay cards */
   .tr-cin{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .tr-card{position:relative;height:400px;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;box-shadow:0 30px 60px -34px rgba(20,34,46,.6)}
+  .tr-card{position:relative;height:400px;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;box-shadow:0 30px 60px -34px rgba(20,34,46,.6);transition:transform .3s ease,box-shadow .3s ease}
   .tr-card .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease}
   .tr-card .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 24%,rgba(12,20,30,.55) 60%,rgba(12,20,30,.93));transition:background .3s ease}
   .tr-card .day{position:absolute;top:15px;right:15px;font:800 12px var(--display);color:var(--ink);background:rgba(255,255,255,.95);padding:6px 12px;border-radius:999px}
@@ -71,13 +71,12 @@
   .tr-card .tr-incl li{display:flex;align-items:center;gap:10px;font:500 13.5px var(--display);color:#eef3f6}
   .tr-card .tr-incl li .ck{flex:none;display:grid;place-items:center;color:var(--stamp,#2E9A8C)}
   .tr-card .tr-incl li .ck svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4}
+  /* same interaction as the destination .pass tiles: lift on hover + reveal */
+  .tr-card:hover,.tr-card:focus-within{transform:translateY(-4px);box-shadow:0 44px 74px -34px rgba(20,34,46,.72)}
   .tr-card:hover .bg,.tr-card:focus-within .bg{transform:scale(1.06)}
   .tr-card:hover .scrim,.tr-card:focus-within .scrim{background:linear-gradient(180deg,rgba(12,20,30,.2),rgba(9,20,32,.95))}
   .tr-card:hover .tr-incl,.tr-card:focus-within .tr-incl{max-height:220px;opacity:1;margin:0 0 14px;padding:14px}
-  @media (hover:none){ /* touch: always show the checklist, no hover needed */
-    .tr-card .tr-incl{max-height:220px;opacity:1;margin:0 0 14px;padding:14px}
-  }
-  @media (prefers-reduced-motion:reduce){.tr-card .bg,.tr-card .scrim,.tr-card .tr-incl{transition:none}}
+  @media (prefers-reduced-motion:reduce){.tr-card,.tr-card .bg,.tr-card .scrim,.tr-card .tr-incl{transition:none}.tr-card:hover,.tr-card:focus-within{transform:none}}
   .tr-pkfoot{text-align:center;margin:34px 0 0;color:var(--muted);font-size:14.5px}
   /* proof — 5-col white stat band */
   .tr-stats{background:#fff;border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
