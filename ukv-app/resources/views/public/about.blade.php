@@ -631,18 +631,6 @@
   <p class="csnote">Illustrative examples of the kinds of cases we prepare. Outcomes depend on each consulate and cannot be guaranteed.</p>
 </div></section>
 
-{{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
-<section id="transparency"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Transparency</p><h2>The important bit, in plain English</h2></div>
-  <div class="ab-callout reveal">
-    <span class="ab-seal" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </span>
-    <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities, and we cannot guarantee any outcome.</p>
-    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a consulate or visa centre decide any faster, and it does not change the appointment slots they have available.</p>
-  </div>
-</div></section>
-
 {{-- DOCUMENT HANDLING — vault (shield hero + steps + credential strip) --}}
 @php
   $dsIcon = [
@@ -732,6 +720,18 @@
       <a class="cbtn mail" href="mailto:{{ $touchEmail }}"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>{{ $touchEmail }}</a>
       <div class="assur"><strong>You will speak directly with our adviser.</strong>Not a bot. Not a form.</div>
     </div>
+  </div>
+</div></section>
+
+{{-- COMPLIANCE / TRANSPARENCY CALLOUT --}}
+<section id="transparency"><div class="wrap">
+  <div class="sec-head reveal"><p class="eyebrow">Transparency</p><h2>The important bit, in plain English</h2></div>
+  <div class="ab-callout reveal">
+    <span class="ab-seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12l2.4 2.4L15.7 9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities, and we cannot guarantee any outcome.</p>
+    <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a consulate or visa centre decide any faster, and it does not change the appointment slots they have available.</p>
   </div>
 </div></section>
 
