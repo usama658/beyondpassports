@@ -48,7 +48,7 @@
     <div class="tk-left">
       <span class="tk-seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
       <h1>Thanks{{ $leadName ? ', '.$leadName : '' }}. Your callback is booked.</h1>
-      <p>{{ $thanksMessage }}</p>
+      <p>A real, UK-based person will call you on the number you gave us, in your chosen time slot.</p>
       <div class="tk-estep">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
         Your enquiry has been emailed to our UK team.
