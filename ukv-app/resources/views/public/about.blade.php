@@ -735,9 +735,9 @@
 {{-- CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
-  <h2>Let's get you travelling</h2>
-  <p style="max-width:48ch;color:#eef0f1">Start your application now, or message our UK team with any question, even just to check whether you need us.</p>
-  <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like to know more about how you work.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I would like to know more about how you work.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
+  <h2>Send us your situation.</h2>
+  <p style="max-width:48ch;color:#eef0f1">If we cannot help, we will tell you honestly. No charge. Most people hear back within a few hours.</p>
+  <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#06301a;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
 </div></section>
 
 <script>
