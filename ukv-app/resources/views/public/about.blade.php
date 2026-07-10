@@ -273,6 +273,29 @@
   .dsv .bcell span { color: rgba(255,255,255,.5); font-size: 11px; line-height: 1.35; display: block; margin-top: 2px; }
   @media (max-width: 900px) { .dsv .steps, .dsv .strip { grid-template-columns: 1fr 1fr; } .dsv .bcell { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); } }
 
+  /* ── Get in touch — unified concierge card (petrol rail + white actions) ── */
+  .abc6 .card { display: grid; grid-template-columns: .92fr 1.08fr; background: var(--white); border: 1px solid var(--paper-edge); border-radius: 22px; overflow: hidden; box-shadow: var(--lift-2); }
+  .abc6 .rail { background: radial-gradient(360px 260px at 0 0, rgba(46,154,140,.2), transparent 60%), var(--navy); color: #fff; padding: 40px; }
+  .abc6 .rail .ey { font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 .6em; display: block; }
+  .abc6 .rail h2 { font-size: clamp(24px, 2.8vw, 32px); color: #fff; margin: 0 0 12px; letter-spacing: -.02em; font-weight: 800; line-height: 1.1; }
+  .abc6 .rail h2 em { font-style: normal; color: var(--soft); }
+  .abc6 .rail .lede { color: rgba(255,255,255,.62); font-size: 14.5px; line-height: 1.6; margin: 0 0 20px; }
+  .abc6 .rail .cl { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 11px; }
+  .abc6 .rail .cl li { display: flex; align-items: center; gap: 11px; font-size: 14.5px; color: rgba(255,255,255,.9); }
+  .abc6 .rail .cl svg { width: 17px; height: 17px; stroke: var(--soft); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .abc6 .rail .chip { display: inline-flex; align-items: center; gap: 8px; background: rgba(46,154,140,.16); border: 1px solid rgba(46,154,140,.35); color: var(--soft); font-size: 12.5px; font-weight: 800; padding: 7px 14px; border-radius: 100px; }
+  .abc6 .rail .chip svg { width: 14px; height: 14px; stroke: var(--soft); fill: none; stroke-width: 2.4; }
+  .abc6 .act { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .abc6 .act h3 { font-size: 18px; color: var(--ink); margin: 0 0 18px; font-weight: 800; }
+  .abc6 .act .cbtn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 800; padding: 14px 22px; border-radius: 12px; text-decoration: none; font-size: 15.5px; box-sizing: border-box; width: 100%; }
+  .abc6 .act .cbtn.wa { background: #25D366; color: #06301a; margin: 0 0 11px; }
+  .abc6 .act .cbtn.wa svg { width: 19px; height: 19px; fill: #06301a; }
+  .abc6 .act .cbtn.mail { border: 1.5px solid var(--cta); color: var(--cta); background: transparent; font-weight: 700; font-size: 15px; }
+  .abc6 .act .cbtn.mail svg { width: 18px; height: 18px; stroke: var(--cta); fill: none; stroke-width: 2; }
+  .abc6 .act .assur { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--paper-edge); font-size: 13.5px; color: var(--muted); text-align: center; }
+  .abc6 .act .assur strong { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 3px; font-weight: 800; }
+  @media (max-width: 900px) { .abc6 .card { grid-template-columns: 1fr; } }
+
   /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
     display: grid;
@@ -677,6 +700,35 @@
     @foreach ($dsBadges as [$ic, $title, $sub])
     <div class="bcell"><span class="bi">{!! $dsIcon[$ic] !!}</span><div><strong>{{ $title }}</strong><span>{{ $sub }}</span></div></div>
     @endforeach
+  </div>
+</div></section>
+
+{{-- GET IN TOUCH — unified concierge card (petrol rail + white actions) --}}
+@php
+  $touchWa = 'https://wa.me/' . (config('ukv.whatsapp') ?: '447882747584') . '?text=' . rawurlencode('Hi Beyond Passports, here is my situation: ');
+  $touchEmail = config('ukv.email', 'hello@beyondpassports.co.uk');
+  $touchTick = '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+  $touchList = ['Which Schengen country', 'Your travel dates', 'Your passport', 'Whether you have applied before'];
+@endphp
+<section id="contact" class="abc6"><div class="wrap reveal">
+  <div class="card">
+    <div class="rail">
+      <span class="ey">Get in touch</span>
+      <h2>Send us your <em>situation</em></h2>
+      <p class="lede">Tell us your situation and we will come back to you within 24 hours. If we cannot improve your application, we say so upfront. No charge for the review.</p>
+      <ul class="cl">
+        @foreach ($touchList as $item)
+        <li>{!! $touchTick !!}<span>{{ $item }}</span></li>
+        @endforeach
+      </ul>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>We respond within 24 hours</span>
+    </div>
+    <div class="act">
+      <h3>Reach us directly</h3>
+      <a class="cbtn wa" href="{{ $touchWa }}" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.8 6.5L3 29l7.2-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3z"/></svg>WhatsApp our adviser</a>
+      <a class="cbtn mail" href="mailto:{{ $touchEmail }}"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>{{ $touchEmail }}</a>
+      <div class="assur"><strong>You will speak directly with our adviser.</strong>Not a bot. Not a form.</div>
+    </div>
   </div>
 </div></section>
 
