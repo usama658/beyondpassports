@@ -250,6 +250,29 @@
   .cvb .csnote { color: var(--muted); font-size: 12.5px; text-align: center; margin: 24px 0 0; }
   @media (max-width: 900px) { .cvb .grid { grid-template-columns: 1fr; } }
 
+  /* ── Document handling — vault: shield hero + steps + credential strip ───── */
+  .dsv .ic { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dsv .head { text-align: center; max-width: 60ch; margin: 0 auto 36px; }
+  .dsv .shield { width: 56px; height: 56px; margin: 0 auto 16px; display: block; }
+  .dsv .shield svg { width: 56px; height: 56px; stroke: var(--stamp-text); fill: rgba(46,154,140,.08); }
+  .dsv .ey { font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cta); margin: 0 0 .6em; display: block; }
+  .dsv h2 { font-size: clamp(24px, 3vw, 34px); color: var(--ink); margin: 0 0 10px; letter-spacing: -.02em; font-weight: 800; }
+  .dsv .intro { color: var(--muted); font-size: 16px; margin: 0; }
+  .dsv .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0 0 20px; }
+  .dsv .step { background: var(--white); border: 1px solid var(--paper-edge); border-radius: 14px; padding: 22px 20px; box-shadow: var(--lift-1); transition: transform .18s ease, box-shadow .18s ease; }
+  .dsv .step:hover { transform: translateY(-4px); box-shadow: var(--lift-2); }
+  .dsv .step .si { width: 40px; height: 40px; border-radius: 11px; background: linear-gradient(135deg, #eef5f2, #dff0eb); border: 1px solid rgba(46,154,140,.25); display: grid; place-items: center; margin: 0 0 13px; }
+  .dsv .step .si svg { width: 20px; height: 20px; stroke: var(--stamp-text); }
+  .dsv .step p { margin: 0; font-size: 13.5px; color: #33454f; line-height: 1.5; font-weight: 500; }
+  .dsv .strip { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--navy); border-radius: 16px; overflow: hidden; }
+  .dsv .bcell { padding: 20px 22px; display: flex; align-items: center; gap: 13px; border-right: 1px solid rgba(255,255,255,.08); }
+  .dsv .bcell:last-child { border-right: 0; }
+  .dsv .bcell .bi { width: 34px; height: 34px; border-radius: 9px; background: rgba(46,154,140,.18); display: grid; place-items: center; flex: none; }
+  .dsv .bcell .bi svg { width: 18px; height: 18px; stroke: var(--soft); fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .dsv .bcell strong { display: block; color: #fff; font-size: 12.5px; font-weight: 800; line-height: 1.2; }
+  .dsv .bcell span { color: rgba(255,255,255,.5); font-size: 11px; line-height: 1.35; display: block; margin-top: 2px; }
+  @media (max-width: 900px) { .dsv .steps, .dsv .strip { grid-template-columns: 1fr 1fr; } .dsv .bcell { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); } }
+
   /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
     display: grid;
@@ -591,6 +614,69 @@
     </span>
     <p>Beyond Passports is an independent commercial service. We are not a government website. Government and embassy fees are payable separately and set by the relevant authorities. Visa decisions are made solely by those authorities, and we cannot guarantee any outcome.</p>
     <p>If you choose an express option, that speeds <strong>our</strong> handling of your application only. It does not make a consulate or visa centre decide any faster, and it does not change the appointment slots they have available.</p>
+  </div>
+</div></section>
+
+{{-- DOCUMENT HANDLING — vault (shield hero + steps + credential strip) --}}
+@php
+  $dsIcon = [
+    'lock'   => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>',
+    'user'   => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>',
+    'trash'  => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/></svg>',
+    'scale'  => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><path d="M12 4v16M6 8h12M8 20h8M6 8l-3 6a3 3 0 0 0 6 0zM18 8l-3 6a3 3 0 0 0 6 0z"/></svg>',
+    'shield' => '<svg class="ic" viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 3 5 6v5.5c0 4.4 3 7.4 7 8.5 4-1.1 7-4.1 7-8.5V6z"/><path d="m9 12 2 2 4-4.3"/></svg>',
+    'flag'   => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><path d="M5 21V4M5 5h11l-2 3 2 3H5"/></svg>',
+    'clip'   => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10h7M8.5 14h7M8.5 18h4"/></svg>',
+    'case'   => '<svg class="ic" viewBox="0 0 24 24" stroke-width="2"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/></svg>',
+  ];
+  $dsSteps = [
+    ['lock',  'Transmitted via encrypted transfer. Not by email.'],
+    ['user',  'Accessed only by the consultant assigned to your case.'],
+    ['trash', 'Permanently deleted within 30 days of your visa decision.'],
+    ['scale', 'We operate under UK data protection law (UK GDPR).'],
+  ];
+
+  // Credential strip: verified certifications from config first, then true operational
+  // fallbacks so nothing uncertified is ever claimed. See config('ukv.compliance').
+  $cmp = config('ukv.compliance', []);
+  $dsBadges = [];
+  if (!empty($cmp['cyber_essentials'])) {
+    $dsBadges[] = ['shield', 'Cyber Essentials Certified', 'UK government-backed data security certification'];
+  }
+  if (!empty($cmp['ico_number'])) {
+    $dsBadges[] = ['flag', 'ICO Registered', "UK Information Commissioner's Office, Registration {$cmp['ico_number']}"];
+  }
+  $dsBadges[] = ['clip', 'UK GDPR Compliant', 'Personal data handled under UK data protection law'];
+  if (!empty($cmp['insurer'])) {
+    $ins = $cmp['insurer'] . (!empty($cmp['indemnity']) ? ', ' . $cmp['indemnity'] . ' professional indemnity' : '');
+    $dsBadges[] = ['case', 'Professionally Insured', $ins];
+  }
+  foreach ([
+    ['lock',  'Encrypted transfer', 'Documents sent over encrypted transfer, never by email'],
+    ['trash', 'Data minimisation', 'Permanently deleted within 30 days of your decision'],
+    ['user',  'Confidential access', 'Seen only by the consultant on your case'],
+  ] as $fill) {
+    if (count($dsBadges) >= 4) break;
+    $dsBadges[] = $fill;
+  }
+  $dsBadges = array_slice($dsBadges, 0, 4);
+@endphp
+<section class="dsv"><div class="wrap">
+  <div class="head reveal">
+    <span class="shield">{!! $dsIcon['shield'] !!}</span>
+    <span class="ey">Document handling</span>
+    <h2>Your documents are handled carefully</h2>
+    <p class="intro">Before you send us anything, here is exactly how your documents are handled.</p>
+  </div>
+  <div class="steps">
+    @foreach ($dsSteps as [$ic, $txt])
+    <div class="step reveal"><span class="si">{!! $dsIcon[$ic] !!}</span><p>{{ $txt }}</p></div>
+    @endforeach
+  </div>
+  <div class="strip reveal">
+    @foreach ($dsBadges as [$ic, $title, $sub])
+    <div class="bcell"><span class="bi">{!! $dsIcon[$ic] !!}</span><div><strong>{{ $title }}</strong><span>{{ $sub }}</span></div></div>
+    @endforeach
   </div>
 </div></section>
 

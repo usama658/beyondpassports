@@ -64,6 +64,17 @@ return [
         'country' => env('UKV_ADDR_COUNTRY', 'United Kingdom'),
     ],
 
+    // Public compliance credentials — /about "document handling" badge strip. Each is blank/false
+    // until genuinely held; a certification badge only renders when its value is set, so no
+    // uncertified claim ever ships. Empty slots fall back to true operational badges (encrypted
+    // transfer, 30-day deletion, confidential access). ICO registration tracked in task #215.
+    'compliance' => [
+        'ico_number'       => env('UKV_ICO_NUMBER', ''),          // e.g. ZB123456 — blank until registered
+        'cyber_essentials' => env('UKV_CYBER_ESSENTIALS', false), // true only once certified
+        'insurer'          => env('UKV_INSURER', ''),             // insurer name — blank hides badge
+        'indemnity'        => env('UKV_INDEMNITY', ''),           // e.g. "£500,000 per claim" — blank omits amount
+    ],
+
     // Public team — /about (full grid) + named-lead line on home + Organization schema. PLACEHOLDER
     // people until real names/roles/credentials supplied. `lead` marks the case-lead.
     // `photo` = public path or URL; blank → an initials monogram is shown. Current photos are
