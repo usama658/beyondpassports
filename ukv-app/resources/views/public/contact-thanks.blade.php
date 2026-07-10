@@ -75,15 +75,17 @@
 <script>
   (function () {
     var wa = @json($waUrl);
+    if (!wa) { return; }
     var el = document.getElementById('tk-count');
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { if (el) { el.textContent = 'a moment'; } return; } // no auto-redirect; manual button stays
     var n = 3;
+    var go = function () { try { window.location.assign(wa); } catch (e) { window.location.href = wa; } };
     var t = setInterval(function () {
       n--;
       if (el) { el.textContent = n < 0 ? 0 : n; }
-      if (n <= 0) { clearInterval(t); window.location.href = wa; }
+      if (n <= 0) { clearInterval(t); go(); }
     }, 1000);
+    // hard fallback in case the interval is throttled (background tab, etc.)
+    setTimeout(go, 3600);
   })();
 </script>
 @endif
