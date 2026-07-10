@@ -26,7 +26,9 @@
   .tk-ring .bg { stroke: rgba(255,255,255,.14); }
   .tk-ring .fg { stroke: #25D366; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 283; animation: tkFill 3s linear forwards; }
   .tk-ring .wac { position: absolute; inset: 0; display: grid; place-items: center; }
-  .tk-ring .wac svg { width: 30px; height: 30px; fill: #25D366; }
+  .tk-ring .wac .disc { width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 6px 16px -6px rgba(37,211,102,.8); }
+  .tk-ring .wac .disc svg { width: 30px; height: 30px; fill: #fff !important; stroke: none !important; }
+  .tk-ring .wac .disc svg path { fill: #fff !important; stroke: none !important; }
   .tk-panel .pk { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 6px; }
   .tk-panel h2 { font-size: 20px; font-weight: 800; margin: 0 0 8px; color: #fff; }
   .tk-panel .sub { font-size: 13.5px; color: rgba(255,255,255,.6); margin: 0 0 20px; }
@@ -60,7 +62,7 @@
     <div class="tk-panel">
       <div class="tk-ring">
         <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true"><circle class="bg" cx="52" cy="52" r="45"/><circle class="fg" cx="52" cy="52" r="45"/></svg>
-        <span class="wac" aria-hidden="true">{!! $waGlyph !!}</span>
+        <span class="wac" aria-hidden="true"><span class="disc">{!! $waGlyph !!}</span></span>
       </div>
       <p class="pk">Opening WhatsApp</p>
       <h2>Sending it to us on WhatsApp too</h2>
