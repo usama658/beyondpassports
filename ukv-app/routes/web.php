@@ -30,6 +30,7 @@ Route::get('/find-a-centre/search', [CentreController::class, 'search'])
 Route::get('/driving-abroad', fn () => redirect('/services', 301))->name('idp');
 Route::view('/about', 'public.about')->name('about');
 Route::view('/contact', 'public.contact')->name('contact');
+Route::get('/contact/thank-you', [ContactController::class, 'thanks'])->name('contact.thanks');
 Route::view('/legal', 'public.legal')->name('legal');
 Route::view('/compare', 'public.compare')->name('compare');
 // Standalone paid-traffic landing page (Speed/outcome). Orphaned by design:

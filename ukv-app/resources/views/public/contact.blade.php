@@ -637,6 +637,8 @@
         })
         .then(function (r) {
           if (r.status >= 200 && r.status < 300 && r.data && r.data.ok) {
+            // Go to the thank-you page, which auto-launches the prefilled WhatsApp chat.
+            if (r.data.redirect) { window.location.href = r.data.redirect; return; }
             showSuccess(r.data.message || 'Thanks, your callback is booked.');
           } else if (r.status === 422 && r.data && r.data.errors) {
             var firstKey = Object.keys(r.data.errors)[0];

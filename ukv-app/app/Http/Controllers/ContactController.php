@@ -53,16 +53,52 @@ class ContactController extends Controller
         }
 
         $first = trim(explode(' ', trim($data['name']))[0]);
-        $message = "Thanks, {$first} — your callback is booked. A real, UK-based person will call you "
+        $message = "Thanks, {$first}. Your callback is booked. A real, UK-based person will call you "
             .'on the number you gave us, in your chosen time slot.';
+
+        // Prefilled WhatsApp hand-off. The thank-you page opens this so the same enquiry also
+        // lands in our WhatsApp inbox, belt-and-braces with the queued email above.
+        $waText = "Hi Beyond Passports, I just requested a callback.\n"
+            ."Name: {$data['name']}\n"
+            ."Phone: {$data['phone']}"
+            .(! empty($data['best_time']) ? "\nBest time: {$data['best_time']}" : '')
+            .(! empty($data['message']) ? "\nEnquiry: {$data['message']}" : '');
+        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584').'?text='.rawurlencode($waText);
+
+        // One-shot flash for the thank-you page (survives to the next request, JSON or redirect).
+        $request->session()->flash('contact_thanks', [
+            'name' => $first,
+            'message' => $message,
+            'wa_url' => $waUrl,
+        ]);
 
         if ($request->expectsJson()) {
             return response()->json([
                 'ok' => true,
                 'message' => $message,
+                'redirect' => route('contact.thanks'),
             ]);
         }
 
-        return back()->with('status', $message);
+        return redirect()->route('contact.thanks');
+    }
+
+    /**
+     * Thank-you page after a callback request. Confirms the email is on its way and
+     * auto-launches the prefilled WhatsApp chat. Reads the one-shot flash from store();
+     * a direct visit with no flash bounces back to /contact.
+     */
+    public function thanks(): RedirectResponse|\Illuminate\Contracts\View\View
+    {
+        $ctx = session('contact_thanks');
+        if (empty($ctx)) {
+            return redirect()->route('contact');
+        }
+
+        return view('public.contact-thanks', [
+            'leadName' => $ctx['name'] ?? '',
+            'thanksMessage' => $ctx['message'] ?? '',
+            'waUrl' => $ctx['wa_url'] ?? null,
+        ]);
     }
 }
