@@ -33,8 +33,8 @@
     text-decoration: none; font-size: 15.5px; border: 0;
     transition: transform .1s, box-shadow .15s;
   }
-  .ab-hero-copy .h-btn.wa { background: #25D366; color: #06301a; }
-  .ab-hero-copy .h-btn.wa svg { width: 18px; height: 18px; fill: #06301a; }
+  .ab-hero-copy .h-btn.wa { background: #25D366; color: #fff; }
+  .ab-hero-copy .h-btn.wa svg { width: 18px; height: 18px; fill: #fff; }
   .ab-hero-copy .h-btn.wa:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(37,211,102,.7); }
   .ab-hero-copy .h-btn.ghost { background: transparent; color: var(--cta); border: 1.5px solid var(--cta); }
   .ab-hero-copy .h-btn.ghost:hover { box-shadow: rgba(21,94,122,.14) 0 0 0 3px; }
@@ -292,13 +292,30 @@
   .abc6 .act { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
   .abc6 .act h3 { font-size: 18px; color: var(--ink); margin: 0 0 18px; font-weight: 800; }
   .abc6 .act .cbtn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 800; padding: 14px 22px; border-radius: 12px; text-decoration: none; font-size: 15.5px; box-sizing: border-box; width: 100%; }
-  .abc6 .act .cbtn.wa { background: #25D366; color: #06301a; margin: 0 0 11px; }
-  .abc6 .act .cbtn.wa svg { width: 19px; height: 19px; fill: #06301a; }
+  .abc6 .act .cbtn.wa { background: #25D366; color: #fff; margin: 0 0 11px; }
+  .abc6 .act .cbtn.wa svg { width: 19px; height: 19px; fill: #fff; }
   .abc6 .act .cbtn.mail { border: 1.5px solid var(--cta); color: var(--cta); background: transparent; font-weight: 700; font-size: 15px; }
   .abc6 .act .cbtn.mail svg { width: 18px; height: 18px; stroke: var(--cta); fill: none; stroke-width: 2; }
   .abc6 .act .assur { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--paper-edge); font-size: 13.5px; color: var(--muted); text-align: center; }
   .abc6 .act .assur strong { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 3px; font-weight: 800; }
   @media (max-width: 900px) { .abc6 .card { grid-template-columns: 1fr; } }
+
+  /* ── Interactivity — hover lifts on the previously-static cards ──────────── */
+  @media (hover: hover) {
+    .ab-cc { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .ab-cc:hover { transform: translateY(-4px); box-shadow: var(--lift-2); border-color: rgba(46,154,140,.4); }
+    .ab-model { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .ab-model:hover { transform: translateY(-2px); box-shadow: var(--lift-1); border-left-color: var(--cta); }
+    .abproc-card { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+    .abproc-card:hover { transform: translateY(-5px); border-color: rgba(121,207,194,.45); background: rgba(255,255,255,.09); }
+    .abrev .pcard { transition: transform .18s ease, box-shadow .18s ease; }
+    .abrev .pcard:hover { transform: translateY(-3px); box-shadow: var(--lift-2); }
+    .dsv .bcell { transition: background .18s ease; }
+    .dsv .bcell:hover { background: rgba(46,154,140,.08); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ab-cc, .ab-cc:hover, .ab-model, .ab-model:hover, .abproc-card, .abproc-card:hover, .abrev .pcard, .abrev .pcard:hover { transform: none; }
+  }
 
   /* ── Values — 4-up centred, icon-top cards ──────────────────────────────── */
   .ab-values {
@@ -740,7 +757,7 @@
   <div class="rule"></div>
   <h2>Send us your situation.</h2>
   <p style="max-width:48ch;color:#eef0f1">If we cannot help, we will tell you honestly. No charge. Most people hear back within a few hours.</p>
-  <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#06301a;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
+  <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
 </div></section>
 
 <script>
