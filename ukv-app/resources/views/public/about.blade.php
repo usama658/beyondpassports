@@ -463,11 +463,12 @@
   $ccCross = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#155E7A" stroke-width="2.2" stroke-linecap="round"/></svg>';
 @endphp
 <section id="who"><div class="wrap">
-  <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>Built on a standard that does not change.</h2></div>
+  <div class="sec-head reveal"><p class="eyebrow">Who we are</p><h2>Built on a standard that does not change</h2></div>
   <div class="ab-who-grid">
     <div class="ab-prose reveal">
-      <p>Visa consultancies exist in every corner of the internet. Most collect enquiries and send template responses. We built Beyond Passports to be the opposite: a consultancy where a qualified person reads your documents, checks your history, and tells you honestly whether your file is ready to submit.</p>
-      <p>We tell clients upfront if we cannot improve their chances. We charge a flat fee. A real person reviews every document before it is submitted. If we cannot help, we say so before you pay. That is the whole model.</p>
+      <p>Visa consultancies exist in every corner of the internet. Most collect enquiries and reply with a template. We built Beyond Passports to be the opposite: a consultancy where a qualified person reads your documents, checks your history and tells you honestly whether your file is ready to submit.</p>
+      <p>We charge a flat fee. A real person reviews every document before it is submitted. If we cannot improve your chances, we say so before you pay. That is the whole model, and it does not change from one case to the next.</p>
+      <p class="ab-note">Our service fee is separate from, and additional to, the consulate or embassy fee. The official fee is set and collected by the authority; our fee pays for the checking, preparation and support we provide. We always show both clearly before you pay.</p>
     </div>
     <div class="ab-contrast reveal">
       <div class="ab-cc is-are">
