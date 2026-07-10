@@ -35,9 +35,9 @@
   .tk-panel .sub b { color: #fff; }
   .tk-wa { display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: #25D366; color: #fff; font-weight: 800; padding: 14px 24px; border-radius: 12px; text-decoration: none; font-size: 15.5px; box-shadow: 0 12px 26px -12px rgba(37,211,102,.7); }
   .tk-wa svg { width: 19px; height: 19px; fill: #fff; }
-  @keyframes tkFill { to { stroke-dashoffset: 0; } }
+  @keyframes tkFill { from { stroke-dashoffset: 283; } to { stroke-dashoffset: 0; } }
   @media (max-width: 820px) { .tk-grid { grid-template-columns: 1fr; gap: 22px; } }
-  @media (prefers-reduced-motion: reduce) { .tk-ring .fg { animation: none; stroke-dashoffset: 0; } }
+  /* Ring fill is a brief functional loading indicator — kept even under reduced-motion. */
 </style>
 @endpush
 
