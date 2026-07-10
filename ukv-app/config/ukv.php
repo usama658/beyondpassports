@@ -56,7 +56,7 @@ return [
     // Leave any line blank to omit it.
     'address' => [
         'company' => env('UKV_COMPANY_NAME', 'Beyond Passports Ltd'),
-        'company_no' => env('UKV_COMPANY_NO', ''),                  // blank until real — no invented Companies House no.
+        'company_no' => env('UKV_COMPANY_NO', '17331903'),          // Companies House registration number
         'line1' => env('UKV_ADDR_LINE1', ''),       // blank until real registered office (address block hides while empty)
         'line2' => env('UKV_ADDR_LINE2', ''),
         'city' => env('UKV_ADDR_CITY', ''),
