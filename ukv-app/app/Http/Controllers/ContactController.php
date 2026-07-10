@@ -40,12 +40,19 @@ class ContactController extends Controller
         ]);
 
         if (! empty($recipient)) {
-            Mail::to($recipient)->queue(new ContactEnquiry(
-                name: $data['name'],
-                phone: $data['phone'],
-                bestTime: $data['best_time'] ?? null,
-                message: $data['message'] ?? null,
-            ));
+            // Send inline (not queued) so a stalled queue worker never silently swallows leads.
+            // Low volume; wrapped so an SMTP hiccup logs but never breaks the traveller's flow.
+            try {
+                Mail::to($recipient)->send(new ContactEnquiry(
+                    name: $data['name'],
+                    phone: $data['phone'],
+                    bestTime: $data['best_time'] ?? null,
+                    message: $data['message'] ?? null,
+                ));
+                Log::info('Contact callback emailed', ['to' => $recipient]);
+            } catch (\Throwable $e) {
+                Log::error('Contact callback email failed', ['to' => $recipient, 'error' => $e->getMessage()]);
+            }
         } else {
             // No owner/from address configured — the log above is the only record. Flag it so it
             // is obvious in ops why no email arrived, without failing the traveller's request.
