@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentEnquiryController;
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\ChecklistController;
@@ -67,10 +68,14 @@ Route::post('/checklist/{checklist}/send', [ChecklistDeliveryController::class, 
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 // Footer newsletter opt-in (consent-gated marketing capture).
 Route::post('/subscribe', [SubscribeController::class, 'store'])->middleware('throttle:contact')->name('subscribe.store');
+// Landing-page appointment/eligibility enquiry — background lead capture (form still opens WhatsApp).
+Route::post('/appointment-enquiry', [AppointmentEnquiryController::class, 'store'])
+    ->middleware('throttle:contact')->name('appointment.enquiry');
 
 // --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
 Route::view('/apply', 'public.apply')->name('apply'); // eligibility-aware intake form (POSTs to apply.store)
 Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
+Route::get('/apply/thank-you', [ApplyController::class, 'thanks'])->name('apply.thanks');
 
 // --- Checkout (standard lane -> Stripe hosted Checkout) ---
 Route::match(['get', 'post'], '/checkout/{order:order_ref}', [CheckoutController::class, 'create'])

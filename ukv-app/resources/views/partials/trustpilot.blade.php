@@ -23,7 +23,7 @@
     $tpWidth  = $width ?? '100%';
     $tpMargin = $margin ?? '18px 0';
 @endphp
-@if (! empty($tp['business_unit_id']))
+@if (($tp['enabled'] ?? false) && ! empty($tp['business_unit_id']))
     {{-- Bootstrap is loaded once in the layout <head>; widgets here init on load. --}}
     <div class="tp-wrap" style="text-align:{{ $tpAlign }};margin:{{ $tpMargin }}">
         <div class="trustpilot-widget" data-locale="en-GB"

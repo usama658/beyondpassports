@@ -340,8 +340,10 @@
           <div class="grid2">
             <div class="field">
               <label for="passport_expiry">Passport expiry date</label>
-              <input type="date" id="passport_expiry" name="passport_expiry" value="{{ old('passport_expiry') }}">
-              <p class="hint">Optional now. We'll confirm validity rules for your destination.</p>
+              {{-- min = tomorrow: mirrors the server's `after:today` rule so the browser blocks
+                   past/expired dates in the picker instead of failing server-side after submit. --}}
+              <input type="date" id="passport_expiry" name="passport_expiry" value="{{ old('passport_expiry') }}" min="{{ now()->addDay()->toDateString() }}">
+              <p class="hint">Optional now. If you enter it, use a future date. We'll confirm validity rules for your destination.</p>
             </div>
           </div>
 
@@ -535,6 +537,7 @@
     var CHECKOUT_URL = @json(url('/checkout'));
     var CSRF = form.querySelector('input[name="_token"]').value;
     var lastOrderRef = '';
+    var lastRedirect = '';
 
     var LABELS = {
       nationality:      { UK: 'United Kingdom', Other: 'Other nationality' },
@@ -634,18 +637,33 @@
         if (m) m.textContent = '';
       }
     }
+    // Message for a control that failed constraint validation (range/type), not emptiness.
+    // Mirrors the server's messages so the traveller sees the same wording client-side.
+    function invalidMessage(c, name) {
+      if (c.id === 'passport_expiry') return 'Passport expiry must be a future date.';
+      return c.validationMessage || (name + ' is invalid.');
+    }
+    // Flag every visible control that is either required-but-empty OR fails a constraint
+    // (e.g. an optional date below its `min`). Optional fields are included so a bad value can
+    // never slip past the client and come back as a confusing server error.
     function flagInvalidFields() {
       clearAllInvalid();
-      var controls = form.querySelectorAll('input[required], select[required]');
+      var controls = form.querySelectorAll('input, select');
       var first = null;
       for (var i = 0; i < controls.length; i++) {
         var c = controls[i];
-        if (c.disabled || c.closest('[hidden]')) continue;
+        if (c.disabled || c.type === 'submit' || c.type === 'button' || c.closest('[hidden]')) continue;
+        var required = c.required;
         var empty = c.type === 'checkbox' ? !c.checked : !String(c.value).trim();
-        if (empty || !c.checkValidity()) {
+        if (required && empty) {
           var label = form.querySelector('label[for="' + c.id + '"]');
           var name = label ? label.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field';
           markInvalid(c, name + ' is required.');
+          if (!first) first = c;
+        } else if (!c.checkValidity()) {
+          var lbl = form.querySelector('label[for="' + c.id + '"]');
+          var nm = lbl ? lbl.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field';
+          markInvalid(c, invalidMessage(c, nm));
           if (!first) first = c;
         }
       }
@@ -687,6 +705,24 @@
     }
     var DEFAULT_ERR = errBox.textContent;
 
+    // Map server-side (422) validation errors back onto their fields with inline messages, so a
+    // rule the client did not mirror (e.g. passport_expiry after:today) is shown on the field
+    // rather than as a false "could not reach our servers" message.
+    function applyServerErrors(errors) {
+      clearAllInvalid();
+      var keys = Object.keys(errors || {}), first = null;
+      for (var i = 0; i < keys.length; i++) {
+        var ctrl = form.querySelector('[name="' + keys[i] + '"]');
+        if (!ctrl) continue;
+        markInvalid(ctrl, (errors[keys[i]] && errors[keys[i]][0]) || 'Please check this field.');
+        if (!first) first = ctrl;
+      }
+      showError(first
+        ? ('Please fix the highlighted field' + (keys.length > 1 ? 's' : '') + ' and try again.')
+        : 'Please check your answers and try again.');
+      if (first) { try { first.focus(); first.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' }); } catch (e) {} }
+    }
+
     function setSubmitting(on) {
       if (!submitBtn) return;
       submitBtn.disabled = on;
@@ -696,6 +732,7 @@
     // Route based on the SERVER's authoritative response: { lane, order_ref, next, checkout_hint }
     function routeFromServer(resp, d) {
       lastOrderRef = (resp && resp.order_ref) || '';
+      lastRedirect = (resp && resp.redirect) || '';
       if (resp && resp.lane === 'standard') {
         route(paneStd);
       } else {
@@ -728,11 +765,19 @@
         body: JSON.stringify(d)
       })
       .then(function (r) {
+        // 422 = server-side validation failed (e.g. a passport expiry the client let through).
+        // Parse the field errors and show them inline instead of a misleading connection error.
+        if (r.status === 422) {
+          return r.json().then(function (body) {
+            return { __invalid: true, errors: (body && body.errors) || {} };
+          });
+        }
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       })
       .then(function (resp) {
         setSubmitting(false);
+        if (resp && resp.__invalid) { applyServerErrors(resp.errors); return; }
         routeFromServer(resp, d);
       })
       .catch(function () {
@@ -769,6 +814,9 @@
     }
 
     document.getElementById('callback-btn').addEventListener('click', function () {
+      // Preferred: go to the server-rendered thank-you page (confirmation + auto WhatsApp),
+      // matching the contact flow. Falls back to the in-page modal if no redirect was returned.
+      if (lastRedirect) { window.location.assign(lastRedirect); return; }
       if (!lastOrderRef) return;
       openCb();
     });
@@ -872,19 +920,26 @@
     }
 
     function stepValid() {
-      var controls = steps[cur].querySelectorAll('input[required], select[required]');
+      // Include optional fields so a bad value (e.g. an expired passport date below the input's
+      // `min`) is caught on its own step, not swallowed to a confusing error at final submit.
+      var controls = steps[cur].querySelectorAll('input, select');
       var firstBad = null;
       for (var i = 0; i < controls.length; i++) {
         var c = controls[i];
-        if (c.disabled || c.closest('[hidden]')) continue;
+        if (c.disabled || c.type === 'submit' || c.type === 'button' || c.closest('[hidden]')) continue;
+        var required = c.required;
         var empty = c.type === 'checkbox' ? !c.checked : !String(c.value).trim();
-        var bad = empty || !c.checkValidity();
+        var reqEmpty = required && empty;
+        var bad = reqEmpty || !c.checkValidity();
         if (bad) {
           c.setAttribute('aria-invalid', 'true');
           var id = c.id + '-error', msg = document.getElementById(id);
           if (!msg) { msg = document.createElement('p'); msg.id = id; msg.className = 'field-error'; c.parentNode.insertBefore(msg, c.nextSibling); }
           var label = form.querySelector('label[for="' + c.id + '"]');
-          msg.textContent = (label ? label.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field') + ' is required.';
+          var name = label ? label.textContent.replace(/\s*\*\s*$/, '').trim() : 'This field';
+          msg.textContent = reqEmpty
+            ? (name + ' is required.')
+            : (c.id === 'passport_expiry' ? 'Passport expiry must be a future date.' : (c.validationMessage || (name + ' is invalid.')));
           if (!firstBad) firstBad = c;
         } else {
           c.removeAttribute('aria-invalid');

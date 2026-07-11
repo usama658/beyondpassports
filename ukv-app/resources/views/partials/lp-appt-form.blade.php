@@ -3,7 +3,8 @@
      Self-contained (bpc-af- prefix); no ukv.css needed. Works without JS: the button is a
      real link to the generic chat, and JS upgrades it to include the typed name/number. --}}
 @php $bpcWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
-<form class="bpc-af" onsubmit="return bpcAppt(this)" novalidate>
+<form class="bpc-af" onsubmit="return bpcAppt(this)" data-capture="{{ route('appointment.enquiry') }}" novalidate>
+  @csrf
   <span class="bpc-af-stamp">FREE</span>
   <p class="bpc-af-eyebrow">Book your appointment</p>
   <h2 class="bpc-af-h">Check your eligibility, free</h2>
@@ -21,6 +22,16 @@
 <script>
 function bpcAppt(f){
   var n=(f.n.value||'').trim(), p=(f.p.value||'').trim(), a=f.querySelector('.bpc-af-go'), num=a.getAttribute('data-wa');
+  // Belt-and-braces lead capture: POST name/number to the server (email + log) so the lead is
+  // recorded even if the traveller never sends the WhatsApp message. Fire-and-forget — never let
+  // it block or break the WhatsApp hand-off below.
+  try{
+    var url=f.getAttribute('data-capture'), tok=f.querySelector('input[name=_token]');
+    if(url && tok && (n||p)){
+      fetch(url,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-CSRF-TOKEN':tok.value,'Accept':'application/json'},
+        body:JSON.stringify({name:n,phone:p,source:location.pathname})}).catch(function(){});
+    }
+  }catch(e){}
   var msg='Hi Beyond Passports, I would like to check my Schengen visa eligibility.';
   if(n||p){ msg='Hi Beyond Passports, I am '+(n||'(name)')+(p?' ('+p+')':'')+'. I would like to check my Schengen visa eligibility and book my appointment.'; }
   window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank','noopener'); return false;

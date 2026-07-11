@@ -17,6 +17,7 @@
     $word = $rating >= 4.3 ? 'Excellent' : ($rating >= 3.5 ? 'Great' : ($rating >= 2.5 ? 'Average' : ($rating >= 1.5 ? 'Poor' : 'Bad')));
     $starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.8 5.8 21.5l1.6-7L2 9.8l7.1-.6z"/></svg>';
 @endphp
+@if ($tp['enabled'] ?? false)
 <div style="text-align:{{ $tpcAlign }};margin:{{ $tpcMargin }}">
 @if ($hasRating)
   <a class="tpr {{ $tpcDark ? 'tpr--dark' : '' }}" href="{{ $tpcUrl }}" target="_blank" rel="noopener"
@@ -35,6 +36,7 @@
   </a>
 @endif
 </div>
+@endif
 @once
 <style>
   /* CTA (no rating yet) */

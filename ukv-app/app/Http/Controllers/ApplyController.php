@@ -6,11 +6,14 @@ namespace App\Http\Controllers;
 
 use App\Enums\EligibilityLane;
 use App\Http\Requests\ApplyRequest;
+use App\Mail\NewApplication;
 use App\Models\Order;
 use App\Services\FraudService;
 use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Public apply-intake endpoint. Builds the order via OrderService and returns the minimal
@@ -39,6 +42,19 @@ class ApplyController extends Controller
         // complements Stripe Radar (card-level, dashboard config); this is application-level.
         $this->fraud->flagIfRisky($order, $request->ip());
 
+        // Notify the owner of every new application so leads never sit silently (esp. the
+        // manual_review lane, which needs a hand-checked quote + callback). Inline send +
+        // try/catch, mirroring ContactController — a mail hiccup logs but never breaks the funnel.
+        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        if (! empty($recipient)) {
+            try {
+                Mail::to($recipient)->send(new NewApplication($order));
+                Log::info('New application emailed', ['to' => $recipient, 'order' => $order->order_ref]);
+            } catch (\Throwable $e) {
+                Log::error('New application email failed', ['order' => $order->order_ref, 'error' => $e->getMessage()]);
+            }
+        }
+
         $lane = $order->eligibility instanceof EligibilityLane
             ? $order->eligibility
             : EligibilityLane::tryFrom((string) $order->eligibility);
@@ -61,17 +77,53 @@ class ApplyController extends Controller
         }
 
         // manual_review (or any non-standard auto lane) -> human callback, no fixed charge.
+        // Send the traveller to a thank-you page that confirms the callback + opens WhatsApp,
+        // mirroring the contact flow. Server-driven so it works with or without JS.
+        $first = trim(explode(' ', trim((string) $order->applicant_name))[0]);
+        $waText = "Hi Beyond Passports, I just submitted an application (ref {$order->order_ref}).\n"
+            ."Name: {$order->applicant_name}\n"
+            ."Destination: {$order->destination_name}"
+            .($order->phone ? "\nPhone: {$order->phone}" : '')
+            ."\nPlease confirm what I need and my personalised quote.";
+        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584').'?text='.rawurlencode($waText);
+
+        $request->session()->flash('apply_thanks', [
+            'name' => $first,
+            'ref' => $order->order_ref,
+            'destination' => $order->destination_name,
+            'wa_url' => $waUrl,
+        ]);
+
         if (! $wantsJson) {
-            return redirect()->route('apply')->with('status',
-                "Thanks — your application (ref {$order->order_ref}) needs a quick human check. "
-                ."We'll call you with a personalised quote.");
+            return redirect()->route('apply.thanks');
         }
 
         return response()->json([
             'lane' => EligibilityLane::ManualReview->value,
             'order_ref' => $order->order_ref,
             'next' => 'callback',
+            'redirect' => route('apply.thanks'),
         ], 201);
+    }
+
+    /**
+     * Thank-you page for the manual-review lane. Confirms the callback + quote, and auto-opens
+     * the prefilled WhatsApp chat. Reads the one-shot flash from store(); a direct visit with no
+     * flash bounces back to /apply.
+     */
+    public function thanks(): RedirectResponse|\Illuminate\Contracts\View\View
+    {
+        $ctx = session('apply_thanks');
+        if (empty($ctx)) {
+            return redirect()->route('apply');
+        }
+
+        return view('public.apply-thanks', [
+            'leadName' => $ctx['name'] ?? '',
+            'orderRef' => $ctx['ref'] ?? '',
+            'destination' => $ctx['destination'] ?? '',
+            'waUrl' => $ctx['wa_url'] ?? null,
+        ]);
     }
 
     /**

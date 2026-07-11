@@ -8,8 +8,9 @@
 <link rel="icon" href="{{ asset('assets/brand/favicon.ico') }}" sizes="any">
 <link rel="apple-touch-icon" href="{{ asset('assets/brand/apple-touch-icon.png') }}">
 <meta name="theme-color" content="#155E7A">
-{{-- Trustpilot TrustBox bootstrap (in <head> per Trustpilot's guidance; ungated so reviews show). --}}
-@if (config('ukv.trustpilot.business_unit_id'))<script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>@endif
+{{-- Trustpilot TrustBox bootstrap (in <head> per Trustpilot's guidance). Gated by the master
+     ukv.trustpilot.enabled flag so the whole widget can be toggled off site-wide. --}}
+@if (config('ukv.trustpilot.enabled') && config('ukv.trustpilot.business_unit_id'))<script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>@endif
 @if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
 @if (config('ukv.google_site_verification'))<meta name="google-site-verification" content="{{ config('ukv.google_site_verification') }}">@endif
 @include('partials.meta-pixel')
