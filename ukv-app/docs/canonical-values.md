@@ -9,6 +9,7 @@ values so they are easy to find. Update both when a value is confirmed.
 | Companies House number | **17331903** | `ukv.address.company_no` / `UKV_COMPANY_NO` | Renders in site + LP footers and Organization schema |
 | Registered company name | Beyond Passports Ltd | `ukv.address.company` / `UKV_COMPANY_NAME` | |
 | Public enquiries email | hello@beyondpassports.co.uk | `ukv.email` / `UKV_EMAIL` | |
+| Contact/callback lead recipient | **hello@beyondpassports.co.uk** | `ukv.owner_email` / `UKV_OWNER_EMAIL` | Where /contact form emails land; prod .env set to hello@ (was admin@ — nobody watched it) |
 | WhatsApp number | _placeholder_ 447882747584 | `ukv.whatsapp` / `UKV_WHATSAPP` | Set real number (task #339) |
 | ICO registration number | _not yet registered_ | `ukv.compliance.ico_number` / `UKV_ICO_NUMBER` | Task #215; badge hidden until set |
 | Cyber Essentials | _not certified_ | `ukv.compliance.cyber_essentials` / `UKV_CYBER_ESSENTIALS` | Badge hidden until true |
