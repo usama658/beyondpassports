@@ -34,7 +34,8 @@ class ApplyController extends Controller
 
     public function store(ApplyRequest $request): JsonResponse|RedirectResponse
     {
-        $order = $this->orders->createFromIntake($request->validated());
+        $intake = $request->validated();
+        $order = $this->orders->createFromIntake($intake);
 
         // Advisory fraud/risk guard (#128): score the freshly-created order and, if it crosses
         // the threshold, flag it + log a fraud event for human review. This NEVER blocks the
@@ -48,7 +49,7 @@ class ApplyController extends Controller
         $recipient = config('ukv.owner_email') ?: config('mail.from.address');
         if (! empty($recipient)) {
             try {
-                Mail::to($recipient)->send(new NewApplication($order));
+                Mail::to($recipient)->send(new NewApplication($order, $intake));
                 Log::info('New application emailed', ['to' => $recipient, 'order' => $order->order_ref]);
             } catch (\Throwable $e) {
                 Log::error('New application email failed', ['order' => $order->order_ref, 'error' => $e->getMessage()]);

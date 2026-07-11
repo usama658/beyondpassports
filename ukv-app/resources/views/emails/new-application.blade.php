@@ -6,18 +6,16 @@ A traveller submitted the apply form. {{ $lane }}.
 @component('mail::table')
 | Field | Detail |
 | :---- | :----- |
-| Reference | {{ $orderRef }} |
-| Name | {{ $applicantName }} |
-| Destination | {{ $destination }} |
-| Travel date | {{ $travelDate }} |
-| Service tier | {{ $tier }} |
-| Email | {{ $email }} |
-| Phone | {{ $phone }} |
+@foreach ($fields as $label => $value)
+| {{ $label }} | {{ $value }} |
+@endforeach
 @endcomponent
 
-@component('mail::button', ['url' => 'tel:' . preg_replace('/[^0-9+]/', '', $phone)])
-Call {{ $applicantName }}
+@if ($phoneDigits)
+@component('mail::button', ['url' => 'tel:' . $phoneDigits])
+Call {{ $fields['Traveller name'] ?? 'the traveller' }}
 @endcomponent
+@endif
 
 Internal operations email — not for customers.
 @endcomponent
