@@ -8,7 +8,7 @@ return [
     'doc_retention_days' => env('UKV_DOC_RETENTION_DAYS', 90),
 
     // Owner/ops digest recipient (daily pending-actions email).
-    'owner_email' => env('UKV_OWNER_EMAIL', ''),
+    'owner_email' => env('UKV_OWNER_EMAIL', 'hello@beyondpassports.co.uk'), // contact/callback leads land here (master inbox)
 
     // Show service-fee PRICES on marketing surfaces (home/destination cards, header mega-menu,
     // money-page tier amounts, Offer schema). When false, those become "fee — on request" /
