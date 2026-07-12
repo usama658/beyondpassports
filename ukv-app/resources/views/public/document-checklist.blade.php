@@ -227,7 +227,7 @@
                 <select id="destination" name="destination" required aria-required="true">
                   <option value="">Choose a destination…</option>
                   @foreach ($navDestinations as $d)
-                    <option value="{{ $d->name }}" @selected(old('destination') === $d->name)>{{ $d->name }}</option>
+                    <option value="{{ $d->name }}" @selected(old('destination', request('destination')) === $d->name)>{{ $d->name }}</option>
                   @endforeach
                 </select>
               </div>
