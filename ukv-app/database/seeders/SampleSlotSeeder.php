@@ -5,81 +5,118 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\CentreSlot;
-use App\Models\SupplyNode;
+use App\Models\Destination;
+use App\Services\AvailabilityService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
 /**
- * TEMPORARY illustrative held-slot inventory for the /schengen-visa per-centre picker.
+ * TEMPORARY illustrative held-slot inventory for the /schengen-visa per-centre picker,
+ * DERIVED FROM the public availability board so the tile and the modal cannot disagree.
  *
- * slots:provision fills every "we book here" centre with the SAME uniform weekday grid, so all
- * centres show identical dates — which reads as fake. This replaces that with a per-centre pattern:
- * each centre gets a distinct opening offset, cadence and time-of-day set, so London / Manchester /
- * Edinburgh of the same country differ (as real centres do).
+ * The board tile reads CentreAvailability (band + next-available date, via AvailabilityService).
+ * The picker modal reads CentreSlot. Previously the two were seeded independently, so a "Limited"
+ * tile could open a modal full of slots, on dates that did not match the tile. This seeder keys the
+ * slots to each country's board status:
  *
- * Still illustrative, NOT verified portal availability. The picker frames every slot as
- * "we confirm it live with the centre and book it for you", and the board carries the
- * "Indicative only" disclaimer. Replace with real bookable availability before paid traffic
- * (#95 / #96, DMCCA). Deterministic (variance from node id) and re-run safe: it clears each
- * centre's future available slots first, so no duplicates and no drift.
+ *   ask  -> no slots        (modal shows "No published slots — ask us")
+ *   lim  -> few slots       (2-3 dates x 1 time per centre — reads as "Limited")
+ *   ok   -> more slots      (5-6 dates x 2 times per centre — reads as "Available")
  *
- * Only touches `available` future slots — held/booked inventory tied to orders is left alone.
+ * Start dates key off the board's next_available_on: the FIRST centre opens exactly on that date
+ * (so the tile's "Next available" == the modal's soonest slot), later centres open progressively
+ * further out. Per-centre variance (offset/cadence/times) comes from the node id, so centres of a
+ * country still differ. Weekend dates nudge to the next weekday.
+ *
+ * Still illustrative, NOT verified portal availability. Picker + board keep the "we confirm live" /
+ * "indicative only" framing. Replace before paid traffic (#95 / #96, DMCCA). Deterministic and
+ * re-run safe: clears each centre's future available slots first. Only touches `available` future
+ * slots — held/booked inventory tied to orders is left alone.
  */
 class SampleSlotSeeder extends Seeder
 {
-    /** Time-of-day sets a centre can run (varied so centres do not all open at 09:00). */
-    private const TIME_SETS = [
-        ['09:00', '11:30'],
+    private const TIME_SETS_OK = [
+        ['09:00', '13:30'],
         ['10:00', '14:00'],
-        ['09:30', '13:30', '15:30'],
-        ['08:30', '10:30', '13:00'],
+        ['09:30', '15:00'],
     ];
 
-    public function run(): void
+    private const TIME_SETS_LIM = [
+        ['10:30'],
+        ['14:00'],
+        ['09:30'],
+    ];
+
+    public function run(AvailabilityService $availability): void
     {
-        $centres = SupplyNode::query()->where('we_book_here', true)->get();
-        $today = Carbon::today();
+        $board = $availability->byDestination('Schengen');
+
+        $destinations = Destination::query()
+            ->where('visa_type', 'Schengen')
+            ->with(['supplyNodes' => fn ($q) => $q->where('we_book_here', true)])
+            ->get();
+
+        $now = Carbon::now();
         $slots = 0;
 
-        foreach ($centres as $node) {
-            // Reset this centre's upcoming available slots so re-runs stay clean.
-            CentreSlot::query()
-                ->where('supply_node_id', $node->getKey())
-                ->where('status', 'available')
-                ->where('slot_at', '>', Carbon::now())
-                ->delete();
+        foreach ($destinations as $destination) {
+            $status = $board[$destination->getKey()]['status'] ?? 'ask';
+            $baseDate = $board[$destination->getKey()]['next_available_on'] ?? null;
 
-            $seed = (int) $node->getKey();
-            $startOffset = 2 + ($seed % 12);          // first opening 2–13 days out
-            $gap = 1 + ($seed % 3);                   // then every 1–3 weekdays
-            $dateCount = 4 + ($seed % 4);             // 4–7 distinct dates
-            $times = self::TIME_SETS[$seed % count(self::TIME_SETS)];
+            foreach ($destination->supplyNodes->values() as $index => $node) {
+                // Reset this centre's upcoming available slots so re-runs stay clean.
+                CentreSlot::query()
+                    ->where('supply_node_id', $node->getKey())
+                    ->where('status', 'available')
+                    ->where('slot_at', '>', $now)
+                    ->delete();
 
-            $day = $today->copy()->addDays($startOffset);
-            $made = 0;
-
-            while ($made < $dateCount) {
-                if (! $day->isWeekday()) {
-                    $day->addDay();
-
+                // No board availability (or no date) => no published slots for this country.
+                if ($status === 'ask' || $baseDate === null) {
                     continue;
                 }
 
-                foreach ($times as $time) {
-                    [$h, $m] = array_pad(explode(':', $time), 2, '0');
-                    CentreSlot::create([
-                        'supply_node_id' => $node->getKey(),
-                        'slot_at' => $day->copy()->setTime((int) $h, (int) $m, 0),
-                        'status' => 'available',
-                    ]);
-                    $slots++;
+                $seed = (int) $node->getKey();
+
+                // Band drives how many slots a centre carries.
+                if ($status === 'ok') {
+                    $dateCount = 5 + ($seed % 2);                              // 5-6 dates
+                    $times = self::TIME_SETS_OK[$seed % count(self::TIME_SETS_OK)];
+                } else {                                                       // 'lim'
+                    $dateCount = 2 + ($seed % 2);                              // 2-3 dates
+                    $times = self::TIME_SETS_LIM[$seed % count(self::TIME_SETS_LIM)];
                 }
 
-                $made++;
-                $day->addDays($gap);
+                // First centre opens ON the board date (tile == modal soonest); others open later.
+                $startOffset = $index === 0 ? 0 : ($index * 3) + ($seed % 4);
+                $gap = 2 + ($seed % 3);                                        // every 2-4 weekdays
+
+                $day = Carbon::parse($baseDate)->startOfDay()->addDays($startOffset);
+                $made = 0;
+
+                while ($made < $dateCount) {
+                    if (! $day->isWeekday()) {
+                        $day->addDay();
+
+                        continue;
+                    }
+
+                    foreach ($times as $time) {
+                        [$h, $m] = array_pad(explode(':', $time), 2, '0');
+                        CentreSlot::create([
+                            'supply_node_id' => $node->getKey(),
+                            'slot_at' => $day->copy()->setTime((int) $h, (int) $m, 0),
+                            'status' => 'available',
+                        ]);
+                        $slots++;
+                    }
+
+                    $made++;
+                    $day->addDays($gap);
+                }
             }
         }
 
-        $this->command?->info("SampleSlotSeeder: {$slots} varied illustrative slots across {$centres->count()} centres.");
+        $this->command?->info("SampleSlotSeeder: {$slots} board-synced illustrative slots seeded.");
     }
 }
