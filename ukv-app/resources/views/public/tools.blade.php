@@ -209,6 +209,13 @@
   </div>
 </div></section>
 
+{{-- PERSONALISED CHECKLIST BAND — nudge from the generic checkers to the tailored tool. --}}
+<section><div class="wrap">
+  <div class="reveal">
+    @include('partials.checklist-band')
+  </div>
+</div></section>
+
 {{-- CTA --}}
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>

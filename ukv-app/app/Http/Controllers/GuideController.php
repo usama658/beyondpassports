@@ -87,6 +87,7 @@ class GuideController extends Controller
 
         return view('public.guides.show', [
             'guide' => $guide,
+            'checklistCountry' => null, // generic guide → generic checklist band
         ]);
     }
 
@@ -104,6 +105,7 @@ class GuideController extends Controller
 
         return view('public.guides.show', [
             'guide' => $guide,
+            'checklistCountry' => $destination->name, // country guide → deep-linked checklist band
         ]);
     }
 }

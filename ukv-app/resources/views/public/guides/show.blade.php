@@ -627,6 +627,11 @@
         </div>
       @endif
     @endif
+
+    {{-- Personalised document-checklist band — deep-linked on country guides, generic elsewhere. --}}
+    <div class="reveal" style="margin-top:26px">
+      @include('partials.checklist-band', ['cbDestination' => $checklistCountry ?? null])
+    </div>
   </div>{{-- /.gs-main --}}
 
   {{-- STICKY MERGED SIDEBAR --}}

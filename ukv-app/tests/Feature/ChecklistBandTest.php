@@ -56,4 +56,9 @@ final class ChecklistBandTest extends TestCase
             ->assertSee('cl-band', false)
             ->assertSee('?destination=Germany', false);
     }
+
+    public function test_tools_hub_shows_the_generic_band(): void
+    {
+        $this->get('/tools')->assertOk()->assertSee('cl-band', false);
+    }
 }
