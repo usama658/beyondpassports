@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Cms;
 
 use App\Cms\Blocks\BlockType;
+use App\Cms\Blocks\HeroBlock;
+use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\RichTextBlock;
 use Filament\Forms\Components\Builder\Block;
 
@@ -16,7 +18,9 @@ class BlockRegistry
 {
     /** @var array<int, class-string<BlockType>> */
     private array $types = [
+        HeroBlock::class,
         RichTextBlock::class,
+        LockedIncludeBlock::class,
     ];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */

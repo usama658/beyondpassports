@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use App\Services\PageRenderer;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 
@@ -15,15 +14,45 @@ use Illuminate\Support\Facades\Cache;
  */
 class CmsController extends Controller
 {
-    public function show(string $slug, PageRenderer $renderer): Response
+    public function show(string $slug): Response
     {
         abort_unless((bool) config('ukv.cms.enabled'), 404);
 
         $page = Page::where('slug', $slug)->first();
         abort_unless($page && $page->isPublishedCms(), 404);
 
-        $html = Cache::remember('cms:page:'.$page->slug, now()->addHours(6), fn () => $renderer->render($page));
+        return $this->renderCms($page);
+    }
 
-        return response()->view('cms.page', ['page' => $page, 'rendered' => $html]);
+    /**
+     * Serve a CMS page for an EXISTING named route (e.g. /services) when the flag is on and the page
+     * is a published cms page; otherwise render the coded Blade view. This is the per-page toggle +
+     * coded fallback for pages that already own a route.
+     */
+    public function pageOrCoded(string $slug, string $codedView): Response
+    {
+        if ((bool) config('ukv.cms.enabled')) {
+            $page = Page::where('slug', $slug)->first();
+            if ($page && $page->isPublishedCms()) {
+                return $this->renderCms($page);
+            }
+        }
+
+        return response()->view($codedView);
+    }
+
+    /**
+     * Render the full CMS page (blocks inside the site layout) and cache the HTML. Rendering the
+     * blocks within the layout in one pass keeps @once/@push behaviour identical to the coded page.
+     */
+    private function renderCms(Page $page): Response
+    {
+        $html = Cache::remember(
+            'cms:page:'.$page->slug,
+            now()->addHours(6),
+            fn () => view('cms.page', ['page' => $page])->render(),
+        );
+
+        return response($html);
     }
 }

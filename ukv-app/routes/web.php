@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 // --- Public site (the content silo) ---
 Route::view('/', 'public.home')->name('home');
-Route::view('/services', 'public.services')->name('services'); // full-catalogue hub (config('ukv.services'))
+// Serves the CMS "services" page when UKV_CMS_ENABLED is on and it is a published cms page, else the
+// coded public.services view (per-page toggle + coded fallback). CMS pilot: Services.
+Route::get('/services', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('services', 'public.services'))->name('services'); // full-catalogue hub (config('ukv.services'))
 Route::view('/tour-packages', 'public.tours')->name('tours'); // visa-led tour packages (config('ukv.tours'))
 Route::view('/tools', 'public.tools')->name('tools');
 // Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
