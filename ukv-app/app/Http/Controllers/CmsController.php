@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use App\Models\Page;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 
@@ -39,6 +41,22 @@ class CmsController extends Controller
         }
 
         return response()->view($codedView);
+    }
+
+    /**
+     * Preview a page's blocks regardless of published status or the global flag, for Admin/Editor
+     * only. Always fresh (no cache), so the team can see a draft before publishing. This is the
+     * "preview" leg of draft -> preview -> publish.
+     */
+    public function preview(Page $page): Response|RedirectResponse
+    {
+        $user = auth()->user();
+        if (! $user) {
+            return redirect()->route('filament.admin.auth.login');
+        }
+        abort_unless(in_array($user->role, [UserRole::Admin, UserRole::Editor], true), 403);
+
+        return response(view('cms.page', ['page' => $page])->render());
     }
 
     /**

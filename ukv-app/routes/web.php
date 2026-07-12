@@ -174,6 +174,10 @@ Route::post('/track/lookup', [TrackController::class, 'lookup'])
     ->middleware('throttle:tracker')
     ->name('track.lookup');
 
+// CMS draft preview (Admin/Editor only) — renders a page's blocks regardless of publish status.
+// Auth is handled inside the controller so guests land on the Filament admin login.
+Route::get('/cms/preview/{page}', [\App\Http\Controllers\CmsController::class, 'preview'])->name('cms.preview');
+
 // --- CMS catch-all (MUST be last). Only fires for slugs no coded route claimed, and only when
 // UKV_CMS_ENABLED is on and the page is a published cms page. Otherwise 404 -> nothing changes.
 Route::get('/{slug}', [\App\Http\Controllers\CmsController::class, 'show'])
