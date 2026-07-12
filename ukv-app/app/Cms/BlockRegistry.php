@@ -6,6 +6,7 @@ namespace App\Cms;
 
 use App\Cms\Blocks\BlockType;
 use App\Cms\Blocks\HeroBlock;
+use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\RichTextBlock;
 use Filament\Forms\Components\Builder\Block;
@@ -20,6 +21,7 @@ class BlockRegistry
     private array $types = [
         HeroBlock::class,
         RichTextBlock::class,
+        ImageBlock::class,
         LockedIncludeBlock::class,
     ];
 
