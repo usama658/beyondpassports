@@ -27,12 +27,15 @@ final class AppointmentEnquiry extends Mailable implements ShouldQueue
 
     public readonly string $leadPhone;
 
+    public readonly string $leadEmail;
+
     public readonly string $source;
 
-    public function __construct(string $name, string $phone, string $source)
+    public function __construct(string $name, string $phone, string $source, string $email = '')
     {
         $this->leadName = trim($name) !== '' ? trim($name) : '(no name given)';
         $this->leadPhone = trim($phone) !== '' ? trim($phone) : '(no number given)';
+        $this->leadEmail = trim($email) !== '' ? trim($email) : '(no email given)';
         $this->source = trim($source) !== '' ? trim($source) : 'landing page';
     }
 
@@ -50,6 +53,7 @@ final class AppointmentEnquiry extends Mailable implements ShouldQueue
             with: [
                 'leadName' => $this->leadName,
                 'leadPhone' => $this->leadPhone,
+                'leadEmail' => $this->leadEmail,
                 'source' => $this->source,
             ],
         );

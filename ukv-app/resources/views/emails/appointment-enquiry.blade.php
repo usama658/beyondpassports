@@ -9,6 +9,7 @@ this is the server record so the lead is not lost if they never send the message
 | :---- | :----- |
 | Name | {{ $leadName }} |
 | Phone | {{ $leadPhone }} |
+| Email | {{ $leadEmail ?? '(no email given)' }} |
 | Source | {{ $source }} |
 @endcomponent
 

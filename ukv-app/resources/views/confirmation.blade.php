@@ -420,6 +420,16 @@
                 @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => true])
             @endif
 
+            {{-- Direct line to the team while they wait for the specialist review. --}}
+            <hr class="cnf-section-divider">
+            <div style="text-align:center;padding:6px 0 2px">
+                <p style="margin:0 0 12px;font-size:15px;line-height:1.55;color:#3a4b55">Questions before we're in touch? Message your specialist directly.</p>
+                @include('partials.wa-cta', [
+                    'message' => "Hi Beyond Passports, I've just submitted my application (ref {$order->order_ref}) and have a question.",
+                    'label' => 'Chat on WhatsApp',
+                ])
+            </div>
+
             {{-- Optional FCA-safe travel-insurance introducer (no charge taken here). --}}
             @include('partials.insurance-introducer')
 

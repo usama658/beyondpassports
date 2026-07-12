@@ -27,11 +27,14 @@ class AppointmentEnquiryController extends Controller
         $data = $request->validate([
             'name' => ['nullable', 'string', 'max:120'],
             'phone' => ['nullable', 'string', 'max:40'],
+            'email' => ['nullable', 'email', 'max:190'],
             'source' => ['nullable', 'string', 'max:120'],
         ]);
 
-        // Nothing to capture if both identity fields are blank — don't email an empty lead.
-        if (trim((string) ($data['name'] ?? '')) === '' && trim((string) ($data['phone'] ?? '')) === '') {
+        // Nothing to capture if every identity field is blank — don't email an empty lead.
+        if (trim((string) ($data['name'] ?? '')) === ''
+            && trim((string) ($data['phone'] ?? '')) === ''
+            && trim((string) ($data['email'] ?? '')) === '') {
             return response()->json(['ok' => false, 'message' => 'Nothing to record.'], 422);
         }
 
@@ -40,6 +43,7 @@ class AppointmentEnquiryController extends Controller
         Log::info('Appointment enquiry', [
             'has_name' => ! empty($data['name']),
             'has_phone' => ! empty($data['phone']),
+            'has_email' => ! empty($data['email']),
             'source' => $data['source'] ?? null,
             'ip' => $request->ip(),
         ]);
@@ -52,6 +56,7 @@ class AppointmentEnquiryController extends Controller
                     name: (string) ($data['name'] ?? ''),
                     phone: (string) ($data['phone'] ?? ''),
                     source: (string) ($data['source'] ?? 'landing page'),
+                    email: (string) ($data['email'] ?? ''),
                 ));
                 Log::info('Appointment enquiry emailed', ['to' => $recipient]);
             } catch (\Throwable $e) {
