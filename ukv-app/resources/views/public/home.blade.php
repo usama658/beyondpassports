@@ -460,10 +460,9 @@
   $regionsPresent = collect($regionOrder)->filter(fn ($r) => ! empty($regionCounts[$r]))
       ->merge(collect(array_keys($regionCounts))->reject(fn ($r) => in_array($r, $regionOrder, true)))
       ->values();
-  // "See all" target: Schengen regions deep-link to the filtered hub; others to the full list.
-  $regionUrl = fn ($r) => in_array($r, $regionOrder, true)
-      ? url('/visa/schengen').'?region='.urlencode($r)
-      : url('/schengen-visa');
+  // "See all" target: the /schengen-visa hub (its own region tabs + searchable grid handle
+  // filtering). /visa/schengen was drafted (301 -> /schengen-visa), so link the canonical page.
+  $regionUrl = fn ($r) => url('/schengen-visa');
 @endphp
 @push('head')
 <style>

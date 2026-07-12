@@ -137,7 +137,10 @@ Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->
 Route::get('/schengen-visa', [DestinationController::class, 'index'])->name('destinations.index');
 Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → canonical Schengen visa page
 Route::get('/schengen-visa-consultancy', [DestinationController::class, 'schengenLanding'])->name('schengen.landing');
-Route::get('/visa/schengen', [DestinationController::class, 'schengen'])->name('destinations.schengen');
+// Drafted: /visa/schengen duplicated the stronger /schengen-visa hub (which has its own region
+// tabs + searchable grid). 301 to the canonical page. Controller schengen() + destinations.schengen
+// view are kept in code, dormant, so this is reversible — restore the Route::get to un-draft.
+Route::redirect('/visa/schengen', '/schengen-visa', 301);
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
 // Nested country guide (spoke) — constrained to the 15 known topic slugs so it never shadows
 // a real destination slug or the money page above.

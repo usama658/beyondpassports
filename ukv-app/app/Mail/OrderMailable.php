@@ -82,6 +82,28 @@ abstract class OrderMailable extends Mailable implements ShouldQueue
     }
 
     /**
+     * Customer email (empty string if none).
+     */
+    protected function email(): string
+    {
+        return trim((string) ($this->order->email ?? ''));
+    }
+
+    /**
+     * Absolute URL to the public document-upload page, prefilled with this order's ref + email
+     * so the customer lands ready to authenticate. Replaces the old dead /how-to-send-documents/.
+     */
+    protected function documentsUrl(): string
+    {
+        $query = http_build_query(array_filter([
+            'ref' => $this->ref() === '—' ? null : $this->ref(),
+            'email' => $this->email() !== '' ? $this->email() : null,
+        ]));
+
+        return $this->baseUrl().'/documents'.($query !== '' ? '?'.$query : '');
+    }
+
+    /**
      * Merge data shared by every lifecycle email view.
      *
      * @return array<string, string>
@@ -93,6 +115,8 @@ abstract class OrderMailable extends Mailable implements ShouldQueue
             'dest' => $this->dest(),
             'ref' => $this->ref(),
             'baseUrl' => $this->baseUrl(),
+            'email' => $this->email(),
+            'documentsUrl' => $this->documentsUrl(),
         ];
     }
 }

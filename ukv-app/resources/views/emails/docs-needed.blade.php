@@ -5,7 +5,7 @@ To move your {{ $dest }} visa application forward (order {{ $ref }}), we need a 
 
 @include('emails.partials.doc-checklist', ['items' => $items ?? []])
 
-How to send them (it's quick): {{ $baseUrl }}/how-to-send-documents/
+Upload them securely here (prefilled with your reference): {{ $documentsUrl }}
 Or just reply here / to our WhatsApp message and we'll guide you.
 
 @include('emails.partials.footer')
