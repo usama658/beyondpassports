@@ -253,23 +253,7 @@
     .slotm-note{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
     @media(max-width:560px){.apbk-grid{grid-template-columns:1fr}.apbk-go{width:100%}.slotm-grid{grid-template-columns:1fr}}
   </style>
-  <div class="apbk reveal">
-    <p class="apbk-h">Pick your appointment slot</p>
-    <p class="apbk-s">Choose your country to see available slots. Select the one you need and we book it for you, live with the centre.</p>
-    <div class="apbk-grid">
-      <div class="apbk-f">
-        <label for="apbk-country">Which country?</label>
-        <select id="apbk-country">
-          <option value="">Choose your Schengen country…</option>
-          @foreach($destinations->sortBy('name') as $d)
-            <option value="{{ $d->name }}">{{ $d->name }}</option>
-          @endforeach
-        </select>
-      </div>
-      <button type="button" class="apbk-go" id="apbk-see">See available slots &rarr;</button>
-    </div>
-    <p class="apbk-note">Free to check. No payment now. We confirm the exact live slot and book it for you.</p>
-  </div>
+  {{-- Picker card drafted — the country tiles below open the slot modal directly. --}}
 
   {{-- Slot-picker modal (populated by JS for the chosen country) --}}
   <div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}">
@@ -415,15 +399,29 @@
     }
     function close() { modal.classList.remove('open'); }
 
-    document.getElementById('apbk-see').addEventListener('click', function () {
+    var seeBtn = document.getElementById('apbk-see');
+    if (seeBtn) seeBtn.addEventListener('click', function () {
       var sel = document.getElementById('apbk-country');
-      if (!sel.value) { sel.focus(); return; }
+      if (!sel || !sel.value) { if (sel) sel.focus(); return; }
       open(sel.value);
     });
     Array.prototype.forEach.call(document.querySelectorAll('.ap-tile[data-slotcountry]'), function (t) {
       t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry')); });
     });
     book.addEventListener('click', function (e) { if (book.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+
+    // Tease the soonest indicative window on the "ask" tiles so they match what the modal shows.
+    // Tiles with real published availability (status ok/lim) keep their server date untouched.
+    var soonest = windows()[0];
+    if (soonest) {
+      Array.prototype.forEach.call(document.querySelectorAll('.ap-tile[data-slotcountry]'), function (t) {
+        if (!t.querySelector('.ap-st.ask')) return;
+        var dt = t.querySelector('.ap-dt'), lb = t.querySelector('.ap-lb');
+        if (dt) dt.textContent = 'Soonest ~ ' + fmt(soonest);
+        if (lb) lb.textContent = 'Tap to choose & book';
+      });
+    }
+
     document.getElementById('slotm-x').addEventListener('click', close);
     modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
