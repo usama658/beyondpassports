@@ -7,9 +7,11 @@ namespace App\Http\Controllers;
 use App\Jobs\SendChecklistWhatsApp;
 use App\Jobs\SyncChecklistLead;
 use App\Mail\ChecklistDelivery;
+use App\Mail\NewChecklistLead;
 use App\Models\ChecklistRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
@@ -102,6 +104,17 @@ class ChecklistDeliveryController extends Controller
         // --- Lead sync (guarded; marketing fields gated on consent inside the job/service) ---
         if ($checklist->email !== null) {
             SyncChecklistLead::dispatch($checklist);
+        }
+
+        // --- Owner notification: put this lead in the inbox, not just HubSpot ---
+        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        if (! empty($recipient)) {
+            try {
+                Mail::to($recipient)->send(new NewChecklistLead($checklist, $this->savedLink($checklist)));
+                Log::info('Checklist lead emailed', ['to' => $recipient, 'token' => $checklist->token]);
+            } catch (\Throwable $e) {
+                Log::error('Checklist lead email failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
+            }
         }
 
         return redirect()

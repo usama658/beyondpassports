@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\DocumentUploadedBy;
 use App\Http\Requests\DocumentDetailRequest;
+use App\Mail\DocumentsUploaded;
 use App\Models\Order;
 use App\Services\DocumentService;
 use App\Services\RequirementService;
@@ -13,6 +14,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Authenticated-by-reference customer document upload, tied to ONE order.
@@ -145,6 +148,24 @@ class DocumentUploadController extends Controller
                     'name' => $file->getClientOriginalName(),
                     'error' => $e->getMessage(),
                 ];
+            }
+        }
+
+        // --- Owner ping: a customer uploaded documents, so the team can act without watching
+        // the admin panel. Only when at least one file was accepted. Inline send + try/catch —
+        // a mail hiccup must never fail the upload response. ---
+        if ($accepted !== []) {
+            $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+            if (! empty($recipient)) {
+                try {
+                    Mail::to($recipient)->send(new DocumentsUploaded(
+                        $order,
+                        array_map(static fn ($a) => (string) ($a['name'] ?? ''), $accepted),
+                    ));
+                    Log::info('Documents-uploaded emailed', ['to' => $recipient, 'order' => $order->order_ref, 'count' => count($accepted)]);
+                } catch (\Throwable $e) {
+                    Log::error('Documents-uploaded email failed', ['order' => $order->order_ref, 'error' => $e->getMessage()]);
+                }
             }
         }
 
