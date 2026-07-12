@@ -228,6 +228,20 @@
   </div>
 </section>
 
+{{-- CONVERSION BAND — the page's whole pitch is "we can book this for you"; capture the lead. --}}
+@php
+  $fcWa = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584').'?text='.rawurlencode('Hi Beyond Passports, I found my nearest centre. Can you check my eligibility and book my Schengen appointment?');
+@endphp
+<section class="cta-band"><div class="wrap reveal">
+  <div class="rule"></div>
+  <h2>We can book your appointment for you</h2>
+  <p style="max-width:54ch;color:#cdd9e1">Found your centre? A UK &amp; Europe registered service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
+  <div class="row">
+    <a href="{{ $fcWa }}" class="btn btn--glass">@include('partials.wa-glyph')Check eligibility, free</a>
+    <a href="{{ url('/apply') }}" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start your application →</a>
+  </div>
+</div></section>
+
 {{-- COMPLIANCE STRIP --}}
 <section class="fc-section-sm" style="padding-top:0">
   <div class="wrap">
