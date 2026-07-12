@@ -21,7 +21,7 @@ class User extends Authenticatable implements FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return in_array($this->role, [UserRole::Admin, UserRole::Agent, UserRole::Viewer], true);
+        return in_array($this->role, [UserRole::Admin, UserRole::Agent, UserRole::Viewer, UserRole::Editor], true);
     }
 
     /** @use HasFactory<UserFactory> */

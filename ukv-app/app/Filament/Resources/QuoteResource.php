@@ -18,6 +18,8 @@ use Filament\Tables\Table;
 
 class QuoteResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = Quote::class;

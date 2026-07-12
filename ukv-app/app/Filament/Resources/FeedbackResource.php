@@ -20,6 +20,8 @@ use Filament\Tables\Table;
 
 class FeedbackResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = Feedback::class;

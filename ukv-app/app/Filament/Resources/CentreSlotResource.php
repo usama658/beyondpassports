@@ -16,6 +16,8 @@ use Filament\Tables\Table;
 
 class CentreSlotResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = CentreSlot::class;

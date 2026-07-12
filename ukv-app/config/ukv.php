@@ -10,6 +10,12 @@ return [
     // Owner/ops digest recipient (daily pending-actions email).
     'owner_email' => env('UKV_OWNER_EMAIL', 'hello@beyondpassports.co.uk'), // contact/callback leads land here (master inbox)
 
+    // Content CMS (theme-safe block builder). OFF by default: public pages render their existing
+    // coded Blade until a page is explicitly switched to cms mode AND published.
+    'cms' => [
+        'enabled' => env('UKV_CMS_ENABLED', false),
+    ],
+
     // Show service-fee PRICES on marketing surfaces (home/destination cards, header mega-menu,
     // money-page tier amounts, Offer schema). When false, those become "fee — on request" /
     // "View" and the tier buttons become quote CTAs. The apply-step price and the order receipt

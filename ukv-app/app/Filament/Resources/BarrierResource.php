@@ -21,6 +21,8 @@ use Filament\Tables\Table;
 
 class BarrierResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = Barrier::class;

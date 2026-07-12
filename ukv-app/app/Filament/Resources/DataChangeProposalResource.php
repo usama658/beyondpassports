@@ -28,6 +28,8 @@ use Illuminate\Support\Carbon;
  */
 class DataChangeProposalResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = DataChangeProposal::class;

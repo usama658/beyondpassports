@@ -17,6 +17,8 @@ use Illuminate\Support\Str;
 
 class SupplyNodeResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = SupplyNode::class;

@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 
 class DestinationResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = Destination::class;

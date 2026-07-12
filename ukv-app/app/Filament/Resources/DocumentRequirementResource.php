@@ -13,6 +13,8 @@ use Filament\Tables\Table;
 
 class DocumentRequirementResource extends Resource
 {
+    use \App\Filament\Concerns\HiddenFromEditor;
+
     use AuthorizesByRole;
 
     protected static ?string $model = DocumentRequirement::class;

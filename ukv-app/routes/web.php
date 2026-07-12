@@ -171,3 +171,9 @@ Route::get('/track', [TrackController::class, 'show'])->name('track.show');
 Route::post('/track/lookup', [TrackController::class, 'lookup'])
     ->middleware('throttle:tracker')
     ->name('track.lookup');
+
+// --- CMS catch-all (MUST be last). Only fires for slugs no coded route claimed, and only when
+// UKV_CMS_ENABLED is on and the page is a published cms page. Otherwise 404 -> nothing changes.
+Route::get('/{slug}', [\App\Http\Controllers\CmsController::class, 'show'])
+    ->where('slug', '[a-z0-9-]+')
+    ->name('cms.show');
