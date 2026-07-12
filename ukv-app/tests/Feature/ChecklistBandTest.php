@@ -37,4 +37,23 @@ final class ChecklistBandTest extends TestCase
             ->assertOk()
             ->assertSee('<option value="Germany" selected>Germany</option>', false);
     }
+
+    public function test_destination_page_shows_the_band_deep_linked_to_its_country(): void
+    {
+        // Money pages are Schengen-only since the pivot.
+        Destination::create([
+            'name' => 'Germany',
+            'slug' => 'germany',
+            'visa_type' => 'Schengen',
+            'govt_fee_gbp' => 80.00,
+            'tier_standard_gbp' => 39.00,
+            'tier_express_gbp' => 59.00,
+            'tier_premium_gbp' => 89.00,
+            'passport_validity_months' => 6,
+        ]);
+
+        $this->get('/visa/germany')->assertOk()
+            ->assertSee('cl-band', false)
+            ->assertSee('?destination=Germany', false);
+    }
 }

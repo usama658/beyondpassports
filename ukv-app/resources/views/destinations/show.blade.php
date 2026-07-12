@@ -318,6 +318,14 @@
 </div></section>
 @endif
 
+{{-- 4a. PERSONALISED-CHECKLIST BAND — turns the generic preview above into a tailored, deep-linked
+     lead capture for this country (free /document-checklist tool). --}}
+<section><div class="wrap">
+  <div class="reveal">
+    @include('partials.checklist-band', ['cbDestination' => $destination->name])
+  </div>
+</div></section>
+
 {{-- 4b. PREVENTION — "built to prevent refusals" (country-templated) --}}
 @include('partials.money-prevention')
 
