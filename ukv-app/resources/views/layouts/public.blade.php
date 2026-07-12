@@ -26,6 +26,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+@include('partials.announcement-bar')
 @include('partials.site-header')
 
 {{-- Reusable inline SVG symbol library: skyline silhouette + UKV stamp.
