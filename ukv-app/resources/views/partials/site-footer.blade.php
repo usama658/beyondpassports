@@ -66,32 +66,14 @@
         @endonce
         @endif
       </div>
+@foreach (\App\Support\NavService::footerColumns() as $col)
       <div>
-        <strong>Service</strong>
-        <a href="{{ url('/services') }}">All services</a>
-        <a href="{{ url('/tour-packages') }}">{{ config('ukv.tours.nav_label', 'Plan a trip') }}</a>
-        <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
-        <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
-        <a href="{{ url('/track') }}">Track application</a>
+        <strong>{{ $col['heading'] }}</strong>
+@foreach ($col['links'] as $link)
+        <a href="{{ $link['url'] }}"@if(!empty($link['external'])) target="_blank" rel="noopener"@endif>{{ $link['label'] }}</a>
+@endforeach
       </div>
-      <div>
-        <strong>Free tools &amp; guides</strong>
-        <a href="{{ url('/tools') }}">Visa checker</a>
-        <a href="{{ url('/document-checklist') }}">Document checker</a>
-        <a href="{{ url('/find-a-centre') }}">Find a centre</a>
-        <a href="{{ url('/guides') }}">Visa guides &amp; stories</a>
-        <a href="{{ url('/reviews') }}">Traveller reviews</a>
-        <a href="{{ url('/compare') }}">Apply yourself vs us</a>
-      </div>
-      <div>
-        <strong>Company &amp; legal</strong>
-        <a href="{{ url('/about') }}">Who we are</a>
-        <a href="{{ url('/contact') }}">Contact</a>
-        <a href="{{ url('/legal') }}#privacy">Privacy</a>
-        <a href="{{ url('/legal') }}#terms">Terms</a>
-        <a href="{{ url('/legal') }}#complaints">Complaints</a>
-        <a href="{{ url('/legal') }}#disclaimer">Disclaimer</a>
-      </div>
+@endforeach
     </div>
     <div class="ft-bottom">
       <span>© Beyond Passports. Independent, not the government. Fee separate from the visa fee. Approval never guaranteed.</span>

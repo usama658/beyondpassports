@@ -18,10 +18,11 @@
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">☰</button>
   <nav class="nav" id="primary-nav" aria-label="Primary">
     {{-- Schengen-only: simple top-nav link (mega-menu removed; recoverable from git). --}}
-    <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
-    <a href="{{ url('/tour-packages') }}">{{ config('ukv.tours.nav_label', 'Plan a trip') }}</a>
-    <a href="{{ url('/about') }}">Who we are</a>
-    <a href="{{ url('/contact') }}" class="btn btn--ghost" style="padding:8px 16px">Contact</a>
-    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn" style="padding:8px 16px">Check eligibility →</a>
+@foreach (\App\Support\NavService::primary() as $item)
+    <a href="{{ $item['url'] }}">{{ $item['label'] }}</a>
+@endforeach
+@foreach (\App\Support\NavService::ctas() as $cta)
+    <a href="{{ $cta['url'] }}"@if(!empty($cta['external'])) target="_blank" rel="noopener"@endif class="btn{{ ($cta['variant'] ?? '') === 'ghost' ? ' btn--ghost' : '' }}" style="padding:8px 16px">{{ $cta['label'] }}</a>
+@endforeach
   </nav>
 </div></header>
