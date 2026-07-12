@@ -12,6 +12,8 @@ Artisan::command('inspire', function () {
 \Illuminate\Support\Facades\Schedule::command('ukv:purge-checklists')->daily();
 \Illuminate\Support\Facades\Schedule::command('ukv:reconcile-stripe')->dailyAt('06:00')->withoutOverlapping();
 \Illuminate\Support\Facades\Schedule::command('ukv:owner-digest')->dailyAt('08:00');
+// Nurture: nudge consented checklist-takers toward applying, ~2 days after they built a checklist.
+\Illuminate\Support\Facades\Schedule::command('ukv:nurture-checklists')->dailyAt('09:00');
 
 // --- Guide engine: freshness (Module B) + AI change-detection (Module C) ---
 \Illuminate\Support\Facades\Schedule::command('destinations:freshness')->dailyAt('07:00');

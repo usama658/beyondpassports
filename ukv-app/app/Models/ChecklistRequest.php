@@ -24,6 +24,7 @@ class ChecklistRequest extends Model
         'stripe_session_id',
         'immediate_delivery_consent',
         'consent_at',
+        'nurture_sent_at',
     ];
 
     protected function casts(): array
@@ -37,6 +38,7 @@ class ChecklistRequest extends Model
             'paid_at' => 'datetime',
             'immediate_delivery_consent' => 'boolean',
             'consent_at' => 'datetime',
+            'nurture_sent_at' => 'datetime',
         ];
     }
 
