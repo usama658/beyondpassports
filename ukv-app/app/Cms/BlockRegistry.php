@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Cms;
 
 use App\Cms\Blocks\BlockType;
+use App\Cms\Blocks\GlobalBlockReference;
 use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
@@ -23,7 +24,14 @@ class BlockRegistry
         RichTextBlock::class,
         ImageBlock::class,
         LockedIncludeBlock::class,
+        GlobalBlockReference::class,
     ];
+
+    /**
+     * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
+     * locked-include) so a reusable block can never reference another reusable block.
+     */
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array
@@ -41,6 +49,14 @@ class BlockRegistry
         $class = $this->all()[$type] ?? null;
 
         return $class ? $class::view() : null;
+    }
+
+    /** Filament form components for one block type's fields (used by the GlobalBlock editor). */
+    public function schemaFor(string $type): array
+    {
+        $class = $this->all()[$type] ?? null;
+
+        return $class ? $class::schema() : [];
     }
 
     /** @return array<int, Block> Filament Builder blocks for the admin form. */
