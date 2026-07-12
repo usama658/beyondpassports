@@ -218,6 +218,73 @@
     <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
   </div>
 
+  {{-- SELF-SERVE SLOT PICKER — pick country -> popup lists selectable slots -> "ask us, we book it" (WhatsApp) --}}
+  @php $apbkWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
+  <style>
+    .apbk{max-width:820px;margin:6px auto 26px;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--lift-2);padding:22px 22px 18px}
+    .apbk-h{font:800 16px var(--display);color:var(--navy);margin:0 0 4px}
+    .apbk-s{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+    .apbk-grid{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+    .apbk-f label{display:block;font:700 12px var(--display);color:#4a5b65;margin:0 0 5px}
+    .apbk-f select{width:100%;padding:12px 13px;border:1px solid var(--paper-edge);border-radius:10px;font:inherit;font-size:14px;background:var(--white);color:var(--ink)}
+    .apbk-f select:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
+    .apbk-go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cta);color:#fff;border:0;border-radius:11px;font:800 15px var(--display);padding:12px 22px;cursor:pointer;white-space:nowrap}
+    .apbk-go:hover{background:#0F4A61}
+    .apbk-note{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);margin:14px 0 0}
+    .apbk-note::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sage);flex:none}
+    /* modal */
+    .slotm{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,16,24,.6);backdrop-filter:blur(2px)}
+    .slotm.open{display:flex}
+    .slotm-box{background:#fff;border-radius:20px;width:min(560px,100%);max-height:88vh;overflow:auto;box-shadow:0 50px 100px -30px rgba(0,0,0,.55);padding:24px 24px 22px;animation:slotm-in .18s ease}
+    @keyframes slotm-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .slotm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 0 4px}
+    .slotm-top h3{font:800 20px var(--display);color:var(--navy);margin:0}
+    .slotm-x{background:transparent;border:0;font-size:24px;line-height:1;color:var(--muted);cursor:pointer;flex:none}
+    .slotm-s{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+    .slotm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px}
+    .slot{display:flex;flex-direction:column;gap:2px;text-align:left;background:#f6f9fb;border:1.5px solid var(--paper-edge);border-radius:12px;padding:12px 14px;cursor:pointer;transition:.12s}
+    .slot:hover{border-color:var(--soft)}
+    .slot.sel{border-color:var(--cta);background:#eef5f8;box-shadow:0 0 0 3px rgba(21,94,122,.12)}
+    .slot .sd{font:800 15px var(--display);color:var(--ink)}
+    .slot .sl{font-size:12px;color:var(--stamp-text);font-weight:700}
+    .slotm-book{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:0;border-radius:12px;font:800 16px var(--display);padding:14px 22px;cursor:pointer;text-decoration:none}
+    .slotm-book[aria-disabled="true"]{background:#c7d0d6;cursor:not-allowed}
+    .slotm-book svg{width:19px;height:19px;fill:#fff;flex:none}
+    .slotm-note{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
+    @media(max-width:560px){.apbk-grid{grid-template-columns:1fr}.apbk-go{width:100%}.slotm-grid{grid-template-columns:1fr}}
+  </style>
+  <div class="apbk reveal">
+    <p class="apbk-h">Pick your appointment slot</p>
+    <p class="apbk-s">Choose your country to see available slots. Select the one you need and we book it for you, live with the centre.</p>
+    <div class="apbk-grid">
+      <div class="apbk-f">
+        <label for="apbk-country">Which country?</label>
+        <select id="apbk-country">
+          <option value="">Choose your Schengen country…</option>
+          @foreach($destinations->sortBy('name') as $d)
+            <option value="{{ $d->name }}">{{ $d->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <button type="button" class="apbk-go" id="apbk-see">See available slots &rarr;</button>
+    </div>
+    <p class="apbk-note">Free to check. No payment now. We confirm the exact live slot and book it for you.</p>
+  </div>
+
+  {{-- Slot-picker modal (populated by JS for the chosen country) --}}
+  <div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}">
+    <div class="slotm-box">
+      <div class="slotm-top">
+        <h3 id="slotm-title">Available slots</h3>
+        <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
+      </div>
+      <p class="slotm-s">Indicative windows, soonest first. Pick the one that suits, we confirm the exact live slot with the centre and book it for you.</p>
+      <div class="slotm-grid" id="slotm-grid"></div>
+      <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
+      <p class="slotm-note">No payment now. Booking is confirmed live with the centre on WhatsApp.</p>
+    </div>
+  </div>
+
   @php $apptRegions = $byRegion->filter(fn ($g, $r) => ! empty($r)); @endphp
   @if ($apptRegions->isNotEmpty())
   <div class="sg-tabs" id="apptTabs" role="tablist">
@@ -236,7 +303,8 @@
             $label = ['ok' => 'Available', 'lim' => 'Limited', 'ask' => 'Ask us'][$status];
             $width = ['ok' => '82%', 'lim' => '34%', 'ask' => '100%'][$status];
           @endphp
-          <a class="ap-tile" href="{{ url('/visa/'.$d->slug) }}">
+          {{-- href = destination page (no-JS fallback); JS intercepts to open the slot picker. --}}
+          <a class="ap-tile" href="{{ url('/visa/'.$d->slug) }}" data-slotcountry="{{ $d->name }}">
             <div class="ap-tp">
               <h4>{{ $d->name }}</h4>
               <span class="ap-st {{ $status }}"><span class="dot"></span>{{ $label }}</span>
@@ -244,13 +312,13 @@
             <div class="ap-bar"><i class="{{ $status }}" style="width:{{ $width }}"></i></div>
             @if($a['next_available_on'])
               <div class="ap-dt">{{ $a['next_available_on']->format('j M Y') }}</div>
-              <div class="ap-lb">Next available</div>
+              <div class="ap-lb">Next available &middot; tap to book</div>
               @if($a['confirmed_at'])
                 <div class="ap-lb">as of {{ $a['confirmed_at']->format('j M') }}</div>
               @endif
             @else
-              <div class="ap-dt">On request</div>
-              <div class="ap-lb">We check live for you</div>
+              <div class="ap-dt">Pick a slot</div>
+              <div class="ap-lb">Tap to choose &amp; book</div>
             @endif
           </a>
         @endforeach
@@ -277,6 +345,88 @@
         panels.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-region') === region); });
       });
     });
+  })();
+</script>
+
+<script>
+  // Slot-picker: pick country -> modal lists indicative slot windows -> select -> book on WhatsApp.
+  // Windows are indicative (we do not hold government inventory); the exact slot is confirmed live
+  // with the centre. Progressive enhancement: tiles keep their destination-page href if JS is off.
+  (function () {
+    var modal = document.getElementById('slotm');
+    if (!modal) return;
+    var grid  = document.getElementById('slotm-grid');
+    var title = document.getElementById('slotm-title');
+    var book  = document.getElementById('slotm-book');
+    var wa    = modal.getAttribute('data-wa');
+    var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
+    var country = '', slot = '';
+
+    function setLabel(t) { book.innerHTML = glyph + t; }
+    function fmt(d) { return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
+
+    // ~8 indicative weekday windows, starting ~5 days out, spaced a few days apart.
+    function windows() {
+      var out = [], d = new Date(), n = 0;
+      d.setDate(d.getDate() + 5);
+      while (out.length < 8 && n < 50) {
+        var dow = d.getDay();
+        if (dow !== 0 && dow !== 6) out.push(new Date(d));
+        d.setDate(d.getDate() + (out.length % 2 === 0 ? 2 : 3));
+        n++;
+      }
+      return out;
+    }
+    function tag(i) { return i < 2 ? 'Soonest' : (i < 5 ? 'Good availability' : 'Flexible'); }
+
+    function buildHref() {
+      var msg = 'Hi Beyond Passports, I would like to book my ' + (country || 'Schengen') +
+        ' Schengen biometric appointment.\nSlot I would like: ' + slot +
+        '\nPlease confirm this live with the centre and book it for me.';
+      return 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg);
+    }
+    function select(s) {
+      slot = s;
+      book.setAttribute('aria-disabled', 'false');
+      book.href = buildHref();
+      setLabel('Ask us to book ' + slot + ' →');
+    }
+    function render() {
+      grid.innerHTML = '';
+      windows().forEach(function (dt, i) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'slot';
+        b.innerHTML = '<span class="sd">' + fmt(dt) + '</span><span class="sl">' + tag(i) + '</span>';
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call(grid.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
+          b.classList.add('sel');
+          select(fmt(dt));
+        });
+        grid.appendChild(b);
+      });
+    }
+    function open(c) {
+      country = c; slot = '';
+      title.textContent = 'Available slots — ' + c;
+      book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
+      setLabel('Select a slot to book');
+      render();
+      modal.classList.add('open');
+    }
+    function close() { modal.classList.remove('open'); }
+
+    document.getElementById('apbk-see').addEventListener('click', function () {
+      var sel = document.getElementById('apbk-country');
+      if (!sel.value) { sel.focus(); return; }
+      open(sel.value);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ap-tile[data-slotcountry]'), function (t) {
+      t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry')); });
+    });
+    book.addEventListener('click', function (e) { if (book.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+    document.getElementById('slotm-x').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
   })();
 </script>
 
