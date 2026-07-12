@@ -446,4 +446,5 @@ h1,h2,h3,h4{color:var(--ink)}
 .ctapanel .lead,.ctapanel p{color:#dff0f5 !important}
 .ctapanel .sub,.ctapanel .note{color:rgba(255,255,255,.78) !important}
 </style>
+@include('partials.lp-email-strip')
 </body></html>
