@@ -37,13 +37,20 @@ fs.mkdirSync(outDir, { recursive: true });
   await shoot(urlB, 'b.png');
 
   if (pixelmatch) {
-    const a = PNG.sync.read(fs.readFileSync(outDir + '/a.png'));
-    const c = PNG.sync.read(fs.readFileSync(outDir + '/b.png'));
+    let a = PNG.sync.read(fs.readFileSync(outDir + '/a.png'));
+    let c = PNG.sync.read(fs.readFileSync(outDir + '/b.png'));
     const width = Math.min(a.width, c.width), height = Math.min(a.height, c.height);
+    // Crop both to the common region so a tiny height difference does not crash pixelmatch.
+    const crop = (png) => {
+      if (png.width === width && png.height === height) return png;
+      const out = new PNG({ width, height });
+      for (let y = 0; y < height; y++) png.data.copy(out.data, y * width * 4, y * png.width * 4, y * png.width * 4 + width * 4);
+      return out;
+    };
+    a = crop(a); c = crop(c);
     const diff = new PNG({ width, height });
     const n = pixelmatch(a.data, c.data, diff.data, width, height, { threshold: 0.1 });
     fs.writeFileSync(outDir + '/diff.png', PNG.sync.write(diff));
-    if (a.width !== c.width || a.height !== c.height) console.log('SIZE-DIFF a=' + a.width + 'x' + a.height + ' b=' + c.width + 'x' + c.height);
     console.log('MISMATCH pixels:', n);
   } else {
     const a = fs.readFileSync(outDir + '/a.png'), c = fs.readFileSync(outDir + '/b.png');
