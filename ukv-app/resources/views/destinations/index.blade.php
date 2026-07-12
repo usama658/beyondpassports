@@ -297,7 +297,8 @@
                data-slotdate = the real published next-available date, so the modal starts there. --}}
           <a class="ap-tile" href="{{ url('/visa/'.$d->slug) }}"
              data-slotcountry="{{ $d->name }}"
-             data-slotdate="{{ optional($a['next_available_on'])->toDateString() }}">
+             data-slotdate="{{ optional($a['next_available_on'])->toDateString() }}"
+             data-slotband="{{ $status }}">
             <div class="ap-tp">
               <h4>{{ $d->name }}</h4>
               <span class="ap-st {{ $status }}"><span class="dot"></span>{{ $label }}</span>
@@ -359,19 +360,20 @@
     var book  = document.getElementById('slotm-book');
     var wa    = modal.getAttribute('data-wa');
     var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
-    var country = '', slot = '', startISO = '';
+    var country = '', slot = '', startISO = '', maxSlots = 6;
 
     function setLabel(t) { book.innerHTML = glyph + t; }
     function fmt(d) { return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
 
-    // ~8 weekday windows. Starts from the country's real published next-available date when we have
-    // one (so the modal matches the tile); otherwise ~5 days out. Never starts in the past.
+    // Weekday windows. Count reflects the band: "Limited" shows fewer than "Available", so the list
+    // length matches each country's availability. Starts from the real next-available date when we
+    // have one (so the modal matches the tile); otherwise ~5 days out. Never starts in the past.
     function windows(fromISO) {
       var d, tomorrow = new Date(); tomorrow.setHours(0, 0, 0, 0); tomorrow.setDate(tomorrow.getDate() + 1);
       if (fromISO) { d = new Date(fromISO + 'T00:00:00'); if (d < tomorrow) d = new Date(tomorrow); }
       else { d = new Date(); d.setDate(d.getDate() + 5); }
       var out = [], n = 0;
-      while (out.length < 8 && n < 60) {
+      while (out.length < maxSlots && n < 60) {
         var dow = d.getDay();
         if (dow !== 0 && dow !== 6) out.push(new Date(d));
         d.setDate(d.getDate() + (out.length % 2 === 0 ? 2 : 3));
@@ -407,8 +409,10 @@
         grid.appendChild(b);
       });
     }
-    function open(c, fromISO) {
+    function open(c, fromISO, band) {
       country = c; startISO = fromISO || ''; slot = '';
+      // Limited availability -> a shorter list; good availability -> a fuller one.
+      maxSlots = band === 'lim' ? 3 : (band === 'ok' ? 7 : 5);
       title.textContent = 'Available slots — ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');
@@ -424,7 +428,7 @@
       open(sel.value);
     });
     Array.prototype.forEach.call(document.querySelectorAll('.ap-tile[data-slotcountry]'), function (t) {
-      t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry'), t.getAttribute('data-slotdate')); });
+      t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry'), t.getAttribute('data-slotdate'), t.getAttribute('data-slotband')); });
     });
     book.addEventListener('click', function (e) { if (book.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
 
