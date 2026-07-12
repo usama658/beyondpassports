@@ -436,9 +436,17 @@
         </div>{{-- /.cnf-body --}}
     </div>{{-- /.cnf-card --}}
 
-    {{-- Track link --}}
+    {{-- Track + document-upload links --}}
+    @php
+        $cnfDocsUrl = '/documents?'.http_build_query(array_filter([
+            'ref' => $order->order_ref,
+            'email' => $order->email,
+        ]));
+    @endphp
     <p class="cnf-footer-links">
         You can <a href="/track">track this application</a> any time using your reference.
+        &nbsp;&middot;&nbsp;
+        <a href="{{ $cnfDocsUrl }}">Send your documents</a>
         &nbsp;&middot;&nbsp;
         <a href="/">Back to Beyond Passports</a>
     </p>

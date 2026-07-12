@@ -289,6 +289,12 @@
         <div class="status">
           <div class="status-card" style="border-radius:12px;border-top:1px solid var(--paper-edge)">
             @include('partials.doc-checklist', ['items' => $docItems, 'personalised' => true])
+            @if ($result)
+              {{-- Route ready customers to the secure upload page (prefilled with their ref). --}}
+              <div style="text-align:center;margin:18px 0 4px">
+                <a href="{{ url('/documents') }}?ref={{ urlencode($result['ref']) }}" class="btn">Send your documents securely &rarr;</a>
+              </div>
+            @endif
           </div>
         </div>
       </div></section>
