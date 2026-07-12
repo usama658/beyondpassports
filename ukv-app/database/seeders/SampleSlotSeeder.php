@@ -57,6 +57,16 @@ class SampleSlotSeeder extends Seeder
             ->get();
 
         $now = Carbon::now();
+
+        // Clear ALL upcoming available slots first, not just this seeder's centres. Otherwise nodes
+        // that slots:provision filled but this seeder does not reseed (generic VFS/PayPoint/DEMO
+        // centres, not tied to a Schengen country) keep a stale uniform grid that shows in the
+        // finder while never appearing in the picker — a desync. Held/booked slots are untouched.
+        CentreSlot::query()
+            ->where('status', 'available')
+            ->where('slot_at', '>', $now)
+            ->delete();
+
         $slots = 0;
 
         foreach ($destinations as $destination) {
@@ -64,13 +74,6 @@ class SampleSlotSeeder extends Seeder
             $baseDate = $board[$destination->getKey()]['next_available_on'] ?? null;
 
             foreach ($destination->supplyNodes->values() as $index => $node) {
-                // Reset this centre's upcoming available slots so re-runs stay clean.
-                CentreSlot::query()
-                    ->where('supply_node_id', $node->getKey())
-                    ->where('status', 'available')
-                    ->where('slot_at', '>', $now)
-                    ->delete();
-
                 // No board availability (or no date) => no published slots for this country.
                 if ($status === 'ask' || $baseDate === null) {
                     continue;

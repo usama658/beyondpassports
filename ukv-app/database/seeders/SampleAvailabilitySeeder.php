@@ -49,10 +49,17 @@ class SampleAvailabilitySeeder extends Seeder
                 continue;
             }
 
+            // Centres do not operate at weekends — nudge a weekend date to the next weekday so the
+            // board's "Next available" matches the picker's soonest bookable slot (which is weekday-only).
+            $nextAvailable = $now->copy()->addDays($days);
+            if (! $nextAvailable->isWeekday()) {
+                $nextAvailable = $nextAvailable->nextWeekday();
+            }
+
             CentreAvailability::updateOrCreate(
                 ['supply_node_id' => $node->getKey()],
                 [
-                    'next_available_on' => $now->copy()->addDays($days)->toDateString(),
+                    'next_available_on' => $nextAvailable->toDateString(),
                     'band' => $band,
                     'source' => 'manual',
                     'note' => 'Sample data — replace with confirmed availability.',
