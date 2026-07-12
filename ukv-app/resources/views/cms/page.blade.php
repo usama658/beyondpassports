@@ -5,6 +5,13 @@
 @section('title', $page->seo_title ?: $page->title)
 @section('description', $page->seo_description ?? '')
 
+@if ($page->noindex)
+  @push('head')<meta name="robots" content="noindex,nofollow">@endpush
+@endif
+@if (! empty($page->og_image))
+  @push('head')<meta property="og:image" content="{{ \Illuminate\Support\Str::startsWith($page->og_image, ['http://', 'https://']) ? $page->og_image : url($page->og_image) }}">@endpush
+@endif
+
 @section('content')
 @php($registry = app(\App\Cms\BlockRegistry::class))
 @foreach ($page->blocks ?? [] as $block)

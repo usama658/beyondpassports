@@ -40,7 +40,9 @@ class PageResource extends Resource
             Forms\Components\Fieldset::make('SEO')->schema([
                 Forms\Components\TextInput::make('seo_title'),
                 Forms\Components\Textarea::make('seo_description')->rows(2),
-                Forms\Components\Toggle::make('noindex'),
+                Forms\Components\TextInput::make('og_image')->label('Social share image URL')
+                    ->helperText('Full URL or a /assets path. Shown when the page is shared.'),
+                Forms\Components\Toggle::make('noindex')->helperText('Keep this page out of Google.'),
                 Forms\Components\Toggle::make('in_sitemap')->default(true),
             ])->columns(2),
         ]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\Guide;
+use App\Models\Page;
 use Illuminate\Http\Response;
 
 /**
@@ -112,6 +113,30 @@ class SitemapController extends Controller
                     'priority' => '0.6',
                 ];
             });
+
+        // Published CMS pages (Content editor), only when the CMS is enabled. Skip noindex and any
+        // URL already listed (services/about are also static entries) so nothing duplicates.
+        if ((bool) config('ukv.cms.enabled')) {
+            $existing = array_column($urls, 'loc');
+            Page::query()
+                ->where('mode', 'cms')
+                ->where('status', 'published')
+                ->where('in_sitemap', true)
+                ->where('noindex', false)
+                ->get()
+                ->each(function (Page $page) use (&$urls, $base, $existing) {
+                    $loc = $base . '/' . ltrim($page->slug, '/');
+                    if (in_array($loc, $existing, true)) {
+                        return;
+                    }
+                    $urls[] = [
+                        'loc' => $loc,
+                        'lastmod' => optional($page->updated_at)->toDateString(),
+                        'changefreq' => 'monthly',
+                        'priority' => '0.5',
+                    ];
+                });
+        }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
