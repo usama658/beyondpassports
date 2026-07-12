@@ -32,7 +32,7 @@ Route::get('/find-a-centre/search', [CentreController::class, 'search'])
     ->middleware('throttle:contact')
     ->name('centre.search');
 Route::get('/driving-abroad', fn () => redirect('/services', 301))->name('idp');
-Route::view('/about', 'public.about')->name('about');
+Route::get('/about', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('about', 'public.about'))->name('about'); // CMS-served when enabled + published, else coded
 Route::view('/contact', 'public.contact')->name('contact');
 Route::get('/contact/thank-you', [ContactController::class, 'thanks'])->name('contact.thanks');
 Route::view('/legal', 'public.legal')->name('legal');

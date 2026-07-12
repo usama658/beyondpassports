@@ -16,6 +16,7 @@ class LockedIncludeBlock implements BlockType
     /** Whitelisted partial keys => Blade partial names. Add entries as sections are extracted. */
     public const PARTIALS = [
         'services-body' => 'partials.services-body',
+        'about-body' => 'partials.about-body',
     ];
 
     public static function key(): string
@@ -35,6 +36,7 @@ class LockedIncludeBlock implements BlockType
                 ->label('Section')
                 ->options([
                     'services-body' => 'Services body (catalogue, how, why, FAQ, CTA)',
+                    'about-body' => 'About body (who we are, values, team, reviews, CTA)',
                 ])
                 ->required(),
         ];
