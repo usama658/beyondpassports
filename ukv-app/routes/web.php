@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentEnquiryController;
+use App\Http\Controllers\AppointmentSlotsController;
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\ChecklistController;
@@ -141,6 +142,9 @@ Route::get('/schengen-visa-consultancy', [DestinationController::class, 'schenge
 // tabs + searchable grid). 301 to the canonical page. Controller schengen() + destinations.schengen
 // view are kept in code, dormant, so this is reversible — restore the Route::get to un-draft.
 Route::redirect('/visa/schengen', '/schengen-visa', 301);
+// Public per-centre appointment slots (JSON) for the /schengen-visa slot picker.
+Route::get('/appointments/slots', [AppointmentSlotsController::class, 'index'])
+    ->middleware('throttle:60,1')->name('appointments.slots');
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
 // Nested country guide (spoke) — constrained to the 15 known topic slugs so it never shadows
 // a real destination slug or the money page above.

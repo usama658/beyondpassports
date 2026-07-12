@@ -251,6 +251,15 @@
     .slotm-book[aria-disabled="true"]{background:#c7d0d6;cursor:not-allowed}
     .slotm-book svg{width:19px;height:19px;fill:#fff;flex:none}
     .slotm-note{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
+    /* per-centre groups */
+    .sc-centre{border:1px solid var(--paper-edge);border-radius:12px;padding:12px 14px;margin:0 0 12px}
+    .sc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px}
+    .sc-name{font:800 14px var(--display);color:var(--navy)}
+    .sc-city{font-size:12px;color:var(--muted);white-space:nowrap}
+    .sc-slots{display:flex;flex-wrap:wrap;gap:8px}
+    .sc-slots .slot{flex:0 0 auto;min-width:96px}
+    .sc-ask{font-size:13px;color:var(--muted);margin:0}
+    .slotm-load{text-align:center;color:var(--muted);font-size:14px;padding:18px 0}
     @media(max-width:560px){.apbk-grid{grid-template-columns:1fr}.apbk-go{width:100%}.slotm-grid{grid-template-columns:1fr}}
   </style>
   {{-- Picker card drafted — the country tiles below open the slot modal directly. --}}
@@ -262,8 +271,8 @@
         <h3 id="slotm-title">Available slots</h3>
         <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
       </div>
-      <p class="slotm-s">Indicative windows, soonest first. Pick the one that suits, we confirm the exact live slot with the centre and book it for you.</p>
-      <div class="slotm-grid" id="slotm-grid"></div>
+      <p class="slotm-s">Booking is centre by centre. Pick a slot at the centre that suits you, we confirm it live with the centre and book it for you.</p>
+      <div id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
       <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
       <p class="slotm-note">No payment now. Booking is confirmed live with the centre on WhatsApp.</p>
     </div>
@@ -349,75 +358,86 @@
 </script>
 
 <script>
-  // Slot-picker: pick country -> modal lists indicative slot windows -> select -> book on WhatsApp.
-  // Windows are indicative (we do not hold government inventory); the exact slot is confirmed live
-  // with the centre. Progressive enhancement: tiles keep their destination-page href if JS is off.
+  // Per-centre slot picker. Booking is centre-specific: pick country -> fetch that country's
+  // bookable centres + their real available slots (CentreSlot, same data as find-a-centre) ->
+  // pick a slot at a centre -> book on WhatsApp. Progressive enhancement: tiles keep their
+  // destination-page href if JS is off.
   (function () {
     var modal = document.getElementById('slotm');
     if (!modal) return;
-    var grid  = document.getElementById('slotm-grid');
+    var box   = document.getElementById('slotm-centres');
     var title = document.getElementById('slotm-title');
     var book  = document.getElementById('slotm-book');
     var wa    = modal.getAttribute('data-wa');
+    var url   = box.getAttribute('data-url');
     var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
-    var country = '', slot = '', startISO = '', maxSlots = 6;
+    var country = '', centre = '', slot = '';
 
     function setLabel(t) { book.innerHTML = glyph + t; }
-    function fmt(d) { return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
+    function esc(s) { return String(s == null ? '' : s).replace(/[<>&"]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]; }); }
 
-    // Weekday windows. Count reflects the band: "Limited" shows fewer than "Available", so the list
-    // length matches each country's availability. Starts from the real next-available date when we
-    // have one (so the modal matches the tile); otherwise ~5 days out. Never starts in the past.
-    function windows(fromISO) {
-      var d, tomorrow = new Date(); tomorrow.setHours(0, 0, 0, 0); tomorrow.setDate(tomorrow.getDate() + 1);
-      if (fromISO) { d = new Date(fromISO + 'T00:00:00'); if (d < tomorrow) d = new Date(tomorrow); }
-      else { d = new Date(); d.setDate(d.getDate() + 5); }
-      var out = [], n = 0;
-      while (out.length < maxSlots && n < 60) {
-        var dow = d.getDay();
-        if (dow !== 0 && dow !== 6) out.push(new Date(d));
-        d.setDate(d.getDate() + (out.length % 2 === 0 ? 2 : 3));
-        n++;
-      }
-      return out;
-    }
-    function tag(i) { return i < 2 ? 'Soonest' : (i < 5 ? 'Good availability' : 'Flexible'); }
-
-    function buildHref() {
+    function bookHref() {
       var msg = 'Hi Beyond Passports, I would like to book my ' + (country || 'Schengen') +
-        ' Schengen biometric appointment.\nSlot I would like: ' + slot +
+        ' Schengen biometric appointment.\nCentre: ' + centre + '\nSlot: ' + slot +
         '\nPlease confirm this live with the centre and book it for me.';
       return 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg);
     }
-    function select(s) {
-      slot = s;
+    function askHref(where) {
+      var msg = 'Hi Beyond Passports, I would like a ' + (country || 'Schengen') + ' appointment' +
+        (where ? ' at ' + where : '') + '. Please check the soonest live slot and book it for me.';
+      return 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg);
+    }
+    function select(btn, centreName, dateLabel) {
+      Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
+      btn.classList.add('sel');
+      centre = centreName; slot = dateLabel;
       book.setAttribute('aria-disabled', 'false');
-      book.href = buildHref();
+      book.href = bookHref();
       setLabel('Ask us to book ' + slot + ' →');
     }
-    function render() {
-      grid.innerHTML = '';
-      windows(startISO).forEach(function (dt, i) {
-        var b = document.createElement('button');
-        b.type = 'button'; b.className = 'slot';
-        b.innerHTML = '<span class="sd">' + fmt(dt) + '</span><span class="sl">' + tag(i) + '</span>';
-        b.addEventListener('click', function () {
-          Array.prototype.forEach.call(grid.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
-          b.classList.add('sel');
-          select(fmt(dt));
-        });
-        grid.appendChild(b);
+    function renderCentres(data) {
+      box.innerHTML = '';
+      var centres = (data && data.centres) || [];
+      if (!centres.length) {
+        box.innerHTML = '<p class="sc-ask">We check live availability with the centres for ' + esc(country) + '. Tap below and we will confirm the soonest slot and book it for you.</p>';
+        book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
+        return;
+      }
+      centres.forEach(function (c) {
+        var wrap = document.createElement('div'); wrap.className = 'sc-centre';
+        wrap.innerHTML = '<div class="sc-head"><span class="sc-name">' + esc(c.name) + '</span>' +
+          (c.city ? '<span class="sc-city">' + esc(c.city) + '</span>' : '') + '</div>';
+        if (c.slots && c.slots.length) {
+          var row = document.createElement('div'); row.className = 'sc-slots';
+          c.slots.forEach(function (s) {
+            var b = document.createElement('button'); b.type = 'button'; b.className = 'slot';
+            b.innerHTML = '<span class="sd">' + esc(s.label) + '</span>';
+            b.addEventListener('click', function () { select(b, c.name, s.label); });
+            row.appendChild(b);
+          });
+          wrap.appendChild(row);
+        } else {
+          var p = document.createElement('p'); p.className = 'sc-ask';
+          p.textContent = 'No published slots right now — ask us to check live.';
+          wrap.appendChild(p);
+        }
+        box.appendChild(wrap);
       });
     }
-    function open(c, fromISO, band) {
-      country = c; startISO = fromISO || ''; slot = '';
-      // Limited availability -> a shorter list; good availability -> a fuller one.
-      maxSlots = band === 'lim' ? 3 : (band === 'ok' ? 7 : 5);
+    function open(c) {
+      country = c; centre = ''; slot = '';
       title.textContent = 'Available slots — ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');
-      render();
+      box.innerHTML = '<p class="slotm-load">Loading centres…</p>';
       modal.classList.add('open');
+      fetch(url + '?country=' + encodeURIComponent(c), { headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(renderCentres)
+        .catch(function () {
+          box.innerHTML = '';
+          book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
+        });
     }
     function close() { modal.classList.remove('open'); }
 
@@ -431,18 +451,6 @@
       t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry'), t.getAttribute('data-slotdate'), t.getAttribute('data-slotband')); });
     });
     book.addEventListener('click', function (e) { if (book.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
-
-    // Tease the soonest indicative window on the "ask" tiles so they match what the modal shows.
-    // Tiles with real published availability (status ok/lim) keep their server date untouched.
-    var soonest = windows()[0];
-    if (soonest) {
-      Array.prototype.forEach.call(document.querySelectorAll('.ap-tile[data-slotcountry]'), function (t) {
-        if (!t.querySelector('.ap-st.ask')) return;
-        var dt = t.querySelector('.ap-dt'), lb = t.querySelector('.ap-lb');
-        if (dt) dt.textContent = 'Soonest ~ ' + fmt(soonest);
-        if (lb) lb.textContent = 'Tap to choose & book';
-      });
-    }
 
     document.getElementById('slotm-x').addEventListener('click', close);
     modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
