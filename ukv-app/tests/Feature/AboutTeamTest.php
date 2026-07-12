@@ -13,10 +13,11 @@ final class AboutTeamTest extends TestCase
 
     public function test_about_shows_team_and_location_from_config(): void
     {
+        // Team lead + company name both come from config('ukv.team') / config('ukv.address').
         $this->get('/about')
             ->assertOk()
-            ->assertSee('Sarah Whitfield')
-            ->assertSee('A UK-based team you can reach')
+            ->assertSee('Sarah Whitmore')
+            ->assertSee('Who we are')
             ->assertSee('Beyond Passports Ltd');
     }
 }

@@ -15,7 +15,7 @@ final class HomePreventionTest extends TestCase
     {
         $this->get('/')
             ->assertOk()
-            ->assertSee('avoidable causes of refusal');
+            ->assertSee('How we prevent refusals');
     }
 
     public function test_prevention_section_has_no_forbidden_claims(): void

@@ -58,21 +58,22 @@ final class ChatCtaTest extends TestCase
 
     public function test_destination_money_page_has_destination_specific_chat_cta(): void
     {
+        // Money pages are Schengen-only since the pivot (non-Schengen slugs 301). Use a Schengen dest.
         $d = \App\Models\Destination::create([
-            'name' => 'Turkey',
-            'slug' => 'turkey',
-            'visa_type' => 'evisa',
-            'govt_fee_gbp' => 20.00,
+            'name' => 'Germany',
+            'slug' => 'germany',
+            'visa_type' => 'Schengen',
+            'govt_fee_gbp' => 80.00,
             'tier_standard_gbp' => 39.00,
             'tier_express_gbp' => 59.00,
             'tier_premium_gbp' => 89.00,
             'passport_validity_months' => 6,
         ]);
 
-        $html = $this->get('/visa/turkey')->assertOk()->getContent();
+        $html = $this->get('/visa/germany')->assertOk()->getContent();
 
         // wa.me link whose prefilled text names the destination (urlencoded → '+').
         $this->assertStringContainsString('wa.me/', $html);
-        $this->assertStringContainsString('documents+for+Turkey', $html);
+        $this->assertStringContainsString('documents+for+Germany', $html);
     }
 }

@@ -94,7 +94,7 @@ final class ApplyNoJsTest extends TestCase
         ]));
 
         $response->assertStatus(302);
-        $response->assertRedirect(route('apply'));
-        $response->assertSessionHas('status');
+        $response->assertRedirect(route('apply.thanks'));
+        $response->assertSessionHas('apply_thanks');
     }
 }
