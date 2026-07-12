@@ -24,7 +24,8 @@ class EditPage extends EditRecord
                 ->icon('heroicon-o-eye')
                 ->color('gray')
                 ->url(fn () => route('cms.preview', $this->record))
-                ->openUrlInNewTab(),
+                ->openUrlInNewTab()
+                ->visible(fn () => $this->record->mode === 'cms'),
             $this->revisionsAction(),
             Actions\DeleteAction::make(),
         ];
