@@ -232,34 +232,42 @@
     .apbk-go:hover{background:#0F4A61}
     .apbk-note{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);margin:14px 0 0}
     .apbk-note::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sage);flex:none}
-    /* modal */
+    /* modal — premium dark-header + warm-tint centre cards (design F) */
     .slotm{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,16,24,.6);backdrop-filter:blur(2px)}
     .slotm.open{display:flex}
-    .slotm-box{background:#fff;border-radius:20px;width:min(560px,100%);max-height:88vh;overflow:auto;box-shadow:0 50px 100px -30px rgba(0,0,0,.55);padding:24px 24px 22px;animation:slotm-in .18s ease}
+    .slotm-box{background:#fff;border-radius:20px;width:min(560px,100%);max-height:88vh;overflow:auto;box-shadow:0 50px 100px -30px rgba(0,0,0,.55);animation:slotm-in .18s ease}
     @keyframes slotm-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-    .slotm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 0 4px}
-    .slotm-top h3{font:800 20px var(--display);color:var(--navy);margin:0}
-    .slotm-x{background:transparent;border:0;font-size:24px;line-height:1;color:var(--muted);cursor:pointer;flex:none}
-    .slotm-s{font-size:13.5px;color:var(--muted);margin:0 0 16px}
-    .slotm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px}
-    .slot{display:flex;flex-direction:column;gap:2px;text-align:left;background:#f6f9fb;border:1.5px solid var(--paper-edge);border-radius:12px;padding:12px 14px;cursor:pointer;transition:.12s}
-    .slot:hover{border-color:var(--soft)}
-    .slot.sel{border-color:var(--cta);background:#eef5f8;box-shadow:0 0 0 3px rgba(21,94,122,.12)}
-    .slot .sd{font:800 15px var(--display);color:var(--ink)}
-    .slot .sl{font-size:12px;color:var(--stamp-text);font-weight:700}
-    .slotm-book{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:0;border-radius:12px;font:800 16px var(--display);padding:14px 22px;cursor:pointer;text-decoration:none}
-    .slotm-book[aria-disabled="true"]{background:#c7d0d6;cursor:not-allowed}
+    .slotm-hd{background:linear-gradient(135deg,#16323b,#1F6E63);color:#fff;padding:22px 24px 20px}
+    .slotm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .slotm-top h3{font:800 21px var(--display);color:#fff;margin:0;letter-spacing:-.02em}
+    .slotm-x{background:rgba(255,255,255,.16);border:0;width:34px;height:34px;border-radius:50%;font-size:20px;line-height:1;color:#fff;cursor:pointer;flex:none}
+    .slotm-s{color:rgba(255,255,255,.82);font-size:13.5px;margin:8px 0 0;line-height:1.5}
+    .slotm-trust{display:flex;gap:16px;margin:14px 0 0;flex-wrap:wrap}
+    .slotm-trust span{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--display);color:rgba(255,255,255,.9)}
+    .slotm-trust b{color:#8fe3c9}
+    .slotm-body{background:#eef4f3;padding:18px 20px}
+    .slotm-foot{padding:16px 24px 20px}
+    .slotm-book{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:0;border-radius:13px;font:800 16px var(--display);padding:15px 22px;cursor:pointer;text-decoration:none;box-shadow:0 12px 26px -12px rgba(37,211,102,.7)}
+    .slotm-book[aria-disabled="true"]{background:#c7d0d6;box-shadow:none;cursor:not-allowed}
     .slotm-book svg{width:19px;height:19px;fill:#fff;flex:none}
     .slotm-note{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
-    /* per-centre groups */
-    .sc-centre{border:1px solid var(--paper-edge);border-radius:12px;padding:12px 14px;margin:0 0 12px}
-    .sc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px}
+    .slotm-load{text-align:center;color:var(--muted);font-size:14px;padding:22px 0}
+    /* per-centre cards */
+    .sc-centre{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 14px 34px -24px rgba(20,45,50,.6);margin:0 0 14px}
+    .sc-centre:last-child{margin:0}
+    .sc-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(90deg,#eafaf6,#f4fbf9);border-bottom:1px solid #d9ece7}
     .sc-name{font:800 14px var(--display);color:var(--navy)}
-    .sc-city{font-size:12px;color:var(--muted);white-space:nowrap}
-    .sc-slots{display:flex;flex-wrap:wrap;gap:8px}
-    .sc-slots .slot{flex:0 0 auto;min-width:96px}
-    .sc-ask{font-size:13px;color:var(--muted);margin:0}
-    .slotm-load{text-align:center;color:var(--muted);font-size:14px;padding:18px 0}
+    .sc-num{font:700 11px var(--display);color:var(--stamp-text);background:#fff;border:1px solid #cfe8e3;border-radius:999px;padding:3px 10px;white-space:nowrap}
+    .sc-slots{display:flex;flex-wrap:wrap;gap:8px;padding:16px}
+    .sc-ask{font-size:13px;color:var(--muted);margin:0;padding:14px 16px}
+    .slot{position:relative;min-width:74px;text-align:center;border:1.5px solid var(--paper-edge);border-radius:12px;padding:9px 12px 10px;cursor:pointer;background:#f7fafb;transition:.12s;flex:0 0 auto}
+    .slot:hover{border-color:var(--stamp);background:#eff8f6}
+    .slot .wd{display:block;font:700 10px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .slot .dm{display:block;font:800 16px var(--display);color:var(--ink);margin-top:1px}
+    .slot.sel{border-color:var(--cta);background:var(--cta);box-shadow:0 8px 18px -10px rgba(21,94,122,.7)}
+    .slot.sel .wd{color:rgba(255,255,255,.85)}
+    .slot.sel .dm{color:#fff}
+    .slot .soon{position:absolute;top:-9px;left:8px;font:800 9px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--stamp);border-radius:999px;padding:2px 7px}
     @media(max-width:560px){.apbk-grid{grid-template-columns:1fr}.apbk-go{width:100%}.slotm-grid{grid-template-columns:1fr}}
   </style>
   {{-- Picker card drafted — the country tiles below open the slot modal directly. --}}
@@ -267,14 +275,19 @@
   {{-- Slot-picker modal (populated by JS for the chosen country) --}}
   <div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}">
     <div class="slotm-box">
-      <div class="slotm-top">
-        <h3 id="slotm-title">Available slots</h3>
-        <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
+      <div class="slotm-hd">
+        <div class="slotm-top">
+          <h3 id="slotm-title">Available slots</h3>
+          <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
+        </div>
+        <p class="slotm-s">Booking is centre by centre. Pick a slot at the centre that suits you.</p>
+        <div class="slotm-trust"><span><b>&checkmark;</b> No payment now</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We book it for you</span></div>
       </div>
-      <p class="slotm-s">Booking is centre by centre. Pick a slot at the centre that suits you, we confirm it live with the centre and book it for you.</p>
-      <div id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
-      <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
-      <p class="slotm-note">No payment now. Booking is confirmed live with the centre on WhatsApp.</p>
+      <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
+      <div class="slotm-foot">
+        <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
+        <p class="slotm-note">Booking is confirmed live with the centre before anything is paid.</p>
+      </div>
     </div>
   </div>
 
@@ -403,25 +416,34 @@
         book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
         return;
       }
+      var first = true;
       centres.forEach(function (c) {
-        var wrap = document.createElement('div'); wrap.className = 'sc-centre';
-        wrap.innerHTML = '<div class="sc-head"><span class="sc-name">' + esc(c.name) + '</span>' +
-          (c.city ? '<span class="sc-city">' + esc(c.city) + '</span>' : '') + '</div>';
-        if (c.slots && c.slots.length) {
+        var card = document.createElement('div'); card.className = 'sc-centre';
+        var n = (c.slots && c.slots.length) || 0;
+        card.innerHTML = '<div class="sc-head"><span class="sc-name">' + esc(c.name) + '</span>' +
+          (n ? '<span class="sc-num">' + n + ' open</span>' : '') + '</div>';
+        if (n) {
           var row = document.createElement('div'); row.className = 'sc-slots';
-          c.slots.forEach(function (s) {
+          c.slots.forEach(function (s, i) {
+            // Label is "Thu 24 Jul" — split weekday from the date for the day-cell.
+            var parts = String(s.label).split(' ');
+            var wd = parts.length > 1 ? parts[0] : '';
+            var dm = parts.length > 1 ? parts.slice(1).join(' ') : s.label;
             var b = document.createElement('button'); b.type = 'button'; b.className = 'slot';
-            b.innerHTML = '<span class="sd">' + esc(s.label) + '</span>';
+            b.innerHTML = (first && i === 0 ? '<span class="soon">Soonest</span>' : '') +
+              (wd ? '<span class="wd">' + esc(wd) + '</span>' : '') +
+              '<span class="dm">' + esc(dm) + '</span>';
             b.addEventListener('click', function () { select(b, c.name, s.label); });
             row.appendChild(b);
           });
-          wrap.appendChild(row);
+          card.appendChild(row);
+          first = false;
         } else {
           var p = document.createElement('p'); p.className = 'sc-ask';
           p.textContent = 'No published slots right now — ask us to check live.';
-          wrap.appendChild(p);
+          card.appendChild(p);
         }
-        box.appendChild(wrap);
+        box.appendChild(card);
       });
     }
     function open(c) {
