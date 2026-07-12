@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\DocumentUploadedBy;
 use App\Http\Requests\DocumentDetailRequest;
+use App\Mail\ApplicationDetailsUpdated;
 use App\Mail\DocumentsUploaded;
 use App\Models\Order;
 use App\Services\DocumentService;
@@ -79,7 +80,21 @@ class DocumentUploadController extends Controller
                     .'Please check your reference and email, or contact us.');
         }
 
-        $order->fill($request->detailAttributes())->save();
+        $details = $request->detailAttributes();
+        $order->fill($details)->save();
+
+        // Owner ping: the customer saved case details. Only when at least one detail field was
+        // actually provided (the form can be submitted incrementally, some entirely blank).
+        $hasDetail = collect($details)->contains(fn ($v) => $v !== null && $v !== '');
+        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        if ($hasDetail && ! empty($recipient)) {
+            try {
+                Mail::to($recipient)->send(new ApplicationDetailsUpdated($order, $details));
+                Log::info('Application details emailed', ['to' => $recipient, 'order' => $order->order_ref]);
+            } catch (\Throwable $e) {
+                Log::error('Application details email failed', ['order' => $order->order_ref, 'error' => $e->getMessage()]);
+            }
+        }
 
         return redirect()
             ->route('documents', ['ref' => $order->order_ref, 'email' => $order->email])
