@@ -269,15 +269,21 @@
     </div>
   </div>
 
-  @php $apptRegions = $byRegion->filter(fn ($g, $r) => ! empty($r)); @endphp
-  @if ($apptRegions->isNotEmpty())
+  @php
+    // Feature ONLY countries with real published availability (status ok/lim). "Ask us" countries
+    // are hidden from this board — it is "where slots are opening now", not the full country list.
+    $availByRegion = $byRegion
+        ->map(fn ($g) => $g->filter(fn ($d) => (($availability[$d->id]['status'] ?? 'ask') !== 'ask'))->values())
+        ->filter(fn ($g) => $g->isNotEmpty());
+  @endphp
+  @if ($availByRegion->isNotEmpty())
   <div class="sg-tabs" id="apptTabs" role="tablist">
-    @foreach ($apptRegions as $region => $group)
+    @foreach ($availByRegion as $region => $group)
       <button type="button" class="sg-tab @if($loop->first) active @endif" role="tab" data-region="{{ $region }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ str_replace(' Europe', '', $region) }} <span class="c">{{ $group->count() }}</span></button>
     @endforeach
   </div>
 
-  @foreach ($apptRegions as $region => $group)
+  @foreach ($availByRegion as $region => $group)
     <div class="ap-panel @if($loop->first) active @endif" data-region="{{ $region }}">
       <div class="ap-tiles">
         @foreach ($group as $d)
@@ -309,12 +315,18 @@
       </div>
     </div>
   @endforeach
+  @else
+    {{-- No country has published availability right now — keep the funnel, don't show an empty board. --}}
+    <div style="text-align:center;max-width:620px;margin:0 auto;padding:24px 26px;background:var(--white);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--lift-1)">
+      <p style="margin:0 0 14px;color:#33454f">We're checking live availability with the centres now. Tell us your country and dates and we'll confirm the soonest slot and book it for you.</p>
+      <a href="https://wa.me/{{ $apbkWa }}?text={{ rawurlencode('Hi Beyond Passports, please check the soonest Schengen biometric appointment for my dates.') }}" class="btn">@include('partials.wa-glyph')Ask us on WhatsApp</a>
+    </div>
   @endif
 
   <div class="ap-legend">
     <span><i style="background:#2E9A8C"></i>Available</span>
     <span><i style="background:#c8923a"></i>Limited</span>
-    <span><i style="background:#155E7A"></i>Ask us, we check live</span>
+    <span><i style="background:#155E7A"></i>Others on request, we check live</span>
   </div>
 </div></section>
 <script>
