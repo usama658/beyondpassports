@@ -16,9 +16,24 @@ use Illuminate\Support\Facades\Cache;
 class Page extends Model
 {
     protected $fillable = [
-        'slug', 'title', 'mode', 'status', 'blocks',
+        'slug', 'title', 'mode', 'layout', 'status', 'blocks',
         'seo_title', 'seo_description', 'og_image', 'noindex', 'in_sitemap', 'published_at',
     ];
+
+    /**
+     * Registered layouts a page may render inside: key => Blade view. Add a layout by creating the
+     * Blade file and registering it here — one line, fully additive. Unknown/blank falls back to the
+     * standard public layout, so a page can never point at a missing layout.
+     */
+    public const LAYOUTS = [
+        'public' => 'layouts.public',
+    ];
+
+    /** Resolve the page's layout to a real Blade view, defaulting safely. */
+    public function layoutView(): string
+    {
+        return self::LAYOUTS[$this->layout ?? 'public'] ?? 'layouts.public';
+    }
 
     protected function casts(): array
     {

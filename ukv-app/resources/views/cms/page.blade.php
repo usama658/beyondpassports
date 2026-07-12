@@ -1,6 +1,6 @@
 {{-- CMS page shell. Renders the block stack INSIDE the site layout (one Blade pass) so @once/@push
      directives in shared partials behave exactly as on the coded page. --}}
-@extends('layouts.public')
+@extends($page->layoutView())
 
 @section('title', $page->seo_title ?: $page->title)
 @section('description', $page->seo_description ?? '')

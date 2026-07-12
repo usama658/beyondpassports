@@ -31,6 +31,11 @@ class PageResource extends Resource
                 ->options(['coded' => 'Coded (theme file)', 'cms' => 'CMS blocks'])
                 ->default('coded')->required()
                 ->helperText('Coded keeps the existing theme page. CMS renders the blocks below.'),
+            Forms\Components\Select::make('layout')
+                ->options(collect(\App\Models\Page::LAYOUTS)->keys()
+                    ->mapWithKeys(fn ($k) => [$k => ucfirst($k).' layout'])->all())
+                ->default('public')->required()
+                ->helperText('Which site layout this page renders inside (cms mode only).'),
             Forms\Components\Select::make('status')
                 ->options(['draft' => 'Draft', 'published' => 'Published'])->default('draft')->required(),
             Forms\Components\Builder::make('blocks')
