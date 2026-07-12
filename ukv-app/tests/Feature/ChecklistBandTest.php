@@ -61,4 +61,30 @@ final class ChecklistBandTest extends TestCase
     {
         $this->get('/tools')->assertOk()->assertSee('cl-band', false);
     }
+
+    public function test_compact_variant_adds_the_modifier_class(): void
+    {
+        $full = view('partials.checklist-band')->render();
+        $compact = view('partials.checklist-band', ['cbCompact' => true])->render();
+
+        // The class name appears in the scoped <style> either way; assert on the wrapper div class.
+        $this->assertStringContainsString('class="cl-band"', $full);
+        $this->assertStringContainsString('class="cl-band cl-band--compact"', $compact);
+    }
+
+    public function test_destination_page_carries_a_compact_scroll_capture_strip(): void
+    {
+        Destination::create([
+            'name' => 'Germany',
+            'slug' => 'germany',
+            'visa_type' => 'Schengen',
+            'govt_fee_gbp' => 80.00,
+            'tier_standard_gbp' => 39.00,
+            'tier_express_gbp' => 59.00,
+            'tier_premium_gbp' => 89.00,
+            'passport_validity_months' => 6,
+        ]);
+
+        $this->get('/visa/germany')->assertOk()->assertSee('cl-band--compact', false);
+    }
 }

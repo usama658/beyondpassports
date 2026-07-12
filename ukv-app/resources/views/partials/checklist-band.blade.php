@@ -23,13 +23,16 @@
       : 'Get your free personalised document checklist');
   $cbSub = ($cbSub ?? null) ?: 'Answer a few questions about your trip and situation. We build the list around you — not a generic one — in under two minutes. Free, no account.';
   $cbCta = ($cbCta ?? null) ?: 'Build my checklist';
+  // Compact = a slim single-row inline strip for mid-content scroll-capture (drops the eyebrow,
+  // supporting line and reassurance note; keeps the title + button).
+  $cbCompact = ($cbCompact ?? false) ? true : false;
   // Deep-link the tool with the destination preselected (matched on country name in the tool form).
   $cbUrl = $cbDestination
       ? route('checklist.tool').'?destination='.rawurlencode($cbDestination)
       : route('checklist.tool');
 @endphp
 
-<div class="cl-band" role="region" aria-label="Free document checklist">
+<div class="cl-band{{ $cbCompact ? ' cl-band--compact' : '' }}" role="region" aria-label="Free document checklist">
   <style>
     /* checklist-band — scoped, literal colours (ink #16222E / petrol #155E7A / teal #1F6E63). */
     .cl-band{font-family:"Outfit",system-ui,sans-serif;color:#16222E;background:linear-gradient(135deg,#F4F6FA,#eaf1f4);
@@ -48,6 +51,11 @@
     .cl-band .cl-btn:focus-visible{outline:2px solid #1F6E63;outline-offset:3px}
     .cl-band .cl-btn svg{width:18px;height:18px;flex:none}
     .cl-band .cl-free{display:block;font-size:12px;color:#697079;margin-top:8px;text-align:center}
+    /* Compact: slim inline strip. Hide the eyebrow/subline/reassurance, tighten padding + title. */
+    .cl-band--compact{padding:16px 20px;gap:16px;border-radius:12px}
+    .cl-band--compact .cl-eyebrow,.cl-band--compact .cl-sub,.cl-band--compact .cl-free{display:none}
+    .cl-band--compact .cl-title{font-size:clamp(17px,2vw,20px);margin:0}
+    .cl-band--compact .cl-btn{padding:11px 20px;font-size:15px}
     @media (max-width:640px){.cl-band{padding:20px}.cl-band .cl-cta{flex:1 1 100%}.cl-band .cl-btn{width:100%;justify-content:center}}
   </style>
 

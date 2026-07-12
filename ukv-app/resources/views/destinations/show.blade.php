@@ -231,6 +231,13 @@
 </div></section>
 @endif
 
+{{-- Mid-page scroll-capture: slim inline checklist strip, deep-linked to this country. --}}
+<section style="padding:14px 0"><div class="wrap">
+  <div class="reveal">
+    @include('partials.checklist-band', ['cbDestination' => $name, 'cbCompact' => true])
+  </div>
+</div></section>
+
 @if (\Illuminate\Support\Str::contains(strtolower((string) $visaType), ['schengen', 'etias']))
 {{-- Schengen short-stay visa honesty banner — British passport holders are visa-free
      (ETIAS from late 2026); this page serves visa-required nationals. Keeps it truthful. --}}
