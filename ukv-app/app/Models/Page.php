@@ -49,4 +49,36 @@ class Page extends Model
             && $this->status === 'published'
             && ! empty($this->blocks);
     }
+
+    /**
+     * Clone this page into a saved DRAFT copy — the "start from a template" flow. The copy is always
+     * cms-mode + draft with a unique slug, so it can never collide with the source or go live by
+     * accident; the team previews it, edits it, then publishes when ready.
+     */
+    public function duplicateAsDraft(): self
+    {
+        $copy = $this->replicate(['published_at']);
+        $copy->title = $this->title.' (copy)';
+        $copy->slug = self::uniqueSlug($this->slug.'-copy');
+        $copy->mode = 'cms';
+        $copy->status = 'draft';
+        $copy->in_sitemap = false;
+        $copy->published_at = null;
+        $copy->save();
+
+        return $copy;
+    }
+
+    /** First free slug of the form base, base-2, base-3, … so duplicates never clash. */
+    public static function uniqueSlug(string $base): string
+    {
+        $slug = $base;
+        $n = 1;
+        while (self::where('slug', $slug)->exists()) {
+            $n++;
+            $slug = $base.'-'.$n;
+        }
+
+        return $slug;
+    }
 }

@@ -56,7 +56,21 @@ class PageResource extends Resource
             Tables\Columns\TextColumn::make('mode')->badge(),
             Tables\Columns\TextColumn::make('status')->badge(),
             Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable(),
-        ])->actions([Tables\Actions\EditAction::make()]);
+        ])->actions([
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\Action::make('duplicate')
+                ->label('Duplicate')
+                ->icon('heroicon-o-document-duplicate')
+                ->color('gray')
+                ->requiresConfirmation()
+                ->modalHeading('Duplicate as a draft')
+                ->modalDescription('Creates a cms-mode draft copy you can edit and publish later. The original is untouched.')
+                ->action(function (\App\Models\Page $record): void {
+                    $copy = $record->duplicateAsDraft();
+                    \Filament\Notifications\Notification::make()
+                        ->title('Duplicated to "'.$copy->title.'"')->success()->send();
+                }),
+        ]);
     }
 
     public static function getPages(): array
