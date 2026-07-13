@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Cms;
 
 use App\Cms\Blocks\BlockType;
+use App\Cms\Blocks\CtaBandBlock;
+use App\Cms\Blocks\FaqBlock;
 use App\Cms\Blocks\GlobalBlockReference;
 use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
@@ -23,6 +25,8 @@ class BlockRegistry
         HeroBlock::class,
         RichTextBlock::class,
         ImageBlock::class,
+        CtaBandBlock::class,
+        FaqBlock::class,
         LockedIncludeBlock::class,
         GlobalBlockReference::class,
     ];
@@ -31,7 +35,7 @@ class BlockRegistry
      * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
      * locked-include) so a reusable block can never reference another reusable block.
      */
-    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image'];
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array
