@@ -75,6 +75,9 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'notice-bar', 'data' => ['tone' => 'brand', 'text' => 'Seasonal note']],
                 ['type' => 'tabs', 'data' => ['heading' => 'Details', 'items' => [['label' => 'One', 'body' => 'First'], ['label' => 'Two', 'body' => 'Second']]]],
                 ['type' => 'checklist', 'data' => ['heading' => 'Included', 'items' => [['text' => 'Human check']]]],
+                ['type' => 'map-embed', 'data' => ['heading' => 'Find us', 'query' => 'London']],
+                ['type' => 'fine-print', 'data' => ['text' => 'We are not a government body.']],
+                ['type' => 'divider', 'data' => ['size' => 'm', 'style' => 'line']],
             ],
         ]);
 
@@ -101,6 +104,9 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('class="cms-buttons"', false)
             ->assertSee('class="cms-notice"', false)
             ->assertSee('class="cms-tabs"', false)
-            ->assertSee('class="cms-checklist"', false);
+            ->assertSee('class="cms-checklist"', false)
+            ->assertSee('class="cms-map"', false)
+            ->assertSee('class="cms-fineprint"', false)
+            ->assertSee('cms-divider', false);
     }
 }

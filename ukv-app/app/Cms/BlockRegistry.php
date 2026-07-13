@@ -12,14 +12,17 @@ use App\Cms\Blocks\ChecklistBlock;
 use App\Cms\Blocks\CompareTableBlock;
 use App\Cms\Blocks\ContactCardsBlock;
 use App\Cms\Blocks\CtaBandBlock;
+use App\Cms\Blocks\DividerBlock;
 use App\Cms\Blocks\FaqBlock;
 use App\Cms\Blocks\FeatureGridBlock;
+use App\Cms\Blocks\FinePrintBlock;
 use App\Cms\Blocks\GalleryBlock;
 use App\Cms\Blocks\GlobalBlockReference;
 use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\LogoStripBlock;
+use App\Cms\Blocks\MapEmbedBlock;
 use App\Cms\Blocks\PricingBlock;
 use App\Cms\Blocks\QuoteBlock;
 use App\Cms\Blocks\NoticeBarBlock;
@@ -67,6 +70,9 @@ class BlockRegistry
         NoticeBarBlock::class,
         TabsBlock::class,
         ChecklistBlock::class,
+        MapEmbedBlock::class,
+        FinePrintBlock::class,
+        DividerBlock::class,
         TrustpilotBlock::class,
         PricingBlock::class,
         LockedIncludeBlock::class,
@@ -77,7 +83,7 @@ class BlockRegistry
      * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
      * locked-include) so a reusable block can never reference another reusable block.
      */
-    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid', 'stats', 'quote', 'split', 'accordion', 'callout', 'testimonials', 'timeline', 'video', 'gallery', 'logo-strip', 'compare-table', 'contact-cards', 'buttons', 'notice-bar', 'tabs', 'checklist'];
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid', 'stats', 'quote', 'split', 'accordion', 'callout', 'testimonials', 'timeline', 'video', 'gallery', 'logo-strip', 'compare-table', 'contact-cards', 'buttons', 'notice-bar', 'tabs', 'checklist', 'map-embed', 'fine-print'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array

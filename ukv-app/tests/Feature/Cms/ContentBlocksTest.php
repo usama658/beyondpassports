@@ -406,6 +406,60 @@ final class ContentBlocksTest extends TestCase
             ->assertSee('A UK specialist reviews your application', false);
     }
 
+    public function test_map_embed_builds_google_maps_iframe_from_query(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-map', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'map-embed', 'data' => ['heading' => 'Find us', 'query' => 'VFS Global London']]],
+        ]);
+
+        $this->get('/promo-map')->assertOk()
+            ->assertSee('class="cms-map"', false)
+            ->assertSee('maps.google.com/maps?q=', false)
+            ->assertSee('output=embed', false);
+    }
+
+    public function test_map_embed_ignores_non_google_url(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-map2', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'map-embed', 'data' => ['query' => 'https://evil.example.com/map']]],
+        ]);
+
+        // A pasted non-Google URL resolves to no embed, so the block renders nothing.
+        $this->get('/promo-map2')->assertOk()
+            ->assertDontSee('class="cms-map"', false)
+            ->assertDontSee('<iframe', false);
+    }
+
+    public function test_fine_print_renders_muted_text(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-fp', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'fine-print', 'data' => ['text' => 'The embassy makes the final decision.']]],
+        ]);
+
+        $this->get('/promo-fp')->assertOk()
+            ->assertSee('class="cms-fineprint"', false)
+            ->assertSee('The embassy makes the final decision.', false);
+    }
+
+    public function test_divider_renders_hairline_rule(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-div', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'divider', 'data' => ['size' => 'l', 'style' => 'line']]],
+        ]);
+
+        $this->get('/promo-div')->assertOk()
+            ->assertSee('cms-divider-line', false)
+            ->assertSee('<hr>', false);
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);
