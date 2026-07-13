@@ -44,6 +44,10 @@ class GlobalBlockResource extends Resource
                 ->required()
                 ->live()
                 ->helperText('The kind of section this reusable block renders.'),
+            Forms\Components\Select::make('status')
+                ->options(['draft' => 'Draft (parked, hidden)', 'published' => 'Published (live)'])
+                ->default('published')->required()
+                ->helperText('Draft blocks render nothing wherever placed until published.'),
             Forms\Components\Group::make()
                 ->statePath('data')
                 ->schema(fn (Get $get): array => $get('type') ? $registry->schemaFor($get('type')) : [])

@@ -14,11 +14,17 @@ use Illuminate\Support\Facades\Cache;
  */
 class GlobalBlock extends Model
 {
-    protected $fillable = ['name', 'type', 'data'];
+    protected $fillable = ['name', 'type', 'status', 'data'];
 
     protected function casts(): array
     {
         return ['data' => 'array'];
+    }
+
+    /** A parked draft renders nothing wherever it's referenced; only published blocks show. */
+    public function isPublished(): bool
+    {
+        return ($this->status ?? 'published') === 'published';
     }
 
     protected static function booted(): void
