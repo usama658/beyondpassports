@@ -320,6 +320,92 @@ final class ContentBlocksTest extends TestCase
             ->assertSee('href="/contact"', false);
     }
 
+    public function test_buttons_render_primary_and_secondary(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-btn', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'buttons', 'data' => [
+                'heading' => 'Choose a path',
+                'items' => [
+                    ['label' => 'Apply now', 'url' => '/apply', 'style' => 'primary'],
+                    ['label' => 'Learn more', 'url' => '/services', 'style' => 'secondary'],
+                ],
+            ]]],
+        ]);
+
+        $this->get('/promo-btn')->assertOk()
+            ->assertSee('class="cms-buttons"', false)
+            ->assertSee('cb-primary', false)
+            ->assertSee('cb-secondary', false)
+            ->assertSee('href="/apply"', false);
+    }
+
+    public function test_notice_bar_renders(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-nb', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'notice-bar', 'data' => [
+                'tone' => 'warning', 'text' => 'Summer slots fill fast.', 'link_label' => 'Book', 'link_url' => '/apply',
+            ]]],
+        ]);
+
+        $this->get('/promo-nb')->assertOk()
+            ->assertSee('class="cms-notice"', false)
+            ->assertSee('Summer slots fill fast.', false)
+            ->assertSee('href="/apply"', false);
+    }
+
+    public function test_tabs_render_no_js_panels(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-tabs', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'tabs', 'data' => [
+                'heading' => 'How we help',
+                'items' => [
+                    ['label' => 'Prepare', 'body' => 'We prepare everything.'],
+                    ['label' => 'Check', 'body' => 'We check it twice.'],
+                ],
+            ]]],
+        ]);
+
+        $this->get('/promo-tabs')->assertOk()
+            ->assertSee('class="cms-tabs"', false)
+            ->assertSee('Prepare', false)
+            ->assertSee('We check it twice.', false)
+            ->assertSee('type="radio"', false);
+    }
+
+    public function test_tabs_need_two_items(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-tabs1', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'tabs', 'data' => ['items' => [['label' => 'Only', 'body' => 'One panel']]]]],
+        ]);
+
+        // A single tab is not a tab set, so it renders nothing.
+        $this->get('/promo-tabs1')->assertOk()->assertDontSee('class="cms-tabs"', false);
+    }
+
+    public function test_checklist_renders_ticked_points(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-ck', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'checklist', 'data' => [
+                'heading' => "What's included",
+                'items' => [['text' => 'A UK specialist reviews your application'], ['text' => 'Document checklist tailored to your trip']],
+            ]]],
+        ]);
+
+        $this->get('/promo-ck')->assertOk()
+            ->assertSee('class="cms-checklist"', false)
+            ->assertSee('A UK specialist reviews your application', false);
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);

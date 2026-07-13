@@ -71,6 +71,10 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'logo-strip', 'data' => ['heading' => 'Featured', 'items' => [['src' => 'https://example.com/logo.png', 'name' => 'Acme']]]],
                 ['type' => 'compare-table', 'data' => ['heading' => 'Us vs them', 'col_a' => 'Us', 'col_b' => 'Them', 'items' => [['label' => 'Human check', 'has_a' => true, 'has_b' => false]]]],
                 ['type' => 'contact-cards', 'data' => ['heading' => 'Reach us', 'items' => [['title' => 'WhatsApp', 'text' => 'Chat now', 'button_label' => 'Open', 'button_url' => '/contact']]]],
+                ['type' => 'buttons', 'data' => ['heading' => 'Pick one', 'items' => [['label' => 'Apply', 'url' => '/apply', 'style' => 'primary']]]],
+                ['type' => 'notice-bar', 'data' => ['tone' => 'brand', 'text' => 'Seasonal note']],
+                ['type' => 'tabs', 'data' => ['heading' => 'Details', 'items' => [['label' => 'One', 'body' => 'First'], ['label' => 'Two', 'body' => 'Second']]]],
+                ['type' => 'checklist', 'data' => ['heading' => 'Included', 'items' => [['text' => 'Human check']]]],
             ],
         ]);
 
@@ -93,6 +97,10 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('class="cms-gallery"', false)
             ->assertSee('class="cms-logos"', false)
             ->assertSee('class="cms-compare"', false)
-            ->assertSee('class="cms-contact"', false);
+            ->assertSee('class="cms-contact"', false)
+            ->assertSee('class="cms-buttons"', false)
+            ->assertSee('class="cms-notice"', false)
+            ->assertSee('class="cms-tabs"', false)
+            ->assertSee('class="cms-checklist"', false);
     }
 }
