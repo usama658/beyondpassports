@@ -44,6 +44,10 @@ Content blocks: `hero`, `rich-text`, `image`, `cta-band`, `faq`, `trust-bar`, `s
 
 Every content block from `steps` onward is self-contained: each renders its own scoped CSS (`.cms-*`) built from brand tokens, so it drops onto any page without depending on that page's stylesheet. `video` accepts only YouTube/Vimeo URLs and emits a privacy-friendly `youtube-nocookie`/Vimeo iframe; any other host resolves to nothing, so an editor can never inject an arbitrary iframe (YouTube/Vimeo are whitelisted in the public `frame-src` CSP). `gallery` + `logo-strip` resolve each tile from the media library first, then a one-off upload, mirroring the Image block's rules. `tabs` is no-JS (pure-CSS radio inputs) with a per-instance `uniqid` group name so multiple tab sets on one page never collide.
 
+## Admin block picker
+
+The picker groups blocks by category (`Content`, `Media`, `Trust & proof`, `Calls to action`, `Layout`, `System`). Filament v3 has no native picker categories, so `BlockRegistry::builderBlocks()` orders blocks by `CATEGORY_ORDER`, prefixes each label with its category (`Content · Steps …`), and gives each block a heroicon; the picker is two columns. `BlockRegistry::CATEGORY` maps every block key → `{cat, icon}` and a guard test fails the build if a registered block has no category or an unknown one — so a new block can't slip into the picker uncategorised.
+
 ## Deliberate non-goals
 
 "Every section editable" is NOT the target. Forms, the eligibility checker, the slot picker, checkout and the tracker are interactive/functional and MUST stay coded (placed as locked sections if needed). Colours/CSS/structure are never editable — the CMS supplies text + images into the existing theme only. This is the theme-and-functionality-safety guarantee the CMS was built around.

@@ -40,6 +40,7 @@ class PageResource extends Resource
                 ->options(['draft' => 'Draft', 'published' => 'Published'])->default('draft')->required(),
             Forms\Components\Builder::make('blocks')
                 ->blocks(app(BlockRegistry::class)->builderBlocks())
+                ->blockPickerColumns(2)->blockPickerWidth('2xl')
                 ->collapsible()->cloneable()->blockNumbers(false)
                 ->columnSpanFull(),
             Forms\Components\Fieldset::make('SEO')->schema([

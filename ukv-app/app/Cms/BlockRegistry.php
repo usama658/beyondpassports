@@ -85,6 +85,54 @@ class BlockRegistry
      */
     public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid', 'stats', 'quote', 'split', 'accordion', 'callout', 'testimonials', 'timeline', 'video', 'gallery', 'logo-strip', 'compare-table', 'contact-cards', 'buttons', 'notice-bar', 'tabs', 'checklist', 'map-embed', 'fine-print'];
 
+    /**
+     * Category order for the admin block picker. Filament v3 has no native picker groups, so blocks
+     * are ordered by category (adjacency = visual grouping) and each label is prefixed with its
+     * category. Every block key MUST appear in CATEGORY (guarded by a test).
+     */
+    public const CATEGORY_ORDER = ['Content', 'Media', 'Trust & proof', 'Calls to action', 'Layout', 'System'];
+
+    /** @var array<string, array{cat: string, icon: string}> block key => picker category + icon */
+    public const CATEGORY = [
+        // Content
+        'hero' => ['cat' => 'Content', 'icon' => 'heroicon-o-sparkles'],
+        'rich-text' => ['cat' => 'Content', 'icon' => 'heroicon-o-document-text'],
+        'steps' => ['cat' => 'Content', 'icon' => 'heroicon-o-list-bullet'],
+        'feature-grid' => ['cat' => 'Content', 'icon' => 'heroicon-o-squares-2x2'],
+        'split' => ['cat' => 'Content', 'icon' => 'heroicon-o-view-columns'],
+        'accordion' => ['cat' => 'Content', 'icon' => 'heroicon-o-chevron-down'],
+        'callout' => ['cat' => 'Content', 'icon' => 'heroicon-o-information-circle'],
+        'timeline' => ['cat' => 'Content', 'icon' => 'heroicon-o-clock'],
+        'tabs' => ['cat' => 'Content', 'icon' => 'heroicon-o-rectangle-group'],
+        'checklist' => ['cat' => 'Content', 'icon' => 'heroicon-o-check-circle'],
+        'faq' => ['cat' => 'Content', 'icon' => 'heroicon-o-question-mark-circle'],
+        'fine-print' => ['cat' => 'Content', 'icon' => 'heroicon-o-document'],
+        // Media
+        'image' => ['cat' => 'Media', 'icon' => 'heroicon-o-photo'],
+        'gallery' => ['cat' => 'Media', 'icon' => 'heroicon-o-photo'],
+        'video' => ['cat' => 'Media', 'icon' => 'heroicon-o-play-circle'],
+        'logo-strip' => ['cat' => 'Media', 'icon' => 'heroicon-o-building-office-2'],
+        'map-embed' => ['cat' => 'Media', 'icon' => 'heroicon-o-map-pin'],
+        // Trust & proof
+        'trust-bar' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-shield-check'],
+        'stats' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-chart-bar'],
+        'quote' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-chat-bubble-bottom-center-text'],
+        'testimonials' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-user-group'],
+        'compare-table' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-table-cells'],
+        'trustpilot' => ['cat' => 'Trust & proof', 'icon' => 'heroicon-o-star'],
+        // Calls to action
+        'cta-band' => ['cat' => 'Calls to action', 'icon' => 'heroicon-o-megaphone'],
+        'buttons' => ['cat' => 'Calls to action', 'icon' => 'heroicon-o-cursor-arrow-rays'],
+        'contact-cards' => ['cat' => 'Calls to action', 'icon' => 'heroicon-o-phone'],
+        'notice-bar' => ['cat' => 'Calls to action', 'icon' => 'heroicon-o-bell-alert'],
+        'pricing' => ['cat' => 'Calls to action', 'icon' => 'heroicon-o-banknotes'],
+        // Layout
+        'divider' => ['cat' => 'Layout', 'icon' => 'heroicon-o-minus'],
+        // System
+        'locked-include' => ['cat' => 'System', 'icon' => 'heroicon-o-lock-closed'],
+        'global' => ['cat' => 'System', 'icon' => 'heroicon-o-square-2-stack'],
+    ];
+
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array
     {
@@ -111,12 +159,33 @@ class BlockRegistry
         return $class ? $class::schema() : [];
     }
 
-    /** @return array<int, Block> Filament Builder blocks for the admin form. */
+    /**
+     * @return array<int, Block> Filament Builder blocks for the admin form, ordered by category
+     * (Content, Media, Trust, CTA, Layout, System) with a category-prefixed label + an icon, so the
+     * flat v3 picker reads as grouped clusters.
+     */
     public function builderBlocks(): array
     {
-        return array_map(
-            fn (string $class) => Block::make($class::key())->label($class::label())->schema($class::schema()),
-            array_values($this->all()),
-        );
+        $all = $this->all();
+        $order = array_flip(self::CATEGORY_ORDER);
+
+        // Stable sort by category order; blocks keep their in-category declaration order.
+        $keys = array_keys($all);
+        usort($keys, function (string $a, string $b) use ($order, $keys): int {
+            $ca = $order[self::CATEGORY[$a]['cat'] ?? 'System'] ?? 99;
+            $cb = $order[self::CATEGORY[$b]['cat'] ?? 'System'] ?? 99;
+
+            return $ca <=> $cb ?: array_search($a, $keys, true) <=> array_search($b, $keys, true);
+        });
+
+        return array_map(function (string $key) use ($all): Block {
+            $class = $all[$key];
+            $meta = self::CATEGORY[$key] ?? ['cat' => 'System', 'icon' => 'heroicon-o-cube'];
+
+            return Block::make($key)
+                ->label($meta['cat'].' · '.$class::label())
+                ->icon($meta['icon'])
+                ->schema($class::schema());
+        }, $keys);
     }
 }

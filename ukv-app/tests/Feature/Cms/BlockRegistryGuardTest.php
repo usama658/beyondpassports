@@ -36,6 +36,39 @@ final class BlockRegistryGuardTest extends TestCase
         }
     }
 
+    public function test_every_block_has_a_valid_picker_category(): void
+    {
+        // A new block must be categorised, or it silently lands in the picker with no group. This
+        // fails the build until CATEGORY has an entry whose category is a known one.
+        $reg = app(BlockRegistry::class);
+        foreach (array_keys($reg->all()) as $key) {
+            $this->assertArrayHasKey($key, BlockRegistry::CATEGORY, "block [{$key}] is missing a picker category");
+            $cat = BlockRegistry::CATEGORY[$key]['cat'];
+            $this->assertContains($cat, BlockRegistry::CATEGORY_ORDER, "block [{$key}] has unknown category [{$cat}]");
+            $this->assertNotSame('', BlockRegistry::CATEGORY[$key]['icon'], "block [{$key}] needs an icon");
+        }
+    }
+
+    public function test_builder_blocks_are_category_ordered_and_complete(): void
+    {
+        $reg = app(BlockRegistry::class);
+        $blocks = $reg->builderBlocks();
+        $this->assertCount(count($reg->all()), $blocks, 'every registered block must appear in the picker');
+
+        // Labels are category-prefixed and the categories appear in CATEGORY_ORDER sequence.
+        $seenOrder = [];
+        foreach ($blocks as $block) {
+            $label = $block->getLabel();
+            $this->assertStringContainsString(' · ', $label, "builder label [{$label}] should be category-prefixed");
+            $cat = trim(explode(' · ', $label)[0]);
+            if (empty($seenOrder) || end($seenOrder) !== $cat) {
+                $seenOrder[] = $cat;
+            }
+        }
+        // Each category block appears contiguously (no category repeats after another begins).
+        $this->assertSame(array_values(array_unique($seenOrder)), $seenOrder, 'categories must be contiguous in the picker');
+    }
+
     public function test_global_allowed_keys_all_exist_in_the_registry(): void
     {
         $all = app(BlockRegistry::class)->all();
