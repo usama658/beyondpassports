@@ -12,8 +12,10 @@ use App\Cms\Blocks\GlobalBlockReference;
 use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
+use App\Cms\Blocks\PricingBlock;
 use App\Cms\Blocks\QuoteBlock;
 use App\Cms\Blocks\RichTextBlock;
+use App\Cms\Blocks\TrustpilotBlock;
 use App\Cms\Blocks\SplitBlock;
 use App\Cms\Blocks\StatsBlock;
 use App\Cms\Blocks\StepsBlock;
@@ -39,6 +41,8 @@ class BlockRegistry
         StatsBlock::class,
         QuoteBlock::class,
         SplitBlock::class,
+        TrustpilotBlock::class,
+        PricingBlock::class,
         LockedIncludeBlock::class,
         GlobalBlockReference::class,
     ];

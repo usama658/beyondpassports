@@ -127,6 +127,30 @@ final class ContentBlocksTest extends TestCase
             ->assertSee('class="cms-split"', false)->assertSee('Why us', false);
     }
 
+    public function test_trustpilot_widget_block_renders(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-tp', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'trustpilot', 'data' => ['theme' => 'dark', 'align' => 'center']]],
+        ]);
+
+        // Renders the coded trustpilot-cta partial (no 500); internals are config-driven.
+        $this->get('/promo-tp')->assertOk();
+    }
+
+    public function test_pricing_widget_block_renders(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-price', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'pricing', 'data' => []]],
+        ]);
+
+        // Renders the coded pricing partial driven by config('ukv.pricing').
+        $this->get('/promo-price')->assertOk();
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);
