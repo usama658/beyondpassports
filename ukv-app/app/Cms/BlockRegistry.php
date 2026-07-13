@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Cms;
 
+use App\Cms\Blocks\AccordionBlock;
 use App\Cms\Blocks\BlockType;
+use App\Cms\Blocks\CalloutBlock;
 use App\Cms\Blocks\CtaBandBlock;
 use App\Cms\Blocks\FaqBlock;
 use App\Cms\Blocks\FeatureGridBlock;
@@ -15,11 +17,14 @@ use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\PricingBlock;
 use App\Cms\Blocks\QuoteBlock;
 use App\Cms\Blocks\RichTextBlock;
+use App\Cms\Blocks\TestimonialsBlock;
+use App\Cms\Blocks\TimelineBlock;
 use App\Cms\Blocks\TrustpilotBlock;
 use App\Cms\Blocks\SplitBlock;
 use App\Cms\Blocks\StatsBlock;
 use App\Cms\Blocks\StepsBlock;
 use App\Cms\Blocks\TrustBarBlock;
+use App\Cms\Blocks\VideoBlock;
 use Filament\Forms\Components\Builder\Block;
 
 /**
@@ -41,6 +46,11 @@ class BlockRegistry
         StatsBlock::class,
         QuoteBlock::class,
         SplitBlock::class,
+        AccordionBlock::class,
+        CalloutBlock::class,
+        TestimonialsBlock::class,
+        TimelineBlock::class,
+        VideoBlock::class,
         TrustpilotBlock::class,
         PricingBlock::class,
         LockedIncludeBlock::class,
@@ -51,7 +61,7 @@ class BlockRegistry
      * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
      * locked-include) so a reusable block can never reference another reusable block.
      */
-    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid', 'stats', 'quote', 'split'];
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid', 'stats', 'quote', 'split', 'accordion', 'callout', 'testimonials', 'timeline', 'video'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array

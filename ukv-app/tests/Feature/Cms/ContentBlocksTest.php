@@ -151,6 +151,103 @@ final class ContentBlocksTest extends TestCase
         $this->get('/promo-price')->assertOk();
     }
 
+    public function test_accordion_renders_details_rows(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-acc', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'accordion', 'data' => [
+                'heading' => 'More detail',
+                'items' => [['title' => 'How long does it take?', 'body' => 'Usually two weeks.']],
+            ]]],
+        ]);
+
+        $this->get('/promo-acc')->assertOk()
+            ->assertSee('class="cms-accordion"', false)
+            ->assertSee('<summary>How long does it take?</summary>', false)
+            ->assertSee('Usually two weeks.', false);
+    }
+
+    public function test_callout_renders_with_tone(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-call', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'callout', 'data' => [
+                'tone' => 'warning', 'title' => 'Check your passport', 'body' => 'It must be valid for six months.',
+            ]]],
+        ]);
+
+        $this->get('/promo-call')->assertOk()
+            ->assertSee('class="cms-callout"', false)
+            ->assertSee('Check your passport', false)
+            ->assertSee('It must be valid for six months.', false);
+    }
+
+    public function test_testimonials_render_grid(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-tm', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'testimonials', 'data' => [
+                'heading' => 'What travellers say',
+                'items' => [['quote' => 'Smooth and simple.', 'name' => 'Priya', 'detail' => 'France']],
+            ]]],
+        ]);
+
+        $this->get('/promo-tm')->assertOk()
+            ->assertSee('class="cms-testimonials"', false)
+            ->assertSee('Smooth and simple.', false)
+            ->assertSee('Priya', false);
+    }
+
+    public function test_timeline_renders_milestones(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-tl', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'timeline', 'data' => [
+                'heading' => 'Your journey',
+                'items' => [['label' => 'Day 1', 'title' => 'You apply', 'text' => 'We open your case.']],
+            ]]],
+        ]);
+
+        $this->get('/promo-tl')->assertOk()
+            ->assertSee('class="cms-timeline"', false)
+            ->assertSee('You apply', false)
+            ->assertSee('Day 1', false);
+    }
+
+    public function test_video_parses_youtube_into_safe_embed(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-vid', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'video', 'data' => [
+                'heading' => 'How it works', 'url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'caption' => 'A short intro.',
+            ]]],
+        ]);
+
+        $this->get('/promo-vid')->assertOk()
+            ->assertSee('class="cms-video"', false)
+            ->assertSee('youtube-nocookie.com/embed/dQw4w9WgXcQ', false)
+            ->assertSee('A short intro.', false);
+    }
+
+    public function test_video_ignores_non_whitelisted_host(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-vid2', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'video', 'data' => ['url' => 'https://evil.example.com/clip.mp4']]],
+        ]);
+
+        // Non-YouTube/Vimeo URL resolves to no embed, so the block renders nothing (no iframe injected).
+        $this->get('/promo-vid2')->assertOk()
+            ->assertDontSee('class="cms-video"', false)
+            ->assertDontSee('<iframe', false);
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);

@@ -40,7 +40,9 @@ Step 1 is now automated by `SectionCoverageTest` — you no longer have to remem
 
 ## Block library (editable content blocks)
 
-`hero`, `rich-text`, `image`, `cta-band`, `faq`, `trust-bar`, `locked-include` (place a whitelisted coded section), `global` (reference a reusable block). Any of the content blocks can also be saved as a **reusable global block** (`GLOBAL_ALLOWED`).
+Content blocks: `hero`, `rich-text`, `image`, `cta-band`, `faq`, `trust-bar`, `steps`, `feature-grid`, `stats`, `quote`, `split`, `accordion`, `callout`, `testimonials`, `timeline`, `video`. Widget/toggle blocks (locked, config-driven, no editable content): `trustpilot`, `pricing`. Structural: `locked-include` (place a whitelisted coded section), `global` (reference a reusable block). Any of the content blocks can also be saved as a **reusable global block** (`GLOBAL_ALLOWED`); the widget blocks and structural blocks are excluded from reuse.
+
+The steps/feature-grid/stats/quote/split/accordion/callout/testimonials/timeline/video blocks are self-contained: each renders its own scoped CSS (`.cms-*`) built from brand tokens, so it drops onto any page without depending on that page's stylesheet. `video` accepts only YouTube/Vimeo URLs and emits a privacy-friendly `youtube-nocookie`/Vimeo iframe; any other host resolves to nothing, so an editor can never inject an arbitrary iframe.
 
 ## Deliberate non-goals
 

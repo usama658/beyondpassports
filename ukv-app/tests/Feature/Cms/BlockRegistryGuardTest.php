@@ -62,6 +62,11 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'stats', 'data' => ['items' => [['number' => '98%', 'label' => 'Approval']]]],
                 ['type' => 'quote', 'data' => ['quote' => 'Great', 'name' => 'A', 'stars' => 5]],
                 ['type' => 'split', 'data' => ['heading' => 'Split heading', 'body' => 'text']],
+                ['type' => 'accordion', 'data' => ['heading' => 'More', 'items' => [['title' => 'Row one', 'body' => 'Detail.']]]],
+                ['type' => 'callout', 'data' => ['tone' => 'info', 'title' => 'Note', 'body' => 'Callout body.']],
+                ['type' => 'testimonials', 'data' => ['heading' => 'Voices', 'items' => [['quote' => 'Loved it', 'name' => 'B']]]],
+                ['type' => 'timeline', 'data' => ['heading' => 'Journey', 'items' => [['label' => 'Day 1', 'title' => 'Kick off', 'text' => 'x']]]],
+                ['type' => 'video', 'data' => ['heading' => 'Watch', 'url' => 'https://youtu.be/dQw4w9WgXcQ']],
             ],
         ]);
 
@@ -74,6 +79,12 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('class="cms-features"', false)
             ->assertSee('class="cms-stats"', false)
             ->assertSee('class="cms-quote"', false)
-            ->assertSee('class="cms-split"', false);
+            ->assertSee('class="cms-split"', false)
+            ->assertSee('class="cms-accordion"', false)
+            ->assertSee('class="cms-callout"', false)
+            ->assertSee('class="cms-testimonials"', false)
+            ->assertSee('class="cms-timeline"', false)
+            ->assertSee('class="cms-video"', false)
+            ->assertSee('youtube-nocookie.com/embed/dQw4w9WgXcQ', false);
     }
 }
