@@ -248,6 +248,78 @@ final class ContentBlocksTest extends TestCase
             ->assertDontSee('<iframe', false);
     }
 
+    public function test_gallery_renders_from_one_off_src(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-gal', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'gallery', 'data' => [
+                'heading' => 'Our work',
+                'items' => [['src' => 'https://example.com/a.jpg', 'alt' => 'Sample', 'caption' => 'Nice']],
+            ]]],
+        ]);
+
+        $this->get('/promo-gal')->assertOk()
+            ->assertSee('class="cms-gallery"', false)
+            ->assertSee('https://example.com/a.jpg', false)
+            ->assertSee('alt="Sample"', false);
+    }
+
+    public function test_logo_strip_renders_linked_and_plain(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-logo', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'logo-strip', 'data' => [
+                'heading' => 'As featured in',
+                'items' => [
+                    ['src' => 'https://example.com/l1.png', 'name' => 'Linked', 'url' => 'https://partner.example'],
+                    ['src' => 'https://example.com/l2.png', 'name' => 'Plain'],
+                ],
+            ]]],
+        ]);
+
+        $this->get('/promo-logo')->assertOk()
+            ->assertSee('class="cms-logos"', false)
+            ->assertSee('alt="Linked"', false)
+            ->assertSee('href="https://partner.example"', false)
+            ->assertSee('alt="Plain"', false);
+    }
+
+    public function test_compare_table_renders_ticks(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-cmp', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'compare-table', 'data' => [
+                'heading' => 'Why us', 'col_a' => 'Beyond Passports', 'col_b' => 'DIY',
+                'items' => [['label' => 'Human review', 'has_a' => true, 'has_b' => false]],
+            ]]],
+        ]);
+
+        $this->get('/promo-cmp')->assertOk()
+            ->assertSee('class="cms-compare"', false)
+            ->assertSee('Beyond Passports', false)
+            ->assertSee('Human review', false);
+    }
+
+    public function test_contact_cards_render(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-cc', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'contact-cards', 'data' => [
+                'heading' => 'Talk to us',
+                'items' => [['title' => 'WhatsApp', 'text' => 'Fastest reply.', 'button_label' => 'Message', 'button_url' => '/contact']],
+            ]]],
+        ]);
+
+        $this->get('/promo-cc')->assertOk()
+            ->assertSee('class="cms-contact"', false)
+            ->assertSee('WhatsApp', false)
+            ->assertSee('href="/contact"', false);
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);

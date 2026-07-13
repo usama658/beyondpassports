@@ -106,8 +106,9 @@ class SecurityHeaders
             // Google Tag Manager + GA4, Microsoft Clarity, Meta Pixel.
             "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://invitejs.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net",
             "connect-src 'self' https://api.stripe.com https://widget.trustpilot.com https://*.trustpilot.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.facebook.com",
-            // google.com/maps: the /about location embed; widget.trustpilot.com: TrustBox iframe.
-            "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com https://widget.trustpilot.com",
+            // google.com/maps: the /about location embed; widget.trustpilot.com: TrustBox iframe;
+            // youtube-nocookie/youtube + player.vimeo: the CMS video block's privacy-friendly embeds.
+            "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com https://widget.trustpilot.com https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com",
         ]);
     }
 

@@ -67,6 +67,10 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'testimonials', 'data' => ['heading' => 'Voices', 'items' => [['quote' => 'Loved it', 'name' => 'B']]]],
                 ['type' => 'timeline', 'data' => ['heading' => 'Journey', 'items' => [['label' => 'Day 1', 'title' => 'Kick off', 'text' => 'x']]]],
                 ['type' => 'video', 'data' => ['heading' => 'Watch', 'url' => 'https://youtu.be/dQw4w9WgXcQ']],
+                ['type' => 'gallery', 'data' => ['heading' => 'Gallery', 'items' => [['src' => 'https://example.com/a.jpg', 'alt' => 'A']]]],
+                ['type' => 'logo-strip', 'data' => ['heading' => 'Featured', 'items' => [['src' => 'https://example.com/logo.png', 'name' => 'Acme']]]],
+                ['type' => 'compare-table', 'data' => ['heading' => 'Us vs them', 'col_a' => 'Us', 'col_b' => 'Them', 'items' => [['label' => 'Human check', 'has_a' => true, 'has_b' => false]]]],
+                ['type' => 'contact-cards', 'data' => ['heading' => 'Reach us', 'items' => [['title' => 'WhatsApp', 'text' => 'Chat now', 'button_label' => 'Open', 'button_url' => '/contact']]]],
             ],
         ]);
 
@@ -85,6 +89,10 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('class="cms-testimonials"', false)
             ->assertSee('class="cms-timeline"', false)
             ->assertSee('class="cms-video"', false)
-            ->assertSee('youtube-nocookie.com/embed/dQw4w9WgXcQ', false);
+            ->assertSee('youtube-nocookie.com/embed/dQw4w9WgXcQ', false)
+            ->assertSee('class="cms-gallery"', false)
+            ->assertSee('class="cms-logos"', false)
+            ->assertSee('class="cms-compare"', false)
+            ->assertSee('class="cms-contact"', false);
     }
 }
