@@ -59,6 +59,9 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'trust-bar', 'data' => ['items' => [['bold' => 'No hidden', 'rest' => 'fees']]]],
                 ['type' => 'steps', 'data' => ['heading' => 'How', 'items' => [['title' => 'Step one']]]],
                 ['type' => 'feature-grid', 'data' => ['heading' => 'Why', 'items' => [['title' => 'Feature one']]]],
+                ['type' => 'stats', 'data' => ['items' => [['number' => '98%', 'label' => 'Approval']]]],
+                ['type' => 'quote', 'data' => ['quote' => 'Great', 'name' => 'A', 'stars' => 5]],
+                ['type' => 'split', 'data' => ['heading' => 'Split heading', 'body' => 'text']],
             ],
         ]);
 
@@ -68,6 +71,9 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('class="faq-e"', false)
             ->assertSee('class="tbar-f"', false)
             ->assertSee('class="cms-steps"', false)
-            ->assertSee('class="cms-features"', false);
+            ->assertSee('class="cms-features"', false)
+            ->assertSee('class="cms-stats"', false)
+            ->assertSee('class="cms-quote"', false)
+            ->assertSee('class="cms-split"', false);
     }
 }
