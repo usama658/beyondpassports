@@ -12,6 +12,7 @@ use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\RichTextBlock;
+use App\Cms\Blocks\TrustBarBlock;
 use Filament\Forms\Components\Builder\Block;
 
 /**
@@ -27,6 +28,7 @@ class BlockRegistry
         ImageBlock::class,
         CtaBandBlock::class,
         FaqBlock::class,
+        TrustBarBlock::class,
         LockedIncludeBlock::class,
         GlobalBlockReference::class,
     ];
@@ -35,7 +37,7 @@ class BlockRegistry
      * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
      * locked-include) so a reusable block can never reference another reusable block.
      */
-    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq'];
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array
