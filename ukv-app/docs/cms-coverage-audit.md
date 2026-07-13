@@ -7,11 +7,12 @@
    `grep -rhoE '<section[^>]*class="[a-z0-9 _-]+"' resources/views/... | ... | sort | uniq -c | sort -rn`
 2. Classify each distinct section into one disposition (table below).
 3. Guard it automatically:
+   - **`SectionCoverageTest`** — re-derives every public `<section>` class from the Blade views and fails if any is not classified in `App\Cms\SectionManifest::KNOWN`. This is the gate that flags a "section with no block" the moment it ships: a new section type turns the build red until someone adds a block or classifies it (block|locked|functional|layout). It also fails on stale manifest entries.
    - `BlockRegistryGuardTest` — every registered block has a real Blade partial + schema, and a page using every content block renders (no 500).
    - Golden-master (`automation/cms-golden.cjs`) — a page served from CMS blocks is byte-identical to its coded twin.
    - `PublicSmokeTest` — every public URL (incl. orphaned LPs) renders < 500.
 
-Re-run step 1 after any new page ships; a new recurring section class that isn't in the table below is the signal to add a block.
+Step 1 is now automated by `SectionCoverageTest` — you no longer have to remember to re-run the grep; CI does it every commit.
 
 ## Disposition rules
 
