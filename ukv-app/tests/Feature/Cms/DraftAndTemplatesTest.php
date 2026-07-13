@@ -50,6 +50,22 @@ final class DraftAndTemplatesTest extends TestCase
         $this->assertSame(1, Page::where('slug', 'template-landing-page')->count());
     }
 
+    public function test_premium_template_showcases_the_expanded_kit(): void
+    {
+        (new CmsPageTemplatesSeeder())->run();
+
+        $premium = Page::where('slug', 'template-premium-landing')->first();
+        $this->assertNotNull($premium);
+        $this->assertSame('draft', $premium->status);
+        $this->assertTrue((bool) $premium->noindex);
+
+        // It exercises a broad slice of the newer block library.
+        $types = collect($premium->blocks)->pluck('type')->all();
+        foreach (['notice-bar', 'logo-strip', 'checklist', 'compare-table', 'tabs', 'testimonials', 'contact-cards', 'fine-print'] as $expected) {
+            $this->assertContains($expected, $types, "premium template should include a {$expected} block");
+        }
+    }
+
     public function test_a_template_is_not_public_but_can_be_duplicated(): void
     {
         config(['ukv.cms.enabled' => true]);

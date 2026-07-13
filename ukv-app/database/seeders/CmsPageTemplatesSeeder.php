@@ -72,6 +72,52 @@ class CmsPageTemplatesSeeder extends Seeder
                     ['type' => 'cta-band', 'data' => ['heading' => 'Questions?', 'subtext' => 'Talk to our UK team.', 'button_label' => 'Contact us', 'button_url' => '/contact']],
                 ],
             ],
+            [
+                'slug' => 'template-premium-landing',
+                'title' => 'Template — Premium landing (full kit)',
+                'mode' => 'cms',
+                'layout' => 'public',
+                'status' => 'draft',
+                'in_sitemap' => false,
+                'noindex' => true,
+                'blocks' => [
+                    ['type' => 'notice-bar', 'data' => ['tone' => 'brand', 'text' => 'Applying soon? Get your document checklist first.', 'link_label' => 'Get it free', 'link_url' => '/document-checklist']],
+                    ['type' => 'hero', 'data' => ['eyebrow' => 'Schengen visas', 'title' => 'A calmer way to apply for your Schengen visa', 'lede' => 'A UK specialist prepares and checks your application so avoidable reasons for refusal are removed before you attend.']],
+                    ['type' => 'logo-strip', 'data' => ['heading' => 'As featured in', 'items' => [
+                        ['src' => '', 'name' => 'Add a partner or press logo'],
+                    ]]],
+                    ['type' => 'steps', 'data' => ['eyebrow' => 'How it works', 'heading' => 'Three simple steps', 'items' => [
+                        ['title' => 'Tell us your trip', 'text' => 'Share your destination and dates.'],
+                        ['title' => 'We prepare and check', 'text' => 'A specialist reviews every document.'],
+                        ['title' => 'You attend, done', 'text' => 'One appointment, fully prepared.'],
+                    ]]],
+                    ['type' => 'checklist', 'data' => ['heading' => "What's included", 'items' => [
+                        ['text' => 'A UK specialist reviews your whole application'],
+                        ['text' => 'A document checklist tailored to your trip'],
+                        ['text' => 'Support on WhatsApp any day of the week'],
+                    ]]],
+                    ['type' => 'compare-table', 'data' => ['heading' => 'With us vs going it alone', 'col_a' => 'With us', 'col_b' => 'On your own', 'items' => [
+                        ['label' => 'Human document check', 'has_a' => true, 'has_b' => false],
+                        ['label' => 'Avoidable refusal reasons removed', 'has_a' => true, 'has_b' => false],
+                        ['label' => 'One clear fixed fee', 'has_a' => true, 'has_b' => false],
+                        ['label' => 'You do the paperwork', 'has_a' => false, 'has_b' => true],
+                    ]]],
+                    ['type' => 'tabs', 'data' => ['heading' => 'Common questions, answered', 'items' => [
+                        ['label' => 'Timing', 'body' => 'We work to your travel date and tell you the soonest realistic window.'],
+                        ['label' => 'Documents', 'body' => 'We send a checklist tailored to your destination and reason for travel.'],
+                        ['label' => 'Guarantees', 'body' => 'No one can guarantee a visa. The embassy decides. We remove the avoidable reasons they say no.'],
+                    ]]],
+                    ['type' => 'testimonials', 'data' => ['heading' => 'What travellers say', 'items' => [
+                        ['quote' => 'Replace with a genuine, consented testimonial.', 'name' => 'Traveller name', 'detail' => 'Schengen visa'],
+                    ]]],
+                    ['type' => 'contact-cards', 'data' => ['heading' => 'Talk to our UK team', 'items' => [
+                        ['title' => 'WhatsApp', 'text' => 'Fastest reply, any day.', 'button_label' => 'Message us', 'button_url' => '/contact'],
+                        ['title' => 'Email', 'text' => 'For longer questions.', 'button_label' => 'Email us', 'button_url' => '/contact'],
+                    ]]],
+                    ['type' => 'cta-band', 'data' => ['heading' => 'Ready to start?', 'subtext' => 'Tell us your trip and we will take it from there.', 'button_label' => 'Start now', 'button_url' => '/apply']],
+                    ['type' => 'fine-print', 'data' => ['text' => 'We are a private service and are not affiliated with any government or embassy. The embassy makes the final decision on every application.']],
+                ],
+            ],
         ];
     }
 }
