@@ -20,12 +20,14 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 // --- Public site (the content silo) ---
-Route::view('/', 'public.home')->name('home');
-// Serves the CMS "services" page when UKV_CMS_ENABLED is on and it is a published cms page, else the
-// coded public.services view (per-page toggle + coded fallback). CMS pilot: Services.
+// Content pages are CMS-switchable: each renders its published cms page when UKV_CMS_ENABLED is on,
+// otherwise the coded Blade view (per-page toggle + coded fallback). Functional pages (apply,
+// checkout, checker, tracker, document upload, DB-driven money pages) intentionally stay coded — a
+// block editor would break their forms/logic; see docs/cms-coverage-audit.md.
+Route::get('/', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('home', 'public.home'))->name('home');
 Route::get('/services', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('services', 'public.services'))->name('services'); // full-catalogue hub (config('ukv.services'))
-Route::view('/tour-packages', 'public.tours')->name('tours'); // visa-led tour packages (config('ukv.tours'))
-Route::view('/tools', 'public.tools')->name('tools');
+Route::get('/tour-packages', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('tour-packages', 'public.tours'))->name('tours'); // visa-led tour packages (config('ukv.tours'))
+Route::view('/tools', 'public.tools')->name('tools'); // stays coded: embeds the interactive checker
 // Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
 Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.page');
 Route::get('/find-a-centre/search', [CentreController::class, 'search'])
@@ -33,21 +35,22 @@ Route::get('/find-a-centre/search', [CentreController::class, 'search'])
     ->name('centre.search');
 Route::get('/driving-abroad', fn () => redirect('/services', 301))->name('idp');
 Route::get('/about', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('about', 'public.about'))->name('about'); // CMS-served when enabled + published, else coded
-Route::view('/contact', 'public.contact')->name('contact');
+Route::view('/contact', 'public.contact')->name('contact'); // stays coded: carries the contact form (POST /contact)
 Route::get('/contact/thank-you', [ContactController::class, 'thanks'])->name('contact.thanks');
-Route::view('/legal', 'public.legal')->name('legal');
-Route::view('/compare', 'public.compare')->name('compare');
+Route::get('/legal', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('legal', 'public.legal'))->name('legal');
+Route::get('/compare', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('compare', 'public.compare'))->name('compare');
 // Standalone paid-traffic landing page (Speed/outcome). Orphaned by design:
 // noindex, NOT in nav/footer, NOT in SitemapController. Reachable by URL only.
 // Paid-traffic landing pages (site-theme light). Orphaned: noindex, NOT in nav/footer/sitemap.
-Route::view('/schengen-visa-agent', 'public.lp-speed')->name('lp.speed');
+// Landing pages are CMS-switchable (content-only marketing), so the team can iterate copy without a deploy.
+Route::get('/schengen-visa-agent', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agent', 'public.lp-speed'))->name('lp.speed');
 // Original dark-premium version of the Speed LP, kept on request.
-Route::view('/schengen-visa-agent-premium', 'public.lp-speed-original')->name('lp.speed.original');
-Route::view('/schengen-visa-refusal-risk', 'public.lp-fear')->name('lp-fear');
-Route::view('/schengen-visa-appointment', 'public.lp-appointments')->name('lp-appointments');
-Route::view('/honest-schengen-visa-service', 'public.lp-trust')->name('lp-trust');
-Route::view('/schengen-visa-refused', 'public.lp-refused')->name('lp-refused');
-Route::view('/schengen-visa-help', 'public.lp-bold')->name('lp-bold'); // Bold LP: dual-lane hero + case-file sections
+Route::get('/schengen-visa-agent-premium', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agent-premium', 'public.lp-speed-original'))->name('lp.speed.original');
+Route::get('/schengen-visa-refusal-risk', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-refusal-risk', 'public.lp-fear'))->name('lp-fear');
+Route::get('/schengen-visa-appointment', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-appointment', 'public.lp-appointments'))->name('lp-appointments');
+Route::get('/honest-schengen-visa-service', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('honest-schengen-visa-service', 'public.lp-trust'))->name('lp-trust');
+Route::get('/schengen-visa-refused', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-refused', 'public.lp-refused'))->name('lp-refused');
+Route::get('/schengen-visa-help', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold'); // Bold LP: dual-lane hero + case-file sections
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);

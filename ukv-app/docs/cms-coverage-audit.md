@@ -48,6 +48,13 @@ Every content block from `steps` onward is self-contained: each renders its own 
 
 The picker groups blocks by category (`Content`, `Media`, `Trust & proof`, `Calls to action`, `Layout`, `System`). Filament v3 has no native picker categories, so `BlockRegistry::builderBlocks()` orders blocks by `CATEGORY_ORDER`, prefixes each label with its category (`Content · Steps …`), and gives each block a heroicon; the picker is two columns. `BlockRegistry::CATEGORY` maps every block key → `{cat, icon}` and a guard test fails the build if a registered block has no category or an unknown one — so a new block can't slip into the picker uncategorised.
 
+## Which URLs are CMS-switchable
+
+Content pages are wired to `CmsController::pageOrCoded(slug, codedView)`: they render their published cms page when `UKV_CMS_ENABLED` is on, else the coded Blade view. Wiring changes nothing until a page is published, and unpublishing (or flipping the flag) reverts instantly — proven by `ContentRouteToggleTest`.
+
+- **CMS-switchable (content):** `/` (home), `/services`, `/about`, `/tour-packages`, `/legal`, `/compare`, and the landing pages `/schengen-visa-agent`, `/schengen-visa-agent-premium`, `/schengen-visa-refusal-risk`, `/schengen-visa-appointment`, `/honest-schengen-visa-service`, `/schengen-visa-refused`, `/schengen-visa-help`. Plus any brand-new `/{slug}` via the catch-all.
+- **Stays coded (by design):** `/tools` (interactive checker), `/contact` (contact form), `/apply` + `/checkout` + `/documents` + `/confirmation` (funnel), `/track` (tracker), `/find-a-centre` (finder), `/schengen-visa` + `/visa/{destination}` (DB-driven money pages), `/guides` + `/guides/{slug}` + `/reviews` (controller-rendered), `/document-checklist` (tool). A block editor would break their forms/logic; migrate a specific section via `locked-include` only if ever needed.
+
 ## Deliberate non-goals
 
 "Every section editable" is NOT the target. Forms, the eligibility checker, the slot picker, checkout and the tracker are interactive/functional and MUST stay coded (placed as locked sections if needed). Colours/CSS/structure are never editable — the CMS supplies text + images into the existing theme only. This is the theme-and-functionality-safety guarantee the CMS was built around.
