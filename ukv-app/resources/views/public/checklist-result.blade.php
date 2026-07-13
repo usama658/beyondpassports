@@ -474,7 +474,7 @@
         <div class="grid2">
           <div class="field">
             <label for="email">Email <span style="color:var(--cta)" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="you@example.com"
+            <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="name@email.com"
               @error('email') aria-invalid="true" @enderror required aria-required="true">
           </div>
           <div class="field">

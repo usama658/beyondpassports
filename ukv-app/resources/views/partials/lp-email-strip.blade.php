@@ -11,7 +11,7 @@
     <form class="lpes-form" onsubmit="return lpesGo(this)" data-capture="{{ route('appointment.enquiry') }}" novalidate>
       @csrf
       <label for="lpes-email" class="mrz">Your email</label>
-      <input id="lpes-email" name="e" type="email" required placeholder="you@example.com" autocomplete="email">
+      <input id="lpes-email" name="e" type="email" required placeholder="name@email.com" autocomplete="email">
       <button type="submit">Email me</button>
     </form>
     <p class="lpes-ok" hidden>Thanks — we'll be in touch shortly.</p>

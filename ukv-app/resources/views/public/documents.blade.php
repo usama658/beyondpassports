@@ -205,7 +205,7 @@
               name="email"
               value="{{ old('email') }}"
               autocomplete="email"
-              placeholder="you@example.com"
+              placeholder="name@email.com"
               maxlength="255"
               required
               aria-required="true">
@@ -302,7 +302,7 @@
               name="email"
               value="{{ $detailEmail }}"
               autocomplete="email"
-              placeholder="you@example.com"
+              placeholder="name@email.com"
               maxlength="255"
               required
               aria-required="true">

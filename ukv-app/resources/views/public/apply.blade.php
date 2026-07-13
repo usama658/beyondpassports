@@ -351,7 +351,7 @@
           <div class="grid2">
             <div class="field">
               <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="you@example.com" required aria-required="true">
+              <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="name@email.com" required aria-required="true">
             </div>
             <div class="field">
               <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
