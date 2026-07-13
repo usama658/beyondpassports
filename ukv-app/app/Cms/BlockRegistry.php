@@ -7,11 +7,13 @@ namespace App\Cms;
 use App\Cms\Blocks\BlockType;
 use App\Cms\Blocks\CtaBandBlock;
 use App\Cms\Blocks\FaqBlock;
+use App\Cms\Blocks\FeatureGridBlock;
 use App\Cms\Blocks\GlobalBlockReference;
 use App\Cms\Blocks\HeroBlock;
 use App\Cms\Blocks\ImageBlock;
 use App\Cms\Blocks\LockedIncludeBlock;
 use App\Cms\Blocks\RichTextBlock;
+use App\Cms\Blocks\StepsBlock;
 use App\Cms\Blocks\TrustBarBlock;
 use Filament\Forms\Components\Builder\Block;
 
@@ -29,6 +31,8 @@ class BlockRegistry
         CtaBandBlock::class,
         FaqBlock::class,
         TrustBarBlock::class,
+        StepsBlock::class,
+        FeatureGridBlock::class,
         LockedIncludeBlock::class,
         GlobalBlockReference::class,
     ];
@@ -37,7 +41,7 @@ class BlockRegistry
      * Block keys that a GlobalBlock may wrap. Excludes reference/structural types (global,
      * locked-include) so a reusable block can never reference another reusable block.
      */
-    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar'];
+    public const GLOBAL_ALLOWED = ['hero', 'rich-text', 'image', 'cta-band', 'faq', 'trust-bar', 'steps', 'feature-grid'];
 
     /** @return array<string, class-string<BlockType>> keyed by block key */
     public function all(): array

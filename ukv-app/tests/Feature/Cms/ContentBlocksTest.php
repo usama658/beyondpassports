@@ -58,6 +58,39 @@ final class ContentBlocksTest extends TestCase
             ->assertSee('No, the embassy decides.', false);
     }
 
+    public function test_steps_render_auto_numbered(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-steps', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'steps', 'data' => [
+                'heading' => 'How it works',
+                'items' => [['title' => 'Send documents', 'text' => 'Upload them.'], ['title' => 'We check', 'text' => 'We review.']],
+            ]]],
+        ]);
+
+        $this->get('/promo-steps')->assertOk()
+            ->assertSee('class="cms-steps"', false)
+            ->assertSee('How it works', false)
+            ->assertSee('Send documents', false);
+    }
+
+    public function test_feature_grid_renders_cards(): void
+    {
+        config(['ukv.cms.enabled' => true]);
+        Page::create([
+            'slug' => 'promo-feat', 'title' => 'Promo', 'mode' => 'cms', 'status' => 'published',
+            'blocks' => [['type' => 'feature-grid', 'data' => [
+                'heading' => 'Why us',
+                'items' => [['title' => 'Human-checked', 'text' => 'A UK lead reviews.']],
+            ]]],
+        ]);
+
+        $this->get('/promo-feat')->assertOk()
+            ->assertSee('class="cms-features"', false)
+            ->assertSee('Human-checked', false);
+    }
+
     public function test_empty_blocks_render_nothing(): void
     {
         config(['ukv.cms.enabled' => true]);

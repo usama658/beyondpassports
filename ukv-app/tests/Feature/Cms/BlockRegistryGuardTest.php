@@ -57,6 +57,8 @@ final class BlockRegistryGuardTest extends TestCase
                 ['type' => 'cta-band', 'data' => ['heading' => 'CTA', 'button_label' => 'Go', 'button_url' => '/apply']],
                 ['type' => 'faq', 'data' => ['heading' => 'Q', 'items' => [['q' => 'A?', 'a' => 'B.']]]],
                 ['type' => 'trust-bar', 'data' => ['items' => [['bold' => 'No hidden', 'rest' => 'fees']]]],
+                ['type' => 'steps', 'data' => ['heading' => 'How', 'items' => [['title' => 'Step one']]]],
+                ['type' => 'feature-grid', 'data' => ['heading' => 'Why', 'items' => [['title' => 'Feature one']]]],
             ],
         ]);
 
@@ -64,6 +66,8 @@ final class BlockRegistryGuardTest extends TestCase
             ->assertSee('Hero title', false)
             ->assertSee('class="cta-band"', false)
             ->assertSee('class="faq-e"', false)
-            ->assertSee('class="tbar-f"', false);
+            ->assertSee('class="tbar-f"', false)
+            ->assertSee('class="cms-steps"', false)
+            ->assertSee('class="cms-features"', false);
     }
 }
