@@ -90,7 +90,7 @@ return [
     // `email` = per-member contact pill on /about; blank → no email pill. PLACEHOLDER addresses.
     'team' => [
         ['name' => 'Sarah Whitmore', 'role' => 'Lead Visa Consultant', 'bio' => 'Personally checks every application before it is submitted, nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/sarah-whitmore.png', 'email' => 'consultant@beyondpassports.co.uk'],
-        ['name' => 'Imran Malik', 'role' => 'Refusal-Recovery Specialist', 'bio' => 'Decodes refusal letters, finds the real trigger, and rebuilds the file, or tells you honestly when it cannot be recovered.', 'lead' => false, 'photo' => '/assets/img/team/imran-malik.png', 'email' => 'refusals@beyondpassports.co.uk'],
+        ['name' => 'Karim Haddad', 'role' => 'Refusal-Recovery Specialist', 'bio' => 'Decodes refusal letters, finds the real trigger, and rebuilds the file, or tells you honestly when it cannot be recovered.', 'lead' => false, 'photo' => '/assets/img/team/karim-haddad.png', 'email' => 'refusals@beyondpassports.co.uk'],
         ['name' => 'Chloe Adams', 'role' => 'Appointments & Client Coordinator', 'bio' => 'Monitors slots across all 27 states daily and keeps you updated at every step.', 'lead' => false, 'photo' => '/assets/img/team/chloe-adams.png', 'email' => 'appointments@beyondpassports.co.uk'],
         // Hidden for now — asset + profile kept (photo: david-hartley.png, docs/team-profiles.md). Uncomment to restore.
         // ['name' => 'David Hartley', 'role' => 'Senior Case Reviewer', 'bio' => 'Final review before submission, the wrong bank statement or missing letter caught before an officer sees it.', 'lead' => false, 'photo' => '/assets/img/team/david-hartley.png', 'email' => 'reviewer@beyondpassports.co.uk'],
