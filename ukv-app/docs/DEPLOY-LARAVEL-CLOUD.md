@@ -32,8 +32,8 @@ APP_KEY=                                     # Generate (see step 4)
 
 UKV_BASE_URL=https://<your-cloud-domain>
 UKV_FRONTEND_ORIGIN=https://<your-cloud-domain>
-UKV_OWNER_EMAIL=you@yourdomain.com
-UKV_PHONE="+44 ..."  UKV_PHONE_E164=+44...  UKV_WHATSAPP=44...  UKV_EMAIL=hello@yourdomain.com
+UKV_OWNER_EMAIL=hello@beyondpassports.co.uk
+UKV_PHONE="+44 ..."  UKV_PHONE_E164=+44...  UKV_WHATSAPP=44...  UKV_EMAIL=hello@beyondpassports.co.uk
 
 QUEUE_CONNECTION=database
 CACHE_STORE=database
@@ -41,7 +41,7 @@ SESSION_DRIVER=database
 
 MAIL_MAILER=smtp                             # real SMTP (Postmark/SES/Mailgun)
 MAIL_HOST=  MAIL_PORT=587  MAIL_USERNAME=  MAIL_PASSWORD=
-MAIL_FROM_ADDRESS=hello@yourdomain.com  MAIL_FROM_NAME="Beyond Passports"
+MAIL_FROM_ADDRESS=hello@beyondpassports.co.uk  MAIL_FROM_NAME="Beyond Passports"
 
 # Integrations — blank = feature simply off (safe). Fill when ready:
 STRIPE_SECRET=            STRIPE_WEBHOOK_SECRET=        # step 7

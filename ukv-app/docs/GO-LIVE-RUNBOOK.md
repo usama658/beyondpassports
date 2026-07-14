@@ -164,7 +164,7 @@ left blank — blank simply turns that feature off (the app degrades gracefully)
 | `UKV_PHONE` | `+44 20 1234 5678` | **(optional)** display number; blank = placeholder |
 | `UKV_PHONE_E164` | `+442012345678` | **(optional)** for `tel:` links |
 | `UKV_WHATSAPP` | `442012345678` | wa.me number, digits only. **Powers the home hero "Chat to our UK team" form + every wa.me link. Blank → `440000000000` placeholder = dead chat. Set the real WhatsApp business number before launch.** |
-| `UKV_EMAIL` | `hello@yourdomain.com` | **(optional)** public enquiries address |
+| `UKV_EMAIL` | `hello@beyondpassports.co.uk` | **(optional)** public enquiries address |
 
 ### Document-checklist tool (UKV_CHECKLIST_*) — all optional, sensible defaults
 | Var | Default | Notes |
@@ -204,7 +204,7 @@ left blank — blank simply turns that feature off (the app degrades gracefully)
 | `MAIL_PORT` | `587` | |
 | `MAIL_USERNAME` | from provider | |
 | `MAIL_PASSWORD` | from provider | |
-| `MAIL_FROM_ADDRESS` | `hello@yourdomain.com` | |
+| `MAIL_FROM_ADDRESS` | `hello@beyondpassports.co.uk` | |
 | `MAIL_FROM_NAME` | `${APP_NAME}` | |
 
 ### Stripe (Phase 5 covers obtaining these)
@@ -266,7 +266,7 @@ The seeded data is **placeholder/demo** and is a **commercial + legal blocker** 
 
 **4.3 Create your real admin user** (replace the demo creds):
 ```
-$ php artisan tinker --execute="App\Models\User::create(['name'=>'Owner','email'=>'you@yourdomain.com','password'=>bcrypt('A-STRONG-PASSWORD'),'role'=>'admin']);"
+$ php artisan tinker --execute="App\Models\User::create(['name'=>'Owner','email'=>'hello@beyondpassports.co.uk','password'=>bcrypt('A-STRONG-PASSWORD'),'role'=>'admin']);"
 ```
 
 **Done when:** you can log in at `https://yourdomain.com/admin` with that account.
