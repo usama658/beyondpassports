@@ -95,10 +95,10 @@ return [
         // ['name' => 'David Hartley', 'role' => 'Senior Case Reviewer', 'bio' => 'Final review before submission, the wrong bank statement or missing letter caught before an officer sees it.', 'lead' => false, 'photo' => '/assets/img/team/david-hartley.png', 'email' => 'david@beyondpassports.co.uk'],
     ],
 
-    // Shared WhatsApp shown on each /about team card (wa.me digits, no +). PLACEHOLDER on the
-    // Ofcom reserved-for-drama range (07700 900xxx → not a real number); swap for the real line.
-    // Kept separate from the sitewide 'whatsapp' key above so a placeholder never leaks sitewide.
-    'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447700900123'),
+    // Shared WhatsApp shown on each /about team card (wa.me digits, no +). Defaults to the real
+    // sitewide line so a placeholder never renders; override with UKV_TEAM_WHATSAPP if the team
+    // ever gets a dedicated number.
+    'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447882747584'),
 
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
