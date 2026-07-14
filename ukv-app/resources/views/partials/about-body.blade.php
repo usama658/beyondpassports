@@ -449,7 +449,7 @@
   </div>
   <div class="reveal">
     <div class="ab-frame">
-      <img src="{{ $lead['photo'] ?? '/assets/img/team/sarah-whitmore.png' }}" alt="{{ $lead['name'] ?? 'Sarah Whitmore' }}, {{ $lead['role'] ?? 'Lead Visa Consultant' }}">
+      <img src="{{ $lead['photo'] ?? '/assets/img/team/sarah-whitmore-visa-consultant.jpg' }}" alt="{{ $lead['name'] ?? 'Sarah Whitmore' }}, {{ $lead['role'] ?? 'Lead Visa Consultant' }} at Beyond Passports" loading="lazy" width="800" height="800">
       <div class="ab-fbadge">
         <strong>{{ $lead['name'] ?? 'Sarah Whitmore' }}</strong>
         <span>{{ $lead['role'] ?? 'Lead Visa Consultant' }}, reviews every file before submission</span>

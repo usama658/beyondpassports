@@ -154,7 +154,7 @@
       @endif
       <div class="photo">
         @if (!empty($m['photo']))
-          <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}" loading="lazy">
+          <img src="{{ $m['photo'] }}" alt="{{ $m['name'] }}, {{ $m['role'] ?? '' }} at Beyond Passports" loading="lazy" width="96" height="96">
         @else
           <span class="monogram" aria-hidden="true">{{ $initials($m['name'] ?? '') }}</span>
         @endif
