@@ -137,6 +137,9 @@
 
   // Shared team WhatsApp (wa.me digits); blank → no WhatsApp pill.
   $teamWa = preg_replace('/\D+/', '', (string) config('ukv.team_whatsapp', ''));
+
+  // Map query from the registered-office postcode (+ city), falling back to a plain UK view.
+  $mapQuery = trim(($addr['postcode'] ?? '') . ' ' . ($addr['city'] ?? '')) ?: 'United Kingdom';
 @endphp
 
 <section class="abt"><div class="wrap">
@@ -201,7 +204,7 @@
     </div>
     <div class="loc-map">
       <div class="map-frame">
-        <iframe title="Map of our UK location" src="https://www.google.com/maps?q=EC1A%201AA,%20London&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map of our UK location" src="https://www.google.com/maps?q={{ urlencode($mapQuery) }}&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>

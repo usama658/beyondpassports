@@ -65,10 +65,10 @@ return [
     'address' => [
         'company' => env('UKV_COMPANY_NAME', 'Beyond Passports Ltd'),
         'company_no' => env('UKV_COMPANY_NO', '17331903'),          // Companies House registration number
-        'line1' => env('UKV_ADDR_LINE1', ''),       // blank until real registered office (address block hides while empty)
-        'line2' => env('UKV_ADDR_LINE2', ''),
-        'city' => env('UKV_ADDR_CITY', ''),
-        'postcode' => env('UKV_ADDR_POSTCODE', ''), // blank until real
+        'line1' => env('UKV_ADDR_LINE1', 'Unit 82a James Carter Road'),  // registered office
+        'line2' => env('UKV_ADDR_LINE2', 'Mildenhall'),
+        'city' => env('UKV_ADDR_CITY', 'Bury St. Edmunds'),
+        'postcode' => env('UKV_ADDR_POSTCODE', 'IP28 7DE'),
         'country' => env('UKV_ADDR_COUNTRY', 'United Kingdom'),
     ],
 

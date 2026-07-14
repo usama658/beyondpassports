@@ -10,19 +10,35 @@
 @php
     $siteName = config('app.name', 'Beyond Passports');
     $base     = rtrim(config('app.url'), '/');
+    $addr     = config('ukv.address', []);
+
+    // PostalAddress from config, only when a street + postcode are set (real registered office).
+    $postal = (! empty($addr['line1']) && ! empty($addr['postcode'])) ? array_filter([
+        '@type'           => 'PostalAddress',
+        'streetAddress'   => trim(($addr['line1'] ?? '') . (! empty($addr['line2']) ? ', ' . $addr['line2'] : '')),
+        'addressLocality' => $addr['city'] ?? null,
+        'postalCode'      => $addr['postcode'] ?? null,
+        'addressCountry'  => 'GB',
+    ]) : null;
+
+    $org = array_filter([
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Organization',
+        '@id'         => $base . '/#organization',
+        'name'        => $siteName,
+        'legalName'   => $addr['company'] ?? null,
+        'url'         => $base . '/',
+        'logo'        => asset('images/logo.png'),
+        'description' => 'Independent UK service that prepares and checks travel document applications for people travelling abroad. Not a government website.',
+        'email'       => config('ukv.email') ?: null,
+        'telephone'   => config('ukv.phone_e164') ?: null,
+        'address'     => $postal,
+        'sameAs'      => array_values(array_filter(config('ukv.social', []))),
+    ], fn ($v) => $v !== null && $v !== '' && $v !== []);
 @endphp
 
 <script type="application/ld+json">
-{!! json_encode([
-    '@context' => 'https://schema.org',
-    '@type'    => 'Organization',
-    '@id'      => $base . '/#organization',
-    'name'     => $siteName,
-    'url'      => $base . '/',
-    'logo'     => asset('images/logo.png'),
-    'description' => 'Independent UK service that prepares and checks travel document applications for people travelling abroad. Not a government website.',
-    'sameAs'   => array_values(array_filter(config('ukv.social', []))),
-], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+{!! json_encode($org, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
 </script>
 
 <script type="application/ld+json">

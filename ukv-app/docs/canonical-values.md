@@ -14,7 +14,7 @@ values so they are easy to find. Update both when a value is confirmed.
 | ICO registration number | _not yet registered_ | `ukv.compliance.ico_number` / `UKV_ICO_NUMBER` | Task #215; badge hidden until set |
 | Cyber Essentials | _not certified_ | `ukv.compliance.cyber_essentials` / `UKV_CYBER_ESSENTIALS` | Badge hidden until true |
 | Professional indemnity insurer | _not set_ | `ukv.compliance.insurer` + `.indemnity` / `UKV_INSURER`, `UKV_INDEMNITY` | Badge hidden until set |
-| Registered office address | _placeholder / blank_ | `ukv.address.line1..postcode` | Address block hides while blank |
+| Registered office address | **Unit 82a James Carter Road, Mildenhall, Bury St. Edmunds, IP28 7DE, United Kingdom** | `ukv.address.line1..postcode` | Renders in footers, /about location card + map, and Organization schema PostalAddress |
 | Founded year | see `SiteStats::foundedYear()` | `ukv.stats` | |
 | Applications-prepared count | _unverified_ | — | Task #322; "thousands" placeholder in copy until substantiated |
 
