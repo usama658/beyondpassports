@@ -4,11 +4,12 @@ Four team members for the site team section, with realistic Gemini / Imagen / Mi
 prompts. Independent Schengen visa service (UK). Names illustrative — swap for real staff if used
 publicly.
 
-**Why the earlier images looked fake / the two women looked alike:** the old prompts only varied hair.
-Diffusion models default to the same "average attractive face" unless you spell out *distinct* face
-geometry per person — face shape, eye colour, nose, skin tone, one or two unique marks — and vary the
-lighting. Every prompt below now locks a different face + different light. Generate each person
-separately (not as a group) so features don't blend.
+**Goal: ordinary, real, everyday people — not models.** Diffusion tools default to glossy,
+symmetrical, "attractive" faces. To get normal-looking staff you must (a) say *plain / average /
+ordinary / not a model* explicitly, (b) give each a *different* plain face, (c) add small real-life
+imperfections (tired eyes, uneven skin, a blemish, slightly crooked teeth, frizzy hair), (d) use flat
+everyday indoor light like a real office LinkedIn photo, not studio glamour. Generate each person
+separately.
 
 Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-haddad,chloe-adams,david-hartley}.png`
 
@@ -20,10 +21,8 @@ Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-
 
 **Bio:** Sarah has guided hundreds of first-time and repeat Schengen applicants through France, Italy and Spain routes. Known for plain-English answers and catching the small things officers reject on.
 
-**Distinct face:** white British woman, late 30s; long oval face, high defined cheekbones, sharp jawline; light grey-green eyes; straight narrow nose; fair skin with faint freckles across the nose bridge; thin natural lips, closed confident smile; small beauty mark below the left cheekbone; straight chestnut-brown hair to the shoulders, side parting, a few flyaways.
-
 **Image prompt:**
-> Candid corporate headshot photograph of a white British woman in her late 30s with a long oval face, high defined cheekbones, a sharp jawline, light grey-green eyes, a straight narrow nose, fair freckled skin across the nose bridge, thin lips in a calm closed-mouth smile, a small beauty mark below her left cheekbone, and straight chestnut-brown shoulder-length hair with a side parting. Navy blazer over a cream blouse. Bright directional window light from the left, blurred modern UK office with greenery behind. Shot on Canon EOS R5, 85mm f/1.8, 4:5 portrait, ISO 200, natural visible skin pores and fine lines, real catchlights, faint film grain, slightly off-centre framing, true-to-life colour, unretouched. Negative: cartoon, 3d render, cgi, plastic skin, airbrushed, over-smoothed, symmetrical AI face, waxy skin, beauty filter.
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking white British woman in her late 30s — not a model, plain approachable face. Soft roundish face, slightly full cheeks, faint lines on the forehead, mild under-eye shadows, fair skin that is a little uneven with light freckles across the nose and a small blemish on one cheek, pale grey-green eyes, a normal straight nose, thin lips in a small friendly closed smile with slightly imperfect teeth. Chestnut-brown hair, a bit frizzy, loosely tied back with a few loose strands. Plain navy cardigan over a simple blouse, minimal or no make-up. Ordinary office with a plain wall and a bit of clutter behind, soft flat daylight from a window. Shot like a real phone or mirrorless snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin texture with visible pores, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, heavy make-up.
 
 ---
 
@@ -33,10 +32,8 @@ Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-
 
 **Bio:** Karim has reviewed hundreds of refusal letters. He specialises in VIS-flagged cases and second applications where the burden of proof has flipped to the applicant.
 
-**Distinct face:** Middle Eastern / Levantine Arab man, early 40s; olive skin; broad square face; strong straight dark eyebrows; deep-set dark brown eyes; prominent straight nose with a slight bump; a neat short black beard with a few grey flecks along the jaw; short black hair with light grey at the temples; calm, serious, approachable expression.
-
 **Image prompt:**
-> Candid corporate headshot photograph of a Middle Eastern Levantine Arab man in his early 40s with olive skin, a broad square face, strong straight dark eyebrows, deep-set dark brown eyes, a prominent straight nose with a slight bump, and a neat short black beard flecked with grey along the jaw; short black hair greying at the temples; calm serious approachable expression. Charcoal-grey suit with an open-collar white shirt. Soft overhead studio light with a warm fill, out-of-focus office interior behind. Shot on Sony A7 IV, 85mm f/1.6, 4:5 portrait, ISO 400, natural skin texture with visible pores and fine lines, real catchlights, faint film grain, slightly off-centre framing, true-to-life colour, unretouched. Negative: cartoon, 3d render, cgi, plastic skin, airbrushed, over-smoothed, symmetrical AI face, waxy skin, beauty filter.
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking Middle Eastern Levantine Arab man in his early 40s — not a model, plain approachable face. Olive skin, a little tired with slight bags under the deep-set dark brown eyes, a normal oval face with a bit of a double chin, thick dark eyebrows, a normal nose, a slightly uneven short black beard going grey in patches, short black hair thinning a little at the temples and a receding hairline. Plain mid-grey shirt, no tie, top button open. Ordinary office background, plain wall, flat mixed indoor lighting. Calm, slightly serious everyday expression. Shot like a real phone or mirrorless snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin texture with visible pores and a few blemishes, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, chiselled jaw, perfect beard.
 
 ---
 
@@ -46,10 +43,8 @@ Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-
 
 **Bio:** Chloe handles the logistics that make or break a timeline — tight-window travel, family bookings, and last-minute slots. First point of contact for most clients.
 
-**Distinct face:** white British woman, late 20s — deliberately *unlike* Sarah; round soft face, full cheeks, soft rounded jaw; warm hazel-brown eyes, slightly upturned nose; rosy fair skin with light freckles across both cheeks; fuller lips, wide genuine open smile with a dimple on the right cheek and a small gap in the front teeth; voluminous curly copper-auburn hair, centre parting, shorter than Sarah's.
-
 **Image prompt:**
-> Candid corporate headshot photograph of a white British woman in her late 20s with a round soft face, full cheeks, a soft rounded jaw, warm hazel-brown eyes, a slightly upturned nose, rosy fair skin with light freckles across both cheeks, fuller lips in a wide genuine open smile showing a small gap in the front teeth and a dimple on the right cheek, and voluminous curly copper-auburn hair with a centre parting. Teal blouse. Bright soft window daylight, clean pale studio background. Shot on Fujifilm X-T5, 56mm f/1.4, 4:5 portrait, ISO 160, natural skin texture with visible pores, real catchlights, faint film grain, slightly off-centre framing, true-to-life colour, unretouched. Make her face clearly different from any other woman — younger, rounder, hazel eyes, curly ginger hair, dimpled asymmetric smile. Negative: cartoon, 3d render, cgi, plastic skin, airbrushed, over-smoothed, symmetrical AI face, waxy skin, beauty filter, same face as previous image.
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking white British woman in her late 20s — not a model, plain girl-next-door face, clearly different from the older woman. Round full face, soft small chin, rosy fair skin with visible freckles across both cheeks and a couple of small spots, warm hazel-brown eyes, a slightly upturned normal nose, fuller lips in a wide genuine open smile with a small gap in the front teeth and a dimple on one cheek. Frizzy curly copper-ginger hair, shoulder length, a bit messy, centre parting. Plain teal top, little or no make-up. Ordinary bright room, plain background, soft window daylight. Shot like a real phone snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin with visible pores, real catchlights, gentle grain, slightly off-centre. Make her clearly younger, rounder and freckly with curly ginger hair — a different plain face from anyone else. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, heavy make-up, same face as previous image.
 
 ---
 
@@ -59,18 +54,17 @@ Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-
 
 **Bio:** David is the last set of eyes on every file. Calm, thorough, and straight about timelines and what the authorities will and won't accept.
 
-**Distinct face:** white British man, mid-50s; square lined face, ruddy complexion; short greying hair receding slightly; blue-grey eyes behind thin rimless glasses with a faint lens reflection; clean-shaven; deep laugh lines; calm reassuring half-smile.
-
 **Image prompt:**
-> Candid corporate headshot photograph of a white British man in his mid-50s with a square lined face, ruddy complexion, short greying slightly-receding hair, blue-grey eyes behind thin rimless glasses with a faint lens reflection, clean-shaven with deep laugh lines, and a calm reassuring half-smile. Dark blue suit and light blue shirt, no tie. Even neutral soft studio light, plain warm-grey background. Shot on Canon EOS R6, 85mm f/2, 4:5 portrait, ISO 200, natural weathered skin texture with visible pores and wrinkles, real catchlights, faint film grain, slightly off-centre framing, true-to-life colour, unretouched. Negative: cartoon, 3d render, cgi, plastic skin, airbrushed, over-smoothed, symmetrical AI face, waxy skin, beauty filter.
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking white British man in his mid-50s — not a model, plain fatherly face. Slightly lined and ruddy complexion, soft jowls, thinning grey hair combed over a receding hairline, blue-grey eyes behind ordinary thin metal glasses with a faint reflection, clean-shaven with a bit of grey stubble, deep laugh lines, a small friendly half-smile with normal teeth. Plain light-blue shirt, no tie. Ordinary office, plain background, flat even indoor light. Shot like a real phone or mirrorless snapshot, 4:5 portrait, slightly soft focus, weathered natural skin with visible pores and wrinkles, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, thick hair, chiselled jaw.
 
 ---
 
 ## Realism checklist (read before generating)
 
-- **Generate each person separately.** Group prompts blend features and give everyone the same face.
-- **Vary the light per person** (left window / overhead+warm fill / soft daylight / even neutral) — identical light across all four is an instant AI tell.
-- **Keep the distinct-face sentence.** If two people share ethnicity/gender, over-specify the differences (age, face shape, eye colour, nose, one unique mark).
-- **One imperfection each** — freckles, a mole, a gap tooth, a dimple, laugh lines. Perfect symmetry reads fake.
-- **4:5 portrait, slightly off-centre.** Dead-centre + f/1.4 bokeh + flawless skin = generated look.
-- If the tool supports it, pass negatives: `--no cartoon, 3d render, cgi, plastic skin, airbrushed, symmetrical face, beauty filter`.
+- **Say "ordinary / average / plain / not a model" — every prompt.** This is the single biggest lever for normal-looking people.
+- **Generate each person separately.** Group prompts blend faces and give everyone the same face.
+- **Everyday flat indoor light** (office window / plain room), not studio glamour. Studio light + f/1.4 bokeh + flawless skin = fake corporate look.
+- **One or two real imperfections each** — tired eyes, a blemish, uneven skin, frizzy hair, a gap tooth, jowls, receding hair. Perfect faces read fake.
+- **Keep the distinct-face line** where two people share ethnicity/gender (over-specify age, face shape, eyes, hair, one mark).
+- **4:5 portrait, slightly off-centre, slightly soft focus** — like a real phone photo.
+- If the tool supports negatives: `--no model, glamour, beauty filter, airbrushed, plastic skin, symmetrical face, studio glam lighting`.
