@@ -33,6 +33,7 @@ return [
     'whatsapp' => env('UKV_WHATSAPP', '447882747584'),   // wa.me number (digits only)
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
     'email_billing' => env('UKV_EMAIL_BILLING', 'billing@beyondpassports.co.uk'), // reply-to on receipt + refund emails (forward to hello@)
+    'email_adviser' => env('UKV_EMAIL_ADVISER', 'adviser@beyondpassports.co.uk'), // named "reach us directly" line on /about (forward to hello@)
 
     // Travel-insurance INTRODUCER (FCA-safe signpost only). Beyond Passports does NOT sell or arrange
     // insurance and takes no charge — this is an optional affiliate link to an FCA-authorised

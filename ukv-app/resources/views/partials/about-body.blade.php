@@ -708,7 +708,7 @@
 {{-- GET IN TOUCH — unified concierge card (petrol rail + white actions) --}}
 @php
   $touchWa = 'https://wa.me/' . (config('ukv.whatsapp') ?: '447882747584') . '?text=' . rawurlencode('Hi Beyond Passports, here is my situation: ');
-  $touchEmail = config('ukv.email', 'hello@beyondpassports.co.uk');
+  $touchEmail = config('ukv.email_adviser', 'adviser@beyondpassports.co.uk');
   $touchTick = '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
   $touchList = ['Which Schengen country', 'Your travel dates', 'Your passport', 'Whether you have applied before'];
 @endphp
