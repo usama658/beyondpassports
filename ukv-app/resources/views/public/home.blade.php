@@ -125,7 +125,13 @@
   @media (max-width:760px){
     .tbar-b .row{grid-template-columns:1fr 1fr;gap:14px}
     .tbar-b .row>div:nth-child(odd){border-left:0}
-    .tbar-f .row{gap:18px 22px}
+    /* Trust bar → swipeable carousel on mobile: one horizontal scroll row, snap per item,
+       full-bleed (breaks out of the .wrap's 20px padding), no visible scrollbar. */
+    .tbar-f .row{flex-wrap:nowrap;justify-content:flex-start;gap:22px;overflow-x:auto;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      padding:14px 20px;margin:0 -20px;scrollbar-width:none}
+    .tbar-f .row::-webkit-scrollbar{display:none}
+    .tbar-f .ti{flex:0 0 auto;scroll-snap-align:start}
   }
 </style>
 @endpush
