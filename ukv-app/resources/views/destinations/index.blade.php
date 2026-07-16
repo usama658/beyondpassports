@@ -40,7 +40,12 @@
   .sg-hcard .tpr .tpr-box svg{width:12px;height:12px}
   .sg-hcard .tpr .tpr-word{font-size:13px}
   .sg-hcard .tpr .tpr-meta,.sg-hcard .tpr .tpr-logo{font-size:12px}
-  @media (max-width:760px){.sg-hero-grid{grid-template-columns:1fr;gap:26px}}
+  @media (max-width:760px){
+    .sg-hero-grid{grid-template-columns:1fr;gap:26px}
+    /* Give the heading + text their side margins back on mobile; the "Start here"
+       card stays edge-to-edge (full width), matching the home hero treatment. */
+    .sg-hero-grid > :not(.sg-hcard){padding-left:20px;padding-right:20px;box-sizing:border-box}
+  }
 
   /* Trust band — dark mesh band (matches home / services .tbar-f) */
   .tbar-f{padding:0;background:
