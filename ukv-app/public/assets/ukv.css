@@ -188,6 +188,14 @@ footer strong{color:#fff}
 .reveal.in{opacity:1;transform:none}
 @media (max-width:860px){
   .hero-grid,.steps,.dests,.ticks{grid-template-columns:1fr!important}
+  /* "How it works" is a flex ticket-strip on desktop (grid-template does nothing to it):
+     stack it to one card per row on mobile, flipping the dashed perforation seam + notches
+     from the left edge to the top edge so it still reads as a torn ticket stub. */
+  .steps{flex-direction:column}
+  .step{flex:none;width:100%}
+  .step + .step{border-left:0;border-top:2px dashed var(--paper-edge)}
+  .step + .step::before{left:-9px;right:auto;top:-9px;bottom:auto}
+  .step + .step::after{left:auto;right:-9px;top:-9px;bottom:auto}
   /* keep nav reachable on mobile (no hamburger needed): wrap under the brand */
   .site-head .wrap{height:auto;flex-wrap:wrap;padding-top:8px;padding-bottom:8px;gap:6px}
   .nav{display:flex;flex-wrap:wrap;width:100%;margin:0}
