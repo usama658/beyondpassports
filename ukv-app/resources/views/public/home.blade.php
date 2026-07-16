@@ -33,6 +33,11 @@
   .hp-bar .f{flex:1;min-width:0}
   .hp-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
   .hp-bar select,.hp-bar input{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  /* Passport <select>: drop the native OS chevron for one matching the combobox caret */
+  .hp-bar select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:38px;cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;background-size:14px}
+  .hp-bar select::-ms-expand{display:none}
   .hp-bar input[readonly]{background:var(--paper);color:var(--muted);cursor:default}
   .hp-bar .btn{white-space:nowrap}
   /* Hero destination combobox — click to drop the full grouped list, or type to filter */
