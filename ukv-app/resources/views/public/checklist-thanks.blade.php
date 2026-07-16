@@ -48,12 +48,12 @@
   <div class="tk-grid">
     <div class="tk-left">
       <span class="tk-seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-      <h1>Your checklist is on its way.</h1>
-      <p>We've emailed your tailored document list for <strong>{{ $destination }}</strong>, usually within a few minutes. Check your inbox (and spam, just in case). When you're ready, our UK team will confirm your exact requirements before you apply.</p>
+      <h1>Your checklist is ready.</h1>
+      <p>We've built your tailored document list for <strong>{{ $destination }}</strong>. We're opening WhatsApp so our UK team can walk you through it and confirm your exact requirements before you apply.</p>
       @if ($email)
       <div class="tk-estep">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-        Your checklist has been emailed to {{ $email }}.
+        We've also emailed a copy to {{ $email }}.
       </div>
       @endif
       <div class="tk-links">

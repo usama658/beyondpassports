@@ -104,12 +104,6 @@
   .dct-perks .pk{font-family:var(--body);font-weight:700;font-size:15px;color:#fff;margin:0 0 4px}
   .dct-perks p{margin:0;font-size:13px;color:rgba(255,255,255,.72);line-height:1.5}
 
-  /* email + marketing consent (delivery step) */
-  .dct-email{margin-top:18px}
-  .dct-err{color:#b3261e}
-  .dct-consent{display:flex;align-items:flex-start;gap:10px;margin-top:12px;font-size:13px;color:var(--muted);line-height:1.5;cursor:pointer}
-  .dct-consent input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--cta)}
-
   /* submit button row */
   .dct-submit-row{margin-top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
   .dct-submit-row .btn{padding:15px 30px;font-size:16px;border-radius:12px}
@@ -329,19 +323,6 @@
                 <p class="hint">A prior refusal can change what's required. It does not mean we can't help.</p>
               </div>
             </div>
-
-            <div class="field dct-email">
-              <label for="email">Where should we send it?</label>
-              <input type="email" id="email" name="email" inputmode="email" autocomplete="email"
-                     placeholder="you@email.com" value="{{ old('email') }}" required
-                     @error('email') aria-invalid="true" @enderror>
-              @error('email')<p class="hint dct-err">{{ $message }}</p>@enderror
-              <p class="hint">We email your tailored checklist here, then open WhatsApp so our UK team can confirm your exact requirements.</p>
-            </div>
-            <label class="dct-consent" for="marketing_consent">
-              <input type="checkbox" id="marketing_consent" name="marketing_consent" value="1" @checked(old('marketing_consent'))>
-              <span>Email me occasional visa tips and reminders. You can unsubscribe anytime. (Optional)</span>
-            </label>
             </div>{{-- /step 2 --}}
 
             {{-- Wizard nav (JS only): Back · dots · Next → submit on step 2. --}}
@@ -353,7 +334,7 @@
 
             <div class="dct-submit-row">
               <button type="submit" class="btn">Get my checklist &rarr;</button>
-              <p class="sub-note">Free · emailed to you in minutes · UK team on WhatsApp to help</p>
+              <p class="sub-note">Free · we open WhatsApp so our UK team can help you get it right</p>
             </div>
           </form>
 

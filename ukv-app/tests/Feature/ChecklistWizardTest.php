@@ -23,18 +23,16 @@ final class ChecklistWizardTest extends TestCase
         $res->assertOk();
         $res->assertSee('name="residency_status"', false);   // step 2 reinstated
         $res->assertSee('name="prior_refusal"', false);      // step 2 reinstated
-        $res->assertSee('name="email"', false);              // delivery step (email required)
         $res->assertDontSee('gate-tier');                    // old tier gate removed
     }
 
-    public function test_submitting_the_wizard_captures_email_and_redirects_to_thanks(): void
+    public function test_submitting_the_wizard_redirects_to_whatsapp_thanks_without_email(): void
     {
         Mail::fake();
         Destination::factory()->create(['name' => 'Turkey']);
 
         $res = $this->post('/document-checklist', [
             'destination' => 'Turkey',
-            'email' => 'traveller@example.com',
             'residency_status' => 'citizen',
             'prior_refusal' => 'no',
         ]);
@@ -42,21 +40,26 @@ final class ChecklistWizardTest extends TestCase
         $request = ChecklistRequest::query()->latest('id')->first();
         $this->assertNotNull($request);
         $this->assertNull($request->paid_at);
+        $this->assertNull($request->email);
+        $res->assertRedirect("/document-checklist/sent/{$request->token}");
+
+        Mail::assertNothingQueued();
+    }
+
+    public function test_optional_email_still_sends_the_checklist(): void
+    {
+        Mail::fake();
+        Destination::factory()->create(['name' => 'Turkey']);
+
+        $res = $this->post('/document-checklist', [
+            'destination' => 'Turkey',
+            'email' => 'traveller@example.com',
+        ]);
+
+        $request = ChecklistRequest::query()->latest('id')->first();
         $this->assertSame('traveller@example.com', $request->email);
         $res->assertRedirect("/document-checklist/sent/{$request->token}");
 
         Mail::assertQueued(ChecklistDelivery::class);
-    }
-
-    public function test_wizard_requires_an_email(): void
-    {
-        Destination::factory()->create(['name' => 'Turkey']);
-
-        $res = $this->from('/document-checklist')->post('/document-checklist', [
-            'destination' => 'Turkey',
-        ]);
-
-        $res->assertSessionHasErrors('email');
-        $this->assertSame(0, ChecklistRequest::query()->count());
     }
 }

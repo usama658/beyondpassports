@@ -68,7 +68,7 @@ class ChecklistController extends Controller
     {
         $validated = $request->validate([
             'destination'        => ['required', 'string', 'max:120'],
-            'email'              => ['required', 'email:rfc', 'max:190'],
+            'email'              => ['nullable', 'email:rfc', 'max:190'],
             'trip_purpose'       => ['nullable', 'string', 'in:tourist,business,study,other'],
             'is_minor'           => ['nullable', 'in:yes,no'],
             'residency_status'   => ['nullable', 'string', 'in:citizen,permanent,visa_holder'],
@@ -80,8 +80,6 @@ class ChecklistController extends Controller
             'visa_entries'       => ['nullable', 'string', 'in:single,multiple'],
             'prior_refusal'      => ['nullable', 'in:yes,no'],
             'marketing_consent'  => ['sometimes', 'boolean'],
-        ], [
-            'email.required' => 'Enter an email address so we can send your checklist.',
         ]);
 
         // Resolve by slug OR display name (mirrors /apply's destination handling — the apply
@@ -103,21 +101,25 @@ class ChecklistController extends Controller
             'ip' => $request->ip(),
         ]);
 
-        // Email the checklist + capture the lead (the wizard now IS the delivery + lead step).
-        $checklist->email = $validated['email'];
-        $checklist->channels = ['email'];
-        $checklist->marketing_consent = (bool) ($validated['marketing_consent'] ?? false);
-        $checklist->save();
+        // The wizard lands the user in WhatsApp (no contact required). If they did leave an email,
+        // also send the checklist + capture the lead — otherwise it's a pure WhatsApp handoff.
+        $email = trim((string) ($validated['email'] ?? ''));
+        if ($email !== '') {
+            $checklist->email = $email;
+            $checklist->channels = ['email'];
+            $checklist->marketing_consent = (bool) ($validated['marketing_consent'] ?? false);
+            $checklist->save();
 
-        Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist, false, false));
-        SyncChecklistLead::dispatch($checklist);
+            Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist, false, false));
+            SyncChecklistLead::dispatch($checklist);
 
-        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
-        if (! empty($recipient)) {
-            try {
-                Mail::to($recipient)->send(new NewChecklistLead($checklist, url('/checklist/'.$checklist->token)));
-            } catch (\Throwable $e) {
-                Log::error('Checklist lead email failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
+            $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+            if (! empty($recipient)) {
+                try {
+                    Mail::to($recipient)->send(new NewChecklistLead($checklist, url('/checklist/'.$checklist->token)));
+                } catch (\Throwable $e) {
+                    Log::error('Checklist lead email failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
+                }
             }
         }
 
