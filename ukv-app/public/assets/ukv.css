@@ -88,7 +88,7 @@ button,a,.btn,summary{touch-action:manipulation}
 .tb-soc:hover{background:rgba(255,255,255,.28);transform:translateY(-1px);text-decoration:none}
 .tb-soc svg{display:block}
 /* phones: socials drop, Call/WhatsApp/Trustpilot keep priority; footer carries socials there */
-@media (max-width:600px){.topbar .tb-row{justify-content:center}.tb-note{width:100%;text-align:center}.tb-links{gap:14px}.tb-social,.tb-div,.tb-ico{display:none}}
+@media (max-width:600px){.topbar .tb-row{justify-content:center}.tb-note{width:100%;text-align:center}.tb-links{gap:14px}.tb-social,.tb-div{display:none}.topbar .tb-ico{display:none}}
 /* header */
 .site-head{position:sticky;top:0;z-index:50;background:rgba(244,245,246,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--paper-edge)}
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
