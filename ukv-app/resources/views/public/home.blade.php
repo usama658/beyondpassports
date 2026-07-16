@@ -448,7 +448,22 @@
     <form id="rk-form" onsubmit="return false">
       <div class="rk-step active" data-step="0">
         <label for="rk-dest">Where are you going?</label>
-        <select id="rk-dest"><option value="">Choose a destination…</option>@foreach ($schengenDests as $d)<option value="{{ $d->name }}">{{ $d->name }}</option>@endforeach</select>
+        <div class="hp-combo rk-combo" id="rkc">
+          <input id="rk-dest" type="text" autocomplete="off" placeholder="Search a country…"
+                 role="combobox" aria-expanded="false" aria-controls="rk-destlist" aria-autocomplete="list">
+          <button type="button" class="hpc-caret" tabindex="-1" aria-label="Show destination list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <ul class="hpc-panel" id="rk-destlist" role="listbox" aria-label="Schengen destinations" hidden>
+            @foreach ($orderedGroups as $region => $list)
+              <li class="hpc-grp" aria-hidden="true">{{ $region }}</li>
+              @foreach ($list as $d)
+                <li role="option" data-v="{{ $d->name }}" data-s="{{ strtolower($d->name) }}"><span class="flag" aria-hidden="true">{{ $flagOf[$d->name] ?? '·' }}</span>{{ $d->name }}</li>
+              @endforeach
+            @endforeach
+            <li class="hpc-none" aria-hidden="true" hidden>No match — we cover all of Schengen.</li>
+          </ul>
+        </div>
         <label for="rk-date" style="margin-top:12px">When do you travel?</label>
         <input id="rk-date" type="date">
       </div>
@@ -486,6 +501,42 @@
   </div>
 </div></div>
   <script>
+    // Readiness "Where are you going?" — same grouped, searchable combobox as the hero.
+    (function () {
+      var combo = document.getElementById('rkc');
+      if (!combo) return;
+      var input = combo.querySelector('input'),
+          panel = combo.querySelector('.hpc-panel'),
+          caret = combo.querySelector('.hpc-caret'),
+          opts  = Array.prototype.slice.call(panel.querySelectorAll('li[role=option]')),
+          grps  = Array.prototype.slice.call(panel.querySelectorAll('.hpc-grp')),
+          none  = panel.querySelector('.hpc-none'),
+          active = -1;
+      function isOpen(){ return combo.classList.contains('open'); }
+      function open(){ combo.classList.add('open'); panel.hidden = false; input.setAttribute('aria-expanded','true'); }
+      function close(){ combo.classList.remove('open'); panel.hidden = true; input.setAttribute('aria-expanded','false'); setActive(-1); }
+      function visible(){ return opts.filter(function(o){ return !o.hidden; }); }
+      function setActive(k){ opts.forEach(function(o){ o.classList.remove('active'); }); var vis = visible(); active = k; if (k >= 0 && k < vis.length){ vis[k].classList.add('active'); vis[k].scrollIntoView({block:'nearest'}); } }
+      function filter(){
+        var q = input.value.trim().toLowerCase(), shown = 0;
+        opts.forEach(function(o){ var m = o.dataset.s.indexOf(q) !== -1; o.hidden = !m; if (m) shown++; });
+        grps.forEach(function(g){ var any = false, n = g.nextElementSibling; while (n && !n.classList.contains('hpc-grp')){ if (n.getAttribute('role') === 'option' && !n.hidden){ any = true; break; } n = n.nextElementSibling; } g.hidden = !any; });
+        none.hidden = shown > 0; setActive(shown > 0 ? 0 : -1);
+      }
+      function choose(o){ input.value = o.dataset.v; close(); input.focus(); }
+      input.addEventListener('focus', function(){ filter(); open(); });
+      input.addEventListener('input', function(){ filter(); open(); });
+      caret.addEventListener('mousedown', function(e){ e.preventDefault(); if (isOpen()){ close(); } else { filter(); open(); input.focus(); } });
+      panel.addEventListener('mousedown', function(e){ var o = e.target.closest('li[role=option]'); if (o){ e.preventDefault(); choose(o); } });
+      input.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowDown'){ e.preventDefault(); if (!isOpen()){ filter(); open(); } else { setActive(Math.min(active + 1, visible().length - 1)); } }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); if (isOpen()) setActive(Math.max(active - 1, 0)); }
+        else if (e.key === 'Enter'){ var vis = visible(); if (isOpen() && active >= 0 && vis[active]){ e.preventDefault(); choose(vis[active]); } }
+        else if (e.key === 'Escape'){ close(); }
+      });
+      document.addEventListener('click', function(e){ if (!combo.contains(e.target)) close(); });
+    })();
+
     (function () {
       var WA = @json(config('ukv.whatsapp') ?: '447882747584');
       var root = document.getElementById('rk');
