@@ -59,6 +59,7 @@ final class ChatCtaTest extends TestCase
 
     public function test_destination_money_page_has_destination_specific_chat_cta(): void
     {
+        config(['ukv.destinations.country_pages_enabled' => true]); // country pages drafted; enable to render
         // Money pages are Schengen-only since the pivot (non-Schengen slugs 301). Use a Schengen dest.
         $d = \App\Models\Destination::create([
             'name' => 'Germany',

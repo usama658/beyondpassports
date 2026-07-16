@@ -12,6 +12,13 @@ final class ChecklistBandTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // Per-country /visa/{slug} pages are drafted behind a flag; enable so these tests render them.
+        config(['ukv.destinations.country_pages_enabled' => true]);
+    }
+
     public function test_generic_band_links_to_the_tool(): void
     {
         $html = view('partials.checklist-band')->render();

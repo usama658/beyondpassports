@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Models\Guide;
 use App\Services\GuideService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Public GUIDES silo — now DB-driven (Guide engine, approach B).
@@ -95,8 +96,14 @@ class GuideController extends Controller
      * Single COUNTRY guide, resolved by destination slug + topic slug. 404 when no published
      * guide matches. {topic} is route-constrained to the 15 known topic slugs in web.php.
      */
-    public function showCountry(Destination $destination, string $topic): View
+    public function showCountry(Destination $destination, string $topic): View|RedirectResponse
     {
+        // Country guide pages DRAFTED alongside the money pages (config
+        // ukv.destinations.country_pages_enabled). While off, 302-redirect to the /schengen-visa hub.
+        if (! config('ukv.destinations.country_pages_enabled')) {
+            return redirect('/schengen-visa');
+        }
+
         $guide = $this->guides->resolveCountryGuide($destination->slug, $topic);
 
         if ($guide === null) {

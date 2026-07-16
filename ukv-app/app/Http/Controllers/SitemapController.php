@@ -75,25 +75,33 @@ class SitemapController extends Controller
         }
 
         // One money page per destination.
+        // Per-country pages DRAFTED (config ukv.destinations.country_pages_enabled). While off, the
+        // /visa/{slug} money pages + /visa/{slug}/{topic} guides redirect to /schengen-visa, so keep
+        // them out of the sitemap entirely.
+        $countryPagesLive = (bool) config('ukv.destinations.country_pages_enabled');
+
         // Schengen-only pivot (2026-06-24): skip non-Schengen (non-ETIAS) destinations so their
         // /visa/{slug} money pages and /visa/{slug}/{topic} guides stay out of the sitemap. Reversible.
-        Destination::query()
-            ->whereNotNull('slug')
-            ->orderBy('name')
-            ->each(function (Destination $destination) use (&$urls, $base) {
-                if ($destination->visa_type !== 'Schengen') {
-                    return;
-                }
-                $urls[] = [
-                    'loc' => $base . '/visa/' . $destination->slug,
-                    'lastmod' => optional($destination->updated_at)->toDateString(),
-                    'changefreq' => 'weekly',
-                    'priority' => '0.7',
-                ];
-            });
+        if ($countryPagesLive) {
+            Destination::query()
+                ->whereNotNull('slug')
+                ->orderBy('name')
+                ->each(function (Destination $destination) use (&$urls, $base) {
+                    if ($destination->visa_type !== 'Schengen') {
+                        return;
+                    }
+                    $urls[] = [
+                        'loc' => $base . '/visa/' . $destination->slug,
+                        'lastmod' => optional($destination->updated_at)->toDateString(),
+                        'changefreq' => 'weekly',
+                        'priority' => '0.7',
+                    ];
+                });
+        }
 
         // Nested country guides (spokes): /visa/{slug}/{topic} for each PUBLISHED country guide.
         Guide::query()
+            ->when(! $countryPagesLive, fn ($q) => $q->whereRaw('1 = 0'))
             ->published()
             ->whereNotNull('destination_id')
             ->with('destination:id,slug,visa_type')

@@ -119,6 +119,12 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination, RequirementService $requirements)
     {
+        // Per-country money pages DRAFTED (config ukv.destinations.country_pages_enabled). While off,
+        // every /visa/{slug} 302-redirects to the single /schengen-visa hub. Reversible.
+        if (! config('ukv.destinations.country_pages_enabled')) {
+            return redirect('/schengen-visa');
+        }
+
         // Schengen-only pivot (2026-06-24): non-Schengen money pages 301 -> /schengen-visa. Reversible.
         if ($destination->visa_type !== 'Schengen') {
             return redirect('/schengen-visa', 301);

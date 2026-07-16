@@ -61,6 +61,13 @@ return [
         'enabled' => (bool) env('UKV_TRACK_ENABLED', false),
     ],
 
+    // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
+    // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
+    // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.
+    'destinations' => [
+        'country_pages_enabled' => (bool) env('UKV_COUNTRY_PAGES_ENABLED', false),
+    ],
+
     // Appointment slots. auto_hold_on_apply tentatively reserves the soonest slot at a centre we
     // book at when an in-person/biometric order is created (online visas are skipped). The short
     // hold (minutes) auto-releases via slots:release-expired if the customer doesn't proceed.
