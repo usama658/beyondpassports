@@ -113,7 +113,7 @@
             <label for="h-dest" style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:0 0 5px">Where are you going?</label>
             <select id="h-dest" data-dest style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--ink)">
               <option value="">Choose a destination…</option>
-              @foreach ($navDestinations as $d)
+              @foreach (($navDestinations ?? collect())->where('visa_type', 'Schengen') as $d)
               <option value="{{ $d->name }}">{{ $d->name }}</option>
               @endforeach
             </select>
@@ -146,7 +146,7 @@
         <label for="t-dest">Where are you going?</label>
         <select id="t-dest" name="dest" data-dest>
           <option value="">Choose a destination…</option>
-          @foreach ($navDestinations as $d)
+          @foreach (($navDestinations ?? collect())->where('visa_type', 'Schengen') as $d)
           <option value="{{ $d->name }}">{{ $d->name }}</option>
           @endforeach
         </select>

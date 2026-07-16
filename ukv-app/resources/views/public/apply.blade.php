@@ -247,7 +247,7 @@
               <label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
               <select id="destination" name="destination" required aria-required="true" data-dest>
                 <option value="">Choose a destination…</option>
-                @foreach ($navDestinations as $d)
+                @foreach (($navDestinations ?? collect())->where('visa_type', 'Schengen') as $d)
                   <option value="{{ $d->name }}" @selected(old('destination', $previewDest?->name) === $d->name)>{{ $d->name }}</option>
                 @endforeach
               </select>
