@@ -151,7 +151,11 @@
     <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
     <div class="f">
       <label for="dest">Where are you going?</label>
-      <input id="dest" type="text" value="the Schengen Area (Europe)" readonly>
+      <input id="dest" type="text" list="hp-dests" autocomplete="off" placeholder="Search a country, or all of Schengen">
+      <datalist id="hp-dests">
+        <option value="Anywhere in the Schengen Area"></option>
+        @foreach ($schengenDests as $d)<option value="{{ $d->name }}"></option>@endforeach
+      </datalist>
     </div>
     <div class="f">
       <label for="nat">Your passport</label>
@@ -183,7 +187,9 @@
       btn.addEventListener('click', function () {
         var nat = document.getElementById('nat');
         var pass = nat && nat.value ? nat.value : 'a UK';
-        var msg = 'Hi Beyond Passports, I am applying for a Schengen visa on ' + pass + ' passport. What do I need?';
+        var destEl = document.getElementById('dest');
+        var dest = destEl && destEl.value.trim() ? destEl.value.trim() : 'the Schengen Area';
+        var msg = 'Hi Beyond Passports, I am applying for a Schengen visa on ' + pass + ' passport for ' + dest + '. What do I need?';
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
     })();
