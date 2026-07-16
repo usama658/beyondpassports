@@ -602,7 +602,7 @@
     <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>You attend the appointment</h3><p>We book a biometric slot in time and tell you exactly what to bring.</p></div>
     <div class="step reveal"><div class="num">04</div><div class="rule"></div><h3>We track it to a decision</h3><p>We follow your application and keep you posted until the embassy decides.</p></div>
   </div>
-  <div style="text-align:center;margin-top:28px"><a class="btn" href="{{ $waLink }}" target="_blank" rel="noopener">Tell us about your trip &rarr;</a> @include('partials.consult-cta')</div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px"><a class="btn" href="{{ $waLink }}" target="_blank" rel="noopener">Tell us about your trip &rarr;</a> @include('partials.consult-cta')</div>
 </div></section>
 
 {{-- 6) FAQ — tinted panel accordion (.faq-e / .faqd) --}}
