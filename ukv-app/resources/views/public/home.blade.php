@@ -49,6 +49,9 @@
   @media (max-width:720px){
     .hp-hero > .wrap{padding:28px 0 34px}
     .hp-bar{flex-direction:column;align-items:stretch}
+    /* Keep the check form edge-to-edge (full width), but give the heading + text
+       their side margins back so they don't hug the screen edges on mobile. */
+    .hp-hero > .wrap > :not(.hp-bar){padding-left:20px;padding-right:20px;box-sizing:border-box}
   }
 </style>
 @endpush
