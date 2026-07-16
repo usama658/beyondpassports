@@ -111,7 +111,7 @@
           <div class="stub"><span>Visa check</span><span>Instant result</span></div>
           <div class="cbody">
             <label for="h-dest" style="font-size:13px;font-weight:700;color:var(--ink);display:block;margin:0 0 5px">Where are you going?</label>
-            <select id="h-dest" style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--ink)">
+            <select id="h-dest" data-dest style="width:100%;padding:12px;border:1px solid var(--paper-edge);border-radius:10px;font-size:15px;background:var(--white);color:var(--ink)">
               <option value="">Choose a destination…</option>
               @foreach ($navDestinations as $d)
               <option value="{{ $d->name }}">{{ $d->name }}</option>
@@ -144,7 +144,7 @@
       <span class="tl-stamp" aria-hidden="true">CHECK<br>&amp; GO</span>
       <div class="f f--dest">
         <label for="t-dest">Where are you going?</label>
-        <select id="t-dest" name="dest">
+        <select id="t-dest" name="dest" data-dest>
           <option value="">Choose a destination…</option>
           @foreach ($navDestinations as $d)
           <option value="{{ $d->name }}">{{ $d->name }}</option>

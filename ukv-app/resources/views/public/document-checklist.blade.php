@@ -224,7 +224,7 @@
             <div class="grid2">
               <div class="field">
                 <label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
-                <select id="destination" name="destination" required aria-required="true">
+                <select id="destination" name="destination" required aria-required="true" data-dest>
                   <option value="">Choose a destination…</option>
                   @foreach ($navDestinations as $d)
                     <option value="{{ $d->name }}" @selected(old('destination', request('destination')) === $d->name)>{{ $d->name }}</option>
