@@ -33,19 +33,13 @@
   .hp-bar .f{flex:1;min-width:0}
   .hp-bar label{display:block;font:700 12px var(--display);margin:0 0 5px;color:var(--ink)}
   .hp-bar select,.hp-bar input{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
-  /* Passport <select>: drop the native OS chevron for one matching the combobox caret */
-  .hp-bar select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:38px;cursor:pointer;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 12px center;background-size:14px}
-  .hp-bar select::-ms-expand{display:none}
-  /* Native <select> has no cross-browser "open" state, so flip the chevron on focus
-     (opening the picker focuses it). Kept as its own rule so it survives even if a
-     browser doesn't understand the select:open rule below. */
-  .hp-bar select:focus{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 15 6-6 6 6'/%3E%3C/svg%3E")}
-  /* Progressive enhancement: exact open-state flip on browsers that support select:open. */
-  .hp-bar select:open{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 15 6-6 6 6'/%3E%3C/svg%3E")}
+  /* Passport picker: a custom listbox (not a native <select>) so its caret flips on
+     open AND close, exactly like the destination combobox. */
+  .hp-bar .hp-selbtn{width:100%;box-sizing:border-box;padding:12px;padding-right:38px;min-height:45px;
+    border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink);
+    cursor:pointer;display:flex;align-items:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hp-bar .hp-selbtn:focus-visible{outline:2px solid var(--cta);outline-offset:1px}
+  .hp-sel .hpc-panel li[role=option][aria-selected="true"]{font-weight:700;color:var(--cta)}
   .hp-bar input[readonly]{background:var(--paper);color:var(--muted);cursor:default}
   .hp-bar .btn{white-space:nowrap}
   /* Hero destination combobox — click to drop the full grouped list, or type to filter */
@@ -224,9 +218,19 @@
         <li class="hpc-none" aria-hidden="true" hidden>No match — we cover all of Schengen.</li>
       </ul>
     </div>
-    <div class="f">
-      <label for="nat">Your passport</label>
-      <select id="nat"><option value="a UK">United Kingdom</option><option value="a non-UK">Other (we'll confirm your rules)</option></select>
+    <div class="f hp-combo hp-sel" id="npc">
+      <label id="nat-label">Your passport</label>
+      <div class="hp-selbtn" id="nat-btn" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-controls="nat-list" aria-labelledby="nat-label nat-text">
+        <span id="nat-text">United Kingdom</span>
+      </div>
+      <button type="button" class="hpc-caret" tabindex="-1" aria-label="Show passport options">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <input type="hidden" id="nat" value="a UK">
+      <ul class="hpc-panel" id="nat-list" role="listbox" aria-label="Your passport" hidden>
+        <li role="option" data-v="a UK" data-label="United Kingdom" aria-selected="true">United Kingdom</li>
+        <li role="option" data-v="a non-UK" data-label="Other (we'll confirm your rules)" aria-selected="false">Other (we'll confirm your rules)</li>
+      </ul>
     </div>
     <button class="btn" type="button" id="hp-chat">See what I need · free →</button>
   </form>
@@ -288,6 +292,35 @@
         if (e.key === 'ArrowDown'){ e.preventDefault(); if (!isOpen()){ filter(); open(); } else { setActive(Math.min(active + 1, visible().length - 1)); } }
         else if (e.key === 'ArrowUp'){ e.preventDefault(); if (isOpen()){ setActive(Math.max(active - 1, 0)); } }
         else if (e.key === 'Enter'){ var vis = visible(); if (isOpen() && active >= 0 && vis[active]){ e.preventDefault(); choose(vis[active]); } }
+        else if (e.key === 'Escape'){ close(); }
+      });
+      document.addEventListener('click', function(e){ if (!combo.contains(e.target)) close(); });
+    })();
+
+    // Passport picker: custom listbox so the caret flips on open AND close (a native
+    // <select> keeps focus after picking, so its arrow only drops on outside-click).
+    (function () {
+      var combo = document.getElementById('npc');
+      if (!combo) return;
+      var btn   = document.getElementById('nat-btn'),
+          caret = combo.querySelector('.hpc-caret'),
+          panel = combo.querySelector('.hpc-panel'),
+          hidden= document.getElementById('nat'),
+          text  = document.getElementById('nat-text'),
+          opts  = Array.prototype.slice.call(panel.querySelectorAll('li[role=option]'));
+      function isOpen(){ return combo.classList.contains('open'); }
+      function open(){ combo.classList.add('open'); panel.hidden = false; btn.setAttribute('aria-expanded','true'); }
+      function close(){ combo.classList.remove('open'); panel.hidden = true; btn.setAttribute('aria-expanded','false'); }
+      function choose(o){
+        hidden.value = o.dataset.v; text.textContent = o.dataset.label;
+        opts.forEach(function(x){ x.setAttribute('aria-selected', x === o ? 'true' : 'false'); });
+        close(); btn.focus();
+      }
+      btn.addEventListener('click', function(){ isOpen() ? close() : open(); });
+      caret.addEventListener('mousedown', function(e){ e.preventDefault(); isOpen() ? close() : open(); });
+      panel.addEventListener('mousedown', function(e){ var o = e.target.closest('li[role=option]'); if (o){ e.preventDefault(); choose(o); } });
+      btn.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' '){ e.preventDefault(); if (!isOpen()) open(); }
         else if (e.key === 'Escape'){ close(); }
       });
       document.addEventListener('click', function(e){ if (!combo.contains(e.target)) close(); });
