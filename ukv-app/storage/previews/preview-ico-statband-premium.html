@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — ICO badge, premium designs (stat-band cell)</title>
+<style>
+  :root{--cta:#155E7A;--navy:#16222E;--ink:#243039;--muted:#697079;--soft:#8fb9c6;--paper:#F7F3EC;
+    --paper-edge:#e6ddcf;--white:#fff;--stamp:#5C9A7B;--stamp-text:#3f8a72;--gold:#C9A54A;--display:"Outfit",system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--display);color:var(--ink);background:#efe7db}
+  .note{background:#fff8e6;border-bottom:1px solid #efdfb8;color:#5A4300;font-size:13px;padding:9px 16px;text-align:center}
+  .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:34px 20px 8px;max-width:1000px;margin-left:auto;margin-right:auto;padding:0 20px}
+
+  .tbar-b{background:linear-gradient(180deg,#FBF6F1,var(--paper));border-top:1px solid var(--paper-edge);border-bottom:1px solid var(--paper-edge)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:24px 0;max-width:1000px;margin:0 auto;padding-left:20px;padding-right:20px}
+  .row>div,.row>a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+  .row>div+div,.row>a{border-left:1px solid var(--paper-edge)}
+  .n{font:800 clamp(24px,3vw,30px)/1 var(--display);color:var(--cta);letter-spacing:-.02em}
+  .l{font:600 13px var(--display);color:var(--muted);margin-top:6px}
+
+  /* D — Official seal / medallion */
+  .seal{width:64px;height:64px;border-radius:50%;position:relative;display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 35%,#1c6f8c,var(--cta));box-shadow:0 10px 22px -12px rgba(21,94,122,.7),inset 0 0 0 2px rgba(255,255,255,.25),inset 0 0 0 6px rgba(255,255,255,.1)}
+  .seal::before{content:"";position:absolute;inset:4px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.45)}
+  .seal svg{width:26px;height:26px;color:#fff;position:relative;z-index:1}
+  .d .l b{color:var(--cta)}
+
+  /* E — Verified ribbon: shield + green verified chip */
+  .e-badge{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--paper-edge);
+    border-radius:14px;padding:10px 14px;box-shadow:0 14px 30px -20px rgba(22,34,46,.7)}
+  .e-badge .sh{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#eaf3f6,#d7ecf0);
+    display:grid;place-items:center;color:var(--cta);border:1px solid rgba(21,94,122,.18)}
+  .e-badge .sh svg{width:17px;height:17px}
+  .e-badge .tx{text-align:left;line-height:1.15}
+  .e-badge .tx .k{font:800 13px var(--display)}.e-badge .tx .k b{color:var(--cta)}
+  .e-badge .tx .chip{display:inline-flex;align-items:center;gap:4px;margin-top:3px;font:800 10px var(--display);letter-spacing:.03em;
+    color:var(--stamp-text);background:rgba(92,154,123,.14);border:1px solid rgba(92,154,123,.3);border-radius:999px;padding:2px 7px}
+  .e-badge .tx .chip svg{width:11px;height:11px}
+
+  /* F — Frosted glass card with gold ref */
+  .f-card{position:relative;padding:14px 18px;border-radius:14px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
+    border:1px solid rgba(255,255,255,.8);box-shadow:0 18px 40px -26px rgba(22,34,46,.6),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(6px)}
+  .f-card .sh{width:26px;height:26px;color:var(--cta);margin:0 auto 6px}
+  .f-card .ref{font:800 18px/1 var(--display);letter-spacing:.02em;color:var(--navy)}
+  .f-card .ref b{color:var(--gold)}
+  .f-card .sub{font:600 11.5px var(--display);color:var(--muted);margin-top:5px}
+
+  /* G — Gradient pill with sheen */
+  .g-pill{position:relative;display:inline-flex;align-items:center;gap:9px;overflow:hidden;
+    background:linear-gradient(120deg,var(--cta),#1f7f9e);color:#fff;border-radius:999px;padding:11px 18px;
+    box-shadow:0 14px 30px -14px rgba(21,94,122,.8)}
+  .g-pill::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);animation:sheen 3.4s ease-in-out infinite}
+  @keyframes sheen{0%,60%{left:-40%}100%{left:130%}}
+  .g-pill svg{width:18px;height:18px}
+  .g-pill .k{font:800 13px var(--display);position:relative}.g-pill .k b{color:#eaf6f2}
+
+  /* H — Stamp/postmark (brand-native passport stamp look) */
+  .h-stamp{position:relative;display:grid;place-items:center;width:96px;height:64px}
+  .h-stamp .ring{position:absolute;inset:0;border:2px solid rgba(21,94,122,.55);border-radius:10px;transform:rotate(-4deg)}
+  .h-stamp .ring::before{content:"";position:absolute;inset:4px;border:1px solid rgba(21,94,122,.4);border-radius:7px}
+  .h-stamp .in{position:relative;transform:rotate(-4deg);text-align:center;color:var(--cta)}
+  .h-stamp .in .t{font:800 9px var(--display);letter-spacing:.14em}
+  .h-stamp .in .r{font:800 15px var(--display);letter-spacing:.02em;margin-top:1px}
+  .h-stamp .in .b{font:700 7.5px var(--display);letter-spacing:.1em;opacity:.8;margin-top:1px}
+</style></head>
+<body>
+<div class="note">PREVIEW · premium ICO badge options for the stat-band cell (replaces "Registered in UK &amp; Europe") · all link the public ICO register</div>
+
+<p class="cap">D — Official seal / medallion</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a class="d" href="#"><span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><div class="l" style="margin-top:8px">ICO registered · <b>ZC197159</b></div></a>
+</div></section>
+
+<p class="cap">E — Verified ribbon (shield + green verified chip)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="e-badge"><span class="sh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="tx"><span class="k">ICO · <b>ZC197159</b></span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4 10-10"/></svg>Verified on register</span></span></span></a>
+</div></section>
+
+<p class="cap">F — Frosted glass card, gold reference</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="f-card"><span class="sh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="ref">ICO <b>ZC197159</b></span><span class="sub">Data protection · verify →</span></span></a>
+</div></section>
+
+<p class="cap">G — Gradient pill with animated sheen</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="g-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span class="k">ICO Registered · <b>ZC197159</b></span></span><span class="l" style="margin-top:8px">Verify on the ICO register →</span></a>
+</div></section>
+
+<p class="cap">H — Passport-stamp (brand-native, matches the "CHECKED &amp; READY" hero stamp)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="h-stamp"><span class="ring"></span><span class="in"><span class="t">ICO REGISTERED</span><span class="r">ZC197159</span><span class="b">DATA PROTECTION</span></span></span><span class="l" style="margin-top:6px">Verify on the register →</span></a>
+</div></section>
+
+<div style="height:50px"></div>
+</body></html>

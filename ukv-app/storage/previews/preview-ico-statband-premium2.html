@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — ICO badge, premium designs vol.2 (stat-band cell)</title>
+<style>
+  :root{--cta:#155E7A;--navy:#16222E;--ink:#243039;--muted:#697079;--soft:#8fb9c6;--paper:#F7F3EC;
+    --paper-edge:#e6ddcf;--white:#fff;--stamp:#5C9A7B;--stamp-text:#3f8a72;--gold:#C9A54A;--display:"Outfit",system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--display);color:var(--ink);background:#efe7db}
+  .note{background:#fff8e6;border-bottom:1px solid #efdfb8;color:#5A4300;font-size:13px;padding:9px 16px;text-align:center}
+  .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;max-width:1000px;margin:34px auto 8px;padding:0 20px}
+  .tbar-b{background:linear-gradient(180deg,#FBF6F1,var(--paper));border-top:1px solid var(--paper-edge);border-bottom:1px solid var(--paper-edge)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:24px 20px;max-width:1000px;margin:0 auto}
+  .row>div,.row>a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+  .row>div+div,.row>a{border-left:1px solid var(--paper-edge)}
+  .n{font:800 clamp(24px,3vw,30px)/1 var(--display);color:var(--cta);letter-spacing:-.02em}
+  .l{font:600 13px var(--display);color:var(--muted);margin-top:6px}
+  .sv{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* I — Security-paper ticket (guilloché fine lines) */
+  .i-t{position:relative;padding:12px 18px;border-radius:12px;overflow:hidden;color:var(--navy);
+    background:repeating-linear-gradient(135deg,rgba(21,94,122,.06) 0 2px,transparent 2px 6px),
+      repeating-linear-gradient(45deg,rgba(21,94,122,.05) 0 2px,transparent 2px 6px),var(--white);
+    border:1px solid rgba(21,94,122,.25);box-shadow:0 12px 26px -20px rgba(22,34,46,.6)}
+  .i-t .top{display:flex;align-items:center;gap:7px;justify-content:center;color:var(--cta)}
+  .i-t .top svg{width:18px;height:18px}.i-t .top span{font:800 10px var(--display);letter-spacing:.14em}
+  .i-t .ref{font:800 19px/1 var(--display);letter-spacing:.06em;margin-top:5px}
+  .i-t .sub{font:600 10.5px var(--display);color:var(--muted);margin-top:4px;letter-spacing:.02em}
+
+  /* J — Two-tone split badge (navy icon block + white ref block) */
+  .j{display:inline-flex;border-radius:12px;overflow:hidden;box-shadow:0 12px 26px -18px rgba(22,34,46,.7);border:1px solid var(--paper-edge)}
+  .j .ic{background:linear-gradient(160deg,#1d3040,var(--navy));display:grid;place-items:center;padding:0 12px;color:#fff}
+  .j .ic svg{width:20px;height:20px}
+  .j .bd{background:#fff;padding:9px 14px;text-align:left}
+  .j .bd .k{font:800 9px var(--display);letter-spacing:.12em;color:var(--muted)}
+  .j .bd .r{font:800 15px var(--display);color:var(--cta);letter-spacing:.02em}
+
+  /* K — Wax-seal certificate */
+  .k-w{position:relative;width:60px;height:60px}
+  .k-w .wax{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2a8aa8,var(--cta) 70%);
+    display:grid;place-items:center;box-shadow:0 8px 18px -8px rgba(21,94,122,.75)}
+  .k-w .wax::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0 8deg,rgba(21,94,122,.55) 8deg 12deg);-webkit-mask:radial-gradient(circle,transparent 26px,#000 26px);mask:radial-gradient(circle,transparent 26px,#000 26px)}
+  .k-w .wax svg{width:24px;height:24px;color:#fff}
+  .k-rib{position:absolute;left:14px;top:52px;width:12px;height:22px;background:var(--cta);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);opacity:.9}
+  .k-rib.r2{left:34px;background:#1f7f9e}
+
+  /* L — Letterpress / engraved (subtle, no color fill) */
+  .l-e{color:#2d3d47;text-align:center}
+  .l-e svg{width:26px;height:26px;color:var(--cta);filter:drop-shadow(0 1px 0 rgba(255,255,255,.8))}
+  .l-e .r{font:800 20px/1 var(--display);letter-spacing:.03em;margin-top:5px;color:#33454f;
+    text-shadow:0 1px 0 rgba(255,255,255,.85),0 -1px 0 rgba(0,0,0,.06)}
+  .l-e .s{font:700 10.5px var(--display);letter-spacing:.12em;color:var(--muted);margin-top:5px}
+
+  /* M — Verified ring (progress ring around shield) */
+  .m-r{position:relative;width:60px;height:60px}
+  .m-r svg.ring{width:60px;height:60px;transform:rotate(-90deg)}
+  .m-r svg.ring circle{fill:none;stroke-width:4}
+  .m-r .bg{stroke:rgba(21,94,122,.14)}
+  .m-r .fg{stroke:var(--stamp);stroke-linecap:round;stroke-dasharray:170;stroke-dashoffset:24}
+  .m-r .core{position:absolute;inset:0;display:grid;place-items:center;color:var(--cta)}
+  .m-r .core svg{width:24px;height:24px}
+  .m-r .tick{position:absolute;right:-2px;bottom:-2px;width:22px;height:22px;border-radius:50%;background:var(--stamp);
+    display:grid;place-items:center;color:#fff;box-shadow:0 0 0 3px #FBF6F1}
+  .m-r .tick svg{width:12px;height:12px;stroke-width:3}
+</style></head>
+<body>
+<div class="note">PREVIEW · premium ICO badge, vol.2 · stat-band cell (replaces "Registered in UK &amp; Europe") · all link the public ICO register</div>
+
+<p class="cap">I — Security-paper ticket (banknote guilloché lines)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="i-t"><span class="top"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span>ICO REGISTERED</span></span><span class="ref">ZC197159</span><span class="sub">Verify on the register →</span></span></a>
+</div></section>
+
+<p class="cap">J — Two-tone split badge (navy icon · white reference)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="j"><span class="ic"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="bd"><span class="k">ICO REGISTERED</span><span class="r">ZC197159</span></span></span><span class="l" style="margin-top:8px">Data protection · verify →</span></a>
+</div></section>
+
+<p class="cap">K — Wax-seal certificate with ribbon tails</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="k-w"><span class="wax"><svg class="sv" viewBox="0 0 24 24" style="stroke:#fff"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="k-rib"></span><span class="k-rib r2"></span></span><span class="l" style="margin-top:16px">ICO registered · <b style="color:var(--cta)">ZC197159</b></span></a>
+</div></section>
+
+<p class="cap">L — Letterpress / engraved (understated, premium)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="l-e"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><div class="r">ZC197159</div><div class="s">ICO REGISTERED</div></span></a>
+</div></section>
+
+<p class="cap">M — Verified ring (progress ring + green tick)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="m-r"><svg class="ring" viewBox="0 0 60 60"><circle class="bg" cx="30" cy="30" r="27"/><circle class="fg" cx="30" cy="30" r="27"/></svg><span class="core"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="tick"><svg class="sv" viewBox="0 0 24 24" style="stroke:#fff"><path d="m5 13 4 4 10-10"/></svg></span></span><span class="l" style="margin-top:8px">ICO · <b style="color:var(--cta)">ZC197159</b> · verify →</span></a>
+</div></section>
+
+<div style="height:50px"></div>
+</body></html>

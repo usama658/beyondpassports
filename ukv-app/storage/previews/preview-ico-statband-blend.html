@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — ICO badge, blended premium (stat-band cell)</title>
+<style>
+  :root{--cta:#155E7A;--navy:#16222E;--ink:#243039;--muted:#697079;--soft:#8fb9c6;--paper:#F7F3EC;
+    --paper-edge:#e6ddcf;--white:#fff;--stamp:#5C9A7B;--stamp-text:#3f8a72;--gold:#C9A54A;--display:"Outfit",system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--display);color:var(--ink);background:#efe7db}
+  .note{background:#fff8e6;border-bottom:1px solid #efdfb8;color:#5A4300;font-size:13px;padding:9px 16px;text-align:center}
+  .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;max-width:1000px;margin:34px auto 8px;padding:0 20px}
+  .tbar-b{background:linear-gradient(180deg,#FBF6F1,var(--paper));border-top:1px solid var(--paper-edge);border-bottom:1px solid var(--paper-edge)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:24px 20px;max-width:1000px;margin:0 auto}
+  .row>div,.row>a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+  .row>div+div,.row>a{border-left:1px solid var(--paper-edge)}
+  .n{font:800 clamp(24px,3vw,30px)/1 var(--display);color:var(--cta);letter-spacing:-.02em}
+  .l{font:600 13px var(--display);color:var(--muted);margin-top:6px}
+  .sv{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  /* shared: keep the exact .n / .l rhythm of the other three cells, just elevate the detail */
+
+  /* S — Seamless: ref IS the number (shield inline), verify as the label. Zero box. */
+  .s-n{display:inline-flex;align-items:center;gap:9px}
+  .s-n svg{width:22px;height:22px;color:var(--cta)}
+  .s-lab .v{color:var(--cta);font-weight:800}
+
+  /* T — Shield-tick as the big glyph, ref folded into the label */
+  .t-g{width:40px;height:40px;color:var(--cta)}
+  .t-g svg{width:100%;height:100%}
+  .t-lab b{color:var(--cta)}
+
+  /* U — Number with a fine petrol keyline underline + micro verified tick */
+  .u-n{position:relative;display:inline-flex;align-items:center;gap:7px;padding-bottom:7px}
+  .u-n::after{content:"";position:absolute;left:12%;right:12%;bottom:0;height:2px;border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--cta),transparent)}
+  .u-n .tk{width:17px;height:17px;border-radius:50%;background:var(--stamp);display:grid;place-items:center;color:#fff}
+  .u-n .tk svg{width:10px;height:10px;stroke-width:3}
+
+  /* V — Gradient-fill reference (petrol→gold), number-sized, blends but feels crafted */
+  .v-n{font:800 clamp(24px,3vw,30px)/1 var(--display);letter-spacing:.01em;
+    background:linear-gradient(100deg,var(--cta),#2b8aa6 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .v-sh{width:20px;height:20px;color:var(--cta);vertical-align:-3px;margin-right:6px}
+
+  /* W — Number + hairline chip label "Verified on the ICO register" (only the label is elevated) */
+  .w-lab{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:700 11.5px var(--display);color:var(--stamp-text);
+    background:rgba(92,154,123,.12);border:1px solid rgba(92,154,123,.28);border-radius:999px;padding:3px 10px}
+  .w-lab svg{width:12px;height:12px;stroke-width:3}
+
+  /* X — Watermark shield behind the reference (subtle depth, still flat in the band) */
+  .x-w{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:2px 6px}
+  .x-w .ghost{position:absolute;width:46px;height:46px;color:rgba(21,94,122,.10);z-index:0}
+  .x-w .ghost svg{width:100%;height:100%}
+  .x-w .r{position:relative;z-index:1;font:800 clamp(22px,2.8vw,28px)/1 var(--display);color:var(--cta);letter-spacing:.01em}
+</style></head>
+<body>
+<div class="note">PREVIEW · blended premium ICO badge · sits in the stat rhythm (no heavy box) · replaces "Registered in UK &amp; Europe" · links the ICO register</div>
+
+<p class="cap">S — Seamless: reference as the number, shield inline (blends fully)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><div class="n"><span class="s-n"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>ZC197159</span></div><div class="l s-lab">ICO registered · <span class="v">verify →</span></div></a>
+</div></section>
+
+<p class="cap">T — Shield-tick as the big glyph, reference in the label</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="t-g"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><div class="l t-lab" style="margin-top:8px">ICO registered · <b>ZC197159</b></div></a>
+</div></section>
+
+<p class="cap">U — Number with a petrol keyline + micro verified tick</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><div class="n"><span class="u-n">ZC197159 <span class="tk"><svg class="sv" viewBox="0 0 24 24" style="stroke:#fff"><path d="m5 13 4 4 10-10"/></svg></span></span></div><div class="l">ICO registered · verify →</div></a>
+</div></section>
+
+<p class="cap">V — Gradient-fill reference (petrol → gold)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><div class="v-n"><svg class="sv v-sh" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>ZC197159</div><div class="l">ICO registered · verify →</div></a>
+</div></section>
+
+<p class="cap">W — Number + hairline "Verified on the ICO register" chip</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><div class="n">ZC197159</div><span class="w-lab"><svg class="sv" viewBox="0 0 24 24"><path d="m5 13 4 4 10-10"/></svg>Verified on the ICO register</span></a>
+</div></section>
+
+<p class="cap">X — Watermark shield behind the reference (subtle depth)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="x-w"><span class="ghost"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="r">ZC197159</span></span><div class="l" style="margin-top:6px">ICO registered · verify →</div></a>
+</div></section>
+
+<div style="height:50px"></div>
+</body></html>

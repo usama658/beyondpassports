@@ -212,6 +212,16 @@ footer strong{color:#fff}
   section.tbar-f > .wrap > .row::-webkit-scrollbar{display:none}
   section.tbar-f > .wrap > .row > .ti{flex:0 0 100%;justify-content:center;scroll-snap-align:center}
 }
+/* ICO registration cell in the stat band (.tbar-b) — watermark shield behind the reference,
+   links the public ICO register. Blends into the number-over-label rhythm of the other cells. */
+.tbar-b .tb-ico{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+.tbar-b .tb-ico-w{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.tbar-b .tb-ico-ghost{position:absolute;inset:0;display:grid;place-items:center;color:rgba(21,94,122,.10);z-index:0}
+.tbar-b .tb-ico-ghost svg{width:46px;height:46px}
+.tbar-b .tb-ico-r{position:relative;z-index:1;letter-spacing:.01em}
+.tbar-b .tb-ico .tb-ico-v{color:var(--cta);font-weight:800}
+.tbar-b .tb-ico:hover .tb-ico-r{color:#0f4a61}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
 
 /* Shared components consolidated from page-scoped styles (silo QA fix) */

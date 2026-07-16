@@ -222,7 +222,7 @@
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
   <div><div class="n">{{ App\Support\SiteStats::applications() }}</div><div class="l">Applications filed in {{ App\Support\SiteStats::yearsActive() }} years</div></div>
   <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
-  <div><div class="n">@include('partials.uk-eu-flags',['size'=>28])</div><div class="l">Registered in UK &amp; Europe</div></div>
+  @include('partials.ico-stat-cell')
 </div></div></section>
 
 {{-- PROBLEM + READINESS CHECK — joined: fears on the left, the check that answers them on the right --}}

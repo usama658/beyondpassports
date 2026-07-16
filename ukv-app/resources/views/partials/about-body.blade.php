@@ -467,7 +467,7 @@
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row" id="ab-counts">
   <div><div class="n" data-count="29">29</div><div class="l">Schengen countries covered</div></div>
-  <div><div class="n">@include('partials.uk-eu-flags',['size'=>26])</div><div class="l">Registered, UK &amp; Europe</div></div>
+  @include('partials.ico-stat-cell')
   <div><div class="n">100%</div><div class="l">Files human-checked before submission</div></div>
   <div><div class="n">Mon&ndash;Sat</div><div class="l">Support, 9&ndash;6</div></div>
 </div></div></section>

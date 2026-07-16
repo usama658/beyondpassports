@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — ICO badge, premium designs vol.3 (stat-band cell)</title>
+<style>
+  :root{--cta:#155E7A;--navy:#16222E;--ink:#243039;--muted:#697079;--soft:#8fb9c6;--paper:#F7F3EC;
+    --paper-edge:#e6ddcf;--white:#fff;--stamp:#5C9A7B;--stamp-text:#3f8a72;--gold:#C9A54A;--display:"Outfit",system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--display);color:var(--ink);background:#efe7db}
+  .note{background:#fff8e6;border-bottom:1px solid #efdfb8;color:#5A4300;font-size:13px;padding:9px 16px;text-align:center}
+  .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;max-width:1000px;margin:34px auto 8px;padding:0 20px}
+  .tbar-b{background:linear-gradient(180deg,#FBF6F1,var(--paper));border-top:1px solid var(--paper-edge);border-bottom:1px solid var(--paper-edge)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center;padding:24px 20px;max-width:1000px;margin:0 auto}
+  .row>div,.row>a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+  .row>div+div,.row>a{border-left:1px solid var(--paper-edge)}
+  .n{font:800 clamp(24px,3vw,30px)/1 var(--display);color:var(--cta);letter-spacing:-.02em}
+  .l{font:600 13px var(--display);color:var(--muted);margin-top:6px}
+  .sv{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* N — Ticket stub with perforation (matches "how it works" ticket motif) */
+  .n-t{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--paper-edge);border-radius:12px;
+    overflow:hidden;box-shadow:0 12px 26px -18px rgba(22,34,46,.6)}
+  .n-t .stub{background:rgba(21,94,122,.08);color:var(--cta);display:grid;place-items:center;padding:0 12px;position:relative}
+  .n-t .stub svg{width:20px;height:20px}
+  .n-t .perf{width:0;border-left:2px dashed var(--paper-edge);position:relative}
+  .n-t .main{padding:9px 15px;text-align:left}
+  .n-t .main .k{font:800 9px var(--display);letter-spacing:.12em;color:var(--muted)}
+  .n-t .main .r{font:800 15px var(--display);color:var(--navy);letter-spacing:.02em}
+
+  /* O — Verification strip (barcode + ref, "checked" system look) */
+  .o-s{background:var(--white);border:1px solid var(--paper-edge);border-radius:11px;padding:10px 14px;box-shadow:0 10px 24px -18px rgba(22,34,46,.6)}
+  .o-s .bars{height:20px;display:flex;gap:1.5px;align-items:stretch;justify-content:center}
+  .o-s .bars i{display:block;width:2px;background:var(--navy)}
+  .o-s .bars i:nth-child(3n){width:3px}.o-s .bars i:nth-child(4n){opacity:.5}.o-s .bars i:nth-child(5n){width:1px}
+  .o-s .r{font:800 13px var(--display);letter-spacing:.14em;color:var(--cta);margin-top:6px}
+  .o-s .k{font:700 9.5px var(--display);letter-spacing:.1em;color:var(--muted);margin-top:2px}
+
+  /* P — Government-gateway card (navy + petrol accent bar) */
+  .p-c{background:linear-gradient(160deg,#1b2c3a,var(--navy));color:#fff;border-radius:12px;padding:12px 16px 12px 14px;
+    position:relative;overflow:hidden;box-shadow:0 16px 34px -20px rgba(22,34,46,.85);min-width:150px}
+  .p-c::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--soft),var(--cta))}
+  .p-c .top{display:flex;align-items:center;gap:8px}
+  .p-c .top svg{width:18px;height:18px;color:var(--soft)}
+  .p-c .top span{font:800 9.5px var(--display);letter-spacing:.12em;color:rgba(255,255,255,.7)}
+  .p-c .r{font:800 18px var(--display);letter-spacing:.03em;margin-top:5px}
+  .p-c .v{font:700 10.5px var(--display);color:var(--soft);margin-top:3px}
+
+  /* Q — Neumorphic soft emboss (matches warm band) */
+  .q-c{background:#f6efe4;border-radius:16px;padding:14px 20px;text-align:center;
+    box-shadow:8px 8px 18px rgba(180,160,130,.45),-8px -8px 18px rgba(255,255,255,.9)}
+  .q-c svg{width:24px;height:24px;color:var(--cta)}
+  .q-c .r{font:800 18px var(--display);letter-spacing:.03em;color:var(--navy);margin-top:5px}
+  .q-c .s{font:700 10px var(--display);letter-spacing:.12em;color:var(--muted);margin-top:4px}
+
+  /* R — Iridescent holographic shield */
+  .r-h{position:relative;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#7be0c9,#4aa9c7 35%,#5b7fe0 65%,#9a6fe0);
+    box-shadow:0 12px 26px -12px rgba(70,110,200,.7)}
+  .r-h::before{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);
+    background-size:200% 100%;animation:holo 3s linear infinite}
+  @keyframes holo{0%{background-position:180% 0}100%{background-position:-80% 0}}
+  .r-h svg{width:26px;height:26px;color:#fff;position:relative;z-index:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+</style></head>
+<body>
+<div class="note">PREVIEW · premium ICO badge, vol.3 · stat-band cell (replaces "Registered in UK &amp; Europe") · all link the public ICO register</div>
+
+<p class="cap">N — Ticket stub with perforation (on-brand, matches "How it works")</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="n-t"><span class="stub"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="perf"></span><span class="main"><span class="k">ICO REGISTERED</span><span class="r">ZC197159</span></span></span><span class="l" style="margin-top:8px">Verify on the register →</span></a>
+</div></section>
+
+<p class="cap">O — Verification strip (barcode + reference)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="o-s"><span class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><div class="r">ZC197159</div><div class="k">ICO REGISTERED · VERIFY →</div></span></a>
+</div></section>
+
+<p class="cap">P — Government-gateway card (navy + petrol accent)</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="p-c"><span class="top"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span>ICO REGISTERED</span></span><span class="r">ZC197159</span><span class="v">Verify on the register →</span></span></a>
+</div></section>
+
+<p class="cap">Q — Neumorphic soft emboss</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="q-c"><svg class="sv" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><div class="r">ZC197159</div><div class="s">ICO REGISTERED</div></span></a>
+</div></section>
+
+<p class="cap">R — Iridescent holographic shield</p>
+<section class="tbar-b"><div class="row">
+  <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
+  <div><div class="n">3,200+</div><div class="l">Applications filed in 6 years</div></div>
+  <div><div class="n">27</div><div class="l">Destinations &amp; growing</div></div>
+  <a href="#"><span class="r-h"><svg class="sv" viewBox="0 0 24 24" style="stroke:#fff"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="l" style="margin-top:8px">ICO registered · <b style="color:var(--cta)">ZC197159</b></span></a>
+</div></section>
+
+<div style="height:50px"></div>
+</body></html>
