@@ -35,6 +35,26 @@
   .hp-bar select,.hp-bar input{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--paper-edge);border-radius:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
   .hp-bar input[readonly]{background:var(--paper);color:var(--muted);cursor:default}
   .hp-bar .btn{white-space:nowrap}
+  /* Hero destination combobox — click to drop the full grouped list, or type to filter */
+  .hp-combo{position:relative}
+  .hp-combo input{padding-right:40px}
+  .hp-combo .hpc-caret{position:absolute;right:6px;bottom:6px;width:32px;height:34px;display:flex;align-items:center;justify-content:center;padding:0;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:8px}
+  .hp-combo .hpc-caret svg{width:15px;height:15px;transition:transform .18s ease}
+  .hp-combo.open .hpc-caret svg{transform:rotate(180deg)}
+  .hp-combo .hpc-caret:hover{background:var(--paper);color:var(--ink)}
+  .hpc-panel{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;margin:0;padding:6px;list-style:none;
+    background:#fff;border:1px solid var(--paper-edge);border-radius:12px;box-shadow:0 26px 50px -24px rgba(22,34,46,.55);
+    max-height:300px;overflow-y:auto;overscroll-behavior:contain}
+  .hpc-panel[hidden]{display:none}
+  .hpc-panel li[role=option]{padding:9px 12px;border-radius:8px;font:600 14.5px var(--display);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:10px}
+  .hpc-panel li[role=option][hidden]{display:none}
+  .hpc-panel li[role=option]:hover,.hpc-panel li[role=option].active{background:rgba(21,94,122,.08)}
+  .hpc-panel .hpc-all{font-weight:700;color:var(--cta)}
+  .hpc-panel .flag{width:20px;text-align:center;flex:none;font-size:15px;line-height:1}
+  .hpc-panel .hpc-grp{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 12px 4px}
+  .hpc-panel .hpc-grp[hidden]{display:none}
+  .hpc-panel .hpc-none{padding:10px 12px;color:var(--muted);font-size:14px}
+  .hpc-panel .hpc-none[hidden]{display:none}
   /* signature passport-stamp accent on the form card's top-right corner */
   .hp-bar{position:relative}
   .hp-bar .stamp{position:absolute;top:-22px;right:-18px;background:#fff;z-index:3}
@@ -139,6 +159,30 @@
   $schengenDests = ($navDestinations ?? collect())->where('visa_type', 'Schengen')->values();
   // Popular destination quick-links (names, not images).
   $hpDests = $schengenDests->take(8);
+
+  // Hero destination picker — group the real covered destinations by region + flag.
+  // DB-driven: only countries we actually cover show up. Names must match DB spelling.
+  $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
+  $regionOf = [
+    'France'=>'Western Europe','Germany'=>'Western Europe','Netherlands'=>'Western Europe','Austria'=>'Western Europe','Belgium'=>'Western Europe','Luxembourg'=>'Western Europe','Switzerland'=>'Western Europe','Liechtenstein'=>'Western Europe',
+    'Spain'=>'Southern Europe','Italy'=>'Southern Europe','Portugal'=>'Southern Europe','Greece'=>'Southern Europe','Croatia'=>'Southern Europe','Malta'=>'Southern Europe','Slovenia'=>'Southern Europe',
+    'Denmark'=>'Northern Europe','Sweden'=>'Northern Europe','Iceland'=>'Northern Europe','Norway'=>'Northern Europe','Finland'=>'Northern Europe','Estonia'=>'Northern Europe','Latvia'=>'Northern Europe','Lithuania'=>'Northern Europe',
+    'Poland'=>'Central & Eastern Europe','Czechia'=>'Central & Eastern Europe','Hungary'=>'Central & Eastern Europe','Slovakia'=>'Central & Eastern Europe','Bulgaria'=>'Central & Eastern Europe','Romania'=>'Central & Eastern Europe',
+  ];
+  $flagOf = [
+    'France'=>'🇫🇷','Germany'=>'🇩🇪','Netherlands'=>'🇳🇱','Austria'=>'🇦🇹','Belgium'=>'🇧🇪','Luxembourg'=>'🇱🇺','Switzerland'=>'🇨🇭','Liechtenstein'=>'🇱🇮',
+    'Spain'=>'🇪🇸','Italy'=>'🇮🇹','Portugal'=>'🇵🇹','Greece'=>'🇬🇷','Croatia'=>'🇭🇷','Malta'=>'🇲🇹','Slovenia'=>'🇸🇮',
+    'Denmark'=>'🇩🇰','Sweden'=>'🇸🇪','Iceland'=>'🇮🇸','Norway'=>'🇳🇴','Finland'=>'🇫🇮','Estonia'=>'🇪🇪','Latvia'=>'🇱🇻','Lithuania'=>'🇱🇹',
+    'Poland'=>'🇵🇱','Czechia'=>'🇨🇿','Hungary'=>'🇭🇺','Slovakia'=>'🇸🇰','Bulgaria'=>'🇧🇬','Romania'=>'🇷🇴',
+  ];
+  $groupedDests = [];
+  foreach ($schengenDests as $d) {
+    $groupedDests[$regionOf[$d->name] ?? 'Other Schengen'][] = $d;
+  }
+  // Order: known regions first (in $regionOrder), any leftover ('Other Schengen') appended.
+  $orderedGroups = [];
+  foreach ($regionOrder as $r) { if (!empty($groupedDests[$r])) { $orderedGroups[$r] = $groupedDests[$r]; } }
+  foreach ($groupedDests as $r => $list) { if (!isset($orderedGroups[$r])) { $orderedGroups[$r] = $list; } }
 @endphp
 <section class="hp-hero"><div class="wrap">
   <p class="eyebrow">Schengen visas</p>
@@ -149,13 +193,23 @@
   {{-- inline visa-check form → opens a WhatsApp chat with the trip pre-filled --}}
   <form class="hp-bar" onsubmit="return false">
     <span class="stamp" aria-hidden="true">CHECKED<br>&amp; READY</span>
-    <div class="f">
+    <div class="f hp-combo" id="hpc">
       <label for="dest">Where are you going?</label>
-      <input id="dest" type="text" list="hp-dests" autocomplete="off" placeholder="Search a country, or all of Schengen">
-      <datalist id="hp-dests">
-        <option value="Anywhere in the Schengen Area"></option>
-        @foreach ($schengenDests as $d)<option value="{{ $d->name }}"></option>@endforeach
-      </datalist>
+      <input id="dest" type="text" autocomplete="off" placeholder="Search a country, or all of Schengen"
+             role="combobox" aria-expanded="false" aria-controls="hp-destlist" aria-autocomplete="list">
+      <button type="button" class="hpc-caret" tabindex="-1" aria-label="Show destination list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <ul class="hpc-panel" id="hp-destlist" role="listbox" aria-label="Schengen destinations" hidden>
+        <li class="hpc-all" role="option" data-v="Anywhere in the Schengen Area" data-s="anywhere schengen area all everywhere"><span class="flag" aria-hidden="true">🇪🇺</span>Anywhere in the Schengen Area</li>
+        @foreach ($orderedGroups as $region => $list)
+          <li class="hpc-grp" aria-hidden="true">{{ $region }}</li>
+          @foreach ($list as $d)
+            <li role="option" data-v="{{ $d->name }}" data-s="{{ strtolower($d->name) }}"><span class="flag" aria-hidden="true">{{ $flagOf[$d->name] ?? '·' }}</span>{{ $d->name }}</li>
+          @endforeach
+        @endforeach
+        <li class="hpc-none" aria-hidden="true" hidden>No match — we cover all of Schengen.</li>
+      </ul>
     </div>
     <div class="f">
       <label for="nat">Your passport</label>
@@ -180,6 +234,53 @@
   </div>
   @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '18px 0 0'])
   <script>
+    // Hero destination combobox: opens the full grouped list on click, filters as you type,
+    // full keyboard support, and feeds the pick into the WhatsApp message.
+    (function () {
+      var combo = document.getElementById('hpc');
+      if (!combo) return;
+      var input = combo.querySelector('input'),
+          panel = combo.querySelector('.hpc-panel'),
+          caret = combo.querySelector('.hpc-caret'),
+          opts  = Array.prototype.slice.call(panel.querySelectorAll('li[role=option]')),
+          grps  = Array.prototype.slice.call(panel.querySelectorAll('.hpc-grp')),
+          none  = panel.querySelector('.hpc-none'),
+          active = -1;
+      function isOpen(){ return combo.classList.contains('open'); }
+      function open(){ combo.classList.add('open'); panel.hidden = false; input.setAttribute('aria-expanded','true'); }
+      function close(){ combo.classList.remove('open'); panel.hidden = true; input.setAttribute('aria-expanded','false'); setActive(-1); }
+      function visible(){ return opts.filter(function(o){ return !o.hidden; }); }
+      function setActive(i){
+        opts.forEach(function(o){ o.classList.remove('active'); });
+        var vis = visible(); active = i;
+        if (i >= 0 && i < vis.length){ vis[i].classList.add('active'); vis[i].scrollIntoView({block:'nearest'}); }
+      }
+      function filter(){
+        var q = input.value.trim().toLowerCase(), shown = 0;
+        opts.forEach(function(o){ var m = o.dataset.s.indexOf(q) !== -1; o.hidden = !m; if (m) shown++; });
+        grps.forEach(function(g){
+          var any = false, n = g.nextElementSibling;
+          while (n && !n.classList.contains('hpc-grp')){ if (n.getAttribute('role') === 'option' && !n.hidden){ any = true; break; } n = n.nextElementSibling; }
+          g.hidden = !any;
+        });
+        none.hidden = shown > 0;
+        setActive(shown > 0 ? 0 : -1);
+      }
+      function choose(o){ input.value = o.dataset.v; close(); input.focus(); }
+      input.addEventListener('focus', function(){ filter(); open(); });
+      input.addEventListener('input', function(){ filter(); open(); });
+      caret.addEventListener('mousedown', function(e){ e.preventDefault(); if (isOpen()){ close(); } else { filter(); open(); input.focus(); } });
+      panel.addEventListener('mousedown', function(e){ var o = e.target.closest('li[role=option]'); if (o){ e.preventDefault(); choose(o); } });
+      input.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowDown'){ e.preventDefault(); if (!isOpen()){ filter(); open(); } else { setActive(Math.min(active + 1, visible().length - 1)); } }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); if (isOpen()){ setActive(Math.max(active - 1, 0)); } }
+        else if (e.key === 'Enter'){ var vis = visible(); if (isOpen() && active >= 0 && vis[active]){ e.preventDefault(); choose(vis[active]); } }
+        else if (e.key === 'Escape'){ close(); }
+      });
+      document.addEventListener('click', function(e){ if (!combo.contains(e.target)) close(); });
+    })();
+
+    // "See what I need" → open a WhatsApp chat with the trip pre-filled.
     (function () {
       var WA = @json(config('ukv.whatsapp') ?: '447882747584');
       var btn = document.getElementById('hp-chat');
@@ -188,7 +289,9 @@
         var nat = document.getElementById('nat');
         var pass = nat && nat.value ? nat.value : 'a UK';
         var destEl = document.getElementById('dest');
-        var dest = destEl && destEl.value.trim() ? destEl.value.trim() : 'the Schengen Area';
+        var raw = destEl && destEl.value.trim() ? destEl.value.trim() : '';
+        // "Anywhere in the Schengen Area" reads awkwardly in the sentence — normalise it.
+        var dest = (!raw || /^anywhere/i.test(raw)) ? 'the Schengen Area' : raw;
         var msg = 'Hi Beyond Passports, I am applying for a Schengen visa on ' + pass + ' passport for ' + dest + '. What do I need?';
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
