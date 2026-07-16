@@ -454,8 +454,7 @@
         ]));
     @endphp
     <p class="cnf-footer-links">
-        You can <a href="/track">track this application</a> any time using your reference.
-        &nbsp;&middot;&nbsp;
+        @if (config('ukv.track.enabled'))You can <a href="/track">track this application</a> any time using your reference. &nbsp;&middot;&nbsp;@endif
         <a href="{{ $cnfDocsUrl }}">Send your documents</a>
         &nbsp;&middot;&nbsp;
         <a href="/">Back to Beyond Passports</a>

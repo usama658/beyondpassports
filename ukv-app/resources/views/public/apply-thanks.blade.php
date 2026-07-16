@@ -65,7 +65,7 @@
         Your application has been emailed to our UK team.
       </div>
       <div class="tk-links">
-        @if ($orderRef)<a href="{{ url('/track') }}?ref={{ urlencode($orderRef) }}">Track my case →</a>@endif
+        @if ($orderRef && config('ukv.track.enabled'))<a href="{{ url('/track') }}?ref={{ urlencode($orderRef) }}">Track my case →</a>@endif
         <a href="{{ url('/') }}">Back to home</a>
       </div>
     </div>

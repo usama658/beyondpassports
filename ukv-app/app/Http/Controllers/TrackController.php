@@ -6,6 +6,7 @@ use App\Enums\OrderStatus;
 use App\Models\Order;
 use App\Services\RequirementService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -158,9 +159,16 @@ class TrackController extends Controller
 
     /**
      * Render the track form.
+     *
+     * The tracker is DRAFTED (config ukv.track.enabled). While off, the page redirects home so the
+     * route stays wired but is not publicly reachable.
      */
-    public function show(): View
+    public function show(): View|RedirectResponse
     {
+        if (! config('ukv.track.enabled')) {
+            return redirect('/');
+        }
+
         return view('track');
     }
 
@@ -170,8 +178,12 @@ class TrackController extends Controller
      * Apply `throttle:` middleware to the route that points here (e.g. throttle:10,1)
      * to rate-limit enumeration attempts.
      */
-    public function lookup(Request $request, RequirementService $requirements): View
+    public function lookup(Request $request, RequirementService $requirements): View|RedirectResponse
     {
+        if (! config('ukv.track.enabled')) {
+            return redirect('/');
+        }
+
         $validated = $request->validate([
             'ref' => ['required', 'string', 'max:32'],
         ]);

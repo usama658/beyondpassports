@@ -114,7 +114,7 @@
       <div class="routes">
         <a class="primary" href="{{ url('/') }}">Back to home</a>
         <a class="ghost" href="{{ url('/schengen-visa') }}">Browse destinations</a>
-        <a class="ghost" href="{{ url('/track') }}">Track an application</a>
+        @if (config('ukv.track.enabled'))<a class="ghost" href="{{ url('/track') }}">Track an application</a>@endif
         <a class="ghost" href="{{ url('/contact') }}">Talk to our team</a>
       </div>
     </div>

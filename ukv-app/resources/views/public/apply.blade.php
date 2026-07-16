@@ -491,9 +491,9 @@
     <div class="sla"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Typical callback: within 1 business day, Mon–Sat 9–6</div>
     <div class="acts">
       <a class="btn" href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}">@include('partials.wa-glyph')WhatsApp us</a>
-      <a class="btn btn--ghost" href="{{ url('/track') }}" id="cbm-track">Track my case</a>
+      @if (config('ukv.track.enabled'))<a class="btn btn--ghost" href="{{ url('/track') }}" id="cbm-track">Track my case</a>@endif
     </div>
-    <p class="micro">Keep your reference to track progress · not a government website.</p>
+    <p class="micro">Keep your reference safe · not a government website.</p>
   </div>
 </div>
 

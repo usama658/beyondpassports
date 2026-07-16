@@ -53,6 +53,7 @@ final class ChatCtaTest extends TestCase
 
     public function test_floating_button_present_on_standalone_track_page(): void
     {
+        config(['ukv.track.enabled' => true]); // tracker is drafted; enable to render the page
         $this->get('/track')->assertOk()->assertSee('data-wa-float', false);
     }
 

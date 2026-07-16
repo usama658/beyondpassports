@@ -63,7 +63,7 @@
         <a href="{{ url('/services') }}">All services</a>
         <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
         <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
-        <a href="{{ url('/track') }}">Track application</a>
+        @if (config('ukv.track.enabled'))<a href="{{ url('/track') }}">Track application</a>@endif
       </div>
       <div class="bpc-col">
         <strong>Free tools &amp; guides</strong>

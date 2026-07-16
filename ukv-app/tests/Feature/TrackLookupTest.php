@@ -22,6 +22,13 @@ final class TrackLookupTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // The tracker is drafted behind a flag; enable it so these tests exercise the lookup.
+        config(['ukv.track.enabled' => true]);
+    }
+
     private function makeOrder(array $overrides = []): Order
     {
         $dest = Destination::create([

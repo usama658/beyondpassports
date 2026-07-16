@@ -55,6 +55,12 @@ return [
         'sticky_action_bar' => (bool) env('UKV_CHECKLIST_STICKY_BAR', true),
     ],
 
+    // Public status tracker (/track). DRAFTED (off) — the page + lookup redirect home and the
+    // tool card / footer link are hidden. Flip to true (or UKV_TRACK_ENABLED=true) to relaunch.
+    'track' => [
+        'enabled' => (bool) env('UKV_TRACK_ENABLED', false),
+    ],
+
     // Appointment slots. auto_hold_on_apply tentatively reserves the soonest slot at a centre we
     // book at when an in-person/biometric order is created (online visas are skipped). The short
     // hold (minutes) auto-releases via slots:release-expired if the customer doesn't proceed.
@@ -368,7 +374,7 @@ return [
             'items' => [
                 ['title' => 'Visa checker', 'desc' => 'Tell us your trip and we confirm exactly what you need in about a minute.', 'status' => 'available', 'url' => '/tools'],
                 ['title' => 'Document checklist', 'desc' => 'A personalised document list for your destination, instantly.', 'status' => 'available', 'url' => '/document-checklist'],
-                ['title' => 'Status tracker', 'desc' => 'Follow your application from submission to passport back in your hand.', 'status' => 'available', 'url' => '/track'],
+                ['title' => 'Status tracker', 'desc' => 'Follow your application from submission to passport back in your hand.', 'status' => env('UKV_TRACK_ENABLED', false) ? 'available' : 'coming-soon', 'url' => env('UKV_TRACK_ENABLED', false) ? '/track' : null],
                 ['title' => '90/180-day calculator & estimators', 'desc' => 'Schengen day-count, fee and timing estimates and a photo check.', 'status' => 'coming-soon', 'url' => null],
             ],
         ],

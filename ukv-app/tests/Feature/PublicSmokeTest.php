@@ -24,7 +24,7 @@ final class PublicSmokeTest extends TestCase
             '/', '/services', '/tour-packages', '/tools', '/find-a-centre',
             '/about', '/contact', '/contact/thank-you', '/legal', '/compare',
             '/guides', '/reviews', '/document-checklist', '/apply', '/apply/thank-you',
-            '/schengen-visa', '/schengen-visa-consultancy', '/track', '/sitemap.xml',
+            '/schengen-visa', '/schengen-visa-consultancy', '/sitemap.xml',
             '/documents', '/driving-abroad',
             // Orphaned landing pages (noindex; reachable by URL only)
             '/schengen-visa-agent', '/schengen-visa-agent-premium', '/schengen-visa-refusal-risk',
