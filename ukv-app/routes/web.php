@@ -62,6 +62,8 @@ Route::get('/document-checklist', [ChecklistController::class, 'tool'])->name('c
 Route::post('/document-checklist', [ChecklistController::class, 'result'])
     ->middleware('throttle:contact')
     ->name('checklist.result');
+// Post-wizard thank-you: confirms the emailed checklist + auto-redirects to WhatsApp (result page drafted).
+Route::get('/document-checklist/sent/{checklistRequest}', [ChecklistController::class, 'thanks'])->name('checklist.thanks');
 Route::get('/checklist/{checklistRequest}', [ChecklistController::class, 'show'])->name('checklist.show');
 Route::post('/checklist/{checklistRequest}/checkout', [ChecklistController::class, 'checkout'])
     ->name('checklist.checkout');

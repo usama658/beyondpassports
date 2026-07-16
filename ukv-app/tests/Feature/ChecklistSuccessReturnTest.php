@@ -15,6 +15,13 @@ final class ChecklistSuccessReturnTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // The on-page result is drafted behind a flag; enable it so these tests exercise the page.
+        config(['ukv.checklist.result_enabled' => true]);
+    }
+
     public function test_valid_session_id_reveals_before_webhook_without_writing_paid_at(): void
     {
         $d = Destination::factory()->create(['name' => 'Turkey']);

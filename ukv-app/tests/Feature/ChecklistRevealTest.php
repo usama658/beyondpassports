@@ -13,6 +13,13 @@ final class ChecklistRevealTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // The on-page result is drafted behind a flag; enable it so these tests exercise the page.
+        config(['ukv.checklist.result_enabled' => true]);
+    }
+
     private function request(array $attrs = []): ChecklistRequest
     {
         $d = Destination::factory()->create(['name' => 'Turkey', 'tier_standard_gbp' => 35, 'tier_express_gbp' => 55, 'tier_premium_gbp' => 85]);

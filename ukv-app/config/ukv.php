@@ -44,6 +44,10 @@ return [
     // Document-checklist tool: calendar-reminder timing (days). The .ics "start your application
     // by" deadline = travel_date − default_processing_days − deadline_buffer_days.
     'checklist' => [
+        // The on-page /checklist/{token} result page is DRAFTED (off). The wizard now emails the
+        // checklist + redirects to WhatsApp via a thank-you page. Flip to true (or set
+        // UKV_CHECKLIST_RESULT_ENABLED=true) to restore the on-screen result, PDF, calendar + paid tiers.
+        'result_enabled' => (bool) env('UKV_CHECKLIST_RESULT_ENABLED', false),
         'default_processing_days' => (int) env('UKV_CHECKLIST_PROCESSING_DAYS', 21),
         'deadline_buffer_days' => (int) env('UKV_CHECKLIST_BUFFER_DAYS', 7),
         // Sticky quick-action bar on the result page (save/email/share/apply always reachable).

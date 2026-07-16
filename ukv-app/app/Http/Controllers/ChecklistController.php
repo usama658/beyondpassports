@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SyncChecklistLead;
+use App\Mail\ChecklistDelivery;
+use App\Mail\NewChecklistLead;
 use App\Models\ChecklistRequest;
 use App\Models\Destination;
 use App\Services\ChecklistPdfService;
@@ -14,6 +17,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Public document-checklist tool (build wave 1: web layer).
@@ -63,6 +68,7 @@ class ChecklistController extends Controller
     {
         $validated = $request->validate([
             'destination'        => ['required', 'string', 'max:120'],
+            'email'              => ['required', 'email:rfc', 'max:190'],
             'trip_purpose'       => ['nullable', 'string', 'in:tourist,business,study,other'],
             'is_minor'           => ['nullable', 'in:yes,no'],
             'residency_status'   => ['nullable', 'string', 'in:citizen,permanent,visa_holder'],
@@ -73,6 +79,9 @@ class ChecklistController extends Controller
             'return_date'        => ['nullable', 'date'],
             'visa_entries'       => ['nullable', 'string', 'in:single,multiple'],
             'prior_refusal'      => ['nullable', 'in:yes,no'],
+            'marketing_consent'  => ['sometimes', 'boolean'],
+        ], [
+            'email.required' => 'Enter an email address so we can send your checklist.',
         ]);
 
         // Resolve by slug OR display name (mirrors /apply's destination handling — the apply
@@ -90,13 +99,55 @@ class ChecklistController extends Controller
 
         $inputs = $this->engineInputs($validated);
 
-        // No contact captured at this step — value-first. The delivery agent's POST
-        // /checklist/{token}/send records contact + channels onto the existing request.
         $checklist = $this->checklists->create($destination, $inputs, [
             'ip' => $request->ip(),
         ]);
 
-        return redirect()->route('checklist.show', ['checklistRequest' => $checklist->token]);
+        // Email the checklist + capture the lead (the wizard now IS the delivery + lead step).
+        $checklist->email = $validated['email'];
+        $checklist->channels = ['email'];
+        $checklist->marketing_consent = (bool) ($validated['marketing_consent'] ?? false);
+        $checklist->save();
+
+        Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist, false, false));
+        SyncChecklistLead::dispatch($checklist);
+
+        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        if (! empty($recipient)) {
+            try {
+                Mail::to($recipient)->send(new NewChecklistLead($checklist, url('/checklist/'.$checklist->token)));
+            } catch (\Throwable $e) {
+                Log::error('Checklist lead email failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
+            }
+        }
+
+        return redirect()->route('checklist.thanks', ['checklistRequest' => $checklist->token]);
+    }
+
+    /**
+     * Thank-you page after the wizard: confirms the checklist was emailed and auto-redirects the
+     * user to WhatsApp (same design as apply-thanks). Replaces the on-page /checklist result while
+     * the result page is drafted (config ukv.checklist.result_enabled).
+     */
+    public function thanks(ChecklistRequest $checklistRequest): View
+    {
+        $checklistRequest->loadMissing('destination');
+        $dest = (string) ($checklistRequest->destination?->name ?? 'your trip');
+        $inputs = is_array($checklistRequest->inputs) ? $checklistRequest->inputs : [];
+
+        $bits = ['Hi Beyond Passports, I just got my document checklist for '.$dest.'.'];
+        if (! empty($inputs['travel_date'])) {
+            $bits[] = 'Travelling around '.$inputs['travel_date'].'.';
+        }
+        $bits[] = 'Please help me get it right.';
+        $waNum = preg_replace('/\D+/', '', (string) (config('ukv.whatsapp') ?: '447882747584'));
+        $waUrl = 'https://wa.me/'.$waNum.'?text='.rawurlencode(implode(' ', $bits));
+
+        return view('public.checklist-thanks', [
+            'destination' => $dest,
+            'email'       => $checklistRequest->email,
+            'waUrl'       => $waUrl,
+        ]);
     }
 
     /**
@@ -168,8 +219,14 @@ class ChecklistController extends Controller
      * Paid-aware: reads $paid from isPaid() OR a valid Stripe session_id query param.
      * The session_id path is read-only — show() must NOT write paid_at (webhook does).
      */
-    public function show(ChecklistRequest $checklistRequest, Request $request, StripeService $stripe): View
+    public function show(ChecklistRequest $checklistRequest, Request $request, StripeService $stripe): View|RedirectResponse
     {
+        // The on-page result is DRAFTED (config ukv.checklist.result_enabled). While off, a saved
+        // link sends the user back to the wizard instead of showing the old checklist page.
+        if (! config('ukv.checklist.result_enabled')) {
+            return redirect()->route('checklist.tool');
+        }
+
         $checklistRequest->loadMissing('destination');
 
         $sessionId = (string) $request->query('session_id', '');
