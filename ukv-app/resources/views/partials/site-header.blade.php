@@ -11,6 +11,8 @@
     <a href="tel:{{ config('ukv.phone_e164') ?: '+447882747584' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
     @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')<b>Europe Team:</b>&nbsp;{{ config('ukv.phone_de') ?: '+49' }}</a>@endif
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}">@include('partials.wa-glyph')WhatsApp</a>
+    @php $tbIco = trim((string) config('ukv.compliance.ico_number', '')); @endphp
+    @if($tbIco !== '')<a href="https://ico.org.uk/ESDWebPages/Entry/{{ rawurlencode($tbIco) }}" target="_blank" rel="noopener" title="Verify our ICO data-protection registration on the ICO register"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><b>ICO:</b>&nbsp;{{ $tbIco }}</a>@endif
   </span>
 </div></div>
 <header class="site-head"><div class="wrap">
