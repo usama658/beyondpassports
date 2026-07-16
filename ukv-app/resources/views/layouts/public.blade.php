@@ -19,8 +19,9 @@
 @hasSection('canonical')
 <link rel="canonical" href="@yield('canonical')">
 @endif
-{{-- Published copy of the coded design system (public/assets/ukv.css). --}}
-<link rel="stylesheet" href="{{ asset('assets/ukv.css') }}">
+{{-- Published copy of the coded design system (public/assets/ukv.css).
+     Cache-bust by file mtime so CSS edits reach browsers/CDN without a manual purge. --}}
+<link rel="stylesheet" href="{{ asset('assets/ukv.css') }}?v={{ @filemtime(public_path('assets/ukv.css')) ?: '1' }}">
 @stack('head')
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
