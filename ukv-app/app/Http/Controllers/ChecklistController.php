@@ -101,8 +101,19 @@ class ChecklistController extends Controller
             'ip' => $request->ip(),
         ]);
 
-        // The wizard lands the user in WhatsApp (no contact required). If they did leave an email,
-        // also send the checklist + capture the lead — otherwise it's a pure WhatsApp handoff.
+        // The wizard lands the user in WhatsApp (no contact required). Email the ready checklist
+        // to the team inbox so whoever answers the WhatsApp message can paste the list straight
+        // into their reply.
+        $team = config('ukv.owner_email') ?: config('mail.from.address');
+        if (! empty($team)) {
+            try {
+                Mail::to($team)->queue(new ChecklistDelivery($checklist, false, false, true));
+            } catch (\Throwable $e) {
+                Log::error('Checklist team copy failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
+            }
+        }
+
+        // If the visitor also left an email, send them their own copy + capture the lead.
         $email = trim((string) ($validated['email'] ?? ''));
         if ($email !== '') {
             $checklist->email = $email;
@@ -113,10 +124,9 @@ class ChecklistController extends Controller
             Mail::to($checklist->email)->queue(new ChecklistDelivery($checklist, false, false));
             SyncChecklistLead::dispatch($checklist);
 
-            $recipient = config('ukv.owner_email') ?: config('mail.from.address');
-            if (! empty($recipient)) {
+            if (! empty($team)) {
                 try {
-                    Mail::to($recipient)->send(new NewChecklistLead($checklist, url('/checklist/'.$checklist->token)));
+                    Mail::to($team)->send(new NewChecklistLead($checklist, url('/checklist/'.$checklist->token)));
                 } catch (\Throwable $e) {
                     Log::error('Checklist lead email failed', ['token' => $checklist->token, 'error' => $e->getMessage()]);
                 }

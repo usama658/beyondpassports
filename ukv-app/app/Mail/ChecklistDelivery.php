@@ -36,6 +36,8 @@ final class ChecklistDelivery extends Mailable implements ShouldQueue
         public readonly ChecklistRequest $request,
         public readonly bool $attachIcs = false,
         public readonly bool $includePdf = false,
+        // Team copy: same snapshot, framed for the team to paste into the WhatsApp reply.
+        public readonly bool $forTeam = false,
     ) {}
 
     private function dest(): string
@@ -52,6 +54,15 @@ final class ChecklistDelivery extends Mailable implements ShouldQueue
 
     public function envelope(): Envelope
     {
+        if ($this->forTeam) {
+            $inputs = is_array($this->request->inputs) ? $this->request->inputs : [];
+            $when = ! empty($inputs['travel_date']) ? ' · travelling '.$inputs['travel_date'] : '';
+
+            return new Envelope(
+                subject: "[Share on WhatsApp] {$this->dest()} checklist ready{$when}",
+            );
+        }
+
         return new Envelope(
             subject: "Your {$this->dest()} document checklist",
         );
@@ -69,6 +80,7 @@ final class ChecklistDelivery extends Mailable implements ShouldQueue
         return new Content(
             markdown: 'emails.checklist',
             with: [
+                'forTeam' => $this->forTeam,
                 'dest' => $destination,
                 'items' => is_array($this->request->items) ? $this->request->items : [],
                 'savedLink' => $base.'/checklist/'.$this->request->token,

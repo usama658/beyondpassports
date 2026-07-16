@@ -43,10 +43,12 @@ final class ChecklistWizardTest extends TestCase
         $this->assertNull($request->email);
         $res->assertRedirect("/document-checklist/sent/{$request->token}");
 
-        Mail::assertNothingQueued();
+        // Team gets the ready checklist to paste into the WhatsApp reply (even with no visitor email).
+        Mail::assertQueued(ChecklistDelivery::class, fn ($mail) => $mail->forTeam === true);
+        Mail::assertQueued(ChecklistDelivery::class, 1);
     }
 
-    public function test_optional_email_still_sends_the_checklist(): void
+    public function test_optional_email_sends_visitor_copy_plus_team_copy(): void
     {
         Mail::fake();
         Destination::factory()->create(['name' => 'Turkey']);
@@ -60,6 +62,9 @@ final class ChecklistWizardTest extends TestCase
         $this->assertSame('traveller@example.com', $request->email);
         $res->assertRedirect("/document-checklist/sent/{$request->token}");
 
-        Mail::assertQueued(ChecklistDelivery::class);
+        // Two ChecklistDelivery sends: team copy (forTeam) + visitor copy.
+        Mail::assertQueued(ChecklistDelivery::class, 2);
+        Mail::assertQueued(ChecklistDelivery::class, fn ($mail) => $mail->forTeam === true);
+        Mail::assertQueued(ChecklistDelivery::class, fn ($mail) => $mail->forTeam === false);
     }
 }
