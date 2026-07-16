@@ -75,6 +75,7 @@
       </div>
 @endforeach
     </div>
+    <div class="ft-ico" style="display:flex;justify-content:center;padding:6px 0 18px">@include('partials.ico-badge', ['variant' => 'dark'])</div>
     <div class="ft-bottom">
       <span>© Beyond Passports. Independent, not the government. Fee separate from the visa fee. Approval never guaranteed.</span>
       <span style="display:inline-flex;align-items:center;gap:7px">@include('partials.uk-eu-flags',['size'=>14])Registered in UK &amp; Europe</span>

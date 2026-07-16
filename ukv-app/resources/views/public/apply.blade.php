@@ -201,6 +201,7 @@
           <span>No payment until you approve</span>
           <span>Every case hand-checked</span>
         </div>
+        <div style="margin:16px 0 0">@include('partials.ico-badge', ['variant' => 'dark'])</div>
         @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '20px 0 0'])
       </div>
       <div class="ap-chip reveal" aria-hidden="true">

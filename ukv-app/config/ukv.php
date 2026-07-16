@@ -100,7 +100,7 @@ return [
     // uncertified claim ever ships. Empty slots fall back to true operational badges (encrypted
     // transfer, 30-day deletion, confidential access). ICO registration tracked in task #215.
     'compliance' => [
-        'ico_number'       => env('UKV_ICO_NUMBER', ''),          // e.g. ZB123456 — blank until registered
+        'ico_number'       => env('UKV_ICO_NUMBER', 'ZC197159'),  // real ICO reg (Beyond Passports Ltd, exp 12 Jul 2027)
         'cyber_essentials' => env('UKV_CYBER_ESSENTIALS', false), // true only once certified
         'insurer'          => env('UKV_INSURER', ''),             // insurer name — blank hides badge
         'indemnity'        => env('UKV_INDEMNITY', ''),           // e.g. "£500,000 per claim" — blank omits amount

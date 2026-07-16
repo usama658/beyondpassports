@@ -166,6 +166,7 @@
     <button class="btn" type="button" id="hp-chat">See what I need · free →</button>
   </form>
   <p class="hp-barhint">A named UK visa specialist replies · usually within minutes, Mon–Sat 9–6</p>
+  <div style="margin:12px 0 0">@include('partials.ico-badge', ['variant' => 'chip'])</div>
 
   {{-- proof pills tight under CTA (getbrazilvisa-style credibility row) --}}
   @push('head')<style>

@@ -167,6 +167,7 @@
           <span><b>Confirmed</b> on receipt</span>
           <span><b>Private</b>, team use only</span>
         </div>
+        <div style="margin:16px 0 0">@include('partials.ico-badge', ['variant' => 'light'])</div>
       </div>
     </div>
   </div>

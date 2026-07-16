@@ -11,7 +11,7 @@ values so they are easy to find. Update both when a value is confirmed.
 | Public enquiries email | hello@beyondpassports.co.uk | `ukv.email` / `UKV_EMAIL` | |
 | Contact/callback lead recipient | **hello@beyondpassports.co.uk** | `ukv.owner_email` / `UKV_OWNER_EMAIL` | Where /contact form emails land; prod .env set to hello@ (was admin@ — nobody watched it) |
 | WhatsApp number | **447882747584** | `ukv.whatsapp` / `UKV_WHATSAPP` | Confirmed real (2026-07-12); drives all WhatsApp CTAs + thank-you/appt hand-offs |
-| ICO registration number | _not yet registered_ | `ukv.compliance.ico_number` / `UKV_ICO_NUMBER` | Task #215; badge hidden until set |
+| ICO registration number | **ZC197159** | `ukv.compliance.ico_number` / `UKV_ICO_NUMBER` | Confirmed real (registered 13 Jul 2026, expires 12 Jul 2027). Task #215 done. Featured site-wide via partials.ico-badge (footer, /about, privacy, apply/upload, home) linking the public ICO register |
 | Cyber Essentials | _not certified_ | `ukv.compliance.cyber_essentials` / `UKV_CYBER_ESSENTIALS` | Badge hidden until true |
 | Professional indemnity insurer | _not set_ | `ukv.compliance.insurer` + `.indemnity` / `UKV_INSURER`, `UKV_INDEMNITY` | Badge hidden until set |
 | Registered office address | **Unit 82a James Carter Road, Mildenhall, Bury St. Edmunds, IP28 7DE, United Kingdom** | `ukv.address.line1..postcode` | Renders in footers, /about location card + map, and Organization schema PostalAddress |
