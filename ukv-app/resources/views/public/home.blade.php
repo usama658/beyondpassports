@@ -125,13 +125,7 @@
   @media (max-width:760px){
     .tbar-b .row{grid-template-columns:1fr 1fr;gap:14px}
     .tbar-b .row>div:nth-child(odd){border-left:0}
-    /* Trust bar → auto-running carousel on mobile: one item per view, full-bleed, snap-centred,
-       no visible scrollbar. JS below advances it and loops (pauses while the user is touching). */
-    .tbar-f .row{flex-wrap:nowrap;justify-content:flex-start;gap:0;overflow-x:auto;
-      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-      padding:14px 0;margin:0 -20px;scrollbar-width:none}
-    .tbar-f .row::-webkit-scrollbar{display:none}
-    .tbar-f .ti{flex:0 0 100%;justify-content:center;scroll-snap-align:center}
+    /* .tbar-f mobile carousel is now global (ukv.css) + auto-run in partials.site-scripts. */
   }
 </style>
 @endpush
@@ -223,49 +217,7 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
   <span class="ti">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></span>
-</div></div>
-<script>
-  /* Auto-running trust-bar carousel (mobile only, one item per view). Advances every 2.6s and
-     loops; pauses while the user is touching/dragging and resumes shortly after. Desktop shows
-     all items inline, so this is gated on the mobile media query. */
-  (function () {
-    var row = document.querySelector('.tbar-f .row');
-    if (!row) return;
-    var mq = window.matchMedia('(max-width:760px)');
-    var timer = null, paused = false, i = 0;
-    function items(){ return row.children.length; }
-    function go(){
-      if (paused || !mq.matches) return;
-      i = (i + 1) % items();
-      var el = row.children[i];
-      if (el) row.scrollTo({ left: el.offsetLeft, behavior: 'smooth' });
-    }
-    function start(){ stop(); if (mq.matches) timer = setInterval(go, 2600); }
-    function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-    // Keep the index in sync if the user swipes manually.
-    var sync;
-    row.addEventListener('scroll', function () {
-      clearTimeout(sync);
-      sync = setTimeout(function () {
-        var best = 0, min = Infinity;
-        for (var k = 0; k < items(); k++) {
-          var d = Math.abs(row.children[k].offsetLeft - row.scrollLeft);
-          if (d < min) { min = d; best = k; }
-        }
-        i = best;
-      }, 120);
-    }, { passive: true });
-    ['touchstart','pointerdown'].forEach(function (e) {
-      row.addEventListener(e, function () { paused = true; }, { passive: true });
-    });
-    ['touchend','pointerup','mouseleave'].forEach(function (e) {
-      row.addEventListener(e, function () { paused = false; }, { passive: true });
-    });
-    (mq.addEventListener ? mq.addEventListener('change', start) : mq.addListener(start));
-    start();
-  })();
-</script>
-</section>
+</div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row">
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
   <div><div class="n">{{ App\Support\SiteStats::applications() }}</div><div class="l">Applications filed in {{ App\Support\SiteStats::yearsActive() }} years</div></div>

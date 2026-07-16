@@ -202,6 +202,16 @@ footer strong{color:#fff}
   .nav a{margin:0 14px 0 0;font-size:14px}
   section{padding:52px 0}
 }
+/* Trust bar (.tbar-f) → auto-running carousel on mobile, SITE-WIDE. One item per view,
+   full-bleed, snap-centred, no scrollbar. `section.tbar-f` specificity (0,1,1) outranks the
+   per-page `.tbar-f .row` base rules (0,2,0? no — .row is 0,2,0) so we qualify the row too.
+   The auto-advance JS lives in partials/site-scripts (runs on every layout page). */
+@media (max-width:760px){
+  section.tbar-f > .wrap > .row{flex-wrap:nowrap;justify-content:flex-start;gap:0;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:14px 0;margin:0 -20px;scrollbar-width:none}
+  section.tbar-f > .wrap > .row::-webkit-scrollbar{display:none}
+  section.tbar-f > .wrap > .row > .ti{flex:0 0 100%;justify-content:center;scroll-snap-align:center}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
 
 /* Shared components consolidated from page-scoped styles (silo QA fix) */
