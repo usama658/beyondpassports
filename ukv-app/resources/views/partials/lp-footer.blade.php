@@ -72,7 +72,7 @@
         <a href="{{ url('/find-a-centre') }}">Find a centre</a>
         <a href="{{ url('/guides') }}">Visa guides &amp; stories</a>
         <a href="{{ url('/reviews') }}">Traveller reviews</a>
-        <a href="{{ url('/compare') }}">Apply yourself vs us</a>
+        @if (config('ukv.compare.enabled'))<a href="{{ url('/compare') }}">Apply yourself vs us</a>@endif
       </div>
       <div class="bpc-col">
         <strong>Company &amp; legal</strong>

@@ -68,6 +68,12 @@ return [
         'country_pages_enabled' => (bool) env('UKV_COUNTRY_PAGES_ENABLED', false),
     ],
 
+    // "Apply yourself vs us" comparison page (/compare). DRAFTED (off) — redirects home, dropped
+    // from the sitemap, footer link hidden. Flip UKV_COMPARE_ENABLED=true to relaunch.
+    'compare' => [
+        'enabled' => (bool) env('UKV_COMPARE_ENABLED', false),
+    ],
+
     // Appointment slots. auto_hold_on_apply tentatively reserves the soonest slot at a centre we
     // book at when an in-person/biometric order is created (online visas are skipped). The short
     // hold (minutes) auto-releases via slots:release-expired if the customer doesn't proceed.

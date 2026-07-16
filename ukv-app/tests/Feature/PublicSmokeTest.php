@@ -22,7 +22,7 @@ final class PublicSmokeTest extends TestCase
         return array_map(fn ($u) => [$u], [
             // Core pages
             '/', '/services', '/tour-packages', '/tools', '/find-a-centre',
-            '/about', '/contact', '/contact/thank-you', '/legal', '/compare',
+            '/about', '/contact', '/contact/thank-you', '/legal',
             '/guides', '/reviews', '/document-checklist', '/apply', '/apply/thank-you',
             '/schengen-visa', '/schengen-visa-consultancy', '/sitemap.xml',
             '/documents', '/driving-abroad',

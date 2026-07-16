@@ -44,11 +44,15 @@ class SitemapController extends Controller
             ['/guides', 'weekly', '0.6'],
             ['/document-checklist', 'monthly', '0.7'],
             ['/find-a-centre', 'monthly', '0.6'],
-            ['/compare', 'monthly', '0.5'],
             ['/about', 'monthly', '0.4'],
             ['/contact', 'monthly', '0.4'],
             ['/legal', 'yearly', '0.2'],
         ];
+
+        // /compare DRAFTED (config ukv.compare.enabled) — keep it out of the sitemap while off.
+        if (config('ukv.compare.enabled')) {
+            $static[] = ['/compare', 'monthly', '0.5'];
+        }
 
         // Guide articles — read straight from the GuideController registry so the
         // sitemap can never drift from the guides that actually exist (audit M-7).

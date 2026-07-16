@@ -38,7 +38,10 @@ Route::get('/about', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCo
 Route::view('/contact', 'public.contact')->name('contact'); // stays coded: carries the contact form (POST /contact)
 Route::get('/contact/thank-you', [ContactController::class, 'thanks'])->name('contact.thanks');
 Route::get('/legal', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('legal', 'public.legal'))->name('legal');
-Route::get('/compare', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('compare', 'public.compare'))->name('compare');
+// /compare DRAFTED (config ukv.compare.enabled). While off, redirect home. Flip UKV_COMPARE_ENABLED=true.
+Route::get('/compare', fn (\App\Http\Controllers\CmsController $c) => config('ukv.compare.enabled')
+    ? $c->pageOrCoded('compare', 'public.compare')
+    : redirect('/'))->name('compare');
 // Standalone paid-traffic landing page (Speed/outcome). Orphaned by design:
 // noindex, NOT in nav/footer, NOT in SitemapController. Reachable by URL only.
 // Paid-traffic landing pages (site-theme light). Orphaned: noindex, NOT in nav/footer/sitemap.
