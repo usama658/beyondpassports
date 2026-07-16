@@ -38,6 +38,14 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat:no-repeat;background-position:right 12px center;background-size:14px}
   .hp-bar select::-ms-expand{display:none}
+  /* Native <select> has no cross-browser "open" state, so flip the chevron on focus
+     (opening the picker focuses it). Kept as its own rule so it survives even if a
+     browser doesn't understand the select:open rule below. */
+  .hp-bar select:focus{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 15 6-6 6 6'/%3E%3C/svg%3E")}
+  /* Progressive enhancement: exact open-state flip on browsers that support select:open. */
+  .hp-bar select:open{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23697079' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 15 6-6 6 6'/%3E%3C/svg%3E")}
   .hp-bar input[readonly]{background:var(--paper);color:var(--muted);cursor:default}
   .hp-bar .btn{white-space:nowrap}
   /* Hero destination combobox — click to drop the full grouped list, or type to filter */
