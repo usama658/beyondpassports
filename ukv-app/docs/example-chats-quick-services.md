@@ -69,7 +69,7 @@ reply is the brand promise (site says "within 24 hours"; WhatsApp is usually muc
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (answer in chat) · Typical span Minutes
 
-**Customer A · British retiree, wants a long France trip**
+### Customer A · British retiree, wants a long France trip
 > **[Mon 09:14] Customer:** hi there. me and my wife are retired, british passports. we want to go to our place in france for about 3 months over the summer. do we need a visa?
 > **[Mon 09:41] BP:** Morning 🙂 quick one, is it exactly 3 months or a bit over?
 > **[Mon 09:43] Customer:** probably 100 days ish
@@ -82,7 +82,7 @@ reply is the brand promise (site says "within 24 hours"; WhatsApp is usually muc
 > **[Mon 10:08] Customer:** thanks thats really helpful
 _Elapsed lead to delivery: about 1 hour._
 
-**Customer B · Indian national on a Skilled Worker visa, first Schengen trip**
+### Customer B · Indian national on a Skilled Worker visa, first Schengen trip
 > **[Tue 12:30] Customer:** hello, im indian passport but living in london on a skilled worker visa. planning italy in sept. what do i actually need? never done this before
 > **[Tue 13:15] BP:** Hiya, no worries, it's straightforward once you know the bits. You'll need an Italy Schengen visa, applied for through their centre here in the UK.
 > **[Tue 13:16] BP:** Main thing they check: your UK visa (needs to be valid a good bit past your trip), bank statements, flights, hotels and travel insurance.
@@ -96,7 +96,7 @@ _Elapsed lead to delivery: about 1 hour._
 > **[Tue 13:37] BP:** Course, whenever you're ready. I can't promise the outcome, that's the consulate's call, but we'll make the file as tidy as it can be 👍
 _Elapsed lead to delivery: under 1 hour._
 
-**Customer C · Nigerian student, tight on time and worried**
+### Customer C · Nigerian student, tight on time and worried
 > **[Wed 16:48] Customer:** pls i need help. nigerian passport, student in manchester. my friends group booked amsterdam for 2 weeks time and i wanted to join. is it even possible now??
 > **[Wed 17:20] BP:** Hey. Right, honestly 2 weeks is very tight for a Netherlands visa from here.
 > **[Wed 17:21] BP:** The appointment alone can be a week or two out, then processing on top. I don't want to sell you a dream that won't land in time.
@@ -111,7 +111,7 @@ _Elapsed lead to delivery: under 1 hour._
 > **[Wed 17:42] BP:** Anytime. Rather you hear it straight 🙂
 _Elapsed lead to delivery: under 1 hour._
 
-**Customer D · Pakistani self-employed, business trip to Germany**
+### Customer D · Pakistani self-employed, business trip to Germany
 > **[Thu 10:05] Customer:** morning. pakistani passport, ILR in the uk. self employed (i run a small import business). need to go frankfurt for a trade fair in october. which visa and whats different for self employed?
 > **[Thu 10:22] BP:** Morning. With ILR you're in a strong spot. It'd be a Germany Schengen visa, business type, through their UK centre.
 > **[Thu 10:24] BP:** Self-employed just means the money side looks a bit different. Instead of payslips they'll want your business bank statements, and ideally an invite or ticket from the trade fair.
@@ -126,7 +126,7 @@ _Elapsed lead to delivery: under 1 hour._
 > **[Thu 10:47] Customer:** yes please send it
 _Elapsed lead to delivery: about 40 minutes._
 
-**Customer E · Filipino care worker, honeymoon to Spain, passport worry**
+### Customer E · Filipino care worker, honeymoon to Spain, passport worry
 > **[Fri 19:30] Customer:** hi hope its ok to message. filipino, health and care worker visa. getting married and want spain for honeymoon in november. worried my passport doesnt have long left
 > **[Sat 09:12] BP:** Morning, and congrats! 🙂 Spain's a lovely shout. Passport's a fair worry so let's check, when does it expire?
 > **[Sat 09:40] Customer:** feb next year
@@ -141,7 +141,7 @@ _Elapsed lead to delivery: about 40 minutes._
 > **[Sat 10:23] Customer:** thank u so much, really kind
 _Elapsed lead to delivery: overnight, sorted next morning._
 
-**Customer F · Egyptian on a Graduate visa, multi-country trip confusion**
+### Customer F · Egyptian on a Graduate visa, multi-country trip confusion
 > **[Mon 11:02] Customer:** hey. egyptian passport, on the graduate visa after my masters. me and 2 mates want to do a euro trip, like france then belgium then germany in one go. do i need 3 visas?? sounds mad
 > **[Mon 11:20] BP:** Ha, no, good news, it's one visa not three. Schengen's a shared zone so a single visa covers all three countries.
 > **[Mon 11:22] Customer:** oh thank god. so which country do i apply to
@@ -156,7 +156,7 @@ _Elapsed lead to delivery: overnight, sorted next morning._
 > **[Mon 11:50] BP:** Sounds good. We can do all three of you as a group file if you like. I can't call the outcome, that's the consulate, but we'll make each one solid. Fee's separate from the French centre's charge, I'll send tiers over 👍
 _Elapsed lead to delivery: under 1 hour._
 
-**Customer G · Ghanaian family visitor, refused before, anxious**
+### Customer G · Ghanaian family visitor, refused before, anxious
 > **[Tue 14:10] Customer:** good afternoon. ghanaian, i have a spouse visa in the uk. i want to visit greece with my kids in december. but i was refused a schengen once in 2022 and im scared to try again
 > **[Tue 14:38] BP:** Afternoon. Ok first, a past refusal doesn't block you, plenty of people get approved after one. Do you remember the reason they gave?
 > **[Tue 14:41] Customer:** something about not proving id come back i think. that was before i married though
@@ -178,7 +178,7 @@ _Elapsed lead to delivery: about 1 hour._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (answer in chat) · Typical span Minutes
 
-**Customer A · British retiree, driving holiday in France & Spain**
+### Customer A · British retiree, driving holiday in France & Spain
 > **[Mon 09:41] Customer:** hi there, quick one. me and my wife are driving down through France into Spain in September. do we need one of those international driving permits?
 > **[Mon 10:22] BP:** Morning 🙂 good news, no. Your UK photocard licence is fine for France and Spain, you don't need an IDP for either.
 > **[Mon 10:23] BP:** Just carry the physical licence, your V5C (logbook) and your insurance docs. That's the bit people forget.
@@ -187,7 +187,7 @@ _Elapsed lead to delivery: about 1 hour._
 > **[Mon 10:27] Customer:** thanks so much!
 _Elapsed lead to delivery: about 45 minutes._
 
-**Customer B · Indian national on a UK skilled worker visa, hiring a car in Italy**
+### Customer B · Indian national on a UK skilled worker visa, hiring a car in Italy
 > **[Tue 13:08] Customer:** hello, i have indian driving licence and i live in uk on work visa. going to italy next month, want to rent a car. do i need international permit?
 > **[Tue 13:15] BP:** Hi! Yeah, for Italy on an Indian licence you'll want an IDP alongside it. Italy's one of the stricter ones for non-EU licences.
 > **[Tue 13:16] BP:** Quick thing though, has your Indian licence been swapped for a UK one, or are you still driving on the Indian one here?
@@ -199,7 +199,7 @@ _Elapsed lead to delivery: about 45 minutes._
 > **[Tue 13:30] Customer:** got it, thank u!
 _Elapsed lead to delivery: about 20 minutes._
 
-**Customer C · Nigerian national, UK student, road trip in Germany**
+### Customer C · Nigerian national, UK student, road trip in Germany
 > **[Wed 16:52] Customer:** hi, im a student here from nigeria. friends and i want to do a road trip in germany over the break. i have a nigerian licence. permit needed?
 > **[Thu 09:14] BP:** Morning, sorry for the late reply, we'd shut for the evening. So for Germany on a Nigerian licence you'd need an IDP, yeah. And it has to be issued in Nigeria, we can't do it here for a non-UK licence.
 > **[Thu 09:15] BP:** Are you actually the one driving, or just going along?
@@ -209,7 +209,7 @@ _Elapsed lead to delivery: about 20 minutes._
 > **[Thu 09:26] BP:** No worries, have a good trip ✈️
 _Elapsed lead to delivery: overnight, sorted next morning._
 
-**Customer D · Pakistani national, UK ILR holder, business trip to Netherlands & Belgium**
+### Customer D · Pakistani national, UK ILR holder, business trip to Netherlands & Belgium
 > **[Fri 11:03] Customer:** salaam, i have ILR in uk and a full UK licence. traveling netherlands and belgium for work, some driving involved. need an IDP?
 > **[Fri 11:19] BP:** Wa alaikum salaam 🙂 nope. Full UK photocard licence covers you in both the Netherlands and Belgium, no IDP needed at all.
 > **[Fri 11:20] BP:** ILR doesn't change that, once you're on a UK licence it's treated as a UK licence full stop.
@@ -218,7 +218,7 @@ _Elapsed lead to delivery: overnight, sorted next morning._
 > **[Fri 11:25] Customer:** understood, appreciate it
 _Elapsed lead to delivery: about 20 minutes._
 
-**Customer E · Filipino national, UK health & care visa, visiting family in Greece**
+### Customer E · Filipino national, UK health & care visa, visiting family in Greece
 > **[Sat 10:12] Customer:** hi po, im from philippines working in uk. flying to greece to see my cousin, might rent a car there. i have philippine licence still. do i need permit?
 > **[Sat 10:41] BP:** Hi! So Greece does ask for an IDP if you're driving on a Philippine licence, yeah. And same as with any non-UK licence, it has to be issued back home in the Philippines, the UK won't do one for it.
 > **[Sat 10:42] BP:** How long have you been in the UK, out of interest?
@@ -229,7 +229,7 @@ _Elapsed lead to delivery: about 20 minutes._
 > **[Sat 10:57] Customer:** salamat po!! very helpful
 _Elapsed lead to delivery: about 45 minutes._
 
-**Customer F · Egyptian national, UK visitor visa, wants us to "get" an IDP fast (honest decline)**
+### Customer F · Egyptian national, UK visitor visa, wants us to "get" an IDP fast (honest decline)
 > **[Mon 14:22] Customer:** hi i need an international driving permit urgent, traveling to france in 5 days. i have egyptian licence. can u get it for me express? happy to pay
 > **[Mon 14:38] BP:** Hi, appreciate you asking but I've got to be straight with you here. We can't get you one, and honestly nobody in the UK can for an Egyptian licence.
 > **[Mon 14:39] BP:** UK post offices only issue IDPs for UK photocard licences. For an Egyptian licence the IDP has to be issued in Egypt, by their authority. There's no express or paid workaround for that, it's just the rule.
@@ -240,7 +240,7 @@ _Elapsed lead to delivery: about 45 minutes._
 > **[Mon 14:48] BP:** Good shout, he can walk it in there. Sorry it's not the answer you wanted 🙂
 _Elapsed lead to delivery: about 25 minutes._
 
-**Customer G · Brazilian national, UK spouse visa, campervan trip across Portugal, Spain & France**
+### Customer G · Brazilian national, UK spouse visa, campervan trip across Portugal, Spain & France
 > **[Tue 17:41] Customer:** hey! me and my husband doing a campervan trip, portugal spain france. im brazilian on spouse visa, he's british. i want to share the driving. what do i need
 > **[Wed 09:08] BP:** Morning! Right, so it depends which licence you're driving on.
 > **[Wed 09:09] BP:** If you've already swapped to a UK licence, you're covered in all three, no IDP needed. If you're still on your Brazilian licence, then for Spain and Portugal you'd want an IDP issued in Brazil, and France would be fine but the IDP doesn't hurt.
@@ -259,7 +259,7 @@ _Elapsed lead to delivery: overnight, answered next morning._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (link in chat) · Typical span Minutes
 
-**Customer A · British retiree, Portugal (long stay visit)**
+### Customer A · British retiree, Portugal (long stay visit)
 > **[Mon 10:41] Customer:** hi there, me and my wife are planning 2 months in the algarve this winter. what docs do we actually need? bit lost
 > **[Mon 11:52] BP:** Hi 🙂 no worries, it's less scary than it looks. Quick one first, are you both British passport holders?
 > **[Mon 12:03] Customer:** yes both British, retired
@@ -271,7 +271,7 @@ _Elapsed lead to delivery: overnight, answered next morning._
 > **[Mon 12:18] BP:** Any charge for that one, none, it's just the checklist. If you'd rather we prep and check the full pack before you submit we do that as a paid service, but plenty of people manage fine off the list. Enjoy the Algarve ✈️
 _Elapsed lead to delivery: about 1.5 hrs from first message to link._
 
-**Customer B · Indian national, Tier 2 worker in UK, Germany business trip**
+### Customer B · Indian national, Tier 2 worker in UK, Germany business trip
 > **[Tue 09:03] Customer:** morning, I need a checklist for a germany business visa pls. indian passport, I work here on skilled worker visa
 > **[Tue 09:12] BP:** Morning. Yeah can do. Business trip, so you'll have an invitation from the German company, that's the key extra doc. Roughly how long are you going for?
 > **[Tue 09:14] Customer:** 5 days, a conference basically
@@ -283,7 +283,7 @@ _Elapsed lead to delivery: about 1.5 hrs from first message to link._
 > **[Tue 09:31] BP:** 👍 nothing to pay for the checklist. If the conference date's tight and you want us to chase a faster appointment slot, that's our express handling, separate from the embassy's own fees, just say the word.
 _Elapsed lead to delivery: 22 minutes._
 
-**Customer C · Nigerian national, self-employed, France tourism**
+### Customer C · Nigerian national, self-employed, France tourism
 > **[Wed 14:20] Customer:** hello. i run my own business (nigerian, ILR in uk) and want to visit paris for a week. what do i need to show for a self employed person? the money side worries me
 > **[Wed 14:38] BP:** Hi 🙂 honestly the funds side is the most common worry and it's manageable. With ILR you've got the easy part, your UK status is solid.
 > **[Wed 14:39] BP:** For self-employed, instead of payslips you'll show: business bank statements (last 3-6 months), personal statements, and proof the business is real, so your Companies House listing or registration, plus recent tax return (SA302) if you've got it.
@@ -295,7 +295,7 @@ _Elapsed lead to delivery: 22 minutes._
 > **[Wed 14:53] BP:** No charge, that's just guidance. Self-employed packs are the ones people most often ask us to sanity-check before submitting, so if you want a second pair of eyes later we can, but you've clearly got a handle on it 👍
 _Elapsed lead to delivery: about 30 minutes._
 
-**Customer D · Filipino national, student in UK, Netherlands short trip**
+### Customer D · Filipino national, student in UK, Netherlands short trip
 > **[Thu 16:55] Customer:** hi po, im a student here (filipino) and my classmates invited me to amsterdam for 4 days next month. can students even go? what docs
 > **[Thu 17:40] BP:** Hey 🙂 yes students can absolutely go, done it loads. You'll just show your studies here tie you back to the UK.
 > **[Thu 17:41] BP:** So: passport, photos, insurance, flights, accommodation, plus a letter from your uni confirming you're enrolled and your term dates, and your student visa/share code. For funds, your own bank statements, or if a parent's sponsoring the trip, their statements plus a short sponsor letter.
@@ -307,7 +307,7 @@ _Elapsed lead to delivery: about 30 minutes._
 > **[Fri 09:12] BP:** 👍 nothing to pay, it's just the list. Term-time trips can be a bit fiddly with the uni letter timing, so if it gets stressful nearer the date give us a shout. Have fun in Amsterdam ✈️
 _Elapsed lead to delivery: overnight, sorted next morning._
 
-**Customer E · Pakistani national, family visit, Spain (honest decline)**
+### Customer E · Pakistani national, family visit, Spain (honest decline)
 > **[Fri 11:10] Customer:** salaam, i want checklist for spain. my brother lives there, pakistani passport. im in the UK on a visit visa myself right now
 > **[Fri 11:44] BP:** Salaam 🙂 ok I need to be straight with you before you spend time on this, and I'd rather tell you now.
 > **[Fri 11:45] BP:** If you're in the UK on a visit visa yourself, you can't apply for a Schengen visa from here. The UK consulates only take Schengen applications from people who are settled or long-term resident, so students, workers, ILR, that sort of thing. A visitor doesn't qualify.
@@ -319,7 +319,7 @@ _Elapsed lead to delivery: overnight, sorted next morning._
 > **[Fri 11:57] BP:** Please do, take care 🙂
 _Elapsed lead to delivery: n/a, no checklist issued, honest steer instead._
 
-**Customer F · Egyptian national, salaried, Italy honeymoon**
+### Customer F · Egyptian national, salaried, Italy honeymoon
 > **[Sat 10:15] Customer:** hi! getting married soon 🎉 planning honeymoon in italy, rome + amalfi. egyptian, i work full time in london. what do we need
 > **[Sat 10:29] BP:** Congrats! 🎉 lovely choice. Are you both applying, and is your partner the same nationality/status as you?
 > **[Sat 10:32] Customer:** yes both egyptian, both work here full time
@@ -331,7 +331,7 @@ _Elapsed lead to delivery: n/a, no checklist issued, honest steer instead._
 > **[Sat 10:49] BP:** No charge, enjoy the planning. If you'd like us to build the itinerary + booking pack so it's watertight, that's a paid add-on, but you two seem sorted. Congrats again ✈️
 _Elapsed lead to delivery: about 30 minutes._
 
-**Customer G · Ghanaian national, ILR, Greece with elderly mother**
+### Customer G · Ghanaian national, ILR, Greece with elderly mother
 > **[Mon 13:02] Customer:** afternoon. i want to take my mum to greece for 10 days, shes 74. im ghanaian with ILR, mum is visiting me from ghana on a visit visa. what docs for us both?
 > **[Mon 13:33] BP:** Afternoon 🙂 lovely trip. Bit of a mixed one so let me split it, because you and your mum are in different situations.
 > **[Mon 13:34] BP:** You (ILR) can apply from the UK no problem. Your mum, though, she's here on a UK visit visa, and same rule I'd flag to anyone: a visitor usually can't lodge a Schengen application from the UK. Hers is the tricky part.
@@ -351,7 +351,7 @@ _Elapsed lead to delivery: your checklist instant; mum's case moved to a paid el
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant once dates given · Typical span Minutes
 
-**Customer A · British retiree, second home in France**
+### Customer A · British retiree, second home in France
 > **[Mon 10:02] Customer:** hi there. we've got a place near Carcassonne and I keep losing track of the 90 day thing. can you check us?
 > **[Mon 10:41] BP:** Yeah course. It's 90 days in any rolling 180 across the whole Schengen area, not per country. Just send me your entry and exit dates for the last 180 days 🙂
 > **[Mon 10:48] Customer:** ok so we went in 4 March, out 2 April. then back in 20 May, still there now (today).
@@ -364,7 +364,7 @@ _Elapsed lead to delivery: your checklist instant; mum's case moved to a paid el
 
 _Elapsed lead to delivery: about 1 hour._
 
-**Customer B · Indian national, UK ILR, frequent business travel**
+### Customer B · Indian national, UK ILR, frequent business travel
 > **[Tue 08:51] Customer:** morning. i travel to germany and netherlands a lot for work. worried im close to the limit. can u help
 > **[Tue 09:12] BP:** Morning, yeah happy to check. Quick thing first, what passport are you travelling on? Just so I know if it's the 90/180 rule that applies to you.
 > **[Tue 09:13] Customer:** indian passport, i have ILR in the uk
@@ -379,7 +379,7 @@ _Elapsed lead to delivery: about 1 hour._
 
 _Elapsed lead to delivery: about 1 hour 20 min._
 
-**Customer C · Nigerian national, UK student visa, first Schengen trip**
+### Customer C · Nigerian national, UK student visa, first Schengen trip
 > **[Wed 13:40] Customer:** hello pls i want to visit spain and france in summer. how many days can i stay
 > **[Wed 14:09] BP:** Hiya. On a short-stay Schengen visa it's up to 90 days in any 180. Since this is your first trip you'd start fresh, so the full 90 is available.
 > **[Wed 14:11] Customer:** ok but i have not applied yet. i am nigerian on uk student visa
@@ -395,7 +395,7 @@ _Elapsed lead to delivery: about 1 hour 20 min._
 
 _Elapsed lead to delivery: about 1 hour 10 min._
 
-**Customer D · Filipino national, UK care worker, misread the rule**
+### Customer D · Filipino national, UK care worker, misread the rule
 > **[Thu 18:44] Customer:** hi po. someone told me i can stay 90 days in italy then 90 days in greece. is that true?
 > **[Fri 09:05] BP:** Morning! Sorry, replying now we're back open. That's a common mix-up. It's 90 days total across the whole Schengen area, Italy and Greece are both in it, so it's not 90 each.
 > **[Fri 09:06] Customer:** ohh really. so both together only 90?
@@ -409,7 +409,7 @@ _Elapsed lead to delivery: about 1 hour 10 min._
 
 _Elapsed lead to delivery: overnight, sorted next morning._
 
-**Customer E · Brazilian national, UK spouse visa, overstay worry**
+### Customer E · Brazilian national, UK spouse visa, overstay worry
 > **[Fri 16:20] Customer:** hi i think i may have overstayed in portugal last month and im really stressed. can you tell me
 > **[Fri 16:38] BP:** Ok, don't panic yet, let's just work it out. Give me every Schengen entry and exit date going back 6 months and we'll see where you actually stand.
 > **[Fri 16:44] Customer:** ok. portugal 10 jan - 8 feb. then spain 1 apr - 30 apr. then portugal again 5 jun - 28 jun
@@ -422,7 +422,7 @@ _Elapsed lead to delivery: overnight, sorted next morning._
 
 _Elapsed lead to delivery: same afternoon, about 1 hour._
 
-**Customer F · Pakistani national, UK Global Talent visa, wants the impossible**
+### Customer F · Pakistani national, UK Global Talent visa, wants the impossible
 > **[Sat 11:15] Customer:** hi. i need to be in the schengen area for about 5 months straight next year for a project. whats the easiest short stay visa for that
 > **[Sat 11:48] BP:** Straight answer, there isn't one. A short-stay Schengen visa caps at 90 days in any 180, so 5 months back to back isn't possible on that route. I won't sell you something that can't work.
 > **[Sat 11:50] Customer:** oh. so what do i do then
@@ -436,7 +436,7 @@ _Elapsed lead to delivery: same afternoon, about 1 hour._
 
 _Elapsed lead to delivery: same day, under an hour._
 
-**Customer G · Kenyan national, UK Skilled Worker visa, planning two trips**
+### Customer G · Kenyan national, UK Skilled Worker visa, planning two trips
 > **[Mon 12:30] Customer:** hey! trying to plan 2 trips next year and dont want to break the 90 day rule. can you sanity check my dates
 > **[Mon 12:52] BP:** Yeah go for it, send them over. Two trips is easy to check.
 > **[Mon 12:55] Customer:** trip 1 austria 5 feb - 25 feb. trip 2 croatia 10 may - 20 jun. thats it for the year
@@ -457,7 +457,7 @@ _Elapsed lead to delivery: about 1 hour 15 min._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (lookup) · Typical span Minutes
 
-**Customer A · British retiree, France trip, checking his paid application**
+### Customer A · British retiree, France trip, checking his paid application
 > **[Mon 10:02] Customer:** hi, sent my docs friday for the france one. any update?
 > **[Mon 10:41] BP:** Morning! Let me pull it up. Can you give me your ref or the email you used?
 > **[Mon 10:43] Customer:** ref BP-2214
@@ -470,7 +470,7 @@ _Elapsed lead to delivery: about 1 hour 15 min._
 
 _Elapsed lead to delivery: about 55 minutes._
 
-**Customer B · Indian national, Tier 2 in London, Italy honeymoon, anxious**
+### Customer B · Indian national, Tier 2 in London, Italy honeymoon, anxious
 > **[Tue 08:12] Customer:** hello is there any way to see where my application is? getting a bit nervous, wedding is soon**
 > **[Tue 09:03] BP:** Hiya, yeah of course. What's the name on the file?
 > **[Tue 09:05] Customer:** Rohan Mehta, italy visa, submitted last week
@@ -483,7 +483,7 @@ _Elapsed lead to delivery: about 55 minutes._
 
 _Elapsed lead to delivery: under an hour._
 
-**Customer C · Nigerian, self-employed, Spain, doc chase**
+### Customer C · Nigerian, self-employed, Spain, doc chase
 > **[Wed 16:40] Customer:** pls where are we with my spain file? been quiet**
 > **[Wed 17:22] BP:** Hi! Not ignoring you, promise. Quick look now.
 > **[Wed 17:28] BP:** Right, so you're actually paused on our end. We're waiting on two things from you.
@@ -495,7 +495,7 @@ _Elapsed lead to delivery: under an hour._
 
 _Elapsed lead to delivery: about 55 minutes._
 
-**Customer D · Filipino nurse, NHS, Netherlands, wrong expectations (honest decline)**
+### Customer D · Filipino nurse, NHS, Netherlands, wrong expectations (honest decline)
 > **[Thu 12:15] Customer:** hi can you check my file and also can u rush the embassy decision? i need it in 4 days**
 > **[Thu 12:51] BP:** Hi! Let me look. And I'll be straight with you on the timing bit.
 > **[Thu 12:56] BP:** Ok your Netherlands file is ready and there's a Manchester slot open Friday, so that part we can do fast.
@@ -507,7 +507,7 @@ _Elapsed lead to delivery: about 55 minutes._
 
 _Elapsed lead to delivery: about 50 minutes._
 
-**Customer E · Pakistani student, Manchester uni, Germany conference, quick check**
+### Customer E · Pakistani student, Manchester uni, Germany conference, quick check
 > **[Fri 14:20] Customer:** heyy just checking status on my germany one, ref?**
 > **[Fri 14:20] Customer:** BP-3097**
 > **[Fri 15:38] BP:** Hey! All good. You're done and dusted our side, Berlin appointment's confirmed for next Wed 10:40.
@@ -518,7 +518,7 @@ _Elapsed lead to delivery: about 50 minutes._
 
 _Elapsed lead to delivery: about 80 minutes._
 
-**Customer F · Egyptian family of four, Greece holiday, group status**
+### Customer F · Egyptian family of four, Greece holiday, group status
 > **[Sat 09:30] Customer:** good morning, checking on the family application, 4 people, greece. all together?**
 > **[Sat 10:15] BP:** Morning! Yes all four are linked under one file, easier that way. Let me see where you're at.
 > **[Sat 10:20] BP:** Ok, three of you are fully prepped. The hold-up is the youngest, we still need the signed parental consent form and a copy of both parents' passports.
@@ -529,7 +529,7 @@ _Elapsed lead to delivery: about 80 minutes._
 
 _Elapsed lead to delivery: under an hour._
 
-**Customer G · Ghanaian business owner, Belgium trade fair, apostille query mid-process**
+### Customer G · Ghanaian business owner, Belgium trade fair, apostille query mid-process
 > **[Mon 11:05] Customer:** whats the status? and my invite letter needed stamping right, is that done**
 > **[Mon 11:44] BP:** Hi! Let me check both for you.
 > **[Mon 11:52] BP:** So your Belgium file's in checks, and yeah the apostille on your invitation went off to be legalised Thursday.
@@ -547,7 +547,7 @@ _Elapsed lead to delivery: about 55 minutes._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (answer in chat) · Typical span Minutes
 
-**Customer A · British retiree, salaried background, heading to France**
+### Customer A · British retiree, salaried background, heading to France
 > **[Mon 10:02] Customer:** hi, where's my nearest place to give fingerprints for a france visa? i'm in Plymouth
 > **[Mon 10:41] BP:** Hi 🙂 for France that's a TLScontact centre. Nearest to Plymouth is the one in Bristol.
 > **[Mon 10:41] BP:** Exeter doesn't do France sadly, so Bristol's your closest.
@@ -560,7 +560,7 @@ _Elapsed lead to delivery: about 55 minutes._
 
 _Elapsed lead to delivery: ~45 minutes._
 
-**Customer B · Indian national, IT contractor, Germany trip**
+### Customer B · Indian national, IT contractor, Germany trip
 > **[Tue 08:51] Customer:** morning. need the german visa centre for someone based in Leeds pls
 > **[Tue 09:12] BP:** Morning! Germany uses VFS Global. Nearest to Leeds is the Manchester centre.
 > **[Tue 09:12] BP:** There's one in London too but Manchester's much closer for you.
@@ -575,7 +575,7 @@ _Elapsed lead to delivery: ~45 minutes._
 
 _Elapsed lead to delivery: ~30 minutes._
 
-**Customer C · Nigerian national, self-employed, Italy trip**
+### Customer C · Nigerian national, self-employed, Italy trip
 > **[Wed 13:30] Customer:** hello, my nearest centre for italy? living in Birmingham
 > **[Wed 13:44] BP:** Hiya. Italy's run through IVL (that's the official Italy provider). Birmingham's actually got its own centre, so you're sorted, no travel really.
 > **[Wed 13:45] Customer:** oh nice didnt expect that
@@ -589,7 +589,7 @@ _Elapsed lead to delivery: ~30 minutes._
 
 _Elapsed lead to delivery: ~15 minutes._
 
-**Customer D · Filipino national, care worker, Spain trip**
+### Customer D · Filipino national, care worker, Spain trip
 > **[Thu 17:40] Customer:** hi can u tell me where to go for spain visa biometrics near Glasgow
 > **[Thu 17:58] BP:** Hi! Spain uses BLS. Sadly the nearest full centre is Edinburgh, there isn't one in Glasgow itself.
 > **[Thu 17:59] Customer:** aw ok edinburgh is fine i can travel
@@ -603,7 +603,7 @@ _Elapsed lead to delivery: ~15 minutes._
 
 _Elapsed lead to delivery: ~overnight, sorted Fri morning._
 
-**Customer E · Pakistani national, student, Netherlands trip (honest decline)**
+### Customer E · Pakistani national, student, Netherlands trip (honest decline)
 > **[Fri 11:05] Customer:** hey which centre for netherlands visa, im in Cardiff
 > **[Fri 11:33] BP:** Hi 🙂 Netherlands biometrics go through VFS. Nearest to Cardiff is the Bristol centre, quick hop over the bridge.
 > **[Fri 11:34] Customer:** ok cool. also im on a student visa here, still less than 6 months left on it. can u do my schengen for me
@@ -616,7 +616,7 @@ _Elapsed lead to delivery: ~overnight, sorted Fri morning._
 
 _Elapsed lead to delivery: ~40 minutes._
 
-**Customer F · Egyptian national, business owner, Greece trip**
+### Customer F · Egyptian national, business owner, Greece trip
 > **[Sat 09:20] Customer:** morning, nearest greek visa centre to London?
 > **[Sat 09:29] BP:** Morning! Greece uses the Global Visa Centre World lot. There's one right in London, so you're not going far at all.
 > **[Sat 09:30] Customer:** good. i travel a lot for business, is there a fast track option
@@ -629,7 +629,7 @@ _Elapsed lead to delivery: ~40 minutes._
 
 _Elapsed lead to delivery: ~20 minutes._
 
-**Customer G · Ghanaian national, NHS nurse, family trip to Portugal**
+### Customer G · Ghanaian national, NHS nurse, family trip to Portugal
 > **[Sat 14:10] Customer:** hi pls where do i do biometrics for portugal, me and 2 kids, we're in Manchester
 > **[Sat 14:38] BP:** Hi 🙂 Portugal goes through VFS. Nearest to you is the Manchester centre, so no big journey with the little ones, good news.
 > **[Sat 14:39] Customer:** oh thank god. do the kids need to come too
@@ -649,7 +649,7 @@ _Elapsed lead to delivery: ~40 minutes._
 
 > ⏱ First reply ≤ 2 hrs · Delivery ≤ 24 hrs · Typical span ~1 business day
 
-**Customer A · British-Indian, salaried, Barcelona long weekend, first Schengen trip**
+### Customer A · British-Indian, salaried, Barcelona long weekend, first Schengen trip
 > **[Mon 09:41] Customer:** hi, first time applying for a spain visa and honestly a bit paranoid about getting refused
 > **[Mon 09:41] Customer:** is there a way you can check my stuff before i submit?
 > **[Mon 10:58] BP:** Yeah, that's exactly what our refusal-risk check is for 🙂
@@ -664,7 +664,7 @@ _Elapsed lead to delivery: ~40 minutes._
 
 _Elapsed lead to delivery: same morning, no charge._
 
-**Customer B · Nigerian, self-employed, France, worried about bank statements**
+### Customer B · Nigerian, self-employed, France, worried about bank statements
 > **[Tue 08:52] Customer:** morning. applying for france tourist visa and my bank statement looks messy, lots of in and out. scared theyll refuse me
 > **[Tue 09:35] BP:** Morning. That's a really common worry, and it's a good one to check before you file.
 > **[Tue 09:36] BP:** Quick version of our refusal-risk check: send me your docs, I go through them like a case officer would and give you a written list of the weak spots plus how to fix them. £29.
@@ -683,7 +683,7 @@ _Elapsed lead to delivery: same morning, no charge._
 
 _Elapsed lead to delivery: ~1 business day._
 
-**Customer C · Pakistani, salaried IT, Germany, previous Schengen refusal**
+### Customer C · Pakistani, salaried IT, Germany, previous Schengen refusal
 > **[Wed 14:03] Customer:** hi i got refused for germany last year and want to reapply. can you check why before i try again pls**
 > **[Wed 14:48] BP:** Hi. Yeah, a reapplication after a refusal is exactly when this check earns its keep. Do you still have the refusal letter? It lists the grounds.
 > **[Wed 15:02] Customer:** yes i have it. it says something about purpose of stay not clear and funds
@@ -700,7 +700,7 @@ _Elapsed lead to delivery: ~1 business day._
 
 _Elapsed lead to delivery: ~1 business day._
 
-**Customer D · Filipino, care worker on Skilled Worker visa, Italy, short-BRP-validity worry**
+### Customer D · Filipino, care worker on Skilled Worker visa, Italy, short-BRP-validity worry
 > **[Thu 09:10] Customer:** hello po. im on skilled worker visa in the uk, want to go italy for holiday. can u check if ill get refused**
 > **[Thu 09:58] BP:** Hi 🙂 Yeah we can check it. When you're on a UK visa, the big things a consulate looks at are your BRP validity and whether you'll clearly come back. Let's look at both.
 > **[Thu 10:05] Customer:** ok. my brp expires feb next year, trip is december
@@ -717,7 +717,7 @@ _Elapsed lead to delivery: ~1 business day._
 
 _Elapsed lead to delivery: same day._
 
-**Customer E · Egyptian, student in UK, Netherlands, thin funds (honest decline / manage expectations)**
+### Customer E · Egyptian, student in UK, Netherlands, thin funds (honest decline / manage expectations)
 > **[Fri 11:20] Customer:** hi, im a student here and want to visit amsterdam next month. want you to check my docs so i dont get refused
 > **[Fri 12:40] BP:** Hi. Happy to look. Before you pay though, tell me the basics so I don't take your £29 for a check that won't change the answer. What funds can you show, and for how long back?
 > **[Fri 12:51] Customer:** um. about £300 in my account and it only went in last week from a friend
@@ -733,7 +733,7 @@ _Elapsed lead to delivery: same day._
 
 _Elapsed lead to delivery: no charge, declined the check._
 
-**Customer F · Brazilian-British dual, retired, Portugal, family visiting worry over invitation letter**
+### Customer F · Brazilian-British dual, retired, Portugal, family visiting worry over invitation letter
 > **[Fri 15:44] Customer:** hello. my sister in portugal invited me and my husband to stay, someone said the invitation letter can get you refused if its wrong. can you check ours?
 > **[Fri 16:30] BP:** Hi 🙂 Yeah, invitation letters trip people up more than you'd think. Quick thing first though, what passports do you and your husband hold?
 > **[Fri 16:41] Customer:** im dual brazil and british, i travel on my british one. my husband is brazilian only
@@ -750,7 +750,7 @@ _Elapsed lead to delivery: no charge, declined the check._
 
 _Elapsed lead to delivery: ~1 business day (overnight)._
 
-**Customer G · Bangladeshi, salaried, Greece honeymoon, tight timeline and employment-gap worry**
+### Customer G · Bangladeshi, salaried, Greece honeymoon, tight timeline and employment-gap worry
 > **[Sat 08:30] Customer:** hi we r getting married n going greece for honeymoon in 5 weeks. i changed jobs 2 months ago n worried the gap will get us refused. can u check both our docs**
 > **[Sat 09:12] BP:** Morning, and congrats 🙂 Five weeks is workable. Yeah, send both applicants' docs and I'll run the refusal-risk check on the pair. £29 covers both of you.
 > **[Sat 09:13] BP:** That's the review fee only, the Greek consulate and appointment-centre fees come separately later.
@@ -773,7 +773,7 @@ _Elapsed lead to delivery: same day._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Same day to 24 hrs · Typical span Same day to 1 day
 
-**Customer A · British-Nigerian, salaried, refused for France after "insufficient funds"**
+### Customer A · British-Nigerian, salaried, refused for France after "insufficient funds"
 > **[Mon 09:41] Customer:** hi, my france visa got refused last week and honestly i dont even understand the letter. can u help me work out what went wrong?
 > **[Mon 10:58] BP:** Hey, yeah we do exactly this. Send me a photo of the refusal letter, all pages, and I'll tell you what they actually flagged.
 > **[Mon 11:04] Customer:** [photo] here u go
@@ -792,7 +792,7 @@ _Elapsed lead to delivery: same day._
 
 _Elapsed lead to delivery: same day, ~4 hrs._
 
-**Customer B · Indian, PhD student in UK, refused for Germany conference, tight deadline**
+### Customer B · Indian, PhD student in UK, refused for Germany conference, tight deadline
 > **[Tue 08:12] Customer:** hello, refused for germany and my conference is in 3 weeks. i really need to understand the reason fast
 > **[Tue 09:44] BP:** Morning. 3 weeks is tight but workable. Send over the refusal letter and your appointment confirmation if you've got it.
 > **[Tue 09:51] Customer:** [photo] letter. conf is 6th aug
@@ -811,7 +811,7 @@ _Elapsed lead to delivery: same day, ~4 hrs._
 
 _Elapsed lead to delivery: same day, ~3.5 hrs._
 
-**Customer C · Filipino, domestic worker, refused for Italy, worried it's her sponsor's fault**
+### Customer C · Filipino, domestic worker, refused for Italy, worried it's her sponsor's fault
 > **[Wed 12:20] Customer:** hi po. my italy visa was refused. my employer is bringing me on holiday with the family. i dont know if i did something wrong or them
 > **[Wed 13:33] BP:** Hi, no need to worry, let's just read what they said. Can you send a photo of the whole refusal letter?
 > **[Wed 13:40] Customer:** [photo]
@@ -830,7 +830,7 @@ _Elapsed lead to delivery: same day, ~3.5 hrs._
 
 _Elapsed lead to delivery: same day, ~3.5 hrs._
 
-**Customer D · Pakistani, self-employed shop owner, refused for Spain, angry about it**
+### Customer D · Pakistani, self-employed shop owner, refused for Spain, angry about it
 > **[Thu 16:41] Customer:** refused for spain and its a joke honestly. i own my business, i have money, what more do they want
 > **[Thu 17:26] BP:** I hear you, it's frustrating when you know you're genuine. Let me actually read the reasons though, because "they got it wrong" and "a doc was missing" need different fixes. Send the letter?
 > **[Thu 17:33] Customer:** [photo] there
@@ -849,7 +849,7 @@ _Elapsed lead to delivery: same day, ~3.5 hrs._
 
 _Elapsed lead to delivery: next day, ~1 day._
 
-**Customer E · Egyptian, salaried engineer, refused for Netherlands, decode reveals a hard problem (honest manage-expectations)**
+### Customer E · Egyptian, salaried engineer, refused for Netherlands, decode reveals a hard problem (honest manage-expectations)
 > **[Mon 10:05] Customer:** hi, netherlands refused me. can you tell me why and how to fix for next time
 > **[Mon 11:40] BP:** Sure, happy to read it. Send a photo of the full letter please, both sides if there's writing on the back.
 > **[Mon 11:52] Customer:** [photo] [photo]
@@ -868,7 +868,7 @@ _Elapsed lead to delivery: next day, ~1 day._
 
 _Elapsed lead to delivery: same day, ~4.5 hrs._
 
-**Customer F · Brazilian, retired, refused for Greece, travel insurance ground**
+### Customer F · Brazilian, retired, refused for Greece, travel insurance ground
 > **[Sat 09:30] Customer:** morning! got refused for greece, me and my husband want to see the islands. the letter mentions insurance but ours was fine i thought
 > **[Sat 10:15] BP:** Morning 🙂 let's have a look. Can you send the refusal letter, and the insurance certificate you submitted if you've got it handy?
 > **[Sat 10:22] Customer:** [photo] letter. [photo] insurance
@@ -887,7 +887,7 @@ _Elapsed lead to delivery: same day, ~4.5 hrs._
 
 _Elapsed lead to delivery: same day, ~2.5 hrs._
 
-**Customer G · Ghanaian, IT contractor in UK, refused for Portugal, employment doubt**
+### Customer G · Ghanaian, IT contractor in UK, refused for Portugal, employment doubt
 > **[Wed 18:44] Customer:** hey, portugal refused me. letter says something about my employment not being clear. im a contractor so maybe thats why?
 > **[Wed 18:52] BP:** Evening. Could well be, contractors get this a lot because their setup doesn't fit the standard "employer letter" box. Send the letter over and I'll confirm.
 > **[Wed 18:56] Customer:** [photo]
@@ -912,7 +912,7 @@ _Elapsed lead to delivery: next morning, ~18 hrs._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Same business day (≤ 24 hrs) · Typical span Same day to 1 day
 
-**Customer A · British retiree, France (long stay), bank statement worry**
+### Customer A · British retiree, France (long stay), bank statement worry
 > **[Mon 10:12] Customer:** hi there. im applying for a french long stay visa and not sure my bank statement is ok. can someone just look at the one document?
 > **[Mon 10:41] BP:** Hi yeah of course, that's exactly the doc check, £25 for a single one 🙂
 > **[Mon 10:42] BP:** What's the worry with it? too little in there, or the format?
@@ -928,7 +928,7 @@ _Elapsed lead to delivery: next morning, ~18 hrs._
 > **[Mon 13:52] BP:** Perfect, that'll do nicely. Good luck with it 🙂
 _Elapsed lead to delivery: same day, ~3 hours._
 
-**Customer B · Indian software engineer (Tier 2), Netherlands business trip, invitation letter**
+### Customer B · Indian software engineer (Tier 2), Netherlands business trip, invitation letter
 > **[Tue 08:47] Customer:** morning. i have an invitation letter from a company in amsterdam for a work meeting. can you check if its worded right for the visa? just this one doc
 > **[Tue 09:05] BP:** Morning 👍 Yeah we can do that, single doc check is £25.
 > **[Tue 09:06] BP:** Send the letter across and tell me your travel dates, I'll check it lines up with what the Dutch want.
@@ -946,7 +946,7 @@ _Elapsed lead to delivery: same day, ~3 hours._
 > **[Tue 16:04] BP:** That's the one. Signature, job title, and they've said they're covering the meeting costs. I'd send that in. Fingers crossed for the rest of it 🙂
 _Elapsed lead to delivery: same day, ~7 hours._
 
-**Customer C · Nigerian self-employed trader, Italy tourism, payslip/proof of funds confusion**
+### Customer C · Nigerian self-employed trader, Italy tourism, payslip/proof of funds confusion
 > **[Wed 12:30] Customer:** hello pls i want italy tourist visa. im self employed so i dont have payslips. someone told me my document is wrong. can u check one thing for me
 > **[Wed 13:44] BP:** Hiya, yeah no worries. Self-employed is fine, you just prove income a different way. £25 for the single check.
 > **[Wed 13:45] BP:** What doc did they say was wrong?
@@ -964,7 +964,7 @@ _Elapsed lead to delivery: same day, ~7 hours._
 > **[Wed 16:44] BP:** No worries at all 🙂 good luck
 _Elapsed lead to delivery: same day, ~3 hours._
 
-**Customer D · Filipino care worker (Skilled Worker visa), Spain tourism, annual leave letter**
+### Customer D · Filipino care worker (Skilled Worker visa), Spain tourism, annual leave letter
 > **[Thu 18:22] Customer:** hi. i work as a carer here in the uk. for my spain visa i need employer letter with my leave dates. can u check mine is ok before i submit? just the letter
 > **[Fri 09:08] BP:** Morning, sorry we were shut when you messaged. Yep happy to check the one letter, £25.
 > **[Fri 09:09] BP:** Ping it over whenever.
@@ -981,7 +981,7 @@ _Elapsed lead to delivery: same day, ~3 hours._
 > **[Fri 15:30] BP:** That's spot on now. Leave dates in, return confirmed, signed. Happy with that one 👍
 _Elapsed lead to delivery: next morning to same day, ~6 hours._
 
-**Customer E · Pakistani business owner, Germany trade fair, sponsorship/financial doc**
+### Customer E · Pakistani business owner, Germany trade fair, sponsorship/financial doc
 > **[Mon 16:40] Customer:** salaam. i own a textile business, going to a trade fair in frankfurt. my accountant gave me a financials letter. can you check it works for the german visa
 > **[Mon 17:12] BP:** Wa alaikum salaam 🙂 yeah we can, £25 for the single doc.
 > **[Mon 17:13] BP:** Send the accountant's letter and I'll see if it covers what Germany wants for a business trip.
@@ -997,7 +997,7 @@ _Elapsed lead to delivery: next morning to same day, ~6 hours._
 > **[Tue 10:02] BP:** 👍 all the best with the fair
 _Elapsed lead to delivery: next morning, ~17 hours across the overnight._
 
-**Customer F · British student, Greece study trip, sponsor letter from parent (honest decline of scope)**
+### Customer F · British student, Greece study trip, sponsor letter from parent (honest decline of scope)
 > **[Wed 20:10] Customer:** hey, im a uni student going to greece for a field trip. my dad is paying. i want you to check his sponsor letter. can you also just quickly confirm my whole application is fine while youre at it?
 > **[Thu 09:14] BP:** Morning 🙂 Happy to check your dad's sponsor letter, that's the £25 single doc.
 > **[Thu 09:15] BP:** I'll be straight with you on the second bit though. "Confirm the whole application" isn't something I can do properly under a single doc check, that's a full review and it's a different service.
@@ -1016,7 +1016,7 @@ _Elapsed lead to delivery: next morning, ~17 hours across the overnight._
 > **[Thu 11:55] BP:** Anytime 🙂 enjoy Greece
 _Elapsed lead to delivery: next morning, ~2.5 hours of work time._
 
-**Customer G · Egyptian PhD researcher (UK study visa), Austria conference, unstamped hotel booking**
+### Customer G · Egyptian PhD researcher (UK study visa), Austria conference, unstamped hotel booking
 > **[Fri 13:05] Customer:** hello. im a phd student in the uk, egyptian passport. going to a conference in vienna. someone said my hotel booking needs to be confirmed properly for the austria visa. can you check just that document
 > **[Fri 14:22] BP:** Hi 🙂 yeah single doc check, £25, that's the one for this.
 > **[Fri 14:23] BP:** Send the booking over. Is it a paid confirmation or one of those free-cancel holds?
@@ -1039,7 +1039,7 @@ _Elapsed lead to delivery: same day, ~2 hours._
 
 > ⏱ First reply ≤ 2 hrs · Delivery 24 to 48 hrs write / ≤ 24 hrs review · Typical span 1 to 2 days
 
-**Customer A · British retiree, salaried pension, France (long visit to daughter)**
+### Customer A · British retiree, salaried pension, France (long visit to daughter)
 > **[Mon 09:41] Customer:** hi there. my daughter lives near lyon and i want to stay 3 months with her. someone said i need a cover letter for the schengen application? not sure what goes in it
 > **[Mon 09:58] BP:** Morning 🙂 yeah a cover letter really helps. it's basically you explaining who you are, why you're going, how long, and that you'll come back.
 > **[Mon 09:58] BP:** you're retired I take it? on a pension?
@@ -1056,7 +1056,7 @@ _Elapsed lead to delivery: same day, ~2 hours._
 
 _Elapsed lead to delivery: ~31 hours._
 
-**Customer B · Indian national, UK skilled-worker visa, self-employed side income, Italy**
+### Customer B · Indian national, UK skilled-worker visa, self-employed side income, Italy
 > **[Wed 12:03] Customer:** hey, need a cover letter for an italy schengen. i'm on a skilled worker visa here in london but i also have freelance income on the side, bit worried it looks messy
 > **[Wed 12:20] BP:** hiya. it's not messy, it's actually fine, we just present it clearly. main job on your skilled worker visa is your anchor, freelance is extra funds.
 > **[Wed 12:21] BP:** what's the trip? holiday, work, both?
@@ -1073,7 +1073,7 @@ _Elapsed lead to delivery: ~31 hours._
 
 _Elapsed lead to delivery: ~26 hours._
 
-**Customer C · Nigerian national, UK student, first Schengen trip, Netherlands (review only)**
+### Customer C · Nigerian national, UK student, first Schengen trip, Netherlands (review only)
 > **[Fri 17:22] Customer:** hi i already wrote my cover letter myself for a netherlands visa but im a student and its my first time travelling to europe. can u just check it? dont want silly mistakes
 > **[Fri 17:41] BP:** yeah course, that's our review service. you send what you've got, I mark it up and tell you what to fix. £29 for that one.
 > **[Fri 17:43] BP:** just so you know that's our fee, nothing to do with the visa fee itself.
@@ -1089,7 +1089,7 @@ _Elapsed lead to delivery: ~26 hours._
 
 _Elapsed lead to delivery: ~18 hours._
 
-**Customer D · Filipino national, UK care worker, Health & Care visa, Spain family trip**
+### Customer D · Filipino national, UK care worker, Health & Care visa, Spain family trip
 > **[Mon 08:47] Customer:** good morning po. me and my husband applying spain visa, im a care worker here on health and care visa. we need cover letter for both of us?
 > **[Mon 10:31] BP:** morning! sorry for the wait, Monday rush. yeah ideally one letter covering the family trip, or a short one each, both work. what's the plan out there?
 > **[Mon 10:38] Customer:** 10 days, we visit barcelona then my husband cousin in valencia. he stay with cousin we book hotel barcelona
@@ -1105,7 +1105,7 @@ _Elapsed lead to delivery: ~18 hours._
 
 _Elapsed lead to delivery: ~30 hours._
 
-**Customer E · Pakistani national, UK self-employed (small business owner), Germany trade fair (honest decline / manage expectations)**
+### Customer E · Pakistani national, UK self-employed (small business owner), Germany trade fair (honest decline / manage expectations)
 > **[Wed 19:12] Customer:** salaam, i need a cover letter urgently for germany, i fly in 5 days for a trade fair in berlin. can u write it and will it get me the visa
 > **[Thu 09:06] BP:** morning, and salaam. I can write you a strong letter, but I've got to be straight with you first.
 > **[Thu 09:07] BP:** flying in 5 days is the problem, not the letter. have you actually got the appointment booked yet?
@@ -1121,7 +1121,7 @@ _Elapsed lead to delivery: ~30 hours._
 
 _Elapsed lead to delivery: n/a · advised to postpone, no fee taken._
 
-**Customer F · Egyptian national, UK dependpartner visa, retired parents visiting, Greece (express write)**
+### Customer F · Egyptian national, UK dependpartner visa, retired parents visiting, Greece (express write)
 > **[Tue 13:04] Customer:** hello, my parents visiting me from egypt and we go greece together for holiday. i am on dependant visa here. i need cover letter but appointment is thursday, can u do fast?
 > **[Tue 13:19] BP:** hiya. Thursday's tight but doable if you get me the details today. we can do it express.
 > **[Tue 13:20] BP:** quick one, are your parents applying from Egypt, or are they already here in the UK with you?
@@ -1139,7 +1139,7 @@ _Elapsed lead to delivery: n/a · advised to postpone, no fee taken._
 
 _Elapsed lead to delivery: ~7.5 hours (same-day express)._
 
-**Customer G · Ghanaian national, UK ILR holder, salaried, big family trip to Portugal (write + soft follow-on)**
+### Customer G · Ghanaian national, UK ILR holder, salaried, big family trip to Portugal (write + soft follow-on)
 > **[Thu 16:33] Customer:** hi, planning portugal for me my wife and our two kids in august. i have ILR, work full time. need a cover letter that covers all four of us
 > **[Thu 16:49] BP:** evening 🙂 nice, family trip. yeah one letter can cover all four, you as the main applicant and the family under you.
 > **[Thu 16:50] BP:** kids on your passport or their own?
@@ -1164,7 +1164,7 @@ _Elapsed lead to delivery: ~43 hours._
 
 > ⏱ First reply ≤ 2 hrs · Delivery ≤ 24 hrs · Typical span ~1 day
 
-**Customer A · British retiree, France (long trip)**
+### Customer A · British retiree, France (long trip)
 > **[Mon 09:41] Customer:** morning. me and my wife are doing 3 weeks in France next month and I keep reading you need to "prove funds". how much do they actually want to see?
 > **[Mon 10:58] BP:** Morning 🙂 there's no fixed magic number, France works on roughly a daily rate times your trip. For a self-arranged stay it's about €120 a day per person, less if your accommodation's prepaid.
 > **[Mon 10:59] BP:** so for 21 days two of you, prepaid hotel changes the maths a fair bit. Have you booked the accommodation already?
@@ -1182,7 +1182,7 @@ _Elapsed lead to delivery: ~43 hours._
 
 _Elapsed lead to delivery: same day, ~6 hrs._
 
-**Customer B · Indian national, Tier 2 worker, Italy**
+### Customer B · Indian national, Tier 2 worker, Italy
 > **[Tue 08:12] Customer:** hi, applying for italy schengen from london. im on skilled worker visa here. my bank balance is a bit low right now, will i get rejected?
 > **[Tue 09:44] BP:** Hi! low balance on its own isn't an automatic no, they look at the whole picture, salary coming in, the pattern, not just today's number. What's roughly in there and what's the trip length?
 > **[Tue 09:51] Customer:** about £900. trip is 6 nights milan + como
@@ -1199,7 +1199,7 @@ _Elapsed lead to delivery: same day, ~6 hrs._
 
 _Elapsed lead to delivery: same day, ~7 hrs._
 
-**Customer C · Nigerian national, self-employed, Spain**
+### Customer C · Nigerian national, self-employed, Spain
 > **[Wed 10:03] Customer:** hello. im self employed (i run a small logistics business) and going to spain. i heard self employed people get rejected more on money. is that true
 > **[Wed 10:35] BP:** Hi 🙂 not more likely to be rejected as such, but self-employed applications do get looked at harder on the funds side, because there's no tidy payslip. It's all about showing the money's real and regular.
 > **[Wed 10:36] BP:** do you run everything through a business account, or is it mixed with personal?
@@ -1217,7 +1217,7 @@ _Elapsed lead to delivery: same day, ~7 hrs._
 
 _Elapsed lead to delivery: next day, ~25 hrs._
 
-**Customer D · Filipino national, sponsored by sibling, Germany**
+### Customer D · Filipino national, sponsored by sibling, Germany
 > **[Wed 16:22] Customer:** hi po. my sister in germany is paying for my whole trip. do i still need to show my own money?
 > **[Wed 17:05] BP:** Hi! good question and a common one. If she's sponsoring you, the funds proof mostly shifts to her, but you'll likely still want a little of your own to show plus proof of the relationship.
 > **[Wed 17:06] BP:** is she doing a formal sponsorship (the German "Verpflichtungserklärung")? or just transferring you money?
@@ -1234,7 +1234,7 @@ _Elapsed lead to delivery: next day, ~25 hrs._
 
 _Elapsed lead to delivery: next morning, ~19 hrs._
 
-**Customer E · Pakistani national, student in UK, Netherlands**
+### Customer E · Pakistani national, student in UK, Netherlands
 > **[Thu 13:04] Customer:** salaam, im a student here on a student visa. going amsterdam for 5 days with 2 friends. my account only has like £600, parents send me money monthly. will that be a problem
 > **[Thu 13:52] BP:** Wa alaikum salaam 🙂 5 days is short so the daily figure they expect isn't huge. £600 could be borderline-ok, but the monthly parent transfers are the thing to present properly.
 > **[Thu 13:53] BP:** do the transfers come in regularly, same-ish amount each month?
@@ -1252,7 +1252,7 @@ _Elapsed lead to delivery: next morning, ~19 hrs._
 
 _Elapsed lead to delivery: next morning, ~21 hrs._
 
-**Customer F · Egyptian national, salaried, Greece (honest decline)**
+### Customer F · Egyptian national, salaried, Greece (honest decline)
 > **[Fri 11:33] Customer:** hi i want to apply for greece next week. my problem is my bank account is basically empty, like £80. but i get paid cash. can you make my statement look ok for the application?
 > **[Fri 12:40] BP:** Hi. I can definitely help with how to present funds, but I want to be straight with you: I can't make a statement "look ok", nothing fabricated, no doctored balances. That's fraud and it'd sink your application (and it's illegal).
 > **[Fri 12:41] BP:** what I CAN do is help you build a genuine, strong case. But £80 showing next week is the real issue we'd need to solve first.
@@ -1268,7 +1268,7 @@ _Elapsed lead to delivery: next morning, ~21 hrs._
 
 _Elapsed lead to delivery: no sale, advised to return in ~6-8 weeks._
 
-**Customer G · Brazilian national, family of four, Portugal**
+### Customer G · Brazilian national, family of four, Portugal
 > **[Sat 09:18] Customer:** bom dia! we are a family of 4 (2 kids, 8 and 11) going to portugal for 10 days. do the kids need to show funds too? bit confused how it works for families
 > **[Sat 10:26] BP:** Bom dia! 🙂 no, the kids don't need their own money. For a family it's the parents' funds covering everyone, and children are usually assessed at a lower daily rate anyway.
 > **[Sat 10:27] BP:** are both parents applying and travelling, or just one of you?
@@ -1293,7 +1293,7 @@ _Elapsed lead to delivery: next working day (weekend gap), ~2 days._
 
 > ⏱ First reply ≤ 2 hrs · Delivery 3 to 7 working days · Typical span ~1 week+
 
-**Customer A · British, salaried, marrying in Italy**
+### Customer A · British, salaried, marrying in Italy
 > **[Mon 09:41] Customer:** hi, getting married in italy in sept and the town hall says my birth certificate needs an apostille. can you sort that?
 > **[Mon 10:58] BP:** Hi 🙂 yeah we do this a lot for Italian weddings. Quick check first, is it a UK birth certificate?
 > **[Mon 11:02] Customer:** yes issued in manchester
@@ -1312,7 +1312,7 @@ _Elapsed lead to delivery: next working day (weekend gap), ~2 days._
 > **[Mon 10:22] Customer:** amazing thank you so much
 _Elapsed lead to delivery: 8 working days._
 
-**Customer B · Indian, self-employed, degree for German job**
+### Customer B · Indian, self-employed, degree for German job
 > **[Tue 14:10] Customer:** hello i have a job offer in germany, they want my uk degree certificate apostilled. can u help
 > **[Tue 15:33] BP:** Hi, yeah we can. Is the degree from a UK university?
 > **[Tue 15:38] Customer:** yes UCL 2016
@@ -1330,7 +1330,7 @@ _Elapsed lead to delivery: 8 working days._
 > **[Wed 12:02] Customer:** thank u so much really appreciate it
 _Elapsed lead to delivery: 6 working days._
 
-**Customer C · Nigerian, family, POA for Spanish property**
+### Customer C · Nigerian, family, POA for Spanish property
 > **[Wed 08:52] Customer:** morning. im buying a property in spain and my lawyer there needs a power of attorney apostilled and translated. can you do the whole thing?
 > **[Wed 09:40] BP:** Morning 🙂 yeah we can handle apostille + Spanish translation. Has the POA been signed and notarised by a UK notary yet?
 > **[Wed 09:44] Customer:** not yet, i just have the draft from the spanish lawyer
@@ -1350,7 +1350,7 @@ _Elapsed lead to delivery: 6 working days._
 > **[Mon 14:40] Customer:** perfect my lawyer will be happy thank you
 _Elapsed lead to delivery: 7 working days (from notarisation)._
 
-**Customer D · Pakistani, student, docs for French university**
+### Customer D · Pakistani, student, docs for French university
 > **[Thu 18:40] Customer:** hi is anyone there. french uni wants my A level certs apostilled by end of month, is that doable
 > **[Fri 09:12] BP:** Morning, sorry we'd shut for the evening. Yeah A level certs are doable. Do you have the original certificates from the exam board?
 > **[Fri 09:30] Customer:** i have originals from AQA yes
@@ -1368,7 +1368,7 @@ _Elapsed lead to delivery: 7 working days (from notarisation)._
 > **[Mon 10:52] Customer:** thank u so much stressed about that deadline
 _Elapsed lead to delivery: 5 working days._
 
-**Customer E · Filipino, salaried, marriage cert for Netherlands (honest decline)**
+### Customer E · Filipino, salaried, marriage cert for Netherlands (honest decline)
 > **[Fri 16:20] Customer:** hi i need my marriage certificate apostilled but its a philippine marriage certificate not a uk one. can you do it
 > **[Fri 17:05] BP:** Hi 🙂 ah that's an important detail. Was the marriage cert issued in the Philippines by the PSA?
 > **[Fri 17:08] Customer:** yes PSA issued
@@ -1382,7 +1382,7 @@ _Elapsed lead to delivery: 5 working days._
 > **[Fri 17:51] Customer:** will do, thanks again
 _Elapsed lead to delivery: n/a, referred out (no charge)._
 
-**Customer F · Egyptian, business, company docs for Greece (express)**
+### Customer F · Egyptian, business, company docs for Greece (express)
 > **[Mon 11:05] Customer:** hello, i need company incorporation documents apostilled for opening a branch in greece. its a bit urgent, board meeting next week
 > **[Mon 11:44] BP:** Hi 🙂 yeah we can do company docs. Which ones exactly, certificate of incorporation, memorandum, that kind of thing?
 > **[Mon 11:50] Customer:** certificate of incorporation and the articles, plus a good standing certificate
@@ -1402,7 +1402,7 @@ _Elapsed lead to delivery: n/a, referred out (no charge)._
 > **[Thu 12:38] Customer:** excellent, exactly what we needed. thank you
 _Elapsed lead to delivery: 4 working days (express)._
 
-**Customer G · Ghanaian, retired, pension life certificate for Portugal**
+### Customer G · Ghanaian, retired, pension life certificate for Portugal
 > **[Wed 13:15] Customer:** good afternoon. i live between uk and portugal and my portuguese bank needs a life certificate apostilled to keep my pension going. can u assist
 > **[Wed 14:22] BP:** Afternoon 🙂 yeah we can. Is the life certificate a UK document, like signed by a UK doctor or solicitor?
 > **[Wed 14:30] Customer:** yes my GP signs it here in the uk
@@ -1427,7 +1427,7 @@ _Elapsed lead to delivery: 6 working days._
 
 > ⏱ First reply ≤ 30 min · Delivery Slot secured 1 to 5 days · Typical span A few days
 
-**Customer A · British retiree, salaried pension, wants a France slot fast for a spring trip**
+### Customer A · British retiree, salaried pension, wants a France slot fast for a spring trip
 > **[Mon 09:14] Customer:** hi there, do you sort out the appointment bookings for france? the tls site keeps saying nothing available for weeks
 > **[Mon 09:31] BP:** Morning 🙂 yeah we do. TLS for France runs out of Manchester or London usually. Which centre's closest for you?
 > **[Mon 09:33] Customer:** manchester ideally. i'm in Leeds
@@ -1446,7 +1446,7 @@ _Elapsed lead to delivery: 6 working days._
 
 _Elapsed lead to delivery: 2 days._
 
-**Customer B · Indian national, Tier 2 skilled worker, urgent Germany business trip**
+### Customer B · Indian national, Tier 2 skilled worker, urgent Germany business trip
 > **[Tue 14:02] Customer:** need a germany appointment urgently, work sending me to munich for a conference. vfs showing nothing till may
 > **[Tue 14:19] BP:** Hi, ok let's see what we can do. When's the conference?
 > **[Tue 14:21] Customer:** 28th of this month. i know its tight
@@ -1465,7 +1465,7 @@ _Elapsed lead to delivery: 2 days._
 
 _Elapsed lead to delivery: 1 day._
 
-**Customer C · Nigerian national, self-employed, Italy trip, honest decline scenario**
+### Customer C · Nigerian national, self-employed, Italy trip, honest decline scenario
 > **[Wed 16:40] Customer:** hello do u book italy appointments? need one in the next 3 days for a trip
 > **[Wed 16:58] BP:** Hi 🙂 we do book Italy, yeah. When exactly are you travelling?
 > **[Wed 17:01] Customer:** saturday. this saturday
@@ -1483,7 +1483,7 @@ _Elapsed lead to delivery: 1 day._
 
 _Elapsed lead to delivery: booking secured 3 days after go-ahead._
 
-**Customer D · Filipino national, care worker, Spain family visit, modest budget**
+### Customer D · Filipino national, care worker, Spain family visit, modest budget
 > **[Thu 12:30] Customer:** hi pls i want spain appointment but the website always full. is it expensive to book thru u?
 > **[Thu 12:52] BP:** Hi 🙂 it's £49 for us to secure the slot. That's our bit only, the BLS Spain centre fee and the visa fee you pay separately when you go in.
 > **[Thu 12:55] Customer:** ok that is ok for me. i visit my sister in valencia, travel in 6 weeks
@@ -1500,7 +1500,7 @@ _Elapsed lead to delivery: booking secured 3 days after go-ahead._
 
 _Elapsed lead to delivery: 2 days._
 
-**Customer E · Pakistani national, student on Skilled Worker dependant visa, Netherlands trip**
+### Customer E · Pakistani national, student on Skilled Worker dependant visa, Netherlands trip
 > **[Fri 11:05] Customer:** salaam, do you do netherlands appointments? need one for amsterdam trip, vfs is fully booked
 > **[Fri 11:20] BP:** Wa alaikum salaam 🙂 yeah we cover Netherlands. When are you looking to travel?
 > **[Fri 11:23] Customer:** middle of next month, around the 18th
@@ -1519,7 +1519,7 @@ _Elapsed lead to delivery: 2 days._
 
 _Elapsed lead to delivery: 3 days._
 
-**Customer F · Egyptian national, self-employed business owner, Greece trip, express priority**
+### Customer F · Egyptian national, self-employed business owner, Greece trip, express priority
 > **[Mon 08:58] Customer:** morning. i need a greece appointment fast, ideally this week. can you do express? happy to prioritise
 > **[Mon 09:12] BP:** Morning 🙂 we can, yeah. Just so we're on the same page, express with us means we chase and grab a slot faster, watching the system round the clock. It doesn't buy a special faster slot or speed up the actual visa decision, that's still Greece's consulate.
 > **[Mon 09:15] Customer:** understood, i just want the earliest appointment possible. i run my own company, timing is money
@@ -1538,7 +1538,7 @@ _Elapsed lead to delivery: 3 days._
 
 _Elapsed lead to delivery: 1 day._
 
-**Customer G · Ghanaian national, salaried NHS nurse, Portugal trip, first-timer nervous**
+### Customer G · Ghanaian national, salaried NHS nurse, Portugal trip, first-timer nervous
 > **[Sat 10:20] Customer:** hello, ive never done this before. i want to visit portugal but i dont even know how to get an appointment, its all confusing
 > **[Sat 10:38] BP:** Hi 🙂 no worries at all, this is exactly the bit people get stuck on. I'll keep it simple. Portugal goes through VFS, and yeah the appointment slots are the hard part. That's what we sort for you.
 > **[Sat 10:41] Customer:** oh good. so u book it and i just turn up?
@@ -1563,7 +1563,7 @@ _Elapsed lead to delivery: 3 days._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Same day (≤ 24 hrs) · Typical span Same day to 1 day
 
-**Customer A · British retiree, driving trip to France**
+### Customer A · British retiree, driving trip to France
 > **[Mon 10:41] Customer:** hi, me and my wife are driving to france next month through the tunnel. do we need anything special now with the new rules? passports are fine
 > **[Mon 11:58] BP:** Hi there 🙂 no Schengen visa needed for you both as Brit passport holders, that bit's easy. It's mainly the passport rules that trip people up.
 > **[Mon 11:58] BP:** two things I'd check: issued less than 10 yrs before you travel, and at least 3 months left after the day you plan to come back.
@@ -1582,7 +1582,7 @@ _Elapsed lead to delivery: 3 days._
 
 _Elapsed lead to delivery: same day, about 5 hours._
 
-**Customer B · Indian national on Skilled Worker visa, first Schengen trip to Italy**
+### Customer B · Indian national on Skilled Worker visa, first Schengen trip to Italy
 > **[Tue 08:52] Customer:** morning. im on a skilled worker visa in the uk (indian passport) and planning a trip to italy in oct. bit confused what i actually need to enter
 > **[Tue 09:31] BP:** morning! ok so on an Indian passport you'll need a Schengen short-stay visa for Italy, the UK visa doesn't cover you there. Is the Skilled Worker BRP/eVisa still valid past October?
 > **[Tue 09:35] Customer:** yes valid till 2027
@@ -1600,7 +1600,7 @@ _Elapsed lead to delivery: same day, about 5 hours._
 
 _Elapsed lead to delivery: same day, about 5 hours._
 
-**Customer C · Nigerian student, worried about a past refusal**
+### Customer C · Nigerian student, worried about a past refusal
 > **[Wed 17:44] Customer:** hello. nigerian passport, student here in london. i want to go to spain in december but i had a schengen refusal from france in 2022. does that mean im banned or
 > **[Wed 17:58] BP:** hi, no you're not banned. A past refusal isn't a block, it just means you declare it honestly and make this application solid. Do you remember the reason they gave on the France refusal?
 > **[Wed 18:01] Customer:** something about not enough funds and unclear purpose i think
@@ -1618,7 +1618,7 @@ _Elapsed lead to delivery: same day, about 5 hours._
 
 _Elapsed lead to delivery: next working day, under 24 hrs._
 
-**Customer D · Filipino care worker, family visit to Germany, tight timeline**
+### Customer D · Filipino care worker, family visit to Germany, tight timeline
 > **[Fri 12:10] Customer:** hi pls i need help fast. filipino, care worker visa uk. my sister in germany having baby, i want to visit end of this month. what do i need?? is there time
 > **[Fri 12:19] BP:** hi! ok deep breath, let's see. End of the month is tight but not impossible. You'll need a Schengen visa for Germany on a Filipino passport, applied from the UK. Is your care worker visa currently valid?
 > **[Fri 12:21] Customer:** yes valid 2 more years
@@ -1636,7 +1636,7 @@ _Elapsed lead to delivery: next working day, under 24 hrs._
 
 _Elapsed lead to delivery: same day, about 4 hours._
 
-**Customer E · Brazilian freelancer, self-employed, Portugal trip (honest decline)**
+### Customer E · Brazilian freelancer, self-employed, Portugal trip (honest decline)
 > **[Mon 14:03] Customer:** hey. brazilian, self employed designer, i live in the uk on a pre-settled status. want to go lisbon in 3 weeks. figured id check what i need before booking flights
 > **[Mon 14:22] BP:** hi 🙂 smart to check first. Quick question so I don't send you down the wrong path, Brazilian passport holders get visa-free short stays in the Schengen area. Have you used any Schengen days in the last 180?
 > **[Mon 14:25] Customer:** no not been to europe at all this year
@@ -1656,7 +1656,7 @@ _Elapsed lead to delivery: same day, about 4 hours._
 
 _Elapsed lead to delivery: same day, about 3 hours._
 
-**Customer F · Pakistani national, business trip to Netherlands**
+### Customer F · Pakistani national, business trip to Netherlands
 > **[Thu 11:15] Customer:** salaam. pakistani passport, ilr in the uk. company sending me to amsterdam for a conference in november. what do i need entry wise
 > **[Thu 11:40] BP:** wa alaikum salaam 🙂 right, Pakistani passport means a Schengen visa for the Netherlands, but your ILR makes it a much stronger case. Is the trip employer-sponsored, ie they're covering costs?
 > **[Thu 11:43] Customer:** yes company pays flights hotel everything. i have a letter from them
@@ -1674,7 +1674,7 @@ _Elapsed lead to delivery: same day, about 3 hours._
 
 _Elapsed lead to delivery: same day, about 5 hours._
 
-**Customer G · Kenyan national, spouse of British citizen, honeymoon to Greece**
+### Customer G · Kenyan national, spouse of British citizen, honeymoon to Greece
 > **[Sat 09:20] Customer:** hi! just got married 🎉 im kenyan, husband is british, we live in london. planning greece for our honeymoon in feb. do i need a visa even though hes british?
 > **[Sat 09:48] Customer:** sorry should say i have a spouse visa here
 > **[Sat 10:05] BP:** congrats!! 🎉 lovely. So being married to a Brit doesn't change the Schengen bit unfortunately, on a Kenyan passport you'll need a visa for Greece. BUT as the spouse of an EU/EEA... hmm, actually he's British post-Brexit so the EU family route doesn't apply here. Standard short-stay it is.
@@ -1699,7 +1699,7 @@ _Elapsed lead to delivery: same day, about 4 hours._
 
 > ⏱ First reply ≤ 2 hrs · Delivery Instant (partner link) · Typical span Minutes
 
-**Customer A · British retiree, road trip through France & Spain**
+### Customer A · British retiree, road trip through France & Spain
 > **[Mon 10:41] Customer:** hi, do you sort travel insurance for the schengen visa? me and my wife driving down through france into spain in sept
 > **[Mon 11:02] BP:** Hi 🙂 We don't sell insurance ourselves, but yeah I can point you the right way.
 > **[Mon 11:02] BP:** As Brits on passports you don't actually need a Schengen visa for a holiday, so no visa insurance rule kicks in.
@@ -1712,7 +1712,7 @@ _Elapsed lead to delivery: same day, about 4 hours._
 
 _Elapsed lead to delivery: ~27 minutes._
 
-**Customer B · Indian national, UK work visa, Italy trip**
+### Customer B · Indian national, UK work visa, Italy trip
 > **[Tue 09:12] Customer:** hi need travel insurance for my italy schengen application. what cover do i buy?
 > **[Tue 09:31] BP:** Morning. Easy one. The consulate wants a policy that covers at least 30,000 euros in medical, and it has to include repatriation.
 > **[Tue 09:31] BP:** Valid across the whole Schengen area, not just Italy.
@@ -1727,7 +1727,7 @@ _Elapsed lead to delivery: ~27 minutes._
 
 _Elapsed lead to delivery: ~27 minutes._
 
-**Customer C · Nigerian national, UK student, Germany conference**
+### Customer C · Nigerian national, UK student, Germany conference
 > **[Wed 14:03] Customer:** hey, buying my insurance for germany visa. my mate said any policy works. true?
 > **[Wed 14:20] BP:** Not quite. Loads of standard policies don't meet the Schengen rule, so I'd be careful with that.
 > **[Wed 14:20] BP:** It has to say 30,000 euros medical minimum AND repatriation, and cover the whole Schengen zone.
@@ -1743,7 +1743,7 @@ _Elapsed lead to delivery: ~27 minutes._
 
 _Elapsed lead to delivery: ~25 minutes._
 
-**Customer D · Pakistani national, self-employed, France visa, mid-application**
+### Customer D · Pakistani national, self-employed, France visa, mid-application
 > **[Thu 16:40] Customer:** salaam, im doing my france visa with your help. quick q on insurance, do you add it to the package?
 > **[Thu 16:58] BP:** Wa alaikum salaam. We don't, no. We keep insurance separate on purpose so you're not paying us a markup on it.
 > **[Thu 16:58] BP:** You buy your own direct from an authorised provider, works out cheaper for you.
@@ -1757,7 +1757,7 @@ _Elapsed lead to delivery: ~25 minutes._
 
 _Elapsed lead to delivery: ~25 minutes._
 
-**Customer E · Filipino national, UK care worker, Netherlands to see family**
+### Customer E · Filipino national, UK care worker, Netherlands to see family
 > **[Fri 12:22] Customer:** hi po, i already bought travel insurance for my netherlands visa. can you check if its ok?
 > **[Fri 12:40] BP:** Hiya. I can't formally approve a policy, that's between you and the insurer, but I can tell you what the consulate looks for.
 > **[Fri 12:40] BP:** Two things mainly. Does it say at least 30,000 euros medical? And does it mention repatriation?
@@ -1771,7 +1771,7 @@ _Elapsed lead to delivery: ~25 minutes._
 
 _Elapsed lead to delivery: ~26 minutes._
 
-**Customer F · Egyptian national, UK resident, Greece island honeymoon**
+### Customer F · Egyptian national, UK resident, Greece island honeymoon
 > **[Sat 10:05] Customer:** morning! honeymoon in greece, need insurance for 2 of us for the visa. do we get one policy or two
 > **[Sat 10:23] BP:** Morning, congrats 🙂 Either works. One policy that names both of you, or one each.
 > **[Sat 10:23] BP:** If it's a joint one just make sure both names are printed on the certificate, consulate wants to see you're both covered.
@@ -1786,7 +1786,7 @@ _Elapsed lead to delivery: ~26 minutes._
 
 _Elapsed lead to delivery: ~25 minutes._
 
-**Customer G · Ghanaian national, UK resident, Portugal, wants cheapest cover only**
+### Customer G · Ghanaian national, UK resident, Portugal, wants cheapest cover only
 > **[Mon 17:12] Customer:** hi i just want the cheapest insurance possible for portugal visa. dont care about extras
 > **[Mon 17:29] BP:** Fair enough. I'd just steer you away from going too cheap and it not meeting the visa rule, that's the only trap.
 > **[Mon 17:29] BP:** Whatever you pick it must show 30,000 euros medical and repatriation, whole Schengen, full dates. Below that it fails.
