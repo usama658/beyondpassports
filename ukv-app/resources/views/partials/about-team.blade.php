@@ -98,7 +98,7 @@
   .abt .follow-work { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--paper-edge); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
   .abt .follow-work .fw-lab { font: 800 14px var(--display); color: var(--ink); }
   .abt .follow-work .fw-lab span { display: block; font: 400 13px var(--display); color: var(--muted); margin-top: 2px; }
-  .abt .follow-work .fw-row { display: flex; gap: 9px; justify-content: center; }
+  .abt .follow-work .fw-row { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; max-width: 100%; }
   .abt .follow-work .fw-soc { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 10px; background: var(--white); border: 1px solid var(--paper-edge); color: var(--ink); transition: transform .18s ease, border-color .18s ease, color .18s ease; }
   .abt .follow-work .fw-soc:hover { border-color: var(--stamp); color: var(--stamp-text); transform: translateY(-2px); }
   .abt .follow-work .fw-soc:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
