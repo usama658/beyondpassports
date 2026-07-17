@@ -231,15 +231,23 @@
   .cvb .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .cvb .card { position: relative; background: var(--white); border: 1px solid var(--paper-edge); border-radius: 18px; overflow: hidden; box-shadow: var(--lift-1); transition: transform .2s ease, box-shadow .2s ease; }
   .cvb .card:hover { transform: translateY(-4px); box-shadow: var(--lift-2); }
-  .cvb .caphd { background: linear-gradient(180deg, #f7f9fb, var(--white)); padding: 16px 20px 14px; border-bottom: 1px solid var(--paper-edge); text-align: center; }
+  .cvb .caphd { background: linear-gradient(180deg, #f7f9fb, var(--white)); padding: 16px 20px 30px; border-bottom: 1px solid var(--paper-edge); text-align: center; }
+  .cvb .caphd .cons { margin: 0 0 2px; }
   .cvb .ctop { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 3px; }
   .cvb .country { font-weight: 800; font-size: 16px; color: var(--ink); }
   .cvb .cons { font-size: 11px; color: var(--muted); margin: 0; }
-  .cvb .med { position: absolute; left: 50%; top: 76px; transform: translateX(-50%); width: 72px; height: 72px; border-radius: 50%; background: var(--stamp); display: grid; place-items: center; text-align: center; color: #fff; box-shadow: 0 0 0 6px var(--white), 0 14px 26px -12px rgba(46,154,140,.8); z-index: 3; }
+  .cvb .med { position: absolute; left: 50%; top: 122px; transform: translateX(-50%); width: 72px; height: 72px; border-radius: 50%; background: var(--stamp); display: grid; place-items: center; text-align: center; color: #fff; box-shadow: 0 0 0 6px var(--white), 0 14px 26px -12px rgba(46,154,140,.8); z-index: 3; }
   .cvb .med .chk { width: 13px; height: 13px; stroke: #fff; stroke-width: 2.8; margin-bottom: 1px; }
   .cvb .med .n { font-size: 18px; font-weight: 800; line-height: 1; }
   .cvb .med .u { font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
-  .cvb .split { display: grid; grid-template-columns: 1fr 1fr; padding-top: 30px; }
+  .cvb .split { display: grid; grid-template-columns: 1fr 1fr; padding-top: 66px; }
+  /* client verified-client chip (top of each case card) */
+  .cvb .cn-chip { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 12px; background: #fff; border: 1px solid rgba(200,155,60,.45); border-radius: 999px; padding: 5px 14px 5px 6px; box-shadow: 0 6px 16px -12px rgba(200,155,60,.75); }
+  .cvb .cn-chip .cn-av { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center; font-weight: 800; font-size: 10.5px; color: #8a6a1f; background: linear-gradient(135deg,#f6ecd2,#eeddb0); border: 1px solid rgba(200,155,60,.5); }
+  .cvb .cn-chip .cn-name { font-weight: 800; font-size: 13px; color: var(--ink); }
+  .cvb .cn-chip .cn-sep { width: 1px; height: 14px; background: rgba(200,155,60,.4); }
+  .cvb .cn-chip .cn-verify { display: inline-flex; align-items: center; gap: 4px; font-size: 9.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #8a6a1f; }
+  .cvb .cn-chip .cn-verify svg { width: 11px; height: 11px; fill: none; stroke: #C89B3C; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
   .cvb .pane { padding: 18px 20px; }
   .cvb .pane.b { background: #fbf4f2; }
   .cvb .pane.a { background: #f3faf7; border-left: 1px solid var(--paper-edge); }
@@ -608,25 +616,31 @@
 {{-- RECENT APPLICATIONS — before/after case cards, crown turnaround medallion (illustrative) --}}
 @php
   $csTick = '<svg class="chk" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+  // Anonymised client name → monogram initials, e.g. "Amara O." → "AO".
+  $csInit = function (string $n): string {
+      $p = preg_split('/\s+/', trim($n), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+      return mb_strtoupper(mb_substr($p[0] ?? '', 0, 1) . (isset($p[1]) ? mb_substr($p[1], 0, 1) : ''));
+  };
   $cases = [
-    ['ref','Germany visa','German Embassy London · West African passport','Previous refusal for employment gap. Consulate flagged inconsistency in financial documentation.','Restructured cover letter with three-year employment history. Supplementary bank statements and employer confirmation to close the gap.','Approved, multiple entry, 6 months','11','Previous refusal'],
-    ['ref','France visa','French Consulate London · South Asian passport','Self-employed with no payslips. Consulate had previously declined a similar application via another service.','Documented income via contracts, invoices and six-month bank history. Structured the self-employment evidence to meet the consulate standard.','Approved, 90 days','8','Previous refusal'],
-    ['first','Spain visa','Spanish Consulate Manchester · South Asian passport','First Schengen application for both applicants. No prior travel history. Joint application with spouse.','Built travel intent documentation, full accommodation chain and sponsor letters. Addressed the no-travel-history concern directly in cover letters.','Both approved','14','First Schengen'],
-    ['ref','Italy visa','Italian Consulate London · Middle Eastern passport','Refused twice previously. Consulate cited insufficient ties to home country.','Built a comprehensive ties-to-home file: property, employment contract, family documentation. Cover letter addressed prior refusals directly.','Approved, single entry','10','Previous refusal'],
-    ['first','Netherlands visa','Dutch Embassy London · East African passport','Student applicant, part-time income, sponsored by parent. No prior international travel history.','Structured sponsorship letter with full financial evidence for applicant and sponsor. Academic enrollment letter to demonstrate return obligation.','Approved, 30 days','12','First Schengen'],
-    ['ref','Switzerland visa','Swiss Embassy London · South American passport','Business trip. Previous refusal under different employer, consulate flagged inconsistency between stated purpose and itinerary.','Rebuilt business purpose documentation: employer invitation, meeting schedule, accommodation tied to the stated destination. Itinerary and purpose aligned precisely.','Approved, multiple entry','9','Previous refusal'],
+    ['ref','Germany visa','German Embassy London · West African passport','Previous refusal for employment gap. Consulate flagged inconsistency in financial documentation.','Restructured cover letter with three-year employment history. Supplementary bank statements and employer confirmation to close the gap.','Approved, multiple entry, 6 months','11','Previous refusal','Amara O.'],
+    ['ref','France visa','French Consulate London · South Asian passport','Self-employed with no payslips. Consulate had previously declined a similar application via another service.','Documented income via contracts, invoices and six-month bank history. Structured the self-employment evidence to meet the consulate standard.','Approved, 90 days','8','Previous refusal','Rahul S.'],
+    ['first','Spain visa','Spanish Consulate Manchester · South Asian passport','First Schengen application for both applicants. No prior travel history. Joint application with spouse.','Built travel intent documentation, full accommodation chain and sponsor letters. Addressed the no-travel-history concern directly in cover letters.','Both approved','14','First Schengen','Neha P.'],
+    ['ref','Italy visa','Italian Consulate London · Middle Eastern passport','Refused twice previously. Consulate cited insufficient ties to home country.','Built a comprehensive ties-to-home file: property, employment contract, family documentation. Cover letter addressed prior refusals directly.','Approved, single entry','10','Previous refusal','Karim H.'],
+    ['first','Netherlands visa','Dutch Embassy London · East African passport','Student applicant, part-time income, sponsored by parent. No prior international travel history.','Structured sponsorship letter with full financial evidence for applicant and sponsor. Academic enrollment letter to demonstrate return obligation.','Approved, 30 days','12','First Schengen','Miriam T.'],
+    ['ref','Switzerland visa','Swiss Embassy London · South American passport','Business trip. Previous refusal under different employer, consulate flagged inconsistency between stated purpose and itinerary.','Rebuilt business purpose documentation: employer invitation, meeting schedule, accommodation tied to the stated destination. Itinerary and purpose aligned precisely.','Approved, multiple entry','9','Previous refusal','Diego M.'],
   ];
 @endphp
 <section class="cvb alt"><div class="wrap">
   <div class="cshead reveal">
     <span class="ey">Recent applications</span>
     <h2>Cases we have prepared</h2>
-    <p>Illustrative of the cases we prepare. Names and exact dates withheld for client privacy. Each case prepared individually.</p>
+    <p>Illustrative of the cases we prepare. Client names anonymised and exact dates withheld for privacy. Each case prepared individually.</p>
   </div>
   <div class="grid">
-    @foreach ($cases as [$tag,$country,$cons,$sit,$did,$out,$days,$tagLabel])
+    @foreach ($cases as [$tag,$country,$cons,$sit,$did,$out,$days,$tagLabel,$client])
     <div class="card reveal">
       <div class="caphd">
+        <span class="cn-chip"><span class="cn-av">{{ $csInit($client) }}</span><span class="cn-name">{{ $client }}</span><span class="cn-sep"></span><span class="cn-verify">{!! $csTick !!}Verified client</span></span>
         <div class="ctop"><span class="country">{{ $country }}</span><span class="badge {{ $tag }}">{{ $tagLabel }}</span></div>
         <p class="cons">{{ $cons }}</p>
       </div>
