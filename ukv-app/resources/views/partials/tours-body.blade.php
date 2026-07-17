@@ -189,7 +189,7 @@
     <p class="tr-sub">Our own records. We do not promise outcomes. We make the case as strong as it can be.</p>
   </div>
   <div class="tr-stats"><div class="row">
-    <div><div class="n">UK &amp; EU</div><div class="l">Registered in the United Kingdom and Europe</div></div>
+    <div><div class="n" style="display:flex;justify-content:center;align-items:center;gap:8px">@include('partials.uk-eu-flags',['size'=>24])</div><div class="l">Registered in the United Kingdom and Europe</div></div>
     <div><div class="n">{{ $apps }}</div><div class="l">Applications prepared and counting</div></div>
     <div><div class="n">{{ $revs }}</div><div class="l">Previously refused cases turned around</div></div>
     <div><div class="n">{{ $ins }}</div><div class="l">Minimum travel insurance per traveller</div></div>
