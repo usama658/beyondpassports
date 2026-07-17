@@ -1,3 +1,10 @@
+# Disable LiteSpeed full-page cache: this is a dynamic Laravel app (sessions, CSRF,
+# per-page app-level caching). Server-level page caching served stale HTML and stopped
+# template/CSS updates from appearing.
+<IfModule LiteSpeed>
+    CacheDisable public /
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
