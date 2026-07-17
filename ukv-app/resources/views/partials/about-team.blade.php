@@ -78,8 +78,14 @@
     position: relative; margin-top: 24px; background: var(--white);
     border: 1px solid var(--paper-edge); border-radius: 18px; overflow: hidden;
     box-shadow: 0 1px 2px rgba(22,34,46,.05), 0 30px 60px -40px rgba(22,34,46,.42);
-    display: grid; grid-template-columns: 1fr 1.25fr;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   }
+  /* grid children must be allowed to shrink below their content min-width,
+     else the map/text min-content forces the track wider than the card and
+     .loc's overflow:hidden silently clips it on narrow viewports. */
+  .abt .loc-body, .abt .loc-map, .abt .member { min-width: 0; }
+  .abt .address { overflow-wrap: anywhere; }
+  .abt .map-frame iframe { max-width: 100%; }
   .abt .loc-body { padding: 46px 48px; align-self: center; }
   .abt .loc-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--stamp-text); margin: 0 0 14px; }
   .abt .loc-eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--stamp); opacity: .7; }
@@ -108,7 +114,7 @@
     .abt .member.lead .photo { width: 84px; height: 84px; }
     .abt .member.lead .photo .monogram { font-size: 26px; }
     .abt .member.lead .name { font-size: 19px; }
-    .abt .loc { grid-template-columns: 1fr; }
+    .abt .loc { grid-template-columns: minmax(0, 1fr); }
     .abt .loc-body { padding: 36px 28px; }
     .abt .loc-map { min-height: 280px; }
     .abt .map-frame { min-height: 252px; }
