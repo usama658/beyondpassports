@@ -1,5 +1,4 @@
-{{-- Tours body. Extracted verbatim from public/tours.blade.php (incl. its @php data block) so the
-     coded route and the CMS locked-include render byte-identical markup + CSS. Edit here, both update. --}}
+{{-- Tours body. Shared by the coded /tour-packages route and the CMS locked-include. --}}
 @php
   $tours   = config('ukv.tours.packages', []);
   $sla     = App\Support\SiteStats::responseSla();
