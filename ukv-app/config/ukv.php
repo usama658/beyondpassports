@@ -338,9 +338,9 @@ return [
             'url'   => '/documents',
             'intro' => 'Most visas are refused over documents. We get yours right.',
             'kicker' => 'Get documents right',
-            'cta' => ['label' => 'Get my free checklist', 'url' => '/document-checklist'],
+            'cta' => ['label' => 'Build my checklist', 'url' => '/document-checklist'],
             'items' => [
-                ['title' => 'Free document checklist', 'desc' => 'A free list of what you need.', 'status' => 'available', 'url' => '/document-checklist'],
+                ['title' => 'Document checklist', 'desc' => 'A list of what you need.', 'status' => 'available', 'url' => '/document-checklist'],
                 ['title' => 'Document check', 'desc' => 'We check your documents before you submit.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Cover letter', 'desc' => 'We write your cover letter.', 'status' => 'coming-soon', 'url' => null],
                 ['title' => 'Proof of funds', 'desc' => 'We get your bank statements right.', 'status' => 'coming-soon', 'url' => null],
@@ -379,10 +379,10 @@ return [
         [
             'key'   => 'tools',
             'layout' => 'cards',
-            'label' => 'Free tools',
+            'label' => 'Visa tools',
             'url'   => '/tools',
             'intro' => 'Start here. No account, no card, just answers.',
-            'kicker' => 'Free, no account',
+            'kicker' => 'No account needed',
             'cta' => ['label' => 'Open the visa checker', 'url' => '/tools'],
             'items' => [
                 ['title' => 'Visa checker', 'desc' => 'Tell us your trip and we confirm exactly what you need in about a minute.', 'status' => 'available', 'url' => '/tools'],

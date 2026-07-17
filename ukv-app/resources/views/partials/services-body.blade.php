@@ -189,7 +189,7 @@
     @endforeach
     <div class="panel">
       <b>Not sure where to start?</b>
-      <p>The free checker tells you exactly what your trip needs.</p>
+      <p>The checker tells you exactly what your trip needs.</p>
       <a href="{{ url('/tools') }}">Open the checker &rarr;</a>
     </div>
   </aside>
@@ -257,11 +257,11 @@
     <h2>Three steps, whichever service you take</h2>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Use the free checker or a quick form. No card, no account.</p></div>
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Check your requirements or a quick form. No card, no account.</p></div>
     <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment, the things that get people refused.</p></div>
     <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>You travel</h3><p>Trackable every step, with tracked passport return.</p></div>
   </div>
-  <div style="text-align:center;margin-top:28px"><a href="{{ url('/tools') }}" class="btn">Start with the free checker &rarr;</a></div>
+  <div style="text-align:center;margin-top:28px"><a href="{{ url('/tools') }}" class="btn">Start with the checker &rarr;</a></div>
 </div></section>
 
 {{-- Why us (shared .ticks design, matches home "What we do") --}}
@@ -292,11 +292,11 @@
   <div class="faq-panel reveal">
     <div class="faqd">
       <details><summary>Can I use one service or do I have to take everything?</summary><p>Either. Pick exactly what you need: one service, several, or the whole journey.</p></details>
-      <details><summary>Is the checker really free?</summary><p>Yes. No card, no account. It tells you what your trip needs in about a minute.</p></details>
+      <details><summary>Does the checker cost anything?</summary><p>No. No card, no account. It tells you what your trip needs in about a minute.</p></details>
       <details><summary>Can you guarantee my visa?</summary><p>No. The embassy makes the decision. What we do is remove the avoidable reasons they say no.</p></details>
       <details><summary>What does it cost?</summary><p>A clear fixed service fee, shown before you pay. It is separate from any government or embassy fee, which is set by the authorities.</p></details>
       <details><summary>I'm not a British citizen, can you still help?</summary><p>Yes. We help UK residents travelling on any passport.</p></details>
-      <details><summary>How do I get started?</summary><p>Message our UK team on WhatsApp with your trip, or run the free checker first. We'll tell you exactly what you need and what it costs before you commit.</p></details>
+      <details><summary>How do I get started?</summary><p>Message our UK team on WhatsApp with your trip, or run the checker first. We'll tell you exactly what you need and what it costs before you commit.</p></details>
     </div>
   </div>
 </div></section>
@@ -305,8 +305,8 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Tell us about your trip</h2>
-  <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your trip needs, or run the free checker first.</p>
-  <div class="row"><a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Run the free checker</a>@include('partials.consult-cta')</div>
+  <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your trip needs, or run the checker first.</p>
+  <div class="row"><a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Check your requirements</a>@include('partials.consult-cta')</div>
 </div></section>
 
 {{-- Scroll-spy: highlight the active silo in the stepper --}}

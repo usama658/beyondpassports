@@ -162,7 +162,7 @@
       <div class="mh-copy">
         <p class="eyebrow">Your document checklist</p>
         <h1>See exactly which documents you need.</h1>
-        <p class="lede">Tell us about your trip and we'll build your checklist. See the full list instantly, or ask a quick question free on WhatsApp.</p>
+        <p class="lede">Tell us about your trip and we'll build your checklist. See the full list instantly, or ask a quick question on WhatsApp.</p>
 
         <ul class="dct-perks reveal">
           <li>
@@ -177,7 +177,7 @@
           </li>
           <li>
             <span class="t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></span>
-            <p class="pk">Free quick answers</p>
+            <p class="pk">Quick answers</p>
             <p>Just need to ask something? Message our UK team on WhatsApp. No payment.</p>
           </li>
         </ul>
@@ -193,7 +193,7 @@
     <div class="dct-grid">
 
       <div class="checker reveal" id="dct-card">
-        <div class="stub"><span>Document checklist</span><span>Free &middot; no sign-up</span></div>
+        <div class="stub"><span>Document checklist</span><span>No sign-up</span></div>
         <div class="cbody">
 
           {{-- Server-side validation summary (shown on a no-JS POST that fails validation). --}}
@@ -334,7 +334,7 @@
 
             <div class="dct-submit-row">
               <button type="submit" class="btn">Get my checklist &rarr;</button>
-              <p class="sub-note">Free · we open WhatsApp so our UK team can help you get it right</p>
+              <p class="sub-note">We open WhatsApp so our UK team can help you get it right</p>
             </div>
           </form>
 
@@ -362,7 +362,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Know what you need, then let's sort it</h2>
-  <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents, or ask a quick question free on WhatsApp. Every case is checked before anything is submitted.</p>
+  <p style="max-width:52ch;color:#cdd9e1">Pick a service level and our UK team prepares &amp; checks your documents, or ask a quick question on WhatsApp. Every case is checked before anything is submitted.</p>
   <div class="row">
     <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about my Schengen documents.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my Schengen documents.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>

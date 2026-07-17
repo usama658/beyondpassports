@@ -56,7 +56,7 @@
 
   @if ($heading)
     <div class="sec-head reveal" style="margin-bottom:18px">
-      <p class="eyebrow">Free travel guides</p>
+      <p class="eyebrow">Travel guides</p>
       <h2 style="font-size:clamp(24px,3vw,30px);color:var(--navy)">{{ $heading }}</h2>
     </div>
   @endif

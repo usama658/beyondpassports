@@ -200,7 +200,7 @@
     <p>Message our UK team. No account needed.</p>
     <div class="acts">
       <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} WhatsApp us</a>
-      <a class="btn btn--ghost" href="{{ url('/tools') }}">Run the free checker</a>
+      <a class="btn btn--ghost" href="{{ url('/tools') }}">Check your requirements</a>
     </div>
     @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
@@ -627,8 +627,8 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Tell us about your trip</h2>
-  <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your Schengen application needs, or run the free checker first.</p>
-  <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Run the free checker</a></div>
+  <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your Schengen application needs, or run the checker first.</p>
+  <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Check your requirements</a></div>
 </div></section>
 
 @if ($destinations->isNotEmpty())

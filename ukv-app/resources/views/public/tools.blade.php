@@ -95,11 +95,11 @@
   <div class="wrap">
     <div class="mh-grid">
       <div class="mh-copy tl-hero-copy reveal">
-        <p class="eyebrow">Free checkers</p>
+        <p class="eyebrow">Visa & IDP checkers</p>
         <h1>Do I need a visa? Do I need an IDP?</h1>
         <p class="lede">Two quick checkers for UK travellers: general guidance in seconds, with a real visa specialist to confirm your exact requirements before you pay. The first step in not getting it wrong is to start the right application, with the right documents.</p>
         <div class="tl-trust">
-          <span>Free to use</span>
+          <span>No account needed</span>
           <span>General guidance, human-confirmed</span>
           <span>Not a government website</span>
         </div>
@@ -135,7 +135,7 @@
 {{-- UNIFIED TRIP CHECKER --}}
 <section><div class="wrap">
   <div class="sec-head reveal tl-head">
-    <p class="eyebrow">Use the checkers</p>
+    <p class="eyebrow">Check your requirementss</p>
     <h2>Find out what your trip requires</h2>
   </div>
   {{-- UNIFIED TRIP CHECKER — horizontal bar (visa + driving in one) --}}
@@ -169,7 +169,7 @@
       </div>
       <button type="submit" class="btn">Check my trip →</button>
     </form>
-    <p class="hint tl-barhint">Free · general guidance · we confirm your exact rules</p>
+    <p class="hint tl-barhint">General guidance · we confirm your exact rules</p>
     <p class="form-error tl-barerr" id="trip-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
 
     <div class="tl-result" id="trip-result" role="region" aria-label="Trip checker result" aria-hidden="true" tabindex="-1">
@@ -195,7 +195,7 @@
   <div class="sec-head reveal"><p class="eyebrow">From check to sorted</p><h2>How it works after the checker</h2></div>
   <div class="tl-steps-wrap">
     <div class="steps">
-      <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Use the free checker for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
+      <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Check your requirements for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
       <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares the paperwork and checks it for the avoidable things that get applications refused. For a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
       <div class="step reveal" style="animation-delay:.12s"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
     </div>

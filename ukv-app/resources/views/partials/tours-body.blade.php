@@ -130,7 +130,7 @@
     </div>
   </div>
   <div class="tr-form">
-    <div class="fl">Check your eligibility, free</div>
+    <div class="fl">Check your eligibility</div>
     <div class="fs">Just your name and number. A UK and Europe registered service spots what could get you refused, then holds the soonest slot before it goes.</div>
     <div class="tr-frow">
       <div class="fcol"><label for="tr-name">Your name</label><input id="tr-name" type="text" autocomplete="name" placeholder="Full name"></div>
@@ -149,11 +149,11 @@
     <p class="tr-sub" style="margin:12px auto 0;max-width:52ch">Every other tour leaves the visa to you. We flip it: the visa is prepared and the appointment booked before you pay for a single flight.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="num">01</div><h3>Free risk check</h3><p>Name and number, that is it. An advisor tells you honestly what could get you refused. No payment.</p></div>
+    <div class="step"><div class="num">01</div><h3>Risk check</h3><p>Name and number, that is it. An advisor tells you honestly what could get you refused. No payment.</p></div>
     <div class="step"><div class="num">02</div><h3>We prepare the visa</h3><p>We build the application the way a consulate reads it, and lock in the appointment before slots go.</p></div>
     <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we book the flights and hotels around your dates. You just pack.</p></div>
   </div>
-  <p class="reassure">No payment until after your free risk check.</p>
+  <p class="reassure">No payment until after your risk check.</p>
 </div></section>
 
 {{-- 3 · PACKAGES (overlay cards, enquiry-only) --}}
@@ -178,7 +178,7 @@
       </div>
     @endforeach
   </div>
-  <p class="tr-pkfoot">Get a quote. No payment until after your free risk check.</p>
+  <p class="tr-pkfoot">Get a quote. No payment until after your risk check.</p>
 </div></section>
 
 {{-- 4 · PROOF (5-col stat band) --}}
@@ -204,7 +204,7 @@
     <details open><summary>Does a refusal affect future travel?</summary><p>Yes. It is logged in the Schengen system for around five years and must be declared on future visa applications. That is exactly why the second attempt has to be built properly.</p></details>
     <details><summary>Which consulate do I apply to?</summary><p>The country you spend the most time in, or your first entry point if nights are equal. We work this out for you, because the wrong choice alone can cause a refusal.</p></details>
     <details><summary>What if appointment slots are gone?</summary><p>We book the appointment as part of preparing your visa, before you commit to travel dates. If the soonest slot is tight, we tell you upfront.</p></details>
-    <details><summary>When do I pay?</summary><p>Nothing until after your free risk check. You only commit once you know where you stand.</p></details>
+    <details><summary>When do I pay?</summary><p>Nothing until after your risk check. You only commit once you know where you stand.</p></details>
     <details><summary>Can you guarantee the visa?</summary><p>No, and be careful of anyone who does. The decision is always the consulate&rsquo;s. We make your application as strong as it can be.</p></details>
   </div></div>
 </div></section>
@@ -220,7 +220,7 @@
     <a class="btn btn--glass" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt="cta">{!! $waIcon !!} Check my eligibility</a>
   </div>
   <p class="tr-ctafnote">No payment. No obligation.</p>
-  <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Book a free consultation.</a></p>
+  <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Book a callback.</a></p>
 </div></section>
 
 <script>

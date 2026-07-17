@@ -232,7 +232,7 @@
         <li role="option" data-v="a non-UK" data-label="Other (we'll confirm your rules)" aria-selected="false">Other (we'll confirm your rules)</li>
       </ul>
     </div>
-    <button class="btn" type="button" id="hp-chat">See what I need · free →</button>
+    <button class="btn" type="button" id="hp-chat">Show my documents →</button>
   </form>
   <p class="hp-barhint">A named UK visa specialist replies · usually within minutes, Mon–Sat 9–6</p>
   <div style="margin:12px 0 0">@include('partials.ico-badge', ['variant' => 'chip'])</div>
@@ -440,7 +440,7 @@
   </style>
   @endpush
   <div class="card reveal" id="rk">
-    <span class="pill">Free · 60 seconds · no sign-up</span>
+    <span class="pill">60 seconds · no sign-up</span>
     <h3>Will your visa pass? Check before you submit.</h3>
     <p class="sub" id="rk-sub">Answer 6 quick questions. We show the gaps that get Schengen visas refused, and whether your travel date is realistic.</p>
 
@@ -493,7 +493,7 @@
 
       <div class="rk-nav">
         <button type="button" class="btn btn--ghost" id="rk-back" style="display:none">← Back</button>
-        <button type="button" class="btn" id="rk-next">Start my free check →</button>
+        <button type="button" class="btn" id="rk-next">Check my readiness →</button>
       </div>
     </form>
     <p class="micro" id="rk-micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
@@ -565,7 +565,7 @@
         steps.forEach(function (s, idx) { s.classList.toggle('active', idx === n); });
         bar.style.width = Math.round((n / RESULT) * 100) + '%';
         backBtn.style.display = (n > 0 && n < RESULT) ? '' : 'none';
-        if (n === 0) { nextBtn.style.display = ''; nextBtn.textContent = 'Start my free check →'; }
+        if (n === 0) { nextBtn.style.display = ''; nextBtn.textContent = 'Check my readiness →'; }
         else if (n < RESULT) { nextBtn.style.display = 'none'; }     // question steps auto-advance
         else { nextBtn.style.display = 'none'; }
         if (n === RESULT) { sub.style.display = 'none'; micro.style.display = 'none'; }
@@ -628,7 +628,7 @@
           + ' Can you help me get this right before I submit?';
         var href = 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
 
-        html += '<a class="btn wa" style="display:block;text-align:center;margin-top:16px;background:#25D366" href="'+href+'" target="_blank" rel="noopener">Get a specialist to fix this · free →</a>'
+        html += '<a class="btn wa" style="display:block;text-align:center;margin-top:16px;background:#25D366" href="'+href+'" target="_blank" rel="noopener">Get a specialist to fix this →</a>'
           + '<p class="micro" style="margin-top:10px">A readiness indicator, not an approval prediction. The embassy decides. <a href="#" id="rk-restart">Start over</a></p>';
 
         document.getElementById('rk-result').innerHTML = html;

@@ -5,9 +5,9 @@
 @php $bpcWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
 <form class="bpc-af" onsubmit="return bpcAppt(this)" data-capture="{{ route('appointment.enquiry') }}" novalidate>
   @csrf
-  <span class="bpc-af-stamp">FREE</span>
+  
   <p class="bpc-af-eyebrow">Book your appointment</p>
-  <h2 class="bpc-af-h">Check your eligibility, free</h2>
+  <h2 class="bpc-af-h">Check your eligibility</h2>
   <p class="bpc-af-sub">Just your name and number. A UK &amp; Europe registered service spots what could get you refused, then holds the soonest slot before it goes.</p>
   <label class="bpc-af-l" for="bpc-af-name">Your name</label>
   <input class="bpc-af-i" id="bpc-af-name" name="n" type="text" placeholder="e.g. Aisha Khan" autocomplete="name">

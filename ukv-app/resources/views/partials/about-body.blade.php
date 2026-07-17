@@ -444,7 +444,7 @@
       <a href="{{ $waHero }}" target="_blank" rel="noopener" class="h-btn wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.8 6.5L3 29l7.2-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3z"/></svg>WhatsApp our adviser</a>
       <a href="{{ url('/contact') }}" class="h-btn ghost">Send us your case</a>
     </div>
-    <p class="friction">Free case review. No commitment. We will tell you honestly if we can help. Usually within a few hours.</p>
+    <p class="friction">Case review, no commitment. We will tell you honestly if we can help. Usually within a few hours.</p>
     @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '0'])
   </div>
   <div class="reveal">

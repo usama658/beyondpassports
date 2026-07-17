@@ -448,7 +448,7 @@
     <p class="lede">A straightforward process with a real specialist guiding you at every stage.</p>
   </div>
   <div class="sgc-steps">
-    <div class="sgc-step reveal"><div class="num">01</div><div class="rule"></div><h3>Eligibility check</h3><p>We confirm you can apply, and on the right visa, before you spend anything.</p><span class="free">Free</span></div>
+    <div class="sgc-step reveal"><div class="num">01</div><div class="rule"></div><h3>Eligibility check</h3><p>We confirm you can apply, and on the right visa, before you spend anything.</p></div>
     <div class="sgc-step reveal"><div class="num">02</div><div class="rule"></div><h3>Embassy or consulate match</h3><p>We work out the right country to apply through, based on your itinerary.</p></div>
     <div class="sgc-step reveal"><div class="num">03</div><div class="rule"></div><h3>Document checklist &amp; review</h3><p>A checklist for your exact circumstances, with every item checked by hand.</p></div>
     <div class="sgc-step reveal"><div class="num">04</div><div class="rule"></div><h3>Appointment booking &amp; submission</h3><p>We confirm live availability, book a slot in time and submit your application.</p></div>

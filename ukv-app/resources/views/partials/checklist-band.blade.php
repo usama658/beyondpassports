@@ -20,8 +20,8 @@
   $cbDestination = ($cbDestination ?? null) ?: null;
   $cbTitle = ($cbTitle ?? null) ?: ($cbDestination
       ? "Know exactly what {$cbDestination} needs — before you apply"
-      : 'Get your free personalised document checklist');
-  $cbSub = ($cbSub ?? null) ?: 'Answer a few questions about your trip and situation. We build the list around you — not a generic one — in under two minutes. Free, no account.';
+      : 'Get your personalised document checklist');
+  $cbSub = ($cbSub ?? null) ?: 'Answer a few questions about your trip and situation. We build the list around you — not a generic one — in under two minutes. No account needed.';
   $cbCta = ($cbCta ?? null) ?: 'Build my checklist';
   // Compact = a slim single-row inline strip for mid-content scroll-capture (drops the eyebrow,
   // supporting line and reassurance note; keeps the title + button).
@@ -32,7 +32,7 @@
       : route('checklist.tool');
 @endphp
 
-<div class="cl-band{{ $cbCompact ? ' cl-band--compact' : '' }}" role="region" aria-label="Free document checklist">
+<div class="cl-band{{ $cbCompact ? ' cl-band--compact' : '' }}" role="region" aria-label="Document checklist">
   <style>
     /* checklist-band — scoped, literal colours (ink #16222E / petrol #155E7A / teal #1F6E63). */
     .cl-band{font-family:"Outfit",system-ui,sans-serif;color:#16222E;background:linear-gradient(135deg,#F4F6FA,#eaf1f4);
@@ -60,7 +60,7 @@
   </style>
 
   <div class="cl-copy">
-    <p class="cl-eyebrow">Free tool</p>
+    <p class="cl-eyebrow">Checklist tool</p>
     <h2 class="cl-title">{{ $cbTitle }}</h2>
     <p class="cl-sub">{{ $cbSub }}</p>
   </div>

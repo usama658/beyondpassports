@@ -174,7 +174,7 @@
       @include('partials.guide-cluster', ['cluster' => $evergreen])
     @else
       <div class="gi-empty">
-        <p>New guides are on the way. In the meantime, our free checker can tell you exactly what your trip needs.</p>
+        <p>New guides are on the way. In the meantime, our checker can tell you exactly what your trip needs.</p>
         <a href="{{ url('/tools') }}" class="btn">Check what I need →</a>
       </div>
     @endif

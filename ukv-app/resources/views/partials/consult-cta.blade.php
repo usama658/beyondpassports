@@ -4,7 +4,7 @@
      Params (all optional, prefixed to avoid clashing with parent-scope vars like $label):
        $consultLabel, $consultVariant ('ghost'|'primary'), $consultMessage. --}}
 @php
-  $ccLabel   = ($consultLabel   ?? null) ?: 'Book a free consultation';
+  $ccLabel   = ($consultLabel   ?? null) ?: 'Book a callback';
   $ccMessage = ($consultMessage ?? null) ?: 'Hi Beyond Passports, I would like to book my free consultation.';
   $ccVariant = ($consultVariant ?? null) ?: 'ghost';
   $ccClass   = $ccVariant === 'primary' ? 'btn' : 'btn btn--ghost';

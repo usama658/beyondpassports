@@ -642,8 +642,8 @@
       <div class="gs-rail-cta">
         <p class="k">Not sure?</p>
         <h3>What does your trip need?</h3>
-        <p>Answer a few quick questions. Our free checker shows whether you need an ETA, a visa, or nothing at all.</p>
-        <a href="{{ $checklistUrl }}" class="rb rb-primary">Use the free checker <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p>Answer a few quick questions. Our checker shows whether you need an ETA, a visa, or nothing at all.</p>
+        <a href="{{ $checklistUrl }}" class="rb rb-primary">Check your requirements <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="{{ $applyUrl }}" class="rb rb-ghost">Start an application</a>
       </div>
 
@@ -657,7 +657,7 @@
           @if ($moneyUrl)
             <li><a href="{{ $moneyUrl }}"><b>{{ $destination->name }} visa: prepared &amp; checked</b><span class="gs-rail-lab">Up to the {{ $destination->name }} hub</span></a></li>
           @endif
-          <li><a href="{{ $checklistUrl }}"><b>Check what your trip needs</b><span class="gs-rail-lab">Free document &amp; visa checker</span></a></li>
+          <li><a href="{{ $checklistUrl }}"><b>Check what your trip needs</b><span class="gs-rail-lab">Document &amp; visa checker</span></a></li>
           <li><a href="{{ url('/guides') }}"><b>All travel guides</b><span class="gs-rail-lab">Index</span></a></li>
         </ul>
       </div>

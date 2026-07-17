@@ -44,7 +44,7 @@
         <div class="rl m"></div><div class="rl l"></div><div class="rl s"></div>
         <div class="lfoot">Decisions may be appealed. This mock is illustrative.</div>
       </div>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%27ve%20had%20a%20Schengen%20refusal%20and%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send your letter for a free review</a>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%27ve%20had%20a%20Schengen%20refusal%20and%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Send your letter for a review</a>
       <div class="lnote"><b>Honest note:</b> Not every refusal is recoverable. If we don't believe we can materially improve your chances, we'll tell you. We'd rather lose a fee than damage your record.</div>
     </div>
     <div>

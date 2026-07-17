@@ -362,14 +362,14 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="halt">Prefer to type it yourself? <b>WhatsApp</b> or <a href="mailto:cases@beyondpassports.co.uk">cases@beyondpassports.co.uk</a></p>
   </div>
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
-    <p class="fl"><span class="dot"></span>Free case check · reply within 24 hours</p>
+    <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
     <div class="combo" id="lpbDest">
       <label for="lpb-dest">Destination</label>
       <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…"></div>
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
-    <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
+    <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
 </div></div></section>
@@ -461,7 +461,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter free →</a>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter →</a>
       @php $rteam = collect(config('ukv.team', []))->filter(fn ($m) => !empty($m['photo']))->take(3); @endphp
       @if ($rteam->count())
       <div class="goldrule"></div>
@@ -501,7 +501,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
   <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents free →</a></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div></section>
 
 {{-- TRUST — dark console + light verify --}}
@@ -515,7 +515,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="dark">
       <h3 class="dh">Four steps. No surprises.</h3><p class="dsub">Same process for every case, every time.</p>
       <div class="stp"><span class="n">1</span><div><h3>You message us</h3><p>WhatsApp or email, in your own words. No booking system, no account.</p></div></div>
-      <div class="stp"><span class="n">2</span><div><h3>We review, free, within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
+      <div class="stp"><span class="n">2</span><div><h3>We review within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
       <div class="stp"><span class="n">3</span><div><h3>We tell you honestly if we can help</h3><p>If we can, we explain what we'd do and what it costs. If we can't, we tell you why.</p></div></div>
       <div class="stp"><span class="n">4</span><div><h3>If you go ahead, we handle everything</h3><p>Documents, evidence, appointment, counter prep, up to walking out of the centre.</p></div></div>
       <div class="statline"><b>24hr</b><span>We aim to reply to every case check within one working day.</span></div>
@@ -541,10 +541,10 @@ html,body{overflow-x:clip;max-width:100%}
         $faqs = [
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
           ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
-          ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the free case check. No fixed upsell, no hidden extras.'],
+          ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the case check. No fixed upsell, no hidden extras.'],
           ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
-          ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website, verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the free case check on its own.'],
+          ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website, verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the case check on its own.'],
         ];
       @endphp
       @foreach($faqs as $f)
@@ -553,7 +553,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
     <aside class="bp">
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
-      <div class="bot"><div class="tick"><span class="c">✓</span>Free to ask, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
   </div>
 </div></section>

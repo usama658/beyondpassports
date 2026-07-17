@@ -20,7 +20,7 @@
 <section class="bpc-pr" id="pricing"><div class="bpc-pr-wrap">
   <p class="bpc-pr-eyebrow">Pricing</p>
   <h2 class="bpc-pr-h">What it costs.</h2>
-  <p class="bpc-pr-sub">Clear service fees. The embassy fee is separate. No payment until after your free risk check.</p>
+  <p class="bpc-pr-sub">Clear service fees. The embassy fee is separate. No payment until after your risk check.</p>
   <div class="bpc-pr-grid">
     @foreach ($bpcTiers as $t)
     <div class="bpc-pr-card{{ $t['feat'] ? ' bpc-pr-feat' : '' }}">
@@ -33,7 +33,7 @@
     </div>
     @endforeach
   </div>
-  <p class="bpc-pr-foot">Embassy fee is separate and goes directly to the authorities. We never touch it. No payment until after your free risk check.</p>
+  <p class="bpc-pr-foot">Embassy fee is separate and goes directly to the authorities. We never touch it. No payment until after your risk check.</p>
 </div></section>
 @once
 <style>
