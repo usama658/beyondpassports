@@ -579,7 +579,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Start your Schengen application</h2>
-  <p style="max-width:50ch;color:#eef0f1">Check your eligibility free, or message us on WhatsApp and we will tell you exactly what your Schengen application needs.</p>
+  <p style="max-width:50ch;color:#eef0f1">Check your eligibility, or message us on WhatsApp and we will tell you exactly what your Schengen application needs.</p>
   <div class="row">
     <a href="{{ url('/tools') }}" class="btn">Check your eligibility</a>
     <a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn btn--glass">{!! $waGlyph !!} Chat on WhatsApp</a>

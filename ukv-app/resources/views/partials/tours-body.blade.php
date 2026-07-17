@@ -213,7 +213,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Start with the visa. The holiday follows.</h2>
-  <p style="max-width:52ch;color:#eef0f1">Send your name and number. We will tell you honestly what your chances look like and what the trip would involve. Free, no obligation.</p>
+  <p style="max-width:52ch;color:#eef0f1">Send your name and number. We will tell you honestly what your chances look like and what the trip would involve. No obligation.</p>
   <div class="tr-ctaform">
     <input id="tr-cta-name" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
     <input id="tr-cta-phone" type="tel" autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
