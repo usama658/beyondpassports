@@ -8,7 +8,7 @@
      no prices, no checkout, no visa/approval guarantee. --}}
 
 @section('title', 'Plan a trip — Europe tours with the Schengen visa built in | Beyond Passports')
-@section('description', 'Visa-led European tour packages. We prepare the Schengen visa and book the appointment first, then wrap flights and hotels. Registered in the UK and Europe. No payment until after your free risk check.')
+@section('description', 'Visa-led European tour packages. We secure your Schengen visa and appointment first, then arrange flights and hotels. No payment until after your risk check.')
 @section('canonical', url('/tour-packages'))
 
 @section('content')

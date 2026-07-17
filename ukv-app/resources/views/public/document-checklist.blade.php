@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Document checklist: see exactly what you need for your trip | Beyond Passports')
-@section('description', "Free document checklist for your Schengen visa, eVisa or ETIAS trip. Answer a few questions and get your tailored list on screen instantly. Keep it, share it or have it sent to you. Independent service, not a government website.")
+@section('description', "Get a personalised Schengen visa document checklist in two minutes. See it on screen, keep it or have it sent. Independent UK service.")
 
 @push('head')
 <style>

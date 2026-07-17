@@ -22,7 +22,7 @@
       ? "Know exactly what {$cbDestination} needs — before you apply"
       : 'Get your personalised document checklist');
   $cbSub = ($cbSub ?? null) ?: 'Answer a few questions about your trip and situation. We build the list around you — not a generic one — in under two minutes. No account needed.';
-  $cbCta = ($cbCta ?? null) ?: 'Build my checklist';
+  $cbCta = ($cbCta ?? null) ?: 'Get my checklist';
   // Compact = a slim single-row inline strip for mid-content scroll-capture (drops the eyebrow,
   // supporting line and reassurance note; keeps the title + button).
   $cbCompact = ($cbCompact ?? false) ? true : false;

@@ -232,7 +232,7 @@
         <li role="option" data-v="a non-UK" data-label="Other (we'll confirm your rules)" aria-selected="false">Other (we'll confirm your rules)</li>
       </ul>
     </div>
-    <button class="btn" type="button" id="hp-chat">Show my documents →</button>
+    <button class="btn" type="button" id="hp-chat">See what I need →</button>
   </form>
   <p class="hp-barhint">A named UK visa specialist replies · usually within minutes, Mon–Sat 9–6</p>
   <div style="margin:12px 0 0">@include('partials.ico-badge', ['variant' => 'chip'])</div>
@@ -493,7 +493,7 @@
 
       <div class="rk-nav">
         <button type="button" class="btn btn--ghost" id="rk-back" style="display:none">← Back</button>
-        <button type="button" class="btn" id="rk-next">Check my readiness →</button>
+        <button type="button" class="btn" id="rk-next">Am I ready? →</button>
       </div>
     </form>
     <p class="micro" id="rk-micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
@@ -565,7 +565,7 @@
         steps.forEach(function (s, idx) { s.classList.toggle('active', idx === n); });
         bar.style.width = Math.round((n / RESULT) * 100) + '%';
         backBtn.style.display = (n > 0 && n < RESULT) ? '' : 'none';
-        if (n === 0) { nextBtn.style.display = ''; nextBtn.textContent = 'Check my readiness →'; }
+        if (n === 0) { nextBtn.style.display = ''; nextBtn.textContent = 'Am I ready? →'; }
         else if (n < RESULT) { nextBtn.style.display = 'none'; }     // question steps auto-advance
         else { nextBtn.style.display = 'none'; }
         if (n === RESULT) { sub.style.display = 'none'; micro.style.display = 'none'; }
@@ -620,7 +620,7 @@
         }
         if (timing) html += '<div class="rk-timing">'+timing+'</div>';
 
-        var msg = 'Hi Beyond Passports, I did the free readiness check.'
+        var msg = 'Hi Beyond Passports, I did the readiness check.'
           + (dest? ' Destination: '+dest+'.' : '')
           + (date? ' Travel date: '+date+'.' : '')
           + ' Result: '+label+'.'

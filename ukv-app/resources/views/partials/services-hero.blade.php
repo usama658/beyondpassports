@@ -21,7 +21,7 @@
     <p>Message our UK team. No account needed.</p>
     <div class="sv-hbtns">
       <a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn btn--wa">{!! $waGlyph !!} WhatsApp us</a>
-      <a href="{{ url('/tools') }}" class="btn btn--ghost">Check in 60 seconds</a>
+      <a href="{{ url('/tools') }}" class="btn btn--ghost">60-second check</a>
     </div>
     <div class="sv-hsteps">
       <span><b>1</b> Pick a service</span>

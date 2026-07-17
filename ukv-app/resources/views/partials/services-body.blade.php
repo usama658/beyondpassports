@@ -257,7 +257,7 @@
     <h2>Three steps, whichever service you take</h2>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Check your requirements or a quick form. No card, no account.</p></div>
+    <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Tell us your trip</h3><p>Use the checker or a quick form. No card, no account.</p></div>
     <div class="step reveal"><div class="num">02</div><div class="rule"></div><h3>We check &amp; prepare</h3><p>Documents, forms, appointment, the things that get people refused.</p></div>
     <div class="step reveal"><div class="num">03</div><div class="rule"></div><h3>You travel</h3><p>Trackable every step, with tracked passport return.</p></div>
   </div>
@@ -306,7 +306,7 @@
   <div class="rule"></div>
   <h2>Tell us about your trip</h2>
   <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your trip needs, or run the checker first.</p>
-  <div class="row"><a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Check your requirements</a>@include('partials.consult-cta')</div>
+  <div class="row"><a href="{{ $waFor('my upcoming trip') }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">What I need →</a>@include('partials.consult-cta')</div>
 </div></section>
 
 {{-- Scroll-spy: highlight the active silo in the stepper --}}

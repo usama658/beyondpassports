@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Free checkers: Do I need a visa or an IDP? | Beyond Passports')
-@section('description', 'Free UK travel checkers from Beyond Passports. Find out whether you need a visa, eVisa or ETA, and whether you need an International Driving Permit (IDP) for your trip. Independent service, not a government website.')
+@section('title', 'Do I Need a Visa or an IDP? Quick Checkers | Beyond Passports')
+@section('description', 'Check in under a minute whether your trip needs a visa, eVisa, ETA or driving permit. Independent UK team, not a government site.')
 
 @push('head')
 <style>
@@ -135,7 +135,7 @@
 {{-- UNIFIED TRIP CHECKER --}}
 <section><div class="wrap">
   <div class="sec-head reveal tl-head">
-    <p class="eyebrow">Check your requirementss</p>
+    <p class="eyebrow">Visa &amp; IDP checkers</p>
     <h2>Find out what your trip requires</h2>
   </div>
   {{-- UNIFIED TRIP CHECKER — horizontal bar (visa + driving in one) --}}
@@ -195,7 +195,7 @@
   <div class="sec-head reveal"><p class="eyebrow">From check to sorted</p><h2>How it works after the checker</h2></div>
   <div class="tl-steps-wrap">
     <div class="steps">
-      <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Check your requirements for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
+      <div class="step reveal"><div class="num">01</div><div class="rule"></div><h3>Check &amp; confirm</h3><p>Answer a few questions for general guidance, then we confirm your exact requirements for your nationality, residence and trip.</p></div>
       <div class="step reveal" style="animation-delay:.06s"><div class="num">02</div><div class="rule"></div><h3>We prepare &amp; check</h3><p>Our UK team prepares the paperwork and checks it for the avoidable things that get applications refused. For a visa we submit it; for an IDP we ready it for your in-person collection.</p></div>
       <div class="step reveal" style="animation-delay:.12s"><div class="num">03</div><div class="rule"></div><h3>Submit or collect</h3><p>Your visa is submitted and tracked, or you collect your IDP in person at PayPoint with the paperwork already sorted.</p></div>
     </div>

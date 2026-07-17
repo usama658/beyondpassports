@@ -643,7 +643,7 @@
         <p class="k">Not sure?</p>
         <h3>What does your trip need?</h3>
         <p>Answer a few quick questions. Our checker shows whether you need an ETA, a visa, or nothing at all.</p>
-        <a href="{{ $checklistUrl }}" class="rb rb-primary">Check your requirements <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="{{ $checklistUrl }}" class="rb rb-primary">What I need <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="{{ $applyUrl }}" class="rb rb-ghost">Start an application</a>
       </div>
 

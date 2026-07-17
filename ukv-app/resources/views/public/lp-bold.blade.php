@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Help: Your Application Has One Chance | Beyond Passports')
-@section('description', 'Independent UK Schengen visa help. First-time or refused, we prepare applications that stand up, decode refusal letters and monitor appointments. Free case check on WhatsApp. Not a government website.')
+@section('description', 'Independent UK help for Schengen visas, first-time or refused. We prepare applications that stand up and decode refusal letters. Reply in 24 hours.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -461,7 +461,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20Schengen%20visa%20was%20refused.%20I%27d%20like%20a%20free%20review%20of%20my%20letter.">Check my refusal letter →</a>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20visa%20was%20refused.%20Can%20you%20review%20my%20letter%3F">Check my refusal letter →</a>
       @php $rteam = collect(config('ukv.team', []))->filter(fn ($m) => !empty($m['photo']))->take(3); @endphp
       @if ($rteam->count())
       <div class="goldrule"></div>
@@ -501,7 +501,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
   <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20free%20risk%20check%20on%20my%20Schengen%20documents%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div></section>
 
 {{-- TRUST — dark console + light verify --}}
@@ -593,7 +593,7 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
   var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
     e.preventDefault();
     var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
-    var msg="Hi, I'd like a free case check on my Schengen visa.";
+    var msg="Hi, I'd like a case check on my Schengen visa.";
     if(d)msg+=' My destination is '+d+'.';
     if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
     window.open('{{ $wa }}?text='+encodeURIComponent(msg),'_blank');

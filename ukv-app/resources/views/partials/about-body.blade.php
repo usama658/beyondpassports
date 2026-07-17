@@ -433,7 +433,7 @@
 <section class="ab-hero"><div class="wrap"><div class="ab-hero-grid">
   @php
     $lead = collect(config('ukv.team'))->firstWhere('lead', true);
-    $waHero = 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi, I would like a free case review of my Schengen application. ');
+    $waHero = 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi, can you review my application before I submit? ');
   @endphp
   <div class="ab-hero-copy reveal">
     <p class="eyebrow">Who we are</p>

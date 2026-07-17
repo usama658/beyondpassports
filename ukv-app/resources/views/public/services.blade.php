@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Our Services: UK Visa, eVisa, ETA & IDP Help | Beyond Passports')
-@section('description', 'Every Beyond Passports service in one place: Schengen and eVisa preparation, appointments, documents, refusal prevention, driving permits and free tools. Independent UK team. Not a government website.')
+@section('description', 'Schengen and eVisa prep, appointments, documents, refusal prevention and driving permits, all in one place. Independent UK team, not a government site.')
 
 @section('content')
 

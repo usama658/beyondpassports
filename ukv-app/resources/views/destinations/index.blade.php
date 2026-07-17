@@ -200,7 +200,7 @@
     <p>Message our UK team. No account needed.</p>
     <div class="acts">
       <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} WhatsApp us</a>
-      <a class="btn btn--ghost" href="{{ url('/tools') }}">Check your requirements</a>
+      <a class="btn btn--ghost" href="{{ url('/tools') }}">What I need →</a>
     </div>
     @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
@@ -628,7 +628,7 @@
   <div class="rule"></div>
   <h2>Tell us about your trip</h2>
   <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your Schengen application needs, or run the checker first.</p>
-  <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">Check your requirements</a></div>
+  <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">What I need →</a></div>
 </div></section>
 
 @if ($destinations->isNotEmpty())

@@ -6,7 +6,7 @@
   $revs    = App\Support\SiteStats::reversals();
   $ins     = App\Support\SiteStats::insuranceMin();
   $waCheck = App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like to check my eligibility before booking a trip.');
-  $waConsult = App\Support\SiteStats::chatUrl('Hi Beyond Passports, I would like to book my free consultation about a tour.');
+  $waConsult = App\Support\SiteStats::chatUrl('Hi, I would like a consultation about a tour.');
   $bookMsg = fn ($p) => App\Support\SiteStats::chatUrl('Hi Beyond Passports, I am interested in the '.$p['name'].' ('.$p['where'].', '.$p['days'].') trip with the visa included. Please tell me more.');
 @endphp
 <style>
@@ -220,7 +220,7 @@
     <a class="btn btn--glass" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt="cta">{!! $waIcon !!} Check my eligibility</a>
   </div>
   <p class="tr-ctafnote">No payment. No obligation.</p>
-  <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Book a callback.</a></p>
+  <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Talk to us.</a></p>
 </div></section>
 
 <script>

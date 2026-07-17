@@ -338,7 +338,7 @@ return [
             'url'   => '/documents',
             'intro' => 'Most visas are refused over documents. We get yours right.',
             'kicker' => 'Get documents right',
-            'cta' => ['label' => 'Build my checklist', 'url' => '/document-checklist'],
+            'cta' => ['label' => 'Get my checklist', 'url' => '/document-checklist'],
             'items' => [
                 ['title' => 'Document checklist', 'desc' => 'A list of what you need.', 'status' => 'available', 'url' => '/document-checklist'],
                 ['title' => 'Document check', 'desc' => 'We check your documents before you submit.', 'status' => 'coming-soon', 'url' => null],
