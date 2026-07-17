@@ -195,6 +195,12 @@ return [
         'reviews'       => [],
     ],
 
+    // Review-platform tiles (the Google + Trustpilot score cards on About).
+    // OFF now = hidden until real verified reviews are connected, so we never
+    // show empty "load once connected" placeholders. Flip on again with
+    // UKV_REVIEW_TILES=true in .env (then php artisan config:cache).
+    'review_tiles' => env('UKV_REVIEW_TILES', false),
+
     // ── Headline stats (single source of truth) ───────────────────────────────
     // Every public page reads its numbers from here so they can never diverge
     // across pages again. The two counters are TIME-BASED ODOMETERS: value =
