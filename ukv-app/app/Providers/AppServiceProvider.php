@@ -53,6 +53,35 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        // schengen-visa-help (lp-bold) appointment board: feed the existing static cards with real
+        // published availability. Feature ONLY countries with a real non-stale snapshot (status
+        // ok/lim) — "ask" countries carry no fabricated date, so they are omitted. Sorted soonest
+        // first. Card class: ok => open/Available, lim => tight/Limited. No slot count is shown
+        // because none is published (the old hardcoded "N slots" figure was illustrative).
+        View::composer('public.lp-bold', function ($view) {
+            $availability = app(\App\Services\AvailabilityService::class)->byDestination('Schengen');
+            $cards = \App\Models\Destination::query()
+                ->where('visa_type', 'Schengen')->get()
+                ->map(function ($d) use ($availability) {
+                    $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null];
+                    return [
+                        'name'   => $d->name,
+                        'status' => $a['status'],
+                        'date'   => $a['next_available_on'],
+                    ];
+                })
+                ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
+                ->sortBy(fn ($c) => $c['date']->timestamp)
+                ->map(fn ($c) => [
+                    'name'  => $c['name'],
+                    'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
+                    'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
+                    'date'  => $c['date']->format('j M Y'),
+                ])
+                ->values();
+            $view->with('apptCards', $cards);
+        });
+
         // Home appointments band: live slot summary (guarded — zeros => the band shows a plain
         // finder CTA instead of fake counts).
         View::composer('public.home', function ($view) {
