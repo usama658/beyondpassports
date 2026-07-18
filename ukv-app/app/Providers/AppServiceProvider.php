@@ -61,6 +61,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('public.lp-bold', function ($view) {
             $availability = app(\App\Services\AvailabilityService::class)->byDestination('Schengen');
             $windowEnd = now()->addDays(30);
+            // Same region order /schengen-visa groups its board by, so the two lists match card-for-
+            // card (region block, soonest-first within each region), not just value-for-value.
+            $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
             $cards = \App\Models\Destination::query()
                 ->where('visa_type', 'Schengen')
                 ->with(['supplyNodes' => fn ($q) => $q->where('we_book_here', true)])
@@ -75,13 +78,18 @@ class AppServiceProvider extends ServiceProvider
                         ->count();
                     return [
                         'name'   => $d->name,
+                        'region' => $d->region,
                         'status' => $a['status'],
                         'date'   => $a['next_available_on'],
                         'slots'  => $slots,
                     ];
                 })
                 ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
-                ->sortBy(fn ($c) => $c['date']->timestamp)
+                ->sortBy(function ($c) use ($regionOrder) {
+                    $ri = array_search($c['region'], $regionOrder, true);
+                    $ri = $ri === false ? 99 : $ri;
+                    return sprintf('%02d-%011d', $ri, $c['date']->timestamp);
+                })
                 ->map(fn ($c) => [
                     'name'  => $c['name'],
                     'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
