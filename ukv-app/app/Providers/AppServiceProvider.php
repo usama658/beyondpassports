@@ -53,23 +53,6 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        // schengen-visa-help (lp-bold): feed the shared appointment-availability board the same
-        // real data /schengen-visa uses, so its slot-picker works identically.
-        View::composer('public.lp-bold', function ($view) {
-            $availSvc = app(\App\Services\AvailabilityService::class);
-            $destinations = \App\Models\Destination::query()
-                ->where('visa_type', 'Schengen')->orderBy('name')->get();
-            $availability = $availSvc->byDestination('Schengen');
-            $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
-            $byRegion = $destinations
-                ->sortBy(fn ($d) => optional($availability[$d->id]['next_available_on'] ?? null)?->timestamp ?? PHP_INT_MAX)
-                ->groupBy('region')
-                ->sortBy(fn ($group, $region) => array_search($region, $regionOrder, true) === false
-                    ? PHP_INT_MAX
-                    : array_search($region, $regionOrder, true));
-            $view->with(['availability' => $availability, 'byRegion' => $byRegion]);
-        });
-
         // Home appointments band: live slot summary (guarded — zeros => the band shows a plain
         // finder CTA instead of fake counts).
         View::composer('public.home', function ($view) {

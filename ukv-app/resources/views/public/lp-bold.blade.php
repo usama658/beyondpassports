@@ -391,8 +391,38 @@ html,body{overflow-x:clip;max-width:100%}
   <span class="ti">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></span>
 </div></div></section>
 
-{{-- BOARD — live appointment slot-picker, ported from /schengen-visa (real CentreSlot data). --}}
-@include('partials.appt-availability-board')
+{{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
+<section class="sec alt bd" id="appointments"><div class="wrap">
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2>{{-- drafted for now: <p class="intro">Every Schengen application needs an in-person appointment. Start your process early. For the tight countries, the next open slot is often weeks away.</p> --}}</div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="bpre">
+    <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
+    <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
+  </div>
+  <div class="bgrid">
+    @php
+      $appts = [
+        ['France','tight','Limited','30 Jun 2026',8],
+        ['Sweden','open','Available','26 Jun 2026',8],
+        ['Poland','none','Very limited','15 Jul 2026',5],
+        ['Spain','open','Available','30 Jun 2026',30],
+        ['Greece','tight','Limited','1 Aug 2026',30],
+        ['Netherlands','none','Very limited','25 Jul 2026',7],
+        ['Iceland','open','Available','10 Jul 2026',8],
+        ['Switzerland','open','Available','15 Jul 2026',9],
+        ['Denmark','open','Available','1 Jul 2026',7],
+        ['Finland','open','Available','5 Jul 2026',8],
+        ['Belgium','open','Available','1 Jul 2026',9],
+        ['Germany','open','Available','15 Jul 2026',9],
+      ];
+    @endphp
+    @foreach($appts as [$cty,$cls,$st,$date,$slots])
+    @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$cty} (next slot shown {$date}). My travel dates are: "; @endphp
+    <a class="hc {{ $cls }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $cty }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $cty }}</span><span class="pill">{{ $st }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $date }}</div><div class="slots"><span class="n">{{ $slots }}</span><small>slots in next 30 days</small></div></div></a>
+    @endforeach
+  </div>
+  <div class="bfoot" style="justify-content:center">
+    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
+</div></section>
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
