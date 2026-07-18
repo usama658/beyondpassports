@@ -393,7 +393,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- BOARD — appointment-window cards. Colour = typical availability, illustrative (not a live feed). --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2><p class="intro">Every Schengen application needs an in-person appointment. Start your process early. For the tight countries, the next open slot is often weeks away.</p></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2>{{-- drafted for now: <p class="intro">Every Schengen application needs an in-person appointment. Start your process early. For the tight countries, the next open slot is often weeks away.</p> --}}</div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
