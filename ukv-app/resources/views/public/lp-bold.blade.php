@@ -449,6 +449,19 @@ html,body{overflow-x:clip;max-width:100%}
   <p class="rnote">Real orders completed this year, shared with each client's permission. The order reference on every review is verifiable on request.</p>
 </div></section>
 
+{{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
+<section class="sec fear" id="vis-risk"><div class="wrap">
+  <div class="fsh"><div class="flabel">Why a refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
+  <div class="fmeter">
+    <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">2</div><div><h3>27 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
+  </div>
+  <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
+</div></section>
+
 {{-- SECTION 2 — start where you are --}}
 <section class="sec sec2"><div class="wrap">
   <p class="eyebrow" style="justify-content:center">How we work</p>
@@ -489,19 +502,6 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- DECODER "Refusal recovery" — drafted out for now. To restore:
      @include('partials.lp-draft-decoder') --}}
-
-{{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
-<section class="sec fear" id="vis-risk"><div class="wrap">
-  <div class="fsh"><div class="flabel">Why a refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
-  <div class="fmeter">
-    <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
-    <div class="row"><div class="num">2</div><div><h3>27 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div><div class="bar"><span></span></div></div>
-    <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
-    <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
-  </div>
-  <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
-</div></section>
 
 {{-- TRUST — dark console + light verify --}}
 <section class="sec tr" id="trust"><div class="wrap">
