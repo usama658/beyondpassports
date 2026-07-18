@@ -355,7 +355,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="hleft">
     <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
-    <p class="hsub">We know why applications get refused. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <p class="hsub">Most refusals come down to a few fixable things. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
     <div class="tp">
       <span class="tp-logo"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>Trustpilot</span>
       <span class="tp-stars">@for($i=0;$i<5;$i++)<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></i>@endfor</span>    </div>
