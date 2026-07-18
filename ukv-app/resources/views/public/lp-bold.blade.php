@@ -141,6 +141,28 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
+/* Summer-peak boarding-pass promo (T1) — dark ticket on the light board. Whole card links to WhatsApp. */
+.lpb .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:0 0 22px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;box-shadow:0 24px 50px -30px rgba(0,0,0,.55);transition:transform .16s ease,box-shadow .18s ease}
+.lpb .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.lpb .peakpass .pp-stub{flex:none;min-width:118px;background:linear-gradient(160deg,#C89B3C,#9a751f);color:#20160a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center}
+.lpb .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase}
+.lpb .peakpass .pp-stub .b{font:800 27px var(--display);line-height:1;margin:4px 0}
+.lpb .peakpass .pp-stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase}
+.lpb .peakpass .pp-perf{width:0;border-left:2px dashed #2c4a56;flex:none}
+.lpb .peakpass .pp-body{flex:1;display:flex;align-items:center;gap:22px;padding:16px 22px;flex-wrap:wrap}
+.lpb .peakpass .pp-fields{display:flex;gap:26px}
+.lpb .peakpass .pp-f{display:flex;flex-direction:column}
+.lpb .peakpass .pp-f .k{font:800 9px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#E7CE93;margin:0 0 3px}
+.lpb .peakpass .pp-f .v{font:800 15px var(--display);color:#fff}
+.lpb .peakpass .pp-f .v.sm{font-size:13.5px;color:#dfeae8;font-weight:700}
+.lpb .peakpass .pp-hl{font:800 17px var(--display);color:#fff}
+.lpb .peakpass .pp-hl small{display:block;font-weight:600;font-size:12.5px;color:#cfe0dd;margin-top:2px}
+.lpb .peakpass .pp-bcode{display:block;width:110px;height:34px;margin-left:auto;background:repeating-linear-gradient(90deg,#E7CE93 0 2px,transparent 2px 4px,#E7CE93 4px 5px,transparent 5px 9px);opacity:.7}
+@media(max-width:640px){
+  .lpb .peakpass .pp-body{gap:12px}
+  .lpb .peakpass .pp-fields{gap:16px;width:100%}
+  .lpb .peakpass .pp-bcode{display:none}
+}
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
 .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
@@ -414,6 +436,23 @@ html,body{overflow-x:clip;max-width:100%}
 @if(!empty($apptCards) && count($apptCards))
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
+  @if (in_array(now()->month, [6, 7, 8]))
+  {{-- Summer-peak boarding-pass promo (auto-shows Jun–Aug only). --}}
+  <a class="peakpass" href="{{ $wa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
+    <span class="pp-stub"><span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span></span>
+    <span class="pp-perf"></span>
+    <span class="pp-body">
+      <span class="pp-fields">
+        <span class="pp-f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span>
+        <span class="pp-f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span>
+        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 states</span></span>
+      </span>
+      <span class="pp-hl">Book before the summer rush.<small>Earliest slots go first across every consulate.</small></span>
+      <span class="pp-bcode" aria-hidden="true"></span>
+    </span>
+  </a>
+  @endif
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
