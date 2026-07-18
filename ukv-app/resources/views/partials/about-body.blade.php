@@ -17,10 +17,10 @@
   .ab-hero-copy h1 { max-width: 20ch; font-size: clamp(32px, 4.4vw, 50px); }
   .ab-hero-copy .lede { max-width: 46ch; margin-bottom: 16px; }
   .ab-hero-copy .callout {
-    font-size: 15px; color: #33454f; line-height: 1.6;
-    background: var(--white); border: 1px solid var(--paper-edge);
-    border-left: 3px solid var(--stamp); border-radius: 0 8px 8px 0;
-    padding: 12px 16px; margin: 0 0 26px;
+    font-size: 15px; color: var(--ink); line-height: 1.7; font-weight: 600;
+    background: rgba(46,154,140,.07); border: 1px solid rgba(46,154,140,.2);
+    border-left: 3px solid var(--stamp); border-radius: 12px;
+    padding: 16px 20px; margin: 0 0 26px;
   }
   .ab-hero-copy .h-btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 10px; }
   .ab-hero-copy .h-btn {
