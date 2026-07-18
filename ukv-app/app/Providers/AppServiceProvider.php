@@ -53,12 +53,11 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        // schengen-visa-help (lp-bold) appointment board: fully synced to the CentreSlot inventory
-        // the slot-picker modal opens. Feature ONLY countries that have real bookable slots in the
-        // next 30 days — the card's "next available" date = that country's soonest slot, and the
-        // count = the number of those slots. So the tile, the modal's soonest chip and the modal's
-        // total always agree. The Available/Limited band still comes from the CentreAvailability
-        // snapshot (colour only); a country with slots but no/ask snapshot defaults to Available.
+        // schengen-visa-help (lp-bold) appointment board: SAME data source as /schengen-visa —
+        // AvailabilityService::byDestination (published CentreAvailability snapshots). Feature the
+        // same countries (status ok/lim, "ask" omitted), same "next available" date, same soonest-
+        // first order, so the two pages never disagree. The slot-count line is the real CentreSlot
+        // total for that country (next 30 days) — the same inventory the pick-a-slot modal opens.
         View::composer('public.lp-bold', function ($view) {
             $availability = app(\App\Services\AvailabilityService::class)->byDestination('Schengen');
             $windowEnd = now()->addDays(30);
@@ -67,28 +66,27 @@ class AppServiceProvider extends ServiceProvider
                 ->with(['supplyNodes' => fn ($q) => $q->where('we_book_here', true)])
                 ->get()
                 ->map(function ($d) use ($availability, $windowEnd) {
+                    $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null];
                     $nodeIds = $d->supplyNodes->pluck('id')->all();
-                    $slotAts = empty($nodeIds) ? collect() : \App\Models\CentreSlot::query()
+                    $slots = empty($nodeIds) ? 0 : \App\Models\CentreSlot::query()
                         ->available()
                         ->whereIn('supply_node_id', $nodeIds)
                         ->where('slot_at', '<=', $windowEnd)
-                        ->orderBy('slot_at')
-                        ->pluck('slot_at');
-                    $status = $availability[$d->id]['status'] ?? 'ask';
+                        ->count();
                     return [
-                        'name'    => $d->name,
-                        'status'  => $status,
-                        'soonest' => $slotAts->first(),
-                        'slots'   => $slotAts->count(),
+                        'name'   => $d->name,
+                        'status' => $a['status'],
+                        'date'   => $a['next_available_on'],
+                        'slots'  => $slots,
                     ];
                 })
-                ->filter(fn ($c) => $c['slots'] > 0 && $c['soonest'] !== null)
-                ->sortBy(fn ($c) => $c['soonest']->timestamp)
+                ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
+                ->sortBy(fn ($c) => $c['date']->timestamp)
                 ->map(fn ($c) => [
                     'name'  => $c['name'],
-                    'cls'   => $c['status'] === 'lim' ? 'tight' : 'open',
-                    'label' => $c['status'] === 'lim' ? 'Limited' : 'Available',
-                    'date'  => $c['soonest']->format('j M Y'),
+                    'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
+                    'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
+                    'date'  => $c['date']->format('j M Y'),
                     'slots' => $c['slots'],
                 ])
                 ->values();
