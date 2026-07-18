@@ -402,12 +402,13 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bgrid">
     @foreach($apptCards as $c)
     @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $c['name'] }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
   <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div></section>
+@include('partials.appt-slot-modal')
 @endif
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
