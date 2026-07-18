@@ -56,18 +56,29 @@ class AppServiceProvider extends ServiceProvider
         // schengen-visa-help (lp-bold) appointment board: feed the existing static cards with real
         // published availability. Feature ONLY countries with a real non-stale snapshot (status
         // ok/lim) — "ask" countries carry no fabricated date, so they are omitted. Sorted soonest
-        // first. Card class: ok => open/Available, lim => tight/Limited. No slot count is shown
-        // because none is published (the old hardcoded "N slots" figure was illustrative).
+        // first. Card class: ok => open/Available, lim => tight/Limited. The slot count is the real
+        // number of bookable CentreSlots (that centre inventory) for the country in the next 30
+        // days — the SAME source the /schengen-visa slot picker uses, so the surfaces stay in sync.
         View::composer('public.lp-bold', function ($view) {
             $availability = app(\App\Services\AvailabilityService::class)->byDestination('Schengen');
+            $windowEnd = now()->addDays(30);
             $cards = \App\Models\Destination::query()
-                ->where('visa_type', 'Schengen')->get()
-                ->map(function ($d) use ($availability) {
+                ->where('visa_type', 'Schengen')
+                ->with(['supplyNodes' => fn ($q) => $q->where('we_book_here', true)])
+                ->get()
+                ->map(function ($d) use ($availability, $windowEnd) {
                     $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null];
+                    $nodeIds = $d->supplyNodes->pluck('id')->all();
+                    $slots = empty($nodeIds) ? 0 : \App\Models\CentreSlot::query()
+                        ->available()
+                        ->whereIn('supply_node_id', $nodeIds)
+                        ->where('slot_at', '<=', $windowEnd)
+                        ->count();
                     return [
                         'name'   => $d->name,
                         'status' => $a['status'],
                         'date'   => $a['next_available_on'],
+                        'slots'  => $slots,
                     ];
                 })
                 ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
@@ -77,6 +88,7 @@ class AppServiceProvider extends ServiceProvider
                     'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
                     'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
                     'date'  => $c['date']->format('j M Y'),
+                    'slots' => $c['slots'],
                 ])
                 ->values();
             $view->with('apptCards', $cards);

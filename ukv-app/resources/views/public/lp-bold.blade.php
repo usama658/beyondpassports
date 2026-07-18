@@ -394,15 +394,15 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer). --}}
 @if(!empty($apptCards) && count($apptCards))
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2></div><span class="live"><span class="dot"></span>Updated regularly</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   <div class="bpre">
-    <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span></div>
+    <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
   </div>
   <div class="bgrid">
     @foreach($apptCards as $c)
     @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $c['name'] }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div></div></a>
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" aria-label="Ask about {{ $c['name'] }} appointments on WhatsApp"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
     @endforeach
   </div>
   <div class="bfoot" style="justify-content:center">
