@@ -70,7 +70,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .cb-list li.none{color:var(--muted);font-weight:500;cursor:default}.lpb .cb-list li.none:hover{background:transparent}
 /* TRUST BAR */
 .lpb .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),var(--ink2);color:#dbe8ea;padding:16px 0}
-.lpb .tbar-f .trow{display:flex;justify-content:center;gap:38px;flex-wrap:wrap}
+.lpb .tbar-f .row{display:flex;justify-content:center;gap:38px;flex-wrap:wrap}
 .lpb .tbar-f .ti{display:inline-flex;align-items:center;gap:9px;font-size:16px}
 .lpb .tbar-f .ti b{color:#fff}.lpb .tbar-f .ti svg{width:20px;height:20px;color:var(--on-dark)}
 /* SECTION 2 — start where you are */
@@ -287,7 +287,7 @@ html,body{overflow-x:clip;max-width:100%}
 @media(max-width:860px){
   .lpb .hgrid,.lpb .grid2,.lpb .dec .grid,.lpb .tr .grid,.lpb .band .wrap{grid-template-columns:1fr}
   .lpb .tr .statline{flex-direction:column;align-items:flex-start;gap:4px}
-  .lpb .tbar-f .trow{gap:18px}
+  .lpb .tbar-f .row{gap:18px}
   .lpb .band .wrap{gap:26px}
   .lpb .dec .side{position:static}
   .lpb .bgrid{grid-template-columns:1fr 1fr}
@@ -403,7 +403,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 {{-- TRUST BAR --}}
-<section class="tbar-f"><div class="wrap"><div class="trow">
+<section class="tbar-f"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
