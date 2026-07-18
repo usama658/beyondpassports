@@ -51,7 +51,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .form .cons{display:flex;gap:8px;align-items:flex-start;margin:13px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
 .lpb .form .cons input{width:16px;height:16px;flex:none;margin-top:2px}
 .lpb .halt{color:var(--muted);font-size:14.5px;margin:16px 0 0}.lpb .halt b{color:var(--ink)}
-.lpb .tp{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:20px 0 0}
+.lpb .tp{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:0 0 20px}
 .lpb .tp-logo{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15.5px;color:var(--ink)}
 .lpb .tp-logo .s{width:19px;height:19px;fill:#00B67A}
 .lpb .tp-stars{display:inline-flex;gap:3px}
