@@ -101,6 +101,14 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ref2 .tiles .t .nm{position:absolute;left:9px;right:9px;bottom:8px;z-index:2}
 .lpb .ref2 .tiles .t .nm b{display:block;font-size:12.5px;color:#fff;line-height:1.15}
 .lpb .ref2 .tiles .t .nm span{display:block;font-size:10px;color:#E7CE93;line-height:1.2;margin-top:2px}
+/* Interactive on hover/focus — visual only, no extra copy: tile lifts, photo zooms
+   gently, gold edge brightens, name rises. */
+.lpb .ref2 .tiles .t{transition:transform .18s ease,box-shadow .2s ease,border-color .18s ease}
+.lpb .ref2 .tiles .t img{transition:transform .32s ease}
+.lpb .ref2 .tiles .t .nm{transition:transform .18s ease}
+.lpb .ref2 .tiles .t:hover,.lpb .ref2 .tiles .t:focus-visible{transform:translateY(-4px);box-shadow:0 24px 44px -26px rgba(0,0,0,.75);border-top-color:#E7CE93;outline:none}
+.lpb .ref2 .tiles .t:hover img,.lpb .ref2 .tiles .t:focus-visible img{transform:scale(1.07)}
+.lpb .ref2 .tiles .t:hover .nm,.lpb .ref2 .tiles .t:focus-visible .nm{transform:translateY(-3px)}
 .lpb .ref2 .tcap{color:#c7d2d8;font-size:12.5px;text-align:center;margin:12px 0 0}
 .lpb .ref2 .tcap b{color:#fff}
 /* Mobile: the 3-across team grid gets cramped on phones — switch to one-per-row
@@ -478,7 +486,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="goldrule"></div>
       <div class="tiles">
         @foreach ($rteam as $m)
-        <div class="t"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div></div>
+        <div class="t" tabindex="0"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div></div>
         @endforeach
       </div>
       <p class="tcap"><b>The people on your case.</b> Named, not a call centre.</p>
