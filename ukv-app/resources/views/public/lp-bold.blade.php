@@ -73,20 +73,6 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .tbar-f .trow{display:flex;justify-content:center;gap:38px;flex-wrap:wrap}
 .lpb .tbar-f .ti{display:inline-flex;align-items:center;gap:9px;font-size:16px}
 .lpb .tbar-f .ti b{color:#fff}.lpb .tbar-f .ti svg{width:20px;height:20px;color:var(--on-dark)}
-/* Trust bar as a continuous carousel: the track holds two copies of the items and
-   slides left by 50% forever, so it loops seamlessly. Pauses on hover; respects
-   reduced-motion (falls back to the centred static row). */
-.lpb .tbar-f .tmarq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.lpb .tbar-f .ttrack{display:flex;flex-wrap:nowrap;width:max-content;animation:tbar-scroll 26s linear infinite;will-change:transform}
-.lpb .tbar-f .tmarq:hover .ttrack{animation-play-state:paused}
-.lpb .tbar-f .ttrack .ti{white-space:nowrap;margin-right:48px}
-@keyframes tbar-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){
-  .lpb .tbar-f .tmarq{-webkit-mask-image:none;mask-image:none}
-  .lpb .tbar-f .ttrack{animation:none;width:auto;flex-wrap:wrap;justify-content:center}
-  .lpb .tbar-f .ttrack .ti{margin-right:0}
-  .lpb .tbar-f .ttrack .dup{display:none}
-}
 /* SECTION 2 — start where you are */
 .lpb .sec2 .head{text-align:center;max-width:26ch;margin:0 auto 6px;font-size:clamp(28px,3.4vw,38px)}
 .lpb .sec2 .s2sub{text-align:center;color:var(--muted);font-size:18px;max-width:52ch;margin:12px auto 26px}
@@ -417,24 +403,12 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 {{-- TRUST BAR --}}
-<section class="tbar-f">
-  @php
-    $trustItems = [
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span>',
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span>',
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span>',
-    ];
-  @endphp
-  <div class="tmarq"><div class="ttrack">
-    {{-- two identical passes so the loop is seamless; the second is decorative (aria-hidden) --}}
-    @foreach ([false, true] as $dup)
-      @foreach ($trustItems as $item)
-        <span class="ti {{ $dup ? 'dup' : '' }}" @if($dup) aria-hidden="true" @endif>{!! $item !!}</span>
-      @endforeach
-      <span class="ti {{ $dup ? 'dup' : '' }}" @if($dup) aria-hidden="true" @endif>@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></span>
-    @endforeach
-  </div></div>
-</section>
+<section class="tbar-f"><div class="wrap"><div class="trow">
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
+  <span class="ti">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></span>
+</div></div></section>
 
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer). --}}
 @if(!empty($apptCards) && count($apptCards))
