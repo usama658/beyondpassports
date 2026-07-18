@@ -223,9 +223,53 @@
     <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
   </div>
 
+  @php $peakWa = config('ukv.whatsapp') ?: '447882747584'; $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
+  @if (in_array(now()->month, [6, 7, 8]))
+  {{-- Summer-peak boarding-pass promo (auto-shows Jun–Aug only). --}}
+  <a class="peakpass reveal" href="https://wa.me/{{ $peakWa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
+    <span class="pp-stub"><span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span></span>
+    <span class="pp-perf"></span>
+    <span class="pp-body">
+      <span class="pp-fields">
+        <span class="pp-f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span>
+        <span class="pp-f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span>
+        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 states</span></span>
+      </span>
+      <span class="pp-hl">Book before the summer rush.<small>Earliest slots go first across every consulate.</small></span>
+      <span class="pp-bcode" aria-hidden="true"></span>
+    </span>
+  </a>
+  @endif
+
   {{-- SELF-SERVE SLOT PICKER — pick country -> popup lists selectable slots -> "ask us, we book it" (WhatsApp) --}}
   @php $apbkWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
   <style>
+    /* Summer-peak boarding-pass promo (T1, white stub). Dark ticket on the light section; links to WhatsApp. */
+    #sg-appts .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;max-width:820px;margin:6px auto 22px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;box-shadow:0 24px 50px -30px rgba(0,0,0,.4);transition:transform .16s ease,box-shadow .18s ease}
+    #sg-appts .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+    #sg-appts .peakpass .pp-stub{flex:none;min-width:118px;background:#fff;color:#16222E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center;border-right:1px solid #e6ebf1}
+    #sg-appts .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
+    #sg-appts .peakpass .pp-stub .b{font:800 27px var(--display);line-height:1;margin:4px 0;color:#16222E}
+    #sg-appts .peakpass .pp-stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
+    #sg-appts .peakpass .pp-perf{width:0;border-left:2px dashed #2c4a56;flex:none}
+    #sg-appts .peakpass .pp-body{flex:1;display:flex;align-items:center;gap:22px;padding:16px 22px;flex-wrap:wrap}
+    #sg-appts .peakpass .pp-fields{display:flex;gap:26px}
+    #sg-appts .peakpass .pp-f{display:flex;flex-direction:column}
+    #sg-appts .peakpass .pp-f .k{font:800 9px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#E7CE93;margin:0 0 3px}
+    #sg-appts .peakpass .pp-f .v{font:800 15px var(--display);color:#fff}
+    #sg-appts .peakpass .pp-f .v.sm{font-size:13.5px;color:#dfeae8;font-weight:700}
+    #sg-appts .peakpass .pp-hl{font:800 17px var(--display);color:#fff}
+    #sg-appts .peakpass .pp-hl small{display:block;font-weight:600;font-size:12.5px;color:#cfe0dd;margin-top:2px}
+    #sg-appts .peakpass .pp-bcode{display:block;width:110px;height:34px;margin-left:auto;background:repeating-linear-gradient(90deg,#E7CE93 0 2px,transparent 2px 4px,#E7CE93 4px 5px,transparent 5px 9px);opacity:.7}
+    @media(max-width:640px){
+      #sg-appts .peakpass{flex-direction:column}
+      #sg-appts .peakpass .pp-stub{flex-direction:row;align-items:baseline;justify-content:center;gap:9px;min-width:0;padding:10px 16px;border-right:0;border-bottom:1px solid #e6ebf1}
+      #sg-appts .peakpass .pp-stub .b{font-size:19px;margin:0}
+      #sg-appts .peakpass .pp-perf{width:auto;height:0;border-left:0;border-top:2px dashed #2c4a56}
+      #sg-appts .peakpass .pp-body{gap:12px}
+      #sg-appts .peakpass .pp-fields{gap:16px;width:100%}
+      #sg-appts .peakpass .pp-bcode{display:none}
+    }
     .apbk{max-width:820px;margin:6px auto 26px;background:var(--white);border:1px solid var(--paper-edge);border-radius:18px;box-shadow:var(--lift-2);padding:22px 22px 18px}
     .apbk-h{font:800 16px var(--display);color:var(--navy);margin:0 0 4px}
     .apbk-s{font-size:13.5px;color:var(--muted);margin:0 0 16px}
