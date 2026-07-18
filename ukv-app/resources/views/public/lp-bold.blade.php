@@ -103,31 +103,16 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ref2 .tiles .t .nm span{display:block;font-size:10px;color:#E7CE93;line-height:1.2;margin-top:2px}
 .lpb .ref2 .tcap{color:#c7d2d8;font-size:12.5px;text-align:center;margin:12px 0 0}
 .lpb .ref2 .tcap b{color:#fff}
-/* Hover/focus reveal: the member's bio slides up over the photo. Keyboard-accessible
-   via focus-within (the tile is focusable). */
-.lpb .ref2 .tiles .t{cursor:pointer;transition:transform .16s ease,box-shadow .18s ease}
-.lpb .ref2 .tiles .t:hover{transform:translateY(-3px);box-shadow:0 22px 40px -24px rgba(0,0,0,.7)}
-.lpb .ref2 .tiles .t:focus-visible{outline:2px solid #C89B3C;outline-offset:2px}
-.lpb .ref2 .tiles .t .bio{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;gap:0;padding:12px 11px;background:linear-gradient(180deg,rgba(6,14,20,.5),rgba(6,14,20,.95));opacity:0;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
-.lpb .ref2 .tiles .t:hover .bio,.lpb .ref2 .tiles .t:focus-within .bio{opacity:1;transform:none}
-.lpb .ref2 .tiles .t:hover .nm,.lpb .ref2 .tiles .t:focus-within .nm{opacity:0}
-.lpb .ref2 .tiles .t .bio b{font-size:13px;color:#fff;line-height:1.15}
-.lpb .ref2 .tiles .t .bio .r{font-size:10px;color:#E7CE93;line-height:1.2;margin:2px 0 6px;display:block}
-.lpb .ref2 .tiles .t .bio p{font-size:10.5px;line-height:1.35;color:#e2eaee;margin:0}
 /* Mobile: the 3-across team grid gets cramped on phones — switch to one-per-row
-   (photo left, name + role + bio right) so faces and roles stay legible. Desktop unchanged. */
+   (photo left, name + role right) so faces and roles stay legible. Desktop unchanged. */
 @media(max-width:560px){
   .lpb .ref2 .tiles{grid-template-columns:1fr;gap:10px}
   .lpb .ref2 .tiles .t{display:flex;align-items:center;gap:13px;aspect-ratio:auto;overflow:visible;border:1px solid rgba(200,155,60,.28);border-top:2px solid #C89B3C;background:rgba(255,255,255,.04);border-radius:14px;padding:10px 12px}
-  .lpb .ref2 .tiles .t:hover{transform:none;box-shadow:none}
   .lpb .ref2 .tiles .t img{width:64px;height:64px;border-radius:12px;flex:none}
   .lpb .ref2 .tiles .t .ov{display:none}
-  /* On touch there is no hover — show the bio inline instead of the name overlay. */
-  .lpb .ref2 .tiles .t .nm{display:none}
-  .lpb .ref2 .tiles .t .bio{position:static;opacity:1;transform:none;background:none;padding:0;pointer-events:auto}
-  .lpb .ref2 .tiles .t .bio b{font-size:15px}
-  .lpb .ref2 .tiles .t .bio .r{font-size:12px;margin:2px 0 4px}
-  .lpb .ref2 .tiles .t .bio p{font-size:11.5px;color:#c7d2d8}
+  .lpb .ref2 .tiles .t .nm{position:static;left:auto;right:auto;bottom:auto}
+  .lpb .ref2 .tiles .t .nm b{font-size:15px}
+  .lpb .ref2 .tiles .t .nm span{font-size:12px}
 }
 .lpb .chips{display:flex;flex-direction:column;gap:11px}
 .lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:14px 16px;transition:transform .12s,box-shadow .12s}
@@ -493,7 +478,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="goldrule"></div>
       <div class="tiles">
         @foreach ($rteam as $m)
-        <div class="t" tabindex="0" role="group" aria-label="{{ $m['name'] }}, {{ $m['role'] }}"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div>@if(!empty($m['bio']))<div class="bio"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span class="r">{{ $m['role'] }}</span><p>{{ $m['bio'] }}</p></div>@endif</div>
+        <div class="t"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div></div>
         @endforeach
       </div>
       <p class="tcap"><b>The people on your case.</b> Named, not a call centre.</p>
