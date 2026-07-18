@@ -69,8 +69,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .cb-list li .fc{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
 .lpb .cb-list li.none{color:var(--muted);font-weight:500;cursor:default}.lpb .cb-list li.none:hover{background:transparent}
 /* TRUST BAR */
-.lpb .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),var(--ink2);color:#dbe8ea;padding:16px 0}
-.lpb .tbar-f .row{display:flex;justify-content:center;gap:38px;flex-wrap:wrap}
+.lpb .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),var(--ink2);color:#dbe8ea;padding:0}
+.lpb .tbar-f .row{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;padding:16px 0}
 .lpb .tbar-f .ti{display:inline-flex;align-items:center;gap:9px;font-size:16px}
 .lpb .tbar-f .ti b{color:#fff}.lpb .tbar-f .ti svg{width:20px;height:20px;color:var(--on-dark)}
 /* SECTION 2 — start where you are */
