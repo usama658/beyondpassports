@@ -16,7 +16,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb *{box-sizing:border-box;min-width:0}
 .lpb h1,.lpb h2,.lpb h3{overflow-wrap:break-word}
 .lpb h1,.lpb h2,.lpb h3,.lpb h4{font-weight:800;line-height:1.12;letter-spacing:-.02em;margin:0}
-.lpb .hl{color:var(--stamp-text)}.lpb .hl-r{color:var(--red)}
+.lpb .hl{color:var(--stamp-text)}.lpb .hl-r{color:#2E9A8C}
 .lpb a{color:var(--cta);text-decoration:none}
 .lpb .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
 .lpb .eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px;display:flex;align-items:center;gap:9px}
