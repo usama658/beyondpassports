@@ -518,7 +518,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- SECTION 2 — start where you are --}}
 <section class="sec sec2"><div class="wrap">
   <p class="eyebrow" style="justify-content:center">How we work</p>
-  <h2 class="head">Not applying fresh? <span class="hl">Start where you are.</span></h2>
+  <h2 class="head">Refused, or stuck halfway? <span class="hl">We take it from here.</span></h2>
   <div class="grid2">
     <div class="ref2">
       <span class="refstamp">Refused</span>
