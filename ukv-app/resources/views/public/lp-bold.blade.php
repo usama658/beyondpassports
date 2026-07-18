@@ -103,6 +103,17 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ref2 .tiles .t .nm span{display:block;font-size:10px;color:#E7CE93;line-height:1.2;margin-top:2px}
 .lpb .ref2 .tcap{color:#c7d2d8;font-size:12.5px;text-align:center;margin:12px 0 0}
 .lpb .ref2 .tcap b{color:#fff}
+/* Mobile: the 3-across team grid gets cramped on phones — switch to one-per-row
+   (photo left, name + role right) so faces and roles stay legible. Desktop unchanged. */
+@media(max-width:560px){
+  .lpb .ref2 .tiles{grid-template-columns:1fr;gap:10px}
+  .lpb .ref2 .tiles .t{display:flex;align-items:center;gap:13px;aspect-ratio:auto;overflow:visible;border:1px solid rgba(200,155,60,.28);border-top:2px solid #C89B3C;background:rgba(255,255,255,.04);border-radius:14px;padding:10px 12px}
+  .lpb .ref2 .tiles .t img{width:64px;height:64px;border-radius:12px;flex:none}
+  .lpb .ref2 .tiles .t .ov{display:none}
+  .lpb .ref2 .tiles .t .nm{position:static;left:auto;right:auto;bottom:auto}
+  .lpb .ref2 .tiles .t .nm b{font-size:15px}
+  .lpb .ref2 .tiles .t .nm span{font-size:12px}
+}
 .lpb .chips{display:flex;flex-direction:column;gap:11px}
 .lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:14px 16px;transition:transform .12s,box-shadow .12s}
 .lpb .sit:hover{transform:translateY(-2px);box-shadow:var(--sh)}
