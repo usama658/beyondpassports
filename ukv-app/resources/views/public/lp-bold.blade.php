@@ -142,7 +142,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
 /* Summer-peak boarding-pass promo (T1) — dark ticket on the light board. Whole card links to WhatsApp. */
-.lpb .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:0 0 22px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;box-shadow:0 24px 50px -30px rgba(0,0,0,.55);transition:transform .16s ease,box-shadow .18s ease}
+.lpb .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:0 0 22px;border-radius:16px;overflow:hidden;background:radial-gradient(620px 240px at 88% 0,rgba(200,155,60,.32),transparent 60%),#122733;border:1px solid #33474f;box-shadow:0 24px 50px -30px rgba(0,0,0,.55);transition:transform .16s ease,box-shadow .18s ease}
 .lpb .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
 .lpb .peakpass .pp-stub{flex:none;min-width:118px;background:#fff;color:#16222E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center;border-right:1px solid #e6ebf1}
 .lpb .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}

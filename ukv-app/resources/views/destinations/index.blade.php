@@ -245,7 +245,7 @@
   @php $apbkWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
   <style>
     /* Summer-peak boarding-pass promo (T1, white stub). Dark ticket on the light section; links to WhatsApp. */
-    #sg-appts .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:6px 0 22px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;box-shadow:0 24px 50px -30px rgba(0,0,0,.4);transition:transform .16s ease,box-shadow .18s ease}
+    #sg-appts .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:6px 0 22px;border-radius:16px;overflow:hidden;background:radial-gradient(620px 240px at 88% 0,rgba(200,155,60,.32),transparent 60%),#122733;border:1px solid #33474f;box-shadow:0 24px 50px -30px rgba(0,0,0,.4);transition:transform .16s ease,box-shadow .18s ease}
     #sg-appts .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
     #sg-appts .peakpass .pp-stub{flex:none;min-width:118px;background:#fff;color:#16222E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center;border-right:1px solid #e6ebf1}
     #sg-appts .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
