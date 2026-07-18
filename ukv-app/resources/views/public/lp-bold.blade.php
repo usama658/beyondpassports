@@ -144,10 +144,10 @@ html,body{overflow-x:clip;max-width:100%}
 /* Summer-peak boarding-pass promo (T1) — dark ticket on the light board. Whole card links to WhatsApp. */
 .lpb .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:0 0 22px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;box-shadow:0 24px 50px -30px rgba(0,0,0,.55);transition:transform .16s ease,box-shadow .18s ease}
 .lpb .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.lpb .peakpass .pp-stub{flex:none;min-width:118px;background:linear-gradient(160deg,#C89B3C,#9a751f);color:#20160a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center}
-.lpb .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase}
-.lpb .peakpass .pp-stub .b{font:800 27px var(--display);line-height:1;margin:4px 0}
-.lpb .peakpass .pp-stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase}
+.lpb .peakpass .pp-stub{flex:none;min-width:118px;background:#fff;color:#16222E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center;border-right:1px solid #e6ebf1}
+.lpb .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
+.lpb .peakpass .pp-stub .b{font:800 27px var(--display);line-height:1;margin:4px 0;color:#16222E}
+.lpb .peakpass .pp-stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
 .lpb .peakpass .pp-perf{width:0;border-left:2px dashed #2c4a56;flex:none}
 .lpb .peakpass .pp-body{flex:1;display:flex;align-items:center;gap:22px;padding:16px 22px;flex-wrap:wrap}
 .lpb .peakpass .pp-fields{display:flex;gap:26px}
@@ -161,7 +161,7 @@ html,body{overflow-x:clip;max-width:100%}
 @media(max-width:640px){
   /* Mobile: stack the ticket and move the gold PEAK stub to a full-width strip on top. */
   .lpb .peakpass{flex-direction:column}
-  .lpb .peakpass .pp-stub{flex-direction:row;align-items:baseline;justify-content:center;gap:9px;min-width:0;padding:10px 16px}
+  .lpb .peakpass .pp-stub{flex-direction:row;align-items:baseline;justify-content:center;gap:9px;min-width:0;padding:10px 16px;border-right:0;border-bottom:1px solid #e6ebf1}
   .lpb .peakpass .pp-stub .b{font-size:19px;margin:0}
   .lpb .peakpass .pp-stub .a{letter-spacing:.16em}
   .lpb .peakpass .pp-perf{width:auto;height:0;border-left:0;border-top:2px dashed #2c4a56}
