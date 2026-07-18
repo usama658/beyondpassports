@@ -159,6 +159,12 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .peakpass .pp-hl small{display:block;font-weight:600;font-size:12.5px;color:#cfe0dd;margin-top:2px}
 .lpb .peakpass .pp-bcode{display:block;width:110px;height:34px;margin-left:auto;background:repeating-linear-gradient(90deg,#E7CE93 0 2px,transparent 2px 4px,#E7CE93 4px 5px,transparent 5px 9px);opacity:.7}
 @media(max-width:640px){
+  /* Mobile: stack the ticket and move the gold PEAK stub to a full-width strip on top. */
+  .lpb .peakpass{flex-direction:column}
+  .lpb .peakpass .pp-stub{flex-direction:row;align-items:baseline;justify-content:center;gap:9px;min-width:0;padding:10px 16px}
+  .lpb .peakpass .pp-stub .b{font-size:19px;margin:0}
+  .lpb .peakpass .pp-stub .a{letter-spacing:.16em}
+  .lpb .peakpass .pp-perf{width:auto;height:0;border-left:0;border-top:2px dashed #2c4a56}
   .lpb .peakpass .pp-body{gap:12px}
   .lpb .peakpass .pp-fields{gap:16px;width:100%}
   .lpb .peakpass .pp-bcode{display:none}
