@@ -389,7 +389,7 @@
     width: 64px; height: 64px; color: var(--soft); opacity: .9;
   }
   .ab-callout .ab-seal svg { width: 100%; height: 100%; display: block; }
-  @media (max-width: 560px) { .ab-callout .ab-seal { position: static; display: block; flex: none; margin: 0 0 14px; width: 52px; height: 52px; } }
+  @media (max-width: 760px) { .ab-callout .ab-seal { position: static; display: block; flex: none; margin: 0 0 14px; width: 52px; height: 52px; } }
 
   /* ── Stat chips row (hero accent) ───────────────────────────────────────── */
   .ab-chips {
