@@ -396,7 +396,7 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 24 hours</span></div>
   <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 27 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 29 states daily and secure slots most never find.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20we%27re%20applying%20for%20Schengen%20visas%20together%20and%20our%20documents%20are%20different.%20Can%20you%20help%3F"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">One weak file affects everyone. We prepare them together.</p></span><span class="chev">→</span></a>
   </div>
@@ -462,7 +462,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="fsh"><div class="flabel">Why a refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
   <div class="fmeter">
     <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
-    <div class="row"><div class="num">2</div><div><h3>27 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div><div class="bar"><span></span></div></div>
+    <div class="row"><div class="num">2</div><div><h3>29 countries can see it</h3><p>France. Germany. Italy. Spain. All of them. They see the refusal before they even open your next application.</p></div><div class="bar"><span></span></div></div>
     <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
@@ -545,7 +545,7 @@ html,body{overflow-x:clip;max-width:100%}
       @php
         $faqs = [
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
-          ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 27 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
+          ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 29 states and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
           ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the case check. No fixed upsell, no hidden extras.'],
           ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
