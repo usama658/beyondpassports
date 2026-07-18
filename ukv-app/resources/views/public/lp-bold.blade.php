@@ -68,6 +68,13 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .cb-list li:hover{background:#eef4f6;color:var(--cta)}
 .lpb .cb-list li .fc{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--muted)}
 .lpb .cb-list li.none{color:var(--muted);font-weight:500;cursor:default}.lpb .cb-list li.none:hover{background:transparent}
+.lpb .cbwrap{position:relative}
+.lpb .cb-caret{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:34px;display:flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:8px;padding:0}
+.lpb .cb-caret:hover{background:var(--paper);color:var(--ink)}
+.lpb .cb-caret svg{width:15px;height:15px;transition:transform .18s ease}
+.lpb .combo.open .cb-caret svg{transform:rotate(180deg)}
+.lpb .cb-list li .flag{font-size:17px;line-height:1;flex:none}
+.lpb .cb-list li .nm{flex:1}
 /* TRUST BAR */
 .lpb .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),var(--ink2);color:#dbe8ea;padding:0}
 .lpb .tbar-f .row{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;padding:16px 0}
@@ -412,7 +419,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
     <div class="combo" id="lpbDest">
       <label for="lpb-dest">Destination</label>
-      <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…"></div>
+      <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…" role="combobox" aria-expanded="false" aria-controls="lpbDestList" aria-autocomplete="list"><button type="button" class="cb-caret" id="lpbDestCaret" tabindex="-1" aria-label="Show destination list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button></div>
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
@@ -631,16 +638,20 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
   var COUNTRIES=@json(($heroDests ?? collect())->all());
   if(!COUNTRIES.length)COUNTRIES=["Austria","Belgium","Bulgaria","Croatia","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Iceland","Italy","Latvia","Liechtenstein","Lithuania","Luxembourg","Malta","Netherlands","Norway","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden","Switzerland"];
   var CODES={Austria:"AT",Belgium:"BE",Bulgaria:"BG",Croatia:"HR",Czechia:"CZ",Denmark:"DK",Estonia:"EE",Finland:"FI",France:"FR",Germany:"DE",Greece:"GR",Hungary:"HU",Iceland:"IS",Italy:"IT",Latvia:"LV",Liechtenstein:"LI",Lithuania:"LT",Luxembourg:"LU",Malta:"MT",Netherlands:"NL",Norway:"NO",Poland:"PL",Portugal:"PT",Romania:"RO",Slovakia:"SK",Slovenia:"SI",Spain:"ES",Sweden:"SE",Switzerland:"CH"};
-  var inp=document.getElementById('lpb-dest'),list=document.getElementById('lpbDestList'),combo=document.getElementById('lpbDest');
+  var FLAGS={Austria:"🇦🇹",Belgium:"🇧🇪",Bulgaria:"🇧🇬",Croatia:"🇭🇷",Czechia:"🇨🇿",Denmark:"🇩🇰",Estonia:"🇪🇪",Finland:"🇫🇮",France:"🇫🇷",Germany:"🇩🇪",Greece:"🇬🇷",Hungary:"🇭🇺",Iceland:"🇮🇸",Italy:"🇮🇹",Latvia:"🇱🇻",Liechtenstein:"🇱🇮",Lithuania:"🇱🇹",Luxembourg:"🇱🇺",Malta:"🇲🇹",Netherlands:"🇳🇱",Norway:"🇳🇴",Poland:"🇵🇱",Portugal:"🇵🇹",Romania:"🇷🇴",Slovakia:"🇸🇰",Slovenia:"🇸🇮",Spain:"🇪🇸",Sweden:"🇸🇪",Switzerland:"🇨🇭"};
+  var inp=document.getElementById('lpb-dest'),list=document.getElementById('lpbDestList'),combo=document.getElementById('lpbDest'),caret=document.getElementById('lpbDestCaret');
   if(inp&&list){
+    function openList(){render(inp.value);list.classList.add('open');combo.classList.add('open');inp.setAttribute('aria-expanded','true');}
+    function closeList(){list.classList.remove('open');combo.classList.remove('open');inp.setAttribute('aria-expanded','false');}
     function render(q){q=(q||'').toLowerCase();list.innerHTML='';
-      var items=COUNTRIES.filter(function(c){return c.toLowerCase().indexOf(q)>-1}).map(function(c){return {n:c,c:CODES[c]}});
-      [{n:"Not sure yet",c:""},{n:"Multiple countries",c:""}].forEach(function(e){if(e.n.toLowerCase().indexOf(q)>-1)items.push(e)});
-      if(!items.length){list.innerHTML='<li class="none">No match, type your destination</li>';return;}
-      items.forEach(function(o){var li=document.createElement('li');li.innerHTML='<span>'+o.n+'</span><span class="fc">'+o.c+'</span>';li.onmousedown=function(ev){ev.preventDefault();inp.value=o.n;list.classList.remove('open');};list.appendChild(li);});}
-    inp.addEventListener('focus',function(){render(inp.value);list.classList.add('open');});
-    inp.addEventListener('input',function(){render(inp.value);list.classList.add('open');});
-    document.addEventListener('click',function(e){if(combo&&!combo.contains(e.target))list.classList.remove('open');});
+      var items=COUNTRIES.filter(function(c){return c.toLowerCase().indexOf(q)>-1}).map(function(c){return {n:c,f:FLAGS[c]||'🇪🇺'}});
+      [{n:"Anywhere in Schengen",f:"🇪🇺"},{n:"Not sure yet",f:"🗺️"}].forEach(function(e){if(e.n.toLowerCase().indexOf(q)>-1)items.push(e)});
+      if(!items.length){list.innerHTML='<li class="none">No match, we cover all of Schengen</li>';return;}
+      items.forEach(function(o){var li=document.createElement('li');li.innerHTML='<span class="flag" aria-hidden="true">'+o.f+'</span><span class="nm">'+o.n+'</span>';li.onmousedown=function(ev){ev.preventDefault();inp.value=o.n;closeList();};list.appendChild(li);});}
+    inp.addEventListener('focus',openList);
+    inp.addEventListener('input',openList);
+    if(caret)caret.addEventListener('click',function(e){e.preventDefault();if(list.classList.contains('open')){closeList();}else{openList();inp.focus();}});
+    document.addEventListener('click',function(e){if(combo&&!combo.contains(e.target))closeList();});
   }
   var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
     e.preventDefault();
