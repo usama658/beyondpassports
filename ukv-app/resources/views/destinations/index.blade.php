@@ -273,6 +273,14 @@
     .slot.sel .wd{color:rgba(255,255,255,.85)}
     .slot.sel .dm{color:#fff}
     .slot .soon{position:absolute;top:-9px;left:8px;font:800 9px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--stamp);border-radius:999px;padding:2px 7px}
+    /* Availability band recolours the header, the selected slot and the "soonest" tag.
+       Default (no class) = Available/green. lim = amber, low = red. */
+    .slotm.lim .slotm-hd{background:linear-gradient(135deg,#4a3410,#b5791f)}
+    .slotm.low .slotm-hd{background:linear-gradient(135deg,#4a1613,#c0392b)}
+    .slotm.lim .slot.sel{border-color:#b5791f;background:#b5791f;box-shadow:0 8px 18px -10px rgba(181,121,31,.7)}
+    .slotm.low .slot.sel{border-color:#c0392b;background:#c0392b;box-shadow:0 8px 18px -10px rgba(192,57,43,.7)}
+    .slotm.lim .slot .soon{background:#b5791f}
+    .slotm.low .slot .soon{background:#c0392b}
     @media(max-width:560px){.apbk-grid{grid-template-columns:1fr}.apbk-go{width:100%}.slotm-grid{grid-template-columns:1fr}}
   </style>
   {{-- Picker card drafted — the country tiles below open the slot modal directly. --}}
@@ -454,8 +462,12 @@
         box.appendChild(card);
       });
     }
-    function open(c) {
+    function open(c, _date, band) {
       country = c; centre = ''; slot = '';
+      // Recolour the modal to the country's availability band (green default / amber / red).
+      modal.classList.remove('lim', 'low');
+      if (band === 'lim') modal.classList.add('lim');
+      else if (band === 'low' || band === 'ask') modal.classList.add('low');
       title.textContent = 'Available slots — ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');

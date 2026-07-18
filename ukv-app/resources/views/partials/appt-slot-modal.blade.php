@@ -38,6 +38,14 @@
   #slotm .slot.sel .wd{color:rgba(255,255,255,.85)}
   #slotm .slot.sel .dm{color:#fff}
   #slotm .slot .soon{position:absolute;top:-9px;left:8px;font:800 9px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#2E9A8C;border-radius:999px;padding:2px 7px}
+  /* Availability band recolours the header, the selected slot and the "soonest" tag.
+     Default (no class) = Available/green. lim = amber, low = red. */
+  #slotm.lim .slotm-hd{background:linear-gradient(135deg,#4a3410,#b5791f)}
+  #slotm.low .slotm-hd{background:linear-gradient(135deg,#4a1613,#c0392b)}
+  #slotm.lim .slot.sel{border-color:#b5791f;background:#b5791f;box-shadow:0 8px 18px -10px rgba(181,121,31,.7)}
+  #slotm.low .slot.sel{border-color:#c0392b;background:#c0392b;box-shadow:0 8px 18px -10px rgba(192,57,43,.7)}
+  #slotm.lim .slot .soon{background:#b5791f}
+  #slotm.low .slot .soon{background:#c0392b}
 </style>
 
 <div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}">
@@ -132,8 +140,12 @@
         box.appendChild(card);
       });
     }
-    function open(c) {
+    function open(c, band) {
       country = c; centre = ''; slot = '';
+      // Recolour the modal to the country's availability band (green default / amber / red).
+      modal.classList.remove('lim', 'low');
+      if (band === 'lim' || band === 'tight') modal.classList.add('lim');
+      else if (band === 'low' || band === 'none') modal.classList.add('low');
       title.textContent = 'Available slots — ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');
@@ -150,7 +162,7 @@
     function close() { modal.classList.remove('open'); }
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-slotcountry]'), function (t) {
-      t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry')); });
+      t.addEventListener('click', function (e) { e.preventDefault(); open(t.getAttribute('data-slotcountry'), t.getAttribute('data-slotband')); });
     });
     book.addEventListener('click', function (e) { if (book.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
     document.getElementById('slotm-x').addEventListener('click', close);
