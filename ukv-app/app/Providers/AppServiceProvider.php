@@ -98,7 +98,17 @@ class AppServiceProvider extends ServiceProvider
                     'slots' => $c['slots'],
                 ])
                 ->values();
+
+            // Hero destination picker — DB-driven like the home hero: only Schengen countries we
+            // actually cover appear (names must match the DB spelling for the code lookup).
+            $heroDests = \App\Models\Destination::query()
+                ->where('visa_type', 'Schengen')
+                ->orderBy('name')
+                ->pluck('name')
+                ->values();
+
             $view->with('apptCards', $cards);
+            $view->with('heroDests', $heroDests);
         });
 
         // Home appointments band: live slot summary (guarded — zeros => the band shows a plain
