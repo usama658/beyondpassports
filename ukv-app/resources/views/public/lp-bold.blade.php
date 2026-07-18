@@ -515,7 +515,6 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="thead">
     <p class="eyebrow">How it works</p>
     <h2 class="h2" style="margin:0 auto;max-width:22ch">Here's exactly what happens when you message us.</h2>
-    <p class="sub">No forms, no account, no upsells. Competence first.</p>
   </div>
   <div class="grid">
     <div class="dark">
