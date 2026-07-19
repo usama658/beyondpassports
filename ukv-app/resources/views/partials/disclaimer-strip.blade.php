@@ -31,14 +31,20 @@
 @once
 <style>
   .disc-strip{display:flex;gap:12px;align-items:flex-start;background:#eef4f6;border:1px solid #d6e5e9;
-    border-left:3px solid #155E7A;border-radius:12px;padding:13px 16px;font-family:"Outfit",system-ui,sans-serif}
-  .disc-strip svg{width:18px;height:18px;flex:0 0 auto;fill:#155E7A;margin-top:1px}
+    border-left:3px solid #155E7A;border-radius:12px;padding:13px 16px;font-family:"Outfit",system-ui,sans-serif;
+    transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,border-left-color .15s ease}
+  .disc-strip svg{width:18px;height:18px;flex:0 0 auto;fill:#155E7A;margin-top:1px;transition:transform .18s ease}
   .disc-strip p{margin:0;font-size:12.5px;line-height:1.55;color:#3d4b55}
   .disc-strip p b{color:#16222E;font-weight:700}
+  /* Hover — subtle lift + accent, matches the card hover language used site-wide */
+  .disc-strip:hover{transform:translateY(-2px);box-shadow:0 16px 32px -20px rgba(20,34,46,.42);border-color:#bcd4da;border-left-width:4px}
+  .disc-strip:hover svg{transform:scale(1.08)}
   /* S4 · dark band — matches the promo band on dark pages */
   .disc-strip--dark{background:linear-gradient(120deg,#14262f,#0f1e26);border:1px solid #26424d;border-left:3px solid #5C9A7B}
   .disc-strip--dark svg{fill:#7fd1b4}
   .disc-strip--dark p{color:#b7c7c5}
   .disc-strip--dark p b{color:#fff}
+  .disc-strip--dark:hover{box-shadow:0 20px 40px -22px rgba(0,0,0,.55);border-color:#3a5a66;border-left-color:#7fd1b4}
+  @media (prefers-reduced-motion:reduce){.disc-strip,.disc-strip svg{transition:none}.disc-strip:hover{transform:none}.disc-strip:hover svg{transform:none}}
 </style>
 @endonce
