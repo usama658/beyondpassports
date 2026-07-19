@@ -20,7 +20,7 @@
   $wrap = $wrap ?? true;
   $text = $text ?? '<b>Beyond Passports is an independent consultancy, not a government or embassy service.</b> We do not issue visas or decide outcomes. Every decision rests with the relevant authorities. We help you prepare and submit your own application correctly.';
 @endphp
-@if($wrap)<div class="wrap" style="padding-top:6px;padding-bottom:6px">@endif
+@if($wrap)<div class="wrap" style="padding-top:22px;padding-bottom:6px">@endif
   <div class="disc-strip" role="note">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4Zm-1 5h2v6h-2V7Zm0 8h2v2h-2v-2Z"/></svg>
     <p>{!! $text !!}</p>
