@@ -616,9 +616,9 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
       <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
-    <div class="disc-strip" role="note">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4Zm-1 5h2v6h-2V7Zm0 8h2v2h-2v-2Z"/></svg>
-      <p><b>Beyond Passports is an independent consultancy, not a government or embassy service.</b> We do not issue visas or decide outcomes. Every decision rests with the relevant authorities. We help you prepare and submit your own application correctly.</p>
+    <div role="note" style="display:flex;gap:12px;align-items:flex-start;background:#eef4f6;border:1px solid #d6e5e9;border-left:3px solid #155E7A;border-radius:12px;padding:13px 16px;font-family:'Outfit',system-ui,sans-serif">
+      <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto;fill:#155E7A;margin-top:1px"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4Zm-1 5h2v6h-2V7Zm0 8h2v2h-2v-2Z"/></svg>
+      <p style="margin:0;font-size:12.5px;line-height:1.55;color:#3d4b55"><b style="color:#16222E;font-weight:700">Beyond Passports is an independent consultancy, not a government or embassy service.</b> We do not issue visas or decide outcomes. Every decision rests with the relevant authorities. We help you prepare and submit your own application correctly.</p>
     </div>
     </div>
   </div>
