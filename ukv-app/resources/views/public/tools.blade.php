@@ -169,6 +169,7 @@
       </div>
       <button type="submit" class="btn">Check my trip →</button>
     </form>
+    <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
     <p class="hint tl-barhint">General guidance · we confirm your exact rules</p>
     <p class="form-error tl-barerr" id="trip-error" role="alert" aria-live="assertive">Choose a destination and your passport to see your result.</p>
 

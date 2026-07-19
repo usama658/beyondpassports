@@ -337,6 +337,7 @@
               <p class="sub-note">We open WhatsApp so our UK team can help you get it right</p>
             </div>
           </form>
+          <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
 
         </div>
       </div>

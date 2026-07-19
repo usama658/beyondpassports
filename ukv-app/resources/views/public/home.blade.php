@@ -234,6 +234,7 @@
     </div>
     <button class="btn" type="button" id="hp-chat">See what I need →</button>
   </form>
+  <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
   <p class="hp-barhint">A named UK visa specialist replies · usually within minutes, Mon–Sat 9–6</p>
   <div style="margin:12px 0 0">@include('partials.ico-badge', ['variant' => 'chip'])</div>
 
@@ -496,6 +497,7 @@
         <button type="button" class="btn" id="rk-next">Am I ready? →</button>
       </div>
     </form>
+    <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
     <p class="micro" id="rk-micro">A readiness indicator, not an approval prediction. Your answers stay private.</p>
     @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
@@ -828,6 +830,7 @@
            style="flex:1;min-width:200px;padding:12px;border:1px solid var(--paper-edge);border-radius:8px;font:inherit;font-size:15px">
     <button type="submit" class="btn">Find nearest →</button>
   </form>
+  <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
   <p class="hint" style="margin-top:10px"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Every Schengen visa needs a biometric appointment at a visa centre.</p>
 </div></section>
 

@@ -639,7 +639,9 @@ html,body{overflow-x:clip;max-width:100%}
     <button type="submit" class="btn">Find nearest →</button>
   </form>
   <p class="chint"><a href="{{ url('/find-a-centre') }}">Browse the full centre finder →</a> · Every Schengen visa needs a biometric appointment at a visa centre.</p>
-</div></section>
+</div>
+@include('partials.disclaimer-strip')
+</section>
 
 </div>
 

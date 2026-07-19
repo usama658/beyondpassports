@@ -395,6 +395,7 @@
             <p class="micro">No payment taken yet &nbsp;·&nbsp; we check your details before anything is submitted</p>
           </div>
         </form>
+        <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
       </div>
     </div>
 

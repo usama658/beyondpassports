@@ -501,6 +501,7 @@
 
           <button type="submit" class="btn">Request a callback</button>
         </form>
+        <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
       </div>
 
     </div>

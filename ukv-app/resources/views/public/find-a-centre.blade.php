@@ -209,6 +209,7 @@
         @endif
       </div>
     </form>
+    <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
   </div>
 </section>
 

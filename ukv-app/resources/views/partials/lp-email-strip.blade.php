@@ -14,6 +14,7 @@
       <input id="lpes-email" name="e" type="email" required placeholder="name@email.com" autocomplete="email">
       <button type="submit">Email me</button>
     </form>
+    <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false, 'variant' => 'dark'])</div>
     <p class="lpes-ok" hidden>Thanks — we'll be in touch shortly.</p>
   </div>
 </section>

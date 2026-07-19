@@ -438,6 +438,7 @@
         <button type="submit" class="btn" style="width:100%;padding:15px;font-size:16px">Get my full checklist →</button>
         <p style="font-size:12px;color:var(--muted);text-align:center;margin:12px 0 0">Service fee only, separate from any government fee. No approval guaranteed.</p>
       </form>
+      <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
     @endif
   </div></section>
 
@@ -514,6 +515,7 @@
         <button type="submit" class="btn dlv-submit">Send me my checklist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l20-7-7 20-3-8-8-3z"/></svg></button>
         <p class="hint">WhatsApp is opt-in and only used if you tick it and give a number. We send the checklist you asked for; marketing is separate and only with your consent above.</p>
       </form>
+      <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
     </div>
   </div></section>
   @endif

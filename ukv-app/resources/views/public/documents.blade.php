@@ -247,6 +247,7 @@
 
             <button type="submit" class="btn" style="margin-top:20px">Upload document</button>
           </form>
+          <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
         </div>
       </div>
     </div>
@@ -365,6 +366,7 @@
 
             <button type="submit" class="btn" style="margin-top:20px">Save my details</button>
           </form>
+          <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
         </div>
       </div>
     </div>

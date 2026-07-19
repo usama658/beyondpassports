@@ -346,6 +346,7 @@
                  autocomplete="postal-code" required aria-label="Your postcode">
           <button type="submit" class="btn">Find nearest →</button>
         </form>
+        <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
         <div class="da-pp-hint">
           <a href="{{ url('/find-a-centre?type=paypoint') }}">Or use my location on the full finder →</a><br>
           <span>The IDP is issued in person at PayPoint. We prepare and check your paperwork; we don't issue the permit ourselves.</span>
