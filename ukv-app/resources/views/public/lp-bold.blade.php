@@ -478,7 +478,9 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
   <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
-</div></section>
+</div>
+@include('partials.disclaimer-strip')
+</section>
 @include('partials.appt-slot-modal')
 @endif
 

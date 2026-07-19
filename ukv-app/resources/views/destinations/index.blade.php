@@ -412,6 +412,7 @@
     <span><i style="background:#155E7A"></i>Others on request, we check live</span>
   </div>
 </div></section>
+@include('partials.disclaimer-strip')
 <script>
   (function () {
     var tabs = Array.prototype.slice.call(document.querySelectorAll('#apptTabs .sg-tab'));

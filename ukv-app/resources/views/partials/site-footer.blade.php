@@ -7,7 +7,7 @@
     <div class="cols">
       <div>
         <a href="{{ url('/') }}" class="brand" style="display:inline-block" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2-reversed.svg') }}" alt="Beyond Passports" width="170" height="44" style="display:block;height:44px;width:auto"></a>
-        <p style="max-width:30ch">Independent UK-based visa &amp; eVisa facilitation for travel abroad, since {{ App\Support\SiteStats::foundedYear() }}. Not a government website.</p>
+        <p style="max-width:36ch"><span style="display:inline-block;font:800 10px 'Outfit',system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#0f1e26;background:#7fd1b4;border-radius:5px;padding:2px 7px;margin-right:7px;vertical-align:1px">Independent</span>UK-based visa &amp; travel consultancy for Schengen applications, since {{ App\Support\SiteStats::foundedYear() }}. Not a government or embassy service; we do not issue visas or decide outcomes. All decisions rest with the relevant authorities.</p>
         @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '14px 0 4px'])
         @php
           $social = array_filter(config('ukv.social', []));
