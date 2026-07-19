@@ -337,7 +337,7 @@
           <h3 id="slotm-title">Select your date</h3>
           <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
         </div>
-        <p class="slotm-s">Tap any open date below, pick the date before it vanishes. We lock it with the centre the moment you pick.</p>
+        <p class="slotm-s">Pick the date before it vanishes. We lock it with the centre the moment you pick.</p>
         <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We do the booking</span></div>
       </div>
       <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
