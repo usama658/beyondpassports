@@ -9,5 +9,5 @@
   <span class="l">ICO registered · <b class="tb-ico-v">verify &rarr;</b></span>
 </a></div>
 @else
-<div><div class="n">@include('partials.uk-eu-flags',['size'=>28])</div><div class="l">Registered in UK &amp; Europe</div></div>
+<div><a href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none"><div class="n">@include('partials.uk-eu-flags',['size'=>28])</div><div class="l">Registered in UK &amp; Europe</div></a></div>
 @endif
