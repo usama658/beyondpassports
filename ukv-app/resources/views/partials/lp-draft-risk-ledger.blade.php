@@ -23,7 +23,7 @@
   <h2 class="h2" style="max-width:22ch">Three things that decide your application before an officer opens it</h2>
   <p class="trans" style="max-width:60ch;margin:12px 0 0">You're here because something about your application feels uncertain. Here's why that instinct is right.</p>
   <div class="ledger">
-    <div class="lrow"><div class="idx">01</div><div class="rc"><span class="tag">The record</span><h3>Every refusal is shared by all 29 states</h3><p>No preview, no draft round. You find out weeks later in a rejection letter — and the refusal is already on your record, visible to every Schengen country for five years through VIS.</p></div></div>
+    <div class="lrow"><div class="idx">01</div><div class="rc"><span class="tag">The record</span><h3>Every refusal is shared by all 29 countries</h3><p>No preview, no draft round. You find out weeks later in a rejection letter — and the refusal is already on your record, visible to every Schengen country for five years through VIS.</p></div></div>
     <div class="lrow"><div class="idx">02</div><div class="rc"><span class="tag">The counter</span><h3>The questions are not small talk</h3><p>Staff note inconsistencies. If your dates don't match your booking, or your letter says business but your invitation says tourism, it's written down. You never see that note. The officer does.</p></div></div>
     <div class="lrow"><div class="idx">03</div><div class="rc"><span class="tag">The funds</span><h3>A healthy balance won't prove what they need</h3><p>Officers look for patterns, not balances. Sudden deposits raise questions. Irregular income raises questions. They're not checking whether you have money — they're checking whether you'll come back.</p></div></div>
   </div>

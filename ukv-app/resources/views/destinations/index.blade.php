@@ -233,7 +233,7 @@
       <span class="pp-fields">
         <span class="pp-f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span>
         <span class="pp-f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span>
-        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 states</span></span>
+        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 countries</span></span>
       </span>
       <span class="pp-hl">Book before the summer rush.<small>Earliest slots go first across every consulate.</small></span>
       <span class="pp-bcode" aria-hidden="true"></span>
