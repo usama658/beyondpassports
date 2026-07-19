@@ -149,6 +149,14 @@ section{padding:72px 0}
 .step h3{font-size:19px;margin:0 0 4px}
 .step h3::before{content:"STEP";display:block;font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--cta);margin:0 0 8px}
 .step p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55;max-width:30ch}
+/* interactive on hover — site-wide (matches the tour-packages "How it works" tiles) */
+.step{transition:background .2s ease}
+.step .num{transition:transform .18s ease,color .18s ease}
+.step h3{transition:color .18s ease}
+.step:hover{background:rgba(46,154,140,.07)}
+.step:hover .num{transform:scale(1.08);color:var(--stamp)}
+.step:hover h3{color:var(--cta)}
+@media (prefers-reduced-motion:reduce){.step,.step .num,.step h3{transition:none!important}.step:hover .num{transform:none}}
 /* CTA band — gradient-mesh on ink, centred (matches the footer CTA for site-wide consistency) */
 .cta-band{position:relative;overflow:hidden;color:#fff;text-align:center;
   background:
