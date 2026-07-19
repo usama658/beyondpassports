@@ -84,20 +84,19 @@ class AppServiceProvider extends ServiceProvider
                         'slots'  => $slots,
                     ];
                 })
+                // Feature ONLY countries with published availability (a real date); the rest are
+                // omitted from the board (no "on request" tiles). The section itself still renders.
+                ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
                 ->sortBy(function ($c) use ($regionOrder) {
                     $ri = array_search($c['region'], $regionOrder, true);
                     $ri = $ri === false ? 99 : $ri;
-                    // Countries with a published date lead (soonest first, by region);
-                    // "on request" countries trail so the board is always populated.
-                    $hasDate = $c['date'] !== null ? 0 : 1;
-                    $ts = $c['date'] !== null ? $c['date']->timestamp : 0;
-                    return sprintf('%d-%02d-%011d', $hasDate, $ri, $ts);
+                    return sprintf('%02d-%011d', $ri, $c['date']->timestamp);
                 })
                 ->map(fn ($c) => [
                     'name'  => $c['name'],
-                    'cls'   => $c['status'] === 'ok' ? 'open' : ($c['status'] === 'lim' ? 'tight' : 'ask'),
-                    'label' => $c['status'] === 'ok' ? 'Available' : ($c['status'] === 'lim' ? 'Limited' : 'On request'),
-                    'date'  => $c['date'] !== null ? $c['date']->format('j M Y') : null,
+                    'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
+                    'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
+                    'date'  => $c['date']->format('j M Y'),
                     'slots' => $c['slots'],
                 ])
                 ->values();

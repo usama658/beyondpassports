@@ -448,8 +448,8 @@ html,body{overflow-x:clip;max-width:100%}
   <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></a>
 </div></div></section>
 
-{{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer). --}}
-@if(!empty($apptCards) && count($apptCards))
+{{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
+     Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
@@ -474,15 +474,12 @@ html,body{overflow-x:clip;max-width:100%}
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
   </div>
   <div class="bgrid">
-    @foreach($apptCards as $c)
-    @php
-      $apptMsg = $c['date']
-        ? "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "
-        : "Hi, I'd like to check Schengen appointment availability for {$c['name']}. My travel dates are: ";
-      $band = $c['cls'] === 'open' ? 'ok' : ($c['cls'] === 'tight' ? 'lim' : 'ask');
-    @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" @if($c['date'])data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $band }}"@endif aria-label="{{ $c['date'] ? 'Pick a '.$c['name'].' appointment slot' : 'Ask about '.$c['name'].' appointments' }}"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2">@if($c['date'])<div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div>@else<div class="lab">Next opening</div><div class="date">On request</div><div class="slots"><small>we check live, daily</small></div>@endif</div></a>
-    @endforeach
+    @forelse($apptCards as $c)
+    @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
+    @empty
+    <p style="grid-column:1/-1;text-align:center;color:#cfe0dd;margin:0;line-height:1.5">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
+    @endforelse
   </div>
   <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
@@ -490,7 +487,6 @@ html,body{overflow-x:clip;max-width:100%}
 @include('partials.disclaimer-strip')
 </section>
 @include('partials.appt-slot-modal')
-@endif
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
