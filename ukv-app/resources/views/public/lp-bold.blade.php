@@ -547,10 +547,10 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="chklist">
       <svg class="stamp" width="60" height="60" viewBox="0 0 48 48" role="img" aria-label="Checked &amp; ready"><use href="#ukv-stamp"></use></svg>
       <ul>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">Stops a wasted fee</span></div></li>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div></li>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p><span class="stop">Stops gaps slipping in</span></div></li>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Stops repeat mistakes</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">4 checks, no wasted fee</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">2 reviewers, fewer errors</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p><span class="stop">1 gate, nothing slips</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Every result, sharper next time</span></div></li>
       </ul>
     </div>
   </div>
