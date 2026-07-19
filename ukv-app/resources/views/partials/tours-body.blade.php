@@ -35,6 +35,10 @@
   .tr-form input::placeholder{color:#9aa6b0;font-weight:500}
   .tr-form input:hover{border-color:#cbd5dd}
   .tr-form input:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
+  .tr-form select{width:100%;padding:14px 40px 14px 15px;border:1.5px solid #e2e8ee;border-radius:12px;font:600 15px var(--display);margin:0 0 13px;background:#fff;color:var(--ink);cursor:pointer;appearance:none;-webkit-appearance:none;transition:border-color .15s ease,box-shadow .15s ease;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235d6b76' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px}
+  .tr-form select:hover{border-color:#cbd5dd}
+  .tr-form select:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
   /* Hero form sits in the right column — stack name / phone / button. */
   .tr-frow{display:grid;grid-template-columns:1fr;gap:0;margin-top:2px}
   .tr-frow .fcol{min-width:0}
@@ -125,6 +129,8 @@
 </style>
 @php
   $waIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;fill:#fff;vertical-align:-3px"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
+  // Destination options for the hero form picker (DB-driven, Schengen only) — mirrors the home hero.
+  $trDests = \App\Models\Destination::query()->where('visa_type', 'Schengen')->orderBy('name')->pluck('name');
 @endphp
 
 {{-- 1 · HERO --}}
@@ -146,6 +152,7 @@
     <div class="fl">Check your eligibility</div>
     <div class="fs">Just your name and number. A <x-reg-verify>UK and Europe registered</x-reg-verify> service spots what could get you refused, then holds the soonest slot before it goes.</div>
     <div class="tr-frow">
+      <div class="fcol"><label for="tr-dest">Where are you going?</label><select id="tr-dest"><option value="">Anywhere in the Schengen Area</option>@foreach($trDests as $trName)<option value="{{ $trName }}">{{ $trName }}</option>@endforeach</select></div>
       <div class="fcol"><label for="tr-name">Your name</label><input id="tr-name" type="text" autocomplete="name" placeholder="Full name"></div>
       <div class="fcol"><label for="tr-phone">Phone number</label><input id="tr-phone" type="tel" autocomplete="tel" placeholder="Mobile number"></div>
       <a class="btn" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt>{!! $waIcon !!} Check my eligibility</a>
@@ -251,23 +258,24 @@
 /* Prefill the WhatsApp message with the visitor's name + phone (no server round-trip). */
 (function () {
   var base = @json($waCheck);
-  function wire(btnSel, nameId, phoneId) {
+  function wire(btnSel, nameId, phoneId, destId) {
     var btn = document.querySelector(btnSel);
     if (!btn) return;
     function build() {
       var n = (document.getElementById(nameId) || {}).value || '';
       var p = (document.getElementById(phoneId) || {}).value || '';
-      if (!n && !p) { btn.href = base; return; }
+      var d = destId ? ((document.getElementById(destId) || {}).value || '') : '';
+      if (!n && !p && !d) { btn.href = base; return; }
       var msg = 'Hi Beyond Passports, I would like to check my eligibility before booking a trip.'
-        + (n ? ' Name: ' + n + '.' : '') + (p ? ' Phone: ' + p + '.' : '');
+        + (d ? ' Destination: ' + d + '.' : '') + (n ? ' Name: ' + n + '.' : '') + (p ? ' Phone: ' + p + '.' : '');
       btn.href = 'https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text=' + encodeURIComponent(msg);
     }
     ['input', 'change'].forEach(function (e) {
-      var nn = document.getElementById(nameId), pp = document.getElementById(phoneId);
-      if (nn) nn.addEventListener(e, build); if (pp) pp.addEventListener(e, build);
+      var nn = document.getElementById(nameId), pp = document.getElementById(phoneId), dd = destId ? document.getElementById(destId) : null;
+      if (nn) nn.addEventListener(e, build); if (pp) pp.addEventListener(e, build); if (dd) dd.addEventListener(e, build);
     });
   }
-  wire('[data-tr-appt]:not([data-tr-appt="cta"])', 'tr-name', 'tr-phone');
-  wire('[data-tr-appt="cta"]', 'tr-cta-name', 'tr-cta-phone');
+  wire('[data-tr-appt]:not([data-tr-appt="cta"])', 'tr-name', 'tr-phone', 'tr-dest');
+  wire('[data-tr-appt="cta"]', 'tr-cta-name', 'tr-cta-phone', null);
 })();
 </script>
