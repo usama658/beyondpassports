@@ -202,6 +202,7 @@
     @endforeach
   </div>
   <p class="tr-pkfoot">Get a quote. No payment until after your risk check.</p>
+  @include('partials.disclaimer-strip')
 </div></section>
 
 {{-- 4 · PROOF (5-col stat band) --}}
