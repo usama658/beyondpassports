@@ -9,8 +9,8 @@
     'text' => '...'           — override body copy (keep the same claim; edit sparingly).
 
   Usage:
-    @include('partials.disclaimer-strip')                       {{-- between sections --}}
-    @include('partials.disclaimer-strip', ['wrap' => false])    {{-- inside a column --}}
+    @include('partials.disclaimer-strip')                     (between sections)
+    @include('partials.disclaimer-strip', ['wrap' => false])  (inside a column)
 
   Self-contained: styling ships via @once the first time it renders on a page, so it
   is correct no matter where it appears or whether other placements render. Resolved-hex
