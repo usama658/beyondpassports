@@ -526,7 +526,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
   <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div>
-@include('partials.disclaimer-strip')
+@include('partials.disclaimer-strip', ['variant' => 'dark'])
 </section>
 
 {{-- SECTION 2 — start where you are --}}
