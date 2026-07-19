@@ -84,17 +84,20 @@ class AppServiceProvider extends ServiceProvider
                         'slots'  => $slots,
                     ];
                 })
-                ->filter(fn ($c) => $c['status'] !== 'ask' && $c['date'] !== null)
                 ->sortBy(function ($c) use ($regionOrder) {
                     $ri = array_search($c['region'], $regionOrder, true);
                     $ri = $ri === false ? 99 : $ri;
-                    return sprintf('%02d-%011d', $ri, $c['date']->timestamp);
+                    // Countries with a published date lead (soonest first, by region);
+                    // "on request" countries trail so the board is always populated.
+                    $hasDate = $c['date'] !== null ? 0 : 1;
+                    $ts = $c['date'] !== null ? $c['date']->timestamp : 0;
+                    return sprintf('%d-%02d-%011d', $hasDate, $ri, $ts);
                 })
                 ->map(fn ($c) => [
                     'name'  => $c['name'],
-                    'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
-                    'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
-                    'date'  => $c['date']->format('j M Y'),
+                    'cls'   => $c['status'] === 'ok' ? 'open' : ($c['status'] === 'lim' ? 'tight' : 'ask'),
+                    'label' => $c['status'] === 'ok' ? 'Available' : ($c['status'] === 'lim' ? 'Limited' : 'On request'),
+                    'date'  => $c['date'] !== null ? $c['date']->format('j M Y') : null,
                     'slots' => $c['slots'],
                 ])
                 ->values();

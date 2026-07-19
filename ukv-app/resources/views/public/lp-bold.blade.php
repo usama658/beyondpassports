@@ -475,8 +475,13 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
   <div class="bgrid">
     @foreach($apptCards as $c)
-    @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
+    @php
+      $apptMsg = $c['date']
+        ? "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "
+        : "Hi, I'd like to check Schengen appointment availability for {$c['name']}. My travel dates are: ";
+      $band = $c['cls'] === 'open' ? 'ok' : ($c['cls'] === 'tight' ? 'lim' : 'ask');
+    @endphp
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" @if($c['date'])data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $band }}"@endif aria-label="{{ $c['date'] ? 'Pick a '.$c['name'].' appointment slot' : 'Ask about '.$c['name'].' appointments' }}"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2">@if($c['date'])<div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div>@else<div class="lab">Next opening</div><div class="date">On request</div><div class="slots"><small>we check live, daily</small></div>@endif</div></a>
     @endforeach
   </div>
   <div class="bfoot" style="justify-content:center">
