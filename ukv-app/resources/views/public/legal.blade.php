@@ -297,7 +297,7 @@
       <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I have a question.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
     </div>
-  </div>
+  <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div>
 </section>
 
 <script>

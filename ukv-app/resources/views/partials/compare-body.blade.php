@@ -283,7 +283,7 @@
   <h2>Decide what suits you, or ask us and we'll be honest</h2>
   <p style="max-width:50ch;color:#eef0f1">Happy to do it yourself? Brilliant, go for it. Want a person to check it and save you the hassle? Start your application, or message us first and we'll tell you straight whether you need us.</p>
   <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, help me decide whether to use you or apply myself.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, help me decide whether to use you or apply myself.') }}" class="btn btn--wa">@include('partials.wa-glyph')Ask us first on WhatsApp</a></div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 {{-- FAQPage structured data --}}
 @verbatim

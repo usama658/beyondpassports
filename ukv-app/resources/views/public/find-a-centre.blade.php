@@ -240,7 +240,7 @@
     <a href="{{ $fcWa }}" class="btn btn--glass">@include('partials.wa-glyph')Check eligibility</a>
     <a href="{{ url('/apply') }}" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start your application →</a>
   </div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 {{-- COMPLIANCE STRIP --}}
 <section class="fc-section-sm" style="padding-top:0">

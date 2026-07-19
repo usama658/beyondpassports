@@ -222,7 +222,7 @@
   <h2>Checked it? Now let's sort it</h2>
   <p style="max-width:50ch;color:#eef0f1">Start your visa application or get help preparing your IDP paperwork. A <x-reg-verify>UK &amp; Europe registered</x-reg-verify> service checks every case before anything is submitted.</p>
   <div class="row"><a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')<a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I used the checker, can you confirm my eligibility?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 @endsection
 

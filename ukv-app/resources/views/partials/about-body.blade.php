@@ -768,7 +768,7 @@
   <h2>Send us your situation.</h2>
   <p style="max-width:48ch;color:#eef0f1">If we cannot help, we will tell you honestly. No charge. Most people hear back within a few hours.</p>
   <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 <script>
 (function () {

@@ -198,6 +198,6 @@
     <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question about a visa guide.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
     <a href="{{ url('/tools') }}" class="btn btn--glass">Check what I need</a>
   </div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 @endsection

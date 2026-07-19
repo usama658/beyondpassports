@@ -30,7 +30,7 @@
 @if($wrap)</div>@endif
 @once
 <style>
-  .disc-strip{display:flex;gap:12px;align-items:flex-start;background:#eef4f6;border:1px solid #d6e5e9;
+  .disc-strip{display:flex;gap:12px;align-items:flex-start;text-align:left;background:#eef4f6;border:1px solid #d6e5e9;
     border-left:3px solid #155E7A;border-radius:12px;padding:13px 16px;font-family:"Outfit",system-ui,sans-serif;
     transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,border-left-color .15s ease}
   .disc-strip svg{width:18px;height:18px;flex:0 0 auto;fill:#155E7A;margin-top:1px;transition:transform .18s ease}

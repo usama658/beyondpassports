@@ -391,7 +391,7 @@
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
       @include('partials.consult-cta')
     </div>
-  </div>
+  <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div>
 </section>
 
 @endsection

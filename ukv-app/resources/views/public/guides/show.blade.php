@@ -687,6 +687,6 @@
     <a href="{{ $checklistUrl }}" class="btn btn--glass">Check what I need</a>
     @include('partials.consult-cta')
   </div>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 @endsection

@@ -221,7 +221,7 @@
   </div>
   <p class="tr-ctafnote">No payment. No obligation.</p>
   <p class="tr-ctaconsult">Prefer to talk it through first? <a href="{{ $waConsult }}" target="_blank" rel="noopener">Talk to us.</a></p>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 <script>
 /* Prefill the WhatsApp message with the visitor's name + phone (no server round-trip). */

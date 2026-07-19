@@ -564,7 +564,7 @@
       <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my document checklist, can you check it?') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
       @include('partials.consult-cta')
     </div>
-  </div></section>
+  <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 </main>
 

@@ -589,6 +589,6 @@
     @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')Europe {{ config('ukv.phone_de') ?: '+49 30 0000 0000' }}</a>@endif
   </div>
   <p class="sgc-disclaimer">Beyond Passports is an independent consultancy, not a government website. We cannot guarantee any visa outcome; the consulate makes the decision. Express speeds our handling only, not the consulate decision. Our service fee is separate from the government visa fee.</p>
-</div></section>
+<div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 @endsection
