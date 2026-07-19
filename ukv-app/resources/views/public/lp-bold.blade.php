@@ -448,7 +448,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer). --}}
 @if(!empty($apptCards) && count($apptCards))
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Current Schengen appointment availability</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
   @if (in_array(now()->month, [6, 7, 8]))
   {{-- Summer-peak boarding-pass promo (auto-shows Jun–Aug only). --}}
