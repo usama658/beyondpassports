@@ -4,6 +4,7 @@
 
 @section('title', $page->seo_title ?: $page->title)
 @section('description', $page->seo_description ?? '')
+@section('canonical', $page->canonicalUrl())
 
 @if ($page->noindex)
   @push('head')<meta name="robots" content="noindex,nofollow">@endpush

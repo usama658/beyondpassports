@@ -235,7 +235,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>We can book your appointment for you</h2>
-  <p style="max-width:54ch;color:#cdd9e1">Found your centre? A UK &amp; Europe registered service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
+  <p style="max-width:54ch;color:#cdd9e1">Found your centre? A <x-reg-verify>UK &amp; Europe registered</x-reg-verify> service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
   <div class="row">
     <a href="{{ $fcWa }}" class="btn btn--glass">@include('partials.wa-glyph')Check eligibility</a>
     <a href="{{ url('/apply') }}" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start your application →</a>

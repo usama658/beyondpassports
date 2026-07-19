@@ -502,7 +502,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>Real people checking real applications</h2>
-  <p style="max-width:52ch;color:#cdd9e1">A UK &amp; Europe registered service reviews every case before anything is submitted. We're an independent service, not a government website, and we'll always tell you honestly what you need.</p>
+  <p style="max-width:52ch;color:#cdd9e1">A <x-reg-verify>UK &amp; Europe registered</x-reg-verify> service reviews every case before anything is submitted. We're an independent service, not a government website, and we'll always tell you honestly what you need.</p>
   <div class="row"><a href="{{ url('/') }}#how" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">How it works</a><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a></div>
 </div></section>
 

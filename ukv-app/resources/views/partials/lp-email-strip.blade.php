@@ -7,7 +7,7 @@
 <section class="lpes" aria-label="Prefer email">
   <div class="lpes-card">
     <p class="lpes-h">Prefer email?</p>
-    <p class="lpes-sub">Leave your address and a UK &amp; Europe registered specialist will reach out. No payment now.</p>
+    <p class="lpes-sub">Leave your address and a <x-reg-verify>UK &amp; Europe registered</x-reg-verify> specialist will reach out. No payment now.</p>
     <form class="lpes-form" onsubmit="return lpesGo(this)" data-capture="{{ route('appointment.enquiry') }}" novalidate>
       @csrf
       <label for="lpes-email" class="mrz">Your email</label>
