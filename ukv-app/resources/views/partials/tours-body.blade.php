@@ -19,26 +19,28 @@
   .tr-flag{width:22px;height:15px;border-radius:3px;display:inline-block;vertical-align:-2px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
   /* hero */
   .tr-hero{background:linear-gradient(180deg,#EAF1F4 0%,#F2F5F6 45%,var(--paper) 100%);border-bottom:1px solid var(--paper-edge)}
-  .tr-hgrid{display:grid;grid-template-columns:1fr;gap:28px;padding:54px 0 62px}
+  .tr-hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center;padding:54px 0 62px}
   .tr-hero h1{color:var(--ink);font:800 clamp(32px,4.6vw,52px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
   .tr-hero .lede{color:var(--muted);font-size:19px;line-height:1.5;margin:0 0 18px;max-width:46ch}
   .tr-htrust{color:var(--stamp-text);font-size:14px;font-weight:600}
   .tr-chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
   .tr-chip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--paper-edge);border-radius:999px;padding:7px 13px;font:600 13px var(--display);color:var(--ink);box-shadow:0 6px 16px -12px rgba(40,50,70,.5)}
   .tr-chip b{color:var(--stamp);font-weight:800}
-  .tr-form{background:#fff;border:1px solid var(--paper-edge);border-radius:22px;padding:28px;box-shadow:0 30px 70px -42px rgba(30,40,60,.65)}
-  .tr-form .fl{font:800 20px var(--display);letter-spacing:-.01em;margin:0 0 6px}
+  .tr-form{position:relative;background:#fff;border:1px solid var(--paper-edge);border-radius:22px;padding:30px 28px 26px;box-shadow:0 34px 74px -42px rgba(30,40,60,.68)}
+  .tr-form .fstamp{position:absolute;top:-13px;right:20px;background:var(--stamp);color:#fff;font:800 10.5px var(--display);letter-spacing:.05em;padding:7px 12px;border-radius:9px;transform:rotate(3deg);box-shadow:0 12px 22px -10px rgba(92,154,123,.7)}
+  .tr-form .fl{font:800 21px var(--display);letter-spacing:-.01em;margin:0 0 6px}
   .tr-form .fs{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 18px}
   .tr-form label{display:block;font:700 11px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
-  .tr-form input{width:100%;padding:13px 14px;border:1px solid var(--paper-edge);border-radius:11px;font:500 15px var(--display);margin:0 0 12px;background:#fbfdfd;color:var(--ink)}
-  .tr-form .btn{width:100%;margin-top:4px}
-  /* Full-width hero form: lay name / phone / button out as one horizontal row on wider
-     screens, stacking on mobile. */
-  .tr-frow{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end;margin-top:4px}
+  .tr-form input{width:100%;padding:14px 15px;border:1.5px solid #e2e8ee;border-radius:12px;font:600 15px var(--display);margin:0 0 13px;background:#fff;color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
+  .tr-form input::placeholder{color:#9aa6b0;font-weight:500}
+  .tr-form input:hover{border-color:#cbd5dd}
+  .tr-form input:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
+  /* Hero form sits in the right column — stack name / phone / button. */
+  .tr-frow{display:grid;grid-template-columns:1fr;gap:0;margin-top:2px}
   .tr-frow .fcol{min-width:0}
-  .tr-frow input{margin:0}
-  .tr-frow .btn{width:auto;margin-top:0;white-space:nowrap;padding-top:13px;padding-bottom:13px}
-  @media(max-width:640px){.tr-frow{grid-template-columns:1fr}.tr-frow .btn{width:100%}}
+  .tr-frow input{margin:0 0 13px}
+  .tr-form .btn{width:100%;margin-top:2px;background:#25D366;border-color:#25D366;color:#fff;border-radius:12px;padding:15px;font-weight:800}
+  .tr-form .btn:hover{background:#1da851;border-color:#1da851}
   /* ukv.css sets svg{display:block}; make button icon+label sit on one line */
   .tr-form .btn,.tr-ctaform .btn,.tr-card .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
   .tr-form .fnote{text-align:center;color:var(--muted);font-size:12.5px;margin:12px 0 0}
@@ -130,6 +132,7 @@
     </div>
   </div>
   <div class="tr-form">
+    <span class="fstamp">No payment now</span>
     <div class="fl">Check your eligibility</div>
     <div class="fs">Just your name and number. A <x-reg-verify>UK and Europe registered</x-reg-verify> service spots what could get you refused, then holds the soonest slot before it goes.</div>
     <div class="tr-frow">
