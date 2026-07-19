@@ -100,7 +100,7 @@
       centre = centreName; slot = dateLabel;
       book.setAttribute('aria-disabled', 'false');
       book.href = bookHref();
-      setLabel('Ask us to book ' + slot + ' →');
+      setLabel('Book ' + slot + ' now →');
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
     }
     function renderCentres(data) {

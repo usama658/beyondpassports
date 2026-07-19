@@ -463,7 +463,7 @@
       centre = centreName; slot = dateLabel;
       book.setAttribute('aria-disabled', 'false');
       book.href = bookHref();
-      setLabel('Ask us to book ' + slot + ' →');
+      setLabel('Book ' + slot + ' now →');
       // Bring the CTA into view so the next step is obvious after picking a slot
       // (matters most on mobile, where the button sits below the centre list).
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
