@@ -28,12 +28,16 @@
   .wa-bub__x:hover{background:rgba(255,255,255,.26);color:#fff}
   @keyframes waBubIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.wa-bub{animation:none}}
-  /* Mobile: collapse the button to a circular FAB (glyph only) + hide the bubble. */
+  /* Mobile: collapse the button to a circular FAB (glyph only). Keep the bubble but shrink it
+     and pin it to the viewport edge so it fits above the round FAB. */
   @media (max-width:620px){
     .wa-float{right:14px;bottom:14px}
     .wa-float .wa-cta{padding:14px;border-radius:50%}
     .wa-float .wa-cta__label{display:none}
-    .wa-bub{display:none!important}
+    .wa-bub{position:fixed;right:14px;bottom:80px;left:auto;width:auto;max-width:calc(100vw - 28px);padding:10px 30px 10px 13px}
+    .wa-bub b{font-size:13.5px}
+    .wa-bub span:not(.wa-bub__dot){font-size:12px}
+    .wa-bub__dot{top:11px;right:32px}
   }
 </style>
 <script>
@@ -42,11 +46,8 @@
     if (!bub) return;
     var KEY = 'waBubDismissed';
     try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
-    // Show after a short delay so it doesn't nag on arrival; skip on small screens.
-    var t = setTimeout(function () {
-      if (window.matchMedia && window.matchMedia('(max-width:620px)').matches) return;
-      bub.hidden = false;
-    }, 6000);
+    // Show after a short delay so it doesn't nag on arrival (desktop + mobile).
+    var t = setTimeout(function () { bub.hidden = false; }, 6000);
     var x = document.getElementById('waBubX');
     if (x) x.addEventListener('click', function () {
       clearTimeout(t); bub.hidden = true;
