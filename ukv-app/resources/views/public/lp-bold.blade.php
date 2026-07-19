@@ -414,6 +414,7 @@ html,body{overflow-x:clip;max-width:100%}
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
   </div>
+  <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
     <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone (UK)</label><input type="text" id="lpb-phone" placeholder="07…"></div></div>
@@ -425,6 +426,8 @@ html,body{overflow-x:clip;max-width:100%}
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
+  @include('partials.disclaimer-strip', ['wrap' => false])
+  </div>
 </div></div></section>
 
 {{-- PATHS — horizontal "start where you are" chips, before the trust bar --}}
