@@ -86,7 +86,7 @@
     </div>
     <div class="bpc-ftbottom">
       <span>© Beyond Passports. Independent, not the government. Fee separate from the visa fee. Approval never guaranteed.</span>
-      <span style="display:inline-flex;align-items:center;gap:7px">@include('partials.uk-eu-flags',['size'=>14])Registered in UK &amp; Europe</span>
+      <a href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="display:inline-flex;align-items:center;gap:7px;color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>14])Registered in UK &amp; Europe</a>
     </div>
   </div></div>
 </footer>
