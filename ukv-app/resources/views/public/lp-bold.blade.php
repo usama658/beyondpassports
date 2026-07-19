@@ -582,7 +582,7 @@ html,body{overflow-x:clip;max-width:100%}
       @php $chNo = config('ukv.company_no') ?: '17331903'; $icoNo = config('ukv.ico_number') ?: 'ZC197159'; @endphp
       <a class="vlink" href="https://find-and-update.company-information.service.gov.uk/company/{{ $chNo }}" target="_blank" rel="noopener"><span class="tick">✓</span><div><h4>Company registration <span class="ext">View on Companies House →</span></h4><p>Beyond Passports Ltd, company no. {{ $chNo }}, on the official Companies House register at gov.uk.</p></div></a>
       <a class="vlink" href="https://ico.org.uk/ESDWebPages/Entry/{{ $icoNo }}" target="_blank" rel="noopener"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Check the ICO register →</span></h4><p>Registered with the Information Commissioner's Office, reg. {{ $icoNo }}. Verify on the public ICO register.</p></div></a>
-      <a class="vlink" href="{{ route('checklist.tool') }}"><span class="tick">✓</span><div><h4>Handled by specialists <span class="ext">Get your checklist →</span></h4><p>15+ years of combined visa casework behind every application. We know the item the checklist leaves out.</p></div></a>
+      <a class="vlink" href="#ask"><span class="tick">✓</span><div><h4>Handled by specialists <span class="ext">Ask us anything →</span></h4><p>15+ years of combined visa casework behind every application. We know the item the checklist leaves out.</p></div></a>
       <a class="vlink" href="#appointments"><span class="tick">✓</span><div><h4>Appointment availability <span class="ext">See live availability →</span></h4><p>See the current per-country appointment board on this page, with the soonest slot for each Schengen country.</p></div></a>
       @php $lpLead = collect(config('ukv.team', []))->firstWhere('lead', true) ?? collect(config('ukv.team', []))->first(); @endphp
       <div class="founder">@if(!empty($lpLead['photo']))<img class="ph" src="{{ asset(ltrim($lpLead['photo'], '/')) }}" alt="{{ $lpLead['name'] }}">@else<span class="ph"></span>@endif<div><b>{{ $lpLead['name'] ?? 'Beyond Passports' }}</b><span>{{ $lpLead['role'] ?? 'UK case team' }} · Schengen visa specialists</span></div></div>
@@ -609,7 +609,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
       @endforeach
     </div>
-    <aside class="bp">
+    <aside class="bp" id="ask">
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
       <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
