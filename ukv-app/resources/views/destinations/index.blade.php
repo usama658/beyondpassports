@@ -199,6 +199,7 @@
     <h3>Start here</h3>
     <p>Tell us where you're going and your passport, and we'll say what you need. No account.</p>
     @include('partials.hero-check-form', ['stack' => true, 'bare' => true])
+    <div style="margin-top:13px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
     @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
 </div></div></section>
@@ -591,7 +592,9 @@
     </div>
     <p class="sg-empty" id="destEmpty">No Schengen country matches that search. Try another, or <a href="{{ url('/contact') }}">ask our team</a>.</p>
   @endif
-</div></section>
+</div>
+@include('partials.disclaimer-strip')
+</section>
 
 {{-- WHY APPLICATIONS GET REFUSED — honest reason / fix rows, before "What we do" --}}
 @php
@@ -627,7 +630,9 @@
   <div class="rf-cta">
     <a class="btn" href="{{ url('/tools') }}">Check your eligibility</a>
   </div>
-</div></section>
+</div>
+@include('partials.disclaimer-strip')
+</section>
 
 {{-- 4) WHAT WE DO — six-service stamp grid (.ticks / .tick / #ukv-stamp) --}}
 <section id="sg-do"><div class="wrap">
@@ -660,7 +665,9 @@
     <div class="step reveal"><div class="num">04</div><div class="rule"></div><h3>We track it to a decision</h3><p>We follow your application and keep you posted until the embassy decides.</p></div>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px"><a class="btn" href="{{ $waLink }}" target="_blank" rel="noopener">Tell us about your trip &rarr;</a> @include('partials.consult-cta')</div>
-</div></section>
+</div>
+@include('partials.disclaimer-strip')
+</section>
 
 {{-- 6) FAQ — tinted panel accordion (.faq-e / .faqd) --}}
 <section id="faq" class="faq-e"><div class="wrap">
@@ -683,6 +690,7 @@
   <h2>Tell us about your trip</h2>
   <p style="max-width:48ch;color:#eef0f1">Message our UK team on WhatsApp and we'll tell you exactly what your Schengen application needs, or run the checker first.</p>
   <div class="row"><a href="{{ $waLink }}" target="_blank" rel="noopener" class="btn">{!! $waGlyph !!} Chat on WhatsApp</a><a href="{{ url('/tools') }}" class="btn btn--glass">What I need →</a></div>
+  <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div>
 </div></section>
 
 @if ($destinations->isNotEmpty())
