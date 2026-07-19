@@ -197,10 +197,10 @@
   </div>
   <div class="sg-hcard">
     <h3>Start here</h3>
-    <p>Message our UK team. No account needed.</p>
-    <div class="acts">
-      <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} WhatsApp us</a>
-      <a class="btn btn--ghost" href="{{ url('/tools') }}">What I need →</a>
+    <p>Tell us where you're going and your passport, and we'll say what you need. No account.</p>
+    @include('partials.hero-check-form', ['stack' => true, 'bare' => true])
+    <div class="acts" style="margin-top:12px">
+      <a class="btn btn--wa" href="{{ $waLink }}" target="_blank" rel="noopener">{!! $waGlyph !!} Or just WhatsApp us</a>
     </div>
     @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '14px 0 0'])
   </div>
