@@ -334,11 +334,11 @@
     <div class="slotm-box">
       <div class="slotm-hd">
         <div class="slotm-top">
-          <h3 id="slotm-title">Available slots</h3>
+          <h3 id="slotm-title">Select your date</h3>
           <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
         </div>
-        <p class="slotm-s">Booking is centre by centre. Pick a slot at the centre that suits you.</p>
-        <div class="slotm-trust"><span><b>&checkmark;</b> No payment now</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We book it for you</span></div>
+        <p class="slotm-s">Tap any open date below, pick the date before it vanishes. We lock it with the centre the moment you pick.</p>
+        <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We do the booking</span></div>
       </div>
       <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
       <div class="slotm-foot">
@@ -512,7 +512,7 @@
       modal.classList.remove('lim', 'low');
       if (band === 'lim') modal.classList.add('lim');
       else if (band === 'low' || band === 'ask') modal.classList.add('low');
-      title.textContent = 'Available slots — ' + c;
+      title.textContent = 'Select your date, ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');
       box.innerHTML = '<p class="slotm-load">Loading centres…</p>';
