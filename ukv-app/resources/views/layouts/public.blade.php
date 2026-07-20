@@ -25,7 +25,7 @@
 @stack('head')
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
-<body>
+<body data-page="{{ Route::currentRouteName() ?: trim(request()->path(), '/') ?: 'home' }}" data-page-path="/{{ ltrim(request()->path(), '/') }}">
 <a class="skip-link" href="#main">Skip to main content</a>
 @include('partials.announcement-bar')
 @include('partials.site-header')
@@ -43,6 +43,7 @@
 
 @include('partials.site-footer')
 
+@include('partials.gtm-tracking')
 @include('partials.site-scripts')
 @include('partials.select-enhance')
 @include('partials.trustpilot-invite')
