@@ -66,6 +66,10 @@
   }
   var banner=document.getElementById('ck-consent');
   var choice=get(NAME);
+  // GTM Preview / Tag Assistant debug session: load the container immediately so the
+  // debug channel attaches at page load. Only triggers for a debug session (gtm_debug
+  // param or referral from tagassistant.google.com) — real visitors stay consent-gated.
+  if(/[?&]gtm_debug=/.test(location.search) || document.referrer.indexOf('tagassistant.google.com')!==-1){ loadAcceptedScripts(); }
   if(choice==='accepted'){ loadAcceptedScripts(); }
   else if(choice!=='rejected'){ if(banner) banner.hidden=false; }
   function done(v){ set(v); if(banner) banner.hidden=true; if(v==='accepted') loadAcceptedScripts(); }
