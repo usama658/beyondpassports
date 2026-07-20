@@ -35,6 +35,16 @@ class Page extends Model
         return self::LAYOUTS[$this->layout ?? 'public'] ?? 'layouts.public';
     }
 
+    /**
+     * Self-canonical URL for the page. The home slug maps to the site root; every other slug is its
+     * own path. Emitted by the CMS page shell so a migrated page keeps the same canonical tag its
+     * coded twin had.
+     */
+    public function canonicalUrl(): string
+    {
+        return $this->slug === 'home' ? url('/') : url('/'.$this->slug);
+    }
+
     protected function casts(): array
     {
         return [
