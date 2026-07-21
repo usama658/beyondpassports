@@ -426,7 +426,6 @@ html,body{overflow-x:clip;max-width:100%}
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
-  @include('partials.disclaimer-strip', ['wrap' => false])
   </div>
 </div></div></section>
 

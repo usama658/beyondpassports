@@ -148,7 +148,6 @@
     @include('partials.hero-check-form', ['stack' => true, 'bare' => true])
     <p class="fnote">No payment. No obligation.</p>
   </div>
-  @include('partials.disclaimer-strip', ['wrap' => false])
   </div>
 </div></div></section>
 

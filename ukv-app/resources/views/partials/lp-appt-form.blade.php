@@ -22,7 +22,6 @@
   </a>
   <p class="bpc-af-trust"><span class="bpc-af-dot"></span>@include('partials.uk-eu-flags',['size'=>13]) Reply in minutes · No payment now · <x-reg-verify style="text-decoration:none">Registered in <b>UK &amp; Europe</b></x-reg-verify></p>
 </form>
-<div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false, 'variant' => 'dark'])</div>
 <script>
 function bpcAppt(f){
   var n=(f.n.value||'').trim(), p=(f.p.value||'').trim(), e=(f.e?f.e.value:'').trim(), a=f.querySelector('.bpc-af-go'), num=a.getAttribute('data-wa');

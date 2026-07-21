@@ -234,7 +234,6 @@
     </div>
     <button class="btn" type="button" id="hp-chat">See what I need →</button>
   </form>
-  <div style="margin-top:14px">@include('partials.disclaimer-strip', ['wrap' => false])</div>
   <p class="hp-barhint">A named UK visa specialist replies · usually within minutes, Mon–Sat 9–6</p>
   <div style="margin:12px 0 0">@include('partials.ico-badge', ['variant' => 'chip'])</div>
 
