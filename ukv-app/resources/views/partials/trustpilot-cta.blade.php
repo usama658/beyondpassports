@@ -18,23 +18,11 @@
     $starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.8 5.8 21.5l1.6-7L2 9.8l7.1-.6z"/></svg>';
 @endphp
 @if ($tp['enabled'] ?? false)
+{{-- Sitewide Trustpilot surface = the real Review Collector TrustBox (live data from
+     Trustpilot: BU id + Review Collector template + token from config). The custom
+     hand-typed stars mirror below is kept only as a code fallback and is not rendered. --}}
 <div style="text-align:{{ $tpcAlign }};margin:{{ $tpcMargin }}">
-@if ($hasRating)
-  <a class="tpr {{ $tpcDark ? 'tpr--dark' : '' }}" href="{{ $tpcUrl }}" target="_blank" rel="noopener"
-     aria-label="Rated {{ $rating }} out of 5 on Trustpilot from {{ $count }} reviews">
-    <span class="tpr-stars">
-      <span class="tpr-row tpr-bg">{!! str_repeat('<i class="tpr-box">'.$starSvg.'</i>', 5) !!}</span>
-      <span class="tpr-row tpr-fg" style="width:{{ $pct }}%">{!! str_repeat('<i class="tpr-box">'.$starSvg.'</i>', 5) !!}</span>
-    </span>
-    <span class="tpr-meta"><b>TrustScore {{ rtrim(rtrim(number_format($rating,1),'0'),'.') }}</b></span>
-    <span class="tpr-logo">{!! $starSvg !!} Trustpilot</span>
-  </a>
-@else
-  <a class="tpc {{ $tpcDark ? 'tpc--dark' : '' }}" href="{{ $tpcEval }}" target="_blank" rel="noopener" aria-label="Review us on Trustpilot">
-    <span class="tpc-star">{!! $starSvg !!}</span>
-    <span class="tpc-tx">Review us on <b>Trustpilot</b></span>
-  </a>
-@endif
+  @include('partials.trustpilot', ['theme' => $tpcDark ? 'dark' : 'light', 'align' => $tpcAlign, 'height' => '52px', 'margin' => '0'])
 </div>
 @endif
 @once

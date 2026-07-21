@@ -167,12 +167,12 @@ return [
         // Master on/off for ALL public Trustpilot surfaces (TrustBox widget, rating/CTA block,
         // bootstrap + invitejs scripts). OFF now = kept fully in code ("draft"), just hidden.
         // Flip on again with UKV_TRUSTPILOT_ENABLED=true in .env (then php artisan config:cache).
-        'enabled'          => env('UKV_TRUSTPILOT_ENABLED', false),
+        'enabled'          => env('UKV_TRUSTPILOT_ENABLED', true),
         'business_unit_id' => env('UKV_TRUSTPILOT_BUSINESS_UNIT_ID', '6a399ad11e7ab73189428ce3'), // Beyond Passports business unit
         'template_id'      => env('UKV_TRUSTPILOT_TEMPLATE_ID', '56278e9abfbbba0bdcd568bc'), // Review Collector (the box enabled on this unit)
-        'review_token'     => env('UKV_TRUSTPILOT_REVIEW_TOKEN', '4da63923-ed36-4abf-ac4c-18f0db428119'), // required by the Review Collector template
+        'review_token'     => env('UKV_TRUSTPILOT_REVIEW_TOKEN', '92382248-483f-4956-93da-09944cc91c14'), // required by the Review Collector template
         'domain'           => env('UKV_TRUSTPILOT_DOMAIN', 'beyondpassports.co.uk'),         // your verified review domain
-        'profile_url'      => env('UKV_TRUSTPILOT_PROFILE_URL', ''),                         // public review-collection link (optional CTA)
+        'profile_url'      => env('UKV_TRUSTPILOT_PROFILE_URL', 'https://trstp.lt/tf7HiLGmh7'), // public review-collection link (fallback CTA)
         // Automatic Feedback BCC: Trustpilot's unique invite alias. BCC'd ONLY on the
         // post-delivery ReviewRequest email, so a genuine review invite fires when an order
         // is delivered. Blank = off. (This sends the customer's email + name to Trustpilot,
