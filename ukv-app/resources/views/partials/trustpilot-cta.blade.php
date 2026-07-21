@@ -22,7 +22,7 @@
      Trustpilot: BU id + Review Collector template + token from config). The custom
      hand-typed stars mirror below is kept only as a code fallback and is not rendered. --}}
 <div style="text-align:{{ $tpcAlign }};margin:{{ $tpcMargin }}">
-  @include('partials.trustpilot', ['theme' => $tpcDark ? 'dark' : 'light', 'align' => $tpcAlign, 'height' => '52px', 'margin' => '0'])
+  @include('partials.trustpilot', ['theme' => $tpcDark ? 'dark' : 'light', 'align' => $tpcAlign, 'height' => '52px', 'width' => '230px', 'margin' => '0'])
 </div>
 @endif
 @once

@@ -407,7 +407,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- HERO — 2-col split w/ form --}}
 <section class="hero"><div class="wrap"><div class="hgrid">
   <div class="hleft">
-    <div class="tp">@include('partials.trustpilot', ['theme' => 'light', 'align' => 'left', 'height' => '52px', 'margin' => '0'])</div>
+    <div class="tp">@include('partials.trustpilot', ['theme' => 'light', 'align' => 'left', 'height' => '52px', 'width' => '230px', 'margin' => '0'])</div>
     <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
