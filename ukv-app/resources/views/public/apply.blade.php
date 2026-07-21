@@ -356,7 +356,7 @@
             </div>
             <div class="field">
               <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 …" required aria-required="true">
+              @include('partials.phone-country', ['name' => 'phone', 'required' => true, 'value' => old('phone'), 'placeholder' => '7911 123456'])
             </div>
             <div class="field">
               <label for="postcode">UK postcode</label>

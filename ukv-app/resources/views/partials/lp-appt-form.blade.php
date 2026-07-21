@@ -12,7 +12,7 @@
   <label class="bpc-af-l" for="bpc-af-name">Your name</label>
   <input class="bpc-af-i" id="bpc-af-name" name="n" type="text" placeholder="e.g. Aisha Khan" autocomplete="name">
   <label class="bpc-af-l" for="bpc-af-phone">Mobile number</label>
-  <input class="bpc-af-i" id="bpc-af-phone" name="p" type="tel" placeholder="07…" autocomplete="tel">
+  @include('partials.phone-country', ['id' => 'bpc-af-phone', 'name' => 'p', 'class' => 'bpc-af-i', 'placeholder' => '7911 123456'])
   {{-- Email fallback: capture a lead who would rather not use WhatsApp / leave a number. --}}
   <label class="bpc-af-l" for="bpc-af-email">Or email (if you prefer we email you)</label>
   <input class="bpc-af-i" id="bpc-af-email" name="e" type="email" placeholder="name@email.com" autocomplete="email">

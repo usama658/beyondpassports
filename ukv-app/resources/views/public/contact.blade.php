@@ -475,7 +475,7 @@
           <input type="text" id="cb-name" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Jane Traveller" required aria-required="true">
 
           <label for="cb-phone">Phone number</label>
-          <input type="tel" id="cb-phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 0000 000000" required aria-required="true">
+          @include('partials.phone-country', ['id' => 'cb-phone', 'name' => 'phone', 'required' => true, 'value' => old('phone'), 'placeholder' => '7911 123456'])
 
           <label for="cb-time">Best time to call</label>
           <select id="cb-time" name="time">

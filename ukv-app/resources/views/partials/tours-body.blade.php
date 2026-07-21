@@ -235,7 +235,7 @@
   <p style="max-width:52ch;color:#eef0f1">Send your name and number. We will tell you honestly what your chances look like and what the trip would involve. No obligation.</p>
   <div class="tr-ctaform">
     <input id="tr-cta-name" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
-    <input id="tr-cta-phone" type="tel" autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
+    @include('partials.phone-country', ['id' => 'tr-cta-phone', 'name' => 'tr-cta-phone', 'placeholder' => 'Phone number'])
     <a class="btn btn--glass" href="{{ $waCheck }}" target="_blank" rel="noopener" data-tr-appt="cta">{!! $waIcon !!} Check my eligibility</a>
   </div>
   <p class="tr-ctafnote">No payment. No obligation.</p>

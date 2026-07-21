@@ -479,7 +479,7 @@
           </div>
           <div class="field">
             <label for="phone">WhatsApp number (optional)</label>
-            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="tel" placeholder="+44 …">
+            @include('partials.phone-country', ['name' => 'phone', 'value' => old('phone'), 'placeholder' => '7911 123456'])
           </div>
         </div>
 
