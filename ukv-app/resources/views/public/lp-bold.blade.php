@@ -417,7 +417,8 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
     <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
-    <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div><div class="fld"><label for="lpb-phone">Phone</label>@include('partials.phone-country', ['id' => 'lpb-phone', 'name' => 'lpb-phone', 'placeholder' => '7911 123456'])</div></div>
+    <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
+    <div class="row"><div class="fld"><label for="lpb-phone">Phone</label>@include('partials.phone-country', ['id' => 'lpb-phone', 'name' => 'lpb-phone', 'placeholder' => '7911 123456'])</div></div>
     <div class="combo" id="lpbDest">
       <label for="lpb-dest">Destination</label>
       <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…" role="combobox" aria-expanded="false" aria-controls="lpbDestList" aria-autocomplete="list"><button type="button" class="cb-caret" id="lpbDestCaret" tabindex="-1" aria-label="Show destination list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button></div>
