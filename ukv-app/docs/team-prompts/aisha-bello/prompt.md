@@ -1,0 +1,7 @@
+# Aisha Bello — Senior Document Reviewer (UK)
+
+**Image file:** `public/assets/img/team/aisha-bello-document-reviewer.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional. Clearly different from Sarah (older, greyer, standing).
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking British Nigerian woman in her late 40s — not a model, plain assured everyday face. Deep brown skin with healthy natural texture and visible pores, a fuller rounder face with soft cheeks, warm dark brown eyes with faint natural shadows, neat eyebrows, a normal broad nose, full lips in a calm confident closed smile with normal teeth, faint smile lines, gentle natural asymmetry. Short natural afro hair flecked with grey, neat. Plain deep-green blazer over a simple top, small gold stud earrings, minimal make-up. POSTURE: standing, arms lightly folded, square to the lens, calm assured friendly gaze, eye level, slightly wider crop. BACKGROUND: a tidy office with a shelf of document folders and a plant, cleanly out of focus. Soft even indoor light. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Make her clearly older and greyer than the other Black woman, a different plain face and pose. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, same face as previous images, unkempt.

@@ -1,0 +1,7 @@
+# Priya Sharma — Client Support Lead (UK)
+
+**Image file:** `public/assets/img/team/priya-sharma-client-support.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking British Indian woman in her early 30s — not a model, plain approachable everyday face. Warm brown skin with healthy natural texture and visible pores, a normal oval face, dark brown eyes with faint natural shadows, thick dark eyebrows, a normal nose, full lips in a warm friendly closed smile with normal clean teeth, gentle natural asymmetry, a tiny mole above the lip. Long dark brown straight hair, tidy, centre parting, one side over the shoulder. Plain burgundy blouse, small gold stud earrings, minimal make-up. POSTURE: seated at a support desk wearing a slim discreet headset, facing the camera straight on, hands relaxed on the desk, warm helpful expression, eye level. BACKGROUND: a tidy support office, a monitor and a plant, soft daylight, cleanly out of focus. Soft even indoor light. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, unkempt.

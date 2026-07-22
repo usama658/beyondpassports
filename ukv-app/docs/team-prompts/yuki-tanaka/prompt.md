@@ -1,0 +1,7 @@
+# Yuki Tanaka — International Clients Coordinator (UK)
+
+**Image file:** `public/assets/img/team/yuki-tanaka-international-coordinator.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Japanese woman in her late 20s — not a model, plain everyday face, clearly different from the other women. Fair-neutral skin with healthy natural texture, a soft oval face, dark brown eyes, straight dark eyebrows, a normal small nose, a gentle friendly closed smile with normal clean teeth, gentle natural asymmetry. Straight black hair in a neat chin-length bob with a straight fringe. Plain dusty-rose blouse, tiny stud earrings, minimal make-up. POSTURE: standing, hands loosely together in front, upper body slightly angled to the lens, calm polite friendly gaze, eye level, slightly tighter crop. BACKGROUND: a bright modern office by a window, blurred desks and a plant, natural daylight, cleanly out of focus. Soft even daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, anime, 3d render, cgi, same face as previous images, unkempt.

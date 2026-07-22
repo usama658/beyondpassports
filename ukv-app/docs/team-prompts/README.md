@@ -16,3 +16,17 @@ One folder per team member, each with a `prompt.md` (realistic + professional im
 - `giulia-ricci/` — Southern Europe Desk (Italy & Spain) → giulia-ricci-southern-europe.jpg
 - `henrik-larsen/` — Senior Compliance Reviewer → henrik-larsen-compliance-reviewer.jpg
 - `sofia-moreau/` — France & Benelux Appointments → sofia-moreau-france-benelux.jpg
+
+## Batch 3 (+10)
+- `priya-sharma/` — Client Support Lead (UK) → priya-sharma-client-support.jpg · British Indian F, early 30s
+- `mateus-costa/` — Iberia Desk (Portugal & Spain) → mateus-costa-iberia-desk.jpg · Portuguese M, late 20s
+- `anneke-de-vries/` — Benelux Liaison (Amsterdam) → anneke-de-vries-benelux.jpg · Dutch F, mid 50s, glasses
+- `dimitris-papadopoulos/` — Greece & Cyprus Desk → dimitris-papadopoulos-greece-desk.jpg · Greek M, mid 50s, moustache
+- `aisha-bello/` — Senior Document Reviewer (UK) → aisha-bello-document-reviewer.jpg · British Nigerian F, late 40s
+- `omar-farah/` — Client Onboarding (UK) → omar-farah-onboarding.jpg · Somali British M, early 30s
+- `nina-kovac/` — Central Europe Appointments → nina-kovac-central-europe.jpg · Croatian F, early 30s
+- `marek-horvat/` — Visegrád Desk (CZ/SK/HU) → marek-horvat-visegrad-desk.jpg · Slovak M, mid 40s
+- `yuki-tanaka/` — International Clients Coordinator (UK) → yuki-tanaka-international-coordinator.jpg · Japanese F, late 20s
+- `liam-oconnor/` — UK Client Liaison → liam-oconnor-uk-liaison.jpg · Irish M, mid 30s
+
+Overall spread: 19 members, ~10F / 9M, ages late-20s→mid-50s, no two share nationality + look. Distinct axes per person: ethnicity, age, gender, hair, glasses/none, beard/none, posture (seated/standing/leaning/angled), what they hold, background, light.
