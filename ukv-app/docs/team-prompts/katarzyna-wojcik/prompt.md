@@ -1,0 +1,6 @@
+# Katarzyna Wójcik — Document Preparation (Warsaw) · Polish F, early 40s [European]
+
+**Image file:** `public/assets/img/team/katarzyna-wojcik-document-prep.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Polish woman in her early 40s — not a model, plain everyday Central-European face. Fair skin with healthy natural texture and a few faint lines, an oval face, grey-green eyes, medium brows, a normal straight nose, a calm friendly closed smile with normal teeth, gentle natural asymmetry. Dark-blonde hair in a neat shoulder-length cut, side parting. Plain deep-teal blouse, small stud earrings, minimal make-up. POSTURE: seated at a desk, one hand resting on a stack of documents, facing the camera nearly straight on, calm friendly gaze, eye level. BACKGROUND: a tidy office with a shelf of document folders, soft daylight, cleanly out of focus. Soft even indoor light. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, unkempt.

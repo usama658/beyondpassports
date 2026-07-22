@@ -1,0 +1,6 @@
+# Ingrid Johansson — Nordic Desk (Sweden & Scandinavia) · Swedish F, mid 30s [European]
+
+**Image file:** `public/assets/img/team/ingrid-johansson-nordic-desk.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Swedish woman in her mid 30s — not a model, plain everyday Nordic face. Fair skin with healthy natural texture and faint freckles, a longish face, pale blue eyes, thin light eyebrows, a normal straight nose, a calm friendly closed smile with normal teeth, gentle natural asymmetry. Straight light-blonde hair to the shoulders, tidy, centre parting. Plain light-grey knit top, tiny earrings, almost no make-up. POSTURE: seated slightly angled at a desk, one forearm resting on it, calm friendly gaze, eye level. BACKGROUND: a bright minimalist Scandinavian office with a window and a plant, cleanly out of focus. Soft even cool daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, unkempt.

@@ -1,0 +1,6 @@
+# Marcus Adeyemi — Client Success Manager (UK) · British Ghanaian M, mid 30s [Black]
+
+**Image file:** `public/assets/img/team/marcus-adeyemi-client-success.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking British Ghanaian man in his mid 30s — not a model, plain friendly everyday face. Dark brown skin with healthy natural texture and visible pores, a rounded face with soft cheeks, warm dark brown eyes, neat eyebrows, a normal broad nose, an easy warm closed smile with normal clean teeth, short black hair with a neat fade, short neat beard, gentle natural asymmetry. Plain navy jumper over a collar, neat. POSTURE: seated at a desk, upper body slightly angled to the lens, hands relaxed on the desk, warm welcoming expression, eye level. BACKGROUND: a bright modern office, blurred desk and a plant, natural daylight, cleanly out of focus. Soft even daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, chiselled jaw, perfect beard, cartoon, 3d render, cgi, unkempt.

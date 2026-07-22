@@ -1,0 +1,6 @@
+# Pavel Novák — Central Europe Appointments (Prague) · Czech M, early 30s [European]
+
+**Image file:** `public/assets/img/team/pavel-novak-central-europe.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Czech man in his early 30s — not a model, plain everyday Central-European face. Fair skin with healthy natural texture, an oval face, grey-blue eyes, light-brown eyebrows, a normal nose, an easy friendly closed smile with normal clean teeth, short light-brown hair neatly styled, clean-shaven with very faint stubble, gentle natural asymmetry. Plain olive quarter-zip over a collar, neat. POSTURE: standing, leaning one shoulder lightly against a desk, upper body slightly angled to the lens, relaxed friendly look, eye level. BACKGROUND: a tidy appointments office with a monitor and a wall calendar, cleanly out of focus. Soft even indoor light. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, chiselled jaw, cartoon, 3d render, cgi, unkempt.

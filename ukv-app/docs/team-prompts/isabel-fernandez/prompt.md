@@ -1,0 +1,6 @@
+# Isabel Fernández — Iberia Desk (Spain & Portugal) · Spanish F, early 30s [European]
+
+**Image file:** `public/assets/img/team/isabel-fernandez-iberia-desk.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Spanish woman in her early 30s — not a model, plain everyday Mediterranean face. Light-olive skin with healthy natural texture, an oval face, warm dark brown eyes, natural eyebrows, a normal nose, full lips in a warm friendly closed smile with normal clean teeth, gentle natural asymmetry. Dark brown hair, straight-to-wavy, tied back in a low loose ponytail with a few loose strands. Plain terracotta blouse, small gold stud earrings, minimal make-up. POSTURE: seated at a desk, both hands resting on a folder, facing the camera nearly straight on, relaxed friendly gaze, eye level. BACKGROUND: a warm sunlit office with a shelf and a small framed print, cleanly out of focus. Soft even warm daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, unkempt.

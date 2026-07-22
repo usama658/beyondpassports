@@ -1,0 +1,6 @@
+# Mei Chen — Client Coordinator (UK) · British Chinese F, late 20s [Asian]
+
+**Image file:** `public/assets/img/team/mei-chen-client-coordinator.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking British Chinese woman in her late 20s — not a model, plain everyday face. Fair-neutral skin with healthy natural texture, a soft round face, dark brown eyes, straight dark eyebrows, a normal small nose, a gentle friendly closed smile with normal clean teeth, gentle natural asymmetry, a tiny mole on the cheek. Straight black hair to the shoulders, tidy, tucked behind one ear. Plain soft-teal blouse, tiny stud earrings, minimal make-up. POSTURE: seated at a desk, one hand resting on a notebook, facing the camera nearly straight on, calm friendly gaze, eye level, slightly tighter crop. BACKGROUND: a bright modern office by a window, blurred desks and a plant, natural daylight, cleanly out of focus. Soft even daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, anime, 3d render, cgi, unkempt.

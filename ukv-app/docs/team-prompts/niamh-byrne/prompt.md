@@ -1,0 +1,6 @@
+# Niamh Byrne — UK & Ireland Liaison · Irish F, late 20s [European]
+
+**Image file:** `public/assets/img/team/niamh-byrne-uk-ireland-liaison.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Irish woman in her late 20s — not a model, plain friendly everyday face. Fair skin with healthy natural texture and light freckles across the nose and cheeks, an oval face, blue-green eyes, reddish-brown eyebrows, a normal nose, a warm friendly closed smile with normal clean teeth, gentle natural asymmetry. Wavy dark-auburn hair to the shoulders, tidy, centre parting. Plain forest-green top, tiny earrings, minimal make-up. POSTURE: standing, hands loosely together in front, upper body slightly angled to the lens, warm cheerful expression, eye level, slightly tighter crop. BACKGROUND: a bright office corner with a window and a plant, natural daylight, cleanly out of focus. Soft even daylight. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, unkempt.

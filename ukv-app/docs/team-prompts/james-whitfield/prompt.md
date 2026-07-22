@@ -1,0 +1,6 @@
+# James Whitfield — Operations Manager (UK) · white British M, mid 40s [British]
+
+**Image file:** `public/assets/img/team/james-whitfield-operations.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking white British man in his mid 40s — not a model, plain everyday face. Fair skin with healthy natural texture, faint lines and a little ruddiness, an oval face with a slight double chin, blue-grey eyes, mid-brown eyebrows, a normal nose, a calm friendly closed smile with normal teeth, short mid-brown hair greying at the temples, clean-shaven with faint stubble, gentle natural asymmetry. Plain light-grey shirt, no tie, sleeves loose, neat. POSTURE: standing, arms lightly folded, roughly square to the lens, relaxed confident expression, eye level. BACKGROUND: a plain office wall with a whiteboard and a shelf, cleanly out of focus. Soft even indoor light. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, chiselled jaw, cartoon, 3d render, cgi, unkempt.
