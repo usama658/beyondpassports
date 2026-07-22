@@ -72,6 +72,8 @@ button,a,.btn,summary{touch-action:manipulation}
 .topbar .tb-links a{white-space:nowrap}
 /* Narrow: stack + centre everything, allow links to wrap. */
 @media (max-width:860px){.topbar .tb-row{justify-content:center;gap:6px 16px}.topbar .tb-links{flex-wrap:wrap;justify-content:center}}
+/* Hide the Trustpilot box from the topbar on mobile (keeps it in footer + page bodies). */
+@media (max-width:768px){.topbar .tb-tp{display:none}}
 /* Shared inline glyphs for WhatsApp / Call links + buttons (partials.wa-glyph / call-glyph) — fixed size */
 .wa-g,.call-g{width:15px;height:15px;fill:currentColor;display:inline-block;vertical-align:-2px;margin-right:6px;flex:none}
 .btn .wa-g,.btn .call-g{width:17px;height:17px;vertical-align:-3px}
