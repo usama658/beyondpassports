@@ -1,0 +1,7 @@
+# Giulia Ricci — Southern Europe Desk (Italy & Spain)
+
+**Image file:** `public/assets/img/team/giulia-ricci-southern-europe.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Italian woman in her early 30s — not a model, plain everyday Mediterranean face, clearly different from the other women. Warm olive skin with healthy natural texture and visible pores, a rounder soft face, dark brown almond eyes with faint natural shadows, thick natural eyebrows, a normal slightly prominent nose, full lips in a small friendly closed smile with normal clean teeth, gentle natural asymmetry. Long dark brown wavy hair, tidy, centre parting, falling past the shoulders. Plain rust-coloured knit top, small gold hoop earrings, minimal make-up. POSTURE: seated at a desk, both hands resting on an open notebook, facing the camera straight on (front-facing head and shoulders), relaxed approachable gaze, eye level. BACKGROUND: a warm terracotta-toned office with a shelf of folders and a small framed print, cleanly out of focus. Soft even warm indoor light from one side. Shot on a good phone, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, cartoon, 3d render, cgi, same face as previous images, unkempt.

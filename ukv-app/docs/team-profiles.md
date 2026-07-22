@@ -70,6 +70,62 @@ Save as (square crop, ~800×800): `public/assets/img/team/{sarah-whitmore,karim-
 
 ---
 
+## European team members (offices in Germany + partner desks across the EU)
+
+Same realistic rules. Each a plain, distinct European face; vary posture, background and light so none blend with the four above or each other. Save as `public/assets/img/team/{lena-vogel,tomasz-nowak,giulia-ricci,henrik-larsen,sofia-moreau}.png`.
+
+### 5. Lena Vogel — Germany Office Lead (Berlin)
+
+**Role:** Runs the German office and the consulate liaison work across the DACH region; the on-the-ground contact for embassy-side questions.
+
+**Posture / angle:** seated slightly angled at a meeting table, one forearm resting on it, turned a little toward the lens; eye level.
+**Background:** a calm Berlin office — a tall window with soft grey daylight, a wall map and a green plant, blurred.
+
+**Image prompt:**
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking white German woman in her early 40s — not a model, plain professional everyday face. Fair slightly cool-toned skin with a few faint lines and one small mole on the cheek, light grey-blue eyes, straight thin eyebrows, a normal straight nose, thin lips in a calm small closed smile, faint under-eye shadows. Straight ash-blonde hair going a little grey, chin-length bob with a side parting, a strand tucked behind one ear. Plain charcoal blazer over a simple top, no jewellery except tiny earrings, minimal make-up. POSTURE: seated slightly angled at a meeting table, one forearm resting on it, upper body turned a little toward the lens, calm level gaze, shot at eye level. BACKGROUND: a calm Berlin office with a tall window and soft grey daylight, a wall map and a green plant, softly out of focus. Flat cool daylight. Shot like a real phone or mirrorless snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin with visible pores, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, heavy make-up, glasses.
+
+### 6. Tomasz Nowak — VFS & Biometrics Coordinator
+
+**Role:** Coordinates VFS/BLS appointments and biometrics slots across Poland and Central Europe; knows which centre clears fastest.
+
+**Posture / angle:** standing, leaning one shoulder lightly against a wall or desk edge, half-turned, hands relaxed; eye level.
+**Background:** a busy but blurred appointments desk — two monitors, a wall calendar, sticky notes.
+
+**Image prompt:**
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking white Polish man in his mid 30s — not a model, plain broad Slavic face. Fair skin that reddens a little at the cheeks, wide square-ish face with a strong jaw and slightly heavy brow, grey-green eyes a bit close-set, short mid-brown hair pushed up, a few days of uneven light-brown stubble, a small nick scar on one eyebrow. Plain dark-green half-zip pullover. POSTURE: standing, leaning one shoulder lightly against a desk edge, upper body half-turned to the lens, hands relaxed at his sides, easy neutral expression, shot at eye level. BACKGROUND: a busy but blurred appointments desk with two monitors, a wall calendar and sticky notes, warm office light. Flat mixed indoor lighting. Shot like a real phone snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin with visible pores and a couple of blemishes, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, chiselled jaw, perfect stubble.
+
+### 7. Giulia Ricci — Southern Europe Desk (Italy & Spain)
+
+**Role:** Handles Italy, Spain and Malta routes — cover letters, itineraries and the paperwork those consulates are strict about.
+
+**Posture / angle:** seated at a desk, both hands resting on an open notebook, facing the camera straight on; eye level.
+**Background:** a warm terracotta-toned office, a shelf of folders and a small framed print, blurred.
+
+**Image prompt:**
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking Italian woman in her early 30s — not a model, plain everyday Mediterranean face, clearly different from the other women. Warm olive skin with a slightly oily T-zone and a couple of small spots on the chin, a rounder soft face, dark brown almond eyes with faint dark circles, thick natural eyebrows, a normal slightly prominent nose, full lips in a small friendly closed smile. Long dark brown wavy hair, a bit frizzy, centre parting, falling past the shoulders. Plain rust-coloured knit top, small gold hoop earrings, minimal make-up. POSTURE: seated at a desk, both hands resting on an open notebook, facing the camera straight on (front-facing head and shoulders), relaxed, shot at eye level. BACKGROUND: a warm terracotta-toned office with a shelf of folders and a small framed print, softly out of focus. Warm indoor light from one side. Shot like a real phone snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin with visible pores, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, heavy make-up, same face as previous images.
+
+### 8. Henrik Larsen — Senior Compliance Reviewer
+
+**Role:** Final compliance check on EU-side files — data handling, consulate rules, and the details that get applications bounced.
+
+**Posture / angle:** standing, arms loosely folded, square to the lens, calm; eye level, slightly wider crop.
+**Background:** a plain light-wood Scandinavian office wall with a single shelf of binders, very softly blurred.
+
+**Image prompt:**
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking Danish Scandinavian man in his late 40s — not a model, plain weathered Nordic face. Fair ruddy skin, tall long face, pale blue eyes with crow's feet, sparse light eyebrows, a long straight nose, thin lips in a neutral calm line, clean-shaven with faint blond-grey stubble, short receding ash-blond hair going grey at the sides. Plain oatmeal crew-neck jumper. POSTURE: standing, arms loosely folded, square to the lens, calm steady gaze, shot at eye level with a slightly wider head-and-shoulders crop. BACKGROUND: a plain light-wood Scandinavian office wall with a single shelf of binders, very softly out of focus. Flat even cool daylight. Slightly reserved everyday expression. Shot like a real phone or mirrorless snapshot, 4:5 portrait, slightly soft focus, weathered natural skin with visible pores and fine lines, real catchlights, gentle grain, slightly off-centre. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, chiselled jaw, thick hair, glasses.
+
+### 9. Sofia Moreau — France & Benelux Appointments
+
+**Role:** Secures France, Belgium and Netherlands appointments and keeps those clients updated through submission.
+
+**Posture / angle:** seated at a laptop, one hand on the trackpad, glancing up at the camera, slight lean in; eye level, tighter crop.
+**Background:** a small bright Paris-style office corner, a window with pale light, a couple of plants, blurred.
+
+**Image prompt:**
+> Natural everyday LinkedIn-style photo of an ordinary, average-looking French woman in her late 20s — not a model, plain understated everyday face, clearly different from the other women. Fair neutral skin with a faint scattering of tiny moles and one small blemish, a slim angular face with defined cheekbones and a pointed chin, dark hazel eyes, thin arched eyebrows, a small straight nose, thin lips in a subtle closed half-smile. Short dark-brown pixie-to-bob cut, slightly tousled, one side tucked back. Plain black fine-knit top, tiny stud earrings, almost no make-up. POSTURE: seated at a laptop, one hand resting on the trackpad, glancing up at the camera with a slight lean in, shot at eye level with a tighter head-and-shoulders crop. BACKGROUND: a small bright Paris-style office corner with a window of pale light and a couple of plants, softly out of focus. Soft flat daylight. Shot like a real phone snapshot, 4:5 portrait, slightly soft focus, natural imperfect skin with visible pores, real catchlights, gentle grain, slightly off-centre. Make her slim, dark-haired and short-cropped — a different plain face and pose from anyone else. Negative: model, glamour, beauty filter, airbrushed, plastic skin, symmetrical AI face, cartoon, 3d render, cgi, studio glam lighting, heavy make-up, freckles, same face as previous images.
+
+---
+
 ## Composition summary (so no two look alike)
 
 All front-facing (square to the lens, eye level). Variety comes from seated-vs-standing, what they hold, face + background — not from turning away.

@@ -1,0 +1,7 @@
+# Karim Haddad — Refusal-Recovery Specialist
+
+**Image file:** `public/assets/img/team/karim-haddad-refusal-specialist.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Middle Eastern Levantine Arab man in his early 40s — not a model, plain approachable face. Olive skin with healthy natural texture and visible pores, slight bags under deep-set dark brown eyes, a normal oval face with a bit of a double chin, thick dark eyebrows, a normal nose, a tidy short black beard going grey in patches, short black hair thinning at the temples with a receding hairline, gentle natural asymmetry. Plain mid-grey shirt, no tie, top button open, neat. POSTURE: seated upright at his desk, facing the camera straight on (front-facing head and shoulders, square to the lens), hands loosely clasped in front, calm friendly level gaze, eye level. BACKGROUND: a wall of shelves and ring binders and archive files, a corkboard with notes, warm office interior cleanly out of focus. Soft even indoor lighting. Calm, approachable, quietly confident expression. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, chiselled jaw, cartoon, 3d render, cgi, grungy, unkempt.

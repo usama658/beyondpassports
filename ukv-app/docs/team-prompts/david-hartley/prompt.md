@@ -1,0 +1,7 @@
+# David Hartley — Senior Case Reviewer (dormant card)
+
+**Image file:** `public/assets/img/team/david-hartley-case-reviewer.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional. Currently hidden on /about — asset kept.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking white British man in his mid-50s — not a model, plain fatherly face. Slightly lined complexion with healthy natural texture, soft jowls, thinning grey hair neatly combed over a receding hairline, blue-grey eyes behind ordinary thin metal glasses with a faint reflection, clean-shaven with a bit of grey stubble, deep laugh lines, a warm friendly half-smile with normal clean teeth, gentle natural asymmetry. Plain light-blue shirt, no tie, neat. POSTURE: seated at his desk, facing the camera straight on (front-facing head and shoulders, square to the lens), forearms and clasped hands resting on the desk, calm approachable gaze, eye level. BACKGROUND: a bookshelf of folders and a couple of framed certificates on the wall, muted meeting-room feel, cleanly out of focus. Soft even indoor light. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, weathered natural skin with visible pores and fine lines, real catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, thick hair, chiselled jaw, cartoon, 3d render, cgi, grungy, unkempt.

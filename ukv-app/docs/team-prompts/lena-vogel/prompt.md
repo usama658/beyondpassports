@@ -1,0 +1,7 @@
+# Lena Vogel — Germany Office Lead (Berlin)
+
+**Image file:** `public/assets/img/team/lena-vogel-germany-lead.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional.
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking white German woman in her early 40s — not a model, plain professional everyday face. Fair slightly cool-toned skin with healthy natural texture, a few faint lines and one small mole on the cheek, light grey-blue eyes, straight thin eyebrows, a normal straight nose, thin lips in a calm friendly closed smile, gentle natural asymmetry. Straight ash-blonde hair going a little grey, chin-length bob with a side parting, a strand tucked behind one ear, tidy. Plain charcoal blazer over a simple top, tiny earrings, minimal make-up. POSTURE: seated slightly angled at a meeting table, one forearm resting on it, upper body turned a little toward the lens, calm approachable gaze, eye level. BACKGROUND: a calm Berlin office with a tall window and soft grey daylight, a wall map and a green plant, cleanly out of focus. Soft even cool daylight. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, heavy make-up, glasses, cartoon, 3d render, cgi, unkempt.
