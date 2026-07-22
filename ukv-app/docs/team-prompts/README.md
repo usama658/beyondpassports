@@ -30,3 +30,17 @@ One folder per team member, each with a `prompt.md` (realistic + professional im
 - `liam-oconnor/` — UK Client Liaison → liam-oconnor-uk-liaison.jpg · Irish M, mid 30s
 
 Overall spread: 19 members, ~10F / 9M, ages late-20s→mid-50s, no two share nationality + look. Distinct axes per person: ethnicity, age, gender, hair, glasses/none, beard/none, posture (seated/standing/leaning/angled), what they hold, background, light.
+
+## FINAL 10 (curated roster — 2 Black · 1 British · 1 Asian · 6 European · no Arab)
+1. Sarah Whitmore — Lead Visa Consultant — Black British F
+2. Aisha Bello — Senior Document Reviewer (UK) — British Nigerian F
+3. Chloe Adams — Appointments & Client Coordinator — white British F
+4. Priya Sharma — Client Support Lead (UK) — British Indian F (Asian)
+5. Lena Vogel — Germany Office Lead (Berlin) — German F
+6. Andrei Popescu — Refusal-Recovery Specialist — Romanian M
+7. Henrik Larsen — Senior Compliance Reviewer — Danish M
+8. Tomasz Nowak — VFS & Biometrics Coordinator — Polish M
+9. Giulia Ricci — Southern Europe Desk (Italy & Spain) — Italian F
+10. Dimitris Papadopoulos — Greece & Cyprus Desk — Greek M
+
+Gender ~6F/4M. Karim (Arab) + Omar retired to retired/. Lucas Mertens kept as a spare.

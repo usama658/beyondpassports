@@ -1,0 +1,7 @@
+# Andrei Popescu — Refusal-Recovery Specialist
+
+**Image file:** `public/assets/img/team/andrei-popescu-refusal-specialist.jpg` (~800×800, 4:5)
+**Generate separately.** Realistic + professional. (European replacement for the refusal-recovery role.)
+
+## Prompt
+Natural everyday LinkedIn-style photo of an ordinary, average-looking Romanian man in his mid 40s — not a model, plain everyday Eastern-European face. Fair-olive skin with healthy natural texture and a little tiredness under deep-set dark hazel eyes, a longish face with a strong nose and a bit of a double chin, thick greying dark eyebrows, a calm serious closed smile with normal teeth, short dark hair greying at the temples and receding a little, short greying stubble, gentle natural asymmetry. Plain dark-navy shirt, no tie, neat. POSTURE: seated upright at a desk, hands loosely clasped in front, square to the lens, calm level considered gaze, eye level. BACKGROUND: a wall of shelves and ring binders and archive files with a corkboard of notes, warm office, cleanly out of focus. Soft even indoor light. Slightly serious but approachable expression. Shot on a good phone or mirrorless, 4:5 portrait, natural depth of field, real skin texture and catchlights, faint grain, slightly off-centre, not over-sharpened. Negative: model, glamour, beauty filter, airbrushed, plastic skin, glowing skin, symmetrical AI face, perfect veneers, harsh studio lighting, chiselled jaw, cartoon, 3d render, cgi, unkempt.
