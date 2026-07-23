@@ -1,141 +1,189 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Refund Promise - integrated section previews</title>
+<title>Refund Promise - premium section previews</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
 .lpb{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366;--amber:#E9B872;--red:#c0492f;
-  --display:"Outfit",system-ui,sans-serif;--sh:0 18px 44px -26px rgba(20,34,46,.34);--sh2:0 30px 66px -30px rgba(20,34,46,.42);
+  --display:"Outfit",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--sh:0 18px 44px -26px rgba(20,34,46,.34);--sh2:0 34px 70px -34px rgba(20,34,46,.5);
   background:var(--paper);color:var(--ink);font:400 18px/1.62 var(--display);-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box;margin:0}
 .lpb .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.lpb .eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 12px;display:flex;align-items:center;gap:9px}
-.lpb .eyebrow::before{content:"";width:26px;height:2px;background:var(--stamp)}
-.lpb h1,.lpb h2,.lpb h3{font-weight:800;letter-spacing:-.02em;line-height:1.12}
-.lpb .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--cta);color:#fff;font-weight:700;padding:15px 24px;border-radius:12px;font-size:16px;box-shadow:var(--sh);border:0;cursor:pointer;text-decoration:none;width:100%}
+.lpb .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--cta);color:#fff;font-weight:700;padding:15px 24px;border-radius:12px;font-size:16px;box-shadow:var(--sh);border:0;text-decoration:none;width:100%;cursor:pointer}
 .lpb .btn.wa{background:var(--wa)}
 .lpb a{color:var(--cta);text-decoration:none}
-.lab{max-width:1120px;margin:34px auto 4px;padding:0 20px;font:800 12px/1.4 "Outfit",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#61707c}
-.labx{max-width:1120px;margin:0 auto 12px;padding:0 20px;font:400 13.5px/1.5 "Outfit",sans-serif;color:#8996a1}
-.stage{padding:8px 0 12px}
-.stage .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
-.shield{width:16px;height:16px;flex:none;fill:none;stroke:var(--stamp);stroke-width:2}
-.shield.d{stroke:var(--on-dark)}
+.lab{max-width:1120px;margin:40px auto 4px;padding:0 20px;font:800 12px/1.4 "Outfit",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a6874}
+.labx{max-width:1120px;margin:0 auto 14px;padding:0 20px;font:400 13.5px/1.55 "Outfit",sans-serif;color:#8996a1}
+.stage{padding:6px 0 10px}.stage .wrap{display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.card{background:#fff;border:1px solid var(--edge);border-radius:22px;padding:26px;box-shadow:var(--sh2);width:400px;max-width:100%}
+.card .fl{font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
+.card .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
+.card label{display:block;font-size:14px;font-weight:500;margin:0 0 6px}
+.card input{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:13px 14px;font:500 16px var(--display);margin-bottom:12px}
+.note{align-self:center;max-width:22ch;color:#8996a1;font-size:13px}
+.sh{fill:none;stroke:var(--stamp);stroke-width:1.8}
 
-/* mock offer card (like the hero form) */
-.formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:24px;box-shadow:var(--sh2);width:380px;max-width:100%}
-.formcard .fl{font-weight:700;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px;display:flex;align-items:center;gap:8px}
-.formcard .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
-.formcard label{display:block;font-size:14px;font-weight:500;margin:0 0 6px}
-.formcard input{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:13px 14px;font:500 16px var(--display);margin-bottom:12px}
-.note{color:#8996a1;font-size:13px;margin-top:12px}
+/* ===== P1 · Guarantee lockup header (editorial) ===== */
+.p1lock{display:flex;align-items:center;gap:13px;padding:15px 0 16px;border-bottom:1px solid var(--edge);margin:0 0 4px}
+.p1mono{width:44px;height:44px;border-radius:13px;background:linear-gradient(150deg,#eaf4f1,#d7ebe6);border:1px solid rgba(46,154,140,.3);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 1px 0 #fff}
+.p1mono svg{width:22px;height:22px}
+.p1tx .k{font:600 10.5px/1 "Outfit";letter-spacing:.22em;text-transform:uppercase;color:var(--stamp-text)}
+.p1tx .v{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-.01em;margin-top:3px;line-height:1.1}
+.p1foot{font-size:12.5px;color:var(--muted);margin-top:10px}.p1foot a{font-weight:700}
 
-/* ===== V1: offer-card footer strip (part of the card) ===== */
-.v1foot{margin:16px -24px -24px;padding:16px 24px;border-top:1px dashed var(--edge);background:#f4f9f8;border-radius:0 0 20px 20px;display:flex;gap:11px;align-items:flex-start}
-.v1foot b{color:var(--stamp-text);font-weight:800;font-size:14px;display:block}
-.v1foot span{color:var(--muted);font-size:13px;line-height:1.45}
-.v1foot a{font-weight:700;font-size:12.5px}
+/* ===== P2 · Split assurance ledger (micro-table) ===== */
+.p2{margin:18px -26px -26px;border-top:1px solid var(--edge);border-radius:0 0 22px 22px;overflow:hidden;background:#fbfdfc;display:grid;grid-template-columns:1fr 1fr}
+.p2 .cell{padding:16px 22px}
+.p2 .cell:first-child{border-right:1px solid var(--edge)}
+.p2 .k{font:700 10px/1 "Outfit";letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+.p2 .k svg{width:13px;height:13px}
+.p2 .v{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--ink);margin-top:6px;line-height:1.2}
+.p2 .s{font-size:12px;color:var(--muted);margin-top:3px}
+.p2cap{grid-column:1/-1;padding:9px 22px;background:#f1f8f6;border-top:1px solid var(--edge);font-size:12px;color:var(--stamp-text);font-weight:600;text-align:center}
 
-/* ===== V2: under-button assurance microcopy ===== */
-.v2wrap{width:380px;max-width:100%}
-.v2line{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;color:var(--stamp-text);font-weight:700;font-size:13.5px}
-.v2line .sub{color:var(--muted);font-weight:400}
+/* ===== P3 · Wax-seal header band (flush, embossed) ===== */
+.p3band{margin:-26px -26px 20px;padding:20px 26px;background:radial-gradient(120% 140% at 85% 0,#0f4a61,#12233c);border-radius:22px 22px 0 0;color:#fff;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden}
+.p3band::after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border:1px solid rgba(121,207,194,.25);border-radius:50%}
+.p3band::before{content:"";position:absolute;right:-8px;bottom:-46px;width:110px;height:110px;border:1px solid rgba(121,207,194,.18);border-radius:50%}
+.p3seal{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 42% 36%,#3fb3a3,#1f6e63);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 6px 16px -6px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.4)}
+.p3seal svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.8}
+.p3tx .k{font:700 10px/1 "Outfit";letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark)}
+.p3tx .v{font-family:var(--serif);font-weight:600;font-size:18px;margin-top:4px;letter-spacing:-.01em}
+.p3tx .s{font-size:12.5px;color:#a9c0c8;margin-top:2px}
 
-/* ===== V3: guarantee item inside the trust bar ===== */
-.tbar{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:20px 24px;box-shadow:var(--sh);width:100%}
-.tbar .row{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-.tbar .ti{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:14.5px}
-.tbar .ti b{font-weight:800}
-.tbar .ti svg{width:20px;height:20px;stroke:var(--stamp);fill:none;stroke-width:2}
-.tbar .ti.hi{background:#eaf4f1;padding:8px 14px;border-radius:999px;color:var(--stamp-text)}
+/* ===== P4 · Premium guarantee band (designed section) ===== */
+.p4{width:100%;position:relative;border-radius:20px;padding:30px 34px;overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,#12233c 0%,#0f4a61 62%,#1f6e63 100%);box-shadow:var(--sh2)}
+.p4::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 160% at 100% 0,rgba(121,207,194,.28),transparent 55%);pointer-events:none}
+.p4 .in{position:relative;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.p4 .badge{width:60px;height:60px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(121,207,194,.4);display:flex;align-items:center;justify-content:center;flex:none;backdrop-filter:blur(4px)}
+.p4 .badge svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.8}
+.p4 .tx{flex:1;min-width:260px}
+.p4 .tx .k{font:700 10.5px/1 "Outfit";letter-spacing:.22em;text-transform:uppercase;color:var(--on-dark);margin-bottom:8px}
+.p4 .tx h3{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:-.01em;line-height:1.16}
+.p4 .pills{display:flex;gap:9px;margin-top:13px;flex-wrap:wrap}
+.p4 .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600}
+.p4 .pill svg{width:14px;height:14px;fill:none;stroke:var(--on-dark);stroke-width:2}
+.p4 .go{background:#fff;color:var(--ink);border-radius:12px;padding:13px 20px;font-weight:700;font-size:15px;white-space:nowrap;text-decoration:none;flex:none}
 
-/* ===== V4: inline guarantee ribbon (slim band between content) ===== */
-.ribbon{width:100%;background:linear-gradient(180deg,#f1f8f6,#fff);border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:var(--sh)}
-.ribbon .ic{width:42px;height:42px;border-radius:12px;background:#eaf4f1;display:flex;align-items:center;justify-content:center;flex:none}
-.ribbon .ic svg{width:22px;height:22px;stroke:var(--stamp);fill:none;stroke-width:2}
-.ribbon .tx{flex:1;min-width:220px}
-.ribbon .tx b{font-size:16px;color:var(--ink);letter-spacing:-.01em}
-.ribbon .tx p{color:var(--muted);font-size:13.5px;margin:2px 0 0}
-.ribbon a{font-weight:700;font-size:14px;white-space:nowrap}
+/* ===== P5 · Hairline ledger row (quiet luxe) ===== */
+.p5{width:100%;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:22px 26px;box-shadow:var(--sh)}
+.p5 .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--edge)}
+.p5 .top .k{font:700 10.5px/1 "Outfit";letter-spacing:.2em;text-transform:uppercase;color:var(--stamp-text)}
+.p5 .top .lnk{font-size:13px;font-weight:700}
+.p5 .rows{margin-top:6px}
+.p5 .r{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px dashed var(--edge)}
+.p5 .r:last-child{border-bottom:0}
+.p5 .r .lab2{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink);flex:1}
+.p5 .r .val{font:600 13px/1 "Outfit";letter-spacing:.02em;color:var(--stamp-text);background:#eaf4f1;padding:6px 11px;border-radius:8px;white-space:nowrap}
+.p5 .r .val.mut{color:var(--muted);background:#f1f4f7}
 
-/* ===== V5: dark-card integrated tick row (for the FAQ boarding-pass) ===== */
-.bp{background:linear-gradient(160deg,#12233c,var(--ink2));color:#fff;border-radius:20px;box-shadow:var(--sh2);width:380px;max-width:100%;overflow:hidden}
-.bp .top{padding:26px 30px 20px;border-bottom:2px dashed rgba(255,255,255,.22)}
-.bp .eyebrow{color:var(--on-dark)}.bp .eyebrow::before{background:var(--on-dark)}
-.bp h3{color:#fff;font-size:22px;margin:0 0 10px}
-.bp .top p{color:#a9c0c8;font-size:14.5px;margin:0}
-.bp .bot{padding:20px 30px 26px}
-.bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:14.5px;margin:0 0 10px}
-.bp .tick .c{width:22px;height:22px;border-radius:6px;background:rgba(121,207,194,.16);color:var(--on-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
-.bp .tick.hi .c{background:var(--on-dark);color:#0f2028}
-.bp .tick.hi{color:#fff;font-weight:700}
-.bp .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font-weight:700;padding:14px 22px;border-radius:12px;text-decoration:none;font-size:16px;margin-top:6px}
-
-@media(max-width:820px){.stage .wrap{flex-direction:column}}
+/* ===== P6 · Boarding-pass stub (integrated card base) ===== */
+.p6{position:relative}
+.p6stub{margin:20px -26px -26px;padding:20px 26px;background:linear-gradient(160deg,#12233c,var(--ink2));border-radius:0 0 22px 22px;color:#fff;position:relative;overflow:hidden}
+.p6stub::before,.p6stub::after{content:"";position:absolute;top:-11px;width:22px;height:22px;border-radius:50%;background:var(--paper)}
+.p6stub::before{left:-11px}.p6stub::after{right:-11px}
+.p6perf{position:absolute;top:0;left:16px;right:16px;height:0;border-top:2px dashed rgba(121,207,194,.3)}
+.p6row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:6px}
+.p6row .l{display:flex;align-items:center;gap:12px}
+.p6ic{width:38px;height:38px;border-radius:11px;background:rgba(121,207,194,.16);display:flex;align-items:center;justify-content:center;flex:none}
+.p6ic svg{width:20px;height:20px;fill:none;stroke:var(--on-dark);stroke-width:1.9}
+.p6tx .k{font:700 9.5px/1 "Outfit";letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark)}
+.p6tx .v{font-family:var(--serif);font-weight:600;font-size:16px;margin-top:3px}
+.p6code{font:600 11px/1.4 ui-monospace,monospace;letter-spacing:.14em;color:#8fb7ad;text-align:right}
+@media(max-width:820px){.stage .wrap{flex-direction:column}.p4 .go{width:100%;text-align:center}}
 </style></head>
 <body class="lpb">
 
-<div class="lab">V1 &middot; Offer-card footer strip</div>
-<div class="labx">Refund promise built into the base of the form card, dashed divider ties it in. Reads as the card's own footer, not a badge stuck on top.</div>
+<div class="lab">P1 &middot; Guarantee lockup header</div>
+<div class="labx">Editorial header row inside the card: soft monogram tile + tiny-caps label + serif line, hairline underline. Feels designed, part of the card's masthead.</div>
 <div class="stage"><div class="wrap">
-  <div class="formcard">
+  <div class="card">
+    <div class="p1lock">
+      <span class="p1mono"><svg class="sh" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+      <div class="p1tx"><div class="k">Refund Promise</div><div class="v">Refused? Fee back, or a free next application.</div></div>
+    </div>
+    <div class="p1foot">You choose which. Government fees excluded, no guarantee of a decision. <a href="/legal#refunds">Read the terms</a>.</div>
+  </div>
+  <p class="note">Sits at the top of an offer/CTA card as its masthead.</p>
+</div></div>
+
+<div class="lab">P2 &middot; Split assurance ledger</div>
+<div class="labx">A two-cell micro-table welded to the card base. Reads like a spec panel: two clear outcomes, one caption. Precise, premium.</div>
+<div class="stage"><div class="wrap">
+  <div class="card">
     <p class="fl"><span class="dot"></span>Case check &middot; reply within 24 hours</p>
     <label>Your name</label><input placeholder="Jane Smith">
-    <label>Phone</label><input placeholder="7911 123456">
     <label>Destination</label><input placeholder="Search a Schengen country…">
     <a class="btn wa" style="margin-top:4px">Check my case</a>
-    <div class="v1foot">
-      <svg class="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>
-      <div><b>Covered by our Refund Promise</b><span>Refused? Full service-fee back, or a free next application. <a href="/legal#refunds">Terms</a>.</span></div>
+    <div class="p2">
+      <div class="cell"><div class="k"><svg class="sh" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>If refused</div><div class="v">Full fee back</div><div class="s">Service fee refunded</div></div>
+      <div class="cell"><div class="k"><svg class="sh" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg>Or instead</div><div class="v">Free next application</div><div class="s">We cover appt + insurance</div></div>
+      <div class="p2cap">Our Refund Promise &middot; you choose which</div>
     </div>
   </div>
-  <p class="note" style="align-self:center;max-width:22ch">The strip lives inside the card. Same border radius, dashed rule, tinted base.</p>
+  <p class="note">The choice becomes a designed panel, not a paragraph.</p>
 </div></div>
 
-<div class="lab">V2 &middot; Under-button assurance line</div>
-<div class="labx">One quiet line directly under the CTA. Lightest touch, drops under every WhatsApp button on the page.</div>
+<div class="lab">P3 &middot; Wax-seal header band</div>
+<div class="labx">Dark inset band across the card top with an embossed teal seal and faint ring engraving. Turns the card head into a crest. High-end, reassuring.</div>
 <div class="stage"><div class="wrap">
-  <div class="v2wrap">
-    <a class="btn wa">Check my documents →</a>
-    <div class="v2line"><svg class="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>Refund Promise <span class="sub">&middot; fee back if refused</span></div>
+  <div class="card">
+    <div class="p3band">
+      <span class="p3seal"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+      <div class="p3tx"><div class="k">Refund Promise</div><div class="v">If it's refused, you're covered.</div><div class="s">Fee back, or a free next application</div></div>
+    </div>
+    <label>Your name</label><input placeholder="Jane Smith">
+    <label>Phone</label><input placeholder="7911 123456">
+    <a class="btn wa" style="margin-top:4px">Check my documents →</a>
   </div>
-  <p class="note" style="align-self:center;max-width:24ch">Scales to any CTA. No box, no corner mark, just trust microcopy where the decision happens.</p>
+  <p class="note">Crowns any card with a crest-like guarantee header.</p>
 </div></div>
 
-<div class="lab">V3 &middot; Guarantee item in the trust bar</div>
-<div class="labx">Add the refund promise as a fourth item in the existing trust strip, one highlighted. It becomes a native row, not an overlay.</div>
+<div class="lab">P4 &middot; Premium guarantee band</div>
+<div class="labx">A full designed band (layered navy-to-teal gradient, glass badge, serif headline, outcome pills, solid CTA). Drop between sections as its own moment, not an alert strip.</div>
 <div class="stage"><div class="wrap">
-  <div class="tbar"><div class="row">
-    <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span><b>Schengen visa</b> experts</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/></svg><span><b>No hidden</b> fees</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>7-day</b> support</span></span>
-    <span class="ti hi"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span><b>Refund Promise</b> &middot; fee back if refused</span></span>
+  <div class="p4"><div class="in">
+    <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+    <div class="tx">
+      <div class="k">Our Refund Promise</div>
+      <h3>If we take your case and it's refused, you're covered.</h3>
+      <div class="pills"><span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</span><span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</span><span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose</span></div>
+    </div>
+    <a class="go" href="/legal#refunds">How it works →</a>
   </div></div>
 </div></div>
 
-<div class="lab">V4 &middot; Inline guarantee ribbon</div>
-<div class="labx">Slim band that sits between section content (e.g. under the risk meter, above the CTA). Teal left-rule + soft gradient make it feel woven in.</div>
+<div class="lab">P5 &middot; Hairline ledger row</div>
+<div class="labx">Ultra-minimal, quiet-luxury. Tiny-caps title, dashed rows, serif labels, chip values. Looks like a considered spec sheet the brand would actually print.</div>
 <div class="stage"><div class="wrap">
-  <div class="ribbon">
-    <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
-    <div class="tx"><b>If we take your case and it's refused, you're covered.</b><p>Choose a full service-fee refund, or a free next application. We can't guarantee a government decision, we guarantee how we stand behind the work.</p></div>
-    <a href="/legal#refunds">How it works →</a>
+  <div class="p5">
+    <div class="top"><span class="k">Our Refund Promise</span><a class="lnk" href="/legal#refunds">Full terms →</a></div>
+    <div class="rows">
+      <div class="r"><span class="lab2">If your application is refused</span><span class="val">Fee back or free next</span></div>
+      <div class="r"><span class="lab2">Before your appointment is booked</span><span class="val">Fully refundable</span></div>
+      <div class="r"><span class="lab2">Government fees &amp; insurance once paid</span><span class="val mut">Non-refundable</span></div>
+    </div>
   </div>
 </div></div>
 
-<div class="lab">V5 &middot; Dark-card integrated tick (FAQ "Ask us anything")</div>
-<div class="labx">The refund promise joins the card's own tick list as a highlighted line. Same rhythm as the other ticks, so it belongs.</div>
+<div class="lab">P6 &middot; Boarding-pass stub</div>
+<div class="labx">The card base becomes a perforated ticket stub (matches the FAQ boarding-pass motif already on the page). Mono code detail sells the "guaranteed" feel.</div>
 <div class="stage"><div class="wrap">
-  <aside class="bp">
-    <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>Send a photo of your letter and get a straight answer the same day.</p></div>
-    <div class="bot">
-      <div class="tick"><span class="c">✓</span>Ask anything, no commitment</div>
-      <div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div>
-      <div class="tick hi"><span class="c">✓</span>Covered by our Refund Promise &middot; fee back if refused</div>
-      <a class="wabtn">Ask on WhatsApp</a>
+  <div class="card p6">
+    <p class="fl"><span class="dot"></span>Case check &middot; reply within 24 hours</p>
+    <label>Your name</label><input placeholder="Jane Smith">
+    <label>Destination</label><input placeholder="Search a Schengen country…">
+    <a class="btn wa" style="margin-top:4px">Check my case</a>
+    <div class="p6stub"><span class="p6perf"></span>
+      <div class="p6row">
+        <div class="l"><span class="p6ic"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+          <div class="p6tx"><div class="k">Refund Promise</div><div class="v">Fee back if refused</div></div></div>
+        <div class="p6code">BP&middot;COVERED<br>FEE-BACK / FREE-NEXT</div>
+      </div>
     </div>
-  </aside>
-  <p class="note" style="align-self:center;max-width:24ch">On dark cards the promise reuses the on-dark teal and the existing tick style.</p>
+  </div>
+  <p class="note">Ties into the boarding-pass motif already on the page.</p>
 </div></div>
 
-<div style="height:50px"></div>
+<div style="height:56px"></div>
 </body></html>
