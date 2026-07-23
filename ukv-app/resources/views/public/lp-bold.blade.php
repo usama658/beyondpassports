@@ -51,6 +51,22 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .form .cons{display:flex;gap:8px;align-items:flex-start;margin:13px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
 .lpb .form .cons input{width:16px;height:16px;flex:none;margin-top:2px}
 .lpb .halt{color:var(--muted);font-size:14.5px;margin:16px 0 0}.lpb .halt b{color:var(--ink)}
+/* Refund Promise passport-stamp — over-prints the offer-card top-right corner */
+.lpb .rstamp{--sz:120px;width:var(--sz);height:var(--sz);position:absolute;top:-24px;right:-16px;z-index:4;color:var(--stamp);transform:rotate(-9deg);pointer-events:none;filter:contrast(1.05)}
+.lpb .rstamp .rdisc{position:absolute;inset:6px;border-radius:50%;background:rgba(255,255,255,.82)}
+.lpb .rstamp .ring{position:absolute;inset:0;border:2.5px solid currentColor;border-radius:50%;opacity:.92}
+.lpb .rstamp .ring2{position:absolute;inset:9px;border:1px solid currentColor;border-radius:50%;opacity:.55}
+.lpb .rstamp .core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1}
+.lpb .rstamp .core .b1{font-weight:800;font-size:10px;letter-spacing:.12em}
+.lpb .rstamp .core .big{font-weight:800;font-size:20px;letter-spacing:.02em;margin:2px 0}
+.lpb .rstamp .core .b2{font-weight:700;font-size:7.5px;letter-spacing:.13em;opacity:.85}
+.lpb .rstamp .curve{position:absolute;inset:0;width:100%;height:100%}
+.lpb .rstamp .curve text{fill:currentColor;font-weight:800;font-size:8px;letter-spacing:.2em}
+/* inside a clipped/dark card: sit within the top-right corner instead of bleeding out */
+.lpb .rstamp.inside{--sz:104px;top:16px;right:18px}
+.lpb .rstamp.ondark{color:var(--on-dark)}
+.lpb .rstamp.ondark .rdisc{display:none}
+@media(max-width:560px){.lpb .rstamp{--sz:94px;top:-16px;right:-4px}.lpb .rstamp .core .big{font-size:16px}.lpb .rstamp.inside{--sz:82px;top:12px;right:12px}}
 .lpb .tp{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:0 0 20px}
 .lpb .tp-logo{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15.5px;color:var(--ink)}
 .lpb .tp-logo .s{width:19px;height:19px;fill:#00B67A}
@@ -412,7 +428,8 @@ html,body{overflow-x:clip;max-width:100%}
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
   </div>
-  <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
+  <div class="hform-col" style="display:flex;flex-direction:column;gap:14px;position:relative">
+  @include('partials.refund-stamp', ['sid' => 'hero'])
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
     <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
@@ -522,7 +539,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
-  <div class="callout"><p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
+  <div class="callout" style="position:relative">@include('partials.refund-stamp', ['sid' => 'fear'])<p><b>We reviewed 600+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
   <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['variant' => 'dark'])
@@ -618,7 +635,8 @@ html,body{overflow-x:clip;max-width:100%}
       @endforeach
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
-    <aside class="bp" id="ask">
+    <aside class="bp" id="ask" style="position:relative">
+      @include('partials.refund-stamp', ['sid' => 'faq', 'stampClass' => 'inside ondark'])
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
       <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
