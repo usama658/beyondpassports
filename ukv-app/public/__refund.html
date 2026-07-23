@@ -1,123 +1,141 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Refund Stamp - lp-bold native previews</title>
+<title>Refund Promise - integrated section previews</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-.lpb{--ink:#16222E;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--muted:#5d6b76;--edge:#dde3ec;--amber:#E9B872;--red:#c0492f;
+.lpb{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366;--amber:#E9B872;--red:#c0492f;
   --display:"Outfit",system-ui,sans-serif;--sh:0 18px 44px -26px rgba(20,34,46,.34);--sh2:0 30px 66px -30px rgba(20,34,46,.42);
   background:var(--paper);color:var(--ink);font:400 18px/1.62 var(--display);-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box;margin:0}
 .lpb .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.lpb .sec{padding:60px 0}
-.lpb .sec.alt{background:#fff;border-block:1px solid var(--edge)}
 .lpb .eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 12px;display:flex;align-items:center;gap:9px}
 .lpb .eyebrow::before{content:"";width:26px;height:2px;background:var(--stamp)}
-.lpb .h2{font-weight:800;font-size:1.7rem;line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
-.lpb .lead{color:var(--muted);font-size:16px;max-width:52ch;margin-top:8px}
-.lpb .btn{display:inline-flex;align-items:center;gap:9px;background:var(--cta);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;font-size:15px;box-shadow:var(--sh);text-decoration:none}
-.lab{max-width:1120px;margin:30px auto 4px;padding:0 20px;font:700 12px/1.4 "Outfit",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a96a0}
-.labx{max-width:1120px;margin:0 auto 8px;padding:0 20px;font:400 13px/1.4 "Outfit",sans-serif;color:#9aa6af}
+.lpb h1,.lpb h2,.lpb h3{font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.lpb .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--cta);color:#fff;font-weight:700;padding:15px 24px;border-radius:12px;font-size:16px;box-shadow:var(--sh);border:0;cursor:pointer;text-decoration:none;width:100%}
+.lpb .btn.wa{background:var(--wa)}
+.lpb a{color:var(--cta);text-decoration:none}
+.lab{max-width:1120px;margin:34px auto 4px;padding:0 20px;font:800 12px/1.4 "Outfit",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#61707c}
+.labx{max-width:1120px;margin:0 auto 12px;padding:0 20px;font:400 13.5px/1.5 "Outfit",sans-serif;color:#8996a1}
+.stage{padding:8px 0 12px}
+.stage .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.shield{width:16px;height:16px;flex:none;fill:none;stroke:var(--stamp);stroke-width:2}
+.shield.d{stroke:var(--on-dark)}
 
-/* ===== THE STAMP ===== round passport ink-stamp, teal, rotated ===== */
-.rstamp{--sz:132px;width:var(--sz);height:var(--sz);flex:0 0 var(--sz);position:relative;color:var(--stamp);transform:rotate(-9deg);font-family:"Outfit",sans-serif}
-.rstamp.ink{filter:contrast(1.05)}
-.rstamp .ring{position:absolute;inset:0;border:2.5px solid currentColor;border-radius:50%;opacity:.9}
-.rstamp .ring2{position:absolute;inset:9px;border:1px solid currentColor;border-radius:50%;opacity:.55}
-.rstamp .core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1}
-.rstamp .core .b1{font-weight:800;font-size:11px;letter-spacing:.12em}
-.rstamp .core .big{font-weight:800;font-size:23px;letter-spacing:.02em;margin:3px 0}
-.rstamp .core .b2{font-weight:700;font-size:8.5px;letter-spacing:.16em;opacity:.85}
-.rstamp .curve{position:absolute;inset:0;width:100%;height:100%}
-.rstamp .curve text{fill:currentColor;font-weight:800;font-size:8.5px;letter-spacing:.22em}
-.rstamp.sm{--sz:96px}.rstamp.sm .core .big{font-size:17px}.rstamp.sm .core .b1{font-size:9px}
-.rstamp.red{color:var(--red)}
-.rstamp.faded{opacity:.5}
+/* mock offer card (like the hero form) */
+.formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:24px;box-shadow:var(--sh2);width:380px;max-width:100%}
+.formcard .fl{font-weight:700;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.formcard .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
+.formcard label{display:block;font-size:14px;font-weight:500;margin:0 0 6px}
+.formcard input{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:10px;padding:13px 14px;font:500 16px var(--display);margin-bottom:12px}
+.note{color:#8996a1;font-size:13px;margin-top:12px}
 
-/* Demo A: stamp overprinted top-right of a hero-ish card */
-.heroish{background:#fff;border:1px solid var(--edge);border-radius:22px;padding:34px;box-shadow:var(--sh);position:relative;overflow:hidden}
-.heroish .rstamp{position:absolute;top:18px;right:22px;opacity:.92}
-.heroish .h2{max-width:20ch}
+/* ===== V1: offer-card footer strip (part of the card) ===== */
+.v1foot{margin:16px -24px -24px;padding:16px 24px;border-top:1px dashed var(--edge);background:#f4f9f8;border-radius:0 0 20px 20px;display:flex;gap:11px;align-items:flex-start}
+.v1foot b{color:var(--stamp-text);font-weight:800;font-size:14px;display:block}
+.v1foot span{color:var(--muted);font-size:13px;line-height:1.45}
+.v1foot a{font-weight:700;font-size:12.5px}
 
-/* Demo B: inline stamp + copy row (drop into appointments/trust) */
-.inrow{display:flex;gap:26px;align-items:center;background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px 30px;box-shadow:var(--sh)}
-.inrow .txt{flex:1}
+/* ===== V2: under-button assurance microcopy ===== */
+.v2wrap{width:380px;max-width:100%}
+.v2line{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;color:var(--stamp-text);font-weight:700;font-size:13.5px}
+.v2line .sub{color:var(--muted);font-weight:400}
 
-/* Demo C: stamp as a chip beside the eyebrow/CTA */
-.chiprow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.stampchip{display:inline-flex;align-items:center;gap:11px;background:#eaf4f1;border:1px dashed var(--stamp);border-radius:999px;padding:8px 16px 8px 10px}
-.stampchip .mini{width:34px;height:34px;border-radius:50%;border:2px solid var(--stamp);color:var(--stamp);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10px;transform:rotate(-8deg);letter-spacing:.02em;text-align:center;line-height:.9}
-.stampchip b{color:var(--stamp-text);font-size:14px;font-weight:800;letter-spacing:.02em}
+/* ===== V3: guarantee item inside the trust bar ===== */
+.tbar{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:20px 24px;box-shadow:var(--sh);width:100%}
+.tbar .row{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.tbar .ti{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:14.5px}
+.tbar .ti b{font-weight:800}
+.tbar .ti svg{width:20px;height:20px;stroke:var(--stamp);fill:none;stroke-width:2}
+.tbar .ti.hi{background:#eaf4f1;padding:8px 14px;border-radius:999px;color:var(--stamp-text)}
 
-/* Demo D: corner ribbon-stamp on a price/plan card */
-.plan{position:relative;background:#fff;border:1.5px solid var(--edge);border-radius:20px;padding:28px;box-shadow:var(--sh);max-width:360px}
-.plan .rstamp{position:absolute;top:-14px;right:-10px}
-.plan h3{font-size:1.3rem;color:var(--ink)}
-.plan .price{font-weight:800;font-size:2rem;color:var(--ink);margin:6px 0}
-.plan ul{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:8px;color:#25323c;font-size:14.5px}
-.plan li::before{content:"\2713";color:var(--stamp);font-weight:800;margin-right:8px}
+/* ===== V4: inline guarantee ribbon (slim band between content) ===== */
+.ribbon{width:100%;background:linear-gradient(180deg,#f1f8f6,#fff);border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:var(--sh)}
+.ribbon .ic{width:42px;height:42px;border-radius:12px;background:#eaf4f1;display:flex;align-items:center;justify-content:center;flex:none}
+.ribbon .ic svg{width:22px;height:22px;stroke:var(--stamp);fill:none;stroke-width:2}
+.ribbon .tx{flex:1;min-width:220px}
+.ribbon .tx b{font-size:16px;color:var(--ink);letter-spacing:-.01em}
+.ribbon .tx p{color:var(--muted);font-size:13.5px;margin:2px 0 0}
+.ribbon a{font-weight:700;font-size:14px;white-space:nowrap}
 
-.micro{color:var(--muted);font-size:13.5px;margin-top:14px;max-width:60ch}
-.micro a{color:var(--cta);text-decoration:none;font-weight:700}
-@media(max-width:760px){.inrow{flex-direction:column;text-align:center}}
+/* ===== V5: dark-card integrated tick row (for the FAQ boarding-pass) ===== */
+.bp{background:linear-gradient(160deg,#12233c,var(--ink2));color:#fff;border-radius:20px;box-shadow:var(--sh2);width:380px;max-width:100%;overflow:hidden}
+.bp .top{padding:26px 30px 20px;border-bottom:2px dashed rgba(255,255,255,.22)}
+.bp .eyebrow{color:var(--on-dark)}.bp .eyebrow::before{background:var(--on-dark)}
+.bp h3{color:#fff;font-size:22px;margin:0 0 10px}
+.bp .top p{color:#a9c0c8;font-size:14.5px;margin:0}
+.bp .bot{padding:20px 30px 26px}
+.bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:14.5px;margin:0 0 10px}
+.bp .tick .c{width:22px;height:22px;border-radius:6px;background:rgba(121,207,194,.16);color:var(--on-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
+.bp .tick.hi .c{background:var(--on-dark);color:#0f2028}
+.bp .tick.hi{color:#fff;font-weight:700}
+.bp .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font-weight:700;padding:14px 22px;border-radius:12px;text-decoration:none;font-size:16px;margin-top:6px}
+
+@media(max-width:820px){.stage .wrap{flex-direction:column}}
 </style></head>
 <body class="lpb">
 
-<p class="lab">Stamp A &middot; over-print top-right of hero / offer card</p>
-<p class="labx">Passport ink-stamp sits over an existing card. Drop onto the hero or the appointments block.</p>
-<section class="sec"><div class="wrap">
-  <div class="heroish">
-    <div class="rstamp ink">
-      <span class="ring"></span><span class="ring2"></span>
-      <svg class="curve" viewBox="0 0 132 132"><defs><path id="tA" d="M66,66 m-50,0 a50,50 0 1,1 100,0"/></defs><text><textPath href="#tA" startOffset="12%">BEYOND PASSPORTS &middot; COVERED &middot;</textPath></text></svg>
-      <span class="core"><span class="b1">REFUND</span><span class="big">PROMISE</span><span class="b2">100% FEE BACK</span></span>
-    </div>
-    <p class="eyebrow">Book your Schengen appointment</p>
-    <h2 class="h2">Nearest available slot, prepared and checked before you go.</h2>
-    <p class="lead">Every order carries our Refund Promise. If we take your case and it's refused, you choose a full service-fee refund or a free next application.</p>
-    <p class="micro">Government fees and high-risk cases excluded. <a href="/legal#refunds">See terms</a>.</p>
-  </div>
-</div></section>
-
-<p class="lab">Stamp B &middot; inline stamp + copy (drop into trust / appointments row)</p>
-<p class="labx">Stamp anchors a one-line reassurance strip inside an existing section.</p>
-<section class="sec alt"><div class="wrap">
-  <div class="inrow">
-    <div class="rstamp">
-      <span class="ring"></span><span class="ring2"></span>
-      <svg class="curve" viewBox="0 0 132 132"><text><textPath href="#tA" startOffset="12%">REFUSED? YOU'RE COVERED &middot;</textPath></text></svg>
-      <span class="core"><span class="b1">REFUND</span><span class="big">PROMISE</span><span class="b2">FEE BACK OR FREE</span></span>
-    </div>
-    <div class="txt">
-      <p class="eyebrow">Buy with confidence</p>
-      <h2 class="h2">If it's refused, get your service fee back, or a free next application.</h2>
-      <p class="micro">You choose. Balance back within 14 days, or we cover your next appointment and insurance. <a href="/legal#refunds">How it works</a>.</p>
+<div class="lab">V1 &middot; Offer-card footer strip</div>
+<div class="labx">Refund promise built into the base of the form card, dashed divider ties it in. Reads as the card's own footer, not a badge stuck on top.</div>
+<div class="stage"><div class="wrap">
+  <div class="formcard">
+    <p class="fl"><span class="dot"></span>Case check &middot; reply within 24 hours</p>
+    <label>Your name</label><input placeholder="Jane Smith">
+    <label>Phone</label><input placeholder="7911 123456">
+    <label>Destination</label><input placeholder="Search a Schengen country…">
+    <a class="btn wa" style="margin-top:4px">Check my case</a>
+    <div class="v1foot">
+      <svg class="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>
+      <div><b>Covered by our Refund Promise</b><span>Refused? Full service-fee back, or a free next application. <a href="/legal#refunds">Terms</a>.</span></div>
     </div>
   </div>
-</div></section>
+  <p class="note" style="align-self:center;max-width:22ch">The strip lives inside the card. Same border radius, dashed rule, tinted base.</p>
+</div></div>
 
-<p class="lab">Stamp C &middot; compact chip (sits beside a heading or CTA)</p>
-<p class="labx">Smallest footprint. A trust chip you can place under any hero CTA or section title.</p>
-<section class="sec"><div class="wrap">
-  <div class="chiprow">
-    <h2 class="h2" style="margin:0">Ready to start your application?</h2>
-    <a class="btn" href="/apply">Check eligibility</a>
-    <span class="stampchip"><span class="mini">REFUND<br>PROMISE</span><b>100% fee back if refused</b></span>
+<div class="lab">V2 &middot; Under-button assurance line</div>
+<div class="labx">One quiet line directly under the CTA. Lightest touch, drops under every WhatsApp button on the page.</div>
+<div class="stage"><div class="wrap">
+  <div class="v2wrap">
+    <a class="btn wa">Check my documents →</a>
+    <div class="v2line"><svg class="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>Refund Promise <span class="sub">&middot; fee back if refused</span></div>
   </div>
-</div></section>
+  <p class="note" style="align-self:center;max-width:24ch">Scales to any CTA. No box, no corner mark, just trust microcopy where the decision happens.</p>
+</div></div>
 
-<p class="lab">Stamp D &middot; corner mark on a plan / price card</p>
-<p class="labx">Stamp peels off the corner of a pricing or plan card to flag it's covered.</p>
-<section class="sec alt"><div class="wrap">
-  <div class="plan">
-    <div class="rstamp sm">
-      <span class="ring"></span><span class="ring2"></span>
-      <span class="core"><span class="b1">REFUND</span><span class="big">PROMISE</span></span>
+<div class="lab">V3 &middot; Guarantee item in the trust bar</div>
+<div class="labx">Add the refund promise as a fourth item in the existing trust strip, one highlighted. It becomes a native row, not an overlay.</div>
+<div class="stage"><div class="wrap">
+  <div class="tbar"><div class="row">
+    <span class="ti"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span><b>Schengen visa</b> experts</span></span>
+    <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/></svg><span><b>No hidden</b> fees</span></span>
+    <span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>7-day</b> support</span></span>
+    <span class="ti hi"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg><span><b>Refund Promise</b> &middot; fee back if refused</span></span>
+  </div></div>
+</div></div>
+
+<div class="lab">V4 &middot; Inline guarantee ribbon</div>
+<div class="labx">Slim band that sits between section content (e.g. under the risk meter, above the CTA). Teal left-rule + soft gradient make it feel woven in.</div>
+<div class="stage"><div class="wrap">
+  <div class="ribbon">
+    <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+    <div class="tx"><b>If we take your case and it's refused, you're covered.</b><p>Choose a full service-fee refund, or a free next application. We can't guarantee a government decision, we guarantee how we stand behind the work.</p></div>
+    <a href="/legal#refunds">How it works →</a>
+  </div>
+</div></div>
+
+<div class="lab">V5 &middot; Dark-card integrated tick (FAQ "Ask us anything")</div>
+<div class="labx">The refund promise joins the card's own tick list as a highlighted line. Same rhythm as the other ticks, so it belongs.</div>
+<div class="stage"><div class="wrap">
+  <aside class="bp">
+    <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>Send a photo of your letter and get a straight answer the same day.</p></div>
+    <div class="bot">
+      <div class="tick"><span class="c">✓</span>Ask anything, no commitment</div>
+      <div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div>
+      <div class="tick hi"><span class="c">✓</span>Covered by our Refund Promise &middot; fee back if refused</div>
+      <a class="wabtn">Ask on WhatsApp</a>
     </div>
-    <h3>Popular</h3>
-    <p class="price">Fixed fee</p>
-    <ul><li>Full document prep and checks</li><li>Nearest appointment booked</li><li>Covered by our Refund Promise</li></ul>
-    <p class="micro"><a href="/legal#refunds">What's covered</a></p>
-  </div>
-</div></section>
+  </aside>
+  <p class="note" style="align-self:center;max-width:24ch">On dark cards the promise reuses the on-dark teal and the existing tick style.</p>
+</div></div>
 
+<div style="height:50px"></div>
 </body></html>
