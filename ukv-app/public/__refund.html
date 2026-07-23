@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refund Promise - previews</title>
+<style>
+:root{--stamp:#5C9A7B;--stamp-d:#4a7e64;--navy:#1f2b3a;--ink:#2b333a;--paper:#faf7f2;--edge:#e7e0d6;--cta:#e8734a}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Outfit',system-ui,Segoe UI,Arial,sans-serif;color:var(--ink);background:#eef1f0;padding:34px 16px;line-height:1.5}
+.lab{max-width:1080px;margin:0 auto 10px;font:700 12px/1.2 sans-serif;letter-spacing:.12em;color:#7a8790;text-transform:uppercase}
+.frame{max-width:1080px;margin:0 auto 40px;background:#fff;border:1px solid var(--edge);border-radius:16px;overflow:hidden;box-shadow:0 20px 50px -34px rgba(30,40,60,.4)}
+.eyebrow{font:800 12px/1 sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp)}
+.fine{font-size:12.5px;color:#6c7680}
+.fine a,.lnk{color:var(--stamp-d);font-weight:700;text-decoration:none}
+.btn{display:inline-block;background:var(--stamp);color:#fff;font-weight:700;padding:12px 22px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:#fff;color:var(--navy);border:1.5px solid var(--edge)}
+
+/* A: promise band */
+.a{background:linear-gradient(180deg,#f3f8f5,#fff);padding:40px}
+.a h2{color:var(--navy);font-size:27px;max-width:22ch;margin:8px 0 22px}
+.a .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.a .card{background:#fff;border:1px solid var(--edge);border-radius:12px;padding:18px}
+.a .num{width:34px;height:34px;border-radius:9px;background:#eaf3ee;color:var(--stamp-d);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px}
+.a .card b{color:var(--navy);display:block;margin-bottom:3px}
+.a .card span{font-size:13.5px;color:#5b656d}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+
+/* B: two cards */
+.b{padding:40px}
+.b h2{color:var(--navy);font-size:25px;text-align:center;margin:6px auto 24px;max-width:24ch}
+.b .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.b .opt{border:1.5px solid var(--edge);border-radius:14px;padding:24px;background:#fff}
+.b .opt.hl{border-color:var(--stamp);box-shadow:0 0 0 3px #eaf3ee}
+.b .tag{font:800 11px/1 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-d)}
+.b .opt h3{color:var(--navy);font-size:20px;margin:8px 0 8px}
+.b .opt p{font-size:14px;color:#5b656d}
+.b .mid{text-align:center;font-weight:800;color:#9aa4ac;margin:0 0 0}
+
+/* C: seal + bullets */
+.c{padding:40px;display:grid;grid-template-columns:210px 1fr;gap:34px;align-items:center}
+.seal{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#f0f7f3,#dcebe3);border:2px solid var(--stamp);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto}
+.seal b{color:var(--stamp-d);font-size:15px;line-height:1.1;letter-spacing:.04em}
+.seal small{color:#6c7680;font-size:11px;margin-top:4px}
+.c h2{color:var(--navy);font-size:24px;margin:0 0 14px}
+.c ul{list-style:none;padding:0;display:grid;gap:10px}
+.c li{display:flex;gap:10px;font-size:14.5px;color:#3a444c}
+.c li .tick{color:var(--stamp);font-weight:800}
+@media(max-width:760px){.a .grid,.b .cols{grid-template-columns:1fr}.c{grid-template-columns:1fr;text-align:center}.c ul{text-align:left}}
+</style></head><body>
+
+<div class="lab">Variant A - Promise band (compact, mid-page strip)</div>
+<div class="frame"><div class="a">
+  <span class="eyebrow">Our Refund Promise</span>
+  <h2>If we take your case and it's refused, you're covered.</h2>
+  <div class="grid">
+    <div class="card"><div class="num">1</div><b>100% service fee back</b><span>Our fee returned in full. Appointment and insurance already paid are deducted.</span></div>
+    <div class="card"><div class="num">2</div><b>Or a free next application</b><span>We handle your next one free and cover the appointment and insurance ourselves.</span></div>
+    <div class="card"><div class="num">3</div><b>You choose which</b><span>Refund or free re-application. Whichever suits you.</span></div>
+  </div>
+  <div class="row">
+    <a class="btn" href="/legal#refunds">See the full Refund Promise</a>
+    <span class="fine">Government fees and cases we flagged as high-risk are excluded. <a href="/legal#refunds">Terms</a>. We can't guarantee any government decision.</span>
+  </div>
+</div></div>
+
+<div class="lab">Variant B - Two-card choice</div>
+<div class="frame"><div class="b">
+  <span class="eyebrow" style="display:block;text-align:center">Our Refund Promise</span>
+  <h2>Refused? The choice is yours.</h2>
+  <div class="cols">
+    <div class="opt"><span class="tag">Option 1</span><h3>Get a refund</h3><p>We return 100% of our service fee. Amounts already spent on your appointment and insurance are deducted, and the balance is back with you within 14 days.</p></div>
+    <div class="opt hl"><span class="tag">Option 2</span><h3>Free next application</h3><p>We prepare your next application to a chosen destination completely free, and cover the appointment and insurance costs ourselves.</p></div>
+  </div>
+  <p class="mid" style="margin-top:16px"><a class="lnk" href="/legal#refunds">Read the Refund Promise and what's excluded</a></p>
+</div></div>
+
+<div class="lab">Variant C - Seal + bullets (trust-led)</div>
+<div class="frame"><div class="c">
+  <div class="seal"><b>REFUND<br>PROMISE</b><small>Beyond Passports</small></div>
+  <div>
+    <span class="eyebrow">Buy with confidence</span>
+    <h2>Your service fee is 100% refundable before we submit.</h2>
+    <ul>
+      <li><span class="tick">&#10003;</span> Full service-fee refund, or a free application next time. You choose.</li>
+      <li><span class="tick">&#10003;</span> Before your appointment is booked, that charge is refundable too.</li>
+      <li><span class="tick">&#10003;</span> Government fees and insurance are non-refundable once paid on your behalf.</li>
+      <li><span class="tick">&#10003;</span> Honest first: if we flag a real risk of refusal up front, that case is excluded.</li>
+    </ul>
+    <p style="margin-top:14px"><a class="btn" href="/legal#refunds">See how it works</a></p>
+  </div>
+</div></div>
+
+</body></html>
