@@ -129,6 +129,7 @@
         <ul aria-labelledby="switch-lab">
           <li><a href="#privacy">Privacy</a></li>
           <li><a href="#terms">Terms</a></li>
+          <li><a href="#refunds">Refunds</a></li>
           <li><a href="#complaints">Complaints</a></li>
           <li><a href="#disclaimer">Disclaimer</a></li>
         </ul>
@@ -180,9 +181,9 @@
           <h3 id="cookies">Cookies</h3>
           <p>We use a small number of <strong>essential cookies</strong> to run this site (for example to keep your session secure). These do not need consent. With your permission we also load <strong>non-essential third-party cookies</strong> for:</p>
           <ul class="plain">
-            <li><strong>Reviews</strong> — Trustpilot, to show genuine customer reviews.</li>
-            <li><strong>Analytics</strong> — Google Analytics 4 and Microsoft Clarity, to understand how the site is used (Clarity may record anonymised sessions with text and inputs masked).</li>
-            <li><strong>Marketing</strong> — Meta (Facebook) Pixel, to measure advertising.</li>
+            <li><strong>Reviews:</strong> Trustpilot, to show genuine customer reviews.</li>
+            <li><strong>Analytics:</strong> Google Analytics 4 and Microsoft Clarity, to understand how the site is used (Clarity may record anonymised sessions with text and inputs masked).</li>
+            <li><strong>Marketing:</strong> Meta (Facebook) Pixel, to measure advertising.</li>
           </ul>
           <p>We ask before loading any of these: when you first visit, you can <strong>Accept all</strong> or <strong>Reject non-essential</strong>, and we remember your choice. If you reject, none of these cookies or scripts are set. You can change your mind by clearing this site's cookies in your browser, which brings the banner back.</p>
 
@@ -228,6 +229,54 @@
 
           <h3>Governing law</h3>
           <p>These terms, and any dispute arising from them or from our service, are governed by the <strong>laws of England and Wales</strong>, and are subject to the <strong>exclusive jurisdiction of the courts of England and Wales</strong>. If you live elsewhere in the UK, you may instead bring proceedings in your local courts as permitted by law.</p>
+
+          <a class="back-top" href="#top">↑ Back to top</a>
+        </article>
+
+        {{-- REFUNDS --}}
+        <article class="legal-sec" id="refunds" aria-labelledby="refunds-h">
+          <p class="updated">Last updated: 2026-07-23</p>
+          <h2 id="refunds-h">Refund Policy</h2>
+          <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+
+          <p>This policy explains what is and isn't refundable, and the two ways we make things right. It sits alongside your statutory cancellation rights, which are set out under <a href="#terms">Terms of Service</a> and are not reduced by anything here.</p>
+
+          <h3>What your payment covers</h3>
+          <p>Your order can include two things:</p>
+          <ul class="plain">
+            <li><strong>Our service fee.</strong> Our work: preparing and checking your application, matching you to the right consulate, and supporting you through to a decision.</li>
+            <li><strong>Third-party costs we pay on your behalf.</strong> The appointment booking fee, travel insurance, and any government or visa fees.</li>
+          </ul>
+
+          <h3>Our service fee: 100% refundable</h3>
+          <p>You can claim a <strong>full refund of our service fee</strong> at any time <strong>before your application is submitted</strong>, subject to the terms below and to your statutory rights.</p>
+
+          <h3>Third-party costs: non-refundable once incurred</h3>
+          <p>Government and visa fees, <strong>travel insurance</strong>, and a <strong>confirmed appointment booking</strong> are paid to third parties on your behalf and cannot be recovered by us, so they are deducted from any refund. <strong>Before an appointment is confirmed, that charge is still refundable.</strong></p>
+
+          <h3>If your application is refused, or you cancel a refundable order, you choose one of two:</h3>
+          <ul class="plain">
+            <li><strong>Option 1: Refund.</strong> We refund <strong>100% of our service fee</strong>. Any appointment-booking fee and insurance already paid are <strong>deducted</strong> (they have been spent on your behalf). The remaining balance is returned to your original payment method within <strong>14 days</strong>.</li>
+            <li><strong>Option 2: Free next application.</strong> Instead of a refund, we handle your <strong>next application to a selected destination completely free</strong>, and <strong>we cover the appointment-booking and insurance costs ourselves</strong>. One free re-application per order. The eligible destinations are confirmed with you at the time of the claim.</li>
+          </ul>
+          <p>The choice is yours.</p>
+
+          <h3>When this does not apply</h3>
+          <p>Our refund and free-re-application offer covers our service. It does <strong>not</strong> apply where:</p>
+          <ul class="plain">
+            <li>We assessed your case and <strong>told you in advance</strong> that your application carried a <strong>significant risk of refusal (around 50% or higher)</strong>, and you chose to proceed. Where that advice is on record (in your meeting notes or chat), a later refusal is not covered.</li>
+            <li>The refusal follows from <strong>inaccurate or incomplete information</strong> you provided, or from documents you were asked for but did not supply.</li>
+            <li>The refusal or loss involves <strong>fraud or falsified documents</strong>.</li>
+          </ul>
+
+          <h3>Important: no guarantee of approval</h3>
+          <p>All decisions are made solely by the relevant government or official authority. This policy is a <strong>goodwill commitment about our own service</strong>. It is not a guarantee that any application will be approved. See <a href="#terms">Terms of Service</a>.</p>
+
+          <h3>Your statutory rights</h3>
+          <p>This offer is <strong>in addition to</strong> your rights under the <strong>Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013</strong>, including your <strong>14-day right to cancel</strong>, and other UK consumer law. Nothing in this policy reduces those rights.</p>
+
+          <h3>How to claim</h3>
+          <p>Email <a href="mailto:refunds@beyondpassports.co.uk">refunds@beyondpassports.co.uk</a> with your order reference, and tell us whether you would prefer a refund or a free next application. Any deductions are summarised at checkout and in your confirmation email.</p>
 
           <a class="back-top" href="#top">↑ Back to top</a>
         </article>
