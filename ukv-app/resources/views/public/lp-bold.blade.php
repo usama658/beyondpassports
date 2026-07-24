@@ -561,6 +561,7 @@ html,body{overflow-x:clip;max-width:100%}
       </ul>
     </div>
   </div>
+  @include('partials.refund-band')
 </div>
 @include('partials.disclaimer-strip')
 </section>
