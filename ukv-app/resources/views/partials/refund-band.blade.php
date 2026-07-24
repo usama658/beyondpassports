@@ -31,10 +31,11 @@
     <div class="tx">
       <div class="k">Our Refund Promise</div>
       <h3>{{ $heading ?? "Refused? Money back, or a free retry." }}</h3>
+      @php $terms = $termsHref ?? '/legal#refunds'; @endphp
       <div class="pills">
-        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</span>
-        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</span>
-        <a class="pill lnk" href="{{ $termsHref ?? '/legal#refunds' }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose &middot; full terms</a>
+        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</a>
+        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</a>
+        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose</a>
       </div>
     </div>
     <a class="go" href="{{ $ctaHref ?? '/legal#refunds' }}">@if(($ctaIcon ?? null) === 'wa')@include('partials.wa-glyph')@endif{{ $ctaText ?? 'How it works' }} &rarr;</a>
