@@ -5,8 +5,15 @@
 @push('head')
 <style>
 .lpb .rband{position:relative;border-radius:20px;padding:30px 34px;overflow:hidden;color:#fff;margin-top:44px;
-  background:linear-gradient(135deg,#12233c 0%,#0f4a61 62%,#1f6e63 100%);box-shadow:var(--sh2)}
-.lpb .rband::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 160% at 100% 0,rgba(121,207,194,.28),transparent 55%);pointer-events:none}
+  background:linear-gradient(135deg,#12233c 0%,#0f4a61 62%,#1f6e63 100%);box-shadow:var(--sh2);
+  border:1px solid rgba(121,207,194,.14);transition:transform .18s ease,box-shadow .2s ease,border-color .2s ease}
+.lpb .rband:hover{transform:translateY(-4px);box-shadow:0 44px 84px -30px rgba(20,34,46,.6);border-color:rgba(121,207,194,.4)}
+.lpb .rband::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 160% at 100% 0,rgba(121,207,194,.28),transparent 55%);pointer-events:none;transition:opacity .25s ease}
+.lpb .rband:hover::after{background:radial-gradient(100% 170% at 100% 0,rgba(121,207,194,.42),transparent 58%)}
+.lpb .rband:hover .badge{background:rgba(255,255,255,.16);border-color:rgba(121,207,194,.6)}
+.lpb .rband .badge,.lpb .rband .go{transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.lpb .rband:hover .go{transform:translateY(-1px)}
+@media(prefers-reduced-motion:reduce){.lpb .rband,.lpb .rband:hover{transform:none}}
 .lpb .rband .in{position:relative;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 .lpb .rband .badge{width:60px;height:60px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(121,207,194,.4);display:flex;align-items:center;justify-content:center;flex:none}
 .lpb .rband .badge svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.8}
