@@ -14,7 +14,12 @@
 
      A CTA is any <a>/<button> matching a btn*/cta* class, a WhatsApp/tel/mailto link, or
      an element carrying data-cta. To label a CTA explicitly, add data-cta="name" in markup;
-     otherwise the trimmed text is used. --}}
+     otherwise the trimmed text is used.
+
+     mailto: links get their OWN event 'email_click' (not cta_click), tagged with the
+     email address + page context, so email interest is trackable per page just like
+     'form_submit' and 'cta_click'. Event fields: email_address, email_text, email_id,
+     email_href, email_section (+ page_key/page_path/page_title). --}}
 @once
 <script>
 (function () {
@@ -48,12 +53,29 @@
     var kind = ctaKind(el);
     if (!kind) return;
     var section = el.closest('section,[data-section]');
+    var sectionId = section ? (section.id || section.getAttribute('data-section') || '') : '';
+    var href = (el.getAttribute && el.getAttribute('href')) || '';
+
+    // Email links get a dedicated 'email_click' event (parallel to form_submit/cta_click).
+    if (kind === 'email') {
+      var addr = href.replace(/^mailto:/i, '').split('?')[0];
+      try { addr = decodeURIComponent(addr); } catch (_) {}
+      var em = base('email_click');
+      em.email_address = addr;
+      em.email_text    = clean(el.getAttribute('data-cta') || el.innerText || el.getAttribute('aria-label'));
+      em.email_id      = el.id || '';
+      em.email_href    = href;
+      em.email_section = sectionId;
+      window.dataLayer.push(em);
+      return;
+    }
+
     var data = base('cta_click');
     data.cta_kind    = kind;
     data.cta_text    = clean(el.getAttribute('data-cta') || el.innerText || el.getAttribute('aria-label') || el.value);
     data.cta_id      = el.id || '';
-    data.cta_href    = (el.getAttribute && el.getAttribute('href')) || '';
-    data.cta_section = section ? (section.id || section.getAttribute('data-section') || '') : '';
+    data.cta_href    = href;
+    data.cta_section = sectionId;
     window.dataLayer.push(data);
   }, true);
 
