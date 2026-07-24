@@ -5,8 +5,7 @@
      (see AppServiceProvider). --}}
 <div class="topbar"><div class="wrap tb-row">
   <span class="tb-spacer" aria-hidden="true"></span>
-  {{-- Trustpilot rating (real figures, manual sync) — centred. --}}
-  <span class="tb-tp">@include('partials.trustpilot-cta', ['align' => 'center', 'theme' => 'dark', 'margin' => '0'])</span>
+  {{-- Trustpilot rating removed from topbar (kept on other surfaces). --}}
   <span class="tb-links">
     <a href="tel:{{ config('ukv.phone_e164') ?: '+447882747584' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
     @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')<b>Europe Team:</b>&nbsp;{{ config('ukv.phone_de') ?: '+49' }}</a>@endif
