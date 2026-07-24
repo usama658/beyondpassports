@@ -1,17 +1,12 @@
-# STAGING — site not ready. Discourage ALL indexing until launch.
-# At go-live: replace this with the launch block below + remove the
-# X-Robots-Tag noindex block in public/.htaccess.
+# Beyond Passports — live. Indexing enabled 2026-07-25.
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /admin
+Disallow: /track
+Disallow: /checkout/
+Disallow: /confirmation/
+Disallow: /documents/
+Disallow: /stripe/
+Disallow: /apply
 
-# --- LAUNCH CONFIG (restore at go-live) ---
-# User-agent: *
-# Allow: /
-# Disallow: /admin
-# Disallow: /track
-# Disallow: /checkout/
-# Disallow: /confirmation/
-# Disallow: /documents/
-# Disallow: /stripe/
-# Disallow: /apply
-# Sitemap: https://beyondpassports.co.uk/sitemap.xml
+Sitemap: https://beyondpassports.co.uk/sitemap.xml

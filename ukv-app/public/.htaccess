@@ -12,10 +12,7 @@
 
     RewriteEngine On
 
-    # STAGING noindex — discourage all crawlers until launch. REMOVE this block at go-live.
-    <IfModule mod_headers.c>
-        Header set X-Robots-Tag "noindex, nofollow, noarchive"
-    </IfModule>
+    # Indexing enabled at go-live (staging X-Robots-Tag noindex removed 2026-07-25).
 
     # Canonical host: force HTTPS + non-www -> https://beyondpassports.co.uk
     RewriteCond %{HTTPS} off [OR]
