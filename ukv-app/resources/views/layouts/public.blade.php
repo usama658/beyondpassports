@@ -17,7 +17,7 @@
 @php
   $__ogTitle = trim($__env->yieldContent('title')) ?: 'Travel visa & eVisa help for UK travellers | Beyond Passports';
   $__ogDesc  = trim($__env->yieldContent('description')) ?: 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.';
-  $__ogImg   = trim($__env->yieldContent('ogImage')) ?: asset('images/og-default.jpg');
+  $__ogImg   = trim($__env->yieldContent('ogImage')) ?: asset('images/og-default.jpg').'?v='.(@filemtime(public_path('images/og-default.jpg')) ?: '1');
   $__ogUrl   = trim($__env->yieldContent('canonical')) ?: url()->current();
 @endphp
 <title>{{ $__ogTitle }}</title>
