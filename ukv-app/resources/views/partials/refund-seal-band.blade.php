@@ -1,5 +1,8 @@
 {{-- Refund Promise wax-seal header band. Crowns a card whose padding is 26px
      and radius 20px (e.g. lp-bold .formcard). Include as the FIRST child.
+     Pass ['flush' => true] for a padding-less, overflow-hidden card (e.g. the
+     dark FAQ .bp boarding-pass): margins zero out, the card clips the corners,
+     and a dashed teal rule separates it from the header below.
      Honest copy: no guarantee of a decision; gov fees excluded (see /legal#refunds). --}}
 @once
 @push('head')
@@ -13,11 +16,12 @@
 .lpb .rsb .k{font-weight:700;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark)}
 .lpb .rsb .v{font-weight:800;font-size:17px;letter-spacing:-.01em;margin-top:4px;line-height:1.15}
 .lpb .rsb .s{font-size:12.5px;color:#a9c0c8;margin-top:2px}
-@media(max-width:420px){.lpb .rsb{padding:16px 20px;gap:12px}.lpb .rsb .v{font-size:15.5px}}
+.lpb .rsb.flush{margin:0;border-radius:0;padding:18px 30px;border-bottom:1px dashed rgba(121,207,194,.3)}
+@media(max-width:420px){.lpb .rsb{padding:16px 20px;gap:12px}.lpb .rsb .v{font-size:15.5px}.lpb .rsb.flush{padding:16px 22px}}
 </style>
 @endpush
 @endonce
-<div class="rsb" aria-label="Our Refund Promise">
+<div class="rsb {{ ($flush ?? false) ? 'flush' : '' }}" aria-label="Our Refund Promise">
   <span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
   <div class="tx">
     <div class="k">Refund Promise</div>
