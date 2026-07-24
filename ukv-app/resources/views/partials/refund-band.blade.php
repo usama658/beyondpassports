@@ -28,7 +28,7 @@
     <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
     <div class="tx">
       <div class="k">Our Refund Promise</div>
-      <h3>If we take your case and it's refused, you're covered.</h3>
+      <h3>{{ $heading ?? "Refused? Your service fee comes back, or your next application is free." }}</h3>
       <div class="pills">
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</span>
