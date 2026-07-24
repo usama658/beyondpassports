@@ -16,6 +16,8 @@
 .lpb .rband .pills{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
 .lpb .rband .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600}
 .lpb .rband .pill svg{width:14px;height:14px;fill:none;stroke:var(--on-dark);stroke-width:2}
+.lpb .rband a.pill{color:#fff;text-decoration:none;transition:background .15s,border-color .15s}
+.lpb .rband a.pill:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
 .lpb .rband .go{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--ink);border-radius:12px;padding:13px 20px;font-weight:700;font-size:15px;white-space:nowrap;text-decoration:none;flex:none}
 .lpb .rband .go:hover{background:#eef4f3}
 .lpb .rband .go svg,.lpb .rband .go .wa-g{width:18px;height:18px;fill:var(--wa);flex:none}
@@ -32,7 +34,7 @@
       <div class="pills">
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</span>
-        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose</span>
+        <a class="pill lnk" href="{{ $termsHref ?? '/legal#refunds' }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose &middot; full terms</a>
       </div>
     </div>
     <a class="go" href="{{ $ctaHref ?? '/legal#refunds' }}">@if(($ctaIcon ?? null) === 'wa')@include('partials.wa-glyph')@endif{{ $ctaText ?? 'How it works' }} &rarr;</a>
