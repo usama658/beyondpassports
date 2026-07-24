@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visas — Sorted Without the Stress | Beyond Passports')
-@section('description', 'Independent UK Schengen visa service. We check, prepare and submit your Schengen application. Registered in UK & Europe, clear fixed fees, every step tracked. Not a government website.')
+@section('title', 'Schengen Visas, Sorted Without Stress | Beyond Passports')
+@section('description', 'Independent UK Schengen visa service. We check, prepare and submit your application. Fixed fees, every step tracked. Not a government website.')
 
 @push('head')
 <script type="application/ld+json">
