@@ -46,14 +46,14 @@ Route::get('/compare', fn (\App\Http\Controllers\CmsController $c) => config('uk
 // noindex, NOT in nav/footer, NOT in SitemapController. Reachable by URL only.
 // Paid-traffic landing pages (site-theme light). Orphaned: noindex, NOT in nav/footer/sitemap.
 // Landing pages are CMS-switchable (content-only marketing), so the team can iterate copy without a deploy.
-Route::get('/schengen-visa-agent', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agent', 'public.lp-speed'))->name('lp.speed');
+Route::get('/schengen-visa-help', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agent', 'public.lp-speed'))->name('lp.speed'); // URL swapped with lp-bold
 // Original dark-premium version of the Speed LP, kept on request.
 Route::get('/schengen-visa-agent-premium', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agent-premium', 'public.lp-speed-original'))->name('lp.speed.original');
 Route::get('/schengen-visa-refusal-risk', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-refusal-risk', 'public.lp-fear'))->name('lp-fear');
 Route::get('/schengen-visa-appointment', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-appointment', 'public.lp-appointments'))->name('lp-appointments');
 Route::get('/honest-schengen-visa-service', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('honest-schengen-visa-service', 'public.lp-trust'))->name('lp-trust');
 Route::get('/schengen-visa-refused', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-refused', 'public.lp-refused'))->name('lp-refused');
-Route::get('/schengen-visa-help', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold'); // Bold LP: dual-lane hero + case-file sections
+Route::get('/schengen-visa-agent', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold'); // Bold LP (URL swapped with lp.speed): dual-lane hero + case-file sections
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
