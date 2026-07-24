@@ -7,9 +7,13 @@
 @once
 @push('head')
 <style>
-.lpb .rsb{margin:-26px -26px 22px;padding:18px 24px;background:radial-gradient(120% 140% at 85% 0,#0f4a61,#12233c);border-radius:20px 20px 0 0;color:#fff;display:flex;align-items:center;gap:15px;position:relative;overflow:hidden}
-.lpb .rsb::after{content:"";position:absolute;right:-30px;top:-30px;width:128px;height:128px;border:1px solid rgba(121,207,194,.25);border-radius:50%}
-.lpb .rsb::before{content:"";position:absolute;right:-8px;bottom:-46px;width:108px;height:108px;border:1px solid rgba(121,207,194,.18);border-radius:50%}
+.lpb .rsb{margin:-26px -26px 22px;padding:18px 24px;background:radial-gradient(120% 140% at 85% 0,#0f4a61,#12233c);background-size:150% 150%;background-position:78% 0;border-radius:20px 20px 0 0;color:#fff;display:flex;align-items:center;gap:15px;position:relative;overflow:hidden;transition:filter .25s ease,background-position .5s ease}
+.lpb .rsb::after{content:"";position:absolute;right:-30px;top:-30px;width:128px;height:128px;border:1px solid rgba(121,207,194,.25);border-radius:50%;transition:border-color .3s ease,transform .45s ease}
+.lpb .rsb::before{content:"";position:absolute;right:-8px;bottom:-46px;width:108px;height:108px;border:1px solid rgba(121,207,194,.18);border-radius:50%;transition:border-color .3s ease,transform .45s ease}
+.lpb a.rsb:hover{background-position:58% 0}
+.lpb a.rsb:hover::after{border-color:rgba(121,207,194,.55);transform:scale(1.12)}
+.lpb a.rsb:hover::before{border-color:rgba(121,207,194,.42);transform:scale(1.15)}
+@media(prefers-reduced-motion:reduce){.lpb a.rsb,.lpb a.rsb:hover{background-position:78% 0}.lpb a.rsb:hover::after,.lpb a.rsb:hover::before{transform:none}}
 .lpb .rsb .seal{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 42% 36%,#3fb3a3,#1f6e63);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 6px 16px -6px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.4)}
 .lpb .rsb .seal svg{width:25px;height:25px;fill:none;stroke:#fff;stroke-width:1.8}
 .lpb .rsb .tx{position:relative}
