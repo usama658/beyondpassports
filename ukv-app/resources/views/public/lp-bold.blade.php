@@ -424,7 +424,7 @@ html,body{overflow-x:clip;max-width:100%}
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
-    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
+    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a> &middot; <a href="/legal#refunds">Refunds</a>.</span></label>
   </form>
   </div>
 </div></div></section>
