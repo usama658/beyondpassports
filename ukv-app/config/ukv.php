@@ -112,7 +112,7 @@ return [
     // royalty-free PLACEHOLDER portraits — replace with real, consented team photos.
     // `email` = per-member contact pill on /about; blank → no email pill. PLACEHOLDER addresses.
     'team' => [
-        ['name' => 'Lena Vogel', 'role' => 'Germany Office Lead (Berlin)', 'bio' => 'Runs our Berlin desk and German-consulate cases, coordinating documents and appointments across the region.', 'lead' => true, 'photo' => '/assets/img/team/lena-vogel-germany-lead.jpg', 'email' => 'consultant@beyondpassports.co.uk'],
+        ['name' => 'Sarah Whitmore', 'role' => 'Lead Visa Consultant', 'bio' => 'Personally checks every application before it is submitted, nothing outsourced.', 'lead' => true, 'photo' => '/assets/img/team/lena-vogel-germany-lead.jpg', 'email' => 'consultant@beyondpassports.co.uk'],
         ['name' => 'James Whitfield', 'role' => 'Refusal-Recovery Specialist', 'bio' => 'Decodes refusal letters, finds the real trigger, and rebuilds the file, or tells you honestly when it cannot be recovered.', 'lead' => false, 'photo' => '/assets/img/team/james-whitfield-operations.jpg', 'email' => 'refusals@beyondpassports.co.uk'],
         ['name' => 'Chloe Adams', 'role' => 'Appointments & Client Coordinator', 'bio' => 'Monitors slots across all 29 countries daily and keeps you updated at every step.', 'lead' => false, 'photo' => '/assets/img/team/chloe-adams-appointments-coordinator.jpg', 'email' => 'appointments@beyondpassports.co.uk'],
         // Hidden for now — asset + profile kept (photo: david-hartley-case-reviewer.jpg, docs/team-profiles.md). Uncomment to restore.
