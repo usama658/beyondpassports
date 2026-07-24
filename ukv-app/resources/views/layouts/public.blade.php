@@ -14,11 +14,29 @@
 @if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
 @if (config('ukv.google_site_verification'))<meta name="google-site-verification" content="{{ config('ukv.google_site_verification') }}">@endif
 @include('partials.meta-pixel')
-<title>@yield('title', 'Travel visa & eVisa help for UK travellers | Beyond Passports')</title>
-<meta name="description" content="@yield('description', 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.')">
-@hasSection('canonical')
-<link rel="canonical" href="@yield('canonical')">
-@endif
+@php
+  $__ogTitle = trim($__env->yieldContent('title')) ?: 'Travel visa & eVisa help for UK travellers | Beyond Passports';
+  $__ogDesc  = trim($__env->yieldContent('description')) ?: 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.';
+  $__ogImg   = trim($__env->yieldContent('ogImage')) ?: asset('images/og-default.jpg');
+  $__ogUrl   = trim($__env->yieldContent('canonical')) ?: url()->current();
+@endphp
+<title>{{ $__ogTitle }}</title>
+<meta name="description" content="{{ $__ogDesc }}">
+<link rel="canonical" href="{{ $__ogUrl }}">
+{{-- Open Graph / Twitter (defaults; pages override via @section('title'|'description'|'ogImage'|'canonical'|'ogType')) --}}
+<meta property="og:site_name" content="Beyond Passports">
+<meta property="og:locale" content="en_GB">
+<meta property="og:type" content="@yield('ogType', 'website')">
+<meta property="og:title" content="{{ $__ogTitle }}">
+<meta property="og:description" content="{{ $__ogDesc }}">
+<meta property="og:url" content="{{ $__ogUrl }}">
+<meta property="og:image" content="{{ $__ogImg }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $__ogTitle }}">
+<meta name="twitter:description" content="{{ $__ogDesc }}">
+<meta name="twitter:image" content="{{ $__ogImg }}">
 {{-- Published copy of the coded design system (public/assets/ukv.css).
      Cache-bust by file mtime so CSS edits reach browsers/CDN without a manual purge. --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}?v={{ @filemtime(public_path('assets/ukv.css')) ?: '1' }}">
