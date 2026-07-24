@@ -561,7 +561,11 @@ html,body{overflow-x:clip;max-width:100%}
       </ul>
     </div>
   </div>
-  @include('partials.refund-band')
+  @include('partials.refund-band', [
+    'ctaHref' => $wa.'?text='.rawurlencode("Hi, before I pay I'd like you to check if my case is one you can help with. If you take it on and it's refused, how does your Refund Promise work for me?"),
+    'ctaText' => 'Ask us to check my case',
+    'ctaIcon' => 'wa',
+  ])
 </div>
 @include('partials.disclaimer-strip')
 </section>
