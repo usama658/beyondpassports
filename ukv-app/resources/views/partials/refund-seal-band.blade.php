@@ -17,15 +17,25 @@
 .lpb .rsb .v{font-weight:800;font-size:17px;letter-spacing:-.01em;margin-top:4px;line-height:1.15}
 .lpb .rsb .s{font-size:12.5px;color:#a9c0c8;margin-top:2px}
 .lpb .rsb.flush{margin:0;border-radius:0;padding:18px 30px;border-bottom:1px dashed rgba(121,207,194,.3)}
+/* interactive: whole band links to the Refund Promise */
+.lpb a.rsb{text-decoration:none;color:#fff;cursor:pointer;transition:filter .2s ease}
+.lpb .rsb .seal,.lpb .rsb .arrow{transition:transform .2s ease,box-shadow .2s ease}
+.lpb a.rsb:hover{filter:brightness(1.07)}
+.lpb a.rsb:hover .seal{transform:scale(1.08) rotate(-4deg);box-shadow:0 9px 22px -6px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.55)}
+.lpb .rsb .arrow{margin-left:auto;color:var(--on-dark);font-weight:800;font-size:19px;position:relative;z-index:1}
+.lpb a.rsb:hover .arrow{transform:translateX(4px)}
+.lpb a.rsb:focus-visible{outline:2px solid var(--on-dark);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.lpb a.rsb:hover .seal,.lpb a.rsb:hover .arrow{transform:none}}
 @media(max-width:420px){.lpb .rsb{padding:16px 20px;gap:12px}.lpb .rsb .v{font-size:15.5px}.lpb .rsb.flush{padding:16px 22px}}
 </style>
 @endpush
 @endonce
-<div class="rsb {{ ($flush ?? false) ? 'flush' : '' }}" aria-label="Our Refund Promise">
+<a class="rsb {{ ($flush ?? false) ? 'flush' : '' }}" href="{{ $href ?? '/legal#refunds' }}" aria-label="Our Refund Promise: fee back if refused, or a free next application. Read the terms.">
   <span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
   <div class="tx">
     <div class="k">Refund Promise</div>
     <div class="v">If it's refused, you're covered.</div>
     <div class="s">Fee back, or a free next application</div>
   </div>
-</div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
