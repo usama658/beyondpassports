@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Help: Your Application Has One Chance | Beyond Passports')
-@section('description', 'Independent UK help for Schengen visas, first-time or refused. We prepare applications that stand up and decode refusal letters. Reply in 24 hours.')
+@section('title', 'Schengen Visa Help, First-Time or Refused | Beyond Passports')
+@section('description', 'Independent UK help for Schengen visas, first-time or refused. Applications that stand up; refusals decoded. Reply in 24h.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
