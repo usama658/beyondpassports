@@ -2,8 +2,8 @@
      Self-contained (own pc- classes + @once CSS/JS). Keeps the real input's id/name so
      existing form JS and the backend keep working; on submit the selected dial code is
      prepended into the value (e.g. "+44 7911 123456"). Also writes a hidden
-     {name}_dialcode field. Flags use emoji (real flags on iOS/Android/Mac; 2-letter code
-     on Windows desktop, which has no flag glyphs).
+     {name}_dialcode field. Flags are self-hosted SVGs (/assets/flags/{iso2}.svg,
+     lipis/flag-icons, MIT) so they render identically on every OS incl. Windows.
 
      Params: name (default 'phone'), id (default = name), required (bool), placeholder,
      value (old input), class (extra classes merged onto the input), default (ISO2, e.g. 'GB'). --}}
@@ -18,7 +18,7 @@
 @endphp
 <div class="pc-combo" data-pc data-pc-default="{{ $pcDef }}">
   <button type="button" class="pc-btn" data-pc-toggle aria-haspopup="listbox" aria-expanded="false" aria-label="Select country dialling code">
-    <span class="pc-fl" data-pc-fl>🇬🇧</span><span class="pc-dc" data-pc-dc>+44</span><span class="pc-car" aria-hidden="true">▾</span>
+    <span class="pc-fl" data-pc-fl><img class="pc-fl-img" src="{{ asset('assets/flags/'.strtolower($pcDef).'.svg') }}" alt="" width="20" height="15"></span><span class="pc-dc" data-pc-dc>+44</span><span class="pc-car" aria-hidden="true">▾</span>
   </button>
   <input type="tel" id="{{ $pcId }}" name="{{ $pcName }}" class="pc-input {{ $pcClass }}"
          value="{{ $pcVal }}" placeholder="{{ $pcPh }}" inputmode="tel" autocomplete="tel"
@@ -31,7 +31,8 @@
   .pc-combo{position:relative;display:flex;border:1.5px solid #e2e8ee;border-radius:12px;background:#fff;transition:border-color .15s,box-shadow .15s}
   .pc-combo:focus-within{border-color:var(--cta,#155E7A);box-shadow:0 0 0 3px rgba(21,94,122,.14)}
   .pc-btn{display:flex;align-items:center;gap:6px;padding:0 11px;background:#f4f7f9;border:0;border-right:1.5px solid #e2e8ee;border-radius:12px 0 0 12px;cursor:pointer;font:700 14px var(--display,inherit);color:var(--ink,#16222E);white-space:nowrap}
-  .pc-btn .pc-fl{font-size:18px;line-height:1}
+  .pc-btn .pc-fl{display:flex;line-height:0}
+  .pc-fl-img{width:20px;height:15px;border-radius:2px;display:block;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.09)}
   .pc-btn .pc-car{color:var(--muted,#5d6b76);font-size:10px}
   .pc-input{flex:1;min-width:0;border:0!important;padding:13px 14px;font:600 15px var(--display,inherit);border-radius:0 12px 12px 0;background:transparent;color:var(--ink,#16222E);box-shadow:none!important}
   .pc-input:focus{outline:none}
@@ -42,7 +43,7 @@
   .pc-list{max-height:220px;overflow:auto;margin:0;padding:0;list-style:none}
   .pc-opt{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;font:600 14px var(--display,inherit)}
   .pc-opt:hover,.pc-opt.pc-hl{background:#eef4f6}
-  .pc-opt .pc-fl{font-size:18px;line-height:1}
+  .pc-opt .pc-fl{display:flex;line-height:0}
   .pc-opt .pc-nm{flex:1;color:var(--ink,#16222E)}
   .pc-opt .pc-dc{color:var(--muted,#5d6b76);font-weight:700;font-size:13px}
   @media(prefers-reduced-motion:reduce){.pc-combo{transition:none}}
@@ -72,13 +73,14 @@
     for(var i=0;i<C.length;i++){ if(C[i][1]===def){ cur=C[i]; break; } }
     pop.innerHTML='<input class="pc-search" placeholder="Search country or code" aria-label="Search country"><ul class="pc-list"></ul>';
     var search=pop.querySelector('.pc-search'), ul=pop.querySelector('.pc-list');
-    function paint(c){ cur=c; fl.textContent=c[2]; dcEls.forEach(function(e){e.textContent=c[3];}); if(dial)dial.value=c[3]; }
+    function flimg(c){ return '<img class="pc-fl-img" src="/assets/flags/'+c[1].toLowerCase()+'.svg" alt="" width="20" height="15">'; }
+    function paint(c){ cur=c; fl.innerHTML=flimg(c); dcEls.forEach(function(e){e.textContent=c[3];}); if(dial)dial.value=c[3]; }
     function render(q){
       q=(q||'').toLowerCase().trim(); ul.innerHTML='';
       C.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1||c[3].indexOf(q)>-1||c[1].toLowerCase()===q;})
        .forEach(function(c){
         var li=document.createElement('li'); li.className='pc-opt'; li.setAttribute('role','option');
-        li.innerHTML='<span class="pc-fl">'+c[2]+'</span><span class="pc-nm">'+c[0]+'</span><span class="pc-dc">'+c[3]+'</span>';
+        li.innerHTML='<span class="pc-fl">'+flimg(c)+'</span><span class="pc-nm">'+c[0]+'</span><span class="pc-dc">'+c[3]+'</span>';
         li.addEventListener('mousedown',function(e){e.preventDefault(); paint(c); close(); input&&input.focus();});
         ul.appendChild(li);
       });
