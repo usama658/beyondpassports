@@ -34,12 +34,12 @@
 </style>
 @endpush
 @endonce
-<a class="rsb {{ ($flush ?? false) ? 'flush' : '' }}" href="{{ $href ?? '/legal#refunds' }}" aria-label="Our Refund Promise: fee back if refused, or a free next application. Read the terms.">
+<a class="rsb {{ ($flush ?? false) ? 'flush' : '' }}" href="{{ $href ?? '/legal#refunds' }}" aria-label="Our Refund Promise: 100% service-fee refund if refused. Read the terms.">
   <span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
   <div class="tx">
     <div class="k">Refund Promise</div>
     <div class="v">If it's refused, you're covered.</div>
-    <div class="s">Fee back, or a free next application</div>
+    <div class="s">100% service-fee refund</div>
   </div>
   <span class="arrow" aria-hidden="true">&rarr;</span>
 </a>
