@@ -14,6 +14,10 @@
 .lpb .rlk .foot{font-size:12.5px;color:var(--muted);margin:9px 0 0}
 .lpb .rlk .foot u{color:var(--cta);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(21,94,122,.35)}
 .lpb a.rlk:hover .mono{transform:scale(1.06);box-shadow:inset 0 1px 0 #fff,0 6px 16px -8px rgba(46,154,140,.6)}
+/* when placed inside a pathband .sit cell: flow as a block, drop the chevron layout */
+.lpb .sit-refund{display:block!important;align-items:stretch}
+.lpb .sit-refund .rlk{max-width:none}
+.lpb .sit-refund .rlk .lockrow{border-top:0;padding-top:2px}
 </style>
 @endpush
 @endonce
