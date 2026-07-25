@@ -411,6 +411,7 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <div style="margin-top:22px">@include('partials.refund-lockup')</div>
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
