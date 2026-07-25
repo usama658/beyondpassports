@@ -158,7 +158,6 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .peakstub .rdot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(225,29,29,.5);animation:pkring 1.1s ease-out infinite}
 @keyframes pkblink{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes pkring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.6);opacity:0}}
-@media(prefers-reduced-motion:reduce){.lpb .peakstub .rdot,.lpb .peakstub .rdot::after{animation:none}}
 @media(max-width:640px){
   .lpb .peakstub{gap:9px;padding:16px 34px}
   .lpb .peakstub .a{font-size:11px;letter-spacing:.16em}
