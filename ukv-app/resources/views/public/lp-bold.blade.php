@@ -414,7 +414,6 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
-    @include('partials.refund-seal-band')
     <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
     <div class="row"><div class="fld"><label for="lpb-phone">Phone</label>@include('partials.phone-country', ['id' => 'lpb-phone', 'name' => 'lpb-phone', 'placeholder' => '7911 123456'])</div></div>
@@ -424,7 +423,7 @@ html,body{overflow-x:clip;max-width:100%}
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
-    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a> &middot; <a href="/legal#refunds">Refunds</a>.</span></label>
+    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
   </div>
 </div></div></section>
