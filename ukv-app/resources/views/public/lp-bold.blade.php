@@ -540,7 +540,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
   </div>
   @include('partials.refund-band', [
-    'ctaHref' => $wa.'?text='.rawurlencode("Hi, I read your Refund Promise. Before I pay, can you explain exactly how the money-back or free retry works if my case is refused?"),
+    'ctaHref' => $wa.'?text='.rawurlencode("Hi, I read your Refund Promise. Before I pay, can you explain exactly how the 100% service-fee refund works if my case is refused?"),
     'ctaText' => 'Check my case now',
     'ctaIcon' => 'wa',
   ])

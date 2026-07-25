@@ -37,12 +37,12 @@
     <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
     <div class="tx">
       <div class="k">Our Refund Promise</div>
-      <h3>{{ $heading ?? "Refused? Money back, or a free retry." }}</h3>
+      <h3>{{ $heading ?? "Refused? We refund 100% of your service fee." }}</h3>
       @php $terms = $termsHref ?? '/legal#refunds'; @endphp
       <div class="pills">
         <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% service fee back</a>
-        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>or a free next application</a>
-        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>you choose</a>
+        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Refunded to your card</a>
+        <a class="pill" href="{{ $terms }}"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Clear, written terms</a>
       </div>
     </div>
     <a class="go" href="{{ $ctaHref ?? '/legal#refunds' }}">@if(($ctaIcon ?? null) === 'wa')@include('partials.wa-glyph')@endif{{ $ctaText ?? 'How it works' }} &rarr;</a>
