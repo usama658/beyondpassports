@@ -1,57 +1,103 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peak stub — mobile + desktop preview (dot + ring)</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<title>Peak section — redesign drafts</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--display:"Outfit",system-ui,sans-serif;--ink:#16222E;--muted:#5d6b76;--edge:#dde3ec}
-*{box-sizing:border-box}
-body{margin:0;background:#e9eef2;font-family:var(--display);padding:30px 16px;display:flex;flex-direction:column;align-items:center;gap:10px}
-.lab{font:800 12px/1.4 var(--display);letter-spacing:.14em;text-transform:uppercase;color:#5a6874;margin-top:18px}
-.phone{width:390px;max-width:94vw;background:#F4F6FA;border:1px solid var(--edge);border-radius:26px;box-shadow:0 30px 70px -34px rgba(20,34,46,.5);padding:20px 16px 26px}
-.deskwrap{width:940px;max-width:96vw;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:28px 24px}
-.deskwrap .cap{color:var(--muted);font-size:13px;margin:0 0 18px}
+:root{--display:"Outfit",system-ui,sans-serif;--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--gold:#E7CE93;--wa:#25D366;--sh2:0 30px 66px -30px rgba(20,34,46,.5)}
+*{box-sizing:border-box;margin:0}
+body{background:#e9eef2;font-family:var(--display);color:var(--ink);padding:28px 16px;display:flex;flex-direction:column;align-items:center}
+.wrap{width:1000px;max-width:96vw}
+.lab{font:800 12px/1.4 var(--display);letter-spacing:.15em;text-transform:uppercase;color:#5a6874;margin:30px 0 10px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;font-weight:700;padding:13px 22px;border-radius:12px;text-decoration:none;font-size:15px;border:0}
+.wa-i{width:17px;height:17px;fill:#fff}
+/* shared red blinking dot + ring */
+.rdot{position:absolute;top:14px;right:16px;width:9px;height:9px;border-radius:50%;background:#ff3b3b;z-index:4;animation:bk 1.1s ease-in-out infinite}
+.rdot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(255,59,59,.5);animation:rg 1.1s ease-out infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes rg{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){.rdot,.rdot::after{animation:none}}
+.live{display:inline-flex;align-items:center;gap:7px;font:800 11px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#ffb4b4}
+.live .d{width:7px;height:7px;border-radius:50%;background:#ff3b3b;animation:bk 1.1s infinite}
 
-/* red blinking dot + pulsing ring (variant B) */
-.blink-dot{position:absolute;top:10px;right:12px;width:9px;height:9px;border-radius:50%;background:#e11d1d;z-index:3;animation:blink 1.1s ease-in-out infinite}
-.blink-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(225,29,29,.45);animation:ring 1.1s ease-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-@keyframes ring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.55);opacity:0}}
-@media(prefers-reduced-motion:reduce){.blink-dot,.blink-dot::after{animation:none}}
+/* ============ A — PEAK ALERT BAND ============ */
+.va{position:relative;border-radius:20px;overflow:hidden;color:#fff;padding:30px 34px;background:radial-gradient(680px 260px at 90% 0,rgba(231,206,147,.28),transparent 60%),linear-gradient(135deg,#12233c,#0f2f3d);border:1px solid #33474f;box-shadow:var(--sh2);display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.va .l{flex:1;min-width:280px}
+.va .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(231,206,147,.16);border:1px solid rgba(231,206,147,.4);color:var(--gold);font:800 11px var(--display);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:12px}
+.va h3{font-size:26px;letter-spacing:-.02em;line-height:1.12}
+.va p{color:#cfe0dd;font-size:14.5px;margin-top:8px;max-width:46ch}
+.va .r{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.va .stats{display:flex;gap:10px}
+.va .st{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:10px 14px;text-align:center;min-width:96px}
+.va .st .k{font:800 9px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.va .st .v{font:800 15px var(--display);color:#fff;margin-top:3px}
 
-/* stub tile — shared base */
-.stub{position:relative;background:#fff;color:var(--ink);border:1px solid #e6ebf1;border-radius:14px;
-  display:flex;align-items:baseline;justify-content:center;gap:10px;text-align:center;box-shadow:0 12px 30px -20px rgba(20,34,46,.45)}
-.stub .a{font:800 10px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#8a97a0}
-.stub .b{font:800 var(--display);line-height:1;color:var(--ink)}
-.stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
+/* ============ B — BOARDING PASS (refined) ============ */
+.vb{position:relative;display:flex;align-items:stretch;border-radius:18px;overflow:hidden;background:radial-gradient(620px 240px at 88% 0,rgba(231,206,147,.3),transparent 60%),#122733;border:1px solid #33474f;box-shadow:var(--sh2)}
+.vb .stub{flex:none;min-width:150px;background:linear-gradient(180deg,#fff,#f4f7fa);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 18px;text-align:center;position:relative}
+.vb .stub::after{content:"";position:absolute;right:-9px;top:0;bottom:0;width:18px;background:radial-gradient(circle at left,transparent 0 8px,#122733 8px) repeat-y;background-size:18px 18px}
+.vb .stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
+.vb .stub .b{font:800 30px var(--display);color:var(--ink);margin:5px 0;line-height:1}
+.vb .stub .c{font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:#b5791f}
+.vb .body{flex:1;display:flex;align-items:center;gap:26px;padding:20px 26px;flex-wrap:wrap}
+.vb .fields{display:flex;gap:28px}
+.vb .f .k{font:800 9px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.vb .f .v{font:800 15px var(--display);color:#fff}
+.vb .f .v.sm{font-size:13.5px;color:#dfeae8;font-weight:700}
+.vb .hl{color:#fff}.vb .hl b{font:800 17px var(--display)}.vb .hl small{display:block;font-weight:600;font-size:12.5px;color:#cfe0dd;margin-top:2px}
+.vb .go{margin-left:auto}
 
-/* mobile: full-width row */
-.stub.m{padding:14px 16px}
-.stub.m .b{font-size:20px}
+/* ============ C — URGENCY CARD (light) ============ */
+.vc{position:relative;background:#fff;border:1px solid var(--edge);border-left:4px solid #ff3b3b;border-radius:16px;padding:24px 26px;box-shadow:0 18px 44px -26px rgba(20,34,46,.34);display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.vc .big{display:flex;flex-direction:column;gap:4px;padding-right:26px;border-right:1px solid var(--edge)}
+.vc .big .p{font:800 11px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#b5791f}
+.vc .big .m{font:800 30px var(--display);color:var(--ink);line-height:1}
+.vc .mid{flex:1;min-width:240px}
+.vc .mid h3{font-size:19px;color:var(--ink);letter-spacing:-.01em}
+.vc .mid .row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.vc .chip{font:700 12px var(--display);color:var(--stamp-text,#1F6E63);background:#eaf4f1;border-radius:999px;padding:5px 12px}
+.vc .chip.warn{color:#a8321c;background:#fdeceb}
 
-/* desktop: full section width, larger PEAK */
-.stub.d{padding:18px 28px;width:100%}
-.stub.d .a{font-size:11px}
-.stub.d .b{font-size:27px}
-.stub.d .c{font-size:11px}
+/* ============ D — MINIMAL STRIP ============ */
+.vd{position:relative;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,#16222E,#123)#16222E;background:#16222E;color:#fff;border-radius:14px;padding:16px 22px;box-shadow:var(--sh2)}
+.vd .tag{font:800 11px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.vd .txt{font:800 16px var(--display)}
+.vd .txt small{font-weight:600;color:#cfe0dd;font-size:13px}
+.vd .go{margin-left:auto}
+@media(max-width:720px){.va,.vc{flex-direction:column;align-items:flex-start}.va .r{align-items:flex-start}.vb{flex-direction:column}.vb .stub::after{display:none}}
 </style></head>
 <body>
 
-<div class="lab">Mobile · stub only · dot + pulsing ring (B)</div>
-<div class="phone">
-  <span class="stub m">
-    <span class="blink-dot" aria-hidden="true"></span>
-    <span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span>
-  </span>
+<div class="wrap">
+<div class="lab">A · Peak alert band (dark, gold accent, stat cards)</div>
+<div class="va"><span class="rdot"></span>
+  <div class="l"><span class="tag">◆ Peak season · Jul–Aug 2026</span><h3>Book before the summer rush.</h3><p>Earliest slots go first across every consulate. We're watching all 29 countries daily and move the moment one opens.</p></div>
+  <div class="r"><div class="stats"><div class="st"><div class="k">Window</div><div class="v">Jul–Aug</div></div><div class="st"><div class="k">Status</div><div class="v">Moving fast</div></div><div class="st"><div class="k">Watching</div><div class="v">All 29</div></div></div><a class="btn" href="#"><svg class="wa-i" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11 20L3 29l6-2A13 13 0 1 0 16 3zm0 24a11 11 0 0 1-6-2l-4 1 1-4a11 11 0 1 1 9 5z"/></svg>Grab a peak slot</a></div>
 </div>
 
-<div class="lab">Desktop · same stub only · dot + pulsing ring</div>
-<div class="deskwrap">
-  <p class="cap">Desktop shows the same compact stub tile (not the full boarding-pass), dot top-right.</p>
-  <span class="stub d">
-    <span class="blink-dot" aria-hidden="true"></span>
-    <span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span>
+<div class="lab">B · Boarding pass (refined ticket, punch edge)</div>
+<a class="vb" href="#" style="text-decoration:none;color:inherit"><span class="rdot"></span>
+  <span class="stub"><span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span></span>
+  <span class="body">
+    <span class="fields"><span class="f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span><span class="f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span><span class="f"><span class="k">Watching</span><span class="v sm">All 29 countries</span></span></span>
+    <span class="hl"><b>Book before the summer rush.</b><small>Earliest slots go first across every consulate.</small></span>
+    <span class="go"><span class="btn">Grab a slot →</span></span>
   </span>
+</a>
+
+<div class="lab">C · Urgency card (light, red edge, big Jul–Aug)</div>
+<div class="vc"><span class="rdot"></span>
+  <div class="big"><span class="p">Peak season</span><span class="m">Jul–Aug</span></div>
+  <div class="mid"><h3>Book before the summer rush.</h3><div class="row"><span class="chip warn">● Slots moving fast</span><span class="chip">Watching all 29 countries</span><span class="chip">We move the moment one opens</span></div></div>
+  <a class="btn" href="#" style="margin-left:auto"><svg class="wa-i" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11 20L3 29l6-2A13 13 0 1 0 16 3z"/></svg>Grab a peak slot</a>
 </div>
 
-<div style="height:40px"></div>
+<div class="lab">D · Minimal strip (slim, whole row)</div>
+<div class="vd"><span class="rdot"></span>
+  <span class="live"><span class="d"></span>Live</span>
+  <span class="tag">Peak · Jul–Aug</span>
+  <span class="txt">Book before the summer rush. <small>Slots moving fast across all 29 countries.</small></span>
+  <a class="btn go" href="#">Grab a slot →</a>
+</div>
+
+<div style="height:50px"></div>
+</div>
 </body></html>
