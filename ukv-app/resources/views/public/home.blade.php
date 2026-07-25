@@ -249,7 +249,7 @@
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Refusals prevented</span>
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>A real UK specialist, by name</span>
   </div>
-  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '18px 0 0'])
+  {{-- Trustpilot removed from hero --}}
   <script>
     // Hero destination combobox: opens the full grouped list on click, filters as you type,
     // full keyboard support, and feeds the pick into the WhatsApp message.
