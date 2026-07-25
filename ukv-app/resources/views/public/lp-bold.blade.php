@@ -148,33 +148,22 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text)}
-/* Summer-peak boarding-pass promo (T1) — dark ticket on the light board. Whole card links to WhatsApp. */
-.lpb .peakpass{display:flex;align-items:stretch;text-decoration:none;color:inherit;margin:0 0 22px;border-radius:16px;overflow:hidden;background:radial-gradient(620px 240px at 88% 0,rgba(200,155,60,.32),transparent 60%),#122733;border:1px solid #33474f;box-shadow:0 24px 50px -30px rgba(0,0,0,.55);transition:transform .16s ease,box-shadow .18s ease}
-.lpb .peakpass:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.lpb .peakpass .pp-stub{flex:none;min-width:118px;background:#fff;color:#16222E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;text-align:center;border-right:1px solid #e6ebf1}
-.lpb .peakpass .pp-stub .a{font:800 10px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
-.lpb .peakpass .pp-stub .b{font:800 27px var(--display);line-height:1;margin:4px 0;color:#16222E}
-.lpb .peakpass .pp-stub .c{font:800 10px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
-.lpb .peakpass .pp-perf{width:0;border-left:2px dashed #2c4a56;flex:none}
-.lpb .peakpass .pp-body{flex:1;display:flex;align-items:center;gap:22px;padding:16px 22px;flex-wrap:wrap}
-.lpb .peakpass .pp-fields{display:flex;gap:26px}
-.lpb .peakpass .pp-f{display:flex;flex-direction:column}
-.lpb .peakpass .pp-f .k{font:800 9px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#E7CE93;margin:0 0 3px}
-.lpb .peakpass .pp-f .v{font:800 15px var(--display);color:#fff}
-.lpb .peakpass .pp-f .v.sm{font-size:13.5px;color:#dfeae8;font-weight:700}
-.lpb .peakpass .pp-hl{font:800 17px var(--display);color:#fff}
-.lpb .peakpass .pp-hl small{display:block;font-weight:600;font-size:12.5px;color:#cfe0dd;margin-top:2px}
-.lpb .peakpass .pp-bcode{display:block;width:110px;height:34px;margin-left:auto;background:repeating-linear-gradient(90deg,#E7CE93 0 2px,transparent 2px 4px,#E7CE93 4px 5px,transparent 5px 9px);opacity:.7}
+/* Summer-peak promo (T1) — stub-only tile, full width, red blinking dot + ring. Whole tile links to WhatsApp. */
+.lpb .peakstub{position:relative;display:flex;align-items:baseline;justify-content:center;gap:12px;text-align:center;text-decoration:none;color:inherit;width:100%;margin:0 0 22px;padding:20px 44px;background:#fff;border:1px solid #e6ebf1;border-radius:14px;box-shadow:0 18px 44px -28px rgba(20,34,46,.34);transition:transform .16s ease,box-shadow .18s ease}
+.lpb .peakstub:hover{transform:translateY(-2px);box-shadow:0 24px 54px -28px rgba(20,34,46,.42)}
+.lpb .peakstub .a{font:800 12px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
+.lpb .peakstub .b{font:800 26px var(--display);line-height:1;color:#16222E}
+.lpb .peakstub .c{font:800 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
+.lpb .peakstub .rdot{position:absolute;top:12px;right:14px;width:9px;height:9px;border-radius:50%;background:#e11d1d;animation:pkblink 1.1s ease-in-out infinite}
+.lpb .peakstub .rdot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(225,29,29,.5);animation:pkring 1.1s ease-out infinite}
+@keyframes pkblink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes pkring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){.lpb .peakstub .rdot,.lpb .peakstub .rdot::after{animation:none}}
 @media(max-width:640px){
-  /* Mobile: stack the ticket and move the gold PEAK stub to a full-width strip on top. */
-  .lpb .peakpass{flex-direction:column}
-  .lpb .peakpass .pp-stub{flex-direction:row;align-items:baseline;justify-content:center;gap:9px;min-width:0;padding:10px 16px;border-right:0;border-bottom:1px solid #e6ebf1}
-  .lpb .peakpass .pp-stub .b{font-size:19px;margin:0}
-  .lpb .peakpass .pp-stub .a{letter-spacing:.16em}
-  .lpb .peakpass .pp-perf{width:auto;height:0;border-left:0;border-top:2px dashed #2c4a56}
-  .lpb .peakpass .pp-body{gap:12px}
-  .lpb .peakpass .pp-fields{gap:16px;width:100%}
-  .lpb .peakpass .pp-bcode{display:none}
+  .lpb .peakstub{gap:9px;padding:16px 34px}
+  .lpb .peakstub .a{font-size:11px;letter-spacing:.16em}
+  .lpb .peakstub .b{font-size:20px}
+  .lpb .peakstub .c{font-size:11px}
 }
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
@@ -452,19 +441,10 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span>Typical this week</span></div>
   @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
   @if (in_array(now()->month, [6, 7, 8]))
-  {{-- Summer-peak boarding-pass promo (auto-shows Jun–Aug only). --}}
-  <a class="peakpass" href="{{ $wa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
-    <span class="pp-stub"><span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span></span>
-    <span class="pp-perf"></span>
-    <span class="pp-body">
-      <span class="pp-fields">
-        <span class="pp-f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span>
-        <span class="pp-f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span>
-        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 countries</span></span>
-      </span>
-      <span class="pp-hl">Book before the summer rush.<small>Earliest slots go first across every consulate.</small></span>
-      <span class="pp-bcode" aria-hidden="true"></span>
-    </span>
+  {{-- Summer-peak promo (auto-shows Jun–Aug only). Stub-only tile + red blinking dot. --}}
+  <a class="peakstub" href="{{ $wa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
+    <span class="rdot" aria-hidden="true"></span>
+    <span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span>
   </a>
   @endif
   <div class="bpre">
