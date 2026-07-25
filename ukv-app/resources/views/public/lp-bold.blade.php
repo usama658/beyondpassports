@@ -422,7 +422,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="sitrow">
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 29 countries daily and secure slots most never find.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="/legal#refunds"><span class="tx"><span class="st">Refund Promise</span><span class="q">"Refused? You're covered"</span><p class="d">Full service-fee refund if your visa is refused. Terms apply.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="/legal#refunds"><span class="tx"><span class="st">Refund Promise</span><span class="q">"Refused? You're covered"</span><p class="d"><strong>100%</strong> service-fee refund if your visa is refused. Terms apply.</p></span><span class="chev">→</span></a>
   </div>
 </div></section>
 
