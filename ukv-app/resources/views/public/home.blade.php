@@ -249,7 +249,23 @@
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Refusals prevented</span>
     <span class="vchip"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>A real UK specialist, by name</span>
   </div>
-  @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '18px 0 0'])
+  @push('head')<style>
+    .hp-trustrow{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin:18px 0 0}
+    .ico-badge{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--paper-edge);background:#fff;border-radius:10px;padding:9px 14px;font:700 13px var(--display);color:var(--ink);transition:.15s}
+    .ico-badge:hover{border-color:var(--stamp);transform:translateY(-1px);box-shadow:0 12px 26px -16px rgba(46,154,140,.5)}
+    .ico-badge svg{width:18px;height:18px;fill:none;stroke:var(--stamp-text);stroke-width:2;flex:none}
+    .ico-badge b{font-weight:800;letter-spacing:.02em}
+  </style>@endpush
+  <div class="hp-trustrow">
+    @include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '0'])
+    @php $hpIco = trim((string) config('ukv.compliance.ico_number', '')); @endphp
+    @if($hpIco !== '')
+    <a class="ico-badge" href="https://ico.org.uk/ESDWebPages/Entry/{{ rawurlencode($hpIco) }}" target="_blank" rel="noopener" title="Verify our ICO data-protection registration on the ICO register">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg>
+      <span>ICO registered · <b>{{ $hpIco }}</b></span>
+    </a>
+    @endif
+  </div>
   <script>
     // Hero destination combobox: opens the full grouped list on click, filters as you type,
     // full keyboard support, and feeds the pick into the WhatsApp message.
