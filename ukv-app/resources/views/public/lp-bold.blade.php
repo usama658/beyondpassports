@@ -393,7 +393,7 @@ html,body{overflow-x:clip;max-width:100%}
 <div class="lpb">
 
 {{-- HERO — 2-col split w/ form --}}
-<section class="hero"><div class="wrap"><div class="hgrid">
+<section class="hero" id="top"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">if refused</span></a>
@@ -419,7 +419,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div></div></section>
 
 {{-- PATHS — horizontal "start where you are" chips, before the trust bar --}}
-<section class="pathband"><div class="wrap">
+<section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 24 hours</span></div>
   <div class="sitrow">
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 29 countries daily and secure slots most never find.</p></span><span class="chev">→</span></a>
@@ -429,7 +429,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 {{-- TRUST BAR --}}
-<section class="tbar-f"><div class="wrap"><div class="row">
+<section class="tbar-f" id="badges"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
@@ -488,7 +488,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 {{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
-<section class="sec fear" id="vis-risk"><div class="wrap">
+<section class="sec fear" id="refusal"><div class="wrap">
   <div class="fsh"><div class="flabel">Why a refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
   <div class="fmeter">
     <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
@@ -503,7 +503,7 @@ html,body{overflow-x:clip;max-width:100%}
 </section>
 
 {{-- SECTION 2 — start where you are --}}
-<section class="sec sec2"><div class="wrap">
+<section class="sec sec2" id="how"><div class="wrap">
   <p class="eyebrow" style="justify-content:center">How we work</p>
   <h2 class="head">Refused, or stuck halfway? <span class="hl">We take it from here.</span></h2>
   <div class="grid2">
