@@ -306,6 +306,7 @@
     .sc-num{font:700 11px var(--display);color:var(--stamp-text);background:#fff;border:1px solid #cfe8e3;border-radius:999px;padding:3px 10px;white-space:nowrap}
     .sc-slots{display:flex;flex-wrap:wrap;gap:8px;padding:16px}
     .sc-ask{font-size:13px;color:var(--muted);margin:0;padding:14px 16px}
+    .sc-more{font-size:12px;color:var(--muted);margin:0;padding:0 16px 14px}
     .slot{position:relative;min-width:74px;text-align:center;border:1.5px solid var(--paper-edge);border-radius:12px;padding:9px 12px 10px;cursor:pointer;background:#f7fafb;transition:.12s;flex:0 0 auto}
     .slot:hover{border-color:var(--stamp);background:#eff8f6}
     .slot .wd{display:block;font:700 10px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -478,8 +479,11 @@
       centres.forEach(function (c) {
         var card = document.createElement('div'); card.className = 'sc-centre';
         var n = (c.slots && c.slots.length) || 0;
+        // "open" = real available-slot count in the 30-day window (sums to the board total).
+        // n = unique days shown below (capped at 6) — the pickable preview.
+        var openN = (typeof c.open === 'number') ? c.open : n;
         card.innerHTML = '<div class="sc-head"><span class="sc-name">' + esc(c.name) + '</span>' +
-          (n ? '<span class="sc-num">' + n + ' open</span>' : '') + '</div>';
+          (openN ? '<span class="sc-num">' + openN + ' open</span>' : '') + '</div>';
         if (n) {
           var row = document.createElement('div'); row.className = 'sc-slots';
           c.slots.forEach(function (s, i) {
@@ -495,6 +499,11 @@
             row.appendChild(b);
           });
           card.appendChild(row);
+          if (openN > n) {
+            var more = document.createElement('p'); more.className = 'sc-more';
+            more.textContent = 'Showing the ' + n + ' soonest days — more times available, confirmed live when you book.';
+            card.appendChild(more);
+          }
           first = false;
         } else {
           var p = document.createElement('p'); p.className = 'sc-ask';
