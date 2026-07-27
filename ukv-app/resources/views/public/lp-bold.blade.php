@@ -161,7 +161,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .peakstub .a{font:800 12px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
 .lpb .peakstub .b{font:800 26px var(--display);line-height:1;color:#16222E}
 .lpb .peakstub .c{font:800 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
-.lpb .peakstub .rdot{position:absolute;top:12px;right:14px;width:9px;height:9px;border-radius:50%;background:#e11d1d;animation:pkblink 1.1s ease-in-out infinite}
+.lpb .peakstub .rdot{position:absolute;top:12px;left:14px;width:9px;height:9px;border-radius:50%;background:#e11d1d;animation:pkblink 1.1s ease-in-out infinite}
 .lpb .peakstub .rdot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(225,29,29,.5);animation:pkring 1.1s ease-out infinite}
 @keyframes pkblink{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes pkring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.6);opacity:0}}
