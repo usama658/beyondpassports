@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slot picker — day then time</title>
+<style>
+:root{--ink:#16222E;--paper:#F4F6FA;--cta:#155E7A;--stamp:#2E9A8C;--stamp-text:#1F6E63;--muted:#5d6b76;--paper-edge:#dde3ec;--display:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--display);color:var(--ink);background:#e9edf1;padding:30px 16px;display:flex;justify-content:center}
+.modal{width:580px;max-width:96vw;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(20,34,46,.5);border:1px solid var(--paper-edge)}
+.mhead{padding:20px 22px;background:linear-gradient(135deg,#12233c,#0f4a61);color:#fff}
+.mhead .c{font:800 20px var(--display);letter-spacing:-.01em}
+.mhead .t{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13px;color:#cfe0dd}
+.mhead .dot{width:8px;height:8px;border-radius:50%;background:#5fd0be;box-shadow:0 0 0 4px rgba(95,208,190,.25)}
+.mhead .tot{font-weight:800;color:#fff}
+.body{padding:14px 16px 6px;max-height:60vh;overflow:auto}
+.sc-centre{border:1px solid var(--paper-edge);border-radius:14px;margin:0 0 12px;overflow:hidden}
+.sc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--paper)}
+.sc-name{font:800 14px var(--display);color:var(--ink)}
+.sc-num{font:700 11px var(--display);color:var(--stamp-text);background:#fff;border:1px solid #cfe8e3;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.sc-days{display:flex;flex-wrap:wrap;gap:8px;padding:16px 16px 6px}
+.day{position:relative;min-width:74px;text-align:center;border:1.5px solid var(--paper-edge);border-radius:12px;padding:9px 12px 10px;cursor:pointer;background:#f7fafb;transition:.12s}
+.day:hover{border-color:var(--stamp);background:#fff}
+.day.sel{border-color:var(--stamp);background:#eaf6f3;box-shadow:0 0 0 3px rgba(46,154,140,.16)}
+.day .soon{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font:800 8px var(--display);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--stamp);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.day .wd{display:block;font:700 10px var(--display);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.day .dm{display:block;font:800 13px var(--display);color:var(--ink);margin-top:1px}
+.day .cnt{display:block;font:700 9px var(--display);color:var(--stamp-text);margin-top:2px}
+.times{padding:2px 16px 16px;display:none}
+.times.show{display:block}
+.times .lbl{display:flex;align-items:center;gap:7px;font:700 11px var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:6px 0 9px}
+.times .lbl svg{width:14px;height:14px;fill:none;stroke:var(--stamp-text);stroke-width:2}
+.tchips{display:flex;flex-wrap:wrap;gap:8px}
+.tchip{border:1.5px solid var(--paper-edge);border-radius:10px;padding:8px 14px;font:800 13px var(--display);color:var(--ink);background:#fff;cursor:pointer;transition:.12s}
+.tchip:hover{border-color:var(--stamp)}
+.tchip.sel{background:var(--stamp-text);color:#fff;border-color:var(--stamp-text)}
+.foot{padding:8px 16px 20px;border-top:1px solid var(--paper-edge)}
+.note{font-size:12px;color:var(--muted);text-align:center;margin:12px 0}
+.book{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:0;border-radius:12px;padding:14px;font:800 15px var(--display);cursor:pointer;opacity:.5;pointer-events:none}
+.book.on{opacity:1;pointer-events:auto}
+</style></head>
+<body>
+<div class="modal">
+  <div class="mhead">
+    <div class="c">Germany — pick a day, then a time</div>
+    <div class="t"><span class="dot"></span><span class="tot">30 appointment slots</span> in the next 30 days · 3 centres · Available</div>
+  </div>
+  <div class="body" id="b"></div>
+  <div class="foot">
+    <p class="note" id="sel">Pick a day to see its available times.</p>
+    <button class="book" id="book"><svg viewBox="0 0 32 32" width="18" height="18" fill="#fff"><path d="M16 3a13 13 0 0 0-11 20L3 29l6-2A13 13 0 1 0 16 3z"/></svg><span id="blabel">Select a slot to book</span></button>
+  </div>
+</div>
+<script>
+// Per-centre open = total time-slots in 30d; each day carries its real times. Sums to 30.
+var centres = [
+  { name:'Germany VAC – London', days:[
+    {wd:'Thu',dm:'31 Jul',times:['09:00','10:30','13:00']},
+    {wd:'Fri',dm:'1 Aug',times:['09:00','14:30']},
+    {wd:'Mon',dm:'4 Aug',times:['10:30','13:00','14:30']},
+    {wd:'Wed',dm:'6 Aug',times:['09:00','10:30']},
+    {wd:'Fri',dm:'8 Aug',times:['13:00','14:30']} ]},          // 12
+  { name:'Germany VAC – Manchester', days:[
+    {wd:'Fri',dm:'1 Aug',times:['09:00','13:00']},
+    {wd:'Thu',dm:'7 Aug',times:['10:30','14:30']},
+    {wd:'Mon',dm:'11 Aug',times:['09:00','10:30','13:00']},
+    {wd:'Fri',dm:'15 Aug',times:['09:00','13:00','14:30']} ]},  // 10
+  { name:'Germany VAC – Edinburgh', days:[
+    {wd:'Mon',dm:'4 Aug',times:['10:30','13:00']},
+    {wd:'Thu',dm:'14 Aug',times:['09:00','14:30','10:30']},
+    {wd:'Mon',dm:'18 Aug',times:['09:00','13:00','14:30']} ]}   // 8
+];
+var b=document.getElementById('b'), sel=document.getElementById('sel'), book=document.getElementById('book'), blabel=document.getElementById('blabel');
+var pick={centre:null,day:null,time:null};
+var firstCentre=true;
+centres.forEach(function(c){
+  var open=c.days.reduce(function(s,d){return s+d.times.length;},0);
+  var card=document.createElement('div'); card.className='sc-centre';
+  card.innerHTML='<div class="sc-head"><span class="sc-name">'+c.name+'</span><span class="sc-num">'+open+' open</span></div>';
+  var drow=document.createElement('div'); drow.className='sc-days';
+  var tbox=document.createElement('div'); tbox.className='times';
+  c.days.forEach(function(d,i){
+    var day=document.createElement('button'); day.className='day';
+    day.innerHTML=(firstCentre&&i===0?'<span class="soon">Soonest</span>':'')+'<span class="wd">'+d.wd+'</span><span class="dm">'+d.dm+'</span><span class="cnt">'+d.times.length+' times</span>';
+    day.addEventListener('click',function(){
+      Array.prototype.forEach.call(document.querySelectorAll('.day'),function(x){x.classList.remove('sel');});
+      day.classList.add('sel');
+      // render this day's times into THIS centre's time box (the "clock")
+      tbox.innerHTML='<div class="lbl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Available times — '+d.wd+' '+d.dm+'</div>';
+      var chips=document.createElement('div'); chips.className='tchips';
+      d.times.slice().sort().forEach(function(t){
+        var chip=document.createElement('button'); chip.className='tchip'; chip.textContent=t;
+        chip.addEventListener('click',function(){
+          Array.prototype.forEach.call(tbox.querySelectorAll('.tchip'),function(x){x.classList.remove('sel');});
+          chip.classList.add('sel');
+          pick={centre:c.name,day:d.wd+' '+d.dm,time:t};
+          sel.textContent='Selected: '+d.wd+' '+d.dm+' at '+t+' · '+c.name;
+          book.classList.add('on'); blabel.textContent='Book '+d.wd+' '+d.dm+' '+t+' →';
+        });
+        chips.appendChild(chip);
+      });
+      tbox.appendChild(chips); tbox.classList.add('show');
+      tbox.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+    drow.appendChild(day);
+  });
+  card.appendChild(drow); card.appendChild(tbox); b.appendChild(card); firstCentre=false;
+});
+</script>
+</body></html>
