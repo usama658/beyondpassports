@@ -160,22 +160,6 @@ html,body{overflow-x:clip;max-width:100%}
 @keyframes lvborder{0%,100%{border-color:#e11d1d}50%{border-color:rgba(225,29,29,.25)}}
 @keyframes lvdot{0%,100%{opacity:1;box-shadow:0 0 0 5px rgba(225,29,29,.22)}50%{opacity:.4;box-shadow:0 0 0 5px rgba(225,29,29,0)}}
 .lpb .bd .live .dot{background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22)}
-/* Summer-peak promo (T1) — stub-only tile, full width, red blinking dot + ring. Whole tile links to WhatsApp. */
-.lpb .peakstub{position:relative;display:flex;align-items:baseline;justify-content:center;gap:12px;text-align:center;text-decoration:none;color:inherit;width:100%;margin:0 0 22px;padding:20px 44px;background:#fff;border:1px solid #e6ebf1;border-radius:14px;box-shadow:0 18px 44px -28px rgba(20,34,46,.34);transition:transform .16s ease,box-shadow .18s ease}
-.lpb .peakstub:hover{transform:translateY(-2px);box-shadow:0 24px 54px -28px rgba(20,34,46,.42)}
-.lpb .peakstub .a{font:800 12px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#8a97a0}
-.lpb .peakstub .b{font:800 26px var(--display);line-height:1;color:#16222E}
-.lpb .peakstub .c{font:800 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#b5791f}
-.lpb .peakstub .rdot{position:absolute;top:12px;left:14px;width:9px;height:9px;border-radius:50%;background:#e11d1d;animation:pkblink 1.1s ease-in-out infinite}
-.lpb .peakstub .rdot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(225,29,29,.5);animation:pkring 1.1s ease-out infinite}
-@keyframes pkblink{0%,100%{opacity:1}50%{opacity:.35}}
-@keyframes pkring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.6);opacity:0}}
-@media(max-width:640px){
-  .lpb .peakstub{gap:9px;padding:16px 34px}
-  .lpb .peakstub .a{font-size:11px;letter-spacing:.16em}
-  .lpb .peakstub .b{font-size:20px}
-  .lpb .peakstub .c{font-size:11px}
-}
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
 .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
@@ -451,14 +435,6 @@ html,body{overflow-x:clip;max-width:100%}
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
-  @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
-  @if (in_array(now()->month, [6, 7, 8]))
-  {{-- Summer-peak promo (auto-shows Jun–Aug only). Stub-only tile + red blinking dot. --}}
-  <a class="peakstub" href="{{ $wa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
-    <span class="rdot" aria-hidden="true"></span>
-    <span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span>
-  </a>
-  @endif
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
