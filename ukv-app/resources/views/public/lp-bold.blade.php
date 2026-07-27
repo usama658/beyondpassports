@@ -40,7 +40,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
 .lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:13ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
-.lpb .hnote{color:var(--ink);font-weight:600;font-size:.98rem;line-height:1.5;max-width:46ch;margin:14px 0 0;padding-left:13px;border-left:3px solid var(--stamp)}
+/* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). */
+.lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:46ch}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
 .lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
 .lpb .formcard .fl{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
