@@ -139,7 +139,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
 .lpb .pathband{padding:4px 0 44px;background:var(--paper)}
 /* Refund "passport ink stamp" — hero trust mark (light bg). Links to /legal#refunds. */
-.lpb .rstamp{display:inline-flex;flex-direction:column;align-items:center;margin-top:22px;transform:rotate(-6deg);border:2.5px solid var(--stamp-text);border-radius:8px;padding:9px 17px;text-align:center;color:var(--stamp-text);position:relative;text-decoration:none;transition:transform .2s ease}
+.lpb .rstamp{display:inline-flex;flex-direction:column;align-items:center;margin:0 0 20px;transform:rotate(-6deg);border:2.5px solid var(--stamp-text);border-radius:8px;padding:9px 17px;text-align:center;color:var(--stamp-text);position:relative;text-decoration:none;transition:transform .2s ease}
 .lpb .rstamp:hover{transform:rotate(-6deg) scale(1.05)}
 .lpb .rstamp::after{content:"";position:absolute;inset:3px;border:1px solid var(--stamp-text);border-radius:5px;opacity:.5}
 .lpb .rstamp .k{font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase}
@@ -403,10 +403,10 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="hero"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
+    <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">if refused</span></a>
     <p class="eyebrow heyebrow">Schengen visas · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
-    <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">if refused</span></a>
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
