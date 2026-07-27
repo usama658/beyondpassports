@@ -307,6 +307,19 @@
     .sc-slots{display:flex;flex-wrap:wrap;gap:8px;padding:16px}
     .sc-ask{font-size:13px;color:var(--muted);margin:0;padding:14px 16px}
     .sc-more{font-size:12px;color:var(--muted);margin:0;padding:0 16px 14px}
+    .slot .ct{display:block;font:700 9px var(--display);color:var(--stamp-text);margin-top:2px}
+    .slot.sel .ct{color:rgba(255,255,255,.9)}
+    /* Day -> time step (revealed when a day is picked) */
+    .sc-times{padding:0 16px 16px;display:none}
+    .sc-times.show{display:block}
+    .sc-tlbl{display:flex;align-items:center;gap:7px;font:700 11px var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:2px 0 10px}
+    .sc-tlbl svg{width:14px;height:14px;stroke:var(--stamp-text)}
+    .tchips{display:flex;flex-wrap:wrap;gap:8px}
+    .tchip{border:1.5px solid var(--paper-edge);border-radius:10px;padding:8px 14px;font:800 13px var(--display);color:var(--ink);background:#f7fafb;cursor:pointer;transition:.12s}
+    .tchip:hover{border-color:var(--stamp);background:#eff8f6}
+    .tchip.sel{background:var(--cta);color:#fff;border-color:var(--cta)}
+    .slotm.lim .tchip.sel{background:#b5791f;border-color:#b5791f}
+    .slotm.low .tchip.sel{background:#c0392b;border-color:#c0392b}
     .slot{position:relative;min-width:74px;text-align:center;border:1.5px solid var(--paper-edge);border-radius:12px;padding:9px 12px 10px;cursor:pointer;background:#f7fafb;transition:.12s;flex:0 0 auto}
     .slot:hover{border-color:var(--stamp);background:#eff8f6}
     .slot .wd{display:block;font:700 10px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -456,15 +469,14 @@
         (where ? ' at ' + where : '') + '. Please check the soonest live slot and book it for me.';
       return 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg);
     }
-    function select(btn, centreName, dateLabel) {
-      Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
-      btn.classList.add('sel');
-      centre = centreName; slot = dateLabel;
+    // A time is chosen -> that's the final selection (day + time).
+    function selectTime(tbtn, centreName, dayLabel, timeLabel) {
+      Array.prototype.forEach.call(box.querySelectorAll('.tchip'), function (x) { x.classList.remove('sel'); });
+      tbtn.classList.add('sel');
+      centre = centreName; slot = dayLabel + ' ' + timeLabel;
       book.setAttribute('aria-disabled', 'false');
       book.href = bookHref();
       setLabel('Book ' + slot + ' now →');
-      // Bring the CTA into view so the next step is obvious after picking a slot
-      // (matters most on mobile, where the button sits below the centre list).
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
     }
     function renderCentres(data) {
@@ -478,32 +490,46 @@
       var first = true;
       centres.forEach(function (c) {
         var card = document.createElement('div'); card.className = 'sc-centre';
-        var n = (c.slots && c.slots.length) || 0;
-        // "open" = real available-slot count in the 30-day window (sums to the board total).
-        // n = unique days shown below (capped at 6) — the pickable preview.
-        var openN = (typeof c.open === 'number') ? c.open : n;
+        var days = (c.days) || [];
+        // "open" = real available time-slots in the 30-day window (sums to the board total).
+        var openN = (typeof c.open === 'number') ? c.open : days.length;
         card.innerHTML = '<div class="sc-head"><span class="sc-name">' + esc(c.name) + '</span>' +
           (openN ? '<span class="sc-num">' + openN + ' open</span>' : '') + '</div>';
-        if (n) {
+        if (days.length) {
           var row = document.createElement('div'); row.className = 'sc-slots';
-          c.slots.forEach(function (s, i) {
+          var tbox = document.createElement('div'); tbox.className = 'sc-times';
+          days.forEach(function (d, i) {
             // Label is "Thu 24 Jul" — split weekday from the date for the day-cell.
-            var parts = String(s.label).split(' ');
+            var parts = String(d.label).split(' ');
             var wd = parts.length > 1 ? parts[0] : '';
-            var dm = parts.length > 1 ? parts.slice(1).join(' ') : s.label;
+            var dm = parts.length > 1 ? parts.slice(1).join(' ') : d.label;
+            var times = d.times || [];
             var b = document.createElement('button'); b.type = 'button'; b.className = 'slot';
             b.innerHTML = (first && i === 0 ? '<span class="soon">Soonest</span>' : '') +
               (wd ? '<span class="wd">' + esc(wd) + '</span>' : '') +
-              '<span class="dm">' + esc(dm) + '</span>';
-            b.addEventListener('click', function () { select(b, c.name, s.label); });
+              '<span class="dm">' + esc(dm) + '</span>' +
+              '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>';
+            b.addEventListener('click', function () {
+              Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
+              b.classList.add('sel');
+              // Reveal this day's times (the "clock") in this centre's time box.
+              tbox.innerHTML = '<div class="sc-tlbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Times for ' + esc(d.label) + '</div>';
+              var chips = document.createElement('div'); chips.className = 'tchips';
+              times.forEach(function (t) {
+                var tc = document.createElement('button'); tc.type = 'button'; tc.className = 'tchip';
+                tc.textContent = t.label;
+                tc.addEventListener('click', function () { selectTime(tc, c.name, d.label, t.label); });
+                chips.appendChild(tc);
+              });
+              tbox.appendChild(chips); tbox.classList.add('show');
+              // Picking a new day clears any prior time selection.
+              book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href'); setLabel('Select a time to book');
+              try { tbox.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
+            });
             row.appendChild(b);
           });
           card.appendChild(row);
-          if (openN > n) {
-            var more = document.createElement('p'); more.className = 'sc-more';
-            more.textContent = 'Showing the ' + n + ' soonest days — more times available, confirmed live when you book.';
-            card.appendChild(more);
-          }
+          card.appendChild(tbox);
           first = false;
         } else {
           var p = document.createElement('p'); p.className = 'sc-ask';

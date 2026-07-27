@@ -40,37 +40,42 @@ class AppointmentSlotsController extends Controller
         $windowEnd = now()->addDays(30);
 
         $centres = $destination->supplyNodes
-            ->map(function ($node) use ($slots, $windowEnd) {
-                // Pull a wider window, then show up to 6 unique DATES (a centre can have several
-                // times on one day — the customer picks a day; we confirm the exact time live).
-                $available = $slots->availableFor($node, 40);
-
-                // Real available-slot count in the board window (the true "N open", not the
-                // capped 6-day preview below).
-                $openCount = CentreSlot::query()
+            ->map(function ($node) use ($windowEnd) {
+                // Every available slot in the 30-day window, soonest first. Grouped into days,
+                // each day carrying its real times — the customer picks a day, then a time.
+                $available = CentreSlot::query()
                     ->where('supply_node_id', $node->getKey())
                     ->available()
                     ->where('slot_at', '<=', $windowEnd)
-                    ->count();
+                    ->orderBy('slot_at')
+                    ->get();
+
+                $days = $available
+                    ->groupBy(fn ($s) => $s->slot_at->toDateString())
+                    ->map(fn ($group, $iso) => [
+                        'iso' => $iso,
+                        'label' => $group->first()->slot_at->format('D j M'),
+                        'times' => $group
+                            ->map(fn ($s) => [
+                                'iso' => $s->slot_at->toIso8601String(),
+                                'label' => $s->slot_at->format('H:i'),
+                            ])
+                            ->values()
+                            ->all(),
+                    ])
+                    ->values()
+                    ->all();
 
                 return [
                     'name' => $node->name,
                     'city' => $this->cityFrom($node->name),
                     'postcode' => $node->postcode,
-                    'open' => $openCount,
-                    'slots' => $available
-                        ->map(fn ($s) => [
-                            'iso' => $s->slot_at->toDateString(),
-                            'label' => $s->slot_at->format('D j M'),
-                        ])
-                        ->unique('iso')
-                        ->take(6)
-                        ->values()
-                        ->all(),
+                    'open' => $available->count(), // true total (sums to the board's country total)
+                    'days' => $days,
                 ];
             })
             // Soonest-slot centres first; centres with no slots sink to the bottom.
-            ->sortBy(fn ($c) => $c['slots'][0]['iso'] ?? '9999-12-31')
+            ->sortBy(fn ($c) => $c['days'][0]['iso'] ?? '9999-12-31')
             ->values()
             ->all();
 
