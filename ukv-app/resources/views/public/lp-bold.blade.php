@@ -40,6 +40,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
 .lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:13ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
+.lpb .hnote{color:var(--ink);font-weight:600;font-size:.98rem;line-height:1.5;max-width:46ch;margin:14px 0 0;padding-left:13px;border-left:3px solid var(--stamp)}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
 .lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
 .lpb .formcard .fl{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
@@ -397,6 +398,7 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="eyebrow heyebrow">Schengen visa consultants · Application, appointment &amp; refusal</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
+    <p class="hnote">Schengen visa consultants for UK applicants: first-time applications, appointment slots, and refusal recovery.</p>
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
