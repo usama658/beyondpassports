@@ -1,0 +1,33 @@
+<!-- DRAFT: refund "passport ink stamp" badge (round-2 variant G), saved 2026-07-27.
+     Rotated, distressed inked look. Two variants: light bg + dark bg (.on-dark).
+     Self-contained CSS + markup. lp-bold token fallbacks baked in. Honest copy. -->
+<style>
+.rb-stamp{display:inline-block;transform:rotate(-7deg);border:2.5px solid var(--stamp-t,#1F6E63);border-radius:8px;
+  padding:10px 16px;text-align:center;color:var(--stamp-t,#1F6E63);position:relative;background:transparent;
+  mix-blend-mode:multiply;opacity:.92;transition:transform .2s ease;font-family:"Outfit",system-ui,sans-serif}
+.rb-stamp:hover{transform:rotate(-7deg) scale(1.05)}
+.rb-stamp::after{content:"";position:absolute;inset:3px;border:1px solid var(--stamp-t,#1F6E63);border-radius:5px;opacity:.5}
+.rb-stamp .k{font-weight:800;font-size:9px;letter-spacing:.24em;text-transform:uppercase}
+.rb-stamp .v{font-weight:800;font-size:22px;letter-spacing:.04em;margin:1px 0;line-height:1}
+.rb-stamp .s{font-weight:700;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
+
+/* DARK variant — place on a dark hero/band. Add class "on-dark". */
+.rb-stamp.on-dark{color:var(--on-dark,#79CFC2);border-color:var(--on-dark,#79CFC2);mix-blend-mode:normal;opacity:1}
+.rb-stamp.on-dark::after{border-color:var(--on-dark,#79CFC2)}
+</style>
+
+<!-- LIGHT background -->
+<a class="rb-stamp" href="/legal#refunds" style="text-decoration:none">
+  <span class="k">Refund Promise</span>
+  <span class="v" style="display:block">100% BACK</span>
+  <span class="s">if refused</span>
+</a>
+
+<!-- DARK background -->
+<a class="rb-stamp on-dark" href="/legal#refunds" style="text-decoration:none">
+  <span class="k">Refund Promise</span>
+  <span class="v" style="display:block">100% BACK</span>
+  <span class="s">if refused</span>
+</a>
+
+<!-- Fine print to place nearby: Refunds cover our service fee only, not government/third-party fees. No guarantee of a decision. Terms apply. -->
