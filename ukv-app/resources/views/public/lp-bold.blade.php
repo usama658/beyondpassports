@@ -494,7 +494,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">3</div><div><h3>It stays for 5 years</h3><p>Not 1. Not 2. Five years on a shared record that follows every future application.</p></div><div class="bar"><span></span></div></div>
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
-  <div class="callout"><p><b>We reviewed {{ \App\Support\SiteStats::lettersReviewed() }}+ refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
+  <div class="callout"><p><b>We reviewed {{ \App\Support\SiteStats::lettersReviewed() }} refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
   <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['variant' => 'dark'])
