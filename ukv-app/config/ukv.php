@@ -126,15 +126,19 @@ return [
 
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
+    // Public social links. Consumers array_filter() these, so a null entry is hidden
+    // everywhere (footer, about-follow, schema sameAs). Facebook/Reddit/Quora are hidden
+    // by default and toggle back on per-network with UKV_SOCIAL_{NET}_SHOW=true in .env
+    // (then php artisan config:cache) — real URLs kept below so nothing is lost.
     'social' => [
-        'facebook'  => env('UKV_SOCIAL_FACEBOOK', 'https://www.facebook.com/people/Beyond-Passports/61591144445879/'),
+        'facebook'  => env('UKV_SOCIAL_FACEBOOK_SHOW', false) ? env('UKV_SOCIAL_FACEBOOK', 'https://www.facebook.com/people/Beyond-Passports/61591144445879/') : null,
         'instagram' => env('UKV_SOCIAL_INSTAGRAM', 'https://www.instagram.com/beyondpassportsuk/'),
         'tiktok'    => env('UKV_SOCIAL_TIKTOK', 'https://www.tiktok.com/@beyond.passports'),
         'youtube'   => env('UKV_SOCIAL_YOUTUBE', 'https://www.youtube.com/@beyondpassports'),
         'linkedin'  => env('UKV_SOCIAL_LINKEDIN', 'https://www.linkedin.com/in/beyond-passports'),
         'pinterest' => env('UKV_SOCIAL_PINTEREST', 'https://www.pinterest.com/beyondpassports/'),
-        'reddit'    => env('UKV_SOCIAL_REDDIT', 'https://www.reddit.com/r/beyondpassports/'),
-        'quora'     => env('UKV_SOCIAL_QUORA', 'https://www.quora.com/profile/Beyond-Passports'),
+        'reddit'    => env('UKV_SOCIAL_REDDIT_SHOW', false) ? env('UKV_SOCIAL_REDDIT', 'https://www.reddit.com/r/beyondpassports/') : null,
+        'quora'     => env('UKV_SOCIAL_QUORA_SHOW', false) ? env('UKV_SOCIAL_QUORA', 'https://www.quora.com/profile/Beyond-Passports') : null,
     ],
 
     // Pinterest domain-verify token (Settings > Claim > add HTML tag). Renders the
