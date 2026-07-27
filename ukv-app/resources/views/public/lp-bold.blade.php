@@ -154,8 +154,11 @@ html,body{overflow-x:clip;max-width:100%}
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
-.lpb .bd .live{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:8px 16px 8px 15px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E}
+.lpb .bd .live{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:8px 16px 8px 15px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E;animation:lvborder 1.1s ease-in-out infinite}
 .lpb .bd .live .lv-mo{color:#e11d1d}
+.lpb .bd .live .dot{animation:lvdot 1.1s ease-in-out infinite}
+@keyframes lvborder{0%,100%{border-color:#e11d1d}50%{border-color:rgba(225,29,29,.25)}}
+@keyframes lvdot{0%,100%{opacity:1;box-shadow:0 0 0 5px rgba(225,29,29,.22)}50%{opacity:.4;box-shadow:0 0 0 5px rgba(225,29,29,0)}}
 .lpb .bd .live .dot{background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22)}
 /* Summer-peak promo (T1) — stub-only tile, full width, red blinking dot + ring. Whole tile links to WhatsApp. */
 .lpb .peakstub{position:relative;display:flex;align-items:baseline;justify-content:center;gap:12px;text-align:center;text-decoration:none;color:inherit;width:100%;margin:0 0 22px;padding:20px 44px;background:#fff;border:1px solid #e6ebf1;border-radius:14px;box-shadow:0 18px 44px -28px rgba(20,34,46,.34);transition:transform .16s ease,box-shadow .18s ease}
