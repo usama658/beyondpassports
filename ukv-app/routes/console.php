@@ -22,6 +22,10 @@ Artisan::command('inspire', function () {
 // Release expired appointment-slot holds back to the available pool.
 \Illuminate\Support\Facades\Schedule::command('slots:release-expired')->everyFiveMinutes();
 
+// Keep a rolling ~8-week buffer of future appointment slots so the board/picker never
+// runs empty as dates pass (cleans stale past-dated available slots at the same time).
+\Illuminate\Support\Facades\Schedule::command('slots:provision 8')->weekly()->sundays()->at('04:00')->withoutOverlapping();
+
 // Public appointment board: derive snapshots from real bookings + tidy long-dead snapshots.
 \Illuminate\Support\Facades\Schedule::command('availability:derive')->dailyAt('06:30');
 \Illuminate\Support\Facades\Schedule::command('availability:sweep')->dailyAt('06:45');
