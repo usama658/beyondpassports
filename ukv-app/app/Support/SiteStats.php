@@ -75,7 +75,7 @@ final class SiteStats
     /** Appointment operators named in copy, e.g. "VFS Global, TLScontact and BLS". */
     public static function appointmentOperators(): string
     {
-        return (string) config('ukv.stats.appointment_operators', 'VFS Global, TLScontact and BLS');
+        return (string) config('ukv.stats.appointment_operators', 'official visa application');
     }
 
     /** Founding year as an int, e.g. 2019. */

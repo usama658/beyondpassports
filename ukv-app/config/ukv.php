@@ -236,7 +236,7 @@ return [
         'letters_reviewed' => env('UKV_STAT_LETTERS_REVIEWED', '600'), // refusal letters reviewed last year (display adds "+")
         // Appointment operators named in copy. Schengen centres run under different operators
         // (VFS Global / TLScontact / BLS) per country, so keep this editable in one place.
-        'appointment_operators' => env('UKV_APPOINTMENT_OPERATORS', 'VFS Global, TLScontact and BLS'),
+        'appointment_operators' => env('UKV_APPOINTMENT_OPERATORS', 'official visa application'),
     ],
 
     // ── Service pricing ───────────────────────────────────────────────────────
