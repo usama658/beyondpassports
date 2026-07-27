@@ -154,7 +154,7 @@ html,body{overflow-x:clip;max-width:100%}
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
-.lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E}
+.lpb .bd .live{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:8px 16px 8px 15px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E}
 .lpb .bd .live .lv-mo{color:#e11d1d}
 .lpb .bd .live .dot{background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22)}
 /* Summer-peak promo (T1) — stub-only tile, full width, red blinking dot + ring. Whole tile links to WhatsApp. */
