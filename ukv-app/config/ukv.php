@@ -234,6 +234,9 @@ return [
         'insurance_min' => env('UKV_STAT_INSURANCE_MIN', '€30,000'), // Schengen medical-cover minimum
         'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '7 minutes'),// first-response target
         'letters_reviewed' => env('UKV_STAT_LETTERS_REVIEWED', '600'), // refusal letters reviewed last year (display adds "+")
+        // Appointment operators named in copy. Schengen centres run under different operators
+        // (VFS Global / TLScontact / BLS) per country, so keep this editable in one place.
+        'appointment_operators' => env('UKV_APPOINTMENT_OPERATORS', 'VFS Global, TLScontact and BLS'),
     ],
 
     // ── Service pricing ───────────────────────────────────────────────────────

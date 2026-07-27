@@ -440,7 +440,7 @@ html,body{overflow-x:clip;max-width:100%}
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
-  <p class="bintro">We monitor Schengen visa appointment slots at VFS Global centres in London, Manchester, and Edinburgh, updated daily.</p>
+  <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
@@ -585,7 +585,7 @@ html,body{overflow-x:clip;max-width:100%}
       @php
         $faqs = [
           ['q'=>'Are you registered Schengen visa agents in the UK?','a'=>'Yes. Beyond Passports is a registered UK company (Companies House no. 17331903). Our consultants handle Schengen visa applications, appointment bookings, and refusal recovery for UK applicants.'],
-          ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We secure slots at VFS Global centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
+          ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We secure slots at '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
           ['q'=>'Do you help with Schengen visa applications for first-time applicants from the UK?','a'=>'Yes. We handle the full Schengen visa application for UK applicants: documents, appointment booking, and submission. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
           ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 29 countries and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],

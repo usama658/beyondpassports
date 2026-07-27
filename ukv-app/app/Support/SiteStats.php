@@ -72,6 +72,12 @@ final class SiteStats
         return (string) config('ukv.stats.letters_reviewed', '600');
     }
 
+    /** Appointment operators named in copy, e.g. "VFS Global, TLScontact and BLS". */
+    public static function appointmentOperators(): string
+    {
+        return (string) config('ukv.stats.appointment_operators', 'VFS Global, TLScontact and BLS');
+    }
+
     /** Founding year as an int, e.g. 2019. */
     public static function foundedYear(): int
     {
