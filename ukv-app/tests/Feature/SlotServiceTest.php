@@ -169,29 +169,46 @@ final class SlotServiceTest extends TestCase
         $this->assertNotNull($farItem['next_slot']);
     }
 
-    public function test_provision_fills_weekday_slots_for_bookable_centres_only_and_is_idempotent(): void
+    public function test_provision_fills_scarce_weekday_slots_for_bookable_centres_only_and_is_idempotent(): void
     {
         $bookable = $this->makeNode(['node_key' => 'centre-book', 'we_book_here' => true]);
         $notBookable = $this->makeNode(['node_key' => 'centre-nobook', 'we_book_here' => false]);
 
-        $r = $this->service()->provision(weeks: 1, times: ['09:00', '13:00']);
+        // 4 weeks so there are enough weekdays for the lead-time scarcity buckets to fire.
+        $r = $this->service()->provision(weeks: 4);
 
-        // 1 week = 5 weekdays * 2 times = 10 slots, bookable centre only.
         $this->assertSame(1, $r['centres']);
-        $this->assertSame(10, $r['created']);
-        $this->assertSame(10, CentreSlot::where('supply_node_id', $bookable->id)->count());
-        $this->assertSame(0, CentreSlot::where('supply_node_id', $notBookable->id)->count());
+        $this->assertSame(0, CentreSlot::where('supply_node_id', $notBookable->id)->count(), 'Non-bookable centre gets no slots.');
 
-        // All created slots are future-dated weekdays.
+        $count = CentreSlot::where('supply_node_id', $bookable->id)->count();
+        // Real VACs are scarce: fill only SOME weekdays (not every one), so the count sits well
+        // below the dense ceiling of 20 weekdays * 2 times = 40. A believable handful, and > 0.
+        $this->assertGreaterThan(0, $count, 'Some slots should be provisioned.');
+        $this->assertLessThan(40, $count, 'Provisioning must be sparse, not fill every weekday.');
+        $this->assertSame($count, $r['created']);
+
+        // All created slots are future-dated weekdays, one per distinct timestamp.
         foreach (CentreSlot::where('supply_node_id', $bookable->id)->get() as $slot) {
             $this->assertTrue($slot->slot_at->isFuture());
             $this->assertTrue($slot->slot_at->isWeekday());
         }
 
-        // Re-running the same window creates nothing new (idempotent).
-        $r2 = $this->service()->provision(weeks: 1, times: ['09:00', '13:00']);
+        // Deterministic per (centre, day) => re-running the same window creates nothing new.
+        $r2 = $this->service()->provision(weeks: 4);
         $this->assertSame(0, $r2['created']);
-        $this->assertSame(10, CentreSlot::where('supply_node_id', $bookable->id)->count());
+        $this->assertSame($count, CentreSlot::where('supply_node_id', $bookable->id)->count());
+    }
+
+    public function test_provision_reset_drops_future_unbooked_available_slots_but_keeps_booked(): void
+    {
+        $node = $this->makeNode(['node_key' => 'centre-reset', 'we_book_here' => true]);
+        $futureAvailable = $this->makeSlot($node, ['slot_at' => Carbon::now()->addDays(3)]);
+        $futureBooked = $this->makeSlot($node, ['status' => 'booked', 'slot_at' => Carbon::now()->addDays(4)]);
+
+        $this->service()->provision(weeks: 4, reset: true);
+
+        $this->assertNull(CentreSlot::find($futureAvailable->id), 'Future unbooked available slot is dropped on reset.');
+        $this->assertNotNull(CentreSlot::find($futureBooked->id), 'Booked slots are never touched by reset.');
     }
 
     public function test_provision_clears_stale_past_available_slots_by_default(): void

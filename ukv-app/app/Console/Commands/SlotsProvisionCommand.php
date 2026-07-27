@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Log;
 class SlotsProvisionCommand extends Command
 {
     /** @var string */
-    protected $signature = 'slots:provision {weeks=4 : Upcoming weeks of weekday slots to fill} {--keep-past : Do not delete stale past-dated available slots first}';
+    protected $signature = 'slots:provision {weeks=4 : Upcoming weeks of weekday slots to fill} {--keep-past : Do not delete stale past-dated available slots first} {--reset : Also drop future *unbooked* available slots first (one-time realism reset)}';
 
     /** @var string */
     protected $description = 'Provision future available appointment slots across all "we book here" centres';
@@ -34,7 +34,7 @@ class SlotsProvisionCommand extends Command
     {
         $weeks = max(1, (int) $this->argument('weeks'));
 
-        $r = $slots->provision($weeks, cleanPast: ! $this->option('keep-past'));
+        $r = $slots->provision($weeks, cleanPast: ! $this->option('keep-past'), reset: (bool) $this->option('reset'));
 
         $this->info("Provisioned {$r['created']} new slot(s) across {$r['centres']} centre(s) for the next {$weeks} week(s); cleaned {$r['cleaned']} stale slot(s).");
         Log::info('Provisioned appointment slots.', $r + ['weeks' => $weeks]);

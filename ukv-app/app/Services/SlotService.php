@@ -214,22 +214,34 @@ final class SlotService
             ]);
     }
 
+    /** HH:MM pool a provisioned open day draws its 1–2 slot times from. */
+    private const SLOT_TIME_POOL = ['09:00', '10:00', '11:20', '13:30', '14:40', '15:50'];
+
     /**
      * Provision future available slots across all "we book here" centres (ops inventory).
      *
-     * Creates one slot per time in $times on each weekday for the next $weeks weeks (5 weekdays
-     * per week), skipping weekends and any slot that already exists — idempotent, so it is safe to
-     * re-run / extend the window. Optionally clears stale past-dated available slots first. Returns
-     * counts for ops visibility.
+     * Real visa application centres are SCARCE, and near dates fill first — so this does NOT fill
+     * every weekday. For each (centre, weekday) it deterministically decides whether that day is open
+     * by lead time (rarely in the next few days, more often further out) and, when open, creates just
+     * 1–2 times drawn from a small pool. Deterministic per (centre, date) => idempotent and stable
+     * across re-runs / window extensions, so per-centre counts stay believable (roughly a handful of
+     * open slots in any 30-day window, not ~100). Skips weekends + any slot that already exists.
+     *
+     * Clears stale past-dated available slots first ($cleanPast). Pass $reset to ALSO drop future
+     * *unbooked* available slots — a one-time realism reset that replaces a denser legacy fill with
+     * this scarce pattern (held/booked slots are never touched).
      *
      * NB: this is inventory the team controls. For Schengen destinations booked on external portals,
      * provisioned counts must reflect real bookable availability before public/paid traffic (DMCCA).
      *
-     * @param  list<string>  $times  HH:MM slot times to create on each weekday
+     * @param  list<string>|null  $times  HH:MM pool to draw open-day slot times from (defaults to the pool)
      * @return array{centres:int, created:int, cleaned:int}
      */
-    public function provision(int $weeks = 4, array $times = ['09:00', '10:30', '13:00', '14:30'], bool $cleanPast = true): array
+    public function provision(int $weeks = 4, ?array $times = null, bool $cleanPast = true, bool $reset = false): array
     {
+        $times = $times ?: self::SLOT_TIME_POOL;
+        $poolN = count($times);
+
         $cleaned = 0;
         if ($cleanPast) {
             $cleaned = CentreSlot::query()
@@ -237,33 +249,50 @@ final class SlotService
                 ->where('slot_at', '<', now())
                 ->delete();
         }
+        if ($reset) {
+            // Replace a denser legacy fill: drop only future *unbooked* available slots.
+            $cleaned += CentreSlot::query()
+                ->where('status', 'available')
+                ->where('slot_at', '>=', now())
+                ->delete();
+        }
 
         $centres = SupplyNode::query()->where('we_book_here', true)->get();
-        $weekdaysToFill = max(1, $weeks) * 5;
         $created = 0;
+        $today = Carbon::today();
+        $end = Carbon::tomorrow()->addWeeks(max(1, $weeks));
 
         foreach ($centres as $centre) {
             $day = Carbon::tomorrow();
-            $filled = 0;
-            while ($filled < $weekdaysToFill) {
+            while ($day->lt($end)) {
                 if ($day->isWeekday()) {
-                    foreach ($times as $time) {
-                        [$h, $m] = array_pad(explode(':', $time), 2, '0');
-                        $at = (clone $day)->setTime((int) $h, (int) $m, 0);
-                        $exists = CentreSlot::query()
-                            ->where('supply_node_id', $centre->id)
-                            ->where('slot_at', $at)
-                            ->exists();
-                        if (! $exists) {
-                            CentreSlot::create([
-                                'supply_node_id' => $centre->id,
-                                'slot_at' => $at,
-                                'status' => 'available',
-                            ]);
-                            $created++;
+                    // Deterministic per (centre, day): same input => same open/closed + same times.
+                    $seed = crc32($centre->getKey().'|'.$day->toDateString());
+                    $daysOut = (int) $today->diffInDays($day);
+                    // Scarcity by lead time — soon = rare, further out = looser.
+                    $open = $daysOut <= 5 ? ($seed % 5 === 0)
+                        : ($daysOut <= 14 ? ($seed % 3 === 0) : ($seed % 2 === 0));
+                    if ($open) {
+                        $howMany = ($seed % 4 === 0) ? 2 : 1; // mostly 1 time, sometimes 2
+                        $offset = $seed % $poolN;
+                        for ($k = 0; $k < $howMany; $k++) {
+                            $time = $times[($offset + $k) % $poolN];
+                            [$h, $m] = array_pad(explode(':', $time), 2, '0');
+                            $at = (clone $day)->setTime((int) $h, (int) $m, 0);
+                            $exists = CentreSlot::query()
+                                ->where('supply_node_id', $centre->id)
+                                ->where('slot_at', $at)
+                                ->exists();
+                            if (! $exists) {
+                                CentreSlot::create([
+                                    'supply_node_id' => $centre->id,
+                                    'slot_at' => $at,
+                                    'status' => 'available',
+                                ]);
+                                $created++;
+                            }
                         }
                     }
-                    $filled++;
                 }
                 $day->addDay();
             }
