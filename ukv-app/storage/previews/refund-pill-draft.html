@@ -1,0 +1,19 @@
+<!-- DRAFT: refund "inline pill" badge (variant F), saved 2026-07-27.
+     Compact — sits in forms, next to a CTA, or in the footer.
+     Self-contained CSS + markup. lp-bold tokens. Honest copy. -->
+<style>
+.rb-pill{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 10px;border-radius:999px;text-decoration:none;
+  background:#fff;border:1.5px solid var(--stamp,#2E9A8C);box-shadow:0 8px 20px -12px rgba(31,110,99,.5);
+  transition:transform .18s ease,box-shadow .18s ease}
+.rb-pill:hover{transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(31,110,99,.6)}
+.rb-pill .d{width:30px;height:30px;border-radius:50%;background:var(--stamp,#2E9A8C);display:flex;align-items:center;justify-content:center;flex:none}
+.rb-pill .d svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4}
+.rb-pill .tx{line-height:1.15}
+.rb-pill .tx b{font:800 13px "Outfit",system-ui,sans-serif;color:var(--ink,#16222E);display:block}
+.rb-pill .tx span{font:600 11px "Outfit",system-ui,sans-serif;color:var(--muted,#5d6b76)}
+</style>
+<a class="rb-pill" href="/legal#refunds">
+  <span class="d"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+  <span class="tx"><b>100% service-fee refund</b><span>if your visa is refused</span></span>
+</a>
+<!-- Fine print to place nearby: Refunds cover our service fee only, not government/third-party fees. No guarantee of a decision. Terms apply. -->
