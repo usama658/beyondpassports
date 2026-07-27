@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refund badge — premium previews</title>
+<style>
+:root{--ink:#16222E;--paper:#F4F6FA;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--stamp-t:#1F6E63;--on-dark:#79CFC2;--muted:#5d6b76;--edge:#dde3ec;--gold:#E7CE93;--gold-d:#c8a95e;--display:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--display);color:var(--ink);background:#eceff3;padding:34px 18px;display:flex;flex-direction:column;align-items:center}
+.wrap{width:1040px;max-width:96vw}
+h1{font-size:22px;letter-spacing:-.02em;margin:0 0 4px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 26px}
+.lab{font:800 11px/1.4 var(--display);letter-spacing:.16em;text-transform:uppercase;color:#6a7681;margin:32px 0 12px}
+.row{display:flex;gap:26px;flex-wrap:wrap;align-items:center}
+.stage{border-radius:18px;padding:30px;display:flex;gap:30px;flex-wrap:wrap;align-items:center;justify-content:center;width:100%}
+.stage.light{background:#fff;border:1px solid var(--edge);box-shadow:0 18px 44px -30px rgba(20,34,46,.3)}
+.stage.dark{background:radial-gradient(600px 300px at 80% 0,rgba(121,207,194,.16),transparent 60%),linear-gradient(135deg,#12233c,#0f2f3d);border:1px solid #33474f}
+.cap{width:100%;text-align:center;font:700 12px var(--display);letter-spacing:.06em;color:#9aa6b0;text-transform:uppercase;margin-top:4px}
+.dark .cap{color:#7f93a0}
+.fine{font-size:11px;color:var(--muted);max-width:230px;text-align:center;margin:10px auto 0;line-height:1.4}
+.dark .fine{color:#a9bcc4}
+
+/* ============ A — WAX SEAL (circular, gold ring, emboss) ============ */
+.b-seal{width:132px;height:132px;border-radius:50%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle at 38% 30%,#eaf4f1,#cfe7e0 55%,#a9d3c8);
+  box-shadow:inset 0 2px 5px rgba(255,255,255,.8),inset 0 -6px 14px rgba(31,110,99,.35),0 14px 30px -12px rgba(31,110,99,.5);
+  border:3px solid var(--gold);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.b-seal::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px dashed rgba(31,110,99,.45)}
+.b-seal:hover{transform:translateY(-3px) rotate(-2deg);box-shadow:inset 0 2px 5px rgba(255,255,255,.8),inset 0 -6px 14px rgba(31,110,99,.35),0 22px 40px -14px rgba(31,110,99,.6)}
+.b-seal .pc{font:800 9px var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--stamp-t)}
+.b-seal .big{font:800 30px var(--display);color:var(--ink);line-height:1;margin:2px 0}
+.b-seal svg{width:20px;height:20px;fill:none;stroke:var(--stamp-t);stroke-width:2;margin-top:2px}
+
+/* ============ B — GUARANTEE SHIELD ============ */
+.b-shield{width:120px;height:138px;position:relative;cursor:pointer;transition:transform .2s ease;filter:drop-shadow(0 14px 26px rgba(21,94,122,.4))}
+.b-shield:hover{transform:translateY(-3px) scale(1.03)}
+.b-shield .sh{position:absolute;inset:0;background:linear-gradient(160deg,var(--cta),var(--cta-d));clip-path:path("M60 0 L120 22 V70 C120 108 92 130 60 138 C28 130 0 108 0 70 V22 Z");display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
+.b-shield .tick{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);border:1.5px solid var(--on-dark);display:flex;align-items:center;justify-content:center;margin-bottom:7px}
+.b-shield .tick svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.4}
+.b-shield .n{font:800 20px var(--display);line-height:1}
+.b-shield .t{font:800 8.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark);margin-top:3px}
+
+/* ============ C — ROSETTE MEDAL (ribbon tails) ============ */
+.b-medal{position:relative;width:120px;cursor:pointer}
+.b-medal .disc{width:120px;height:120px;border-radius:50%;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:conic-gradient(from 0deg,var(--gold),#f3e4bd,var(--gold-d),var(--gold),#f3e4bd,var(--gold-d),var(--gold));
+  box-shadow:0 12px 26px -10px rgba(200,169,94,.7),inset 0 0 0 6px rgba(255,255,255,.35);transition:transform .2s ease}
+.b-medal:hover .disc{transform:rotate(8deg)}
+.b-medal .disc .in{width:88px;height:88px;border-radius:50%;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.b-medal .disc .in .n{font:800 22px var(--display);color:var(--gold);line-height:1}
+.b-medal .disc .in .t{font:800 8px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-top:2px}
+.b-medal .rib{position:absolute;top:92px;width:26px;height:52px;background:var(--cta);z-index:1}
+.b-medal .rib.l{left:34px;transform:rotate(8deg);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)}
+.b-medal .rib.r{right:34px;transform:rotate(-8deg);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)}
+
+/* ============ D — HALLMARK STAMP (rounded square, embossed) ============ */
+.b-stamp{width:150px;padding:16px 14px;border-radius:16px;text-align:center;position:relative;cursor:pointer;
+  background:linear-gradient(180deg,#fff,#f1f6f4);border:2px solid var(--stamp);
+  box-shadow:0 14px 30px -14px rgba(31,110,99,.5);transition:transform .2s ease,box-shadow .2s ease}
+.b-stamp::before{content:"";position:absolute;inset:5px;border-radius:11px;border:1px solid rgba(46,154,140,.35)}
+.b-stamp:hover{transform:translateY(-3px);box-shadow:0 22px 40px -16px rgba(31,110,99,.6)}
+.b-stamp .ico{width:30px;height:30px;margin:0 auto 6px;border-radius:9px;background:var(--stamp);display:flex;align-items:center;justify-content:center}
+.b-stamp .ico svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2.2}
+.b-stamp .k{font:800 9px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--stamp-t)}
+.b-stamp .v{font:800 15px var(--display);color:var(--ink);margin:2px 0 1px}
+.b-stamp .s{font:600 10px var(--display);color:var(--muted)}
+
+/* ============ E — MONOGRAM COIN (BP + refund ring) ============ */
+.b-coin{width:126px;height:126px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:radial-gradient(circle at 40% 35%,#1c3040,#12222e 70%);border:2px solid rgba(121,207,194,.5);
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.6),inset 0 0 22px rgba(121,207,194,.14);transition:transform .2s ease}
+.b-coin:hover{transform:translateY(-3px) scale(1.03)}
+.b-coin .ring{position:absolute;inset:9px;border-radius:50%;border:1px dashed rgba(121,207,194,.4)}
+.b-coin .mid{text-align:center;z-index:2}
+.b-coin .mono{font:800 26px var(--display);color:var(--gold);line-height:1;letter-spacing:-.02em}
+.b-coin .t{font:800 8px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark);margin-top:3px}
+.b-coin .arc{position:absolute;bottom:11px;left:0;right:0;text-align:center;font:800 7.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ============ F — INLINE PILL (for tight spots / forms) ============ */
+.b-pill{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 10px;border-radius:999px;cursor:pointer;
+  background:#fff;border:1.5px solid var(--stamp);box-shadow:0 8px 20px -12px rgba(31,110,99,.5);transition:transform .18s ease,box-shadow .18s ease}
+.b-pill:hover{transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(31,110,99,.6)}
+.b-pill .d{width:30px;height:30px;border-radius:50%;background:var(--stamp);display:flex;align-items:center;justify-content:center;flex:none}
+.b-pill .d svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4}
+.b-pill .tx{line-height:1.15}
+.b-pill .tx b{font:800 13px var(--display);color:var(--ink);display:block}
+.b-pill .tx span{font:600 11px var(--display);color:var(--muted)}
+</style></head>
+<body>
+<div class="wrap">
+  <h1>Refund badge — premium previews</h1>
+  <p class="sub">6 badge styles on light + dark. Copy stays honest: 100% service-fee refund if refused, terms apply. Hover to see motion.</p>
+
+  <div class="lab">On light (hero form / FAQ / footer)</div>
+  <div class="stage light">
+    <div><div class="b-seal"><span class="pc">Refund</span><span class="big">100%</span><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></div><div class="cap">A · Wax seal</div></div>
+    <div><div class="b-shield"><div class="sh"><span class="tick"><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><span class="n">100%</span><span class="t">Fee back</span></div></div><div class="cap">B · Guarantee shield</div></div>
+    <div><div class="b-medal"><span class="rib l"></span><span class="rib r"></span><div class="disc"><div class="in"><span class="n">100%</span><span class="t">Refund</span></div></div></div><div class="cap">C · Rosette medal</div></div>
+    <div><div class="b-stamp"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><div class="k">Refund Promise</div><div class="v">100% fee back</div><div class="s">if refused</div></div><div class="cap">D · Hallmark stamp</div></div>
+  </div>
+  <p class="fine">Refunds cover our service fee only, not government or third-party fees. No guarantee of a decision. See terms.</p>
+
+  <div class="lab">On dark (hero band / boarding-pass / peak strip)</div>
+  <div class="stage dark">
+    <div><div class="b-seal"><span class="pc">Refund</span><span class="big">100%</span><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></div><div class="cap">A · Wax seal</div></div>
+    <div><div class="b-shield"><div class="sh"><span class="tick"><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg></span><span class="n">100%</span><span class="t">Fee back</span></div></div><div class="cap">B · Guarantee shield</div></div>
+    <div><div class="b-medal"><span class="rib l"></span><span class="rib r"></span><div class="disc"><div class="in"><span class="n">100%</span><span class="t">Refund</span></div></div></div><div class="cap">C · Rosette medal</div></div>
+    <div><div class="b-coin"><span class="ring"></span><div class="mid"><div class="mono">BP</div><div class="t">100% back</div></div><span class="arc">Refund Promise</span></div><div class="cap">E · Monogram coin</div></div>
+  </div>
+
+  <div class="lab">Inline pill (compact — sits in forms, next to CTA, in footer)</div>
+  <div class="stage light" style="justify-content:flex-start">
+    <div class="b-pill"><span class="d"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span><span class="tx"><b>100% service-fee refund</b><span>if your visa is refused</span></span></div>
+    <div class="cap" style="text-align:left;width:auto">F · Inline pill</div>
+  </div>
+
+  <div style="height:50px"></div>
+</div>
+</body></html>
