@@ -66,6 +66,12 @@ final class SiteStats
         return (string) config('ukv.stats.response_sla', '7 minutes');
     }
 
+    /** Refusal letters reviewed last year, e.g. "600" (callers add any "+" suffix). */
+    public static function lettersReviewed(): string
+    {
+        return (string) config('ukv.stats.letters_reviewed', '600');
+    }
+
     /** Founding year as an int, e.g. 2019. */
     public static function foundedYear(): int
     {

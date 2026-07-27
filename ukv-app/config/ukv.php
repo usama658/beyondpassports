@@ -233,6 +233,7 @@ return [
         'approval_pct'  => env('UKV_STAT_APPROVAL_PCT', '94'),      // headline approval rate (%)
         'insurance_min' => env('UKV_STAT_INSURANCE_MIN', '€30,000'), // Schengen medical-cover minimum
         'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '7 minutes'),// first-response target
+        'letters_reviewed' => env('UKV_STAT_LETTERS_REVIEWED', '600'), // refusal letters reviewed last year (display adds "+")
     ],
 
     // ── Service pricing ───────────────────────────────────────────────────────
