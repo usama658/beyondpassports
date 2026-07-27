@@ -434,7 +434,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
+  <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
