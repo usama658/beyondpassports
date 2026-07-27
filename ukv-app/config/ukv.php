@@ -132,7 +132,7 @@ return [
     // (then php artisan config:cache) — real URLs kept below so nothing is lost.
     'social' => [
         'facebook'  => env('UKV_SOCIAL_FACEBOOK_SHOW', false) ? env('UKV_SOCIAL_FACEBOOK', 'https://www.facebook.com/people/Beyond-Passports/61591144445879/') : null,
-        'instagram' => env('UKV_SOCIAL_INSTAGRAM', 'https://www.instagram.com/beyondpassportsuk/'),
+        'instagram' => env('UKV_SOCIAL_INSTAGRAM_SHOW', false) ? env('UKV_SOCIAL_INSTAGRAM', 'https://www.instagram.com/beyondpassportsuk/') : null,
         'tiktok'    => env('UKV_SOCIAL_TIKTOK', 'https://www.tiktok.com/@beyond.passports'),
         'youtube'   => env('UKV_SOCIAL_YOUTUBE', 'https://www.youtube.com/@beyondpassports'),
         'linkedin'  => env('UKV_SOCIAL_LINKEDIN', 'https://www.linkedin.com/in/beyond-passports'),
