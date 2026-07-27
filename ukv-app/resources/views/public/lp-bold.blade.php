@@ -154,7 +154,8 @@ html,body{overflow-x:clip;max-width:100%}
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
 .lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
-.lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #efe0c2;border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#b5791f}
+.lpb .bd .live{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #efe0c2;border-radius:999px;padding:8px 14px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E}
+.lpb .bd .live .lv-mo{color:#b5791f}
 .lpb .bd .live .dot{background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22)}
 /* Summer-peak promo (T1) — stub-only tile, full width, red blinking dot + ring. Whole tile links to WhatsApp. */
 .lpb .peakstub{position:relative;display:flex;align-items:baseline;justify-content:center;gap:12px;text-align:center;text-decoration:none;color:inherit;width:100%;margin:0 0 22px;padding:20px 44px;background:#fff;border:1px solid #e6ebf1;border-radius:14px;box-shadow:0 18px 44px -28px rgba(20,34,46,.34);transition:transform .16s ease,box-shadow .18s ease}
@@ -446,7 +447,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span>Summer Peak · Jul–Aug</span></div>
+  <div class="btop"><div><p class="eyebrow">Don't miss your appointment window</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span>Summer Peak ·&nbsp;<span class="lv-mo">Jul–Aug</span></span></div>
   @php $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
   @if (in_array(now()->month, [6, 7, 8]))
   {{-- Summer-peak promo (auto-shows Jun–Aug only). Stub-only tile + red blinking dot. --}}
