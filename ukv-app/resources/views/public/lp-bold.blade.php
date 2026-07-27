@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Agent & Consultants UK | Beyond Passports')
-@section('description', 'Independent UK help for Schengen visas, first-time or refused. Applications that stand up; refusals decoded. Reply in 24h.')
+@section('description', 'Schengen visa agents for UK applicants. We handle applications, find appointment slots, and recover refusals. 100% refund if refused.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
