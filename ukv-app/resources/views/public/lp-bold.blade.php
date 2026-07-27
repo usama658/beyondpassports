@@ -152,7 +152,8 @@ html,body{overflow-x:clip;max-width:100%}
 @media(max-width:820px){.lpb .sitrow{grid-template-columns:1fr}}
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
-.lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 26px}
+.lpb .bd .btop{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:0 0 18px}
+.lpb .bd .bintro{font:400 15px var(--display);color:#5d6b76;max-width:64ch;margin:0 0 22px}
 .lpb .bd .intro{color:var(--muted);font-size:16px;max-width:60ch;margin:12px 0 0}
 .lpb .bd .live{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:8px 16px 8px 15px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#16222E;animation:lvborder 1.1s ease-in-out infinite}
 .lpb .bd .live .lv-mo{color:#e11d1d}
@@ -435,6 +436,7 @@ html,body{overflow-x:clip;max-width:100%}
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
+  <p class="bintro">We monitor Schengen visa appointment slots at the official visa application centres in London, Manchester, and Edinburgh, updated daily.</p>
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
