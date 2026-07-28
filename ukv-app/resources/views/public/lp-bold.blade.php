@@ -456,7 +456,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div>
-@include('partials.disclaimer-strip')
+@include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your application and assists with booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
 @include('partials.appt-slot-modal')
 
