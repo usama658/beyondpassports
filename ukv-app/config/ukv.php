@@ -61,6 +61,20 @@ return [
         'enabled' => (bool) env('UKV_TRACK_ENABLED', false),
     ],
 
+    // Funnel pages that can read like an official government application / document-submission /
+    // status portal are DRAFTED for compliance (Google Ads / not-the-government). Each page's
+    // route 302-redirects home when off, and links to it are gated on the same flag. The
+    // WhatsApp "Check eligibility" path stays live. Flip the matching env true to relaunch.
+    'apply' => [
+        'enabled' => (bool) env('UKV_APPLY_ENABLED', false),
+    ],
+    'documents' => [
+        'enabled' => (bool) env('UKV_DOCUMENTS_ENABLED', false),
+    ],
+    'confirmation' => [
+        'enabled' => (bool) env('UKV_CONFIRMATION_ENABLED', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.

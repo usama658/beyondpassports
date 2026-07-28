@@ -83,10 +83,16 @@ Route::post('/subscribe', [SubscribeController::class, 'store'])->middleware('th
 Route::post('/appointment-enquiry', [AppointmentEnquiryController::class, 'store'])
     ->middleware('throttle:contact')->name('appointment.enquiry');
 
-// --- Apply funnel (the coded apply page lives on Netlify and POSTs here) ---
-Route::view('/apply', 'public.apply')->name('apply'); // eligibility-aware intake form (POSTs to apply.store)
-Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
-Route::get('/apply/thank-you', [ApplyController::class, 'thanks'])->name('apply.thanks');
+// --- Apply funnel --- (DRAFTED when UKV_APPLY_ENABLED=false: 302-redirects home)
+if (config('ukv.apply.enabled')) {
+    Route::view('/apply', 'public.apply')->name('apply'); // eligibility-aware intake form (POSTs to apply.store)
+    Route::post('/apply', [ApplyController::class, 'store'])->name('apply.store');
+    Route::get('/apply/thank-you', [ApplyController::class, 'thanks'])->name('apply.thanks');
+} else {
+    Route::get('/apply', fn () => redirect('/', 302))->name('apply');
+    Route::post('/apply', fn () => redirect('/', 302))->name('apply.store');
+    Route::get('/apply/thank-you', fn () => redirect('/', 302))->name('apply.thanks');
+}
 
 // --- Checkout (standard lane -> Stripe hosted Checkout) ---
 Route::match(['get', 'post'], '/checkout/{order:order_ref}', [CheckoutController::class, 'create'])
@@ -128,21 +134,31 @@ Route::get('/health/mail', function () {
     ]);
 })->name('health.mail');
 
-// --- Confirmation / thank-you ---
-Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
-    // Document Requirements Engine: pass the personalised checklist (for()) to the view.
-    return view('confirmation', [
-        'order'    => $order,
-        'docItems' => $requirements->for($order),
-    ]);
-})->name('confirmation');
+// --- Confirmation / thank-you --- (DRAFTED when UKV_CONFIRMATION_ENABLED=false: 302-redirects home)
+if (config('ukv.confirmation.enabled')) {
+    Route::get('/confirmation/{order:order_ref}', function (Order $order, \App\Services\RequirementService $requirements) {
+        // Document Requirements Engine: pass the personalised checklist (for()) to the view.
+        return view('confirmation', [
+            'order'    => $order,
+            'docItems' => $requirements->for($order),
+        ]);
+    })->name('confirmation');
+} else {
+    Route::get('/confirmation/{order:order_ref}', fn () => redirect('/', 302))->name('confirmation');
+}
 
-// --- Post-payment document upload (customer authenticates by order ref + email) ---
-Route::get('/documents', [DocumentUploadController::class, 'page'])->name('documents');
-Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
-    ->middleware('throttle:10,1')
-    ->name('documents.upload');
-Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->middleware('throttle:10,1')->name('documents.detail'); // post-pay document-detail capture (Document Requirements Engine)
+// --- Post-payment document upload --- (DRAFTED when UKV_DOCUMENTS_ENABLED=false: 302-redirects home)
+if (config('ukv.documents.enabled')) {
+    Route::get('/documents', [DocumentUploadController::class, 'page'])->name('documents');
+    Route::post('/documents/upload', [DocumentUploadController::class, 'store'])
+        ->middleware('throttle:10,1')
+        ->name('documents.upload');
+    Route::post('/documents/details', [DocumentUploadController::class, 'detail'])->middleware('throttle:10,1')->name('documents.detail'); // post-pay document-detail capture (Document Requirements Engine)
+} else {
+    Route::get('/documents', fn () => redirect('/', 302))->name('documents');
+    Route::post('/documents/upload', fn () => redirect('/', 302))->name('documents.upload');
+    Route::post('/documents/details', fn () => redirect('/', 302))->name('documents.detail');
+}
 
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/schengen-visa', [DestinationController::class, 'index'])->name('destinations.index');
