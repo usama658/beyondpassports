@@ -250,7 +250,7 @@ return [
 
         'approval_pct'  => env('UKV_STAT_APPROVAL_PCT', '94'),      // headline approval rate (%)
         'insurance_min' => env('UKV_STAT_INSURANCE_MIN', '€30,000'), // Schengen medical-cover minimum
-        'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '7 minutes'),// first-response target
+        'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '2 hours'),// first-response target (matches the site-wide 'within 2 hours' copy)
         'letters_reviewed' => env('UKV_STAT_LETTERS_REVIEWED', '600'), // refusal letters reviewed last year (display adds "+")
         // Appointment operators named in copy. Schengen centres run under different operators
         // (VFS Global / TLScontact / BLS) per country, so keep this editable in one place.
