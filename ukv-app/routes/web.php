@@ -177,10 +177,19 @@ if (! app()->isProduction()) {
 }
 
 // --- Public status tracker ---
-Route::get('/track', [TrackController::class, 'show'])->name('track.show');
-Route::post('/track/lookup', [TrackController::class, 'lookup'])
-    ->middleware('throttle:tracker')
-    ->name('track.lookup');
+// DRAFTED when UKV_TRACK_ENABLED=false: a public "Track application" page can read like an
+// official government status service, so it is hidden. Links are already gated on the same flag;
+// this also gates the ROUTE so direct hits to /track 302-redirect home instead of rendering.
+// Flip UKV_TRACK_ENABLED=true to relaunch the tracker.
+if (config('ukv.track.enabled')) {
+    Route::get('/track', [TrackController::class, 'show'])->name('track.show');
+    Route::post('/track/lookup', [TrackController::class, 'lookup'])
+        ->middleware('throttle:tracker')
+        ->name('track.lookup');
+} else {
+    Route::get('/track', fn () => redirect('/', 302))->name('track.show');
+    Route::post('/track/lookup', fn () => redirect('/', 302))->name('track.lookup');
+}
 
 // CMS draft preview (Admin/Editor only) — renders a page's blocks regardless of publish status.
 // Auth is handled inside the controller so guests land on the Filament admin login.

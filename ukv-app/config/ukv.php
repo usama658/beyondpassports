@@ -203,7 +203,11 @@ return [
     // OFF now = hidden until real verified reviews are connected, so we never
     // show empty "load once connected" placeholders. Flip on again with
     // UKV_REVIEW_TILES=true in .env (then php artisan config:cache).
-    'review_tiles' => env('UKV_REVIEW_TILES', false),
+    // DRAFTED (hard off): the Google 4.9 / Trustpilot 4.8 tiles are hardcoded ratings with no
+    // connected profile, so they read as fabricated (Google Ads / ASA risk). Forced off here
+    // regardless of any stray env override. To relaunch once real profiles are connected, restore:
+    //   'review_tiles' => env('UKV_REVIEW_TILES', false),
+    'review_tiles' => false,
 
     // ── Headline stats (single source of truth) ───────────────────────────────
     // Every public page reads its numbers from here so they can never diverge
