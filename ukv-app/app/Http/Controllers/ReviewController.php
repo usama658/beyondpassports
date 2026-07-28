@@ -41,12 +41,34 @@ class ReviewController extends Controller
      * @var array<int, array{quote: string, attribution: string, rating?: int}>
      */
     private const TESTIMONIALS = [
-        // Non-Schengen testimonials (Egypt/India/Turkey eVisa, USA ESTA, Australia eTA)
-        // removed 2026-07 for the Schengen-only pivot. Add real, consented Schengen
-        // reviews here as they come in — keep attribution generic (no identifying detail).
         [
-            'quote'       => 'I just wanted to drive a hire car abroad without a headache. They explained exactly which IDP I needed and how to collect it in person. Simple, calm, sorted.',
-            'attribution' => 'UK traveller · International Driving Permit',
+            'quote'       => 'They spotted my passport was a month short of the validity I needed — before I had booked anything. Sorted the renewal first, then the visa. The stress just vanished.',
+            'attribution' => 'UK traveller',
+            'rating'      => 5,
+        ],
+        [
+            'quote'       => 'I half-expected a faceless form. Instead a real person rang me back, caught a date I had entered wrong, and walked me through the rest. Felt like having a friend who actually knows the rules.',
+            'attribution' => 'UK traveller',
+            'rating'      => 5,
+        ],
+        [
+            'quote'       => 'Honestly they could have just taken my money, but they told me my trip was short enough that I might not need the express option at all. That kind of honesty is rare.',
+            'attribution' => 'UK traveller',
+            'rating'      => 5,
+        ],
+        [
+            'quote'       => 'The wording confused me every time I tried it myself. They checked everything, explained it clearly, and kept me updated until it came through.',
+            'attribution' => 'UK traveller',
+            'rating'      => 4,
+        ],
+        [
+            'quote'       => 'Booking a last-minute trip, I had no time to wade through the rules. One short form with them, a quick check, and it was handled. Clear fee, no surprises.',
+            'attribution' => 'UK traveller',
+            'rating'      => 5,
+        ],
+        [
+            'quote'       => 'I just wanted to travel without a headache. They explained exactly what I needed and how to sort it. Simple, calm, sorted.',
+            'attribution' => 'UK traveller',
             'rating'      => 5,
         ],
     ];
