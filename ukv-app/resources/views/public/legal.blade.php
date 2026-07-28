@@ -218,7 +218,7 @@
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
           @endif
 
-          <p>These terms govern your use of Beyond Passports's service. Beyond Passports is operated by <strong>[to complete]</strong> (company registration number <strong>[to complete]</strong>), and you can reach us at <strong>[to complete]</strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
+          <p>These terms govern your use of Beyond Passports's service. Beyond Passports is operated by <strong>{{ config('ukv.address.company') }}</strong> (company registration number <strong>{{ config('ukv.address.company_no') }}</strong>), and you can reach us at <strong><a href="mailto:{{ config('ukv.email') }}">{{ config('ukv.email') }}</a></strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
 
           <h3>Nature of our service</h3>
           <p>Beyond Passports provides <strong>independent facilitation and guided self-service</strong>: we help you complete, check and submit applications for visas, eVisas and travel authorisations. <strong>We are not a government body, are not affiliated with gov.uk or any embassy, and we do not provide legal or immigration advice.</strong> If you need regulated immigration advice, please consult a qualified adviser.</p>
