@@ -56,7 +56,8 @@ class NavService
     {
         return static::override('nav_footer') ?? [
             ['heading' => 'Service', 'links' => [
-                ['label' => 'All services', 'url' => url('/services')],
+                // 'All services' hidden while the services hub is drafted off (config ukv.services_page.enabled)
+                ...(config('ukv.services_page.enabled') ? [['label' => 'All services', 'url' => url('/services')]] : []),
                 ['label' => config('ukv.tours.nav_label', 'Plan a trip'), 'url' => url('/tour-packages')],
                 ['label' => 'Schengen visa', 'url' => url('/schengen-visa')],
                 ['label' => 'Check eligibility →', 'url' => SiteStats::chatUrl(), 'external' => true],

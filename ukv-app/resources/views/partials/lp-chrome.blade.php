@@ -18,7 +18,7 @@
   <button class="bpc-navtoggle" type="button" aria-expanded="false" aria-controls="bpc-nav" aria-label="Open menu" onclick="var n=document.getElementById('bpc-nav'),o=n.classList.toggle('bpc-open');this.setAttribute('aria-expanded',o)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   <nav class="bpc-nav" id="bpc-nav" aria-label="Primary">
     <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
-    <a href="{{ url('/services') }}">Services</a>
+    @if(config('ukv.services_page.enabled'))<a href="{{ url('/services') }}">Services</a>@endif
     <a href="{{ url('/about') }}">Who we are</a>
     <a href="{{ url('/contact') }}" class="bpc-btn bpc-btn--ghost">Contact</a>
     <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="bpc-btn">Check eligibility →</a>

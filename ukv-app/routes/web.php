@@ -25,7 +25,13 @@ use Illuminate\Support\Facades\Route;
 // checkout, checker, tracker, document upload, DB-driven money pages) intentionally stay coded — a
 // block editor would break their forms/logic; see docs/cms-coverage-audit.md.
 Route::get('/', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('home', 'public.home'))->name('home');
-Route::get('/services', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('services', 'public.services'))->name('services'); // full-catalogue hub (config('ukv.services'))
+// Services hub drafted OFF (config('ukv.services_page.enabled'), env UKV_SERVICES_ENABLED).
+// When disabled the route 302-redirects home; route name kept in both branches so url()/links resolve.
+if (config('ukv.services_page.enabled')) {
+    Route::get('/services', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('services', 'public.services'))->name('services'); // full-catalogue hub (config('ukv.services'))
+} else {
+    Route::get('/services', fn () => redirect('/', 302))->name('services');
+}
 Route::get('/tour-packages', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('tour-packages', 'public.tours'))->name('tours'); // visa-led tour packages (config('ukv.tours'))
 Route::view('/tools', 'public.tools')->name('tools'); // stays coded: embeds the interactive checker
 // Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
@@ -33,7 +39,7 @@ Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.pa
 Route::get('/find-a-centre/search', [CentreController::class, 'search'])
     ->middleware('throttle:contact')
     ->name('centre.search');
-Route::get('/driving-abroad', fn () => redirect('/services', 301))->name('idp');
+Route::get('/driving-abroad', fn () => redirect(config('ukv.services_page.enabled') ? '/services' : '/', 301))->name('idp');
 Route::get('/about', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('about', 'public.about'))->name('about'); // CMS-served when enabled + published, else coded
 Route::view('/contact', 'public.contact')->name('contact'); // stays coded: carries the contact form (POST /contact)
 Route::get('/contact/thank-you', [ContactController::class, 'thanks'])->name('contact.thanks');

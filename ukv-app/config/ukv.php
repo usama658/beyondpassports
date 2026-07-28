@@ -89,6 +89,13 @@ return [
         'draft_notice' => (bool) env('UKV_LEGAL_DRAFT_NOTICE', false),
     ],
 
+    // Services hub page (/services). Drafted OFF: when false the route 302-redirects
+    // home and every link to it (nav, footers, sitemap) is hidden. Flip
+    // UKV_SERVICES_ENABLED=true to relaunch. The catalogue itself lives in 'services' below.
+    'services_page' => [
+        'enabled' => (bool) env('UKV_SERVICES_ENABLED', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.

@@ -60,7 +60,7 @@
       </div>
       <div class="bpc-col">
         <strong>Service</strong>
-        <a href="{{ url('/services') }}">All services</a>
+        @if(config('ukv.services_page.enabled'))<a href="{{ url('/services') }}">All services</a>@endif
         <a href="{{ url('/schengen-visa') }}">Schengen visa</a>
         <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Check eligibility →</a>
       </div>

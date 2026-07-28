@@ -36,7 +36,8 @@ class SitemapController extends Controller
         // Static public pages: [path, changefreq, priority]
         $static = [
             ['/', 'weekly', '1.0'],
-            ['/services', 'weekly', '0.9'],
+            // /services omitted while the hub is drafted off (config ukv.services_page.enabled)
+            ...(config('ukv.services_page.enabled') ? [['/services', 'weekly', '0.9']] : []),
             ['/tour-packages', 'weekly', '0.8'],
             ['/schengen-visa-consultancy', 'weekly', '0.9'],
             ['/schengen-visa', 'weekly', '0.8'],
