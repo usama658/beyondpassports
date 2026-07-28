@@ -33,7 +33,14 @@ if (config('ukv.services_page.enabled')) {
     Route::get('/services', fn () => redirect('/', 302))->name('services');
 }
 Route::get('/tour-packages', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('tour-packages', 'public.tours'))->name('tours'); // visa-led tour packages (config('ukv.tours'))
-Route::view('/tools', 'public.tools')->name('tools'); // stays coded: embeds the interactive checker
+// Visa-checker tool drafted OFF (config('ukv.tools_page.enabled'), env UKV_TOOLS_ENABLED).
+// When disabled the route redirects to WhatsApp so every "Check eligibility" CTA still
+// converts; route name kept in both branches so url()/links resolve.
+if (config('ukv.tools_page.enabled')) {
+    Route::view('/tools', 'public.tools')->name('tools'); // stays coded: embeds the interactive checker
+} else {
+    Route::get('/tools', fn () => redirect()->away(\App\Support\SiteStats::chatUrl()))->name('tools');
+}
 // Nearest-centre finder (postcode / geolocation -> nearest IDP, VAC, partner centres).
 Route::get('/find-a-centre', [CentreController::class, 'page'])->name('centre.page');
 Route::get('/find-a-centre/search', [CentreController::class, 'search'])

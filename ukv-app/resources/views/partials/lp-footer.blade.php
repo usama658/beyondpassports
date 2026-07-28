@@ -66,7 +66,7 @@
       </div>
       <div class="bpc-col">
         <strong>Tools &amp; guides</strong>
-        <a href="{{ url('/tools') }}">Visa checker</a>
+        @if(config('ukv.tools_page.enabled'))<a href="{{ url('/tools') }}">Visa checker</a>@endif
         <a href="{{ url('/document-checklist') }}">Document checker</a>
         <a href="{{ url('/find-a-centre') }}">Find a centre</a>
         <a href="{{ url('/guides') }}">Visa guides &amp; stories</a>

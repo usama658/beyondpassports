@@ -41,7 +41,8 @@ class SitemapController extends Controller
             ['/tour-packages', 'weekly', '0.8'],
             ['/schengen-visa-consultancy', 'weekly', '0.9'],
             ['/schengen-visa', 'weekly', '0.8'],
-            ['/tools', 'monthly', '0.7'],
+            // /tools omitted while the visa checker is drafted off (config ukv.tools_page.enabled)
+            ...(config('ukv.tools_page.enabled') ? [['/tools', 'monthly', '0.7']] : []),
             ['/guides', 'weekly', '0.6'],
             ['/document-checklist', 'monthly', '0.7'],
             ['/find-a-centre', 'monthly', '0.6'],

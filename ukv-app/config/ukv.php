@@ -96,6 +96,13 @@ return [
         'enabled' => (bool) env('UKV_SERVICES_ENABLED', false),
     ],
 
+    // Visa-checker tool page (/tools). Drafted OFF: when false the route redirects
+    // to WhatsApp (so every "Check eligibility" CTA still converts) and the tool is
+    // hidden from nav + sitemap. Flip UKV_TOOLS_ENABLED=true to relaunch the checker.
+    'tools_page' => [
+        'enabled' => (bool) env('UKV_TOOLS_ENABLED', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.

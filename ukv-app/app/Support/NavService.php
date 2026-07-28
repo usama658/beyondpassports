@@ -64,7 +64,8 @@ class NavService
                 ['label' => 'Track application', 'url' => url('/track')],
             ]],
             ['heading' => 'Free tools & guides', 'links' => [
-                ['label' => 'Visa checker', 'url' => url('/tools')],
+                // 'Visa checker' hidden while the tool is drafted off (config ukv.tools_page.enabled)
+                ...(config('ukv.tools_page.enabled') ? [['label' => 'Visa checker', 'url' => url('/tools')]] : []),
                 ['label' => 'Document checker', 'url' => url('/document-checklist')],
                 ['label' => 'Find a centre', 'url' => url('/find-a-centre')],
                 ['label' => 'Visa guides & stories', 'url' => url('/guides')],
