@@ -446,7 +446,7 @@
   <div class="ab-hero-copy reveal">
     <p class="eyebrow">Who we are</p>
     <h1>The people who check your file before the consulate does.</h1>
-    <p class="lede">Beyond Passports is a Schengen visa consultancy. With offices in the UK and Germany, we have prepared thousands of applications since {{ App\Support\SiteStats::foundedYear() }}. Every one reviewed by a real person before it reached the consulate.</p>
+    <p class="lede">Beyond Passports is a UK Schengen visa consultancy, registered in England and Wales. Every application is reviewed by a real person before it reaches the consulate.</p>
     <p class="callout">Applying with a passport that faces higher consulate scrutiny? The document list is longer and the margin for error is smaller. That is exactly what we prepare for.</p>
     <div class="h-btns">
       <a href="{{ $waHero }}" target="_blank" rel="noopener" class="h-btn wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.8 6.5L3 29l7.2-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3z"/></svg>WhatsApp our adviser</a>
