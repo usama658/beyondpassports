@@ -289,14 +289,16 @@ return [
 
     // ── Tour packages ("Plan a trip") ─────────────────────────────────────────
     // Drives /plan-a-trip (public.tours). Visa-led holiday packages: we prepare the
-    // Schengen visa + book the appointment first, then wrap flights + hotels.
+    // Schengen visa + book the appointment first, then wrap hotels + ground transport.
     //
     // COMPLIANCE (do not remove):
-    //   'enquiry_only' => true keeps every package CTA as a WhatsApp enquiry (no
-    //   priced checkout). Selling FLIGHT-INCLUSIVE packages needs an ATOL licence
-    //   (CAA) and organiser insolvency protection under the Package Travel Regs
-    //   2018. Until both are in place, leave 'enquiry_only' => true — the page
-    //   generates leads only, it does not complete a sale. Prices are never shown.
+    //   Packages deliberately EXCLUDE flights: we prepare the visa + appointment and
+    //   arrange hotels + ground transport only; the client books their own flights.
+    //   Selling a FLIGHT-INCLUSIVE package would require an ATOL licence (CAA) and
+    //   insolvency protection under the Package Travel Regs 2018 — do NOT add flights
+    //   to any 'bens' or the page copy until both are held. 'enquiry_only' => true
+    //   also keeps every CTA a WhatsApp enquiry (no priced checkout); leads only,
+    //   no completed sale, prices never shown.
     //   'img' is a CSS background (gradient placeholder); swap for a real photo URL
     //   under /assets when photography is ready.
     'tours' => [
@@ -306,12 +308,12 @@ return [
         // (shown if the photo ever fails to load). Photos are self-hosted, Unsplash-
         // licensed (free commercial use); swap for owned/bought shots any time.
         'packages' => [
-            ['name' => 'Paris Long Weekend',     'where' => 'France',                        'days' => '4 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)',                 'img' => "url('/assets/tours/paris.jpg') center/cover no-repeat, linear-gradient(135deg,#485563,#29323c)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights from the UK', 'Central Paris hotel, 3 nights']],
-            ['name' => 'Italy Highlights',       'where' => 'Rome · Florence · Venice',       'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)',                 'img' => "url('/assets/tours/italy.jpg') center/cover no-repeat, linear-gradient(135deg,#8e2de2,#4a1042)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights + internal rail', 'Rome, Florence & Venice, 6 nights']],
-            ['name' => 'Greek Islands Escape',   'where' => 'Greece',                         'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#0D5EAF 0 20%,#fff 20% 40%,#0D5EAF 40% 60%,#fff 60% 80%,#0D5EAF 80%)', 'img' => "url('/assets/tours/greece.jpg') center/cover no-repeat, linear-gradient(135deg,#1c92d2,#2b5876)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights + island ferries', 'Athens & island hotels, 6 nights']],
-            ['name' => 'Amsterdam & the Rhine',  'where' => 'Netherlands + Germany',          'days' => '6 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#21468B 50%,#FFCE00 50%)',                             'img' => "url('/assets/tours/amsterdam.jpg') center/cover no-repeat, linear-gradient(135deg,#134e5e,#71b280)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights + Rhine transfers', 'Amsterdam & Rhine hotels, 5 nights']],
-            ['name' => 'Spain & Portugal',       'where' => 'Spain + Portugal',               'days' => '10 days', 'flagship' => false, 'flag' => 'linear-gradient(90deg,#AA151B 50%,#046A38 50%)',                             'img' => "url('/assets/tours/spain-portugal.jpg') center/cover no-repeat, linear-gradient(135deg,#c04848,#480048)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights + inter-city rail', 'Madrid, Lisbon & Seville, 9 nights']],
-            ['name' => 'Best of Western Europe', 'where' => 'France · Switzerland · Italy',    'days' => '14 days', 'flagship' => true,  'flag' => 'linear-gradient(90deg,#0055A4 33%,#DA291C 33% 66%,#009246 66%)',             'img' => "url('/assets/tours/western-europe.jpg') center/cover no-repeat, linear-gradient(135deg,#0f2027,#203a43,#2c5364)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Return flights + scenic first-class rail', 'France, Switzerland & Italy, 13 nights']],
+            ['name' => 'Paris Long Weekend',     'where' => 'France',                        'days' => '4 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)',                 'img' => "url('/assets/tours/paris.jpg') center/cover no-repeat, linear-gradient(135deg,#485563,#29323c)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Airport transfers on arrival', 'Central Paris hotel, 3 nights']],
+            ['name' => 'Italy Highlights',       'where' => 'Rome · Florence · Venice',       'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)',                 'img' => "url('/assets/tours/italy.jpg') center/cover no-repeat, linear-gradient(135deg,#8e2de2,#4a1042)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Internal rail between cities', 'Rome, Florence & Venice, 6 nights']],
+            ['name' => 'Greek Islands Escape',   'where' => 'Greece',                         'days' => '7 days',  'flagship' => false, 'flag' => 'linear-gradient(180deg,#0D5EAF 0 20%,#fff 20% 40%,#0D5EAF 40% 60%,#fff 60% 80%,#0D5EAF 80%)', 'img' => "url('/assets/tours/greece.jpg') center/cover no-repeat, linear-gradient(135deg,#1c92d2,#2b5876)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Inter-island ferry transfers', 'Athens & island hotels, 6 nights']],
+            ['name' => 'Amsterdam & the Rhine',  'where' => 'Netherlands + Germany',          'days' => '6 days',  'flagship' => false, 'flag' => 'linear-gradient(90deg,#21468B 50%,#FFCE00 50%)',                             'img' => "url('/assets/tours/amsterdam.jpg') center/cover no-repeat, linear-gradient(135deg,#134e5e,#71b280)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Rhine river transfers', 'Amsterdam & Rhine hotels, 5 nights']],
+            ['name' => 'Spain & Portugal',       'where' => 'Spain + Portugal',               'days' => '10 days', 'flagship' => false, 'flag' => 'linear-gradient(90deg,#AA151B 50%,#046A38 50%)',                             'img' => "url('/assets/tours/spain-portugal.jpg') center/cover no-repeat, linear-gradient(135deg,#c04848,#480048)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Inter-city rail between cities', 'Madrid, Lisbon & Seville, 9 nights']],
+            ['name' => 'Best of Western Europe', 'where' => 'France · Switzerland · Italy',    'days' => '14 days', 'flagship' => true,  'flag' => 'linear-gradient(90deg,#0055A4 33%,#DA291C 33% 66%,#009246 66%)',             'img' => "url('/assets/tours/western-europe.jpg') center/cover no-repeat, linear-gradient(135deg,#0f2027,#203a43,#2c5364)", 'bens' => ['Schengen visa prepared in-house', 'Biometric appointment booked', 'Scenic first-class rail journeys', 'France, Switzerland & Italy, 13 nights']],
         ],
     ],
 

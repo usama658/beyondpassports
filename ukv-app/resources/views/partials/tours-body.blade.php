@@ -130,12 +130,12 @@
 {{-- 1 · HERO --}}
 <section class="tr-hero"><div class="wrap"><div class="tr-hgrid">
   <div>
-    <p class="eyebrow">Flights, hotels and the Schengen visa. One booking.</p>
+    <p class="eyebrow">Hotels, transfers and the Schengen visa. One booking.</p>
     <h1>Book the trip.<br>We clear the visa.</h1>
-    <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with flights and hotels. You just pack.</p>
+    <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with hotels and transfers. You book your flights on your own dates.</p>
     <div class="tr-htrust">✦ <x-reg-verify style="text-decoration:none">Registered in England and Wales</x-reg-verify> · we usually reply within {{ $sla }}</div>
     <div class="tr-chips">
-      <span class="tr-chip"><b>✓</b> Flights included</span>
+      <span class="tr-chip"><b>✓</b> You book your flights</span>
       <span class="tr-chip"><b>✓</b> Hotels + transfers</span>
       <span class="tr-chip"><b>✓</b> Visa + appointment</span>
     </div>
@@ -155,7 +155,7 @@
 <section class="tbar-f"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Flights + hotels</b> included</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hotels + transfers</b> included</span></span>
   <x-reg-verify class="ti" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></x-reg-verify>
 </div></div></section>
 
@@ -164,12 +164,12 @@
   <div class="sec-head">
     <p class="eyebrow">How it works</p>
     <h2>We clear the visa first. Then you travel.</h2>
-    <p class="tr-sub" style="margin:12px auto 0;max-width:52ch">Every other tour leaves the visa to you. We flip it: the visa is prepared and the appointment booked before you pay for a single flight.</p>
+    <p class="tr-sub" style="margin:12px auto 0;max-width:52ch">Every other tour leaves the visa to you. We flip it: the visa is prepared and the appointment booked before you commit to a single booking.</p>
   </div>
   <div class="steps">
     <div class="step"><div class="num">01</div><h3>Risk check</h3><p>Name and number, that is it. An advisor tells you honestly what could get you refused. No payment.</p></div>
     <div class="step"><div class="num">02</div><h3>We prepare the visa</h3><p>We build the application the way a consulate reads it, and lock in the appointment before slots go.</p></div>
-    <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we book the flights and hotels around your dates. You just pack.</p></div>
+    <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we book the hotels and transfers around your dates. You book your flights and pack.</p></div>
   </div>
   <p class="reassure">No payment until after your risk check.</p>
 </div></section>
@@ -178,12 +178,12 @@
 <section class="tr-sec tr-white"><div class="wrap" style="text-align:center">
   <p class="eyebrow">Six ways to see Europe</p>
   <h2>Pick the trip. The visa comes built in.</h2>
-  <p class="tr-sub" style="max-width:60ch;margin:0 auto 40px">Every package includes the Schengen visa preparation, the appointment booking, return flights and hotels. One booking, one team, one price.</p>
+  <p class="tr-sub" style="max-width:60ch;margin:0 auto 40px">Every package includes the Schengen visa preparation, the appointment booking, hotels and transfers. You book your own flights. One team, one plan.</p>
   <div class="tr-cin">
     @foreach ($tours as $p)
       <div class="tr-card">
         <div class="bg" style="background:{{ $p['img'] }}"></div><div class="scrim"></div>
-        <span class="vis">{{ $p['flagship'] ? '★ Flagship' : 'Visa + flights + hotels' }}</span>
+        <span class="vis">{{ $p['flagship'] ? '★ Flagship' : 'Visa + hotels + transfers' }}</span>
         <span class="day">{{ $p['days'] }}</span>
         <div class="in">
           <div class="co"><span class="tr-flag" style="background:{{ $p['flag'] }}"></span>{{ $p['where'] }}</div>
