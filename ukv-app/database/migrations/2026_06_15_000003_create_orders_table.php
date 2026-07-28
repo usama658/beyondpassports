@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
 
             // --- Identity / customer ---
-            $table->string('order_ref', 32)->unique();                     // from: ukv_order_ref (UKV-YYYY-NNNNNN)
+            $table->string('order_ref', 32)->unique();                     // from: ukv_order_ref (BP-YYYY-NNNNNN)
             $table->string('name', 160)->nullable();                       // from: ukv_name
             $table->string('email', 190)->nullable();                      // from: ukv_email
             $table->string('passport_number', 40)->nullable();             // from: ukv_passport_number (PII)

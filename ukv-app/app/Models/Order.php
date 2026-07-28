@@ -110,7 +110,9 @@ class Order extends Model
     }
 
     /**
-     * Generate a unique order reference in UKV-YYYY-NNNNNN format.
+     * Generate a unique order reference in BP-YYYY-NNNNNN format.
+     * BP = Beyond Passports. The old "UKV-" prefix read like UK Visas & Immigration
+     * (government impersonation risk), so customer-facing refs use the brand prefix.
      * Year is derived from created_at (or now() at creation time) — never hardcoded.
      * Sequence is the next 6-digit number within that year, zero-padded.
      */
@@ -120,7 +122,7 @@ class Order extends Model
         $year = $when->format('Y');
 
         // Highest existing sequence for this year, scoped by the ref prefix.
-        $prefix = "UKV-{$year}-";
+        $prefix = "BP-{$year}-";
         $last = static::query()
             ->where('order_ref', 'like', $prefix.'%')
             ->lockForUpdate()

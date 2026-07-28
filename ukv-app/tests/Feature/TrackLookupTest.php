@@ -87,7 +87,7 @@ final class TrackLookupTest extends TestCase
         // Create a real order so we can prove an unknown ref doesn't surface it.
         $order = $this->makeOrder();
 
-        $response = $this->post('/track/lookup', ['ref' => 'UKV-2099-999999']);
+        $response = $this->post('/track/lookup', ['ref' => 'BP-2099-999999']);
 
         $response->assertStatus(200); // generic page, not an error
         $response->assertDontSee('Wilhelmina', escape: false);

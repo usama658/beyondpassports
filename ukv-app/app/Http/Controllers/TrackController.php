@@ -188,7 +188,7 @@ class TrackController extends Controller
             'ref' => ['required', 'string', 'max:32'],
         ]);
 
-        // Normalise: references are upper-case, hyphenated (UKV-YYYY-NNNNNN). Trim/upcase
+        // Normalise: references are upper-case, hyphenated (BP-YYYY-NNNNNN). Trim/upcase
         // so casing/whitespace in the email copy doesn't cause a false miss. Still EXACT
         // match — no partial/LIKE lookups.
         $ref = strtoupper(trim($validated['ref']));

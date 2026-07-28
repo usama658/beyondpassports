@@ -68,7 +68,7 @@ class DiscountResource extends Resource
                         TextInput::make('order_ref')
                             ->label('Order ref')
                             ->maxLength(32)
-                            ->helperText('Snapshot reference (UKV-YYYY-NNNNNN) of the order this was redeemed on. Loose string link, not an FK.'),
+                            ->helperText('Snapshot reference (BP-YYYY-NNNNNN) of the order this was redeemed on. Loose string link, not an FK.'),
                         Toggle::make('used')
                             ->label('Used')
                             ->default(false),

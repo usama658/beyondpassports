@@ -116,7 +116,7 @@ final class DocumentUploadTest extends TestCase
         $order = $this->makeOrder();
 
         $response = $this->postJson('/documents/upload', [
-            'ref' => 'UKV-2099-999999',
+            'ref' => 'BP-2099-999999',
             'email' => $order->email,
             'file' => UploadedFile::fake()->create('p.pdf', 50, 'application/pdf'),
         ]);

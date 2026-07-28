@@ -262,7 +262,7 @@ class DemoOrderSeeder extends Seeder
             $pricing = $price($d, $tier);
 
             $attrs = array_merge([
-                'order_ref' => sprintf('UKV-%s-%06d', $year, 900000 + $seq), // demo ref band, avoids clashing with live sequence
+                'order_ref' => sprintf('BP-%s-%06d', $year, 900000 + $seq), // demo ref band, avoids clashing with live sequence
                 'destination_id' => $d->id,
                 'destination_name' => $d->name,
                 'tier' => $tier,

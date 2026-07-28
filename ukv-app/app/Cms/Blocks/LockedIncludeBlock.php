@@ -17,6 +17,9 @@ class LockedIncludeBlock implements BlockType
     public const PARTIALS = [
         'services-body' => 'partials.services-body',
         'about-body' => 'partials.about-body',
+        'legal-body' => 'partials.legal-body',
+        'compare-body' => 'partials.compare-body',
+        'tours-body' => 'partials.tours-body',
     ];
 
     public static function key(): string
@@ -37,6 +40,9 @@ class LockedIncludeBlock implements BlockType
                 ->options([
                     'services-body' => 'Services body (catalogue, how, why, FAQ, CTA)',
                     'about-body' => 'About body (who we are, values, team, reviews, CTA)',
+                    'legal-body' => 'Legal body (privacy, terms, complaints, disclaimer)',
+                    'compare-body' => 'Compare body (DIY vs us, trade-offs, FAQ, CTA)',
+                    'tours-body' => 'Tours body (hero, packages, proof, FAQ, CTA)',
                 ])
                 ->required(),
         ];

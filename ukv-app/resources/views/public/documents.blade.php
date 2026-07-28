@@ -190,14 +190,14 @@
               name="ref"
               value="{{ old('ref') }}"
               class="ref-input"
-              placeholder="UKV-2026-004821"
+              placeholder="BP-2026-004821"
               autocomplete="off"
               inputmode="text"
               maxlength="32"
               style="text-transform:uppercase"
               required
               aria-required="true">
-            <p class="field-hint">It's in your confirmation email. It looks like <code>UKV-2026-004821</code>.</p>
+            <p class="field-hint">It's in your confirmation email. It looks like <code>BP-2026-004821</code>.</p>
 
             <label for="email">Email on your application</label>
             <input
@@ -289,7 +289,7 @@
               name="ref"
               value="{{ $detailRef }}"
               class="ref-input"
-              placeholder="UKV-2026-004821"
+              placeholder="BP-2026-004821"
               autocomplete="off"
               inputmode="text"
               maxlength="32"

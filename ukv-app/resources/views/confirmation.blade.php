@@ -1,5 +1,5 @@
 {{--
-    Order confirmation — renders the plain order reference (UKV-YYYY-NNNNNN) plus the
+    Order confirmation — renders the plain order reference (BP-YYYY-NNNNNN) plus the
     lane-specific next steps. Self-contained styling (Petrol/Teal, self-hosted Outfit)
     mirroring assets/ukv.css.
 

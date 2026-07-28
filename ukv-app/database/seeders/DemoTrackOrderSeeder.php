@@ -20,7 +20,7 @@ class DemoTrackOrderSeeder extends Seeder
     public function run(): void
     {
         Order::updateOrCreate(
-            ['order_ref' => 'UKV-2026-100200'],
+            ['order_ref' => 'BP-2026-100200'],
             [
                 'name'             => 'Demo Traveller',
                 'email'            => 'demo@beyondpassports.co.uk',

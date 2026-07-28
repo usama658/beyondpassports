@@ -175,7 +175,7 @@
             name="ref"
             class="ref-input"
             value="{{ old('ref', $searchedRef) }}"
-            placeholder="UKV-2026-004821"
+            placeholder="BP-2026-004821"
             autocomplete="off"
             inputmode="text"
             maxlength="32"
@@ -186,7 +186,7 @@
             aria-required="true">
           <button type="submit" class="btn">Track →</button>
         </div>
-        <p class="tp-hint" id="ref-hint">Format: UKV-YEAR-NUMBER · it's in your confirmation email</p>
+        <p class="tp-hint" id="ref-hint">Format: BP-YEAR-NUMBER · it's in your confirmation email</p>
         @error('ref')
           <p class="tp-error" id="ref-error" role="alert">{{ $message }}</p>
         @enderror
@@ -202,7 +202,7 @@
     <section class="track-sec"><div class="wrap">
       <div class="notfound" role="status" aria-live="polite">
         <p>We couldn't find an application matching <strong>{{ $searchedRef }}</strong>.</p>
-        <p>Please double-check the reference in your confirmation email (it looks like <code>UKV-2026-004821</code>) and try again. If you're still stuck, get in touch and we'll help.</p>
+        <p>Please double-check the reference in your confirmation email (it looks like <code>BP-2026-004821</code>) and try again. If you're still stuck, get in touch and we'll help.</p>
       </div>
     </div></section>
   @endif
