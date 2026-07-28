@@ -499,7 +499,8 @@
           <li>{!! $ccTick !!}Registered in England and Wales</li>
           <li>{!! $ccTick !!}Human document checks on every case</li>
           <li>{!! $ccTick !!}Optional to use, your choice</li>
-          <li>{!! $ccTick !!}Professionally insured</li>
+          {{-- Drafted 2026-07: professional indemnity insurance not in place yet. Restore this line once cover is held (and the guarded "Professionally Insured" badge auto-appears when ukv.compliance.insurer is set). --}}
+          {{-- <li>{!! $ccTick !!}Professionally insured</li> --}}
         </ul>
       </div>
       <div class="ab-cc is-not">
