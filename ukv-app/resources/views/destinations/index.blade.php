@@ -351,7 +351,7 @@
         <p class="slotm-s">Pick the date before it vanishes. We lock it with the centre the moment you pick.</p>
         <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We do the booking</span></div>
       </div>
-      <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}"></div>
+      <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}" data-timepicker="{{ config('ukv.appointments.time_picker') ? '1' : '0' }}"></div>
       <div class="slotm-foot">
         <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
         <p class="slotm-note">Booking is confirmed live with the centre before anything is paid.</p>
@@ -452,10 +452,21 @@
     var book  = document.getElementById('slotm-book');
     var wa    = modal.getAttribute('data-wa');
     var url   = box.getAttribute('data-url');
+    var timePicker = box.getAttribute('data-timepicker') === '1'; // off -> day is the final pick
     var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
     var country = '', centre = '', slot = '';
 
     function setLabel(t) { book.innerHTML = glyph + t; }
+    // Day is the final selection (time-picker off): book with just the day, time confirmed on WhatsApp.
+    function selectDay(dbtn, centreName, dayLabel) {
+      Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
+      dbtn.classList.add('sel');
+      centre = centreName; slot = dayLabel;
+      book.setAttribute('aria-disabled', 'false');
+      book.href = bookHref();
+      setLabel('Book ' + slot + ' now →');
+      try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
+    }
     function esc(s) { return String(s == null ? '' : s).replace(/[<>&"]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]; }); }
 
     function bookHref() {
@@ -508,8 +519,10 @@
             b.innerHTML = (first && i === 0 ? '<span class="soon">Soonest</span>' : '') +
               (wd ? '<span class="wd">' + esc(wd) + '</span>' : '') +
               '<span class="dm">' + esc(dm) + '</span>' +
-              '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>';
+              (timePicker ? '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>' : '');
             b.addEventListener('click', function () {
+              // Time-picker off: picking the day is the whole selection.
+              if (!timePicker) { selectDay(b, c.name, d.label); return; }
               Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
               b.classList.add('sel');
               // Reveal this day's times (the "clock") in this centre's time box.

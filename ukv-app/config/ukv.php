@@ -75,6 +75,13 @@ return [
         'enabled' => (bool) env('UKV_CONFIRMATION_ENABLED', false),
     ],
 
+    // Appointment slot modal: when time_picker is OFF, choosing a day is the final
+    // selection (no per-day time chips) — the exact time is confirmed live on WhatsApp.
+    // Flip UKV_APPT_TIME_PICKER=true to bring the time-of-day step back.
+    'appointments' => [
+        'time_picker' => (bool) env('UKV_APPT_TIME_PICKER', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.
