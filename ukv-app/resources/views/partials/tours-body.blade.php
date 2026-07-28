@@ -133,7 +133,7 @@
     <p class="eyebrow">Flights, hotels and the Schengen visa. One booking.</p>
     <h1>Book the trip.<br>We clear the visa.</h1>
     <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with flights and hotels. You just pack.</p>
-    <div class="tr-htrust">✦ <x-reg-verify style="text-decoration:none">Registered in the UK and Europe</x-reg-verify> · we usually reply within {{ $sla }}</div>
+    <div class="tr-htrust">✦ <x-reg-verify style="text-decoration:none">Registered in England and Wales</x-reg-verify> · we usually reply within {{ $sla }}</div>
     <div class="tr-chips">
       <span class="tr-chip"><b>✓</b> Flights included</span>
       <span class="tr-chip"><b>✓</b> Hotels + transfers</span>
@@ -144,7 +144,7 @@
   <div class="tr-form">
     <span class="fstamp">No payment now</span>
     <div class="fl">Check your eligibility</div>
-    <div class="fs">Tell us where you're going and your passport. A <x-reg-verify>UK and Europe registered</x-reg-verify> service spots what could get you refused before you book.</div>
+    <div class="fs">Tell us where you're going and your passport. A <x-reg-verify>England and Wales registered</x-reg-verify> service spots what could get you refused before you book.</div>
     @include('partials.hero-check-form', ['stack' => true, 'bare' => true])
     <p class="fnote">No payment. No obligation.</p>
   </div>
@@ -156,7 +156,7 @@
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Flights + hotels</b> included</span></span>
-  <x-reg-verify class="ti" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>UK &amp; Europe</b></span></x-reg-verify>
+  <x-reg-verify class="ti" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></x-reg-verify>
 </div></div></section>
 
 {{-- 2 · HOW IT WORKS (global .steps) --}}
@@ -208,7 +208,7 @@
     <p class="tr-sub">Our own records. We do not promise outcomes. We make the case as strong as it can be.</p>
   </div>
   <div class="tr-stats"><div class="row">
-    <div><div class="n" style="display:flex;justify-content:center;align-items:center;gap:8px">@include('partials.uk-eu-flags',['size'=>24])</div><div class="l"><x-reg-verify style="text-decoration:none">Registered in the United Kingdom and Europe</x-reg-verify></div></div>
+    <div><div class="n" style="display:flex;justify-content:center;align-items:center;gap:8px">@include('partials.uk-eu-flags',['size'=>24])</div><div class="l"><x-reg-verify style="text-decoration:none">Registered in England and Wales</x-reg-verify></div></div>
     <div><div class="n">{{ $apps }}</div><div class="l">Applications prepared and counting</div></div>
     <div><div class="n">{{ $revs }}</div><div class="l">Previously refused cases turned around</div></div>
     <div><div class="n">{{ $ins }}</div><div class="l">Minimum travel insurance per traveller</div></div>

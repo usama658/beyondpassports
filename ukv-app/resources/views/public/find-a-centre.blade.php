@@ -236,7 +236,7 @@
 <section class="cta-band"><div class="wrap reveal">
   <div class="rule"></div>
   <h2>We can book your appointment for you</h2>
-  <p style="max-width:54ch;color:#cdd9e1">Found your centre? A <x-reg-verify>UK &amp; Europe registered</x-reg-verify> service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
+  <p style="max-width:54ch;color:#cdd9e1">Found your centre? A <x-reg-verify>England and Wales registered</x-reg-verify> service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
   <div class="row">
     <a href="{{ $fcWa }}" class="btn btn--glass">@include('partials.wa-glyph')Check eligibility</a>
     <a href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start on WhatsApp →</a>
