@@ -59,7 +59,7 @@
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>AI and a real UK person review funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div>
+          <div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>A real UK person reviews funds, validity and consistency, the details that trip applications up.</p><span class="stop">Stops document errors</span></div>
         </li>
         <li>
           <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
