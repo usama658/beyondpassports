@@ -131,7 +131,7 @@
 <section class="tr-hero"><div class="wrap"><div class="tr-hgrid">
   <div>
     <p class="eyebrow">Hotels, transfers and the Schengen visa. One booking.</p>
-    <h1>Book the trip.<br>We prepare the visa.</h1>
+    <h1>Book the trip.<br>We prepare the visa documents.</h1>
     <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with hotels and transfers.</p>
     <div class="tr-htrust">✦ <x-reg-verify style="text-decoration:none">Registered in England and Wales</x-reg-verify> · we usually reply within {{ $sla }}</div>
     <div class="tr-chips">
