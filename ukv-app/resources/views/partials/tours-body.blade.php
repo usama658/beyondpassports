@@ -131,11 +131,11 @@
 <section class="tr-hero"><div class="wrap"><div class="tr-hgrid">
   <div>
     <p class="eyebrow">Hotels, transfers and the Schengen visa. One booking.</p>
-    <h1>Book the trip.<br>We clear the visa.</h1>
-    <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with hotels and transfers. You book your flights on your own dates.</p>
+    <h1>Book the trip.<br>We prepare the visa.</h1>
+    <p class="lede">Every other tour leaves the visa to you. We prepare it in-house, book your appointment and cut the refusal risk, then wrap it with hotels and transfers.</p>
     <div class="tr-htrust">✦ <x-reg-verify style="text-decoration:none">Registered in England and Wales</x-reg-verify> · we usually reply within {{ $sla }}</div>
     <div class="tr-chips">
-      <span class="tr-chip"><b>✓</b> You book your flights</span>
+      <span class="tr-chip"><b>✓</b> Refusal-risk check</span>
       <span class="tr-chip"><b>✓</b> Hotels + transfers</span>
       <span class="tr-chip"><b>✓</b> Visa + appointment</span>
     </div>
@@ -163,13 +163,13 @@
 <section class="tr-sec tr-how"><div class="wrap">
   <div class="sec-head">
     <p class="eyebrow">How it works</p>
-    <h2>We clear the visa first. Then you travel.</h2>
+    <h2>We prepare the visa first. Then you travel.</h2>
     <p class="tr-sub" style="margin:12px auto 0;max-width:52ch">Every other tour leaves the visa to you. We flip it: the visa is prepared and the appointment booked before you commit to a single booking.</p>
   </div>
   <div class="steps">
     <div class="step"><div class="num">01</div><h3>Risk check</h3><p>Name and number, that is it. An advisor tells you honestly what could get you refused. No payment.</p></div>
     <div class="step"><div class="num">02</div><h3>We prepare the visa</h3><p>We build the application the way a consulate reads it, and lock in the appointment before slots go.</p></div>
-    <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we book the hotels and transfers around your dates. You book your flights and pack.</p></div>
+    <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we arrange the hotels and transfers around your travel dates.</p></div>
   </div>
   <p class="reassure">No payment until after your risk check.</p>
 </div></section>
@@ -178,7 +178,7 @@
 <section class="tr-sec tr-white"><div class="wrap" style="text-align:center">
   <p class="eyebrow">Six ways to see Europe</p>
   <h2>Pick the trip. The visa comes built in.</h2>
-  <p class="tr-sub" style="max-width:60ch;margin:0 auto 40px">Every package includes the Schengen visa preparation, the appointment booking, hotels and transfers. You book your own flights. One team, one plan.</p>
+  <p class="tr-sub" style="max-width:60ch;margin:0 auto 40px">Every package includes the Schengen visa preparation, the appointment booking, hotels and transfers. One team, one plan.</p>
   <div class="tr-cin">
     @foreach ($tours as $p)
       <div class="tr-card">
