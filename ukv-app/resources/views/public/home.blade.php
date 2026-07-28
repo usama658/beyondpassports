@@ -802,11 +802,27 @@
   <div class="sec-head">
     <svg class="pin" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     <p class="eyebrow">In-person centres</p>
-    {{-- Precise slot counts removed 2026-07: the DB holds synthetic seeded slots, so an
-         exact "N appointments available" is not credible and would contradict the
-         indicative-availability disclosure. Honest, non-numeric finder instead. --}}
-    <h2>Find your nearest centre</h2>
-    <p style="max-width:58ch;color:var(--muted)">Schengen visas need an in-person biometric appointment. Enter your postcode and we'll show the closest centre, so you don't have to go hunting. Live availability is confirmed with the centre before you pay.</p>
+    @if (($slotSummary['available_count'] ?? 0) > 0)
+      <h2>Grab an appointment before it's gone</h2>
+      @push('head')<style>
+        #appointments .ap-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 0;padding:0;list-style:none}
+        #appointments .ap-chips li{display:inline-flex;align-items:center;gap:8px;font:700 14px var(--display);padding:9px 15px;border-radius:999px}
+        #appointments .ap-chips .live{background:rgba(46,154,140,.10);border:1px solid rgba(46,154,140,.22);color:var(--stamp-text)}
+        #appointments .ap-chips .meta{background:#fff;border:1px solid var(--paper-edge);color:var(--ink)}
+        #appointments .ap-chips .meta svg{width:16px;height:16px;color:var(--cta);flex:none}
+        #appointments .ap-chips .pulse{width:8px;height:8px;border-radius:50%;background:var(--stamp);box-shadow:0 0 0 0 rgba(46,154,140,.55);animation:apPulse 2s infinite;flex:none}
+        @keyframes apPulse{0%{box-shadow:0 0 0 0 rgba(46,154,140,.5)}70%{box-shadow:0 0 0 7px rgba(46,154,140,0)}100%{box-shadow:0 0 0 0 rgba(46,154,140,0)}}
+      </style>@endpush
+      <ul class="ap-chips">
+        {{-- Precise counts dropped 2026-07 (synthetic seed data, not credible). Same chip design, non-numeric text. --}}
+        <li class="live"><span class="pulse" aria-hidden="true"></span>Appointments available</li>
+        @if (! empty($slotSummary['next_slot_at']))<li class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Next on {{ $slotSummary['next_slot_at']->format('j M Y') }}</li>@endif
+      </ul>
+      <p style="max-width:58ch;color:var(--muted);margin-top:12px">Enter your postcode to find the one nearest you. Live availability is confirmed with the centre before you pay.</p>
+    @else
+      <h2>Find your nearest centre</h2>
+      <p style="max-width:58ch;color:var(--muted)">Schengen visas need an in-person biometric appointment. Enter your postcode and we'll show the closest centre, so you don't have to go hunting.</p>
+    @endif
   </div>
   <form method="GET" action="{{ route('centre.search') }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;max-width:520px">
     <input type="text" name="postcode" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" required aria-label="Your postcode"
