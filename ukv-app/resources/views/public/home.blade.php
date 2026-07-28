@@ -817,6 +817,7 @@
         {{-- Precise counts dropped 2026-07 (synthetic seed data, not credible). Same chip design, non-numeric text. --}}
         <li class="live"><span class="pulse" aria-hidden="true"></span>Appointments available</li>
         @if (! empty($slotSummary['next_slot_at']))<li class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Next on {{ $slotSummary['next_slot_at']->format('j M Y') }}</li>@endif
+        <li class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>In-person centres near you</li>
       </ul>
       <p style="max-width:58ch;color:var(--muted);margin-top:12px">Enter your postcode to find the one nearest you. Live availability is confirmed with the centre before you pay.</p>
     @else
