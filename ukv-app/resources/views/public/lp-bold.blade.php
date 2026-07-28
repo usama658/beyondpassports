@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Agent & Consultants UK | Beyond Passports')
-@section('description', 'Schengen visa agents for UK applicants. We handle applications, find appointment slots, and recover refusals. 100% refund if refused.')
+@section('description', 'Schengen visa agents for UK applicants. We handle applications, find appointment slots, and recover refusals. 100% service-fee refund if refused.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -396,7 +396,7 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="hero" id="top"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
-    <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">if refused</span></a>
+    <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
     <p class="eyebrow heyebrow">Schengen visa consultants · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
