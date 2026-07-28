@@ -72,7 +72,7 @@
       <p class="eyebrow">{{ $eyebrow }}</p>
       <h2 id="testimonials-head">{{ $heading }}</h2>
       <div style="margin:10px 0 4px">@include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '0'])</div>
-      <p>Every review here is shared with the traveller's consent and anonymised, shown alongside our live Trustpilot score.</p>
+      <p>Every review here is shared with the traveller's consent and anonymised.</p>
       @if ($showAll)
         <p style="margin-top:16px"><a class="rlink" style="font-weight:700;color:var(--soft)" href="{{ url('/reviews') }}">Read more reviews →</a></p>
       @endif
