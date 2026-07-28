@@ -404,7 +404,7 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
-    <p class="fl"><span class="dot"></span>Case check · reply within 24 hours</p>
+    <p class="fl"><span class="dot"></span>Case check · reply within 2 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
     <div class="row"><div class="fld"><label for="lpb-phone">Phone</label>@include('partials.phone-country', ['id' => 'lpb-phone', 'name' => 'lpb-phone', 'placeholder' => '7911 123456'])</div></div>
     <div class="combo" id="lpbDest">
@@ -420,7 +420,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- PATHS — horizontal "start where you are" chips, before the trust bar --}}
 <section class="pathband" id="paths"><div class="wrap">
-  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 24 hours</span></div>
+  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 2 hours</span></div>
   <div class="sitrow">
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We monitor all 29 countries daily and secure slots most never find.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know it works. We handle paperwork, appointment and details.</p></span><span class="chev">→</span></a>
@@ -559,7 +559,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="dark">
       <h3 class="dh">Four steps. No surprises.</h3><p class="dsub">Same process for every case, every time.</p>
       <div class="stp"><span class="n">1</span><div><h3>You message us</h3><p>WhatsApp or email, in your own words. No booking system, no account.</p></div></div>
-      <div class="stp"><span class="n">2</span><div><h3>We review within 24 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
+      <div class="stp"><span class="n">2</span><div><h3>We review within 2 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
       <div class="stp"><span class="n">3</span><div><h3>We tell you honestly if we can help</h3><p>If we can, we explain what we'd do and what it costs. If we can't, we tell you why.</p></div></div>
       <div class="stp"><span class="n">4</span><div><h3>We help you with everything</h3><p>Documents, evidence, appointment booking, and a full briefing so you know exactly what to expect on the day. You attend the centre yourself.</p></div></div>
       <div class="statline"><b>24hr</b><span>We aim to reply to every case check within 2 hours.</span></div>
@@ -603,7 +603,7 @@ html,body{overflow-x:clip;max-width:100%}
     <aside class="bp" id="ask">
       @include('partials.refund-seal-band', ['flush' => true])
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
-      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 24 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 2 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
     @include('partials.disclaimer-strip', ['wrap' => false])
     </div>

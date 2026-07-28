@@ -733,13 +733,13 @@
     <div class="rail">
       <span class="ey">Get in touch</span>
       <h2>Send us your <em>situation</em></h2>
-      <p class="lede">Tell us your situation and we will come back to you within 24 hours. If we cannot improve your application, we say so upfront. No charge for the review.</p>
+      <p class="lede">Tell us your situation and we will come back to you within 2 hours. If we cannot improve your application, we say so upfront. No charge for the review.</p>
       <ul class="cl">
         @foreach ($touchList as $item)
         <li>{!! $touchTick !!}<span>{{ $item }}</span></li>
         @endforeach
       </ul>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>We respond within 24 hours</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>We respond within 2 hours</span>
     </div>
     <div class="act">
       <h3>Reach us directly</h3>
