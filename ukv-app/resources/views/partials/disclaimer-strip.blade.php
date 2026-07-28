@@ -20,7 +20,7 @@
 @php
   $wrap = $wrap ?? true;
   $variant = $variant ?? 'light';
-  $text = $text ?? '<b>Beyond Passports is an independent consultancy, not a government or embassy service.</b> We do not issue visas or decide outcomes. Every decision rests with the relevant authorities. We help you prepare and submit your own application correctly.';
+  $text = $text ?? '<b>Beyond Passports is a private visa consulting service, not a government or embassy service and not a government intermediary.</b> We do not sell visas, obtain government documents, or process applications on behalf of any government. Our service is entirely preparatory: document preparation and appointment assistance, the same category as an immigration solicitor or an accountant helping with tax filings. The visa itself is obtained directly by the applicant from the relevant consulate, and every decision rests with the authorities.';
 @endphp
 @if($wrap)<div class="wrap" style="padding-top:22px;padding-bottom:6px">@endif
   <div class="disc-strip{{ $variant === 'dark' ? ' disc-strip--dark' : '' }}" role="note">
