@@ -1,0 +1,18 @@
+<!-- DRAFT — the COUNTED version of the lp-bold "refusal letters" callout, swapped out
+     2026-07 for a number-free version (unsubstantiated figure). Restore anytime.
+
+     LIVE now (public/lp-bold.blade.php, the .callout <p>):
+       <b>The refusal letters we review tell the same story.</b> Most describe something
+       preventable. Wrong bank statements. Missing employer letters. Itineraries that did not
+       add up. The kind of thing a 30 minute review would have caught.
+
+     To restore the counted version, paste this back in place of the line above.
+     The number pulls from config('ukv.stats.letters_reviewed') via SiteStats::lettersReviewed()
+     (env UKV_STAT_LETTERS_REVIEWED, currently 642). Only re-enable once the figure is
+     genuinely substantiable (Google Ads / ASA).
+-->
+
+<!-- ===== COUNTED VERSION (Blade) ===== -->
+<!--
+<b>We reviewed {{ \App\Support\SiteStats::lettersReviewed() }} refusal letters last year.</b> Over half were preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.
+-->
