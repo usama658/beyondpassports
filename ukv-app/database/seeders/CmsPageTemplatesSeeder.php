@@ -37,7 +37,7 @@ class CmsPageTemplatesSeeder extends Seeder
                     ['type' => 'hero', 'data' => ['eyebrow' => 'Eyebrow', 'title' => 'A clear, benefit-led headline', 'lede' => 'One sentence that says who this is for and what they get.']],
                     ['type' => 'trust-bar', 'data' => ['items' => [
                         ['bold' => 'Schengen', 'rest' => 'experts'], ['bold' => 'No hidden', 'rest' => 'fees'],
-                        ['bold' => '7-day', 'rest' => 'support'], ['bold' => 'UK & Europe', 'rest' => 'registered'],
+                        ['bold' => '7-day', 'rest' => 'support'], ['bold' => 'England & Wales', 'rest' => 'registered'],
                     ]]],
                     ['type' => 'steps', 'data' => ['eyebrow' => 'How it works', 'heading' => 'Three simple steps', 'items' => [
                         ['title' => 'Tell us your trip', 'text' => 'Share destination and dates.'],

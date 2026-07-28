@@ -23,8 +23,8 @@ class CmsAboutPilotSeeder extends Seeder
                 'title' => 'About',
                 'mode' => 'cms',
                 'status' => 'published',
-                'seo_title' => 'About Us: Independent Schengen Visa Service, UK & Europe | Beyond Passports',
-                'seo_description' => 'Beyond Passports is an independent Schengen visa consultancy registered in the UK and Europe. Not a government website. Clear fees, real human checks, honest advice.',
+                'seo_title' => 'About Us: Independent Schengen Visa Service for UK Applicants | Beyond Passports',
+                'seo_description' => 'Beyond Passports is an independent Schengen visa consultancy registered in England and Wales. Not a government website. Clear fees, real human checks, honest advice.',
                 'blocks' => [
                     ['type' => 'locked-include', 'data' => ['partial' => 'about-body']],
                 ],

@@ -51,7 +51,7 @@ class CmsContentPagesSeeder extends Seeder
                 'mode' => 'cms',
                 'status' => 'published',
                 'seo_title' => 'Plan a trip — Europe tours with the Schengen visa built in | Beyond Passports',
-                'seo_description' => 'Visa-led European tour packages. We prepare the Schengen visa and book the appointment first, then wrap flights and hotels. Registered in the UK and Europe. No payment until after your free risk check.',
+                'seo_description' => 'Visa-led European tour packages. We prepare the Schengen visa and book the appointment first, then wrap flights and hotels. Registered in England and Wales. No payment until after your free risk check.',
                 'blocks' => [['type' => 'locked-include', 'data' => ['partial' => 'tours-body']]],
             ],
         ];
