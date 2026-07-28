@@ -232,7 +232,7 @@
   // tools.blade — two free checkers. Vanilla JS, no network. General guidance only.
   document.addEventListener('DOMContentLoaded', function () {
     // URLs resolved server-side so client links honour the silo.
-    var APPLY_URL = @json(url('/apply'));
+    var APPLY_URL = @json(\App\Support\SiteStats::chatUrl()); // apply page drafted -> checker CTA opens WhatsApp
     var IDP_URL   = @json(url('/driving-abroad'));
 
     // --- destination knowledge (UK citizen, tourism) -------------------------

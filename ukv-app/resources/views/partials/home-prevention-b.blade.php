@@ -45,8 +45,8 @@
       <h2>Four checks between you and a refusal.</h2>
       <p class="promise">A refusal usually means something fixable slipped through. We catch it while there's still time to put it right.</p>
       <div class="cta-row">
-        <a href="{{ url('/apply') }}" class="btn">Start my application →</a>
-        <a href="{{ url('/apply') }}" class="rlink">Worried about refusal? See how →</a>
+        <a href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn">Start on WhatsApp →</a>
+        <a href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="rlink">Worried about refusal? Ask us →</a>
       </div>
     </div>
 

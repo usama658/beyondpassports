@@ -57,7 +57,7 @@
       </div>
       @endif
       <div class="tk-links">
-        <a href="{{ url('/apply') }}">Start my application →</a>
+        <a href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Start on WhatsApp →</a>
         <a href="{{ url('/') }}">Back to home</a>
       </div>
     </div>

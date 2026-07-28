@@ -239,7 +239,7 @@
   <p style="max-width:54ch;color:#cdd9e1">Found your centre? A <x-reg-verify>UK &amp; Europe registered</x-reg-verify> service checks your documents and holds the soonest slot before it goes. You just turn up. Independent service, not a government website.</p>
   <div class="row">
     <a href="{{ $fcWa }}" class="btn btn--glass">@include('partials.wa-glyph')Check eligibility</a>
-    <a href="{{ url('/apply') }}" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start your application →</a>
+    <a href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost" style="color:#fff;border-color:#cdd9e1">Start on WhatsApp →</a>
   </div>
 <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 

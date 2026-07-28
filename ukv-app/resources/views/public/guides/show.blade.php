@@ -50,7 +50,7 @@
 
     // --- Hub-and-spoke link targets ------------------------------------------------------
     // DOWN: /apply?destination + the money page + the document-checklist tool.
-    $applyUrl     = $isCountry ? url('/apply').'?destination='.urlencode($destination->slug) : url('/apply');
+    $applyUrl     = \App\Support\SiteStats::chatUrl(); // apply page drafted -> route enquiries to WhatsApp
     $moneyUrl     = $isCountry ? url('/visa/'.$destination->slug) : null;
     $checklistUrl = url('/tools');     // public document-checklist / visa-checker tool
 
@@ -644,7 +644,7 @@
         <h3>What does your trip need?</h3>
         <p>Answer a few quick questions. Our checker shows whether you need an ETA, a visa, or nothing at all.</p>
         <a href="{{ $checklistUrl }}" class="rb rb-primary">What I need <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="{{ $applyUrl }}" class="rb rb-ghost">Start an application</a>
+        <a href="{{ $applyUrl }}" target="_blank" rel="noopener" class="rb rb-ghost">Start on WhatsApp</a>
       </div>
 
       {{-- Related guides --}}

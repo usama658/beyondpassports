@@ -162,7 +162,7 @@
             @endif
             @if ($booked)
               {{-- We can book this centre — primary action is to book through us. --}}
-              <a class="nc-railbtn is-pri" href="{{ url('/apply') }}">Book through us</a>
+              <a class="nc-railbtn is-pri" href="{{ \App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener">Book through us</a>
             @elseif ($contactHref !== null)
               <a class="nc-railbtn is-ghost"
                  href="{{ $contactHref }}"
