@@ -1,6 +1,6 @@
 {{-- ICO registration cell for the .tbar-b stat band. Watermark shield behind the reference
      number (design "X"), linking the public ICO register. Renders only when the number is set;
-     otherwise falls back to the original "Registered in UK & Europe" flags cell so nothing breaks.
+     otherwise falls back to the original "Registered in England and Wales" flags cell so nothing breaks.
      Drop-in replacement for one <div> cell in a .tbar-b .row. --}}
 @php $icoRef = trim((string) config('ukv.compliance.ico_number', '')); @endphp
 @if ($icoRef !== '')
