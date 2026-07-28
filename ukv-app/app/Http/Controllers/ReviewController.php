@@ -42,7 +42,7 @@ class ReviewController extends Controller
      */
     private const TESTIMONIALS = [
         [
-            'quote'       => 'They spotted my passport was a month short of the validity I needed — before I had booked anything. Sorted the renewal first, then the visa. The stress just vanished.',
+            'quote'       => 'They spotted my passport was a month short of the validity I needed, before I had booked anything. Sorted the renewal first, then the visa. I felt so much calmer after that.',
             'attribution' => 'UK traveller',
             'rating'      => 5,
         ],
