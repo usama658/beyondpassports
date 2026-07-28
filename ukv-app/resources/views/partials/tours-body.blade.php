@@ -163,12 +163,12 @@
 <section class="tr-sec tr-how"><div class="wrap">
   <div class="sec-head">
     <p class="eyebrow">How it works</p>
-    <h2>We prepare the visa first. Then you travel.</h2>
+    <h2>We prepare the documents for your visa first. Then you travel.</h2>
     <p class="tr-sub" style="margin:12px auto 0;max-width:52ch">Every other tour leaves the visa to you. We flip it: the visa is prepared and the appointment booked before you commit to a single booking.</p>
   </div>
   <div class="steps">
     <div class="step"><div class="num">01</div><h3>Risk check</h3><p>Name and number, that is it. An advisor tells you honestly what could get you refused. No payment.</p></div>
-    <div class="step"><div class="num">02</div><h3>We prepare the visa</h3><p>We build the application the way a consulate reads it, and lock in the appointment before slots go.</p></div>
+    <div class="step"><div class="num">02</div><h3>We prepare the documents for your visa</h3><p>We build the application the way a consulate reads it, and lock in the appointment before slots go.</p></div>
     <div class="step"><div class="num">03</div><h3>We wrap the trip</h3><p>Visa handled, we arrange the hotels and transfers around your travel dates.</p></div>
   </div>
   <p class="reassure">No payment until after your risk check.</p>
