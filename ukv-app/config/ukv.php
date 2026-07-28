@@ -82,6 +82,13 @@ return [
         'time_picker' => (bool) env('UKV_APPT_TIME_PICKER', false),
     ],
 
+    // Legal pages: the "draft / have a solicitor review" banners are hidden by
+    // default so they never show on the live site. Only flip this back on once a
+    // qualified solicitor has actually reviewed (or is being featured for) the copy.
+    'legal' => [
+        'draft_notice' => (bool) env('UKV_LEGAL_DRAFT_NOTICE', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.

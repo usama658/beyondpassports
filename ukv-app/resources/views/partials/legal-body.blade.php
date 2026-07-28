@@ -109,10 +109,12 @@
         <h1>Legal &amp; policies</h1>
         <p class="lede">Everything that governs how we work with you, in plain English: how we handle your data, the terms of our service, how to raise a complaint, and an important disclaimer about who we are. Beyond Passports is an independent facilitation service. We are not a government website and not affiliated with gov.uk or any embassy.</p>
         <div style="display:flex;justify-content:center;margin:14px 0 4px">@include('partials.trustpilot-cta', ['align' => 'center', 'margin' => '0'])</div>
+@if(config('ukv.legal.draft_notice'))
         <div class="draft-banner" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
           <p><strong>Draft for review. Have a solicitor review before relying on these.</strong> These policies are working drafts written for Beyond Passports's business model. They have not yet been checked by a qualified legal adviser and should not be treated as final legal advice.</p>
         </div>
+        @endif
       </div>
     </div>
   </div>
@@ -142,7 +144,9 @@
         <article class="legal-sec" id="privacy" aria-labelledby="privacy-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="privacy-h">Privacy Policy</h2>
+@if(config('ukv.legal.draft_notice'))
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+          @endif
 
           <p>This policy explains what personal data Beyond Passports collects when you use our visa, eVisa, ETA and IDP-guidance facilitation service, why we collect it, how long we keep it, and the rights you have over it. The <strong>data controller</strong> is Beyond Passports, company registration number <strong>[to complete]</strong>, registered at <strong>[to complete]</strong>. For any privacy question, email <a href="mailto:privacy@beyondpassports.co.uk">privacy@beyondpassports.co.uk</a> <strong>[to complete]</strong>.</p>
 
@@ -200,7 +204,9 @@
         <article class="legal-sec" id="terms" aria-labelledby="terms-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="terms-h">Terms of Service</h2>
+@if(config('ukv.legal.draft_notice'))
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+          @endif
 
           <p>These terms govern your use of Beyond Passports's service. Beyond Passports is operated by <strong>[to complete]</strong> (company registration number <strong>[to complete]</strong>), and you can reach us at <strong>[to complete]</strong>. By placing an order you agree to these terms. Please read them alongside our Privacy Policy and Disclaimer below.</p>
 
@@ -237,7 +243,9 @@
         <article class="legal-sec" id="refunds" aria-labelledby="refunds-h">
           <p class="updated">Last updated: 2026-07-23</p>
           <h2 id="refunds-h">Refund Policy</h2>
+@if(config('ukv.legal.draft_notice'))
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+          @endif
 
           <p>This policy explains what is and isn't refundable, and the two ways we make things right. It sits alongside your statutory cancellation rights, which are set out under <a href="#terms">Terms of Service</a> and are not reduced by anything here.</p>
 
@@ -285,7 +293,9 @@
         <article class="legal-sec" id="complaints" aria-labelledby="complaints-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="complaints-h">Complaints Procedure</h2>
+@if(config('ukv.legal.draft_notice'))
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+          @endif
 
           <p>We want every customer to be happy with our service. If something has gone wrong, we'd like the chance to put it right.</p>
 
@@ -308,7 +318,9 @@
         <article class="legal-sec" id="disclaimer" aria-labelledby="disclaimer-h">
           <p class="updated">Last updated: 2026-06-15</p>
           <h2 id="disclaimer-h">Disclaimer</h2>
+@if(config('ukv.legal.draft_notice'))
           <div class="ph-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>[Placeholder. Review with a solicitor before launch]</span></div>
+          @endif
 
           <p><strong>Beyond Passports is an independent visa and travel consultancy. We are not affiliated with, endorsed by, or connected to any government, embassy, consulate, or visa application centre.</strong> We do not issue visas or any government documents, and we cannot influence the outcome of an application. All visa decisions rest solely with the relevant government authorities. Our service is guided support with your own application and its documents. Official applications can be made directly with the relevant authority, usually for the government fee alone.</p>
 
