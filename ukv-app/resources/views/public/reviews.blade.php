@@ -48,8 +48,9 @@
     <span class="p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Plain-English answers</span>
     <span class="p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A UK team you can reach</span>
   </div>
-  @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0'])
-  <p class="micro">Consented &amp; anonymised · independent service · not a government website</p>
+  {{-- Live Trustpilot score removed 2026-07 (not shown on /reviews). Restore the include to bring the TrustBox widget back. --}}
+  {{-- @include('partials.trustpilot-cta', ['align' => 'left', 'margin' => '18px 0 0']) --}}
+  <p class="micro" style="margin-top:18px">Consented &amp; anonymised · independent service · not a government website</p>
 </div></section>
 
 {{-- ALL TESTIMONIALS (shared partial, full list) --}}
