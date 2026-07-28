@@ -67,7 +67,7 @@
     <div class="head">
       <p class="eyebrow">Built to prevent refusals</p>
       <h2>We remove each of those before you submit</h2>
-      <p>A named UK visa specialist reviews your whole {{ $name }} file against the current rules (funds, validity, consistency and documents) before anything is submitted.</p>
+      <p>A named UK visa specialist reviews your whole {{ $name }} file against the current rules (documents, funds, validity and consistency) before anything is submitted.</p>
     </div>
 
     <div class="checks">
