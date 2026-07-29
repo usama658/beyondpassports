@@ -2,7 +2,7 @@
 
 @section('title', 'Schengen Visa Consultancy for UK Residents | Beyond Passports')
 @section('description', 'Independent Schengen visa consultancy for UK residents. Registered in England and Wales, we prepare, check and submit your application, catching the mistakes that get people refused. Not a government website.')
-@section('canonical', url('/schengen-visa-consultancy'))
+@section('canonical', url(config('ukv.consultancy_page.enabled') ? '/schengen-visa-consultancy' : '/schengen-visa'))
 
 @php
   // WhatsApp deep-link (same pattern as the other public pages).
@@ -44,7 +44,7 @@
       'name' => 'Beyond Passports',
       'url' => url('/'),
     ],
-    'url' => url('/schengen-visa-consultancy'),
+    'url' => url(config('ukv.consultancy_page.enabled') ? '/schengen-visa-consultancy' : '/schengen-visa'),
   ];
   $faqLd = [
     '@context' => 'https://schema.org',

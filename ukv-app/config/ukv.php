@@ -103,6 +103,13 @@ return [
         'enabled' => (bool) env('UKV_TOOLS_ENABLED', false),
     ],
 
+    // Schengen consultancy landing (/schengen-visa-consultancy). DRAFTED OFF: when false the route
+    // 301-redirects to /schengen-visa, is dropped from the sitemap, and /schengen-visa self-canonicals
+    // (instead of pointing here). Flip UKV_CONSULTANCY_ENABLED=true to relaunch.
+    'consultancy_page' => [
+        'enabled' => (bool) env('UKV_CONSULTANCY_ENABLED', false),
+    ],
+
     // Per-country money pages (/visa/{slug}) + country guide pages (/visa/{slug}/{topic}).
     // DRAFTED (off) — both 302-redirect to /schengen-visa and are dropped from the sitemap, so
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.

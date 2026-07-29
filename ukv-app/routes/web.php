@@ -176,7 +176,11 @@ if (config('ukv.documents.enabled')) {
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/schengen-visa', [DestinationController::class, 'index'])->name('destinations.index');
 Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → canonical Schengen visa page
-Route::get('/schengen-visa-consultancy', [DestinationController::class, 'schengenLanding'])->name('schengen.landing');
+// Schengen consultancy landing. DRAFTED OFF (config ukv.consultancy_page.enabled): 301 to the
+// canonical /schengen-visa hub while off. Controller kept, so flipping the flag relaunches it.
+Route::get('/schengen-visa-consultancy', config('ukv.consultancy_page.enabled')
+    ? [DestinationController::class, 'schengenLanding']
+    : fn () => redirect('/schengen-visa', 301))->name('schengen.landing');
 // Drafted: /visa/schengen duplicated the stronger /schengen-visa hub (which has its own region
 // tabs + searchable grid). 301 to the canonical page. Controller schengen() + destinations.schengen
 // view are kept in code, dormant, so this is reversible — restore the Route::get to un-draft.

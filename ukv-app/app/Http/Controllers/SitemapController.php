@@ -39,7 +39,8 @@ class SitemapController extends Controller
             // /services omitted while the hub is drafted off (config ukv.services_page.enabled)
             ...(config('ukv.services_page.enabled') ? [['/services', 'weekly', '0.9']] : []),
             ['/tour-packages', 'weekly', '0.8'],
-            ['/schengen-visa-consultancy', 'weekly', '0.9'],
+            // /schengen-visa-consultancy omitted while drafted off (config ukv.consultancy_page.enabled)
+            ...(config('ukv.consultancy_page.enabled') ? [['/schengen-visa-consultancy', 'weekly', '0.9']] : []),
             ['/schengen-visa', 'weekly', '0.8'],
             // /tools omitted while the visa checker is drafted off (config ukv.tools_page.enabled)
             ...(config('ukv.tools_page.enabled') ? [['/tools', 'monthly', '0.7']] : []),
