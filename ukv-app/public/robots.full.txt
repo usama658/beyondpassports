@@ -1,0 +1,12 @@
+# Beyond Passports — live. Indexing enabled 2026-07-25.
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /track
+Disallow: /checkout/
+Disallow: /confirmation/
+Disallow: /documents/
+Disallow: /stripe/
+Disallow: /apply
+
+Sitemap: https://beyondpassports.co.uk/sitemap.xml
