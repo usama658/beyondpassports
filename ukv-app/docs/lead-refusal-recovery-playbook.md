@@ -28,6 +28,10 @@ Soft-commit line that converts without over-promising:
 
 Then log the lead and arrange the callback.
 
+**Document intake address:** ask clients to email documents to **`documents@beyondpassports.co.uk`**
+(forwarder → the `hello@` master inbox). Filter/label the inbox by `To: documents@` for a clean
+"case docs" view. Save each lead's docs into their folder under `Beyond Passports - Leads/` in Drive.
+
 ---
 
 ## 2. Reading a Schengen refusal letter (the 17 boxes)
