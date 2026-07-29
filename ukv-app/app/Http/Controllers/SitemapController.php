@@ -133,13 +133,26 @@ class SitemapController extends Controller
         // URL already listed (services/about are also static entries) so nothing duplicates.
         if ((bool) config('ukv.cms.enabled')) {
             $existing = array_column($urls, 'loc');
+
+            // Slugs whose public route is DRAFTED OFF (feature flag) redirect away, so their CMS
+            // page must never surface in the sitemap even if published + in_sitemap.
+            $draftedOff = array_filter([
+                config('ukv.services_page.enabled') ? null : 'services',
+                config('ukv.tools_page.enabled') ? null : 'tools',
+                config('ukv.consultancy_page.enabled') ? null : 'schengen-visa-consultancy',
+                config('ukv.compare.enabled') ? null : 'compare',
+            ]);
+
             Page::query()
                 ->where('mode', 'cms')
                 ->where('status', 'published')
                 ->where('in_sitemap', true)
                 ->where('noindex', false)
                 ->get()
-                ->each(function (Page $page) use (&$urls, $base, $existing) {
+                ->each(function (Page $page) use (&$urls, $base, $existing, $draftedOff) {
+                    if (in_array(ltrim($page->slug, '/'), $draftedOff, true)) {
+                        return;
+                    }
                     $loc = $base . '/' . ltrim($page->slug, '/');
                     if (in_array($loc, $existing, true)) {
                         return;
