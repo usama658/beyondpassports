@@ -562,7 +562,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="stp"><span class="n">2</span><div><h3>We review within 2 hours</h3><p>We work out whether it's a case we can actually help with. Costs you nothing.</p></div></div>
       <div class="stp"><span class="n">3</span><div><h3>We tell you honestly if we can help</h3><p>If we can, we explain what we'd do and what it costs. If we can't, we tell you why.</p></div></div>
       <div class="stp"><span class="n">4</span><div><h3>We help you with everything</h3><p>Documents, evidence, appointment booking, and a full briefing so you know exactly what to expect on the day. You attend the centre yourself.</p></div></div>
-      <div class="statline"><b>24hr</b><span>We aim to reply to every case check within 2 hours.</span></div>
+      <div class="statline"><b>2hr</b><span>We aim to reply to every case check within 2 hours.</span></div>
     </div>
     <div class="lite">
       <h3 class="lh">Don't take our word for it.</h3><p class="lsub">Verify us independently, or ask us and we'll hand you the reference:</p>
