@@ -422,9 +422,9 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 2 hours</span></div>
   <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F" data-cta="path-appointment"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents." data-cta="path-experienced"><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}" data-cta="path-couple"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our document preparation specialists prepare every file as one, so no weak application drags the group down.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our document preparation specialists prepare every file as one, so no weak application drags the group down.</p></span><span class="chev">→</span></a>
   </div>
 </div></section>
 
@@ -448,13 +448,13 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bgrid">
     @forelse($apptCards as $c)
     @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-cta="appt-card" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div><div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div></div></a>
     @empty
     <p style="grid-column:1/-1;text-align:center;color:#cfe0dd;margin:0;line-height:1.5">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
     @endforelse
   </div>
   <div class="bfoot" style="justify-content:center">
-    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20" data-cta="appt-band">Check your eligibility →</a></div>
+    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
@@ -497,7 +497,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
   <div class="callout"><p><b>The refusal letters we review tell the same story.</b> Most describe something preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply." data-cta="qa-docs">@include('partials.wa-glyph')Check my documents →</a></div>
+  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['variant' => 'dark'])
 </section>
@@ -512,7 +512,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. We decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20visa%20was%20refused.%20Can%20you%20review%20my%20letter%3F" data-cta="refusal">Check my refusal letter →</a>
+      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20visa%20was%20refused.%20Can%20you%20review%20my%20letter%3F">Check my refusal letter →</a>
       @php $rteam = collect(config('ukv.team', []))->filter(fn ($m) => !empty($m['photo']))->take(3); @endphp
       @if ($rteam->count())
       <div class="goldrule"></div>
@@ -603,7 +603,7 @@ html,body{overflow-x:clip;max-width:100%}
     <aside class="bp" id="ask">
       @include('partials.refund-seal-band', ['flush' => true])
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
-      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 2 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20" data-cta="faq">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 2 hours</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>
     @include('partials.disclaimer-strip', ['wrap' => false])
     </div>
@@ -650,18 +650,15 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
     if(caret)caret.addEventListener('click',function(e){e.preventDefault();if(list.classList.contains('open')){closeList();}else{openList();inp.focus();}});
     document.addEventListener('click',function(e){if(combo&&!combo.contains(e.target))closeList();});
   }
-  // Section-level conversion tracking: one whatsapp_click event, cta_location per section.
-  function waPush(loc,extra){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:'whatsapp_click',cta_location:loc||'other',lp:'schengen-visa-help'},extra||{}));}
-  Array.prototype.forEach.call(document.querySelectorAll('a[href*="wa.me"]'),function(a){a.addEventListener('click',function(){waPush(a.getAttribute('data-cta'),{slot_country:a.getAttribute('data-slotcountry')||''});});});
   var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
     e.preventDefault();
     var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
     var msg="Hi, I'd like a case check on my Schengen visa.";
     if(d)msg+=' My destination is '+d+'.';
     if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
-    waPush('hero-form',{destination:d});
     window.open('{{ $wa }}?text='+encodeURIComponent(msg),'_blank');
   });
 })();
 </script>
+@include("partials.gtm-tracking")
 @endsection
