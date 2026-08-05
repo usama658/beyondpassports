@@ -400,7 +400,7 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="eyebrow heyebrow">Schengen visa consultants · UK applicants</p>
     <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
-    <p class="hnote">Schengen visa consultants for UK applicants: first-time applications, appointment slots, and refusal recovery.</p>
+    <p class="hnote">Schengen visa consultants for UK applicants: first-time applicants, appointment slots, and refusal recovery.</p>
   </div>
   <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
@@ -456,7 +456,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bfoot" style="justify-content:center">
     <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
 </div>
-@include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your application and assists with booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
+@include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
 @include('partials.appt-slot-modal')
 
@@ -586,7 +586,7 @@ html,body{overflow-x:clip;max-width:100%}
         $faqs = [
           ['q'=>'Are you registered Schengen visa document preparation specialists in the UK?','a'=>'Yes. Beyond Passports is a registered UK company (Companies House no. 17331903). Our consultants prepare Schengen visa documents, help find appointment bookings, and assist with refusal recovery for UK applicants.'],
           ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We secure slots at '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
-          ['q'=>'Do you help with Schengen visa applications for first-time applicants from the UK?','a'=>'Yes. We prepare the full Schengen visa application for UK applicants: documents and appointment booking. You attend the visa centre and submit in person. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
+          ['q'=>'Do you help first-time Schengen visa applicants from the UK?','a'=>'Yes. We prepare the full Schengen visa application for UK applicants: documents and appointment booking. You attend the visa centre and submit in person. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
           ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 29 countries and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
           ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the case check. No fixed upsell, no hidden extras.'],
