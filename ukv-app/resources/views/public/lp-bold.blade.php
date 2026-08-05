@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Agent & Consultants UK | Beyond Passports')
-@section('description', 'Schengen visa agents for UK applicants. We handle applications, find appointment slots, and recover refusals. 100% service-fee refund if refused.')
+@section('title', 'Schengen Visa Document Preparation UK | Beyond Passports')
+@section('description', 'Schengen visa document preparation for UK applicants. We prepare your documents, find appointment slots, and help recover refusals. 100% service-fee refund if refused.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -423,8 +423,8 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 2 hours</span></div>
   <div class="sitrow">
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20handle%20my%20Schengen%20application."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants handle your application, appointment booking and every document.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa agents prepare every file as one, so no weak application drags the group down.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants prepare your documents, book your appointment and manage every file.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our document preparation specialists prepare every file as one, so no weak application drags the group down.</p></span><span class="chev">→</span></a>
   </div>
 </div></section>
 
@@ -529,7 +529,7 @@ html,body{overflow-x:clip;max-width:100%}
       <ul>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">4 checks, no wasted fee</span></div></li>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>A real UK person reviews your documents, checking funds, validity and consistency, the details that trip applications up.</p><span class="stop">Reviewed by hand, fewer errors</span></div></li>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-submission QA gate</h3><p>Nothing is submitted until a UK reviewer has signed off the whole file.</p><span class="stop">1 gate, nothing slips</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-file QA gate</h3><p>Your file isn't finalised until a UK reviewer has signed off the whole thing.</p><span class="stop">1 gate, nothing slips</span></div></li>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Every result, sharper next time</span></div></li>
       </ul>
     </div>
@@ -584,9 +584,9 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="flist">
       @php
         $faqs = [
-          ['q'=>'Are you registered Schengen visa agents in the UK?','a'=>'Yes. Beyond Passports is a registered UK company (Companies House no. 17331903). Our consultants handle Schengen visa applications, appointment bookings, and refusal recovery for UK applicants.'],
+          ['q'=>'Are you registered Schengen visa document preparation specialists in the UK?','a'=>'Yes. Beyond Passports is a registered UK company (Companies House no. 17331903). Our consultants prepare Schengen visa documents, help find appointment bookings, and assist with refusal recovery for UK applicants.'],
           ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We secure slots at '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
-          ['q'=>'Do you help with Schengen visa applications for first-time applicants from the UK?','a'=>'Yes. We handle the full Schengen visa application for UK applicants: documents, appointment booking, and submission. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
+          ['q'=>'Do you help with Schengen visa applications for first-time applicants from the UK?','a'=>'Yes. We prepare the full Schengen visa application for UK applicants: documents and appointment booking. You attend the visa centre and submit in person. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
           ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 29 countries and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
           ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the case check. No fixed upsell, no hidden extras.'],
