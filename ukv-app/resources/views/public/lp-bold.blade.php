@@ -402,7 +402,7 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
     <p class="hnote">Schengen visa consultants for UK applicants: first-time applicants, appointment slots, and refusal recovery.</p>
   </div>
-  <div class="hform-col" style="display:flex;flex-direction:column;gap:14px">
+  <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
     <p class="fl"><span class="dot"></span>Case check · reply within 2 hours</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
