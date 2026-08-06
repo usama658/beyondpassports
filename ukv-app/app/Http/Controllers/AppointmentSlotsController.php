@@ -35,9 +35,9 @@ class AppointmentSlotsController extends Controller
             return response()->json(['country' => $country, 'centres' => []]);
         }
 
-        // Same 30-day window the lp-bold board totals over, so per-centre "open" counts
+        // Same 90-day window the lp-bold board totals over, so per-centre "open" counts
         // sum to the board's country total (no board-vs-modal mismatch).
-        $windowEnd = now()->addDays(30);
+        $windowEnd = now()->addDays(90);
 
         $centres = $destination->supplyNodes
             ->map(function ($node) use ($windowEnd) {

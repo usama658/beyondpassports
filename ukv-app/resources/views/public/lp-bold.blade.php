@@ -448,7 +448,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bgrid">
     @forelse($apptCards as $c)
     @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div>@if(($c['slots'] ?? 0) > 0)<div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 30 days</small></div>@endif</div></a>
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $c['cls'] === 'tight' ? 'lim' : 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div><div class="date">{{ $c['date'] }}</div>@if(($c['slots'] ?? 0) > 0)<div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 90 days</small></div>@endif</div></a>
     @empty
     <p style="grid-column:1/-1;text-align:center;color:#cfe0dd;margin:0;line-height:1.5">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
     @endforelse
