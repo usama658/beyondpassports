@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Document Preparation UK | Beyond Passports')
+@section('title', 'Schengen Visa Consultants UK | Schengen Visa Help | Beyond Passports')
 @section('description', 'Schengen visa document preparation for UK applicants. We prepare your documents, find appointment slots, and help recover refusals. 100% service-fee refund if refused.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
