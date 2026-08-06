@@ -71,17 +71,21 @@ class AppServiceProvider extends ServiceProvider
                 ->map(function ($d) use ($availability, $windowEnd) {
                     $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null];
                     $nodeIds = $d->supplyNodes->pluck('id')->all();
-                    $slots = empty($nodeIds) ? 0 : \App\Models\CentreSlot::query()
+                    $open = empty($nodeIds) ? collect() : \App\Models\CentreSlot::query()
                         ->available()
                         ->whereIn('supply_node_id', $nodeIds)
                         ->where('slot_at', '<=', $windowEnd)
-                        ->count();
+                        ->get();
+                    // Distinct open days drive the scarcity tier (Available / Limited / Very limited);
+                    // raw slot count still feeds the "N slots" line.
+                    $openDays = $open->groupBy(fn ($s) => $s->slot_at->toDateString())->count();
                     return [
                         'name'   => $d->name,
                         'region' => $d->region,
                         'status' => $a['status'],
                         'date'   => $a['next_available_on'],
-                        'slots'  => $slots,
+                        'slots'  => $open->count(),
+                        'days'   => $openDays,
                     ];
                 })
                 // Feature ONLY countries with published availability (a real date); the rest are
@@ -92,13 +96,21 @@ class AppServiceProvider extends ServiceProvider
                     $ri = $ri === false ? 99 : $ri;
                     return sprintf('%02d-%011d', $ri, $c['date']->timestamp);
                 })
-                ->map(fn ($c) => [
-                    'name'  => $c['name'],
-                    'cls'   => $c['status'] === 'ok' ? 'open' : 'tight',
-                    'label' => $c['status'] === 'ok' ? 'Available' : 'Limited',
-                    'date'  => $c['date']->format('j M Y'),
-                    'slots' => $c['slots'],
-                ])
+                ->map(function ($c) {
+                    // Scarcity tier from distinct open days: >=5 plentiful, 2-4 limited, 1 very limited.
+                    $days = $c['days'];
+                    [$cls, $label] = $days >= 5
+                        ? ['open', 'Available']
+                        : ($days >= 2 ? ['tight', 'Limited'] : ['none', 'Very limited']);
+
+                    return [
+                        'name'  => $c['name'],
+                        'cls'   => $cls,
+                        'label' => $label,
+                        'date'  => $c['date']->format('j M Y'),
+                        'slots' => $c['slots'],
+                    ];
+                })
                 ->values();
 
             // Hero destination picker — DB-driven like the home hero: only Schengen countries we
