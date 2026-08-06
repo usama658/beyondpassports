@@ -594,7 +594,7 @@ html,body{overflow-x:clip;max-width:100%}
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
           ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website, verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the case check on its own.'],
           ['q'=>'Are you Schengen visa agents?','a'=>'We are a Schengen visa consultancy, not agents or an agency. Our consultants prepare your documents and help with appointments. You attend the visa centre and submit in person yourself. Looking for Schengen visa help near you? Message us, we work with UK applicants nationwide.'],
-          ['q'=>'Can I get Schengen visa help if I'm in the UK?','a'=>'Yes. We provide Schengen visa help for UK applicants from anywhere in England, Scotland, Wales, and Northern Ireland. Our consultancy prepares everything remotely until your in-person biometric appointment at the visa centre.'],
+          ['q'=>'Can I get Schengen visa help if I\'m in the UK?','a'=>'Yes. We provide Schengen visa help for UK applicants from anywhere in England, Scotland, Wales, and Northern Ireland. Our consultancy prepares everything remotely until your in-person biometric appointment at the visa centre.'],
         ];
       @endphp
       @foreach($faqs as $f)
