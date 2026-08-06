@@ -38,7 +38,7 @@ html,body{overflow-x:clip;max-width:100%}
 /* HERO — 2-col split w/ form */
 .lpb .hero{padding:64px 0 58px;background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%)}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
-.lpb .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:13ch;margin:14px 0 0}
+.lpb .hero .hhead{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:13ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 /* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). Interactive on hover. */
 .lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:46ch;transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
@@ -397,8 +397,8 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
-    <p class="eyebrow heyebrow">Schengen visa consultants · UK applicants</p>
-    <h1>A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h1>
+    <h1 class="eyebrow heyebrow">Schengen Visa Consultants for UK Applicants</h1>
+    <h2 class="hhead">A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h2>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
     <p class="hnote">Schengen visa consultants for UK applicants: first-time applicants, appointment slots, and refusal recovery.</p>
   </div>
