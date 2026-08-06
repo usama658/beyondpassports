@@ -21,7 +21,7 @@
     @if(config('ukv.services_page.enabled'))<a href="{{ url('/services') }}">Services</a>@endif
     <a href="{{ url('/about') }}">Who we are</a>
     <a href="{{ url('/contact') }}" class="bpc-btn bpc-btn--ghost">Contact</a>
-    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="bpc-btn">Check eligibility →</a>
+    <a href="{{ App\Support\SiteStats::chatUrl() }}" target="_blank" rel="noopener" class="bpc-btn">Free case check →</a>
   </nav>
 </div></header>
 @once

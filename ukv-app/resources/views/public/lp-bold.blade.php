@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Consultants UK | Schengen Visa Help | Beyond Passports')
-@section('description', 'Schengen visa document preparation for UK applicants. We prepare your documents, find appointment slots, and help recover refusals. 100% service-fee refund if refused.')
+@section('description', 'Schengen visa help from a registered UK consultancy. We prepare your documents, find appointment slots, and help recover refusals. 100% service-fee refund if refused.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -399,8 +399,8 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
     <h1 class="eyebrow heyebrow">Schengen Visa Consultants for UK Applicants</h1>
     <h2 class="hhead">A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h2>
-    <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and we'll say honestly if it's a case we can help with.</p>
-    <p class="hnote">Schengen visa consultants for UK applicants: first-time applicants, appointment slots, and refusal recovery.</p>
+    <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and our Schengen visa consultancy will say honestly if it's a case we can help with.</p>
+    <p class="hnote">Schengen visa help for UK applicants: first-time cases, appointment slots, and refusal recovery from a registered UK consultancy.</p>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
@@ -422,15 +422,15 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
   <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and find slots most applicants miss.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our document preparation specialists prepare every file as one, so no weak application drags the group down.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
   </div>
 </div></section>
 
 {{-- TRUST BAR --}}
 <section class="tbar-f" id="badges"><div class="wrap"><div class="row">
-  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> experts</span></span>
+  <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> consultancy</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.2c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1.1 1.6-2.5 1.6-2.5.7-2.5 1.7 1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>No hidden</b> fees</span></span>
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>7-day</b> support</span></span>
   <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></a>
@@ -454,7 +454,7 @@ html,body{overflow-x:clip;max-width:100%}
     @endforelse
   </div>
   <div class="bfoot" style="justify-content:center">
-    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Check your eligibility →</a></div>
+    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Get Schengen visa help →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
@@ -527,8 +527,8 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="chklist">
       <svg class="stamp" width="60" height="60" viewBox="0 0 48 48" role="img" aria-label="Checked &amp; ready"><use href="#ukv-stamp"></use></svg>
       <ul>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Eligibility checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">4 checks, no wasted fee</span></div></li>
-        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>A real UK person reviews your documents, checking funds, validity and consistency, the details that trip applications up.</p><span class="stop">Reviewed by hand, fewer errors</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 1</span><h3>Case checked first</h3><p>Before you pay, we confirm you qualify: nationality, residence, status and trip purpose.</p><span class="stop">4 checks, no wasted fee</span></div></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 2</span><h3>Documents checked twice</h3><p>A real UK person reviews your documents, checking funds, validity and consistency, the details that trip cases up.</p><span class="stop">Reviewed by hand, fewer errors</span></div></li>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Check 3</span><h3>Pre-file QA gate</h3><p>Your file isn't finalised until a UK reviewer has signed off the whole thing.</p><span class="stop">1 gate, nothing slips</span></div></li>
         <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><span class="ck">Always</span><h3>We learn from every outcome</h3><p>Each result sharpens our checks, so the next application is stronger.</p><span class="stop">Every result, sharper next time</span></div></li>
       </ul>
@@ -569,10 +569,10 @@ html,body{overflow-x:clip;max-width:100%}
       @php $chNo = config('ukv.company_no') ?: '17331903'; $icoNo = config('ukv.ico_number') ?: 'ZC197159'; @endphp
       <a class="vlink" href="https://find-and-update.company-information.service.gov.uk/company/{{ $chNo }}" target="_blank" rel="noopener"><span class="tick">✓</span><div><h4>Company registration <span class="ext">View on Companies House →</span></h4><p>Beyond Passports Ltd, company no. {{ $chNo }}, on the official Companies House register at gov.uk.</p></div></a>
       <a class="vlink" href="https://ico.org.uk/ESDWebPages/Entry/{{ $icoNo }}" target="_blank" rel="noopener"><span class="tick">✓</span><div><h4>Data handling <span class="ext">Check the ICO register →</span></h4><p>Registered with the Information Commissioner's Office, reg. {{ $icoNo }}. Verify on the public ICO register.</p></div></a>
-      <a class="vlink" href="#faq"><span class="tick">✓</span><div><h4>Handled by specialists <span class="ext">See our answers →</span></h4><p>Schengen visa specialists with 15+ years of combined casework. We know the item the checklist leaves out.</p></div></a>
+      <a class="vlink" href="#faq"><span class="tick">✓</span><div><h4>Schengen visa specialists <span class="ext">See our answers →</span></h4><p>Schengen visa specialists with 15+ years of combined casework. We know the item the checklist leaves out.</p></div></a>
       <a class="vlink" href="#appointments"><span class="tick">✓</span><div><h4>Appointment availability <span class="ext">See live availability →</span></h4><p>See the current per-country appointment board on this page, with the soonest slot for each Schengen country.</p></div></a>
       @php $lpLead = collect(config('ukv.team', []))->firstWhere('lead', true) ?? collect(config('ukv.team', []))->first(); @endphp
-      <div class="founder">@if(!empty($lpLead['photo']))<img class="ph" src="{{ asset(ltrim($lpLead['photo'], '/')) }}" alt="{{ $lpLead['name'] }}">@else<span class="ph"></span>@endif<div><b>{{ $lpLead['name'] ?? 'Beyond Passports' }}</b><span>{{ $lpLead['role'] ?? 'UK case team' }} · Schengen visa specialists</span></div></div>
+      <div class="founder">@if(!empty($lpLead['photo']))<img class="ph" src="{{ asset(ltrim($lpLead['photo'], '/')) }}" alt="{{ $lpLead['name'] }}">@else<span class="ph"></span>@endif<div><b>{{ $lpLead['name'] ?? 'Beyond Passports' }}</b><span>{{ $lpLead['role'] ?? 'UK case team' }} · Schengen visa consultancy</span></div></div>
     </div>
   </div>
 </div></section>
@@ -584,15 +584,17 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="flist">
       @php
         $faqs = [
-          ['q'=>'Are you registered Schengen visa document preparation specialists in the UK?','a'=>'Yes. Beyond Passports is a registered UK company (Companies House no. 17331903). Our consultants prepare Schengen visa documents, help find appointment bookings, and assist with refusal recovery for UK applicants.'],
-          ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We secure slots at '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
-          ['q'=>'Do you help first-time Schengen visa applicants from the UK?','a'=>'Yes. We prepare the full Schengen visa document file for UK applicants: documents and appointment booking. You attend the visa centre and submit in person. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
+          ['q'=>'Are you a registered Schengen visa consultancy in the UK?','a'=>'Yes. Beyond Passports is a registered Schengen visa consultancy in the UK (Companies House no. 17331903). Our consultants prepare visa documents, help find appointments, and assist with refusal recovery for UK applicants.'],
+          ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'Yes. We monitor appointment availability across all 29 Schengen countries daily, including Italy, France, Germany, Spain, and the Netherlands. We find slots at '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester, and Edinburgh that most applicants never find refreshing the page themselves.'],
+          ['q'=>'Do you offer Schengen visa help for first-time UK applicants?','a'=>'Yes. We prepare the full Schengen visa document file for UK applicants: documents and appointment booking. You attend the visa centre and submit in person. No prior experience needed. We cover applications for France, Italy, Germany, Spain, the Netherlands, and all 29 Schengen countries.'],
           ['q'=>'What do you actually do that I can’t do myself?','a'=>'You can do it all yourself. Centres are open, checklists are online, booking is public. What we do is close the gap between what the checklist says and what the officer actually evaluates, and monitor appointment systems so you don’t spend weeks refreshing a page.'],
           ['q'=>'How quickly can you get me an appointment?','a'=>'It depends on the country and season. Some release daily, others go weeks with nothing. We monitor all 29 countries and move the moment something opens. We won’t promise a date we can’t control; tell us your window and we’ll be straight.'],
           ['q'=>'What does this cost?','a'=>'Our service fee is separate from the consulate’s visa fee, paid to the government directly. We quote after the case check. No fixed upsell, no hidden extras.'],
           ['q'=>'Why WhatsApp instead of a form?','a'=>'A visa case is a conversation, not a ticket. WhatsApp lets you send a photo of your letter, ask a follow-up, and get a real answer the same day. Forms make you wait; we’d rather just talk.'],
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate, not to us. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. That’s what moves the odds. The outcome is never ours to promise.','key'=>true],
           ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Don’t trust the website, verify us. Registered UK company (search Companies House) and registered with the ICO. Message us before you pay anything; judge the case check on its own.'],
+          ['q'=>'Are you Schengen visa agents?','a'=>'We are a Schengen visa consultancy, not agents or an agency. Our consultants prepare your documents and help with appointments. You attend the visa centre and submit in person yourself. Looking for Schengen visa help near you? Message us, we work with UK applicants nationwide.'],
+          ['q'=>'Can I get Schengen visa help if I'm in the UK?','a'=>'Yes. We provide Schengen visa help for UK applicants from anywhere in England, Scotland, Wales, and Northern Ireland. Our consultancy prepares everything remotely until your in-person biometric appointment at the visa centre.'],
         ];
       @endphp
       @foreach($faqs as $f)
