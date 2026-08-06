@@ -452,7 +452,7 @@
             <h3>Email</h3>
             <p class="detail"><a href="mailto:{{ config('ukv.email') ?: 'hello@beyondpassports.co.uk' }}">{{ config('ukv.email') ?: 'hello@beyondpassports.co.uk' }}</a></p>
             <p class="sub">Best for sending documents or anything you want in writing.</p>
-            <span class="hrs">Reply within 2 hours</span>
+            <span class="hrs">Reply within 30 minutes</span>
           </div>
         </div>
 
