@@ -514,15 +514,17 @@
             var parts = String(d.label).split(' ');
             var wd = parts.length > 1 ? parts[0] : '';
             var dm = parts.length > 1 ? parts.slice(1).join(' ') : d.label;
-            var times = d.times || [];
+            // Real times only: '00:00' is the "time TBC" marker for date-only slots, so a day
+            // shows its time chips only when the centre actually published times (France/Poland).
+            var times = (d.times || []).filter(function (t) { return t.label !== '00:00'; });
             var b = document.createElement('button'); b.type = 'button'; b.className = 'slot';
             b.innerHTML = (first && i === 0 ? '<span class="soon">Soonest</span>' : '') +
               (wd ? '<span class="wd">' + esc(wd) + '</span>' : '') +
               '<span class="dm">' + esc(dm) + '</span>' +
-              (timePicker ? '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>' : '');
+              (times.length ? '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>' : '');
             b.addEventListener('click', function () {
-              // Time-picker off: picking the day is the whole selection.
-              if (!timePicker) { selectDay(b, c.name, d.label); return; }
+              // No published times for this day: picking the day is the whole selection.
+              if (!times.length) { selectDay(b, c.name, d.label); return; }
               Array.prototype.forEach.call(box.querySelectorAll('.slot'), function (x) { x.classList.remove('sel'); });
               b.classList.add('sel');
               // Reveal this day's times (the "clock") in this centre's time box.
