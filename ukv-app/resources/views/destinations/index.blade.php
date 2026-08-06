@@ -222,22 +222,14 @@
     <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
   </div>
 
-  @php $peakWa = config('ukv.whatsapp') ?: '447882747584'; $peakMsg = 'Hi, I want a Schengen appointment during the summer peak (Jul-Aug). My travel dates are: '; @endphp
+  {{-- Summer-peak live badge (auto-shows Jun–Aug), mirrors the /schengen-visa-help header pill. --}}
   @if (in_array(now()->month, [6, 7, 8]))
-  {{-- Summer-peak boarding-pass promo (auto-shows Jun–Aug only). --}}
-  <a class="peakpass reveal" href="https://wa.me/{{ $peakWa }}?text={{ rawurlencode($peakMsg) }}" aria-label="Ask about summer-peak Schengen appointments on WhatsApp">
-    <span class="pp-stub"><span class="a">Season</span><span class="b">PEAK</span><span class="c">Jul–Aug</span></span>
-    <span class="pp-perf"></span>
-    <span class="pp-body">
-      <span class="pp-fields">
-        <span class="pp-f"><span class="k">Window</span><span class="v">Jul–Aug 2026</span></span>
-        <span class="pp-f"><span class="k">Status</span><span class="v sm">Slots moving fast</span></span>
-        <span class="pp-f"><span class="k">Watching</span><span class="v sm">All 29 countries</span></span>
-      </span>
-      <span class="pp-hl">Book before the summer rush.<small>Earliest slots go first across every consulate.</small></span>
-      <span class="pp-bcode" aria-hidden="true"></span>
+  <div class="reveal" style="display:flex;justify-content:center;margin:2px 0 24px">
+    <span style="display:inline-flex;align-items:center;gap:9px;background:rgba(46,154,140,.12);color:#1F6E63;font:800 13px var(--display);letter-spacing:.04em;padding:9px 17px;border-radius:999px">
+      <span style="width:8px;height:8px;border-radius:50%;background:#2E9A8C;box-shadow:0 0 0 4px rgba(46,154,140,.22);flex:none"></span>
+      Summer Peak &middot; Jul–Aug
     </span>
-  </a>
+  </div>
   @endif
 
   {{-- SELF-SERVE SLOT PICKER — pick country -> popup lists selectable slots -> "ask us, we book it" (WhatsApp) --}}
