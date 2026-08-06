@@ -151,11 +151,13 @@
   #sg-appts .ap-st.ok{background:rgba(46,154,140,.14);color:#1F6E63}#sg-appts .ap-st.ok .dot{background:#2E9A8C}
   #sg-appts .ap-st.lim{background:rgba(200,146,58,.16);color:#946100}#sg-appts .ap-st.lim .dot{background:#c8923a}
   #sg-appts .ap-st.ask{background:rgba(21,94,122,.12);color:var(--cta)}#sg-appts .ap-st.ask .dot{background:var(--cta)}
+  #sg-appts .ap-st.low{background:rgba(192,57,43,.14);color:#c0392b}#sg-appts .ap-st.low .dot{background:#c0392b}
   #sg-appts .ap-bar{height:6px;border-radius:999px;background:#e7edf0;overflow:hidden}
   #sg-appts .ap-bar>i{display:block;height:100%;border-radius:999px}
   #sg-appts .ap-bar>i.ok{background:linear-gradient(90deg,#2E9A8C,#5C9A7B)}
   #sg-appts .ap-bar>i.lim{background:linear-gradient(90deg,#c8923a,#e0b15f)}
   #sg-appts .ap-bar>i.ask{background:repeating-linear-gradient(90deg,#cdd7dc 0 6px,transparent 6px 12px)}
+  #sg-appts .ap-bar>i.low{background:linear-gradient(90deg,#c0392b,#e0685a)}
   #sg-appts .ap-dt{font:700 14px var(--display);color:var(--ink);margin-top:11px}
   #sg-appts .ap-lb{font-size:11px;color:var(--muted);margin-top:3px}
   #sg-appts .ap-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:28px;font-size:12px;color:var(--muted)}
@@ -379,9 +381,17 @@
         @foreach ($group as $d)
           @php
             $a = $availability[$d->id] ?? ['status' => 'ask', 'next_available_on' => null, 'confirmed_at' => null];
-            $status = $a['status'];
-            $label = ['ok' => 'Available', 'lim' => 'Limited', 'ask' => 'Ask us'][$status];
-            $width = ['ok' => '82%', 'lim' => '34%', 'ask' => '100%'][$status];
+            // Scarcity tier from distinct open days in the 90-day window (matches the LP board):
+            // >=5 Available, 2-4 Limited, 1 Very limited; "ask" stays "ask".
+            $nodeIds = $d->supplyNodes->pluck('id')->all();
+            $days = ($a['status'] === 'ask' || empty($nodeIds)) ? 0 : \App\Models\CentreSlot::query()
+                ->available()
+                ->whereIn('supply_node_id', $nodeIds)
+                ->where('slot_at', '<=', now()->addDays(90))
+                ->get()->groupBy(fn ($s) => $s->slot_at->toDateString())->count();
+            $status = $a['status'] === 'ask' ? 'ask' : ($days >= 5 ? 'ok' : ($days >= 2 ? 'lim' : 'low'));
+            $label = ['ok' => 'Available', 'lim' => 'Limited', 'low' => 'Very limited', 'ask' => 'Ask us'][$status];
+            $width = ['ok' => '82%', 'lim' => '34%', 'low' => '15%', 'ask' => '100%'][$status];
           @endphp
           {{-- href = destination page (no-JS fallback); JS intercepts to open the slot picker.
                data-slotdate = the real published next-available date, so the modal starts there. --}}
