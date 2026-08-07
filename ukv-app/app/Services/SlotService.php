@@ -302,6 +302,67 @@ final class SlotService
     }
 
     /**
+     * Preloadable slot payload for the "pick a slot" modal, keyed by country display name.
+     *
+     * Same shape the AppointmentSlotsController returns per country (centres -> days -> times),
+     * but for ALL Schengen countries at once, so the modal can render instantly from an inlined
+     * blob with zero round-trip (the fetch endpoint stays as a fallback). Cached briefly — slot
+     * inventory only changes when ops update it, and the modal tolerates a few minutes of lag.
+     *
+     * @return array<string, list<array{name:string, open:int, days:list<array{iso:string,label:string,times:list<array{iso:string,label:string}>}>}>>
+     */
+    public function modalPayload(int $ttl = 300): array
+    {
+        return \Illuminate\Support\Facades\Cache::remember('appt_modal_payload_v1', $ttl, function (): array {
+            $windowEnd = Carbon::now()->addDays(90);
+
+            return \App\Models\Destination::query()
+                ->where('visa_type', 'Schengen')
+                ->with(['supplyNodes' => fn ($q) => $q->where('we_book_here', true)])
+                ->get()
+                ->mapWithKeys(function ($destination) use ($windowEnd): array {
+                    $centres = $destination->supplyNodes
+                        ->map(function ($node) use ($windowEnd): array {
+                            $available = CentreSlot::query()
+                                ->where('supply_node_id', $node->getKey())
+                                ->available()
+                                ->where('slot_at', '<=', $windowEnd)
+                                ->orderBy('slot_at')
+                                ->get();
+
+                            $days = $available
+                                ->groupBy(fn ($s) => $s->slot_at->toDateString())
+                                ->map(fn ($group, $iso) => [
+                                    'iso' => $iso,
+                                    'label' => $group->first()->slot_at->format('D j M'),
+                                    'times' => $group
+                                        ->map(fn ($s) => [
+                                            'iso' => $s->slot_at->toIso8601String(),
+                                            'label' => $s->slot_at->format('H:i'),
+                                        ])
+                                        ->values()
+                                        ->all(),
+                                ])
+                                ->values()
+                                ->all();
+
+                            return [
+                                'name' => $node->name,
+                                'open' => $available->count(),
+                                'days' => $days,
+                            ];
+                        })
+                        ->sortBy(fn ($c) => $c['days'][0]['iso'] ?? '9999-12-31')
+                        ->values()
+                        ->all();
+
+                    return [$destination->name => $centres];
+                })
+                ->all();
+        });
+    }
+
+    /**
      * Aggregate availability for the home teaser: upcoming available slots at "we book here"
      * centres, the soonest slot, and how many distinct centres have availability. Zeros/null when
      * nothing is available, so the home band falls back to a plain finder CTA (no fake counts).

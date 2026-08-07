@@ -2,7 +2,13 @@
      Self-contained: resolved-hex CSS (no theme vars, so it renders identically on the dark lp-bold
      LP) + the exact slot-picker JS. Bind: any element with [data-slotcountry] opens it. Real slots
      come from route('appointments.slots') (CentreSlot), same inventory as the /schengen-visa page. --}}
-@php $apbkWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
+@php
+  $apbkWa = config('ukv.whatsapp') ?: '447882747584';
+  // Preload every country's slots so the modal renders instantly (zero round-trip). The fetch
+  // endpoint stays as a fallback for anything not in the blob. Cached in the service.
+  $apptPreload = app(\App\Services\SlotService::class)->modalPayload();
+@endphp
+<script>window.__APPT_SLOTS = {!! json_encode($apptPreload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!};</script>
 <style>
   #slotm{position:fixed;inset:0;z-index:1400;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,16,24,.6);backdrop-filter:blur(2px);font-family:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif}
   #slotm.open{display:flex}
@@ -203,6 +209,10 @@
       setLabel('Select a slot to book');
       box.innerHTML = '<p class="slotm-load">Loading centres…</p>';
       modal.classList.add('open');
+      // Instant path: render from the preloaded blob (no network). Falls through to fetch only
+      // if this country wasn't inlined (e.g. matched by slug, or blob missing).
+      var pre = (window.__APPT_SLOTS || {})[c];
+      if (pre) { renderCentres({ country: c, centres: pre }); return; }
       fetch(url + '?country=' + encodeURIComponent(c), { headers: { 'Accept': 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(renderCentres)

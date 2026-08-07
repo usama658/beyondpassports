@@ -25,6 +25,18 @@ class AppointmentSlotsController extends Controller
     {
         $country = trim((string) $request->query('country', ''));
 
+        $payload = \Illuminate\Support\Facades\Cache::remember(
+            'appt_slots_ep_'.md5(mb_strtolower($country)),
+            300,
+            fn () => $this->build($country)
+        );
+
+        return response()->json($payload);
+    }
+
+    /** @return array{country:string, centres:array} */
+    private function build(string $country): array
+    {
         $destination = Destination::query()
             ->where('visa_type', 'Schengen')
             ->where(fn ($q) => $q->where('name', $country)->orWhere('slug', $country))
@@ -32,7 +44,7 @@ class AppointmentSlotsController extends Controller
             ->first();
 
         if ($destination === null) {
-            return response()->json(['country' => $country, 'centres' => []]);
+            return ['country' => $country, 'centres' => []];
         }
 
         // Same 90-day window the lp-bold board totals over, so per-centre "open" counts
@@ -79,7 +91,7 @@ class AppointmentSlotsController extends Controller
             ->values()
             ->all();
 
-        return response()->json(['country' => $destination->name, 'centres' => $centres]);
+        return ['country' => $destination->name, 'centres' => $centres];
     }
 
     /** Pull a readable city from a "{Country} visa application centre – {City}" node name. */
