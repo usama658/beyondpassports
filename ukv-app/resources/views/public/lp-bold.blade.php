@@ -399,8 +399,8 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
     <h1 class="eyebrow heyebrow">Schengen Visa Consultants for UK Applicants</h1>
     <h2 class="hhead">A Schengen refusal stays on your record for <span class="hl-r">5 years</span>.</h2>
-    <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and our Schengen visa consultancy will say honestly if it's a case we can help with.</p>
-    <p class="hnote">Schengen visa help for UK applicants: first-time cases, appointment slots, and refusal recovery from a registered UK consultancy.</p>
+    <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and our Schengen visa consultants say honestly if it's a case we can help with.</p>
+    <p class="hnote">Schengen visa agency or consultancy? We're a UK registered Schengen visa consultancy helping first-time applications, securing appointment slots, and refusal recovery.</p>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
@@ -422,7 +422,7 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
   <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need appointment</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment slots across all 29 countries daily and find slots most applicants miss.</p></span><span class="chev">→</span></a>
+    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need Schengen visa appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment availability across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Experienced</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa consultants prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
     <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
   </div>
