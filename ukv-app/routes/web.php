@@ -66,7 +66,7 @@ Route::get('/schengen-visa-refusal-risk', fn (\App\Http\Controllers\CmsControlle
 Route::get('/schengen-visa-appointment', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-appointment', 'public.lp-appointments'))->name('lp-appointments');
 Route::get('/honest-schengen-visa-service', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('honest-schengen-visa-service', 'public.lp-trust'))->name('lp-trust');
 Route::get('/schengen-visa-refused', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-refused', 'public.lp-refused'))->name('lp-refused');
-Route::get('/schengen-visa-help', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold'); // Bold LP (dual-lane hero + case-file) on /schengen-visa-help; key aligned to URL
+Route::redirect('/schengen-visa-help', '/schengen-visa-consultancy', 301); // LP moved to /schengen-visa-consultancy; 301 preserves old inbound links, ad history + link equity
 Route::get('/guides', [GuideController::class, 'index'])->name('guides.index');
 // Legacy guide slug -> new nested country-guide home (301), registered before the {slug} catch.
 Route::redirect('/guides/do-uk-travellers-need-visa-turkey', '/visa/turkey/do-i-need-a-visa', 301);
@@ -176,11 +176,9 @@ if (config('ukv.documents.enabled')) {
 // --- Public destination money pages (DB-driven, SEO) ---
 Route::get('/schengen-visa', [DestinationController::class, 'index'])->name('destinations.index');
 Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → canonical Schengen visa page
-// Schengen consultancy landing. DRAFTED OFF (config ukv.consultancy_page.enabled): 301 to the
-// canonical /schengen-visa hub while off. Controller kept, so flipping the flag relaunches it.
-Route::get('/schengen-visa-consultancy', config('ukv.consultancy_page.enabled')
-    ? [DestinationController::class, 'schengenLanding']
-    : fn () => redirect('/schengen-visa', 301))->name('schengen.landing');
+// Bold LP (dual-lane hero + case-file) now lives here — moved from /schengen-visa-help (301).
+// CMS key stays 'schengen-visa-help' (internal, unchanged); coded fallback = public.lp-bold.
+Route::get('/schengen-visa-consultancy', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold');
 // Drafted: /visa/schengen duplicated the stronger /schengen-visa hub (which has its own region
 // tabs + searchable grid). 301 to the canonical page. Controller schengen() + destinations.schengen
 // view are kept in code, dormant, so this is reversible — restore the Route::get to un-draft.
