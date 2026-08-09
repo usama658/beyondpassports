@@ -443,9 +443,9 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
   <div class="sitrow">
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need Schengen visa appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment availability across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Looking for Schengen visa agent?</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa specialists prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
-    <a class="sit" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need Schengen visa appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment availability across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="agent" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Looking for Schengen visa agent?</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa specialists prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
   </div>
 </div></section>
 
@@ -475,7 +475,7 @@ html,body{overflow-x:clip;max-width:100%}
     @endforelse
   </div>
   <div class="bfoot" style="justify-content:center">
-    <a class="btn" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Get Schengen visa help →</a></div>
+    <a class="btn" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Get Schengen visa help →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
@@ -518,7 +518,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="row"><div class="num">4</div><div><h3>You start at minus one</h3><p>Your next application does not start at zero. The burden of proof flips to you. You now have to prove you are not a risk.</p></div><div class="bar"><span></span></div></div>
   </div>
   <div class="callout"><p><b>The refusal letters we review tell the same story.</b> Most describe something preventable. Wrong bank statements. Missing employer letters. Itineraries that did not add up. The kind of thing a 30 minute review would have caught.</p></div>
-  <div class="fcta"><a class="btn wa" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
+  <div class="fcta"><a class="btn wa" data-thx="documents" href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20a%20risk%20check%20before%20I%20apply.">@include('partials.wa-glyph')Check my documents →</a></div>
 </div>
 @include('partials.disclaimer-strip', ['variant' => 'dark'])
 </section>
@@ -533,7 +533,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="ltag">Refusal recovery</p>
       <h3>Start refusal recovery</h3>
       <p>The letter doesn't tell you the real reason. Our Schengen visa specialist decode it, find what actually triggered it, and rebuild, or tell you honestly if it can't be recovered.</p>
-      <a class="btn" href="{{ $wa }}?text=Hi%2C%20my%20visa%20was%20refused.%20Can%20you%20review%20my%20letter%3F">Check my refusal letter →</a>
+      <a class="btn" data-thx="refusal" href="{{ $wa }}?text=Hi%2C%20my%20visa%20was%20refused.%20Can%20you%20review%20my%20letter%3F">Check my refusal letter →</a>
       @php $rteam = collect(config('ukv.team', []))->filter(fn ($m) => !empty($m['photo']))->take(3); @endphp
       @if ($rteam->count())
       <div class="goldrule"></div>
@@ -673,11 +673,14 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
     if(caret)caret.addEventListener('click',function(e){e.preventDefault();if(list.classList.contains('open')){closeList();}else{openList();inp.focus();}});
     document.addEventListener('click',function(e){if(combo&&!combo.contains(e.target))closeList();});
   }
+  var THXURL='{{ url('/schengen-visa-consultancy/thank-you') }}';
+  // route each intent CTA (path cards + doc/refusal buttons) through the dynamic thank-you page
+  Array.prototype.forEach.call(document.querySelectorAll('a[data-thx]'),function(a){a.addEventListener('click',function(e){e.preventDefault();try{sessionStorage.setItem('bpCaseLead',JSON.stringify({intent:a.getAttribute('data-thx')}));}catch(err){}window.location.assign(THXURL);});});
   var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
     e.preventDefault();
     var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
-    try{sessionStorage.setItem('bpCaseLead',JSON.stringify({name:n,dest:d,phone:p}));}catch(err){}
-    window.location.assign('{{ url('/schengen-visa-consultancy/thank-you') }}');
+    try{sessionStorage.setItem('bpCaseLead',JSON.stringify({intent:'case',name:n,dest:d,phone:p}));}catch(err){}
+    window.location.assign(THXURL);
   });
 })();
 </script>

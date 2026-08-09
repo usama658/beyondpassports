@@ -73,15 +73,28 @@
 (function () {
   var lead = null;
   try { lead = JSON.parse(sessionStorage.getItem('bpCaseLead') || 'null'); sessionStorage.removeItem('bpCaseLead'); } catch (e) {}
-  if (!lead) { return; } // direct visit: left card only, no WhatsApp panel
+  if (!lead) { return; } // direct visit: default left card, no WhatsApp panel
+
+  // dynamic content per intent (which form/CTA it landed from)
+  var MAP = {
+    'case':        { head: 'Your case check is in.',        body: 'A UK-based Schengen visa specialist will review your case and reply, usually within 30 minutes in working hours. No payment is taken to check your case.',                          wa: "Hi, I'd like a case check on my Schengen visa." },
+    'appointment': { head: "We're on your appointment.",     body: 'We track Schengen visa appointment availability across all 29 countries daily. A UK specialist will reply about the earliest slots for your trip.',                                 wa: 'Hi, I need a Schengen visa appointment but every slot is gone. Can you help me find one?' },
+    'agent':       { head: "We'll handle it for you.",       body: 'Our Schengen visa specialists will prepare your documents, book your appointment and coordinate everything. A UK specialist will reply shortly.',                                 wa: "Hi, I've done this before and just want you to prepare my Schengen documents." },
+    'family':      { head: 'Your group application is in.',  body: 'Our Schengen visa specialists will prepare every file together, so no weak case drags the group down. A UK specialist will reply shortly.',                                      wa: "Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?" },
+    'refusal':     { head: "We'll review your refusal.",     body: 'Send us your refusal letter. Our specialists will decode the real reason and tell you honestly if it can be recovered. A UK specialist will reply shortly.',                    wa: 'Hi, my visa was refused. Can you review my letter?' },
+    'documents':   { head: "We'll check your documents.",    body: 'A real UK reviewer will check your documents for the details that trip cases up, before you apply. A UK specialist will reply shortly.',                                       wa: "Hi, I'd like a risk check before I apply." }
+  };
+  var m = MAP[lead.intent] || MAP['case'];
   var n = (lead.name || '').trim(), d = (lead.dest || '').trim(), p = (lead.phone || '').trim();
-  var msg = "Hi, I'd like a case check on my Schengen visa.";
+
+  document.getElementById('tkHead').textContent = (n ? 'Thanks, ' + n + '. ' : 'Thanks. ') + m.head;
+  document.getElementById('tkBody').textContent = m.body;
+
+  var msg = m.wa;
   if (d) { msg += ' My destination is ' + d + '.'; }
   if (n) { msg += ' My name is ' + n + '.'; }
   if (p) { msg += ' My number is ' + p + '.'; }
   var waUrl = @json($wa) + '?text=' + encodeURIComponent(msg);
-
-  if (n) { document.getElementById('tkHead').textContent = 'Thanks, ' + n + '. Your case check is in.'; }
   document.getElementById('tkWa').href = waUrl;
   var panel = document.getElementById('tkPanel'); if (panel) { panel.hidden = false; }
 
