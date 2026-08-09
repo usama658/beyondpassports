@@ -116,6 +116,8 @@
     #slotm .slotm-top h3{font-size:18px}
     #slotm .cgrid{grid-template-columns:1fr 1fr;gap:9px}
     #slotm .ct{min-height:0;padding:12px 11px}
+    #slotm .ct .radio{display:none}
+    #slotm .ct .trow{justify-content:flex-end}
     #slotm .ct .nm{font-size:16px;line-height:1.2}
     #slotm .ct .meta{font-size:11px}
     #slotm .ct .badge{font-size:10px;padding:4px 8px}
