@@ -242,8 +242,9 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ngcn{font-weight:800;font-size:16px;color:#16222E}
 .lpb .ngnx{font-size:11.5px;color:#5d6b76;margin-top:1px}.lpb .ngnx b{color:#1F6E63}
 .lpb .ngstp{display:inline-block;margin-top:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:var(--c);background:var(--cbg)}
-.lpb .ngcta{flex:none;display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#04140b;font:800 11.5px "Outfit",system-ui,sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(37,211,102,.7)}
-.lpb .ngcta svg{width:14px;height:14px;fill:#04140b;flex:none}
+.lpb .ngcta{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--c);color:#fff;font:800 11.5px "Outfit",system-ui,sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -12px var(--c)}
+.lpb .ngcta svg{width:14px;height:14px;fill:#fff;flex:none}
+@media(hover:hover){.lpb .ngcard:hover .ngcta{filter:brightness(.92)}}
 .lpb .ngfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;background:#fbe4e0;border:1px solid rgba(192,57,43,.2);border-radius:12px;font-size:12.5px;color:#7a3a30}
 .lpb .ngfoot .brup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#c0392b;background:#fff;border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:4px 9px;white-space:nowrap}
 .lpb .ngfoot a{color:#c0392b;font-weight:800}
