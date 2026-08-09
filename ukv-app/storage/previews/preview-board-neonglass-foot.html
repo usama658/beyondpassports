@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neon-glass board — urgency footer options</title>
+<style>
+  :root{--ink:#16222E;--ink2:#0f2028;--edge:#dde3ec;--muted:#5d6b76;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--wa:#25D366;--red:#c0392b;--amber:#b5791f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#eef2f6;color:var(--ink);padding:26px 16px 90px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.sub{font-size:12.5px;color:#5d6b76;margin-bottom:16px}
+  .row{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px 16px 20px;margin-bottom:16px}
+  .tag{font:800 11px 'Outfit',sans-serif;letter-spacing:.04em;color:#155E7A;margin-bottom:10px;display:block}
+  .note{font-size:11.5px;color:#7a8791;margin-top:9px}
+  a{text-decoration:none}
+
+  /* shared bits */
+  .clock{flex:none}
+  .up{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:6px;padding:4px 9px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+  .btnwa{display:inline-flex;align-items:center;gap:7px;font:800 12.5px 'Outfit',sans-serif;padding:10px 16px;border-radius:10px;white-space:nowrap}
+  .btnwa svg{width:15px;height:15px;flex:none}
+
+  /* ── A · current, tidied red ── */
+  .fA{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 14px;background:#fbe4e0;border:1px solid rgba(192,57,43,.2);border-radius:12px;font-size:12.5px;color:#7a3a30}
+  .fA .up{color:var(--red);background:#fff;border:1px solid rgba(192,57,43,.3)}
+  .fA a{color:var(--red);font-weight:800}
+
+  /* ── B · brand petrol bar, amber clock, WA button ── */
+  .fB{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;background:radial-gradient(600px 160px at 15% 0,rgba(21,94,122,.55),transparent),var(--ink2);border-radius:14px;color:#dbe8ea;font-size:13px}
+  .fB .up{color:#0f2028;background:#E9B872;border:0}
+  .fB .txt{flex:1;min-width:180px}.fB .txt b{color:#fff}
+  .fB .btnwa{background:var(--wa);color:#04140b;margin-left:auto;box-shadow:0 10px 22px -12px rgba(37,211,102,.6)}
+  .fB .btnwa svg{fill:#04140b}
+
+  /* ── C · white card, red left accent, CTA link ── */
+  .fC{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:14px 16px;background:#fff;border:1px solid var(--edge);border-left:4px solid var(--red);border-radius:12px;box-shadow:0 14px 30px -26px rgba(20,34,46,.5);font-size:13px;color:#42525c}
+  .fC .up{color:var(--red);background:#fbe4e0;border:0}
+  .fC .txt{flex:1;min-width:170px}.fC .txt b{color:var(--ink)}
+  .fC a{color:var(--cta);font-weight:800}
+
+  /* ── D · warm amber, time-sensitive ── */
+  .fD{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 15px;background:#fdf3e7;border:1px solid #f0d9b8;border-radius:12px;font-size:12.5px;color:#8a5a1a}
+  .fD .up{color:#8a5a1a;background:#fff;border:1px solid #f0d9b8}
+  .fD .txt{flex:1;min-width:170px}.fD .txt b{color:#5c3d10}
+  .fD a{color:#8a5a1a;font-weight:800;text-decoration:underline}
+
+  /* ── E · petrol bar + WA button, no red at all ── */
+  .fE{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;background:var(--cta);border-radius:14px;color:#eaf3f6;font-size:13px}
+  .fE .up{color:var(--cta);background:#fff;border:0}
+  .fE .txt{flex:1;min-width:180px}.fE .txt b{color:#fff}
+  .fE .btnwa{background:#fff;color:var(--cta);margin-left:auto}
+  .fE .btnwa svg{fill:var(--cta)}
+
+  /* ── F · minimal inline, no box ── */
+  .fF{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:12px 4px 2px;font-size:13px;color:#42525c;border-top:1px solid var(--edge)}
+  .fF .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(192,57,43,.15);flex:none}
+  .fF b{color:var(--ink)}
+  .fF a{color:var(--cta);font-weight:800}
+</style></head><body><div class="wrap">
+  <h1>Urgency footer — polish options</h1>
+  <p class="sub">The strip under the neon-glass board. Six treatments, site theme (petrol #155E7A · amber · red).</p>
+
+  <div class="row"><span class="tag">A · Current, tidied red</span>
+    <div class="fA"><span class="up">⏱ Urgent</span><span>Travelling within 3 weeks? These slots won't wait — <a href="#">message us now</a>.</span></div>
+    <p class="note">Softest change. Same red alert, cleaner pill.</p></div>
+
+  <div class="row"><span class="tag">B · Brand petrol bar + WhatsApp button</span>
+    <div class="fB"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">On-brand dark bar, amber clock, real WhatsApp button. Strongest CTA. My pick.</p></div>
+
+  <div class="row"><span class="tag">C · White card, red accent edge</span>
+    <div class="fC"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a href="#">Message us now →</a></div>
+    <p class="note">Matches the white cards above it; red only as an accent edge.</p></div>
+
+  <div class="row"><span class="tag">D · Warm amber (time-sensitive, not alarm)</span>
+    <div class="fD"><span class="up">⏱ Time-sensitive</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a href="#">Message us now</a></div>
+    <p class="note">Softer tone than red. Reuses the site's existing amber "urgent" style.</p></div>
+
+  <div class="row"><span class="tag">E · Petrol bar, no red</span>
+    <div class="fE"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Full brand petrol, white button. Calm-confident, no alarm red.</p></div>
+
+  <div class="row"><span class="tag">F · Minimal inline (no box)</span>
+    <div class="fF"><span class="dot"></span><span>Travelling within 3 weeks? <b>These slots won't wait.</b> <a href="#">Message us now →</a></span></div>
+    <p class="note">Lightest footprint. Pulse dot + line, sits on a divider.</p></div>
+</div>
+</body></html>

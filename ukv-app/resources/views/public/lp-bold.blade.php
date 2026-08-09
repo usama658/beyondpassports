@@ -245,9 +245,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ngcta{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--c);color:#fff;font:800 11.5px "Outfit",system-ui,sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -12px var(--c)}
 .lpb .ngcta svg{width:14px;height:14px;fill:#fff;flex:none}
 @media(hover:hover){.lpb .ngcard:hover .ngcta{filter:brightness(.92)}}
-.lpb .ngfoot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;background:#fbe4e0;border:1px solid rgba(192,57,43,.2);border-radius:12px;font-size:12.5px;color:#7a3a30}
-.lpb .ngfoot .brup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#c0392b;background:#fff;border:1px solid rgba(192,57,43,.3);border-radius:6px;padding:4px 9px;white-space:nowrap}
-.lpb .ngfoot a{color:#c0392b;font-weight:800}
+.lpb .ngfoot{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border-radius:14px;font-size:13px;color:#e6c9c6;background:radial-gradient(600px 170px at 12% 0,rgba(224,52,43,.55),transparent),#0f2028}
+.lpb .ngfoot .ngup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#c0392b;border-radius:6px;padding:4px 9px;white-space:nowrap}
+.lpb .ngfoot .ngmsg{flex:1;min-width:180px}.lpb .ngfoot .ngmsg b{color:#fff}
+.lpb .ngfoot .ngwa{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:#fff;color:#c0392b;font:800 12.5px "Outfit",system-ui,sans-serif;padding:10px 16px;border-radius:10px;white-space:nowrap;text-decoration:none}
+.lpb .ngfoot .ngwa svg{width:15px;height:15px;fill:#c0392b;flex:none}
 .lpb .brempty{text-align:center;color:#5d6b76;padding:22px}
 @media(max-width:560px){
   .lpb .nggrid{grid-template-columns:1fr}
@@ -550,7 +552,7 @@ html,body{overflow-x:clip;max-width:100%}
       <p class="brempty" style="grid-column:1/-1">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
       @endforelse
     </div>
-    <div class="ngfoot"><span class="brup">⏱ Urgent</span><span>Travelling within 3 weeks? These slots won't wait — <a href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">message us now</a>.</span></div>
+    <div class="ngfoot"><span class="ngup">⏱ Urgent</span><span class="ngmsg">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="ngwa" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">@include('partials.wa-glyph')Message us now</a></div>
   </div>
 @else
   <div class="bpre">

@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Urgency accent — red variations</title>
+<style>
+  :root{--ink2:#0f2028;--edge:#dde3ec;--cta:#155E7A;--wa:#25D366;--red:#c0392b;--crimson:#e0342b;--maroon:#9b2d22;--coral:#f0574a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:#16222E;background:#eef2f6;padding:26px 16px 90px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.sub{font-size:12.5px;color:#5d6b76;margin-bottom:16px}
+  .row{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px 16px 20px;margin-bottom:16px}
+  .tag{font:800 11px 'Outfit',sans-serif;letter-spacing:.04em;color:#155E7A;margin-bottom:10px;display:block}
+  .note{font-size:11.5px;color:#7a8791;margin-top:9px}
+  a{text-decoration:none}
+  @keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+  @keyframes gl{0%,100%{box-shadow:0 0 10px rgba(224,52,43,.6)}50%{box-shadow:0 0 20px rgba(224,52,43,.95)}}
+
+  .f{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;color:#c7d6d8;font-size:13px;overflow:hidden;background:radial-gradient(600px 160px at 15% 0,rgba(21,94,122,.6),transparent),var(--ink2)}
+  .f .txt{flex:1;min-width:180px}.f .txt b{color:#fff}
+  .f .up{position:relative;z-index:1;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:6px;padding:4px 9px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;color:#fff}
+  .f .btnwa{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;font:800 12.5px 'Outfit',sans-serif;padding:10px 16px;border-radius:10px;white-space:nowrap;margin-left:auto;background:var(--wa);color:#04140b}
+  .f .btnwa svg{width:15px;height:15px;fill:#04140b;flex:none}
+  .pdot{width:7px;height:7px;border-radius:50%;background:#fff;animation:pl 1.5s infinite}
+
+  /* R1 · Brand red (matches Very-limited band) */
+  .r1 .up{background:var(--red)}
+  /* R2 · Bright crimson */
+  .r2 .up{background:var(--crimson)}
+  /* R3 · Red + pulsing dot */
+  .r3 .up{background:var(--red)}
+  /* R4 · Red glow edge + red pill */
+  .r4::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--crimson);box-shadow:0 0 16px var(--crimson)}
+  .r4 .up{background:var(--red)}
+  /* R5 · Crimson glowing pill (animated) */
+  .r5 .up{background:var(--crimson);animation:gl 2s ease-in-out infinite}
+  /* R6 · Red gradient pill */
+  .r6 .up{background:linear-gradient(100deg,var(--maroon),var(--crimson))}
+</style></head><body><div class="wrap">
+  <h1>Urgency accent — red variations</h1>
+  <p class="sub">Base = petrol-glow-on-ink bar. Red ⏱ pill. Brand red #c0392b · crimson #e0342b · maroon #9b2d22.</p>
+
+  <div class="row"><span class="tag">R1 · Brand red (matches "Very limited" band)</span>
+    <div class="f r1"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Same red as the Very-limited cards. Consistent, not shouty. My pick.</p></div>
+
+  <div class="row"><span class="tag">R2 · Bright crimson</span>
+    <div class="f r2"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Brighter, hotter. More alarm than brand red.</p></div>
+
+  <div class="row"><span class="tag">R3 · Red + pulsing dot</span>
+    <div class="f r3"><span class="up"><span class="pdot"></span>Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Brand red pill, live white pulse dot. Motion = urgency.</p></div>
+
+  <div class="row"><span class="tag">R4 · Red glow edge + red pill</span>
+    <div class="f r4"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Red glow left edge (echoes the card glow) + red pill. Ties to the board.</p></div>
+
+  <div class="row"><span class="tag">R5 · Crimson glowing pill (animated)</span>
+    <div class="f r5"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Crimson pill with a soft breathing glow. Most attention-grabbing.</p></div>
+
+  <div class="row"><span class="tag">R6 · Red gradient pill</span>
+    <div class="f r6"><span class="up">⏱ Urgent</span><span class="txt">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="btnwa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Message us now</a></div>
+    <p class="note">Maroon into crimson. Depth without leaving red.</p></div>
+</div>
+</body></html>
