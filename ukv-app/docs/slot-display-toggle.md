@@ -20,6 +20,19 @@ UKV_SLOT_WEEK_LABELS=false     # exact dates  (original behaviour)
 
 Both code paths ship together. `false` reproduces the original date behaviour byte-for-byte.
 
+## Count-focus mode (board only)
+
+Separate flag that makes each board card feature the **slot count** instead of the date/week:
+
+```
+UKV_SLOT_COUNT_FOCUS=true      # "Slots open / N / in next 90 days", centred
+UKV_SLOT_COUNT_FOCUS=false     # default — show date or week per UKV_SLOT_WEEK_LABELS
+```
+
+When `true` it overrides `UKV_SLOT_WEEK_LABELS` for the **board** card body (the popup is
+unaffected). Same clear commands as below. Card frame/colours/header are unchanged — only the
+featured line swaps.
+
 ## How to flip it (host)
 
 ```

@@ -134,6 +134,10 @@ return [
         // date is kept behind each modal week-chip (holds the soonest slot in that week) and
         // confirmed with the client live on WhatsApp. Off => exact dates as before.
         'week_labels' => (bool) env('UKV_SLOT_WEEK_LABELS', false),
+
+        // Board cards feature only the SLOT COUNT ("Slots open / N / in next 90 days"), centred,
+        // instead of the next-available date/week. Overrides week_labels for the board body.
+        'count_focus' => (bool) env('UKV_SLOT_COUNT_FOCUS', false),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization

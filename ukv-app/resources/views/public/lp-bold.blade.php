@@ -207,6 +207,14 @@ html,body{overflow-x:clip;max-width:100%}
 @media(max-width:1080px){.lpb .bgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.lpb .bgrid{grid-template-columns:1fr}.lpb .hc .hd{flex-direction:column-reverse;align-items:center;justify-content:center;gap:7px;padding:12px 16px;text-align:center}}
 /* Week-label mode: the date is a two-line hierarchy (bold relative + muted month/year). */
+/* Count-focus mode: feature the slot count, centred, in place of the date/week. Reuses the
+   existing band colour (--c) + the slots-box tokens (--cbg2/--cbd) for the "next 90 days" pill. */
+.lpb .bd.cf .hc .bd2{text-align:center}
+.lpb .bd.cf .hc .lab{color:var(--cd)}
+.lpb .hc .count{font-family:var(--mono);font-weight:800;font-size:44px;line-height:.92;color:var(--c)}
+.lpb .hc .win{display:inline-flex;align-items:center;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:999px;padding:7px 13px;margin-top:12px}
+.lpb .hc .win .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.lpb .hc .win small{font-size:12px;color:var(--muted);font-weight:600}
 .lpb .hc .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .lpb .hc .wk .rel{font-size:19px;font-weight:800;line-height:1;letter-spacing:-.01em}
 .lpb .hc .wk .my{font-size:13px;font-weight:700;color:var(--muted)}
@@ -479,7 +487,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
      Only countries with a published date are featured; the section always renders. --}}
-<section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}" id="appointments"><div class="wrap">
+<section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
   <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
   <div class="bpre">
@@ -489,7 +497,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bgrid">
     @forelse($apptCards as $c)
     @php $apptMsg = "Hi, I'd like to check Schengen appointment availability for {$c['name']} (next slot shown {$c['date']}). My travel dates are: "; @endphp
-    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2"><div class="lab">Next available</div>@if(!empty($c['date_rel']))<div class="wk"><span class="rel">{{ $c['date_rel'] }}</span><span class="my">{{ $c['date_my'] }}</span></div>@else<div class="date">{{ $c['date'] }}</div>@endif@if(($c['slots'] ?? 0) > 0)<div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 90 days</small></div>@endif</div></a>
+    <a class="hc {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode($apptMsg) }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok' }}" aria-label="Pick a {{ $c['name'] }} appointment slot"><div class="hd"><span class="cty">{{ $c['name'] }}</span><span class="pill">{{ $c['label'] }}</span></div><div class="bd2">@if(config('ukv.slots.count_focus'))<div class="lab">Slots open</div><div class="count">{{ $c['slots'] ?? 0 }}</div><div class="win"><span class="dot"></span><small>in next 90 days</small></div>@else<div class="lab">Next available</div>@if(!empty($c['date_rel']))<div class="wk"><span class="rel">{{ $c['date_rel'] }}</span><span class="my">{{ $c['date_my'] }}</span></div>@else<div class="date">{{ $c['date'] }}</div>@endif@if(($c['slots'] ?? 0) > 0)<div class="slots"><span class="n">{{ $c['slots'] }}</span><small>slots in next 90 days</small></div>@endif@endif</div></a>
     @empty
     <p style="grid-column:1/-1;text-align:center;color:#cfe0dd;margin:0;line-height:1.5">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
     @endforelse

@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Board — count focus (Variant C) on live design</title>
+<style>
+  :root{--ink:#16222E;--muted:#5d6b76;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
+  .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
+  .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#0f1a20;color:#fff;padding:26px 18px}
+  .wrap{max-width:1000px;margin:0 auto}
+  .eyebrowtop{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8fe3c9;margin:0 0 4px}
+  h2{font-size:26px;margin:0 0 14px;letter-spacing:-.02em}
+  .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:1080px){.bgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.bgrid{grid-template-columns:1fr 1fr}}
+  /* ── existing card design, unchanged ── */
+  .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(0,0,0,.6);display:block;text-decoration:none;color:inherit;background:#fff}
+  .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .hc .cty{color:#fff;font-size:18px;font-weight:800}
+  .hc .pill{flex:0 0 auto;font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
+  .hc .bd2{background:var(--cbg);padding:16px 18px}
+  .hc .lab{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cd);margin:0 0 6px}
+  /* count hero: reuse the mono/colour of the existing slot count, just larger */
+  .hc .count{font-family:var(--mono);font-weight:800;font-size:44px;line-height:.92;color:var(--c)}
+  /* the "in next 90 days" pill reuses the existing .slots box tokens (cbg2 + cbd) */
+  .hc .win{display:inline-flex;align-items:center;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:999px;padding:7px 13px;margin-top:12px}
+  .hc .win .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
+  .hc .win small{font-size:12px;color:var(--muted);font-weight:600}
+</style></head><body><div class="wrap">
+  <p class="eyebrowtop">Schengen Visa Appointment Availability</p>
+  <h2>Slots vanish in seconds.</h2>
+  <div class="bgrid" id="g"></div>
+</div>
+<script>
+  var D=[
+   ['Netherlands','tight','LIMITED',2],
+   ['France','open','AVAILABLE',48],
+   ['Switzerland','none','VERY LIMITED',1],
+   ['Liechtenstein','none','VERY LIMITED',1],
+   ['Portugal','none','VERY LIMITED',1],
+   ['Italy','none','VERY LIMITED',1],
+   ['Norway','none','VERY LIMITED',1],
+   ['Iceland','tight','LIMITED',2],
+   ['Poland','none','VERY LIMITED',4],
+   ['Hungary','tight','LIMITED',2]
+  ];
+  document.getElementById('g').innerHTML=D.map(function(c){
+    return '<a class="hc '+c[1]+'" href="#">'
+      +'<div class="hd"><span class="cty">'+c[0]+'</span><span class="pill">'+c[2]+'</span></div>'
+      +'<div class="bd2"><div class="lab">Slots open</div>'
+      +'<div class="count">'+c[3]+'</div>'
+      +'<div class="win"><span class="dot"></span><small>in next 90 days</small></div></div></a>';
+  }).join('');
+</script>
+</body></html>
