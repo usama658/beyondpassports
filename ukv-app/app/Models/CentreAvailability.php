@@ -53,10 +53,17 @@ class CentreAvailability extends Model
         return $this->belongsTo(SupplyNode::class);
     }
 
-    /** True once the freshness window has lapsed (stale -> treated as "ask"). */
+    /**
+     * True once the snapshot is no longer usable -> treated as "ask". That is:
+     * the freshness window lapsed, OR the published next_available_on has itself slipped into the
+     * past (a date that was future when published becomes stale the day it passes, even while the
+     * freshness window is still open). Guards the board from ever showing a past "next available".
+     */
     public function isStale(): bool
     {
-        return $this->expires_at === null || $this->expires_at->isPast();
+        return $this->expires_at === null
+            || $this->expires_at->isPast()
+            || ($this->next_available_on !== null && $this->next_available_on->lt(Carbon::today()));
     }
 
     /** True when the snapshot will lapse within $days (drives ops "refresh me" flags). */
