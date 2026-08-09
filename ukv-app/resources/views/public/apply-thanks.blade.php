@@ -26,7 +26,8 @@
   /* right — live connecting-to-WhatsApp panel */
   .tk-panel { background: radial-gradient(420px 240px at 100% 0, rgba(37,211,102,.22), transparent 60%), var(--navy); border-radius: 20px; box-shadow: var(--lift-2); padding: 36px; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
   .tk-ring { width: 104px; height: 104px; position: relative; margin: 0 0 20px; }
-  .tk-ring svg { transform: rotate(-90deg); }
+  .tk-ring > svg { transform: rotate(-90deg); } /* only the progress-ring circle, not the nested WhatsApp glyph */
+  .tk-ring .wac .disc svg { transform: none; }
   .tk-ring circle { fill: none; stroke-width: 8; }
   .tk-ring .bg { stroke: rgba(255,255,255,.14); }
   .tk-ring .fg { stroke: #25D366; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 283; animation: tkFill 3s linear forwards; }
