@@ -9,7 +9,11 @@
   $apptPreload = app(\App\Services\SlotService::class)->modalPayload();
   // Week-label mode: the picker shows one chip per week (soonest slot behind it), so the copy
   // says "week" not "date". Off => exact-date picker with a time step, as before.
-  $apbkNoun = config('ukv.slots.week_labels') ? 'week' : 'date';
+  $apbkWeek = (bool) config('ukv.slots.week_labels');
+  $apbkNoun = $apbkWeek ? 'week' : 'date';
+  $apbkSub = $apbkWeek
+    ? 'Pick the week before it vanishes. We lock it with the centre the moment you pick, and confirm the exact date with you live on WhatsApp.'
+    : 'Pick the date before it vanishes. We lock it with the centre the moment you pick.';
 @endphp
 <script>window.__APPT_SLOTS = {!! json_encode($apptPreload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!};</script>
 <style>
@@ -80,7 +84,7 @@
         <h3 id="slotm-title">Select your {{ $apbkNoun }}</h3>
         <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
       </div>
-      <p class="slotm-s">Pick the {{ $apbkNoun }} before it vanishes. We lock it with the centre the moment you pick@if($apbkNoun === 'week'), and confirm the exact date with you live on WhatsApp@endif.</p>
+      <p class="slotm-s">{{ $apbkSub }}</p>
       <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We do the booking</span></div>
     </div>
     <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}" data-timepicker="{{ config('ukv.appointments.time_picker') ? '1' : '0' }}"></div>
