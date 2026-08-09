@@ -7,13 +7,19 @@
   // Preload every country's slots so the modal renders instantly (zero round-trip). The fetch
   // endpoint stays as a fallback for anything not in the blob. Cached in the service.
   $apptPreload = app(\App\Services\SlotService::class)->modalPayload();
-  // Week-label mode: the picker shows one chip per week (soonest slot behind it), so the copy
-  // says "week" not "date". Off => exact-date picker with a time step, as before.
+  // Display mode (matches the board):
+  //   count_focus -> CENTRE picker: pick a centre, we book its soonest slot. No date/week chips.
+  //   week_labels -> WEEK chips (one per week, soonest held).
+  //   default     -> exact-date picker with a time step.
+  $apbkCentre = (bool) config('ukv.slots.count_focus');
   $apbkWeek = (bool) config('ukv.slots.week_labels');
-  $apbkNoun = $apbkWeek ? 'week' : 'date';
-  $apbkSub = $apbkWeek
-    ? 'Pick the week before it vanishes. We lock it with the centre the moment you pick, and confirm the exact date with you live on WhatsApp.'
-    : 'Pick the date before it vanishes. We lock it with the centre the moment you pick.';
+  $apbkMode = $apbkCentre ? 'centre' : 'slot';
+  $apbkNoun = $apbkCentre ? 'centre' : ($apbkWeek ? 'week' : 'date');
+  $apbkSub = $apbkCentre
+    ? 'Pick the centre. We find and lock the soonest slot there, and confirm the exact date with you live on WhatsApp.'
+    : ($apbkWeek
+      ? 'Pick the week before it vanishes. We lock it with the centre the moment you pick, and confirm the exact date with you live on WhatsApp.'
+      : 'Pick the date before it vanishes. We lock it with the centre the moment you pick.');
 @endphp
 <script>window.__APPT_SLOTS = {!! json_encode($apptPreload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!};</script>
 <style>
@@ -78,9 +84,32 @@
   #slotm.low .slot.sel{border-color:#c0392b;background:#c0392b;box-shadow:0 8px 18px -10px rgba(192,57,43,.7)}
   #slotm.lim .slot .soon{background:#b5791f}
   #slotm.low .slot .soon{background:#c0392b}
+  /* ── Centre-selection mode (count_focus): pick a centre, not a date. ── */
+  #slotm .sc-lead{font:800 11px "Outfit",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#5d6b76;margin:0 0 12px}
+  #slotm .ct{position:relative;display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.5px solid #dde3ec;border-radius:14px;padding:14px 16px;margin:0 0 11px;cursor:pointer;transition:.12s;font-family:inherit}
+  #slotm .ct:last-child{margin:0}
+  #slotm .ct:hover{border-color:#2E9A8C;box-shadow:0 0 0 3px rgba(46,154,140,.14)}
+  #slotm .ct.dim{opacity:.92}
+  #slotm .ct .radio{width:22px;height:22px;border-radius:50%;border:2px solid #dde3ec;flex:none;position:relative;background:#fff}
+  #slotm .ct .radio::after{content:'';position:absolute;inset:4px;border-radius:50%;background:#155E7A;opacity:0;transition:.12s}
+  #slotm .ct:hover .radio{border-color:#2E9A8C}
+  #slotm .ct .info{flex:1;min-width:0}
+  #slotm .ct .nm{font:800 14px "Outfit",system-ui,sans-serif;color:#16222E}
+  #slotm .ct .meta{font-size:12.5px;color:#5d6b76;margin-top:2px}
+  #slotm .ct .badge{font:800 11px "Outfit",system-ui,sans-serif;color:#1F6E63;background:rgba(46,154,140,.1);border-radius:999px;padding:4px 9px;white-space:nowrap;flex:none}
+  #slotm .ct .soontag{position:absolute;top:-9px;left:16px;font:800 9px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#2f9e5f;border-radius:999px;padding:3px 9px;box-shadow:0 4px 10px -4px rgba(47,158,95,.6)}
+  /* selected row — band-aware fill (default navy / amber / red), same scheme as the slot chips */
+  #slotm .ct.sel{border-color:#155E7A;background:#155E7A}
+  #slotm .ct.sel .nm{color:#fff}
+  #slotm .ct.sel .meta{color:rgba(255,255,255,.85)}
+  #slotm .ct.sel .radio{border-color:#fff;background:#fff}
+  #slotm .ct.sel .radio::after{opacity:1}
+  #slotm .ct.sel .badge{background:rgba(255,255,255,.2);color:#fff}
+  #slotm.lim .ct.sel{border-color:#b5791f;background:#b5791f}
+  #slotm.low .ct.sel{border-color:#c0392b;background:#c0392b}
 </style>
 
-<div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}" data-datenoun="{{ $apbkNoun }}">
+<div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}" data-datenoun="{{ $apbkNoun }}" data-mode="{{ $apbkMode }}">
   <div class="slotm-box">
     <div class="slotm-hd">
       <div class="slotm-top">
@@ -92,7 +121,7 @@
     </div>
     <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}" data-timepicker="{{ config('ukv.appointments.time_picker') ? '1' : '0' }}"></div>
     <div class="slotm-foot">
-      <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a slot to book</a>
+      <a class="slotm-book" id="slotm-book" href="#" target="_blank" rel="noopener" aria-disabled="true">@include('partials.wa-glyph')Select a {{ $apbkNoun === 'centre' ? 'centre' : 'slot' }} to book</a>
       <p class="slotm-note">Booking is confirmed live with the centre before anything is paid.</p>
     </div>
   </div>
@@ -110,6 +139,7 @@
     var book  = document.getElementById('slotm-book');
     var wa    = modal.getAttribute('data-wa');
     var noun  = modal.getAttribute('data-datenoun') || 'date'; // 'week' when week-labels on
+    var mode  = modal.getAttribute('data-mode') || 'slot';      // 'centre' -> pick a centre, not a date
     var url   = box.getAttribute('data-url');
     var timePicker = box.getAttribute('data-timepicker') === '1'; // off -> day is the final pick
     var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
@@ -149,9 +179,44 @@
       setLabel('Book ' + slot + ' now →');
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
     }
+    // Short city from "{Country} visa application centre – {City}".
+    function cityOf(n) {
+      var seps = ['–', ' - ', '—'];
+      for (var i = 0; i < seps.length; i++) { if (String(n).indexOf(seps[i]) > -1) { var p = String(n).split(seps[i]); return p[p.length - 1].trim(); } }
+      return n;
+    }
+    // Centre mode: pick a centre (not a date). Centres with slots book the soonest; empty ones ask.
+    function renderCentresPick(centres) {
+      var lead = document.createElement('p'); lead.className = 'sc-lead'; lead.textContent = 'Choose an application centre';
+      box.appendChild(lead);
+      var firstOpen = true;
+      centres.forEach(function (c) {
+        var openN = (typeof c.open === 'number') ? c.open : ((c.days || []).length);
+        var has = openN > 0;
+        var city = cityOf(c.name);
+        var rowEl = document.createElement('button'); rowEl.type = 'button'; rowEl.className = 'ct' + (has ? '' : ' dim');
+        rowEl.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest available</span>' : '') +
+          '<span class="radio"></span>' +
+          '<div class="info"><div class="nm">' + esc(c.name) + '</div><div class="meta">' +
+          (has ? 'We book the earliest slot here' : 'No published slots right now — we check live for you') + '</div></div>' +
+          (has ? '<span class="badge">' + openN + ' open</span>' : '');
+        rowEl.addEventListener('click', function () {
+          Array.prototype.forEach.call(box.querySelectorAll('.ct'), function (x) { x.classList.remove('sel'); });
+          rowEl.classList.add('sel');
+          centre = c.name;
+          book.setAttribute('aria-disabled', 'false');
+          if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Book ' + city + ' now →'); }
+          else { book.href = askHref(c.name); setLabel('Ask us about ' + city + ' →'); }
+          try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
+        });
+        if (has) firstOpen = false;
+        box.appendChild(rowEl);
+      });
+    }
     function renderCentres(data) {
       box.innerHTML = '';
       var centres = (data && data.centres) || [];
+      if (mode === 'centre' && centres.length) { renderCentresPick(centres); return; }
       if (!centres.length) {
         box.innerHTML = '<p class="sc-ask">We check live availability with the centres for ' + esc(country) + '. Tap below and we will confirm the soonest slot and book it for you.</p>';
         book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
@@ -230,7 +295,7 @@
       else if (band === 'low' || band === 'none') modal.classList.add('low');
       title.textContent = 'Select your ' + noun + ', ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
-      setLabel('Select a slot to book');
+      setLabel('Select a ' + (mode === 'centre' ? 'centre' : 'slot') + ' to book');
       box.innerHTML = '<p class="slotm-load">Loading centres…</p>';
       modal.classList.add('open');
       // Instant path: render from the preloaded blob (no network). Falls through to fetch only

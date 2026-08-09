@@ -29,9 +29,15 @@ UKV_SLOT_COUNT_FOCUS=true      # "Slots open / N / in next 90 days", centred
 UKV_SLOT_COUNT_FOCUS=false     # default — show date or week per UKV_SLOT_WEEK_LABELS
 ```
 
-When `true` it overrides `UKV_SLOT_WEEK_LABELS` for the **board** card body (the popup is
-unaffected). Same clear commands as below. Card frame/colours/header are unchanged — only the
-featured line swaps.
+When `true` it overrides `UKV_SLOT_WEEK_LABELS`. Same clear commands as below. Two effects:
+
+- **Board** card body swaps the date/week for the centred slot count. Card frame/colours/header
+  unchanged.
+- **Slot popup** becomes a **centre picker**: header "Select your centre, {country}", each centre
+  is a selectable row (radio), the soonest-available centre carries a green "Soonest available"
+  chip + "N open" badge, empty centres show "we check live for you". Picking a centre books its
+  soonest slot on WhatsApp — no date/week chips. Selected row uses the same band fill as the slot
+  chips (navy / amber / red).
 
 ## How to flip it (host)
 
