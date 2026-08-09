@@ -440,7 +440,7 @@ html,body{overflow-x:clip;max-width:100%}
     <h1 class="eyebrow heyebrow">Schengen Visa Consultants for UK Applicants</h1>
     <h2 class="hhead">A Schengen visa refusal stays on your record for <span class="hl-r">5 years</span>.</h2>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and our Schengen visa consultants say honestly if it's a case we can help with.</p>
-    <p class="hnote">Schengen visa agency or consultancy? We're a UK registered Schengen visa consultancy helping first-time applications, securing appointment slots, and refusal recovery.</p>
+    <p class="hnote">We're a UK registered Schengen visa consultancy helping first-time applications, securing appointment slots, and refusal recovery.</p>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
