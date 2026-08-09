@@ -44,6 +44,22 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:46ch;transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
 .lpb .hnote:hover{transform:translateY(-2px);border-color:var(--stamp);background:rgba(46,154,140,.12);box-shadow:0 18px 40px -22px rgba(46,154,140,.55)}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
+.lpb .lpb-thanks{background:#fff;border:1px solid var(--edge);border-radius:20px;box-shadow:0 30px 60px -30px rgba(20,34,46,.5);padding:30px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:11px}
+.lpb .lpb-thanks .lt-seal{width:56px;height:56px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.4);display:grid;place-items:center}
+.lpb .lpb-thanks .lt-seal svg{width:27px;height:27px;stroke:var(--stamp-text);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.lpb .lpb-thanks h3{font-size:22px;color:var(--ink);font-weight:800;letter-spacing:-.02em;margin:4px 0 0}
+.lpb .lpb-thanks p{color:var(--muted);font-size:14px;line-height:1.55;margin:0;max-width:34ch}
+.lpb .lpb-thanks .lt-ring{width:96px;height:96px;position:relative;margin:4px 0}
+.lpb .lpb-thanks .lt-ring svg{transform:rotate(-90deg)}
+.lpb .lpb-thanks .lt-ring circle{fill:none;stroke-width:8}
+.lpb .lpb-thanks .lt-ring .bg{stroke:rgba(46,154,140,.18)}
+.lpb .lpb-thanks .lt-ring .fg{stroke:var(--wa);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283}
+.lpb .lpb-thanks .lt-ring.go .fg{animation:lpbFill 3s linear forwards}
+.lpb .lpb-thanks .lt-ring .wac{position:absolute;inset:0;display:grid;place-items:center}
+.lpb .lpb-thanks .lt-ring .wac .disc{width:50px;height:50px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 16px -6px rgba(37,211,102,.7)}
+.lpb .lpb-thanks .lt-ring .wac .disc svg{width:28px;height:28px;fill:#fff}
+.lpb .lpb-thanks .lt-wa{width:100%}
+@keyframes lpbFill{from{stroke-dashoffset:283}to{stroke-dashoffset:0}}
 .lpb .formcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2)}
 .lpb .formcard .fl{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin:0 0 15px;display:flex;align-items:center;gap:8px}
 .lpb .formcard .fl .dot{width:8px;height:8px;border-radius:50%;background:var(--wa)}
@@ -419,6 +435,16 @@ html,body{overflow-x:clip;max-width:100%}
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
+  <div class="lpb-thanks" id="lpbThanks" hidden>
+    <span class="lt-seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <h3 id="lpbThanksH">Thanks. Your case check is in.</h3>
+    <div class="lt-ring" aria-hidden="true">
+      <svg width="96" height="96" viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="45"/><circle class="fg" cx="52" cy="52" r="45"/></svg>
+      <span class="wac"><span class="disc">@include('partials.wa-glyph')</span></span>
+    </div>
+    <p>Opening WhatsApp so your details reach our UK team, prefilled. The chat opens in <b id="lpbCount">3</b> seconds.</p>
+    <a class="btn wa lt-wa" id="lpbWaBtn" href="{{ $wa }}" target="_blank" rel="noopener">@include('partials.wa-glyph')Open WhatsApp now</a>
+  </div>
   </div>
 </div></div></section>
 
@@ -662,7 +688,15 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
     var msg="Hi, I'd like a case check on my Schengen visa.";
     if(d)msg+=' My destination is '+d+'.';
     if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
-    window.open('{{ $wa }}?text='+encodeURIComponent(msg),'_blank');
+    var waUrl='{{ $wa }}?text='+encodeURIComponent(msg);
+    var th=document.getElementById('lpbThanks'),btn=document.getElementById('lpbWaBtn'),cEl=document.getElementById('lpbCount'),hEl=document.getElementById('lpbThanksH');
+    if(btn)btn.href=waUrl;
+    if(hEl&&n)hEl.textContent='Thanks, '+n+'. Your case check is in.';
+    f.style.display='none';
+    if(th){th.hidden=false;var r=th.querySelector('.lt-ring');if(r)r.classList.add('go');}
+    var c=3,go=function(){window.location.assign(waUrl);};
+    var t=setInterval(function(){c--;if(cEl)cEl.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);
+    setTimeout(go,3600);
   });
 })();
 </script>
