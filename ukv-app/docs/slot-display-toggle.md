@@ -1,8 +1,25 @@
-# Appointment slot display toggle — weeks vs dates
+# Appointment slot display toggle — 3 modes
 
 Controls how the **public appointment board** (`/schengen-visa-consultancy`) and the
-**slot-picker popup** show availability. One switch drives both surfaces. Fully reversible,
-no redeploy, no code change.
+**slot-picker popup** show availability. Two `.env` flags give **3 display modes**. Fully
+reversible, no redeploy, no code change.
+
+## ⚠️ Run ONE mode at a time
+
+Set **at most one** of the two flags to `true`. Turning **both** on adds both the `wk` and `cf`
+CSS classes to the board section (`sec alt bd wk cf`) whose mobile rules collide (week = left-
+aligned header, count = centred), so the layout breaks. Always leave the mode you are not using
+`false`.
+
+| # | Mode | `UKV_SLOT_WEEK_LABELS` | `UKV_SLOT_COUNT_FOCUS` | Board section class |
+|---|------|:-:|:-:|---|
+| 1 | Dates (original) | false | false | `sec alt bd` |
+| 2 | Weeks | **true** | false | `sec alt bd wk` |
+| 3 | Count / Centre | false | **true** | `sec alt bd cf` |
+
+Current live = **mode 3** (count/centre). Verify the class after any change:
+`document.querySelector('#appointments').className` should show exactly one of `wk` / `cf` (or
+neither for dates).
 
 ## The flag
 
