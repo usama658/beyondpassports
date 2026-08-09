@@ -219,7 +219,7 @@
         var tile = document.createElement('button'); tile.type = 'button'; tile.className = 'ct';
         tile.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest</span>' : '') +
           '<div class="trow"><span class="radio"></span><span class="badge' + (has ? '' : ' find') + '">' +
-          (has ? openN + ' open' : 'Secure a slot') + '</span></div>' +
+          (has ? openN + ' open' : 'Secure now') + '</span></div>' +
           '<div class="nm">' + esc(city) + '</div>' +
           '<div class="sub">Visa application centre</div>' +
           '<div class="meta">' + (has ? 'We help you secure the earliest slot' : 'No slots open! We help you find one.') + '</div>';
