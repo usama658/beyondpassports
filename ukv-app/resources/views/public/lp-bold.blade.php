@@ -212,7 +212,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .bd.cf .hc .bd2{text-align:center}
 .lpb .bd.cf .hc .lab{color:var(--cd)}
 .lpb .hc .count{font-family:var(--mono);font-weight:800;font-size:44px;line-height:.92;color:var(--c)}
-.lpb .hc .win{display:inline-flex;align-items:center;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:999px;padding:7px 13px;margin-top:12px}
+.lpb .hc .win{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:9px 12px;margin-top:12px}
 .lpb .hc .win .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
 .lpb .hc .win small{font-size:12px;color:var(--muted);font-weight:600}
 .lpb .hc .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
