@@ -228,7 +228,7 @@
           tile.classList.add('sel');
           centre = c.name;
           book.setAttribute('aria-disabled', 'false');
-          if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Help me Book ' + city + ' now'); }
+          if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Secure ' + city + ' Slot'); }
           else { book.href = findHref(c.name); setLabel('Find me a ' + city + ' slot'); }
           try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
         });
