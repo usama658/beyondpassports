@@ -436,16 +436,6 @@ html,body{overflow-x:clip;max-width:100%}
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
   </form>
-  <div class="lpb-thanks" id="lpbThanks" hidden>
-    <span class="lt-seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
-    <h3 id="lpbThanksH">Thanks. Your case check is in.</h3>
-    <div class="lt-ring" aria-hidden="true">
-      <svg width="96" height="96" viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="45"/><circle class="fg" cx="52" cy="52" r="45"/></svg>
-      <span class="wac"><span class="disc">@include('partials.wa-glyph')</span></span>
-    </div>
-    <p>Opening WhatsApp so your details reach our UK team, prefilled. The chat opens in <b id="lpbCount">3</b> seconds.</p>
-    <a class="btn wa lt-wa" id="lpbWaBtn" href="{{ $wa }}" target="_blank" rel="noopener">@include('partials.wa-glyph')Open WhatsApp now</a>
-  </div>
   </div>
 </div></div></section>
 
@@ -686,18 +676,8 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
   var f=document.getElementById('lpbCaseForm');if(!f)return;f.addEventListener('submit',function(e){
     e.preventDefault();
     var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
-    var msg="Hi, I'd like a case check on my Schengen visa.";
-    if(d)msg+=' My destination is '+d+'.';
-    if(n)msg+=' My name is '+n+'.';if(p)msg+=' My number is '+p+'.';
-    var waUrl='{{ $wa }}?text='+encodeURIComponent(msg);
-    var th=document.getElementById('lpbThanks'),btn=document.getElementById('lpbWaBtn'),cEl=document.getElementById('lpbCount'),hEl=document.getElementById('lpbThanksH');
-    if(btn)btn.href=waUrl;
-    if(hEl&&n)hEl.textContent='Thanks, '+n+'. Your case check is in.';
-    f.style.display='none';
-    if(th){th.hidden=false;var r=th.querySelector('.lt-ring');if(r)r.classList.add('go');}
-    var c=3,go=function(){window.location.assign(waUrl);};
-    var t=setInterval(function(){c--;if(cEl)cEl.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);
-    setTimeout(go,3600);
+    try{sessionStorage.setItem('bpCaseLead',JSON.stringify({name:n,dest:d,phone:p}));}catch(err){}
+    window.location.assign('{{ url('/schengen-visa-consultancy/thank-you') }}');
   });
 })();
 </script>
