@@ -131,7 +131,7 @@
         <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
       </div>
       <p class="slotm-s">{{ $apbkSub }}</p>
-      <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We help you book one</span></div>
+      <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We help you secure one</span></div>
     </div>
     <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}" data-timepicker="{{ config('ukv.appointments.time_picker') ? '1' : '0' }}"></div>
     <div class="slotm-foot">
