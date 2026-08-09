@@ -540,7 +540,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="nggrid">
       @forelse($apptCards as $c)
       @php $band = ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok'; $rn = (int) ($c['slots'] ?? 0); @endphp
-      <a class="ngcard {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $band }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
+      <a class="ngcard {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
         <div class="ngn">{{ $rn }}</div>
         <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div><div class="ngnx">Next: <b>{{ $c['week'] }}</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span></div>
         <span class="ngcta">@include('partials.wa-glyph')Secure</span>
@@ -570,7 +570,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div>
 @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
-@include('partials.appt-slot-modal')
+@unless(config('ukv.slots.rows'))@include('partials.appt-slot-modal')@endunless
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
