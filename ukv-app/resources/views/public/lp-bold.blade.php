@@ -325,6 +325,10 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb .formcard{padding:22px}
   .lpb .formcard .fl{flex-wrap:wrap}
   .lpb .form input[type=text]{font-size:16px}
+  /* mobile hero: lock heading to 2.1rem + proportional sub/note */
+  .lpb .hero .hhead{font-size:2.1rem;line-height:1.08;max-width:20ch}
+  .lpb .hsub{font-size:1.05rem}
+  .lpb .hnote{font-size:14px;padding:14px 16px}
 }
 /* HOVER — interactive lift/press across cards, tiles, buttons */
 @media(hover:hover){
