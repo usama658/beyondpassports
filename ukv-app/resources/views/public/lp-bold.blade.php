@@ -182,9 +182,9 @@ html,body{overflow-x:clip;max-width:100%}
 @keyframes lvdot{0%,100%{opacity:1;box-shadow:0 0 0 5px rgba(225,29,29,.22)}50%{opacity:.4;box-shadow:0 0 0 5px rgba(225,29,29,0)}}
 .lpb .bd .live .dot{background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22)}
 .lpb .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
-.lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
-.lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
+.lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8;--soft:#eef7f3}
+.lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a;--soft:#fbf4e4}
+.lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8;--soft:#fdeeeb}
 .lpb .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh);display:block;text-decoration:none;color:inherit;transition:transform .16s ease,box-shadow .18s ease}
 .lpb a.hc:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
 @media(hover:hover){.lpb a.hc:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(20,34,46,.5)}}
@@ -226,16 +226,15 @@ html,body{overflow-x:clip;max-width:100%}
 /* ── MODE 4 — neon-glass (Light Mist): frosted cards, band glow edge (config ukv.slots.rows) ── */
 .lpb .bd.rows .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
 .lpb .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 4px 14px}
-.lpb .ngleg{display:flex;gap:9px;flex-wrap:wrap}
-.lpb .ngleg>span{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:100px}
-.lpb .ngleg .lg-ok{color:#1F6E63;background:#e2f1ec}.lpb .ngleg .lg-lim{color:#b5791f;background:#f7edd6}.lpb .ngleg .lg-low{color:#c0392b;background:#fbe1dc}
+.lpb .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}
+.lpb .ngleg>span{display:inline-flex;align-items:center;gap:6px}
 .lpb .nghd .d{width:8px;height:8px;border-radius:50%}
 .lpb .nghd .d.open{background:#1F6E63}.lpb .nghd .d.tight{background:#b5791f}.lpb .nghd .d.none{background:#c0392b}
 .lpb .ngtick{font-size:12px;font-weight:700;color:#1F6E63;display:inline-flex;align-items:center;gap:7px}
 .lpb .ngdot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;animation:brpulse 2s ease-in-out infinite}
 @keyframes brpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 .lpb .nggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
+.lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:var(--soft);border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
 @media(hover:hover){.lpb .ngcard:hover{transform:translateY(-2px);box-shadow:0 22px 44px -28px rgba(20,45,50,.5)}}
 .lpb .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
 .lpb .ngn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:40px;font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--c);flex:none;font-variant-numeric:tabular-nums}
@@ -538,7 +537,7 @@ html,body{overflow-x:clip;max-width:100%}
   @php $apptTotal = collect($apptCards)->sum('slots'); @endphp
   <div class="ngstage">
     <div class="nghd">
-      <span class="ngleg"><span class="lg-ok">Available</span><span class="lg-lim">Limited</span><span class="lg-low">Very limited</span></span>
+      <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
       @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span>{{ $apptTotal }} slots open now</span>@endif
     </div>
     <div class="nggrid">
