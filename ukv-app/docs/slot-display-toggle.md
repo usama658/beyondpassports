@@ -11,15 +11,18 @@ CSS classes to the board section (`sec alt bd wk cf`) whose mobile rules collide
 aligned header, count = centred), so the layout breaks. Always leave the mode you are not using
 `false`.
 
-| # | Mode | `UKV_SLOT_WEEK_LABELS` | `UKV_SLOT_COUNT_FOCUS` | Board section class |
-|---|------|:-:|:-:|---|
-| 1 | Dates (original) | false | false | `sec alt bd` |
-| 2 | Weeks | **true** | false | `sec alt bd wk` |
-| 3 | Count / Centre | false | **true** | `sec alt bd cf` |
+| # | Mode | flag = true | Board section class |
+|---|------|-------------|---------------------|
+| 1 | Dates (original) | (none) | `sec alt bd` |
+| 2 | Weeks | `UKV_SLOT_WEEK_LABELS` | `sec alt bd wk` |
+| 3 | Count / Centre | `UKV_SLOT_COUNT_FOCUS` | `sec alt bd cf` |
+| 4 | Departures rows | `UKV_SLOT_ROWS` | `sec alt bd rows` |
 
-Current live = **mode 3** (count/centre). Verify the class after any change:
-`document.querySelector('#appointments').className` should show exactly one of `wk` / `cf` (or
-neither for dates).
+Mode 4 (rows): board becomes a departures-board list — flag · country · "Next: {week}" · status
+pill · big slot count · WhatsApp "Secure now"; each row opens the same centre popup. Set only ONE
+flag true. Verify the class after any change:
+`document.querySelector('#appointments').className` should carry exactly one of `wk` / `cf` / `rows`
+(or none for dates).
 
 ## The flag
 

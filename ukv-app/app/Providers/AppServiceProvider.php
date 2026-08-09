@@ -106,6 +106,17 @@ class AppServiceProvider extends ServiceProvider
                     $weekMode = config('ukv.slots.week_labels');
                     $parts = $weekMode ? \App\Support\WeekLabel::parts($c['date']) : null;
 
+                    // Emoji flag by Schengen country (rows mode). Fallback to a neutral marker.
+                    static $flags = [
+                        'Austria' => '🇦🇹', 'Belgium' => '🇧🇪', 'Croatia' => '🇭🇷', 'Czechia' => '🇨🇿',
+                        'Denmark' => '🇩🇰', 'Estonia' => '🇪🇪', 'Finland' => '🇫🇮', 'France' => '🇫🇷',
+                        'Germany' => '🇩🇪', 'Greece' => '🇬🇷', 'Hungary' => '🇭🇺', 'Iceland' => '🇮🇸',
+                        'Italy' => '🇮🇹', 'Latvia' => '🇱🇻', 'Liechtenstein' => '🇱🇮', 'Lithuania' => '🇱🇹',
+                        'Luxembourg' => '🇱🇺', 'Malta' => '🇲🇹', 'Netherlands' => '🇳🇱', 'Norway' => '🇳🇴',
+                        'Poland' => '🇵🇱', 'Portugal' => '🇵🇹', 'Slovakia' => '🇸🇰', 'Slovenia' => '🇸🇮',
+                        'Spain' => '🇪🇸', 'Sweden' => '🇸🇪', 'Switzerland' => '🇨🇭',
+                    ];
+
                     return [
                         'name'     => $c['name'],
                         'cls'      => $cls,
@@ -113,6 +124,8 @@ class AppServiceProvider extends ServiceProvider
                         'date'     => $weekMode ? ($parts['rel'].' '.$parts['my']) : $c['date']->format('j M Y'),
                         'date_rel' => $parts['rel'] ?? null, // set only in week mode -> two-line render
                         'date_my'  => $parts['my'] ?? null,
+                        'week'     => \App\Support\WeekLabel::for($c['date']), // "Next: 3rd Week Aug 2026" (rows mode)
+                        'flag'     => $flags[$c['name']] ?? '🏴',
                         'slots'    => $c['slots'],
                     ];
                 })

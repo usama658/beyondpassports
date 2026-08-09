@@ -138,6 +138,11 @@ return [
         // Board cards feature only the SLOT COUNT ("Slots open / N / in next 90 days"), centred,
         // instead of the next-available date/week. Overrides week_labels for the board body.
         'count_focus' => (bool) env('UKV_SLOT_COUNT_FOCUS', false),
+
+        // Board renders as a DEPARTURES-BOARD list of rows (flag · country · Next: week · status ·
+        // big slot count · WhatsApp "Secure now") instead of the card grid. Mode 4. Run only one of
+        // week_labels / count_focus / rows at a time.
+        'rows' => (bool) env('UKV_SLOT_ROWS', false),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization

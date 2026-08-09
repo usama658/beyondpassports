@@ -223,6 +223,45 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb .bd.cf .hc .bd2{padding:13px}
   .lpb .bd.cf .hc .count{font-size:38px}
 }
+/* ── MODE 4 — departures-board rows (config ukv.slots.rows) ── */
+.lpb .bd.rows .brboard{background:#fff;border:1px solid #dde3ec;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -34px rgba(20,34,46,.6);margin-top:6px}
+.lpb .brhead{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:13px 20px;border-bottom:1px solid #eef1f4;font-size:11.5px;color:#5d6b76}
+.lpb .brhead>span{display:inline-flex;align-items:center;gap:6px}
+.lpb .brhead .d{width:8px;height:8px;border-radius:50%}
+.lpb .brhead .d.open{background:#1F6E63}.lpb .brhead .d.tight{background:#b5791f}.lpb .brhead .d.none{background:#c0392b}
+.lpb .brtick{margin-left:auto;color:#1F6E63;font-weight:700}
+.lpb .brdot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;animation:brpulse 2s ease-in-out infinite}
+@keyframes brpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.lpb .brow{display:grid;grid-template-columns:34px 1fr auto 62px auto;align-items:center;gap:16px;padding:13px 20px;border-top:1px solid rgba(0,0,0,.05);border-left:4px solid transparent;text-decoration:none;color:#16222E;cursor:pointer;transition:filter .14s}
+.lpb .brboard .brow:first-of-type{border-top:none}
+.lpb .brow.open,.lpb .brow.tight,.lpb .brow.none{background:var(--cbg)}
+@media(hover:hover){.lpb .brow:hover{filter:brightness(.97)}}
+.lpb .brflag{font-size:22px;line-height:1}
+.lpb .brcn{display:block;font-weight:800;font-size:15.5px;color:#16222E}
+.lpb .brnx{display:block;font-size:11.5px;color:#5d6b76;margin-top:1px}
+.lpb .brnx b{color:#1F6E63}
+.lpb .brpill{justify-self:start;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:5px;white-space:nowrap;color:var(--c);background:var(--cbg2)}
+.lpb .brnum{text-align:right}
+.lpb .brn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--c);font-variant-numeric:tabular-nums}
+.lpb .brl{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:#5d6b76;margin-top:2px}
+.lpb .brcta{justify-self:end;margin-left:14px;display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#04140b;font:800 12px "Outfit",system-ui,sans-serif;padding:9px 15px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(37,211,102,.7)}
+.lpb .brcta svg{width:14px;height:14px;fill:#04140b;flex:none}
+.lpb .brempty{text-align:center;color:#5d6b76;padding:22px}
+.lpb .bd.rows .brfoot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:14px;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px}
+.lpb .bru{display:flex;align-items:center;gap:10px;min-width:0}
+.lpb .brup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#ff9182;background:rgba(192,57,43,.2);border:1px solid rgba(192,57,43,.4);border-radius:6px;padding:4px 9px;white-space:nowrap}
+.lpb .brum{font-size:13px;color:#cfe0dd}
+.lpb .brwa{display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#04140b;font:800 14.5px "Outfit",system-ui,sans-serif;padding:12px 20px;border-radius:11px;text-decoration:none;box-shadow:0 12px 26px -12px rgba(37,211,102,.6)}
+.lpb .brwa svg{width:18px;height:18px;fill:#04140b;flex:none}
+@media(max-width:560px){
+  .lpb .brow{grid-template-columns:30px 1fr auto;grid-template-areas:'flag name num' 'flag pill cta';gap:8px 12px;padding:14px 16px}
+  .lpb .brflag{grid-area:flag;align-self:start;margin-top:2px}
+  .lpb .brinfo{grid-area:name;min-width:0}
+  .lpb .brpill{grid-area:pill;align-self:center}
+  .lpb .brnum{grid-area:num}
+  .lpb .brcta{grid-area:cta;justify-self:end;align-self:center;margin-left:0}
+  .lpb .brhead{padding:12px 14px}
+}
 .lpb .hc .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .lpb .hc .wk .rel{font-size:19px;font-weight:800;line-height:1;letter-spacing:-.01em}
 .lpb .hc .wk .my{font-size:13px;font-weight:700;color:var(--muted)}
@@ -495,9 +534,35 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
      Only countries with a published date are featured; the section always renders. --}}
-<section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}" id="appointments"><div class="wrap">
+<section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}{{ config('ukv.slots.rows') ? ' rows' : '' }}" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
   <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
+@if(config('ukv.slots.rows'))
+  {{-- MODE 4 — departures-board rows: flag · country · Next: week · status · slot count · WhatsApp. --}}
+  @php $apptTotal = collect($apptCards)->sum('slots'); @endphp
+  <div class="brboard">
+    <div class="brhead">
+      <span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span>
+      @if($apptTotal > 0)<span class="brtick"><span class="brdot"></span>{{ $apptTotal }} slots open now</span>@endif
+    </div>
+    @forelse($apptCards as $c)
+    @php $band = ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok'; $rn = (int) ($c['slots'] ?? 0); @endphp
+    <a class="brow {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" data-slotcountry="{{ $c['name'] }}" data-slotband="{{ $band }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
+      <span class="brflag">{{ $c['flag'] }}</span>
+      <div class="brinfo"><span class="brcn">{{ $c['name'] }}</span><span class="brnx">Next: <b>{{ $c['week'] }}</b></span></div>
+      <span class="brpill {{ $c['cls'] }}">{{ $c['label'] }}</span>
+      <div class="brnum"><span class="brn">{{ $rn }}</span><span class="brl">slot{{ $rn === 1 ? '' : 's' }}</span></div>
+      <span class="brcta">@include('partials.wa-glyph')Secure now</span>
+    </a>
+    @empty
+    <p class="brempty">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
+    @endforelse
+  </div>
+  <div class="brfoot">
+    <div class="bru"><span class="brup">⏱ Urgent</span><span class="brum">Travelling within 3 weeks? These slots won't wait.</span></div>
+    <a class="brwa" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">@include('partials.wa-glyph')WhatsApp us now</a>
+  </div>
+@else
   <div class="bpre">
     <div class="blegend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
     <span class="urgent">⏱ Travelling within 3 weeks? Tell us now, the tight countries can't wait.</span>
@@ -512,6 +577,7 @@ html,body{overflow-x:clip;max-width:100%}
   </div>
   <div class="bfoot" style="justify-content:center">
     <a class="btn" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">Get Schengen visa help →</a></div>
+@endif
 </div>
 @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
 </section>
