@@ -84,34 +84,36 @@
   #slotm.low .slot.sel{border-color:#c0392b;background:#c0392b;box-shadow:0 8px 18px -10px rgba(192,57,43,.7)}
   #slotm.lim .slot .soon{background:#b5791f}
   #slotm.low .slot .soon{background:#c0392b}
-  /* ── Centre-selection mode (count_focus): pick a centre, not a date. ── */
+  /* ── Centre-selection mode (count_focus): pick a centre, not a date. 2x2 tile grid. ── */
   #slotm .sc-lead{font:800 11px "Outfit",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#5d6b76;margin:0 0 12px}
-  #slotm .ct{position:relative;display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1.5px solid #dde3ec;border-radius:14px;padding:14px 16px;margin:0 0 11px;cursor:pointer;transition:.12s;font-family:inherit}
-  #slotm .ct:last-child{margin:0}
+  #slotm .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  #slotm .ct{position:relative;display:flex;flex-direction:column;gap:8px;width:100%;text-align:left;background:#fff;border:1.5px solid #dde3ec;border-radius:14px;padding:15px 14px 13px;cursor:pointer;transition:.12s;font-family:inherit;min-height:118px}
   #slotm .ct:hover{border-color:#2E9A8C;box-shadow:0 0 0 3px rgba(46,154,140,.14)}
-  #slotm .ct.dim{opacity:.92}
-  #slotm .ct .radio{width:22px;height:22px;border-radius:50%;border:2px solid #dde3ec;flex:none;position:relative;background:#fff}
+  #slotm .ct .trow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  #slotm .ct .radio{width:20px;height:20px;border-radius:50%;border:2px solid #dde3ec;flex:none;position:relative;background:#fff}
   #slotm .ct .radio::after{content:'';position:absolute;inset:4px;border-radius:50%;background:#155E7A;opacity:0;transition:.12s}
   #slotm .ct:hover .radio{border-color:#2E9A8C}
-  #slotm .ct .info{flex:1;min-width:0}
-  #slotm .ct .nm{font:800 14px "Outfit",system-ui,sans-serif;color:#16222E}
-  #slotm .ct .meta{font-size:12.5px;color:#5d6b76;margin-top:2px}
-  #slotm .ct .badge{font:800 11px "Outfit",system-ui,sans-serif;color:#1F6E63;background:rgba(46,154,140,.1);border-radius:999px;padding:4px 9px;white-space:nowrap;flex:none}
-  #slotm .ct .soontag{position:absolute;top:-9px;left:16px;font:800 9px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#2f9e5f;border-radius:999px;padding:3px 9px;box-shadow:0 4px 10px -4px rgba(47,158,95,.6)}
-  /* selected row — band-aware fill (default navy / amber / red), same scheme as the slot chips */
+  #slotm .ct .nm{font:800 13px "Outfit",system-ui,sans-serif;color:#16222E;line-height:1.3}
+  #slotm .ct .meta{font-size:11.5px;color:#5d6b76;margin-top:auto;line-height:1.35}
+  #slotm .ct .badge{font:800 10.5px "Outfit",system-ui,sans-serif;color:#1F6E63;background:rgba(46,154,140,.1);border-radius:999px;padding:4px 8px;white-space:nowrap}
+  #slotm .ct .badge.find{background:#fff;border:1px solid #2E9A8C;color:#1F6E63}
+  #slotm .ct .soontag{position:absolute;top:-9px;left:14px;font:800 8.5px "Outfit",system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#2f9e5f;border-radius:999px;padding:3px 8px;box-shadow:0 4px 10px -4px rgba(47,158,95,.6)}
+  /* selected tile — band-aware fill (default navy / amber / red), same scheme as the slot chips */
   #slotm .ct.sel{border-color:#155E7A;background:#155E7A}
   #slotm .ct.sel .nm{color:#fff}
   #slotm .ct.sel .meta{color:rgba(255,255,255,.85)}
   #slotm .ct.sel .radio{border-color:#fff;background:#fff}
   #slotm .ct.sel .radio::after{opacity:1}
   #slotm .ct.sel .badge{background:rgba(255,255,255,.2);color:#fff}
+  #slotm .ct.sel .badge.find{border-color:transparent}
   #slotm.lim .ct.sel{border-color:#b5791f;background:#b5791f}
   #slotm.low .ct.sel{border-color:#c0392b;background:#c0392b}
   /* Mobile: stack the trust ticks + tighten the centre rows so long centre names read cleanly. */
   @media(max-width:480px){
     #slotm .slotm-trust{flex-direction:column;gap:6px}
     #slotm .slotm-top h3{font-size:18px}
-    #slotm .ct{gap:11px;padding:13px}
+    #slotm .cgrid{grid-template-columns:1fr;gap:10px}
+    #slotm .ct{min-height:0;padding:13px}
     #slotm .ct .nm{font-size:12.5px;line-height:1.3}
     #slotm .ct .meta{font-size:11.5px}
     #slotm .ct .badge{font-size:10px;padding:4px 8px}
@@ -195,32 +197,40 @@
       for (var i = 0; i < seps.length; i++) { if (String(n).indexOf(seps[i]) > -1) { var p = String(n).split(seps[i]); return p[p.length - 1].trim(); } }
       return n;
     }
-    // Centre mode: pick a centre (not a date). Centres with slots book the soonest; empty ones ask.
+    // "Find me a slot" message for a centre with no published slots.
+    function findHref(where) {
+      var msg = 'Hi Beyond Passports, there are no published ' + (country || 'Schengen') + ' slots at ' + where +
+        ' right now. Please find me the soonest slot there and book it for me.';
+      return 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg);
+    }
+    // Centre mode: 2x2 tile grid. Every centre is selectable — ones with slots book the soonest;
+    // empty ones carry a "Find me a slot" badge and send a find-a-slot request.
     function renderCentresPick(centres) {
       var lead = document.createElement('p'); lead.className = 'sc-lead'; lead.textContent = 'Choose an application centre';
       box.appendChild(lead);
+      var grid = document.createElement('div'); grid.className = 'cgrid'; box.appendChild(grid);
       var firstOpen = true;
       centres.forEach(function (c) {
         var openN = (typeof c.open === 'number') ? c.open : ((c.days || []).length);
         var has = openN > 0;
         var city = cityOf(c.name);
-        var rowEl = document.createElement('button'); rowEl.type = 'button'; rowEl.className = 'ct' + (has ? '' : ' dim');
-        rowEl.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest available</span>' : '') +
-          '<span class="radio"></span>' +
-          '<div class="info"><div class="nm">' + esc(c.name) + '</div><div class="meta">' +
-          (has ? 'We book the earliest slot here' : 'No published slots right now — we check live for you') + '</div></div>' +
-          (has ? '<span class="badge">' + openN + ' open</span>' : '');
-        rowEl.addEventListener('click', function () {
+        var tile = document.createElement('button'); tile.type = 'button'; tile.className = 'ct';
+        tile.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest available</span>' : '') +
+          '<div class="trow"><span class="radio"></span><span class="badge' + (has ? '' : ' find') + '">' +
+          (has ? openN + ' open' : 'Find me a slot') + '</span></div>' +
+          '<div class="nm">' + esc(c.name) + '</div>' +
+          '<div class="meta">' + (has ? 'We book the earliest slot here' : 'No published slots right now — we check live for you') + '</div>';
+        tile.addEventListener('click', function () {
           Array.prototype.forEach.call(box.querySelectorAll('.ct'), function (x) { x.classList.remove('sel'); });
-          rowEl.classList.add('sel');
+          tile.classList.add('sel');
           centre = c.name;
           book.setAttribute('aria-disabled', 'false');
           if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Book ' + city + ' now →'); }
-          else { book.href = askHref(c.name); setLabel('Ask us about ' + city + ' →'); }
+          else { book.href = findHref(c.name); setLabel('Find me a ' + city + ' slot →'); }
           try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
         });
         if (has) firstOpen = false;
-        box.appendChild(rowEl);
+        grid.appendChild(tile);
       });
     }
     function renderCentres(data) {

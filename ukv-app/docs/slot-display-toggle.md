@@ -33,11 +33,11 @@ When `true` it overrides `UKV_SLOT_WEEK_LABELS`. Same clear commands as below. T
 
 - **Board** card body swaps the date/week for the centred slot count. Card frame/colours/header
   unchanged.
-- **Slot popup** becomes a **centre picker**: header "Select your centre, {country}", each centre
-  is a selectable row (radio), the soonest-available centre carries a green "Soonest available"
-  chip + "N open" badge, empty centres show "we check live for you". Picking a centre books its
-  soonest slot on WhatsApp — no date/week chips. Selected row uses the same band fill as the slot
-  chips (navy / amber / red).
+- **Slot popup** becomes a **centre picker** (2x2 tile grid, 1 col on mobile): header "Select your
+  centre, {country}". Every centre tile is selectable (radio). The soonest-available centre carries
+  a green "Soonest available" chip + "N open" badge and books its soonest slot; centres with no
+  published slots carry a "Find me a slot" badge and send a find-a-slot request. No date/week chips.
+  Selected tile uses the same band fill as the slot chips (navy / amber / red).
 
 ## How to flip it (host)
 
