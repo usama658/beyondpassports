@@ -181,6 +181,8 @@ Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → cano
 Route::get('/schengen-visa-consultancy', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold');
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).
 Route::view('/schengen-visa-consultancy/thank-you', 'public.lp-thanks')->name('lp-bold.thanks');
+// LP hero case-form lead: emails the lead to the owner inbox before the WhatsApp hand-off. Throttled; CSRF-exempt + honeypot.
+Route::post('/schengen-visa-consultancy/lead', [\App\Http\Controllers\LpLeadController::class, 'store'])->middleware('throttle:12,1')->name('lp-bold.lead');
 // Drafted: /visa/schengen duplicated the stronger /schengen-visa hub (which has its own region
 // tabs + searchable grid). 301 to the canonical page. Controller schengen() + destinations.schengen
 // view are kept in code, dormant, so this is reversible — restore the Route::get to un-draft.

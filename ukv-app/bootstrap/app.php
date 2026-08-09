@@ -16,8 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
         // X-Forwarded-Proto/Host and generates correct https://<public-host> asset/route URLs
         // instead of the internal http://127.0.0.1. Required behind any proxy in production too.
         $middleware->trustProxies(at: '*');
-        // Stripe posts its webhook without a CSRF token.
-        $middleware->validateCsrfTokens(except: ['stripe/webhook']);
+        // Stripe posts its webhook without a CSRF token. LP lead endpoint is a public,
+        // stateless email-only handler (honeypot + throttle guarded) that must not fail on a
+        // stale token behind the CDN, so it is CSRF-exempt too.
+        $middleware->validateCsrfTokens(except: ['stripe/webhook', 'schengen-visa-consultancy/lead']);
         // Security headers (CSP/HSTS/etc.) on web responses; admin gets a Filament-safe CSP.
         $middleware->web(append: [SecurityHeaders::class]);
     })
