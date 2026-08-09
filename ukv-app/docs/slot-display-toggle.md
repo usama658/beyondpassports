@@ -16,10 +16,11 @@ aligned header, count = centred), so the layout breaks. Always leave the mode yo
 | 1 | Dates (original) | (none) | `sec alt bd` |
 | 2 | Weeks | `UKV_SLOT_WEEK_LABELS` | `sec alt bd wk` |
 | 3 | Count / Centre | `UKV_SLOT_COUNT_FOCUS` | `sec alt bd cf` |
-| 4 | Departures rows | `UKV_SLOT_ROWS` | `sec alt bd rows` |
+| 4 | Neon-glass cards | `UKV_SLOT_ROWS` | `sec alt bd rows` |
 
-Mode 4 (rows): board becomes a departures-board list — flag · country · "Next: {week}" · status
-pill · big slot count · WhatsApp "Secure now"; each row opens the same centre popup. Set only ONE
+Mode 4 (rows/neon-glass): board becomes frosted **neon-glass cards** (2-up, "Light Mist" palette) —
+big slot count · country · "Next: {week}" · status chip · band glow edge · WhatsApp "Secure"; each
+card opens the same centre popup. Set only ONE
 flag true. Verify the class after any change:
 `document.querySelector('#appointments').className` should carry exactly one of `wk` / `cf` / `rows`
 (or none for dates).

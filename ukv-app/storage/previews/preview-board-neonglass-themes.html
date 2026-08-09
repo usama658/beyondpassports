@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neon glass board — colour themes</title>
+<style>
+  :root{--wa:#25D366;--mono:ui-monospace,SFMono-Regular,Menlo,'Courier New',monospace}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#0a1412;color:#e7efee;padding:26px 16px 90px}
+  .wrap{max-width:800px;margin:0 auto}
+  h1{font-size:16px;color:#8fe3c9;font-weight:800;margin-bottom:3px}.sub{font-size:12px;color:#6f8f89;margin-bottom:18px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .tab{padding:8px 15px;border:1px solid #1e3a3f;background:transparent;border-radius:100px;font:600 12.5px 'Outfit',sans-serif;color:#7f9b96;cursor:pointer}
+  .tab.on{background:#12312e;border-color:#2f9e8f;color:#bff0e2}
+  .panel{display:none}.panel.on{display:block}
+  .wa-svg{width:14px;height:14px;fill:currentColor;flex:none}
+  @keyframes pl{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* stage + header (themed via vars) */
+  .stage{border-radius:20px;padding:18px}
+  .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:4px 4px 16px}
+  .ey{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ey)}
+  .tick{font-size:12px;font-weight:700;color:var(--tick);display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa);animation:pl 2s infinite}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+
+  .card{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--gbd);border-radius:16px;padding:16px;display:flex;align-items:center;gap:16px;color:var(--txt);text-decoration:none;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+  .available::before{background:var(--av);box-shadow:0 0 var(--glow) var(--av)}
+  .limited::before{background:var(--lim);box-shadow:0 0 var(--glow) var(--lim)}
+  .very-limited::before{background:var(--vl);box-shadow:0 0 var(--glow) var(--vl)}
+  .n{font-family:var(--mono);font-size:40px;font-weight:900;line-height:1;letter-spacing:-.05em;flex:none;text-shadow:0 0 var(--nglow) currentColor}
+  .available .n{color:var(--av)}.limited .n{color:var(--lim)}.very-limited .n{color:var(--vl)}
+  .info{flex:1;min-width:0}
+  .cn{font-weight:800;font-size:16px}.nx{font-size:11.5px;color:var(--sub);margin-top:1px}.nx b{color:var(--subb)}
+  .stp{display:inline-block;margin-top:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px}
+  .available .stp{background:var(--avbg);color:var(--av)}.limited .stp{background:var(--limbg);color:var(--lim)}.very-limited .stp{background:var(--vlbg);color:var(--vl)}
+  .cta{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--wa);color:#04140b;font:800 11.5px 'Outfit',sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(37,211,102,.7)}
+
+  /* ===== DARK · MIDNIGHT ===== */
+  .t-midnight{background:radial-gradient(80% 70% at 0 0,#0e3f52,#06181e 55%),radial-gradient(80% 80% at 100% 100%,#17402f,transparent);
+    --ey:#7fd7c9;--tick:#7fe0b6;--glass:rgba(255,255,255,.055);--gbd:rgba(255,255,255,.12);--txt:#e7efee;--sub:#9fc2ba;--subb:#d5ece5;
+    --av:#8ff0c4;--lim:#ffdf95;--vl:#ffa196;--avbg:rgba(63,224,166,.16);--limbg:rgba(255,203,82,.16);--vlbg:rgba(255,106,90,.16);--glow:18px;--nglow:22px}
+  /* ===== DARK · PETROL ===== */
+  .t-petrol{background:radial-gradient(85% 75% at 10% 0,#16323b,#0a1a1e 58%),radial-gradient(70% 70% at 100% 100%,#0f3a33,transparent);
+    --ey:#8fe3c9;--tick:#8fe3c9;--glass:rgba(255,255,255,.05);--gbd:rgba(143,227,201,.16);--txt:#eaf3f1;--sub:#7fb0a6;--subb:#bfe6dc;
+    --av:#5fd4a6;--lim:#e9c46a;--vl:#f0897c;--avbg:rgba(95,212,166,.14);--limbg:rgba(233,196,106,.14);--vlbg:rgba(240,137,124,.14);--glow:16px;--nglow:18px}
+  /* ===== LIGHT · MIST ===== */
+  .t-mist{background:radial-gradient(80% 70% at 0 0,#eaf1f3,#dfe9ec 60%),radial-gradient(70% 70% at 100% 100%,#e7f2ee,transparent);border:1px solid #dbe4e6;
+    --ey:#1F6E63;--tick:#1F6E63;--glass:rgba(255,255,255,.62);--gbd:rgba(255,255,255,.85);--txt:#16222E;--sub:#5d6b76;--subb:#1F6E63;
+    --av:#1F6E63;--lim:#b5791f;--vl:#c0392b;--avbg:#e2f1ec;--limbg:#f7edd6;--vlbg:#fbe1dc;--glow:14px;--nglow:0px}
+  /* ===== LIGHT · CREAM ===== */
+  .t-cream{background:radial-gradient(80% 70% at 0 0,#f6f0e4,#efe7d6 60%),radial-gradient(70% 70% at 100% 100%,#f3ede0,transparent);border:1px solid #e4dcc9;
+    --ey:#8a6b2f;--tick:#1F6E63;--glass:rgba(255,255,255,.55);--gbd:rgba(255,255,255,.8);--txt:#211d15;--sub:#7a6f56;--subb:#1F6E63;
+    --av:#1F6E63;--lim:#b5791f;--vl:#c0392b;--avbg:#e7f1ea;--limbg:#f6ecd4;--vlbg:#f8e2dc;--glow:12px;--nglow:0px}
+</style></head><body><div class="wrap">
+  <h1>Neon glass board — colour themes</h1>
+  <p class="sub">Same layout, four palettes · dark ×2, light ×2</p>
+  <div class="tabs">
+    <button class="tab on" onclick="sw(0)">Dark · Midnight</button>
+    <button class="tab" onclick="sw(1)">Dark · Petrol</button>
+    <button class="tab" onclick="sw(2)">Light · Mist</button>
+    <button class="tab" onclick="sw(3)">Light · Cream</button>
+  </div>
+  <div class="panel on"><div class="stage t-midnight"><div class="hd"><span class="ey">Schengen Appointment Availability</span><span class="tick"><span class="dot"></span>63 slots open now</span></div><div class="grid" data-g></div></div></div>
+  <div class="panel"><div class="stage t-petrol"><div class="hd"><span class="ey">Schengen Appointment Availability</span><span class="tick"><span class="dot"></span>63 slots open now</span></div><div class="grid" data-g></div></div></div>
+  <div class="panel"><div class="stage t-mist"><div class="hd"><span class="ey">Schengen Appointment Availability</span><span class="tick"><span class="dot"></span>63 slots open now</span></div><div class="grid" data-g></div></div></div>
+  <div class="panel"><div class="stage t-cream"><div class="hd"><span class="ey">Schengen Appointment Availability</span><span class="tick"><span class="dot"></span>63 slots open now</span></div><div class="grid" data-g></div></div></div>
+</div>
+<script>
+  var WA='<svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+  var D=[
+    ['France','FR','available',48,'3rd Week Aug 2026'],['Netherlands','NL','limited',2,'3rd Week Aug 2026'],
+    ['Iceland','IS','limited',2,'4th Week Aug 2026'],['Hungary','HU','limited',2,'3rd Week Sep 2026'],
+    ['Poland','PL','very-limited',4,'Next Week Aug 2026'],['Portugal','PT','very-limited',1,'Next Week Aug 2026'],
+    ['Norway','NO','very-limited',1,'3rd Week Aug 2026'],['Switzerland','CH','very-limited',1,'2nd Week Sep 2026'],
+    ['Italy','IT','very-limited',1,'3rd Week Sep 2026'],['Liechtenstein','LI','very-limited',1,'2nd Week Sep 2026']
+  ];
+  var L={available:'Available',limited:'Limited','very-limited':'Very limited'};
+  function sl(n){return n==1?'slot':'slots';}
+  var html=D.map(function(c){return '<a class="card '+c[2]+'" href="#"><div class="n">'+c[3]+'</div><div class="info"><div class="cn">'+c[0]+'</div><div class="nx">Next: <b>'+c[4]+'</b></div><span class="stp">'+L[c[2]]+' · '+sl(c[3])+'</span></div><span class="cta">'+WA+'Secure</span></a>';}).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-g]'),function(g){g.innerHTML=html;});
+  function sw(i){document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('on',j===i);});document.querySelectorAll('.panel').forEach(function(p,j){p.classList.toggle('on',j===i);});}
+</script>
+</body></html>

@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Availability board — premium rows concepts</title>
+<style>
+  :root{--ink:#16222E;--muted:#5d6b76;--paper:#F4F6FA;--edge:#dde3ec;--stamp:#2E9A8C;--stampd:#1F6E63;--wa:#25D366;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+        --av:#1F6E63;--avbg:#e7f4ef;--lim:#b5791f;--limbg:#faeed6;--vl:#c0392b;--vlbg:#fbe4e0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#0c171b;color:#e7efee;padding:28px 16px 80px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:16px;color:#8fe3c9;font-weight:800;letter-spacing:.02em;margin-bottom:3px}
+  .sub{font-size:12px;color:#7f9b96;margin-bottom:18px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .tab{padding:8px 15px;border:1px solid #1e3a3f;background:transparent;border-radius:100px;font:600 12.5px 'Outfit',sans-serif;color:#7f9b96;cursor:pointer}
+  .tab.on{background:#12312e;border-color:#2f9e8f;color:#bff0e2}
+  .panel{display:none}.panel.on{display:block}
+  .wa-svg{width:14px;height:14px;fill:currentColor;flex:none}
+  .iso{font-family:var(--mono);font-weight:800;font-size:12px;letter-spacing:.04em;display:inline-flex;align-items:center;justify-content:center;border-radius:8px}
+
+  /* ============ A — DEPARTURES LIGHT ============ */
+  .A .board{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px #000}
+  .A .hd{background:linear-gradient(135deg,#16323b,#1F6E63);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .A .hd .ey{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8fe3c9}
+  .A .tick{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:#8fe3c9}
+  .A .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa);animation:p 2s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
+  .A .row{display:grid;grid-template-columns:40px 1fr auto 60px auto;align-items:center;gap:16px;padding:13px 20px;border-top:1px solid rgba(0,0,0,.05);color:var(--ink);text-decoration:none}
+  .A .row:first-of-type{border-top:none}
+  .A .row.available{background:var(--avbg)}.A .row.limited{background:var(--limbg)}.A .row.very-limited{background:var(--vlbg)}
+  .A .iso{width:40px;height:30px}
+  .A .available .iso{background:#fff;color:var(--av);border:1.5px solid var(--av)}.A .limited .iso{background:#fff;color:var(--lim);border:1.5px solid var(--lim)}.A .very-limited .iso{background:#fff;color:var(--vl);border:1.5px solid var(--vl)}
+  .A .cn{font-weight:800;font-size:15.5px}.A .nx{font-size:11.5px;color:var(--muted);margin-top:1px}.A .nx b{color:var(--stampd)}
+  .A .pill{justify-self:start;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:5px;white-space:nowrap}
+  .A .available .pill{background:#fff;color:var(--av)}.A .limited .pill{background:#fff;color:var(--lim)}.A .very-limited .pill{background:#fff;color:var(--vl)}
+  .A .num{text-align:right}.A .n{font-family:var(--mono);font-size:26px;font-weight:800;line-height:1;letter-spacing:-.03em}.A .available .n{color:var(--av)}.A .limited .n{color:var(--lim)}.A .very-limited .n{color:var(--vl)}
+  .A .nl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
+  .A .cta{justify-self:end;display:inline-flex;align-items:center;gap:6px;background:var(--wa);color:#04140b;font:800 12px 'Outfit',sans-serif;padding:9px 15px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(37,211,102,.7)}
+
+  /* ============ B — DEPARTURES DARK ============ */
+  .B .board{background:linear-gradient(180deg,#0f2429,#0a1a1e);border:1px solid #12262b;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px #000}
+  .B .hd{padding:18px 20px 4px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .B .ey{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#5f8f89}
+  .B .tick{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:#3fb984}.B .dot{width:8px;height:8px;border-radius:50%;background:#3fb984;box-shadow:0 0 8px #3fb984;animation:p 2s infinite}
+  .B .row{display:grid;grid-template-columns:42px 1fr auto 60px auto;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid #0c1c20;color:#dbe7e6;text-decoration:none;position:relative}
+  .B .row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:.9}
+  .B .row.available::before{background:#3fb984;box-shadow:0 0 12px #3fb984}.B .row.limited::before{background:#e0a52b}.B .row.very-limited::before{background:#ef5b4c;box-shadow:0 0 12px #ef5b4c}
+  .B .iso{width:42px;height:31px;background:#0c2126;border:1px solid #1a3b40}
+  .B .available .iso{color:#6ee7b7}.B .limited .iso{color:#fcd34d}.B .very-limited .iso{color:#fca5a5}
+  .B .cn{font-weight:800;font-size:15.5px;color:#eaf3f1}.B .nx{font-size:11.5px;color:#587c78;margin-top:1px}.B .nx b{color:#8fb7b1}
+  .B .pill{justify-self:start;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:5px;white-space:nowrap}
+  .B .available .pill{background:rgba(63,185,132,.12);color:#3fb984}.B .limited .pill{background:rgba(224,165,43,.13);color:#e0a52b}.B .very-limited .pill{background:rgba(239,91,76,.12);color:#ef5b4c}
+  .B .num{text-align:right}.B .n{font-family:var(--mono);font-size:27px;font-weight:900;line-height:1;letter-spacing:-.04em}
+  .B .available .n{color:#6ee7b7}.B .limited .n{color:#fcd34d}.B .very-limited .n{color:#fca5a5;animation:rp 1.5s infinite}@keyframes rp{0%,100%{opacity:1}50%{opacity:.5}}
+  .B .nl{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#3f625e;margin-top:2px}
+  .B .cta{justify-self:end;display:inline-flex;align-items:center;gap:6px;background:var(--wa);color:#04140b;font:800 12px 'Outfit',sans-serif;padding:9px 15px;border-radius:9px;white-space:nowrap}
+
+  /* ============ C — BOARDING PASS ============ */
+  .C .list{display:flex;flex-direction:column;gap:11px}
+  .C .bp{display:grid;grid-template-columns:78px 1fr auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(0,0,0,.6);color:var(--ink);text-decoration:none}
+  .C .stub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 8px;color:#fff;position:relative}
+  .C .available .stub{background:linear-gradient(160deg,#2f9e7b,#1F6E63)}.C .limited .stub{background:linear-gradient(160deg,#caa049,#b5791f)}.C .very-limited .stub{background:linear-gradient(160deg,#d85647,#c0392b)}
+  .C .stub .code{font-family:var(--mono);font-weight:900;font-size:20px;letter-spacing:.06em}
+  .C .stub .st{font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+  .C .stub::after{content:'';position:absolute;right:-6px;top:0;bottom:0;width:12px;background:radial-gradient(circle at 6px 6px,transparent 6px,#fff 6px) 0 0/12px 12px repeat-y}
+  .C .mid{padding:13px 16px}
+  .C .cn{font-weight:800;font-size:16px}.C .nx{font-size:12px;color:var(--muted);margin-top:2px}.C .nx b{color:var(--stampd)}
+  .C .rt{display:flex;align-items:center;gap:14px;padding:13px 16px 13px 4px}
+  .C .num{text-align:center;line-height:1}.C .n{font-family:var(--mono);font-size:30px;font-weight:900;letter-spacing:-.04em}
+  .C .available .n{color:var(--av)}.C .limited .n{color:var(--lim)}.C .very-limited .n{color:var(--vl)}
+  .C .nl{font-size:8.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+  .C .cta{display:inline-flex;align-items:center;gap:6px;background:var(--wa);color:#04140b;font:800 12px 'Outfit',sans-serif;padding:10px 15px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(37,211,102,.7)}
+  @media(max-width:560px){
+    .A .row,.B .row{grid-template-columns:34px 1fr auto;grid-template-areas:'iso name num' 'iso pill cta';gap:8px 12px}
+    .A .iso,.B .iso{grid-area:iso;align-self:start;margin-top:2px}
+    .A .info,.B .info{grid-area:name}.A .pill,.B .pill{grid-area:pill}.A .num,.B .num{grid-area:num}.A .cta,.B .cta{grid-area:cta;justify-self:end}
+    .C .bp{grid-template-columns:66px 1fr}.C .rt{grid-column:1/-1;justify-content:space-between;padding:0 16px 14px;border-top:1px dashed var(--edge);padding-top:12px}
+  }
+</style></head><body><div class="wrap">
+  <h1>Availability board — premium row concepts</h1>
+  <p class="sub">Departures-board layout · Beyond Passports palette · airport-code chips (render everywhere) · WhatsApp-native</p>
+  <div class="tabs">
+    <button class="tab on" onclick="sw(0)">A — Departures Light</button>
+    <button class="tab" onclick="sw(1)">B — Departures Dark</button>
+    <button class="tab" onclick="sw(2)">C — Boarding Pass</button>
+  </div>
+  <div class="panel on A"><div class="board">
+    <div class="hd"><span class="ey">Schengen Appointment Availability</span><span class="tick"><span class="dot"></span>63 slots open now</span></div>
+    <div id="A"></div>
+  </div></div>
+  <div class="panel B"><div class="board">
+    <div class="hd"><span class="ey">Live Appointment Status</span><span class="tick"><span class="dot"></span>63 slots open now</span></div>
+    <div id="B"></div>
+  </div></div>
+  <div class="panel C"><div class="list" id="C"></div></div>
+</div>
+<script>
+  var WA='<svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+  var D=[
+    ['France','FR','available',48,'3rd Week Aug 2026'],['Netherlands','NL','limited',2,'3rd Week Aug 2026'],
+    ['Iceland','IS','limited',2,'4th Week Aug 2026'],['Hungary','HU','limited',2,'3rd Week Sep 2026'],
+    ['Poland','PL','very-limited',4,'Next Week Aug 2026'],['Portugal','PT','very-limited',1,'Next Week Aug 2026'],
+    ['Norway','NO','very-limited',1,'3rd Week Aug 2026'],['Switzerland','CH','very-limited',1,'2nd Week Sep 2026'],
+    ['Italy','IT','very-limited',1,'3rd Week Sep 2026'],['Liechtenstein','LI','very-limited',1,'2nd Week Sep 2026']
+  ];
+  var L={available:'Available',limited:'Limited','very-limited':'Very limited'};
+  function sl(n){return n==1?'slot':'slots';}
+  document.getElementById('A').innerHTML=D.map(function(c){return '<a class="row '+c[2]+'" href="#"><span class="iso">'+c[1]+'</span><div class="info"><div class="cn">'+c[0]+'</div><div class="nx">Next: <b>'+c[4]+'</b></div></div><span class="pill">'+L[c[2]]+'</span><div class="num"><div class="n">'+c[3]+'</div><div class="nl">'+sl(c[3])+'</div></div><span class="cta">'+WA+'Secure now</span></a>';}).join('');
+  document.getElementById('B').innerHTML=D.map(function(c){return '<a class="row '+c[2]+'" href="#"><span class="iso">'+c[1]+'</span><div class="info"><div class="cn">'+c[0]+'</div><div class="nx">Next: <b>'+c[4]+'</b></div></div><span class="pill">'+L[c[2]]+'</span><div class="num"><div class="n">'+c[3]+'</div><div class="nl">'+sl(c[3])+'</div></div><span class="cta">'+WA+'Secure now</span></a>';}).join('');
+  document.getElementById('C').innerHTML=D.map(function(c){return '<a class="bp '+c[2]+'" href="#"><div class="stub"><span class="code">'+c[1]+'</span><span class="st">'+L[c[2]]+'</span></div><div class="mid"><div class="cn">'+c[0]+'</div><div class="nx">Next: <b>'+c[4]+'</b></div></div><div class="rt"><div class="num"><div class="n">'+c[3]+'</div><div class="nl">'+sl(c[3])+' left</div></div><span class="cta">'+WA+'Secure now</span></div></a>';}).join('');
+  function sw(i){document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('on',j===i);});document.querySelectorAll('.panel').forEach(function(p,j){p.classList.toggle('on',j===i);});}
+</script>
+</body></html>
