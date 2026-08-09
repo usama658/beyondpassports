@@ -56,6 +56,9 @@
   #slotm .slot.wkslot .dm{font-size:13px;line-height:1.3;margin-top:0}
   #slotm .slot.wkslot .ct{color:#2E9A8C}
   #slotm .slot .ct{display:block;font:700 9px "Outfit",system-ui,sans-serif;color:#1F6E63;margin-top:2px}
+  /* Selected slot has a dark fill -> whiten the sub-label ("Tap to hold" / "N times") so it stays
+     readable. Placed after .wkslot .ct so it wins for the week chip too (same specificity). */
+  #slotm .slot.sel .ct{color:rgba(255,255,255,.92)}
   /* Day is picked -> its times ("clock") reveal below the day row for that centre. */
   #slotm .sc-times{padding:0 16px 16px;display:none}
   #slotm .sc-times.show{display:block}
