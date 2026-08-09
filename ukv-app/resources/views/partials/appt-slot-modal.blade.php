@@ -217,7 +217,7 @@
         var has = openN > 0;
         var city = cityOf(c.name);
         var tile = document.createElement('button'); tile.type = 'button'; tile.className = 'ct';
-        tile.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest available</span>' : '') +
+        tile.innerHTML = (has && firstOpen ? '<span class="soontag">Soonest</span>' : '') +
           '<div class="trow"><span class="radio"></span><span class="badge' + (has ? '' : ' find') + '">' +
           (has ? openN + ' open' : 'Secure a slot') + '</span></div>' +
           '<div class="nm">' + esc(city) + '</div>' +
