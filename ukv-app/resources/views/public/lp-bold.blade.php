@@ -224,7 +224,7 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb .bd.cf .hc .count{font-size:38px}
 }
 /* ── MODE 4 — neon-glass (Light Mist): frosted cards, band glow edge (config ukv.slots.rows) ── */
-.lpb .bd.rows .ngstage{background:radial-gradient(80% 70% at 0 0,#eaf1f3,#dfe9ec 60%),radial-gradient(70% 70% at 100% 100%,#e7f2ee,transparent);border:1px solid #dbe4e6;border-radius:20px;padding:18px;margin-top:6px}
+.lpb .bd.rows .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
 .lpb .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 4px 14px}
 .lpb .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}
 .lpb .ngleg>span{display:inline-flex;align-items:center;gap:6px}
@@ -234,7 +234,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ngdot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;animation:brpulse 2s ease-in-out infinite}
 @keyframes brpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 .lpb .nggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:rgba(255,255,255,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.85);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;transition:transform .15s,box-shadow .15s}
+.lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
 @media(hover:hover){.lpb .ngcard:hover{transform:translateY(-2px);box-shadow:0 22px 44px -28px rgba(20,45,50,.5)}}
 .lpb .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
 .lpb .ngn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:40px;font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--c);flex:none;font-variant-numeric:tabular-nums}
