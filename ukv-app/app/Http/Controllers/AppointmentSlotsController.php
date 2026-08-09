@@ -62,21 +62,7 @@ class AppointmentSlotsController extends Controller
                     ->orderBy('slot_at')
                     ->get();
 
-                $days = $available
-                    ->groupBy(fn ($s) => $s->slot_at->toDateString())
-                    ->map(fn ($group, $iso) => [
-                        'iso' => $iso,
-                        'label' => $group->first()->slot_at->format('D j M'),
-                        'times' => $group
-                            ->map(fn ($s) => [
-                                'iso' => $s->slot_at->toIso8601String(),
-                                'label' => $s->slot_at->format('H:i'),
-                            ])
-                            ->values()
-                            ->all(),
-                    ])
-                    ->values()
-                    ->all();
+                $days = SlotService::daysPayload($available);
 
                 return [
                     'name' => $node->name,

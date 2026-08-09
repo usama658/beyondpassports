@@ -129,6 +129,11 @@ return [
     'slots' => [
         'auto_hold_on_apply' => (bool) env('UKV_SLOTS_AUTO_HOLD', true),
         'hold_minutes' => (int) env('UKV_SLOTS_HOLD_MINUTES', 60),
+        // Public surfaces (board + slot-picker modal) show WEEK labels ("This Week Aug 2026",
+        // "Next Week Aug 2026", "3rd Week Aug 2026") instead of exact dates when true. The real
+        // date is kept behind each modal week-chip (holds the soonest slot in that week) and
+        // confirmed with the client live on WhatsApp. Off => exact dates as before.
+        'week_labels' => (bool) env('UKV_SLOT_WEEK_LABELS', false),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization

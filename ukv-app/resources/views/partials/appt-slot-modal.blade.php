@@ -7,6 +7,9 @@
   // Preload every country's slots so the modal renders instantly (zero round-trip). The fetch
   // endpoint stays as a fallback for anything not in the blob. Cached in the service.
   $apptPreload = app(\App\Services\SlotService::class)->modalPayload();
+  // Week-label mode: the picker shows one chip per week (soonest slot behind it), so the copy
+  // says "week" not "date". Off => exact-date picker with a time step, as before.
+  $apbkNoun = config('ukv.slots.week_labels') ? 'week' : 'date';
 @endphp
 <script>window.__APPT_SLOTS = {!! json_encode($apptPreload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!};</script>
 <style>
@@ -44,6 +47,10 @@
   #slotm .slot.sel .wd{color:rgba(255,255,255,.85)}
   #slotm .slot.sel .dm{color:#fff}
   #slotm .slot .soon{position:absolute;top:-9px;left:8px;font:800 9px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#2E9A8C;border-radius:999px;padding:2px 7px}
+  /* Week-label chip: one per week, holds the soonest slot. Wider + smaller label than a day-cell. */
+  #slotm .slot.wkslot{min-width:118px;padding:12px 14px}
+  #slotm .slot.wkslot .dm{font-size:13px;line-height:1.3;margin-top:0}
+  #slotm .slot.wkslot .ct{color:#2E9A8C}
   #slotm .slot .ct{display:block;font:700 9px "Outfit",system-ui,sans-serif;color:#1F6E63;margin-top:2px}
   /* Day is picked -> its times ("clock") reveal below the day row for that centre. */
   #slotm .sc-times{padding:0 16px 16px;display:none}
@@ -66,14 +73,14 @@
   #slotm.low .slot .soon{background:#c0392b}
 </style>
 
-<div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}">
+<div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}" data-datenoun="{{ $apbkNoun }}">
   <div class="slotm-box">
     <div class="slotm-hd">
       <div class="slotm-top">
-        <h3 id="slotm-title">Select your date</h3>
+        <h3 id="slotm-title">Select your {{ $apbkNoun }}</h3>
         <button type="button" class="slotm-x" id="slotm-x" aria-label="Close">&times;</button>
       </div>
-      <p class="slotm-s">Pick the date before it vanishes. We lock it with the centre the moment you pick.</p>
+      <p class="slotm-s">Pick the {{ $apbkNoun }} before it vanishes. We lock it with the centre the moment you pick@if($apbkNoun === 'week'), and confirm the exact date with you live on WhatsApp@endif.</p>
       <div class="slotm-trust"><span><b>&checkmark;</b> Tap to hold</span><span><b>&checkmark;</b> Confirmed live on WhatsApp</span><span><b>&checkmark;</b> We do the booking</span></div>
     </div>
     <div class="slotm-body" id="slotm-centres" data-url="{{ route('appointments.slots', [], false) }}" data-timepicker="{{ config('ukv.appointments.time_picker') ? '1' : '0' }}"></div>
@@ -95,6 +102,7 @@
     var title = document.getElementById('slotm-title');
     var book  = document.getElementById('slotm-book');
     var wa    = modal.getAttribute('data-wa');
+    var noun  = modal.getAttribute('data-datenoun') || 'date'; // 'week' when week-labels on
     var url   = box.getAttribute('data-url');
     var timePicker = box.getAttribute('data-timepicker') === '1'; // off -> day is the final pick
     var glyph = book.querySelector('svg') ? book.querySelector('svg').outerHTML : '';
@@ -154,17 +162,26 @@
           var row = document.createElement('div'); row.className = 'sc-slots';
           var tbox = document.createElement('div'); tbox.className = 'sc-times';
           days.forEach(function (d, i) {
-            // Label is "Thu 24 Jul" — split weekday from the date for the day-cell.
-            var parts = String(d.label).split(' ');
-            var wd = parts.length > 1 ? parts[0] : '';
-            var dm = parts.length > 1 ? parts.slice(1).join(' ') : d.label;
+            // Week-label mode: the whole label is one line ("3rd Week Aug 2026"), no weekday split
+            // and no times — the chip holds the soonest slot in that week. Otherwise the label is
+            // "Thu 24 Jul": split weekday from the date for the day-cell.
+            var wd, dm;
+            if (d.week) {
+              wd = ''; dm = d.label;
+            } else {
+              var parts = String(d.label).split(' ');
+              wd = parts.length > 1 ? parts[0] : '';
+              dm = parts.length > 1 ? parts.slice(1).join(' ') : d.label;
+            }
             // Real times only: '00:00' is the "time TBC" marker for date-only slots, so a day
             // shows its time chips only when the centre actually published times (France/Poland).
-            var times = (d.times || []).filter(function (t) { return t.label !== '00:00'; });
-            var b = document.createElement('button'); b.type = 'button'; b.className = 'slot';
+            // Week chips carry no times (times array is empty) — picking the week is the selection.
+            var times = d.week ? [] : (d.times || []).filter(function (t) { return t.label !== '00:00'; });
+            var b = document.createElement('button'); b.type = 'button'; b.className = 'slot' + (d.week ? ' wkslot' : '');
             b.innerHTML = (first && i === 0 ? '<span class="soon">Soonest</span>' : '') +
               (wd ? '<span class="wd">' + esc(wd) + '</span>' : '') +
               '<span class="dm">' + esc(dm) + '</span>' +
+              (d.week ? '<span class="ct">Tap to hold</span>' : '') +
               (times.length ? '<span class="ct">' + times.length + (times.length === 1 ? ' time' : ' times') + '</span>' : '');
             b.addEventListener('click', function () {
               // No published times for this day: picking the day is the whole selection.
@@ -204,7 +221,7 @@
       modal.classList.remove('lim', 'low');
       if (band === 'lim' || band === 'tight') modal.classList.add('lim');
       else if (band === 'low' || band === 'none') modal.classList.add('low');
-      title.textContent = 'Select your date, ' + c;
+      title.textContent = 'Select your ' + noun + ', ' + c;
       book.setAttribute('aria-disabled', 'true'); book.removeAttribute('href');
       setLabel('Select a slot to book');
       box.innerHTML = '<p class="slotm-load">Loading centres…</p>';

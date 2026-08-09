@@ -107,7 +107,9 @@ class AppServiceProvider extends ServiceProvider
                         'name'  => $c['name'],
                         'cls'   => $cls,
                         'label' => $label,
-                        'date'  => $c['date']->format('j M Y'),
+                        'date'  => config('ukv.slots.week_labels')
+                            ? \App\Support\WeekLabel::for($c['date'])
+                            : $c['date']->format('j M Y'),
                         'slots' => $c['slots'],
                     ];
                 })

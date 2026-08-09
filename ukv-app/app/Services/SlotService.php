@@ -330,21 +330,7 @@ final class SlotService
                                 ->orderBy('slot_at')
                                 ->get();
 
-                            $days = $available
-                                ->groupBy(fn ($s) => $s->slot_at->toDateString())
-                                ->map(fn ($group, $iso) => [
-                                    'iso' => $iso,
-                                    'label' => $group->first()->slot_at->format('D j M'),
-                                    'times' => $group
-                                        ->map(fn ($s) => [
-                                            'iso' => $s->slot_at->toIso8601String(),
-                                            'label' => $s->slot_at->format('H:i'),
-                                        ])
-                                        ->values()
-                                        ->all(),
-                                ])
-                                ->values()
-                                ->all();
+                            $days = self::daysPayload($available);
 
                             return [
                                 'name' => $node->name,
@@ -360,6 +346,59 @@ final class SlotService
                 })
                 ->all();
         });
+    }
+
+    /**
+     * Build the slot-picker modal's per-centre "days" array from a centre's available slots
+     * (soonest first). Shared by modalPayload() and AppointmentSlotsController::build() so the
+     * inlined blob and the fetch fallback always agree.
+     *
+     * Default: one entry per calendar day, each carrying its real times — the customer picks a
+     * day, then a time.
+     *
+     * When config('ukv.slots.week_labels') is on: one entry per ISO week (Monday-Sunday), labelled
+     * by week (WeekLabel) and holding the SOONEST slot in that week (rule: one chip per week).
+     * Times are dropped and week=true is flagged, so tapping the week-chip is the whole selection
+     * and the exact date/time is confirmed with the client live on WhatsApp.
+     *
+     * @param  Collection<int, CentreSlot>  $available  available slots, soonest first
+     * @return list<array{iso:string, label:string, week?:bool, times:list<array{iso:string,label:string}>}>
+     */
+    public static function daysPayload(Collection $available): array
+    {
+        if (config('ukv.slots.week_labels')) {
+            return $available
+                ->groupBy(fn ($s) => $s->slot_at->copy()->startOfWeek(Carbon::MONDAY)->toDateString())
+                ->map(function ($group): array {
+                    // Collection is soonest-first, so first() is the soonest slot in this week.
+                    $soonest = $group->first()->slot_at;
+
+                    return [
+                        'iso' => $soonest->toDateString(),
+                        'label' => \App\Support\WeekLabel::for($soonest),
+                        'week' => true,
+                        'times' => [],
+                    ];
+                })
+                ->values()
+                ->all();
+        }
+
+        return $available
+            ->groupBy(fn ($s) => $s->slot_at->toDateString())
+            ->map(fn ($group, $iso) => [
+                'iso' => $iso,
+                'label' => $group->first()->slot_at->format('D j M'),
+                'times' => $group
+                    ->map(fn ($s) => [
+                        'iso' => $s->slot_at->toIso8601String(),
+                        'label' => $s->slot_at->format('H:i'),
+                    ])
+                    ->values()
+                    ->all(),
+            ])
+            ->values()
+            ->all();
     }
 
     /**
