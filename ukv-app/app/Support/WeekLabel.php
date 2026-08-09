@@ -24,7 +24,22 @@ final class WeekLabel
 {
     private const ORDINAL = [1 => '1st', 2 => '2nd', 3 => '3rd', 4 => '4th', 5 => '5th', 6 => '6th'];
 
+    /** Full one-line label, e.g. "Next Week Aug 2026". */
     public static function for(Carbon $date, ?Carbon $today = null): string
+    {
+        ['rel' => $rel, 'my' => $my] = self::parts($date, $today);
+
+        return $rel.' '.$my;
+    }
+
+    /**
+     * The label split into its two display parts, for a two-line hierarchy on the board:
+     *   rel = the relative/absolute week word ("This Week", "Next Week", "3rd Week")
+     *   my  = the target date's "M Y" ("Aug 2026")
+     *
+     * @return array{rel:string, my:string}
+     */
+    public static function parts(Carbon $date, ?Carbon $today = null): array
     {
         $today = ($today ?? Carbon::today())->copy()->startOfDay();
 
@@ -34,19 +49,19 @@ final class WeekLabel
         // Both are Mondays, so the day gap is an exact multiple of 7 -> whole weeks, signed.
         $weeks = (int) round($thisMonday->diffInDays($targetMonday, false) / 7);
 
-        $monthYear = $date->format('M Y');
+        $my = $date->format('M Y');
 
         if ($weeks <= 0) {
-            return 'This Week '.$monthYear;
+            return ['rel' => 'This Week', 'my' => $my];
         }
 
         if ($weeks === 1) {
-            return 'Next Week '.$monthYear;
+            return ['rel' => 'Next Week', 'my' => $my];
         }
 
         $weekOfMonth = (int) ceil($date->day / 7);
         $ordinal = self::ORDINAL[$weekOfMonth] ?? $weekOfMonth.'th';
 
-        return $ordinal.' Week '.$monthYear;
+        return ['rel' => $ordinal.' Week', 'my' => $my];
     }
 }

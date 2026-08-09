@@ -1,0 +1,112 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Board week-labels — premium mobile</title>
+<style>
+  :root{--ink:#16222E;--muted:#5d6b76;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--cta:#2E9A8C;--sh:0 18px 40px -26px rgba(20,34,46,.5)}
+  .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8}
+  .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a}
+  .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#0f1a20;color:#fff;padding:24px 14px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+  .col{width:390px;max-width:100%}
+  .col > h3{font-size:14px;font-weight:800;letter-spacing:.04em;color:#8fe3c9;margin:0 0 4px;text-align:center}
+  .col > p{font-size:12px;color:#9fb3ad;margin:0 0 14px;text-align:center;line-height:1.5}
+  /* phone frame */
+  .phone{background:#0c151a;border:9px solid #223038;border-radius:34px;padding:16px 14px 22px;box-shadow:0 40px 80px -30px #000}
+  .sec{background:linear-gradient(180deg,#14323b,#0f272e);border-radius:20px;padding:18px 15px}
+  .eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7fd3b9;margin:0 0 4px}
+  .h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;line-height:1.1}
+  .bintro{font-size:11.5px;color:#bcd; color:#a9c2bd;margin:0 0 14px;line-height:1.45}
+  .live{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:#7fd3b9;margin:0 0 12px}
+  .live .dot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:p 1.8s infinite}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 7px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  .legend{display:flex;gap:12px;font-size:10.5px;color:#9fb3ad;margin:0 0 14px;flex-wrap:wrap}
+  .legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:0}
+  .grid{display:grid;gap:12px}
+
+  /* ---------- VARIANT A: full-width, split week label ---------- */
+  .A .grid{grid-template-columns:1fr}
+  .hc{border:1.5px solid var(--cbd);border-radius:16px;overflow:hidden;box-shadow:var(--sh);text-decoration:none;color:inherit;display:block;background:#fff}
+  .hc .hd{background:linear-gradient(90deg,var(--c),var(--cd));padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .hc .cty{color:#fff;font-size:17px;font-weight:800}
+  .hc .pill{flex:0 0 auto;font-weight:800;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--cd);background:#fff;padding:4px 9px;border-radius:999px;white-space:nowrap}
+  .hc .bd2{background:var(--cbg);padding:14px 16px;color:var(--ink)}
+  .hc .lab{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cd);margin:0 0 4px}
+  /* the split week label: big relative + muted month/year */
+  .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
+  .wk .rel{font-size:22px;font-weight:800;line-height:1;letter-spacing:-.01em;color:var(--ink)}
+  .wk .my{font-size:13px;font-weight:700;color:var(--muted)}
+  .hc .slots{display:flex;align-items:baseline;gap:7px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:8px 11px}
+  .hc .slots .n{font-family:var(--mono);font-weight:800;font-size:18px;color:var(--c)}
+  .hc .slots small{font-size:11px;color:var(--muted)}
+  .soontag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--cta);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+
+  /* ---------- VARIANT B: 2-up compact tiles ---------- */
+  .B .grid{grid-template-columns:1fr 1fr}
+  .B .hc .hd{flex-direction:column;align-items:flex-start;gap:6px;padding:11px 12px}
+  .B .hc .cty{font-size:15px}
+  .B .hc .bd2{padding:12px}
+  .B .wk{flex-direction:column;gap:1px;margin:0 0 10px}
+  .B .wk .rel{font-size:18px}
+  .B .wk .my{font-size:11.5px}
+  .B .hc .slots{padding:6px 9px;gap:5px}
+  .B .hc .slots .n{font-size:15px}
+  .B .hc .slots small{font-size:10px}
+
+  .cta{display:block;text-align:center;background:#25D366;color:#fff;font-weight:800;font-size:14px;padding:13px;border-radius:12px;text-decoration:none;margin:16px 0 0;box-shadow:0 12px 26px -12px rgba(37,211,102,.7)}
+  .note{font-size:10px;color:#8aa;margin:12px 2px 0;line-height:1.5}
+</style></head><body>
+
+<div class="col A">
+  <h3>Variant A — full-width (recommended)</h3>
+  <p>Week split into a bold relative line + muted month/year. Clean hierarchy, never cramped, one card per row.</p>
+  <div class="phone"><div class="sec">
+    <p class="eyebrow">Schengen Visa Appointment Availability</p>
+    <h2 class="h2">Slots vanish in seconds.</h2>
+    <p class="bintro">We monitor Schengen visa appointment slots at centres in London, Manchester and Edinburgh, updated daily.</p>
+    <div class="live"><span class="dot"></span>Summer Peak · Jul–Aug</div>
+    <div class="legend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
+    <div class="grid" id="gA"></div>
+    <a class="cta" href="#">Get Schengen visa help →</a>
+  </div></div>
+</div>
+
+<div class="col B">
+  <h3>Variant B — 2-up compact</h3>
+  <p>Denser tiles, week stacked. More on screen at once; less breathing room. Same data.</p>
+  <div class="phone"><div class="sec">
+    <p class="eyebrow">Schengen Visa Appointment Availability</p>
+    <h2 class="h2">Slots vanish in seconds.</h2>
+    <div class="live"><span class="dot"></span>Summer Peak · Jul–Aug</div>
+    <div class="legend"><span><i style="background:#1F6E63"></i>Available</span><span><i style="background:#b5791f"></i>Limited</span><span><i style="background:#c0392b"></i>Very limited</span></div>
+    <div class="grid" id="gB"></div>
+    <a class="cta" href="#">Get Schengen visa help →</a>
+  </div></div>
+</div>
+
+<script>
+  // Live board data (10 Aug). rel = relative/absolute week word, my = month year.
+  var D=[
+   ['Netherlands','tight','LIMITED','3rd Week','Aug 2026',2,true],
+   ['France','open','AVAILABLE','3rd Week','Aug 2026',9,false],
+   ['Portugal','none','VERY LIMITED','Next Week','Aug 2026',1,false],
+   ['Poland','none','VERY LIMITED','Next Week','Aug 2026',4,false],
+   ['Norway','none','VERY LIMITED','3rd Week','Aug 2026',1,false],
+   ['Iceland','tight','LIMITED','4th Week','Aug 2026',2,false],
+   ['Switzerland','none','VERY LIMITED','2nd Week','Sep 2026',1,false],
+   ['Liechtenstein','none','VERY LIMITED','2nd Week','Sep 2026',1,false],
+   ['Italy','none','VERY LIMITED','3rd Week','Sep 2026',1,false],
+   ['Hungary','tight','LIMITED','3rd Week','Sep 2026',2,false]
+  ];
+  function card(c){
+    var soon = c[6] ? '<span class="soontag">Soonest</span>' : '';
+    var slots = c[5]>0 ? '<div class="slots"><span class="n">'+c[5]+'</span><small>slot'+(c[5]==1?'':'s')+' in next 90 days</small></div>' : '';
+    return '<a class="hc '+c[1]+'" href="#">'
+      +'<div class="hd"><span class="cty">'+c[0]+'</span><span class="pill">'+c[2]+'</span></div>'
+      +'<div class="bd2"><div class="lab">Next available'+soon+'</div>'
+      +'<div class="wk"><span class="rel">'+c[3]+'</span><span class="my">'+c[4]+'</span></div>'
+      +slots+'</div></a>';
+  }
+  document.getElementById('gA').innerHTML=D.map(card).join('');
+  document.getElementById('gB').innerHTML=D.map(card).join('');
+</script>
+</body></html>

@@ -103,14 +103,17 @@ class AppServiceProvider extends ServiceProvider
                         ? ['open', 'Available']
                         : ($days >= 2 ? ['tight', 'Limited'] : ['none', 'Very limited']);
 
+                    $weekMode = config('ukv.slots.week_labels');
+                    $parts = $weekMode ? \App\Support\WeekLabel::parts($c['date']) : null;
+
                     return [
-                        'name'  => $c['name'],
-                        'cls'   => $cls,
-                        'label' => $label,
-                        'date'  => config('ukv.slots.week_labels')
-                            ? \App\Support\WeekLabel::for($c['date'])
-                            : $c['date']->format('j M Y'),
-                        'slots' => $c['slots'],
+                        'name'     => $c['name'],
+                        'cls'      => $cls,
+                        'label'    => $label,
+                        'date'     => $weekMode ? ($parts['rel'].' '.$parts['my']) : $c['date']->format('j M Y'),
+                        'date_rel' => $parts['rel'] ?? null, // set only in week mode -> two-line render
+                        'date_my'  => $parts['my'] ?? null,
+                        'slots'    => $c['slots'],
                     ];
                 })
                 ->values();
