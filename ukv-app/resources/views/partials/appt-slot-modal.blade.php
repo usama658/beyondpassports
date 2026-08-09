@@ -166,7 +166,7 @@
       centre = centreName; slot = dayLabel;
       book.setAttribute('aria-disabled', 'false');
       book.href = bookHref();
-      setLabel('Book ' + slot + ' now →');
+      setLabel('Book ' + slot + ' now');
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
     }
 
@@ -190,7 +190,7 @@
       centre = centreName; slot = dayLabel + ' ' + timeLabel;
       book.setAttribute('aria-disabled', 'false');
       book.href = bookHref();
-      setLabel('Book ' + slot + ' now →');
+      setLabel('Book ' + slot + ' now');
       try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) { book.scrollIntoView(); }
     }
     // Short city from "{Country} visa application centre – {City}".
@@ -228,8 +228,8 @@
           tile.classList.add('sel');
           centre = c.name;
           book.setAttribute('aria-disabled', 'false');
-          if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Book ' + city + ' now →'); }
-          else { book.href = findHref(c.name); setLabel('Find me a ' + city + ' slot →'); }
+          if (has) { slot = 'Soonest available'; book.href = bookHref(); setLabel('Book ' + city + ' now'); }
+          else { book.href = findHref(c.name); setLabel('Secure a ' + city + ' slot'); }
           try { book.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
         });
         if (has) firstOpen = false;
@@ -242,7 +242,7 @@
       if (mode === 'centre' && centres.length) { renderCentresPick(centres); return; }
       if (!centres.length) {
         box.innerHTML = '<p class="sc-ask">We check live availability with the centres for ' + esc(country) + '. Tap below and we will confirm the soonest slot and book it for you.</p>';
-        book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
+        book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp');
         return;
       }
       var first = true;
@@ -330,7 +330,7 @@
         .then(renderCentres)
         .catch(function () {
           box.innerHTML = '';
-          book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp →');
+          book.setAttribute('aria-disabled', 'false'); book.href = askHref(''); setLabel('Ask us on WhatsApp');
         });
     }
     function close() { modal.classList.remove('open'); }
