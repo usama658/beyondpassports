@@ -36,6 +36,9 @@
   .pc-btn .pc-car{color:var(--muted,#5d6b76);font-size:10px}
   .pc-input{flex:1;min-width:0;border:0!important;padding:13px 14px;font:600 15px var(--display,inherit);border-radius:0 12px 12px 0;background:transparent;color:var(--ink,#16222E);box-shadow:none!important}
   .pc-input:focus{outline:none}
+  .pc-err{color:#c0492f;font:600 12.5px var(--display,inherit);margin:6px 2px 0}
+  .pc-combo.pc-invalid{border-color:#c0492f}
+  .pc-combo.pc-invalid:focus-within{box-shadow:0 0 0 3px rgba(192,73,47,.16)}
   .pc-pop{position:absolute;z-index:60;top:calc(100% + 6px);left:0;width:290px;max-width:90vw;background:#fff;border:1px solid var(--paper-edge,#dde3ec);border-radius:14px;box-shadow:0 30px 60px -24px rgba(20,30,45,.5);padding:8px}
   .pc-pop[hidden]{display:none}
   .pc-search{width:100%;padding:9px 11px;border:1.5px solid #e2e8ee;border-radius:9px;font:600 13px var(--display,inherit);margin:0 0 6px}
@@ -50,18 +53,19 @@
 </style>
 <script>
 (function(){
+  // [name, iso2, emoji, dialcode, [minDigits, maxDigits]] — national significant digits (leading 0 dropped)
   var C=[
-   ["United Kingdom","GB","🇬🇧","+44"],["Ireland","IE","🇮🇪","+353"],["France","FR","🇫🇷","+33"],
-   ["Germany","DE","🇩🇪","+49"],["Spain","ES","🇪🇸","+34"],["Italy","IT","🇮🇹","+39"],
-   ["Netherlands","NL","🇳🇱","+31"],["Belgium","BE","🇧🇪","+32"],["Portugal","PT","🇵🇹","+351"],
-   ["Poland","PL","🇵🇱","+48"],["Greece","GR","🇬🇷","+30"],["Austria","AT","🇦🇹","+43"],
-   ["Czechia","CZ","🇨🇿","+420"],["Switzerland","CH","🇨🇭","+41"],["Sweden","SE","🇸🇪","+46"],
-   ["Denmark","DK","🇩🇰","+45"],["Norway","NO","🇳🇴","+47"],["United States","US","🇺🇸","+1"],
-   ["Canada","CA","🇨🇦","+1"],["India","IN","🇮🇳","+91"],["Pakistan","PK","🇵🇰","+92"],
-   ["Bangladesh","BD","🇧🇩","+880"],["Nigeria","NG","🇳🇬","+234"],["Kenya","KE","🇰🇪","+254"],
-   ["South Africa","ZA","🇿🇦","+27"],["UAE","AE","🇦🇪","+971"],["Saudi Arabia","SA","🇸🇦","+966"],
-   ["Qatar","QA","🇶🇦","+974"],["Australia","AU","🇦🇺","+61"],["New Zealand","NZ","🇳🇿","+64"],
-   ["Turkey","TR","🇹🇷","+90"],["China","CN","🇨🇳","+86"]
+   ["United Kingdom","GB","🇬🇧","+44",[10,10]],["Ireland","IE","🇮🇪","+353",[7,9]],["France","FR","🇫🇷","+33",[9,9]],
+   ["Germany","DE","🇩🇪","+49",[10,11]],["Spain","ES","🇪🇸","+34",[9,9]],["Italy","IT","🇮🇹","+39",[9,10]],
+   ["Netherlands","NL","🇳🇱","+31",[9,9]],["Belgium","BE","🇧🇪","+32",[8,9]],["Portugal","PT","🇵🇹","+351",[9,9]],
+   ["Poland","PL","🇵🇱","+48",[9,9]],["Greece","GR","🇬🇷","+30",[10,10]],["Austria","AT","🇦🇹","+43",[9,13]],
+   ["Czechia","CZ","🇨🇿","+420",[9,9]],["Switzerland","CH","🇨🇭","+41",[9,9]],["Sweden","SE","🇸🇪","+46",[7,9]],
+   ["Denmark","DK","🇩🇰","+45",[8,8]],["Norway","NO","🇳🇴","+47",[8,8]],["United States","US","🇺🇸","+1",[10,10]],
+   ["Canada","CA","🇨🇦","+1",[10,10]],["India","IN","🇮🇳","+91",[10,10]],["Pakistan","PK","🇵🇰","+92",[10,10]],
+   ["Bangladesh","BD","🇧🇩","+880",[10,10]],["Nigeria","NG","🇳🇬","+234",[8,10]],["Kenya","KE","🇰🇪","+254",[9,9]],
+   ["South Africa","ZA","🇿🇦","+27",[9,9]],["UAE","AE","🇦🇪","+971",[9,9]],["Saudi Arabia","SA","🇸🇦","+966",[9,9]],
+   ["Qatar","QA","🇶🇦","+974",[8,8]],["Australia","AU","🇦🇺","+61",[9,9]],["New Zealand","NZ","🇳🇿","+64",[8,10]],
+   ["Turkey","TR","🇹🇷","+90",[10,10]],["China","CN","🇨🇳","+86",[11,11]]
   ];
   function initOne(root){
     if(root.__pc) return; root.__pc=1;
@@ -92,12 +96,34 @@
     search.addEventListener('keydown',function(e){ if(e.key==='Escape'){close(); btn.focus();} });
     document.addEventListener('click',function(e){ if(!root.contains(e.target)) close(); });
     paint(cur);
-    // On submit, prepend the dial code into the number so the stored value is full-international.
+    // Inline validation (per-country digit-length). Lightweight: catches empty/letters/wrong-length.
+    var err=document.createElement('div'); err.className='pc-err'; err.hidden=true; err.setAttribute('role','alert');
+    root.parentNode.insertBefore(err, root.nextSibling);
+    function showErr(m){ err.textContent=m; err.hidden=false; root.classList.add('pc-invalid'); input.setAttribute('aria-invalid','true'); }
+    function clearErr(){ err.hidden=true; root.classList.remove('pc-invalid'); input.removeAttribute('aria-invalid'); }
+    function status(){
+      var raw=(input.value||'').trim();
+      if(!raw){ return input.hasAttribute('required') ? 'req' : 'ok'; }
+      var digits=raw.replace(/[^\d]/g,'').replace(/^0+/,''), rng=cur[4]||[6,15];
+      return (digits.length>=rng[0] && digits.length<=rng[1]) ? 'ok' : 'bad';
+    }
+    input.addEventListener('input', clearErr);
+    input.addEventListener('blur', function(){ if(status()==='bad'){ showErr('Enter a valid '+cur[0]+' phone number.'); } });
+    // Validate + normalise to full-international on submit. Capture phase + stopPropagation so an
+    // invalid number blocks the form's own submit handler (e.g. the LP redirect) too.
     var form=input&&input.closest('form');
-    if(form){ form.addEventListener('submit',function(){
+    if(form){ form.addEventListener('submit',function(ev){
+      var s=status();
+      if(s!=='ok'){
+        ev.preventDefault(); ev.stopPropagation();
+        showErr(s==='req' ? 'Enter your phone number.' : 'Enter a valid '+cur[0]+' phone number.');
+        input.focus();
+        return;
+      }
+      clearErr();
       var v=(input.value||'').trim();
-      if(v && v.charAt(0)!=='+'){ input.value=cur[3]+' '+v.replace(/^0+/,''); }
-    }); }
+      if(v && v.charAt(0)!=='+'){ input.value=cur[3]+' '+v.replace(/[^\d]/g,'').replace(/^0+/,''); }
+    }, true); }
   }
   function initAll(){ document.querySelectorAll('[data-pc]').forEach(initOne); }
   if(document.readyState!=='loading') initAll(); else document.addEventListener('DOMContentLoaded',initAll);
