@@ -215,6 +215,14 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hc .win{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--cbg2);border:1px solid var(--cbd);border-radius:10px;padding:9px 12px;margin-top:12px}
 .lpb .hc .win .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
 .lpb .hc .win small{font-size:12px;color:var(--muted);font-weight:600}
+/* Count-focus mobile: 2-up tiles + stacked, centred header (pill on top, country below). */
+@media(max-width:560px){
+  .lpb .bd.cf .bgrid{grid-template-columns:1fr 1fr;gap:12px}
+  .lpb .bd.cf .hc .hd{flex-direction:column-reverse;align-items:center;justify-content:center;text-align:center;gap:6px;padding:11px 13px}
+  .lpb .bd.cf .hc .cty{font-size:15px}
+  .lpb .bd.cf .hc .bd2{padding:13px}
+  .lpb .bd.cf .hc .count{font-size:38px}
+}
 .lpb .hc .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .lpb .hc .wk .rel{font-size:19px;font-weight:800;line-height:1;letter-spacing:-.01em}
 .lpb .hc .wk .my{font-size:13px;font-weight:700;color:var(--muted)}
