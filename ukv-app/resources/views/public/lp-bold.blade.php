@@ -45,6 +45,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hnote:hover{transform:translateY(-2px);border-color:var(--stamp);background:rgba(46,154,140,.12);box-shadow:0 18px 40px -22px rgba(46,154,140,.55)}
 .lpb .heyebrow{color:var(--stamp-text);margin-bottom:0}
 .lpb .lpb-thanks{background:#fff;border:1px solid var(--edge);border-radius:20px;box-shadow:0 30px 60px -30px rgba(20,34,46,.5);padding:30px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:11px}
+.lpb .lpb-thanks[hidden]{display:none}
 .lpb .lpb-thanks .lt-seal{width:56px;height:56px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.4);display:grid;place-items:center}
 .lpb .lpb-thanks .lt-seal svg{width:27px;height:27px;stroke:var(--stamp-text);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .lpb .lpb-thanks h3{font-size:22px;color:var(--ink);font-weight:800;letter-spacing:-.02em;margin:4px 0 0}
