@@ -226,8 +226,9 @@ html,body{overflow-x:clip;max-width:100%}
 /* ── MODE 4 — neon-glass (Light Mist): frosted cards, band glow edge (config ukv.slots.rows) ── */
 .lpb .bd.rows .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
 .lpb .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 4px 14px}
-.lpb .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}
-.lpb .ngleg>span{display:inline-flex;align-items:center;gap:6px}
+.lpb .ngleg{display:flex;gap:9px;flex-wrap:wrap}
+.lpb .ngleg>span{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:100px}
+.lpb .ngleg .lg-ok{color:#1F6E63;background:#e2f1ec}.lpb .ngleg .lg-lim{color:#b5791f;background:#f7edd6}.lpb .ngleg .lg-low{color:#c0392b;background:#fbe1dc}
 .lpb .nghd .d{width:8px;height:8px;border-radius:50%}
 .lpb .nghd .d.open{background:#1F6E63}.lpb .nghd .d.tight{background:#b5791f}.lpb .nghd .d.none{background:#c0392b}
 .lpb .ngtick{font-size:12px;font-weight:700;color:#1F6E63;display:inline-flex;align-items:center;gap:7px}
@@ -537,7 +538,7 @@ html,body{overflow-x:clip;max-width:100%}
   @php $apptTotal = collect($apptCards)->sum('slots'); @endphp
   <div class="ngstage">
     <div class="nghd">
-      <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
+      <span class="ngleg"><span class="lg-ok">Available</span><span class="lg-lim">Limited</span><span class="lg-low">Very limited</span></span>
       @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span>{{ $apptTotal }} slots open now</span>@endif
     </div>
     <div class="nggrid">
