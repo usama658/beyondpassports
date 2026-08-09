@@ -107,6 +107,16 @@
   #slotm .ct.sel .badge{background:rgba(255,255,255,.2);color:#fff}
   #slotm.lim .ct.sel{border-color:#b5791f;background:#b5791f}
   #slotm.low .ct.sel{border-color:#c0392b;background:#c0392b}
+  /* Mobile: stack the trust ticks + tighten the centre rows so long centre names read cleanly. */
+  @media(max-width:480px){
+    #slotm .slotm-trust{flex-direction:column;gap:6px}
+    #slotm .slotm-top h3{font-size:18px}
+    #slotm .ct{gap:11px;padding:13px}
+    #slotm .ct .nm{font-size:12.5px;line-height:1.3}
+    #slotm .ct .meta{font-size:11.5px}
+    #slotm .ct .badge{font-size:10px;padding:4px 8px}
+    #slotm .ct .soontag{left:13px;font-size:8.5px}
+  }
 </style>
 
 <div class="slotm" id="slotm" role="dialog" aria-modal="true" aria-labelledby="slotm-title" data-wa="{{ $apbkWa }}" data-datenoun="{{ $apbkNoun }}" data-mode="{{ $apbkMode }}">
