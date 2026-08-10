@@ -694,35 +694,45 @@ html,body{overflow-x:clip;max-width:100%}
 @include('partials.disclaimer-strip', ['variant' => 'dark'])
 </section>
 
-{{-- BEFORE ANYTHING ELSE — UK-status eligibility reassurance --}}
+{{-- BEFORE ANYTHING ELSE — UK-status eligibility (two-tone split) --}}
 @once
 <style>
-.lpb .baeh{text-align:center;max-width:26ch;margin:12px auto 14px;font-size:clamp(26px,3.4vw,36px);line-height:1.12;letter-spacing:-.02em}
-.lpb .baeintro{text-align:center;max-width:62ch;margin:0 auto 30px;color:var(--muted);font-size:16.5px;line-height:1.62}
-.lpb .baegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:0 auto}
-@media(max-width:700px){.lpb .baegrid{grid-template-columns:1fr}}
-.lpb .baecard{background:#fff;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 18px}
-.lpb .baecard h3{font-size:15.5px;font-weight:800;color:var(--ink);margin:0 0 5px}
-.lpb .baecard p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5}
-.lpb .baealso{text-align:center;max-width:66ch;margin:22px auto 26px;color:var(--muted);font-size:14px;line-height:1.6}.lpb .baealso b{color:var(--ink)}
-.lpb .baecta{max-width:420px;margin:0 auto;text-align:center}
-.lpb .baesub{margin:12px 0 0;color:#8a959d;font-size:12.5px;line-height:1.5}
+.lpb .bae2{display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--edge);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -50px rgba(20,34,46,.6)}
+@media(max-width:760px){.lpb .bae2{grid-template-columns:1fr}}
+.lpb .bael{background:radial-gradient(520px 320px at 18% 0,rgba(46,154,140,.35),transparent),var(--ink2);color:#dbe8ea;padding:36px 32px;display:flex;flex-direction:column}
+.lpb .bael .eyebrow{color:#7fd7c9}.lpb .bael .eyebrow::before{background:#7fd7c9}
+.lpb .baeh{color:#fff;font-size:clamp(24px,2.7vw,32px);line-height:1.12;letter-spacing:-.02em;margin:12px 0 12px;max-width:22ch}
+.lpb .baeh .hl-r{color:#ffb4a6}
+.lpb .baeintro{color:#a9c2bd;font-size:15.5px;line-height:1.6;margin:0 0 20px}
+.lpb .bael .btn{width:auto;align-self:flex-start;padding:14px 22px}
+.lpb .baesub{color:#7f9b96;font-size:12px;line-height:1.5;margin:11px 0 0}
+.lpb .baer{padding:28px 30px}
+.lpb .baegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.lpb .baegrid{grid-template-columns:1fr}}
+.lpb .baecard{background:#fff;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 16px}
+.lpb .baecard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 4px}
+.lpb .baecard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.lpb .baealso{color:var(--muted);font-size:13px;line-height:1.6;margin:14px 0 0}.lpb .baealso b{color:var(--ink)}
 </style>
 @endonce
 <section class="sec bae" id="eligibility"><div class="wrap">
-  <p class="eyebrow" style="justify-content:center">Before anything else</p>
-  <h2 class="h2 baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
-  <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
-  <div class="baegrid">
-    <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
-    <div class="baecard"><h3>BRP holder</h3><p>BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.</p></div>
-    <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
-    <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
-  </div>
-  <p class="baealso"><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p>
-  <div class="baecta">
-    <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
-    <p class="baesub">Free. No payment, no obligation. A named consultant replies within 30 minutes, 7 days a week.</p>
+  <div class="bae2">
+    <div class="bael">
+      <span class="eyebrow">Before anything else</span>
+      <h2 class="baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
+      <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
+      <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
+      <p class="baesub">Free. No payment, no obligation. A named consultant replies within 30 minutes, 7 days a week.</p>
+    </div>
+    <div class="baer">
+      <div class="baegrid">
+        <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
+        <div class="baecard"><h3>BRP holder</h3><p>BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.</p></div>
+        <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
+        <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
+      </div>
+      <p class="baealso"><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p>
+    </div>
   </div>
 </div></section>
 
