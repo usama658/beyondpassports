@@ -544,7 +544,7 @@ html,body{overflow-x:clip;max-width:100%}
   <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
 @if(config('ukv.slots.rows'))
   {{-- MODE 4 — neon-glass (Light Mist): frosted 2-up cards, big slot count, band glow edge. --}}
-  @php $apptShown = collect($apptCards)->filter(fn ($c) => (int) ($c['slots'] ?? 0) > 0)->values(); $apptTotal = $apptShown->sum('slots'); @endphp
+  @php $apptShown = collect($apptCards); $apptTotal = $apptShown->sum('slots'); @endphp
   <div class="ngstage" data-slotboard>
     <div class="nghd">
       <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
@@ -560,10 +560,10 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="nggrid">
       @forelse($apptShown as $c)
       @php $band = ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok'; $rn = (int) ($c['slots'] ?? 0); @endphp
-      <a class="ngcard {{ $c['cls'] }}" data-slotname="{{ \Illuminate\Support\Str::lower($c['name']) }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
+      <a class="ngcard {{ $c['cls'] }}{{ $rn === 0 ? ' zero' : '' }}" data-slotname="{{ \Illuminate\Support\Str::lower($c['name']) }}" data-slotzero="{{ $rn === 0 ? '1' : '0' }}" href="{{ $wa }}?text={{ rawurlencode($rn === 0 ? 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. There are no live slots showing right now, please put me on the watch and grab the next one.' : 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="{{ $rn === 0 ? 'Ask about a '.$c['name'].' appointment' : 'Secure a '.$c['name'].' appointment slot' }}"@if($rn === 0) hidden @endif>
         <div class="ngn">{{ $rn }}</div>
-        <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div><div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 90 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span></div>
-        <span class="ngcta">@include('partials.wa-glyph')Secure</span>
+        <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div>@if($rn === 0)<div class="ngnx">no live slots <b>right now</b></div><span class="ngstp">Ask us to watch</span>@else<div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 90 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span>@endif</div>
+        <span class="ngcta">@include('partials.wa-glyph'){{ $rn === 0 ? 'Ask us' : 'Secure' }}</span>
       </a>
       @empty
       <p class="brempty" style="grid-column:1/-1">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
@@ -572,7 +572,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
     <div class="ngfoot"><span class="ngup">⏱ Urgent</span><span class="ngmsg">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="ngwa" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">@include('partials.wa-glyph')Message us now</a></div>
     @php $apptTotalTxt = $apptTotal.' slot'.($apptTotal === 1 ? '' : 's').' open now'; @endphp
-    <script>(function(){var b=document.querySelector('[data-slotboard]');if(!b)return;var q=b.querySelector('[data-slotsearch]'),clr=b.querySelector('[data-slotclear]'),cards=b.querySelectorAll('.ngcard'),empty=b.querySelector('[data-slotempty]'),term=b.querySelector('[data-slotterm]'),cnt=b.querySelector('[data-slotcount]');if(!q)return;var base=@json($apptTotalTxt);function f(){var v=q.value.trim().toLowerCase(),shown=0,sum=0;cards.forEach(function(c){var hit=!v||c.getAttribute('data-slotname').indexOf(v)>-1;c.hidden=!hit;if(hit){shown++;sum+=parseInt((c.querySelector('.ngn')||{}).textContent,10)||0;}});if(clr)clr.hidden=!v;if(empty)empty.hidden=shown>0;if(term)term.textContent=q.value.trim();if(cnt)cnt.textContent=v?(shown+(shown===1?' country':' countries')+' · '+sum+' slot'+(sum===1?'':'s')):base;}q.addEventListener('input',f);if(clr)clr.addEventListener('click',function(){q.value='';q.focus();f();});})();</script>
+    <script>(function(){var b=document.querySelector('[data-slotboard]');if(!b)return;var q=b.querySelector('[data-slotsearch]'),clr=b.querySelector('[data-slotclear]'),cards=b.querySelectorAll('.ngcard'),empty=b.querySelector('[data-slotempty]'),term=b.querySelector('[data-slotterm]'),cnt=b.querySelector('[data-slotcount]');if(!q)return;var base=@json($apptTotalTxt);function f(){var v=q.value.trim().toLowerCase(),active=v.length>0,shown=0,sum=0;cards.forEach(function(c){var hit=!v||c.getAttribute('data-slotname').indexOf(v)>-1;var zero=c.getAttribute('data-slotzero')==='1';var vis=hit&&(active||!zero);c.hidden=!vis;if(vis){shown++;sum+=parseInt((c.querySelector('.ngn')||{}).textContent,10)||0;}});if(clr)clr.hidden=!active;if(empty)empty.hidden=shown>0;if(term)term.textContent=q.value.trim();if(cnt)cnt.textContent=active?(shown+(shown===1?' country':' countries')+' · '+sum+' slot'+(sum===1?'':'s')):base;}f();q.addEventListener('input',f);if(clr)clr.addEventListener('click',function(){q.value='';q.focus();f();});})();</script>
   </div>
 @else
   <div class="bpre">
