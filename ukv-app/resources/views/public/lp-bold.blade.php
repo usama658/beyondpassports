@@ -61,6 +61,10 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
 .lpb .hero .hhead{font-size:3rem;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
+.lpb .hproof{display:flex;flex-wrap:wrap;gap:9px 18px;margin:18px 0 0}
+.lpb .hproof span{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:#3d4a56}
+.lpb .hproof .ck{flex:none;width:19px;height:19px;border-radius:50%;background:rgba(46,154,140,.14);display:grid;place-items:center}
+.lpb .hproof .ck svg{width:12px;height:12px;fill:none;stroke:var(--stamp-text);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 /* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). Interactive on hover. */
 .lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:none;transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
 .lpb .hnote:hover{transform:translateY(-2px);border-color:var(--stamp);background:rgba(46,154,140,.12);box-shadow:0 18px 40px -22px rgba(46,154,140,.55)}
@@ -536,9 +540,13 @@ html,body{overflow-x:clip;max-width:100%}
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">@include('partials.wa-glyph')Check my case free on WhatsApp</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
     </div>
+    <div class="hproof">
+      <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>93% approval rate</span>
+      <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>UK-registered Schengen visa consultants</span>
+    </div>
     <div class="hrf">
       <span class="hrf-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
-      <div class="hrf-t"><b>Fee back if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
+      <div class="hrf-t"><b>100% refund if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
     </div>
     <span class="hreply"><span class="dot"></span>Reply within 30 minutes</span>
   </div>
@@ -848,10 +856,10 @@ html,body{overflow-x:clip;max-width:100%}
           ['q'=>'Can I see what you will do before I pay?','a'=>'Yes. The case check and the quote are free and they come first. You see exactly what we will do and what it costs, in writing, before any payment. If the answer is that you can do this yourself, we’ll say so.'],
           ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'We watch the consulate calendars through the day and publish what we find on the board near the top of this page. We monitor '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester and Edinburgh across all 29 Schengen countries. Tell us your travel dates and we’ll be straight with you about what is realistic. We do not control consulate calendars and we will not pretend we do.'],
           ['q'=>'Are you Schengen tourist visa consultants?','a'=>'Yes, tourist cases are the most common thing we do. Our Schengen tourist visa consultants prepare the full document file: bank statements, employment letter, itinerary, accommodation confirmation, travel insurance. France, Italy, Germany, Portugal, Spain and the rest.'],
-          ['q'=>'What does Schengen visa consulting involve?','a'=>'Three things: document preparation, appointment assistance, and refusal recovery. The difference between a consulting service and doing it yourself is knowing which gap on the standard checklist is the one that triggers a refusal.'],
-          ['q'=>'Can I find a Schengen visa consultant near me?','a'=>'You do not need one nearby. Everything except your biometric appointment is done remotely, so where we sit makes no difference to your file. What matters is whether the person reading your documents has seen your kind of case before.'],
+          ['q'=>'What does Schengen visa consulting actually involve?','a'=>'Schengen visa consulting covers three things: document preparation, appointment booking, and refusal recovery. Our Schengen visa application consultants prepare your full file: bank statements, cover letter, itinerary, insurance, then book your appointment and brief you for the embassy visit. You attend in person; we make sure everything is right before you do.'],
+          ['q'=>'Are there Schengen visa consultants in London I can meet?','a'=>'We prepare files for applicants across London and the rest of the UK. Our Schengen visa consultants in London handle cases remotely, over WhatsApp and phone, so you get the same service whether you’re in Hounslow, Southall or Edinburgh. What matters is whether the consultant reviewing your documents has seen your type of case before, not whether you can shake their hand.'],
           ['q'=>'Are there Schengen visa consultants near me in the UK?','a'=>'We prepare files for applicants in Birmingham, Leicester, Bradford, Manchester, London and everywhere else in the UK, including group and family applications where every file has to line up with the others. There is no office to visit.'],
-          ['q'=>'Are you a Schengen visa consultancy UK applicants can verify on a government register?','a'=>'Yes. Beyond Passports Ltd, Companies House 17331903, ICO ZC197159. Both registers are public and free to search. Check us before you message us, not after.'],
+          ['q'=>'How do I find the best consultant for Schengen visa applications?','a'=>'Look for a Schengen visa consultancy registered in the UK (check Companies House), with verifiable client references, a clear refund policy, and named consultants, not an anonymous form. Beyond Passports meets all four. Verify us on Companies House (no. 17331903) and the ICO register (ZC197159).'],
           ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Do not trust the website. Verify the company on Companies House and the ICO register. Message us before you pay anything and judge the free case check on its own. If it is not useful, you have lost a few minutes and nothing else.'],
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. If the consulate refuses after we have prepared your complete file, we refund 100% of our service fee.','key'=>true],
         ];
