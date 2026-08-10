@@ -170,7 +170,8 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb .ref2 .tiles .t .nm span{font-size:12px}
 }
 .lpb .chips{display:flex;flex-direction:column;gap:11px}
-.lpb .sit{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:14px 16px;transition:transform .12s,box-shadow .12s}
+.lpb .sit{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--edge);border-left:3px solid var(--cta);border-radius:12px;padding:16px;transition:transform .12s,box-shadow .12s}
+.lpb .sit .scta{margin-top:auto;padding-top:4px;display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14.5px;color:var(--cta)}
 .lpb .sit:hover{transform:translateY(-2px);box-shadow:var(--sh)}
 .lpb .sit .tx{min-width:0}
 .lpb .sit .st{font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text);display:block;margin:0 0 4px}
@@ -491,7 +492,7 @@ html,body{overflow-x:clip;max-width:100%}
   /* Start-where-you-are chips (already lift) + ref2 card covered above */
   .lpb .sit{transition:transform .14s ease,box-shadow .16s ease,border-color .15s ease}
   .lpb .sit:hover{transform:translateY(-3px);box-shadow:var(--sh);border-left-color:var(--stamp)}
-  .lpb .sit:hover .chev{background:var(--cta);color:#fff;transform:translateX(2px);transition:background .15s ease,color .15s ease,transform .15s ease}
+  .lpb .sit:hover .scta{color:var(--cta-d);transform:translateX(2px);transition:color .15s ease,transform .15s ease}
   /* how-it-works steps — nudge, brighten badge + heading */
   .lpb .tr .stp{border-radius:12px;transition:transform .14s ease}
   .lpb .tr .stp:hover{transform:translateX(4px)}
@@ -669,9 +670,9 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="pathband" id="paths"><div class="wrap">
   <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
   <div class="sitrow">
-    <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Cannot get an appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track the Schengen visa consulate calendars every 3 hours and publish what we find on the board near the top of this page. We move the moment a slot opens.</p></span><span class="chev">→</span></a>
-    <a class="sit" data-thx="agent" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">First time applicant?</span><span class="q">"I have never done this before"</span><p class="d">We prepare your file: bank statements, employment letter, itinerary, travel insurance, accommodation. You submit at the visa centre. Our <b>Schengen tourist visa consultants</b> handle everything before that day.</p></span><span class="chev">→</span></a>
-    <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Family or group application?</span><span class="q">"We're applying together"</span><p class="d">We prepare every file together and check each one against the others so no two applications contradict. Group of three or more: our fee per person drops.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Cannot get an appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track the Schengen visa consulate calendars every 3 hours and publish what we find on the board near the top of this page. We move the moment a slot opens.</p></span><span class="scta">Find me an appointment ›</span></a>
+    <a class="sit" data-thx="agent" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, this is my first Schengen visa. Please prepare my tourist visa documents and handle the appointment for me.') }}"><span class="tx"><span class="st">First time applicant?</span><span class="q">"I have never done this before"</span><p class="d">We prepare your file: bank statements, employment letter, itinerary, travel insurance, accommodation. You submit at the visa centre. Our <b>Schengen tourist visa consultants</b> handle everything before that day.</p></span><span class="scta">Start my tourist visa ›</span></a>
+    <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Family or group application?</span><span class="q">"We're applying together"</span><p class="d">We prepare every file together and check each one against the others so no two applications contradict. Group of three or more: our fee per person drops.</p></span><span class="scta">Get the group price ›</span></a>
   </div>
 </div></section>
 
