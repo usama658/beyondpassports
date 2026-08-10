@@ -575,7 +575,19 @@ html,body{overflow-x:clip;max-width:100%}
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}{{ config('ukv.slots.rows') ? ' rows' : '' }}" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
-  <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
+  <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh.</p>
+  @if(config('ukv.slots.last_checked'))
+  @once
+  <style>
+  .lpb .bfresh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0}
+  .lpb .bfresh .fchip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--stamp-text);background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.28);border-radius:100px;padding:6px 12px}
+  .lpb .bfresh .fdot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa)}
+  .lpb .bfresh .fcad{font-size:12px;color:#8a959d}
+  .lpb .bfresh .fmsg{font-size:12.5px;color:var(--cta);font-weight:700;text-decoration:none}
+  </style>
+  @endonce
+  <div class="bfresh"><span class="fchip"><span class="fdot"></span>Last checked {{ config('ukv.slots.last_checked') }}</span><span class="fcad">Rechecked every 3 hours</span><a class="fmsg" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please send today\'s live Schengen appointment numbers.') }}">Message us for today's numbers →</a></div>
+  @endif
 @if(config('ukv.slots.rows'))
   {{-- MODE 4 — neon-glass (Light Mist): frosted 2-up cards, big slot count, band glow edge. --}}
   @php

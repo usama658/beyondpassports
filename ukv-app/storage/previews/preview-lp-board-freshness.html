@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Board freshness lines — options</title>
+<style>
+  :root{--ink:#16222E;--edge:#dde3ec;--cta:#155E7A;--stamp:#2E9A8C;--stamp-t:#1F6E63;--muted:#5d6b76;--wa:#25D366;--amber:#b5791f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:var(--ink);background:#fff;padding:26px 16px 90px}
+  .wrap{max-width:680px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.subx{font-size:12.5px;color:#5d6b76;margin-bottom:18px}
+  .tag{font:800 11px 'Outfit',sans-serif;letter-spacing:.04em;color:#155E7A;margin:16px 0 8px;display:block}
+  .box{background:linear-gradient(180deg,#f7f9fb,#fff);border:1px solid var(--edge);border-radius:16px;padding:22px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--stamp-t);margin-bottom:8px}
+  .h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 8px}
+  .intro{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+  .intro b{color:var(--ink)}
+  a{color:var(--cta);font-weight:700;text-decoration:none}
+
+  /* A · inline muted line */
+  .fA{margin-top:10px;font-size:13px;color:#8a959d;line-height:1.55}.fA b{color:var(--muted);font-weight:700}
+
+  /* B · freshness bar (chip + link) */
+  .fB{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:13px}
+  .fB .chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--stamp-t);background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.28);border-radius:100px;padding:6px 12px}
+  .fB .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa)}
+  .fB .cad{font-size:12px;color:#8a959d}
+  .fB .msg{font-size:12.5px;color:var(--cta);font-weight:700}
+
+  /* C · boxed freshness strip */
+  .fC{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;background:#f2f7f9;border:1px solid #dbe6ea;border-left:3px solid var(--cta);border-radius:12px;padding:11px 14px}
+  .fC svg{width:16px;height:16px;fill:var(--cta);flex:none}
+  .fC .t{font-size:12.5px;color:#42525c}.fC .t b{color:var(--ink)}
+  .fC .sep{width:1px;height:14px;background:#cfdbe0}
+
+  /* D · two stacked lines */
+  .fD{margin-top:12px}
+  .fD .l1{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-t)}
+  .fD .l1 .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa)}
+  .fD .l2{font-size:12px;color:#8a959d;margin-top:5px}
+</style></head><body><div class="wrap">
+  <h1>Board freshness lines — options</h1>
+  <p class="subx">Adds "last checked" + "rechecked every 3 hours" under the board intro. Four treatments.</p>
+
+  <span class="tag">A · Inline muted line</span>
+  <div class="box"><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2><p class="intro">We monitor Schengen visa appointment slots at official visa application centres in London, Manchester, and Edinburgh.</p>
+    <p class="fA"><b>Last checked 16:00 on 9 August.</b> We recheck the consulate calendars every 3 hours. <a href="#">Message us for today's numbers.</a></p></div>
+
+  <span class="tag">B · Freshness bar (chip + link)</span>
+  <div class="box"><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2><p class="intro">We monitor Schengen visa appointment slots at official visa application centres in London, Manchester, and Edinburgh.</p>
+    <div class="fB"><span class="chip"><span class="dot"></span>Last checked 16:00 · 9 Aug</span><span class="cad">Rechecked every 3 hours</span><a class="msg" href="#">Message us for today's numbers →</a></div></div>
+
+  <span class="tag">C · Boxed strip</span>
+  <div class="box"><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2><p class="intro">We monitor Schengen visa appointment slots at official visa application centres in London, Manchester, and Edinburgh.</p>
+    <div class="fC"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg><span class="t"><b>Last checked 16:00, 9 August.</b> Rechecked every 3 hours.</span><span class="sep"></span><a href="#">Message us for today's numbers</a></div></div>
+
+  <span class="tag">D · Two stacked lines</span>
+  <div class="box"><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2><p class="intro">We monitor Schengen visa appointment slots at official visa application centres in London, Manchester, and Edinburgh.</p>
+    <div class="fD"><span class="l1"><span class="dot"></span>Last checked 16:00 on 9 August · <a href="#">Message us for today's numbers</a></span><div class="l2">We recheck the consulate calendars every 3 hours.</div></div></div>
+</div>
+</body></html>
