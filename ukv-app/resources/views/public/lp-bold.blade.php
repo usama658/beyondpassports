@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Consultants UK | Schengen Visa Help | Beyond Passports')
-@section('description', 'Schengen visa help from a registered UK consultancy. We prepare your documents, find appointment slots, and help recover refusals. 100% service-fee refund if refused.')
+@section('title', 'Schengen Visa Consultants UK | 93% Approved | Beyond Passports Consultancy')
+@section('description', 'Trusted Schengen visa consultants UK, with 93% approval rate across 2,000+ cases. Best consultant for Schengen visa applications, appointments and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
