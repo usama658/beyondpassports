@@ -523,11 +523,11 @@ html,body{overflow-x:clip;max-width:100%}
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">Schengen visa consultants who prepare your application. <span class="hl-r">Refused? Money back.</span></h2>
     <p class="hsub">Schengen visas get refused when something in the application is missing, unclear, or does not add up. One refusal stays on your record for five years, and all 29 Schengen countries can see it. <strong>We check every document before it goes anywhere near the consulate.</strong></p>
+    <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
     <div class="hcta">
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">@include('partials.wa-glyph')Check my case free on WhatsApp</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
     </div>
-    <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
     <div class="hrf">
       <span class="hrf-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
       <div class="hrf-t"><b>Fee back if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
