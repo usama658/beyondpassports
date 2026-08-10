@@ -709,7 +709,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .baer{padding:28px 30px}
 .lpb .baegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:520px){.lpb .baegrid{grid-template-columns:1fr}}
-.lpb .baecard{background:#fff;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 16px}
+.lpb .baecard{background:#fff;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 16px;transition:transform .16s ease,box-shadow .16s ease,border-color .15s ease}
+@media(hover:hover){.lpb .baecard:hover{transform:translateY(-3px);box-shadow:0 22px 44px -30px rgba(20,34,46,.5);border-left-color:var(--cta)}}
 .lpb .baecard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 4px}
 .lpb .baecard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
 .lpb .baealso{display:flex;gap:11px;align-items:flex-start;margin:16px 0 0;background:#f7faf9;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:13px 15px}
