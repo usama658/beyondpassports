@@ -41,8 +41,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hcta{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 0}
 .lpb .hcta a{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:800 15px "Outfit",system-ui,sans-serif;padding:14px 20px;border-radius:12px;text-decoration:none;transition:background .15s,box-shadow .15s}
 .lpb .hcta a svg{width:18px;height:18px;flex:none}
-.lpb .hcta-wa{background:var(--wa);color:#04140b;box-shadow:0 14px 30px -14px rgba(37,211,102,.6)}
-.lpb .hcta-wa:hover{background:#1eb457}.lpb .hcta-wa svg{fill:#04140b}
+.lpb .hcta-wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -14px rgba(37,211,102,.6)}
+.lpb .hcta-wa:hover{background:#1eb457}.lpb .hcta-wa svg{fill:#fff}
 .lpb .hcta-appt{background:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.7)}
 .lpb .hcta-appt:hover{background:var(--cta-d)}.lpb .hcta-appt svg{fill:#fff}
 @media(max-width:560px){.lpb .hcta a{flex:1 0 100%}}
@@ -521,7 +521,7 @@ html,body{overflow-x:clip;max-width:100%}
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">@include('partials.wa-glyph')Check my case free on WhatsApp</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
     </div>
-    <p class="hnote">We're a UK registered Schengen visa consultancy helping first-time applications, securing appointment slots, and refusal recovery.</p>
+    <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
