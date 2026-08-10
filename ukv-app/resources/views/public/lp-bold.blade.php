@@ -797,7 +797,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="bae2">
     <div class="bael">
       <span class="eyebrow">Before anything else</span>
-      <h2 class="baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
+      <h2 class="baeh">Your UK Visa Doesn't Stop You. <span class="hl-r">Ask a Schengen Visa Consultant Free</span></h2>
       <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
       <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
       <div class="baestrip"><span class="dot"></span><span><b>Free</b>, no obligation</span><span class="sep"></span><span>A named consultant replies in <b>30 min</b>, 7 days a week</span></div>
