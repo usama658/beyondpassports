@@ -575,7 +575,6 @@ html,body{overflow-x:clip;max-width:100%}
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}{{ config('ukv.slots.rows') ? ' rows' : '' }}" id="appointments"><div class="wrap">
   <div class="btop"><div><p class="eyebrow">Schengen Visa Appointment Availability</p><h2 class="h2">Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
-  <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh.</p>
   @if(config('ukv.slots.last_checked'))
   @once
   <style>
