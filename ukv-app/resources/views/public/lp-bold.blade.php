@@ -31,7 +31,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .micro{color:var(--muted);font-size:14px;line-height:1.55}
 .lpb .trans{color:var(--muted);font-size:15.5px;line-height:1.55}
 .lpb .h2{font-size:clamp(27px,3.4vw,40px);letter-spacing:-.03em;max-width:20ch}
-.lpb .rows .btop .h2{max-width:30ch}
+.lpb .rows .btop .h2{max-width:26ch}
 .lpb .dot{width:9px;height:9px;border-radius:50%;background:var(--stamp);box-shadow:0 0 0 5px rgba(46,154,140,.22);display:inline-block}
 .lpb .urgent{display:inline-flex;align-items:center;gap:9px;background:#fdf3e7;border:1px solid #f0d9b8;color:#8a5a1a;font-size:14.5px;font-weight:600;padding:12px 18px;border-radius:12px}
 .lpb .ctarow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:20px}
