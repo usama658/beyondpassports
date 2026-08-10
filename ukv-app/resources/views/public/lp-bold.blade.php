@@ -574,7 +574,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BOARD — appointment-window cards, fed by real published availability ($apptCards composer).
      Only countries with a published date are featured; the section always renders. --}}
 <section class="sec alt bd{{ config('ukv.slots.week_labels') ? ' wk' : '' }}{{ config('ukv.slots.count_focus') ? ' cf' : '' }}{{ config('ukv.slots.rows') ? ' rows' : '' }}" id="appointments"><div class="wrap">
-  <div class="btop"><div><p class="eyebrow">Appointment board</p><h2 class="h2">Schengen appointments we can see right now. Slots vanish in seconds.</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
+  <div class="btop"><div><p class="eyebrow">Appointment board</p><h2 class="h2">Schengen Visa Appointments Found by Our Consultants This Week</h2></div><span class="live"><span class="dot"></span><span class="lv-txt">Summer Peak · <span class="lv-mo">Jul–Aug</span></span></span></div>
   @if(config('ukv.slots.last_checked'))
   @once
   <style>
