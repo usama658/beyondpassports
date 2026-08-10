@@ -677,7 +677,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
 <section class="sec fear" id="refusal"><div class="wrap">
-  <div class="fsh"><div class="flabel">Why a refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
+  <div class="fsh"><div class="flabel">Why a Schengen visa refusal sticks</div><h2>The Visa Information System <span class="hl">remembers everything.</span></h2></div>
   <div class="fmeter">
     <div class="row"><div class="num">1</div><div><h3>You get refused</h3><p>You apply for a Schengen visa. You get refused. That refusal gets logged in a shared EU database called VIS.</p></div><div class="bar"><span></span></div></div>
     <div class="row"><div class="num">2</div><div><h3>29 countries can see it</h3><p>You get one submission. The moment it's in, it's judged, and if it's wrong, that refusal is on your file across all 29 countries.</p></div><div class="bar"><span></span></div></div>
