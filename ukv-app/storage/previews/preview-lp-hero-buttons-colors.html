@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero buttons — colour schemes</title>
+<style>
+  :root{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--edge:#dde3ec;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--muted:#5d6b76;--wa:#25D366;--amber:#E9B872}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:var(--ink);background:#eef2f6;padding:26px 16px 80px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.sub{font-size:12.5px;color:#5d6b76;margin-bottom:16px}
+  .row{background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%);border:1px solid var(--edge);border-radius:16px;padding:18px 18px 20px;margin-bottom:14px}
+  .tag{font:800 11px 'Outfit',sans-serif;letter-spacing:.04em;color:#155E7A;margin-bottom:12px;display:block}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:800 14.5px 'Outfit',sans-serif;padding:14px 20px;border-radius:12px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,color .15s}
+  .btn svg{width:18px;height:18px;flex:none}
+  .note{font-size:11.5px;color:#7a8791;margin-top:10px}
+
+  /* primary variants */
+  .p-wa{background:var(--wa);color:#04140b}.p-wa svg{fill:#04140b}
+  .p-petrol{background:var(--cta);color:#fff}.p-petrol svg{fill:#fff}
+  .p-teal{background:var(--stamp);color:#06231f}.p-teal svg{fill:#06231f}
+  .p-ink{background:var(--ink2);color:#eaf3f6}.p-ink svg{fill:#eaf3f6}
+  /* secondary variants */
+  .s-petrolout{background:#fff;color:var(--cta);border-color:#bcd2db}.s-petrolout svg{fill:var(--cta)}
+  .s-tealout{background:#fff;color:#1F6E63;border-color:#bfe0d6}.s-tealout svg{fill:#1F6E63}
+  .s-inkout{background:#fff;color:var(--ink2);border-color:#c3ccd2}.s-inkout svg{fill:var(--ink2)}
+  .s-petrol{background:var(--cta);color:#fff}.s-petrol svg{fill:#fff}
+  .s-wa{background:var(--wa);color:#04140b}.s-wa svg{fill:#04140b}
+  .s-ghost{background:rgba(21,94,122,.09);color:var(--cta);border-color:transparent}.s-ghost svg{fill:var(--cta)}
+</style></head><body><div class="wrap">
+  <h1>Hero buttons — colour schemes</h1>
+  <p class="sub">Primary = "Check my case free on WhatsApp". Secondary = "See appointment availability" (scrolls to board). All from the brand palette.</p>
+
+  <div class="row"><span class="tag">S1 · WA green + petrol outline (current)</span>
+    <div class="cta-row"><a class="btn p-wa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-petrolout" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Green leads (action), petrol outline is the quiet secondary. Clear hierarchy.</p></div>
+
+  <div class="row"><span class="tag">S2 · Petrol solid + teal outline</span>
+    <div class="cta-row"><a class="btn p-petrol" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-tealout" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Full brand: petrol primary, teal-tinted outline. Most "on-brand", less WhatsApp signal.</p></div>
+
+  <div class="row"><span class="tag">S3 · WA green + petrol solid (both filled)</span>
+    <div class="cta-row"><a class="btn p-wa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-petrol" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Two strong buttons, green + petrol. Punchy but competes for attention.</p></div>
+
+  <div class="row"><span class="tag">S4 · Petrol solid + WA green (swap)</span>
+    <div class="cta-row"><a class="btn p-petrol" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-wa" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Petrol primary, green secondary. Brand-led, green still draws the eye down to the board.</p></div>
+
+  <div class="row"><span class="tag">S5 · Teal solid + petrol outline</span>
+    <div class="cta-row"><a class="btn p-teal" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-petrolout" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Teal accent primary. Softer than green, cohesive with the eyebrow/seal colour.</p></div>
+
+  <div class="row"><span class="tag">S6 · WA green + ghost petrol</span>
+    <div class="cta-row"><a class="btn p-wa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a><a class="btn s-ghost" href="#"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a></div>
+    <p class="note">Green primary, soft petrol-tint ghost. Lightest secondary, cleanest hierarchy.</p></div>
+</div>
+</body></html>

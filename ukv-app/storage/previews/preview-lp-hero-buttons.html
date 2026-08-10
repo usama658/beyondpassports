@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LP hero — two buttons</title>
+<style>
+  :root{--ink:#16222E;--ink2:#0f2028;--paper:#F4F6FA;--edge:#dde3ec;--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--stamp-text:#1F6E63;--muted:#5d6b76;--wa:#25D366}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:var(--ink);background:#eef2f6;padding:26px 16px 80px}
+  .wrap{max-width:760px;margin:0 auto}
+  .cap{font-size:12px;color:#5d6b76;margin-bottom:12px}
+  .hero{background:linear-gradient(180deg,#EAF1F4,var(--paper) 72%);border:1px solid var(--edge);border-radius:20px;padding:34px 30px 32px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp-text);margin-bottom:14px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--stamp)}
+  h1{font-size:clamp(26px,4vw,36px);line-height:1.14;letter-spacing:-.02em;margin:0 0 14px;max-width:20ch}
+  .lead{font-size:16.5px;line-height:1.62;color:#33424c;margin:0 0 14px;max-width:52ch}
+  .lead b{color:var(--ink)}
+  .who{font-size:14.5px;line-height:1.6;color:var(--muted);background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 16px;margin:0 0 22px;max-width:50ch}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:800 15.5px 'Outfit',sans-serif;padding:15px 22px;border-radius:12px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn-wa{background:var(--wa);color:#04140b;box-shadow:0 14px 30px -14px rgba(37,211,102,.6)}
+  .btn-wa svg{fill:#04140b}.btn-wa:hover{background:#1eb457}
+  .btn-2{background:#fff;color:var(--cta);border-color:#bcd2db}
+  .btn-2 svg{fill:var(--cta)}
+  .btn-2:hover{background:var(--cta);color:#fff;border-color:var(--cta)}
+  .btn-2:hover svg{fill:#fff}
+  .anchor{margin-top:22px;text-align:center;color:#93a0a8;font-size:12px}
+</style></head><body><div class="wrap">
+  <p class="cap">LP hero + two CTAs — brand petrol/teal. Second button smooth-scrolls to the appointment board on the same page.</p>
+  <div class="hero">
+    <span class="eyebrow">UK Schengen Visa Consultancy</span>
+    <h1>A Schengen visa refusal stays on your record for 5 years.</h1>
+    <p class="lead">You get one shot. <b>There's no draft round.</b> Tell us where you're going and our Schengen visa consultants say honestly if it's a case we can help with.</p>
+    <p class="who">We're a UK registered Schengen visa consultancy helping first-time applications, securing appointment slots, and refusal recovery.</p>
+    <div class="cta-row">
+      <a class="btn btn-wa" href="#"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>Check my case free on WhatsApp</a>
+      <a class="btn btn-2" href="#appointments"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
+    </div>
+  </div>
+  <p class="anchor">↓ "See appointment availability" scrolls down to the live slot board (#appointments) on the same landing page ↓</p>
+</div>
+</body></html>
