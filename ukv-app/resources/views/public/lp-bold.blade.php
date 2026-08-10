@@ -870,6 +870,9 @@ html,body{overflow-x:clip;max-width:100%}
           ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. If the consulate refuses after we have prepared your complete file, we refund 100% of our service fee.','key'=>true],
         ];
       @endphp
+      @push('head')
+      <script type="application/ld+json">@php echo json_encode(['@context'=>'https://schema.org','@type'=>'FAQPage','mainEntity'=>collect($faqs)->map(fn ($f) => ['@type'=>'Question','name'=>$f['q'],'acceptedAnswer'=>['@type'=>'Answer','text'=>trim(strip_tags($f['a']))]])->all()], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); @endphp</script>
+      @endpush
       @foreach($faqs as $f)
       <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
       @endforeach
