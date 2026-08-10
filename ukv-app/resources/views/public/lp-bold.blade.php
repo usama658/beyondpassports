@@ -712,7 +712,9 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .baecard{background:#fff;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 16px}
 .lpb .baecard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 4px}
 .lpb .baecard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
-.lpb .baealso{color:var(--muted);font-size:13px;line-height:1.6;margin:14px 0 0}.lpb .baealso b{color:var(--ink)}
+.lpb .baealso{display:flex;gap:11px;align-items:flex-start;margin:16px 0 0;background:#f7faf9;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:13px 15px}
+.lpb .baealso .ic{flex:none;width:26px;height:26px;border-radius:7px;background:rgba(46,154,140,.14);color:var(--stamp-t);display:grid;place-items:center;font-weight:900;font-size:16px;line-height:1}
+.lpb .baealso p{margin:0;font-size:13px;line-height:1.55;color:var(--muted)}.lpb .baealso b{color:var(--ink)}
 .lpb .baestrip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px}
 .lpb .baestrip .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa);flex:none}
 .lpb .baestrip span{font-size:12.5px;color:#cfe0dd}.lpb .baestrip b{color:#fff;font-weight:800}
@@ -777,7 +779,7 @@ html,body{overflow-x:clip;max-width:100%}
         <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
         <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
       </div>
-      <p class="baealso"><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p>
+      <div class="baealso"><span class="ic">+</span><p><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p></div>
     </div>
   </div>
 </div></section>
