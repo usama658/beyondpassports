@@ -335,6 +335,10 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .pscore{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1}
 .lpb .pcount{font-size:12.5px;color:var(--muted);margin-top:2px}
 .lpb .plink{margin-left:auto;font-size:13px;font-weight:700;color:var(--cta);flex:none}
+.lpb .rchips{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:18px 0 0}
+.lpb .rchip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--edge);border-radius:100px;padding:10px 17px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5);font-size:14px;font-weight:600;color:#3d4a56}
+.lpb .rchip b{color:var(--cta);font-weight:900;font-size:16px}
+.lpb .rchip .d{width:8px;height:8px;border-radius:50%;background:var(--stamp);box-shadow:0 0 0 4px rgba(46,154,140,.18)}
 .lpb .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .lpb .rc{position:relative;background:var(--cream);border:1px solid var(--edge);border-radius:18px;padding:28px 26px;box-shadow:var(--sh);overflow:hidden}
 .lpb .rc .wm{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-weight:700;font-size:140px;line-height:1;color:var(--gold);opacity:.09;pointer-events:none}
@@ -663,7 +667,9 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
-  <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:26ch">What They Say About Our Schengen Visa Consultancy</h2></div>
+  <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:26ch">What They Say About Our Schengen Visa Consultancy</h2>
+    <div class="rchips"><span class="rchip"><span class="d"></span><b>2,000+</b>&nbsp;UK applicants</span><span class="rchip"><span class="d"></span><b>93%</b>&nbsp;approved</span></div>
+  </div>
   @if (config('ukv.review_tiles'))
   <div class="rplat">
     <div class="pcard"><span class="pico g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.4a5.5 5.5 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-5 6.7-5z"/></svg></span><div><div class="pname">Google Reviews</div><div class="pstar">★★★★★</div><div class="pscore">4.9</div><div class="pcount">Verified reviews load once connected</div></div></div>
@@ -678,7 +684,7 @@ html,body{overflow-x:clip;max-width:100%}
         ['P','Priya Sharma','Jun 2026','BP-2026-102596','I\'m on a UK residence permit and wasn\'t sure I could even apply. Their consultant walked me through it, sorted my Germany visa, no drama at the consulate. Fair fee and a real person answered every email.'],
         ['R','Rohan Iyer','Mar 2026','BP-2026-101473','Applied for a Spain visa for a family holiday, five of us. They handled all the forms and kept it organised so nothing got missed. Approved for everyone. Saved me a huge headache.'],
         ['M','Mary Grace Santos','Jun 2026','BP-2026-103918','Had a Schengen refusal a year back so I was worried. They went through what went wrong, fixed it, and my Netherlands visa came through this time. Straight with me the whole way.'],
-        ['T','Tom Hughes','May 2026','BP-2026-100667','Business trip to Belgium, needed it done properly and fast. Uploaded my papers, they checked everything, visa sorted before I flew. Landed in Brussels, no issues at the border.'],
+        ['A','Ahmed Rahman','May 2026','BP-2026-100667','Business trip to Belgium, needed it done properly and fast. Uploaded my papers, they checked everything, visa sorted before I flew. Landed in Brussels, no issues at the border.'],
       ];
     @endphp
     @foreach($reviews as [$init,$name,$when,$src,$quote])
