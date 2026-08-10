@@ -514,7 +514,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
-    <h1 class="eyebrow heyebrow">Schengen Visa Consultants for UK Applicants</h1>
+    <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">A Schengen visa refusal stays on your record for <span class="hl-r">5 years</span>.</h2>
     <p class="hsub">You get one shot. There's no draft round. Tell us where you're going and our Schengen visa consultants say honestly if it's a case we can help with.</p>
     <div class="hcta">
