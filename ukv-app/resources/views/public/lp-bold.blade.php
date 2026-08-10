@@ -574,7 +574,7 @@ html,body{overflow-x:clip;max-width:100%}
       <a class="ngcard {{ $c['cls'] }}{{ $rn === 0 ? ' zero' : '' }}" data-slotname="{{ \Illuminate\Support\Str::lower($c['name']) }}" data-slotzero="{{ $rn === 0 ? '1' : '0' }}" href="{{ $wa }}?text={{ rawurlencode($rn === 0 ? 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. There are no live slots showing right now, please put me on the watch and grab the next one.' : 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="{{ $rn === 0 ? 'Ask about a '.$c['name'].' appointment' : 'Secure a '.$c['name'].' appointment slot' }}"@if($rn === 0) hidden @endif>
         <div class="ngn">{{ $rn }}</div>
         <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div>@if($rn === 0)<div class="ngnx">no live slots <b>right now</b></div><span class="ngstp">Ask us to watch</span>@else<div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 90 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span>@endif</div>
-        <span class="ngcta">@include('partials.wa-glyph'){{ $rn === 0 ? 'Ask us' : 'Secure' }}</span>
+        <span class="ngcta">@include('partials.wa-glyph'){{ $rn === 0 ? 'Find me '.$c['name'].' slots' : 'Secure' }}</span>
       </a>
       @empty
       <p class="brempty" style="grid-column:1/-1">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
