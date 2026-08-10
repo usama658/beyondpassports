@@ -530,7 +530,7 @@ html,body{overflow-x:clip;max-width:100%}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">The UK's Schengen Visa Consultancy That Prepares Everything and <span class="hl-r">Refunds You If Refused.</span></h2>
-    <p class="hsub">Schengen visas get refused when something in the application is missing, unclear, or does not add up. One refusal stays on your record for five years, and all 29 Schengen countries can see it. <strong>We check every document before it goes anywhere near the consulate.</strong></p>
+    <p class="hsub">The UK's specialist Schengen visa consultancy. We prepare bulletproof applications, track appointment availability across 29 countries daily, and guarantee a full refund if refused. <strong>93% approval rate across 2,000+ UK cases.</strong></p>
     <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
     <div class="hcta">
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">@include('partials.wa-glyph')Check my case free on WhatsApp</a>
