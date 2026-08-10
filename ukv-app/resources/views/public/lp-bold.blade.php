@@ -783,6 +783,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
   </div>
   @include('partials.refund-band', [
+    'heading' => 'Refused? Every Penny Back. Our Schengen Visa Consulting Promise.',
     'ctaHref' => $wa.'?text='.rawurlencode("Hi, I read your Refund Promise. Before I pay, can you explain exactly how the 100% service-fee refund works if my case is refused?"),
     'ctaText' => 'Check my case now',
     'ctaIcon' => 'wa',
