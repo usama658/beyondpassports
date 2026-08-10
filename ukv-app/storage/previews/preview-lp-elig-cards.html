@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Status cards — premium options</title>
+<style>
+  :root{--ink:#16222E;--edge:#dde3ec;--cta:#155E7A;--stamp:#2E9A8C;--stamp-t:#1F6E63;--muted:#5d6b76;--paper:#F4F6FA}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:var(--ink);background:#e7edf2;padding:24px 14px 90px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.subx{font-size:12.5px;color:#5d6b76;margin-bottom:16px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{padding:8px 15px;border:1px solid #cdd8de;background:#fff;border-radius:100px;font:700 12.5px 'Outfit',sans-serif;color:#5d6b76;cursor:pointer}.tab.on{background:#155E7A;border-color:#155E7A;color:#fff}
+  .panel{display:none}.panel.on{display:block}
+  .R{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:16px 17px;transition:transform .16s,box-shadow .16s,border-color .15s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 22px 44px -30px rgba(20,34,46,.5)}
+  .card h3{font-size:14.5px;font-weight:800;margin:0 0 5px;display:flex;align-items:center;gap:9px}
+  .card p{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0}
+  .chip{flex:none;width:32px;height:27px;border-radius:7px;background:rgba(46,154,140,.12);color:var(--stamp-t);display:grid;place-items:center;font-weight:900;font-size:10px}
+
+  /* A left-rule (current) */
+  .a .card{border-left:3px solid var(--stamp)}.a .chip{display:none}
+  /* B monogram chip + hover top accent */
+  .b .card{border-top:2px solid transparent}.b .card:hover{border-top-color:var(--stamp)}
+  /* C soft tint fill + chip */
+  .c .card{background:var(--paper);border-color:#e4eb f0}
+  .c .chip{background:#fff}
+  /* D icon-lift: chip becomes a rounded teal tile top-left, title below */
+  .d .card{padding-top:18px}
+  .d .card h3{flex-direction:column;align-items:flex-start;gap:10px}
+  .d .chip{width:38px;height:34px;border-radius:10px;font-size:11px;box-shadow:0 10px 22px -14px rgba(46,154,140,.7)}
+  /* E numbered */
+  .e .chip{background:transparent;border:1.5px solid rgba(46,154,140,.4);color:var(--stamp-t);border-radius:50%;width:26px;height:26px;font-size:12px}
+</style></head><body><div class="wrap">
+  <h1>Status cards — premium options</h1>
+  <p class="subx">The eVisa / BRP / Student / Dependant cards. Five treatments.</p>
+  <div class="tabs">
+    <button class="tab on" onclick="sw(0)">A · Left-rule (current)</button>
+    <button class="tab" onclick="sw(1)">B · Chip + top accent</button>
+    <button class="tab" onclick="sw(2)">C · Soft tint</button>
+    <button class="tab" onclick="sw(3)">D · Tile chip</button>
+    <button class="tab" onclick="sw(4)">E · Ringed monogram</button>
+  </div>
+  <div class="panel on"><div class="R"><div class="grid a" data-g></div></div></div>
+  <div class="panel"><div class="R"><div class="grid b" data-g data-chip></div></div></div>
+  <div class="panel"><div class="R"><div class="grid c" data-g data-chip></div></div></div>
+  <div class="panel"><div class="R"><div class="grid d" data-g data-chip></div></div></div>
+  <div class="panel"><div class="R"><div class="grid e" data-g data-chip></div></div></div>
+</div>
+<script>
+  var C=[['eVisa or share code','Your UKVI account share code is what we check. Send us the code, not a photo of a document.','eV'],['BRP holder','BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.','BRP'],['Student visa','A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.','ST'],['Dependant, spouse or Skilled Worker visa','Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.','DEP']];
+  document.querySelectorAll('[data-g]').forEach(function(g){var ch=g.hasAttribute('data-chip');g.innerHTML=C.map(function(c,i){var lead=ch?'<span class="chip">'+(g.classList.contains('e')?(i+1):c[2])+'</span>':'';return '<div class="card"><h3>'+lead+'<span>'+c[0]+'</span></h3><p>'+c[1]+'</p></div>';}).join('');});
+  function sw(i){document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('on',j===i);});document.querySelectorAll('.panel').forEach(function(p,j){p.classList.toggle('on',j===i);});}
+</script>
+</body></html>
