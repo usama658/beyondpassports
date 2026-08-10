@@ -695,7 +695,7 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 <section class="pathband" id="paths"><div class="wrap">
-  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
+  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Your Schengen Visa Consultant! Which Path Fits You?</span></div>
   <div class="sitrow">
     <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Cannot get an appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track the Schengen visa consulate calendars every 3 hours and publish what we find on the board near the top of this page. We move the moment a slot opens.</p></span><span class="scta">Find me an appointment ›</span></a>
     <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Family or group application?</span><span class="q">"We're applying together"</span><p class="d">We prepare every file together and check each one against the others so no two applications contradict. Group of three or more: our fee per person drops.</p></span><span class="scta">Get the group price ›</span></a>
