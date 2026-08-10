@@ -52,6 +52,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hrf-t b{display:block;font-size:14px;font-weight:800;color:var(--ink)}
 .lpb .hrf-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5}
 .lpb .hreply{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);margin-top:10px}
+.lpb .ftrust{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.lpb .ftrust .ln{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;line-height:1.5;color:#8a959d}
+.lpb .ftrust .ln b{color:#6a757d;font-weight:700}
+.lpb .ftrust .ic{flex:none;width:28px;height:28px;border-radius:8px;background:rgba(46,154,140,.12);display:grid;place-items:center}
+.lpb .ftrust .ic svg{width:16px;height:16px;fill:var(--stamp-text)}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
 .lpb .hero .hhead{font-size:2.6rem;line-height:1.08;letter-spacing:-.02em;max-width:20ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
@@ -546,7 +551,11 @@ html,body{overflow-x:clip;max-width:100%}
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
-    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. We never share your details. <a href="/legal">Privacy</a>.</span></label>
+    <div class="ftrust">
+      <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span><span><b>100% refund</b> if the consulate refuses after we prepare your file.</span></span>
+      <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg></span><span>A <b>named consultant replies within 30 minutes</b>, 7 days a week. We never share your details.</span></span>
+    </div>
+    <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. <a href="/legal">Privacy</a>.</span></label>
   </form>
   </div>
 </div></div></section>
