@@ -191,9 +191,10 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .rstamp .k{font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase}
 .lpb .rstamp .v{font-weight:800;font-size:22px;letter-spacing:.04em;line-height:1;margin:1px 0}
 .lpb .rstamp .s{font-weight:700;font-size:8px;letter-spacing:.16em;text-transform:uppercase}
-.lpb .pathhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
-.lpb .pathhead .k{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text)}
-.lpb .pathhead .s{color:var(--muted);font-size:14px}
+.lpb .pathhead{margin:0 0 30px}
+.lpb .pathhead .h2{margin:0}
+.lpb .pathsub{color:var(--muted);font-size:1.05rem;line-height:1.6;max-width:60ch;margin:12px 0 0}
+.lpb .pathsub b{color:var(--ink);font-weight:700}
 .lpb .sitrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:1024px){.lpb .sitrow{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:820px){.lpb .sitrow{grid-template-columns:1fr}}
@@ -695,7 +696,11 @@ html,body{overflow-x:clip;max-width:100%}
 </div></section>
 
 <section class="pathband" id="paths"><div class="wrap">
-  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Your Schengen Visa Consultant! Which Path Fits You?</span></div>
+  <div class="pathhead">
+    <p class="eyebrow">Start where you are</p>
+    <h2 class="h2" style="max-width:26ch">Schengen visa consultants near you</h2>
+    <p class="pathsub"><b>London, Manchester, Birmingham, Edinburgh, Leicester, Bradford.</b> Whether you need a Schengen visa consultant in London or anywhere in the UK, we work remotely. Pick your situation below.</p>
+  </div>
   <div class="sitrow">
     <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Cannot get an appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track 29 Schengen embassy calendars. Tell us your dates, your Schengen visa consultant finds what's open.</p></span><span class="scta">Find me an appointment ›</span></a>
     <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, I'm applying for a Schengen visa (first time, or visiting family or friends). Can you prepare my complete file?") }}"><span class="tx"><span class="st">First time? Visiting family or friends?</span><span class="q">"Where do I even start?"</span><p class="d">Your Schengen visa application consultant prepares the complete file. You attend the centre, we handle everything before.</p></span><span class="scta">Prepare my file for me ›</span></a>
