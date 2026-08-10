@@ -769,7 +769,7 @@ html,body{overflow-x:clip;max-width:100%}
         <div class="t" tabindex="0"><img src="{{ asset(ltrim($m['photo'], '/')) }}" alt="{{ $m['name'] }}" loading="lazy"><div class="ov"></div><div class="nm"><b>{{ \Illuminate\Support\Str::before($m['name'], ' ') }}</b><span>{{ $m['role'] }}</span></div></div>
         @endforeach
       </div>
-      <p class="tcap"><b>The people on your case.</b> Named, not a call centre.</p>
+      <p class="tcap"><b>Your named Schengen visa consultants in the UK.</b> Not a call centre. Not an offshore operation. Not an AI chatbot. Real people who know your case by name.</p>
       @endif
     </div>
     <div class="chklist">
