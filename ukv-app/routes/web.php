@@ -179,6 +179,8 @@ Route::redirect('/destinations', '/schengen-visa', 301); // legacy slug → cano
 // Bold LP (dual-lane hero + case-file) now lives here — moved from /schengen-visa-help (301).
 // CMS key stays 'schengen-visa-help' (internal, unchanged); coded fallback = public.lp-bold.
 Route::get('/schengen-visa-consultancy', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-help', 'public.lp-bold'))->name('lp-bold');
+// Schengen Visa Agency LP (standalone brand-themed page). Coded fallback = public.lp-agency.
+Route::get('/schengen-visa-agency', fn (\App\Http\Controllers\CmsController $c) => $c->pageOrCoded('schengen-visa-agency', 'public.lp-agency'))->name('lp-agency');
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).
 Route::view('/schengen-visa-consultancy/thank-you', 'public.lp-thanks')->name('lp-bold.thanks');
 // LP hero case-form lead: emails the lead to the owner inbox before the WhatsApp hand-off. Throttled; CSRF-exempt + honeypot.
