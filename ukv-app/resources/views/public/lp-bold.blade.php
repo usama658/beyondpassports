@@ -544,7 +544,18 @@ html,body{overflow-x:clip;max-width:100%}
   <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
 @if(config('ukv.slots.rows'))
   {{-- MODE 4 — neon-glass (Light Mist): frosted 2-up cards, big slot count, band glow edge. --}}
-  @php $apptShown = collect($apptCards); $apptTotal = $apptShown->sum('slots'); @endphp
+  @php
+    $apptShown = collect($apptCards);
+    $apptTotal = $apptShown->sum('slots');
+    // Merge in every remaining Schengen country as a 0-slot card so search can reach them all.
+    $schengenAll = ['Austria','Belgium','Bulgaria','Croatia','Czechia','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Iceland','Italy','Latvia','Liechtenstein','Lithuania','Luxembourg','Malta','Netherlands','Norway','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden','Switzerland'];
+    $apptHave = $apptShown->pluck('name')->map(fn ($n) => \Illuminate\Support\Str::lower($n))->all();
+    foreach ($schengenAll as $sn) {
+      if (!in_array(\Illuminate\Support\Str::lower($sn), $apptHave, true)) {
+        $apptShown->push(['name' => $sn, 'cls' => 'none', 'label' => 'Very limited', 'slots' => 0]);
+      }
+    }
+  @endphp
   <div class="ngstage" data-slotboard>
     <div class="nghd">
       <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
