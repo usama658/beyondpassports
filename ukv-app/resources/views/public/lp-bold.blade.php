@@ -713,10 +713,12 @@ html,body{overflow-x:clip;max-width:100%}
 @media(hover:hover){.lpb .baecard:hover{transform:translateY(-3px);box-shadow:0 22px 44px -30px rgba(20,34,46,.5);border-left-color:var(--cta)}}
 .lpb .baecard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 4px}
 .lpb .baecard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
-.lpb .baealso{display:flex;gap:11px;align-items:flex-start;margin:16px 0 0;background:#f7faf9;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:13px 15px}
+.lpb .baealso{display:flex;gap:11px;align-items:flex-start;margin:16px 0 0;background:#f7faf9;border:1px solid var(--edge);border-left:3px solid var(--stamp);border-radius:12px;padding:13px 15px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+@media(hover:hover){.lpb .baealso:hover{transform:translateY(-2px);box-shadow:0 18px 40px -28px rgba(20,34,46,.5);border-left-color:var(--cta)}}
 .lpb .baealso .ic{flex:none;width:26px;height:26px;border-radius:7px;background:rgba(46,154,140,.14);color:var(--stamp-t);display:grid;place-items:center;font-weight:900;font-size:16px;line-height:1}
 .lpb .baealso p{margin:0;font-size:13px;line-height:1.55;color:var(--muted)}.lpb .baealso b{color:var(--ink)}
-.lpb .baestrip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px}
+.lpb .baestrip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px;transition:background .15s ease,border-color .15s ease}
+@media(hover:hover){.lpb .baestrip:hover{background:rgba(255,255,255,.09);border-color:rgba(127,215,201,.4)}}
 .lpb .baestrip .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa);flex:none}
 .lpb .baestrip span{font-size:12.5px;color:#cfe0dd}.lpb .baestrip b{color:#fff;font-weight:800}
 .lpb .baestrip .sep{width:1px;height:14px;background:rgba(255,255,255,.16)}
