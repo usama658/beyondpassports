@@ -529,7 +529,7 @@ html,body{overflow-x:clip;max-width:100%}
     {{-- Trustpilot removed from hero --}}
     <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
-    <h2 class="hhead">Schengen visa consultants who prepare your application. <span class="hl-r">Refused? Money back.</span></h2>
+    <h2 class="hhead">The UK's Schengen Visa Consultancy That Prepares Everything and <span class="hl-r">Refunds You If Refused.</span></h2>
     <p class="hsub">Schengen visas get refused when something in the application is missing, unclear, or does not add up. One refusal stays on your record for five years, and all 29 Schengen countries can see it. <strong>We check every document before it goes anywhere near the consulate.</strong></p>
     <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
     <div class="hcta">
