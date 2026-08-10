@@ -189,7 +189,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .pathhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
 .lpb .pathhead .k{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-text)}
 .lpb .pathhead .s{color:var(--muted);font-size:14px}
-.lpb .sitrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.lpb .sitrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:1024px){.lpb .sitrow{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:820px){.lpb .sitrow{grid-template-columns:1fr}}
 /* RISK — ledger: drafted out, see partials/lp-draft-risk-ledger.blade.php */
 /* BOARD — appointment-window cards (colored header + tinted body, 3 tiers) */
