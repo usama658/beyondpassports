@@ -883,11 +883,44 @@ html,body{overflow-x:clip;max-width:100%}
       @endforeach
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
-    <aside class="bp" id="ask">
-      @include('partials.refund-seal-band', ['flush' => true])
-      <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
-      <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 30 minutes</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
+    @once
+    @push('head')<style>
+    .lpb .askcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2);position:relative;overflow:hidden}
+    .lpb .askcard::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--stamp),var(--cta))}
+    .lpb .askcard .eyebrow{margin:2px 0 12px}
+    .lpb .askcard h3{font-size:22px;color:var(--ink);letter-spacing:-.02em;line-height:1.15;margin:0}
+    .lpb .askcard .asksub{color:var(--muted);font-size:14.5px;line-height:1.55;margin:9px 0 16px}.lpb .askcard .asksub b{color:var(--ink)}
+    .lpb .askcard label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:0 0 6px}
+    .lpb .askcard input,.lpb .askcard select{width:100%;background:var(--paper);border:1px solid var(--edge);border-radius:11px;padding:14px 15px;color:var(--ink);font:500 16px var(--display);margin:0 0 12px}
+    .lpb .askcard input:focus,.lpb .askcard select:focus{outline:2px solid var(--stamp);outline-offset:1px;border-color:transparent}
+    .lpb .askcard .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font-weight:800;border:0;border-radius:12px;padding:15px;cursor:pointer;font-size:16px;margin-top:2px}
+    .lpb .askcard .wabtn svg,.lpb .askcard .wabtn .wa-g{width:18px;height:18px;fill:#fff}
+    .lpb .askcard .asktrig{display:flex;flex-wrap:wrap;gap:8px 14px;margin:14px 0 0}
+    .lpb .askcard .asktrig span{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#3d4a56}
+    .lpb .askcard .asktrig i{flex:none;width:17px;height:17px;border-radius:50%;background:rgba(46,154,140,.14);display:grid;place-items:center}
+    .lpb .askcard .asktrig i::after{content:"\2713";font-size:10px;font-weight:900;color:var(--stamp-text)}
+    .lpb .askcard .askurg{display:flex;align-items:flex-start;gap:9px;margin:16px 0 0;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:11px;padding:12px 14px;font-size:13px;line-height:1.5;color:var(--ink)}
+    .lpb .askcard .askurg svg{flex:none;width:17px;height:17px;fill:var(--stamp-text);margin-top:1px}
+    .lpb .askcard .askwa{display:block;text-align:center;margin:14px 0 0;font-size:13.5px;font-weight:700;color:var(--cta)}
+    </style>@endpush
+    @endonce
+    <aside id="ask" style="display:flex;flex-direction:column;gap:16px">
+      @include('partials.refund-seal-band', ['flush' => false])
+      <form class="askcard" onsubmit="return bpAsk(event)">
+        <p class="eyebrow">Get started with your Schengen visa consultants</p>
+        <h3>Your Schengen visa starts with a 30-second message.</h3>
+        <p class="asksub">Tell us where you're going. Your dedicated Schengen visa consultant replies in 30 minutes. <b>Honestly.</b></p>
+        <label for="ask-name">Your name</label>
+        <input id="ask-name" type="text" placeholder="Jane Smith" autocomplete="name">
+        <label for="ask-dest">Where are you travelling?</label>
+        <select id="ask-dest"><option value="">Select a Schengen country…</option>@foreach($heroDests as $hd)<option>{{ $hd }}</option>@endforeach</select>
+        <button class="wabtn" type="submit">@include('partials.wa-glyph')Check my case free</button>
+        <div class="asktrig"><span><i></i>No payment needed</span><span><i></i>100% refund if refused</span><span><i></i>UK-registered consultancy</span></div>
+        <p class="askurg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg>The earlier you start, the more appointment options your consultant has.</p>
+        <a class="askwa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">Prefer WhatsApp? Message us directly &rarr;</a>
+      </form>
     </aside>
+    <script>function bpAsk(e){e.preventDefault();var n=(document.getElementById('ask-name')||{}).value||'';var d=(document.getElementById('ask-dest')||{}).value||'';var t='Hi Beyond Passports, please check my Schengen visa case for free.'+(n?(' My name is '+n+'.'):'')+(d?(' I am going to '+d+'.'):'');window.open('{{ $wa }}?text='+encodeURIComponent(t),'_blank');return false;}</script>
     @include('partials.disclaimer-strip', ['wrap' => false])
     </div>
   </div>
