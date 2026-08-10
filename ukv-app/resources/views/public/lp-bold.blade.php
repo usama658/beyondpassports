@@ -403,7 +403,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .faq{background:radial-gradient(1000px 500px at 30% -10%,#eef2f7,#E7ECF2)}
 .lpb .faq .fhd{margin:0 0 26px}
 .lpb .faq .fhd .fsub{color:var(--muted);font-size:16.5px;margin:12px 0 0;max-width:56ch}
-.lpb .faq .fsplit{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:start}
+.lpb .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
 .lpb .faq .flist{display:flex;flex-direction:column;gap:12px}
 .lpb .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
 .lpb .faq .fcard.open{border-color:var(--stamp);box-shadow:var(--sh)}
@@ -882,7 +882,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="fcard{{ $loop->first ? ' open' : '' }}{{ !empty($f['key']) ? ' key' : '' }}"><p class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></p><div class="fa"><div class="fain">{!! $f['a'] !!}</div></div></div>
       @endforeach
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:22px">
     @once
     @push('head')<style>
     .lpb .askcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:26px;box-shadow:var(--sh2);position:relative;overflow:hidden}
