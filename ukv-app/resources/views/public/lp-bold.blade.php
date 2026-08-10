@@ -713,6 +713,10 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .baecard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 4px}
 .lpb .baecard p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
 .lpb .baealso{color:var(--muted);font-size:13px;line-height:1.6;margin:14px 0 0}.lpb .baealso b{color:var(--ink)}
+.lpb .baestrip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px}
+.lpb .baestrip .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa);flex:none}
+.lpb .baestrip span{font-size:12.5px;color:#cfe0dd}.lpb .baestrip b{color:#fff;font-weight:800}
+.lpb .baestrip .sep{width:1px;height:14px;background:rgba(255,255,255,.16)}
 </style>
 @endonce
 
@@ -764,7 +768,7 @@ html,body{overflow-x:clip;max-width:100%}
       <h2 class="baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
       <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
       <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
-      <p class="baesub">Free. No payment, no obligation. A named consultant replies within 30 minutes, 7 days a week.</p>
+      <div class="baestrip"><span class="dot"></span><span><b>Free</b>, no obligation</span><span class="sep"></span><span>A named consultant replies in <b>30 min</b>, 7 days a week</span></div>
     </div>
     <div class="baer">
       <div class="baegrid">
