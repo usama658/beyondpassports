@@ -552,15 +552,6 @@ html,body{overflow-x:clip;max-width:100%}
 </div></div></section>
 
 {{-- PATHS — horizontal "start where you are" chips, before the trust bar --}}
-<section class="pathband" id="paths"><div class="wrap">
-  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
-  <div class="sitrow">
-    <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need Schengen visa appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment availability across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
-    <a class="sit" data-thx="agent" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Schengen visa specialist?</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa specialists prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
-    <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
-  </div>
-</div></section>
-
 {{-- TRUST BAR --}}
 <section class="tbar-f" id="badges"><div class="wrap"><div class="row">
   <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Schengen visa</b> consultancy</span></span>
@@ -664,6 +655,15 @@ html,body{overflow-x:clip;max-width:100%}
     @endforeach
   </div>
   <p class="rnote">Real orders completed this year, shared with each client's permission. The order reference on every review is verifiable on request.</p>
+</div></section>
+
+<section class="pathband" id="paths"><div class="wrap">
+  <div class="pathhead"><span class="k">Start where you are</span><span class="s">Pick the path that fits, we reply within 30 minutes</span></div>
+  <div class="sitrow">
+    <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Need Schengen visa appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track Schengen visa appointment availability across all 29 countries daily and secure appointments most applicants never find.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="agent" href="{{ $wa }}?text=Hi%2C%20I%27ve%20done%20this%20before%20and%20just%20want%20you%20to%20prepare%20my%20Schengen%20documents."><span class="tx"><span class="st">Schengen visa specialist?</span><span class="q">"Just handle it for me"</span><p class="d">You know the process. Our Schengen visa specialists prepare your documents, book your appointment and coordinate every document.</p></span><span class="chev">→</span></a>
+    <a class="sit" data-thx="family" href="{{ $wa }}?text={{ rawurlencode("Hi, we're applying for Schengen visas together as a couple/family. Can you prepare our applications together so nothing gets missed?") }}"><span class="tx"><span class="st">Couple or family</span><span class="q">"We're applying together"</span><p class="d">Applying together? Our Schengen visa consultants prepare every file together, so no weak case drags the group down.</p></span><span class="chev">→</span></a>
+  </div>
 </div></section>
 
 {{-- FEAR — VIS severity meter (exact refusal-risk design) --}}
