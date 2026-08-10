@@ -53,7 +53,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hrf-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5}
 .lpb .hreply{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);margin-top:10px}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
-.lpb .hero .hhead{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:15ch;margin:14px 0 0}
+.lpb .hero .hhead{font-size:2.6rem;line-height:1.08;letter-spacing:-.02em;max-width:20ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 /* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). Interactive on hover. */
 .lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:none;transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
