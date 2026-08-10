@@ -697,6 +697,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- BEFORE ANYTHING ELSE — UK-status eligibility (two-tone split) --}}
 @once
 <style>
+.lpb .bae{padding:36px 0}
 .lpb .bae2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--edge);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -50px rgba(20,34,46,.6)}
 @media(max-width:760px){.lpb .bae2{grid-template-columns:1fr}}
 .lpb .bael{background:radial-gradient(560px 340px at 84% 0,rgba(21,94,122,.55),transparent),var(--ink2);color:#dbe8ea;padding:36px 32px;display:flex;flex-direction:column}
