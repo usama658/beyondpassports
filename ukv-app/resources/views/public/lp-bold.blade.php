@@ -850,7 +850,7 @@ html,body{overflow-x:clip;max-width:100%}
 
 {{-- FAQ — accordion left + boarding-pass "ask us anything" card right --}}
 <section class="sec faq" id="faq"><div class="wrap">
-  <div class="fhd"><p class="eyebrow">Straight answers</p><h2 class="h2">Questions? We've got answers.</h2><p class="fsub">What we do, what it costs, and what we won't promise. If yours isn't here, just ask.</p></div>
+  <div class="fhd"><p class="eyebrow">Schengen Visa Consultants UK</p><h2 class="h2">Questions? We've got answers.</h2><p class="fsub">What we do, what it costs, and what we won't promise. If yours isn't here, just ask.</p></div>
   <div class="fsplit">
     <div class="flist">
       @php
