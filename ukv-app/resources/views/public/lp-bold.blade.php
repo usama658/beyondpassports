@@ -699,7 +699,7 @@ html,body{overflow-x:clip;max-width:100%}
 <style>
 .lpb .bae2{display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--edge);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -50px rgba(20,34,46,.6)}
 @media(max-width:760px){.lpb .bae2{grid-template-columns:1fr}}
-.lpb .bael{background:radial-gradient(520px 320px at 18% 0,rgba(46,154,140,.35),transparent),var(--ink2);color:#dbe8ea;padding:36px 32px;display:flex;flex-direction:column}
+.lpb .bael{background:radial-gradient(560px 340px at 84% 0,rgba(21,94,122,.55),transparent),var(--ink2);color:#dbe8ea;padding:36px 32px;display:flex;flex-direction:column}
 .lpb .bael .eyebrow{color:#7fd7c9}.lpb .bael .eyebrow::before{background:#7fd7c9}
 .lpb .baeh{color:#fff;font-size:clamp(24px,2.7vw,32px);line-height:1.12;letter-spacing:-.02em;margin:12px 0 12px;max-width:22ch}
 .lpb .baeh .hl-r{color:#ffb4a6}
