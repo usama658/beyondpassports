@@ -550,7 +550,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="cbwrap"><input type="text" id="lpb-dest" class="cb-input" placeholder="Search or select a Schengen country…" role="combobox" aria-expanded="false" aria-controls="lpbDestList" aria-autocomplete="list"><button type="button" class="cb-caret" id="lpbDestCaret" tabindex="-1" aria-label="Show destination list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button></div>
       <ul class="cb-list" id="lpbDestList"></ul>
     </div>
-    <button class="btn wa" type="submit">@include('partials.wa-glyph')Check my case</button>
+    <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
     <div class="ftrust">
       <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span><span><b>100% refund</b> if the consulate refuses after we prepare your file.</span></span>
       <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg></span><span>A <b>named consultant replies within 30 minutes</b>, 7 days a week. We never share your details.</span></span>
