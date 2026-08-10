@@ -537,7 +537,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
     <input type="text" id="lpb-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-    <p class="fl"><span class="dot"></span>Case check · reply within 30 minutes</p>
+    <p class="fl"><span class="dot"></span>Free case check · Answer in 30 minutes</p>
     <div class="row"><div class="fld"><label for="lpb-name">Your name</label><input type="text" id="lpb-name" placeholder="Jane Smith"></div></div>
     <div class="row"><div class="fld"><label for="lpb-phone">Phone</label>@include('partials.phone-country', ['id' => 'lpb-phone', 'name' => 'lpb-phone', 'placeholder' => '7911 123456'])</div></div>
     <div class="combo" id="lpbDest">
