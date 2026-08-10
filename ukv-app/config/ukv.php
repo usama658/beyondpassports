@@ -213,6 +213,10 @@ return [
     // it works where the consent-gated GTM verification cannot. Blank = tag omitted.
     'google_site_verification' => env('UKV_GOOGLE_SITE_VERIFICATION', '1jOX6QKbeuTbBQyMBqPocBKt_JkTT0rAGwdBgZ6kIR8'),
 
+    // Cookie-consent banner toggle. false = banner hidden and no non-essential scripts
+    // load (compliant, no tracking). Set UKV_COOKIE_BANNER=true to switch it back on.
+    'cookie_banner' => env('UKV_COOKIE_BANNER', false),
+
     // Google Tag Manager container ID. NON-ESSENTIAL (analytics/marketing) — loaded
     // ONLY after the visitor accepts cookies (UK PECR), inside the cookie-consent
     // partial's loadAcceptedScripts(). Blank = GTM never loads. Configure GA4/ads tags

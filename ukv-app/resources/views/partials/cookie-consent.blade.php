@@ -3,7 +3,11 @@
      the `ukv_consent` cookie for 180 days. No JS = no banner + no non-essential
      scripts load, so the default state is compliant.
 
-     To gate another non-essential script later, add it inside loadAcceptedScripts(). --}}
+     To gate another non-essential script later, add it inside loadAcceptedScripts().
+
+     TOGGLE: hidden while config('ukv.cookie_banner') is false (env UKV_COOKIE_BANNER).
+     Off = no banner and no non-essential scripts load, which is the compliant default. --}}
+@php if (! config('ukv.cookie_banner', false)) return; @endphp
 @once
 <div id="ck-consent" class="ck-consent" role="dialog" aria-live="polite" aria-label="Cookie choices" hidden>
   <div class="ck-inner">
