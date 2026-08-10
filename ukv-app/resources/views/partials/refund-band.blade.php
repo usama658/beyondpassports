@@ -36,7 +36,7 @@
   <div class="in">
     <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
     <div class="tx">
-      <div class="k">Our Refund Promise</div>
+      <div class="k">{{ $kicker ?? 'Our Refund Promise' }}</div>
       <h3>{{ $heading ?? "Refused? We refund 100% of your service fee." }}</h3>
       @php $terms = $termsHref ?? '/legal#refunds'; @endphp
       <div class="pills">
