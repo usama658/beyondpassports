@@ -1062,6 +1062,23 @@
   }
   .sva .reveal { opacity: 1; transform: none; }
 }
+
+/* Default site trust bar (.tbar-f) — core desktop styling. The global ukv.css only
+   ships the mobile carousel; the navy band + flex row live in each page's own CSS
+   (home.blade.php has its own copy). Scoped to .sva and given explicit padding
+   because .sva *{padding:0} zeroes the shared .wrap. */
+.sva .tbar-f { padding: 0; background:
+    radial-gradient(520px 200px at 12% 0%, rgba(21,94,122,.45), transparent 60%),
+    radial-gradient(520px 200px at 92% 100%, rgba(46,154,140,.42), transparent 60%),
+    var(--navy); color:#fff; }
+.sva .tbar-f .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.sva .tbar-f .row { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:16px 0; }
+.sva .tbar-f .ti { display:flex; align-items:center; gap:9px; font:600 14px var(--font-display); color:#fff; white-space:nowrap; }
+.sva .tbar-f .ti svg { width:20px; height:20px; color:#7fd1b4; flex:none; }
+.sva .tbar-f .ti b { color:#7fd1b4; font-weight:800; }
+@media (max-width:760px) {
+  .sva .tbar-f .wrap { padding:0; }
+}
 </style>
 @endpush
 
