@@ -52,8 +52,8 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hrf-t b{display:block;font-size:14px;font-weight:800;color:var(--ink)}
 .lpb .hrf-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5}
 .lpb .hreply{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);margin-top:10px}
-.lpb .ftrust{margin-top:14px;display:flex;flex-direction:column;gap:10px}
-.lpb .ftrust .ln{display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.5;color:#8a959d}
+.lpb .ftrust{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.lpb .ftrust .ln{display:flex;align-items:center;justify-content:center;gap:10px;font-size:12.5px;line-height:1.5;color:#8a959d;text-align:left}
 .lpb .ftrust .ln b{color:#6a757d;font-weight:700}
 .lpb .ftrust .ic{flex:none;width:28px;height:28px;border-radius:8px;background:rgba(46,154,140,.12);display:grid;place-items:center}
 .lpb .ftrust .ic svg{width:16px;height:16px;fill:var(--stamp-text)}
