@@ -539,7 +539,7 @@ html,body{overflow-x:clip;max-width:100%}
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">The UK's Schengen Visa Consultancy That Prepares Everything and <span class="hl-r">Refunds You If Refused.</span></h2>
     <p class="hsub">The UK's specialist Schengen visa consultancy. We prepare bulletproof applications, track appointment availability across 29 countries daily, and guarantee a full refund if refused. <strong>93% approval rate across 2,000+ UK cases.</strong></p>
-    <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
+    <p class="hnote">Applying from inside the UK? <strong>Students, ILR holders, work-permit holders and everyone on other UK immigration routes now hold their status as a UKVI eVisa</strong> (the BRP card was phased out). You can apply, and your passport does not need to be European.</p>
     <div class="hcta">
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">@include('partials.wa-glyph')Check my case free on WhatsApp</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
