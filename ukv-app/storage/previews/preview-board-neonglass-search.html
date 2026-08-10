@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neon-glass board — country search</title>
+<style>
+  :root{--edge:#dde3ec;--muted:#5d6b76;--cta:#155E7A;--wa:#25D366;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .open{--c:#1F6E63;--cbg:#e7f4ef;--soft:#f5faf8}.tight{--c:#b5791f;--cbg:#faeed6;--soft:#fdf9ef}.none{--c:#c0392b;--cbg:#fbe4e0;--soft:#fef4f2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;color:#16222E;background:#eef2f6;padding:26px 16px 90px}
+  .wrap{max-width:800px;margin:0 auto}
+  h1{font-size:17px;color:#155E7A;font-weight:800;margin-bottom:3px}.subt{font-size:12.5px;color:#5d6b76;margin-bottom:16px}
+  .sec{background:#fff;border:1px solid var(--edge);border-radius:18px;padding:20px}
+  .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 2px 14px}
+  .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}.ngleg>span{display:inline-flex;align-items:center;gap:6px}
+  .nghd .d{width:8px;height:8px;border-radius:50%}.nghd .d.open{background:#1F6E63}.nghd .d.tight{background:#b5791f}.nghd .d.none{background:#c0392b}
+  .ngtick{font-size:12px;font-weight:700;color:#1F6E63;display:inline-flex;align-items:center;gap:7px}
+  .ngdot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa)}
+
+  /* search bar */
+  .ngsearch{position:relative;margin:0 0 14px}
+  .ngsearch svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:#8a99a2}
+  .ngsearch input{width:100%;font:600 14px 'Outfit',sans-serif;color:#16222E;padding:12px 40px 12px 40px;border:1px solid var(--edge);border-radius:12px;background:#f7f9fb;outline:none;transition:border-color .15s,box-shadow .15s}
+  .ngsearch input:focus{border-color:#155E7A;box-shadow:0 0 0 3px rgba(21,94,122,.12);background:#fff}
+  .ngsearch .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#eef2f6;color:#5d6b76;width:26px;height:26px;border-radius:8px;cursor:pointer;font-size:15px;display:none}
+  .ngsearch .clr.on{display:block}
+
+  .nggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.nggrid{grid-template-columns:1fr}}
+  .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:var(--soft);border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5)}
+  .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
+  .ngn{font-family:var(--mono);font-size:40px;font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--c);flex:none}
+  .nginfo{flex:1;min-width:0}.ngcn{font-weight:800;font-size:16px}.ngnx{font-size:11.5px;color:#5d6b76;margin-top:1px}.ngnx b{color:#1F6E63}
+  .ngstp{display:inline-block;margin-top:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:var(--c);background:var(--cbg)}
+  .ngcta{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--c);color:#fff;font:800 11.5px 'Outfit',sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -12px var(--c)}
+  .ngcta svg{width:14px;height:14px;fill:#fff;flex:none}
+  .ngnone{grid-column:1/-1;text-align:center;color:#5d6b76;padding:22px;font-size:13px;display:none}
+  .ngnone b{color:#16222E}
+</style></head><body><div class="wrap">
+  <h1>Neon-glass board — country search</h1>
+  <p class="subt">Type a country to filter the board instantly (try "po", "ice", "land"). Empty = show all.</p>
+  <div class="sec">
+    <div class="nghd"><span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span><span class="ngtick"><span class="ngdot"></span><span id="cnt">62 slots open now</span></span></div>
+    <div class="ngsearch">
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
+      <input id="q" type="text" placeholder="Search a country…" autocomplete="off" aria-label="Search a country">
+      <button class="clr" id="clr" aria-label="Clear search">&times;</button>
+    </div>
+    <div class="nggrid" id="g"></div>
+    <p class="ngnone" id="none">No match for "<b id="term"></b>". Message us and we'll check any Schengen country.</p>
+  </div>
+</div>
+<script>
+  var WA='<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+  var D=[['France','open','Available',48],['Netherlands','tight','Limited',2],['Iceland','tight','Limited',2],['Hungary','tight','Limited',2],['Poland','none','Very limited',4],['Portugal','none','Very limited',1],['Switzerland','none','Very limited',1],['Italy','none','Very limited',1],['Norway','none','Very limited',1],['Liechtenstein','none','Very limited',1],['Germany','open','Available',12],['Spain','tight','Limited',3]];
+  var g=document.getElementById('g');
+  g.innerHTML=D.map(function(c,i){var n=c[3];return '<a class="ngcard '+c[1]+'" data-name="'+c[0].toLowerCase()+'" href="#"><div class="ngn">'+n+'</div><div class="nginfo"><div class="ngcn">'+c[0]+'</div><div class="ngnx">slot'+(n===1?'':'s')+' <b>in the next 90 days</b></div><span class="ngstp">'+c[2]+' · '+n+' slot'+(n===1?'':'s')+'</span></div><span class="ngcta">'+WA+'Secure</span></a>';}).join('');
+  var q=document.getElementById('q'),clr=document.getElementById('clr'),none=document.getElementById('none'),term=document.getElementById('term'),cnt=document.getElementById('cnt');
+  function filter(){var v=q.value.trim().toLowerCase();var shown=0,sum=0;
+    Array.prototype.forEach.call(g.children,function(card){var hit=!v||card.dataset.name.indexOf(v)>-1;card.style.display=hit?'':'none';if(hit){shown++;sum+=parseInt(card.querySelector('.ngn').textContent,10)||0;}});
+    clr.classList.toggle('on',!!v);
+    none.style.display=shown?'none':'block';term.textContent=v;
+    cnt.textContent=v?(shown+(shown===1?' country':' countries')+' · '+sum+' slots'):'62 slots open now';
+  }
+  q.addEventListener('input',filter);
+  clr.addEventListener('click',function(){q.value='';q.focus();filter();});
+</script>
+</body></html>

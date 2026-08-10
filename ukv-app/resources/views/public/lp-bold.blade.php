@@ -225,6 +225,14 @@ html,body{overflow-x:clip;max-width:100%}
 }
 /* ── MODE 4 — neon-glass (Light Mist): frosted cards, band glow edge (config ukv.slots.rows) ── */
 .lpb .bd.rows .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
+.lpb .ngsearch{position:relative;margin:0 0 14px}
+.lpb .ngsearch>svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:#8a99a2;pointer-events:none}
+.lpb .ngsearch input{width:100%;font:600 14px "Outfit",system-ui,sans-serif;color:#16222E;padding:12px 40px;border:1px solid var(--edge);border-radius:12px;background:#f7f9fb;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
+.lpb .ngsearch input:focus{border-color:#155E7A;box-shadow:0 0 0 3px rgba(21,94,122,.12);background:#fff}
+.lpb .ngsearch .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#eef2f6;color:#5d6b76;width:26px;height:26px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1;display:grid;place-items:center}
+.lpb .ngsearch .clr[hidden]{display:none}
+.lpb .ngempty{grid-column:1/-1;text-align:center;color:#5d6b76;font-size:13px;padding:20px 8px;line-height:1.5}
+.lpb .ngempty b{color:#16222E}.lpb .ngempty a{color:#155E7A;font-weight:800}
 .lpb .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 4px 14px}
 .lpb .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}
 .lpb .ngleg>span{display:inline-flex;align-items:center;gap:6px}
@@ -535,16 +543,23 @@ html,body{overflow-x:clip;max-width:100%}
   <p class="bintro">We monitor Schengen visa appointment slots at {{ \App\Support\SiteStats::appointmentOperators() }} centres in London, Manchester, and Edinburgh, updated daily.</p>
 @if(config('ukv.slots.rows'))
   {{-- MODE 4 — neon-glass (Light Mist): frosted 2-up cards, big slot count, band glow edge. --}}
-  @php $apptTotal = collect($apptCards)->sum('slots'); @endphp
-  <div class="ngstage">
+  @php $apptShown = collect($apptCards)->filter(fn ($c) => (int) ($c['slots'] ?? 0) > 0)->values(); $apptTotal = $apptShown->sum('slots'); @endphp
+  <div class="ngstage" data-slotboard>
     <div class="nghd">
       <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
-      @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span>{{ $apptTotal }} slots open now</span>@endif
+      @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span><span data-slotcount>{{ $apptTotal }} slots open now</span></span>@endif
     </div>
+    @if($apptShown->count() > 4)
+    <div class="ngsearch">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
+      <input data-slotsearch type="text" placeholder="Search a country…" autocomplete="off" aria-label="Search Schengen country">
+      <button type="button" class="clr" data-slotclear aria-label="Clear search">&times;</button>
+    </div>
+    @endif
     <div class="nggrid">
-      @forelse($apptCards as $c)
+      @forelse($apptShown as $c)
       @php $band = ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok'; $rn = (int) ($c['slots'] ?? 0); @endphp
-      <a class="ngcard {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
+      <a class="ngcard {{ $c['cls'] }}" data-slotname="{{ \Illuminate\Support\Str::lower($c['name']) }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
         <div class="ngn">{{ $rn }}</div>
         <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div><div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 90 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span></div>
         <span class="ngcta">@include('partials.wa-glyph')Secure</span>
@@ -552,8 +567,11 @@ html,body{overflow-x:clip;max-width:100%}
       @empty
       <p class="brempty" style="grid-column:1/-1">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
       @endforelse
+      <p class="ngempty" data-slotempty hidden>No live slots match “<b data-slotterm></b>”. <a href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20to%20check%20Schengen%20appointment%20availability.%20My%20travel%20dates%20are%3A%20">Message us</a> and we'll check any Schengen country.</p>
     </div>
     <div class="ngfoot"><span class="ngup">⏱ Urgent</span><span class="ngmsg">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="ngwa" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">@include('partials.wa-glyph')Message us now</a></div>
+    @php $apptTotalTxt = $apptTotal.' slot'.($apptTotal === 1 ? '' : 's').' open now'; @endphp
+    <script>(function(){var b=document.querySelector('[data-slotboard]');if(!b)return;var q=b.querySelector('[data-slotsearch]'),clr=b.querySelector('[data-slotclear]'),cards=b.querySelectorAll('.ngcard'),empty=b.querySelector('[data-slotempty]'),term=b.querySelector('[data-slotterm]'),cnt=b.querySelector('[data-slotcount]');if(!q)return;var base=@json($apptTotalTxt);function f(){var v=q.value.trim().toLowerCase(),shown=0,sum=0;cards.forEach(function(c){var hit=!v||c.getAttribute('data-slotname').indexOf(v)>-1;c.hidden=!hit;if(hit){shown++;sum+=parseInt((c.querySelector('.ngn')||{}).textContent,10)||0;}});if(clr)clr.hidden=!v;if(empty)empty.hidden=shown>0;if(term)term.textContent=q.value.trim();if(cnt)cnt.textContent=v?(shown+(shown===1?' country':' countries')+' · '+sum+' slot'+(sum===1?'':'s')):base;}q.addEventListener('input',f);if(clr)clr.addEventListener('click',function(){q.value='';q.focus();f();});})();</script>
   </div>
 @else
   <div class="bpre">
