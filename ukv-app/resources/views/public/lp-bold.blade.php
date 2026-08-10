@@ -46,6 +46,12 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hcta-appt{background:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.7)}
 .lpb .hcta-appt:hover{background:var(--cta-d)}.lpb .hcta-appt svg{fill:#fff}
 @media(max-width:560px){.lpb .hcta a{flex:1 0 100%}}
+.lpb .hrf{display:flex;align-items:center;gap:13px;margin:14px 0 0;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:13px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
+.lpb .hrf-seal{flex:none;width:42px;height:42px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center}
+.lpb .hrf-seal svg{width:22px;height:22px;fill:var(--stamp-text)}
+.lpb .hrf-t b{display:block;font-size:14px;font-weight:800;color:var(--ink)}
+.lpb .hrf-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5}
+.lpb .hreply{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);margin-top:10px}
 .lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
 .lpb .hero .hhead{font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.02em;max-width:15ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
@@ -522,6 +528,11 @@ html,body{overflow-x:clip;max-width:100%}
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>See appointment availability</a>
     </div>
     <p class="hnote">Applying from inside the UK on an <strong>eVisa, a BRP, ILR, a student visa or a dependant visa?</strong> You can apply. Your passport does not need to be European.</p>
+    <div class="hrf">
+      <span class="hrf-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
+      <div class="hrf-t"><b>Fee back if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
+    </div>
+    <span class="hreply"><span class="dot"></span>Reply within 30 minutes</span>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
   <form class="formcard form" id="lpbCaseForm" autocomplete="off">
