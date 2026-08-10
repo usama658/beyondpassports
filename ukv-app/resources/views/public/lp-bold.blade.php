@@ -715,26 +715,6 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .baealso{color:var(--muted);font-size:13px;line-height:1.6;margin:14px 0 0}.lpb .baealso b{color:var(--ink)}
 </style>
 @endonce
-<section class="sec bae" id="eligibility"><div class="wrap">
-  <div class="bae2">
-    <div class="bael">
-      <span class="eyebrow">Before anything else</span>
-      <h2 class="baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
-      <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
-      <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
-      <p class="baesub">Free. No payment, no obligation. A named consultant replies within 30 minutes, 7 days a week.</p>
-    </div>
-    <div class="baer">
-      <div class="baegrid">
-        <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
-        <div class="baecard"><h3>BRP holder</h3><p>BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.</p></div>
-        <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
-        <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
-      </div>
-      <p class="baealso"><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p>
-    </div>
-  </div>
-</div></section>
 
 {{-- SECTION 2 — start where you are --}}
 <section class="sec sec2" id="how"><div class="wrap">
@@ -776,6 +756,27 @@ html,body{overflow-x:clip;max-width:100%}
 </div>
 @include('partials.disclaimer-strip')
 </section>
+
+<section class="sec bae" id="eligibility"><div class="wrap">
+  <div class="bae2">
+    <div class="bael">
+      <span class="eyebrow">Before anything else</span>
+      <h2 class="baeh">Your UK visa does not stop you. <span class="hl-r">Your passport does not either.</span></h2>
+      <p class="baeintro">Ask a Schengen visa consultant to check your status free, before you pay anything. What matters is that your UK status stays valid for three months after you return. Not which passport you hold.</p>
+      <a class="btn wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check for free whether my UK status lets me apply for a Schengen visa. My UK status is: ') }}">@include('partials.wa-glyph')Check if I qualify, free</a>
+      <p class="baesub">Free. No payment, no obligation. A named consultant replies within 30 minutes, 7 days a week.</p>
+    </div>
+    <div class="baer">
+      <div class="baegrid">
+        <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
+        <div class="baecard"><h3>BRP holder</h3><p>BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.</p></div>
+        <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
+        <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
+      </div>
+      <p class="baealso"><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p>
+    </div>
+  </div>
+</div></section>
 
 {{-- RISK "Before you apply" ledger — drafted out for now. To restore:
      @include('partials.lp-draft-risk-ledger') --}}
