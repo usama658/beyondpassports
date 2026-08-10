@@ -546,7 +546,7 @@ html,body{overflow-x:clip;max-width:100%}
       @php $band = ['open' => 'ok', 'tight' => 'lim', 'none' => 'low'][$c['cls']] ?? 'ok'; $rn = (int) ($c['slots'] ?? 0); @endphp
       <a class="ngcard {{ $c['cls'] }}" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="Secure a {{ $c['name'] }} appointment slot">
         <div class="ngn">{{ $rn }}</div>
-        <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div><div class="ngnx">Next: <b>{{ $c['week'] }}</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span></div>
+        <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div><div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 90 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span></div>
         <span class="ngcta">@include('partials.wa-glyph')Secure</span>
       </a>
       @empty

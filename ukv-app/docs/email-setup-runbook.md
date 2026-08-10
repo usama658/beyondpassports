@@ -17,7 +17,7 @@ address is needed (operator signups, role addresses, etc.).
   receives verification/confirmation mail (it lands in hello@); any portal login uses the address +
   that portal's own password.
 
-Existing forwarders → `hello@`: `complaints@`, `privacy@`, `support@`, `billing@`.
+Existing forwarders → `hello@`: `complaints@`, `privacy@`, `support@`, `billing@`, `refunds@`.
 
 ## Add a forwarder (preferred — alias, no mailbox/login)
 **cPanel UI:** Email → **Forwarders → Add Forwarder** → address e.g. `vfs`, forward to
