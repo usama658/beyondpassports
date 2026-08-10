@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Urgency footer — mobile (C4)</title>
+<style>
+  :root{--ink2:#0f2028;--red:#c0392b;--wa:#25D366}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Outfit',system-ui,'Segoe UI',sans-serif;background:#0f272e;min-height:100vh;display:grid;place-items:center;padding:22px}
+  .phone{width:390px;max-width:100%;background:#0c151a;border:9px solid #223038;border-radius:36px;padding:12px;box-shadow:0 46px 90px -30px #000}
+  .scr{border-radius:26px;overflow:hidden;background:#fff}
+  .sec{background:#fff;padding:16px 12px}
+  .cap{font-size:11px;color:#7a8791;text-align:center;margin:2px 0 12px}
+  /* board footer C4, mobile */
+  .ngfoot{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 15px;border-radius:14px;font-size:13px;color:#e6c9c6;background:radial-gradient(500px 150px at 12% 0,rgba(224,52,43,.55),transparent),var(--ink2)}
+  .ngup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:6px;padding:4px 9px;white-space:nowrap}
+  .ngmsg{flex:1;min-width:150px}.ngmsg b{color:#fff}
+  .ngwa{flex:1 0 100%;justify-content:center;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--red);font:800 13px 'Outfit',sans-serif;padding:12px;border-radius:11px;white-space:nowrap;text-decoration:none;margin-top:2px}
+  .ngwa svg{width:16px;height:16px;fill:var(--red);flex:none}
+  /* one card above for context */
+  .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fef4f2;border:1px solid #dde3ec;border-radius:15px;padding:14px;margin-bottom:11px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5)}
+  .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#c0392b;box-shadow:0 0 14px #c0392b}
+  .ngn{font-family:ui-monospace,Menlo,monospace;font-size:34px;font-weight:900;line-height:1;letter-spacing:-.05em;color:#c0392b;flex:none}
+  .nginfo{flex:1;min-width:0}.ngcn{font-weight:800;font-size:16px}.ngnx{font-size:11.5px;color:#5d6b76;margin-top:1px}.ngnx b{color:#1F6E63}
+  .ngstp{display:inline-block;margin-top:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:#c0392b;background:#fbe1dc}
+  .ngcta{flex:1 0 100%;justify-content:center;display:inline-flex;align-items:center;gap:6px;background:#c0392b;color:#fff;font:800 12.5px 'Outfit',sans-serif;padding:11px;border-radius:10px;margin-top:2px}
+  .ngcta svg{width:15px;height:15px;fill:#fff}
+</style></head><body>
+<div class="phone"><div class="scr"><div class="sec">
+  <p class="cap">Neon-glass board · urgency footer (C4) on mobile</p>
+  <a class="ngcard" href="#"><div class="ngn">1</div><div class="nginfo"><div class="ngcn">Portugal</div><div class="ngnx">Next: <b>Next Week Aug 2026</b></div><span class="ngstp">Very limited · 1 slot</span></div><span class="ngcta" id="c1"></span></a>
+  <div class="ngfoot"><span class="ngup">⏱ Urgent</span><span class="ngmsg">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="ngwa" href="#" id="w1"></a></div>
+</div></div></div>
+<script>
+  var WA='<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+  document.getElementById('c1').innerHTML=WA+'Secure';
+  document.getElementById('w1').innerHTML=WA+'Message us now';
+</script>
+</body></html>

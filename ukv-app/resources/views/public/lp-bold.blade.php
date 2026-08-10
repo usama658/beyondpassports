@@ -256,6 +256,7 @@ html,body{overflow-x:clip;max-width:100%}
   .lpb .ngcard{flex-wrap:wrap;gap:12px}
   .lpb .ngn{font-size:34px}
   .lpb .ngcta{flex:1 0 100%;justify-content:center;margin-top:2px}
+  .lpb .ngfoot .ngwa{flex:1 0 100%;justify-content:center;margin-left:0;margin-top:2px}
 }
 .lpb .hc .wk{display:flex;align-items:baseline;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .lpb .hc .wk .rel{font-size:19px;font-weight:800;line-height:1;letter-spacing:-.01em}
