@@ -57,10 +57,10 @@ class AppServiceProvider extends ServiceProvider
         // AvailabilityService::byDestination (published CentreAvailability snapshots). Feature the
         // same countries (status ok/lim, "ask" omitted), same "next available" date, same soonest-
         // first order, so the two pages never disagree. The slot-count line is the real CentreSlot
-        // total for that country (next 90 days) — the same inventory the pick-a-slot modal opens.
+        // total for that country (next 30 days) — the same inventory the pick-a-slot modal opens.
         View::composer('public.lp-bold', function ($view) {
             $availability = app(\App\Services\AvailabilityService::class)->byDestination('Schengen');
-            $windowEnd = now()->addDays(90);
+            $windowEnd = now()->addDays(30);
             // Same region order /schengen-visa groups its board by, so the two lists match card-for-
             // card (region block, soonest-first within each region), not just value-for-value.
             $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
