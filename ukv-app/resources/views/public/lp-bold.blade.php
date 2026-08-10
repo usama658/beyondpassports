@@ -805,7 +805,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="baer">
       <div class="baegrid">
         <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
-        <div class="baecard"><h3>BRP holder</h3><p>BRPs were replaced by eVisas at the end of 2024. If you still hold the card, we will tell you what proof the consulate wants now.</p></div>
+        <div class="baecard"><h3>Still holding an old BRP card?</h3><p>BRP cards were replaced by the UKVI eVisa at the end of 2024, so your status now lives in your online account. Send us your share code and we will confirm what the consulate needs.</p></div>
         <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
         <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
       </div>
@@ -855,7 +855,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="flist">
       @php
         $faqs = [
-          ['q'=>'I’m in the UK on an eVisa or a BRP. Can I apply for a Schengen visa from here?','a'=>'Yes. Anyone legally resident in the UK applies from the UK, whatever passport they hold. Your UK status needs to stay valid for at least three months after you plan to return. Send us your UKVI share code on WhatsApp and we’ll confirm your position for free. We ask for the share code rather than a photo of a document, because it is the proof the consulate accepts and it is safer for you to send.'],
+          ['q'=>'I’m in the UK on an eVisa (or an old BRP). Can I apply for a Schengen visa from here?','a'=>'Yes. Anyone legally resident in the UK applies from the UK, whatever passport they hold. UK immigration status now sits on a UKVI eVisa (BRP cards were phased out at the end of 2024). Your UK status needs to stay valid for at least three months after you plan to return. Send us your UKVI share code on WhatsApp and we’ll confirm your position for free. We ask for the share code rather than a photo of a document, because it is the proof the consulate accepts and it is safer for you to send.'],
           ['q'=>'I’m a student. Will they refuse me because I’m not working?','a'=>'No. A student file is built differently, not weakly: your university enrolment letter, your term dates, and clear evidence of who is funding the trip. Where a parent or relative is funding it, that relationship and that money both have to be evidenced properly. That is the part most student applications get wrong.'],
           ['q'=>'Does my passport make me more likely to be refused?','a'=>'Applying on a UK visa or permit rather than an EU passport means your file is read more closely, and the evidence has to answer questions an EU passport is never asked. That is a fact about the evidence bar, not a fact about you. It means the file has to be tighter, not that you should not apply. We’ll tell you honestly, before you pay, whether your case is strong, borderline, or not worth the consulate fee yet.'],
           ['q'=>'Do I have to send you my passport?','a'=>'<b>No. Never.</b> Your passport stays with you and you hand it in yourself at the visa centre. Any agent who asks you to post them your passport should be avoided.'],
