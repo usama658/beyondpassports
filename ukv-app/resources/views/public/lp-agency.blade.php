@@ -1079,6 +1079,17 @@
 @media (max-width:760px) {
   .sva .tbar-f .wrap { padding:0; }
 }
+
+/* ── HERO · Direction B (light editorial) polish ── */
+.sva .hero-spine { position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:linear-gradient(180deg, var(--teal-bright), var(--teal)); z-index:2; }
+.sva .eyebrow { display:inline-flex; align-items:center; gap:.55rem; }
+.sva .eyebrow::before { content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--teal-bright); box-shadow:0 0 0 4px rgba(46,154,140,.18); flex:none; }
+.sva .hero h1 .hl { color:var(--teal); }
+.sva .hero h1 .u { background:linear-gradient(180deg, transparent 62%, rgba(46,154,140,.28) 0); padding:0 2px; }
+.sva .proof-item { background:var(--white); border:1px solid var(--border);
+  box-shadow:0 2px 8px -4px rgba(15,25,35,.15); border-radius:999px; padding:.5rem .8rem; }
 </style>
 @endpush
 
@@ -1087,6 +1098,7 @@
 
 <!-- HERO -->
 <section class="hero">
+  <span class="hero-spine" aria-hidden="true"></span>
   <svg class="hero-landmarks" viewBox="0 0 600 180" fill="var(--navy)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- Eiffel Tower silhouette -->
     <path d="M80 180h-8l12-70 8-50h-6l-2-15h4l2-25h-2l2-20 2 20h-2l2 25h4l-2 15h-6l8 50 12 70h-8l-4-25h-12z"/>
@@ -1110,7 +1122,7 @@
 
       <p class="eyebrow">Trusted Schengen Visa Agency, UK-Based Agents</p>
 
-      <h1>Our Schengen Visa Agents Found 62 Appointments This Week. Zero Were on Public Pages.</h1>
+      <h1>Our Schengen Visa Agents Found <span class="hl u">62 Appointments</span> This Week. <span class="hl">Zero</span> Were on Public Pages.</h1>
 
       <p class="hero-sub">The UK's specialist Schengen visa agents. We track appointment availability across 29 countries daily, prepare thorough applications, and refund our service fee if the consulate refuses. <strong>93% approval rate</strong> across 2,000+ cases.</p>
 
