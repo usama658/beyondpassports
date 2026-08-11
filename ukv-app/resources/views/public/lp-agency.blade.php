@@ -1196,7 +1196,7 @@
 .sva .stk h2 .hl{color:#7fd7c9}
 .sva .stk-sub{color:#9db1ce;font-size:1rem;margin-top:11px}
 .sva .stk-meter{position:relative;margin:6px 0 0;padding-left:6px}
-.sva .stk-meter::before{content:"";position:absolute;left:27px;top:26px;bottom:34px;width:2px;background:linear-gradient(180deg,#7fd7c9,#e6a94e)}
+.sva .stk-row:not(:last-of-type) .stk-num::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);width:2px;height:20px;background:linear-gradient(180deg,rgba(127,215,201,.7),rgba(230,169,78,.6))}
 .sva .stk-row{position:relative;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:0 0 20px;margin:0}
 .sva .stk-row:last-of-type{padding-bottom:4px}
 .sva .stk-num{position:relative;z-index:1;width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(127,215,201,.4);box-shadow:0 0 0 6px var(--navy)}
@@ -1217,7 +1217,7 @@
 .sva .stk-reassure{text-align:center;font-size:.98rem;line-height:1.55;color:#cdd9d8;margin:20px 0 0}
 .sva .stk-reassure b{color:#fff}
 .sva .stk-cta{display:flex;justify-content:center;margin-top:18px}
-@media(max-width:600px){.sva .stk-meter::before{left:24px}.sva .stk-row{grid-template-columns:50px 1fr;gap:13px}.sva .stk-num{width:50px;height:50px;font-size:18px}}
+@media(max-width:600px){.sva .stk-row{grid-template-columns:50px 1fr;gap:13px}.sva .stk-num{width:50px;height:50px;font-size:18px}}
 
 /* "How our agency works" — ghost-number process cards (light band) */
 .sva .gpb{background:linear-gradient(180deg,#fbfdfe,#f4f6fa)}
