@@ -1165,48 +1165,54 @@
 .sva .lpb .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
 @media(max-width:900px){.sva .lpb .rgrid{grid-template-columns:1fr}}
 
-/* "What's at stake" — VIS refusal severity meter (dark, echoes consultancy fear band) */
+/* "What's at stake" — escalating VIS refusal rail (dark, teal->amber severity) */
 .sva .stk{position:relative;color:#eef3fb;padding:clamp(3rem,6vw,4.75rem) 1.5rem;overflow:hidden;background:
-  radial-gradient(680px 340px at 85% -10%,rgba(224,52,43,.34),transparent 60%),
-  radial-gradient(620px 320px at 5% 110%,rgba(21,94,122,.4),transparent 60%),
+  radial-gradient(680px 340px at 88% -10%,rgba(230,169,78,.16),transparent 60%),
+  radial-gradient(620px 320px at 5% 110%,rgba(21,94,122,.42),transparent 60%),
   var(--navy)}
-.sva .stk-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
-.sva .stk-head{text-align:center;max-width:60ch;margin:0 auto 34px}
-.sva .stk-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff6a60;margin-bottom:14px}
-.sva .stk-label .fd{width:8px;height:8px;border-radius:50%;background:#ff6a60;box-shadow:0 0 10px #ff6a60;animation:stkpulse 1.6s ease-in-out infinite}
+.sva .stk-inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
+.sva .stk-head{text-align:center;max-width:60ch;margin:0 auto 30px}
+.sva .stk-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#e6a94e;margin-bottom:14px}
+.sva .stk-label .fd{width:8px;height:8px;border-radius:50%;background:#e6a94e;box-shadow:0 0 10px #e6a94e;animation:stkpulse 1.6s ease-in-out infinite}
 @keyframes stkpulse{0%,100%{opacity:1}50%{opacity:.35}}
 .sva .stk h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.13;letter-spacing:-.02em}
 .sva .stk h2 .hl{color:#7fd7c9}
 .sva .stk-sub{color:#9db1ce;font-size:1rem;margin-top:11px}
-.sva .stk-row{display:grid;grid-template-columns:52px 1fr 130px;gap:20px;align-items:center;padding:17px 20px;background:linear-gradient(180deg,rgba(19,40,76,.5),rgba(13,28,54,.5));border:1px solid rgba(255,255,255,.1);border-radius:14px;margin-bottom:12px}
-.sva .stk-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:#ff6a60}
-.sva .stk-row h3{font-weight:700;font-size:1.02rem;color:#fff;margin:0}
-.sva .stk-row p{color:#9db1ce;font-size:.9rem;margin:4px 0 0}
-.sva .stk-row p b{color:#fff}
-.sva .stk-bar{height:8px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden}
-.sva .stk-bar span{display:block;height:100%;background:linear-gradient(90deg,#ff9a9a,#ff6a60)}
-.sva .stk-meter .stk-row:nth-of-type(1) .stk-bar span{width:25%}
-.sva .stk-meter .stk-row:nth-of-type(2) .stk-bar span{width:50%}
-.sva .stk-meter .stk-row:nth-of-type(3) .stk-bar span{width:75%}
-.sva .stk-meter .stk-row:nth-of-type(4) .stk-bar span{width:100%}
-.sva .stk-call{background:rgba(224,52,43,.1);border:1px solid rgba(224,52,43,.3);border-left:4px solid #ff6a60;border-radius:14px;padding:20px 22px;margin-top:22px}
-.sva .stk-call p{color:#c9d6e8;font-size:.98rem;line-height:1.6;margin:0}
-.sva .stk-call p+p{margin-top:10px}
-.sva .stk-call b{color:#fff}.sva .stk-call .cost b{color:#ff6a60}
-.sva .stk-cta{display:flex;justify-content:center;margin-top:26px}
-@media(max-width:640px){.sva .stk-row{grid-template-columns:44px 1fr;gap:14px}.sva .stk-bar{grid-column:1/-1}}
+.sva .stk-meter{position:relative;margin:6px 0 0;padding-left:6px}
+.sva .stk-meter::before{content:"";position:absolute;left:27px;top:26px;bottom:34px;width:2px;background:linear-gradient(180deg,#7fd7c9,#e6a94e)}
+.sva .stk-row{position:relative;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:0 0 20px;margin:0}
+.sva .stk-row:last-of-type{padding-bottom:4px}
+.sva .stk-num{position:relative;z-index:1;width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(127,215,201,.4);box-shadow:0 0 0 6px var(--navy)}
+.sva .stk-row:nth-of-type(3) .stk-num{border-color:rgba(230,169,78,.45)}
+.sva .stk-row:nth-of-type(4) .stk-num{border-color:rgba(230,169,78,.65);background:linear-gradient(160deg,rgba(230,169,78,.22),rgba(230,169,78,.05))}
+.sva .stk-row h3{font-weight:800;font-size:1.02rem;color:#fff;margin:6px 0 4px}
+.sva .stk-row p{color:#a9bbba;font-size:.9rem;line-height:1.5;margin:0}
+.sva .stk-row p b{color:#7fd7c9}
+.sva .stk-bar{display:none}
+.sva .stk-call{background:rgba(230,169,78,.1);border:1px solid rgba(230,169,78,.28);border-left:4px solid #e6a94e;border-radius:14px;padding:18px 20px;margin-top:20px}
+.sva .stk-call p{color:#e7d7bd;font-size:.95rem;line-height:1.55;margin:0}
+.sva .stk-call b{color:#fff}
+.sva .stk-cost{margin-top:14px;padding:20px;border-radius:16px;text-align:center;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12)}
+.sva .stk-cost .big{font-weight:900;font-size:1.9rem;color:#fff;letter-spacing:-.02em;line-height:1}
+.sva .stk-cost .big span{color:#e6a94e}
+.sva .stk-cost p{font-size:.82rem;line-height:1.5;color:#9fb1b0;margin:8px 0 0}
+.sva .stk-cost p b{color:#fff}
+.sva .stk-reassure{text-align:center;font-size:.98rem;line-height:1.55;color:#cdd9d8;margin:20px 0 0}
+.sva .stk-reassure b{color:#fff}
+.sva .stk-cta{display:flex;justify-content:center;margin-top:18px}
+@media(max-width:600px){.sva .stk-meter::before{left:24px}.sva .stk-row{grid-template-columns:50px 1fr;gap:13px}.sva .stk-num{width:50px;height:50px;font-size:18px}}
 
-/* "How our agency works" — ghost-number process cards (dark band) */
-.sva .gpb{background:radial-gradient(700px 320px at 50% -8%,rgba(21,94,122,.4),transparent 60%),var(--navy);color:#fff}
-.sva .gpb .section-eyebrow{color:#7fd7c9}
-.sva .gpb h2{color:#fff}
-.sva .gpb .section-sub{color:#9db1ce}
-.sva .gpb .gcard{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 22px 24px;transition:transform .2s,border-color .25s}
-.sva .gpb .gcard:hover{transform:translateY(-6px);border-color:rgba(127,215,201,.5)}
-.sva .gpb .ghost{position:absolute;top:-24px;right:2px;font:900 118px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(127,215,201,.1);pointer-events:none;letter-spacing:-.05em}
-.sva .gpb .gtag{position:relative;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7fd7c9;margin-bottom:11px;display:inline-block}
-.sva .gpb .gcard h3{position:relative;font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
-.sva .gpb .gcard p{position:relative;font-size:12.8px;line-height:1.55;color:#b7c7c5}
+/* "How our agency works" — ghost-number process cards (light band) */
+.sva .gpb{background:linear-gradient(180deg,#fbfdfe,#f4f6fa)}
+.sva .gpb .section-eyebrow{color:#1f6e63}
+.sva .gpb h2{color:var(--ink)}
+.sva .gpb .section-sub{color:var(--muted)}
+.sva .gpb .gcard{position:relative;overflow:hidden;background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px 22px 22px;box-shadow:0 14px 34px -26px rgba(15,25,35,.4);transition:transform .2s,box-shadow .25s}
+.sva .gpb .gcard:hover{transform:translateY(-5px);box-shadow:0 22px 46px -28px rgba(15,25,35,.45)}
+.sva .gpb .ghost{position:absolute;top:-20px;right:2px;font:900 108px/1 "Outfit",ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(21,94,122,.07);pointer-events:none;letter-spacing:-.05em}
+.sva .gpb .gtag{position:relative;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1f6e63;margin-bottom:10px;display:inline-block}
+.sva .gpb .gcard h3{position:relative;font-size:16.5px;font-weight:800;color:var(--ink);margin-bottom:7px}
+.sva .gpb .gcard p{position:relative;font-size:13px;line-height:1.5;color:var(--muted)}
 
 /* Promise + Team — one section, two columns */
 .sva .pt2{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:stretch}
@@ -1600,16 +1606,19 @@
       <p class="stk-sub">Not "if", when. It happens. The question is whether it happens to you.</p>
     </div>
     <div class="stk-meter reveal">
-      <div class="stk-row"><div class="stk-num">1</div><div><h3>You get refused</h3><p>Your application is rejected. That refusal is logged in <b>VIS, the shared EU database</b>.</p></div><div class="stk-bar"><span></span></div></div>
-      <div class="stk-row"><div class="stk-num">2</div><div><h3>29 countries see it</h3><p>Not just the country you applied to. Every Schengen country, <b>all 29</b>, can see your refusal on file.</p></div><div class="stk-bar"><span></span></div></div>
-      <div class="stk-row"><div class="stk-num">3</div><div><h3>It stays for 5 years</h3><p>Not 1 year. Not 2. <b>Five years</b> on a shared record that follows every future application you make.</p></div><div class="stk-bar"><span></span></div></div>
-      <div class="stk-row"><div class="stk-num">4</div><div><h3>You start at minus one</h3><p>Your next application doesn't start at zero. <b>The burden of proof flips.</b> You must prove you're not a risk.</p></div><div class="stk-bar"><span></span></div></div>
+      <div class="stk-row"><div class="stk-num">1</div><div><h3>You get refused</h3><p>Your application is rejected. That refusal is logged in <b>VIS, the shared EU database</b>.</p></div></div>
+      <div class="stk-row"><div class="stk-num">2</div><div><h3>29 countries see it</h3><p>Not just the country you applied to. Every Schengen country, <b>all 29</b>, can see your refusal on file.</p></div></div>
+      <div class="stk-row"><div class="stk-num">3</div><div><h3>It stays for 5 years</h3><p>Not 1 year. Not 2. <b>Five years</b> on a shared record that follows every future application you make.</p></div></div>
+      <div class="stk-row"><div class="stk-num">4</div><div><h3>You start at minus one</h3><p>Your next application doesn't start at zero. <b>The burden of proof flips.</b> You must prove you're not a risk.</p></div></div>
     </div>
     <div class="stk-call reveal">
       <p><b>Most refusals we review describe something preventable.</b> Wrong bank statements. Missing employer letters. Itineraries that didn't add up.</p>
-      <p class="cost">Each refusal costs you <b>£180+</b> in embassy fees, months of waiting, and a 5-year mark on your record. That's <b>£500+</b> in real cost, for a mistake a 30-minute document review catches every time.</p>
-      <p>Our Schengen visa agents check everything <b>before you pay a penny</b> to the embassy.</p>
     </div>
+    <div class="stk-cost reveal">
+      <div class="big">£500+ <span>real cost</span></div>
+      <p>Each refusal: <b>£180+</b> embassy fees, months of waiting, and a 5-year mark. For a mistake a 30-minute document review catches every time.</p>
+    </div>
+    <p class="stk-reassure reveal">Our Schengen visa agents check everything <b>before you pay a penny</b> to the embassy.</p>
     <div class="stk-cta reveal">
       <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free document check before I apply.') }}" class="cta-btn" style="width:auto">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
@@ -1636,7 +1645,7 @@
     </div>
 
     <div style="margin-top: 2rem; text-align: center;">
-      <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}" class="cta-btn" style="max-width: 300px; margin: 0 auto;">
+      <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}" class="cta-btn" style="max-width: 320px; margin: 0 auto; background:var(--teal); box-shadow:0 16px 30px -16px rgba(21,94,122,.6);">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
         <span style="position:relative;z-index:1">Start step 1 now →</span>
       </a>
