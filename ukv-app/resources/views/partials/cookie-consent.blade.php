@@ -1,14 +1,21 @@
-{{-- Cookie consent banner (UK PECR / GDPR). Non-essential third-party scripts
-     (currently Trustpilot) load ONLY after the visitor accepts. Choice stored in
-     the `ukv_consent` cookie for 180 days. No JS = no banner + no non-essential
-     scripts load, so the default state is compliant.
+{{-- Cookie consent banner + analytics loader.
 
-     To gate another non-essential script later, add it inside loadAcceptedScripts().
+     TWO MODES via config('ukv.cookie_banner') (env UKV_COOKIE_BANNER):
 
-     TOGGLE: hidden while config('ukv.cookie_banner') is false (env UKV_COOKIE_BANNER).
-     Off = no banner and no non-essential scripts load, which is the compliant default. --}}
-@php if (! config('ukv.cookie_banner', false)) return; @endphp
+       true  = PECR consent banner shown. Non-essential tags (GTM / GA4 / Clarity /
+               Google Ads / Meta Pixel) load ONLY after the visitor clicks "Accept all".
+               This is the UK-compliant mode.
+
+       false = NO banner. Analytics load IMMEDIATELY and UNGATED (no consent step).  <-- current
+               NOTE: loading non-essential cookies without consent is NOT UK PECR
+               compliant — deliberate, per owner request. To return to the compliant
+               consent flow, set UKV_COOKIE_BANNER=true (then clear config cache).
+
+     Banner choice is stored in the `ukv_consent` cookie for 180 days.
+     Each tag also self-gates on its ID being configured (ukv.gtm_id etc.). --}}
+@php $bannerOn = config('ukv.cookie_banner', false); @endphp
 @once
+@if ($bannerOn)
 <div id="ck-consent" class="ck-consent" role="dialog" aria-live="polite" aria-label="Cookie choices" hidden>
   <div class="ck-inner">
     <p class="ck-text">
@@ -37,6 +44,7 @@
   .ck-consent .ck-accept:hover{filter:brightness(1.06)}
   @media(max-width:560px){.ck-consent .ck-actions{width:100%}.ck-consent .ck-btn{flex:1}}
 </style>
+@endif
 <script>
 (function () {
   var NAME = 'ukv_consent';
@@ -47,32 +55,31 @@
     if(loaded) return; loaded=true;
     // Trustpilot bootstrap now loads ungated in partials/trustpilot (reviews show without consent).
 @if (config('ukv.gtm_id'))
-    // Google Tag Manager (non-essential — analytics/marketing). Consent-gated.
+    // Google Tag Manager (analytics/marketing — also carries Google Ads tags).
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ config('ukv.gtm_id') }}');
 @endif
 @if (config('ukv.ga4_id'))
-    // Google Analytics 4 (non-essential — analytics). Consent-gated.
+    // Google Analytics 4.
     (function(){var g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id={{ config('ukv.ga4_id') }}';document.head.appendChild(g);})();
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ config('ukv.ga4_id') }}');
 @endif
 @if (config('ukv.clarity_id'))
-    // Microsoft Clarity (non-essential — analytics). Consent-gated.
+    // Microsoft Clarity.
     (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','{{ config('ukv.clarity_id') }}');
 @endif
 @if (config('ukv.meta_pixel_id'))
-    // Meta Pixel is already loaded in <head> with consent revoked (partials.meta-pixel).
-    // Granting consent now releases the queued PageView + any later events. (UK PECR)
+    // Meta Pixel is loaded in <head> with consent revoked (partials.meta-pixel).
+    // Granting here releases the queued PageView + later events.
     if(window.fbq){ fbq('consent','grant'); }
 @endif
-    // LinkedIn profile badge (non-essential — sets LinkedIn cookies). Consent-gated;
-    // only fetched when a badge is actually on the page (e.g. the About page).
+    // LinkedIn profile badge (only when a badge is present on the page).
     if(document.querySelector('.LI-profile-badge')){var li=document.createElement('script');li.async=true;li.defer=true;li.src='https://platform.linkedin.com/badges/js/profile.js';document.head.appendChild(li);}
   }
+@if ($bannerOn)
   var banner=document.getElementById('ck-consent');
   var choice=get(NAME);
-  // GTM Preview / Tag Assistant debug session: load the container immediately so the
-  // debug channel attaches at page load. Only triggers for a debug session (gtm_debug
-  // param or referral from tagassistant.google.com) — real visitors stay consent-gated.
+  // GTM Preview / Tag Assistant debug session: load immediately so the debug channel
+  // attaches at page load. Real visitors stay consent-gated.
   if(/[?&]gtm_debug=/.test(location.search) || document.referrer.indexOf('tagassistant.google.com')!==-1){ loadAcceptedScripts(); }
   if(choice==='accepted'){ loadAcceptedScripts(); }
   else if(choice!=='rejected'){ if(banner) banner.hidden=false; }
@@ -80,6 +87,10 @@
   var a=document.getElementById('ck-accept'), r=document.getElementById('ck-reject');
   if(a) a.addEventListener('click', function(){ done('accepted'); });
   if(r) r.addEventListener('click', function(){ done('rejected'); });
+@else
+  // No banner (UKV_COOKIE_BANNER=false): load analytics immediately, ungated.
+  loadAcceptedScripts();
+@endif
 })();
 </script>
 @endonce
