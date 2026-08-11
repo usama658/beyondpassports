@@ -1261,7 +1261,8 @@
 @media(max-width:860px){.sva .pt2{grid-template-columns:1fr}}
 
 /* FAQ + side form card — two columns */
-.sva .faqwrap{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:start}
+.sva .faqwrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:36px;align-items:start}
+.sva .faq-aside{order:-1}
 .sva .faq-main .faq-list{margin-top:1.4rem}
 .sva .faq-aside{position:sticky;top:96px}
 .sva .faq-formcard{background:radial-gradient(360px 180px at 15% 0,rgba(46,154,140,.22),transparent 60%),var(--navy);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 24px;color:#fff;box-shadow:0 30px 60px -34px rgba(15,25,35,.5)}
@@ -1273,7 +1274,7 @@
 .sva .faq-formcard .close-trust{justify-content:flex-start;margin-top:14px;font-size:.72rem;color:#9db1ce}
 .sva .faq-formcard .consent-check{display:block;font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.55)}
 .sva .faq-formcard .consent-check input{margin:3px 7px 0 0;vertical-align:top}
-@media(max-width:900px){.sva .faqwrap{grid-template-columns:1fr}.sva .faq-aside{position:static}.sva .faq-formcard{max-width:400px;margin:0 auto}}
+@media(max-width:900px){.sva .faqwrap{grid-template-columns:1fr}.sva .faq-aside{position:static;order:0}.sva .faq-formcard{max-width:400px;margin:0 auto}}
 
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
