@@ -1624,7 +1624,7 @@
       <p class="stk-sub">Not "if", when. It happens. The question is whether it happens to you.</p>
     </div>
     <div class="stk-meter reveal">
-      <div class="stk-row"><div class="stk-num">1</div><div><h3>You get refused</h3><p>Your application is rejected. That refusal is logged in <b>VIS, the shared EU database</b>.</p></div></div>
+      <div class="stk-row"><div class="stk-num">1</div><div><h3>You get refused</h3><p>Your Schengen visa application from UK is rejected. That refusal is logged in <b>VIS, the shared EU database</b>.</p></div></div>
       <div class="stk-row"><div class="stk-num">2</div><div><h3>29 countries see it</h3><p>Not just the country you applied to. Every Schengen country, <b>all 29</b>, can see your refusal on file.</p></div></div>
       <div class="stk-row"><div class="stk-num">3</div><div><h3>It stays for 5 years</h3><p>Not 1 year. Not 2. <b>Five years</b> on a shared record that follows every future application you make.</p></div></div>
       <div class="stk-row"><div class="stk-num">4</div><div><h3>You start at minus one</h3><p>Your next application doesn't start at zero. <b>The burden of proof flips.</b> You must prove you're not a risk.</p></div></div>
