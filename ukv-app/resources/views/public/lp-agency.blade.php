@@ -1148,10 +1148,23 @@
 /* ── Live appointment board — same neon-glass design as /schengen-visa-consultancy.
    Scoped under a nested .lpb wrapper so we reuse the consultancy board CSS verbatim
    without colliding with the .sva page tokens. ── */
-.sva .lpb{--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366}
+.sva .lpb{--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366;--gold:#C89B3C;--cream:#FBFAF7;--serif:Georgia,"Times New Roman",serif;--sh:0 18px 40px -24px rgba(20,34,46,.28)}
 .sva .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8;--soft:#f5faf8}
 .sva .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a;--soft:#fdf9ef}
 .sva .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8;--soft:#fef4f2}
+/* Reviews — signature monogram cards (cream + gold + serif), ported from consultancy .rev */
+.sva .lpb .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sva .lpb .rc{position:relative;background:var(--cream);border:1px solid var(--edge);border-radius:18px;padding:28px 26px;box-shadow:var(--sh);overflow:hidden}
+.sva .lpb .rc .wm{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-weight:700;font-size:140px;line-height:1;color:var(--gold);opacity:.09;pointer-events:none}
+.sva .lpb .rc .rst{position:relative;font-size:15px;color:var(--gold);margin:0 0 14px;letter-spacing:1px}
+.sva .lpb .rc .rq{position:relative;font-family:var(--serif);font-size:18px;font-weight:500;color:#243039;line-height:1.5;margin:0 0 20px}
+.sva .lpb .rc .rf{position:relative;display:flex;align-items:center;gap:11px;padding-top:15px;border-top:1px solid var(--edge)}
+.sva .lpb .rc .rf .gd{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+.sva .lpb .rc .rn{font-weight:800;font-size:15px;color:#16222e}.sva .lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
+.sva .lpb .rc .rsrc{margin-left:auto;font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.sva .lpb .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
+@media(max-width:900px){.sva .lpb .rgrid{grid-template-columns:1fr}}
+
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -1468,18 +1481,24 @@
       <p class="section-sub">Real clients from our community. Every reference is verifiable on request.</p>
     </div>
 
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"Had a refusal last year and was terrified of applying again. They went through what went wrong, fixed it, and my Netherlands visa came through. Straight with me the whole way."</p><div class="testimonial-meta"><div class="testimonial-avatar">PS</div><div><div class="testimonial-name">Priya Sharma · Birmingham</div><div class="testimonial-detail">🇳🇱 Netherlands visa · June 2026 · Ref: BP-2026-100227</div></div></div></div>
-
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn't believe it until I saw the confirmation email. Proper service."</p><div class="testimonial-meta"><div class="testimonial-avatar">FH</div><div><div class="testimonial-name">Fatima Hussain · Manchester</div><div class="testimonial-detail">🇫🇷 France visa · May 2026 · Ref: BP-2026-100184</div></div></div></div>
-
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"Handled everything for me and my wife. Two separate applications, both approved first time. The cover letters they wrote were brilliant, really specific to our situation."</p><div class="testimonial-meta"><div class="testimonial-avatar">DO</div><div><div class="testimonial-name">Daniel O'Brien · London</div><div class="testimonial-detail">🇪🇸 Spain visa · April 2026 · Ref: BP-2026-100142</div></div></div></div>
-
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"First time applying for Schengen, had no idea where to start. They walked me through every document on WhatsApp. Got my Italy visa in 8 working days."</p><div class="testimonial-meta"><div class="testimonial-avatar">MS</div><div><div class="testimonial-name">Maria Santos · Leicester</div><div class="testimonial-detail">🇮🇹 Italy visa · July 2026 · Ref: BP-2026-100291</div></div></div></div>
-
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"Family of four, all approved. They coordinated everything so we submitted together. The embassy briefing was the best part, knew exactly what to expect."</p><div class="testimonial-meta"><div class="testimonial-avatar">AR</div><div><div class="testimonial-name">Ahmed Rahman · Bradford</div><div class="testimonial-detail">🇧🇪 Belgium visa · June 2026 · Ref: BP-2026-100256</div></div></div></div>
-
-      <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">"Was sceptical because I'd been scammed before by another 'agent'. These guys showed me their ICO registration, sent everything in writing. Completely different experience."</p><div class="testimonial-meta"><div class="testimonial-avatar">SB</div><div><div class="testimonial-name">Sophie Bennett · Edinburgh</div><div class="testimonial-detail">🇳🇱 Netherlands visa · March 2026 · Ref: BP-2026-100098</div></div></div></div>
+    {{-- Reviews — signature monogram cards, same design as /schengen-visa-consultancy (.lpb .rc). --}}
+    <div class="lpb reveal">
+      <div class="rgrid">
+        @php
+          $agencyReviews = [
+            ['PS','Priya Sharma','Birmingham · 🇳🇱 Netherlands visa · June 2026','BP-2026-100227','Had a refusal last year and was terrified of applying again. They went through what went wrong, fixed it, and my Netherlands visa came through. Straight with me the whole way.'],
+            ['FH','Fatima Hussain','Manchester · 🇫🇷 France visa · May 2026','BP-2026-100184','Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn\'t believe it until I saw the confirmation email. Proper service.'],
+            ['DO','Daniel O\'Brien','London · 🇪🇸 Spain visa · April 2026','BP-2026-100142','Handled everything for me and my wife. Two separate applications, both approved first time. The cover letters they wrote were brilliant, really specific to our situation.'],
+            ['MS','Maria Santos','Leicester · 🇮🇹 Italy visa · July 2026','BP-2026-100291','First time applying for Schengen, had no idea where to start. They walked me through every document on WhatsApp. Got my Italy visa in 8 working days.'],
+            ['AR','Ahmed Rahman','Bradford · 🇧🇪 Belgium visa · June 2026','BP-2026-100256','Family of four, all approved. They coordinated everything so we submitted together. The embassy briefing was the best part, knew exactly what to expect.'],
+            ['SB','Sophie Bennett','Edinburgh · 🇳🇱 Netherlands visa · March 2026','BP-2026-100098','Was sceptical because I\'d been scammed before by another "agent". These guys showed me their ICO registration, sent everything in writing. Completely different experience.'],
+          ];
+        @endphp
+        @foreach($agencyReviews as [$init,$name,$sub,$src,$quote])
+        <div class="rc"><span class="wm">{{ $init[0] }}</span><div class="rst">★★★★★</div><p class="rq">{{ $quote }}</p><div class="rf"><span class="gd"></span><div class="rn">{{ $name }}<span>{{ $sub }}</span></div><span class="rsrc">{{ $src }}</span></div></div>
+        @endforeach
+      </div>
+      <p class="rnote">Real orders completed this year, shared with each client's permission. The order reference on every review is verifiable on request.</p>
     </div>
   </div>
 </section>
