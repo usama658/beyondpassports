@@ -1237,6 +1237,21 @@
 .sva .pt-q::before{content:"\201C";position:absolute;top:-2px;left:-2px;font-size:26px;line-height:1;color:rgba(46,154,140,.32);font-family:Georgia,serif}
 @media(max-width:860px){.sva .pt2{grid-template-columns:1fr}}
 
+/* FAQ + side form card — two columns */
+.sva .faqwrap{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:start}
+.sva .faq-main .faq-list{margin-top:1.4rem}
+.sva .faq-aside{position:sticky;top:96px}
+.sva .faq-formcard{background:radial-gradient(360px 180px at 15% 0,rgba(46,154,140,.22),transparent 60%),var(--navy);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 24px;color:#fff;box-shadow:0 30px 60px -34px rgba(15,25,35,.5)}
+.sva .faq-formcard .fc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7fd7c9;margin-bottom:10px}
+.sva .faq-formcard .fc-eyebrow::before{content:"";width:20px;height:2px;background:var(--stamp)}
+.sva .faq-formcard .fc-h{font-size:1.12rem;font-weight:800;line-height:1.25;color:#fff;margin-bottom:6px}
+.sva .faq-formcard .fc-sub{font-size:.85rem;line-height:1.5;color:#9db1ce;margin-bottom:16px}
+.sva .faq-formcard .close-form{max-width:none;margin:0}
+.sva .faq-formcard .close-trust{justify-content:flex-start;margin-top:14px;font-size:.72rem;color:#9db1ce}
+.sva .faq-formcard .consent-check{display:block;font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.55)}
+.sva .faq-formcard .consent-check input{margin:3px 7px 0 0;vertical-align:top}
+@media(max-width:900px){.sva .faqwrap{grid-template-columns:1fr}.sva .faq-aside{position:static}.sva .faq-formcard{max-width:400px;margin:0 auto}}
+
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -1663,47 +1678,18 @@
   </div>
 </section>
 
-<!-- CLOSE -->
-<section class="section section--navy close-section" id="close-cta">
+<!-- FAQ + side form (two columns) -->
+<section class="section section--white" id="faq">
   <div class="section-inner">
-    <div class="reveal">
-      <p class="section-eyebrow">Get started with your Schengen visa agents</p>
-      <h2>Your Schengen Visa Starts With a 30-Second Message</h2>
-      <p class="section-sub">Tell us where you're going. Your dedicated Schengen visa agent replies in 30 minutes. Honestly.</p>
-    </div>
+    <div class="faqwrap">
+      <div class="faq-main">
+        <div class="reveal">
+          <p class="section-eyebrow">Common questions</p>
+          <h2>Schengen Visa Agents UK: Your Questions, Straight Answers</h2>
+          <p class="section-sub">What UK applicants ask our agency for Schengen visa help every day. No jargon, no runaround.</p>
+        </div>
 
-    <div class="close-form reveal">
-      <div class="close-form-row">
-        <input type="text" placeholder="Your name">
-        <input type="tel" placeholder="+44" value="+44 ">
-      </div>
-      <select><option value="" disabled selected>Where are you going?</option><option>France</option><option>Netherlands</option><option>Italy</option><option>Spain</option><option>Germany</option><option>Switzerland</option><option>Belgium</option><option>Austria</option><option>Portugal</option><option>Greece</option><option>Poland</option><option>Hungary</option><option>Czech Republic</option><option>Norway</option><option>Sweden</option><option>Denmark</option><option>Finland</option><option>Other Schengen</option></select>
-      <label class="consent-check consent-check--dark"><input type="checkbox" checked> I agree to be contacted about my enquiry. <a href="#" style="color:var(--cta);text-decoration:underline">Privacy</a></label>
-      <a class="cta-btn" href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-        <span style="position:relative;z-index:1">Check my case free →</span>
-      </a>
-    </div>
-
-    <div class="close-trust reveal">
-      <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No payment needed</span>
-      <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 93% approval rate</span>
-      <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100% refund if refused</span>
-      <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> UK-registered Schengen visa agents</span>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section section--white">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-eyebrow">Common questions</p>
-      <h2>Schengen Visa Agents UK: Your Questions, Straight Answers</h2>
-      <p class="section-sub">What UK applicants ask our agency for Schengen visa help every day. No jargon, no runaround.</p>
-    </div>
-
-    <div class="faq-list reveal">
+        <div class="faq-list reveal">
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does a Schengen visa agent do?<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">A Schengen visa agent prepares your complete application: documents, cover letter, appointment booking, and a briefing for the embassy visit. You still attend the appointment in person. The agent's job is making sure every document is right before you do. Anyone claiming they can attend on your behalf or guarantee approval is misleading you.</div></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does a Schengen visa agency in the UK charge?<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Our service starts from £149 per person. This includes document preparation, cover letter, appointment booking, and our 100% refund promise if your visa is refused. No hidden fees. You see the full price before you pay anything.</div></div></div>
@@ -1721,6 +1707,33 @@
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the difference between a Schengen visa agent and a travel agent?<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">A Schengen visa travel agent typically only books flights and hotels. A specialist Schengen visa agent like Beyond Passports handles the full visa application: document preparation, cover letter, appointment booking, and embassy briefing. Some travel agents offer visa assistance as an add-on, but it's rarely their specialism. We do nothing else. Visas are all we do.</div></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I find a trustworthy agency for Schengen visa in the UK?<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3.75v10.5M3.75 9h10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Look for three things: UK company registration (check Companies House), ICO registration for data protection, and a clear refund policy in writing. Avoid any agency for Schengen visa that guarantees approval. No honest agent can promise that. Beyond Passports is registered in England & Wales, ICO registered (ZC197159), and offers a written 100% service fee refund if your visa is refused.</div></div></div>
+        </div>
+      </div>
+      <aside class="faq-aside reveal" id="close-cta">
+        <div class="faq-formcard">
+          <p class="fc-eyebrow">Get started with your Schengen visa agents</p>
+          <h3 class="fc-h">Your Schengen visa starts with a 30-second message.</h3>
+          <p class="fc-sub">Tell us where you're going. Your dedicated Schengen visa agent replies in 30 minutes. Honestly.</p>
+          <div class="close-form">
+            <div class="close-form-row">
+              <input type="text" placeholder="Your name">
+              <input type="tel" placeholder="+44" value="+44 ">
+            </div>
+            <select><option value="" disabled selected>Where are you going?</option><option>France</option><option>Netherlands</option><option>Italy</option><option>Spain</option><option>Germany</option><option>Switzerland</option><option>Belgium</option><option>Austria</option><option>Portugal</option><option>Greece</option><option>Poland</option><option>Hungary</option><option>Czech Republic</option><option>Norway</option><option>Sweden</option><option>Denmark</option><option>Finland</option><option>Other Schengen</option></select>
+            <label class="consent-check consent-check--dark"><input type="checkbox" checked> I agree to be contacted about my enquiry. <a href="#" style="color:var(--cta);text-decoration:underline">Privacy</a></label>
+            <a class="cta-btn" href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+              <span style="position:relative;z-index:1">Check my case free →</span>
+            </a>
+          </div>
+          <div class="close-trust">
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No payment needed</span>
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 93% approval rate</span>
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100% refund if refused</span>
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> UK-registered Schengen visa agents</span>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
