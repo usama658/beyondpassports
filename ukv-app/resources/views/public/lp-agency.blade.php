@@ -1263,6 +1263,7 @@
 /* FAQ + side form card — two columns */
 .sva .faqwrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:36px;align-items:start}
 .sva .faq-aside{order:-1}
+.sva .faq-formcard .close-form-row{grid-template-columns:1fr}
 .sva .faq-main .faq-list{margin-top:1.4rem}
 .sva .faq-aside{position:sticky;top:96px}
 .sva .faq-formcard{background:radial-gradient(360px 180px at 15% 0,rgba(46,154,140,.22),transparent 60%),var(--navy);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 24px;color:#fff;box-shadow:0 30px 60px -34px rgba(15,25,35,.5)}
