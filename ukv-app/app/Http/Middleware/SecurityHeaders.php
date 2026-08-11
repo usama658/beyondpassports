@@ -107,10 +107,12 @@ class SecurityHeaders
             // googleads.g.doubleclick.net + googleadservices.com: Google Ads conversion tag
             // (loaded via GTM). No script-src-elem directive => the browser falls back to
             // script-src, so listing them here unblocks the conversion script load.
-            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://invitejs.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://googleads.g.doubleclick.net https://www.googleadservices.com",
+            // static.cloudflareinsights.com: Cloudflare Web Analytics (RUM) beacon, auto-injected
+            // by the CF proxy. Its POST goes to cloudflareinsights.com (see connect-src).
+            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://widget.trustpilot.com https://invitejs.trustpilot.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://static.cloudflareinsights.com",
             // Google Ads conversion pings (remarketing + 1p-conversion beacons) go to
             // google.com, googleads.g.doubleclick.net, ad.doubleclick.net, googleadservices.com.
-            "connect-src 'self' https://api.stripe.com https://widget.trustpilot.com https://*.trustpilot.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://tagassistant.google.com https://*.clarity.ms https://connect.facebook.net https://www.facebook.com https://www.google.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com",
+            "connect-src 'self' https://api.stripe.com https://widget.trustpilot.com https://*.trustpilot.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://tagassistant.google.com https://*.clarity.ms https://connect.facebook.net https://www.facebook.com https://www.google.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://cloudflareinsights.com https://static.cloudflareinsights.com",
             // google.com/maps: the /about location embed; widget.trustpilot.com: TrustBox iframe;
             // youtube-nocookie/youtube + player.vimeo: the CMS video block's privacy-friendly embeds.
             // googletagmanager.com + tagassistant.google.com: GTM Preview / Tag Assistant debug bridge iframe.
