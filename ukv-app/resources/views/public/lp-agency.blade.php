@@ -1709,6 +1709,9 @@
         <div class="pt-row"><span class="pt-av">C</span><div><div class="pt-nm">Chloe</div><div class="pt-rl">Appointments &amp; Client Coordinator</div><p class="pt-q">I monitor appointment systems daily. Most slots I find never appear on public booking pages.</p></div></div>
       </div>
     </div>
+    <div class="reveal" style="margin-top:1.75rem">
+      @include('partials.disclaimer-strip', ['wrap' => false])
+    </div>
   </div>
 </section>
 
