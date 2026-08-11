@@ -29,8 +29,8 @@
   --shadow:0 18px 44px -26px rgba(20,34,46,.34);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;max-width:100%;overflow-x:clip;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 /* Headings — tight, punchy display type (matches the home-hero preview): Outfit 700,
    tighter tracking + leading site-wide. */
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;margin:0 0 .4em;letter-spacing:-.03em}
