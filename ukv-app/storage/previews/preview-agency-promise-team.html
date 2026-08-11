@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agency — promise + team (2-column)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+:root{--navy:#16222e;--navy-2:#0f2028;--teal:#155e7a;--teal-d:#0f4a61;--stamp:#2e9a8c;--teal-light:#e7f4ef;
+  --wa:#25d366;--paper:#f4f6fa;--white:#fff;--border:#dde3ec;--ink:#16222e;--muted:#5d6b76;--soft:#7fd7c9;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Outfit",system-ui,sans-serif;background:#e9edf2;color:var(--ink);padding:34px 20px 60px}
+.lab{max-width:1180px;margin:0 auto 12px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#8493a0}
+.stage{max-width:1180px;margin:0 auto 46px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(15,25,35,.55)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--stamp)}
+.ar{display:inline-block;transition:transform .2s}
+
+.sec{background:linear-gradient(180deg,#fbfdfe,var(--paper));padding:60px 0 66px}
+.two{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:stretch}
+
+/* ---- LEFT · refund promise (dark card) ---- */
+.pr{position:relative;overflow:hidden;color:#eaf3f1;border-radius:22px;padding:36px 34px;display:flex;flex-direction:column;background:
+  radial-gradient(460px 240px at 12% 0,rgba(46,154,140,.34),transparent 60%),
+  radial-gradient(460px 240px at 100% 110%,rgba(21,94,122,.45),transparent 60%),var(--navy)}
+.pr .seal{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin-bottom:20px;background:radial-gradient(circle at 35% 30%,rgba(127,215,201,.3),rgba(46,154,140,.08));border:1.5px solid rgba(127,215,201,.45);box-shadow:0 0 34px -8px rgba(46,154,140,.6)}
+.pr .seal svg{width:38px;height:38px;fill:none;stroke:var(--soft);stroke-width:1.6}
+.pr .eyebrow{color:var(--soft);margin-bottom:12px}
+.pr h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;line-height:1.14;letter-spacing:-.02em;color:#fff}
+.pr h2 .hl{color:var(--soft)}
+.pr .pts{display:flex;flex-direction:column;gap:9px;margin:20px 0 16px}
+.pr .pt{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:#dfeeeb}
+.pr .pt .ck{width:19px;height:19px;border-radius:50%;background:rgba(46,154,140,.22);display:grid;place-items:center;flex:none}
+.pr .pt .ck svg{width:11px;height:11px;fill:none;stroke:var(--soft);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pr .body{font-size:14px;line-height:1.6;color:#b7c7c5}.pr .body b{color:#fff}
+.pr .btn{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;margin-top:auto;padding-top:22px}
+.pr .btn a{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;font:800 15px "Outfit",sans-serif;padding:14px 22px;border-radius:12px;text-decoration:none;box-shadow:0 18px 34px -16px rgba(37,211,102,.6)}
+.pr .btn svg{width:18px;height:18px;fill:#fff}
+
+/* ---- RIGHT · team (white card) ---- */
+.tm{background:var(--white);border:1px solid var(--border);border-radius:22px;padding:32px 30px;box-shadow:0 20px 50px -34px rgba(15,25,35,.4);display:flex;flex-direction:column}
+.tm .eyebrow{color:#1f6e63;margin-bottom:10px}
+.tm h2{font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.tm .tsub{color:var(--muted);font-size:13.5px;line-height:1.55;margin:9px 0 20px}
+.tm .row{display:grid;grid-template-columns:52px 1fr;gap:15px;align-items:start;padding:16px 0;border-top:1px solid var(--border)}
+.tm .row:first-of-type{border-top:0;padding-top:4px}
+.tm .av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:800 20px "Outfit",sans-serif;color:#fff;background:linear-gradient(160deg,var(--teal),var(--teal-d));box-shadow:0 10px 20px -12px rgba(21,94,122,.7)}
+.tm .nm{font-size:16px;font-weight:800;color:var(--ink);line-height:1.1}
+.tm .rl{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#1f6e63;margin-top:3px}
+.tm .q{position:relative;font-size:13.2px;font-style:italic;line-height:1.55;color:#33424d;margin-top:8px;padding-left:16px}
+.tm .q::before{content:"\201C";position:absolute;top:-2px;left:-2px;font-size:26px;line-height:1;color:rgba(46,154,140,.32);font-family:Georgia,serif}
+
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<p class="lab">Promise + Team — one section, two columns</p>
+<div class="stage"><section class="sec"><div class="wrap"><div class="two">
+
+  <!-- LEFT: promise -->
+  <div class="pr">
+    <span class="seal"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <p class="eyebrow">Your Schengen visa agency promise</p>
+    <h2>Refused? Your Service Fee Back. <span class="hl">100% of it.</span></h2>
+    <div class="pts">
+      <span class="pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>Refunded to your original payment method</span>
+      <span class="pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>Clear, written terms before you pay</span>
+      <span class="pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>No questions, no hoops, no delays</span>
+    </div>
+    <p class="body">We don't guarantee the embassy's decision. Nobody honestly can. We guarantee our work. <b>If our preparation fails you, we refund our service fee.</b> Check your case free today. You only pay when you're ready to proceed.</p>
+    <span class="btn"><a href="#"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.48 1.7.62.7.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.4.25-.7.25-1.3.18-1.42-.08-.12-.27-.2-.57-.35"/></svg>Check my case now →</a></span>
+  </div>
+
+  <!-- RIGHT: team -->
+  <div class="tm">
+    <p class="eyebrow">Your Schengen visa agents</p>
+    <h2>The People On Your Case</h2>
+    <p class="tsub">Named Schengen visa agents in the UK. Not a call centre. Not an offshore operation.</p>
+    <div class="row"><span class="av">S</span><div><div class="nm">Sarah</div><div class="rl">Lead Visa Consultant</div><p class="q">I review every refusal letter personally. Most describe something a 30-minute check would have caught.</p></div></div>
+    <div class="row"><span class="av">J</span><div><div class="nm">James</div><div class="rl">Refusal-Recovery Specialist</div><p class="q">The refusal letter never tells you the real reason. I find what actually triggered it.</p></div></div>
+    <div class="row"><span class="av">C</span><div><div class="nm">Chloe</div><div class="rl">Appointments &amp; Client Coordinator</div><p class="q">I monitor appointment systems daily. Most slots I find never appear on public booking pages.</p></div></div>
+  </div>
+
+</div></div></section></div>
+</body></html>

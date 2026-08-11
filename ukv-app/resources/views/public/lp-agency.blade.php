@@ -1208,6 +1208,35 @@
 .sva .gpb .gcard h3{position:relative;font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
 .sva .gpb .gcard p{position:relative;font-size:12.8px;line-height:1.55;color:#b7c7c5}
 
+/* Promise + Team — one section, two columns */
+.sva .pt2{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:stretch}
+.sva .pt-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.sva .pt-eyebrow::before{content:"";width:18px;height:2px;background:var(--teal-bright)}
+.sva .pt-pr{position:relative;overflow:hidden;color:#eaf3f1;border-radius:22px;padding:36px 34px;display:flex;flex-direction:column;background:radial-gradient(460px 240px at 12% 0,rgba(46,154,140,.34),transparent 60%),radial-gradient(460px 240px at 100% 110%,rgba(21,94,122,.45),transparent 60%),var(--navy)}
+.sva .pt-seal{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin-bottom:20px;background:radial-gradient(circle at 35% 30%,rgba(127,215,201,.3),rgba(46,154,140,.08));border:1.5px solid rgba(127,215,201,.45);box-shadow:0 0 34px -8px rgba(46,154,140,.6)}
+.sva .pt-seal svg{width:38px;height:38px;fill:none;stroke:#7fd7c9;stroke-width:1.6}
+.sva .pt-pr .pt-eyebrow{color:#7fd7c9}
+.sva .pt-pr h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;line-height:1.14;letter-spacing:-.02em;color:#fff}
+.sva .pt-pr h2 .hl{color:#7fd7c9}
+.sva .pt-pts{display:flex;flex-direction:column;gap:9px;margin:20px 0 16px}
+.sva .pt-pt{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:#dfeeeb}
+.sva .pt-pt .ck{width:19px;height:19px;border-radius:50%;background:rgba(46,154,140,.22);display:grid;place-items:center;flex:none}
+.sva .pt-pt .ck svg{width:11px;height:11px;fill:none;stroke:#7fd7c9;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sva .pt-body{font-size:14px;line-height:1.6;color:#b7c7c5}.sva .pt-body b{color:#fff}
+.sva .pt-pr .pt-cta{align-self:flex-start;margin-top:auto;padding-top:22px}
+.sva .pt-tm{background:var(--white);border:1px solid var(--border);border-radius:22px;padding:32px 30px;box-shadow:0 20px 50px -34px rgba(15,25,35,.4);display:flex;flex-direction:column}
+.sva .pt-tm .pt-eyebrow{color:#1f6e63}
+.sva .pt-tm h2{font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.sva .pt-tsub{color:var(--muted);font-size:13.5px;line-height:1.55;margin:9px 0 20px}
+.sva .pt-row{display:grid;grid-template-columns:52px 1fr;gap:15px;align-items:start;padding:16px 0;border-top:1px solid var(--border)}
+.sva .pt-row:first-of-type{border-top:0;padding-top:4px}
+.sva .pt-av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:800 20px "Outfit",sans-serif;color:#fff;background:linear-gradient(160deg,var(--teal),#0f4a61);box-shadow:0 10px 20px -12px rgba(21,94,122,.7)}
+.sva .pt-nm{font-size:16px;font-weight:800;color:var(--ink);line-height:1.1}
+.sva .pt-rl{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#1f6e63;margin-top:3px}
+.sva .pt-q{position:relative;font-size:13.2px;font-style:italic;line-height:1.55;color:#33424d;margin-top:8px;padding-left:16px}
+.sva .pt-q::before{content:"\201C";position:absolute;top:-2px;left:-2px;font-size:26px;line-height:1;color:rgba(46,154,140,.32);font-family:Georgia,serif}
+@media(max-width:860px){.sva .pt2{grid-template-columns:1fr}}
+
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -1600,42 +1629,36 @@
   </div>
 </section>
 
-<!-- GUARANTEE -->
+<!-- PROMISE + TEAM — one section, two columns -->
 <div class="section-divider"></div>
-<section class="section section--white">
-  <div class="section-inner">
-    <div class="guarantee-box reveal">
-      <div class="guarantee-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#155E7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
-      <h2>Refused? Your Service Fee Back. That's Our Schengen Visa Agency Promise.</h2>
-      <p>Refused? <strong>100% of your service fee back.</strong></p>
-      <ul class="guarantee-checks">
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Refunded to your original payment method</li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Clear, written terms before you pay</li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No questions, no hoops, no delays</li>
-      </ul>
-      <p class="guarantee-honesty">We don't guarantee the embassy's decision. Nobody honestly can. We guarantee our work. If our preparation fails you, we refund our service fee. Check your case free today. You only pay when you're ready to proceed.</p>
-      <div style="margin-top: 1.5rem;">
-        <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}" class="cta-btn" style="max-width: 260px; margin: 0 auto;">Check my case now →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
 <section class="section section--grey">
   <div class="section-inner">
-    <div class="reveal">
-      <p class="section-eyebrow">Your Schengen visa agents</p>
-      <h2>The People On Your Case</h2>
-      <p class="section-sub">Named Schengen visa agents in the UK. Not a call centre. Not an offshore operation.</p>
-    </div>
-
-    <div class="team-grid">
-      <div class="team-card reveal"><div class="team-avatar">S</div><h3>Sarah</h3><p class="team-role">Lead Visa Consultant</p><p class="team-quote">"I review every refusal letter personally. Most describe something a 30-minute check would have caught."</p></div>
-      <div class="team-card reveal"><div class="team-avatar">J</div><h3>James</h3><p class="team-role">Refusal-Recovery Specialist</p><p class="team-quote">"The refusal letter never tells you the real reason. I find what actually triggered it."</p></div>
-      <div class="team-card reveal"><div class="team-avatar">C</div><h3>Chloe</h3><p class="team-role">Appointments & Client Coordinator</p><p class="team-quote">"I monitor appointment systems daily. Most slots I find never appear on public booking pages."</p></div>
+    <div class="pt2 reveal">
+      <div class="pt-pr">
+        <span class="pt-seal"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="pt-eyebrow">Your Schengen visa agency promise</p>
+        <h2>Refused? Your Service Fee Back. <span class="hl">100% of it.</span></h2>
+        <div class="pt-pts">
+          <span class="pt-pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>Refunded to your original payment method</span>
+          <span class="pt-pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>Clear, written terms before you pay</span>
+          <span class="pt-pt"><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span>No questions, no hoops, no delays</span>
+        </div>
+        <p class="pt-body">We don't guarantee the embassy's decision. Nobody honestly can. We guarantee our work. <b>If our preparation fails you, we refund our service fee.</b> Check your case free today. You only pay when you're ready to proceed.</p>
+        <div class="pt-cta">
+          <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}" class="cta-btn" style="width:auto">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            <span style="position:relative;z-index:1">Check my case now →</span>
+          </a>
+        </div>
+      </div>
+      <div class="pt-tm">
+        <p class="pt-eyebrow">Your Schengen visa agents</p>
+        <h2>The People On Your Case</h2>
+        <p class="pt-tsub">Named Schengen visa agents in the UK. Not a call centre. Not an offshore operation.</p>
+        <div class="pt-row"><span class="pt-av">S</span><div><div class="pt-nm">Sarah</div><div class="pt-rl">Lead Visa Consultant</div><p class="pt-q">I review every refusal letter personally. Most describe something a 30-minute check would have caught.</p></div></div>
+        <div class="pt-row"><span class="pt-av">J</span><div><div class="pt-nm">James</div><div class="pt-rl">Refusal-Recovery Specialist</div><p class="pt-q">The refusal letter never tells you the real reason. I find what actually triggered it.</p></div></div>
+        <div class="pt-row"><span class="pt-av">C</span><div><div class="pt-nm">Chloe</div><div class="pt-rl">Appointments &amp; Client Coordinator</div><p class="pt-q">I monitor appointment systems daily. Most slots I find never appear on public booking pages.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
