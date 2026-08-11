@@ -1644,6 +1644,9 @@
         <span style="position:relative;z-index:1">Check my documents free →</span>
       </a>
     </div>
+    <div class="stk-disc reveal" style="margin-top:26px">
+      @include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])
+    </div>
   </div>
 </section>
 
