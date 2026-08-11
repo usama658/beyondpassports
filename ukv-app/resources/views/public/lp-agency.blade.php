@@ -422,34 +422,84 @@
   .sva .path-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Case-file dossier cards: folder tab (::before) + mono REF + service stamp */
 .sva .path-card {
   background: var(--card);
   border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 4px 14px 14px 14px;
+  padding: 1.75rem 1.6rem 1.5rem;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: 13px;
+}
+.sva .path-card::before {
+  content: "";
+  position: absolute;
+  top: -13px; left: -1.5px;
+  width: 120px; height: 14px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-bottom: 0;
+  border-radius: 8px 12px 0 0;
 }
 .sva .path-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+.sva .pc-ref {
+  position: absolute;
+  top: 1.35rem; right: 1.5rem;
+  font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--grey-500);
+}
+.sva .pc-top {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.sva .pc-ic {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: var(--teal-light);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.sva .pc-ic svg { width: 23px; height: 23px; fill: none; stroke: var(--teal); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.sva .pc-stamp {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  border: 1.5px solid rgba(21,94,122,0.35);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  transform: rotate(-3deg);
 }
 .sva .path-card-quote {
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
   font-style: italic;
-  color: var(--teal);
-  margin-bottom: 0.85rem;
+  color: #1f6e63;
+  background: rgba(46,154,140,0.09);
+  align-self: flex-start;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
 }
 .sva .path-card h3 {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
   color: var(--navy);
   line-height: 1.3;
 }
@@ -458,14 +508,19 @@
   color: var(--grey-600);
   line-height: 1.65;
   flex: 1;
-  margin-bottom: 1.25rem;
+}
+.sva .pc-divide {
+  border: 0;
+  border-top: 1px dashed var(--border);
+  margin: 1rem 0 0;
 }
 .sva .path-card-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  margin-top: 0.9rem;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--teal);
   text-decoration: none;
   transition: gap 0.2s, color 0.2s;
@@ -1209,23 +1264,41 @@
 
     <div class="path-grid">
       <div class="path-card reveal">
+        <span class="pc-ref">REF · APT</span>
+        <div class="pc-top">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14l2.5 2.5L15 12"/></svg></span>
+          <span class="pc-stamp">Appointment</span>
+        </div>
         <p class="path-card-quote">"Every slot is gone"</p>
         <h3>Need a Schengen visa appointment?</h3>
         <p>Our Schengen visa agents monitor appointment slots at official visa centres near you: London, Manchester, Edinburgh, and across the UK. Rechecked every 3 hours. We regularly secure slots that never appear on public pages.</p>
+        <hr class="pc-divide">
         <a href="#hero-name" class="path-card-cta">Check appointment availability <span>→</span></a>
       </div>
 
       <div class="path-card reveal">
+        <span class="pc-ref">REF · FSV</span>
+        <div class="pc-top">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13l2 2 4-4"/></svg></span>
+          <span class="pc-stamp">Full service</span>
+        </div>
         <p class="path-card-quote">"Just handle it for me"</p>
         <h3>Looking for a Schengen visa travel agent?</h3>
         <p>We prepare your documents, write your cover letter, book your appointment, and brief you for the embassy visit. A dedicated agency for Schengen visa applications. You attend, we make sure everything is right before you do.</p>
+        <hr class="pc-divide">
         <a href="#hero-name" class="path-card-cta">Check my case <span>→</span></a>
       </div>
 
       <div class="path-card reveal">
+        <span class="pc-ref">REF · GRP</span>
+        <div class="pc-top">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M17 11a3 3 0 1 0-2-5.2"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M17 14a5 5 0 0 1 4 5v1"/></svg></span>
+          <span class="pc-stamp">Group</span>
+        </div>
         <p class="path-card-quote">"We're applying together"</p>
         <h3>Couple or family application?</h3>
         <p>We prepare every file together so no weak case drags the group down. One fee per person, one coordinator from our Schengen visa agency, one timeline.</p>
+        <hr class="pc-divide">
         <a href="#hero-name" class="path-card-cta">Check our case <span>→</span></a>
       </div>
     </div>
