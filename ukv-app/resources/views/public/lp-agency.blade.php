@@ -1145,6 +1145,69 @@
   .sva .tbar-f .wrap { padding:0; }
 }
 
+/* ── Live appointment board — same neon-glass design as /schengen-visa-consultancy.
+   Scoped under a nested .lpb wrapper so we reuse the consultancy board CSS verbatim
+   without colliding with the .sva page tokens. ── */
+.sva .lpb{--cta:#155E7A;--cta-d:#0F4A61;--stamp:#2E9A8C;--soft:#A9CCDA;--stamp-text:#1F6E63;--muted:#5d6b76;--edge:#dde3ec;--wa:#25D366}
+.sva .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8;--soft:#f5faf8}
+.sva .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a;--soft:#fdf9ef}
+.sva .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8;--soft:#fef4f2}
+.sva .lpb .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
+.sva .lpb .bfresh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.sva .lpb .bfresh .fchip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--stamp-text);background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.28);border-radius:100px;padding:6px 12px}
+.sva .lpb .bfresh .fdot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 8px var(--wa)}
+.sva .lpb .bfresh .fcad{font-size:12px;color:#8a959d}
+.sva .lpb .bfresh .fmsg{font-size:12.5px;color:var(--cta);font-weight:700;text-decoration:none}
+.sva .lpb .ngsearch{position:relative;margin:0 0 14px}
+.sva .lpb .ngsearch>svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:#8a99a2;pointer-events:none}
+.sva .lpb .ngsearch input{width:100%;font:600 14px "Outfit",system-ui,sans-serif;color:#16222E;padding:12px 40px;border:1px solid var(--edge);border-radius:12px;background:#f7f9fb;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
+.sva .lpb .ngsearch input:focus{border-color:#155E7A;box-shadow:0 0 0 3px rgba(21,94,122,.12);background:#fff}
+.sva .lpb .ngsearch .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#eef2f6;color:#5d6b76;width:26px;height:26px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1;display:grid;place-items:center}
+.sva .lpb .ngsearch .clr[hidden]{display:none}
+.sva .lpb .ngsug{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:#fff;border:1px solid var(--edge);border-radius:12px;box-shadow:0 24px 50px -24px rgba(20,34,46,.5);max-height:264px;overflow:auto}
+.sva .lpb .ngsug[hidden]{display:none}
+.sva .lpb .ngsug li{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:8px;font-size:14px;font-weight:600;color:#16222E;cursor:pointer}
+.sva .lpb .ngsug li .fl{width:24px;flex:none;display:flex;align-items:center}
+.sva .lpb .ngsug .flimg{width:24px;height:16px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.1);display:block}
+.sva .lpb .ngsug li .zt{margin-left:auto;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#8a99a2}
+.sva .lpb .ngsug li:hover,.sva .lpb .ngsug li.on{background:#eef4f6;color:#155E7A}
+.sva .lpb .ngempty{grid-column:1/-1;text-align:center;color:#5d6b76;font-size:13px;padding:20px 8px;line-height:1.5}
+.sva .lpb .ngempty b{color:#16222E}.sva .lpb .ngempty a{color:#155E7A;font-weight:800}
+.sva .lpb .nghd{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 4px 14px}
+.sva .lpb .ngleg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#5d6b76}
+.sva .lpb .ngleg>span{display:inline-flex;align-items:center;gap:6px}
+.sva .lpb .nghd .d{width:8px;height:8px;border-radius:50%}
+.sva .lpb .nghd .d.open{background:#1F6E63}.sva .lpb .nghd .d.tight{background:#b5791f}.sva .lpb .nghd .d.none{background:#c0392b}
+.sva .lpb .ngtick{font-size:12px;font-weight:700;color:#1F6E63;display:inline-flex;align-items:center;gap:7px}
+.sva .lpb .ngdot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;animation:brpulse 2s ease-in-out infinite}
+@keyframes brpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.sva .lpb .nggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sva .lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:var(--soft);border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
+@media(hover:hover){.sva .lpb .ngcard:hover{transform:translateY(-2px);box-shadow:0 22px 44px -28px rgba(20,45,50,.5)}}
+.sva .lpb .ngcard[hidden]{display:none}
+.sva .lpb .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
+.sva .lpb .ngn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:40px;font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--c);flex:none;font-variant-numeric:tabular-nums}
+.sva .lpb .nginfo{flex:1;min-width:0}
+.sva .lpb .ngcn{font-weight:800;font-size:16px;color:#16222E}
+.sva .lpb .ngnx{font-size:11.5px;color:#5d6b76;margin-top:1px}.sva .lpb .ngnx b{color:#1F6E63}
+.sva .lpb .ngstp{display:inline-block;margin-top:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:var(--c);background:var(--cbg)}
+.sva .lpb .ngcta{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--c);color:#fff;font:800 11.5px "Outfit",system-ui,sans-serif;padding:9px 13px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 18px -12px var(--c)}
+.sva .lpb .ngcta svg{width:14px;height:14px;fill:#fff;flex:none}
+@media(hover:hover){.sva .lpb .ngcard:hover .ngcta{filter:brightness(.92)}}
+.sva .lpb .ngfoot{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border-radius:14px;font-size:13px;color:#e6c9c6;background:radial-gradient(600px 170px at 12% 0,rgba(224,52,43,.55),transparent),#0f2028}
+.sva .lpb .ngfoot .ngup{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#c0392b;border-radius:6px;padding:4px 9px;white-space:nowrap}
+.sva .lpb .ngfoot .ngmsg{flex:1;min-width:180px}.sva .lpb .ngfoot .ngmsg b{color:#fff}
+.sva .lpb .ngfoot .ngwa{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:#fff;color:#c0392b;font:800 12.5px "Outfit",system-ui,sans-serif;padding:10px 16px;border-radius:10px;white-space:nowrap;text-decoration:none}
+.sva .lpb .ngfoot .ngwa svg{width:15px;height:15px;fill:#c0392b;flex:none}
+.sva .lpb .brempty{text-align:center;color:#5d6b76;padding:22px}
+@media(max-width:560px){
+  .sva .lpb .nggrid{grid-template-columns:1fr}
+  .sva .lpb .ngcard{flex-wrap:wrap;gap:12px}
+  .sva .lpb .ngn{font-size:34px}
+  .sva .lpb .ngcta{flex:1 0 100%;justify-content:center;margin-top:2px}
+  .sva .lpb .ngfoot .ngwa{flex:1 0 100%;justify-content:center;margin-left:0;margin-top:2px}
+}
+
 /* ── HERO · Direction B (light editorial) polish ── */
 .sva .hero-spine { position:absolute; left:0; top:0; bottom:0; width:5px;
   background:linear-gradient(180deg, var(--teal-bright), var(--teal)); z-index:2; }
@@ -1328,31 +1391,56 @@
       <p class="section-sub">Rechecked every 3 hours from official visa centres across all 29 Schengen countries. Most applicants never see these slots. Our Schengen visa agents in the UK find them.</p>
     </div>
 
-    <div class="appt-table-wrap reveal">
-      <table class="appt-table">
-        <thead><tr><th>Country</th><th>Slots</th><th>Status</th><th></th></tr></thead>
-        <tbody>
-          <tr><td><span class="appt-country"><span class="flag">🇫🇷</span> France</span></td><td><strong>48</strong></td><td><span class="status-badge status-badge--green"><span class="status-dot status-dot--green"></span> Available</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇳🇱</span> Netherlands</span></td><td><strong>12</strong></td><td><span class="status-badge status-badge--green"><span class="status-dot status-dot--green"></span> Available</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇵🇱</span> Poland</span></td><td><strong>4</strong></td><td><span class="status-badge status-badge--amber"><span class="status-dot status-dot--amber"></span> Limited</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇭🇺</span> Hungary</span></td><td><strong>2</strong></td><td><span class="status-badge status-badge--amber"><span class="status-dot status-dot--amber"></span> Limited</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇮🇹</span> Italy</span></td><td><strong>1</strong></td><td><span class="status-badge status-badge--red"><span class="status-dot status-dot--red"></span> Very limited</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇨🇭</span> Switzerland</span></td><td><strong>1</strong></td><td><span class="status-badge status-badge--red"><span class="status-dot status-dot--red"></span> Very limited</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇳🇴</span> Norway</span></td><td><strong>1</strong></td><td><span class="status-badge status-badge--red"><span class="status-dot status-dot--red"></span> Very limited</span></td><td><a href="#hero-name" class="appt-cta">Secure →</a></td></tr>
-          <tr><td><span class="appt-country"><span class="flag">🇪🇸</span> Spain</span></td><td><strong>0</strong></td><td><span class="status-badge status-badge--grey"><span class="status-dot status-dot--grey"></span> Full, waitlist open</span></td><td><a href="#hero-name" class="appt-cta">Join →</a></td></tr>
-        </tbody>
-      </table>
+    @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
+    {{-- Live board — same neon-glass design as /schengen-visa-consultancy, fed by the shared
+         $apptCards composer. Scoped under .lpb so the consultancy board CSS applies verbatim. --}}
+    <div class="lpb reveal">
+      @if(config('ukv.slots.last_checked'))
+      <div class="bfresh"><span class="fchip"><span class="fdot"></span>Last checked {{ config('ukv.slots.last_checked') }}</span><span class="fcad">Rechecked every 3 hours</span><a class="fmsg" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please send today\'s live Schengen appointment numbers.') }}">Message us for today's numbers →</a></div>
+      @endif
+      @php
+        $apptShown = collect($apptCards ?? []);
+        $apptTotal = $apptShown->sum('slots');
+        $schengenAll = ['Austria','Belgium','Bulgaria','Croatia','Czechia','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Iceland','Italy','Latvia','Liechtenstein','Lithuania','Luxembourg','Malta','Netherlands','Norway','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden','Switzerland'];
+        $apptHave = $apptShown->pluck('name')->map(fn ($n) => \Illuminate\Support\Str::lower($n))->all();
+        foreach ($schengenAll as $sn) {
+          if (!in_array(\Illuminate\Support\Str::lower($sn), $apptHave, true)) {
+            $apptShown->push(['name' => $sn, 'cls' => 'none', 'label' => 'Very limited', 'slots' => 0]);
+          }
+        }
+      @endphp
+      <div class="ngstage" data-slotboard>
+        <div class="nghd">
+          <span class="ngleg"><span><i class="d open"></i>Available</span><span><i class="d tight"></i>Limited</span><span><i class="d none"></i>Very limited</span></span>
+          @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span><span data-slotcount>{{ $apptTotal }} slots open now</span></span>@endif
+        </div>
+        @if($apptShown->count() > 4)
+        <div class="ngsearch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
+          <input data-slotsearch type="text" placeholder="Search a Schengen country…" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-label="Search Schengen country">
+          <button type="button" class="clr" data-slotclear aria-label="Clear search">&times;</button>
+          <ul class="ngsug" data-slotsug role="listbox" hidden></ul>
+        </div>
+        @endif
+        <div class="nggrid">
+          @forelse($apptShown as $c)
+          @php $rn = (int) ($c['slots'] ?? 0); @endphp
+          <a class="ngcard {{ $c['cls'] }}{{ $rn === 0 ? ' zero' : '' }}" data-slotname="{{ \Illuminate\Support\Str::lower($c['name']) }}" data-slotzero="{{ $rn === 0 ? '1' : '0' }}" href="{{ $wa }}?text={{ rawurlencode($rn === 0 ? 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. There are no live slots showing right now, please put me on the watch and grab the next one.' : 'Hi Beyond Passports, I would like a '.$c['name'].' Schengen appointment. Please check the soonest live slot and secure it for me.') }}" aria-label="{{ $rn === 0 ? 'Ask about a '.$c['name'].' appointment' : 'Secure a '.$c['name'].' appointment slot' }}"@if($rn === 0) hidden @endif>
+            <div class="ngn">{{ $rn }}</div>
+            <div class="nginfo"><div class="ngcn">{{ $c['name'] }}</div>@if($rn === 0)<div class="ngnx">no live slots <b>right now</b></div><span class="ngstp">Ask us to watch</span>@else<div class="ngnx">slot{{ $rn === 1 ? '' : 's' }} <b>in the next 30 days</b></div><span class="ngstp">{{ $c['label'] }} · {{ $rn }} slot{{ $rn === 1 ? '' : 's' }}</span>@endif</div>
+            <span class="ngcta">@include('partials.wa-glyph'){{ $rn === 0 ? 'Find me '.$c['name'].' slots' : 'Secure' }}</span>
+          </a>
+          @empty
+          <p class="brempty" style="grid-column:1/-1">Live availability is confirmed with each centre before you pay. Tell us your dates and we'll check today.</p>
+          @endforelse
+          <p class="ngempty" data-slotempty hidden>No live slots match “<b data-slotterm></b>”. <a href="{{ $wa }}?text=Hi%2C%20I%27d%20like%20to%20check%20Schengen%20appointment%20availability.%20My%20travel%20dates%20are%3A%20">Message us</a> and we'll check any Schengen country.</p>
+        </div>
+        <div class="ngfoot"><span class="ngup">⏱ Urgent</span><span class="ngmsg">Travelling within 3 weeks? <b>These slots won't wait.</b></span><a class="ngwa" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment.%20My%20travel%20dates%20are%3A%20">@include('partials.wa-glyph')Message us now</a></div>
+        @php $apptTotalTxt = $apptTotal.' slot'.($apptTotal === 1 ? '' : 's').' open now'; @endphp
+        <script>(function(){var b=document.querySelector('[data-slotboard]');if(!b)return;var wrap=b.querySelector('.ngsearch'),q=b.querySelector('[data-slotsearch]'),clr=b.querySelector('[data-slotclear]'),sug=b.querySelector('[data-slotsug]'),cards=b.querySelectorAll('.ngcard'),empty=b.querySelector('[data-slotempty]'),term=b.querySelector('[data-slotterm]'),cnt=b.querySelector('[data-slotcount]');if(!q)return;var base=@json($apptTotalTxt);var SCH=[["Austria","AT"],["Belgium","BE"],["Bulgaria","BG"],["Croatia","HR"],["Czechia","CZ"],["Denmark","DK"],["Estonia","EE"],["Finland","FI"],["France","FR"],["Germany","DE"],["Greece","GR"],["Hungary","HU"],["Iceland","IS"],["Italy","IT"],["Latvia","LV"],["Liechtenstein","LI"],["Lithuania","LT"],["Luxembourg","LU"],["Malta","MT"],["Netherlands","NL"],["Norway","NO"],["Poland","PL"],["Portugal","PT"],["Romania","RO"],["Slovakia","SK"],["Slovenia","SI"],["Spain","ES"],["Sweden","SE"],["Switzerland","CH"]];var LIVE={};cards.forEach(function(c){if(c.getAttribute('data-slotzero')!=='1')LIVE[c.getAttribute('data-slotname')]=1;});function flag(cc){return '<img class="flimg" src="https://flagcdn.com/'+cc.toLowerCase()+'.svg" width="24" height="16" alt="" loading="lazy">';}function f(){var v=q.value.trim().toLowerCase(),active=v.length>0,shown=0,sum=0;cards.forEach(function(c){var hit=!v||c.getAttribute('data-slotname').indexOf(v)>-1;var zero=c.getAttribute('data-slotzero')==='1';var vis=hit&&(active||!zero);c.hidden=!vis;if(vis){shown++;sum+=parseInt((c.querySelector('.ngn')||{}).textContent,10)||0;}});if(clr)clr.hidden=!active;if(empty)empty.hidden=shown>0;if(term)term.textContent=q.value.trim();if(cnt)cnt.textContent=active?(shown+(shown===1?' country':' countries')+' · '+sum+' slot'+(sum===1?'':'s')):base;}function open(s){if(!sug)return;sug.hidden=!s;q.setAttribute('aria-expanded',s?'true':'false');}function renderSug(){if(!sug)return;var v=q.value.trim().toLowerCase();var list=SCH.filter(function(c){return !v||c[0].toLowerCase().indexOf(v)>-1;}).slice(0,8);if(!list.length){open(false);return;}sug.innerHTML=list.map(function(c){var live=LIVE[c[0].toLowerCase()];return '<li role="option" data-c="'+c[0]+'"><span class="fl">'+flag(c[1])+'</span>'+c[0]+(live?'':'<span class="zt">no live slots</span>')+'</li>';}).join('');open(true);}f();q.addEventListener('input',function(){f();renderSug();});q.addEventListener('focus',renderSug);if(sug)sug.addEventListener('mousedown',function(e){var li=e.target.closest('li[data-c]');if(!li)return;e.preventDefault();q.value=li.getAttribute('data-c');open(false);f();});if(clr)clr.addEventListener('click',function(){q.value='';q.focus();f();renderSug();});q.addEventListener('keydown',function(e){if(e.key==='Escape')open(false);});document.addEventListener('click',function(e){if(wrap&&!wrap.contains(e.target))open(false);});})();</script>
+      </div>
+      @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
     </div>
-
-    <div class="urgency-bar reveal">
-      <p class="urgency-bar-text"><strong>Travelling within 3 weeks?</strong> These slots won't wait. The best way to lose an appointment is to think about it overnight.</p>
-      <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free Schengen visa case check.') }}" class="cta-btn" style="width:auto">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-        <span style="position:relative;z-index:1">Message us now →</span>
-      </a>
-    </div>
-
-    <p class="appt-disclaimer">Appointment availability is indicative, rechecked every 3 hours from public visa centres. Exact slot confirmed with the centre before you pay. Beyond Passports assists with appointment booking. Every visa decision rests with the authorities.</p>
   </div>
 </section>
 
