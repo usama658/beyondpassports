@@ -1449,9 +1449,6 @@
         <span><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> We reply on WhatsApp</span>
         <span><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Takes 30 seconds</span>
       </div>
-      <div style="margin-top:14px">
-        @include('partials.disclaimer-strip', ['wrap' => false])
-      </div>
     </div>
   </div>
 </section>
