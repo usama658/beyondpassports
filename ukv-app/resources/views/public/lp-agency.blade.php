@@ -1765,6 +1765,13 @@
   </div>
 </section>
 
+{{-- Compliance disclaimer below FAQ (locked partial, light variant) --}}
+<section class="section section--white" style="padding-top:0">
+  <div class="section-inner">
+    @include('partials.disclaimer-strip', ['wrap' => false])
+  </div>
+</section>
+
 <!-- FAQ SCHEMA -->
 @verbatim
 <script type="application/ld+json">
