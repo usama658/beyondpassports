@@ -1165,6 +1165,37 @@
 .sva .lpb .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
 @media(max-width:900px){.sva .lpb .rgrid{grid-template-columns:1fr}}
 
+/* "What's at stake" — VIS refusal severity meter (dark, echoes consultancy fear band) */
+.sva .stk{position:relative;color:#eef3fb;padding:clamp(3rem,6vw,4.75rem) 1.5rem;overflow:hidden;background:
+  radial-gradient(680px 340px at 85% -10%,rgba(224,52,43,.34),transparent 60%),
+  radial-gradient(620px 320px at 5% 110%,rgba(21,94,122,.4),transparent 60%),
+  var(--navy)}
+.sva .stk-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
+.sva .stk-head{text-align:center;max-width:60ch;margin:0 auto 34px}
+.sva .stk-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff6a60;margin-bottom:14px}
+.sva .stk-label .fd{width:8px;height:8px;border-radius:50%;background:#ff6a60;box-shadow:0 0 10px #ff6a60;animation:stkpulse 1.6s ease-in-out infinite}
+@keyframes stkpulse{0%,100%{opacity:1}50%{opacity:.35}}
+.sva .stk h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.13;letter-spacing:-.02em}
+.sva .stk h2 .hl{color:#7fd7c9}
+.sva .stk-sub{color:#9db1ce;font-size:1rem;margin-top:11px}
+.sva .stk-row{display:grid;grid-template-columns:52px 1fr 130px;gap:20px;align-items:center;padding:17px 20px;background:linear-gradient(180deg,rgba(19,40,76,.5),rgba(13,28,54,.5));border:1px solid rgba(255,255,255,.1);border-radius:14px;margin-bottom:12px}
+.sva .stk-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:#ff6a60}
+.sva .stk-row h3{font-weight:700;font-size:1.02rem;color:#fff;margin:0}
+.sva .stk-row p{color:#9db1ce;font-size:.9rem;margin:4px 0 0}
+.sva .stk-row p b{color:#fff}
+.sva .stk-bar{height:8px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden}
+.sva .stk-bar span{display:block;height:100%;background:linear-gradient(90deg,#ff9a9a,#ff6a60)}
+.sva .stk-meter .stk-row:nth-of-type(1) .stk-bar span{width:25%}
+.sva .stk-meter .stk-row:nth-of-type(2) .stk-bar span{width:50%}
+.sva .stk-meter .stk-row:nth-of-type(3) .stk-bar span{width:75%}
+.sva .stk-meter .stk-row:nth-of-type(4) .stk-bar span{width:100%}
+.sva .stk-call{background:rgba(224,52,43,.1);border:1px solid rgba(224,52,43,.3);border-left:4px solid #ff6a60;border-radius:14px;padding:20px 22px;margin-top:22px}
+.sva .stk-call p{color:#c9d6e8;font-size:.98rem;line-height:1.6;margin:0}
+.sva .stk-call p+p{margin-top:10px}
+.sva .stk-call b{color:#fff}.sva .stk-call .cost b{color:#ff6a60}
+.sva .stk-cta{display:flex;justify-content:center;margin-top:26px}
+@media(max-width:640px){.sva .stk-row{grid-template-columns:44px 1fr;gap:14px}.sva .stk-bar{grid-column:1/-1}}
+
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -1503,32 +1534,31 @@
   </div>
 </section>
 
-<!-- AGITATE -->
+<!-- STAKE — VIS refusal severity meter -->
 <div class="section-divider"></div>
-<section class="section section--white">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-eyebrow">What's at stake</p>
-      <h2>What Happens When a Schengen Visa Gets Refused</h2>
-      <p class="section-sub">Not "if", when. It happens. The question is whether it happens to you.</p>
+<section class="stk">
+  <div class="stk-inner">
+    <div class="stk-head reveal">
+      <div class="stk-label"><span class="fd"></span>What's at stake</div>
+      <h2>What Happens When a Schengen Visa <span class="hl">Gets Refused.</span></h2>
+      <p class="stk-sub">Not "if", when. It happens. The question is whether it happens to you.</p>
     </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-step"><div class="timeline-dot"></div><h3>You get refused</h3><p>Your application is rejected. That refusal is logged in <strong>VIS, the shared EU database</strong>.</p></div>
-      <div class="timeline-step"><div class="timeline-dot"></div><h3>29 countries see it</h3><p>Not just the country you applied to. Every Schengen country, <strong>all 29</strong>, can see your refusal on file.</p></div>
-      <div class="timeline-step"><div class="timeline-dot"></div><h3>It stays for 5 years</h3><p>Not 1 year. Not 2. <strong>Five years</strong> on a shared record that follows every future application you make.</p></div>
-      <div class="timeline-step"><div class="timeline-dot"></div><h3>You start at minus one</h3><p>Your next application doesn't start at zero. <strong>The burden of proof flips.</strong> You must prove you're not a risk.</p></div>
+    <div class="stk-meter reveal">
+      <div class="stk-row"><div class="stk-num">1</div><div><h3>You get refused</h3><p>Your application is rejected. That refusal is logged in <b>VIS, the shared EU database</b>.</p></div><div class="stk-bar"><span></span></div></div>
+      <div class="stk-row"><div class="stk-num">2</div><div><h3>29 countries see it</h3><p>Not just the country you applied to. Every Schengen country, <b>all 29</b>, can see your refusal on file.</p></div><div class="stk-bar"><span></span></div></div>
+      <div class="stk-row"><div class="stk-num">3</div><div><h3>It stays for 5 years</h3><p>Not 1 year. Not 2. <b>Five years</b> on a shared record that follows every future application you make.</p></div><div class="stk-bar"><span></span></div></div>
+      <div class="stk-row"><div class="stk-num">4</div><div><h3>You start at minus one</h3><p>Your next application doesn't start at zero. <b>The burden of proof flips.</b> You must prove you're not a risk.</p></div><div class="stk-bar"><span></span></div></div>
     </div>
-
-    <div class="bridge-box reveal">
-      <p>Most refusals we review describe something <strong>preventable</strong>.</p>
-      <p>Wrong bank statements. Missing employer letters. Itineraries that didn't add up.</p>
-      <p>Each refusal costs you <strong>£180+ in embassy fees</strong>, months of waiting, and a 5-year mark on your record. That's £500+ in real cost, for a mistake a 30-minute document review catches every time.</p>
-      <p><strong>Our Schengen visa agents check everything before you pay a penny to the embassy.</strong></p>
+    <div class="stk-call reveal">
+      <p><b>Most refusals we review describe something preventable.</b> Wrong bank statements. Missing employer letters. Itineraries that didn't add up.</p>
+      <p class="cost">Each refusal costs you <b>£180+</b> in embassy fees, months of waiting, and a 5-year mark on your record. That's <b>£500+</b> in real cost, for a mistake a 30-minute document review catches every time.</p>
+      <p>Our Schengen visa agents check everything <b>before you pay a penny</b> to the embassy.</p>
     </div>
-
-    <div style="margin-top: 1.75rem;">
-      <a href="#hero-name" class="cta-btn inline-cta">Check my documents free →</a>
+    <div class="stk-cta reveal">
+      <a href="{{ 'https://wa.me/'.config('ukv.whatsapp').'?text='.rawurlencode('Hi Beyond Passports, I would like a free document check before I apply.') }}" class="cta-btn" style="width:auto">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="position:relative;z-index:1"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+        <span style="position:relative;z-index:1">Check my documents free →</span>
+      </a>
     </div>
   </div>
 </section>

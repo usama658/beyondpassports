@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agency process — premium previews v2</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+:root{--navy:#16222e;--navy-2:#0f2028;--teal:#155e7a;--teal-d:#0f4a61;--stamp:#2e9a8c;--teal-light:#e7f4ef;
+  --wa:#25d366;--paper:#f4f6fa;--white:#fff;--border:#dde3ec;--ink:#16222e;--muted:#5d6b76;--soft:#7fd7c9;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Outfit",system-ui,sans-serif;background:#e9edf2;color:var(--ink);padding:34px 20px 60px}
+.lab{max-width:1180px;margin:0 auto 12px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#8493a0}
+.stage{max-width:1180px;margin:0 auto 46px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(15,25,35,.55)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ar{display:inline-block;transition:transform .2s}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1f6e63}
+.eyebrow::before,.eyebrow::after{content:"";width:18px;height:2px;background:var(--stamp)}
+h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;letter-spacing:-.025em;line-height:1.12;color:var(--ink);margin-top:12px}
+.psub{color:var(--muted);font-size:15px;line-height:1.6;margin-top:12px}
+.phead{text-align:center;max-width:60ch;margin:0 auto 44px}
+.pcta{display:flex;justify-content:center;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font:800 15px "Outfit",sans-serif;padding:14px 24px;border-radius:12px;text-decoration:none;box-shadow:0 16px 30px -16px rgba(21,94,122,.6)}
+
+/* ===== P2 · GHOST-NUMBER CARDS (dark) ===== */
+.gp{background:radial-gradient(700px 320px at 50% -10%,rgba(21,94,122,.4),transparent 60%),var(--navy);padding:62px 0 68px;color:#fff}
+.gp .eyebrow{color:var(--soft)}
+.gp h2{color:#fff}.gp .psub{color:#9db1ce}
+.gp .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gp .card{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 22px 24px;transition:transform .2s,border-color .25s}
+.gp .card:hover{transform:translateY(-6px);border-color:rgba(127,215,201,.5)}
+.gp .card:hover .ar{transform:translateX(4px)}
+.gp .ghost{position:absolute;top:-24px;right:2px;font:900 120px/1 ui-monospace,monospace;color:rgba(127,215,201,.1);pointer-events:none;letter-spacing:-.05em}
+.gp .tag{position:relative;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:12px;display:inline-block}
+.gp .card h3{position:relative;font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.gp .card p{position:relative;font-size:12.8px;line-height:1.55;color:#b7c7c5}
+.gp .btn{background:var(--wa);box-shadow:0 16px 30px -16px rgba(37,211,102,.6)}
+@media(max-width:820px){.gp .grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.gp .grid{grid-template-columns:1fr}}
+
+/* ===== P3 · VERTICAL RAIL TIMELINE (light) ===== */
+.vp{background:linear-gradient(180deg,#fbfdfe,var(--paper));padding:62px 0 68px}
+.vp .rail{position:relative;max-width:720px;margin:44px auto 0;padding-left:8px}
+.vp .rail::before{content:"";position:absolute;left:31px;top:14px;bottom:14px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--stamp),var(--teal))}
+.vp .vstep{position:relative;display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:flex-start;padding:0 0 26px}
+.vp .vstep:last-child{padding-bottom:0}
+.vp .vno{position:relative;z-index:1;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:900 20px ui-monospace,monospace;color:#fff;background:linear-gradient(180deg,var(--teal),var(--teal-d));box-shadow:0 12px 26px -12px rgba(21,94,122,.7),0 0 0 6px var(--paper)}
+.vp .vbody{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px 22px;box-shadow:0 12px 30px -22px rgba(15,25,35,.3);transition:transform .18s,box-shadow .22s}
+.vp .vbody:hover{transform:translateX(3px);box-shadow:0 20px 40px -26px rgba(15,25,35,.4)}
+.vp .vbody h3{font-size:16.5px;font-weight:800;color:var(--ink);margin-bottom:5px}
+.vp .vbody .vt{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1f6e63;margin-bottom:6px}
+.vp .vbody p{font-size:13.2px;line-height:1.55;color:var(--muted)}
+@media(max-width:520px){.vp .rail::before{left:26px}.vp .vstep{grid-template-columns:54px 1fr;gap:14px}.vp .vno{width:54px;height:54px;font-size:17px}}
+</style></head>
+<body>
+
+<!-- P2 -->
+<p class="lab">Direction P2 — Ghost-number cards (dark band, oversized teal numerals)</p>
+<div class="stage"><section class="gp"><div class="wrap">
+  <div class="phead"><p class="eyebrow">How our Schengen visa agency works</p><h2>Four Steps. No Surprises. No Payment Until You're Ready.</h2><p class="psub">Same process every time. No account. No booking system. No login. We help our community navigate the Schengen visa process, properly.</p></div>
+  <div class="grid">
+    <div class="card"><span class="ghost">01</span><span class="tag">You message us</span><h3>Tell us the trip</h3><p>WhatsApp or phone, your own words. Where you're going and when. That's all we need to start.</p></div>
+    <div class="card"><span class="ghost">02</span><span class="tag">We check your case</span><h3>Within 30 minutes</h3><p>Free. We confirm whether we can actually help. If we can't, we tell you honestly.</p></div>
+    <div class="card"><span class="ghost">03</span><span class="tag">We prepare everything</span><h3>Every detail checked</h3><p>Documents. Cover letter. Appointment booking. Full embassy briefing, before submission.</p></div>
+    <div class="card"><span class="ghost">04</span><span class="tag">You attend</span><h3>Walk in sorted</h3><p>Every document right. Every question anticipated. You attend knowing it's handled.</p></div>
+  </div>
+  <div class="pcta"><a class="btn" href="#">Start step 1 now <span class="ar">→</span></a></div>
+</div></section></div>
+
+<!-- P3 -->
+<p class="lab">Direction P3 — Vertical rail timeline (teal spine + number medallions)</p>
+<div class="stage"><section class="vp"><div class="wrap">
+  <div class="phead"><p class="eyebrow">How our Schengen visa agency works</p><h2>Four Steps. No Surprises. No Payment Until You're Ready.</h2><p class="psub">Same process every time. No account. No booking system. No login. We help our community navigate the Schengen visa process, properly.</p></div>
+  <div class="rail">
+    <div class="vstep"><div class="vno">01</div><div class="vbody"><div class="vt">You message us</div><h3>Tell us where you're going and when</h3><p>WhatsApp or phone. Your own words. That's all we need to start.</p></div></div>
+    <div class="vstep"><div class="vno">02</div><div class="vbody"><div class="vt">We check your case</div><h3>Within 30 minutes, free</h3><p>We confirm whether we can actually help. If we can't, we tell you honestly.</p></div></div>
+    <div class="vstep"><div class="vno">03</div><div class="vbody"><div class="vt">We prepare everything</div><h3>Documents, cover letter, appointment, briefing</h3><p>Every detail checked before submission. Nothing left to chance.</p></div></div>
+    <div class="vstep"><div class="vno">04</div><div class="vbody"><div class="vt">You attend with confidence</div><h3>Every document right, every question anticipated</h3><p>You walk into the appointment knowing it's sorted.</p></div></div>
+  </div>
+  <div class="pcta"><a class="btn" href="#">Start step 1 now <span class="ar">→</span></a></div>
+</div></section></div>
+
+</body></html>
