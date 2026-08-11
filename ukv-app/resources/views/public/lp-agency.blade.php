@@ -1672,6 +1672,9 @@
         <span style="position:relative;z-index:1">Start step 1 now →</span>
       </a>
     </div>
+    <div class="reveal" style="margin-top:1.75rem">
+      @include('partials.disclaimer-strip', ['wrap' => false])
+    </div>
   </div>
 </section>
 
