@@ -1387,7 +1387,7 @@
 
       <h1>Our Schengen Visa Agents Found <span class="hl u">62 Appointments</span> This Week. <span class="hl">Zero</span> Were on Public Pages.</h1>
 
-      <p class="hero-sub">The UK's specialist Schengen visa agents. We track appointment availability across 29 countries daily, prepare thorough applications, and refund our service fee if the consulate refuses. <strong>93% approval rate</strong> across 2,000+ cases.</p>
+      <p class="hero-sub">The UK's specialist Schengen visa agents. We track appointment availability across 29 countries daily, prepare thorough applications, and refund our service fee if the consulate refuses.</p>
 
       <div class="proof-strip">
         <span class="proof-item">
