@@ -1769,6 +1769,9 @@
             <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> UK-registered Schengen visa agents</span>
           </div>
         </div>
+        <div class="reveal" style="margin-top:16px">
+          @include('partials.disclaimer-strip', ['wrap' => false])
+        </div>
       </aside>
     </div>
   </div>
