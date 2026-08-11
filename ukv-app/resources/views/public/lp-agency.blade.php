@@ -1745,7 +1745,6 @@
           <div class="close-form">
             <div class="close-form-row">
               <input type="text" placeholder="Your name">
-              <input type="tel" placeholder="+44" value="+44 ">
             </div>
             <select><option value="" disabled selected>Where are you going?</option><option>France</option><option>Netherlands</option><option>Italy</option><option>Spain</option><option>Germany</option><option>Switzerland</option><option>Belgium</option><option>Austria</option><option>Portugal</option><option>Greece</option><option>Poland</option><option>Hungary</option><option>Czech Republic</option><option>Norway</option><option>Sweden</option><option>Denmark</option><option>Finland</option><option>Other Schengen</option></select>
             <label class="consent-check consent-check--dark"><input type="checkbox" checked> I agree to be contacted about my enquiry. <a href="#" style="color:var(--cta);text-decoration:underline">Privacy</a></label>
