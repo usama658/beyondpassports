@@ -1400,10 +1400,6 @@
         </span>
         <span class="proof-item">
           <span class="proof-check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Only 15 new cases per month
-        </span>
-        <span class="proof-item">
-          <span class="proof-check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           UK-registered visa agents
         </span>
       </div>
