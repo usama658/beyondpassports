@@ -1155,7 +1155,7 @@
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.sva .board-topline .board-titles{max-width:34ch}
+.sva .board-topline .board-titles{flex:1 1 520px;min-width:0}
 .sva .peak-badge{flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:7px 15px 7px 13px;font:800 12px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#16222e;animation:pkborder 1.1s ease-in-out infinite}
 .sva .peak-badge .pk-mo{color:#e11d1d}
 .sva .peak-badge .pk-dot{width:8px;height:8px;border-radius:50%;background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22);animation:pkdot 1.1s ease-in-out infinite;flex:none}
