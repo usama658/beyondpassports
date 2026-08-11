@@ -1152,9 +1152,11 @@
 .sva .lpb .open{--c:#1F6E63;--cd:#155248;--cbg:#e7f4ef;--cbg2:#f4fbf8;--cbd:#bfe3d8;--soft:#f5faf8}
 .sva .lpb .tight{--c:#b5791f;--cd:#9a6413;--cbg:#faeed6;--cbg2:#fffaf0;--cbd:#ecce9a;--soft:#fdf9ef}
 .sva .lpb .none{--c:#c0392b;--cd:#992a1f;--cbg:#fbe4e0;--cbg2:#fff3f0;--cbd:#eeb4a8;--soft:#fef4f2}
-/* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header */
-.sva .board-topline{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:4px}
-.sva .peak-badge{display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:7px 15px 7px 13px;font:800 12px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#16222e;animation:pkborder 1.1s ease-in-out infinite}
+/* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
+   title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
+.sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sva .board-topline .board-titles{max-width:34ch}
+.sva .peak-badge{flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid #e11d1d;border-radius:999px;padding:7px 15px 7px 13px;font:800 12px "Outfit",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#16222e;animation:pkborder 1.1s ease-in-out infinite}
 .sva .peak-badge .pk-mo{color:#e11d1d}
 .sva .peak-badge .pk-dot{width:8px;height:8px;border-radius:50%;background:#e11d1d;box-shadow:0 0 0 5px rgba(225,29,29,.22);animation:pkdot 1.1s ease-in-out infinite;flex:none}
 @keyframes pkborder{0%,100%{border-color:#e11d1d}50%{border-color:rgba(225,29,29,.25)}}
@@ -1395,10 +1397,12 @@
   <div class="section-inner">
     <div class="reveal">
       <div class="board-topline">
-        <p class="section-eyebrow">Live availability</p>
+        <div class="board-titles">
+          <p class="section-eyebrow">Live availability</p>
+          <h2>Schengen Visa Appointments: Found by Our Agents This Week</h2>
+        </div>
         <span class="peak-badge"><span class="pk-dot"></span>Summer Peak · <span class="pk-mo">Jul–Aug</span></span>
       </div>
-      <h2>Schengen Visa Appointments: Found by Our Agents This Week</h2>
       <p class="section-sub">Rechecked every 3 hours from official visa centres across all 29 Schengen countries. Most applicants never see these slots. Our Schengen visa agents in the UK find them.</p>
     </div>
 
