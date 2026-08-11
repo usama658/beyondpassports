@@ -1253,7 +1253,7 @@
 .sva .pt-tsub{color:var(--muted);font-size:13.5px;line-height:1.55;margin:9px 0 20px}
 .sva .pt-row{display:grid;grid-template-columns:52px 1fr;gap:15px;align-items:start;padding:16px 0;border-top:1px solid var(--border)}
 .sva .pt-row:first-of-type{border-top:0;padding-top:4px}
-.sva .pt-av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:800 20px "Outfit",sans-serif;color:#fff;background:linear-gradient(160deg,var(--teal),#0f4a61);box-shadow:0 10px 20px -12px rgba(21,94,122,.7)}
+.sva .pt-av{width:52px;height:52px;border-radius:50%;object-fit:cover;display:block;background:linear-gradient(160deg,var(--teal),#0f4a61);box-shadow:0 10px 20px -12px rgba(21,94,122,.7);border:2px solid #fff;outline:1px solid var(--border)}
 .sva .pt-nm{font-size:16px;font-weight:800;color:var(--ink);line-height:1.1}
 .sva .pt-rl{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#1f6e63;margin-top:3px}
 .sva .pt-q{position:relative;font-size:13.2px;font-style:italic;line-height:1.55;color:#33424d;margin-top:8px;padding-left:16px}
@@ -1457,64 +1457,6 @@
   <x-reg-verify class="ti">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></x-reg-verify>
 </div></div></section>
 
-<!-- ENGAGE -->
-<section class="section section--grey">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-eyebrow">Your situation</p>
-      <h2>Your Schengen Visa Agency: Which Path Fits You?</h2>
-      <p class="section-sub">Schengen visa agents near you in the UK: London, Manchester, Birmingham, Edinburgh. Pick your situation below.</p>
-    </div>
-
-    <div class="path-grid">
-      <div class="path-card reveal">
-        <div class="pc-stub">
-          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14l2.5 2.5L15 12"/></svg></span>
-          <span class="pc-code">Appointment</span>
-        </div>
-        <span class="pc-perf" aria-hidden="true"></span>
-        <div class="pc-body">
-          <p class="path-card-quote">"Every slot is gone"</p>
-          <h3>Need a Schengen visa appointment?</h3>
-          <p>Our Schengen visa agents monitor appointment slots at official visa centres near you: London, Manchester, Edinburgh, and across the UK. Rechecked every 3 hours. We regularly secure slots that never appear on public pages.</p>
-          <a href="#hero-name" class="path-card-cta">Check appointment availability <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="path-card reveal">
-        <div class="pc-stub">
-          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13l2 2 4-4"/></svg></span>
-          <span class="pc-code">Full service</span>
-        </div>
-        <span class="pc-perf" aria-hidden="true"></span>
-        <div class="pc-body">
-          <p class="path-card-quote">"Just handle it for me"</p>
-          <h3>Looking for a Schengen visa travel agent?</h3>
-          <p>We prepare your documents, write your cover letter, book your appointment, and brief you for the embassy visit. A dedicated agency for Schengen visa applications. You attend, we make sure everything is right before you do.</p>
-          <a href="#hero-name" class="path-card-cta">Check my case <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="path-card reveal">
-        <div class="pc-stub">
-          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M17 11a3 3 0 1 0-2-5.2"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M17 14a5 5 0 0 1 4 5v1"/></svg></span>
-          <span class="pc-code">Group</span>
-        </div>
-        <span class="pc-perf" aria-hidden="true"></span>
-        <div class="pc-body">
-          <p class="path-card-quote">"We're applying together"</p>
-          <h3>Couple or family application?</h3>
-          <p>We prepare every file together so no weak case drags the group down. One fee per person, one coordinator from our Schengen visa agency, one timeline.</p>
-          <a href="#hero-name" class="path-card-cta">Check our case <span>→</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="reveal" style="margin-top:1.75rem">
-      @include('partials.disclaimer-strip', ['wrap' => false])
-    </div>
-  </div>
-</section>
-
 <!-- APPOINTMENT TABLE -->
 <div class="section-divider"></div>
 <section class="section section--white">
@@ -1579,6 +1521,64 @@
         <script>(function(){var b=document.querySelector('[data-slotboard]');if(!b)return;var wrap=b.querySelector('.ngsearch'),q=b.querySelector('[data-slotsearch]'),clr=b.querySelector('[data-slotclear]'),sug=b.querySelector('[data-slotsug]'),cards=b.querySelectorAll('.ngcard'),empty=b.querySelector('[data-slotempty]'),term=b.querySelector('[data-slotterm]'),cnt=b.querySelector('[data-slotcount]');if(!q)return;var base=@json($apptTotalTxt);var SCH=[["Austria","AT"],["Belgium","BE"],["Bulgaria","BG"],["Croatia","HR"],["Czechia","CZ"],["Denmark","DK"],["Estonia","EE"],["Finland","FI"],["France","FR"],["Germany","DE"],["Greece","GR"],["Hungary","HU"],["Iceland","IS"],["Italy","IT"],["Latvia","LV"],["Liechtenstein","LI"],["Lithuania","LT"],["Luxembourg","LU"],["Malta","MT"],["Netherlands","NL"],["Norway","NO"],["Poland","PL"],["Portugal","PT"],["Romania","RO"],["Slovakia","SK"],["Slovenia","SI"],["Spain","ES"],["Sweden","SE"],["Switzerland","CH"]];var LIVE={};cards.forEach(function(c){if(c.getAttribute('data-slotzero')!=='1')LIVE[c.getAttribute('data-slotname')]=1;});function flag(cc){return '<img class="flimg" src="https://flagcdn.com/'+cc.toLowerCase()+'.svg" width="24" height="16" alt="" loading="lazy">';}function f(){var v=q.value.trim().toLowerCase(),active=v.length>0,shown=0,sum=0;cards.forEach(function(c){var hit=!v||c.getAttribute('data-slotname').indexOf(v)>-1;var zero=c.getAttribute('data-slotzero')==='1';var vis=hit&&(active||!zero);c.hidden=!vis;if(vis){shown++;sum+=parseInt((c.querySelector('.ngn')||{}).textContent,10)||0;}});if(clr)clr.hidden=!active;if(empty)empty.hidden=shown>0;if(term)term.textContent=q.value.trim();if(cnt)cnt.textContent=active?(shown+(shown===1?' country':' countries')+' · '+sum+' slot'+(sum===1?'':'s')):base;}function open(s){if(!sug)return;sug.hidden=!s;q.setAttribute('aria-expanded',s?'true':'false');}function renderSug(){if(!sug)return;var v=q.value.trim().toLowerCase();var list=SCH.filter(function(c){return !v||c[0].toLowerCase().indexOf(v)>-1;}).slice(0,8);if(!list.length){open(false);return;}sug.innerHTML=list.map(function(c){var live=LIVE[c[0].toLowerCase()];return '<li role="option" data-c="'+c[0]+'"><span class="fl">'+flag(c[1])+'</span>'+c[0]+(live?'':'<span class="zt">no live slots</span>')+'</li>';}).join('');open(true);}f();q.addEventListener('input',function(){f();renderSug();});q.addEventListener('focus',renderSug);if(sug)sug.addEventListener('mousedown',function(e){var li=e.target.closest('li[data-c]');if(!li)return;e.preventDefault();q.value=li.getAttribute('data-c');open(false);f();});if(clr)clr.addEventListener('click',function(){q.value='';q.focus();f();renderSug();});q.addEventListener('keydown',function(e){if(e.key==='Escape')open(false);});document.addEventListener('click',function(e){if(wrap&&!wrap.contains(e.target))open(false);});})();</script>
       </div>
       @include('partials.disclaimer-strip', ['text' => 'Appointment availability shown here is indicative, not a live booking system. Slot dates are updated daily from public appointment centres and can change at any moment; the exact slot is confirmed with the centre before you pay. Beyond Passports prepares your documents and assists with appointment booking. We do not control or guarantee appointment availability, and every visa decision rests with the relevant authorities.'])
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGE -->
+<section class="section section--grey">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Your situation</p>
+      <h2>Your Schengen Visa Agency: Which Path Fits You?</h2>
+      <p class="section-sub">Schengen visa agents near you in the UK: London, Manchester, Birmingham, Edinburgh. Pick your situation below.</p>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card reveal">
+        <div class="pc-stub">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14l2.5 2.5L15 12"/></svg></span>
+          <span class="pc-code">Appointment</span>
+        </div>
+        <span class="pc-perf" aria-hidden="true"></span>
+        <div class="pc-body">
+          <p class="path-card-quote">"Every slot is gone"</p>
+          <h3>Need a Schengen visa appointment?</h3>
+          <p>Our Schengen visa agents monitor appointment slots at official visa centres near you: London, Manchester, Edinburgh, and across the UK. Rechecked every 3 hours. We regularly secure slots that never appear on public pages.</p>
+          <a href="#hero-name" class="path-card-cta">Check appointment availability <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="path-card reveal">
+        <div class="pc-stub">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 13l2 2 4-4"/></svg></span>
+          <span class="pc-code">Full service</span>
+        </div>
+        <span class="pc-perf" aria-hidden="true"></span>
+        <div class="pc-body">
+          <p class="path-card-quote">"Just handle it for me"</p>
+          <h3>Looking for a Schengen visa travel agent?</h3>
+          <p>We prepare your documents, write your cover letter, book your appointment, and brief you for the embassy visit. A dedicated agency for Schengen visa applications. You attend, we make sure everything is right before you do.</p>
+          <a href="#hero-name" class="path-card-cta">Check my case <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="path-card reveal">
+        <div class="pc-stub">
+          <span class="pc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M17 11a3 3 0 1 0-2-5.2"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M17 14a5 5 0 0 1 4 5v1"/></svg></span>
+          <span class="pc-code">Group</span>
+        </div>
+        <span class="pc-perf" aria-hidden="true"></span>
+        <div class="pc-body">
+          <p class="path-card-quote">"We're applying together"</p>
+          <h3>Couple or family application?</h3>
+          <p>We prepare every file together so no weak case drags the group down. One fee per person, one coordinator from our Schengen visa agency, one timeline.</p>
+          <a href="#hero-name" class="path-card-cta">Check our case <span>→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:1.75rem">
+      @include('partials.disclaimer-strip', ['wrap' => false])
     </div>
   </div>
 </section>
@@ -1703,9 +1703,9 @@
         <p class="pt-eyebrow">Your Schengen visa agents</p>
         <h2>The People On Your Case</h2>
         <p class="pt-tsub">Named Schengen visa agents in the UK. Not a call centre. Not an offshore operation.</p>
-        <div class="pt-row"><span class="pt-av">S</span><div><div class="pt-nm">Sarah</div><div class="pt-rl">Lead Visa Consultant</div><p class="pt-q">I review every refusal letter personally. Most describe something a 30-minute check would have caught.</p></div></div>
-        <div class="pt-row"><span class="pt-av">J</span><div><div class="pt-nm">James</div><div class="pt-rl">Refusal-Recovery Specialist</div><p class="pt-q">The refusal letter never tells you the real reason. I find what actually triggered it.</p></div></div>
-        <div class="pt-row"><span class="pt-av">C</span><div><div class="pt-nm">Chloe</div><div class="pt-rl">Appointments &amp; Client Coordinator</div><p class="pt-q">I monitor appointment systems daily. Most slots I find never appear on public booking pages.</p></div></div>
+        <div class="pt-row"><img class="pt-av" src="{{ asset('assets/img/team/sarah-whitmore-visa-consultant.jpg') }}" alt="Sarah, Lead Visa Consultant at Beyond Passports" loading="lazy" width="52" height="52"><div><div class="pt-nm">Sarah</div><div class="pt-rl">Lead Visa Consultant</div><p class="pt-q">I review every refusal letter personally. Most describe something a 30-minute check would have caught.</p></div></div>
+        <div class="pt-row"><img class="pt-av" src="{{ asset('assets/img/team/james-whitfield-operations.jpg') }}" alt="James, Refusal-Recovery Specialist at Beyond Passports" loading="lazy" width="52" height="52"><div><div class="pt-nm">James</div><div class="pt-rl">Refusal-Recovery Specialist</div><p class="pt-q">The refusal letter never tells you the real reason. I find what actually triggered it.</p></div></div>
+        <div class="pt-row"><img class="pt-av" src="{{ asset('assets/img/team/chloe-adams-appointments-coordinator.jpg') }}" alt="Chloe, Appointments &amp; Client Coordinator at Beyond Passports" loading="lazy" width="52" height="52"><div><div class="pt-nm">Chloe</div><div class="pt-rl">Appointments &amp; Client Coordinator</div><p class="pt-q">I monitor appointment systems daily. Most slots I find never appear on public booking pages.</p></div></div>
       </div>
     </div>
     <div class="reveal" style="margin-top:1.75rem">
