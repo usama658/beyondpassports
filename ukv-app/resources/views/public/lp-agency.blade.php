@@ -1196,6 +1196,18 @@
 .sva .stk-cta{display:flex;justify-content:center;margin-top:26px}
 @media(max-width:640px){.sva .stk-row{grid-template-columns:44px 1fr;gap:14px}.sva .stk-bar{grid-column:1/-1}}
 
+/* "How our agency works" — ghost-number process cards (dark band) */
+.sva .gpb{background:radial-gradient(700px 320px at 50% -8%,rgba(21,94,122,.4),transparent 60%),var(--navy);color:#fff}
+.sva .gpb .section-eyebrow{color:#7fd7c9}
+.sva .gpb h2{color:#fff}
+.sva .gpb .section-sub{color:#9db1ce}
+.sva .gpb .gcard{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 22px 24px;transition:transform .2s,border-color .25s}
+.sva .gpb .gcard:hover{transform:translateY(-6px);border-color:rgba(127,215,201,.5)}
+.sva .gpb .ghost{position:absolute;top:-24px;right:2px;font:900 118px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(127,215,201,.1);pointer-events:none;letter-spacing:-.05em}
+.sva .gpb .gtag{position:relative;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7fd7c9;margin-bottom:11px;display:inline-block}
+.sva .gpb .gcard h3{position:relative;font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.sva .gpb .gcard p{position:relative;font-size:12.8px;line-height:1.55;color:#b7c7c5}
+
 /* Live "Summer Peak · Jul–Aug" badge — same treatment as the consultancy board header:
    title block left, badge bottom-aligned on the right (mirrors .lpb .bd .btop). */
 .sva .board-topline{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -1563,8 +1575,8 @@
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section section--grey">
+<!-- PROCESS — ghost-number dark band -->
+<section class="section gpb">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-eyebrow">How our Schengen visa agency works</p>
@@ -1573,10 +1585,10 @@
     </div>
 
     <div class="process-grid">
-      <div class="process-card reveal"><div class="process-number">01</div><h3>You message us</h3><p>WhatsApp or phone. Your own words. Tell us where you're going and when. That's all we need to start.</p></div>
-      <div class="process-card reveal"><div class="process-number">02</div><h3>We check your case</h3><p>Within 30 minutes. Free. We confirm whether we can actually help. If we can't, we tell you honestly.</p></div>
-      <div class="process-card reveal"><div class="process-number">03</div><h3>We prepare everything</h3><p>Documents. Cover letter. Appointment booking. Full embassy briefing. Every detail checked before submission.</p></div>
-      <div class="process-card reveal"><div class="process-number">04</div><h3>You attend with confidence</h3><p>Every document right. Every question anticipated. You walk into the appointment knowing it's sorted.</p></div>
+      <div class="gcard reveal"><span class="ghost">01</span><span class="gtag">You message us</span><h3>Tell us the trip</h3><p>WhatsApp or phone. Your own words. Where you're going and when. That's all we need to start.</p></div>
+      <div class="gcard reveal"><span class="ghost">02</span><span class="gtag">We check your case</span><h3>Within 30 minutes</h3><p>Free. We confirm whether we can actually help. If we can't, we tell you honestly.</p></div>
+      <div class="gcard reveal"><span class="ghost">03</span><span class="gtag">We prepare everything</span><h3>Every detail checked</h3><p>Documents. Cover letter. Appointment booking. Full embassy briefing, before submission.</p></div>
+      <div class="gcard reveal"><span class="ghost">04</span><span class="gtag">You attend</span><h3>Walk in sorted</h3><p>Every document right. Every question anticipated. You attend knowing it's handled.</p></div>
     </div>
 
     <div style="margin-top: 2rem; text-align: center;">
