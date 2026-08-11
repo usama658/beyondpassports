@@ -14,6 +14,7 @@
 @if (config('ukv.pinterest_verify'))<meta name="p:domain_verify" content="{{ config('ukv.pinterest_verify') }}">@endif
 @if (config('ukv.google_site_verification'))<meta name="google-site-verification" content="{{ config('ukv.google_site_verification') }}">@endif
 @include('partials.meta-pixel')
+@include('partials.analytics-head')
 @php
   $__ogTitle = trim($__env->yieldContent('title')) ?: 'Travel visa & eVisa help for UK travellers | Beyond Passports';
   $__ogDesc  = trim($__env->yieldContent('description')) ?: 'Independent UK team that prepares and checks your travel visa or eVisa application before you go abroad. Clear fixed service fees, fast handling, every step tracked. Not a government website.';
@@ -44,6 +45,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body data-page="{{ Route::currentRouteName() ?: trim(request()->path(), '/') ?: 'home' }}" data-page-path="/{{ ltrim(request()->path(), '/') }}">
+@if (! config('ukv.cookie_banner', false) && config('ukv.gtm_id'))<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ config('ukv.gtm_id') }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>@endif
 <a class="skip-link" href="#main">Skip to main content</a>
 @include('partials.announcement-bar')
 @include('partials.site-header')

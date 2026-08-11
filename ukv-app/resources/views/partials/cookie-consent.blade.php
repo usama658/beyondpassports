@@ -88,8 +88,10 @@
   if(a) a.addEventListener('click', function(){ done('accepted'); });
   if(r) r.addEventListener('click', function(){ done('rejected'); });
 @else
-  // No banner (UKV_COOKIE_BANNER=false): load analytics immediately, ungated.
-  loadAcceptedScripts();
+  // No banner (UKV_COOKIE_BANNER=false): analytics load statically in <head> via
+  // partials.analytics-head on layout pages (detectable by Google). Only fall back to
+  // JS-injection here if that static install isn't present (e.g. standalone LP heads).
+  if(!window.__bpTagsLoaded){ loadAcceptedScripts(); }
 @endif
 })();
 </script>
