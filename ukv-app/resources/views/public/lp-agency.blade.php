@@ -528,6 +528,14 @@
   transition: gap 0.2s, color 0.2s;
 }
 .sva .path-card-cta:hover { gap: 0.65rem; color: var(--teal-bright); }
+/* Boarding-pass cards — small-screen tightening */
+@media (max-width: 560px) {
+  .sva .pc-stub { width: 60px; padding: 0.9rem 0; }
+  .sva .pc-ic { width: 34px; height: 34px; }
+  .sva .pc-ic svg { width: 18px; height: 18px; }
+  .sva .pc-body { padding: 1rem 1rem 0.9rem; }
+  .sva .path-card h3 { font-size: 0.98rem; }
+}
 
 /* ── APPOINTMENT TABLE ── */
 .sva .appt-table-wrap {
