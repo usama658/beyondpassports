@@ -1096,7 +1096,8 @@
 
 /* Consultancy-exact FAQ cards (ported from /schengen-visa-consultancy .faq) */
 .sva .cfaq{--cta:#155E7A;--stamp:#2E9A8C;--stamp-text:#1F6E63;--edge:#dde3ec;--red:#c0492f;--ink:#16222E;--muted:#5d6b76;--sh:0 18px 44px -26px rgba(20,34,46,.34);display:flex;flex-direction:column;gap:12px;margin-top:1.4rem}
-.sva .cfaq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
+.sva .cfaq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s,transform .16s ease}
+.sva .cfaq .qg,.sva .cfaq .pm{transition:background .15s ease,color .15s ease}
 .sva .cfaq .fcard.open{border-color:var(--stamp);box-shadow:var(--sh)}
 .sva .cfaq .fq{display:flex;align-items:center;gap:14px;padding:20px 22px;cursor:pointer;font-weight:600;font-size:17.5px;line-height:1.34;margin:0;background:none;border:0;width:100%;text-align:left;color:var(--ink);font-family:inherit}
 .sva .cfaq .qg{width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
@@ -1110,6 +1111,14 @@
 .sva .cfaq .fain{padding:0 22px 22px 70px;color:var(--muted);font-size:15.5px;line-height:1.62}
 .sva .cfaq .fain b{color:var(--ink)}
 @media(max-width:520px){.sva .cfaq .fain{padding-left:22px}}
+/* Interactive: FAQ cards lift + the Q badge tints on hover (closed cards). */
+@media(hover:hover){
+  .sva .cfaq .fcard:hover{transform:translateY(-2px);border-color:var(--stamp);box-shadow:0 24px 48px -28px rgba(20,34,46,.45)}
+  .sva .cfaq .fcard:not(.open):not(.key):hover .qg{background:var(--stamp);color:#fff}
+  .sva .cfaq .fcard.key:not(.open):hover{border-color:var(--red)}
+  .sva .cfaq .fcard:hover .pm{color:var(--stamp-text)}
+}
+@media(prefers-reduced-motion:reduce){.sva .cfaq .fcard:hover{transform:none}}
 
 /* ── UTILITY ── */
 .sva .sr-only {
