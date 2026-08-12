@@ -305,6 +305,10 @@
   background: var(--white);
   box-shadow: 0 0 0 3px var(--teal-glow);
 }
+/* Country-code phone combo (partials.phone-country): the combo wrapper owns the
+   border/focus ring, so strip the generic .form-field input treatment off .pc-input. */
+.sva .form-field .pc-input { background: transparent; padding: 13px 14px; border: 0 !important; box-shadow: none !important; }
+.sva .form-field .pc-input:focus { background: transparent; box-shadow: none !important; }
 
 .sva .cta-btn {
   display: flex;
@@ -1418,7 +1422,7 @@
       </div>
       <div class="form-field">
         <label for="hero-phone">Phone (WhatsApp)</label>
-        <input type="tel" id="hero-phone" placeholder="+44" value="+44 ">
+        @include('partials.phone-country', ['id' => 'hero-phone', 'name' => 'hero-phone', 'placeholder' => '7911 123456'])
       </div>
       <div class="form-field">
         <label for="hero-country">Where are you going?</label>
