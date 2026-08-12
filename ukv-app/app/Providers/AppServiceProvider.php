@@ -157,7 +157,10 @@ class AppServiceProvider extends ServiceProvider
                     if (! $next->isWeekday()) {
                         $next = $next->nextWeekday();
                     }
-                    [$cls, $label] = ($seed % 3 === 0) ? ['tight', 'Limited'] : ['open', 'Available'];
+                    // Low counts on purpose — scarcity. Limited tiles 1-2, available 2-4.
+                    $limited = ($seed % 3 === 0);
+                    [$cls, $label] = $limited ? ['tight', 'Limited'] : ['open', 'Available'];
+                    $slots = $limited ? (1 + ($seed % 2)) : (2 + ($seed % 3));
                     $cards->push([
                         'name'     => $name,
                         'cls'      => $cls,
@@ -167,7 +170,7 @@ class AppServiceProvider extends ServiceProvider
                         'date_my'  => null,
                         'week'     => \App\Support\WeekLabel::for($next),
                         'flag'     => $flagsAll[$name],
-                        'slots'    => 4 + ($seed % 18),
+                        'slots'    => $slots,
                     ]);
                 }
                 $cards = $cards->values();
