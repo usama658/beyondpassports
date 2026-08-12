@@ -1592,7 +1592,7 @@
   <div class="section-inner">
     <div class="reveal">
       <p class="section-eyebrow">Client results</p>
-      <h2>2,000+ UK Applicants. 93% Approved. Here's What They Say About Our Schengen Visa Agency.</h2>
+      <h2>Here's What They Say About Our Schengen Visa Agency.</h2>
       <p class="section-sub">Real clients from our community. Every reference is verifiable on request.</p>
     </div>
 
