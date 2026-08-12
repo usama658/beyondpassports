@@ -145,7 +145,7 @@ return [
         'rows' => (bool) env('UKV_SLOT_ROWS', false),
 
         // Freshness line under the board intro. Update after each sweep. Blank = line hidden.
-        'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '16:00 on 9 August'),
+        'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '16:00 on 13 August'),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization
