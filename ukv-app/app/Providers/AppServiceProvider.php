@@ -176,6 +176,19 @@ class AppServiceProvider extends ServiceProvider
                 $cards = $cards->values();
             }
 
+            // Scarcity clamp: keep every displayed slot count low (real DB cards can carry large
+            // sample inventory like 142 which kills urgency). Deterministic per country so it does
+            // not flicker between requests. Only affects the number shown, not the underlying data.
+            if (config('ukv.slots.dummy_all')) {
+                $cards = $cards->map(function ($c) {
+                    if (($c['slots'] ?? 0) > 5) {
+                        $c['slots'] = 2 + (crc32((string) ($c['name'] ?? '')) % 4); // 2..5
+                    }
+
+                    return $c;
+                })->values();
+            }
+
             // Hero destination picker — DB-driven like the home hero: only Schengen countries we
             // actually cover appear (names must match the DB spelling for the code lookup).
             $heroDests = \App\Models\Destination::query()
