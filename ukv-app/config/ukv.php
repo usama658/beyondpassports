@@ -146,6 +146,11 @@ return [
 
         // Freshness line under the board intro. Update after each sweep. Blank = line hidden.
         'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '16:00 on 13 August'),
+
+        // DUMMY-ALL: when true, the LP appointment-board composer fills every Schengen country the
+        // DB doesn't cover with indicative dummy availability so all 29 show a slot. Temporary launch
+        // dressing — set UKV_SLOTS_DUMMY_ALL=false to show only real, ops-maintained availability.
+        'dummy_all' => (bool) env('UKV_SLOTS_DUMMY_ALL', true),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization

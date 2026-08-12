@@ -131,6 +131,48 @@ class AppServiceProvider extends ServiceProvider
                 })
                 ->values();
 
+            // DUMMY-ALL (config ukv.slots.dummy_all): fill every Schengen country the DB-derived
+            // board is missing with indicative dummy availability, so the public LP boards show a
+            // live-looking slot for all 29 instead of "ask us"/0-slot tiles. Real DB cards above win;
+            // only the gaps are filled. Deterministic per country name. Temporary — flip the flag off
+            // to revert. The board keeps its "indicative only, we confirm live" framing.
+            if (config('ukv.slots.dummy_all')) {
+                $flagsAll = [
+                    'Austria' => '🇦🇹', 'Belgium' => '🇧🇪', 'Bulgaria' => '🇧🇬', 'Croatia' => '🇭🇷',
+                    'Czechia' => '🇨🇿', 'Denmark' => '🇩🇰', 'Estonia' => '🇪🇪', 'Finland' => '🇫🇮',
+                    'France' => '🇫🇷', 'Germany' => '🇩🇪', 'Greece' => '🇬🇷', 'Hungary' => '🇭🇺',
+                    'Iceland' => '🇮🇸', 'Italy' => '🇮🇹', 'Latvia' => '🇱🇻', 'Liechtenstein' => '🇱🇮',
+                    'Lithuania' => '🇱🇹', 'Luxembourg' => '🇱🇺', 'Malta' => '🇲🇹', 'Netherlands' => '🇳🇱',
+                    'Norway' => '🇳🇴', 'Poland' => '🇵🇱', 'Portugal' => '🇵🇹', 'Romania' => '🇷🇴',
+                    'Slovakia' => '🇸🇰', 'Slovenia' => '🇸🇮', 'Spain' => '🇪🇸', 'Sweden' => '🇸🇪',
+                    'Switzerland' => '🇨🇭',
+                ];
+                $have = $cards->pluck('name')->map(fn ($n) => strtolower((string) $n))->all();
+                foreach (array_keys($flagsAll) as $name) {
+                    if (in_array(strtolower($name), $have, true)) {
+                        continue;
+                    }
+                    $seed = crc32($name);
+                    $next = now()->addDays(5 + ($seed % 23));
+                    if (! $next->isWeekday()) {
+                        $next = $next->nextWeekday();
+                    }
+                    [$cls, $label] = ($seed % 3 === 0) ? ['tight', 'Limited'] : ['open', 'Available'];
+                    $cards->push([
+                        'name'     => $name,
+                        'cls'      => $cls,
+                        'label'    => $label,
+                        'date'     => $next->format('j M Y'),
+                        'date_rel' => null,
+                        'date_my'  => null,
+                        'week'     => \App\Support\WeekLabel::for($next),
+                        'flag'     => $flagsAll[$name],
+                        'slots'    => 4 + ($seed % 18),
+                    ]);
+                }
+                $cards = $cards->values();
+            }
+
             // Hero destination picker — DB-driven like the home hero: only Schengen countries we
             // actually cover appear (names must match the DB spelling for the code lookup).
             $heroDests = \App\Models\Destination::query()
