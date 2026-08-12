@@ -1190,8 +1190,8 @@
 .sva .lpb .rc .rq{position:relative;font-family:var(--serif);font-size:18px;font-weight:500;color:#243039;line-height:1.5;margin:0 0 20px}
 .sva .lpb .rc .rf{position:relative;display:flex;align-items:center;gap:11px;padding-top:15px;border-top:1px solid var(--edge)}
 .sva .lpb .rc .rf .gd{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
-.sva .lpb .rc .rn{font-weight:800;font-size:15px;color:#16222e}.sva .lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
-.sva .lpb .rc .rsrc{margin-left:auto;font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.sva .lpb .rc .rn{flex:1;min-width:0;font-weight:800;font-size:15px;color:#16222e}.sva .lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
+.sva .lpb .rc .rsrc{flex:none;margin-left:auto;font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 /* Interactive: lift + reveal the monogram watermark on hover (same as /schengen-visa-consultancy). */
 .sva .lpb .rc{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
 .sva .lpb .rc .wm{transition:opacity .2s ease}
