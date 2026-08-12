@@ -1183,6 +1183,14 @@
 .sva .lpb .rc .rf .gd{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
 .sva .lpb .rc .rn{font-weight:800;font-size:15px;color:#16222e}.sva .lpb .rc .rn span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:1px}
 .sva .lpb .rc .rsrc{margin-left:auto;font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+/* Interactive: lift + reveal the monogram watermark on hover (same as /schengen-visa-consultancy). */
+.sva .lpb .rc{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease}
+.sva .lpb .rc .wm{transition:opacity .2s ease}
+@media(hover:hover){
+  .sva .lpb .rc:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(20,34,46,.5);border-color:rgba(200,155,60,.45)}
+  .sva .lpb .rc:hover .wm{opacity:.16}
+}
+@media(prefers-reduced-motion:reduce){.sva .lpb .rc{transition:none}.sva .lpb .rc:hover{transform:none}}
 .sva .lpb .rnote{color:var(--muted);font-size:12.5px;text-align:center;margin:22px 0 0}
 @media(max-width:900px){.sva .lpb .rgrid{grid-template-columns:1fr}}
 
@@ -1222,6 +1230,14 @@
 .sva .stk-reassure b{color:#fff}
 .sva .stk-cta{display:flex;justify-content:center;margin-top:18px}
 @media(max-width:600px){.sva .stk-row{grid-template-columns:50px 1fr;gap:13px}.sva .stk-num{width:50px;height:50px;font-size:18px}}
+/* Interactive: number tile lifts + glows, heading tints on row hover; cost/call cards lift. */
+.sva .stk-num,.sva .stk-row h3,.sva .stk-cost,.sva .stk-call{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,color .15s ease,background .18s ease}
+@media(hover:hover){
+  .sva .stk-row:hover .stk-num{transform:translateY(-3px);border-color:rgba(230,169,78,.85);box-shadow:0 0 0 6px var(--navy),0 12px 24px -10px rgba(230,169,78,.55)}
+  .sva .stk-row:hover h3{color:#7fd7c9}
+  .sva .stk-cost:hover,.sva .stk-call:hover{transform:translateY(-3px);box-shadow:0 26px 50px -30px rgba(0,0,0,.6);border-color:rgba(230,169,78,.5)}
+}
+@media(prefers-reduced-motion:reduce){.sva .stk-num,.sva .stk-cost,.sva .stk-call{transition:none}.sva .stk-row:hover .stk-num,.sva .stk-cost:hover,.sva .stk-call:hover{transform:none}}
 
 /* "How our agency works" — ghost-number process cards (light band) */
 .sva .gpb{background:linear-gradient(180deg,#fbfdfe,#f4f6fa)}
@@ -1263,6 +1279,16 @@
 .sva .pt-q{position:relative;font-size:13.2px;font-style:italic;line-height:1.55;color:#33424d;margin-top:8px;padding-left:16px}
 .sva .pt-q::before{content:"\201C";position:absolute;top:-2px;left:-2px;font-size:26px;line-height:1;color:rgba(46,154,140,.32);font-family:Georgia,serif}
 @media(max-width:860px){.sva .pt2{grid-template-columns:1fr}}
+/* Interactive: promise card + team rows respond on hover (avatar pops, row tints). */
+.sva .pt-pr,.sva .pt-tm,.sva .pt-row,.sva .pt-av,.sva .pt-pt .ck{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
+.sva .pt-row{border-radius:12px}
+@media(hover:hover){
+  .sva .pt-pr:hover,.sva .pt-tm:hover{transform:translateY(-3px);box-shadow:0 30px 60px -34px rgba(15,25,35,.55)}
+  .sva .pt-row:hover{background:rgba(21,94,122,.06)}
+  .sva .pt-row:hover .pt-av{transform:scale(1.07);box-shadow:0 12px 22px -10px rgba(21,94,122,.6)}
+  .sva .pt-pt:hover .ck{transform:scale(1.12);background:rgba(46,154,140,.4)}
+}
+@media(prefers-reduced-motion:reduce){.sva .pt-pr,.sva .pt-tm,.sva .pt-row,.sva .pt-av{transition:none}.sva .pt-pr:hover,.sva .pt-tm:hover,.sva .pt-row:hover .pt-av{transform:none}}
 
 /* FAQ + side form card — two columns */
 .sva .faqwrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:36px;align-items:start}
