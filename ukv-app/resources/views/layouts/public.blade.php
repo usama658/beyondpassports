@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{-- Brand v2 favicons / icons --}}
+{{-- Brand v2 favicons / icons. Root /favicon.ico first (Google favicon spec: 48x48 min,
+     crawlable at the domain root); PNG + SVG variants after for browsers that prefer them. --}}
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ asset('assets/brand/bp-symbol-48.png') }}">
 <link rel="icon" href="{{ asset('assets/brand/favicon.svg') }}" type="image/svg+xml">
-<link rel="icon" href="{{ asset('assets/brand/favicon.ico') }}" sizes="any">
 <link rel="apple-touch-icon" href="{{ asset('assets/brand/apple-touch-icon.png') }}">
 <meta name="theme-color" content="#155E7A">
 {{-- Trustpilot TrustBox bootstrap (in <head> per Trustpilot's guidance). Gated by the master
