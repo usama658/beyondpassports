@@ -978,11 +978,12 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
     var n=document.getElementById('lpb-name').value.trim(),p=document.getElementById('lpb-phone').value.trim(),d=inp?inp.value.trim():'';
     var hp=document.getElementById('lpb-hp');
     // email the lead first (keepalive: completes even after we navigate to the thank-you/WhatsApp)
-    try{fetch('{{ url('/schengen-visa-consultancy/lead') }}',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:n,phone:p,dest:d,intent:'case',website:hp?hp.value:''})});}catch(err){}
+    try{fetch('{{ url('/schengen-visa-consultancy/lead') }}',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:n,phone:p,dest:d,intent:'case',website:hp?hp.value:'',utm:(window.bpUtm&&window.bpUtm())||null})});}catch(err){}
     try{sessionStorage.setItem('bpCaseLead',JSON.stringify({intent:'case',name:n,dest:d,phone:p}));}catch(err){}
     window.location.assign(THXURL);
   });
 })();
 </script>
+@include('partials.utm-capture')
 @include("partials.gtm-tracking")
 @endsection

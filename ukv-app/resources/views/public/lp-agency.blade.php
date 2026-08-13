@@ -1859,5 +1859,7 @@
 })();
 </script>
 
+@include('partials.utm-capture')
+
 </div>
 @endsection
