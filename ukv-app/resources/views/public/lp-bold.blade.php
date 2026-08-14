@@ -831,7 +831,7 @@ html,body{overflow-x:clip;max-width:100%}
       <div class="baegrid">
         <div class="baecard"><h3>eVisa or share code</h3><p>Your UKVI account share code is what we check. Send us the code, not a photo of a document.</p></div>
         <div class="baecard"><h3>Graduate or Post-Study Work visa</h3><p>Your route qualifies. Send us your UKVI account share code and we will tell you exactly which evidence the consulate weighs most for your case.</p></div>
-        <div class="baecard"><h3>On a student visa? Worried about funds</h3><p>The fear we hear most is "they will think I cannot support myself." A student file is built differently, not weakly. We lead with your enrolment letter and term dates, then evidence who funds the trip: if a sponsor pays, we show the relationship and the money side by side, so the officer sees the full picture, not a gap.</p></div>
+        <div class="baecard"><h3>Student visa</h3><p>A student file is built differently, not weakly. We will tell you exactly how yours has to be put together.</p></div>
         <div class="baecard"><h3>Dependant, spouse or Skilled Worker visa</h3><p>Same route, different evidence. We will tell you which parts of your file the officer will look at hardest.</p></div>
       </div>
       <div class="baealso"><span class="ic">+</span><p><b>Also covered:</b> ILR, EU Settlement Scheme status (settled or presettled), refugee travel document holders, and British citizens.</p></div>
