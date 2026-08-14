@@ -151,6 +151,11 @@ return [
         // DB doesn't cover with indicative dummy availability so all 29 show a slot. Temporary launch
         // dressing — set UKV_SLOTS_DUMMY_ALL=false to show only real, ops-maintained availability.
         'dummy_all' => (bool) env('UKV_SLOTS_DUMMY_ALL', true),
+
+        // FEATURED countries: the board shows LIVE-slot cards for only these (in this order), ranked
+        // by real UK travel + Schengen visa demand. Every other country still renders as a hidden
+        // "ask us to watch" card the board search box reveals, so all 29 stay reachable. Empty = all.
+        'featured' => ['Spain', 'France', 'Italy', 'Greece', 'Netherlands', 'Germany', 'Portugal', 'Switzerland'],
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization

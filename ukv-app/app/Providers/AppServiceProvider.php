@@ -176,6 +176,19 @@ class AppServiceProvider extends ServiceProvider
                 $cards = $cards->values();
             }
 
+            // FEATURED shortlist: the board shows LIVE-slot cards for only these countries (config
+            // ukv.slots.featured, ordered by real demand). Every other country is dropped from the
+            // card set here, then the blade re-adds it as a hidden "ask us to watch" card the search
+            // box reveals — so the board reads as a tight top-8 strip while all 29 stay reachable.
+            $featured = (array) config('ukv.slots.featured', []);
+            if (! empty($featured)) {
+                $rank = array_flip(array_map('strtolower', $featured));
+                $cards = $cards
+                    ->filter(fn ($c) => isset($rank[strtolower((string) $c['name'])]))
+                    ->sortBy(fn ($c) => $rank[strtolower((string) $c['name'])])
+                    ->values();
+            }
+
             // Hero destination picker — DB-driven like the home hero: only Schengen countries we
             // actually cover appear (names must match the DB spelling for the code lookup).
             $heroDests = \App\Models\Destination::query()
