@@ -261,6 +261,8 @@ html,body{overflow-x:clip;max-width:100%}
 }
 /* ── MODE 4 — neon-glass (Light Mist): frosted cards, band glow edge (config ukv.slots.rows) ── */
 .lpb .bd.rows .ngstage{background:transparent;border:0;padding:0;margin-top:6px}
+.lpb .nghint{font-size:13px;font-weight:800;color:var(--ink);margin:0 0 7px}
+.lpb .nghint span{font-weight:600;color:var(--muted)}
 .lpb .ngsearch{position:relative;margin:0 0 14px}
 .lpb .ngsearch>svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:#8a99a2;pointer-events:none}
 .lpb .ngsearch input{width:100%;font:600 14px "Outfit",system-ui,sans-serif;color:#16222E;padding:12px 40px;border:1px solid var(--edge);border-radius:12px;background:#f7f9fb;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
@@ -630,6 +632,7 @@ html,body{overflow-x:clip;max-width:100%}
       @if($apptTotal > 0)<span class="ngtick"><span class="ngdot"></span><span data-slotcount>{{ $apptTotal }} slots open now</span></span>@endif
     </div>
     @if($apptShown->count() > 4)
+    <p class="nghint">Find your country <span>· all 29 Schengen countries covered</span></p>
     <div class="ngsearch">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
       <input data-slotsearch type="text" placeholder="Search a Schengen country…" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-label="Search Schengen country">
