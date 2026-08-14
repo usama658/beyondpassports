@@ -46,7 +46,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hcta-wa:hover{background:#1eb457}.lpb .hcta-wa svg{fill:#fff}
 .lpb .hcta-appt{background:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.7)}
 .lpb .hcta-appt:hover{background:var(--cta-d)}.lpb .hcta-appt svg{fill:#fff}
-.lpb .hcta-call{background:none;color:var(--cta);padding:14px 6px;border-radius:0;box-shadow:none;gap:7px}
+.lpb .hcta-call{background:none;color:var(--cta);padding:14px 6px 14px 2px;margin-left:-4px;border-radius:0;box-shadow:none;gap:7px}
 .lpb .hcta-call .ar{transition:transform .15s}.lpb .hcta-call:hover .ar{transform:translateX(4px)}
 @media(max-width:560px){.lpb .hcta a{flex:1 0 100%}.lpb .hcta-call{padding:6px}}
 .lpb .hrf{display:flex;align-items:center;gap:13px;margin:14px 0 0;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:13px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
