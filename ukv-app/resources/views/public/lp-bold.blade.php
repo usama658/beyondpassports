@@ -60,7 +60,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ftrust .ln b{color:#6a757d;font-weight:700}
 .lpb .ftrust .ic{flex:none;width:28px;height:28px;border-radius:8px;background:rgba(46,154,140,.12);display:grid;place-items:center}
 .lpb .ftrust .ic svg{width:16px;height:16px;fill:var(--stamp-text)}
-.lpb .hgrid{display:grid;grid-template-columns:1.35fr .9fr;gap:46px;align-items:center}
+.lpb .hgrid{display:grid;grid-template-columns:1.55fr .85fr;gap:40px;align-items:center}
 .lpb .hero .hhead{font-size:3rem;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 .lpb .hproof{display:flex;flex-wrap:wrap;gap:9px 18px;margin:18px 0 0}
