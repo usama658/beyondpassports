@@ -65,7 +65,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 /* proof chips — "rating-chip" template (white pill + soft shadow, destination-card chip) */
 .lpb .hproof{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
-.lpb .hproof>span{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;box-shadow:0 4px 12px -6px rgba(40,50,70,.3)}
+.lpb .hproof>span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--edge);color:var(--ink);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;box-shadow:0 14px 34px -26px rgba(20,34,46,.5)}
 .lpb .hproof .ck{flex:none;display:grid;place-items:center}
 .lpb .hproof .ck svg{width:13px;height:13px;fill:none;stroke:var(--stamp-text);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 /* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). Interactive on hover. */
