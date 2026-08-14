@@ -176,18 +176,6 @@ class AppServiceProvider extends ServiceProvider
                 $cards = $cards->values();
             }
 
-            // Popular shortlist: show only the most-searched Schengen destinations on the board by
-            // default (config ukv.slots.popular), ordered as listed, so the board reads as a tight
-            // "top countries" strip instead of all 29. The search box still covers every country.
-            $popular = (array) config('ukv.slots.popular', []);
-            if (! empty($popular)) {
-                $order = array_flip(array_map('strtolower', $popular));
-                $cards = $cards
-                    ->filter(fn ($c) => isset($order[strtolower((string) $c['name'])]))
-                    ->sortBy(fn ($c) => $order[strtolower((string) $c['name'])])
-                    ->values();
-            }
-
             // Hero destination picker — DB-driven like the home hero: only Schengen countries we
             // actually cover appear (names must match the DB spelling for the code lookup).
             $heroDests = \App\Models\Destination::query()

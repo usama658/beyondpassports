@@ -151,11 +151,6 @@ return [
         // DB doesn't cover with indicative dummy availability so all 29 show a slot. Temporary launch
         // dressing — set UKV_SLOTS_DUMMY_ALL=false to show only real, ops-maintained availability.
         'dummy_all' => (bool) env('UKV_SLOTS_DUMMY_ALL', true),
-
-        // POPULAR SHORTLIST: when set, the LP appointment board shows only these destinations (in
-        // this order), so it reads as a tight top-countries strip instead of all 29. Empty array =
-        // show every country. The board search box still covers all 29 regardless.
-        'popular' => ['France', 'Italy', 'Spain', 'Germany', 'Greece', 'Netherlands', 'Switzerland', 'Portugal'],
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization
