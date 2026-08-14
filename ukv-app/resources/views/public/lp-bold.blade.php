@@ -50,8 +50,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hcta-call .ar{transition:transform .15s}.lpb .hcta-call:hover .ar{transform:translateX(4px)}
 @media(max-width:560px){.lpb .hcta a{flex:1 0 100%}.lpb .hcta-call{padding:6px}}
 .lpb .hrf{display:flex;align-items:center;gap:13px;margin:14px 0 0;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:13px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
-.lpb .hrf-seal{flex:none;width:42px;height:42px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center}
+.lpb .hrf-seal{flex:none;width:42px;height:42px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center;position:relative;animation:sealGlow 2s ease-in-out infinite}
 .lpb .hrf-seal svg{width:22px;height:22px;fill:var(--stamp-text)}
+.lpb .hrf-seal .wave{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--stamp);animation:sealWave 2s ease-out infinite;pointer-events:none}
+@keyframes sealGlow{0%,100%{box-shadow:0 0 4px -2px rgba(46,154,140,.3)}50%{box-shadow:0 0 18px 3px rgba(46,154,140,.85)}}
+@keyframes sealWave{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
 .lpb .hrf-t b{display:block;font-size:14px;font-weight:800;color:var(--ink)}
 .lpb .hrf-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;line-height:1.5}
 .lpb .hreply{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--stamp-text);margin-top:10px}
@@ -556,7 +559,7 @@ html,body{overflow-x:clip;max-width:100%}
       <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>UK-registered Schengen visa consultants</span>
     </div>
     <div class="hrf">
-      <span class="hrf-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
+      <span class="hrf-seal"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
       <div class="hrf-t"><b>100% refund if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
     </div>
     <span class="hreply"><span class="dot"></span>Reply within 30 minutes</span>
