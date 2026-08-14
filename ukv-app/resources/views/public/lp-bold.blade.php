@@ -188,8 +188,10 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .sit .chev{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#eef4f6;color:var(--cta);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
 .lpb .pathband{padding:4px 0 44px;background:var(--paper)}
 /* Refund "passport ink stamp" — hero trust mark (light bg). Links to /legal#refunds. */
-.lpb .rstamp{display:inline-flex;flex-direction:column;align-items:center;margin:0 0 20px;transform:rotate(-6deg);border:2.5px solid var(--stamp-text);border-radius:8px;padding:9px 17px;text-align:center;color:var(--stamp-text);position:relative;text-decoration:none;transition:transform .2s ease}
-.lpb .rstamp:hover{transform:rotate(-6deg) scale(1.05)}
+.lpb .rstamp{display:inline-flex;flex-direction:column;align-items:center;margin:0 0 20px;transform:rotate(-6deg);border:2.5px solid var(--stamp-text);border-radius:8px;padding:9px 17px;text-align:center;color:var(--stamp-text);position:relative;text-decoration:none;animation:rsGlow 2s ease-in-out infinite}
+.lpb .rstamp .wave{position:absolute;inset:-6px;border-radius:12px;border:2px solid var(--stamp);animation:rsWave 2s ease-out infinite;pointer-events:none}
+@keyframes rsGlow{0%,100%{box-shadow:0 0 6px -2px rgba(46,154,140,.3)}50%{box-shadow:0 0 28px 3px rgba(46,154,140,.8)}}
+@keyframes rsWave{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.45);opacity:0}}
 .lpb .rstamp::after{content:"";position:absolute;inset:3px;border:1px solid var(--stamp-text);border-radius:5px;opacity:.5}
 .lpb .rstamp .k{font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase}
 .lpb .rstamp .v{font-weight:800;font-size:22px;letter-spacing:.04em;line-height:1;margin:1px 0}
@@ -539,7 +541,7 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="hero" id="top"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
-    <a class="rstamp" href="/legal#refunds" aria-label="Refund Promise: 100% service-fee refund if your visa is refused. Terms apply."><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></a>
+    <span class="rstamp"><span class="wave" aria-hidden="true"></span><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></span>
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">Schengen visa specialists. <span class="hl-r">Fast appointments,</span> error-free applications.</h2>
     <p class="hsub">Struggling to book a Schengen visa appointment from the UK? Our Schengen visa consultants track availability across 29 countries daily and prepare a refusal-proof application.</p>
