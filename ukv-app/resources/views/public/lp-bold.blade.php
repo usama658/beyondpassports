@@ -46,7 +46,9 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hcta-wa:hover{background:#1eb457}.lpb .hcta-wa svg{fill:#fff}
 .lpb .hcta-appt{background:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.7)}
 .lpb .hcta-appt:hover{background:var(--cta-d)}.lpb .hcta-appt svg{fill:#fff}
-@media(max-width:560px){.lpb .hcta a{flex:1 0 100%}}
+.lpb .hcta-call{background:none;color:var(--cta);padding:14px 6px;border-radius:0;box-shadow:none;gap:7px}
+.lpb .hcta-call .ar{transition:transform .15s}.lpb .hcta-call:hover .ar{transform:translateX(4px)}
+@media(max-width:560px){.lpb .hcta a{flex:1 0 100%}.lpb .hcta-call{padding:6px}}
 .lpb .hrf{display:flex;align-items:center;gap:13px;margin:14px 0 0;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:13px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
 .lpb .hrf-seal{flex:none;width:42px;height:42px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center}
 .lpb .hrf-seal svg{width:22px;height:22px;fill:var(--stamp-text)}
@@ -544,6 +546,7 @@ html,body{overflow-x:clip;max-width:100%}
     <div class="hcta">
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my eligibility for a Schengen visa. Where I am going: ') }}">@include('partials.wa-glyph')Check my eligibility</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>Find my appointment</a>
+      <a class="hcta-call" href="https://calendly.com/beyondpassports/30min" target="_blank" rel="noopener">Book a 30-min call <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
     <div class="hproof">
       <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>97% approval rate</span>
