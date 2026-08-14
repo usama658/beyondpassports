@@ -1356,7 +1356,7 @@
 .sva .lpb .ngdot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;animation:brpulse 2s ease-in-out infinite}
 @keyframes brpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 .sva .lpb .nggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.sva .lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:var(--soft);border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
+.sva .lpb .ngcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:15px;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px;text-decoration:none;color:#16222E;box-shadow:0 14px 30px -24px rgba(20,34,46,.5);transition:transform .15s,box-shadow .15s}
 @media(hover:hover){.sva .lpb .ngcard:hover{transform:translateY(-2px);box-shadow:0 22px 44px -28px rgba(20,45,50,.5)}}
 .sva .lpb .ngcard[hidden]{display:none}
 .sva .lpb .ngcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);box-shadow:0 0 14px var(--c)}
