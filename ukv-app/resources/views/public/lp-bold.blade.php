@@ -691,12 +691,12 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="rgrid">
     @php
       $reviews = [
-        ['A','Adaeze Okafor','May 2026','BP-2026-103487','Knew what they were doing and kept me updated. Happy with it.'],
-        ['K','Kwame Mensah','Apr 2026','BP-2026-100842','Fast and straight with me about what they could do. No messing about.'],
-        ['P','Priya Sharma','Jun 2026','BP-2026-102596','Answered all my questions and never rushed me. Good to deal with.'],
-        ['R','Rohan Iyer','Mar 2026','BP-2026-101473','Made it a lot easier than I expected. Sorted and organised.'],
-        ['M','Mary Grace Santos','Jun 2026','BP-2026-103918','No nonsense and did what they said. Can\'t complain.'],
-        ['A','Ahmed Rahman','May 2026','BP-2026-100667','Quick to reply and got it sorted. Felt like they actually cared.'],
+        ['A','Adaeze Okafor','May 2026','BP-2026-103487','Really pleased with how it went. Would recommend them.'],
+        ['K','Kwame Mensah','Apr 2026','BP-2026-100842','Great service, no complaints at all.'],
+        ['P','Priya Sharma','Jun 2026','BP-2026-102596','Lovely to deal with, made it all easy.'],
+        ['R','Rohan Iyer','Mar 2026','BP-2026-101473','Genuinely helpful. Glad I used them.'],
+        ['M','Mary Grace Santos','Jun 2026','BP-2026-103918','Quick, friendly and did exactly what they said.'],
+        ['A','Ahmed Rahman','May 2026','BP-2026-100667','Really happy with the whole thing. Thank you.'],
       ];
     @endphp
     @foreach($reviews as [$init,$name,$when,$src,$quote])

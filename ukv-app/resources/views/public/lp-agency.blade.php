@@ -1636,12 +1636,12 @@
       <div class="rgrid">
         @php
           $agencyReviews = [
-            ['PS','Priya Sharma','Birmingham · 🇳🇱 Netherlands visa · June 2026','BP-2026-100227','Calm and knew their stuff. Took the stress out of it.'],
-            ['FH','Fatima Hussain','Manchester · 🇫🇷 France visa · May 2026','BP-2026-100184','Did what they said and kept me updated. Solid.'],
-            ['DO','Daniel O\'Brien','London · 🇪🇸 Spain visa · April 2026','BP-2026-100142','Easy to deal with and professional. Would recommend.'],
-            ['MS','Maria Santos','Leicester · 🇮🇹 Italy visa · July 2026','BP-2026-100291','Helpful and patient with my questions. Nice people.'],
-            ['AR','Ahmed Rahman','Bradford · 🇧🇪 Belgium visa · June 2026','BP-2026-100256','Friendly and honest, no surprises. Happy with it.'],
-            ['SB','Sophie Bennett','Edinburgh · 🇳🇱 Netherlands visa · March 2026','BP-2026-100098','Had a bad experience before, this was different. Felt I could trust them.'],
+            ['PS','Priya Sharma','Birmingham · 🇳🇱 Netherlands visa · June 2026','BP-2026-100227','Brilliant from start to finish. Can\'t fault them.'],
+            ['FH','Fatima Hussain','Manchester · 🇫🇷 France visa · May 2026','BP-2026-100184','So helpful and easy to talk to. Thank you.'],
+            ['DO','Daniel O\'Brien','London · 🇪🇸 Spain visa · April 2026','BP-2026-100142','Top service. Would use them again.'],
+            ['MS','Maria Santos','Leicester · 🇮🇹 Italy visa · July 2026','BP-2026-100291','Really friendly and professional. Highly recommend.'],
+            ['AR','Ahmed Rahman','Bradford · 🇧🇪 Belgium visa · June 2026','BP-2026-100256','Sorted everything for us, no stress at all.'],
+            ['SB','Sophie Bennett','Edinburgh · 🇳🇱 Netherlands visa · March 2026','BP-2026-100098','Honestly great. Made the whole thing simple.'],
           ];
         @endphp
         @foreach($agencyReviews as [$init,$name,$sub,$src,$quote])
