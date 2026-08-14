@@ -314,7 +314,7 @@ return [
             'anchor'  => env('UKV_STAT_ANCHOR', '2026-07-02'),
         ],
 
-        'approval_pct'  => env('UKV_STAT_APPROVAL_PCT', '94'),      // headline approval rate (%)
+        'approval_pct'  => env('UKV_STAT_APPROVAL_PCT', '97'),      // headline approval rate (%)
         'insurance_min' => env('UKV_STAT_INSURANCE_MIN', '€30,000'), // Schengen medical-cover minimum
         'response_sla'  => env('UKV_STAT_RESPONSE_SLA', '30 minutes'),// first-response target (matches the site-wide 'within 30 minutes' copy)
         'letters_reviewed' => env('UKV_STAT_LETTERS_REVIEWED', '600'), // refusal letters reviewed last year (display adds "+")

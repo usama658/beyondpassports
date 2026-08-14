@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Consultants UK | 93% Approved | Beyond Passports Consultancy')
-@section('description', 'Trusted Schengen visa consultants UK, with 93% approval rate across 2,000+ cases. Best consultant for Schengen visa applications, appointments and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
+@section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
+@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 2,000+ cases. Best consultant for Schengen visa applications, appointments and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -546,7 +546,7 @@ html,body{overflow-x:clip;max-width:100%}
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>Find my appointment</a>
     </div>
     <div class="hproof">
-      <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>93% approval rate</span>
+      <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>97% approval rate</span>
       <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>UK-registered Schengen visa consultants</span>
     </div>
     <div class="hrf">
@@ -680,7 +680,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
   <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:26ch">What They Say About Our Schengen Visa Consultancy</h2>
-    <div class="rchips"><span class="rchip"><span class="d"></span><b>2,000+</b>&nbsp;UK applicants</span><span class="rchip"><span class="d"></span><b>93%</b>&nbsp;approved</span></div>
+    <div class="rchips"><span class="rchip"><span class="d"></span><b>2,000+</b>&nbsp;UK applicants</span><span class="rchip"><span class="d"></span><b>97%</b>&nbsp;approved</span></div>
   </div>
   @if (config('ukv.review_tiles'))
   <div class="rplat">

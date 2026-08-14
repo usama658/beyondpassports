@@ -2,7 +2,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Agency UK | Beyond Passports')
-@section('description', 'Trusted Schengen visa agents in the UK. 93% approval rate. We find appointments, prepare documents, and handle your application. 100% refund if refused. Free case check, reply in 30 minutes.')
+@section('description', 'Trusted Schengen visa agents in the UK. 97% approval rate. We find appointments, prepare documents, and handle your application. 100% refund if refused. Free case check, reply in 30 minutes.')
 
 @push('head')
 <style>
@@ -1431,7 +1431,7 @@
       <div class="proof-strip">
         <span class="proof-item">
           <span class="proof-check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          93% approval rate
+          97% approval rate
         </span>
         <span class="proof-item">
           <span class="proof-check"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -1802,7 +1802,7 @@
           </div>
           <div class="close-trust">
             <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No payment needed</span>
-            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 93% approval rate</span>
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 97% approval rate</span>
             <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 100% refund if refused</span>
             <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> UK-registered Schengen visa agents</span>
           </div>
