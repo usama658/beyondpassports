@@ -63,10 +63,11 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .hgrid{display:grid;grid-template-columns:1.53fr .98fr;gap:40px;align-items:center}
 .lpb .hero .hhead{font-size:3rem;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
-.lpb .hproof{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 0}
-.lpb .hproof span{display:inline-flex;align-items:center;gap:7px;background:rgba(46,154,140,.10);border:1px solid rgba(46,154,140,.22);border-radius:999px;padding:6px 13px 6px 10px;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--stamp-text);line-height:1}
+/* proof chips — "rating-chip" template (white pill + soft shadow, destination-card chip) */
+.lpb .hproof{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.lpb .hproof>span{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;box-shadow:0 4px 12px -6px rgba(40,50,70,.3)}
 .lpb .hproof .ck{flex:none;display:grid;place-items:center}
-.lpb .hproof .ck svg{width:11px;height:11px;fill:none;stroke:var(--stamp-text);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.lpb .hproof .ck svg{width:13px;height:13px;fill:none;stroke:var(--stamp-text);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 /* Mirrors the about-us .callout exactly (tinted card + stamp left-rule). Interactive on hover. */
 .lpb .hnote{font-size:15px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:16px 20px;margin:18px 0 0;max-width:none;transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background .18s ease}
 .lpb .hnote:hover{transform:translateY(-2px);border-color:var(--stamp);background:rgba(46,154,140,.12);box-shadow:0 18px 40px -22px rgba(46,154,140,.55)}
