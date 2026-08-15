@@ -1,13 +1,14 @@
-{{-- Desktop-only appointment-board lead modal (V1: split layout, dark country rail,
-     phone-first "Secure now", channel row below).
+{{-- Desktop-only appointment-board lead modal (v2: split layout, dark country rail with
+     featured call line, timeframe segmented step + phone, "Secure my slot", channel row).
 
-     Gated by config('ukv.slots.desktop_form') — OFF by default (staging flag). When on,
-     desktop pointers (pointer:fine, >=900px) get this modal on board-tile click instead
-     of the wa.me tap-through; mobile behaviour is untouched.
+     Gated by config('ukv.slots.desktop_form'). When on, desktop pointers (pointer:fine,
+     >=900px) get this modal on board-tile click instead of the wa.me tap-through; mobile
+     behaviour is untouched.
 
-     Submits phone + country to the existing lp-bold.lead endpoint (email to the team
-     inbox + log, UTM attached by the utm-capture helper when present). "Secure on Chat"
-     reuses the tile's original wa.me link; "Book Consultation" opens Calendly. --}}
+     Submits timeframe (via `intent`) + phone + country to the existing lp-bold.lead
+     endpoint (email to the team inbox + log, UTM attached by the utm-capture helper when
+     present). "Secure on a Call" reuses the tile's original wa.me link; "Book Consultation"
+     opens Calendly; the rail call card dials the office line direct. --}}
 @if (config('ukv.slots.desktop_form'))
 <div class="bdf" id="bdf" role="dialog" aria-modal="true" aria-labelledby="bdf-country" hidden>
   <div class="bdf-box">
@@ -20,19 +21,27 @@
         <span><b>30 min</b>reply time</span>
         <span><b>&pound;0</b>until confirmed</span>
       </div>
+      <a class="bdf-railcall" href="tel:+447882747584">
+        <span class="bdf-rc-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.5 15.5 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg>+44 7882 747584</span>
+        <span class="bdf-rc-sub">Lines open 9am&ndash;9pm, 7 days a week</span>
+      </a>
     </div>
     <div class="bdf-main">
       <button type="button" class="bdf-x" data-bdf-close aria-label="Close">&times;</button>
-      <p class="bdf-lead">Drop your number and a named consultant secures the live slot with you personally.</p>
+      <p class="bdf-lead">Two quick things and a named consultant secures the live slot with you personally.</p>
       <form id="bdf-form" autocomplete="off">
+        <label class="bdf-fl">When are you travelling? <span class="bdf-req">*</span></label>
+        <div class="bdf-seg" id="bdf-seg">
+          <button type="button" data-tf="1&ndash;3 weeks">1&ndash;3 wks</button><button type="button" data-tf="This month">This month</button><button type="button" data-tf="1&ndash;3 months">1&ndash;3 mo</button><button type="button" data-tf="Just planning">Planning</button>
+        </div>
         <label class="bdf-fl" for="bdf-phone">Your phone number <span class="bdf-req">*</span></label>
         @include('partials.phone-country', ['id' => 'bdf-phone', 'name' => 'phone', 'required' => true, 'placeholder' => '7911 123456'])
         <p class="bdf-hint">Required. We only use this to confirm your slot. Never shared.</p>
-        <button type="submit" class="bdf-secure">Secure now</button>
+        <button type="submit" class="bdf-secure">Secure my slot</button>
       </form>
       <div class="bdf-ordiv">or secure it your way</div>
       <div class="bdf-chrow">
-        <a class="bdf-ch bdf-ch-wa" id="bdf-wa" href="#">@include('partials.wa-glyph')Secure on Chat</a>
+        <a class="bdf-ch bdf-ch-call" id="bdf-wa" href="#">@include('partials.wa-glyph')Secure on a Call</a>
         <a class="bdf-ch bdf-ch-cal" href="https://calendly.com/beyondpassports/30min" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5z"/></svg>Book Consultation</a>
       </div>
       <p class="bdf-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>Booking is confirmed live with the centre before anything is paid.</p>
@@ -63,11 +72,21 @@
 .bdf-stats{margin-top:auto;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
 .bdf-stats span{font:600 12px "Outfit",system-ui,sans-serif;color:rgba(255,255,255,.85)}
 .bdf-stats b{display:block;font-size:17px;color:#8fe3c9}
+.bdf-railcall{margin-top:16px;position:relative;z-index:1;display:block;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(143,227,201,.35);border-radius:12px;padding:11px 13px;transition:background .15s}
+.bdf-railcall:hover{background:rgba(255,255,255,.14)}
+.bdf-rc-top{display:flex;align-items:center;gap:8px;font:800 13.5px "Outfit",system-ui,sans-serif;color:#8fe3c9}
+.bdf-rc-top svg{width:14px;height:14px;fill:#8fe3c9;flex:none}
+.bdf-rc-sub{display:block;font:600 10.5px "Outfit",system-ui,sans-serif;color:rgba(255,255,255,.7);margin-top:3px}
 .bdf-main{flex:1;padding:24px 24px 22px;background:#fff;position:relative}
 .bdf-x{position:absolute;right:14px;top:14px;background:#eef2f6;color:#5d6b76;border:0;width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer}
 .bdf-lead{font-size:13px;color:#5d6b76;line-height:1.55;margin:0 0 16px;max-width:36ch}
 .bdf-fl{font-size:12.5px;font-weight:800;color:#16222E;margin:0 0 8px;display:block}
 .bdf-req{color:#c0492f;font-weight:900}
+.bdf-seg{display:flex;border:1.5px solid #dde3ec;border-radius:12px;overflow:hidden;background:#f4f7f9;margin-bottom:14px;transition:border-color .15s,box-shadow .15s}
+.bdf-seg button{flex:1;border:0;background:none;padding:11px 4px;font:700 12px "Outfit",system-ui,sans-serif;color:#5d6b76;cursor:pointer;transition:all .12s}
+.bdf-seg button + button{border-left:1.5px solid #dde3ec}
+.bdf-seg button.sel{background:#1F6E63;color:#fff}
+.bdf-seg.err{border-color:#c0492f;box-shadow:0 0 0 3px rgba(192,73,47,.12)}
 .bdf-hint{font-size:11.5px;color:#5d6b76;margin:7px 2px 0}
 .bdf-secure{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#fff;border:0;border-radius:14px;font:800 16px "Outfit",system-ui,sans-serif;padding:15px 22px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(37,211,102,.7);transition:filter .15s,transform .12s;margin-top:14px}
 .bdf-secure:hover{filter:brightness(.95);transform:translateY(-1px)}
@@ -80,6 +99,8 @@
 .bdf-ch svg{width:16px;height:16px;flex:none}
 .bdf-ch-wa{background:rgba(37,211,102,.12);color:#128c46;border:1.5px solid rgba(37,211,102,.4)}
 .bdf-ch-wa svg{fill:#128c46}
+.bdf-ch-call{background:rgba(46,154,140,.1);color:#1F6E63;border:1.5px solid rgba(46,154,140,.4)}
+.bdf-ch-call svg{fill:#1F6E63}
 .bdf-ch-cal{background:rgba(21,94,122,.08);color:#155E7A;border:1.5px solid rgba(21,94,122,.3)}
 .bdf-ch-cal svg{fill:#155E7A}
 .bdf-note{display:flex;align-items:center;justify-content:center;gap:7px;font-size:11.5px;color:#5d6b76;margin:11px 0 0;text-align:center}
@@ -113,6 +134,16 @@
       chrow = wrap.querySelector('.bdf-chrow'),
       note = wrap.querySelector('.bdf-note'),
       leadP = wrap.querySelector('.bdf-lead');
+  // Mandatory travel-timeframe segmented control.
+  var seg = document.getElementById('bdf-seg'), timeframe = '';
+  seg.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      seg.querySelectorAll('button').forEach(function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel');
+      timeframe = b.getAttribute('data-tf') || '';
+      seg.classList.remove('err');
+    });
+  });
   var ISO = {"austria":"at","belgium":"be","bulgaria":"bg","croatia":"hr","czechia":"cz","denmark":"dk","estonia":"ee","finland":"fi","france":"fr","germany":"de","greece":"gr","hungary":"hu","iceland":"is","italy":"it","latvia":"lv","liechtenstein":"li","lithuania":"lt","luxembourg":"lu","malta":"mt","netherlands":"nl","norway":"no","poland":"pl","portugal":"pt","romania":"ro","slovakia":"sk","slovenia":"si","spain":"es","sweden":"se","switzerland":"ch"};
   var country = '';
   function openM(card){
@@ -126,7 +157,10 @@
     if (iso) { flag.src = 'https://flagcdn.com/' + iso + '.svg'; flag.hidden = false; } else { flag.hidden = true; }
     var href = card.getAttribute('href') || '#';
     wa1.href = href; wa2.href = href;
-    // reset to form state
+    // reset to form state (fresh timeframe pick per open)
+    timeframe = '';
+    seg.classList.remove('err');
+    seg.querySelectorAll('button').forEach(function(x){ x.classList.remove('sel'); });
     form.hidden = false; ordiv.hidden = false; chrow.hidden = false; note.hidden = false; leadP.hidden = false; thx.hidden = true;
     wrap.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -146,13 +180,14 @@
   // Submit -> existing lead endpoint (email + log). UTM attached when the capture helper is present.
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if (!timeframe) { seg.classList.add('err'); seg.scrollIntoView({block:'nearest'}); return; }
     var input = document.getElementById('bdf-phone');
     var phone = (input.value || '').trim();
     if (!phone) { input.focus(); return; }
     var dial = form.querySelector('[data-pc-dial]');
     if (phone.charAt(0) !== '+' && dial) { phone = dial.value + ' ' + phone.replace(/[^\d]/g,'').replace(/^0+/,''); }
     var btn = form.querySelector('.bdf-secure'); btn.disabled = true;
-    var payload = { phone: phone, dest: country, utm: (window.bpUtm ? window.bpUtm() : null) };
+    var payload = { phone: phone, dest: country, intent: 'slot · ' + timeframe, utm: (window.bpUtm ? window.bpUtm() : null) };
     fetch(@json(route('lp-bold.lead')), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': @json(csrf_token()), 'Accept': 'application/json' },
