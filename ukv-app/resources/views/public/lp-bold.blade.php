@@ -549,7 +549,7 @@ html,body{overflow-x:clip;max-width:100%}
     <span class="rstamp"><span class="wave" aria-hidden="true"></span><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></span>
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">Schengen visa Consultants. <span class="hl-r">Fast Track appointments,</span> Error-free applications.</h2>
-    <p class="hsub">Struggling to book a Schengen visa appointment from the UK? Our Schengen visa consultants track availability across 29 countries daily and prepare a refusal-proof application.</p>
+    <p class="hsub">Struggling to book a Schengen visa appointment from the UK? Our Schengen visa consultants track availability across 29 countries daily and help prepare a refusal-proof application.</p>
     <p class="hnote"><strong>Non-EU passport? UK eVisa? You can apply.</strong> If you legally reside in the UK, you apply for your Schengen visa from the UK, whatever passport you hold.</p>
     <div class="hcta">
       <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my eligibility for a Schengen visa. Where I am going: ') }}">@include('partials.wa-glyph')Check my eligibility</a>
