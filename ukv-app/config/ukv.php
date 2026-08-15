@@ -147,6 +147,13 @@ return [
         // Freshness line under the board intro. Update after each sweep. Blank = line hidden.
         'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '16:00 on 13 August'),
 
+        // DESKTOP FORM (staging flag): when true, desktop pointers (pointer:fine, >=900px)
+        // get a lead-form modal on board-tile click — split layout, dark country rail,
+        // phone-first "Secure now" + Secure on Chat / Book Consultation channel row —
+        // instead of the wa.me tap-through. Mobile untouched. OFF by default; flip
+        // UKV_BOARD_DESKTOP_FORM=true to stage/launch.
+        'desktop_form' => (bool) env('UKV_BOARD_DESKTOP_FORM', false),
+
         // DUMMY-ALL: when true, the LP appointment-board composer fills every Schengen country the
         // DB doesn't cover with indicative dummy availability so all 29 show a slot. Temporary launch
         // dressing — set UKV_SLOTS_DUMMY_ALL=false to show only real, ops-maintained availability.
