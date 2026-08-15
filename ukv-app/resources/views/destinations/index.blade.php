@@ -220,6 +220,13 @@
     <h2>Where slots are opening now</h2>
     <p class="lede">For most Schengen visas the biometric appointment is the real bottleneck, not the visa. Here is a recent snapshot by country, soonest first. Start early so you do not miss your window.</p>
     <div><span class="ap-note"><span class="d"></span>Indicative only. We confirm live availability with the centre before you pay.</span></div>
+    @if(config('ukv.slots.last_checked'))
+    {{-- Freshness line — same ukv.slots.last_checked toggle as the LP boards. --}}
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px 0 0">
+      <span style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:#1F6E63;background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.28);border-radius:100px;padding:6px 12px"><span style="width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366"></span>Last checked {{ config('ukv.slots.last_checked') }}</span>
+      <span style="font-size:12px;color:#8a959d">Rechecked every 3 hours</span>
+    </div>
+    @endif
   </div>
 
   {{-- Summer-peak live badge (auto-shows Jun–Aug), mirrors the /schengen-visa-help header pill. --}}
