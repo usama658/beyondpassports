@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
-@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 2,000+ cases. Best consultant for Schengen visa applications, appointments and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
+@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 2,000+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -722,7 +722,7 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="pathhead">
     <p class="eyebrow">Start where you are</p>
     <h2 class="h2" style="max-width:26ch">Schengen visa consultants near you</h2>
-    <p class="pathsub"><b>London, Manchester, Birmingham, Edinburgh, Leicester, Bradford.</b> Whether you need a Schengen visa consultant in London or anywhere in the UK, we work remotely. Pick your situation below.</p>
+    <p class="pathsub"><b>London, Manchester, Birmingham, Edinburgh, Leicester, Bradford.</b> Whether you need a Schengen visa consultant in London or anywhere in the UK, we provide Schengen visa help remotely. Pick your situation below.</p>
   </div>
   <div class="sitrow">
     <a class="sit" data-thx="appointment" href="{{ $wa }}?text=Hi%2C%20I%20need%20a%20Schengen%20appointment%20but%20every%20slot%20is%20gone.%20Can%20you%20help%20me%20find%20one%3F"><span class="tx"><span class="st">Cannot get an appointment?</span><span class="q">"Every slot is gone"</span><p class="d">We track 29 Schengen embassy calendars. Tell us your dates, your Schengen visa consultant finds what's open.</p></span><span class="scta">Find me an appointment ›</span></a>
@@ -889,6 +889,7 @@ html,body{overflow-x:clip;max-width:100%}
           ['q'=>'Do I have to send you my passport?','a'=>'<b>No. Never.</b> Your passport stays with you and you hand it in yourself at the visa centre. Any agent who asks you to post them your passport should be avoided.'],
           ['q'=>'Can I see what you will do before I pay?','a'=>'Yes. The case check and the quote are free and they come first. You see exactly what we will do and what it costs, in writing, before any payment. If the answer is that you can do this yourself, we’ll say so.'],
           ['q'=>'Can you help me find a Schengen visa appointment?','a'=>'We watch the consulate calendars through the day and publish what we find on the board near the top of this page. We monitor '.\App\Support\SiteStats::appointmentOperators().' centres in London, Manchester and Edinburgh across all 29 Schengen countries. Tell us your travel dates and we’ll be straight with you about what is realistic. We do not control consulate calendars and we will not pretend we do.'],
+          ['q'=>'Can you help with my Schengen visa application?','a'=>'Yes. Our Schengen visa help covers the whole application: we check your case, build the document file, complete the forms, book the appointment, and run a final QA before you attend the centre. You get clear application assistance at every step, and a named consultant you can message whenever a question comes up.'],
           ['q'=>'Are you Schengen tourist visa consultants from the UK?','a'=>'Yes, tourist cases are the most common thing we do. Our Schengen tourist visa consultants prepare the full document file: bank statements, employment letter, itinerary, accommodation confirmation, travel insurance. France, Italy, Germany, Portugal, Spain and the rest.'],
           ['q'=>'What does Schengen visa consulting actually involve?','a'=>'Schengen visa consulting covers three things: document preparation, appointment booking, and refusal recovery. Our Schengen visa application consultants prepare your full file: bank statements, cover letter, itinerary, insurance, then book your appointment and brief you for the embassy visit. You attend in person; we make sure everything is right before you do.'],
           ['q'=>'Are there Schengen visa consultants in London I can meet?','a'=>'We prepare files for applicants across London and the rest of the UK. Our Schengen visa consultants in London handle cases remotely, over WhatsApp and phone, so you get the same service whether you’re in Hounslow, Southall or Edinburgh. What matters is whether the consultant reviewing your documents has seen your type of case before, not whether you can shake their hand.'],
