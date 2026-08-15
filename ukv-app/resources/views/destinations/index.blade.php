@@ -632,7 +632,8 @@
     @endforeach
   </div>
   @endif
-  <form class="sg-search" role="search" onsubmit="return false">
+  <p class="sg-hint" style="max-width:480px;margin:18px auto 0;font-size:13px;font-weight:800;color:var(--ink)">Find your country <span style="font-weight:600;color:var(--muted)">· all 29 Schengen countries covered</span></p>
+  <form class="sg-search" role="search" onsubmit="return false" style="margin-top:7px">
     <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
     <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
   </form>
