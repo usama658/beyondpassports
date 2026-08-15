@@ -41,6 +41,31 @@ class DestinationController extends Controller
         // Honest, per-destination appointment availability (published snapshots only; "ask" when none).
         $availability = $availability->byDestination('Schengen');
 
+        // DUMMY-ALL (config ukv.slots.dummy_all): mirror the LP boards — backfill every country
+        // with no fresh published snapshot with indicative dummy availability so the board shows
+        // all 29 instead of hiding "ask" countries. Deterministic per country name (same crc32
+        // seeds as the LP composer). Real snapshots always win; flip the flag off to revert.
+        if (config('ukv.slots.dummy_all')) {
+            foreach ($destinations as $d) {
+                if (($availability[$d->id]['status'] ?? 'ask') !== 'ask') {
+                    continue;
+                }
+                $seed = crc32($d->name);
+                $next = now()->addDays(5 + ($seed % 23));
+                if (! $next->isWeekday()) {
+                    $next = $next->nextWeekday();
+                }
+                $limited = ($seed % 3 === 0);
+                $availability[$d->id] = [
+                    'status'            => $limited ? 'lim' : 'ok',
+                    'next_available_on' => $next,
+                    'confirmed_at'      => now(),
+                    // Distinct open days for the scarcity tier (matches LP counts: Limited 1-2, Available 2-4).
+                    'dummy_days'        => $limited ? (1 + ($seed % 2)) : (2 + ($seed % 3)),
+                ];
+            }
+        }
+
         // Region-grouped, soonest-available-first within each region, for the appointment board.
         $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
         $byRegion = $destinations

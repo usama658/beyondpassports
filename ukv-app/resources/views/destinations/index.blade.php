@@ -376,11 +376,14 @@
             // Scarcity tier from distinct open days in the 90-day window (matches the LP board):
             // >=5 Available, 2-4 Limited, 1 Very limited; "ask" stays "ask".
             $nodeIds = $d->supplyNodes->pluck('id')->all();
-            $days = ($a['status'] === 'ask' || empty($nodeIds)) ? 0 : \App\Models\CentreSlot::query()
-                ->available()
-                ->whereIn('supply_node_id', $nodeIds)
-                ->where('slot_at', '<=', now()->addDays(90))
-                ->get()->groupBy(fn ($s) => $s->slot_at->toDateString())->count();
+            // Dummy-backfilled entries (ukv.slots.dummy_all) carry their own day count — no slot rows exist.
+            $days = isset($a['dummy_days'])
+                ? (int) $a['dummy_days']
+                : (($a['status'] === 'ask' || empty($nodeIds)) ? 0 : \App\Models\CentreSlot::query()
+                    ->available()
+                    ->whereIn('supply_node_id', $nodeIds)
+                    ->where('slot_at', '<=', now()->addDays(90))
+                    ->get()->groupBy(fn ($s) => $s->slot_at->toDateString())->count());
             $status = $a['status'] === 'ask' ? 'ask' : ($days >= 5 ? 'ok' : ($days >= 2 ? 'lim' : 'low'));
             $label = ['ok' => 'Available', 'lim' => 'Limited', 'low' => 'Very limited', 'ask' => 'Ask us'][$status];
             $width = ['ok' => '82%', 'lim' => '34%', 'low' => '15%', 'ask' => '100%'][$status];
