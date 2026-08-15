@@ -64,7 +64,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ftrust .ic{flex:none;width:28px;height:28px;border-radius:8px;background:rgba(46,154,140,.12);display:grid;place-items:center}
 .lpb .ftrust .ic svg{width:16px;height:16px;fill:var(--stamp-text)}
 .lpb .hgrid{display:grid;grid-template-columns:1.53fr .98fr;gap:40px;align-items:center}
-.lpb .hero .hhead{font-size:3rem;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin:14px 0 0}
+.lpb .hero .hhead{font-size:3rem;line-height:1.08;letter-spacing:-.02em;max-width:19ch;margin:14px 0 0}
 .lpb .hsub{color:var(--muted);font-size:1.18rem;line-height:1.5;max-width:44ch;margin:14px 0 0}
 /* proof chips — "rating-chip" template (white pill + soft shadow, destination-card chip) */
 .lpb .hproof{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
