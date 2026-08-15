@@ -40,6 +40,11 @@
 <meta name="twitter:title" content="{{ $__ogTitle }}">
 <meta name="twitter:description" content="{{ $__ogDesc }}">
 <meta name="twitter:image" content="{{ $__ogImg }}">
+{{-- Perf: preload the two font weights that render above the fold (400 body, 800 headings)
+     so text paint doesn't wait on CSS parse -> font discovery. Other weights load on demand. --}}
+<link rel="preload" href="{{ asset('fonts/outfit-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ asset('fonts/outfit-800.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://flagcdn.com">
 {{-- Published copy of the coded design system (public/assets/ukv.css).
      Cache-bust by file mtime so CSS edits reach browsers/CDN without a manual purge. --}}
 <link rel="stylesheet" href="{{ asset('assets/ukv.css') }}?v={{ @filemtime(public_path('assets/ukv.css')) ?: '1' }}">
