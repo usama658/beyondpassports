@@ -233,16 +233,15 @@
 .vfr .faq .fhd .fsub{color:var(--muted);font-size:16.5px;line-height:1.5;margin:12px 0 0;max-width:56ch}
 .vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
 .vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
-.vfr .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
+.vfr .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;padding:0;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
 .vfr .faq .fcard.open{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
-.vfr .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:20px;line-height:1.34;margin:0;transition:padding .18s}
-.vfr .faq .fcard.open .fq{padding-bottom:6px}
+.vfr .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:20px;line-height:1.34;margin:0}
 .vfr .faq .qg{width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
 .vfr .faq .fcard.open .qg{background:var(--stamp);color:#fff}
 .vfr .faq .fcard.key .qg{background:#fdecea;color:#c0492f}.vfr .faq .fcard.key.open .qg{background:#c0492f;color:#fff}
 .vfr .faq .pm{margin-left:auto;color:var(--cta);font-size:28px;line-height:.7;flex:none;transition:transform .18s}.vfr .faq .fcard.open .pm{transform:rotate(45deg)}
 .vfr .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.vfr .faq .fcard.open .fa{max-height:520px}
-.vfr .faq .fa .fain{padding:0 24px 10px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.vfr .faq .fa .fain b{color:var(--ink)}
+.vfr .faq .fa .fain{padding:0 24px 24px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.vfr .faq .fa .fain b{color:var(--ink)}
 /* boarding-pass card + rail */
 .vfr .faq .rrail{display:flex;flex-direction:column;gap:22px;position:sticky;top:20px}
 .vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;box-shadow:0 30px 66px -30px rgba(20,34,46,.42);overflow:hidden}
