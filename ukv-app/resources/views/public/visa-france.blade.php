@@ -96,6 +96,11 @@
 
 /* 3+4 · price (dark navy card) + process (ringed timeline), 2-col */
 .vfr .fp{background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
+/* D2-parity · scope section/heading/eyebrow to match darkleft-D2 preview without touching other sections [fp-d2-parity] */
+.vfr section.fp{padding:46px 0}
+.vfr .fp h2{font-size:clamp(22px,2.8vw,28px);margin:0 0 6px}
+.vfr .fp .eyebrow{font-size:11.5px;margin-bottom:9px}
+.vfr .fp .eyebrow::before{width:24px}
 .vfr .fp-two{display:grid;grid-template-columns:1fr 1.05fr;gap:36px;align-items:start}
 /* dark navy price card (D2) */
 .vfr .dprice{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);color:#fff;border-radius:20px;padding:28px;box-shadow:0 40px 90px -46px rgba(20,34,46,.6)}
