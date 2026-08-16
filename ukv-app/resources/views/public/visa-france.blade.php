@@ -235,7 +235,8 @@
 .vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
 .vfr .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
 .vfr .faq .fcard.open{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
-.vfr .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:20px;line-height:1.34;margin:0}
+.vfr .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:20px;line-height:1.34;margin:0;transition:padding .18s}
+.vfr .faq .fcard.open .fq{padding-bottom:6px}
 .vfr .faq .qg{width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
 .vfr .faq .fcard.open .qg{background:var(--stamp);color:#fff}
 .vfr .faq .fcard.key .qg{background:#fdecea;color:#c0492f}.vfr .faq .fcard.key.open .qg{background:#c0492f;color:#fff}
