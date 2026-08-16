@@ -115,9 +115,12 @@
 .vfr .dprice .fr:last-child{border-bottom:0}
 .vfr .dprice .fr span:first-child{color:rgba(255,255,255,.88)}.vfr .dprice .fr small{display:block;color:rgba(255,255,255,.5);font-size:11px;font-weight:600;margin-top:1px}
 .vfr .dprice .fr b{color:#fff;white-space:nowrap}
-.vfr .dprice .pn{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.vfr .dprice .pn{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
 .vfr .dprice .pn span{background:rgba(255,255,255,.1);border:1px solid rgba(143,227,201,.35);color:var(--mint);border-radius:11px;padding:9px 13px;font:800 12px 'Outfit',sans-serif}
 .vfr .dprice .pn span.hot{background:rgba(233,184,114,.16);border-color:rgba(233,184,114,.5);color:#E9B872}
+.vfr .dprice .pn .pcta{margin-left:auto;display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;border-radius:11px;font:800 12px 'Outfit',sans-serif;padding:10px 15px;text-decoration:none;white-space:nowrap;box-shadow:0 14px 30px -14px rgba(37,211,102,.6)}
+.vfr .dprice .pn .pcta svg{width:15px;height:15px;fill:#fff}
+@media(max-width:400px){.vfr .dprice .pn .pcta{margin-left:0;width:100%;justify-content:center}}
 .vfr .dprice .pnote{position:relative;z-index:1;font-size:11.5px;color:rgba(255,255,255,.6);margin:14px 0 0;line-height:1.6}
 /* ringed timeline */
 .vfr .fp-flow h2{margin-bottom:16px}
@@ -356,7 +359,7 @@
         <div class="fr"><span>TLScontact charge<small>Paid to TLS, at booking</small></span><b>at booking</b></div>
         <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, pack</small></span><b>&pound;130</b></div>
       </div>
-      <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 after booking</span></div>
+      <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 after booking</span><a class="pcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to start my France visa application. I understand it is £40 now, £90 once my appointment is booked.') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Start for &pound;40</a></div>
       <p class="pnote">Consulate and TLS fees paid to them directly. Service fee refunded if the consulate refuses after we prepared the file.</p>
     </div>
     <div class="fp-flow">
