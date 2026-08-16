@@ -252,20 +252,20 @@
       <div class="fee">
         <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate</small></span><b>&euro;90</b></div>
         <div class="fr"><span>TLScontact charge<small>Paid to TLS, at booking</small></span><b>at booking</b></div>
-        <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, file pack</small></span><b>&pound;130</b></div>
+        <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, pack</small></span><b>&pound;130</b></div>
       </div>
       <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 after booking</span></div>
-      <p class="pnote">Consulate and TLS fees are paid to them directly. If the consulate refuses after we prepared the file, our service fee comes back to you.</p>
+      <p class="pnote">Consulate and TLS fees paid to them directly. Service fee refunded if the consulate refuses after we prepared the file.</p>
     </div>
     <div class="fp-flow">
       <span class="eyebrow">How it works for France</span>
       <h2>You attend one appointment.</h2>
       <div class="steps">
-        <div class="st"><div class="rail"><span class="n">1</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>France-Visas form</b><p>The official form and your FRA reference. Without it, the TLS calendar shows nothing.</p></div></div>
-        <div class="st"><div class="rail"><span class="n">2</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Build the file</b><p>Itinerary, Schengen-compliant insurance, accommodation, cover letter, finances, checked line by line.</p></div></div>
-        <div class="st"><div class="rail"><span class="n">3</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Take the earliest date</b><p>We watch the TLScontact calendar and secure the earliest date that fits, at your nearest centre.</p></div></div>
-        <div class="st you"><div class="rail"><span class="n">4</span><span class="ln"></span></div><div class="bd"><span class="who">You</span><b>Biometrics at TLS</b><p>Attend with the pack we prepared. Fingerprints and photo, usually 15 to 20 minutes.</p></div></div>
-        <div class="st"><div class="rail"><span class="n">5</span></div><div class="bd"><span class="who">Then</span><b>Travel with confidence</b><p>The consulate decides in 10 to 15 working days. Your passport comes back through TLS, and you fly.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">1</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>France-Visas form</b><p>Official form + your FRA reference. Without it the TLS calendar shows nothing.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">2</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Build the file</b><p>Insurance, accommodation, cover letter, finances, checked line by line.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">3</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Take the earliest date</b><p>We watch the TLScontact calendar and secure the soonest slot.</p></div></div>
+        <div class="st you"><div class="rail"><span class="n">4</span><span class="ln"></span></div><div class="bd"><span class="who">You</span><b>Biometrics at TLS</b><p>Attend with the pack we prepared. 15 to 20 minutes.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">5</span></div><div class="bd"><span class="who">Then</span><b>Travel with confidence</b><p>Decision in 10 to 15 working days, passport back through TLS.</p></div></div>
       </div>
     </div>
   </div></div></section>
