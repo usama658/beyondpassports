@@ -232,13 +232,17 @@
 .vfr .rc.light .who span{color:var(--muted)}
 .vfr .rc.dark .who span{color:rgba(255,255,255,.55)}
 
-/* 11 · more strip */
-.vfr .more{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:14px;padding:16px 18px;color:#fff}
-.vfr .more .tx{font:800 14px 'Outfit',sans-serif}
-.vfr .more .tx b{color:var(--mint)}
-.vfr .more .tx span{display:block;font:600 12px 'Outfit',sans-serif;color:rgba(255,255,255,.65);margin-top:2px}
-.vfr .more a{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:var(--wa);color:#fff;font:800 12.5px 'Outfit',sans-serif;padding:11px 16px;border-radius:999px;text-decoration:none;white-space:nowrap}
-.vfr .more a svg{width:14px;height:14px;fill:#fff}
+/* 11 · more strip — live pulse dot + text + pill CTA [more-M1] */
+.vfr .more{position:relative;overflow:hidden;display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:18px;padding:22px 26px;color:#fff;box-shadow:0 40px 90px -46px rgba(20,34,46,.6)}
+.vfr .more::after{content:'';position:absolute;right:-70px;top:-90px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
+.vfr .more .live{flex:none;display:inline-flex;align-items:center;gap:8px;background:rgba(143,227,201,.12);border:1px solid rgba(143,227,201,.3);color:var(--mint);border-radius:999px;padding:7px 13px;font:800 10.5px 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1}
+.vfr .more .live i{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:vfrpl 1.8s infinite}
+@keyframes vfrpl{0%{box-shadow:0 0 0 0 rgba(143,227,201,.55)}70%{box-shadow:0 0 0 8px rgba(143,227,201,0)}100%{box-shadow:0 0 0 0 rgba(143,227,201,0)}}
+.vfr .more .tx{flex:1;min-width:240px;position:relative;z-index:1}
+.vfr .more .tx b{display:block;font:800 17px 'Outfit',sans-serif;letter-spacing:-.01em;color:#fff}
+.vfr .more .tx span{display:block;font:600 13px 'Outfit',sans-serif;color:rgba(255,255,255,.6);margin-top:3px}
+.vfr .more a{position:relative;z-index:1;margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;font:800 13px 'Outfit',sans-serif;padding:12px 20px;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
+.vfr .more a svg{width:15px;height:15px;fill:#fff}
 
 @media(max-width:860px){
   .vfr .pack{grid-template-columns:1fr 1fr}
@@ -445,7 +449,8 @@
   {{-- 11 · MORE STRIP --}}
   <section style="padding-top:0"><div class="wrap">
     <div class="more">
-      <div class="tx">Dates not working for <b>your travel</b>?<span>The calendar moves daily. Tell us your dates and we watch it for you.</span></div>
+      <span class="live"><i></i>Calendar live</span>
+      <div class="tx"><b>Dates not working for your travel?</b><span>The TLScontact calendar moves daily. Tell us your dates and we watch it for you.</span></div>
       <a href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, the France dates shown do not fit my travel. My dates are: ') }}">@include('partials.wa-glyph')Ask us to watch the calendar</a>
     </div>
   </div></section>
