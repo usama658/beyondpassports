@@ -189,11 +189,11 @@
       <div class="pbadges">
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><span class="pound">&pound;</span></span>
-          <div class="tx"><b>Start for just &pound;40</b><span>The rest only when your appointment is booked</span></div>
+          <div class="tx"><b>Start for just &pound;40</b><span>&pound;90 only after booking</span></div>
         </div>
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg></span>
-          <div class="tx"><b>Reply within 30 minutes</b><span>A named consultant, 7 days a week</span></div>
+          <div class="tx"><b>Reply within 30 minutes</b><span>A named consultant, 7 days</span></div>
         </div>
       </div>
     </div>
