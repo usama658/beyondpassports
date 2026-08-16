@@ -6,7 +6,7 @@
   <div class="ft-main"><div class="wrap">
     <div class="cols">
       <div>
-        <a href="{{ url('/') }}" class="brand" style="display:inline-block" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2-reversed.svg') }}" alt="Beyond Passports" width="170" height="44" style="display:block;height:44px;width:auto"></a>
+        <a href="{{ url('/') }}" class="brand" style="display:inline-block" aria-label="Beyond Passports home"><img src="{{ asset('assets/brand/bp-logo-v2-reversed.svg?v=2') }}" alt="Beyond Passports" width="170" height="44" style="display:block;height:44px;width:auto"></a>
         @include('partials.trustpilot-cta', ['align' => 'left', 'theme' => 'dark', 'margin' => '14px 0 4px'])
         @php
           $social = array_filter(config('ukv.social', []));
