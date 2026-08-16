@@ -204,8 +204,9 @@
 .vfr .ref p{font-size:14px;color:rgba(255,255,255,.72);margin:0 auto 20px;line-height:1.6;max-width:52ch}
 .vfr .refcta{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;border-radius:12px;font:800 14px 'Outfit',sans-serif;padding:13px 22px;text-decoration:none;white-space:nowrap;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
 .vfr .refcta svg{width:16px;height:16px;fill:#fff}
-.vfr .ref .trust{margin-top:14px;font:600 12px 'Outfit',sans-serif;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;gap:8px}
-.vfr .ref .trust svg{width:14px;height:14px;fill:var(--mint);flex:none}
+.vfr .ref .trust{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font:600 13px 'Outfit',sans-serif;color:rgba(255,255,255,.66);display:flex;align-items:center;justify-content:center;gap:9px}
+.vfr .ref .trust b{color:#fff;font-weight:800}
+.vfr .ref .trust svg{width:16px;height:16px;fill:var(--mint);flex:none}
 @media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
 
 /* 10 · faq — boarding-pass: accordion left + dark CTA + disclaimer right [faq-bp] */
@@ -443,7 +444,7 @@
         <h3>A refusal follows you for <b>five years.</b></h3>
         <p>Every Schengen consulate can see it, and a wrong re-application makes it worse. Before you try France again, let us find the real reason and answer it.</p>
         <a class="refcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I was refused a Schengen visa before and want to apply for France. Can you review my refusal letter?') }}">@include('partials.wa-glyph')Review my refusal</a>
-        <div class="trust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>Honest assessment, whether or not you become a client</div>
+        <div class="trust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg><span><b>Honest assessment</b>, whether or not you become a client</span></div>
       </div>
     </div>
   </div></section>
