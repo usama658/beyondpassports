@@ -405,10 +405,11 @@
     </div>
   </div></div></section>
 
-  {{-- 7 · DO / DON'T --}}
-  <section><div class="wrap">
+  {{-- 7 · DO / DON'T + REFUSAL — merged into one honesty section --}}
+  <section class="fp"><div class="wrap">
     <span class="eyebrow">Straight answers</span>
-    <h2>What we do, and what we don't</h2>
+    <h2>What we do, what we don't, and one thing to know first</h2>
+    <p class="sub">No queue-jumping, no guarantees we can't keep. And if you've been refused before, start here.</p>
     @php
       $ddTick = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.1 14.2-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4z"/></svg>';
       $ddCross = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm3.5 12.1-1.4 1.4L12 13.4l-2.1 2.1-1.4-1.4L10.6 12 8.5 9.9l1.4-1.4L12 10.6l2.1-2.1 1.4 1.4L13.4 12z"/></svg>';
@@ -435,11 +436,7 @@
         </ul>
       </div>
     </div>
-  </div></section>
-
-  {{-- 8 · REFUSAL RECOVERY --}}
-  <section><div class="wrap">
-    <div class="ref">
+    <div class="ref" style="margin-top:16px">
       <span class="big" aria-hidden="true">5 YEARS</span>
       <div class="in">
         <span class="eyebrow">Refused before</span>
