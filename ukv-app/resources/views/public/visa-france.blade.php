@@ -193,14 +193,20 @@
 .vfr .ddc.do li .mk svg{width:19px;height:19px;fill:var(--stampt)}
 .vfr .ddc.dont li .mk svg{width:19px;height:19px;fill:#E9B872}
 
-/* 8 · refusal */
-.vfr .ref{position:relative;overflow:hidden;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:18px;padding:26px;color:#fff;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.vfr .ref h3{font-size:19px;font-weight:800;margin:0 0 6px}
+/* 8 · refusal — hero statement, giant "5 YEARS" watermark, centred CTA [ref-hero] */
+.vfr .ref{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:20px;padding:40px 34px;color:#fff;text-align:center;box-shadow:0 44px 96px -48px rgba(20,34,46,.65)}
+.vfr .ref::after{content:'';position:absolute;right:-90px;top:-110px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(233,184,114,.14),transparent 66%);pointer-events:none}
+.vfr .ref .big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 200px 'Outfit',sans-serif;color:rgba(255,255,255,.03);letter-spacing:-.05em;z-index:0;pointer-events:none;white-space:nowrap;line-height:1}
+.vfr .ref .in{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.vfr .ref .eyebrow{color:#E9B872;justify-content:center}.vfr .ref .eyebrow::before{background:#E9B872}
+.vfr .ref h3{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 8px}
 .vfr .ref h3 b{color:var(--mint)}
-.vfr .ref p{font-size:13.5px;color:rgba(255,255,255,.75);margin:0;max-width:52ch}
-.vfr .ref .tx{flex:1;min-width:260px}
-.vfr .refcta{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;border-radius:12px;font:800 14px 'Outfit',sans-serif;padding:13px 20px;text-decoration:none;white-space:nowrap}
-.vfr .refcta svg{width:15px;height:15px;fill:#fff}
+.vfr .ref p{font-size:14px;color:rgba(255,255,255,.72);margin:0 auto 20px;line-height:1.6;max-width:52ch}
+.vfr .refcta{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;border-radius:12px;font:800 14px 'Outfit',sans-serif;padding:13px 22px;text-decoration:none;white-space:nowrap;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
+.vfr .refcta svg{width:16px;height:16px;fill:#fff}
+.vfr .ref .trust{margin-top:14px;font:600 12px 'Outfit',sans-serif;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;gap:8px}
+.vfr .ref .trust svg{width:14px;height:14px;fill:var(--mint);flex:none}
+@media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
 
 /* 9 · faq */
 .vfr .faq details{margin-bottom:10px}
@@ -392,11 +398,14 @@
   {{-- 8 · REFUSAL RECOVERY --}}
   <section><div class="wrap">
     <div class="ref">
-      <div class="tx">
-        <h3>Refused before? <b>Review my Refusal.</b></h3>
-        <p>A refusal sits on the Schengen system for five years, and a wrong re-application makes it worse. Send us the refusal letter, we find the real trigger and tell you honestly whether and how to reapply for France.</p>
+      <span class="big" aria-hidden="true">5 YEARS</span>
+      <div class="in">
+        <span class="eyebrow">Refused before</span>
+        <h3>A refusal follows you for <b>five years.</b></h3>
+        <p>Every Schengen consulate can see it, and a wrong re-application makes it worse. Before you try France again, let us find the real reason and answer it.</p>
+        <a class="refcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I was refused a Schengen visa before and want to apply for France. Can you review my refusal letter?') }}">@include('partials.wa-glyph')Review my refusal</a>
+        <div class="trust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>Honest assessment, whether or not you become a client</div>
       </div>
-      <a class="refcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I was refused a Schengen visa before and want to apply for France. Can you review my refusal letter?') }}">@include('partials.wa-glyph')Review my refusal</a>
     </div>
   </div></section>
 
