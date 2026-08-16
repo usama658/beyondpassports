@@ -116,7 +116,7 @@
 .vfr .dprice .pnote{position:relative;z-index:1;font-size:11.5px;color:rgba(255,255,255,.6);margin:14px 0 0;line-height:1.6}
 /* ringed timeline */
 .vfr .fp-flow h2{margin-bottom:16px}
-.vfr .steps{display:flex;flex-direction:column;gap:0}
+.vfr .steps{display:flex;flex-direction:column;gap:0;background:none;border:0;box-shadow:none;border-radius:0;padding:0}
 .vfr .st{display:flex;gap:14px;padding-bottom:16px;background:none;border:0;border-radius:0}
 .vfr .st:last-child{padding-bottom:0}
 .vfr .st .rail{flex:none;display:flex;flex-direction:column;align-items:center}
