@@ -85,6 +85,14 @@
 .vfr .fthx p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
 @media(max-width:860px){.vfr .hgrid{grid-template-columns:1fr}}
 
+/* 2 · trust bar — 1:1 with live .tbar-f */
+.vfr .tbar-f{background:radial-gradient(600px 200px at 30% 0,rgba(21,94,122,.5),transparent),#0f2028;color:#dbe8ea;padding:0}
+.vfr .tbar-f .wrap{max-width:1140px}
+.vfr .tbar-f .row{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;padding:16px 0}
+.vfr .tbar-f .ti{display:inline-flex;align-items:center;gap:9px;font-size:16px}
+.vfr .tbar-f .ti b{color:#fff}.vfr .tbar-f .ti svg{width:20px;height:20px;color:#79CFC2}
+@media(max-width:560px){.vfr .tbar-f .row{gap:18px}}
+
 /* 3 · fee table */
 .vfr .fee{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;max-width:640px}
 .vfr .fee .fr{display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--edge);font-size:14.5px}
@@ -209,6 +217,14 @@
         <p><b>A named consultant replies within 30 minutes</b>, 7 days a week. We are already watching the TLScontact France calendar for your dates.</p>
       </div>
     </div>
+  </div></div></section>
+
+  {{-- 2 · TRUST BAR — matches live /schengen-visa-consultancy .tbar-f exactly --}}
+  <section class="tbar-f"><div class="wrap"><div class="row">
+    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>France visa</b> consultancy</span></span>
+    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span><b>3 UK</b> TLS centres</span></span>
+    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>30-min</b> reply</span></span>
+    <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></a>
   </div></div></section>
 
   {{-- 3 · FEE TABLE --}}
