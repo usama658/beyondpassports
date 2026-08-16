@@ -9,14 +9,6 @@
 
 @php
   $wa = 'https://wa.me/'.config('ukv.whatsapp');
-  // Deterministic sample availability (same seed style as the LP board) until live France data feeds in.
-  $centres = [];
-  foreach (['London', 'Manchester', 'Edinburgh'] as $c) {
-    $seed = crc32('France'.$c);
-    $next = now()->addDays(4 + ($seed % 18));
-    if (! $next->isWeekday()) $next = $next->nextWeekday();
-    $centres[] = ['name' => $c, 'date' => $next, 'slots' => 1 + ($seed % 4)];
-  }
   $faqs = [
     ['q' => 'How do I get a France Schengen visa appointment from the UK?', 'a' => 'France uses TLScontact centres in London, Manchester and Edinburgh. You need a France-Visas application reference before the TLS calendar will show you dates. We complete the France-Visas form, generate your reference, then watch the calendar and take the earliest date that fits your travel.'],
     ['q' => 'How long does a France visa take from the UK?', 'a' => 'The consulate\'s published processing time is 10 to 15 working days after your biometric appointment, longer in peak season. Appointment lead time comes on top, so start 6 to 8 weeks before travel where you can. We cannot speed up the consulate\'s decision, only how fast your file is ready and submitted.'],
@@ -40,34 +32,58 @@
 .vfr .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--stampt);margin-bottom:10px}
 .vfr .eyebrow::before{content:'';width:26px;height:3px;border-radius:2px;background:var(--stamp)}
 
-/* 1 · hero */
-.vfr .hero{padding:52px 0 40px;background:linear-gradient(180deg,#eef3f6,var(--paper))}
-.vfr .hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:0 0 14px;max-width:21ch}
+/* 1 · hero — split: copy + proof badges left, white availability form right */
+.vfr .hero{padding:54px 0 50px;background:linear-gradient(180deg,#eef3f6,var(--paper) 72%)}
+.vfr .hgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center}
+.vfr .hero h1{font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:14px 0 0;max-width:20ch}
 .vfr .hero h1 b{color:var(--stampt)}
-.vfr .hsub{font-size:16.5px;color:var(--muted);line-height:1.6;max-width:56ch;margin:0 0 20px}
-.vfr .avail{position:relative;overflow:hidden;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:18px;padding:18px;margin:22px 0 18px}
-.vfr .avail::after{content:'';position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.18),transparent 65%);pointer-events:none}
-.vfr .avail .ah{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.vfr .avail .ah b{color:#fff;font-size:15px}
-.vfr .avail .ah span{color:var(--mint);font:800 12px 'Outfit',sans-serif}
-.vfr .avail .ah span i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:6px;animation:vfrblink 1.6s infinite}
+.vfr .hsub{font-size:16.5px;color:var(--muted);line-height:1.55;max-width:52ch;margin:14px 0 0}
+.vfr .hprice{font-size:14.5px;color:var(--ink);line-height:1.7;font-weight:600;background:rgba(46,154,140,.07);border:1px solid rgba(46,154,140,.2);border-left:3px solid var(--stamp);border-radius:12px;padding:14px 18px;margin:18px 0 0}
+/* proof badges (refund-badge style) */
+.vfr .pbadges{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 0}
+.vfr .pbadge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:12px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
+.vfr .pbadge .sl{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center;position:relative}
+.vfr .pbadge .sl svg{width:19px;height:19px;fill:var(--stampt)}
+.vfr .pbadge .sl.glow{animation:vfrSeal 2s ease-in-out infinite}
+.vfr .pbadge .sl .wave{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--stamp);animation:vfrWave 2s ease-out infinite;pointer-events:none}
+@keyframes vfrSeal{0%,100%{box-shadow:0 0 4px -2px rgba(46,154,140,.3)}50%{box-shadow:0 0 18px 3px rgba(46,154,140,.85)}}
+@keyframes vfrWave{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+.vfr .pbadge .tx b{display:block;font:800 13.5px 'Outfit',sans-serif;color:var(--ink)}
+.vfr .pbadge .tx span{display:block;font:600 11.5px 'Outfit',sans-serif;color:var(--muted);margin-top:1px;line-height:1.4}
+/* white availability form card */
+.vfr .fcard{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:24px;box-shadow:0 30px 66px -30px rgba(20,34,46,.42)}
+.vfr .fc-eye{display:flex;align-items:center;gap:9px;font:800 11px 'Outfit',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--stampt);margin-bottom:4px}
+.vfr .fc-eye i{width:7px;height:7px;border-radius:50%;background:var(--stamp);display:inline-block;animation:vfrblink 1.6s infinite}
 @keyframes vfrblink{50%{opacity:.3}}
-.vfr .crow{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.vfr .cc{background:#fff;border-radius:13px;padding:13px 14px;text-decoration:none;color:var(--ink);display:block;transition:transform .12s}
-.vfr .cc:hover{transform:translateY(-2px)}
-.vfr .cc .cn{font:800 14.5px 'Outfit',sans-serif}
-.vfr .cc .cd{font:800 16px 'Outfit',sans-serif;color:var(--stampt);margin:3px 0 1px}
-.vfr .cc .cs{font:600 11.5px 'Outfit',sans-serif;color:var(--muted)}
-.vfr .anote{position:relative;z-index:1;font:600 11.5px 'Outfit',sans-serif;color:rgba(255,255,255,.7);margin:11px 2px 0}
-.vfr .hcta{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#fff;border-radius:14px;font:800 15.5px 'Outfit',sans-serif;padding:14px 24px;text-decoration:none;box-shadow:0 14px 30px -12px rgba(37,211,102,.7);transition:transform .12s,filter .15s}
-.vfr .hcta:hover{transform:translateY(-1px);filter:brightness(.95)}
-.vfr .hcta svg{width:17px;height:17px;fill:#fff}
-.vfr .hform-note{font-size:12.5px;color:var(--muted);margin-top:9px}
-
-/* 2 · trust chips */
-.vfr .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.vfr .chips span{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--edge);border-radius:999px;padding:9px 15px;font:700 12.5px 'Outfit',sans-serif;box-shadow:0 14px 34px -26px rgba(20,34,46,.5)}
-.vfr .chips b{color:var(--stampt)}
+.vfr .fc-h{font:800 19px 'Outfit',sans-serif;letter-spacing:-.01em;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.vfr .fc-flag{width:24px;height:16px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+.vfr .cchips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}
+.vfr .cchips span{font:700 11px 'Outfit',sans-serif;background:var(--paper);border:1px solid var(--edge);border-radius:8px;padding:6px 9px;color:var(--muted)}
+.vfr .cchips span.dl{color:var(--stampt)}
+.vfr .fl{font:800 12px 'Outfit',sans-serif;color:var(--ink);margin:0 0 7px;display:block}
+.vfr .fl .rq{color:var(--red)}
+.vfr .tf{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.vfr .tf button{border:1.5px solid var(--edge);background:#fff;border-radius:11px;padding:11px 6px;font:700 13px 'Outfit',sans-serif;color:var(--ink);cursor:pointer;transition:all .12s}
+.vfr .tf button:hover{border-color:var(--stamp)}
+.vfr .tf button.sel{background:var(--stampt);border-color:var(--stampt);color:#fff}
+.vfr .tf.err{outline:2px solid rgba(192,73,47,.5);outline-offset:3px;border-radius:12px}
+.vfr .pc{position:relative;display:flex;border:1px solid var(--edge);border-radius:11px;background:var(--paper);margin-bottom:14px}
+.vfr .pc:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.12);background:#fff}
+.vfr .pc .cc{display:flex;align-items:center;gap:7px;padding:0 12px;border-right:1px solid var(--edge);font:700 14px 'Outfit',sans-serif;white-space:nowrap}
+.vfr .pc .cc img{width:20px;height:14px;border-radius:2px}
+.vfr .pc input{flex:1;border:0;background:transparent;padding:13px 14px;font:600 15px 'Outfit',sans-serif;outline:none;color:var(--ink)}
+.vfr .sbtn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;border:0;border-radius:13px;font:800 16px 'Outfit',sans-serif;padding:15px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(37,211,102,.65);transition:filter .15s,transform .12s}
+.vfr .sbtn:hover{filter:brightness(.95);transform:translateY(-1px)}
+.vfr .sbtn[disabled]{opacity:.6;cursor:wait}
+.vfr .sbtn svg{width:17px;height:17px;fill:#fff}
+.vfr .fnote{font:600 11.5px 'Outfit',sans-serif;color:var(--muted);text-align:center;margin:10px 0 0}
+.vfr .fthx{text-align:center;padding:6px 0}
+.vfr .fthx[hidden]{display:none}
+.vfr .fthx .tick{width:56px;height:56px;border-radius:50%;background:rgba(46,154,140,.14);border:2px solid var(--stamp);display:grid;place-items:center;margin:0 auto 12px}
+.vfr .fthx .tick svg{width:26px;height:26px;fill:none;stroke:var(--stampt);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.vfr .fthx h4{font:800 18px 'Outfit',sans-serif;margin:0 0 6px}
+.vfr .fthx p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+@media(max-width:860px){.vfr .hgrid{grid-template-columns:1fr}}
 
 /* 3 · fee table */
 .vfr .fee{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;max-width:640px}
@@ -155,36 +171,45 @@
 <div class="vfr">
 
   {{-- 1 · HERO: mechanism headline + France availability --}}
-  <section class="hero"><div class="wrap">
-    <span class="eyebrow">France Schengen Visa from the UK</span>
-    <h1>We Watch the TLScontact Calendar. You Just <b>Show Up</b>.</h1>
-    <p class="hsub">France appointments in London, Manchester and Edinburgh, rechecked daily. We set up your France-Visas reference, then take the earliest date the calendar releases.</p>
-
-    <div class="avail">
-      <div class="ah"><b>TLScontact France · next appointments</b><span><i></i>checked daily</span></div>
-      <div class="crow">
-        @foreach($centres as $c)
-        <a class="cc" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I need a France Schengen appointment at TLScontact '.$c['name'].'. Please check the earliest live date for me.') }}">
-          <div class="cn">TLS {{ $c['name'] }}</div>
-          <div class="cd">{{ $c['date']->format('D j M') }}</div>
-          <div class="cs">indicative · confirmed live before you pay</div>
-        </a>
-        @endforeach
+  <section class="hero"><div class="wrap"><div class="hgrid">
+    <div>
+      <span class="eyebrow">France Schengen visa from the UK</span>
+      <h1>We Watch the TLScontact Calendar. You Just <b>Show Up</b>.</h1>
+      <p class="hsub">France appointments in London, Manchester and Edinburgh, rechecked daily. Tell us your dates, we take the earliest slot the calendar releases and confirm it with you.</p>
+      <p class="hprice"><strong>&pound;130 total. &pound;90 only once your appointment is booked.</strong> Service fee refunded if the consulate refuses the file we prepared.</p>
+      <div class="pbadges">
+        <div class="pbadge">
+          <span class="sl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
+          <div class="tx"><b>Companies House 17331903</b><span>UK-registered Schengen visa consultancy</span></div>
+        </div>
+        <div class="pbadge">
+          <span class="sl glow"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg></span>
+          <div class="tx"><b>Reply within 30 minutes</b><span>A named consultant, 7 days a week</span></div>
+        </div>
       </div>
-      <p class="anote">The TLS calendar releases dates in batches. Empty today does not mean empty tomorrow, which is why we watch it for you.</p>
     </div>
 
-    <a class="hcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I want to check France appointment availability. My travel dates are: ') }}">@include('partials.wa-glyph')Check France Availability</a>
-    <p class="hform-note">We reply within 30 minutes. No payment needed.</p>
-
-    {{-- 2 · trust chips --}}
-    <div class="chips">
-      <span><b>&pound;130</b> all-in · &pound;90 only after your appointment is booked</span>
-      <span>Service-fee <b>refund promise</b></span>
-      <span>Companies House <b>17331903</b></span>
-      <span>Replies in <b>30 minutes</b>, named consultant</span>
+    <div class="fcard">
+      <form id="vfr-form" autocomplete="off">
+        <div class="fc-eye"><i></i>TLScontact France &middot; checked daily</div>
+        <div class="fc-h"><img class="fc-flag" src="https://flagcdn.com/fr.svg" alt="">Find my France slot</div>
+        <div class="cchips"><span>London</span><span>Manchester</span><span>Edinburgh</span><span class="dl"><b>checked daily</b></span></div>
+        <label class="fl">When are you travelling? <span class="rq">*</span></label>
+        <div class="tf" id="vfr-tf">
+          <button type="button" data-tf="Within 3 weeks">Within 3 weeks</button><button type="button" data-tf="This month">This month</button><button type="button" data-tf="In 1&ndash;3 months">In 1&ndash;3 months</button><button type="button" data-tf="Just planning">Just planning</button>
+        </div>
+        <label class="fl" for="vfr-phone">Your phone number <span class="rq">*</span></label>
+        <div class="pc"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+        <button type="submit" class="sbtn">@include('partials.wa-glyph')Check France availability</button>
+        <p class="fnote">We reply within 30 minutes and take the earliest date at your nearest centre.</p>
+      </form>
+      <div class="fthx" hidden>
+        <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
+        <h4>Request received</h4>
+        <p><b>A named consultant replies within 30 minutes</b>, 7 days a week. We are already watching the TLScontact France calendar for your dates.</p>
+      </div>
     </div>
-  </div></section>
+  </div></div></section>
 
   {{-- 3 · FEE TABLE --}}
   <section><div class="wrap">
@@ -328,5 +353,35 @@
 
 </div>
 
+<script>
+(function(){
+  var form = document.getElementById('vfr-form'); if (!form) return;
+  var seg = document.getElementById('vfr-tf'), timeframe = '';
+  seg.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      seg.querySelectorAll('button').forEach(function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel'); timeframe = b.getAttribute('data-tf') || ''; seg.classList.remove('err');
+    });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!timeframe) { seg.classList.add('err'); seg.scrollIntoView({block:'center'}); return; }
+    var input = document.getElementById('vfr-phone');
+    var phone = (input.value || '').trim();
+    if (!phone) { input.focus(); return; }
+    if (phone.charAt(0) !== '+') { phone = '+44 ' + phone.replace(/[^\d]/g,'').replace(/^0+/,''); }
+    var btn = form.querySelector('.sbtn'); btn.disabled = true;
+    var payload = { phone: phone, dest: 'France', intent: 'France slot - ' + timeframe, utm: (window.bpUtm ? window.bpUtm() : null) };
+    fetch(@json(route('lp-bold.lead')), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': @json(csrf_token()), 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(){}).finally(function(){
+      form.hidden = true;
+      var thx = form.parentNode.querySelector('.fthx'); if (thx) thx.hidden = false;
+    });
+  });
+})();
+</script>
 <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn ($f) => ['@type' => 'Question', 'name' => $f['q'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']]], $faqs)], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 @endsection
