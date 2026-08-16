@@ -213,13 +213,24 @@
 .vfr .faq summary{font-size:14.5px}
 .vfr .faq details div{padding:0 18px 15px;font-size:13.5px;color:var(--muted);line-height:1.7}
 
-/* 10 · reviews */
-.vfr .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.vfr .rc{background:#fff;border:1px solid var(--edge);border-radius:15px;padding:18px}
-.vfr .rc .st5{color:#e2a63d;font-size:13px;letter-spacing:2px;margin-bottom:8px}
-.vfr .rc p{font-size:13px;line-height:1.65;color:var(--ink);margin:0 0 12px}
+/* 9 · reviews — dark navy feature card + two light cards [reviews-B] */
+.vfr .rgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+.vfr .rc{border-radius:16px;padding:22px;display:flex;flex-direction:column}
+.vfr .rc.light{background:#fff;border:1px solid var(--edge);box-shadow:0 18px 40px -32px rgba(20,34,46,.5)}
+.vfr .rc.dark{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);color:#fff;box-shadow:0 40px 90px -46px rgba(20,34,46,.6)}
+.vfr .rc.dark::after{content:'';position:absolute;right:-60px;top:-80px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
+.vfr .rc .st5{color:#e2a63d;font-size:13px;letter-spacing:2px;margin-bottom:12px;position:relative;z-index:1}
+.vfr .rc p{font-size:13px;line-height:1.65;margin:0 0 16px;flex:1;position:relative;z-index:1}
+.vfr .rc.light p{color:var(--ink)}
+.vfr .rc.dark p{font-size:14.5px;color:#fff}
+.vfr .rc .foot{display:flex;align-items:center;gap:11px;position:relative;z-index:1}
+.vfr .rc .av{flex:none;width:42px;height:42px;border-radius:50%;background:linear-gradient(160deg,#2E9A8C,#1F6E63);display:grid;place-items:center;font:800 15px 'Outfit',sans-serif;color:#fff}
+.vfr .rc.dark .av{background:rgba(143,227,201,.18);color:var(--mint)}
 .vfr .rc .who{font:800 12.5px 'Outfit',sans-serif}
-.vfr .rc .who span{display:block;font:600 11px 'Outfit',sans-serif;color:var(--muted);margin-top:2px}
+.vfr .rc.dark .who{color:#fff}
+.vfr .rc .who span{display:block;font:600 10.5px 'Outfit',sans-serif;margin-top:2px}
+.vfr .rc.light .who span{color:var(--muted)}
+.vfr .rc.dark .who span{color:rgba(255,255,255,.55)}
 
 /* 11 · more strip */
 .vfr .more{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:14px;padding:16px 18px;color:#fff}
@@ -414,9 +425,9 @@
     <span class="eyebrow">France clients</span>
     <h2>What France applicants say</h2>
     <div class="rgrid" style="margin-top:18px">
-      <div class="rc"><div class="st5">★★★★★</div><p>First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time.</p><div class="who">Adaeze Okafor<span>May 2026 · BP-2026-103487</span></div></div>
-      <div class="rc"><div class="st5">★★★★★</div><p>Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn't believe it until I saw the confirmation email. Proper service.</p><div class="who">Fatima Hussain<span>Manchester · May 2026 · BP-2026-100184</span></div></div>
-      <div class="rc"><div class="st5">★★★★★</div><p>Needed it before a wedding on a tight timeline. Honest that they can't rush the consulate, just the paperwork. Did exactly what they said.</p><div class="who">Kwame Mensah<span>Apr 2026 · BP-2026-100842</span></div></div>
+      <div class="rc dark"><div class="st5">★★★★★</div><p>First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time.</p><div class="foot"><span class="av">AO</span><span class="who">Adaeze Okafor<span>May 2026 · BP-2026-103487</span></span></div></div>
+      <div class="rc light"><div class="st5">★★★★★</div><p>Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn't believe it until I saw the confirmation email. Proper service.</p><div class="foot"><span class="av">FH</span><span class="who">Fatima Hussain<span>Manchester · May 2026 · BP-2026-100184</span></span></div></div>
+      <div class="rc light"><div class="st5">★★★★★</div><p>Needed it before a wedding on a tight timeline. Honest that they can't rush the consulate, just the paperwork. Did exactly what they said.</p><div class="foot"><span class="av">KM</span><span class="who">Kwame Mensah<span>Apr 2026 · BP-2026-100842</span></span></div></div>
     </div>
   </div></section>
 
