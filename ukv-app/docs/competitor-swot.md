@@ -169,3 +169,21 @@ testimonials (non-UK names) → popular countries → pricing (€190 excl. govt
 7. Honest operational metrics module ("median first reply / appointments secured this month") — the credible version of "99% on time" (SVC shape)
 8. Process steps with we/you asymmetry ending on the outcome ("Travel with confidence") (EuroPath)
 9. Trust-check module: "Look us up: Companies House 17331903 · ICO ZC197159" — while 4 competitors run broken/fake counters
+
+---
+
+# APPROVED /visa/france SECTION STACK (owner-approved 16 Aug 2026)
+1. Hero: mechanism headline + France availability widget (Atlys widget-as-hero + Flypass mechanism line) — CTA "Check France Availability"
+2. Trust chips: CH 17331903 · ICO ZC197159 · £130 total · 30-min named reply (Flypass hero badges + FlyFast chip compression)
+3. Server-rendered fee table: Consulate + TLS + BP £130 (£40/£90) + Total + all-in parenthetical (VisaHQ structure + Aviva parenthetical + xVisa laddering)
+4. France 5-step process, we/you asymmetry, ends "Travel with confidence" (EuroPath arc + Nexus FRA detail)
+5. Documents by traveller type, collapsible (Aviva depth, BP voice)
+6. Deliverables preview — the actual pack (Atlys carousel)
+7. "What we do — and what we don't" (xVisa honesty section)
+8. Refusal-recovery block + CTA "Review my Refusal" (TourLoom)
+9. France FAQ ×8-10 incl. persona Qs + FAQPage schema (Atlys personas + Aviva facts)
+10. France-tagged reviews, real counts only (Breakout placement)
+11. "Don't see your date?" strip — search/watch + WhatsApp (own ngmore pattern, honest slot framing)
+12. Disclaimer strip (locked partial)
+
+Dropped deliberately: eligibility quiz (scam-adjacent register), countdown/discount timers, outcome guarantees, non-visa upsells.
