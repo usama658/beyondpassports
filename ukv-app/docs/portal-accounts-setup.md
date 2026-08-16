@@ -22,13 +22,21 @@ add phone, turn on 2FA if offered, then tick done.
 | **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | hello@… | ☐ | ☐ |
 | **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | hello@… | ☐ | ✅ |
 | **BLS International** | Spain | https://uk.blsspainglobal.com | hello@… | ☐ | ☐ |
-| **GVCW** | Greece | https://uk-gr.gvcworld.eu/en | hello@… | ☐ | ☐ |
+| **GVCW** | Greece | https://uk-gr.gvcworld.eu/en/login | `gvcw@` (→ hello@) | ☐ | ◐ registering |
 | **e-Konsulat** | Poland | https://secure.e-konsulat.gov.pl/ | hello@… | ☐ | n/a — per-application |
 | **eViza** | Romania | https://eviza.mae.ro/ | hello@… | ☐ | n/a — per-application |
 | **ezov.mzv.sk** | Slovakia | https://ezov.mzv.sk | hello@… | ☐ | n/a — per-application |
 | Luxembourg | (no portal) | email `Londres.consulat@mae.etat.lu` to book | — | — | ☐ |
 
 (Account emails can all be the one ops inbox `hello@`, or per-operator **forwarders** that land in `hello@`.)
+
+### GVCW — Greece (in progress)
+- Portal: https://uk-gr.gvcworld.eu/en/login · centre: **Edinburgh** · country: **Greece**
+- Account email: `gvcw@beyondpassports.co.uk` — forwarder **live** (→ hello@, created via uapi).
+- Username: `bpgreece` (fallback `beyondpassports_gr` if taken).
+- Password: **in the password manager** — deliberately NOT stored here (repo is pushed to GitHub). Rotate after first login.
+- Pending: real First/Last name + UK phone on the registration; confirm Edinburgh shows under Greece VAC.
+- Reminder: GVCW is a gated operator — one calendar check per centre (429-ban risk).
 
 ### Optional — per-operator forwarders (all land in hello@, no extra mailbox/login)
 cPanel → Email → **Forwarders → Add Forwarder**: address `vfs`, forward to `hello@beyondpassports.co.uk`.
