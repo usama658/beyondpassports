@@ -1670,12 +1670,12 @@
       <div class="rgrid">
         @php
           $agencyReviews = [
-            ['PS','Priya Sharma','Birmingham · 🇳🇱 Netherlands visa · June 2026','BP-2026-100227','Brilliant from start to finish. Can\'t fault them.'],
-            ['FH','Fatima Hussain','Manchester · 🇫🇷 France visa · May 2026','BP-2026-100184','So helpful and easy to talk to. Thank you.'],
-            ['DO','Daniel O\'Brien','London · 🇪🇸 Spain visa · April 2026','BP-2026-100142','Top service. Would use them again.'],
-            ['MS','Maria Santos','Leicester · 🇮🇹 Italy visa · July 2026','BP-2026-100291','Really friendly and professional. Highly recommend.'],
-            ['AR','Ahmed Rahman','Bradford · 🇧🇪 Belgium visa · June 2026','BP-2026-100256','Sorted everything for us, no stress at all.'],
-            ['SB','Sophie Bennett','Edinburgh · 🇳🇱 Netherlands visa · March 2026','BP-2026-100098','Honestly great. Made the whole thing simple.'],
+            ['PS','Priya Sharma','Birmingham · 🇳🇱 Netherlands visa · June 2026','BP-2026-100227','Had a refusal last year and was terrified of applying again. They went through what went wrong, fixed it, and my Netherlands visa came through. Straight with me the whole way.'],
+            ['FH','Fatima Hussain','Manchester · 🇫🇷 France visa · May 2026','BP-2026-100184','Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn\'t believe it until I saw the confirmation email. Proper service.'],
+            ['DO','Daniel O\'Brien','London · 🇪🇸 Spain visa · April 2026','BP-2026-100142','Handled everything for me and my wife. Two separate applications, both approved first time. The cover letters they wrote were brilliant, really specific to our situation.'],
+            ['MS','Maria Santos','Leicester · 🇮🇹 Italy visa · July 2026','BP-2026-100291','First time applying for Schengen, had no idea where to start. They walked me through every document on WhatsApp. Got my Italy visa in 8 working days.'],
+            ['AR','Ahmed Rahman','Bradford · 🇧🇪 Belgium visa · June 2026','BP-2026-100256','Family of four, all approved. They coordinated everything so we submitted together. The embassy briefing was the best part, knew exactly what to expect.'],
+            ['SB','Sophie Bennett','Edinburgh · 🇳🇱 Netherlands visa · March 2026','BP-2026-100098','Was sceptical because I\'d been scammed before by another "agent". These guys showed me their ICO registration, sent everything in writing. Completely different experience.'],
           ];
         @endphp
         @foreach($agencyReviews as [$init,$name,$sub,$src,$quote])

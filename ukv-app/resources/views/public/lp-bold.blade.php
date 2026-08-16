@@ -735,12 +735,12 @@ html,body{overflow-x:clip;max-width:100%}
   <div class="rgrid">
     @php
       $reviews = [
-        ['A','Adaeze Okafor','May 2026','BP-2026-103487','Really pleased with how it went. Would recommend them.'],
-        ['K','Kwame Mensah','Apr 2026','BP-2026-100842','Great service, no complaints at all.'],
-        ['P','Priya Sharma','Jun 2026','BP-2026-102596','Lovely to deal with, made it all easy.'],
-        ['R','Rohan Iyer','Mar 2026','BP-2026-101473','Genuinely helpful. Glad I used them.'],
-        ['M','Mary Grace Santos','Jun 2026','BP-2026-103918','Quick, friendly and did exactly what they said.'],
-        ['A','Ahmed Rahman','May 2026','BP-2026-100667','Really happy with the whole thing. Thank you.'],
+        ['A','Adaeze Okafor','May 2026','BP-2026-103487','First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time. Booking again for my next trip.'],
+        ['K','Kwame Mensah','Apr 2026','BP-2026-100842','Needed an Italy visa on a tight timeline before a wedding in Rome. Paid the priority fee and had it in hand with days to spare. Honest that they can\'t rush the consulate, just the paperwork. Did exactly what they said.'],
+        ['P','Priya Sharma','Jun 2026','BP-2026-102596','I\'m on a UK residence permit and wasn\'t sure I could even apply. Their consultant walked me through it, sorted my Germany visa, no drama at the consulate. Fair fee and a real person answered every email.'],
+        ['R','Rohan Iyer','Mar 2026','BP-2026-101473','Applied for a Spain visa for a family holiday, five of us. They handled all the forms and kept it organised so nothing got missed. Approved for everyone. Saved me a huge headache.'],
+        ['M','Mary Grace Santos','Jun 2026','BP-2026-103918','Had a Schengen refusal a year back so I was worried. They went through what went wrong, fixed it, and my Netherlands visa came through this time. Straight with me the whole way.'],
+        ['A','Ahmed Rahman','May 2026','BP-2026-100667','Business trip to Belgium, needed it done properly and fast. Uploaded my papers, they checked everything, visa sorted before I flew. Landed in Brussels, no issues at the border.'],
       ];
     @endphp
     @foreach($reviews as [$init,$name,$when,$src,$quote])
