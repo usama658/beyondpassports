@@ -229,16 +229,16 @@
 .vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
 .vfr .faq details.fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;margin:0;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
 .vfr .faq details.fcard[open]{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
-.vfr .faq summary.fq{display:flex;align-items:center;gap:13px;padding:19px 22px;cursor:pointer;font:600 17px 'Outfit',sans-serif;line-height:1.35;list-style:none}
+.vfr .faq summary.fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font:600 20px 'Outfit',sans-serif;line-height:1.34;list-style:none}
 .vfr .faq summary.fq::-webkit-details-marker{display:none}
 .vfr .faq summary.fq::after{content:none}
-.vfr .faq .qg{flex:none;width:32px;height:32px;border-radius:9px;background:#eef4f6;color:var(--cta);font:800 15px 'Outfit',sans-serif;display:flex;align-items:center;justify-content:center}
+.vfr .faq .qg{flex:none;width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font:800 16px 'Outfit',sans-serif;display:flex;align-items:center;justify-content:center}
 .vfr .faq details[open] .qg{background:var(--stamp);color:#fff}
 .vfr .faq details.key .qg{background:#fdecea;color:#c0492f}
 .vfr .faq details.key[open] .qg{background:#c0492f;color:#fff}
-.vfr .faq .pm{margin-left:auto;flex:none;color:var(--cta);font-size:27px;line-height:.7;transition:transform .18s}
+.vfr .faq .pm{margin-left:auto;flex:none;color:var(--cta);font-size:28px;line-height:.7;transition:transform .18s}
 .vfr .faq details[open] .pm{transform:rotate(45deg)}
-.vfr .faq .fain{padding:0 22px 20px 67px;color:var(--muted);font-size:14.5px;line-height:1.62}
+.vfr .faq .fain{padding:0 24px 24px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}
 .vfr .faq .fain b{color:var(--ink)}
 .vfr .faq .rrail{display:flex;flex-direction:column;gap:20px;position:sticky;top:20px}
 .vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 66px -30px rgba(20,34,46,.42)}
