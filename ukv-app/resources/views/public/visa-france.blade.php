@@ -174,12 +174,24 @@
 .vfr .packfoot .tx span{font-size:12px;color:rgba(255,255,255,.66);line-height:1.45}
 @media(max-width:860px){.vfr .dpx .two{grid-template-columns:1fr}}
 
-/* 7 · do/don't */
-.vfr .dd{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px}
-.vfr .ddc{background:#fff;border:1px solid var(--edge);border-radius:16px;padding:20px}
-.vfr .ddc h3{font-size:15px;font-weight:800;margin:0 0 10px}
-.vfr .ddc ul{margin:0;padding-left:20px;font-size:13.5px;color:var(--muted);line-height:1.9}
-.vfr .ddc.dont h3{color:#b5791f}
+/* 7 · do/don't — light "do" card + dark navy "don't" card (premium bookend) [dd-bookend] */
+.vfr .dd{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.vfr .ddc{border-radius:18px;padding:24px}
+.vfr .ddc.do{background:#fff;border:1px solid var(--edge);box-shadow:0 20px 44px -34px rgba(20,34,46,.5)}
+.vfr .ddc.dont{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);box-shadow:0 40px 90px -46px rgba(20,34,46,.6)}
+.vfr .ddc.dont::after{content:'';position:absolute;right:-70px;top:-90px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(233,184,114,.16),transparent 65%);pointer-events:none}
+.vfr .ddc .hd{display:flex;align-items:center;gap:11px;margin-bottom:16px;position:relative;z-index:1}
+.vfr .ddc .hd .bdg{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center}
+.vfr .ddc.do .hd .bdg{background:rgba(46,154,140,.12)}.vfr .ddc.dont .hd .bdg{background:rgba(233,184,114,.16)}
+.vfr .ddc .hd .bdg svg{width:19px;height:19px}.vfr .ddc.do .hd .bdg svg{fill:var(--stampt)}.vfr .ddc.dont .hd .bdg svg{fill:#E9B872}
+.vfr .ddc h3{font:800 17px 'Outfit',sans-serif;margin:0}.vfr .ddc.dont h3{color:#fff}
+.vfr .ddc ul{list-style:none;margin:0;padding:0}
+.vfr .ddc li{position:relative;z-index:1;display:flex;gap:11px;align-items:flex-start;padding:11px 0;font-size:13.5px;line-height:1.5}
+.vfr .ddc.do li{color:var(--ink);border-top:1px solid var(--edge)}.vfr .ddc.do li:first-child{border-top:0}
+.vfr .ddc.dont li{color:rgba(255,255,255,.82);border-top:1px solid rgba(255,255,255,.1)}.vfr .ddc.dont li:first-child{border-top:0}
+.vfr .ddc li .mk{flex:none;width:19px;height:19px;margin-top:1px}
+.vfr .ddc.do li .mk svg{width:19px;height:19px;fill:var(--stampt)}
+.vfr .ddc.dont li .mk svg{width:19px;height:19px;fill:#E9B872}
 
 /* 8 · refusal */
 .vfr .ref{position:relative;overflow:hidden;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:18px;padding:26px;color:#fff;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
@@ -349,21 +361,31 @@
   <section><div class="wrap">
     <span class="eyebrow">Straight answers</span>
     <h2>What we do, and what we don't</h2>
+    @php
+      $ddTick = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.1 14.2-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4z"/></svg>';
+      $ddCross = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm3.5 12.1-1.4 1.4L12 13.4l-2.1 2.1-1.4-1.4L10.6 12 8.5 9.9l1.4-1.4L12 10.6l2.1-2.1 1.4 1.4L13.4 12z"/></svg>';
+    @endphp
     <div class="dd" style="margin-top:18px">
-      <div class="ddc"><h3>We do</h3><ul>
-        <li>Complete the France-Visas form and generate your FRA reference</li>
-        <li>Watch the TLScontact calendar and take the earliest workable date</li>
-        <li>Check every document before it goes anywhere near the centre</li>
-        <li>Reply within 30 minutes, from a named consultant</li>
-        <li>Refund our service fee if the consulate refuses the file we prepared</li>
-      </ul></div>
-      <div class="ddc dont"><h3>We don't</h3><ul>
-        <li>Speed up the consulate's decision. Nobody can, and we won't pretend</li>
-        <li>Book you through a different country to game the main-destination rule</li>
-        <li>Sell queue-jumping or "premium slots" that don't exist</li>
-        <li>Guarantee a visa. The decision is always the consulate's</li>
-        <li>We are not the government and not affiliated with TLScontact</li>
-      </ul></div>
+      <div class="ddc do">
+        <div class="hd"><span class="bdg"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"/></svg></span><h3>We do</h3></div>
+        <ul>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Complete the France-Visas form and generate your FRA reference</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Watch the TLScontact calendar and take the earliest workable date</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Check every document before it goes anywhere near the centre</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Reply within 30 minutes, from a named consultant</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Refund our service fee if the consulate refuses the file we prepared</span></li>
+        </ul>
+      </div>
+      <div class="ddc dont">
+        <div class="hd"><span class="bdg"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.8 0 3.5.6 4.9 1.7L5.7 16.9A8 8 0 0 1 12 4zm0 16c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1A8 8 0 0 1 12 20z"/></svg></span><h3>We don't</h3></div>
+        <ul>
+          <li><span class="mk">{!! $ddCross !!}</span><span>Speed up the consulate's decision. Nobody can, and we won't pretend</span></li>
+          <li><span class="mk">{!! $ddCross !!}</span><span>Book you through a different country to game the main-destination rule</span></li>
+          <li><span class="mk">{!! $ddCross !!}</span><span>Sell queue-jumping or "premium slots" that don't exist</span></li>
+          <li><span class="mk">{!! $ddCross !!}</span><span>Guarantee a visa. The decision is always the consulate's</span></li>
+          <li><span class="mk">{!! $ddCross !!}</span><span>We are not the government and not affiliated with TLScontact</span></li>
+        </ul>
+      </div>
     </div>
   </div></section>
 
