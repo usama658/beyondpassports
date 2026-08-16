@@ -44,6 +44,7 @@
 .vfr .pbadge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--edge);border-radius:12px;padding:12px 15px;box-shadow:0 12px 28px -22px rgba(20,34,46,.5)}
 .vfr .pbadge .sl{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(46,154,140,.12);border:1.5px solid rgba(46,154,140,.42);display:grid;place-items:center;position:relative}
 .vfr .pbadge .sl svg{width:19px;height:19px;fill:var(--stampt)}
+.vfr .pbadge .sl .pound{font:800 17px 'Outfit',sans-serif;color:var(--stampt);position:relative;z-index:1}
 .vfr .pbadge .sl.glow{animation:vfrSeal 2s ease-in-out infinite}
 .vfr .pbadge .sl .wave{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--stamp);animation:vfrWave 2s ease-out infinite;pointer-events:none}
 @keyframes vfrSeal{0%,100%{box-shadow:0 0 4px -2px rgba(46,154,140,.3)}50%{box-shadow:0 0 18px 3px rgba(46,154,140,.85)}}
@@ -187,8 +188,8 @@
       <p class="hprice"><strong>&pound;130 total. &pound;90 only once your appointment is booked.</strong> Service fee refunded if the consulate refuses the file we prepared.</p>
       <div class="pbadges">
         <div class="pbadge">
-          <span class="sl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
-          <div class="tx"><b>Companies House 17331903</b><span>UK-registered Schengen visa consultancy</span></div>
+          <span class="sl glow"><span class="wave" aria-hidden="true"></span><span class="pound">&pound;</span></span>
+          <div class="tx"><b>Start for just &pound;40</b><span>The rest only when your appointment is booked</span></div>
         </div>
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg></span>
