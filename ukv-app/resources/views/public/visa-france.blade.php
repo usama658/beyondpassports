@@ -462,6 +462,15 @@
     </div>
   </div></section>
 
+  {{-- 9b · WATCH-THE-CALENDAR STRIP — sits directly under reviews --}}
+  <section style="padding-top:0"><div class="wrap">
+    <div class="more">
+      <span class="live"><i></i>Calendar live</span>
+      <div class="tx"><b>Dates not working for your travel?</b><span>The TLScontact calendar moves daily. Tell us your dates and we watch it for you.</span></div>
+      <a href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, the France dates shown do not fit my travel. My dates are: ') }}">@include('partials.wa-glyph')Ask us to watch the calendar</a>
+    </div>
+  </div></section>
+
   {{-- 10 · FAQ — boarding-pass: accordion left + dark CTA card + disclaimer right --}}
   <section class="faqsec"><div class="wrap">
     <span class="eyebrow">France visa FAQ</span>
@@ -490,15 +499,6 @@
         @include('partials.disclaimer-strip', ['text' => 'Beyond Passports is an independent consultancy registered in England and Wales. We are not the government, not the French consulate, and not TLScontact. Appointment dates shown are indicative, updated daily and confirmed live with the centre before you pay. We help prepare applications and assist with appointment booking; every visa decision rests with the relevant consulate.', 'wrap' => false])
       </div>
     </div></div>
-  </div></section>
-
-  {{-- 11 · MORE STRIP --}}
-  <section style="padding-top:0"><div class="wrap">
-    <div class="more">
-      <span class="live"><i></i>Calendar live</span>
-      <div class="tx"><b>Dates not working for your travel?</b><span>The TLScontact calendar moves daily. Tell us your dates and we watch it for you.</span></div>
-      <a href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, the France dates shown do not fit my travel. My dates are: ') }}">@include('partials.wa-glyph')Ask us to watch the calendar</a>
-    </div>
   </div></section>
 
 
