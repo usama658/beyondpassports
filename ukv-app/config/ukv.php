@@ -10,6 +10,11 @@ return [
     // Owner/ops digest recipient (daily pending-actions email).
     'owner_email' => env('UKV_OWNER_EMAIL', 'hello@beyondpassports.co.uk'), // contact/callback leads land here (master inbox)
 
+    // LP lead-capture recipient (hero case form, board desktop modal, LP appointment enquiries).
+    // Separate from owner_email so sales leads route to the info@ Gmail inbox while ops/contact
+    // mail stays on the hello@ master inbox.
+    'leads_email' => env('UKV_LEADS_EMAIL', 'info@beyondpassports.co.uk'),
+
     // Content CMS (theme-safe block builder). OFF by default: public pages render their existing
     // coded Blade until a page is explicitly switched to cms mode AND published.
     'cms' => [

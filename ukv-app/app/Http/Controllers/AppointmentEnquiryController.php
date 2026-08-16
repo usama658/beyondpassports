@@ -38,7 +38,7 @@ class AppointmentEnquiryController extends Controller
             return response()->json(['ok' => false, 'message' => 'Nothing to record.'], 422);
         }
 
-        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        $recipient = config('ukv.leads_email') ?: config('ukv.owner_email') ?: config('mail.from.address');
 
         Log::info('Appointment enquiry', [
             'has_name' => ! empty($data['name']),

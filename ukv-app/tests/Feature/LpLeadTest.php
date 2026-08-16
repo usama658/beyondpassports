@@ -12,9 +12,9 @@ use Tests\TestCase;
  */
 class LpLeadTest extends TestCase
 {
-    public function test_lead_is_emailed_to_owner_inbox(): void
+    public function test_lead_is_emailed_to_leads_inbox(): void
     {
-        config(['mail.default' => 'array', 'ukv.owner_email' => 'owner@example.test']);
+        config(['mail.default' => 'array', 'ukv.leads_email' => 'leads@example.test']);
 
         $res = $this->postJson('/schengen-visa-consultancy/lead', [
             'name' => 'Jane Smith',
@@ -29,7 +29,7 @@ class LpLeadTest extends TestCase
         $this->assertCount(1, $messages, 'exactly one lead email should be sent');
 
         $email = $messages[0]->getOriginalMessage();
-        $this->assertSame('owner@example.test', $email->getTo()[0]->getAddress());
+        $this->assertSame('leads@example.test', $email->getTo()[0]->getAddress());
         $this->assertStringContainsString('Jane Smith', (string) $email->getSubject());
         $body = (string) $email->getTextBody();
         $this->assertStringContainsString('Italy', $body);
@@ -53,7 +53,7 @@ class LpLeadTest extends TestCase
 
     public function test_empty_post_still_ok_and_emails_placeholder(): void
     {
-        config(['mail.default' => 'array', 'ukv.owner_email' => 'owner@example.test']);
+        config(['mail.default' => 'array', 'ukv.leads_email' => 'leads@example.test']);
 
         $res = $this->postJson('/schengen-visa-consultancy/lead', ['intent' => 'appointment']);
 

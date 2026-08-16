@@ -43,7 +43,7 @@ class LpLeadController extends Controller
             ->filter(fn ($v) => is_scalar($v) && $v !== '')
             ->map(fn ($v) => mb_substr((string) $v, 0, 120));
 
-        $recipient = config('ukv.owner_email') ?: config('mail.from.address');
+        $recipient = config('ukv.leads_email') ?: config('ukv.owner_email') ?: config('mail.from.address');
         $intent = $data['intent'] ?? 'case';
 
         Log::info('LP lead', [
