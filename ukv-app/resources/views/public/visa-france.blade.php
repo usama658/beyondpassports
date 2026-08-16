@@ -94,25 +94,40 @@
 .vfr .tbar-f .ti b{color:#fff}.vfr .tbar-f .ti svg{width:20px;height:20px;color:#79CFC2}
 @media(max-width:560px){.vfr .tbar-f .row{gap:18px}}
 
-/* 3 · fee table */
-.vfr .fee{background:#fff;border:1px solid var(--edge);border-radius:18px;overflow:hidden;max-width:640px}
-.vfr .fee .fr{display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--edge);font-size:14.5px}
-.vfr .fee .fr span:last-child{font-weight:800;white-space:nowrap}
-.vfr .fee .fr small{display:block;color:var(--muted);font-size:12px;font-weight:600;margin-top:2px}
-.vfr .fee .tot{background:rgba(46,154,140,.08)}
-.vfr .fee .tot span{font-weight:800;color:var(--stampt)}
-.vfr .fee-note{font-size:13px;color:var(--muted);margin-top:12px;max-width:60ch}
-.vfr .paynow{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.vfr .paynow span{background:#fff;border:1.5px solid rgba(46,154,140,.4);color:var(--stampt);border-radius:12px;padding:10px 16px;font:800 13px 'Outfit',sans-serif}
-
-/* 4 · process */
-.vfr .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.vfr .st{background:#fff;border:1px solid var(--edge);border-radius:15px;padding:16px}
-.vfr .st .n{width:28px;height:28px;border-radius:50%;background:rgba(46,154,140,.14);color:var(--stampt);display:grid;place-items:center;font:800 13px 'Outfit',sans-serif;margin-bottom:9px}
-.vfr .st b{display:block;font-size:14px;margin-bottom:4px}
-.vfr .st p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0}
-.vfr .st .who{display:inline-block;font:800 10px 'Outfit',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--stampt);background:rgba(46,154,140,.1);border-radius:6px;padding:3px 7px;margin-bottom:7px}
-.vfr .st .who.you{color:#b5791f;background:rgba(181,121,31,.1)}
+/* 3+4 · price (dark navy card) + process (ringed timeline), 2-col */
+.vfr .fp{background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
+.vfr .fp-two{display:grid;grid-template-columns:1fr 1.05fr;gap:36px;align-items:start}
+/* dark navy price card (D2) */
+.vfr .dprice{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);color:#fff;border-radius:20px;padding:28px;box-shadow:0 40px 90px -46px rgba(20,34,46,.6)}
+.vfr .dprice::after{content:'';position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
+.vfr .dprice .eyebrow{color:var(--mint);position:relative;z-index:1}.vfr .dprice .eyebrow::before{background:var(--mint)}
+.vfr .dprice h2{color:#fff;position:relative;z-index:1}
+.vfr .dprice .hero-n{position:relative;z-index:1;display:flex;align-items:baseline;gap:8px;margin:6px 0 16px;flex-wrap:wrap}
+.vfr .dprice .hero-n .big{font:800 48px 'Outfit',sans-serif;color:var(--mint);letter-spacing:-.03em}
+.vfr .dprice .hero-n .cap{font:700 13px 'Outfit',sans-serif;color:rgba(255,255,255,.7)}
+.vfr .dprice .fee{position:relative;z-index:1;background:none;border:0;max-width:none;border-radius:0}
+.vfr .dprice .fr{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:13.5px}
+.vfr .dprice .fr:last-child{border-bottom:0}
+.vfr .dprice .fr span:first-child{color:rgba(255,255,255,.88)}.vfr .dprice .fr small{display:block;color:rgba(255,255,255,.5);font-size:11px;font-weight:600;margin-top:1px}
+.vfr .dprice .fr b{color:#fff;white-space:nowrap}
+.vfr .dprice .pn{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.vfr .dprice .pn span{background:rgba(255,255,255,.1);border:1px solid rgba(143,227,201,.35);color:var(--mint);border-radius:11px;padding:9px 13px;font:800 12px 'Outfit',sans-serif}
+.vfr .dprice .pn span.hot{background:rgba(233,184,114,.16);border-color:rgba(233,184,114,.5);color:#E9B872}
+.vfr .dprice .pnote{position:relative;z-index:1;font-size:11.5px;color:rgba(255,255,255,.6);margin:14px 0 0;line-height:1.6}
+/* ringed timeline */
+.vfr .fp-flow h2{margin-bottom:16px}
+.vfr .steps{display:flex;flex-direction:column;gap:0}
+.vfr .st{display:flex;gap:14px;padding-bottom:16px;background:none;border:0;border-radius:0}
+.vfr .st:last-child{padding-bottom:0}
+.vfr .st .rail{flex:none;display:flex;flex-direction:column;align-items:center}
+.vfr .st .n{width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--stamp);color:var(--stampt);display:grid;place-items:center;font:800 14px 'Outfit',sans-serif;margin:0}
+.vfr .st.you .n{border-color:#b5791f;color:#b5791f}
+.vfr .st .ln{flex:1;width:2px;background:linear-gradient(var(--stamp),var(--edge));margin:4px 0}.vfr .st:last-child .ln{display:none}
+.vfr .st b{display:block;font-size:14.5px;margin-bottom:2px}
+.vfr .st p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
+.vfr .st .who{display:inline-block;font:800 9px 'Outfit',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--stampt);background:rgba(46,154,140,.1);border-radius:5px;padding:2px 6px;margin-bottom:5px}
+.vfr .st.you .who{color:#b5791f;background:rgba(181,121,31,.1)}
+@media(max-width:820px){.vfr .fp-two{grid-template-columns:1fr}}
 
 /* 5 · docs */
 .vfr .docs{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px}
@@ -228,33 +243,32 @@
     <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></a>
   </div></div></section>
 
-  {{-- 3 · FEE TABLE --}}
-  <section><div class="wrap">
-    <span class="eyebrow">Transparent pricing</span>
-    <h2>What a France visa actually costs</h2>
-    <p class="sub">The whole number, on the page. No "from" prices, no surprises after a form.</p>
-    <div class="fee">
-      <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate, set by Schengen rules</small></span><span>&euro;90</span></div>
-      <div class="fr"><span>TLScontact service charge<small>Paid to TLS, confirmed at booking</small></span><span>confirmed at booking</span></div>
-      <div class="fr"><span>Beyond Passports fee<small>Form, FRA reference, document check, appointment, file pack, named consultant</small></span><span>&pound;130</span></div>
-      <div class="fr tot"><span>Our fee covers everything we do</span><span>&pound;130 total</span></div>
+  {{-- 3+4 · PRICE (dark navy card) + PROCESS (ringed timeline), 2-column --}}
+  <section class="fp"><div class="wrap"><div class="fp-two">
+    <div class="dprice">
+      <span class="eyebrow">Transparent pricing</span>
+      <h2>What a France visa costs</h2>
+      <div class="hero-n"><span class="big">&pound;130</span><span class="cap">total &middot; &pound;40 now, &pound;90 after booking</span></div>
+      <div class="fee">
+        <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate</small></span><b>&euro;90</b></div>
+        <div class="fr"><span>TLScontact charge<small>Paid to TLS, at booking</small></span><b>at booking</b></div>
+        <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, file pack</small></span><b>&pound;130</b></div>
+      </div>
+      <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 after booking</span></div>
+      <p class="pnote">Consulate and TLS fees are paid to them directly. If the consulate refuses after we prepared the file, our service fee comes back to you.</p>
     </div>
-    <div class="paynow"><span>Payable now: &pound;40</span><span>&pound;90 only once your appointment is booked</span></div>
-    <p class="fee-note">&pound;130 covers everything we do. The only things it does not include are the consulate's own fee and the TLS centre charge, paid to them directly. If the consulate refuses your application after we prepared the file, our service fee comes back to you.</p>
-  </div></section>
-
-  {{-- 4 · PROCESS --}}
-  <section style="background:#fff"><div class="wrap">
-    <span class="eyebrow">How it works for France</span>
-    <h2>You attend one appointment. We do the rest.</h2>
-    <div class="steps" style="margin-top:20px">
-      <div class="st"><span class="n">1</span><span class="who">We</span><b>France-Visas form</b><p>We complete the official France-Visas application and generate your FRA reference. Without it, the TLS calendar shows nothing.</p></div>
-      <div class="st"><span class="n">2</span><span class="who">We</span><b>Build the file</b><p>Itinerary, Schengen-compliant insurance, accommodation, cover letter, finances. Checked line by line before anything is booked.</p></div>
-      <div class="st"><span class="n">3</span><span class="who">We</span><b>Take the earliest date</b><p>We watch the TLScontact calendar and secure the earliest date that fits your travel, at your nearest centre.</p></div>
-      <div class="st"><span class="n">4</span><span class="who you">You</span><b>Biometrics at TLS</b><p>Your one job: attend with the pack we prepared. Fingerprints and photo, usually 15 to 20 minutes.</p></div>
-      <div class="st"><span class="n">5</span><span class="who">Then</span><b>Travel with confidence</b><p>The consulate decides in 10 to 15 working days. Your passport comes back through TLS, and you fly.</p></div>
+    <div class="fp-flow">
+      <span class="eyebrow">How it works for France</span>
+      <h2>You attend one appointment.</h2>
+      <div class="steps">
+        <div class="st"><div class="rail"><span class="n">1</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>France-Visas form</b><p>The official form and your FRA reference. Without it, the TLS calendar shows nothing.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">2</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Build the file</b><p>Itinerary, Schengen-compliant insurance, accommodation, cover letter, finances, checked line by line.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">3</span><span class="ln"></span></div><div class="bd"><span class="who">We</span><b>Take the earliest date</b><p>We watch the TLScontact calendar and secure the earliest date that fits, at your nearest centre.</p></div></div>
+        <div class="st you"><div class="rail"><span class="n">4</span><span class="ln"></span></div><div class="bd"><span class="who">You</span><b>Biometrics at TLS</b><p>Attend with the pack we prepared. Fingerprints and photo, usually 15 to 20 minutes.</p></div></div>
+        <div class="st"><div class="rail"><span class="n">5</span></div><div class="bd"><span class="who">Then</span><b>Travel with confidence</b><p>The consulate decides in 10 to 15 working days. Your passport comes back through TLS, and you fly.</p></div></div>
+      </div>
     </div>
-  </div></section>
+  </div></div></section>
 
   {{-- 5 · DOCS BY TRAVELLER TYPE --}}
   <section><div class="wrap">
