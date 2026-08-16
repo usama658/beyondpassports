@@ -8,7 +8,8 @@ return [
     'doc_retention_days' => env('UKV_DOC_RETENTION_DAYS', 90),
 
     // Owner/ops digest recipient (daily pending-actions email).
-    'owner_email' => env('UKV_OWNER_EMAIL', 'hello@beyondpassports.co.uk'), // contact/callback leads land here (master inbox)
+    // 2026-08-16: moved hello@ -> info@ (Gmail-backed inbox); all internal/ops mail now lands there.
+    'owner_email' => env('UKV_OWNER_EMAIL', 'info@beyondpassports.co.uk'), // contact/callback leads land here (master inbox)
 
     // LP lead-capture recipient (hero case form, board desktop modal, LP appointment enquiries).
     // Separate from owner_email so sales leads route to the info@ Gmail inbox while ops/contact
