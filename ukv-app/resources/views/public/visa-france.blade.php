@@ -208,10 +208,37 @@
 .vfr .ref .trust svg{width:14px;height:14px;fill:var(--mint);flex:none}
 @media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
 
-/* 9 · faq */
-.vfr .faq details{margin-bottom:10px}
-.vfr .faq summary{font-size:14.5px}
-.vfr .faq details div{padding:0 18px 15px;font-size:13.5px;color:var(--muted);line-height:1.7}
+/* 10 · faq — boarding-pass: accordion left + dark CTA + disclaimer right [faq-bp] */
+.vfr section.faqsec{background:radial-gradient(1000px 500px at 30% -10%,#eef2f7,#E7ECF2)}
+.vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start;margin-top:20px}
+.vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
+.vfr .faq details.fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;margin:0;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
+.vfr .faq details.fcard[open]{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
+.vfr .faq summary.fq{display:flex;align-items:center;gap:13px;padding:19px 22px;cursor:pointer;font:600 17px 'Outfit',sans-serif;line-height:1.35;list-style:none}
+.vfr .faq summary.fq::-webkit-details-marker{display:none}
+.vfr .faq summary.fq::after{content:none}
+.vfr .faq .qg{flex:none;width:32px;height:32px;border-radius:9px;background:#eef4f6;color:var(--cta);font:800 15px 'Outfit',sans-serif;display:flex;align-items:center;justify-content:center}
+.vfr .faq details[open] .qg{background:var(--stamp);color:#fff}
+.vfr .faq details.key .qg{background:#fdecea;color:#c0492f}
+.vfr .faq details.key[open] .qg{background:#c0492f;color:#fff}
+.vfr .faq .pm{margin-left:auto;flex:none;color:var(--cta);font-size:27px;line-height:.7;transition:transform .18s}
+.vfr .faq details[open] .pm{transform:rotate(45deg)}
+.vfr .faq .fain{padding:0 22px 20px 67px;color:var(--muted);font-size:14.5px;line-height:1.62}
+.vfr .faq .fain b{color:var(--ink)}
+.vfr .faq .rrail{display:flex;flex-direction:column;gap:16px;position:sticky;top:20px}
+.vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 66px -30px rgba(20,34,46,.42)}
+.vfr .faq .bp .top{padding:28px 30px 22px;border-bottom:2px dashed rgba(255,255,255,.22);position:relative}
+.vfr .faq .bp .top::after{content:"";position:absolute;bottom:-12px;left:-12px;width:24px;height:24px;border-radius:50%;background:#E7ECF2}
+.vfr .faq .bp .top::before{content:"";position:absolute;bottom:-12px;right:-12px;width:24px;height:24px;border-radius:50%;background:#E7ECF2}
+.vfr .faq .bp .eyebrow{color:#79CFC2;margin-bottom:10px}.vfr .faq .bp .eyebrow::before{background:#79CFC2}
+.vfr .faq .bp h3{color:#fff;font:800 21px 'Outfit',sans-serif;margin:0 0 10px;max-width:16ch;letter-spacing:-.01em}
+.vfr .faq .bp .top p{color:#a9c0c8;font-size:14.5px;line-height:1.55;margin:0}
+.vfr .faq .bp .bot{padding:22px 30px 28px}
+.vfr .faq .bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:14px;margin:0 0 11px}
+.vfr .faq .bp .tick .c{flex:none;width:22px;height:22px;border-radius:6px;background:rgba(121,207,194,.16);color:#79CFC2;display:flex;align-items:center;justify-content:center;font:800 12px 'Outfit',sans-serif}
+.vfr .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font:800 15px 'Outfit',sans-serif;padding:14px 20px;border-radius:12px;text-decoration:none;margin-top:8px;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
+.vfr .faq .bp .wabtn svg{width:17px;height:17px;fill:#fff}
+@media(max-width:860px){.vfr .faq .fsplit{grid-template-columns:1fr}.vfr .faq .rrail{position:static}}
 
 /* 9 · reviews — dark navy feature card + two light cards [reviews-B] */
 .vfr .rgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
@@ -435,15 +462,34 @@
     </div>
   </div></section>
 
-  {{-- 10 · FAQ --}}
-  <section style="background:#fff"><div class="wrap">
+  {{-- 10 · FAQ — boarding-pass: accordion left + dark CTA card + disclaimer right --}}
+  <section class="faqsec"><div class="wrap">
     <span class="eyebrow">France visa FAQ</span>
     <h2>Asked every week, answered straight</h2>
-    <div class="faq" style="margin-top:18px;max-width:760px">
-      @foreach($faqs as $f)
-      <details><summary>{{ $f['q'] }}</summary><div>{{ $f['a'] }}</div></details>
-      @endforeach
-    </div>
+    <p class="sub">What we do, what it costs, and what we won't promise. If yours isn't here, just ask.</p>
+    <div class="faq"><div class="fsplit">
+      <div class="flist">
+        @foreach($faqs as $f)
+          @php $isKey = \Illuminate\Support\Str::contains(strtolower($f['q']), 'refused'); @endphp
+          <details class="fcard{{ $isKey ? ' key' : '' }}" {{ $loop->first ? 'open' : '' }}>
+            <summary class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></summary>
+            <div class="fain">{{ $f['a'] }}</div>
+          </details>
+        @endforeach
+      </div>
+      <div class="rrail">
+        <aside class="bp">
+          <div class="top"><span class="eyebrow">Ask us anything</span><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
+          <div class="bot">
+            <div class="tick"><span class="c">&#10003;</span>Ask anything, no commitment</div>
+            <div class="tick"><span class="c">&#10003;</span>A named France consultant replies, not a chatbot</div>
+            <div class="tick"><span class="c">&#10003;</span>Answer within 30 minutes</div>
+            <a class="wabtn" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa: ') }}">@include('partials.wa-glyph')Ask on WhatsApp</a>
+          </div>
+        </aside>
+        @include('partials.disclaimer-strip', ['text' => 'Beyond Passports is an independent consultancy registered in England and Wales. We are not the government, not the French consulate, and not TLScontact. Appointment dates shown are indicative, updated daily and confirmed live with the centre before you pay. We help prepare applications and assist with appointment booking; every visa decision rests with the relevant consulate.', 'wrap' => false])
+      </div>
+    </div></div>
   </div></section>
 
   {{-- 11 · MORE STRIP --}}
@@ -455,10 +501,6 @@
     </div>
   </div></section>
 
-  {{-- 12 · DISCLAIMER --}}
-  <section style="padding:0 0 44px"><div class="wrap">
-    @include('partials.disclaimer-strip', ['text' => 'Beyond Passports is an independent consultancy registered in England and Wales. We are not the government, not the French consulate, and not TLScontact. Appointment dates shown are indicative, updated daily and confirmed live with the centre before you pay. We help prepare applications and assist with appointment booking; every visa decision rests with the relevant consulate.'])
-  </div></section>
 
 </div>
 
