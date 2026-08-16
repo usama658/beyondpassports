@@ -151,6 +151,17 @@
 .vfr .dpx details li{position:relative;padding:6px 0 6px 24px;border-top:1px solid var(--edge)}
 .vfr .dpx details li:first-child{border-top:0}
 .vfr .dpx details li::before{content:'';position:absolute;left:2px;top:11px;width:12px;height:12px;border-radius:50%;background:rgba(46,154,140,.14);border:1.5px solid var(--stamp)}
+/* per-panel dark CTA card (chat + 30-min call) [docs-cta] */
+.vfr .dpx .cbar{margin:2px 18px 16px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:12px;padding:14px 16px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.vfr .dpx .cbar::after{content:'';position:absolute;right:-40px;top:-50px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
+.vfr .dpx .cbar .q{flex:1;min-width:150px;position:relative;z-index:1;font:800 12.5px 'Outfit',sans-serif;color:#fff}
+.vfr .dpx .cbar .q span{display:block;font:600 11px 'Outfit',sans-serif;color:rgba(255,255,255,.6);margin-top:2px}
+.vfr .dpx .cbar .cbtns{display:flex;gap:8px;position:relative;z-index:1}
+.vfr .dpx .cbar .wa{display:inline-flex;align-items:center;gap:7px;background:var(--wa);color:#fff;border-radius:9px;font:800 12px 'Outfit',sans-serif;padding:9px 13px;text-decoration:none;white-space:nowrap}
+.vfr .dpx .cbar .wa svg{width:15px;height:15px;fill:#fff}
+.vfr .dpx .cbar .call{display:inline-flex;align-items:center;gap:7px;background:rgba(143,227,201,.14);color:var(--mint);border:1px solid rgba(143,227,201,.35);border-radius:9px;font:800 12px 'Outfit',sans-serif;padding:9px 13px;text-decoration:none;white-space:nowrap}
+.vfr .dpx .cbar .call svg{width:14px;height:14px;fill:var(--mint)}
+@media(max-width:520px){.vfr .dpx .cbar .cbtns{width:100%}.vfr .dpx .cbar .wa,.vfr .dpx .cbar .call{flex:1;justify-content:center}}
 /* right — dark deliverables pack (P2) */
 .vfr .packwrap{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:20px;padding:28px;color:#fff;box-shadow:0 40px 90px -46px rgba(20,34,46,.6);display:flex;flex-direction:column}
 .vfr .packwrap::after{content:'';position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
@@ -375,23 +386,31 @@
         <li>Last 3 months' bank statements</li>
         <li>UK immigration status (BRP / eVisa share code where applicable)</li>
         <li>Travel insurance &euro;30,000+, flight itinerary, accommodation</li>
-      </ul></details>
+      </ul>
+      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      </details>
       <details name="fdocs"><summary>Self-employed</summary><ul>
         <li>Everything in Employed, minus the employer letter</li>
         <li>Latest tax return or SA302</li>
         <li>Business bank statements</li>
         <li>Proof of business: Companies House entry, contracts or invoices</li>
-      </ul></details>
+      </ul>
+      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      </details>
       <details name="fdocs"><summary>Student</summary><ul>
         <li>Enrolment letter with term dates from your UK institution</li>
         <li>Student bank statements, or sponsor's statements + letter</li>
         <li>UK immigration status documents</li>
-      </ul></details>
+      </ul>
+      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      </details>
       <details name="fdocs"><summary>Family / travelling with children</summary><ul>
         <li>Birth or marriage certificates linking the group</li>
         <li>Consent letter if one parent travels alone with a child</li>
         <li>One application per traveller, submitted together</li>
-      </ul></details>
+      </ul>
+      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      </details>
     </div>
     <div class="packwrap">
       <span class="eyebrow">What you actually get</span>
