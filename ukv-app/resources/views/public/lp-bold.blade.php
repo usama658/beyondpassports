@@ -285,7 +285,7 @@ html,body{overflow-x:clip;max-width:100%}
 .lpb .ngmore .srch{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
 .lpb .ngmore .wam{background:#25D366;color:#fff;border:0}
 .lpb .ngmore .wam svg{width:14px;height:14px;fill:#fff;flex:none}
-@media(max-width:560px){.lpb .ngmore .btns{margin-left:0;width:100%}.lpb .ngmore .btns a,.lpb .ngmore .btns button{flex:1;justify-content:center}}
+@media(max-width:560px){.lpb .ngmore .btns{margin-left:0;width:100%;flex-direction:column}.lpb .ngmore .btns a,.lpb .ngmore .btns button{width:100%;justify-content:center}}
 .lpb .ngsearch .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:#eef2f6;color:#5d6b76;width:26px;height:26px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1;display:grid;place-items:center}
 .lpb .ngsearch .clr[hidden]{display:none}
 .lpb .ngsug{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:#fff;border:1px solid var(--edge);border-radius:12px;box-shadow:0 24px 50px -24px rgba(20,34,46,.5);max-height:264px;overflow:auto}
