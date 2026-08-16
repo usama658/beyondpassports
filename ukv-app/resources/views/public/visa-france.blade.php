@@ -224,8 +224,8 @@
 @media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
 
 /* 10 · faq — boarding-pass: accordion left + dark CTA + disclaimer right [faq-bp] */
-.vfr section.faqsec{background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
-.vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start;margin-top:20px}
+.vfr section.faqsec{padding:72px 0;background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
+.vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;margin-top:6px}
 .vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
 .vfr .faq details.fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;margin:0;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
 .vfr .faq details.fcard[open]{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
@@ -240,7 +240,7 @@
 .vfr .faq details[open] .pm{transform:rotate(45deg)}
 .vfr .faq .fain{padding:0 22px 20px 67px;color:var(--muted);font-size:14.5px;line-height:1.62}
 .vfr .faq .fain b{color:var(--ink)}
-.vfr .faq .rrail{display:flex;flex-direction:column;gap:16px;position:sticky;top:20px}
+.vfr .faq .rrail{display:flex;flex-direction:column;gap:20px;position:sticky;top:20px}
 .vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 66px -30px rgba(20,34,46,.42)}
 .vfr .faq .bp .top{padding:28px 30px 22px;border-bottom:2px dashed rgba(255,255,255,.22);position:relative}
 .vfr .faq .bp .top::after{content:"";position:absolute;bottom:-12px;left:-12px;width:24px;height:24px;border-radius:50%;background:var(--paper)}
@@ -253,7 +253,7 @@
 .vfr .faq .bp .tick .c{flex:none;width:22px;height:22px;border-radius:6px;background:rgba(121,207,194,.16);color:#79CFC2;display:flex;align-items:center;justify-content:center;font:800 12px 'Outfit',sans-serif}
 .vfr .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font:800 15px 'Outfit',sans-serif;padding:14px 20px;border-radius:12px;text-decoration:none;margin-top:8px;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
 .vfr .faq .bp .wabtn svg{width:17px;height:17px;fill:#fff}
-@media(max-width:860px){.vfr .faq .fsplit{grid-template-columns:1fr}.vfr .faq .rrail{position:static}}
+@media(max-width:860px){.vfr section.faqsec{padding:52px 0}.vfr .faq .fsplit{grid-template-columns:1fr}.vfr .faq .rrail{position:static}}
 
 /* 9 · reviews — dark navy feature card + two light cards [reviews-B] */
 .vfr .rgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
