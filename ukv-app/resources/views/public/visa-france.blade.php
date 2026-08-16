@@ -135,19 +135,44 @@
 @media(max-width:900px){.vfr .fp-two{grid-template-columns:1fr;gap:26px}}
 @media(max-width:560px){.vfr .dprice{padding:22px}.vfr .dprice .hero-n .big{font-size:40px}}
 
-/* 5 · docs */
-.vfr .docs{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px}
+/* 5+6 · docs accordion (left) + dark deliverables pack (right), 2-col [docs-pack-final] */
+.vfr .dpx .two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.vfr .dpx .colh{margin-bottom:16px}
+.vfr .dpx .colh h2{font-size:clamp(22px,2.8vw,28px)}
+/* left — accordion (uses generic .vfr summary +/- marker) */
 .vfr details{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:0}
 .vfr summary{cursor:pointer;font:800 14.5px 'Outfit',sans-serif;padding:15px 18px;list-style:none;display:flex;justify-content:space-between;align-items:center}
 .vfr summary::after{content:'+';font-size:18px;color:var(--stampt)}
 .vfr details[open] summary::after{content:'\2212'}
 .vfr details ul{margin:0;padding:0 18px 15px 34px;font-size:13.5px;color:var(--muted);line-height:1.8}
-
-/* 6 · pack */
-.vfr .pack{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.vfr .pk{background:#fff;border:1px solid var(--edge);border-radius:15px;padding:16px}
-.vfr .pk b{display:block;font-size:13.5px;margin-bottom:4px}
-.vfr .pk p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
+.vfr .dpx details{margin-bottom:10px;box-shadow:0 14px 34px -28px rgba(20,34,46,.5)}
+.vfr .dpx summary .who{font:800 9px 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--stampt);background:rgba(46,154,140,.1);border-radius:5px;padding:3px 7px;margin-left:auto;margin-right:12px}
+.vfr .dpx details ul{padding:2px 18px 15px 18px;list-style:none;font-size:13px;line-height:1.5}
+.vfr .dpx details li{position:relative;padding:6px 0 6px 24px;border-top:1px solid var(--edge)}
+.vfr .dpx details li:first-child{border-top:0}
+.vfr .dpx details li::before{content:'';position:absolute;left:2px;top:11px;width:12px;height:12px;border-radius:50%;background:rgba(46,154,140,.14);border:1.5px solid var(--stamp)}
+/* right — dark deliverables pack (P2) */
+.vfr .packwrap{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:20px;padding:28px;color:#fff;box-shadow:0 40px 90px -46px rgba(20,34,46,.6);display:flex;flex-direction:column}
+.vfr .packwrap::after{content:'';position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
+.vfr .packwrap .eyebrow{color:var(--mint);position:relative;z-index:1}.vfr .packwrap .eyebrow::before{background:var(--mint)}
+.vfr .packwrap h2{color:#fff;position:relative;z-index:1;margin-bottom:6px;font-size:clamp(22px,2.8vw,28px)}
+.vfr .packwrap .psub{position:relative;z-index:1;font-size:13px;color:rgba(255,255,255,.62);margin:0 0 16px;line-height:1.5}
+.vfr .packwrap .cnt{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;background:rgba(143,227,201,.14);border:1px solid rgba(143,227,201,.35);color:var(--mint);border-radius:999px;padding:6px 12px;font:800 11px 'Outfit',sans-serif;margin:0 0 12px;align-self:flex-start}
+.vfr .pk{position:relative;z-index:1;display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(143,227,201,.24);border-radius:13px;padding:14px 15px;margin-bottom:10px;transition:background .15s,border-color .15s}
+.vfr .pk:last-child{margin-bottom:0}
+.vfr .pk:hover{background:rgba(255,255,255,.09);border-color:rgba(143,227,201,.45)}
+.vfr .pk .ic{flex:none;width:40px;height:40px;border-radius:11px;background:rgba(143,227,201,.14);display:grid;place-items:center}
+.vfr .pk .ic svg{width:20px;height:20px;fill:var(--mint)}
+.vfr .pk b{display:block;font-size:14px;margin-bottom:2px;color:#fff}
+.vfr .pk p{font-size:12.5px;color:rgba(255,255,255,.62);margin:0;line-height:1.5}
+.vfr .pk .no{margin-left:auto;flex:none;color:var(--mint);font:800 11px 'Outfit',sans-serif;opacity:.5}
+/* footer — B5 shield badge */
+.vfr .packfoot{position:relative;z-index:1;display:flex;align-items:center;gap:13px;margin-top:16px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px}
+.vfr .packfoot .sh{flex:none;width:40px;height:46px;display:grid;place-items:center;filter:drop-shadow(0 6px 14px rgba(143,227,201,.25))}
+.vfr .packfoot .sh svg{width:40px;height:46px}
+.vfr .packfoot .tx b{display:block;font:800 12.5px 'Outfit',sans-serif;color:var(--mint);letter-spacing:.02em;margin-bottom:3px}
+.vfr .packfoot .tx span{font-size:12px;color:rgba(255,255,255,.66);line-height:1.45}
+@media(max-width:860px){.vfr .dpx .two{grid-template-columns:1fr}}
 
 /* 7 · do/don't */
 .vfr .dd{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px}
@@ -275,14 +300,16 @@
     </div>
   </div></div></section>
 
-  {{-- 5 · DOCS BY TRAVELLER TYPE --}}
-  <section><div class="wrap">
-    <span class="eyebrow">Documents</span>
-    <h2>Your France checklist, by situation</h2>
-    <p class="sub">One missing document at TLScontact and your travel date is gone. This is what the file check exists for.</p>
-    <div class="docs">
-      <details open><summary>Employed</summary><ul>
-        <li>Passport (3+ months validity beyond return, 2 blank pages)</li>
+  {{-- 5+6 · DOCS (accordion) + DELIVERABLES PACK (dark), 2-column --}}
+  <section class="dpx"><div class="wrap"><div class="two">
+    <div>
+      <div class="colh">
+        <span class="eyebrow">Documents</span>
+        <h2>Your France checklist, by situation</h2>
+        <p class="sub">One missing document at TLScontact and your travel date is gone. This is what the file check exists for.</p>
+      </div>
+      <details open><summary>Employed <span class="who">Most common</span></summary><ul>
+        <li>Passport, 3+ months validity beyond return, 2 blank pages</li>
         <li>Last 3 months' payslips + employer letter with approved leave dates</li>
         <li>Last 3 months' bank statements</li>
         <li>UK immigration status (BRP / eVisa share code where applicable)</li>
@@ -302,22 +329,21 @@
       <details><summary>Family / travelling with children</summary><ul>
         <li>Birth or marriage certificates linking the group</li>
         <li>Consent letter if one parent travels alone with a child</li>
-        <li>One application per traveller, submitted together, appointments aligned</li>
+        <li>One application per traveller, submitted together</li>
       </ul></details>
     </div>
-  </div></section>
-
-  {{-- 6 · DELIVERABLES PACK --}}
-  <section style="background:#fff"><div class="wrap">
-    <span class="eyebrow">What you actually get</span>
-    <h2>The appointment pack, in your hands before TLS</h2>
-    <div class="pack" style="margin-top:20px">
-      <div class="pk"><b>Completed France-Visas application</b><p>With your FRA reference, ready for the centre.</p></div>
-      <div class="pk"><b>Tailored cover letter</b><p>Your trip, your ties, your finances, written for a visa officer.</p></div>
-      <div class="pk"><b>Itinerary + insurance certificate</b><p>Bookings structured the way consulates expect, &euro;30k-compliant cover.</p></div>
-      <div class="pk"><b>Appointment confirmation + briefing</b><p>Date, centre, what happens in the room, what to carry.</p></div>
+    <div class="packwrap">
+      <span class="eyebrow">What you actually get</span>
+      <span class="cnt">&#10003; 4 things, ready to hand over</span>
+      <h2>The appointment pack, before TLS</h2>
+      <p class="psub">Everything an officer needs, in one folder, before you walk in.</p>
+      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span><div><b>Completed France-Visas application</b><p>With your FRA reference, ready for the centre.</p></div><span class="no">01</span></div>
+      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.9l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><div><b>Tailored cover letter</b><p>Your trip, your ties, your finances, written for a visa officer.</p></div><span class="no">02</span></div>
+      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><div><b>Itinerary + insurance certificate</b><p>Bookings structured the way consulates expect, &euro;30k-compliant cover.</p></div><span class="no">03</span></div>
+      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg></span><div><b>Appointment confirmation + briefing</b><p>Date, centre, what happens in the room, what to carry.</p></div><span class="no">04</span></div>
+      <div class="packfoot"><span class="sh"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" fill="rgba(143,227,201,.16)" stroke="#8fe3c9" stroke-width="1.2"/><path d="M8.5 12.2l2.3 2.3 4.6-4.8" fill="none" stroke="#8fe3c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="tx"><b>HUMAN-CHECKED FILE</b><span>Every item checked by a named consultant before it reaches TLScontact.</span></div></div>
     </div>
-  </div></section>
+  </div></div></section>
 
   {{-- 7 · DO / DON'T --}}
   <section><div class="wrap">
