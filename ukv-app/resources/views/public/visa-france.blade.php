@@ -242,7 +242,7 @@
 .vfr .faq .fcard.key .qg{background:#fdecea;color:#c0492f}.vfr .faq .fcard.key.open .qg{background:#c0492f;color:#fff}
 .vfr .faq .pm{margin-left:auto;color:var(--cta);font-size:28px;line-height:.7;flex:none;transition:transform .18s}.vfr .faq .fcard.open .pm{transform:rotate(45deg)}
 .vfr .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.vfr .faq .fcard.open .fa{max-height:520px}
-.vfr .faq .fa .fain{padding:0 24px 18px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.vfr .faq .fa .fain b{color:var(--ink)}
+.vfr .faq .fa .fain{padding:0 24px 10px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.vfr .faq .fa .fain b{color:var(--ink)}
 /* boarding-pass card + rail */
 .vfr .faq .rrail{display:flex;flex-direction:column;gap:22px;position:sticky;top:20px}
 .vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;box-shadow:0 30px 66px -30px rgba(20,34,46,.42);overflow:hidden}
