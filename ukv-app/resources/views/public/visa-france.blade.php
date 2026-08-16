@@ -409,18 +409,7 @@
     </div>
   </div></section>
 
-  {{-- 9 · FAQ --}}
-  <section style="background:#fff"><div class="wrap">
-    <span class="eyebrow">France visa FAQ</span>
-    <h2>Asked every week, answered straight</h2>
-    <div class="faq" style="margin-top:18px;max-width:760px">
-      @foreach($faqs as $f)
-      <details><summary>{{ $f['q'] }}</summary><div>{{ $f['a'] }}</div></details>
-      @endforeach
-    </div>
-  </div></section>
-
-  {{-- 10 · REVIEWS (France-relevant) --}}
+  {{-- 9 · REVIEWS (France-relevant) — before FAQ --}}
   <section><div class="wrap">
     <span class="eyebrow">France clients</span>
     <h2>What France applicants say</h2>
@@ -428,6 +417,17 @@
       <div class="rc"><div class="st5">★★★★★</div><p>First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time.</p><div class="who">Adaeze Okafor<span>May 2026 · BP-2026-103487</span></div></div>
       <div class="rc"><div class="st5">★★★★★</div><p>Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn't believe it until I saw the confirmation email. Proper service.</p><div class="who">Fatima Hussain<span>Manchester · May 2026 · BP-2026-100184</span></div></div>
       <div class="rc"><div class="st5">★★★★★</div><p>Needed it before a wedding on a tight timeline. Honest that they can't rush the consulate, just the paperwork. Did exactly what they said.</p><div class="who">Kwame Mensah<span>Apr 2026 · BP-2026-100842</span></div></div>
+    </div>
+  </div></section>
+
+  {{-- 10 · FAQ --}}
+  <section style="background:#fff"><div class="wrap">
+    <span class="eyebrow">France visa FAQ</span>
+    <h2>Asked every week, answered straight</h2>
+    <div class="faq" style="margin-top:18px;max-width:760px">
+      @foreach($faqs as $f)
+      <details><summary>{{ $f['q'] }}</summary><div>{{ $f['a'] }}</div></details>
+      @endforeach
     </div>
   </div></section>
 
