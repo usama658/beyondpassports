@@ -308,25 +308,25 @@
         <h2>Your France checklist, by situation</h2>
         <p class="sub">One missing document at TLScontact and your travel date is gone. This is what the file check exists for.</p>
       </div>
-      <details open><summary>Employed <span class="who">Most common</span></summary><ul>
+      <details name="fdocs" open><summary>Employed <span class="who">Most common</span></summary><ul>
         <li>Passport, 3+ months validity beyond return, 2 blank pages</li>
         <li>Last 3 months' payslips + employer letter with approved leave dates</li>
         <li>Last 3 months' bank statements</li>
         <li>UK immigration status (BRP / eVisa share code where applicable)</li>
         <li>Travel insurance &euro;30,000+, flight itinerary, accommodation</li>
       </ul></details>
-      <details><summary>Self-employed</summary><ul>
+      <details name="fdocs"><summary>Self-employed</summary><ul>
         <li>Everything in Employed, minus the employer letter</li>
         <li>Latest tax return or SA302</li>
         <li>Business bank statements</li>
         <li>Proof of business: Companies House entry, contracts or invoices</li>
       </ul></details>
-      <details><summary>Student</summary><ul>
+      <details name="fdocs"><summary>Student</summary><ul>
         <li>Enrolment letter with term dates from your UK institution</li>
         <li>Student bank statements, or sponsor's statements + letter</li>
         <li>UK immigration status documents</li>
       </ul></details>
-      <details><summary>Family / travelling with children</summary><ul>
+      <details name="fdocs"><summary>Family / travelling with children</summary><ul>
         <li>Birth or marriage certificates linking the group</li>
         <li>Consent letter if one parent travels alone with a child</li>
         <li>One application per traveller, submitted together</li>
