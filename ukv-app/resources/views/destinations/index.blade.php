@@ -77,8 +77,18 @@
   .sg-tab:hover{border-color:var(--soft);color:var(--cta)}
   .sg-tab.active{background:var(--cta);border-color:var(--cta);color:#fff;box-shadow:0 12px 26px -14px rgba(21,94,122,.6)}
   .sg-tab.active .c{color:rgba(255,255,255,.82)}
-  .sg-search{display:flex;gap:10px;max-width:480px;margin:18px auto 0}
-  .sg-search input{flex:1;padding:13px 16px;border:1px solid var(--paper-edge);border-radius:12px;font:inherit;font-size:15px;background:#fff;box-shadow:0 16px 40px -30px rgba(40,50,70,.5)}
+  .sg-band{position:relative;overflow:hidden;background:linear-gradient(160deg,#132c34,#1F6E63);border-radius:16px;padding:15px 16px;max-width:560px;margin:18px auto 0}
+  .sg-band::after{content:'';position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.18),transparent 65%);pointer-events:none}
+  .sg-hint{position:relative;z-index:1;font-size:14px;font-weight:800;color:#fff;margin:0 0 9px;text-align:left}
+  .sg-hint b{color:#8fe3c9;font-weight:800}
+  .sg-hint span{font-weight:600;color:rgba(255,255,255,.65);font-size:12.5px}
+  .sg-search{position:relative;z-index:1;display:flex;gap:10px;margin:0}
+  .sg-search input{flex:1;padding:13px 16px;border:0;border-radius:12px;font:inherit;font-size:15px;background:#fff;outline:none;transition:box-shadow .15s}
+  .sg-search input:focus{box-shadow:0 0 0 3px rgba(143,227,201,.45)}
+  .sg-qc{position:relative;z-index:1;display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+  .sg-qc button{font:700 12px var(--display);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;cursor:pointer;transition:background .15s}
+  .sg-qc button:hover{background:rgba(255,255,255,.22)}
+  .sg-qc button.more{color:#8fe3c9;border-color:rgba(143,227,201,.4)}
   .sg-empty{display:none;text-align:center;color:var(--muted);margin-top:24px}
   @media (max-width:520px){.sg-search{flex-direction:column}}
 
@@ -639,11 +649,15 @@
     @endforeach
   </div>
   @endif
-  <p class="sg-hint" style="max-width:480px;margin:18px auto 0;font-size:13px;font-weight:800;color:var(--ink)">Find your country <span style="font-weight:600;color:var(--muted)">· all 29 Schengen countries covered</span></p>
-  <form class="sg-search" role="search" onsubmit="return false" style="margin-top:7px">
-    <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
-    <button class="btn" type="button" onclick="document.getElementById('destSearch').focus()">Search</button>
-  </form>
+  <div class="sg-band">
+    <p class="sg-hint">Find <b>your country</b> <span>· all 29 Schengen countries covered</span></p>
+    <form class="sg-search" role="search" onsubmit="return false">
+      <input type="search" id="destSearch" placeholder="Search a Schengen country…" aria-label="Search Schengen countries" autocomplete="off">
+    </form>
+    <div class="sg-qc" id="sgQc">
+      <button type="button">Spain</button><button type="button">France</button><button type="button">Italy</button><button type="button">Germany</button><button type="button">Netherlands</button><button type="button" class="more" data-more>+ 24 more</button>
+    </div>
+  </div>
   @if ($destinations->isEmpty())
     <p style="text-align:center;color:var(--muted);margin-top:24px">Schengen destinations are being added shortly.</p>
   @else
@@ -788,6 +802,14 @@
       });
     });
     if (input) input.addEventListener('input', apply);
+    var qc = document.getElementById('sgQc');
+    if (qc && input) qc.addEventListener('click', function (e) {
+      var t = e.target.closest('button');
+      if (!t) return;
+      if (t.hasAttribute('data-more')) { input.value = ''; apply(); input.focus(); return; }
+      input.value = t.textContent;
+      apply();
+    });
     apply();
   })();
 </script>
