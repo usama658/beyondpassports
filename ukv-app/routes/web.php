@@ -192,6 +192,16 @@ Route::redirect('/visa/schengen', '/schengen-visa', 301);
 // Public per-centre appointment slots (JSON) for the /schengen-visa slot picker.
 Route::get('/appointments/slots', [AppointmentSlotsController::class, 'index'])
     ->middleware('throttle:60,1')->name('appointments.slots');
+// /visa/france destination-page PILOT (competitor-SWOT-driven, docs/competitor-swot.md). STAGING:
+// renders when config('ukv.destinations.france_pilot') is on OR with ?preview=bp2026 (noindex-safe
+// while the flag is off since the drafted redirect below stays canonical). Registered BEFORE the
+// generic {destination:slug} route so it takes precedence.
+Route::get('/visa/france', function () {
+    if (config('ukv.destinations.france_pilot') || request('preview') === 'bp2026') {
+        return response(view('public.visa-france'))->header('X-Robots-Tag', config('ukv.destinations.france_pilot') ? 'all' : 'noindex, nofollow');
+    }
+    return redirect('/schengen-visa', 302);
+})->name('visa.france');
 Route::get('/visa/{destination:slug}', [DestinationController::class, 'show'])->name('destinations.show');
 // Nested country guide (spoke) — constrained to the 15 known topic slugs so it never shadows
 // a real destination slug or the money page above.

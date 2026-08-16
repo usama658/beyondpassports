@@ -121,6 +121,9 @@ return [
     // only the single /schengen-visa hub is live. Flip UKV_COUNTRY_PAGES_ENABLED=true to relaunch.
     'destinations' => [
         'country_pages_enabled' => (bool) env('UKV_COUNTRY_PAGES_ENABLED', false),
+        // /visa/france destination-page pilot (new LP-grade template). OFF = staging: the page only
+        // renders with ?preview=bp2026 (noindexed); public URL keeps redirecting to /schengen-visa.
+        'france_pilot' => (bool) env('UKV_FRANCE_PILOT', false),
     ],
 
     // "Apply yourself vs us" comparison page (/compare). DRAFTED (off) — redirects home, dropped
