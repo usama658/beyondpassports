@@ -223,37 +223,42 @@
 .vfr .ref .trust svg{width:16px;height:16px;fill:var(--mint);flex:none}
 @media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
 
-/* 10 · faq — boarding-pass: accordion left + dark CTA + disclaimer right [faq-bp] */
-.vfr section.faqsec{padding:72px 0;background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
-.vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;margin-top:6px}
+/* 10 · FAQ — pixel-perfect port of /schengen-visa-consultancy [faq-lpb] */
+.vfr section.faqsec{padding:80px 0;background:radial-gradient(1000px 500px at 30% -10%,#eef2f7,#E7ECF2)}
+.vfr .faqsec .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.vfr .faq .fhd{margin:0 0 26px}
+.vfr .faq .fhd .eyebrow{font:800 .74rem 'Outfit',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--stampt);margin:0;display:flex;align-items:center;gap:9px}
+.vfr .faq .fhd .eyebrow::before{content:"";width:26px;height:2px;border-radius:0;background:var(--stamp)}
+.vfr .faq .fhd h2{font-size:clamp(27px,3.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.1;max-width:20ch;margin:14px 0 0}
+.vfr .faq .fhd .fsub{color:var(--muted);font-size:16.5px;line-height:1.5;margin:12px 0 0;max-width:56ch}
+.vfr .faq .fsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
 .vfr .faq .flist{display:flex;flex-direction:column;gap:12px}
-.vfr .faq details.fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;margin:0;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
-.vfr .faq details.fcard[open]{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
-.vfr .faq summary.fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font:600 20px 'Outfit',sans-serif;line-height:1.34;list-style:none}
-.vfr .faq summary.fq::-webkit-details-marker{display:none}
-.vfr .faq summary.fq::after{content:none}
-.vfr .faq .qg{flex:none;width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font:800 16px 'Outfit',sans-serif;display:flex;align-items:center;justify-content:center}
-.vfr .faq details[open] .qg{background:var(--stamp);color:#fff}
-.vfr .faq details.key .qg{background:#fdecea;color:#c0492f}
-.vfr .faq details.key[open] .qg{background:#c0492f;color:#fff}
-.vfr .faq .pm{margin-left:auto;flex:none;color:var(--cta);font-size:28px;line-height:.7;transition:transform .18s}
-.vfr .faq details[open] .pm{transform:rotate(45deg)}
-.vfr .faq .fain{padding:0 24px 24px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}
-.vfr .faq .fain b{color:var(--ink)}
-.vfr .faq .rrail{display:flex;flex-direction:column;gap:20px;position:sticky;top:20px}
-.vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 66px -30px rgba(20,34,46,.42)}
-.vfr .faq .bp .top{padding:28px 30px 22px;border-bottom:2px dashed rgba(255,255,255,.22);position:relative}
-.vfr .faq .bp .top::after{content:"";position:absolute;bottom:-12px;left:-12px;width:24px;height:24px;border-radius:50%;background:var(--paper)}
-.vfr .faq .bp .top::before{content:"";position:absolute;bottom:-12px;right:-12px;width:24px;height:24px;border-radius:50%;background:var(--paper)}
-.vfr .faq .bp .eyebrow{color:#79CFC2;margin-bottom:10px}.vfr .faq .bp .eyebrow::before{background:#79CFC2}
-.vfr .faq .bp h3{color:#fff;font:800 21px 'Outfit',sans-serif;margin:0 0 10px;max-width:16ch;letter-spacing:-.01em}
-.vfr .faq .bp .top p{color:#a9c0c8;font-size:14.5px;line-height:1.55;margin:0}
-.vfr .faq .bp .bot{padding:22px 30px 28px}
-.vfr .faq .bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:14px;margin:0 0 11px}
-.vfr .faq .bp .tick .c{flex:none;width:22px;height:22px;border-radius:6px;background:rgba(121,207,194,.16);color:#79CFC2;display:flex;align-items:center;justify-content:center;font:800 12px 'Outfit',sans-serif}
-.vfr .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font:800 15px 'Outfit',sans-serif;padding:14px 20px;border-radius:12px;text-decoration:none;margin-top:8px;box-shadow:0 16px 34px -16px rgba(37,211,102,.6)}
-.vfr .faq .bp .wabtn svg{width:17px;height:17px;fill:#fff}
-@media(max-width:860px){.vfr section.faqsec{padding:52px 0}.vfr .faq .fsplit{grid-template-columns:1fr}.vfr .faq .rrail{position:static}}
+.vfr .faq .fcard{background:#fff;border:1px solid var(--edge);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(20,34,46,.4);transition:box-shadow .16s,border-color .15s}
+.vfr .faq .fcard.open{border-color:var(--stamp);box-shadow:0 18px 44px -26px rgba(20,34,46,.34)}
+.vfr .faq .fq{display:flex;align-items:center;gap:14px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:20px;line-height:1.34;margin:0}
+.vfr .faq .qg{width:34px;height:34px;border-radius:9px;background:#eef4f6;color:var(--cta);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
+.vfr .faq .fcard.open .qg{background:var(--stamp);color:#fff}
+.vfr .faq .fcard.key .qg{background:#fdecea;color:#c0492f}.vfr .faq .fcard.key.open .qg{background:#c0492f;color:#fff}
+.vfr .faq .pm{margin-left:auto;color:var(--cta);font-size:28px;line-height:.7;flex:none;transition:transform .18s}.vfr .faq .fcard.open .pm{transform:rotate(45deg)}
+.vfr .faq .fa{max-height:0;overflow:hidden;transition:max-height .22s;margin:0}.vfr .faq .fcard.open .fa{max-height:520px}
+.vfr .faq .fa .fain{padding:0 24px 24px 72px;color:var(--muted);font-size:17.5px;line-height:1.62}.vfr .faq .fa .fain b{color:var(--ink)}
+/* boarding-pass card + rail */
+.vfr .faq .rrail{display:flex;flex-direction:column;gap:22px;position:sticky;top:20px}
+.vfr .faq .bp{background:linear-gradient(160deg,#12233c,#0f2028);color:#fff;border-radius:20px;box-shadow:0 30px 66px -30px rgba(20,34,46,.42);overflow:hidden}
+.vfr .faq .bp .top{padding:30px 32px 24px;border-bottom:2px dashed rgba(255,255,255,.22);position:relative}
+.vfr .faq .bp .top::after{content:"";position:absolute;bottom:-12px;left:-12px;width:24px;height:24px;border-radius:50%;background:#E7ECF2}
+.vfr .faq .bp .top::before{content:"";position:absolute;bottom:-12px;right:-12px;width:24px;height:24px;border-radius:50%;background:#E7ECF2}
+.vfr .faq .bp .eyebrow{color:#79CFC2;margin:0;display:flex;align-items:center;gap:9px;font:800 .74rem 'Outfit',sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.vfr .faq .bp .eyebrow::before{content:"";width:26px;height:2px;background:#79CFC2}
+.vfr .faq .bp h3{color:#fff;font-size:23px;font-weight:800;letter-spacing:-.01em;margin:12px 0 12px;max-width:16ch}
+.vfr .faq .bp .top p{color:#a9c0c8;font-size:15px;line-height:1.55;margin:0}
+.vfr .faq .bp .bot{padding:24px 32px 30px}
+.vfr .faq .bp .tick{display:flex;align-items:center;gap:11px;color:#dbe8ef;font-size:15px;margin:0 0 11px}
+.vfr .faq .bp .tick .c{width:23px;height:23px;border-radius:6px;background:rgba(121,207,194,.16);color:#79CFC2;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
+.vfr .faq .bp .wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--wa);color:#fff;font-weight:700;padding:15px 22px;border-radius:12px;text-decoration:none;font-size:16px;margin-top:8px}
+.vfr .faq .bp .wabtn svg{width:18px;height:18px;fill:#fff}
+@media(max-width:900px){.vfr .faq .fsplit{grid-template-columns:1fr}.vfr .faq .rrail{position:static}}
+@media(max-width:860px){.vfr section.faqsec{padding:56px 0}.vfr .faqsec .wrap{padding:0 20px}}
 
 /* 9 · reviews — dark navy feature card + two light cards [reviews-B] */
 .vfr .rgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
@@ -491,19 +496,21 @@
     </div>
   </div></section>
 
-  {{-- 10 · FAQ — boarding-pass: accordion left + dark CTA card + disclaimer right --}}
-  <section class="faqsec"><div class="wrap">
-    <span class="eyebrow">France visa FAQ</span>
-    <h2>Asked every week, answered straight</h2>
-    <p class="sub">What we do, what it costs, and what we won't promise. If yours isn't here, just ask.</p>
-    <div class="faq"><div class="fsplit">
+  {{-- 10 · FAQ — pixel-perfect port of /schengen-visa-consultancy --}}
+  <section class="faqsec faq"><div class="wrap">
+    <div class="fhd">
+      <span class="eyebrow">France visa FAQ</span>
+      <h2>Asked every week, answered straight.</h2>
+      <p class="fsub">What we do, what it costs, and what we won't promise. If yours isn't here, just ask.</p>
+    </div>
+    <div class="fsplit">
       <div class="flist">
         @foreach($faqs as $f)
           @php $isKey = \Illuminate\Support\Str::contains(strtolower($f['q']), 'refused'); @endphp
-          <details class="fcard{{ $isKey ? ' key' : '' }}" {{ $loop->first ? 'open' : '' }}>
-            <summary class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></summary>
-            <div class="fain">{{ $f['a'] }}</div>
-          </details>
+          <div class="fcard{{ $loop->first ? ' open' : '' }}{{ $isKey ? ' key' : '' }}">
+            <p class="fq"><span class="qg">Q</span><span>{{ $f['q'] }}</span><span class="pm">+</span></p>
+            <div class="fa"><div class="fain">{{ $f['a'] }}</div></div>
+          </div>
         @endforeach
       </div>
       <div class="rrail">
@@ -518,13 +525,18 @@
         </aside>
         @include('partials.disclaimer-strip', ['text' => 'Beyond Passports is an independent consultancy registered in England and Wales. We are not the government, not the French consulate, and not TLScontact. Appointment dates shown are indicative, updated daily and confirmed live with the centre before you pay. We help prepare applications and assist with appointment booking; every visa decision rests with the relevant consulate.', 'wrap' => false])
       </div>
-    </div></div>
+    </div>
   </div></section>
 
 
 </div>
 
 <script>
+(function(){
+  document.querySelectorAll('.vfr .faq .fcard .fq').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentNode.classList.toggle('open'); });
+  });
+})();
 (function(){
   var form = document.getElementById('vfr-form'); if (!form) return;
   var seg = document.getElementById('vfr-tf'), timeframe = '';
