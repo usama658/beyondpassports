@@ -127,7 +127,8 @@
 .vfr .st p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
 .vfr .st .who{display:inline-block;font:800 9px 'Outfit',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--stampt);background:rgba(46,154,140,.1);border-radius:5px;padding:2px 6px;margin-bottom:5px}
 .vfr .st.you .who{color:#b5791f;background:rgba(181,121,31,.1)}
-@media(max-width:820px){.vfr .fp-two{grid-template-columns:1fr}}
+@media(max-width:900px){.vfr .fp-two{grid-template-columns:1fr;gap:26px}}
+@media(max-width:560px){.vfr .dprice{padding:22px}.vfr .dprice .hero-n .big{font-size:40px}}
 
 /* 5 · docs */
 .vfr .docs{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px}
@@ -181,7 +182,6 @@
 .vfr .more a svg{width:14px;height:14px;fill:#fff}
 
 @media(max-width:860px){
-  .vfr .steps{grid-template-columns:1fr 1fr}
   .vfr .pack{grid-template-columns:1fr 1fr}
   .vfr .rgrid{grid-template-columns:1fr}
   .vfr .docs,.vfr .dd{grid-template-columns:1fr}
