@@ -298,6 +298,62 @@
   .vfr .crow{grid-template-columns:1fr}
   .vfr .more a{margin-left:0;width:100%;justify-content:center}
 }
+
+/* 8 · APPOINTMENT CENTRES + VISA-TYPE CAPTURE */
+.vfr .apptsec{background:radial-gradient(760px 300px at 50% -8%,#eef3f6,var(--paper))}
+.vfr .apptsec .atwo{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:stretch;margin-top:20px}
+.vfr .apptsec .pin{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;flex:none}
+.vfr .aclust{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:20px;padding:28px;color:#fff;box-shadow:0 40px 90px -46px rgba(20,34,46,.6);display:flex;flex-direction:column}
+.vfr .aclust::after{content:'';position:absolute;right:-60px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 66%);pointer-events:none}
+.vfr .aclust>*{position:relative;z-index:1}
+.vfr .aclust .eyebrow{color:var(--mint)}
+.vfr .aclust .eyebrow::before{background:var(--mint)}
+.vfr .aclust .flagrow{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+.vfr .aclust .abig{font:800 58px 'Outfit',sans-serif;color:var(--mint);letter-spacing:-.03em;line-height:1}
+.vfr .aclust .acap{font:700 14px 'Outfit',sans-serif;color:#fff}
+.vfr .aclust .asub2{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:10px;line-height:1.55}
+.vfr .aclust .nopick{display:flex;align-items:center;gap:9px;margin-top:16px;font:700 12px 'Outfit',sans-serif;color:var(--mint);background:rgba(143,227,201,.1);border:1px solid rgba(143,227,201,.28);border-radius:11px;padding:10px 13px}
+.vfr .aclust .nopick .pin{stroke:var(--mint)}
+.vfr .aclust .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.vfr .aclust .chips .chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(143,227,201,.24);border-radius:999px;padding:9px 13px;font:800 12.5px 'Outfit',sans-serif;color:#eafff6}
+.vfr .aclust .chips .chip .pin{stroke:var(--mint);width:13px;height:13px}
+.vfr .aclust .alive{display:inline-flex;align-items:center;gap:8px;font:800 10.5px 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 12px;color:var(--mint);background:rgba(143,227,201,.12);border:1px solid rgba(143,227,201,.3);align-self:flex-start;margin-top:18px}
+.vfr .aclust .alive i{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:vfrpl 1.8s infinite}
+.vfr .apptsec .flag{width:40px;height:27px;border-radius:4px;overflow:hidden;display:inline-flex;flex:none;box-shadow:0 2px 6px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18)}
+.vfr .apptsec .flag i{display:block;height:100%;width:33.34%}
+.vfr .apptsec .flag .b{background:#0055A4}.vfr .apptsec .flag .w{background:#fff}.vfr .apptsec .flag .r{background:#EF4135}
+.vfr .apanel{background:#fff;border:1px solid var(--edge);border-radius:20px;padding:24px;box-shadow:0 30px 66px -34px rgba(20,34,46,.5);display:flex;flex-direction:column}
+.vfr .apanel form{display:flex;flex-direction:column;flex:1}
+.vfr .apanel .lbl{font:800 11px 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.vfr .apanel .ph2{font:800 18px 'Outfit',sans-serif;margin:0 0 4px}
+.vfr .apanel .psub{font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.vfr .apanel .vt{display:flex;flex-wrap:wrap;gap:9px}
+.vfr .apanel .vt button{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--edge);background:#fff;color:var(--ink);border-radius:12px;padding:11px 14px;font:800 13.5px 'Outfit',sans-serif;cursor:pointer;transition:all .12s}
+.vfr .apanel .vt button svg{width:16px;height:16px;fill:var(--stampt)}
+.vfr .apanel .vt button:hover{border-color:var(--stamp)}
+.vfr .apanel .vt button.sel{background:var(--stampt);border-color:var(--stampt);color:#fff}
+.vfr .apanel .vt button.sel svg{fill:#fff}
+.vfr .apanel .vt.err{outline:2px solid rgba(192,73,47,.4);outline-offset:4px;border-radius:14px}
+.vfr .apanel .afrow{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:auto;padding-top:18px;align-items:center}
+.vfr .apanel .apc{position:relative;display:flex;border:1px solid var(--edge);border-radius:11px;background:var(--paper);overflow:hidden}
+.vfr .apanel .apc:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.12);background:#fff}
+.vfr .apanel .apc.err{outline:2px solid rgba(192,73,47,.4);outline-offset:3px}
+.vfr .apanel .apc .cc{display:flex;align-items:center;gap:7px;padding:0 12px;border-right:1px solid var(--edge);font:700 14px 'Outfit',sans-serif;white-space:nowrap}
+.vfr .apanel .apc .cc img{width:20px;height:14px;border-radius:2px}
+.vfr .apanel .apc input{flex:1;border:0;background:transparent;padding:13px 14px;font:600 15px 'Outfit',sans-serif;outline:none;color:var(--ink);min-width:0}
+.vfr .apanel .asb{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;border:0;border-radius:12px;font:800 14px 'Outfit',sans-serif;padding:14px 20px;cursor:pointer;white-space:nowrap;box-shadow:0 14px 30px -14px rgba(37,211,102,.6);transition:filter .15s,transform .12s}
+.vfr .apanel .asb:hover{filter:brightness(.95);transform:translateY(-1px)}
+.vfr .apanel .asb svg{width:16px;height:16px;fill:#fff}
+.vfr .apanel .asb[disabled]{opacity:.6;cursor:wait}
+.vfr .apanel .afoot{margin-top:12px;font:600 11.5px 'Outfit',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px}
+.vfr .apanel .afoot .alive{display:inline-flex;align-items:center;gap:8px;font:800 10.5px 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 12px;color:var(--stampt);background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.25)}
+.vfr .apanel .afoot .alive i{width:7px;height:7px;border-radius:50%;background:var(--stamp);animation:vfrpl 1.8s infinite}
+.vfr .apanel .athx{text-align:center;margin:auto 0;padding:12px 0}
+.vfr .apanel .athx .tick{width:54px;height:54px;border-radius:50%;background:rgba(46,154,140,.14);border:2px solid var(--stamp);display:grid;place-items:center;margin:0 auto 10px}
+.vfr .apanel .athx .tick svg{width:25px;height:25px;fill:none;stroke:var(--stampt);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.vfr .apanel .athx h4{font:800 18px 'Outfit',sans-serif;margin:0 0 5px}
+.vfr .apanel .athx p{font-size:13px;color:var(--muted);margin:0;line-height:1.55}
+@media(max-width:820px){.vfr .apptsec .atwo{grid-template-columns:1fr}.vfr .apanel .afrow{grid-template-columns:1fr}}
 </style>
 @endpush
 
@@ -476,6 +532,53 @@
     </div>
   </div></section>
 
+  {{-- 8 · APPOINTMENT CENTRES + VISA-TYPE CAPTURE --}}
+  <section class="apptsec"><div class="wrap">
+    <span class="eyebrow">France appointments</span>
+    <h2>Where we book, and what it's for</h2>
+    <p class="sub">We watch all three UK centres for you. Tell us your visa type and number, and we take the soonest slot the TLScontact calendar releases.</p>
+    <div class="atwo">
+      <div class="aclust">
+        <span class="eyebrow">Watched daily</span>
+        <div class="flagrow"><span class="flag"><i class="b"></i><i class="w"></i><i class="r"></i></span><div class="abig">3</div></div>
+        <div class="acap">UK centres for France</div>
+        <div class="asub2">Checked every day including weekends. A named consultant replies within 30 minutes.</div>
+        <div class="nopick"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>We watch all three &mdash; no need to pick.</div>
+        <div class="chips">
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London</span>
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Manchester</span>
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Edinburgh</span>
+        </div>
+        <span class="alive"><i></i>Checked daily</span>
+      </div>
+      <div class="apanel">
+        <form id="vfr-appt" autocomplete="off">
+          <p class="lbl">Get your slot watched</p>
+          <h3 class="ph2">What is your visa for?</h3>
+          <p class="psub">Pick your purpose, drop your number, and we watch all three centres for the soonest date.</p>
+          <div class="vt" id="vfr-appt-vt">
+            <button type="button" data-v="Tourism"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-6v3m0 14v3M2 12h3m14 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>Tourism</button>
+            <button type="button" data-v="Business"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2zm0 4h6V6H9z"/></svg>Business</button>
+            <button type="button" data-v="Family or friends"><svg viewBox="0 0 24 24"><path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a5 5 0 0 1 14 0v1H5z"/></svg>Family or friends</button>
+            <button type="button" data-v="Short study"><svg viewBox="0 0 24 24"><path d="M12 3 1 8l11 5 9-4.1V15h2V8zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.2z"/></svg>Short study</button>
+            <button type="button" data-v="Culture or sport"><svg viewBox="0 0 24 24"><path d="M4 21h16v-2H4zm2-3h12V9l-6-4-6 4z"/></svg>Culture or sport</button>
+            <button type="button" data-v="Medical"><svg viewBox="0 0 24 24"><path d="M11 3h2v6h6v2h-6v6h-2v-6H5V9h6z"/></svg>Medical</button>
+          </div>
+          <div class="afrow">
+            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+            <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
+          </div>
+          <div class="afoot"><span class="alive"><i></i>Checked daily</span>Reply within 30 minutes, 7 days.</div>
+        </form>
+        <div class="athx" hidden>
+          <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
+          <h4>Request received</h4>
+          <p>A named consultant is watching all three France centres and replies within 30 minutes, 7 days a week.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
   {{-- 9 · REVIEWS (France-relevant) — before FAQ --}}
   <section><div class="wrap">
     <span class="eyebrow">France clients</span>
@@ -562,6 +665,37 @@
     }).catch(function(){}).finally(function(){
       form.hidden = true;
       var thx = form.parentNode.querySelector('.fthx'); if (thx) thx.hidden = false;
+    });
+  });
+})();
+(function(){
+  var form = document.getElementById('vfr-appt'); if (!form) return;
+  var vt = document.getElementById('vfr-appt-vt'), pick = '';
+  vt.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      vt.classList.remove('err');
+      if (b.classList.contains('sel')) { b.classList.remove('sel'); pick = ''; return; }
+      vt.querySelectorAll('button').forEach(function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel'); pick = b.getAttribute('data-v') || '';
+    });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!pick) { vt.classList.add('err'); vt.scrollIntoView({block:'center'}); return; }
+    var pcw = document.getElementById('vfr-appt-pcw');
+    var input = document.getElementById('vfr-appt-phone');
+    var raw = (input.value || '').replace(/[^\d]/g,'');
+    if (raw.length < 7) { pcw.classList.add('err'); input.focus(); return; }
+    var phone = '+44 ' + raw.replace(/^0+/,'');
+    var btn = form.querySelector('.asb'); btn.disabled = true;
+    var payload = { phone: phone, dest: 'France', intent: 'France appointment - ' + pick, utm: (window.bpUtm ? window.bpUtm() : null) };
+    fetch(@json(route('lp-bold.lead')), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': @json(csrf_token()), 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(){}).finally(function(){
+      form.hidden = true;
+      var thx = form.parentNode.querySelector('.athx'); if (thx) thx.hidden = false;
     });
   });
 })();
