@@ -409,6 +409,53 @@
     <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></a>
   </div></div></section>
 
+  {{-- 8 · APPOINTMENT CENTRES + VISA-TYPE CAPTURE — sits directly below trust bar --}}
+  <section class="apptsec"><div class="wrap">
+    <span class="eyebrow">France appointments</span>
+    <h2>Where we book, and what it's for</h2>
+    <p class="sub">We watch all three UK centres for you. Tell us your visa type and number, and we take the soonest slot the TLScontact calendar releases.</p>
+    <div class="atwo">
+      <div class="aclust">
+        <span class="eyebrow">Watched daily</span>
+        <div class="flagrow"><span class="flag"><i class="b"></i><i class="w"></i><i class="r"></i></span><div class="abig">3</div></div>
+        <div class="acap">UK centres for France</div>
+        <div class="asub2">Checked every day including weekends. A named consultant replies within 30 minutes.</div>
+        <div class="nopick"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>We watch all three &mdash; no need to pick.</div>
+        <div class="chips">
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London</span>
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Manchester</span>
+          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Edinburgh</span>
+        </div>
+        <span class="alive"><i></i>Checked daily</span>
+      </div>
+      <div class="apanel">
+        <form id="vfr-appt" autocomplete="off">
+          <p class="lbl">Get your slot watched</p>
+          <h3 class="ph2">What is your visa for?</h3>
+          <p class="psub">Pick your purpose, drop your number, and we watch all three centres for the soonest date.</p>
+          <div class="vt" id="vfr-appt-vt">
+            <button type="button" data-v="Tourism"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-6v3m0 14v3M2 12h3m14 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>Tourism</button>
+            <button type="button" data-v="Business"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2zm0 4h6V6H9z"/></svg>Business</button>
+            <button type="button" data-v="Family or friends"><svg viewBox="0 0 24 24"><path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a5 5 0 0 1 14 0v1H5z"/></svg>Family or friends</button>
+            <button type="button" data-v="Short study"><svg viewBox="0 0 24 24"><path d="M12 3 1 8l11 5 9-4.1V15h2V8zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.2z"/></svg>Short study</button>
+            <button type="button" data-v="Culture or sport"><svg viewBox="0 0 24 24"><path d="M4 21h16v-2H4zm2-3h12V9l-6-4-6 4z"/></svg>Culture or sport</button>
+            <button type="button" data-v="Medical"><svg viewBox="0 0 24 24"><path d="M11 3h2v6h6v2h-6v6h-2v-6H5V9h6z"/></svg>Medical</button>
+          </div>
+          <div class="afrow">
+            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+            <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
+          </div>
+          <div class="afoot"><span class="alive"><i></i>Checked daily</span>Reply within 30 minutes, 7 days.</div>
+        </form>
+        <div class="athx" hidden>
+          <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
+          <h4>Request received</h4>
+          <p>A named consultant is watching all three France centres and replies within 30 minutes, 7 days a week.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
   {{-- 3+4 · PRICE (dark navy card) + PROCESS (ringed timeline), 2-column --}}
   <section class="fp"><div class="wrap"><div class="fp-two">
     <div class="dprice">
@@ -528,53 +575,6 @@
         <p>Every Schengen consulate can see it, and a wrong re-application makes it worse. Before you try France again, let us find the real reason and answer it.</p>
         <a class="refcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I was refused a Schengen visa before and want to apply for France. Can you review my refusal letter?') }}">@include('partials.wa-glyph')Review my refusal</a>
         <div class="trust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg><span><b>Honest assessment</b>, whether or not you become a client</span></div>
-      </div>
-    </div>
-  </div></section>
-
-  {{-- 8 · APPOINTMENT CENTRES + VISA-TYPE CAPTURE --}}
-  <section class="apptsec"><div class="wrap">
-    <span class="eyebrow">France appointments</span>
-    <h2>Where we book, and what it's for</h2>
-    <p class="sub">We watch all three UK centres for you. Tell us your visa type and number, and we take the soonest slot the TLScontact calendar releases.</p>
-    <div class="atwo">
-      <div class="aclust">
-        <span class="eyebrow">Watched daily</span>
-        <div class="flagrow"><span class="flag"><i class="b"></i><i class="w"></i><i class="r"></i></span><div class="abig">3</div></div>
-        <div class="acap">UK centres for France</div>
-        <div class="asub2">Checked every day including weekends. A named consultant replies within 30 minutes.</div>
-        <div class="nopick"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>We watch all three &mdash; no need to pick.</div>
-        <div class="chips">
-          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London</span>
-          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Manchester</span>
-          <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Edinburgh</span>
-        </div>
-        <span class="alive"><i></i>Checked daily</span>
-      </div>
-      <div class="apanel">
-        <form id="vfr-appt" autocomplete="off">
-          <p class="lbl">Get your slot watched</p>
-          <h3 class="ph2">What is your visa for?</h3>
-          <p class="psub">Pick your purpose, drop your number, and we watch all three centres for the soonest date.</p>
-          <div class="vt" id="vfr-appt-vt">
-            <button type="button" data-v="Tourism"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-6v3m0 14v3M2 12h3m14 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>Tourism</button>
-            <button type="button" data-v="Business"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2zm0 4h6V6H9z"/></svg>Business</button>
-            <button type="button" data-v="Family or friends"><svg viewBox="0 0 24 24"><path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a5 5 0 0 1 14 0v1H5z"/></svg>Family or friends</button>
-            <button type="button" data-v="Short study"><svg viewBox="0 0 24 24"><path d="M12 3 1 8l11 5 9-4.1V15h2V8zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.2z"/></svg>Short study</button>
-            <button type="button" data-v="Culture or sport"><svg viewBox="0 0 24 24"><path d="M4 21h16v-2H4zm2-3h12V9l-6-4-6 4z"/></svg>Culture or sport</button>
-            <button type="button" data-v="Medical"><svg viewBox="0 0 24 24"><path d="M11 3h2v6h6v2h-6v6h-2v-6H5V9h6z"/></svg>Medical</button>
-          </div>
-          <div class="afrow">
-            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
-            <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
-          </div>
-          <div class="afoot"><span class="alive"><i></i>Checked daily</span>Reply within 30 minutes, 7 days.</div>
-        </form>
-        <div class="athx" hidden>
-          <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
-          <h4>Request received</h4>
-          <p>A named consultant is watching all three France centres and replies within 30 minutes, 7 days a week.</p>
-        </div>
       </div>
     </div>
   </div></section>
