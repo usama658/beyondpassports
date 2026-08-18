@@ -256,8 +256,14 @@
             <li><strong>Third-party costs we pay on your behalf.</strong> The appointment booking fee, travel insurance, and any government or visa fees.</li>
           </ul>
 
-          <h3>Our service fee: 100% refundable</h3>
-          <p>You can claim a <strong>full refund of our service fee</strong> at any time <strong>before your application is submitted</strong>, subject to the terms below and to your statutory rights.</p>
+          <h3>Our service fee: fully refundable before we begin work</h3>
+          <p>You can claim a <strong>full refund of our service fee before we begin work</strong> on your order, subject to the terms below and to your statutory rights. Once we have started the administrative work &mdash; for example completing your visa application form, generating your reference, or securing an appointment &mdash; an <strong>admin fee applies</strong> if you then cancel or change your mind (see below).</p>
+
+          <h3>If you change your mind after we have started</h3>
+          <p>If you cancel or change your mind once we have begun the administrative work, we refund what you paid <strong>less an admin fee</strong>. The admin fee is <strong>not a flat rate</strong>: it reflects the work already carried out on your order (such as preparing your form, generating your reference, or securing an appointment), and any <strong>third-party costs already spent</strong> on your behalf (a confirmed appointment or insurance) are also deducted.</p>
+
+          <h3>If we are unable to secure an appointment</h3>
+          <p>If we are <strong>unable to book you an appointment</strong>, you receive a <strong>100% refund</strong> of everything you paid us. No admin fee is deducted in that case.</p>
 
           <h3>Third-party costs: non-refundable once incurred</h3>
           <p>Government and visa fees, <strong>travel insurance</strong>, and a <strong>confirmed appointment booking</strong> are paid to third parties on your behalf and cannot be recovered by us, so they are deducted from any refund. <strong>Before an appointment is confirmed, that charge is still refundable.</strong></p>

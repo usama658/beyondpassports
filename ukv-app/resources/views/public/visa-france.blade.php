@@ -540,7 +540,7 @@
         <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, pack</small></span><b>&pound;130</b></div>
       </div>
       <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 on the full case</span><a class="pcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to start my France visa application. I understand it is £40 now, £90 for the full case.') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Start for &pound;40</a></div>
-      <p class="pnote">Consulate and TLS fees paid to them directly. Our service fee refunded if the consulate refuses a file we prepared (terms apply).</p>
+      <p class="pnote">Consulate and TLS fees are paid to them directly. If we can't secure you an appointment, you get a full refund; if the consulate refuses a file we prepared, we refund our service fee or handle your next application free; if you change your mind after we've started, an admin fee applies. <a href="{{ route('legal') }}#refunds">See our refund policy</a>.</p>
     </div>
     <div class="fp-flow">
       <span class="eyebrow">How it works for France</span>
@@ -630,7 +630,7 @@
           <li><span class="mk">{!! $ddTick !!}</span><span>Watch the TLScontact calendar and take the earliest workable date</span></li>
           <li><span class="mk">{!! $ddTick !!}</span><span>Check every document before it goes anywhere near the centre</span></li>
           <li><span class="mk">{!! $ddTick !!}</span><span>Reply within 30 minutes, from a named consultant</span></li>
-          <li><span class="mk">{!! $ddTick !!}</span><span>Refund our service fee if the consulate refuses a file we prepared (terms apply)</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Refund in full if we can't get you an appointment, or our service fee if the consulate refuses a file we prepared</span></li>
         </ul>
       </div>
       <div class="ddc dont">
