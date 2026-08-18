@@ -354,6 +354,38 @@
 .vfr .apanel .athx h4{font:800 18px 'Outfit',sans-serif;margin:0 0 5px}
 .vfr .apanel .athx p{font-size:13px;color:var(--muted);margin:0;line-height:1.55}
 @media(max-width:820px){.vfr .apptsec .atwo{grid-template-columns:1fr}.vfr .apanel .afrow{grid-template-columns:1fr}}
+
+/* 8b · SCHENGEN COUNTRY DIRECTORY — A–Z jump rail, visa + appointments */
+.vfr .cdir .cdbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:20px 0 14px}
+.vfr .cdir .cdsearch{flex:1;min-width:240px;max-width:400px;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--edge);border-radius:14px;padding:4px 6px 4px 16px;box-shadow:0 12px 30px -22px rgba(20,34,46,.5)}
+.vfr .cdir .cdsearch:focus-within{border-color:var(--cta);box-shadow:0 0 0 3px rgba(21,94,122,.12)}
+.vfr .cdir .cdsearch svg{width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:2;flex:none}
+.vfr .cdir .cdsearch input{flex:1;border:0;background:transparent;outline:none;padding:12px 4px;font:600 15px 'Outfit',sans-serif;color:var(--ink);min-width:0}
+.vfr .cdir .cdsearch .cdclr{border:0;background:var(--paper);color:var(--muted);border-radius:9px;width:32px;height:32px;cursor:pointer;font:700 15px 'Outfit',sans-serif;display:none}
+.vfr .cdir .cdaz{display:flex;flex-wrap:wrap;gap:3px}
+.vfr .cdir .cdaz button{border:1px solid var(--edge);background:#fff;color:var(--muted);width:26px;height:26px;border-radius:7px;font:800 10.5px 'Outfit',sans-serif;cursor:pointer;transition:all .1s}
+.vfr .cdir .cdaz button:hover:not(:disabled){border-color:var(--stamp);color:var(--stampt)}
+.vfr .cdir .cdaz button:disabled{opacity:.32;cursor:default}
+.vfr .cdir .cdbox{max-height:470px;overflow-y:auto;border:1px solid var(--edge);border-radius:16px;background:#fff;padding:4px 18px 14px;box-shadow:inset 0 -18px 22px -22px rgba(20,34,46,.25)}
+.vfr .cdir .cdgrp{scroll-margin-top:4px}
+.vfr .cdir .cdgh{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--edge);margin:0 -18px 8px;padding:12px 18px 8px;z-index:1}
+.vfr .cdir .cdgh span{font:800 12px 'Outfit',sans-serif;color:var(--stampt);letter-spacing:.08em}
+.vfr .cdir .cdgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:14px}
+.vfr .cdir .cdrow{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--edge);border-radius:12px;padding:11px 13px;transition:border-color .1s,background .1s}
+.vfr .cdir .cdrow:hover{border-color:var(--stamp);background:#fff}
+.vfr .cdir .cdrow img{width:24px;height:16px;border-radius:3px;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.18);flex:none}
+.vfr .cdir .cdrow b{font:800 14px 'Outfit',sans-serif}
+.vfr .cdir .cdrow .cdlinks{margin-left:auto;display:flex;gap:6px}
+.vfr .cdir .cdrow .cdlinks a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font:800 11px 'Outfit',sans-serif;border-radius:8px;padding:6px 10px;white-space:nowrap}
+.vfr .cdir .cdrow .cdlinks a svg{width:13px;height:13px;flex:none}
+.vfr .cdir .cdrow .cdlinks .cdg{color:var(--stampt);background:rgba(46,154,140,.1);border:1px solid rgba(46,154,140,.22)}
+.vfr .cdir .cdrow .cdlinks .cdg svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vfr .cdir .cdrow .cdlinks .cdb{color:#fff;background:var(--cta)}
+.vfr .cdir .cdrow .cdlinks .cdb svg{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vfr .cdir .cdnone{align-items:center;gap:14px;flex-wrap:wrap;background:var(--paper);border:1px dashed var(--edge);border-radius:14px;padding:16px 18px;display:none;margin-top:10px}
+.vfr .cdir .cdnone b{font:800 14px 'Outfit',sans-serif}.vfr .cdir .cdnone span{font:600 13px 'Outfit',sans-serif;color:var(--muted)}
+.vfr .cdir .cdnone a{margin-left:auto}
+@media(max-width:700px){.vfr .cdir .cdgrid{grid-template-columns:1fr}}
 </style>
 @endpush
 
@@ -452,6 +484,60 @@
           <h4>Request received</h4>
           <p>A named consultant is watching all three France centres and replies within 30 minutes, 7 days a week.</p>
         </div>
+      </div>
+    </div>
+  </div></section>
+
+  {{-- 8b · SCHENGEN COUNTRY DIRECTORY — A–Z jump rail, visa help + appointments --}}
+  @php
+    $cdCountries = [
+      'at'=>'Austria','be'=>'Belgium','hr'=>'Croatia','cz'=>'Czechia','dk'=>'Denmark','ee'=>'Estonia',
+      'fi'=>'Finland','de'=>'Germany','gr'=>'Greece','hu'=>'Hungary','is'=>'Iceland','it'=>'Italy',
+      'lv'=>'Latvia','li'=>'Liechtenstein','lt'=>'Lithuania','lu'=>'Luxembourg','mt'=>'Malta','nl'=>'Netherlands',
+      'no'=>'Norway','pl'=>'Poland','pt'=>'Portugal','sk'=>'Slovakia','si'=>'Slovenia','es'=>'Spain','se'=>'Sweden','ch'=>'Switzerland',
+    ];
+    $cdGroups = [];
+    foreach ($cdCountries as $code => $name) { $cdGroups[strtoupper($name[0])][$code] = $name; }
+    ksort($cdGroups);
+    $cdLetters = range('A', 'Z');
+  @endphp
+  <section class="cdir"><div class="wrap">
+    <span class="eyebrow">Not just France</span>
+    <h2>Every Schengen country: visa help &amp; appointments</h2>
+    <p class="sub">We help with the visa and watch the UK appointment centres for the whole Schengen area, not only France. Search your country, or jump by letter.</p>
+    <div class="cdbar">
+      <label class="cdsearch">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input id="cd-search" type="text" placeholder="Search a country, e.g. Greece" autocomplete="off" aria-label="Search Schengen countries">
+        <button type="button" class="cdclr" id="cd-clear" aria-label="Clear search">&times;</button>
+      </label>
+      <div class="cdaz" id="cd-az">
+        @foreach($cdLetters as $L)
+          <button type="button" data-l="{{ $L }}" @disabled(!isset($cdGroups[$L]))>{{ $L }}</button>
+        @endforeach
+      </div>
+    </div>
+    <div class="cdbox" id="cd-box">
+      @foreach($cdGroups as $L => $items)
+        <div class="cdgrp" data-l="{{ $L }}" id="cd-{{ $L }}">
+          <div class="cdgh"><span>{{ $L }}</span></div>
+          <div class="cdgrid">
+            @foreach($items as $code => $name)
+              <div class="cdrow" data-name="{{ strtolower($name) }}">
+                <img src="https://flagcdn.com/{{ $code }}.svg" alt="{{ $name }} flag" width="24" height="16" loading="lazy">
+                <b>{{ $name }}</b>
+                <span class="cdlinks">
+                  <a class="cdg" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I need help with a '.$name.' Schengen visa from the UK.') }}">Visa <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a class="cdb" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please watch the '.$name.' appointment centres for me.') }}"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>Book</a>
+                </span>
+              </div>
+            @endforeach
+          </div>
+        </div>
+      @endforeach
+      <div class="cdnone" id="cd-none">
+        <b>No match found</b><span>Tell us your country and we'll confirm we cover it.</span>
+        <a class="cta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I want help with a Schengen visa for: ') }}">@include('partials.wa-glyph')Tell us your country</a>
       </div>
     </div>
   </div></section>
@@ -698,6 +784,25 @@
       var thx = form.parentNode.querySelector('.athx'); if (thx) thx.hidden = false;
     });
   });
+})();
+(function(){
+  var box = document.getElementById('cd-box'); if (!box) return;
+  var inp = document.getElementById('cd-search'), clr = document.getElementById('cd-clear');
+  var none = document.getElementById('cd-none'), rows = box.querySelectorAll('.cdrow'), grps = box.querySelectorAll('.cdgrp');
+  document.getElementById('cd-az').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b || b.disabled) return;
+    var t = document.getElementById('cd-' + b.getAttribute('data-l'));
+    if (t) t.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+  function filter(){
+    var q = (inp.value || '').trim().toLowerCase(); clr.style.display = q ? 'block' : 'none';
+    var total = 0;
+    rows.forEach(function(r){ var hit = !q || r.getAttribute('data-name').indexOf(q) >= 0; r.style.display = hit ? '' : 'none'; if (hit) total++; });
+    grps.forEach(function(g){ var any = g.querySelector('.cdrow:not([style*="none"])'); g.style.display = any ? '' : 'none'; });
+    none.style.display = total ? 'none' : 'flex';
+  }
+  inp.addEventListener('input', filter);
+  clr.addEventListener('click', function(){ inp.value = ''; filter(); inp.focus(); });
 })();
 </script>
 <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn ($f) => ['@type' => 'Question', 'name' => $f['q'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']]], $faqs)], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
