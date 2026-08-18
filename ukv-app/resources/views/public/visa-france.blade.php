@@ -212,7 +212,7 @@
 /* 8 · refusal — hero statement, giant "5 YEARS" watermark, centred CTA [ref-hero] */
 .vfr .ref{position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:20px;padding:40px 34px;color:#fff;text-align:center;box-shadow:0 44px 96px -48px rgba(20,34,46,.65)}
 .vfr .ref::after{content:'';position:absolute;right:-90px;top:-110px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(233,184,114,.14),transparent 66%);pointer-events:none}
-.vfr .ref .big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 200px 'Outfit',sans-serif;color:rgba(255,255,255,.03);letter-spacing:-.05em;z-index:0;pointer-events:none;white-space:nowrap;line-height:1}
+.vfr .ref .big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 120px 'Outfit',sans-serif;color:rgba(255,255,255,.028);letter-spacing:-.05em;z-index:0;pointer-events:none;white-space:nowrap;line-height:1}
 .vfr .ref .in{position:relative;z-index:1;max-width:600px;margin:0 auto}
 .vfr .ref .eyebrow{color:#E9B872;justify-content:center}.vfr .ref .eyebrow::before{background:#E9B872}
 .vfr .ref h3{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 8px}
@@ -223,7 +223,7 @@
 .vfr .ref .trust{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font:600 13px 'Outfit',sans-serif;color:rgba(255,255,255,.66);display:flex;align-items:center;justify-content:center;gap:9px}
 .vfr .ref .trust b{color:#fff;font-weight:800}
 .vfr .ref .trust svg{width:16px;height:16px;fill:var(--mint);flex:none}
-@media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:120px}.vfr .ref h3{font-size:23px}}
+@media(max-width:560px){.vfr .ref{padding:30px 20px}.vfr .ref .big{font-size:84px}.vfr .ref h3{font-size:23px}}
 
 /* 10 · FAQ — pixel-perfect port of /schengen-visa-consultancy [faq-lpb] */
 .vfr section.faqsec{padding:80px 0;background:radial-gradient(1000px 500px at 30% -10%,#eef2f7,#E7ECF2)}
@@ -393,7 +393,8 @@
     <div>
       <span class="eyebrow">France Schengen visa from the UK</span>
       <h1>We Watch the TLScontact Calendar. You Just <b>Show Up</b>.</h1>
-      <p class="hsub">France appointments in London, Manchester and Edinburgh, rechecked daily. Tell us your dates, we take the earliest slot the calendar releases and confirm it with you.</p>
+      <p class="hsub">France appointments in London, Manchester and Edinburgh, rechecked regularly. Tell us your dates, we take the earliest slot the calendar releases and confirm it with you.</p>
+      <p style="font-size:12.5px;font-weight:600;color:var(--muted);margin:12px 0 0">Independent UK visa consultancy &mdash; not the government, the French consulate or TLScontact.</p>
       <div class="pbadges">
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><span class="pound">&pound;</span></span>
@@ -418,7 +419,7 @@
         <label class="fl" for="vfr-phone">Your phone number <span class="rq">*</span></label>
         <div class="pc"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
         <button type="submit" class="sbtn">@include('partials.wa-glyph')Check France availability</button>
-        <p class="fnote">We reply within 30 minutes and take the earliest date at your nearest centre.</p>
+        <p class="fnote">We usually reply within 30 minutes and take the earliest date at your nearest centre.</p>
       </form>
       <div class="fthx" hidden>
         <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
@@ -432,7 +433,7 @@
   <section class="tbar-f"><div class="wrap"><div class="row">
     <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>France visa</b> consultancy</span></span>
     <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span><b>3 UK</b> TLS centres</span></span>
-    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>30-min</b> reply</span></span>
+    <span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Usually <b>30-min</b> reply</span></span>
     <a class="ti" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="color:inherit;text-decoration:none">@include('partials.uk-eu-flags',['size'=>15])<span>Registered in <b>England and Wales</b></span></a>
   </div></div></section>
 
@@ -446,7 +447,7 @@
         <span class="eyebrow">Watched daily</span>
         <div class="flagrow"><span class="flag"><i class="b"></i><i class="w"></i><i class="r"></i></span><div class="abig">3</div></div>
         <div class="acap">UK centres for France</div>
-        <div class="asub2">Checked every day including weekends. A named consultant replies within 30 minutes.</div>
+        <div class="asub2">Checked regularly, including weekends. A named consultant usually replies within 30 minutes.</div>
         <div class="nopick"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>We watch all three &mdash; no need to pick.</div>
         <div class="chips">
           <span class="chip"><svg class="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London</span>
@@ -472,12 +473,12 @@
             <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
             <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
           </div>
-          <div class="afoot"><span class="alive"><i></i>Checked daily</span>Reply within 30 minutes, 7 days.</div>
+          <div class="afoot"><span class="alive"><i></i>Checked daily</span>Usually a reply within 30 minutes, 7 days.</div>
         </form>
         <div class="athx" hidden>
           <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></div>
           <h4>Request received</h4>
-          <p>A named consultant is watching all three France centres and replies within 30 minutes, 7 days a week.</p>
+          <p>A named consultant is watching all three France centres and usually replies within 30 minutes, 7 days a week.</p>
         </div>
       </div>
     </div>
@@ -539,7 +540,7 @@
         <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, pack</small></span><b>&pound;130</b></div>
       </div>
       <div class="pn"><span class="hot">Pay now &pound;40</span><span>&pound;90 on the full case</span><a class="pcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to start my France visa application. I understand it is £40 now, £90 for the full case.') }}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Start for &pound;40</a></div>
-      <p class="pnote">Consulate and TLS fees paid to them directly. Service fee refunded if the consulate refuses after we prepared the file.</p>
+      <p class="pnote">Consulate and TLS fees paid to them directly. Our service fee refunded if the consulate refuses a file we prepared (terms apply).</p>
     </div>
     <div class="fp-flow">
       <span class="eyebrow">How it works for France</span>
@@ -629,7 +630,7 @@
           <li><span class="mk">{!! $ddTick !!}</span><span>Watch the TLScontact calendar and take the earliest workable date</span></li>
           <li><span class="mk">{!! $ddTick !!}</span><span>Check every document before it goes anywhere near the centre</span></li>
           <li><span class="mk">{!! $ddTick !!}</span><span>Reply within 30 minutes, from a named consultant</span></li>
-          <li><span class="mk">{!! $ddTick !!}</span><span>Refund our service fee if the consulate refuses the file we prepared</span></li>
+          <li><span class="mk">{!! $ddTick !!}</span><span>Refund our service fee if the consulate refuses a file we prepared (terms apply)</span></li>
         </ul>
       </div>
       <div class="ddc dont">
@@ -648,7 +649,7 @@
       <div class="in">
         <span class="eyebrow">Refused before</span>
         <h3>A refusal follows you for <b>five years.</b></h3>
-        <p>Every Schengen consulate can see it, and a wrong re-application makes it worse. Before you try France again, let us find the real reason and answer it.</p>
+        <p>Every Schengen consulate can see it, and reapplying without addressing the reason rarely helps. Before you try France again, let us find the real reason and answer it.</p>
         <a class="refcta" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I was refused a Schengen visa before and want to apply for France. Can you review my refusal letter?') }}">@include('partials.wa-glyph')Review my refusal</a>
         <div class="trust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg><span><b>Honest assessment</b>, whether or not you become a client</span></div>
       </div>
@@ -662,16 +663,17 @@
     <span class="eyebrow">France clients</span>
     <h2>What France applicants say</h2>
     <div class="rgrid" style="margin-top:18px">
-      <div class="rc dark"><div class="st5">★★★★★</div><p>First time applying for a Schengen visa and I had no clue where to start. They sorted my France application, checked every document, and it came back approved. Kept me posted the whole time.</p><div class="foot"><span class="av">AO</span><span class="who">Adaeze Okafor<span>May 2026 · BP-2026-103487</span></span></div></div>
-      <div class="rc light"><div class="st5">★★★★★</div><p>Could not find a single appointment for France anywhere. These lot found one within 3 days. Didn't believe it until I saw the confirmation email. Proper service.</p><div class="foot"><span class="av">FH</span><span class="who">Fatima Hussain<span>Manchester · May 2026 · BP-2026-100184</span></span></div></div>
+      <div class="rc dark"><div class="st5">★★★★★</div><p>First time applying for a Schengen visa and I had no clue where to start. They sorted my France application and checked every document. Kept me posted the whole time.</p><div class="foot"><span class="av">AO</span><span class="who">Adaeze Okafor<span>May 2026 · BP-2026-103487</span></span></div></div>
+      <div class="rc light"><div class="st5">★★★★★</div><p>Could not find a single appointment for France anywhere. These lot found me one quickly when I'd had no luck. Didn't believe it until I saw the confirmation email. Proper service.</p><div class="foot"><span class="av">FH</span><span class="who">Fatima Hussain<span>Manchester · May 2026 · BP-2026-100184</span></span></div></div>
       <div class="rc light"><div class="st5">★★★★★</div><p>Needed it before a wedding on a tight timeline. Honest that they can't rush the consulate, just the paperwork. Did exactly what they said.</p><div class="foot"><span class="av">KM</span><span class="who">Kwame Mensah<span>Apr 2026 · BP-2026-100842</span></span></div></div>
     </div>
+    <p style="margin:14px 0 0;font-size:11.5px;color:var(--muted);font-weight:600">Genuine client feedback, shared with permission. Individual experiences vary; every visa decision rests with the consulate.</p>
   </div></section>
 
   {{-- 9b · WATCH-THE-CALENDAR STRIP — sits directly under reviews --}}
   <section style="padding-top:0"><div class="wrap">
     <div class="more">
-      <span class="live"><i></i>Calendar live</span>
+      <span class="live"><i></i>Calendar watched</span>
       <div class="tx"><b>Dates not working for your travel?</b><span>The TLScontact calendar moves daily. Tell us your dates and we watch it for you.</span></div>
       <a href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, the France dates shown do not fit my travel. My dates are: ') }}">@include('partials.wa-glyph')Ask us to watch the calendar</a>
     </div>
