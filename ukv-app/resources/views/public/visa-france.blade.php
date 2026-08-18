@@ -154,6 +154,8 @@
 .vfr .dpx details li{position:relative;padding:6px 0 6px 24px;border-top:1px solid var(--edge)}
 .vfr .dpx details li:first-child{border-top:0}
 .vfr .dpx details li::before{content:'';position:absolute;left:2px;top:11px;width:12px;height:12px;border-radius:50%;background:rgba(46,154,140,.14);border:1.5px solid var(--stamp)}
+.vfr .dpx details li b{color:var(--ink);font-weight:800}
+.vfr .dpx details li span{color:var(--muted)}
 /* per-panel dark CTA card (chat + 30-min call) [docs-cta] */
 .vfr .dpx .cbar{margin:2px 18px 16px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0f2028,#16323c);border-radius:12px;padding:14px 16px;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .vfr .dpx .cbar::after{content:'';position:absolute;right:-40px;top:-50px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(143,227,201,.16),transparent 65%);pointer-events:none}
@@ -559,38 +561,41 @@
       <div class="colh">
         <span class="eyebrow">Documents</span>
         <h2>Your France checklist, by situation</h2>
-        <p class="sub">One missing document at TLScontact and your travel date is gone. This is what the file check exists for.</p>
+        <p class="sub">The document types France asks for, by situation. The exact amounts, dates and formats change with your case, and getting one wrong loses your slot, so we confirm each with you before you submit.</p>
       </div>
       <details name="fdocs" open><summary>Employed <span class="who">Most common</span></summary><ul>
-        <li>Passport, 3+ months validity beyond return, 2 blank pages</li>
-        <li>Last 3 months' payslips + employer letter with approved leave dates</li>
-        <li>Last 3 months' bank statements</li>
-        <li>UK immigration status (BRP / eVisa share code where applicable)</li>
-        <li>Travel insurance &euro;30,000+, flight itinerary, accommodation</li>
+        <li><b>Passport</b> <span>with enough validity and space for the trip</span></li>
+        <li><b>Proof of employment</b> <span>and your approved leave</span></li>
+        <li><b>Proof of income and personal funds</b></li>
+        <li><b>UK immigration status</b></li>
+        <li><b>Travel cover, flights and accommodation</b></li>
       </ul>
-      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      <div class="cbar"><div class="q">Not sure yours are right?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
       </details>
       <details name="fdocs"><summary>Self-employed</summary><ul>
-        <li>Everything in Employed, minus the employer letter</li>
-        <li>Latest tax return or SA302</li>
-        <li>Business bank statements</li>
-        <li>Proof of business: Companies House entry, contracts or invoices</li>
+        <li><b>Passport</b> <span>with enough validity and space</span></li>
+        <li><b>Proof of self-employment and your business</b></li>
+        <li><b>Business and personal finances</b></li>
+        <li><b>UK immigration status</b></li>
+        <li><b>Travel cover, flights and accommodation</b></li>
       </ul>
-      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      <div class="cbar"><div class="q">Not sure yours are right?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
       </details>
       <details name="fdocs"><summary>Student</summary><ul>
-        <li>Enrolment letter with term dates from your UK institution</li>
-        <li>Student bank statements, or sponsor's statements + letter</li>
-        <li>UK immigration status documents</li>
+        <li><b>Passport</b> <span>with enough validity and space</span></li>
+        <li><b>Proof of enrolment and term dates</b></li>
+        <li><b>Proof of funds</b> <span>yours or a sponsor's</span></li>
+        <li><b>UK immigration status</b></li>
       </ul>
-      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      <div class="cbar"><div class="q">Not sure yours are right?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
       </details>
       <details name="fdocs"><summary>Family / travelling with children</summary><ul>
-        <li>Birth or marriage certificates linking the group</li>
-        <li>Consent letter if one parent travels alone with a child</li>
-        <li>One application per traveller, submitted together</li>
+        <li><b>Valid passports</b> <span>for everyone travelling</span></li>
+        <li><b>Documents linking the family</b></li>
+        <li><b>Parental consent</b> <span>where one parent travels with a child</span></li>
+        <li><b>Proof of funds and the trip</b></li>
       </ul>
-      <div class="cbar"><div class="q">Documents not adding up?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
+      <div class="cbar"><div class="q">Not sure yours are right?<span>Get a free check from a named consultant.</span></div><div class="cbtns"><a class="wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I have a question about my France visa documents: ') }}" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.6 1.9.5 2.3.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>Chat</a><a class="call" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, I would like to book a 30-minute France visa consultation.') }}"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>30-min call</a></div></div>
       </details>
     </div>
     <div class="packwrap">
@@ -600,7 +605,7 @@
       <p class="psub">Everything an officer needs, in one folder, before you walk in.</p>
       <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span><div><b>Completed France-Visas application</b><p>With your FRA reference, ready for the centre.</p></div><span class="no">01</span></div>
       <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.8 9.9l-3.75-3.75L3 17.25zM20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><div><b>Tailored cover letter</b><p>Your trip, your ties, your finances, written for a visa officer.</p></div><span class="no">02</span></div>
-      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><div><b>Itinerary + insurance certificate</b><p>Bookings structured the way consulates expect, &euro;30k-compliant cover.</p></div><span class="no">03</span></div>
+      <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><div><b>Itinerary + insurance certificate</b><p>Bookings structured the way consulates expect, with compliant travel cover.</p></div><span class="no">03</span></div>
       <div class="pk"><span class="ic"><svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg></span><div><b>Appointment confirmation + briefing</b><p>Date, centre, what happens in the room, what to carry.</p></div><span class="no">04</span></div>
       <div class="packfoot"><span class="sh"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" fill="rgba(143,227,201,.16)" stroke="#8fe3c9" stroke-width="1.2"/><path d="M8.5 12.2l2.3 2.3 4.6-4.8" fill="none" stroke="#8fe3c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="tx"><b>HUMAN-CHECKED FILE</b><span>Every item checked by a named consultant before it reaches TLScontact.</span></div></div>
     </div>
