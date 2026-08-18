@@ -398,7 +398,7 @@
       <div class="pbadges">
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><span class="pound">&pound;</span></span>
-          <div class="tx"><b>Start for just &pound;40</b><span>&pound;90 only after booking</span></div>
+          <div class="tx"><b>Start for just &pound;40</b><span>&pound;90 on the full case, after booking</span></div>
         </div>
         <a class="pbadge" href="https://find-and-update.company-information.service.gov.uk/company/{{ config('ukv.company_no') ?: '17331903' }}" target="_blank" rel="noopener" title="Verify our UK registration on Companies House" style="text-decoration:none;color:inherit">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10z"/></svg></span>
