@@ -497,8 +497,8 @@
   @endphp
   <section class="cdir"><div class="wrap">
     <span class="eyebrow">Not just France</span>
-    <h2>Every Schengen country: visa help &amp; appointments</h2>
-    <p class="sub">We help with the visa and watch the UK appointment centres for the whole Schengen area, not only France. Search your country, or jump by letter.</p>
+    <h2>Find your Schengen destination</h2>
+    <p class="sub">Every Schengen country, watched from the UK. Search or browse, then start on WhatsApp.</p>
     <div class="cdbar">
       <label class="cdsearch">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
