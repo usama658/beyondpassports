@@ -533,7 +533,7 @@
     <div class="dprice">
       <span class="eyebrow">Transparent pricing</span>
       <h2>What a France visa costs</h2>
-      <div class="hero-n"><span class="big">&pound;130</span><span class="cap">total &middot; &pound;40 now, &pound;90 after booking</span></div>
+      <div class="hero-n"><span class="big">&pound;40</span><span class="cap">to start &middot; &pound;130 total, &pound;90 only after your appointment is booked</span></div>
       <div class="fee">
         <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate</small></span><b>&euro;90</b></div>
         <div class="fr"><span>TLScontact charge<small>Paid to TLS, at booking</small></span><b>at booking</b></div>
