@@ -394,7 +394,7 @@
       <span class="eyebrow">France Schengen visa from the UK</span>
       <h1>We Watch the TLScontact Calendar. You Just <b>Show Up</b>.</h1>
       <p class="hsub">France appointments in London, Manchester and Edinburgh, rechecked daily. Tell us your dates, we take the earliest slot the calendar releases and confirm it with you.</p>
-      <p class="hprice"><strong>&pound;130 total. &pound;90 only once your appointment is booked.</strong> Service fee refunded if the consulate refuses the file we prepared.</p>
+      <p class="hprice"><strong>&pound;130 total. &pound;90 on the full case.</strong> Service fee refunded if the consulate refuses the file we prepared.</p>
       <div class="pbadges">
         <div class="pbadge">
           <span class="sl glow"><span class="wave" aria-hidden="true"></span><span class="pound">&pound;</span></span>
