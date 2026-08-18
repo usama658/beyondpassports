@@ -13,7 +13,7 @@
     ['q' => 'How do I get a France Schengen visa appointment from the UK?', 'a' => 'France uses TLScontact centres in London, Manchester and Edinburgh. You need a France-Visas application reference before the TLS calendar will show you dates. We complete the France-Visas form, generate your reference, then watch the calendar and take the earliest date that fits your travel.'],
     ['q' => 'How long does a France visa take from the UK?', 'a' => 'The consulate\'s published processing time is 10 to 15 working days after your biometric appointment, longer in peak season. Appointment lead time comes on top, so start 6 to 8 weeks before travel where you can. We cannot speed up the consulate\'s decision, only how fast your file is ready and submitted.'],
     ['q' => 'I\'m on a UK residence permit. Can I apply for a France visa from the UK?', 'a' => 'Yes. If you legally reside in the UK you apply from the UK, whatever passport you hold. Your UK immigration status documents form part of the file, and we check them before anything is submitted.'],
-    ['q' => 'What does the France visa cost in total?', 'a' => 'Three parts: the consulate fee of €90 for adults (paid to the consulate), the TLScontact service charge (paid to TLS, confirmed at booking), and our £130 fee, of which £90 is only due once your appointment is booked.'],
+    ['q' => 'What does the France visa cost in total?', 'a' => 'Three parts: the consulate fee of €96 for adults (paid to the consulate), the TLScontact service charge (paid to TLS, confirmed at booking), and our £130 fee, of which £90 is only due once your appointment is booked.'],
     ['q' => 'What travel insurance do I need for France?', 'a' => 'Schengen rules require medical cover of at least €30,000, valid across the whole Schengen Area for your full stay. A compliant certificate is part of the file pack we prepare.'],
     ['q' => 'I was refused a Schengen visa before. Does that affect a France application?', 'a' => 'A refusal sits on the Schengen system for five years and every consulate can see it. It does not block a new application, but the new file has to answer the refusal reason. We review the refusal letter first and tell you honestly whether and how to reapply.'],
     ['q' => 'I\'m self-employed. What extra documents does France ask for?', 'a' => 'Typically your last tax return or SA302, business bank statements, and proof of your business (Companies House entry or invoices). We give you the exact list for your situation and check each document before submission.'],
@@ -535,7 +535,7 @@
       <h2>What a France visa costs</h2>
       <div class="hero-n"><span class="big">&pound;40</span><span class="cap">to start &middot; &pound;130 total, &pound;90 on the full case</span></div>
       <div class="fee">
-        <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate</small></span><b>&euro;90</b></div>
+        <div class="fr"><span>Consulate fee (adult)<small>Paid to the French consulate</small></span><b>&euro;96</b></div>
         <div class="fr"><span>TLScontact charge<small>Paid to TLS, at booking</small></span><b>at booking</b></div>
         <div class="fr"><span>Beyond Passports fee<small>Form, FRA ref, docs, appointment, pack</small></span><b>&pound;130</b></div>
       </div>
