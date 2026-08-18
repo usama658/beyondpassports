@@ -554,6 +554,8 @@
     </div>
   </div></div></section>
 
+  @include('partials.disclaimer-strip')
+
   {{-- 5+6 · DOCS (accordion) + DELIVERABLES PACK (dark), 2-column --}}
   <section class="dpx"><div class="wrap"><div class="two">
     <div>
@@ -652,6 +654,8 @@
       </div>
     </div>
   </div></section>
+
+  @include('partials.disclaimer-strip')
 
   {{-- 9 · REVIEWS (France-relevant) — before FAQ --}}
   <section><div class="wrap">
