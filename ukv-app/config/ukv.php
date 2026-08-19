@@ -154,7 +154,7 @@ return [
         'rows' => (bool) env('UKV_SLOT_ROWS', false),
 
         // Freshness line under the board intro. Update after each sweep. Blank = line hidden.
-        'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '16:00 on 13 August'),
+        'last_checked' => env('UKV_SLOTS_LAST_CHECKED', '19 August'),
 
         // DESKTOP FORM (staging flag): when true, desktop pointers (pointer:fine, >=900px)
         // get a lead-form modal on board-tile click — split layout, dark country rail,
