@@ -21,7 +21,7 @@ add phone, turn on 2FA if offered, then tick done.
 |---|---|---|---|---|---|
 | **VFS Global** | most countries (Austria, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Malta, Netherlands, Norway, Portugal, Slovenia, Sweden) | https://visa.vfsglobal.com/gbr/en/ (Register) | hello@… | ☐ | ☐ |
 | **TLScontact** | Germany, France, Belgium, Switzerland | https://visas-de.tlscontact.com/ (and per-country) | hello@… | ☐ | ✅ |
-| **BLS International** | Spain | https://uk.blsspainglobal.com/Global/account/RegisterUser | `appointments@` | ☐ | ◐ registering |
+| **BLS International** | Spain | https://uk.blsspainglobal.com/Global/account/RegisterUser | `blses1@` (→ hello@) | ☐ | ◐ registering |
 | **GVCW** | Greece | https://uk-gr.gvcworld.eu/en/login | `gvcw@` (→ hello@) | ☐ | ◐ registering |
 | **e-Konsulat** | Poland | https://secure.e-konsulat.gov.pl/ | hello@… | ☐ | n/a — per-application |
 | **eViza** | Romania | https://eviza.mae.ro/ | hello@… | ☐ | n/a — per-application |
@@ -40,9 +40,9 @@ add phone, turn on 2FA if offered, then tick done.
 
 ### BLS International — Spain (in progress)
 - Portal: https://uk.blsspainglobal.com/Global/account/RegisterUser · centres: **London / Manchester / Edinburgh**
-- Account email: `appointments@beyondpassports.co.uk` (live ops mailbox — no forwarder needed; verification lands direct).
+- Account email: `blses1@beyondpassports.co.uk` — forwarder → hello@ (created via uapi). `appointments@` was tried first but did not work for BLS registration; replaced with this dedicated forwarder.
 - Password: **password manager**, NOT this repo/chat. Rotate after first login.
-- One BLS account = one applicant passport identity. Spin up a second identity later as `blses2@` forwarder if a parallel account is needed.
+- One BLS account = one applicant passport identity. Next parallel account → `blses2@` forwarder.
 - Tiers: Normal (often empty), Prime Time / Premium (paid). Check calendar via login; slots drip-released.
 
 ### Optional — per-operator forwarders (all land in hello@, no extra mailbox/login)
