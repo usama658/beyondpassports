@@ -86,7 +86,62 @@ h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
 details summary::-webkit-details-marker{display:none}
 .wa-in{display:inline-flex;align-items:center;gap:7px;background:rgba(37,211,102,.1);color:#128C3E;border:1px solid rgba(37,211,102,.25);font:700 12.5px var(--sans);padding:9px 15px;border-radius:10px;text-decoration:none;margin-top:12px}
 
-.lbl{display:none}</style></head><body>
+.lbl{display:none}
+/* === functional diagnostic form (G-func) === */
+.dform .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:28px;backdrop-filter:blur(14px);box-shadow:0 40px 90px -30px rgba(0,0,0,.7)}
+.dform .pill{display:inline-flex;align-items:center;gap:7px;font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(197,150,58,.12);padding:6px 12px;border-radius:999px}
+.dform .bars{display:flex;gap:6px;margin:14px 0 20px}
+.dform .bar{height:5px;flex:1;border-radius:3px;background:rgba(255,255,255,.15);transition:background .3s}
+.dform .bar.on{background:var(--gold)}
+.dform h2.q{font-family:var(--serif);font-weight:400;font-size:23px;color:#fff;margin-bottom:16px}
+.dform .grid{display:grid;gap:10px}
+.dform .tile{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:14px 13px;cursor:pointer;text-align:left;width:100%;transition:all .16s}
+.dform .tile:hover{border-color:var(--gold);background:rgba(197,150,58,.06)}
+.dform .tile .dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.3);flex:none;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:border-color .16s}
+.dform .tile .dotf{width:9px;height:9px;border-radius:50%;background:var(--gold);transform:scale(0);transition:transform .16s}
+.dform .tile .ic{color:rgba(255,255,255,.85);transition:color .16s;display:flex}
+.dform .tile:hover .ic,.dform .tile.sel .ic{color:var(--gold)}
+.dform .tile:hover .dot,.dform .tile.sel .dot{border-color:var(--gold)}
+.dform .tile.sel{border-color:var(--gold);background:rgba(197,150,58,.1)}
+.dform .tile.sel .dotf{transform:scale(1)}
+.dform .step{display:none;animation:fade .25s ease}
+.dform .step.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.dform .back{display:none;align-items:center;gap:6px;background:none;border:0;color:rgba(255,255,255,.6);font:600 13px var(--sans);cursor:pointer;padding:4px 0;margin-bottom:4px}
+.dform .back:hover{color:#fff}
+.dform .back.show{display:inline-flex}
+.dform .fld{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.16);border-radius:12px;padding:14px 16px;color:#fff;font:500 15px var(--sans);margin-bottom:12px;outline:none;transition:border-color .16s}
+.dform .fld:focus{border-color:var(--gold)}
+.dform .fld::placeholder{color:rgba(255,255,255,.4)}
+.dform .flderr{border-color:#f87171!important}
+.dform .errmsg{color:#fca5a5;font:600 12px var(--sans);margin:-6px 0 12px}
+.dform .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;height:54px;border:0;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;transition:filter .16s}
+.dform .wabtn:hover{filter:brightness(1.05)}
+.dform .reassure{font:500 12px var(--sans);color:rgba(255,255,255,.5);text-align:center;margin-top:14px}
+.dform .summ{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:16px;margin-bottom:18px}
+.dform .summ .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08);font:500 13px var(--sans)}
+.dform .summ .row:last-child{border-bottom:0}
+.dform .summ .k{color:rgba(255,255,255,.55)}.dform .summ .v{color:#fff;font-weight:700;text-align:right}
+.dform .pc-combo{position:relative;display:flex;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.05);margin-bottom:12px;transition:border-color .15s,box-shadow .15s}
+.dform .pc-combo:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.18)}
+.dform .pc-combo.pc-invalid{border-color:#f87171}
+.dform .pc-btn{display:flex;align-items:center;gap:6px;padding:0 12px;background:rgba(255,255,255,.06);border:0;border-right:1.5px solid rgba(255,255,255,.14);border-radius:12px 0 0 12px;cursor:pointer;font:700 14px var(--sans);color:#fff;white-space:nowrap}
+.dform .pc-fl-img{width:20px;height:15px;border-radius:2px;display:block;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+.dform .pc-car{color:rgba(255,255,255,.55);font-size:10px}
+.dform .pc-input{flex:1;min-width:0;border:0!important;padding:14px 15px;font:500 15px var(--sans);border-radius:0 12px 12px 0;background:transparent;color:#fff;box-shadow:none!important;margin:0!important}
+.dform .pc-input:focus{outline:none}
+.dform .pc-input::placeholder{color:rgba(255,255,255,.4)}
+.dform .pc-pop{position:absolute;z-index:60;top:calc(100% + 6px);left:0;width:300px;max-width:92vw;background:#0f1e3d;border:1px solid rgba(255,255,255,.16);border-radius:14px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);padding:8px}
+.dform .pc-pop[hidden]{display:none}
+.dform .pc-search{width:100%;padding:10px 12px;border:1.5px solid rgba(255,255,255,.16);border-radius:9px;font:600 13px var(--sans);margin:0 0 6px;background:rgba(255,255,255,.05);color:#fff}
+.dform .pc-search::placeholder{color:rgba(255,255,255,.4)}
+.dform .pc-search:focus{outline:none;border-color:var(--gold)}
+.dform .pc-list{max-height:220px;overflow:auto;margin:0;padding:0;list-style:none}
+.dform .pc-opt{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;font:600 14px var(--sans);color:#fff}
+.dform .pc-opt:hover,.dform .pc-opt.pc-hl{background:rgba(197,150,58,.16)}
+.dform .pc-opt .pc-nm{flex:1}
+.dform .pc-opt .pc-dc{color:rgba(255,255,255,.55);font-weight:700;font-size:13px}
+details[open] summary span:last-child{transform:rotate(45deg)}</style></head><body>
 
 <div class=ann>Italy: limited slots available. Spain filling fast. If your trip is in the next 8 weeks, do not wait.</div>
 <section style="background:linear-gradient(120deg,#0B1528 0%,#0B1528 48%,#12224d 100%);min-height:100vh;display:flex;align-items:center;padding:40px 0">
@@ -99,12 +154,13 @@ details summary::-webkit-details-marker{display:none}
     <div style="display:flex;gap:34px;margin:26px 0"><div style="text-align:center"><div style="font:900 26px var(--sans);color:#fff">2,000+</div><div style="font:600 10.5px var(--sans);color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Applications filed</div></div><div style="text-align:center"><div style="font:900 26px var(--sans);color:#fff">97%</div><div style="font:600 10.5px var(--sans);color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Approval rate</div></div><div style="text-align:center"><div style="font:900 26px var(--sans);color:#fff">30 min</div><div style="font:600 10.5px var(--sans);color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">WhatsApp reply</div></div></div>
     <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:20px"><div style="display:flex;align-items:center;gap:13px"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e6c885);display:flex;align-items:center;justify-content:center;font:800 19px var(--sans);color:#0B1528;flex:none">S</div><div><div style="font:700 15px var(--sans);color:#fff">Your dedicated consultant team.</div><div style="font:600 12px var(--sans);color:rgba(255,255,255,.6)">UK-based experts since 2019 · Reply in 30 min</div></div></div></div>
   </div>
-  <div style="background:var(--surface);border-radius:22px;padding:28px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span class=eyebrow style="color:var(--gold)">Step 1 of 4</span><span style="font:600 12px var(--sans);color:var(--muted)">Find out where you stand in 60 seconds</span></div><div style="height:5px;background:var(--border);border-radius:3px;margin-bottom:18px"><div style="width:25%;height:100%;background:var(--gold);border-radius:3px"></div></div>
-    <h2 style="font-family:var(--serif);font-weight:400;font-size:23px;color:var(--navy);margin-bottom:16px">What's your situation right now?</h2>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px"><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">✈️</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">First time applying</b><span style="font:500 12px var(--sans);color:var(--muted)">Never done this before</span></button><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">🚫</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">Been refused before</b><span style="font:500 12px var(--sans);color:var(--muted)">Need to fix and reapply</span></button><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">📋</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">Complex situation</b><span style="font:500 12px var(--sans);color:var(--muted)">Self employed or dependants</span></button><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">⚡</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">Travelling in 4 weeks</b><span style="font:500 12px var(--sans);color:var(--muted)">Time is the main problem</span></button><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">🔍</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">Checking if I qualify</b><span style="font:500 12px var(--sans);color:var(--muted)">Not sure I can apply from UK</span></button><button style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:15px 14px;text-align:left;cursor:pointer;transition:all .16s" onmouseover="this.style.borderColor='var(--gold)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><span style="font-size:22px">📅</span><b style="display:block;font:700 14px var(--sans);color:var(--navy);margin:8px 0 2px">Looking for slots</b><span style="font:500 12px var(--sans);color:var(--muted)">Want to see availability</span></button></div>
-    <p style="font:500 12px var(--sans);color:var(--muted);text-align:center;margin-top:16px">No payment now. Just a message. Mon to Sat, 9am to 7pm.</p>
+  <div class=dform><div class=card>
+  <button class=back id=back><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg> Back</button>
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <span class=pill>Step 1 of 4</span>
+    <span style="font:600 12.5px var(--sans);color:rgba(255,255,255,.6)">Find out where you stand in 60 seconds</span>
   </div>
+  <div class=bars><div class="bar on" id="bar1"></div><div class="bar" id="bar2"></div><div class="bar" id="bar3"></div><div class="bar" id="bar4"></div>
 </div></section>
 <section style="background:linear-gradient(160deg,#0B1528,#12224a);padding:76px 0;color:#fff">
 <div class=wrap style="text-align:center;max-width:660px;margin:0 auto 12px">
@@ -411,4 +467,123 @@ details summary::-webkit-details-marker{display:none}
 <div style="padding:0 4px 20px 48px"><p style="font:400 14.5px var(--sans);color:rgba(255,255,255,.72);line-height:1.65">You apply through the embassy of the country where you'll spend the most days. If nights are equal, you apply through your country of first entry. Applying to the wrong one is a common refusal trigger, so we confirm the correct embassy for your exact itinerary.</p><a href="#" style="display:inline-flex;align-items:center;gap:7px;background:var(--wa);color:#fff;font:700 12.5px var(--sans);padding:10px 16px;border-radius:10px;text-decoration:none;margin-top:12px">Message us your itinerary</a></div>
 </details></div>
 </div></section>
+<section id="final-cta" style="background:radial-gradient(900px 500px at 50% -10%,#1b2f5c,#0B1528 60%);padding:90px 0 70px;color:#fff;text-align:center"><div class=wrap style="max-width:760px"><span class=eyebrow>Your next step</span><h2 style="font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.08;margin:16px 0 16px">Stop refreshing VFS.<br><span style="font-style:italic;color:var(--gold)">Let's start.</span></h2><p style="font-size:18px;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 32px">One message. A named consultant tells you free exactly where you stand, usually within 30 minutes.</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px"><a href="#hero" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;font:800 16px var(--sans);height:58px;padding:0 34px;border-radius:14px;text-decoration:none;box-shadow:0 20px 40px -18px rgba(37,211,102,.6)"><svg width=21 height=21 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Get my free check</a><a href="#hero" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:#fff;font:700 15px var(--sans);height:58px;padding:0 26px;border-radius:14px;text-decoration:none;border:1.5px solid rgba(255,255,255,.28)">See current slots</a></div><div style="display:flex;gap:22px;justify-content:center;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>£40 to start</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Refunded if we can't secure your appointment</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Reply usually within 30 minutes</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Companies House 17331903</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>ICO ZC197159</span></div></div></section><div style="background:#0a1120;color:rgba(255,255,255,.5);font:500 12px var(--sans);text-align:center;padding:16px 22px;line-height:1.6">We are a private, independent visa-assistance service. We are not the government, a consulate, or VFS/TLS. Visa decisions are made solely by the relevant authorities.</div><div style="background:#0a1120;color:rgba(255,255,255,.4);font:500 12px var(--sans);text-align:center;padding:16px 22px;border-top:1px solid rgba(255,255,255,.07)">Beyond Passports &middot; Companies House 17331903 &middot; ICO ZC197159 &middot; Terms &middot; Privacy &middot; Complaints &middot; Contact &middot; &copy; 2026</div>
+<script>
+var STATE={1:null,2:null,3:null},CUR=1,TOTAL=4,WA='447882747584';
+function bars(){for(var i=1;i<=TOTAL;i++){document.getElementById('bar'+i).classList.toggle('on',i<=CUR);}}
+function show(n){
+  CUR=n;
+  var steps=document.querySelectorAll('.step');
+  steps.forEach(function(s){s.classList.toggle('active',+s.dataset.n===n);});
+  document.getElementById('back').classList.toggle('show',n>1);
+  var pill=document.querySelector('.pill');if(pill)pill.textContent='Step '+n+' of '+TOTAL;
+  bars();
+  if(n===TOTAL)fillSummary();
+  var c=document.querySelector('.card');if(c)c.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function pick(el,step){
+  var g=el.parentNode;
+  g.querySelectorAll('.tile').forEach(function(t){t.classList.remove('sel');});
+  el.classList.add('sel');
+  STATE[step]=el.dataset.val;
+  setTimeout(function(){ if(step<3)show(step+1); else show(TOTAL); },220);
+}
+function restoreSel(step){
+  if(!STATE[step])return;
+  document.querySelectorAll('.tile[data-step="'+step+'"]').forEach(function(t){
+    t.classList.toggle('sel',t.dataset.val===STATE[step]);
+  });
+}
+function goBack(){
+  if(CUR===TOTAL){show(3);restoreSel(3);return;}
+  if(CUR>1){show(CUR-1);restoreSel(CUR-1);}
+}
+function buildMsg(){
+  var name=document.getElementById('f_name').value.trim();
+  var phone=(window.pcFull&&window.pcFull())||'';
+  var lines=['Hi Beyond Passports, I would like help with my Schengen visa.',''];
+  if(STATE[1])lines.push('Situation: '+STATE[1]);
+  if(STATE[2])lines.push('Destination: '+STATE[2]);
+  if(STATE[3])lines.push('Travelling: '+STATE[3]);
+  if(name)lines.push('Name: '+name);
+  if(phone)lines.push('Number: '+phone);
+  return lines.join('\n');
+}
+function fillSummary(){
+  var m={1:'Situation',2:'Destination',3:'Travelling'};
+  var h='';
+  for(var k in m){ if(STATE[k]) h+='<div class=row><span class=k>'+m[k]+'</span><span class=v>'+STATE[k]+'</span></div>'; }
+  document.getElementById('summary').innerHTML=h;
+}
+function send(){
+  var nameEl=document.getElementById('f_name');
+  var ok=true;
+  if(!nameEl.value.trim()){nameEl.classList.add('flderr');document.getElementById('e_name').style.display='block';ok=false;}
+  else{nameEl.classList.remove('flderr');document.getElementById('e_name').style.display='none';}
+  var ps=(window.pcStatus&&window.pcStatus())||'bad';
+  var combo=document.getElementById('pc'),eph=document.getElementById('e_phone');
+  if(ps!=='ok'){combo.classList.add('pc-invalid');eph.textContent=(ps==='req'?'Please enter your WhatsApp number':'Enter a valid '+((window.pcCountry&&window.pcCountry())||'')+' number');eph.style.display='block';ok=false;}
+  else{combo.classList.remove('pc-invalid');eph.style.display='none';}
+  if(!ok)return;
+  var text=encodeURIComponent(buildMsg());
+  var waApp='whatsapp://send?phone='+WA+'&text='+text;
+  var waWeb='https://wa.me/'+WA+'?text='+text;
+  var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isMobile){
+    var t=setTimeout(function(){window.location.href=waWeb;},1200);
+    window.location.href=waApp;
+    window.addEventListener('pagehide',function(){clearTimeout(t);});
+  }else{
+    window.open(waWeb,'_blank');
+  }
+}
+document.getElementById('back').addEventListener('click',goBack);
+bars();
+// ---- dial-code phone combo (port of partials.phone-country) ----
+(function(){
+ var FB='https://beyondpassports.co.uk/assets/flags/';
+ var C=[
+  ["United Kingdom","GB","+44",[10,10]],["Ireland","IE","+353",[7,9]],["France","FR","+33",[9,9]],
+  ["Germany","DE","+49",[10,11]],["Spain","ES","+34",[9,9]],["Italy","IT","+39",[9,10]],
+  ["Netherlands","NL","+31",[9,9]],["Belgium","BE","+32",[8,9]],["Portugal","PT","+351",[9,9]],
+  ["Poland","PL","+48",[9,9]],["Greece","GR","+30",[10,10]],["Austria","AT","+43",[9,13]],
+  ["Czechia","CZ","+420",[9,9]],["Switzerland","CH","+41",[9,9]],["Sweden","SE","+46",[7,9]],
+  ["Denmark","DK","+45",[8,8]],["Norway","NO","+47",[8,8]],["United States","US","+1",[10,10]],
+  ["Canada","CA","+1",[10,10]],["India","IN","+91",[10,10]],["Pakistan","PK","+92",[10,10]],
+  ["Bangladesh","BD","+880",[10,10]],["Nigeria","NG","+234",[8,10]],["Kenya","KE","+254",[9,9]],
+  ["South Africa","ZA","+27",[9,9]],["UAE","AE","+971",[9,9]],["Saudi Arabia","SA","+966",[9,9]],
+  ["Qatar","QA","+974",[8,8]],["Australia","AU","+61",[9,9]],["New Zealand","NZ","+64",[8,10]],
+  ["Turkey","TR","+90",[10,10]],["China","CN","+86",[11,11]]
+ ];
+ var root=document.getElementById('pc');if(!root)return;
+ var btn=document.getElementById('pcBtn'),pop=document.getElementById('pcPop'),
+     flag=document.getElementById('pcFlag'),dc=document.getElementById('pcDc'),
+     input=document.getElementById('f_phone');
+ var cur=C[0];
+ pop.innerHTML='<input class=pc-search placeholder="Search country or code" aria-label="Search country"><ul class=pc-list></ul>';
+ var search=pop.querySelector('.pc-search'),ul=pop.querySelector('.pc-list');
+ function flimg(c){return '<img class=pc-fl-img src="'+FB+c[1].toLowerCase()+'.svg" width=20 height=15 alt="">';}
+ function paint(c){cur=c;flag.src=FB+c[1].toLowerCase()+'.svg';dc.textContent=c[2];}
+ function render(q){q=(q||'').toLowerCase().trim();ul.innerHTML='';
+  C.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1||c[2].indexOf(q)>-1||c[1].toLowerCase()===q;})
+   .forEach(function(c){var li=document.createElement('li');li.className='pc-opt';li.setAttribute('role','option');
+    li.innerHTML='<span>'+flimg(c)+'</span><span class=pc-nm>'+c[0]+'</span><span class=pc-dc>'+c[2]+'</span>';
+    li.addEventListener('mousedown',function(e){e.preventDefault();paint(c);close();input.focus();});ul.appendChild(li);});}
+ function open(){render('');pop.hidden=false;btn.setAttribute('aria-expanded','true');setTimeout(function(){search.focus();},20);}
+ function close(){pop.hidden=true;btn.setAttribute('aria-expanded','false');}
+ btn.addEventListener('click',function(e){e.stopPropagation();pop.hidden?open():close();});
+ search.addEventListener('input',function(){render(this.value);});
+ search.addEventListener('keydown',function(e){if(e.key==='Escape'){close();btn.focus();}});
+ document.addEventListener('click',function(e){if(!root.contains(e.target))close();});
+ paint(cur);
+ input.addEventListener('input',function(){root.classList.remove('pc-invalid');document.getElementById('e_phone').style.display='none';});
+ window.pcCountry=function(){return cur[0];};
+ window.pcStatus=function(){
+   var raw=(input.value||'').trim();if(!raw)return 'req';
+   var d=raw.replace(/[^0-9]/g,'').replace(/^0+/,''),r=cur[3]||[6,15];
+   return (d.length>=r[0]&&d.length<=r[1])?'ok':'bad';};
+ window.pcFull=function(){var v=(input.value||'').trim();if(!v)return '';
+   if(v.charAt(0)==='+')return v;return cur[2]+' '+v.replace(/[^0-9]/g,'').replace(/^0+/,'');};
+})();
+</script>
 </body></html>
