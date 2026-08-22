@@ -98,10 +98,24 @@
   document.getElementById('tkWa').href = waUrl;
   var panel = document.getElementById('tkPanel'); if (panel) { panel.hidden = false; }
 
-  var el = document.getElementById('tkCount'), c = 3;
-  var go = function () { try { window.location.assign(waUrl); } catch (e) { window.location.href = waUrl; } };
+  // On mobile (incl. ad in-app browsers), the plain wa.me handoff often fails to
+  // open the app. Try the native whatsapp:// scheme first, fall back to wa.me.
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+  var deepUrl = 'whatsapp://send?phone=' + @json(config('ukv.whatsapp')) + '&text=' + encodeURIComponent(msg);
+
+  var el = document.getElementById('tkCount'), c = 3, went = false;
+  var go = function () {
+    if (went) { return; } went = true;
+    if (isMobile) {
+      try { window.location.href = deepUrl; } catch (e) {}
+      setTimeout(function () { window.location.href = waUrl; }, 1500); // app not installed -> wa.me
+    } else {
+      try { window.location.assign(waUrl); } catch (e) { window.location.href = waUrl; }
+    }
+  };
   var t = setInterval(function () { c--; if (el) { el.textContent = c < 0 ? 0 : c; } if (c <= 0) { clearInterval(t); go(); } }, 1000);
   setTimeout(go, 3600);
 })();
 </script>
+@include('partials.wa-deeplink')
 @endsection
