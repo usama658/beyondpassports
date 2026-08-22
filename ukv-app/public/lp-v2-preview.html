@@ -642,13 +642,25 @@ function send(){
   var waApp='whatsapp://send?phone='+WA+'&text='+text;
   var waWeb='https://wa.me/'+WA+'?text='+text;
   var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if(isMobile){
-    var t=setTimeout(function(){window.location.href=waWeb;},1200);
-    window.location.href=waApp;
-    window.addEventListener('pagehide',function(){clearTimeout(t);});
-  }else{
-    window.open(waWeb,'_blank');
+  // swap the card to the in-card confirmation view (not a separate page)
+  var nm=nameEl.value.trim();
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('back').classList.remove('show');
+  var pill=document.querySelector('.pill');if(pill)pill.textContent='All set';
+  document.querySelectorAll('.bar').forEach(function(b){b.classList.add('on');});
+  document.getElementById('sntHead').textContent=nm?("You're all set, "+nm+"."):"You're all set.";
+  document.getElementById('sntWa').href=waWeb;
+  var sm={1:'Situation',2:'Destination',3:'Travelling'},sh='';
+  for(var k in sm){ if(STATE[k]) sh+='<div class=row><span class=k>'+sm[k]+'</span><span class=v>'+STATE[k]+'</span></div>'; }
+  document.getElementById('sntSummary').innerHTML=sh;
+  document.getElementById('sent').classList.add('active');
+  var c=3,el=document.getElementById('sntCount'),went=false;
+  function go(){ if(went)return; went=true;
+    if(isMobile){ try{window.location.href=waApp;}catch(e){} setTimeout(function(){window.location.href=waWeb;},1500); }
+    else{ window.open(waWeb,'_blank'); }
   }
+  var t=setInterval(function(){c--;if(el)el.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);
+  setTimeout(go,3300);
 }
 document.getElementById('back').addEventListener('click',goBack);
 bars();
