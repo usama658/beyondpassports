@@ -719,11 +719,11 @@ var WA='447882747584',ST={sit:null,dest:null,tim:null},SEQ=[],CUR=0,CFG=null;
 var INTENTS={
  full:{seq:['sit','dest','tim','details'],wa:'I would like help with my Schengen visa.'},
  eligibility:{seq:['sit','dest','details'],wa:'I would like to check my eligibility for a Schengen visa.'},
- slots:{seq:['dest','tim','details'],q:{dest:'Which country do you need a slot for?'},wa:'I would like to check live appointment availability.'},
+ slots:{seq:['dest','tim','details'],preset:{sit:'Looking for appointment slots'},q:{dest:'Which country do you need a slot for?'},wa:'I would like to check live appointment availability.'},
  refusal:{seq:['dest','details'],preset:{sit:'Been refused before'},banner:'Refused before? Let us fix what went wrong and reapply properly.',wa:'I was refused before and need help reapplying.'},
- ready:{seq:['dest','details'],q:{dest:'Great — which country are you applying for?'},wa:'I would like to start my Schengen visa case.'},
- priority:{seq:['dest','tim','details'],q:{dest:'Which country are you applying for?',tim:'When do you travel?'},wa:'I need priority help — my trip cannot be missed.'},
- timeline:{seq:['tim','dest','details'],q:{tim:'When are you travelling?'},wa:'Here is my travel timeline — please advise.'}
+ ready:{seq:['dest','details'],preset:{sit:'Ready to start now'},q:{dest:'Great — which country are you applying for?'},wa:'I would like to start my Schengen visa case.'},
+ priority:{seq:['dest','tim','details'],preset:{sit:'Urgent — trip cannot be missed'},q:{dest:'Which country are you applying for?',tim:'When do you travel?'},wa:'I need priority help — my trip cannot be missed.'},
+ timeline:{seq:['tim','dest','details'],preset:{sit:'Planning travel timing'},q:{tim:'When are you travelling?'},wa:'Here is my travel timeline — please advise.'}
 };
 function stepnum(key){return {sit:1,dest:2,tim:3,details:4}[key];}
 var QDEF={};['1','2','3'].forEach(function(n){var el=document.querySelector('#mov .mstep[data-mn="'+n+'"] h3.mq');if(el)QDEF[n]=el.textContent;});
