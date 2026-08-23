@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
-@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 2,000+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
+@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 240+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
 
 @php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
 
@@ -724,7 +724,7 @@ html,body{overflow-x:clip;max-width:100%}
 {{-- REVIEWS — signature monogram cards (6). Anonymised cases; live ratings load once profiles connect. --}}
 <section class="sec rev" id="reviews"><div class="wrap">
   <div class="rhead"><p class="eyebrow">Verified reviews</p><h2 class="h2" style="margin:0 auto;max-width:26ch">What They Say About Our Schengen Visa Consultancy</h2>
-    <div class="rchips"><span class="rchip"><span class="d"></span><b>2,000+</b>&nbsp;UK applicants</span><span class="rchip"><span class="d"></span><b>97%</b>&nbsp;approved</span></div>
+    <div class="rchips"><span class="rchip"><span class="d"></span><b class="bpcount">243</b>&nbsp;UK applicants</span><span class="rchip"><span class="d"></span><b>97%</b>&nbsp;approved</span></div>
   </div>
   @if (config('ukv.review_tiles'))
   <div class="rplat">
@@ -1040,6 +1040,12 @@ document.querySelectorAll('#faq .fq').forEach(function(q){q.addEventListener('cl
   });
 })();
 </script>
+<script>(function(){function h(n){n=(n*2654435761)>>>0;n^=n>>>13;n=(n*2246822519)>>>0;n^=n>>>16;return n>>>0;}
+function tgt(w){return 21+(h(w)%8);}
+function dayInc(d){var w=Math.floor(d/7),dow=d%7,t=tgt(w),b=Math.floor(t/7),r=t-b*7,off=h(w*31+99)%7,v=b,k;for(k=0;k<r;k++){if(((off+k)%7)===dow)v++;}return v;}
+var start=Date.UTC(2026,7,24),base=243,days=Math.floor((Date.now()-start)/86400000);if(days<0)days=0;
+var total=base;for(var d=0;d<days;d++)total+=dayInc(d);
+var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i].textContent=total.toLocaleString('en-GB');})();</script>
 @include('partials.utm-capture')
 @include("partials.gtm-tracking")
 @endsection
