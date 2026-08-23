@@ -733,8 +733,7 @@ window.mPick=function(el,step){var g=el.parentNode;g.querySelectorAll('.mtile').
  if(step===1)ST.sit=el.dataset.val; else if(step===2)ST.dest=el.dataset.val; else ST.tim=el.dataset.val;
  setTimeout(function(){ if(CUR<SEQ.length-1) show(CUR+1); },200);};
 window.mBack=function(){if(CUR>0)show(CUR-1);};
-function msg(){var nm=document.getElementById('mfname').value.trim(),ph=(window.mPcFull&&window.mPcFull())||'';var l=['Hi Beyond Passports, I would like help with my Schengen visa.',''];if(ST.dest)l.push('Destination: '+ST.dest);if(ST.sit)l.push('Situation: '+ST.sit);if(ST.tim)l.push('Travelling: '+ST.tim);if(nm)l.push('Name: '+nm);if(ph)l.push('Number: '+ph);return l.join('
-');}
+function msg(){var nm=document.getElementById('mfname').value.trim(),ph=(window.mPcFull&&window.mPcFull())||'';var l=['Hi Beyond Passports, I would like help with my Schengen visa.',''];if(ST.dest)l.push('Destination: '+ST.dest);if(ST.sit)l.push('Situation: '+ST.sit);if(ST.tim)l.push('Travelling: '+ST.tim);if(nm)l.push('Name: '+nm);if(ph)l.push('Number: '+ph);return l.join('\n');}
 window.mSend=function(){var nm=document.getElementById('mfname');var ok=true;if(!nm.value.trim()){nm.style.borderColor='#dc2626';document.getElementById('mename').style.display='block';ok=false;}else{nm.style.borderColor='';document.getElementById('mename').style.display='none';}
  var ps=(window.mPcStatus&&window.mPcStatus())||'bad',pc=document.getElementById('mpc'),ep=document.getElementById('mephone');if(ps!=='ok'){pc.style.borderColor='#dc2626';ep.style.display='block';ok=false;}else{pc.style.borderColor='';ep.style.display='none';}
  if(!ok)return;var text=encodeURIComponent(msg()),app='whatsapp://send?phone='+WA+'&text='+text,web='https://wa.me/'+WA+'?text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
