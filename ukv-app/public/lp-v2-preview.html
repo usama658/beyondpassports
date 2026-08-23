@@ -824,13 +824,13 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
     <button class=mtile onclick="mPk('tim','Just planning ahead')"><span><b>Just planning ahead</b><span class=d>No fixed date</span></span></button>
    </div></div>
 
-   <div class=mstep data-k=details><h3 class=mq id=mdetq>Tell us where to reach you.</h3><p class=msub id=mdetsub>A UK specialist replies on WhatsApp, usually within 30 min.</p>
+   <div class=mstep data-k=details><h3 class=mq id=mdetq>Tell us where to reach you.</h3><p class=msub id=mdetsub style="margin:-8px 0 8px">What you've told us:</p><div class=msntsum id=mdetsum style="margin:0 0 16px"></div>
      <input class=mfld id=mfname placeholder="Your first name" autocomplete=given-name>
      <div class=merr id=mename>Please enter your name</div>
      <div class=mpc id=mpc><button type=button class=mpcbtn id=mpcbtn><img id=mpcflag src="https://beyondpassports.co.uk/assets/flags/gb.svg" width=20 height=15 alt=""><span id=mpcdc>+44</span><span style="color:var(--muted);font-size:10px">▾</span></button><input class=mpcin id=mfphone type=tel placeholder="7911 123456" inputmode=tel><div id=mpcpop style="position:absolute;z-index:5;top:calc(100% + 6px);left:0;width:280px;max-width:90vw;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 30px 60px -24px rgba(20,30,45,.4);padding:8px" hidden></div></div>
      <div class=merr id=mephone>Enter a valid number</div>
      <button class=mwabtn id=mdetbtn onclick=mNext()>Continue &rsaquo;</button>
-     <p class=mreassure id=mdetre>No payment now. Just a message. Mon to Sat, 9am to 7pm.</p>
+     <p class=mreassure id=mdetre>Send when ready. A UK specialist replies on WhatsApp, usually within 30 min.</p>
    </div>
 
    <div class=mstep data-k=closeWa><div class=msntgrid>
@@ -890,7 +890,7 @@ function show(i){CUR=i;var raw=SEQ[i],k=realKey(raw);document.querySelectorAll('
  $('mback').classList.toggle('on',i>0&&raw!=='close');
  $('mpill').textContent=(raw==='close')?'All set':('Step '+(i+1)+' of '+(SEQ.length-1));
  var chip=$('mdest');if(ST.dest){chip.innerHTML=(ST.iso?'<img src="https://flagcdn.com/'+ST.iso+'.svg" alt="" style="width:18px;height:13px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.1)">':'🌍')+' '+ST.dest;chip.style.display='inline-flex';}else chip.style.display='none';
- if(raw==='details'){var ns=(ST.pref==='notsure');$('mdetq').textContent=(CFG&&CFG.head)||'Tell us where to reach you.';$('mdetsub').textContent=ns?'Prefer to talk first? Set up a free 30-min consult.':'A UK specialist replies on WhatsApp, usually within 30 min.';$('mdetre').textContent=ns?'Call or WhatsApp. Your choice.':'Send when ready.';}
+ if(raw==='details'){var ns=(ST.pref==='notsure');$('mdetq').textContent=(CFG&&CFG.head)||'Tell us where to reach you.';mFillSum('mdetsum');$('mdetre').textContent=ns?'Prefer to talk it through? Pick a call or WhatsApp next.':'Send when ready. A UK specialist replies on WhatsApp, usually within 30 min.';}
  if(raw==='close')doClose();
  bars();}
 window.mOpen=function(intent,dest,iso){
