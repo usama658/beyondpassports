@@ -301,7 +301,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 .slc.ask .slac{background:linear-gradient(90deg,#94a3b8,#cbd5e1)}
 .slin{padding:22px}
 .slrow{display:flex;align-items:center;gap:11px;margin-bottom:18px}
-.slflag{width:44px;height:44px;border-radius:12px;background:var(--bp-page,#F7F5F0);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
+.slflag{width:44px;height:44px;border-radius:12px;background:var(--bp-page,#F7F5F0);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none;overflow:hidden}
+.slflag img{width:100%;height:100%;object-fit:cover;display:block}
 .slc .slcty{font:800 16px var(--sans);color:var(--navy)}
 .slc .slop{display:inline-flex;align-items:center;gap:5px;font:600 11px var(--sans);color:var(--muted);margin-top:2px}
 .slc .slop svg{width:11px;height:11px;color:var(--green)}
@@ -320,7 +321,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 .slc.ask .slcta{background:var(--gold);color:#3d2b08}
 .slcta svg{width:15px;height:15px}
 .slflags{display:flex;align-items:center;margin-bottom:12px}
-.slflags .f{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #fff;box-shadow:0 2px 8px -2px rgba(11,21,40,.35);display:flex;align-items:center;justify-content:center;font-size:15px;margin-left:-8px}
+.slflags .f{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #fff;box-shadow:0 2px 8px -2px rgba(11,21,40,.35);display:flex;align-items:center;justify-content:center;font-size:15px;margin-left:-8px;overflow:hidden}
+.slflags .f img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .slflags .f:first-child{margin-left:0}
 .slflags .more{width:30px;height:30px;border-radius:50%;margin-left:-8px;background:var(--navy);color:#fff;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font:800 10px var(--sans)}
 .slsub{font:500 12.5px var(--sans);color:var(--muted);line-height:1.5;margin-bottom:16px}
@@ -337,43 +339,43 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 </div>
 <div class="slwrap slg">
  <button type=button class="slc" onclick="mOpen('Spain')"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇪🇸</span><div><div class=slcty>Spain</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>BLS International</div></div></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/es.svg" alt="Spain"></span><div><div class=slcty>Spain</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>BLS International</div></div></div>
   <div class=slnum><b>20</b><span>slots open</span></div>
   <div class=slmeter><i style="width:66%"></i></div>
   <div class=slnx><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round><path d="M8 2v4M16 2v4M3 9h18"/><rect x=3 y=4 width=18 height=17 rx=2/><path d="M12 12.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9.1 14.7l2-.3z"/></svg>Next: 26 Aug</div>
   <div class=slcta>Get this slot <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
  <button type=button class="slc" onclick="mOpen('France')"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇫🇷</span><div><div class=slcty>France</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>TLS Contact</div></div></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/fr.svg" alt="France"></span><div><div class=slcty>France</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>TLS Contact</div></div></div>
   <div class=slnum><b>32</b><span>slots open</span></div>
   <div class=slmeter><i style="width:82%"></i></div>
   <div class=slnx><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round><path d="M8 2v4M16 2v4M3 9h18"/><rect x=3 y=4 width=18 height=17 rx=2/><path d="M12 12.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9.1 14.7l2-.3z"/></svg>Next: 24 Aug</div>
   <div class=slcta>Get this slot <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
  <button type=button class="slc low" onclick="mOpen('Italy')"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇮🇹</span><div><div class=slcty>Italy</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>VFS Global</div></div></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/it.svg" alt="Italy"></span><div><div class=slcty>Italy</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>VFS Global</div></div></div>
   <div class=slnum><b>3</b><span>slots left</span></div>
   <div class=slmeter><i style="width:12%"></i></div>
   <div class=slnx><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round><path d="M22 12A10 10 0 1 1 12 2"/><path d="M12 7v5l3 2M16 3l4 2-2 4"/></svg>Near capacity. Act today.</div>
   <div class=slcta>See current slots <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
  <button type=button class="slc" onclick="mOpen('Germany')"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇩🇪</span><div><div class=slcty>Germany</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>TLS Contact</div></div></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/de.svg" alt="Germany"></span><div><div class=slcty>Germany</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>TLS Contact</div></div></div>
   <div class=slnum><b>28</b><span>slots open</span></div>
   <div class=slmeter><i style="width:74%"></i></div>
   <div class=slnx><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round><path d="M8 2v4M16 2v4M3 9h18"/><rect x=3 y=4 width=18 height=17 rx=2/><path d="M12 12.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9.1 14.7l2-.3z"/></svg>Next: 27 Aug</div>
   <div class=slcta>Get this slot <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
  <button type=button class="slc" onclick="mOpen('Greece')"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇬🇷</span><div><div class=slcty>Greece</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>VFS Global</div></div></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/gr.svg" alt="Greece"></span><div><div class=slcty>Greece</div><div class=slop><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>VFS Global</div></div></div>
   <div class=slnum><b>30</b><span>slots open</span></div>
   <div class=slmeter><i style="width:78%"></i></div>
   <div class=slnx><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round><path d="M8 2v4M16 2v4M3 9h18"/><rect x=3 y=4 width=18 height=17 rx=2/><path d="M12 12.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9.1 14.7l2-.3z"/></svg>Next: 28 Aug</div>
   <div class=slcta>Get this slot <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
  <button type=button class="slc ask" onclick="mOpenSearch()"><div class=slac></div><div class=slin>
-  <div class=slrow><span class=slflag>🇪🇺</span><div><div class=slcty>Somewhere else?</div><div class=slop>We cover them all</div></div></div>
-  <div class=slflags><span class=f>🇵🇹</span><span class=f>🇳🇱</span><span class=f>🇦🇹</span><span class=f>🇧🇪</span><span class=f>🇨🇭</span><span class=more>+24</span></div>
+  <div class=slrow><span class=slflag><img src="https://flagcdn.com/eu.svg" alt="EU"></span><div><div class=slcty>Somewhere else?</div><div class=slop>We cover them all</div></div></div>
+  <div class=slflags><span class=f><img src="https://flagcdn.com/pt.svg" alt=""></span><span class=f><img src="https://flagcdn.com/nl.svg" alt=""></span><span class=f><img src="https://flagcdn.com/at.svg" alt=""></span><span class=f><img src="https://flagcdn.com/be.svg" alt=""></span><span class=f><img src="https://flagcdn.com/ch.svg" alt=""></span><span class=more>+24</span></div>
   <div class="slsub slsub-d"><b>29 Schengen countries</b> covered. Tell us where you are headed and we check live availability.</div><div class="slsub slsub-m"><b>All 29 Schengen</b> countries. Tell us where and we check live.</div>
   <div class=slcta>Find your country <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
