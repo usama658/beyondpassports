@@ -490,8 +490,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   <div style="padding:34px 30px;text-align:center;display:flex;flex-direction:column;justify-content:center">
     <div style="font-size:32px;margin-bottom:12px">↩</div>
     <h3 style="font-family:var(--serif);font-weight:400;font-size:24px;color:#fff;margin-bottom:8px">Already refused</h3>
-    <p style="font:500 13.5px var(--sans);color:rgba(255,255,255,.68);line-height:1.6;margin-bottom:20px">Send us your refusal letter. We find the real cause and rebuild from scratch.</p>
-    <a href="#" onclick="mOpen('refusal');return false" class=wa-btn style="max-width:280px;margin:0 auto;width:100%">Send my letter</a>
+    <p style="font:500 13.5px var(--sans);color:rgba(255,255,255,.68);line-height:1.6;margin-bottom:20px">Tell us what happened and share your refusal letter in chat. We find the likely cause and rebuild your case.</p>
+    <a href="#" onclick="mOpen('refused');return false" class=wa-btn style="max-width:280px;margin:0 auto;width:100%">Start my refusal review</a>
   </div>
   <div style="width:1px;background:linear-gradient(180deg,transparent,var(--gold),transparent);position:relative"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:#0a1220;border:1px solid rgba(197,150,58,.4);display:flex;align-items:center;justify-content:center;font:700 11px var(--sans);color:var(--gold)">or</div></div>
   <div style="padding:34px 30px;text-align:center;display:flex;flex-direction:column;justify-content:center">
@@ -530,7 +530,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <span style="font-family:var(--serif);font-size:20px;color:var(--gold);width:34px;flex:none">04</span>
 <span style="font:700 16px var(--sans);color:var(--navy);flex:1">I was refused before. Can you still help?</span>
 <span style="color:var(--gold);font:700 18px var(--sans);flex:none;transition:.2s">+</span></summary>
-<div style="padding:0 4px 20px 48px"><p style="font:400 14.5px var(--sans);color:#475569;line-height:1.65">Yes. Send your refusal letter and we identify exactly what the embassy flagged and what needs to change. In our experience most refusals are documentation errors, not eligibility problems, so they are usually fixable.</p><a href="#" onclick="mOpen('refusal');return false" style="display:inline-flex;align-items:center;gap:7px;background:rgba(37,211,102,.1);color:#128C3E;border:1px solid rgba(37,211,102,.25);font:700 12px var(--sans);padding:8px 14px;border-radius:9px;text-decoration:none;margin-top:12px">Send my refusal letter →</a></div></details><details style="border-bottom:1px solid var(--border)">
+<div style="padding:0 4px 20px 48px"><p style="font:400 14.5px var(--sans);color:#475569;line-height:1.65">Yes. Send your refusal letter and we identify exactly what the embassy flagged and what needs to change. In our experience most refusals are documentation errors, not eligibility problems, so they are usually fixable.</p><a href="#" onclick="mOpen('refused');return false" style="display:inline-flex;align-items:center;gap:7px;background:rgba(37,211,102,.1);color:#128C3E;border:1px solid rgba(37,211,102,.25);font:700 12px var(--sans);padding:8px 14px;border-radius:9px;text-decoration:none;margin-top:12px">Send my refusal letter →</a></div></details><details style="border-bottom:1px solid var(--border)">
 <summary style="list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:14px;padding:18px 4px">
 <span style="font-family:var(--serif);font-size:20px;color:var(--gold);width:34px;flex:none">05</span>
 <span style="font:700 16px var(--sans);color:var(--navy);flex:1">How do I know you're legitimate?</span>
@@ -874,6 +874,24 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .v-chip.bad{background:rgba(220,38,38,.09);border:1px solid rgba(220,38,38,.26);color:#b91c1c}
 .v-chip.neutral{background:#f1f5f9;border:1px solid var(--border);color:#475569}
 .v-fine{font:500 11px var(--sans);color:#94a3b8;text-align:center;margin-top:11px;line-height:1.45}
+.mpl-badge{display:inline-flex;align-items:center;gap:6px;font:800 10px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:11px;background:rgba(197,150,58,.12);border:1px solid rgba(197,150,58,.3);color:#8a6a1f}
+.mpl-badge.teal{background:rgba(22,163,74,.1);border-color:rgba(22,163,74,.28);color:#15803d}
+.mpl-badge.slate{background:#eef2f6;border-color:var(--border);color:#475569}
+.mpl-tag{font:600 13px var(--sans);color:var(--muted);margin:4px 0 16px}
+.mpl-price{display:flex;align-items:flex-end;gap:10px;padding:15px 16px;background:linear-gradient(120deg,#fbf6ec,#fff);border:1px solid rgba(197,150,58,.3);border-radius:14px;margin-bottom:8px}
+.mpl-price .now{font-family:var(--serif);font-size:33px;color:var(--navy);line-height:.95}
+.mpl-price .now small{font-size:15px;color:var(--muted)}
+.mpl-price .then{font:600 12px var(--sans);color:var(--muted);padding-bottom:4px;line-height:1.4}
+.mpl-price .then b{color:var(--navy);font-weight:800}
+.mpl-split{font:600 11.5px var(--sans);color:#94a3b8;margin:0 2px 15px;display:flex;align-items:center;gap:6px}
+.mpl-inc{list-style:none;margin:0 0 15px;padding:0}
+.mpl-inc li{display:flex;align-items:flex-start;gap:9px;font:600 13px var(--sans);color:var(--navy);padding:6px 0}
+.mpl-inc li svg{width:17px;height:17px;flex:none;color:#15803d;margin-top:1px}
+.mpl-inc li span small{display:block;font:500 11.5px var(--sans);color:var(--muted);margin-top:1px}
+.mpl-after{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:13px;padding:12px 13px;margin-bottom:16px;box-shadow:0 16px 34px -16px rgba(11,21,40,.4)}
+.mpl-after b{display:block;font:800 12px var(--sans);color:var(--navy)}
+.mpl-after span{display:block;font:600 11.5px var(--sans);color:var(--muted);margin-top:2px;line-height:1.45}
+.mpl-fine{font:500 11px var(--sans);color:#94a3b8;text-align:center;margin-top:11px;line-height:1.45}
 </style><div class=mov id=mov>
  <div class=mmodal>
   <div class=mhead><button class=mback id=mback onclick="mBack()" aria-label=Back><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg></button><span class=mpill id=mpill>Step 1</span><span class=mdest id=mdest></span><span class=mhsp></span><span class=mhint>60-sec check</span><button class=mx onclick="mClose()" aria-label=Close>✕</button></div>
@@ -882,6 +900,18 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
    <div class=mbars id=mbars></div>
    <div class=mbanner id=mbanner></div>
    <div id=murg style="margin:0 0 4px;display:none"></div>
+
+   <div class=mstep data-k=plan>
+    <span class=mpl-badge id=mplbadge></span>
+    <h3 class=mq id=mpltitle style="margin-bottom:2px"></h3>
+    <p class=mpl-tag id=mpltag></p>
+    <div class=mpl-price><span class=now id=mplnow></span><span class=then id=mplthen></span></div>
+    <p class=mpl-split id=mplsplit></p>
+    <ul class=mpl-inc id=mplinc></ul>
+    <div class=mpl-after id=mplafter></div>
+    <button class=mwabtn style="background:#C5963A;color:#3d2b08" onclick="mNext()"><svg width=18 height=18 viewBox="0 0 24 24" fill=none stroke="#3d2b08" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg> Confirm and continue</button>
+    <p class=mpl-fine id=mplfine></p>
+   </div>
 
    <div class=mstep data-k=preference><h3 class=mq>How would you like to start?</h3><p class=msub>Your call — nothing is charged here.</p><div class=mgrid>
     <button class="mtile ptile" data-pref=p40 onclick="mPref('p40')"><span class=pick><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span><span class=pic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" clip-rule=evenodd/><path d="M5.26 17.242a.75.75 0 1 0-.897-1.203 5.243 5.243 0 0 0-2.05 5.022.75.75 0 0 0 .625.627 5.243 5.243 0 0 0 5.022-2.051.75.75 0 1 0-1.202-.897 3.744 3.744 0 0 1-3.008 1.51c0-1.23.592-2.323 1.51-3.008Z"/></svg></span><span class=num>&pound;39</span><span class=psub>Just to start</span><span class=then>Pay &pound;99 later</span></button>
@@ -988,11 +1018,11 @@ var INT={
  ready:{seq:['purpose','country','details','close'],wa:'I am ready to start - what is my first step?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
  priority:{seq:['purpose','country','flex','tim','details','close'],wa:'my trip is close - is it still doable, and what has to happen now?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
  timeline:{seq:['purpose','tim','country','details','close'],wa:'do my dates still leave enough time? When must I start?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
- refused:{seq:['refreason','country','details','close'],wa:'I was refused before and need help.',banner:'Refused before? Most refusals come down to one fixable thing. Let us find yours.',cq:'Which country refused you?',head:'Where do we send your review?'},
- refusalpay:{seq:['refreason','country','details','close'],wa:'I would like Refusal Recovery (£194, £39 to start).',banner:'Refusal Recovery - we read the letter, find the cause, rebuild and reapply.',cq:'Which country refused you?',head:'Where do we send your review?'},
- price40:{seq:['preference','country','details','close'],wa:'I would like to get started.',preselect:'p40',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
- price85:{seq:['preference','country','details','close'],wa:'I would like to get started.',preselect:'p85',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
- price140:{seq:['preference','country','details','close'],wa:'I would like to get started.',preselect:'p140',cq:'Which country are you applying for?',head:'Where do we send your first step?'}
+ refused:{seq:['refreason','country','details','close'],wa:'I was refused before and need help.',cq:'Which country refused you?',head:'Where do we send your review?'},
+ refusalpay:{seq:['plan','refreason','country','details','close'],plan:'refusal',wa:'I would like Refusal Recovery (£194 service fee, paid in full).',cq:'Which country refused you?',head:'Where do we send your review?'},
+ price40:{seq:['plan','country','details','close'],plan:'start',wa:'I would like the Start plan (£39 to start, then £99 for the full service).',preselect:'p40',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
+ price85:{seq:['plan','country','details','close'],plan:'prime',wa:'I would like the Prime slot plan (£85 to start, then £99 for the full service).',preselect:'p85',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
+ price140:{seq:['plan','country','details','close'],plan:'full',wa:'I would like to pay in full (£138 service fee).',preselect:'p140',cq:'Which country are you applying for?',head:'Where do we send your first step?'}
 };
 var ISOM={Spain:'es',France:'fr',Italy:'it',Germany:'de',Greece:'gr'};
 function $(id){return document.getElementById(id);}
@@ -1002,6 +1032,7 @@ function show(i){CUR=i;var raw=SEQ[i],k=realKey(raw);document.querySelectorAll('
  $('mback').classList.toggle('on',i>0&&raw!=='close');
  $('mpill').textContent=(raw==='close')?'All set':('Step '+(i+1)+' of '+(SEQ.length-1));
  var chip=$('mdest');if(ST.dest){chip.innerHTML=(ST.iso?'<img src="https://flagcdn.com/'+ST.iso+'.svg" alt="" style="width:18px;height:13px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.1)">':'🌍')+' '+ST.dest;chip.style.display='inline-flex';}else chip.style.display='none';
+ if(raw==='plan'){mPlanFill();}
  if(raw==='details'){mDetailsFill();}
  if(raw==='close')doClose();
  var md=$('mtdiff');if(md){if(ST.dest&&ST.iso&&raw!=='country'&&raw!=='close'&&window.diffHTML){md.innerHTML=window.diffHTML(ST.iso);md.style.display='inline-flex';}else{md.style.display='none';md.innerHTML='';}}
@@ -1009,10 +1040,11 @@ function show(i){CUR=i;var raw=SEQ[i],k=realKey(raw);document.querySelectorAll('
  bars();}
 window.mOpen=function(intent,dest,iso){
  if(!INT[intent]){dest=intent;iso=ISOM[intent]||'';intent='availability';}
- CFG=INT[intent];ST={intent:intent,pref:null,purpose:null,refreason:null,dest:null,iso:null,centre:null,dates:null,altc:null,tim:null};
+ CFG=INT[intent];ST={intent:intent,pref:null,plan:null,purpose:null,refreason:null,dest:null,iso:null,centre:null,dates:null,altc:null,tim:null};
  SEQ=CFG.seq.slice();
  if(dest){ST.dest=dest;ST.iso=iso||'';var ci=SEQ.indexOf('country');if(ci>-1)SEQ.splice(ci,1);}
  if(CFG.preselect)ST.pref=CFG.preselect;
+ if(CFG.plan)ST.plan=CFG.plan;
  $('mcq').textContent=CFG.cq||'Which country are you applying for?';
  var bn=$('mbanner');if(CFG.banner){bn.textContent=CFG.banner;bn.classList.add('on');}else bn.classList.remove('on');
  document.querySelectorAll('#mov .ptile').forEach(function(t){t.classList.toggle('sel',t.dataset.pref===ST.pref);});
@@ -1036,7 +1068,7 @@ var SC=[["Austria","at"],["Belgium","be"],["Bulgaria","bg"],["Croatia","hr"],["C
 var MSLOT={fr:['open','Open'],de:['open','Open'],gr:['open','Open'],es:['lim','Filling'],it:['lim','Limited'],at:['open','Open'],be:['lim','Limited'],pt:['open','Open'],nl:['open','Open']};
 window.mCrender=function(q){q=(q||'').toLowerCase();var ul=$('mclist');ul.innerHTML='';var m=SC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li style="grid-column:1/-1;color:var(--muted);padding:8px">No match. Try another spelling.</li>';return;}m.forEach(function(c){var s=MSLOT[c[1]]||['chk','Check'];var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+s[0]+'"><span class=cdot2></span>'+s[1]+'</span>';li.onclick=function(){mPickC(c[0],c[1]);};ul.appendChild(li);});};
 window.mNext=function(){var nm=$('mfname');if(document.querySelector('#mov .mstep.on').dataset.k==='details'){var ok=true;if(!nm.value.trim()){nm.style.borderColor='#dc2626';$('mename').style.display='block';ok=false;}else{nm.style.borderColor='';$('mename').style.display='none';}var ps=(window.mPcStatus&&window.mPcStatus())||'bad';if(ps!=='ok'){$('mpc').style.borderColor='#dc2626';$('mephone').style.display='block';ok=false;}else{$('mpc').style.borderColor='';$('mephone').style.display='none';}if(!ok)return;}next();};
-function msg(){var nm=$('mfname').value.trim(),ph=(window.mPcFull&&window.mPcFull())||'';var intro;if(ST.intent==='refused')intro='I was refused before and need help - '+(RLOOP[ST.refreason]||'what went wrong?');else if(ST.intent==='refusalpay')intro='I would like Refusal Recovery (£194, £39 to start) - '+(RLOOP[ST.refreason]||'my refusal.');else intro=(CFG&&CFG.wa)||'I would like help with my Schengen visa.';var l=['Hi Beyond Passports, '+intro,''];
+function msg(){var nm=$('mfname').value.trim(),ph=(window.mPcFull&&window.mPcFull())||'';var intro;if(ST.intent==='refused')intro='I was refused before and need help - '+(RLOOP[ST.refreason]||'what went wrong?');else if(ST.intent==='refusalpay')intro='I would like Refusal Recovery (£194 service fee, paid in full) - '+(RLOOP[ST.refreason]||'my refusal.');else intro=(CFG&&CFG.wa)||'I would like help with my Schengen visa.';var l=['Hi Beyond Passports, '+intro,''];
  if(ST.pref&&ST.pref!=='notsure')l.push('Preference: '+PREF[ST.pref]);
  if(ST.purpose)l.push('Travelling for: '+ST.purpose);
  if(ST.refreason)l.push('Refused on: '+ST.refreason);
@@ -1069,6 +1101,27 @@ function mDetailsFill(){
  if(dest)rows.push(['Destination',dest,window.vSlot(iso)]);
  if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
  var snap=$('mdetsum');if(snap)snap.innerHTML=window.vSnap(rows);}
+var PLAN={
+ start:{badge:['teal','Most chosen'],title:'Start your application',tag:'Pay as you go. Nothing due until we have a plan.',now:'&pound;39<small> today</small>',then:'then <b>&pound;99</b><br>for the full service',split:'&pound;138 service fee, split. Government visa fees are separate.',inc:[['Document prep and checks','We build the file with you'],['Appointment booked for you','Nearest slot we can find'],['Submission support','Right up to your appointment day']],aftic:'bolt',aftt:'What &pound;39 unlocks today',aftx:'A UK consultant opens your file and replies within 30 minutes.',fine:'Refunded if we cannot get you an appointment. Handling speed, not a guaranteed visa decision.'},
+ prime:{badge:['','Fastest route'],title:'Prime slot booking',tag:'Priority appointment search for close travel dates.',now:'&pound;85<small> today</small>',then:'then <b>&pound;99</b><br>for the full service',split:'Prime covers our service and the premium slot tier. Government visa fees are separate.',inc:[['Priority slot search','We watch premium tiers daily'],['Everything in Start','Docs, booking, submission support'],['Best for trips inside 4 weeks','When a normal slot will not land in time']],aftic:'bolt',aftt:'Why Prime',aftx:'Premium slots open and close fast. We hold your place the moment one drops.',fine:'Premium slot availability is not guaranteed. Refunded if none can be secured.'},
+ full:{badge:['slate','One payment'],title:'Pay in full',tag:'Everything in one payment. Nothing more to pay later.',now:'&pound;138<small> in full</small>',then:'one payment<br><b>no second payment</b>',split:'&pound;138 service fee, one go. Government visa fees are separate.',inc:[['Full service, one invoice','No second payment on appointment day'],['Docs, booking, submission support','Everything in Start included'],['Cleanest for expense claims','One receipt, done']],aftic:'check',aftt:'What you get',aftx:'The full service starts today and there is nothing left to pay us.',fine:'Refunded if we cannot get you an appointment. Handling speed, not a guaranteed visa decision.'},
+ refusal:{badge:['','For a previous refusal'],title:'Refusal Recovery',tag:'We read the letter, find the cause, rebuild and reapply.',now:'&pound;194<small> in full</small>',then:'one payment<br><b>no second payment</b>',split:'&pound;194 service fee, one payment. Government visa fees are separate.',inc:[['We read your refusal letter','Find the exact reason you were refused'],['Rebuild the weak points','Funds, ties, travel plan, documents'],['Prepare and submit the reapplication','With a stronger case this time']],aftic:'shield',aftt:'Honest note',aftx:'A refusal does not decide the next one, but we cannot promise an approval. We fix what we can control.',fine:'&pound;194 service fee, refundable if we cannot help. No guaranteed outcome.'}
+};
+var PLCHK='<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>';
+var PLINFO='<svg viewBox="0 0 24 24" fill=currentColor style="width:13px;height:13px;color:#C5963A;flex:none"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"/></svg>';
+var PLIC={
+ bolt:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round style="width:19px;height:19px;color:#C5963A;flex:none;margin-top:1px"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round style="width:19px;height:19px;color:#C5963A;flex:none;margin-top:1px"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+ shield:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round style="width:19px;height:19px;color:#C5963A;flex:none;margin-top:1px"><path d="M12 2 2 7v6c0 5 4 8 10 10 6-2 10-5 10-10V7L12 2Z"/></svg>'
+};
+function mPlanFill(){var p=PLAN[ST.plan]||PLAN.start;
+ var b=$('mplbadge');b.className='mpl-badge '+(p.badge[0]||'');b.textContent=p.badge[1];
+ $('mpltitle').textContent=p.title;$('mpltag').textContent=p.tag;
+ $('mplnow').innerHTML=p.now;$('mplthen').innerHTML=p.then;
+ $('mplsplit').innerHTML=PLINFO+p.split;
+ var inc='';p.inc.forEach(function(x){inc+='<li>'+PLCHK+'<span>'+x[0]+'<small>'+x[1]+'</small></span></li>';});$('mplinc').innerHTML=inc;
+ $('mplafter').innerHTML=PLIC[p.aftic]+'<span><b>'+p.aftt+'</b><span>'+p.aftx+'</span></span>';
+ $('mplfine').innerHTML=p.fine;}
 function doClose(){var text=encodeURIComponent(msg()),web='https://wa.me/'+WA+'?text='+text,app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
  if(ST.pref==='notsure'){mFillSum('mcallsum');var cw=$('mcallwa');if(cw)cw.href=web;return;}
  var nm=$('mfname').value.trim();$('msnthead').textContent=nm?("You're all set, "+nm+"."):"You're all set.";$('msntwa').href=web;mFillSum('msntsum');
