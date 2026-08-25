@@ -847,6 +847,9 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .v-badge svg{width:14px;height:14px;flex:none}
 .v-badge.g{background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.28);color:#15803d}
 .v-badge.a{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.3);color:#b45309}
+.v-badge.r{background:rgba(220,38,38,.09);border:1px solid rgba(220,38,38,.28);color:#b91c1c}
+.v-badge.s{background:#eef2f6;border:1px solid var(--border);color:#475569}
+.v-lean{font:600 11px var(--sans);color:#94a3b8;margin-top:10px;display:flex;align-items:center;gap:6px}
 .v-sub{font:500 13.5px var(--sans);color:#475569;line-height:1.55;margin:0 0 18px}
 .v-sub b{color:var(--navy);font-weight:700}
 .v-flabel{font:700 12.5px var(--sans);color:var(--navy);margin-bottom:8px}
@@ -1077,23 +1080,50 @@ function mFillSum(id){var el=$(id);if(!el)return;var r=[];
  if(ST.dest)r.push(['Destination',ST.dest]);
  if(ST.tim)r.push(['Travelling',ST.tim]);
  var h='';r.forEach(function(x){h+='<div class=row><span class=k>'+x[0]+'</span><span class=v>'+x[1]+'</span></div>';});el.innerHTML=h;}
+var REFBASE={'Funds':3,'Travel plan':3,'Insurance':3,'Return':2,'Documents':2,'Overstay':1,'Not sure':0};
+var REFMOD={straightforward:1,standard:0,strict:-1,high:-2};
+var REFLEAN={it:'Italy leans on document and funds proof.',nl:'Netherlands leans on ties and purpose.',be:'Belgium applies high scrutiny across the board.',ch:'Switzerland is exact on funds and insurance.',fr:'France leans on a coherent, evidenced itinerary.',de:'Germany leans on ties and financial pattern.'};
+var REFBIC={
+ check:'<svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule=evenodd/></svg>',
+ bolt:'<svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>',
+ tri:'<svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule=evenodd/></svg>',
+ srch:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r="7"></circle><path d="M21 21l-4.3-4.3"/></svg>'
+};
+var REFCOPY={
+ green:{badge:['g','Recoverable'],icon:'check',head:'Good news. This looks recoverable.',sub:'This type of refusal is usually about how things were shown, not whether you qualify. Add your number and a consultant confirms the fix.',verd:'<b>Looks recoverable.</b> A consultant confirms the exact fix in a quick review.',chip:['ok','Workable'],vcol:'#15803d'},
+ amber:{badge:['a','Fixable with work'],icon:'bolt',head:'Your case needs a proper look.',sub:'This can often be turned around, but it needs stronger evidence. Add your number and we will tell you straight.',verd:'<b>Fixable in many cases, not all.</b> A consultant reviews what can be strengthened.',chip:['warn','Needs work'],vcol:'#b45309'},
+ red:{badge:['r','High risk'],icon:'tri',head:'This one is harder. We will be honest.',sub:'Refusals on this ground are difficult to reverse. Add your number and we tell you if it is worth trying, no sales pitch.',verd:'<b>Higher risk.</b> We only proceed if there is a real path, and give you a straight answer first.',chip:['bad','High risk'],vcol:'#b91c1c'},
+ assess:{badge:['s','Assessment needed'],icon:'srch',head:'Send us the letter and we will tell you.',sub:'We read your refusal letter and give you a straight read before anything else. Add your number and share it in chat.',verd:'<b>We assess first.</b> Then tell you honestly what can be done.',chip:['neutral','Read letter first'],vcol:'#64748b'}
+};
+function refTier(reason,iso){var base=REFBASE[reason];if(base===undefined||base===0)return 'assess';var c=window.CTRY&&window.CTRY[(iso||'').toLowerCase()];var mod=REFMOD[(c?c[1]:'standard')]||0;var s=Math.max(1,Math.min(3,base+mod));return s===3?'green':(s===2?'amber':'red');}
+function refVIcon(col){return '<svg viewBox="0 0 24 24" fill=none stroke="'+col+'" stroke-width=2 stroke-linecap=round stroke-linejoin=round><circle cx=12 cy=12 r="9"></circle><path d="M12 8v4l3 2"/></svg>';}
 function mDetailsFill(){
  var purpose=ST.purpose||'',ref=ST.refreason||'',dest=ST.dest||'',iso=ST.iso||'',tim=ST.tim||'';
- var amber=!!ref||/within 2 weeks/i.test(tim)||/refus|complex|reject/i.test(ST.intent||'');
- var badge=$('mdetbadge');
+ var badge=$('mdetbadge'),head=$('mdetq'),sub=$('mdetsub'),verd=$('mdetverdict'),snap=$('mdetsum');
+ if(ref){
+  var t=refTier(ref,iso),c=REFCOPY[t];
+  if(badge){badge.className='v-badge '+c.badge[0];badge.innerHTML=REFBIC[c.icon]+c.badge[1];}
+  if(head)head.textContent=c.head;
+  if(sub)sub.innerHTML=c.sub;
+  if(verd)verd.innerHTML=refVIcon(c.vcol)+'<span>'+c.verd+'</span>';
+  var rr=[['Refused on',ref,c.chip]];if(dest)rr.push(['Destination',dest,window.vSlot(iso)]);
+  if(snap){snap.innerHTML=window.vSnap(rr,'Your refusal snapshot');
+   var lean=REFLEAN[(iso||'').toLowerCase()];
+   if((t==='amber'||t==='red')&&lean)snap.insertAdjacentHTML('beforeend','<div class=v-lean>'+PLINFO+lean+'</div>');}
+  return;
+ }
+ var amber=/within 2 weeks/i.test(tim)||/complex/i.test(ST.intent||'');
  if(badge){badge.className='v-badge '+(amber?'a':'g');badge.innerHTML=window.vBadgeInner(amber);}
- var head=$('mdetq');if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
- var sub=$('mdetsub');
+ if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
  if(sub)sub.innerHTML=amber
    ?'That is exactly the kind of case we handle. Add your number and we will tell you straight, no sales pitch.'
    :'You can apply for <b>'+(dest||'the Schengen area')+'</b> from the UK. Add your number and your consultant confirms today.';
- var verd=$('mdetverdict');if(verd)verd.innerHTML=window.vVerdictInner(amber);
+ if(verd)verd.innerHTML=window.vVerdictInner(amber);
  var rows=[];
- if(ref)rows.push(['Refused on',ref,['bad','Needs review']]);
- else if(purpose)rows.push(['Purpose',purpose,['ok','Eligible category']]);
+ if(purpose)rows.push(['Purpose',purpose,['ok','Eligible category']]);
  if(dest)rows.push(['Destination',dest,window.vSlot(iso)]);
  if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
- var snap=$('mdetsum');if(snap)snap.innerHTML=window.vSnap(rows);}
+ if(snap)snap.innerHTML=window.vSnap(rows);}
 var PLAN={
  start:{badge:['teal','Most chosen'],title:'Start your application',tag:'Pay as you go. Nothing due until we have a plan.',now:'&pound;39<small> today</small>',then:'then <b>&pound;99</b><br>for the full service',split:'&pound;138 service fee, split. Government visa fees are separate.',inc:[['Document prep and checks','We build the file with you'],['Appointment booked for you','Nearest slot we can find'],['Submission support','Right up to your appointment day']],aftic:'bolt',aftt:'What &pound;39 unlocks today',aftx:'A UK consultant opens your file and replies within 30 minutes.',fine:'Refunded if we cannot get you an appointment. Handling speed, not a guaranteed visa decision.'},
  prime:{badge:['','Fastest route'],title:'Prime slot booking',tag:'Priority appointment search for close travel dates.',now:'&pound;85<small> today</small>',then:'then <b>&pound;99</b><br>for the full service',split:'Prime covers our service and the premium slot tier. Government visa fees are separate.',inc:[['Priority slot search','We watch premium tiers daily'],['Everything in Start','Docs, booking, submission support'],['Best for trips inside 4 weeks','When a normal slot will not land in time']],aftic:'bolt',aftt:'Why Prime',aftx:'Premium slots open and close fast. We hold your place the moment one drops.',fine:'Premium slot availability is not guaranteed. Refunded if none can be secured.'},
@@ -1186,7 +1216,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
   if(/planning/i.test(t))return['ok','Plenty of time'];
   return['neutral',''];};
  window.vAmber=function(sit,tim){return /refused|complex|4 weeks/i.test(sit||'')||/within 2 weeks/i.test(tim||'');};
- window.vSnap=function(rows){var h='<div class=v-snaphd>Your eligibility snapshot <small>provisional</small></div>';
+ window.vSnap=function(rows,title){var h='<div class=v-snaphd>'+(title||'Your eligibility snapshot')+' <small>provisional</small></div>';
   rows.forEach(function(r){if(!r[1])return;h+='<div class=v-row><span class=k>'+r[0]+'</span><span class=v>'+r[1]+'</span>'+window.vChip(r[2])+'</div>';});
   return h;};
  window.vBadgeInner=function(amber){return amber
