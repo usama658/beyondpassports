@@ -224,7 +224,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 .htrust-track{display:flex;flex-wrap:wrap;gap:9px}
 @media(max-width:640px){
  #dhero{min-height:auto!important;padding:22px 0 0!important}
- #dhero .dhero-grid{grid-template-columns:1fr!important;gap:20px!important}
+ #dhero .dhero-grid{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
+ #dhero .dhero-grid>div{min-width:0!important}
  #dhero .dhero-grid>div:first-child h1{font-size:32px!important;line-height:1.1!important;margin:14px 0 12px!important}
  #dhero .heroctas{flex-direction:column!important}
  #dhero .heroctas>a{width:100%!important}
@@ -233,6 +234,13 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  #dhero .htrust{overflow:hidden;margin-bottom:24px;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
  #dhero .htrust-track{flex-wrap:nowrap!important;width:max-content!important;animation:hmarq 22s linear infinite}
  @keyframes hmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+}
+@media(max-width:640px){
+ [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
+ [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
+ [style*="grid-template-columns:1fr 1.35fr 1fr"]{grid-template-columns:1fr!important}
+ .whard{grid-template-columns:1fr 1fr!important}
+ .refreasons{grid-template-columns:1fr!important}
 }
 </style>
 <section id=dhero style="background:linear-gradient(120deg,#0B1528 0%,#0B1528 48%,#12224d 100%);min-height:100vh;display:flex;align-items:center;padding:40px 0">
@@ -626,7 +634,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 </div>
 <div class=wrap style="max-width:900px;margin:18px auto 0">
   <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px"><span class=bpcount style="font-family:var(--serif);font-size:34px;color:var(--gold)">243</span><span style="font:500 13px var(--sans);color:rgba(255,255,255,.75)">cases reviewed. In most refusals, the cause is documentation, not eligibility.</span></div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">📄</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Insufficient funds shown</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">✉️</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Employer letter rejected</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">🗺️</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Wrong embassy applied to</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">📅</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Accommodation booked too early</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div></div>
+  <div class=refreasons style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">📄</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Insufficient funds shown</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">✉️</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Employer letter rejected</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">🗺️</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Wrong embassy applied to</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div><div style="display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px"><span style="font-size:18px">📅</span><span style="font:600 13px var(--sans);color:#fff;flex:1">Accommodation booked too early</span><span style="color:#86efac;font:700 10.5px var(--sans)">Fixable</span></div></div>
 </div>
 </section>
 
