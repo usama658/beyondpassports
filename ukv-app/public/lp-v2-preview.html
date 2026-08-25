@@ -484,13 +484,16 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   .prio-card{position:relative;background:linear-gradient(160deg,#101f3d,#0b1528 60%);border-radius:24px;padding:34px 36px;overflow:hidden;box-shadow:0 50px 120px -40px rgba(0,0,0,.7);margin-top:22px}
   .prio-card::before{content:"";position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(140deg,rgba(197,150,58,.7),rgba(197,150,58,.05) 40%,rgba(255,255,255,.06));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
   .prio-glow{position:absolute;top:-80px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(197,150,58,.18),transparent 70%);pointer-events:none}
-  .prio-top{display:flex;align-items:center;gap:16px;margin-bottom:20px;position:relative}
-  .prio-av{position:relative;flex:none}
-  .prio-av img{width:60px;height:60px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px #0b1528,0 0 0 4px var(--gold),0 12px 30px -10px rgba(197,150,58,.6)}
-  .prio-av .vf{position:absolute;bottom:-3px;right:-3px;width:21px;height:21px;border-radius:50%;background:var(--gold);border:2.5px solid #0b1528;display:flex;align-items:center;justify-content:center}
-  .prio-av .vf svg{width:11px;height:11px;color:#0b1528}
-  .prio-name{font:800 14.5px var(--sans);color:#fff}
-  .prio-role{font:600 12px var(--sans);color:rgba(255,255,255,.55);margin-top:2px}
+  .prio-grid{display:grid;grid-template-columns:186px 1fr;gap:30px;align-items:center;position:relative}
+  .prio-lead{text-align:center;position:relative;padding-right:30px}
+  .prio-lead::after{content:"";position:absolute;top:8px;bottom:8px;right:0;width:1px;background:linear-gradient(180deg,transparent,rgba(197,150,58,.4),transparent)}
+  .prio-av{position:relative;display:inline-block;margin-bottom:14px}
+  .prio-av img{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 2px #0b1528,0 0 0 4px var(--gold),0 16px 36px -12px rgba(197,150,58,.6)}
+  .prio-av .vf{position:absolute;bottom:2px;right:2px;width:26px;height:26px;border-radius:50%;background:var(--gold);border:3px solid #0b1528;display:flex;align-items:center;justify-content:center}
+  .prio-av .vf svg{width:13px;height:13px;color:#0b1528}
+  .prio-name{font:800 15px var(--sans);color:#fff}
+  .prio-role{font:600 12px var(--sans);color:rgba(255,255,255,.55);margin-top:4px;line-height:1.45}
+  @media(max-width:640px){.prio-grid{grid-template-columns:1fr}.prio-lead{padding-right:0;padding-bottom:22px}.prio-lead::after{top:auto;bottom:0;right:8px;left:8px;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(197,150,58,.4),transparent)}}
   .prio-eye{display:inline-flex;align-items:center;gap:8px;font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);position:relative}
   .prio-eye .ln{width:26px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
   .prio-h{font-family:var(--serif);font-weight:400;font-size:27px;color:#fff;line-height:1.12;margin:14px 0 12px;position:relative}
@@ -501,11 +504,15 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   .prio-chip svg{width:13px;height:13px;color:var(--gold)}
   </style>
   <div class=prio-card><span class=prio-glow></span>
-    <div class=prio-top><span class=prio-av><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt=""><span class=vf><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span></span><div><div class=prio-name>Your Priority lead</div><div class=prio-role>Senior consultant &middot; handles your case personally</div></div></div>
-    <div class=prio-eye><span class=ln></span>What Priority actually means</div>
-    <div class=prio-h>You get the team, not the queue.</div>
-    <p class=prio-body>Priority clients go straight to the top. No shared inbox, no junior review. Your case sits with senior consultants who know what each consulate is looking for right now, which appointment centres have flexibility, and what a borderline case needs to get through. <span class=pull>If your trip cannot be missed, this is the team you want on it.</span></p>
-    <div class=prio-chips><span class=prio-chip><svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Straight to a senior</span><span class=prio-chip><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r="7"></circle><path d="M21 21l-4.3-4.3"/></svg>Centres with flexibility</span><span class=prio-chip><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Borderline cases handled</span></div>
+    <div class=prio-grid>
+     <div class=prio-lead><span class=prio-av><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt=""><span class=vf><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span></span><div class=prio-name>Your Priority lead</div><div class=prio-role>Senior consultant<br>handles your case personally</div></div>
+     <div>
+      <div class=prio-eye><span class=ln></span>What Priority actually means</div>
+      <div class=prio-h>You get the team, not the queue.</div>
+      <p class=prio-body>Priority clients go straight to the top. No shared inbox, no junior review. Your case sits with senior consultants who know what each consulate is looking for right now, which appointment centres have flexibility, and what a borderline case needs to get through. <span class=pull>If your trip cannot be missed, this is the team you want on it.</span></p>
+      <div class=prio-chips><span class=prio-chip><svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Straight to a senior</span><span class=prio-chip><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r="7"></circle><path d="M21 21l-4.3-4.3"/></svg>Centres with flexibility</span><span class=prio-chip><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Borderline cases handled</span></div>
+     </div>
+    </div>
   </div>
 
   <!-- REFUSAL RECOVERY -->
