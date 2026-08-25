@@ -726,7 +726,7 @@ function fillSummary(){
   var sit=STATE[1]||'',dest=STATE[2]||'',iso=window.HISO||'',tim=STATE[3]||'';
   var amber=window.vAmber?window.vAmber(sit,tim):false;
   var badge=document.getElementById('s4badge');
-  if(badge){badge.className='v-badge '+(amber?'a':'g');badge.innerHTML=window.vBadgeInner(amber);}
+  if(badge){badge.style.display='none';}
   var head=document.getElementById('s4head');
   if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
   var sub=document.getElementById('s4sub');
@@ -1218,7 +1218,7 @@ function mDetailsFill(){
  var badge=$('mdetbadge'),head=$('mdetq'),sub=$('mdetsub'),verd=$('mdetverdict'),snap=$('mdetsum');
  if(ref){
   var t=refTier(ref,iso),c=REFCOPY[t];
-  if(badge){badge.className='v-badge '+c.badge[0];badge.innerHTML=REFBIC[c.icon]+c.badge[1];}
+  if(badge){badge.style.display='none';}
   if(head)head.textContent=c.head;
   if(sub)sub.innerHTML=c.sub;
   if(verd)verd.innerHTML=refVIcon(c.vcol)+'<span>'+c.verd+'</span>';
@@ -1229,7 +1229,7 @@ function mDetailsFill(){
   return;
  }
  var amber=/within 2 weeks/i.test(tim)||/complex/i.test(ST.intent||'');
- if(badge){badge.className='v-badge '+(amber?'a':'g');badge.innerHTML=window.vBadgeInner(amber);}
+ if(badge){badge.style.display='none';}
  if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
  if(sub)sub.innerHTML=amber
    ?'That is exactly the kind of case we handle. Add your number and we will tell you straight, no sales pitch.'
