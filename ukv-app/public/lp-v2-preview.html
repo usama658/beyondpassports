@@ -25,7 +25,7 @@ h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 .eyebrow{display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
-.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;font:800 16px var(--sans);height:56px;padding:0 34px;border-radius:14px;text-decoration:none}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#E8CB8E;color:#3d2b08;font:800 16px var(--sans);height:56px;padding:0 34px;border-radius:14px;text-decoration:none}
 
 
 :root{--surface:#fff;--navy:#0B1528;--navy-mid:#172654;--gold:#C5963A;--green:#16A34A;--wa:#25D366;--muted:#5b6b7d;--border:#E2E8F0;--serif:'DM Serif Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
@@ -46,7 +46,7 @@ h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 .eyebrow{display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
-.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;font:800 15px var(--sans);height:54px;padding:0 30px;border-radius:13px;text-decoration:none}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#E8CB8E;color:#3d2b08;font:800 15px var(--sans);height:54px;padding:0 30px;border-radius:13px;text-decoration:none}
 .badge{display:inline-flex;align-items:center;gap:7px;font:700 12px var(--sans);padding:7px 13px;border-radius:999px}
 
 
@@ -74,7 +74,7 @@ h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 .eyebrow{display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
-.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;font:800 15px var(--sans);height:54px;border-radius:13px;text-decoration:none}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#E8CB8E;color:#3d2b08;font:800 15px var(--sans);height:54px;border-radius:13px;text-decoration:none}
 
 
 :root{--surface:#fff;--navy:#0B1528;--navy-mid:#172654;--gold:#C5963A;--green:#16A34A;--wa:#25D366;--muted:#5b6b7d;--border:#E2E8F0;--serif:'DM Serif Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
@@ -104,26 +104,71 @@ details summary::-webkit-details-marker{display:none}
 .dform .tile:hover .dot,.dform .tile.sel .dot{border-color:var(--gold)}
 .dform .tile.sel{border-color:var(--gold);background:#fffdf8}
 .dform .tile.sel .dotf{transform:scale(1)}
+.pgrid .tile{position:relative;align-items:center;overflow:hidden;box-shadow:0 8px 20px -8px rgba(11,21,40,.24)}
+.pgrid .tile:hover{transform:translateY(-4px);box-shadow:0 24px 42px -16px rgba(11,21,40,.42)}
+.pgrid .tile.sel{box-shadow:0 12px 26px -10px rgba(197,150,58,.5)}
+.pgrid .s1ic{width:36px;height:36px;border-radius:10px;background:rgba(197,150,58,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none;transition:.16s}
+.pgrid .s1ic svg{width:20px;height:20px}
+.pgrid .tile.sel .s1ic{background:var(--gold);color:#fff}
+.pgrid .s1b{flex:1;min-width:0}
+.pgrid .s1b b{display:block;font:700 13.5px var(--sans);color:var(--navy)}
+.pgrid .s1s{display:block;font:500 11.5px var(--sans);color:var(--muted);margin-top:2px}
+.pgrid .s1n{position:absolute;top:-6px;right:8px;font:400 44px 'DM Serif Display',serif;color:rgba(11,21,40,.05);line-height:1;pointer-events:none}
+.pgrid .tile.sel .s1n{color:rgba(197,150,58,.18)}
+#hcgrid .tile{align-items:center;gap:11px;box-shadow:0 8px 20px -8px rgba(11,21,40,.24)}
+#hcgrid .tile:hover{transform:translateY(-4px);box-shadow:0 24px 42px -16px rgba(11,21,40,.42)}
+#hcgrid .tile.sel{box-shadow:0 12px 26px -10px rgba(197,150,58,.5)}
+#hcgrid .hflag{width:33px;height:24px;border-radius:5px;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 3px 7px -3px rgba(0,0,0,.3)}
+#hcgrid .tile.sel .hflag{box-shadow:0 0 0 2px var(--gold),0 3px 7px -3px rgba(0,0,0,.3)}
+#hcgrid .cn{flex:1;min-width:0;font:700 13.5px var(--sans);color:var(--navy)}
+#hcgrid .cst{display:inline-flex;align-items:center;gap:5px;font:700 10px var(--sans);flex:none}
+#hcgrid .cdot{width:7px;height:7px;border-radius:50%;flex:none}
+#hcgrid .cst.open{color:#16a34a}#hcgrid .cst.open .cdot{background:#22c55e}
+#hcgrid .cst.lim{color:#b45309}#hcgrid .cst.lim .cdot{background:#f59e0b}
+#hcgrid .csrch{margin-left:auto;color:#cbd5e1;flex:none;width:17px;height:17px}
+.dform .msearch .euchip{display:flex;align-items:center;gap:7px;background:#f4f7f9;border-radius:9px;padding:5px 9px 5px 6px;flex:none}
+.dform .msearch .euchip img.flag{width:24px;height:17px}
+.dform .msearch .euchip span{font:800 10px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+#hclist{gap:9px}
+#hclist li{position:relative;align-items:center;gap:10px;padding:11px;box-shadow:0 6px 16px -8px rgba(11,21,40,.22);transition:all .16s}
+#hclist li:hover{border-color:var(--gold);background:#fffdf8;transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(11,21,40,.4)}
+#hclist .cn2{flex:1;min-width:0;font:700 12.5px var(--sans);color:var(--navy)}
+#hclist .cst2{display:inline-flex;align-items:center;gap:4px;font:700 9px var(--sans);flex:none}
+#hclist .cdot2{width:6px;height:6px;border-radius:50%;flex:none}
+#hclist .cst2.open{color:#16a34a}#hclist .cst2.open .cdot2{background:#22c55e}
+#hclist .cst2.lim{color:#b45309}#hclist .cst2.lim .cdot2{background:#f59e0b}
+#hclist .cst2.chk{color:#94a3b8}#hclist .cst2.chk .cdot2{background:#cbd5e1}
+#hclist .nomatch{grid-column:1/-1;border:0;box-shadow:none;padding:8px;color:var(--muted);font:500 12.5px var(--sans);cursor:default}
 .dform .step{display:none;animation:fade .25s ease}
 .dform .step.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.dform .back{display:none;align-items:center;gap:6px;background:none;border:0;color:var(--muted);font:600 13px var(--sans);cursor:pointer;padding:4px 0;margin-bottom:4px}
-.dform .back:hover{color:var(--navy)}
+.dform .back{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;flex:none;box-shadow:0 6px 14px -8px rgba(11,21,40,.3)}
+.dform .back svg{width:16px;height:16px}
+.dform .back:hover{color:var(--navy);border-color:var(--gold)}
 .dform .back.show{display:inline-flex}
-.dform .fld{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--navy);font:500 15px var(--sans);margin-bottom:12px;outline:none;transition:border-color .16s}
-.dform .fld:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.14)}
+.dform .htoprow{display:flex;align-items:center;gap:8px}
+.dform .htflag{display:inline-flex;align-items:center;gap:6px;font:700 11px var(--sans);color:var(--navy);background:#f4f7f9;border:1px solid var(--border);border-radius:999px;padding:5px 10px}
+.dform .htflag[hidden]{display:none}
+.dform .htflag img{width:16px;height:12px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.dform .htspring{flex:1}
+.dform .hthint{font:600 12px var(--sans);color:var(--muted)}
+.dform .fld{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--navy);font:500 15px var(--sans);margin-bottom:12px;outline:none;box-shadow:0 6px 16px -8px rgba(11,21,40,.22);transition:border-color .16s,box-shadow .16s}
+.dform .fld:focus{border-color:var(--gold);box-shadow:0 10px 24px -10px rgba(197,150,58,.4),0 0 0 3px rgba(197,150,58,.14)}
 .dform .fld::placeholder{color:#94a3b8}
 .dform .flderr{border-color:#dc2626!important}
 .dform .errmsg{color:#c0392b;font:600 12px var(--sans);margin:-6px 0 12px}
-.dform .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;height:54px;border:0;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;transition:filter .16s}
-.dform .wabtn:hover{filter:brightness(1.05)}
+.dform .wabtn{display:flex;align-items:center;justify-content:center;gap:9px;background:#C5963A;color:#3d2b08;height:54px;border:0;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;box-shadow:0 14px 30px -12px rgba(197,150,58,.55);transition:transform .16s,box-shadow .16s,background .16s}
+.dform .wabtn svg{fill:#3d2b08}
+.dform .wabtn:hover{background:#D0A24A;transform:translateY(-2px);box-shadow:0 22px 44px -12px rgba(197,150,58,.7)}
 .dform .reassure{font:500 12px var(--sans);color:var(--muted);text-align:center;margin-top:14px}
-.dform .summ{background:#f6f9fb;border:1px solid var(--border);border-radius:13px;padding:16px;margin-bottom:18px}
+.dform .trust{display:flex;align-items:center;justify-content:center;gap:6px;font:600 11.5px var(--sans);color:#16a34a;margin-top:13px}
+.dform .trust svg{width:14px;height:14px;flex:none}
+.dform .summ{background:#f6f9fb;border:1px solid var(--border);border-radius:13px;padding:16px;margin-bottom:18px;box-shadow:0 8px 20px -12px rgba(11,21,40,.28)}
 .dform .summ .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--border);font:500 13px var(--sans)}
 .dform .summ .row:last-child{border-bottom:0}
 .dform .summ .k{color:var(--muted)}.dform .summ .v{color:var(--navy);font-weight:700;text-align:right}
-.dform .pc-combo{position:relative;display:flex;border:1.5px solid var(--border);border-radius:12px;background:#fff;margin-bottom:12px;transition:border-color .15s,box-shadow .15s}
-.dform .pc-combo:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.14)}
+.dform .pc-combo{position:relative;display:flex;border:1.5px solid var(--border);border-radius:12px;background:#fff;margin-bottom:12px;box-shadow:0 6px 16px -8px rgba(11,21,40,.22);transition:border-color .15s,box-shadow .15s}
+.dform .pc-combo:focus-within{border-color:var(--gold);box-shadow:0 10px 24px -10px rgba(197,150,58,.4),0 0 0 3px rgba(197,150,58,.14)}
 .dform .pc-combo.pc-invalid{border-color:#dc2626}
 .dform .pc-btn{display:flex;align-items:center;gap:6px;padding:0 12px;background:#f4f7f9;border:0;border-right:1.5px solid var(--border);border-radius:12px 0 0 12px;cursor:pointer;font:700 14px var(--sans);color:var(--navy);white-space:nowrap}
 .dform .pc-fl-img{width:20px;height:15px;border-radius:2px;display:block;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.09)}
@@ -157,14 +202,15 @@ details summary::-webkit-details-marker{display:none}
 .dform .snt .ring>svg{transform:rotate(-90deg)}
 .dform .snt .ring circle{fill:none;stroke-width:8}
 .dform .snt .ring .bg{stroke:var(--border)}
-.dform .snt .ring .fg{stroke:var(--wa);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;animation:sntFill 3s linear forwards}
+.dform .snt .ring .fg{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;animation:sntFill 3s linear forwards}
 .dform .snt .ring .wac{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.dform .snt .ring .disc{width:50px;height:50px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center}
+.dform .snt .ring .disc{width:50px;height:50px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center}
 @keyframes sntFill{from{stroke-dashoffset:283}to{stroke-dashoffset:0}}
 .dform .snt .pk{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
 .dform .snt .cnt{font:500 12.5px var(--sans);color:#475569;margin-bottom:16px}
 .dform .snt .cnt b{color:var(--navy)}
-.dform .snt .waopen{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;font:800 13.5px var(--sans);height:48px;padding:0 22px;border-radius:12px;text-decoration:none;width:100%}
+.dform .snt .waopen{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#C5963A;color:#3d2b08;font:800 13.5px var(--sans);height:48px;padding:0 22px;border-radius:12px;text-decoration:none;width:100%}
+.dform .snt .waopen svg{fill:#3d2b08}
 @media(max-width:640px){.dform .sntgrid{grid-template-columns:1fr}.dform .sntR{border-left:0;border-top:1px solid var(--border);margin-top:14px}}
 details[open] summary span:last-child{transform:rotate(45deg)}
 </style></head><body>
@@ -175,42 +221,11 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 
 <section style="background:linear-gradient(120deg,#0B1528 0%,#0B1528 48%,#12224d 100%);min-height:100vh;display:flex;align-items:center;padding:40px 0">
 <div class=wrap style="display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center"><div><span style="display:inline-block;font:800 11.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(197,150,58,.1);border:1px solid rgba(197,150,58,.22);padding:6px 13px;border-radius:999px">Non-EU passport &middot; Skilled Worker &middot; Graduate &middot; Student</span><h1 style="color:#fff;font-size:48px;line-height:1.06;margin:18px 0 14px">Schengen Visa Services UK. <span style="font-style:italic;color:var(--gold)">Living in the UK on a visa? We handle the whole thing.</span></h1><p style="color:rgba(255,255,255,.74);font-size:17px;max-width:460px;margin-bottom:22px">You can apply for a Schengen visa from the UK. Documents, appointment and submission. From £39 &middot; No phone calls &middot; WhatsApp only.</p><div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px"><span style="display:inline-flex;align-items:center;gap:7px;font:600 12px var(--sans);color:rgba(255,255,255,.82);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);padding:7px 12px;border-radius:999px"><span style="color:#FBBF24;letter-spacing:1px;font-size:13px;line-height:1">&#9733;&#9733;&#9733;&#9733;&#9733;</span>4.9 &middot; <span class=bpcount>243</span>+ applications</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 12px var(--sans);color:rgba(255,255,255,.82);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:7px 12px;border-radius:999px"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>UK registered &middot; 17331903</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 12px var(--sans);color:rgba(255,255,255,.82);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:7px 12px;border-radius:999px"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5V12l3 2"/></svg></span>Reply within 30 minutes</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 12px var(--sans);color:rgba(255,255,255,.82);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:7px 12px;border-radius:999px"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>£39 to start, refunded if no appointment</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px"><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore" style="width:46px;height:46px;border-radius:50%;object-fit:cover;display:block;flex:none;outline:2px solid rgba(197,150,58,.45)"><div><div style="font:700 14.5px var(--sans);color:#fff">Your consultant is <span style="color:var(--gold)">Sarah</span>.</div><div style="font:600 11.5px var(--sans);color:rgba(255,255,255,.6);margin-top:2px;line-height:1.45">Registered in England &amp; Wales &middot; <span class=bpcount>243</span>+ Schengen applications prepared from the UK</div></div></div></div><div class=dform><div class=card>
- <button class=back id=back><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg> Back</button>
- <div style="display:flex;align-items:center;justify-content:space-between"><span class=pill>Step 1 of 4</span><span style="font:600 12.5px var(--sans);color:var(--muted)">Find out where you stand in 60 seconds</span></div>
+ <div class=htoprow><button class=back id=back aria-label=Back><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg></button><span class=pill>Step 1 of 4</span><span class=htflag id=htopflag hidden></span><span class=htspring></span><span class=hthint>60-sec check</span></div>
+ <div id=htdiff style="margin-top:9px;display:none"></div>
  <div class=bars><div class="bar on" id="bar1"></div><div class="bar" id="bar2"></div><div class="bar" id="bar3"></div><div class="bar" id="bar4"></div></div>
- <div class="step active" data-n="1"><h2 class=q>What's your situation right now?</h2><div class=grid style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="1" data-val="First time applying" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.2 4.5a1.5 1.5 0 0 1 2.6 0l2 3.4 6 1.7a1 1 0 0 1 .3 1.7l-3.8 3 .8 5.6a1 1 0 0 1-1.5 1l-4.3-2.6-4.3 2.6a1 1 0 0 1-1.5-1l.8-5.6-3.8-3a1 1 0 0 1 .3-1.7l6-1.7z"/></svg></span>First time applying</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Never done this before</span></span></button><button class=tile data-step="1" data-val="Been refused before" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M9 9l6 6M15 9l-6 6"/></svg></span>Been refused before</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Need to fix and reapply</span></span></button><button class=tile data-step="1" data-val="Complex situation" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15" rx="2.2"/><path d="M8.5 9h7M8.5 12h7M8.5 15h4"/></svg></span>Complex situation</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Self employed or dependants</span></span></button><button class=tile data-step="1" data-val="Travelling in 4 weeks" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5V12l3 2"/></svg></span>Travelling in 4 weeks</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Time is the main problem</span></span></button><button class=tile data-step="1" data-val="Checking if I qualify" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.2"/><path d="M16 16l4 4"/></svg></span>Checking if I qualify</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Not sure I can apply from UK</span></span></button><button class=tile data-step="1" data-val="Looking for slots" onclick="pick(this,1)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="14" rx="2"/><path d="M4.5 9.5h15M8.5 3.5v4M15.5 3.5v4"/></svg></span>Looking for slots</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Want to see availability</span></span></button></div></div><div class="step" data-n="2"><h2 class=q>Which country are you applying for?</h2><div class=grid id=hcgrid style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="2" data-val="Spain" onclick="pick(this,2)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/es.svg" alt="">Spain</b></span></button><button class=tile data-step="2" data-val="France" onclick="pick(this,2)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/fr.svg" alt="">France</b></span></button><button class=tile data-step="2" data-val="Italy" onclick="pick(this,2)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/it.svg" alt="">Italy</b></span></button><button class=tile data-step="2" data-val="Germany" onclick="pick(this,2)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/de.svg" alt="">Germany</b></span></button><button class=tile data-step="2" data-val="Greece" onclick="pick(this,2)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/gr.svg" alt="">Greece</b></span></button><button class=tile onclick="hCsearch()">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:8px;font:700 14.5px var(--sans);color:var(--navy)"><img class=hflag src="https://flagcdn.com/eu.svg" alt="">Other Schengen country</b></span></button></div><div id=hcwrap class=mhide style="margin-top:10px"><div class=msearch><img class=flag src="https://flagcdn.com/eu.svg" alt=""><input id=hcq placeholder="Search Schengen countries" oninput="hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hCclose()">✕</button></div><ul class=mres id=hclist></ul></div></div><div class="step" data-n="3"><h2 class=q>When are you travelling?</h2><div class=grid style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="3" data-val="Within 2 weeks" onclick="pick(this,3)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h5l-1 8 8-10h-5l1-8z"/></svg></span>Within 2 weeks</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Urgent</span></span></button><button class=tile data-step="3" data-val="In 2 to 4 weeks" onclick="pick(this,3)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5V12l3 2"/></svg></span>In 2 to 4 weeks</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Soon</span></span></button><button class=tile data-step="3" data-val="In 1 to 3 months" onclick="pick(this,3)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="14" rx="2"/><path d="M4.5 9.5h15M8.5 3.5v4M15.5 3.5v4"/></svg></span>In 1 to 3 months</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">Planning</span></span></button><button class=tile data-step="3" data-val="Just planning ahead" onclick="pick(this,3)">
-<span class="dot"><span class="dotf"></span></span>
-<span style="flex:1"><b style="display:flex;align-items:center;gap:7px;font:700 14.5px var(--sans);color:var(--navy)"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10M7 20h10M8 4c0 4 8 4 8 8s-8 4-8 8M16 4c0 4-8 4-8 8"/></svg></span>Just planning ahead</b><span style="display:block;font:500 12px var(--sans);color:var(--muted);margin-top:3px">No fixed date</span></span></button></div></div><div class="step" data-n="4"><h2 class=q>Tell us where to reach you.</h2>
+ <div id=hurg style="margin-top:13px;display:none"></div>
+ <div class="step active" data-n="1"><h2 class=q>What's your situation right now?</h2><div class="grid pgrid" id=s1grid style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="1" data-val="First time applying" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 8.187 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258c.94-.236 1.674-.97 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule=evenodd/></svg></span><span class=s1b><b>First time applying</b><span class=s1s>Never done this before</span></span><span class=s1n>1</span></button><button class=tile data-step="1" data-val="Been refused before" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Been refused before</b><span class=s1s>Need to fix and reapply</span></span><span class=s1n>2</span></button><button class=tile data-step="1" data-val="Complex situation" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M11.644 1.59a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0L1.894 8.16a.75.75 0 0 1 0-1.32l9.75-5.25Z"/><path d="m3.265 10.602 7.668 4.129a2.25 2.25 0 0 0 2.134 0l7.668-4.13 1.37.739a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.71 0l-9.75-5.25a.75.75 0 0 1 0-1.32l1.37-.738Z"/><path d="m10.933 19.231-7.668-4.13-1.37.739a.75.75 0 0 0 0 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 0 0 0-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 0 1-2.134-.001Z"/></svg></span><span class=s1b><b>Complex situation</b><span class=s1s>Self employed or dependants</span></span><span class=s1n>3</span></button><button class=tile data-step="1" data-val="Travelling in 4 weeks" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Travelling in 4 weeks</b><span class=s1s>Time is the main problem</span></span><span class=s1n>4</span></button><button class=tile data-step="1" data-val="Checking if I qualify" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z" clip-rule=evenodd/><path fill-rule=evenodd d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V9.375Zm9.586 4.594a.75.75 0 0 0-1.172-.938l-2.476 3.096-.908-.907a.75.75 0 0 0-1.06 1.06l1.5 1.5a.75.75 0 0 0 1.116-.062l3-3.75Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Checking if I qualify</b><span class=s1s>Not sure I can apply from UK</span></span><span class=s1n>5</span></button><button class=tile data-step="1" data-val="Looking for slots" onclick="pick(this,1)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Looking for slots</b><span class=s1s>Want to see availability</span></span><span class=s1n>6</span></button></div></div><div class="step" data-n="2"><h2 class=q>Which country are you applying for?</h2><div class=grid id=hcgrid style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="2" data-val="Spain" onclick="pick(this,2)"><img class=hflag src="https://flagcdn.com/es.svg" alt=""><span class=cn>Spain</span><span class="cst lim"><span class=cdot></span>Filling</span></button><button class=tile data-step="2" data-val="France" onclick="pick(this,2)"><img class=hflag src="https://flagcdn.com/fr.svg" alt=""><span class=cn>France</span><span class="cst open"><span class=cdot></span>Open</span></button><button class=tile data-step="2" data-val="Italy" onclick="pick(this,2)"><img class=hflag src="https://flagcdn.com/it.svg" alt=""><span class=cn>Italy</span><span class="cst lim"><span class=cdot></span>Limited</span></button><button class=tile data-step="2" data-val="Germany" onclick="pick(this,2)"><img class=hflag src="https://flagcdn.com/de.svg" alt=""><span class=cn>Germany</span><span class="cst open"><span class=cdot></span>Open</span></button><button class=tile data-step="2" data-val="Greece" onclick="pick(this,2)"><img class=hflag src="https://flagcdn.com/gr.svg" alt=""><span class=cn>Greece</span><span class="cst open"><span class=cdot></span>Open</span></button><button class=tile onclick="hCsearch()"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span><svg class=csrch viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7/><path d="M21 21l-4.3-4.3"/></svg></button></div><div id=hcwrap class=mhide style="margin-top:10px"><div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=hcq placeholder="Search countries" oninput="hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hCclose()">✕</button></div><ul class=mres id=hclist></ul></div></div><div class="step" data-n="3"><h2 class=q>When are you travelling?</h2><div class="grid pgrid" style="grid-template-columns:repeat(2,1fr)"><button class=tile data-step="3" data-val="Within 2 weeks" onclick="pick(this,3)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Within 2 weeks</b><span class=s1s>Urgent</span></span><span class=s1n>1</span></button><button class=tile data-step="3" data-val="In 2 to 4 weeks" onclick="pick(this,3)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 2 to 4 weeks</b><span class=s1s>Soon</span></span><span class=s1n>2</span></button><button class=tile data-step="3" data-val="In 1 to 3 months" onclick="pick(this,3)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 1 to 3 months</b><span class=s1s>Planning</span></span><span class=s1n>3</span></button><button class=tile data-step="3" data-val="Just planning ahead" onclick="pick(this,3)"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path fill-rule=evenodd d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Just planning ahead</b><span class=s1s>No fixed date</span></span><span class=s1n>4</span></button></div></div><div class="step" data-n="4"><span class="v-badge g" id=s4badge></span><h2 class=q id=s4head style="margin-bottom:10px">Good news. You look eligible.</h2><p class=v-sub id=s4sub></p><div class=v-flabel>Where should we reach you?</div>
 <input class=fld id=f_name type=text placeholder="Your first name" autocomplete="given-name">
 <div class=errmsg id=e_name style="display:none">Please enter your name</div>
 <div class="pc-combo" id=pc data-pc-default="GB">
@@ -222,10 +237,10 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  <div class=pc-pop id=pcPop role=listbox aria-label=Country hidden></div>
 </div>
 <div class=errmsg id=e_phone style="display:none">Please enter a valid number</div>
-<button class=wabtn onclick="send()"><svg width=20 height=20 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Get my answer on WhatsApp</button>
-<p class=reassure>Send when ready. A UK specialist replies on WhatsApp, usually within 30 min.</p>
-<p style="font:600 12.5px var(--sans);color:var(--muted);margin:18px 0 8px">What you've told us:</p>
-<div class=summ id=summary></div></div>
+<button class=wabtn onclick="send()"><svg width=19 height=19 viewBox="0 0 24 24" fill=none stroke="#3d2b08" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Get professional assessment</button>
+<div class=v-verdict id=s4verdict></div>
+<div class=v-snap id=summary></div>
+<p class=v-fine>Provisional only. Eligibility to apply is not a visa decision. Your details stay private.</p></div>
 <div class=snt id=sent><div class=sntgrid>
  <div class=sntL>
   <div class=seal><svg width=27 height=27 viewBox="0 0 24 24" fill=none stroke="#C5963A" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -253,11 +268,11 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🇪🇸</span><div><div style="font:700 16px var(--sans);color:var(--navy)">Spain</div><div style="font:600 11.5px var(--sans);color:var(--muted)">BLS International</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--green);line-height:1">~20</span><span style="font:600 12px var(--sans);color:var(--muted)">indicative</span></div>
 <div style="font:600 12px var(--sans);color:var(--muted);margin:6px 0 16px">Next: late Aug</div>
-<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:var(--wa);color:#fff;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('France')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#C5963A;color:#3d2b08;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('France')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🇫🇷</span><div><div style="font:700 16px var(--sans);color:var(--navy)">France</div><div style="font:600 11.5px var(--sans);color:var(--muted)">TLS Contact</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--green);line-height:1">~32</span><span style="font:600 12px var(--sans);color:var(--muted)">indicative</span></div>
 <div style="font:600 12px var(--sans);color:var(--muted);margin:6px 0 16px">Next: late Aug</div>
-<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:var(--wa);color:#fff;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Italy')" style="display:block;background:var(--surface);border:1.5px solid rgba(216,119,6,.35);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 0 0 1px rgba(216,119,6,.25),0 16px 34px -28px rgba(216,119,6,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#C5963A;color:#3d2b08;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Italy')" style="display:block;background:var(--surface);border:1.5px solid rgba(216,119,6,.35);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 0 0 1px rgba(216,119,6,.25),0 16px 34px -28px rgba(216,119,6,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🇮🇹</span><div><div style="font:700 16px var(--sans);color:var(--navy)">Italy</div><div style="font:600 11.5px var(--sans);color:var(--muted)">VFS Global</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--amber);line-height:1">Low</span><span style="font:600 12px var(--sans);color:var(--muted)">filling fast</span></div>
 <div style="font:600 12px var(--sans);color:var(--amber);margin:6px 0 16px">Near capacity, act soon</div>
@@ -265,11 +280,11 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🇩🇪</span><div><div style="font:700 16px var(--sans);color:var(--navy)">Germany</div><div style="font:600 11.5px var(--sans);color:var(--muted)">TLS Contact</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--green);line-height:1">~28</span><span style="font:600 12px var(--sans);color:var(--muted)">indicative</span></div>
 <div style="font:600 12px var(--sans);color:var(--muted);margin:6px 0 16px">Next: late Aug</div>
-<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:var(--wa);color:#fff;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Greece')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#C5963A;color:#3d2b08;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Greece')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🇬🇷</span><div><div style="font:700 16px var(--sans);color:var(--navy)">Greece</div><div style="font:600 11.5px var(--sans);color:var(--muted)">VFS Global</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--green);line-height:1">~30</span><span style="font:600 12px var(--sans);color:var(--muted)">indicative</span></div>
 <div style="font:600 12px var(--sans);color:var(--muted);margin:6px 0 16px">Next: late Aug</div>
-<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:var(--wa);color:#fff;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Other country')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+<div style="display:flex;align-items:center;justify-content:center;height:44px;border-radius:11px;background:#C5963A;color:#3d2b08;font:800 13px var(--sans)">Check this slot →</div></button><button type=button onclick="mOpen('Other country')" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-decoration:none;box-shadow:0 16px 34px -30px rgba(11,21,40,.5);transition:transform .16s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
 <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="font-size:28px">🌍</span><div><div style="font:700 16px var(--sans);color:var(--navy)">Other country</div><div style="font:600 11.5px var(--sans);color:var(--muted)">Ask us</div></div></div>
 <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--serif);font-size:44px;color:var(--muted);line-height:1">29</span><span style="font:600 12px var(--sans);color:var(--muted)">countries</span></div>
 <div style="font:600 12px var(--sans);color:var(--muted);margin:6px 0 16px">We watch it for you</div>
@@ -295,7 +310,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <span style="color:var(--gold);display:flex;margin-bottom:14px"><svg width=22 height=22 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.7 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>
 <div style="display:flex;align-items:baseline;gap:7px"><span style="font-family:var(--serif);font-size:40px;color:#fff;line-height:1">£130</span><span style="font:700 13px var(--sans);color:var(--gold)">total</span></div>
 <p style="font:500 13px var(--sans);color:rgba(255,255,255,.66);margin-top:8px;line-height:1.5">£39 to start, £99 on appointment. Refunded if no appointment.</p></div></div>
-<div class=wrap style="text-align:center;margin-top:26px"><a href="#" onclick="mOpenAny();return false" style="display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#fff;font:800 15px var(--sans);height:52px;padding:0 30px;border-radius:13px;text-decoration:none">Get my free check &rarr;</a></div>
+<div class=wrap style="text-align:center;margin-top:26px"><a href="#" onclick="mOpenAny();return false" style="display:inline-flex;align-items:center;gap:8px;background:#E8CB8E;color:#3d2b08;font:800 15px var(--sans);height:52px;padding:0 30px;border-radius:13px;text-decoration:none">Get my free check &rarr;</a></div>
 </section>
 <section style="background:radial-gradient(820px 340px at 50% -12%,#eaf1f4,#F8FAFC);padding:76px 0">
 <div class=wrap style="text-align:center;max-width:680px;margin:0 auto 30px">
@@ -430,7 +445,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
       <div style="border-top:1px solid var(--border);padding-top:12px;flex:1"><div style="display:flex;gap:9px;align-items:flex-start;padding:6px 0;font:500 13.5px Inter;color:#334155;line-height:1.45"><span style="color:#16A34A;font-weight:800;flex:none">✓</span><span>Named consultant assigned to your case</span></div><div style="display:flex;gap:9px;align-items:flex-start;padding:6px 0;font:500 13.5px Inter;color:#334155;line-height:1.45"><span style="color:#16A34A;font-weight:800;flex:none">✓</span><span>Full application, every document checked</span></div><div style="display:flex;gap:9px;align-items:flex-start;padding:6px 0;font:500 13.5px Inter;color:#334155;line-height:1.45"><span style="color:#16A34A;font-weight:800;flex:none">✓</span><span>Employer letter and cover letter written for you</span></div><div style="display:flex;gap:9px;align-items:flex-start;padding:6px 0;font:500 13.5px Inter;color:#334155;line-height:1.45"><span style="color:#16A34A;font-weight:800;flex:none">✓</span><span>Appointment found and booked</span></div><div style="display:flex;gap:9px;align-items:flex-start;padding:6px 0;font:500 13.5px Inter;color:#334155;line-height:1.45"><span style="color:#16A34A;font-weight:800;flex:none">✓</span><span>WhatsApp direct line, reply in 30 min</span></div>
         <div style="background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);border-radius:10px;padding:11px 13px;font:600 12.5px var(--sans);color:#14532d;margin-top:12px">↩ Refused? Free refile included. We redo the whole thing.</div>
       </div>
-      <a href="#" onclick="mOpen('price140');return false" style="display:flex;justify-content:center;align-items:center;gap:8px;height:54px;background:var(--wa);color:#fff;font:800 15px var(--sans);border-radius:13px;text-decoration:none;margin-top:14px">Start My Application →</a>
+      <a href="#" onclick="mOpen('price140');return false" style="display:flex;justify-content:center;align-items:center;gap:8px;height:54px;background:#C5963A;color:#3d2b08;font:800 15px var(--sans);border-radius:13px;text-decoration:none;margin-top:14px">Start My Application →</a>
       <p style="font:500 11.5px var(--sans);color:var(--muted);text-align:center;margin-top:10px">Exact fee confirmed after free review. Complex cases may vary.</p>
     </div>
     <!-- Priority -->
@@ -527,7 +542,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <span style="color:var(--gold);font:700 18px var(--sans);flex:none;transition:.2s">+</span></summary>
 <div style="padding:0 4px 20px 48px"><p style="font:400 14.5px var(--sans);color:#475569;line-height:1.65">You apply through the embassy of the country where you'll spend the most days. If nights are equal, apply through your country of first entry. Applying to the wrong one is a common refusal trigger, so we confirm the correct embassy for your exact itinerary.</p><a href="#" onclick="mOpen('timeline');return false" style="display:inline-flex;align-items:center;gap:7px;background:rgba(37,211,102,.1);color:#128C3E;border:1px solid rgba(37,211,102,.25);font:700 12px var(--sans);padding:8px 14px;border-radius:9px;text-decoration:none;margin-top:12px">Message us your itinerary →</a></div></details></div>
 </div></section>
-<section id="final-cta" style="background:radial-gradient(900px 500px at 50% -10%,#1b2f5c,#0B1528 60%);padding:90px 0 70px;color:#fff;text-align:center"><div class=wrap style="max-width:760px"><span class=eyebrow>Your next step</span><h2 style="font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.08;margin:16px 0 16px">Stop refreshing VFS.<br><span style="font-style:italic;color:var(--gold)">Let's start.</span></h2><p style="font-size:18px;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 32px">One message. A named consultant tells you free exactly where you stand, usually within 30 minutes.</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px"><a href="#" onclick="mOpenAny();return false" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;font:800 16px var(--sans);height:58px;padding:0 34px;border-radius:14px;text-decoration:none;box-shadow:0 20px 40px -18px rgba(37,211,102,.6)"><svg width=21 height=21 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Get my free check</a><a href="#" onclick="mOpen('slots');return false" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:#fff;font:700 15px var(--sans);height:58px;padding:0 26px;border-radius:14px;text-decoration:none;border:1.5px solid rgba(255,255,255,.28)">See current slots</a></div><div style="display:flex;gap:22px;justify-content:center;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>£39 to start</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Refunded if we can't secure your appointment</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Reply usually within 30 minutes</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>UK registered &middot; 17331903</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>ICO ZC197159</span></div></div></section><div style="background:#0a1120;color:rgba(255,255,255,.5);font:500 12px var(--sans);text-align:center;padding:16px 22px;line-height:1.6">We are a private, independent visa-assistance service. We are not the government, a consulate, or VFS/TLS. Visa decisions are made solely by the relevant authorities.</div><div style="background:#0a1120;color:rgba(255,255,255,.4);font:500 12px var(--sans);text-align:center;padding:16px 22px;border-top:1px solid rgba(255,255,255,.07)">Beyond Passports &middot; UK registered &middot; 17331903 &middot; ICO ZC197159 &middot; Terms &middot; Privacy &middot; Complaints &middot; Contact &middot; &copy; 2026</div>
+<section id="final-cta" style="background:radial-gradient(900px 500px at 50% -10%,#1b2f5c,#0B1528 60%);padding:90px 0 70px;color:#fff;text-align:center"><div class=wrap style="max-width:760px"><span class=eyebrow>Your next step</span><h2 style="font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.08;margin:16px 0 16px">Stop refreshing VFS.<br><span style="font-style:italic;color:var(--gold)">Let's start.</span></h2><p style="font-size:18px;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 32px">One message. A named consultant tells you free exactly where you stand, usually within 30 minutes.</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px"><a href="#" onclick="mOpenAny();return false" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#E8CB8E;color:#3d2b08;font:800 16px var(--sans);height:58px;padding:0 34px;border-radius:14px;text-decoration:none;box-shadow:0 20px 40px -18px rgba(197,150,58,.55)"><svg width=21 height=21 viewBox="0 0 24 24" fill="#3d2b08"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Get my free check</a><a href="#" onclick="mOpen('slots');return false" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:#fff;font:700 15px var(--sans);height:58px;padding:0 26px;border-radius:14px;text-decoration:none;border:1.5px solid rgba(255,255,255,.28)">See current slots</a></div><div style="display:flex;gap:22px;justify-content:center;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>£39 to start</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Refunded if we can't secure your appointment</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>Reply usually within 30 minutes</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>UK registered &middot; 17331903</span><span style="display:inline-flex;align-items:center;gap:7px;font:600 13px var(--sans);color:rgba(255,255,255,.8)"><span style="color:var(--gold);display:flex"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span>ICO ZC197159</span></div></div></section><div style="background:#0a1120;color:rgba(255,255,255,.5);font:500 12px var(--sans);text-align:center;padding:16px 22px;line-height:1.6">We are a private, independent visa-assistance service. We are not the government, a consulate, or VFS/TLS. Visa decisions are made solely by the relevant authorities.</div><div style="background:#0a1120;color:rgba(255,255,255,.4);font:500 12px var(--sans);text-align:center;padding:16px 22px;border-top:1px solid rgba(255,255,255,.07)">Beyond Passports &middot; UK registered &middot; 17331903 &middot; ICO ZC197159 &middot; Terms &middot; Privacy &middot; Complaints &middot; Contact &middot; &copy; 2026</div>
 <script>
 var STATE={1:null,2:null,3:null},CUR=1,TOTAL=4,WA='447882747584';
 function bars(){for(var i=1;i<=TOTAL;i++){document.getElementById('bar'+i).classList.toggle('on',i<=CUR);}}
@@ -538,6 +553,13 @@ function show(n){
   document.getElementById('back').classList.toggle('show',n>1);
   var pill=document.querySelector('.pill');if(pill)pill.textContent='Step '+n+' of '+TOTAL;
   bars();
+  var known=STATE[2]&&window.HISO&&n>=3;
+  var hf=document.getElementById('htopflag');
+  if(hf){if(known){hf.innerHTML='<img src="https://flagcdn.com/'+window.HISO+'.svg" alt="">'+STATE[2];hf.hidden=false;}else{hf.hidden=true;hf.innerHTML='';}}
+  var hd=document.getElementById('htdiff');
+  if(hd){if(known&&window.diffHTML){hd.innerHTML=window.diffHTML(window.HISO);hd.style.display='';}else{hd.style.display='none';hd.innerHTML='';}}
+  var hu=document.getElementById('hurg');
+  if(hu){if(known&&window.urgHTML){hu.innerHTML=window.urgHTML(STATE[2],window.HISO);hu.style.display='';}else{hu.style.display='none';hu.innerHTML='';}}
   if(n===TOTAL)fillSummary();
   var c=document.querySelector('.card');if(c)c.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -546,6 +568,7 @@ function pick(el,step){
   g.querySelectorAll('.tile').forEach(function(t){t.classList.remove('sel');});
   el.classList.add('sel');
   STATE[step]=el.dataset.val;
+  if(step===2){var f=HSC.filter(function(c){return c[0]===el.dataset.val;})[0];window.HISO=f?f[1]:'';}
   setTimeout(function(){
     if(step===1)show(2);
     else if(step===2)afterCountry();
@@ -569,7 +592,8 @@ function pickC(el,name,iso){
 }
 function hCsearch(){document.getElementById('hcgrid').style.display='none';document.getElementById('hcwrap').classList.remove('mhide');hCrender('');document.getElementById('hcq').focus();}
 function hCclose(){var w=document.getElementById('hcwrap');if(w)w.classList.add('mhide');var g=document.getElementById('hcgrid');if(g)g.style.display='';var q=document.getElementById('hcq');if(q)q.value='';}
-function hCrender(q){q=(q||'').toLowerCase();var ul=document.getElementById('hclist');if(!ul)return;ul.innerHTML='';var m=HSC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li style="grid-column:1/-1;color:var(--muted);padding:8px">No match.</li>';return;}m.forEach(function(c){var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt="">'+c[0];li.onclick=function(){pickC(null,c[0],c[1]);};ul.appendChild(li);});}
+var HSLOT={fr:['open','Open'],de:['open','Open'],gr:['open','Open'],es:['lim','Filling'],it:['lim','Limited']};
+function hCrender(q){q=(q||'').toLowerCase();var ul=document.getElementById('hclist');if(!ul)return;ul.innerHTML='';var m=HSC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li class=nomatch>No match. Try another spelling.</li>';return;}m.forEach(function(c){var st=HSLOT[c[1]]||['chk','Check'];var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+st[0]+'"><span class=cdot2></span>'+st[1]+'</span>';li.onclick=function(){pickC(null,c[0],c[1]);};ul.appendChild(li);});}
 function restoreSel(step){
   if(!STATE[step])return;
   document.querySelectorAll('.tile[data-step="'+step+'"]').forEach(function(t){
@@ -592,10 +616,23 @@ function buildMsg(){
   return lines.join('\n');
 }
 function fillSummary(){
-  var m={1:'Situation',2:'Destination',3:'Travelling'};
-  var h='';
-  for(var k in m){ if(STATE[k]) h+='<div class=row><span class=k>'+m[k]+'</span><span class=v>'+STATE[k]+'</span></div>'; }
-  document.getElementById('summary').innerHTML=h;
+  var sit=STATE[1]||'',dest=STATE[2]||'',iso=window.HISO||'',tim=STATE[3]||'';
+  var amber=window.vAmber?window.vAmber(sit,tim):false;
+  var badge=document.getElementById('s4badge');
+  if(badge){badge.className='v-badge '+(amber?'a':'g');badge.innerHTML=window.vBadgeInner(amber);}
+  var head=document.getElementById('s4head');
+  if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
+  var sub=document.getElementById('s4sub');
+  if(sub)sub.innerHTML=amber
+    ?'That is exactly the kind of case we handle. Add your number and we will tell you straight, no sales pitch.'
+    :'You can apply for <b>'+(dest||'the Schengen area')+'</b> from the UK. Add your number and your consultant confirms today.';
+  var verd=document.getElementById('s4verdict');
+  if(verd)verd.innerHTML=window.vVerdictInner(amber);
+  var sitChip=/refused|complex/i.test(sit)?['bad','Needs review']:(/4 weeks/i.test(sit)?['warn','Time-sensitive']:['ok','Eligible category']);
+  var rows=[['Situation',sit,sitChip]];
+  if(dest)rows.push(['Destination',dest,window.vSlot(iso)]);
+  if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
+  document.getElementById('summary').innerHTML=window.vSnap(rows);
 }
 function send(){
   var nameEl=document.getElementById('f_name');
@@ -684,11 +721,14 @@ bars();
 .mov{position:fixed;inset:0;background:rgba(9,17,32,.62);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
 .mov.open{display:flex}
 .mmodal{background:#fff;border-radius:22px;width:100%;max-width:560px;max-height:92vh;overflow:auto;box-shadow:0 50px 120px -30px rgba(0,0,0,.6);position:relative}
-.mhead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 0}
+.mhead{display:flex;align-items:center;gap:8px;padding:20px 24px 0}
+.mhsp{flex:1}
+.mhint{font:600 12px var(--sans);color:var(--muted)}
+@media(max-width:520px){.mhint{display:none}}
 .mbody{padding:14px 24px 26px}
 .mx{width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:#fff;cursor:pointer;font:700 16px var(--sans);color:var(--muted);display:flex;align-items:center;justify-content:center}
 .mpill{display:inline-flex;align-items:center;gap:7px;font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(197,150,58,.12);padding:6px 12px;border-radius:999px}
-.mdest{display:inline-flex;align-items:center;gap:6px;font:700 12px var(--sans);color:var(--navy);background:#eef4f6;border:1px solid var(--border);padding:5px 11px;border-radius:999px;margin-left:8px}
+.mdest{display:inline-flex;align-items:center;gap:6px;font:700 12px var(--sans);color:var(--navy);background:#eef4f6;border:1px solid var(--border);padding:5px 11px;border-radius:999px}
 .mbars{display:flex;gap:6px;margin:14px 0 18px}.mbar{height:5px;flex:1;border-radius:3px;background:var(--border)}.mbar.on{background:var(--gold)}
 h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);margin-bottom:16px}
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -698,13 +738,19 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .mtile .mdotf{width:9px;height:9px;border-radius:50%;background:var(--gold);transform:scale(0);transition:.16s}.mtile .mic{color:var(--navy-mid);display:flex}
 .mtile:hover .mic,.mtile.sel .mic{color:var(--gold)}.mtile.sel{border-color:var(--gold);background:#fffdf8}.mtile.sel .mdot{border-color:var(--gold)}.mtile.sel .mdotf{transform:scale(1)}
 .mstep{display:none}.mstep.on{display:block}
-.mfld{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--navy);font:500 15px var(--sans);margin-bottom:12px;outline:none}
-.mfld:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.14)}
+.mfld{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--navy);font:500 15px var(--sans);margin-bottom:12px;outline:none;box-shadow:0 8px 20px -8px rgba(11,21,40,.24);transition:border-color .16s,box-shadow .16s}
+.mfld:focus{border-color:var(--gold);box-shadow:0 10px 24px -10px rgba(197,150,58,.4),0 0 0 3px rgba(197,150,58,.14)}
+.mtrust{display:flex;align-items:center;justify-content:center;gap:6px;font:600 11.5px var(--sans);color:#16a34a;margin-top:13px}
+.mtrust svg{width:14px;height:14px;flex:none}
+.mrl{font:600 12.5px var(--sans);color:var(--muted);margin:18px 0 8px}
 .merr{color:#c0392b;font:600 12px var(--sans);margin:-6px 0 12px;display:none}
-.mwabtn{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--wa);color:#fff;height:52px;border:0;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;text-decoration:none}
+.mwabtn{display:flex;align-items:center;justify-content:center;gap:9px;background:#C5963A;color:#3d2b08;height:52px;border:0;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;text-decoration:none}
+.mwabtn svg{fill:#3d2b08}
 .mreassure{font:500 12px var(--sans);color:var(--muted);text-align:center;margin-top:14px}
-.mback{display:none;align-items:center;gap:6px;background:none;border:0;color:var(--muted);font:600 13px var(--sans);cursor:pointer;padding:4px 0;margin-bottom:4px}.mback.on{display:inline-flex}
-.mpc{position:relative;display:flex;border:1.5px solid var(--border);border-radius:12px;background:#fff;margin-bottom:12px}
+.mback{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;flex:none;box-shadow:0 6px 14px -8px rgba(11,21,40,.3)}.mback svg{width:16px;height:16px}.mback:hover{color:var(--navy);border-color:var(--gold)}.mback.on{display:inline-flex}
+.mtoprow{display:flex;align-items:center;gap:8px}
+.mpc{position:relative;display:flex;border:1.5px solid var(--border);border-radius:12px;background:#fff;margin-bottom:12px;box-shadow:0 8px 20px -8px rgba(11,21,40,.24);transition:border-color .16s,box-shadow .16s}
+.mpc:focus-within{border-color:var(--gold);box-shadow:0 10px 24px -10px rgba(197,150,58,.4),0 0 0 3px rgba(197,150,58,.14)}
 .mpc:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.14)}
 .mpcbtn{display:flex;align-items:center;gap:6px;padding:0 12px;background:#f4f7f9;border:0;border-right:1.5px solid var(--border);border-radius:12px 0 0 12px;cursor:pointer;font:700 14px var(--sans);color:var(--navy)}
 .mpcin{flex:1;border:0!important;padding:14px 15px;font:500 15px var(--sans);border-radius:0 12px 12px 0;background:transparent;color:var(--navy);outline:none}
@@ -723,12 +769,33 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .dform .tile .ic{display:none}
 .dform .mres li img.flag,.dform .msearch img.flag{width:22px;height:16px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .mtile.ctile,.mtile.ptile{align-items:center}
+.mov .pg .mtile{align-items:center;position:relative;overflow:hidden}
+.mov .mtile .s1ic{width:36px;height:36px;border-radius:10px;background:rgba(197,150,58,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none;transition:.16s}
+.mov .mtile .s1ic svg{width:20px;height:20px}
+.mov .mtile.sel .s1ic{background:var(--gold);color:#fff}
+.mov .mtile .s1b{flex:1;min-width:0}
+.mov .mtile .s1b b{display:block;font:700 13.5px var(--sans);color:var(--navy)}
+.mov .mtile .s1s{display:block;font:500 11.5px var(--sans);color:var(--muted);margin-top:2px}
+.mov .mtile .s1n{position:absolute;top:-6px;right:8px;font:400 44px var(--serif);color:rgba(11,21,40,.05);line-height:1;pointer-events:none}
+.mov .mtile.sel .s1n{color:rgba(197,150,58,.18)}
 .ptile{flex-direction:column!important;align-items:flex-start!important;gap:2px;position:relative}
 .ptile .num{font-family:var(--serif);font-size:30px;color:var(--navy);line-height:1}
 .ptile .psub{font:600 12.5px var(--sans);color:var(--navy)}
 .ptile .then{font:500 11.5px var(--sans);color:var(--muted);margin-top:1px}
 .ptile.sel{border-color:var(--gold);background:#fffdf8;box-shadow:0 0 0 3px rgba(197,150,58,.14)}
-.frow{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1.5px solid var(--border);border-radius:13px;padding:13px;margin-bottom:10px}
+.mov .ptile{overflow:hidden}
+.mov .ptile .pic{width:32px;height:32px;border-radius:9px;background:rgba(197,150,58,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:8px;transition:.16s}
+.mov .ptile .pic svg{width:18px;height:18px}
+.mov .ptile.sel .pic{background:var(--gold);color:#fff}
+.mov .ptile .pick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.16s}
+.mov .ptile.sel .pick{background:var(--gold);border-color:var(--gold)}
+.mov .ptile .pick svg{width:12px;height:12px;color:#fff;opacity:0;transition:.16s}
+.mov .ptile.sel .pick svg{opacity:1}
+.frow{display:flex;align-items:center;gap:12px;border:1.5px solid var(--border);border-radius:14px;padding:14px;margin-bottom:11px;background:#fff;box-shadow:0 8px 20px -8px rgba(11,21,40,.24);transition:all .18s}
+.frow:hover{border-color:var(--gold);background:#fffdf8;transform:translateY(-4px);box-shadow:0 24px 42px -16px rgba(11,21,40,.42)}
+.frow .fic{width:34px;height:34px;border-radius:10px;background:rgba(197,150,58,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+.frow .fic svg{width:19px;height:19px}
+.frow .ftx{flex:1;min-width:0}
 .frow .ft{font:700 13.5px var(--sans);color:var(--navy)}.frow .fd{font:500 11.5px var(--sans);color:var(--muted);margin-top:2px}
 .seg{display:flex;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;flex:none}
 .seg button{border:0;background:#fff;padding:8px 14px;font:700 13px var(--sans);color:var(--muted);cursor:pointer}
@@ -739,19 +806,36 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .mres{list-style:none;margin:10px 0 0;padding:0;max-height:220px;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .mres li{display:flex;align-items:center;gap:9px;padding:10px;border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font:600 13px var(--sans);color:var(--navy)}
 .mres li:hover{border-color:var(--gold);background:#fffdf8}
+.mov .mtile.ctile .cn{flex:1;min-width:0;font:700 13.5px var(--sans);color:var(--navy)}
+.mov .mtile.ctile .cst{display:inline-flex;align-items:center;gap:5px;font:700 9.5px var(--sans);flex:none}
+.mov .mtile.ctile .cdot{width:6px;height:6px;border-radius:50%;flex:none}
+.mov .mtile.ctile .cst.open{color:#16a34a}.mov .mtile.ctile .cst.open .cdot{background:#22c55e}
+.mov .mtile.ctile .cst.lim{color:#b45309}.mov .mtile.ctile .cst.lim .cdot{background:#f59e0b}
+.mov .mtile.ctile .csrch{margin-left:auto;color:#cbd5e1;flex:none}
+.mov .msearch .euchip{display:flex;align-items:center;gap:7px;background:rgba(197,150,58,.1);border-radius:9px;padding:5px 9px 5px 6px;flex:none}
+.mov .msearch .euchip img.flag{width:24px;height:17px}
+.mov .msearch .euchip span{font:800 10px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+.mov .mres li{box-shadow:0 8px 20px -8px rgba(11,21,40,.24);transition:.16s}
+.mov .mres li:hover{transform:translateY(-3px);box-shadow:0 22px 40px -16px rgba(11,21,40,.42)}
+.mov .mres li .cn2{flex:1;min-width:0;font:700 13px var(--sans);color:var(--navy)}
+.mov .mres li .cst2{display:inline-flex;align-items:center;gap:5px;font:700 9px var(--sans);flex:none}
+.mov .mres li .cdot2{width:6px;height:6px;border-radius:50%;flex:none}
+.mov .mres li .cst2.open{color:#16a34a}.mov .mres li .cst2.open .cdot2{background:#22c55e}
+.mov .mres li .cst2.lim{color:#b45309}.mov .mres li .cst2.lim .cdot2{background:#f59e0b}
+.mov .mres li .cst2.chk{color:#94a3b8}.mov .mres li .cst2.chk .cdot2{background:#cbd5e1}
 .mcallbtn{display:flex;align-items:center;justify-content:center;gap:9px;height:52px;border-radius:13px;width:100%;font:800 15px var(--sans);cursor:pointer;text-decoration:none;margin-top:10px}
 .mwabtn,.mcallbtn,.waopen{white-space:nowrap}
 .mhide{display:none}
-.mov .mtile{box-shadow:0 2px 6px -2px rgba(11,21,40,.12);transition:all .18s}
-.mov .mtile:hover{box-shadow:0 14px 26px -14px rgba(11,21,40,.30);transform:translateY(-2px)}
-.mov .mtile.sel{box-shadow:0 10px 22px -12px rgba(197,150,58,.4)}
+.mov .mtile{box-shadow:0 8px 20px -8px rgba(11,21,40,.24);transition:all .18s}
+.mov .mtile:hover{box-shadow:0 24px 42px -16px rgba(11,21,40,.42);transform:translateY(-4px)}
+.mov .mtile.sel{box-shadow:0 12px 26px -10px rgba(197,150,58,.5)}
 .mov .msntgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:0}
 .mov .msntL{padding:4px 18px 4px 2px}
 .mov .msntL .mseal{margin:0 0 14px}
 .mov .msntL h3{text-align:left;margin-bottom:8px}
 .mov .msntL .mb{font:500 13px var(--sans);color:#475569;line-height:1.6;margin:0 0 6px}
 .mov .msntR{background:radial-gradient(300px 200px at 100% 0,rgba(37,211,102,.12),transparent 60%),#f6f9fb;border-left:1px solid var(--border);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.mov .msntsum{background:#f6f9fb;border:1px solid var(--border);border-radius:12px;padding:2px 14px;margin-top:14px}
+.mov .msntsum{background:#f6f9fb;border:1px solid var(--border);border-radius:12px;padding:2px 14px;margin-top:14px;box-shadow:0 8px 20px -8px rgba(11,21,40,.24)}
 .mov .msntsum .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font:500 12.5px var(--sans)}
 .mov .msntsum .row:last-child{border-bottom:0}
 .mov .msntsum .k{color:var(--muted)}.mov .msntsum .v{color:var(--navy);font-weight:700;text-align:right}
@@ -759,79 +843,106 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .mov .mring>svg{transform:rotate(-90deg)}
 .mov .mring circle{fill:none;stroke-width:8}
 .mov .mring .bg{stroke:var(--border)}
-.mov .mring .fg{stroke:var(--wa);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;animation:sntFill 3s linear forwards}
+.mov .mring .fg{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;animation:sntFill 3s linear forwards}
 .mov .mring .wac{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.mov .mring .disc{width:50px;height:50px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center}
+.mov .mring .disc{width:50px;height:50px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center}
 .mov .mpk{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
 .mov .mcnt{font:500 12.5px var(--sans);color:#475569;margin-bottom:16px}
 .mov .mcnt b{color:var(--navy)}
 @media(max-width:600px){.mov .msntgrid{grid-template-columns:1fr}.mov .msntR{border-left:0;border-top:1px solid var(--border);margin-top:14px}.mov .msntL{padding-right:2px}}
+.v-badge{display:inline-flex;align-items:center;gap:7px;font:800 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:12px}
+.v-badge svg{width:14px;height:14px;flex:none}
+.v-badge.g{background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.28);color:#15803d}
+.v-badge.a{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.3);color:#b45309}
+.v-sub{font:500 13.5px var(--sans);color:#475569;line-height:1.55;margin:0 0 18px}
+.v-sub b{color:var(--navy);font-weight:700}
+.v-flabel{font:700 12.5px var(--sans);color:var(--navy);margin-bottom:8px}
+.v-verdict{display:flex;gap:9px;align-items:flex-start;font:600 12px var(--sans);color:#475569;line-height:1.5;margin:16px 0 14px;padding:0 2px}
+.v-verdict svg{width:16px;height:16px;flex:none;margin-top:1px}
+.v-verdict b{color:var(--navy);font-weight:800}
+.v-snap{background:#f6f9fb;border:1px solid var(--border);border-radius:14px;padding:15px 16px;box-shadow:0 8px 20px -12px rgba(11,21,40,.28)}
+.v-snaphd{font:800 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:11px;display:flex;align-items:center;justify-content:space-between}
+.v-snaphd small{font:600 10px var(--sans);letter-spacing:0;text-transform:none;color:#94a3b8}
+.v-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border)}
+.v-row:first-of-type{border-top:0}
+.v-row .k{font:600 12px var(--sans);color:var(--muted);width:84px;flex:none}
+.v-row .v{font:700 12.5px var(--sans);color:var(--navy);flex:1;min-width:0}
+.v-chip{display:inline-flex;align-items:center;gap:5px;font:700 10px var(--sans);border-radius:999px;padding:4px 9px;flex:none}
+.v-chip svg{width:11px;height:11px;flex:none}
+.v-chip.ok{background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.24);color:#15803d}
+.v-chip.warn{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#b45309}
+.v-chip.bad{background:rgba(220,38,38,.09);border:1px solid rgba(220,38,38,.26);color:#b91c1c}
+.v-chip.neutral{background:#f1f5f9;border:1px solid var(--border);color:#475569}
+.v-fine{font:500 11px var(--sans);color:#94a3b8;text-align:center;margin-top:11px;line-height:1.45}
 </style><div class=mov id=mov>
  <div class=mmodal>
-  <div class=mhead><span style="display:flex;align-items:center"><span class=mpill id=mpill>Step 1</span><span class=mdest id=mdest></span></span><button class=mx onclick="mClose()" aria-label=Close>✕</button></div>
+  <div class=mhead><button class=mback id=mback onclick="mBack()" aria-label=Back><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg></button><span class=mpill id=mpill>Step 1</span><span class=mdest id=mdest></span><span class=mhsp></span><span class=mhint>60-sec check</span><button class=mx onclick="mClose()" aria-label=Close>✕</button></div>
   <div class=mbody>
-   <button class=mback id=mback onclick="mBack()"><svg width=15 height=15 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg> Back</button>
+   <div id=mtdiff style="display:none;margin-bottom:2px"></div>
    <div class=mbars id=mbars></div>
    <div class=mbanner id=mbanner></div>
+   <div id=murg style="margin:0 0 4px;display:none"></div>
 
    <div class=mstep data-k=preference><h3 class=mq>How would you like to start?</h3><p class=msub>Your call — nothing is charged here.</p><div class=mgrid>
-    <button class="mtile ptile" data-pref=p40 onclick="mPref('p40')"><span class=num>&pound;39</span><span class=psub>Just to start</span><span class=then>Pay &pound;99 later</span></button>
-    <button class="mtile ptile" data-pref=p85 onclick="mPref('p85')"><span class=num>&pound;85</span><span class=psub>To book Prime slot</span><span class=then>Pay &pound;99 later</span></button>
-    <button class="mtile ptile" data-pref=p140 onclick="mPref('p140')"><span class=num>&pound;138</span><span class=psub>Pay in full</span><span class=then>Nothing more to pay</span></button>
-    <button class="mtile ptile" data-pref=notsure onclick="mPref('notsure')"><span class=num style="font-size:22px">Not sure</span><span class=psub>Talk it through first</span></button>
+    <button class="mtile ptile" data-pref=p40 onclick="mPref('p40')"><span class=pick><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span><span class=pic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" clip-rule=evenodd/><path d="M5.26 17.242a.75.75 0 1 0-.897-1.203 5.243 5.243 0 0 0-2.05 5.022.75.75 0 0 0 .625.627 5.243 5.243 0 0 0 5.022-2.051.75.75 0 1 0-1.202-.897 3.744 3.744 0 0 1-3.008 1.51c0-1.23.592-2.323 1.51-3.008Z"/></svg></span><span class=num>&pound;39</span><span class=psub>Just to start</span><span class=then>Pay &pound;99 later</span></button>
+    <button class="mtile ptile" data-pref=p85 onclick="mPref('p85')"><span class=pick><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span><span class=pic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule=evenodd/></svg></span><span class=num>&pound;85</span><span class=psub>To book Prime slot</span><span class=then>Pay &pound;99 later</span></button>
+    <button class="mtile ptile" data-pref=p140 onclick="mPref('p140')"><span class=pick><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span><span class=pic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule=evenodd/></svg></span><span class=num>&pound;138</span><span class=psub>Pay in full</span><span class=then>Nothing more to pay</span></button>
+    <button class="mtile ptile" data-pref=notsure onclick="mPref('notsure')"><span class=pick><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></span><span class=pic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.678 3.348-3.97Z" clip-rule=evenodd/></svg></span><span class=num style="font-size:22px">Not sure</span><span class=psub>Talk it through first</span></button>
    </div></div>
 
-   <div class=mstep data-k=refreason><h3 class=mq>What did they refuse you on?</h3><p class=msub>Pick what it came down to. Not sure is fine.</p><div class=mgrid>
-    <button class=mtile onclick="mRr('Travel plan')"><span><b>Travel plan</b><span class=d>Purpose, hotel or itinerary</span></span></button>
-    <button class=mtile onclick="mRr('Funds')"><span><b>Funds</b><span class=d>Money not accepted</span></span></button>
-    <button class=mtile onclick="mRr('Return')"><span><b>Return</b><span class=d>Doubted I'd come back</span></span></button>
-    <button class=mtile onclick="mRr('Insurance')"><span><b>Insurance</b><span class=d>Cover wrong or missing</span></span></button>
-    <button class=mtile onclick="mRr('Documents')"><span><b>Documents</b><span class=d>Papers not believed</span></span></button>
-    <button class=mtile onclick="mRr('Overstay')"><span><b>Overstay</b><span class=d>Previous visa overstayed</span></span></button>
-    <button class="mtile wide" onclick="mRr('Not sure')"><span><b>Not sure</b><span class=d>Send us the letter, we'll read the reason</span></span></button>
+   <div class=mstep data-k=refreason><h3 class=mq>What did they refuse you on?</h3><p class=msub>Pick what it came down to. Not sure is fine.</p><div class="mgrid pg">
+    <button class=mtile onclick="mRr('Travel plan')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M8.161 2.58a1.875 1.875 0 0 1 1.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0 1 21.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 0 1-1.676 0l-4.994-2.497a.375.375 0 0 0-.336 0l-3.868 1.935A1.875 1.875 0 0 1 2.25 19.18V6.695c0-.71.401-1.36 1.036-1.677l4.875-2.437ZM9 6a.75.75 0 0 1 .75.75V15a.75.75 0 0 1-1.5 0V6.75A.75.75 0 0 1 9 6Zm6.75 3a.75.75 0 0 0-1.5 0v8.25a.75.75 0 0 0 1.5 0V9Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Travel plan</b><span class=s1s>Purpose, hotel or itinerary</span></span><span class=s1n>1</span></button>
+    <button class=mtile onclick="mRr('Funds')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"/><path fill-rule=evenodd d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z" clip-rule=evenodd/><path d="M2.25 18a.75.75 0 0 0 0 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 0 0-.75-.75H2.25Z"/></svg></span><span class=s1b><b>Funds</b><span class=s1s>Money not accepted</span></span><span class=s1n>2</span></button>
+    <button class=mtile onclick="mRr('Return')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Return</b><span class=s1s>Doubted I'd come back</span></span><span class=s1n>3</span></button>
+    <button class=mtile onclick="mRr('Insurance')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Insurance</b><span class=s1s>Cover wrong or missing</span></span><span class=s1n>4</span></button>
+    <button class=mtile onclick="mRr('Documents')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z" clip-rule=evenodd/><path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z"/></svg></span><span class=s1b><b>Documents</b><span class=s1s>Papers not believed</span></span><span class=s1n>5</span></button>
+    <button class=mtile onclick="mRr('Overstay')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Overstay</b><span class=s1s>Previous visa overstayed</span></span><span class=s1n>6</span></button>
+    <button class="mtile wide" onclick="mRr('Not sure')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .671 1.34l-.041.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Not sure</b><span class=s1s>Send us the letter, we'll read the reason</span></span><span class=s1n>7</span></button>
    </div></div>
 
-   <div class=mstep data-k=purpose><h3 class=mq>Why are you travelling?</h3><p class=msub>This tells us exactly what your case needs.</p><div class=mgrid>
-    <button class=mtile onclick="mPk('purpose','Holiday')"><span><b>Holiday</b><span class=d>Tourism or a short break</span></span></button>
-    <button class=mtile onclick="mPk('purpose','Family/friends')"><span><b>Family / friends</b><span class=d>Visiting someone abroad</span></span></button>
-    <button class=mtile onclick="mPk('purpose','Business')"><span><b>Business</b><span class=d>Work trip or meetings</span></span></button>
-    <button class=mtile onclick="mPk('purpose','Study')"><span><b>Study</b><span class=d>Course or exchange</span></span></button>
-    <button class="mtile wide" onclick="mPk('purpose','Long-stay')"><span><b>Long-stay</b><span class=d>Frequent traveller or multi-entry</span></span></button>
+   <div class=mstep data-k=purpose><h3 class=mq>Why are you travelling?</h3><p class=msub>This tells us exactly what your case needs.</p><div class="mgrid pg">
+    <button class=mtile onclick="mPk('purpose','Holiday')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.592-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Holiday</b><span class=s1s>Tourism or a short break</span></span><span class=s1n>1</span></button>
+    <button class=mtile onclick="mPk('purpose','Family/friends')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z"/></svg></span><span class=s1b><b>Family / friends</b><span class=s1s>Visiting someone abroad</span></span><span class=s1n>2</span></button>
+    <button class=mtile onclick="mPk('purpose','Business')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M7.5 5.25a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0 1 12 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 0 1 7.5 5.455V5.25Zm7.5 0v.09a49.488 49.488 0 0 0-6 0v-.09a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5Zm-3 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule=evenodd/><path d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.19.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z"/></svg></span><span class=s1b><b>Business</b><span class=s1s>Work trip or meetings</span></span><span class=s1n>3</span></button>
+    <button class=mtile onclick="mPk('purpose','Study')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.949 49.949 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z"/><path d="M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.727.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z"/><path d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z"/></svg></span><span class=s1b><b>Study</b><span class=s1s>Course or exchange</span></span><span class=s1n>4</span></button>
+    <button class="mtile wide" onclick="mPk('purpose','Long-stay')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Long-stay</b><span class=s1s>Frequent traveller or multi-entry</span></span><span class=s1n>5</span></button>
    </div></div>
 
    <div class=mstep data-k=country><h3 class=mq id=mcq>Which country are you applying for?</h3><p class=msub>Pick a popular one, or search all Schengen countries.</p>
     <div class=mgrid id=mcgrid>
-     <button class="mtile ctile" onclick="mPickC('Spain','es')"><img class=flag src="https://flagcdn.com/es.svg" alt=""><b>Spain</b></button>
-     <button class="mtile ctile" onclick="mPickC('France','fr')"><img class=flag src="https://flagcdn.com/fr.svg" alt=""><b>France</b></button>
-     <button class="mtile ctile" onclick="mPickC('Italy','it')"><img class=flag src="https://flagcdn.com/it.svg" alt=""><b>Italy</b></button>
-     <button class="mtile ctile" onclick="mPickC('Germany','de')"><img class=flag src="https://flagcdn.com/de.svg" alt=""><b>Germany</b></button>
-     <button class="mtile ctile" onclick="mPickC('Greece','gr')"><img class=flag src="https://flagcdn.com/gr.svg" alt=""><b>Greece</b></button>
-     <button class="mtile ctile" onclick="mCsearch()"><img class=flag src="https://flagcdn.com/eu.svg" alt=""><b>Other country</b></button>
+     <button class="mtile ctile" onclick="mPickC('Spain','es')"><img class=flag src="https://flagcdn.com/es.svg" alt=""><span class=cn>Spain</span><span class="cst lim"><span class=cdot></span>Filling</span></button>
+     <button class="mtile ctile" onclick="mPickC('France','fr')"><img class=flag src="https://flagcdn.com/fr.svg" alt=""><span class=cn>France</span><span class="cst open"><span class=cdot></span>Open</span></button>
+     <button class="mtile ctile" onclick="mPickC('Italy','it')"><img class=flag src="https://flagcdn.com/it.svg" alt=""><span class=cn>Italy</span><span class="cst lim"><span class=cdot></span>Limited</span></button>
+     <button class="mtile ctile" onclick="mPickC('Germany','de')"><img class=flag src="https://flagcdn.com/de.svg" alt=""><span class=cn>Germany</span><span class="cst open"><span class=cdot></span>Open</span></button>
+     <button class="mtile ctile" onclick="mPickC('Greece','gr')"><img class=flag src="https://flagcdn.com/gr.svg" alt=""><span class=cn>Greece</span><span class="cst open"><span class=cdot></span>Open</span></button>
+     <button class="mtile ctile" onclick="mCsearch()"><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span><svg class=csrch width=17 height=17 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7/><path d="M21 21l-4.3-4.3"/></svg></button>
     </div>
-    <div id=mcwrap class=mhide><div class=msearch><img class=flag src="https://flagcdn.com/eu.svg" alt=""><input id=mcq2 placeholder="Search Schengen countries" oninput="mCrender(this.value)" autocomplete=off><button class=bk onclick="mCclose()">✕</button></div><ul class=mres id=mclist></ul></div>
+    <div id=mcwrap class=mhide><div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=mcq2 placeholder="Search countries" oninput="mCrender(this.value)" autocomplete=off><button class=bk onclick="mCclose()">✕</button></div><ul class=mres id=mclist></ul></div>
    </div>
 
    <div class=mstep data-k=flex><h3 class=mq>How flexible can you be?</h3><p class=msub>More flexibility means a sooner appointment.</p>
-    <div class=frow><div><div class=ft>Flexible on the UK visa centre?</div><div class=fd>London &middot; Manchester &middot; Edinburgh</div></div><div class=seg><button onclick="mFlex(this,'centre','Yes')">Yes</button><button onclick="mFlex(this,'centre','No')">No</button></div></div>
-    <div class=frow><div><div class=ft>Flexible on your travel dates?</div><div class=fd>Shift a few days for a sooner slot</div></div><div class=seg><button onclick="mFlex(this,'dates','Yes')">Yes</button><button onclick="mFlex(this,'dates','No')">No</button></div></div>
-    <div class=frow><div><div class=ft>Open to another country for a sooner slot?</div><div class=fd>Only if your plans aren't fixed</div></div><div class=seg><button onclick="mFlex(this,'altc','Yes')">Yes</button><button onclick="mFlex(this,'altc','No')">No</button></div></div>
-    <button class=mwabtn style="background:var(--navy)" onclick="mNext()">Continue &rsaquo;</button>
+    <div class=frow><span class=fic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule=evenodd/></svg></span><div class=ftx><div class=ft>Flexible on the UK visa centre?</div><div class=fd>London &middot; Manchester &middot; Edinburgh</div></div><div class=seg><button onclick="mFlex(this,'centre','Yes')">Yes</button><button onclick="mFlex(this,'centre','No')">No</button></div></div>
+    <div class=frow><span class=fic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule=evenodd/></svg></span><div class=ftx><div class=ft>Flexible on your travel dates?</div><div class=fd>Shift a few days for a sooner slot</div></div><div class=seg><button onclick="mFlex(this,'dates','Yes')">Yes</button><button onclick="mFlex(this,'dates','No')">No</button></div></div>
+    <div class=frow><span class=fic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM6.262 6.072a8.25 8.25 0 1 0 10.562-.766 4.5 4.5 0 0 1-1.318 1.357L14.25 7.5l.165.33a.809.809 0 0 1-1.086 1.085l-.604-.302a1.125 1.125 0 0 0-1.298.21l-.132.131c-.439.44-.439 1.152 0 1.591l.296.296c.256.257.622.374.98.314l1.17-.195c.323-.054.654.036.905.245l1.33 1.108c.32.267.46.694.358 1.1a8.7 8.7 0 0 1-2.288 4.04l-.723.724a1.125 1.125 0 0 1-1.298.21l-.153-.076a1.125 1.125 0 0 1-.622-1.006v-1.089c0-.298-.119-.585-.33-.796l-1.347-1.347a1.125 1.125 0 0 1-.21-1.298L9.75 12l-1.64-1.64a6 6 0 0 1-1.676-3.257l-.172-1.03Z" clip-rule=evenodd/></svg></span><div class=ftx><div class=ft>Open to another country for a sooner slot?</div><div class=fd>Only if your plans aren't fixed</div></div><div class=seg><button onclick="mFlex(this,'altc','Yes')">Yes</button><button onclick="mFlex(this,'altc','No')">No</button></div></div>
+    <button class=mwabtn style="background:var(--navy);color:#fff" onclick="mNext()">Continue &rsaquo;</button>
    </div>
 
-   <div class=mstep data-k=tim><h3 class=mq>When are you travelling?</h3><p class=msub>Even a rough idea helps.</p><div class=mgrid>
-    <button class=mtile onclick="mPk('tim','Within 2 weeks')"><span><b>Within 2 weeks</b><span class=d>Urgent</span></span></button>
-    <button class=mtile onclick="mPk('tim','In 2 to 4 weeks')"><span><b>In 2 to 4 weeks</b><span class=d>Soon</span></span></button>
-    <button class=mtile onclick="mPk('tim','In 1 to 3 months')"><span><b>In 1 to 3 months</b><span class=d>Planning</span></span></button>
-    <button class=mtile onclick="mPk('tim','Just planning ahead')"><span><b>Just planning ahead</b><span class=d>No fixed date</span></span></button>
+   <div class=mstep data-k=tim><h3 class=mq>When are you travelling?</h3><p class=msub>Even a rough idea helps.</p><div class="mgrid pg">
+    <button class=mtile onclick="mPk('tim','Within 2 weeks')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Within 2 weeks</b><span class=s1s>Urgent</span></span><span class=s1n>1</span></button>
+    <button class=mtile onclick="mPk('tim','In 2 to 4 weeks')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 2 to 4 weeks</b><span class=s1s>Soon</span></span><span class=s1n>2</span></button>
+    <button class=mtile onclick="mPk('tim','In 1 to 3 months')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 1 to 3 months</b><span class=s1s>Planning</span></span><span class=s1n>3</span></button>
+    <button class=mtile onclick="mPk('tim','Just planning ahead')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path fill-rule=evenodd d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Just planning ahead</b><span class=s1s>No fixed date</span></span><span class=s1n>4</span></button>
    </div></div>
 
-   <div class=mstep data-k=details><h3 class=mq id=mdetq>Tell us where to reach you.</h3><p class=msub id=mdetsub style="margin:-8px 0 8px">What you've told us:</p><div class=msntsum id=mdetsum style="margin:0 0 16px"></div>
+   <div class=mstep data-k=details><span class="v-badge g" id=mdetbadge></span><h3 class=mq id=mdetq style="margin-bottom:8px">Good news. You look eligible.</h3><p class=v-sub id=mdetsub></p><div class=v-flabel>Where should we reach you?</div>
      <input class=mfld id=mfname placeholder="Your first name" autocomplete=given-name>
      <div class=merr id=mename>Please enter your name</div>
      <div class=mpc id=mpc><button type=button class=mpcbtn id=mpcbtn><img id=mpcflag src="https://beyondpassports.co.uk/assets/flags/gb.svg" width=20 height=15 alt=""><span id=mpcdc>+44</span><span style="color:var(--muted);font-size:10px">▾</span></button><input class=mpcin id=mfphone type=tel placeholder="7911 123456" inputmode=tel><div id=mpcpop style="position:absolute;z-index:5;top:calc(100% + 6px);left:0;width:280px;max-width:90vw;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 30px 60px -24px rgba(20,30,45,.4);padding:8px" hidden></div></div>
      <div class=merr id=mephone>Enter a valid number</div>
-     <button class=mwabtn id=mdetbtn onclick=mNext()>Continue &rsaquo;</button>
-     <p class=mreassure id=mdetre>Send when ready. A UK specialist replies on WhatsApp, usually within 30 min.</p>
+     <button class=mwabtn id=mdetbtn style="background:#C5963A;color:#3d2b08" onclick=mNext()><svg width=18 height=18 viewBox="0 0 24 24" fill=none stroke="#3d2b08" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Get professional assessment</button>
+     <div class=v-verdict id=mdetverdict></div>
+     <div class=v-snap id=mdetsum></div>
+     <p class=v-fine>Provisional only. Eligibility to apply is not a visa decision. Your details stay private.</p>
    </div>
 
    <div class=mstep data-k=closeWa><div class=msntgrid>
@@ -860,7 +971,7 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
      <p class=mpk>Your choice</p>
      <p class=mcnt>Pick whichever suits you.</p>
      <a class=mcallbtn href="https://calendly.com/beyondpassports/30min" target=_blank rel=noopener style="background:var(--navy);color:#fff;margin:0">&#128197; Calendly</a>
-     <a class=mcallbtn id=mcallwa href="#" target=_blank rel=noopener style="background:var(--wa);color:#fff"><svg width=19 height=19 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> WhatsApp</a>
+     <a class=mcallbtn id=mcallwa href="#" target=_blank rel=noopener style="background:#C5963A;color:#3d2b08"><svg width=19 height=19 viewBox="0 0 24 24" fill="#3d2b08"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> WhatsApp</a>
     </div>
    </div></div>
   </div>
@@ -891,8 +1002,10 @@ function show(i){CUR=i;var raw=SEQ[i],k=realKey(raw);document.querySelectorAll('
  $('mback').classList.toggle('on',i>0&&raw!=='close');
  $('mpill').textContent=(raw==='close')?'All set':('Step '+(i+1)+' of '+(SEQ.length-1));
  var chip=$('mdest');if(ST.dest){chip.innerHTML=(ST.iso?'<img src="https://flagcdn.com/'+ST.iso+'.svg" alt="" style="width:18px;height:13px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.1)">':'🌍')+' '+ST.dest;chip.style.display='inline-flex';}else chip.style.display='none';
- if(raw==='details'){var ns=(ST.pref==='notsure');$('mdetq').textContent=(CFG&&CFG.head)||'Tell us where to reach you.';mFillSum('mdetsum');$('mdetre').textContent=ns?'Prefer to talk it through? Pick a call or WhatsApp next.':'Send when ready. A UK specialist replies on WhatsApp, usually within 30 min.';}
+ if(raw==='details'){mDetailsFill();}
  if(raw==='close')doClose();
+ var md=$('mtdiff');if(md){if(ST.dest&&ST.iso&&raw!=='country'&&raw!=='close'&&window.diffHTML){md.innerHTML=window.diffHTML(ST.iso);md.style.display='inline-flex';}else{md.style.display='none';md.innerHTML='';}}
+ var mu=$('murg');if(mu){if(ST.dest&&ST.iso&&raw!=='country'&&raw!=='close'&&window.urgHTML){mu.innerHTML=window.urgHTML(ST.dest,ST.iso);mu.style.display='';}else{mu.style.display='none';mu.innerHTML='';}}
  bars();}
 window.mOpen=function(intent,dest,iso){
  if(!INT[intent]){dest=intent;iso=ISOM[intent]||'';intent='availability';}
@@ -920,7 +1033,8 @@ window.mFlex=function(el,k,v){var g=el.parentNode;g.querySelectorAll('button').f
 window.mCsearch=function(){$('mcgrid').classList.add('mhide');$('mcwrap').classList.remove('mhide');mCrender('');$('mcq2').focus();};
 window.mCclose=function(){var w=$('mcwrap');if(w)w.classList.add('mhide');var g=$('mcgrid');if(g)g.classList.remove('mhide');var q=$('mcq2');if(q)q.value='';};
 var SC=[["Austria","at"],["Belgium","be"],["Bulgaria","bg"],["Croatia","hr"],["Czechia","cz"],["Denmark","dk"],["Estonia","ee"],["Finland","fi"],["France","fr"],["Germany","de"],["Greece","gr"],["Hungary","hu"],["Iceland","is"],["Italy","it"],["Latvia","lv"],["Liechtenstein","li"],["Lithuania","lt"],["Luxembourg","lu"],["Malta","mt"],["Netherlands","nl"],["Norway","no"],["Poland","pl"],["Portugal","pt"],["Romania","ro"],["Slovakia","sk"],["Slovenia","si"],["Spain","es"],["Sweden","se"],["Switzerland","ch"]];
-window.mCrender=function(q){q=(q||'').toLowerCase();var ul=$('mclist');ul.innerHTML='';var m=SC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li style="grid-column:1/-1;color:var(--muted);padding:8px">No match.</li>';return;}m.forEach(function(c){var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt="">'+c[0];li.onclick=function(){mPickC(c[0],c[1]);};ul.appendChild(li);});};
+var MSLOT={fr:['open','Open'],de:['open','Open'],gr:['open','Open'],es:['lim','Filling'],it:['lim','Limited'],at:['open','Open'],be:['lim','Limited'],pt:['open','Open'],nl:['open','Open']};
+window.mCrender=function(q){q=(q||'').toLowerCase();var ul=$('mclist');ul.innerHTML='';var m=SC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li style="grid-column:1/-1;color:var(--muted);padding:8px">No match. Try another spelling.</li>';return;}m.forEach(function(c){var s=MSLOT[c[1]]||['chk','Check'];var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+s[0]+'"><span class=cdot2></span>'+s[1]+'</span>';li.onclick=function(){mPickC(c[0],c[1]);};ul.appendChild(li);});};
 window.mNext=function(){var nm=$('mfname');if(document.querySelector('#mov .mstep.on').dataset.k==='details'){var ok=true;if(!nm.value.trim()){nm.style.borderColor='#dc2626';$('mename').style.display='block';ok=false;}else{nm.style.borderColor='';$('mename').style.display='none';}var ps=(window.mPcStatus&&window.mPcStatus())||'bad';if(ps!=='ok'){$('mpc').style.borderColor='#dc2626';$('mephone').style.display='block';ok=false;}else{$('mpc').style.borderColor='';$('mephone').style.display='none';}if(!ok)return;}next();};
 function msg(){var nm=$('mfname').value.trim(),ph=(window.mPcFull&&window.mPcFull())||'';var intro;if(ST.intent==='refused')intro='I was refused before and need help - '+(RLOOP[ST.refreason]||'what went wrong?');else if(ST.intent==='refusalpay')intro='I would like Refusal Recovery (£194, £39 to start) - '+(RLOOP[ST.refreason]||'my refusal.');else intro=(CFG&&CFG.wa)||'I would like help with my Schengen visa.';var l=['Hi Beyond Passports, '+intro,''];
  if(ST.pref&&ST.pref!=='notsure')l.push('Preference: '+PREF[ST.pref]);
@@ -938,6 +1052,23 @@ function mFillSum(id){var el=$(id);if(!el)return;var r=[];
  if(ST.dest)r.push(['Destination',ST.dest]);
  if(ST.tim)r.push(['Travelling',ST.tim]);
  var h='';r.forEach(function(x){h+='<div class=row><span class=k>'+x[0]+'</span><span class=v>'+x[1]+'</span></div>';});el.innerHTML=h;}
+function mDetailsFill(){
+ var purpose=ST.purpose||'',ref=ST.refreason||'',dest=ST.dest||'',iso=ST.iso||'',tim=ST.tim||'';
+ var amber=!!ref||/within 2 weeks/i.test(tim)||/refus|complex|reject/i.test(ST.intent||'');
+ var badge=$('mdetbadge');
+ if(badge){badge.className='v-badge '+(amber?'a':'g');badge.innerHTML=window.vBadgeInner(amber);}
+ var head=$('mdetq');if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
+ var sub=$('mdetsub');
+ if(sub)sub.innerHTML=amber
+   ?'That is exactly the kind of case we handle. Add your number and we will tell you straight, no sales pitch.'
+   :'You can apply for <b>'+(dest||'the Schengen area')+'</b> from the UK. Add your number and your consultant confirms today.';
+ var verd=$('mdetverdict');if(verd)verd.innerHTML=window.vVerdictInner(amber);
+ var rows=[];
+ if(ref)rows.push(['Refused on',ref,['bad','Needs review']]);
+ else if(purpose)rows.push(['Purpose',purpose,['ok','Eligible category']]);
+ if(dest)rows.push(['Destination',dest,window.vSlot(iso)]);
+ if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
+ var snap=$('mdetsum');if(snap)snap.innerHTML=window.vSnap(rows);}
 function doClose(){var text=encodeURIComponent(msg()),web='https://wa.me/'+WA+'?text='+text,app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
  if(ST.pref==='notsure'){mFillSum('mcallsum');var cw=$('mcallwa');if(cw)cw.href=web;return;}
  var nm=$('mfname').value.trim();$('msnthead').textContent=nm?("You're all set, "+nm+"."):"You're all set.";$('msntwa').href=web;mFillSum('msntsum');
@@ -963,4 +1094,61 @@ function dayInc(d){var w=Math.floor(d/7),dow=d%7,t=tgt(w),b=Math.floor(t/7),r=t-
 var start=Date.UTC(2026,7,24),base=243,days=Math.floor((Date.now()-start)/86400000);if(days<0)days=0;
 var total=base;for(var d=0;d<days;d++)total+=dayInc(d);
 var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i].textContent=total.toLocaleString('en-GB');})();</script>
+<script>
+(function(){
+ var CT={es:['filling','standard'],fr:['open','straightforward'],it:['limited','strict'],de:['open','standard'],gr:['open','straightforward'],nl:['filling','strict'],pt:['open','straightforward'],be:['limited','high'],at:['check','standard'],ch:['waitlist','strict']};
+ window.CTRY=CT;
+ var S={
+  open:['linear-gradient(100deg,rgba(197,150,58,.1),rgba(197,150,58,.03))','rgba(197,150,58,.28)','#C5963A','#5c410f','#8a621f','<svg viewBox="0 0 24 24" fill=none stroke=#fff stroke-width=2.6 stroke-linecap=round stroke-linejoin=round style="width:10px;height:10px"><path d="M20 6L9 17l-5-5"/></svg>',': good availability now','Best slots go early. Start while dates are open.'],
+  filling:['linear-gradient(100deg,rgba(245,158,11,.12),rgba(245,158,11,.04))','rgba(245,158,11,.28)','#B45309','#7c3d06','#b45309','<svg viewBox="0 0 24 24" fill=none stroke=#fff stroke-width=2.2 stroke-linecap=round stroke-linejoin=round style="width:10px;height:10px"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 0M7 21c0-5 10-5 10 0"/></svg>',': appointments filling fast','If your trip is in the next 8 weeks, do not wait.'],
+  limited:['linear-gradient(100deg,rgba(245,158,11,.12),rgba(245,158,11,.04))','rgba(245,158,11,.28)','#B45309','#7c3d06','#b45309','<svg viewBox="0 0 24 24" fill=#fff style="width:10px;height:10px"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>',': limited slots left','If your trip is in the next 8 weeks, do not wait.'],
+  check:['#f6f9fb','#E2E8F0','#64748b','#0B1528','#5b6b7d','<svg viewBox="0 0 24 24" fill=none stroke=#fff stroke-width=2.4 stroke-linecap=round stroke-linejoin=round style="width:10px;height:10px"><circle cx=11 cy=11 r=7/><path d="M21 21l-4.3-4.3"/></svg>',': live availability check','Tell us your dates and we confirm fast.'],
+  waitlist:['rgba(11,21,40,.04)','rgba(11,21,40,.12)','#0B1528','#0B1528','#5b6b7d','<svg viewBox="0 0 24 24" fill=none stroke=#fff stroke-width=2.2 stroke-linecap=round stroke-linejoin=round style="width:10px;height:10px"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>',': currently by waitlist','We alert you the moment a slot opens.']
+ };
+ var D={
+  straightforward:['rgba(22,163,74,.1)','rgba(22,163,74,.25)','#166534','<svg viewBox="0 0 24 24" fill=currentColor style="width:13px;height:13px"><path d="M7 10v10H3V10h4zm3.5 0 3-6.5c.7-1.5 3-1 3 .8V8h3.3c1.3 0 2.2 1.2 1.9 2.4l-1.4 6.2c-.2 1-1.1 1.6-2.1 1.6H10.5V10z"/></svg>','Usually smooth when documents are in order'],
+  standard:['#f1f5f9','#E2E8F0','#5b6b7d','<svg viewBox="0 0 24 24" fill=currentColor style="width:13px;height:13px"><path fill-rule=evenodd d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z" clip-rule=evenodd/><path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z"/></svg>','Standard checks. Details matter'],
+  strict:['rgba(180,83,9,.1)','rgba(180,83,9,.28)','#b45309','<svg viewBox="0 0 24 24" fill=currentColor style="width:13px;height:13px"><path fill-rule=evenodd d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule=evenodd/></svg>','Strict on funds and documents. Common refusal points'],
+  high:['rgba(220,38,38,.09)','rgba(220,38,38,.28)','#b91c1c','<svg viewBox="0 0 24 24" fill=currentColor style="width:13px;height:13px"><path fill-rule=evenodd d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule=evenodd/></svg>','Higher refusal risk. Expert prep advised']
+ };
+ window.urgHTML=function(name,iso){
+  iso=(iso||'').toLowerCase();var c=CT[iso]||['check','standard'];var s=S[c[0]]||S.check;
+  return '<div style="display:flex;gap:11px;align-items:center;border-radius:13px;padding:11px 13px;background:'+s[0]+';border:1px solid '+s[1]+'">'
+   +'<span style="position:relative;flex:none"><img src="https://flagcdn.com/'+iso+'.svg" alt="" style="width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:0 6px 14px -6px rgba(11,21,40,.5),0 0 0 1px rgba(0,0,0,.08)"><span style="position:absolute;bottom:-4px;right:-4px;width:18px;height:18px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;background:'+s[2]+'">'+s[5]+'</span></span>'
+   +'<span><b style="display:block;font:800 12px Inter,sans-serif;color:'+s[3]+'">'+name+s[6]+'</b><span style="display:block;font:600 11px Inter,sans-serif;color:'+s[4]+';margin-top:2px;line-height:1.4">'+s[7]+'</span></span></div>';
+ };
+ window.diffHTML=function(iso){
+  iso=(iso||'').toLowerCase();var c=CT[iso]||['check','standard'];var d=D[c[1]]||D.standard;
+  return '<span style="display:inline-flex;align-items:center;gap:6px;font:700 10.5px Inter,sans-serif;border-radius:999px;padding:5px 10px;background:'+d[0]+';border:1px solid '+d[1]+';color:'+d[2]+'">'+d[3]+d[4]+'</span>';
+ };
+ var VIC={
+  ok:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=3 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>',
+  warn:'<svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>',
+  bad:'<svg viewBox="0 0 24 24" fill=currentColor><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1 5h2v6h-2V7Zm0 8h2v2h-2v-2Z"/></svg>',
+  neutral:'<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r="7"></circle><path d="M21 21l-4.3-4.3"/></svg>'
+ };
+ window.vChip=function(c){return c&&c[1]?'<span class="v-chip '+c[0]+'">'+(VIC[c[0]]||'')+c[1]+'</span>':'';};
+ window.vSlot=function(iso){var c=CT[(iso||'').toLowerCase()];var s=c?c[0]:'check';
+  if(s==='open')return['ok','Appointments open'];
+  if(s==='filling'||s==='limited')return['warn','Book soon'];
+  if(s==='waitlist')return['neutral','Waitlist'];
+  return['neutral','Live check'];};
+ window.vTime=function(t){t=t||'';
+  if(/within 2 weeks/i.test(t))return['bad','Very tight'];
+  if(/2 to 4 weeks/i.test(t))return['warn','Tight, act now'];
+  if(/1 to 3 months/i.test(t))return['ok','Good runway'];
+  if(/planning/i.test(t))return['ok','Plenty of time'];
+  return['neutral',''];};
+ window.vAmber=function(sit,tim){return /refused|complex|4 weeks/i.test(sit||'')||/within 2 weeks/i.test(tim||'');};
+ window.vSnap=function(rows){var h='<div class=v-snaphd>Your eligibility snapshot <small>provisional</small></div>';
+  rows.forEach(function(r){if(!r[1])return;h+='<div class=v-row><span class=k>'+r[0]+'</span><span class=v>'+r[1]+'</span>'+window.vChip(r[2])+'</div>';});
+  return h;};
+ window.vBadgeInner=function(amber){return amber
+   ? '<svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Needs a human look'
+   : '<svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg>Provisional result';};
+ window.vVerdictInner=function(amber){return amber
+   ? '<svg viewBox="0 0 24 24" fill=none stroke="#b45309" stroke-width=2 stroke-linecap=round stroke-linejoin=round><circle cx=12 cy=12 r="9"><path d="M12 8v4l3 2"/></svg><span><b>We can still help.</b> A consultant reviews complex and urgent cases first, subject to a quick review.</span>'
+   : '<svg viewBox="0 0 24 24" fill=none stroke="#15803d" stroke-width=2 stroke-linecap=round stroke-linejoin=round><circle cx=12 cy=12 r="9"><path d="M12 8v4l3 2"/></svg><span><b>Looks eligible.</b> Final check takes 2 minutes with your consultant, subject to a quick review.</span>';};
+})();
+</script>
 </body></html>
