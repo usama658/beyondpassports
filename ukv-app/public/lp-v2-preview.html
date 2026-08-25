@@ -324,9 +324,10 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 .slflags .f:first-child{margin-left:0}
 .slflags .more{width:30px;height:30px;border-radius:50%;margin-left:-8px;background:var(--navy);color:#fff;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font:800 10px var(--sans)}
 .slsub{font:500 12.5px var(--sans);color:var(--muted);line-height:1.5;margin-bottom:16px}
+.slsub-m{display:none}
 .slsub b{color:var(--navy);font-weight:800}
 @media(max-width:820px){.slg{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.slwrap{padding:0 16px}.slg{grid-template-columns:1fr 1fr;gap:11px}.slin{padding:14px 13px}.slrow{flex-direction:column;align-items:flex-start;gap:0;margin-bottom:0}.slflag{width:36px;height:36px;border-radius:10px;font-size:20px;margin-bottom:10px}.slcty{font-size:14px}.slop{font-size:10px;margin-top:0;margin-bottom:10px}.slop svg{display:none}.slnum{gap:5px;margin-bottom:8px}.slnum b{font-size:30px}.slnum span{font-size:10px}.slmeter{height:4px;margin-bottom:8px}.slnx{font-size:10px;font-weight:700;margin-bottom:11px}.slnx svg{width:11px;height:11px}.slcta{height:38px;font-size:11.5px}.slsub{font-size:11px;line-height:1.45}.slflags{margin-bottom:10px}.slflags .f{width:22px;height:22px;font-size:11px;border-width:1.5px;margin-left:-6px}.slflags .f:first-child{margin-left:0}.slflags .more{width:24px;height:22px;border-radius:999px;font-size:8.5px;margin-left:-6px;padding:0 2px}}
+@media(max-width:560px){.slwrap{padding:0 16px}.slg{grid-template-columns:1fr 1fr;gap:11px}.slin{padding:14px 13px}.slrow{flex-direction:column;align-items:flex-start;gap:0;margin-bottom:0}.slflag{width:36px;height:36px;border-radius:10px;font-size:20px;margin-bottom:10px}.slcty{font-size:14px}.slop{font-size:10px;margin-top:0;margin-bottom:10px}.slop svg{display:none}.slnum{gap:5px;margin-bottom:8px}.slnum b{font-size:30px}.slnum span{font-size:10px}.slmeter{height:4px;margin-bottom:8px}.slnx{font-size:10px;font-weight:700;margin-bottom:11px}.slnx svg{width:11px;height:11px}.slcta{height:38px;font-size:11.5px}.slsub{font-size:11px;line-height:1.45}.slsub-d{display:none!important}.slsub-m{display:block}.slflags{margin-bottom:10px}.slflags .f{width:22px;height:22px;font-size:11px;border-width:1.5px;margin-left:-6px}.slflags .f:first-child{margin-left:0}.slflags .more{width:24px;height:22px;border-radius:999px;font-size:8.5px;margin-left:-6px;padding:0 2px}}
 </style>
 <div class=wrap style="text-align:center;max-width:660px;margin:0 auto 12px">
  <span class=sllive><span class=sldot></span>Live &middot; updated today</span>
@@ -373,7 +374,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  <button type=button class="slc ask" onclick="mOpenSearch()"><div class=slac></div><div class=slin>
   <div class=slrow><span class=slflag>🇪🇺</span><div><div class=slcty>Somewhere else?</div><div class=slop>We cover them all</div></div></div>
   <div class=slflags><span class=f>🇵🇹</span><span class=f>🇳🇱</span><span class=f>🇦🇹</span><span class=f>🇧🇪</span><span class=f>🇨🇭</span><span class=more>+24</span></div>
-  <div class=slsub><b>29 Schengen countries</b> covered. Tell us where you are headed and we check live availability.</div>
+  <div class="slsub slsub-d"><b>29 Schengen countries</b> covered. Tell us where you are headed and we check live availability.</div><div class="slsub slsub-m"><b>All 29 Schengen</b> countries. Tell us where and we check live.</div>
   <div class=slcta>Find your country <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.6 stroke-linecap=round stroke-linejoin=round><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
  </div></button>
 </div>
