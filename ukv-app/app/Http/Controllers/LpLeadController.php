@@ -51,6 +51,22 @@ class LpLeadController extends Controller
         $recipient = config('ukv.leads_email') ?: config('ukv.owner_email') ?: config('mail.from.address');
         $intent = $data['intent'] ?? 'case';
 
+        // Durable capture: full lead (incl. name + phone) to storage/app/leads.jsonl, so a lead
+        // is never lost when the mail transport is down. Recover with: cat storage/app/leads.jsonl
+        try {
+            \Illuminate\Support\Facades\Storage::disk('local')->append('leads.jsonl', json_encode([
+                'time' => now()->toIso8601String(),
+                'name' => $data['name'] ?? null,
+                'phone' => $data['phone'] ?? null,
+                'dest' => $data['dest'] ?? null,
+                'intent' => $intent,
+                'source' => $source,
+                'ip' => $request->ip(),
+            ], JSON_UNESCAPED_UNICODE));
+        } catch (\Throwable $e) {
+            Log::warning('Lead file append failed', ['error' => $e->getMessage()]);
+        }
+
         Log::info('LP lead', [
             'intent' => $intent,
             'has_phone' => ! empty($data['phone']),
