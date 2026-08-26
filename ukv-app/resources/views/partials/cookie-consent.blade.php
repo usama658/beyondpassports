@@ -59,8 +59,8 @@
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ config('ukv.gtm_id') }}');
 @endif
 @if (config('ukv.ga4_id'))
-    // Google Analytics 4.
-    (function(){var g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id={{ config('ukv.ga4_id') }}';document.head.appendChild(g);})();
+    // Google Analytics 4 — first-party measurement path (ukv.ga4_fp_path) when set, else standard loader.
+    (function(){var g=document.createElement('script');g.async=true;g.src='{{ config('ukv.ga4_fp_path') ?: 'https://www.googletagmanager.com/gtag/js?id='.config('ukv.ga4_id') }}';document.head.appendChild(g);})();
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ config('ukv.ga4_id') }}');
 @endif
 @if (config('ukv.clarity_id'))

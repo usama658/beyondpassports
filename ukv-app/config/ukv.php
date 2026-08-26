@@ -257,6 +257,12 @@ return [
     // Blank any one to disable it. Set up direct (not via GTM) so no GTM-tag config
     // is needed; GTM stays available for anything added later.
     'ga4_id'        => env('UKV_GA4_ID', 'G-KR93N3DF55'),       // Google Analytics 4 Measurement ID
+    // Google tag gateway (first-party mode) measurement path, e.g. "/5u9d". When set, the
+    // gtag.js loader is served same-origin from this path (routed to Google by the Cloudflare
+    // Google tag gateway integration) instead of googletagmanager.com. Leave BLANK until the
+    // Cloudflare gateway is finalized and /<path>/?validate_geo=healthy returns "ok" — while
+    // blank, the standard googletagmanager.com loader is used (no breakage).
+    'ga4_fp_path'   => env('UKV_GA4_FP_PATH', ''),
     'clarity_id'    => env('UKV_CLARITY_ID', 'xbfqfhmnvp'),     // Microsoft Clarity project ID
     'meta_pixel_id' => env('UKV_META_PIXEL_ID', '1780802003331250'), // Meta (Facebook) Pixel / dataset ID
 
