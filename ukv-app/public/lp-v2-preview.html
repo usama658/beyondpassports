@@ -258,6 +258,9 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  #hclist li,#mclist li{flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
  #hclist .cn2,#mclist li .cn2{flex:none;width:100%}
  #hclist,#mclist{max-height:none;overflow:visible}
+ .v-snap .v-row .kv{flex-direction:column;align-items:flex-start;gap:2px}
+ .v-snap .v-row .k{width:auto;font:700 9px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:#94a3b8}
+ .v-snap .v-row .v{font-size:13px}
 }
 </style>
 <section id=dhero style="background:linear-gradient(120deg,#0B1528 0%,#0B1528 48%,#12224d 100%);min-height:100vh;display:flex;align-items:center;padding:40px 0">
@@ -1020,6 +1023,7 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .v-snaphd small{font:600 10px var(--sans);letter-spacing:0;text-transform:none;color:#94a3b8}
 .v-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border)}
 .v-row:first-of-type{border-top:0}
+.v-row .kv{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .v-row .k{font:600 12px var(--sans);color:var(--muted);width:84px;flex:none}
 .v-row .v{font:700 12.5px var(--sans);color:var(--navy);flex:1;min-width:0}
 .v-chip{display:inline-flex;align-items:center;gap:5px;font:700 10px var(--sans);border-radius:999px;padding:4px 9px;flex:none}
@@ -1378,7 +1382,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
   return['neutral',''];};
  window.vAmber=function(sit,tim){return /refused|complex|4 weeks/i.test(sit||'')||/within 2 weeks/i.test(tim||'');};
  window.vSnap=function(rows,title){var h='<div class=v-snaphd>'+(title||'Your eligibility snapshot')+' <small>provisional</small></div>';
-  rows.forEach(function(r){if(!r[1])return;h+='<div class=v-row><span class=k>'+r[0]+'</span><span class=v>'+r[1]+'</span>'+window.vChip(r[2])+'</div>';});
+  rows.forEach(function(r){if(!r[1])return;h+='<div class=v-row><span class=kv><span class=k>'+r[0]+'</span><span class=v>'+r[1]+'</span></span>'+window.vChip(r[2])+'</div>';});
   return h;};
  window.vBadgeInner=function(amber){return amber
    ? '<svg viewBox="0 0 24 24" fill=currentColor><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Needs a human look'
