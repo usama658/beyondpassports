@@ -236,6 +236,20 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  #dhero .htrust-track>span{white-space:nowrap!important;flex:none!important}
  @keyframes hmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 }
+.rr-m{display:none}
+.rr-m .rr-card{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-left:3px solid var(--gold);border-radius:20px;padding:22px 20px;margin-top:20px}
+.rr-m .rr-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.rr-m .rr-eye{font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.rr-m .rr-h{font-family:var(--serif);font-weight:400;font-size:23px;color:#fff;margin-top:6px}
+.rr-m .rr-price{font:900 32px var(--sans);color:var(--gold);line-height:1;text-align:right;white-space:nowrap}
+.rr-m .rr-psub{font:600 10.5px var(--sans);color:rgba(255,255,255,.6);text-align:right;margin-top:3px;white-space:nowrap}
+.rr-m .rr-b{font:500 13.5px var(--sans);color:rgba(255,255,255,.74);line-height:1.6}
+.rr-m .rr-refund{display:flex;gap:10px;align-items:flex-start;margin-top:16px;background:rgba(22,163,74,.09);border:1px solid rgba(22,163,74,.28);border-radius:14px;padding:14px 15px}
+.rr-m .rr-refund svg{width:18px;height:18px;color:#4ade80;flex:none;margin-top:1px}
+.rr-m .rr-refund span{font:700 12.5px var(--sans);color:#fff;line-height:1.5}
+.rr-m .rr-cta{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;background:var(--gold);color:#0B1528;font:800 14.5px var(--sans);border-radius:12px;text-decoration:none;margin-top:16px}
+.rr-m .rr-reg{font:500 11.5px var(--sans);color:rgba(255,255,255,.55);text-align:center;line-height:1.7;margin-top:16px}
+.rr-m .rr-embassy{font:500 11.5px var(--sans);color:rgba(255,255,255,.5);text-align:center;line-height:1.6;margin-top:8px}
 .how-m{display:none}
 .how-m .how-row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin:0 -22px;padding:0 22px 4px}
 .how-m .how-row::-webkit-scrollbar{display:none}
@@ -272,6 +286,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  .team-m{display:block}
  .how-d{display:none!important}
  .how-m{display:block}
+ .rr-d,.rr-foot-d{display:none!important}
+ .rr-m{display:block}
  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:1fr 1.35fr 1fr"]{grid-template-columns:1fr!important}
@@ -705,16 +721,26 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   </div>
 
   <!-- REFUSAL RECOVERY -->
-  <div style="background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px;margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center">
+  <div class=rr-d style="background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px;margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center">
     <div><div class=eyebrow style="color:var(--gold)">Already been refused?</div><h3 style="font-family:var(--serif);font-weight:400;font-size:24px;color:#fff;margin:8px 0 8px">Refusal Recovery</h3><p style="font:500 14px var(--sans);color:rgba(255,255,255,.72);max-width:540px;line-height:1.6">Not the same service. We read your refusal letter, find the actual cause, rebuild your file from scratch, and reapply. Different process. Different outcome.</p></div>
     <div style="text-align:center;flex:none"><div style="font:900 40px var(--sans);color:var(--gold)">£194</div><div style="font:600 12px var(--sans);color:rgba(255,255,255,.6);margin-bottom:14px">£39 to start · £155 after review</div><a href="#" onclick="mOpen('refusalpay');return false" style="display:inline-flex;background:var(--gold);color:#0B1528;font:800 14px var(--sans);padding:13px 24px;border-radius:12px;text-decoration:none">Discuss My Refusal →</a></div>
   </div>
 
   <!-- FOOTER -->
-  <p style="text-align:center;max-width:740px;margin:28px auto 0;font:500 12.5px var(--sans);color:rgba(255,255,255,.62);line-height:1.8">
+  <p class=rr-foot-d style="text-align:center;max-width:740px;margin:28px auto 0;font:500 12.5px var(--sans);color:rgba(255,255,255,.62);line-height:1.8">
   UK registered &middot; 17331903 · ICO registered ZC197159 · Mildenhall, Suffolk IP28 7BG<br>
   Embassy visa fees (typically £60 to £80) and visa centre charges are paid directly to them. We never handle embassy payments.<br>
   <b style="color:#fff">If we review your documents and cannot help, your fee is refunded in full. No questions asked.</b></p>
+  <div class=rr-m>
+   <div class=rr-card>
+    <div class=rr-top><div><div class=rr-eye>Already been refused?</div><div class=rr-h>Refusal Recovery</div></div><div><div class=rr-price>£194</div><div class=rr-psub>£39 to start · £155 after review</div></div></div>
+    <p class=rr-b>Not the same service. We read your refusal letter, find the actual cause, rebuild your file from scratch, and reapply. Different process. Different outcome.</p>
+    <div class=rr-refund><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg><span>If we review your documents and cannot help, your fee is refunded in full. No questions asked.</span></div>
+    <a href="#" onclick="mOpen('refusalpay');return false" class=rr-cta>Discuss My Refusal &rarr;</a>
+   </div>
+   <p class=rr-reg>UK registered &middot; 17331903 · ICO registered ZC197159 · Mildenhall, Suffolk IP28 7BG</p>
+   <p class=rr-embassy>Embassy visa fees (typically £60 to £80) and visa centre charges are paid directly to them. We never handle embassy payments.</p>
+  </div>
 </div></section>
 <section style="background:radial-gradient(ellipse at 50% -8%,#1c2f60,#0a1220 62%);padding:82px 0;color:#fff">
 <div class=wrap style="text-align:center;max-width:680px;margin:0 auto 14px">
