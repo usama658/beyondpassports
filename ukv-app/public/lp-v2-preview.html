@@ -236,7 +236,27 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  #dhero .htrust-track>span{white-space:nowrap!important;flex:none!important}
  @keyframes hmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 }
+.team-m{display:none}
+.team-m .tm-hdr{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.team-m .tm-hdr>img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;outline:2px solid rgba(197,150,58,.4)}
+.team-m .tm-nm{font:700 17px var(--sans);color:#fff}
+.team-m .tm-ro{font:600 12px var(--sans);color:var(--gold);margin:1px 0 4px}
+.team-m .tm-avail{display:inline-flex;align-items:center;gap:7px;font:600 12px var(--sans);color:#86efac}
+.team-m .tm-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.team-m .tm-trust{background:rgba(197,150,58,.06);border:1px solid rgba(197,150,58,.24);border-radius:18px;padding:18px}
+.team-m .tm-lbl{font:800 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.team-m .tm-t{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font:600 13.5px var(--sans);color:rgba(255,255,255,.86);border-top:1px solid rgba(255,255,255,.07)}
+.team-m .tm-t:first-of-type{border-top:0}
+.team-m .tm-t svg{width:16px;height:16px;color:#4ade80;flex:none;margin-top:1px}
+.team-m .tm-team{display:flex;align-items:center;gap:10px;margin:16px 0}
+.team-m .tm-stack{display:flex}
+.team-m .tm-stack img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #0f1d3f;margin-left:-9px}
+.team-m .tm-stack img:first-child{margin-left:0}
+.team-m .tm-cap{font:600 12px var(--sans);color:rgba(255,255,255,.65)}
+.team-m .tm-body{font:400 15px var(--sans);color:rgba(255,255,255,.78);line-height:1.62;margin-bottom:22px}
 @media(max-width:640px){
+ .team-d{display:none!important}
+ .team-m{display:block}
  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:1fr 1.35fr 1fr"]{grid-template-columns:1fr!important}
@@ -469,7 +489,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   <span class=eyebrow>The team behind every case</span>
   <h2 style="font-size:38px;color:#fff;margin:12px 0 10px;line-height:1.12">Real consultants. <span style="font-style:italic;color:var(--gold)">Not a call centre. Not a chatbot.</span></h2>
 </div>
-<div class=wrap style="display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start">
+<div class="wrap team-d" style="display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start">
   <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:28px;text-align:center;backdrop-filter:blur(8px)">
     <img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore, Lead Consultant" style="width:96px;height:96px;border-radius:50%;margin:0 auto 16px;object-fit:cover;display:block;outline:4px solid rgba(255,255,255,.1)">
     <div style="font:700 20px var(--sans);color:#fff">Sarah</div>
@@ -491,7 +511,21 @@ details[open] summary span:last-child{transform:rotate(45deg)}
     </div>
     <a href="#" onclick="mOpen('ready');return false" class=wa-btn>Start my case</a>
   </div>
-</div></section>
+</div>
+<div class="wrap team-m">
+ <div class=tm-hdr><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore"><div><div class=tm-nm>Sarah</div><div class=tm-ro>Lead Consultant · Beyond Passports</div><div class=tm-avail><span class=tm-dot></span>Available · Mon to Sat, 9am to 7pm</div></div></div>
+ <div class=tm-trust>
+  <div class=tm-lbl>Verified &amp; registered</div>
+  <div class=tm-t><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg><span>Companies House registered: #17331903</span></div>
+  <div class=tm-t><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg><span>ICO Data Protection registered: ZC197159</span></div>
+  <div class=tm-t><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg><span>UK registered address: Unit 82a, Mildenhall, Suffolk IP28 7BG</span></div>
+  <div class=tm-t><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg><span>97% approval rate across <span class=bpcount>243</span> cases (Jan 2024 to Aug 2026)</span></div>
+ </div>
+ <div class=tm-team><span class=tm-stack><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt=Sarah><img src="https://beyondpassports.co.uk/assets/img/team/james-whitfield-operations.jpg" alt=James><img src="https://beyondpassports.co.uk/assets/img/team/chloe-adams-appointments-coordinator.jpg" alt=Chloe></span><span class=tm-cap>Sarah, James &amp; Chloe on your case</span></div>
+ <p class=tm-body>Sarah leads the team and has handled <span class=bpcount>243</span> Schengen visa applications for UK residents on non-EU passports since 2019. Every case is reviewed personally. Your documents are read, the gaps are found, and you are told exactly what to fix before your appointment. Not a template response. Not a generic checklist.<br><br>You message on WhatsApp. Our team replies within 30 minutes. Everything is in writing, so you always have a record of what was said and what was agreed.</p>
+ <a href="#" onclick="mOpen('ready');return false" class=wa-btn style="width:100%">Start my case</a>
+</div>
+</section>
 <section style="background:radial-gradient(820px 340px at 50% -12%,#eaf1f4,#F8FAFC);padding:76px 0">
 <div class=wrap>
  <div style="text-align:center;max-width:680px;margin:0 auto 40px">
