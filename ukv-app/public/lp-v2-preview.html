@@ -997,6 +997,7 @@ function fillSummary(){
   if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
   document.getElementById('summary').innerHTML=window.vSnap(rows);
 }
+function postLead(name,phone,dest,intent){try{fetch('/schengen-visa-consultancy/lead',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:name||'',phone:phone||'',dest:dest||'',intent:intent||'case',website:'',utm:(window.bpUtm&&window.bpUtm())||null})});}catch(e){}}
 function send(){
   var nameEl=document.getElementById('f_name');
   var ok=true;
@@ -1007,6 +1008,7 @@ function send(){
   if(ps!=='ok'){combo.classList.add('pc-invalid');eph.textContent=(ps==='req'?'Please enter your WhatsApp number':'Enter a valid '+((window.pcCountry&&window.pcCountry())||'')+' number');eph.style.display='block';ok=false;}
   else{combo.classList.remove('pc-invalid');eph.style.display='none';}
   if(!ok)return;
+  postLead(nameEl.value.trim(),(window.pcFull&&window.pcFull())||'',STATE[2]||'','lp-v2 hero');
   var text=encodeURIComponent(buildMsg());
   var waApp='whatsapp://send?phone='+WA+'&text='+text;
   var waWeb='https://wa.me/'+WA+'?text='+text;
@@ -1534,7 +1536,7 @@ function mPlanFill(){var p=PLAN[ST.plan]||PLAN.start;
  var inc='';p.inc.forEach(function(x){inc+='<li>'+PLCHK+'<span>'+x[0]+'<small>'+x[1]+'</small></span></li>';});$('mplinc').innerHTML=inc;
  $('mplafter').innerHTML=PLIC[p.aftic]+'<span><b>'+p.aftt+'</b><span>'+p.aftx+'</span></span>';
  $('mplfine').innerHTML=p.fine;}
-function doClose(){var text=encodeURIComponent(msg()),web='https://wa.me/'+WA+'?text='+text,app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function doClose(){postLead($('mfname').value.trim(),(window.mPcFull&&window.mPcFull())||'',ST.dest||'',ST.intent||'case');var text=encodeURIComponent(msg()),web='https://wa.me/'+WA+'?text='+text,app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
  if(ST.pref==='notsure'){mFillSum('mcallsum');var cw=$('mcallwa');if(cw)cw.href=web;return;}
  var nm=$('mfname').value.trim();$('msnthead').textContent=nm?("You're all set, "+nm+"."):"You're all set.";$('msntwa').href=web;mFillSum('msntsum');
  var c=3,el=document.querySelector('#msntcnt b'),w=false;function go(){if(w)return;w=true;if(mob){try{location.href=app;}catch(e){}setTimeout(function(){location.href=web;},1500);}else{window.open(web,'_blank');}}
