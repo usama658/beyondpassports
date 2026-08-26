@@ -997,7 +997,7 @@ function fillSummary(){
   if(tim)rows.push(['Timeline',tim,window.vTime(tim)]);
   document.getElementById('summary').innerHTML=window.vSnap(rows);
 }
-function postLead(name,phone,dest,intent){try{fetch('/schengen-visa-consultancy/lead',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:name||'',phone:phone||'',dest:dest||'',intent:intent||'case',website:'',utm:(window.bpUtm&&window.bpUtm())||null})});}catch(e){}}
+function postLead(name,phone,dest,intent){try{fetch('/schengen-visa-consultancy/lead',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:name||'',phone:phone||'',dest:dest||'',intent:intent||'case',source:'lp-v2 (money page)',website:'',utm:(window.bpUtm&&window.bpUtm())||null})});}catch(e){}}
 function send(){
   var nameEl=document.getElementById('f_name');
   var ok=true;

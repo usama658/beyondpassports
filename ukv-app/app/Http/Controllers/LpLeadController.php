@@ -32,8 +32,13 @@ class LpLeadController extends Controller
             'phone' => 'nullable|string|max:40',
             'dest' => 'nullable|string|max:80',
             'intent' => 'nullable|string|max:40',
+            'source' => 'nullable|string|max:80',
             'utm' => 'nullable|array',
         ]);
+
+        // Which page/form sent the lead (e.g. "lp-v2 (money page)"); falls back to the
+        // original Bold LP path so existing callers are unchanged.
+        $source = ($data['source'] ?? null) ?: '/schengen-visa-consultancy';
 
         // Ad attribution (Google Ads ValueTrack params captured client-side by
         // partials/utm-capture). Whitelisted keys, scalar values only, capped length.
@@ -60,16 +65,16 @@ class LpLeadController extends Controller
                 .'Name: '.(($data['name'] ?? null) ?: '—')."\n"
                 .'Phone: '.(($data['phone'] ?? null) ?: '—')."\n"
                 .'Destination: '.(($data['dest'] ?? null) ?: '—')."\n"
-                ."Source: /schengen-visa-consultancy\n"
+                ."Source: {$source}\n"
                 .'Ad attribution: '.($utm->isNotEmpty()
                     ? $utm->map(fn ($v, $k) => "{$k}={$v}")->implode(' | ')
                     : '— (organic / direct)')."\n"
                 .'IP: '.$request->ip()."\n"
                 .'Time: '.now()->toDayDateTimeString();
             try {
-                Mail::raw($body, function ($m) use ($recipient, $data, $intent) {
+                Mail::raw($body, function ($m) use ($recipient, $data, $intent, $source) {
                     $who = ($data['name'] ?? null) ?: 'website visitor';
-                    $m->to($recipient)->subject("New case-check lead ({$intent}) — {$who}");
+                    $m->to($recipient)->subject("New lead ({$intent}) — {$who} · {$source}");
                 });
                 Log::info('LP lead emailed', ['to' => $recipient]);
             } catch (\Throwable $e) {
