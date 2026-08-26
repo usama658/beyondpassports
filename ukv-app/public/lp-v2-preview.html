@@ -431,7 +431,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  <h2 style="font-size:40px;color:var(--navy);margin:12px 0 12px;line-height:1.12"><span class=bpcount>243</span> applications. <span style="font-style:italic;color:var(--gold)">Every one had a problem we fixed.</span></h2>
  <p style="color:var(--muted);font-size:15px">Every testimonial has a reference number. Email us to verify any of them.</p>
 </div>
-<div style="display:flex;gap:16px;overflow-x:auto;padding:4px 22px 14px;scroll-snap-type:x mandatory;max-width:1120px;margin:0 auto"><div style="flex:none;width:340px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px;scroll-snap-align:start;box-shadow:0 16px 34px -30px rgba(11,21,40,.5)">
+<div class=tscroll style="display:flex;gap:16px;overflow-x:auto;padding:4px 22px 14px;scroll-snap-type:x mandatory;max-width:1120px;margin:0 auto"><div style="flex:none;width:340px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px;scroll-snap-align:start;box-shadow:0 16px 34px -30px rgba(11,21,40,.5)">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><span style="color:#f0b429;letter-spacing:2px;font-size:14px">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span style="font:700 10.5px 'Inter',monospace;color:var(--muted);background:#f1f5f9;border:1px solid var(--border);padding:4px 8px;border-radius:7px">BP-2024-0847</span></div>
 <p style="font:500 14px var(--sans);color:#1f2b38;line-height:1.6;margin-bottom:16px">&ldquo;I'd been refused twice before finding Beyond Passports. She spotted the problem in 10 minutes, my employer letter was missing two specific lines. Approved 3 weeks later.&rdquo;</p>
 <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:14px">
@@ -1030,6 +1030,8 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .v-snaphd small{font:600 10px var(--sans);letter-spacing:0;text-transform:none;color:#94a3b8}
 .v-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border)}
 .v-row:first-of-type{border-top:0}
+.tscroll{scrollbar-width:none;-ms-overflow-style:none}
+.tscroll::-webkit-scrollbar{display:none;width:0;height:0}
 .v-row .kv{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .v-row .k{font:600 12px var(--sans);color:var(--muted);width:84px;flex:none}
 .v-row .v{font:700 12.5px var(--sans);color:var(--navy);flex:1;min-width:0}
