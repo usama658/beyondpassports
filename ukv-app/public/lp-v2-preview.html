@@ -1665,7 +1665,8 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
   var d=new Date(),idx=Math.floor(d.getTime()/1000/60/30)%TEAM.length,t=TEAM[idx];
   if(av.getAttribute('data-i')!==t.i){av.src=t.i;av.setAttribute('data-i',t.i);av.alt=t.n;}
   nm.textContent=t.n;
-  var day=d.getDay(),hr=d.getHours(),open=(day>=1&&day<=6)&&(hr>=9&&hr<19);
+  var hr,dayName;try{hr=parseInt(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hour12:false}).format(d),10)%24;dayName=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short'}).format(d);}catch(e){hr=d.getHours();dayName=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];}
+  var open=!/sun/i.test(dayName)&&(hr>=9&&hr<19);
   if(open){el.classList.remove('off');stt.textContent='Online now';sub.textContent='Typically replies in 30 minutes';}
   else{el.classList.add('off');stt.textContent='Away';sub.textContent='Back Mon to Sat, 9am to 7pm';}
  }
