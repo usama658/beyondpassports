@@ -115,10 +115,10 @@ details summary::-webkit-details-marker{display:none}
 .pgrid .s1s{display:block;font:500 11.5px var(--sans);color:var(--muted);margin-top:2px}
 .pgrid .s1n{position:absolute;top:-6px;right:8px;font:400 44px 'DM Serif Display',serif;color:rgba(11,21,40,.05);line-height:1;pointer-events:none}
 .pgrid .tile.sel .s1n{color:rgba(197,150,58,.18)}
-#hcgrid .tile{align-items:center;gap:11px;box-shadow:0 8px 20px -8px rgba(11,21,40,.24)}
+#hcgrid .tile{align-items:center;gap:11px;min-width:0;box-shadow:0 8px 20px -8px rgba(11,21,40,.24)}
 #hcgrid .tile:hover{transform:translateY(-4px);box-shadow:0 24px 42px -16px rgba(11,21,40,.42)}
 #hcgrid .tile.sel{box-shadow:0 12px 26px -10px rgba(197,150,58,.5)}
-#hcgrid .hflag{width:33px;height:24px;border-radius:5px;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 3px 7px -3px rgba(0,0,0,.3)}
+#hcgrid .hflag{width:33px;height:24px;flex:none;border-radius:5px;box-shadow:0 0 0 1px rgba(0,0,0,.08),0 3px 7px -3px rgba(0,0,0,.3)}
 #hcgrid .tile.sel .hflag{box-shadow:0 0 0 2px var(--gold),0 3px 7px -3px rgba(0,0,0,.3)}
 #hcgrid .cn{flex:1;min-width:0;font:700 13.5px var(--sans);color:var(--navy)}
 #hcgrid .cst{display:inline-flex;align-items:center;gap:5px;font:700 10px var(--sans);flex:none}
@@ -252,6 +252,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  .dform .htoprow:has(.htflag:not([hidden])) .hthint{display:none}
  .mov .mgrid.pg .mtile{flex-direction:column;align-items:flex-start;gap:9px;padding:15px 13px 14px}
  .mov .mgrid.pg .mtile .s1b{width:100%}
+ #hcgrid,#mcgrid{grid-template-columns:1fr!important}
 }
 </style>
 <section id=dhero style="background:linear-gradient(120deg,#0B1528 0%,#0B1528 48%,#12224d 100%);min-height:100vh;display:flex;align-items:center;padding:40px 0">
@@ -914,6 +915,7 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .dform .tile .ic{display:none}
 .dform .mres li img.flag,.dform .msearch img.flag{width:22px;height:16px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .mtile.ctile,.mtile.ptile{align-items:center}
+#mcgrid .mtile{min-width:0}
 .mov .pg .mtile{align-items:center;position:relative;overflow:hidden}
 .mov .mtile .s1ic{width:36px;height:36px;border-radius:10px;background:rgba(197,150,58,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none;transition:.16s}
 .mov .mtile .s1ic svg{width:20px;height:20px}
