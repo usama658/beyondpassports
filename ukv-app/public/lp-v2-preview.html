@@ -236,6 +236,19 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  #dhero .htrust-track>span{white-space:nowrap!important;flex:none!important}
  @keyframes hmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 }
+.how-m{display:none}
+.how-m .how-row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin:0 -22px;padding:0 22px 4px}
+.how-m .how-row::-webkit-scrollbar{display:none}
+.how-m .how-c{flex:none;width:calc(100vw - 44px);scroll-snap-align:center;background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px 22px;box-shadow:0 16px 34px -28px rgba(11,21,40,.5);text-align:center}
+.how-m .how-ic{display:flex;width:60px;height:60px;border-radius:16px;background:rgba(197,150,58,.12);border:1px solid rgba(197,150,58,.28);align-items:center;justify-content:center;color:var(--gold);margin:0 auto 14px}
+.how-m .how-ic svg{width:28px;height:28px}
+.how-m .how-n{font:800 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.how-m .how-ttl{font:800 16px var(--sans);color:var(--navy)}
+.how-m .how-desc{font:500 13.5px var(--sans);color:#51617a;line-height:1.55;margin:6px 0 11px}
+.how-m .how-meta{display:inline-flex;font:700 11px var(--sans);color:#8a6a1f;background:rgba(197,150,58,.14);padding:5px 11px;border-radius:999px}
+.how-m .how-dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.how-m .how-dots span{width:8px;height:8px;border-radius:999px;background:#cbd5e1;transition:width .2s,background .2s}
+.how-m .how-dots span.on{width:24px;background:var(--gold)}
 .team-m{display:none}
 .team-m .tm-hdr{display:flex;align-items:center;gap:13px;margin-bottom:16px}
 .team-m .tm-hdr>img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;outline:2px solid rgba(197,150,58,.4)}
@@ -257,6 +270,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 @media(max-width:640px){
  .team-d{display:none!important}
  .team-m{display:block}
+ .how-d{display:none!important}
+ .how-m{display:block}
  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:1fr 1.35fr 1fr"]{grid-template-columns:1fr!important}
@@ -532,7 +547,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
   <span class=eyebrow>How it works</span>
   <h2 style="font-size:40px;color:var(--navy);margin:12px 0 0;line-height:1.12">From &ldquo;I don't know where to start&rdquo;<br><span style="font-style:italic;color:var(--gold)">to approved. Step by step.</span></h2>
  </div>
- <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px"><div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;position:relative;overflow:hidden;box-shadow:0 16px 34px -30px rgba(11,21,40,.5)">
+ <div class=how-d style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px"><div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;position:relative;overflow:hidden;box-shadow:0 16px 34px -30px rgba(11,21,40,.5)">
 <div style="font-family:var(--serif);font-size:52px;line-height:1;color:rgba(197,150,58,.45)">1</div>
 <h3 style="font:700 16px var(--sans);color:var(--navy);margin:8px 0 8px">You message on WhatsApp</h3>
 <p style="font:500 13px var(--sans);color:#475569;line-height:1.55;margin-bottom:14px">The form above pre-fills your message. Tap send. Your situation, destination, and timeline are already written in it.</p>
@@ -553,6 +568,16 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <h3 style="font:700 16px var(--sans);color:var(--navy);margin:8px 0 8px">You travel</h3>
 <p style="font:500 13px var(--sans);color:#475569;line-height:1.55;margin-bottom:14px">Most clients approved within 5 to 15 working days. If the embassy needs anything else, your consultant follows up on your behalf.</p>
 <span style="display:inline-flex;font:700 11px var(--sans);color:#8a6a1f;background:rgba(197,150,58,.14);padding:5px 10px;border-radius:999px">97% approved first time</span></div></div>
+<div class=how-m>
+ <div class=how-row id=howrow>
+  <div class=how-c><span class=how-ic><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.9 stroke-linecap=round stroke-linejoin=round><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div class=how-n>Step 1</div><div class=how-ttl>You message on WhatsApp</div><p class=how-desc>The form above pre-fills your message. Tap send. Your situation, destination, and timeline are already written in it.</p><span class=how-meta>Takes 90 seconds</span></div>
+  <div class=how-c><span class=how-ic><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.8 stroke-linecap=round><circle cx=12 cy=12 r=8.2 /><path d="M12 7.5V12l3 2"/></svg></span><div class=how-n>Step 2</div><div class=how-ttl>Case review within 30 minutes</div><p class=how-desc>Your consultant reviews your situation and replies with exactly what documents you need, what to fix, and whether your timeline is realistic.</p><span class=how-meta>Same day, every time</span></div>
+  <div class=how-c><span class=how-ic><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.8 stroke-linecap=round stroke-linejoin=round><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h7"/></svg></span><div class=how-n>Step 3</div><div class=how-ttl>Documents sorted</div><p class=how-desc>Employer letter drafted. Bank statement guidance sent. Cover letter written in the exact format your embassy requires. Every document reviewed before submission.</p><span class=how-meta>1 to 3 days</span></div>
+  <div class=how-c><span class=how-ic><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.8 stroke-linecap=round stroke-linejoin=round><rect x=3.5 y=5 width=17 height=16 rx=2 /><path d="M3.5 9.5h17M8 3v4M16 3v4M8 14l3 3 5-5"/></svg></span><div class=how-n>Step 4</div><div class=how-ttl>Appointment booked</div><p class=how-desc>Your slot secured at the correct centre: BLS, TLS, VFS or OeSD depending on your destination. You show up with your completed packet.</p><span class=how-meta>We handle the booking</span></div>
+  <div class=how-c><span class=how-ic><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.8 stroke-linecap=round stroke-linejoin=round><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span><div class=how-n>Step 5</div><div class=how-ttl>You travel</div><p class=how-desc>Most clients approved within 5 to 15 working days. If the embassy needs anything else, your consultant follows up on your behalf.</p><span class=how-meta>97% approved first time</span></div>
+ </div>
+ <div class=how-dots id=howdots></div>
+</div>
  <div style="margin-top:26px;display:flex;align-items:center;gap:12px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.3);border-radius:14px;padding:16px 20px;font:600 13.5px var(--sans);color:#0f172a"><span style="font-size:22px">&#128172;</span><span>No phone calls. WhatsApp only. Replies within 30 minutes, Mon to Sat 9am to 7pm. Everything in writing, so you always have a record of what was said.</span></div>
 </div></section>
 
@@ -1444,6 +1469,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
 })();
 (function(){var t=document.querySelector('.dtoggle'),n=document.getElementById('dprimary');if(t&&n){t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});n.addEventListener('click',function(e){if(e.target.closest('a'))n.classList.remove('open');});}})();
 (function(){var h=document.getElementById('htrust');if(!h||h.querySelector('.htrust-track'))return;var t=document.createElement('div');t.className='htrust-track';while(h.firstChild)t.appendChild(h.firstChild);h.appendChild(t);try{if(window.matchMedia('(max-width:640px)').matches)t.innerHTML+=t.innerHTML;}catch(e){}})();
+(function(){var row=document.getElementById('howrow'),dots=document.getElementById('howdots');if(!row||!dots)return;var cards=row.children;function step(){var c=cards[0];return c?c.getBoundingClientRect().width+14:356;}for(var i=0;i<cards.length;i++){var s=document.createElement('span');dots.appendChild(s);}function upd(){var a=Math.round(row.scrollLeft/step());if(a<0)a=0;if(a>dots.children.length-1)a=dots.children.length-1;for(var i=0;i<dots.children.length;i++)dots.children[i].className=i===a?'on':'';}row.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();})();
 (function(){var row=document.querySelector('.tscroll'),dots=document.getElementById('tdots');if(!row||!dots)return;var cards=row.children;function step(){var c=cards[0];return c?c.getBoundingClientRect().width+16:356;}for(var i=0;i<cards.length;i++){(function(i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to testimonial '+(i+1));b.addEventListener('click',function(){row.scrollTo({left:i*step(),behavior:'smooth'});});dots.appendChild(b);})(i);}function upd(){var a=Math.round(row.scrollLeft/step());if(a<0)a=0;if(a>dots.children.length-1)a=dots.children.length-1;for(var i=0;i<dots.children.length;i++)dots.children[i].classList.toggle('on',i===a);}row.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();})();
 </script>
 </body></html>
