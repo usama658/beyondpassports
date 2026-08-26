@@ -275,6 +275,9 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
  [style*="grid-template-columns:1fr 1.35fr 1fr"]{grid-template-columns:1fr!important}
+ .tiers{gap:30px!important}
+ .tiers>div{transform:none!important}
+ .tiers>div[style*="scale(1.03)"]{padding:30px 26px!important}
  .whard{grid-template-columns:1fr!important;gap:0!important;margin:24px 0 26px!important}
  .whard .c,.whard .c.value{background:none!important;border:0!important;border-radius:0!important;border-top:1px solid rgba(255,255,255,.1)!important;padding:18px 0!important;display:grid;grid-template-columns:42px 1fr;column-gap:16px;transform:none!important}
  .whard .c:first-child{border-top:0!important}
@@ -630,7 +633,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 
 
   <!-- 3 TIERS: spotlight center -->
-  <div style="display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:18px;align-items:stretch">
+  <div class=tiers style="display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:18px;align-items:stretch">
     <!-- Appointment Only -->
     <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px;display:flex;flex-direction:column">
       <div style="font:800 10px var(--sans);color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Just the appointment</div>
