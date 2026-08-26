@@ -457,7 +457,8 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:14px">
 <div style="display:flex;align-items:center;gap:11px"><span style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0B1528,#2a4080);color:#fff;display:flex;align-items:center;justify-content:center;font:800 14px var(--sans);flex:none">JO</span><div><div style="font:700 14px var(--sans);color:var(--navy)">James O.</div><div style="font:600 11.5px var(--sans);color:var(--muted)">London · Greece trip</div></div></div>
 <a href="#" style="font:700 12px var(--sans);color:var(--navy-mid);text-decoration:none;white-space:nowrap">Verify &rarr;</a></div></div></div>
-<p class=wrap style="text-align:center;font:600 13px var(--sans);color:var(--muted);margin-top:16px">Scroll for more &middot; Every reference is checkable</p>
+<div class=tdots id=tdots aria-label="Testimonial pagination"></div>
+<p class=wrap style="text-align:center;font:600 13px var(--sans);color:var(--muted);margin-top:14px">Scroll for more &middot; Every reference is checkable</p>
 </section>
 <section style="background:linear-gradient(160deg,#0B1528,#12224a);padding:80px 0;color:#fff">
 <div class=wrap style="text-align:center;max-width:640px;margin:0 auto 44px">
@@ -1032,6 +1033,9 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--navy);
 .v-row:first-of-type{border-top:0}
 .tscroll{scrollbar-width:none;-ms-overflow-style:none}
 .tscroll::-webkit-scrollbar{display:none;width:0;height:0}
+.tdots{display:flex;gap:8px;justify-content:center;margin:16px auto 0}
+.tdots button{width:8px;height:8px;border-radius:999px;border:0;background:#cbd5e1;cursor:pointer;padding:0;transition:width .2s,background .2s}
+.tdots button.on{width:24px;background:var(--gold)}
 .v-row .kv{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .v-row .k{font:600 12px var(--sans);color:var(--muted);width:84px;flex:none}
 .v-row .v{font:700 12.5px var(--sans);color:var(--navy);flex:1;min-width:0}
@@ -1402,5 +1406,6 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
 })();
 (function(){var t=document.querySelector('.dtoggle'),n=document.getElementById('dprimary');if(t&&n){t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});n.addEventListener('click',function(e){if(e.target.closest('a'))n.classList.remove('open');});}})();
 (function(){var h=document.getElementById('htrust');if(!h||h.querySelector('.htrust-track'))return;var t=document.createElement('div');t.className='htrust-track';while(h.firstChild)t.appendChild(h.firstChild);h.appendChild(t);try{if(window.matchMedia('(max-width:640px)').matches)t.innerHTML+=t.innerHTML;}catch(e){}})();
+(function(){var row=document.querySelector('.tscroll'),dots=document.getElementById('tdots');if(!row||!dots)return;var cards=row.children;function step(){var c=cards[0];return c?c.getBoundingClientRect().width+16:356;}for(var i=0;i<cards.length;i++){(function(i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to testimonial '+(i+1));b.addEventListener('click',function(){row.scrollTo({left:i*step(),behavior:'smooth'});});dots.appendChild(b);})(i);}function upd(){var a=Math.round(row.scrollLeft/step());if(a<0)a=0;if(a>dots.children.length-1)a=dots.children.length-1;for(var i=0;i<dots.children.length;i++)dots.children[i].classList.toggle('on',i===a);}row.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();})();
 </script>
 </body></html>
