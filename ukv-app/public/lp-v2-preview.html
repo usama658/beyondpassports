@@ -308,6 +308,14 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  .tiers{gap:30px!important}
  .tiers>div{transform:none!important}
  .tiers>div[style*="scale(1.03)"]{padding:30px 26px!important}
+ .faq-acc details{border-bottom:0!important;border-top:1px solid var(--border)!important}
+ .faq-acc details:first-child{border-top:0!important}
+ .faq-acc summary{padding:18px 2px!important;align-items:baseline!important}
+ .faq-acc summary>span:first-child{font-size:26px!important;width:44px!important;line-height:.8!important}
+ .faq-acc summary>span:nth-child(2){font-size:15px!important}
+ .faq-acc summary>span:last-child{font-size:20px!important;transition:transform .2s}
+ .faq-acc details[open] summary>span:last-child{transform:rotate(45deg)}
+ .faq-acc details>div{padding:0 2px 20px 46px!important}
  .whard{grid-template-columns:1fr!important;gap:0!important;margin:24px 0 26px!important}
  .whard .c,.whard .c.value{background:none!important;border:0!important;border-radius:0!important;border-top:1px solid rgba(255,255,255,.1)!important;padding:18px 0!important;display:grid;grid-template-columns:42px 1fr;column-gap:16px;transform:none!important}
  .whard .c:first-child{border-top:0!important}
@@ -791,7 +799,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
 <section style="background:#F8FAFC;padding:80px 0">
 <div class=wrap style="display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start">
  <div style="position:sticky;top:24px"><span class=eyebrow>Questions</span><h2 style="font-size:38px;color:var(--navy);margin:12px 0 14px;line-height:1.1">The ones you're <span style="font-style:italic;color:var(--gold)">already thinking.</span></h2><p style="font:500 14px var(--sans);color:var(--muted)">Still unsure? Message us. We reply within 30 minutes, no payment, no commitment.</p></div>
- <div><details open style="border-bottom:1px solid var(--border)">
+ <div class=faq-acc><details open style="border-bottom:1px solid var(--border)">
 <summary style="list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:14px;padding:18px 4px">
 <span style="font-family:var(--serif);font-size:20px;color:var(--gold);width:34px;flex:none">01</span>
 <span style="font:700 16px var(--sans);color:var(--navy);flex:1">Can I apply from the UK on a Skilled Worker, Graduate, Student, Family or other UK visa?</span>
