@@ -245,6 +245,10 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  [style*="grid-template-columns:.85fr 1.15fr"]{grid-template-columns:1fr!important;gap:24px!important}
  [style*="grid-template-columns:.8fr 1.2fr"]{grid-template-columns:1fr!important;gap:24px!important}
  [style*="grid-template-columns:repeat(4,1fr)"]>div{min-width:0;padding:16px!important}
+ .wstake{grid-template-columns:1fr 1fr!important;gap:12px!important}
+ .wstake>div{position:relative;overflow:hidden;padding:17px 15px!important}
+ .wstake>div::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+ .wstake>div span[style*="font-family:var(--serif)"]{font-size:34px!important}
 }
 @media(max-width:375px){
  .dform .pgrid .tile{flex-direction:column;align-items:flex-start;gap:9px;padding:15px 13px 14px}
@@ -404,7 +408,7 @@ details[open] summary span:last-child{transform:rotate(45deg)}
  <h2 style="font-size:40px;color:#fff;margin:12px 0 12px;line-height:1.1">A refusal isn't a redo. <span style="font-style:italic;color:var(--gold)">It follows you.</span></h2>
  <p style="color:rgba(255,255,255,.72);font-size:16px">Most refusals are documentation errors, not eligibility problems. The cost of getting it wrong is not small.</p>
 </div>
-<div class=wrap style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px"><div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px">
+<div class="wrap wstake" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px"><div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px">
 <span style="color:var(--gold);display:flex;margin-bottom:14px"><svg width=22 height=22 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.7 stroke-linecap=round stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 9l6 6M15 9l-6 6"/></svg></span>
 <div style="display:flex;align-items:baseline;gap:7px"><span style="font-family:var(--serif);font-size:40px;color:#fff;line-height:1">5</span><span style="font:700 13px var(--sans);color:var(--gold)">years</span></div>
 <p style="font:500 13px var(--sans);color:rgba(255,255,255,.66);margin-top:8px;line-height:1.5">A refusal stays on your record</p></div><div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px">
