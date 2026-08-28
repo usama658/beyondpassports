@@ -98,8 +98,8 @@ class SecurityHeaders
             "frame-ancestors 'self'",
             "form-action 'self' https://checkout.stripe.com",
             "img-src 'self' data: https: ",
-            "font-src 'self' data:",
-            "style-src 'self' 'unsafe-inline'",
+            "font-src 'self' data: https://fonts.gstatic.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             // 'unsafe-inline' needed: the public pages carry inline <script> (apply funnel
             // routing, checker JS, reveal). A per-request nonce is the stricter future upgrade.
             // Consent-loaded third parties (cookie-consent partial): Trustpilot reviews widget,
@@ -133,8 +133,8 @@ class SecurityHeaders
             "object-src 'none'",
             "frame-ancestors 'self'",
             "img-src 'self' data: blob:",
-            "font-src 'self' data:",
-            "style-src 'self' 'unsafe-inline'",
+            "font-src 'self' data: https://fonts.gstatic.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             // 'unsafe-eval' is REQUIRED by Filament's Alpine.js — it evaluates x-data /
             // x-show expressions via new Function(); without it Alpine never boots and the
             // panel renders blank (content stays hidden under x-cloak). Scoped to /admin* only.
