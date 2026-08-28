@@ -297,6 +297,14 @@ return [
             'hook'    => 'Stuck on the form, unsure about a document, or not certain you qualify? Send us that one page.',
             'sub'     => 'Most problems are small: a bank statement dated wrong, insurance that ends too early, an employer letter missing one line. Photograph what you have and we tell you what to fix, the same day.',
         ],
+        'agents-uk' => [
+            'title'   => 'Schengen Visa Agents UK | Beyond Passports',
+            'meta'    => 'Schengen visa agents in the UK who check every document before you submit. Written answer back in 30 minutes, from £39.',
+            'h1_lead' => 'Schengen visa agents in the UK ',
+            'h1_gold' => 'who check every document before you submit.',
+            'hook'    => 'We read the full file, not just the checklist. Bank statements, employer letter, insurance dates, accommodation, all of it.',
+            'sub'     => 'For eVisa, Skilled Worker, Graduate, Student and Family visa holders applying from the UK. Send your documents and you get back a written list of what is missing and what to change.',
+        ],
     ],
 
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
