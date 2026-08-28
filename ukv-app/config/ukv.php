@@ -289,6 +289,14 @@ return [
             'hook'    => 'We cannot create dates. We can make sure your file is ready for the one that appears.',
             'sub'     => 'Slots open with a few days notice and go to whoever is already prepared. Have every document checked and ready now, and you can take whatever the centre releases.',
         ],
+        'application-help' => [
+            'title'   => 'Schengen Visa Application Help UK | Beyond Passports',
+            'meta'    => 'Schengen visa application help for anyone applying from the UK. Send the page you are stuck on and get an answer the same day, from £39.',
+            'h1_lead' => 'Schengen visa application help for anyone ',
+            'h1_gold' => 'applying from the UK.',
+            'hook'    => 'Stuck on the form, unsure about a document, or not certain you qualify? Send us that one page.',
+            'sub'     => 'Most problems are small: a bank statement dated wrong, insurance that ends too early, an employer letter missing one line. Photograph what you have and we tell you what to fix, the same day.',
+        ],
     ],
 
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the

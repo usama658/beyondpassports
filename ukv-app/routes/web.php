@@ -188,6 +188,7 @@ Route::get('/schengen-visa-services-uk', fn () => response()->file(public_path('
 // Keyword variants of the same lp-v2 page: LpVariantController swaps only the hero per route
 // (config ukv.lp_variants). One source file, no copies. Still noindex until the go-live call.
 Route::get('/schengen-visa-appointment-help', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'appointment-help')->name('schengen-visa-appointment-help');
+Route::get('/schengen-visa-application-help', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'application-help')->name('schengen-visa-application-help');
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).
 Route::view('/schengen-visa-consultancy/thank-you', 'public.lp-thanks')->name('lp-bold.thanks');
 // LP hero case-form lead: emails the lead to the owner inbox before the WhatsApp hand-off. Throttled; CSRF-exempt + honeypot.
