@@ -266,6 +266,31 @@ return [
     'clarity_id'    => env('UKV_CLARITY_ID', 'xbfqfhmnvp'),     // Microsoft Clarity project ID
     'meta_pixel_id' => env('UKV_META_PIXEL_ID', '1780802003331250'), // Meta (Facebook) Pixel / dataset ID
 
+    // lp-v2 money-page keyword variants. LpVariantController serves the SINGLE source file
+    // public/lp-v2-preview.html with only the hero block swapped per route, so there is one
+    // page to maintain, not N copies. 'lp_default_hero' is the copy currently baked into that
+    // file (the /schengen-visa-services-uk page); each variant replaces those exact strings.
+    // Add a variant here + a route to spin up a new keyword page. Pages stay noindex (the file
+    // carries robots noindex) until the go-live/canonical decision.
+    'lp_default_hero' => [
+        'title'   => 'Schengen Visa Services UK | Beyond Passports',
+        'meta'    => 'Schengen visa services for UK residents applying on an eVisa. You prove your status with a share code that lasts 90 days. From £39.',
+        'h1_lead' => 'Schengen visa services for UK residents ',
+        'h1_gold' => 'applying on an eVisa.',
+        'hook'    => 'You prove your UK status with a share code. It lasts 90 days, so the week you generate it matters.',
+        'sub'     => 'We tell you which documents your visa type needs, when to generate your share code, and what your destination consulate asks for. Send your travel month and we start there.',
+    ],
+    'lp_variants' => [
+        'appointment-help' => [
+            'title'   => 'Schengen Visa Appointment Help UK | Beyond Passports',
+            'meta'    => 'Schengen visa appointment help for UK applicants who cannot find a slot. We get your file complete so you can book the moment one opens.',
+            'h1_lead' => 'Schengen visa appointment help for UK applicants ',
+            'h1_gold' => 'who cannot find a slot.',
+            'hook'    => 'We cannot create dates. We can make sure your file is ready for the one that appears.',
+            'sub'     => 'Slots open with a few days notice and go to whoever is already prepared. Have every document checked and ready now, and you can take whatever the centre releases.',
+        ],
+    ],
+
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
     // Trustpilot business account is verified; the TrustBox widget stays hidden until then, so
     // no fake stars ever ship. Find these in Trustpilot Business > Integrations > TrustBox.
