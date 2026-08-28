@@ -571,7 +571,7 @@ html,body{overflow-x:clip;max-width:100%}
     <p class="hsub">Struggling to book a Schengen visa appointment from the UK? Our Schengen visa consultants track availability across 29 countries daily and help prepare a refusal-proof application.</p>
     <p class="hnote"><strong>Non-EU passport? UK eVisa? You can apply.</strong> If you legally reside in the UK, you apply for your Schengen visa from the UK, whatever passport you hold.</p>
     <div class="hcta">
-      <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my eligibility for a Schengen visa. Where I am going: ') }}">@include('partials.wa-glyph')Check my eligibility</a>
+      <a class="hcta-wa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please take my Schengen visa application from here. Where I am going: ') }}">@include('partials.wa-glyph')Take it from here</a>
       <a class="hcta-appt" href="#appointments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>Find my appointment</a>
       <a class="hcta-call" href="https://calendly.com/beyondpassports/30min" target="_blank" rel="noopener">Book a 30-min call <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
