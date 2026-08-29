@@ -1644,6 +1644,12 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  .fa-ov .grid.pgrid .s1b b{font-size:13px}
  .fa-ov .htoprow:has(.htflag:not([hidden])) .hthint{display:none}
 }
+/* full-screen on mobile, mirroring the old modal (#mov .mmodal) so the forms load edge-to-edge */
+@media(max-width:640px){
+ .fa-ov{padding:0;align-items:stretch}
+ .fa-ov .dform{max-width:none;width:100%;margin:0}
+ .fa-ov .card{border-radius:0;min-height:100vh}
+}
 .fa-ov .dform{width:100%;max-width:440px;margin:0 auto;align-self:flex-start}
 .fa-ov .card{position:relative}
 .fa-x{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:0;background:#f4f6f9;color:#5b6b7d;font:700 17px var(--sans);cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center}
