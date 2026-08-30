@@ -1,4 +1,4 @@
-# Isabel Fernández — Iberia Desk (Spain & Portugal) · Spanish F, early 30s [European]
+# Zayla Ferreira — Iberia Desk (Spain & Portugal) · Spanish F, early 30s [European]
 
 **Image file:** `public/assets/img/team/isabel-fernandez-iberia-desk.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
 

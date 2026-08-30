@@ -1,4 +1,4 @@
-# Pavel Novák — Central Europe Appointments (Prague) · Czech M, early 30s [European]
+# Leo Novák — Central Europe Appointments (Prague) · Czech M, early 30s [European]
 
 **Image file:** `public/assets/img/team/pavel-novak-central-europe.jpg` (~800×800, 4:5). Generate separately. Realistic + professional.
 
