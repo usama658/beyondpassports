@@ -184,7 +184,9 @@ Route::get('/schengen-visa-agency', fn (\App\Http\Controllers\CmsController $c) 
 // lp-v2 money page (UK eVisa Schengen hero). Serves the static public/lp-v2-preview.html at a clean
 // slug. Still noindex,nofollow in the file (preview) until the go-live decision (index + canonical vs
 // the /schengen-visa-consultancy money page to avoid duplicate-content cannibalisation).
-Route::get('/schengen-visa-services-uk', fn () => response()->file(public_path('lp-v2-preview.html')))->name('schengen-visa-services-uk');
+// Routed through LpVariantController (like the variants) so it inherits the injected site-wide
+// analytics head (GTM/GA4/consent); default variant key = no hero swap.
+Route::get('/schengen-visa-services-uk', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'services-uk')->name('schengen-visa-services-uk');
 // Keyword variants of the same lp-v2 page: LpVariantController swaps only the hero per route
 // (config ukv.lp_variants). One source file, no copies. Still noindex until the go-live call.
 Route::get('/schengen-visa-appointment-help', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'appointment-help')->name('schengen-visa-appointment-help');
