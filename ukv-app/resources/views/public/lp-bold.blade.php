@@ -1,9 +1,16 @@
 @extends('layouts.public')
 
-@section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
-@section('description', 'Trusted Schengen visa consultants UK, with 97% approval rate across 240+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.')
+@php
+  $wa = 'https://wa.me/'.config('ukv.whatsapp');
+  // Reversible master switch for the refund-promise UI on this page. OFF for now.
+  // Flip via env UKV_REFUND_PROMISE_ENABLED=true (config/ukv.php) to restore every refund block below.
+  $refundOn = (bool) config('ukv.refund_promise_enabled', false);
+@endphp
 
-@php $wa = 'https://wa.me/'.config('ukv.whatsapp'); @endphp
+@section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
+@section('description', $refundOn
+  ? 'Trusted Schengen visa consultants UK, with 97% approval rate across 240+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.'
+  : 'Trusted Schengen visa consultants UK, with 97% approval rate across 240+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. Free case check, reply in 30 min.')
 
 @push('head')
 <style>
@@ -565,7 +572,7 @@ html,body{overflow-x:clip;max-width:100%}
 <section class="hero" id="top"><div class="wrap"><div class="hgrid">
   <div class="hleft">
     {{-- Trustpilot removed from hero --}}
-    <span class="rstamp"><span class="wave" aria-hidden="true"></span><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></span>
+    @if($refundOn)<span class="rstamp"><span class="wave" aria-hidden="true"></span><span class="k">Refund Promise</span><span class="v">100% BACK</span><span class="s">service fee · if refused</span></span>@endif
     <h1 class="eyebrow heyebrow">Schengen visa consultants UK</h1>
     <h2 class="hhead">Schengen Visa Consultants. <span class="hl-r">Track Appointments,</span> Error-Free Applications.</h2>
     <p class="hsub">Struggling to book a Schengen visa appointment from the UK? Our Schengen visa consultants track availability across 29 countries daily and help prepare a refusal-proof application.</p>
@@ -579,10 +586,10 @@ html,body{overflow-x:clip;max-width:100%}
       <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>97% approval rate</span>
       <span><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span>UK-registered Schengen visa consultants</span>
     </div>
-    <div class="hrf">
+    @if($refundOn)<div class="hrf">
       <span class="hrf-seal"><span class="wave" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span>
       <div class="hrf-t"><b>100% refund if refused</b><span>100% of our service fee refunded if the consulate refuses after we prepare your file.</span></div>
-    </div>
+    </div>@endif
     <span class="hreply"><span class="dot"></span>Reply within 30 minutes</span>
   </div>
   <div class="hform-col" id="form" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:90px">
@@ -598,7 +605,7 @@ html,body{overflow-x:clip;max-width:100%}
     </div>
     <button class="btn wa" type="submit">@include('partials.wa-glyph')Get my free case check</button>
     <div class="ftrust">
-      <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span><span><b>100% refund</b> if the consulate refuses after we prepare your file.</span></span>
+      @if($refundOn)<span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15L7 12.2l1.4-1.4 2.4 2.4 5-5L17.2 9l-6.4 6z"/></svg></span><span><b>100% refund</b> if the consulate refuses after we prepare your file.</span></span>@endif
       <span class="ln"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg></span><span>A <b>named consultant replies within 30 minutes</b>, 7 days a week. We never share your details.</span></span>
     </div>
     <label class="cons"><input type="checkbox" checked><span>I agree to be contacted about my enquiry. <a href="/legal">Privacy</a>.</span></label>
@@ -842,6 +849,7 @@ html,body{overflow-x:clip;max-width:100%}
       </ul>
     </div>
   </div>
+  @if($refundOn)
   @include('partials.refund-band', [
     'kicker' => 'Our Schengen Visa Consulting Promise',
     'heading' => 'Refused? Every Penny Back.',
@@ -849,6 +857,7 @@ html,body{overflow-x:clip;max-width:100%}
     'ctaText' => 'Check my case now',
     'ctaIcon' => 'wa',
   ])
+  @endif
 </div>
 @include('partials.disclaimer-strip')
 </section>
@@ -928,7 +937,7 @@ html,body{overflow-x:clip;max-width:100%}
           ['q'=>'Are there Schengen visa consultants near me in the UK?','a'=>'We prepare files for applicants applying from Birmingham, Leicester, Bradford, Manchester, London and anywhere else in the UK, including group and family applications where every file has to line up with the others. There is no office to visit.'],
           ['q'=>'How do I find the best consultant for Schengen visa application assistance?','a'=>'Look for a Schengen visa consultancy registered in the UK (check Companies House), with verifiable client references, a clear refund policy, and named consultants, not an anonymous form. Beyond Passports meets all four. Verify us on Companies House (no. 17331903) and the ICO register (ZC197159).'],
           ['q'=>'I’ve never heard of Beyond Passports. Why you?','a'=>'Fair. Do not trust the website. Verify the company on Companies House and the ICO register. Message us before you pay anything and judge the free case check on its own. If it is not useful, you have lost a few minutes and nothing else.'],
-          ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag. If the consulate refuses after we have prepared your complete file, we refund 100% of our service fee.','key'=>true],
+          ['q'=>'Can you guarantee approval?','a'=>'<b>No, and be wary of anyone who does.</b> The decision belongs to the consulate. What we control is preparation: a coherent file, evidence that answers the officer’s real questions, and no contradictions to flag.'.($refundOn ? ' If the consulate refuses after we have prepared your complete file, we refund 100% of our service fee.' : ''),'key'=>true],
         ];
       @endphp
       @push('head')
@@ -970,14 +979,14 @@ html,body{overflow-x:clip;max-width:100%}
         <label for="ask-dest">Where are you travelling?</label>
         <select id="ask-dest"><option value="">Select a Schengen country…</option>@foreach($heroDests as $hd)<option>{{ $hd }}</option>@endforeach</select>
         <button class="wabtn" type="submit">@include('partials.wa-glyph')Check my case free</button>
-        <div class="asktrig"><span><i></i>No payment needed</span><span><i></i>100% refund if refused</span><span><i></i>UK-registered consultancy</span></div>
+        <div class="asktrig"><span><i></i>No payment needed</span>@if($refundOn)<span><i></i>100% refund if refused</span>@endif<span><i></i>UK-registered consultancy</span></div>
         <p class="askurg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4-.4.3-4 2.3-1-1.7 3.4-2V6h2v6.4z"/></svg>The earlier you start, the more appointment options your consultant has.</p>
         <a class="askwa" href="{{ $wa }}?text={{ rawurlencode('Hi Beyond Passports, please check my Schengen visa case for free. Where I am going: ') }}">Prefer WhatsApp? Message us directly &rarr;</a>
       </form>
     </aside>
     <script>function bpAsk(e){e.preventDefault();var n=(document.getElementById('ask-name')||{}).value||'';var d=(document.getElementById('ask-dest')||{}).value||'';var t='Hi Beyond Passports, please check my Schengen visa case for free.'+(n?(' My name is '+n+'.'):'')+(d?(' I am going to '+d+'.'):'');window.open('{{ $wa }}?text='+encodeURIComponent(t),'_blank');return false;}</script>
     <aside class="bp" id="ask">
-      @include('partials.refund-seal-band', ['flush' => true])
+      @if($refundOn)@include('partials.refund-seal-band', ['flush' => true])@endif
       <div class="top"><p class="eyebrow">Ask us anything</p><h3>Still have a question?</h3><p>No question is too small. Send a photo of your letter, ask a follow-up, and get a straight answer the same day.</p></div>
       <div class="bot"><div class="tick"><span class="c">✓</span>Ask anything, no commitment</div><div class="tick"><span class="c">✓</span>A senior consultant replies, not a chatbot</div><div class="tick"><span class="c">✓</span>Answer within 30 minutes</div><a class="wabtn" href="{{ $wa }}?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Schengen%20visa%3A%20">@include('partials.wa-glyph')Ask on WhatsApp</a></div>
     </aside>

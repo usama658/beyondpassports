@@ -126,6 +126,12 @@ return [
         'france_pilot' => (bool) env('UKV_FRANCE_PILOT', false),
     ],
 
+    // Refund-promise UI on /schengen-visa-consultancy (public.lp-bold). OFF for now — hides every
+    // "100% refund if refused" block (hero stamp, hero seal, form trust line, "Every Penny Back"
+    // band, ask-form chip, refund seal band, FAQ refund sentence, meta claim). Fully reversible:
+    // flip UKV_REFUND_PROMISE_ENABLED=true to restore all of it. Honesty caveats stay either way.
+    'refund_promise_enabled' => (bool) env('UKV_REFUND_PROMISE_ENABLED', false),
+
     // "Apply yourself vs us" comparison page (/compare). DRAFTED (off) — redirects home, dropped
     // from the sitemap, footer link hidden. Flip UKV_COMPARE_ENABLED=true to relaunch.
     'compare' => [
