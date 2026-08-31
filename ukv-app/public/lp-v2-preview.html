@@ -1936,7 +1936,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
   var first=t.n.split(',')[0].trim();
   bubble.innerHTML='<b>Hi, I\'m '+first+'.</b> How can I assist you?';
   var hr,dayName;try{hr=parseInt(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hour12:false}).format(d),10)%24;dayName=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short'}).format(d);}catch(e){hr=d.getHours();dayName=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];}
-  var open=!/sun/i.test(dayName)&&(hr>=9&&hr<19);
+  var open=!/sun/i.test(dayName)&&(hr>=9&&hr<24);
   if(open){el.classList.remove('off');stt.textContent='Online now';}
   else{el.classList.add('off');stt.textContent='Away';}
  }
