@@ -1509,14 +1509,14 @@ var WA='447882747584',ST={},SEQ=[],CUR=0,CFG=null;
 var PREF={p40:'£39 upfront, appointment booking only',p85:'£39 to start, then £145 for the full service',p140:'£39 to start, then £99 for the full service',notsure:'Not sure yet'};
 var RLOOP={'Travel plan':'which part of my trip looked unconvincing?','Funds':'was it the money, or how I showed it?','Return':'how do I prove I will come back?','Insurance':'what cover do they actually require?','Documents':'which document did they distrust?','Overstay':'can a past overstay be explained away?','Not sure':'what actually went wrong? I can send the refusal letter.'};
 var INT={
- eligibility:{seq:['purpose','country','tim','details','close'],wa:'I would like to check my eligibility for a Schengen visa.',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
- slots:{seq:['purpose','country','flex','tim','details','close'],wa:'which appointments are actually open for me right now?',cq:'Which country do you need a slot for?',head:'Tell us where to reach you.'},
+ eligibility:{seq:['country','purpose','tim','details','close'],wa:'I would like to check my eligibility for a Schengen visa.',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
+ slots:{seq:['country','purpose','flex','tim','details','close'],wa:'which appointments are actually open for me right now?',cq:'Which country do you need a slot for?',head:'Tell us where to reach you.'},
  availability:{seq:['purpose','flex','tim','details','close'],wa:'are there any slots open for me right now?',cq:'Which country do you need a slot for?',head:'Tell us where to reach you.'},
- ready:{seq:['purpose','country','details','close'],wa:'I am ready to start - what is my first step?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
- priority:{seq:['purpose','country','flex','tim','details','close'],wa:'my trip is close - is it still doable, and what has to happen now?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
- timeline:{seq:['purpose','tim','country','details','close'],wa:'do my dates still leave enough time? When must I start?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
- refused:{seq:['refreason','country','details','close'],wa:'I was refused before and need help.',cq:'Which country refused you?',head:'Where do we send your review?'},
- refusalpay:{seq:['plan','refreason','country','details','close'],plan:'refusal',wa:'I would like Refusal Recovery (£194 service fee, paid in full).',cq:'Which country refused you?',head:'Where do we send your review?'},
+ ready:{seq:['country','purpose','details','close'],wa:'I am ready to start - what is my first step?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
+ priority:{seq:['country','purpose','flex','tim','details','close'],wa:'my trip is close - is it still doable, and what has to happen now?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
+ timeline:{seq:['country','purpose','tim','details','close'],wa:'do my dates still leave enough time? When must I start?',cq:'Which country are you applying for?',head:'Tell us where to reach you.'},
+ refused:{seq:['country','refreason','details','close'],wa:'I was refused before and need help.',cq:'Which country refused you?',head:'Where do we send your review?'},
+ refusalpay:{seq:['plan','country','refreason','details','close'],plan:'refusal',wa:'I would like Refusal Recovery (£194 service fee, paid in full).',cq:'Which country refused you?',head:'Where do we send your review?'},
  price40:{seq:['plan','country','details','close'],plan:'start',wa:'I would like Slot Hunt (£39, you lock it).',preselect:'p40',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
  price85:{seq:['plan','country','details','close'],plan:'prime',wa:'I would like Priority Concierge (£184, £39 to start).',preselect:'p85',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
  price140:{seq:['plan','country','details','close'],plan:'full',wa:'I would like Full Service (£138, £39 to start).',preselect:'p140',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
