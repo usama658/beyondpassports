@@ -1948,4 +1948,45 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  var mov=document.getElementById('mov');if(mov){new MutationObserver(tick).observe(mov,{attributes:true,attributeFilter:['class']});}
 })();
 </script>
+<style>
+/* Mobile hero form: promote to a full-screen sheet once past step 1. Additive + mobile-only;
+   desktop (>760px) never matches, so the inline design is unchanged there. No existing rule touched. */
+@media(max-width:760px){
+  .dform.as-modal{position:fixed;inset:0;z-index:9999;margin:0;padding:12px;background:linear-gradient(160deg,#0d1a30,#0b1528);overflow-y:auto;display:block;animation:dfup .28s cubic-bezier(.22,.61,.36,1)}
+  .dform.as-modal .card{min-height:calc(100dvh - 24px);position:relative}
+  @keyframes dfup{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  body.mlock{overflow:hidden}
+  .dform.as-modal .df-close{display:flex}
+  .dform.as-modal .hthint{display:none}
+}
+/* Close button reuses the production .mx design (same as the other form modals). This global rule
+   just hides it by default (outside the mobile modal); .dform.as-modal .df-close shows it. */
+.df-close{display:none}
+</style>
+<script>
+(function(){
+  var dform=document.querySelector('.dform');if(!dform)return;
+  var card=dform.querySelector('.card');
+  var mq=window.matchMedia('(max-width:760px)');
+  var close=document.createElement('button');
+  close.className='mx df-close';close.setAttribute('type','button');close.setAttribute('aria-label','Close');
+  close.textContent='✕';
+  var htr=dform.querySelector('.htoprow');(htr||card).appendChild(close);
+  function activeStep(){var s=dform.querySelector('.step.active');return s?parseInt(s.getAttribute('data-n'),10):1;}
+  function sync(){
+    if(!mq.matches){dform.classList.remove('as-modal');document.body.classList.remove('mlock');return;}
+    if(activeStep()>=2){dform.classList.add('as-modal');document.body.classList.add('mlock');}
+    else{dform.classList.remove('as-modal');document.body.classList.remove('mlock');}
+  }
+  close.addEventListener('click',function(){
+    var back=dform.querySelector('.back');var guard=0;
+    (function step(){if(activeStep()>1&&back&&guard<8){guard++;back.click();setTimeout(step,10);}else{sync();}})();
+  });
+  var mo=new MutationObserver(function(){setTimeout(sync,0)});
+  dform.querySelectorAll('.step').forEach(function(s){mo.observe(s,{attributes:true,attributeFilter:['class']})});
+  dform.addEventListener('click',function(){setTimeout(sync,30)},true);
+  (mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));
+  sync();
+})();
+</script>
 </body></html>
