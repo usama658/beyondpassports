@@ -37,6 +37,7 @@ return [
     // is live; set UKV_SHOW_DE_PHONE=true to surface it everywhere again.
     'show_de_phone' => filter_var(env('UKV_SHOW_DE_PHONE', false), FILTER_VALIDATE_BOOLEAN),
     'whatsapp' => env('UKV_WHATSAPP', '447882747584'),   // wa.me number (digits only)
+    'whatsapp_secondary' => env('UKV_WHATSAPP_SECONDARY', '447462230788'), // 2nd line (+44 7462 230788); "Talk to an Expert" CTAs route here
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
     'email_billing' => env('UKV_EMAIL_BILLING', 'billing@beyondpassports.co.uk'), // reply-to on receipt + refund emails (forward to hello@)
     'email_adviser' => env('UKV_EMAIL_ADVISER', 'adviser@beyondpassports.co.uk'), // named "reach us directly" line on /about (forward to hello@)
