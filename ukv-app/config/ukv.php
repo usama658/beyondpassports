@@ -278,7 +278,7 @@ return [
         'h1_lead' => 'Schengen visa services for UK residents ',
         'h1_gold' => 'applying on an eVisa.',
         'hook'    => 'You prove your UK status with a share code. It lasts 90 days, so the week you generate it matters.',
-        'sub'     => 'We tell you which documents your visa type needs, when to generate your share code, and what your destination consulate asks for. Send your travel month and we start there.',
+        'sub'     => 'Skip endless portal refreshes and confusing embassy checklists. We catch live cancellations as they open and guide you to the easiest embassies, protecting your application from costly paperwork mistakes.',
     ],
     'lp_variants' => [
         'appointment-help' => [
