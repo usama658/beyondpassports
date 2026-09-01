@@ -189,7 +189,9 @@ Route::get('/schengen-visa-agency', fn (\App\Http\Controllers\CmsController $c) 
 Route::get('/schengen-visa-services-uk', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'services-uk')->name('schengen-visa-services-uk');
 // Keyword variants of the same lp-v2 page: LpVariantController swaps only the hero per route
 // (config ukv.lp_variants). One source file, no copies. Still noindex until the go-live call.
-Route::get('/schengen-visa-appointment-help', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'appointment-help')->name('schengen-visa-appointment-help');
+Route::get('/schengen-visa-assistance', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'assistance')->name('schengen-visa-assistance');
+// Old appointment slug retired (Google Ads govt-services policy). 301 to the advisory page; update the ad Final URL too.
+Route::redirect('/schengen-visa-appointment-help', '/schengen-visa-assistance', 301);
 Route::get('/schengen-visa-application-help', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'application-help')->name('schengen-visa-application-help');
 Route::get('/schengen-visa-agents-uk', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'agents-uk')->name('schengen-visa-agents-uk');
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).

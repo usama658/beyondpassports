@@ -288,13 +288,16 @@ return [
         'sub'     => 'Skip endless portal refreshes and confusing embassy checklists. We catch live cancellations as they open and guide you to the easiest embassies, protecting your application from costly paperwork mistakes.',
     ],
     'lp_variants' => [
-        'appointment-help' => [
-            'title'   => 'Schengen Visa Appointment Help UK | Beyond Passports',
-            'meta'    => 'Schengen visa appointment help for UK applicants who cannot find a slot. We get your file complete so you can book the moment one opens.',
-            'h1_lead' => 'Schengen visa appointment help for UK applicants ',
-            'h1_gold' => 'who cannot find a slot.',
-            'hook'    => 'We cannot create dates. We can make sure your file is ready for the one that appears.',
-            'sub'     => 'Slots open with a few days notice and go to whoever is already prepared. Have every document checked and ready now, and you can take whatever the centre releases.',
+        // Renamed from 'appointment-help' (2026-09-01): the "appointment" slug/intent risks Google
+        // Ads' government-services policy. Advisory framing keeps appointment RELEVANCE (slot/availability
+        // wording so ad-intent match holds) but drops the booking-on-your-behalf PROMISE. Old slug 301s here.
+        'assistance' => [
+            'title'   => 'Schengen Visa Assistance UK | Beyond Passports',
+            'meta'    => 'Schengen visa assistance for UK residents: expert help preparing your application and getting appointment-ready, so you can book the moment a slot opens. Reply in 30 minutes.',
+            'h1_lead' => 'Schengen visa assistance for UK residents, ',
+            'h1_gold' => 'ready the moment a slot opens.',
+            'hook'    => 'We cannot create dates. We make sure your file is ready for the one that appears.',
+            'sub'     => 'We track live availability across the centres and get your file fully prepared, so when a slot opens you book it yourself in minutes. Guidance, document review and preparation only, you submit and book through the official portal.',
         ],
         'application-help' => [
             'title'   => 'Schengen Visa Application Help & Support UK | Beyond Passports',
