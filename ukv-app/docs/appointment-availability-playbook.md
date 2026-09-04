@@ -33,6 +33,24 @@ multi-day drip, not a one-sitting job — and honestly isn't worth it (see §6).
 
 ---
 
+## 0b. Multi-market note (UK, SA, future)
+
+VFS accounts are per **destination country AND source market** — a South Africa applicant checks
+through VFS's South Africa tenant, a separate portal/account set from the UK ones in §2. That means
+SA gets its own rate-limit buckets; it does not compete with or draw down UK throughput.
+
+**But the 429201/429001 behavior for the SA tenant is unconfirmed** — assumed to match UK (same
+platform) but never tested. Before trusting the model at SA scale: **first real SA VFS account →
+ONE test check on a single low-stakes destination country → confirm the error codes and cooldown
+timing match §0 → log the result in Portal Accounts (mark "SA tenant confirmed" or note the
+deviation) → only then proceed under the same One Rule as UK.**
+
+Opening real SA VFS accounts is blocked until SA compliance (ASATA/FICA-equivalent) is resolved —
+this validation step happens then, not before. Same rule applies to any future source market: new
+market = new tenant = unconfirmed until the first real test.
+
+---
+
 ## 1. Which operators are even checkable ("Sweepable" column)
 
 | Operator | Sweepable? | Why |
