@@ -7,6 +7,12 @@
   $refundOn = (bool) config('ukv.refund_promise_enabled', false);
 @endphp
 
+{{-- Retired 2026-09-04: page parked at /schengen-visa-consultancy-old, kept off Google while the
+     lp-v2 consultancy variant takes the main slug. --}}
+@push('head')
+<meta name="robots" content="noindex, nofollow">
+@endpush
+
 @section('title', 'Schengen Visa Consultants UK | 97% Approved | Beyond Passports Consultancy')
 @section('description', $refundOn
   ? 'Trusted Schengen visa consultants UK, with 97% approval rate across 240+ cases. Expert Schengen visa help and application assistance: appointments, documents and refusal recovery. 100% refund if refused. Free case check, reply in 30 min.'

@@ -315,6 +315,16 @@ return [
             'hook'    => 'We read the full file, not just the checklist. Bank statements, employer letter, insurance dates, accommodation, all of it.',
             'sub'     => 'For eVisa, Skilled Worker, Graduate, Student and Family visa holders applying from the UK. Send your documents and you get back a written list of what is missing and what to change.',
         ],
+        // 2026-09-04: consultancy slug moved off the old lp-bold page (retired to -old) onto the lp-v2
+        // template. Agent/agency keyword intent; advisory copy only (no "we book/secure the slot", no bare %).
+        'consultancy' => [
+            'title'   => 'Schengen Visa Consultants UK | Beyond Passports',
+            'meta'    => 'Independent Schengen visa consultants in the UK: document review, application guidance and refusal recovery from a named consultant. Reply in 30 minutes, from £39.',
+            'h1_lead' => 'Schengen visa consultants for anyone applying ',
+            'h1_gold' => 'from the UK.',
+            'hook'    => 'A named UK consultant checks your whole file, guides the application, and helps you get appointment-ready.',
+            'sub'     => 'Independent UK consultants who check every document before you submit and guide you through the application, so you apply with confidence. Not a government service, you submit and book your own appointment through the official portal.',
+        ],
     ],
 
     // Trustpilot social proof (third-party reviews). Paste the Business Unit ID once the
