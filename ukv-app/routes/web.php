@@ -198,6 +198,19 @@ Route::get('/schengen-visa-application-help', [\App\Http\Controllers\LpVariantCo
 Route::get('/schengen-visa-agents-uk', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'agents-uk')->name('schengen-visa-agents-uk');
 // Consultancy slug now serves the lp-v2 template (replaced the retired lp-bold page, which moved to -old).
 Route::get('/schengen-visa-consultancy', [\App\Http\Controllers\LpVariantController::class, 'show'])->defaults('variant', 'consultancy')->name('schengen-visa-consultancy');
+// France money page (premium france-gold build). Served like the lp-v2 variants: static public
+// file + injected analytics/consent head. Indexable go-live 2026-09-07.
+Route::get('/schengen-visa/france', function () {
+    $path = public_path('lp-france.html');
+    abort_unless(is_file($path), 404);
+    $html = (string) file_get_contents($path);
+    $head = view('partials.analytics-head')->render();
+    $pos = stripos($html, '<head>');
+    if ($pos !== false) { $at = $pos + strlen('<head>'); $html = substr($html, 0, $at).$head.substr($html, $at); }
+    return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
+})->name('schengen-visa-france');
+// Honour the trailing-slash form the slug was chosen with.
+Route::redirect('/schengen-visa/france/', '/schengen-visa/france', 301);
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).
 Route::view('/schengen-visa-consultancy/thank-you', 'public.lp-thanks')->name('lp-bold.thanks');
 // LP hero case-form lead: emails the lead to the owner inbox before the WhatsApp hand-off. Throttled; CSRF-exempt + honeypot.
