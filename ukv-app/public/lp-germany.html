@@ -1392,7 +1392,7 @@ html, #fhero body{max-width:100%;overflow-x:clip}
 .df-close{display:none}
 /* neutralise host ukv.css .step process-component leaking onto quiz steps */
 #fhero .dform .step{flex:none;padding:0;margin:0;counter-increment:none;text-align:left;border-left:0}
-#fhero .dform .step + .step{border-left:0}
+#fhero .dform .step + .step{border-left:0!important;border-top:0!important}
 #fhero .dform .step + .step::before,#fhero .dform .step + .step::after{content:none;display:none}
 #fhero .dform .step .num{display:none}
 /* ukv.css .step:hover green tint leaked onto the container = the "surrounding bg changes on hover" */
@@ -1421,6 +1421,18 @@ body.mlock{overflow:hidden}
 #fhero .dform .pgrid .tile:not([data-step="1"]) .s1b{width:100%}
 #fhero .mov .mgrid.pg .mtile{flex-direction:column;align-items:flex-start;gap:9px;padding:15px 13px 14px}
 #fhero .mov .mgrid.pg .mtile .s1b{width:100%}
+}
+/* ukv.css `.q` collision: a border-top leaks onto the quiz step headings (shows as a dotted line above them on mobile) */
+#fhero .dform h2.q,#fhero .fa-ov h2.q,#fhero .mmodal h2.q,#fhero h2.q{border:0!important}
+/* taller option tiles (more top/bottom padding) in full-screen mobile forms */
+@media(max-width:760px){
+#fhero .dform .pgrid .tile{padding-top:26px!important;padding-bottom:26px!important}
+#fhero .mov .mgrid.pg .mtile{padding-top:26px!important;padding-bottom:26px!important}
+}
+/* full-screen mobile: vertically centre the whole form (topbar + bars + step) as a group */
+@media(max-width:760px){
+#fhero .dform.as-modal .card{display:flex;flex-direction:column;justify-content:center}
+#fhero .fa-ov .card{display:flex;flex-direction:column;justify-content:center}
 }
 
 </style>
