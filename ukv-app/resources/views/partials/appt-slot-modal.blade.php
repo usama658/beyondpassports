@@ -3,7 +3,7 @@
      LP) + the exact slot-picker JS. Bind: any element with [data-slotcountry] opens it. Real slots
      come from route('appointments.slots') (CentreSlot), same inventory as the /schengen-visa page. --}}
 @php
-  $apbkWa = config('ukv.whatsapp') ?: '447882747584';
+  $apbkWa = config('ukv.whatsapp') ?: '447462230788';
   // Preload every country's slots so the modal renders instantly (zero round-trip). The fetch
   // endpoint stays as a fallback for anything not in the blob. Cached in the service.
   $apptPreload = app(\App\Services\SlotService::class)->modalPayload();

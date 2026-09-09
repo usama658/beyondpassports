@@ -256,7 +256,7 @@
       if (!n && !p && !d) { btn.href = base; return; }
       var msg = 'Hi Beyond Passports, I would like to check my eligibility before booking a trip.'
         + (d ? ' Destination: ' + d + '.' : '') + (n ? ' Name: ' + n + '.' : '') + (p ? ' Phone: ' + p + '.' : '');
-      btn.href = 'https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text=' + encodeURIComponent(msg);
+      btn.href = 'https://wa.me/{{ config('ukv.whatsapp') ?: '447462230788' }}?text=' + encodeURIComponent(msg);
     }
     ['input', 'change'].forEach(function (e) {
       var nn = document.getElementById(nameId), pp = document.getElementById(phoneId), dd = destId ? document.getElementById(destId) : null;

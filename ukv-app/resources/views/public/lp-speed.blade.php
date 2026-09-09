@@ -1,4 +1,4 @@
-@php $wa = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584'); @endphp
+@php $wa = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447462230788'); @endphp
 {{-- LP /schengen-visa-agent — site-theme (warm-light) reskin. Orphaned: noindex, not in nav/footer/sitemap.
      NOTE: hero + track-record backgrounds use Unsplash PREVIEW images — replace with licensed/owned
      assets before public traffic. CTAs read config('ukv.whatsapp'). --}}

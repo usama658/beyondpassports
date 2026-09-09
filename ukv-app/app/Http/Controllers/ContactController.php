@@ -70,7 +70,7 @@ class ContactController extends Controller
             ."Phone: {$data['phone']}"
             .(! empty($data['best_time']) ? "\nBest time: {$data['best_time']}" : '')
             .(! empty($data['message']) ? "\nEnquiry: {$data['message']}" : '');
-        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584').'?text='.rawurlencode($waText);
+        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447462230788').'?text='.rawurlencode($waText);
 
         // One-shot flash for the thank-you page (survives to the next request, JSON or redirect).
         $request->session()->flash('contact_thanks', [

@@ -86,7 +86,7 @@ class ApplyController extends Controller
             ."Destination: {$order->destination_name}"
             .($order->phone ? "\nPhone: {$order->phone}" : '')
             ."\nPlease confirm what I need and my personalised quote.";
-        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447882747584').'?text='.rawurlencode($waText);
+        $waUrl = 'https://wa.me/'.(config('ukv.whatsapp') ?: '447462230788').'?text='.rawurlencode($waText);
 
         $request->session()->flash('apply_thanks', [
             'name' => $first,
