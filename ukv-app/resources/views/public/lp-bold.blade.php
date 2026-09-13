@@ -1061,6 +1061,6 @@ function dayInc(d){var w=Math.floor(d/7),dow=d%7,t=tgt(w),b=Math.floor(t/7),r=t-
 var start=Date.UTC(2026,7,24),base=243,days=Math.floor((Date.now()-start)/86400000);if(days<0)days=0;
 var total=base;for(var d=0;d<days;d++)total+=dayInc(d);
 var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i].textContent=total.toLocaleString('en-GB');})();</script>
-@include('partials.utm-capture')
+{{-- utm-capture now injected site-wide via layouts/public.blade.php --}}
 @include("partials.gtm-tracking")
 @endsection

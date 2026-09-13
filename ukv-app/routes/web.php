@@ -208,6 +208,10 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     $head = view('partials.analytics-head')->render();
     $pos = stripos($html, '<head>');
     if ($pos !== false) { $at = $pos + strlen('<head>'); $html = substr($html, 0, $at).$head.substr($html, $at); }
+    // Lead attribution (gclid/UTM capture + WhatsApp ref + CRM beacon), injected before </body>.
+    $attr = view('partials.utm-capture')->render();
+    $bpos = strripos($html, '</body>');
+    if ($bpos !== false) { $html = substr($html, 0, $bpos).$attr.substr($html, $bpos); }
     return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
 })->where('country', 'france|spain|netherlands|germany')->name('schengen-visa-country');
 // Honour the trailing-slash form the slugs were chosen with.

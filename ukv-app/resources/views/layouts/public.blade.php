@@ -71,6 +71,8 @@
 @include('partials.site-footer')
 
 @include('partials.gtm-tracking')
+{{-- Lead attribution: gclid/UTM capture, WhatsApp ref + CRM beacon. Site-wide, one source of truth. --}}
+@include('partials.utm-capture')
 @include('partials.site-scripts')
 @include('partials.select-enhance')
 @include('partials.trustpilot-invite')

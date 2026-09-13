@@ -1893,7 +1893,7 @@
 })();
 </script>
 
-@include('partials.utm-capture')
+{{-- utm-capture now injected site-wide via layouts/public.blade.php --}}
 
 </div>
 @endsection

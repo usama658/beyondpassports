@@ -492,4 +492,5 @@ h1,h2,h3,h4{color:var(--ink)}
 </style>
 @include("partials.cookie-consent")
 @include("partials.gtm-tracking")
+@include('partials.utm-capture')
 </body></html>

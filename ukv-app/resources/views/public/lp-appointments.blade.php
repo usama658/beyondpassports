@@ -449,4 +449,5 @@ h1,h2,h3,h4{color:var(--ink)}
 @include('partials.lp-email-strip')
 @include("partials.cookie-consent")
 @include("partials.gtm-tracking")
+@include('partials.utm-capture')
 </body></html>

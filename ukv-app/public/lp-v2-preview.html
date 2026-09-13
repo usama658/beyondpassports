@@ -1124,7 +1124,7 @@ function send(){
   postLead('',(window.pcFull&&window.pcFull())||'',STATE.country||'','lp-v2 hero');
   var text=encodeURIComponent(buildMsg());
   var waApp='whatsapp://send?phone='+WA+'&text='+text;
-  var waWeb='https://wa.me/'+WA+'?text='+text;
+  var waWeb=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+text);
   var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
   document.getElementById('back').classList.remove('show');
@@ -1651,7 +1651,7 @@ function mPlanFill(){var p=PLAN[ST.plan]||PLAN.start;
  var inc='';p.inc.forEach(function(x){inc+='<li>'+PLCHK+'<span>'+x[0]+'<small>'+x[1]+'</small></span></li>';});$('mplinc').innerHTML=inc;
  $('mplafter').innerHTML=PLIC[p.aftic]+'<span><b>'+p.aftt+'</b><span>'+p.aftx+'</span></span>';
  $('mplfine').innerHTML=p.fine;}
-function doClose(){postLead($('mfname').value.trim(),(window.mPcFull&&window.mPcFull())||'',ST.dest||'',ST.intent||'case');var text=encodeURIComponent(msg()),web='https://wa.me/'+WA+'?text='+text,app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function doClose(){postLead($('mfname').value.trim(),(window.mPcFull&&window.mPcFull())||'',ST.dest||'',ST.intent||'case');var text=encodeURIComponent(msg()),web=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+text),app='whatsapp://send?phone='+WA+'&text='+text,mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
  if(ST.pref==='notsure'){mFillSum('mcallsum');var cw=$('mcallwa');if(cw)cw.href=web;return;}
  var nm=$('mfname').value.trim();$('msnthead').textContent=nm?("You're all set, "+nm+"."):"You're all set.";$('msntwa').href=web;mFillSum('msntsum');
  var c=3,el=document.querySelector('#msntcnt b'),w=false;function go(){if(w)return;w=true;if(mob){try{location.href=app;}catch(e){}setTimeout(function(){location.href=web;},1500);}else{window.open(web,'_blank');}}
@@ -1864,7 +1864,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  var BUCKET={es:'high',fr:'high',it:'high',de:'fast',nl:'fast'};
  function verdictText(k,cc,c){var s=STOP[k];if(!s)return '';if(k==='noappt'){var b=BUCKET[cc]||'def';var t=b==='high'?s.vHigh:(b==='fast'?s.vFast:s.vDef);return t.replace(/\{C\}/g,c);}return (s.v||'').replace(/\{C\}/g,c);}
  function renderV(){var s=STOP[S.stopper];if(!s)return;var c=S.country||'your destination';var b=$('faBadge');b.className='v-badge '+s.bc;b.textContent=s.badge;$('faSub').innerHTML=verdictText(S.stopper,S.cc,c);var u=URG[S.timing]||'',ug=$('faUrg');if(u){$('faUrgt').textContent=u;ug.style.display='flex';}else{ug.style.display='none';}$('faCta').textContent=s.cta.replace('{C}',c);}
- window.faSend=function(){var ph=$('faPhone').value.trim();if(ph.replace(/\D/g,'').length<7){$('faErr').style.display='block';return;}$('faErr').style.display='none';var s=STOP[S.stopper]||{cta:'help me'};if(window.postLead)postLead('',ph,S.country||'','lp-v2 whats-at-stake');var lines=['Hi Beyond Passports.'];if(S.country)lines.push('Destination: '+S.country);if(S.stopper)lines.push('My situation: '+(STOPLBL[S.stopper]||''));if(S.timing)lines.push('Timing: '+(TIMLBL[S.timing]||''));lines.push('Please '+s.cta.replace('{C}',S.country||'my destination').toLowerCase()+'.');lines.push('Number: '+ph);var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n'));faShow(5);window.open(url,'_blank');};
+ window.faSend=function(){var ph=$('faPhone').value.trim();if(ph.replace(/\D/g,'').length<7){$('faErr').style.display='block';return;}$('faErr').style.display='none';var s=STOP[S.stopper]||{cta:'help me'};if(window.postLead)postLead('',ph,S.country||'','lp-v2 whats-at-stake');var lines=['Hi Beyond Passports.'];if(S.country)lines.push('Destination: '+S.country);if(S.stopper)lines.push('My situation: '+(STOPLBL[S.stopper]||''));if(S.timing)lines.push('Timing: '+(TIMLBL[S.timing]||''));lines.push('Please '+s.cta.replace('{C}',S.country||'my destination').toLowerCase()+'.');lines.push('Number: '+ph);var url=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n')));faShow(5);window.open(url,'_blank');};
  ov.addEventListener('click',function(e){if(e.target===ov)faClose();});
 })();
 </script>
@@ -1908,7 +1908,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  window.fbPickTiming=function(el,k){selIn(el);S.timing=k;setTimeout(function(){fbShow(2);},180);};
  window.fbPickReady=function(el,k){selIn(el);S.ready=k;setTimeout(function(){fbShow(3);},180);};
  function renderV(){var r=READY[S.ready];if(!r)return;var c=S.country||'your destination';var b=$('fbBadge');b.className='v-badge '+r.bc;b.textContent=r.badge;$('fbSub').innerHTML=r.v.replace(/\{C\}/g,c);var u=URG[S.timing]||'',ug=$('fbUrg');if(u){$('fbUrgt').textContent=u;ug.style.display='flex';}else{ug.style.display='none';}$('fbCta').textContent=r.cta.replace(/\{C\}/g,c);}
- window.fbSend=function(){var ph=$('fbPhone').value.trim();if(ph.replace(/\D/g,'').length<7){$('fbErr').style.display='block';return;}$('fbErr').style.display='none';var r=READY[S.ready]||{cta:'help me'};if(window.postLead)postLead('',ph,S.country||'','lp-v2 appointment');var lines=['Hi Beyond Passports.'];if(S.country)lines.push('Destination: '+S.country);if(S.timing)lines.push('Travelling: '+(TIMLBL[S.timing]||''));if(S.ready)lines.push('Documents: '+(READYLBL[S.ready]||''));lines.push('Please '+r.cta.replace(/\{C\}/g,S.country||'my destination').toLowerCase()+'.');lines.push('Number: '+ph);var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n'));fbShow(4);window.open(url,'_blank');};
+ window.fbSend=function(){var ph=$('fbPhone').value.trim();if(ph.replace(/\D/g,'').length<7){$('fbErr').style.display='block';return;}$('fbErr').style.display='none';var r=READY[S.ready]||{cta:'help me'};if(window.postLead)postLead('',ph,S.country||'','lp-v2 appointment');var lines=['Hi Beyond Passports.'];if(S.country)lines.push('Destination: '+S.country);if(S.timing)lines.push('Travelling: '+(TIMLBL[S.timing]||''));if(S.ready)lines.push('Documents: '+(READYLBL[S.ready]||''));lines.push('Please '+r.cta.replace(/\{C\}/g,S.country||'my destination').toLowerCase()+'.');lines.push('Number: '+ph);var url=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n')));fbShow(4);window.open(url,'_blank');};
  ov.addEventListener('click',function(e){if(e.target===ov)fbClose();});
 })();
 </script>
@@ -1931,7 +1931,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  ];
  var el=document.getElementById('wafab');if(!el)return;
  var av=document.getElementById('wafabav'),nm=document.getElementById('wafabnm'),stt=document.getElementById('wafabstt'),bubble=document.getElementById('wafabbubble'),card=document.getElementById('wafabcard');
- card.href='https://wa.me/'+WA+'?text='+TXT;
+ card.href=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+TXT);
  function render(){
   var d=new Date(),idx=Math.floor(d.getTime()/1000/60/30)%TEAM.length,t=TEAM[idx];
   if(av.getAttribute('data-i')!==t.i){av.src=t.i;av.setAttribute('data-i',t.i);av.alt=t.n;}

@@ -51,6 +51,13 @@ class LpVariantController extends Controller
             $html = substr($html, 0, $at).$head.substr($html, $at);
         }
 
+        // Lead attribution (gclid/UTM capture + WhatsApp ref + CRM beacon), injected before </body>.
+        $attr = view('partials.utm-capture')->render();
+        $bpos = strripos($html, '</body>');
+        if ($bpos !== false) {
+            $html = substr($html, 0, $bpos).$attr.substr($html, $bpos);
+        }
+
         return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 }
