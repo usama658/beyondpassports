@@ -17,8 +17,10 @@
       5. exposes window.bpWaUrl(url) / window.bpWa(text) so JS-built wa.me CTAs
          (window.open / location.href / programmatic anchor.href) inherit the ref + beacon.
 
-    The CRM endpoint (go.beyondpassports.co.uk) may not be live yet — the beacon fails
-    silently and NEVER blocks the WhatsApp hand-off. No personal data is written; only the ad
+    The CRM endpoint (bp-crm-production.up.railway.app) must implement POST /api/track/wa-click
+    and return CORS (Access-Control-Allow-Origin) for the beyondpassports.co.uk origin; until it
+    does the beacon fails silently and NEVER blocks the WhatsApp hand-off. No personal data is
+    written; only the ad
     params Google already put in the URL. Runs before cookie consent by explicit decision.
     Include once per page, near the end of <body>. Idempotent: safe if two copies ever load.
 --}}
@@ -28,7 +30,7 @@
   window.__bpAttr = true;
 
   // ── Per-site settings (Beyond Passports) ──────────────────────────────────
-  var TRACK  = 'https://go.beyondpassports.co.uk/api/track/wa-click';
+  var TRACK  = 'https://bp-crm-production.up.railway.app/api/track/wa-click';
   var PREFIX = 'BP';
   // ──────────────────────────────────────────────────────────────────────────
 
