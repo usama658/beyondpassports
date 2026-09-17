@@ -29,7 +29,17 @@ class AppointmentEnquiryController extends Controller
             'phone' => ['nullable', 'string', 'max:40'],
             'email' => ['nullable', 'email', 'max:190'],
             'source' => ['nullable', 'string', 'max:120'],
+            'utm' => ['nullable', 'array'],
         ]);
+
+        // Ad-click attribution (from partials/utm-capture -> window.bpUtm). Whitelisted keys,
+        // scalar values only, capped — so a keyword-driven appointment lead is traceable.
+        $utm = collect($data['utm'] ?? [])
+            ->only(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+                'matchtype', 'device', 'network', 'loc', 'gclid', 'wbraid', 'gbraid', 'lp'])
+            ->filter(fn ($v) => is_scalar($v) && $v !== '')
+            ->map(fn ($v) => mb_substr((string) $v, 0, 120))
+            ->all();
 
         // Nothing to capture if every identity field is blank — don't email an empty lead.
         if (trim((string) ($data['name'] ?? '')) === ''
@@ -45,6 +55,7 @@ class AppointmentEnquiryController extends Controller
             'has_phone' => ! empty($data['phone']),
             'has_email' => ! empty($data['email']),
             'source' => $data['source'] ?? null,
+            'utm' => $utm ?: null,
             'ip' => $request->ip(),
         ]);
 

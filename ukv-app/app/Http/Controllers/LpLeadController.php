@@ -44,7 +44,7 @@ class LpLeadController extends Controller
         // partials/utm-capture). Whitelisted keys, scalar values only, capped length.
         $utm = collect($data['utm'] ?? [])
             ->only(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-                'matchtype', 'device', 'network', 'loc', 'gclid', 'lp'])
+                'matchtype', 'device', 'network', 'loc', 'gclid', 'wbraid', 'gbraid', 'lp'])
             ->filter(fn ($v) => is_scalar($v) && $v !== '')
             ->map(fn ($v) => mb_substr((string) $v, 0, 120));
 
