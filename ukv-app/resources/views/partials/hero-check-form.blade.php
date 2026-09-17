@@ -178,7 +178,7 @@
   })();
   // "See what I need" → open a WhatsApp chat with the trip pre-filled.
   (function () {
-    var WA = @json(config('ukv.whatsapp') ?: '447882747584');
+    var WA = @json(config('ukv.whatsapp') ?: '447462230788');
     var btn = document.getElementById('hp-chat');
     if (!btn) return;
     btn.addEventListener('click', function () {

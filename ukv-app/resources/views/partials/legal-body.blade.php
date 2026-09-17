@@ -352,7 +352,7 @@
     <p style="max-width:50ch;color:#eef0f1">Talk to a real person about how our service works, what's included, and the fees, with no obligation. Independent service, not a government website.</p>
     <div class="row">
       <a href="{{ App\Support\SiteStats::chatUrl('Hi Beyond Passports, I have a question.') }}" target="_blank" rel="noopener" class="btn">Check eligibility →</a> @include('partials.consult-cta')
-      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, I have a question.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
+      <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447462230788' }}?text={{ rawurlencode('Hi Beyond Passports, I have a question.') }}" class="btn btn--glass">@include('partials.wa-glyph')Chat on WhatsApp</a>
     </div>
   <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div>
 </section>

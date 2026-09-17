@@ -724,7 +724,7 @@
 
 {{-- GET IN TOUCH — unified concierge card (petrol rail + white actions) --}}
 @php
-  $touchWa = 'https://wa.me/' . (config('ukv.whatsapp') ?: '447882747584') . '?text=' . rawurlencode('Hi Beyond Passports, here is my situation: ');
+  $touchWa = 'https://wa.me/' . (config('ukv.whatsapp') ?: '447462230788') . '?text=' . rawurlencode('Hi Beyond Passports, here is my situation: ');
   $touchEmail = config('ukv.email_adviser', 'adviser@beyondpassports.co.uk');
   $touchTick = '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
   $touchList = ['Which Schengen country', 'Your travel dates', 'Your passport', 'Whether you have applied before'];
@@ -768,7 +768,7 @@
   <div class="rule"></div>
   <h2>Send us your situation.</h2>
   <p style="max-width:48ch;color:#eef0f1">If we cannot help, we will tell you honestly. No charge. Most people hear back within a few hours.</p>
-  <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
+  <div class="row"><a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447462230788' }}?text={{ rawurlencode('Hi Beyond Passports, here is my situation: ') }}" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;border-color:#25D366">@include('partials.wa-glyph')WhatsApp our adviser</a><a href="{{ url('/about#contact') }}" class="btn" style="background:#fff;color:var(--cta);border-color:#fff">Send us your case</a></div>
 <div style="margin-top:18px">@include('partials.disclaimer-strip', ['variant' => 'dark', 'wrap' => false])</div></div></section>
 
 <script>

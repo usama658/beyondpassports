@@ -2,7 +2,7 @@
      Name + mobile → opens WhatsApp with those details prefilled + an eligibility query.
      Self-contained (bpc-af- prefix); no ukv.css needed. Works without JS: the button is a
      real link to the generic chat, and JS upgrades it to include the typed name/number. --}}
-@php $bpcWa = config('ukv.whatsapp') ?: '447882747584'; @endphp
+@php $bpcWa = config('ukv.whatsapp') ?: '447462230788'; @endphp
 <form class="bpc-af" onsubmit="return bpcAppt(this)" data-capture="{{ route('appointment.enquiry') }}" novalidate>
   @csrf
   
