@@ -254,13 +254,27 @@
       var p = (document.getElementById(phoneId) || {}).value || '';
       var d = destId ? ((document.getElementById(destId) || {}).value || '') : '';
       if (!n && !p && !d) { btn.href = base; return; }
+      // Phone intentionally NOT in the WhatsApp text: the agent already sees the sender's
+      // number, and leaving it out prevents the v2 noteWa() from double-capturing (bpLead below
+      // is the single, reliable lead->CRM path with the full dial code).
       var msg = 'Hi Beyond Passports, I would like to check my eligibility before booking a trip.'
-        + (d ? ' Destination: ' + d + '.' : '') + (n ? ' Name: ' + n + '.' : '') + (p ? ' Phone: ' + p + '.' : '');
+        + (d ? ' Destination: ' + d + '.' : '') + (n ? ' Name: ' + n + '.' : '');
       btn.href = 'https://wa.me/{{ config('ukv.whatsapp') ?: '447462230788' }}?text=' + encodeURIComponent(msg);
     }
     ['input', 'change'].forEach(function (e) {
       var nn = document.getElementById(nameId), pp = document.getElementById(phoneId), dd = destId ? document.getElementById(destId) : null;
       if (nn) nn.addEventListener(e, build); if (pp) pp.addEventListener(e, build); if (dd) dd.addEventListener(e, build);
+    });
+    // Explicit lead -> CRM on click (WhatsApp-first form, no <form> submit for the v2 script to catch).
+    btn.addEventListener('click', function () {
+      try {
+        if (!window.bpLead) return;
+        var n = (document.getElementById(nameId) || {}).value || '';
+        var p = (document.getElementById(phoneId) || {}).value || '';
+        var d = destId ? ((document.getElementById(destId) || {}).value || '') : '';
+        var dc = (document.querySelector('[name="' + phoneId + '_dialcode"]') || {}).value || '+44';
+        window.bpLead({ name: n, phone: p, dial: dc, destination: d, formName: 'tour-packages' });
+      } catch (e) {}
     });
   }
   wire('[data-tr-appt]:not([data-tr-appt="cta"])', 'tr-name', 'tr-phone', 'tr-dest');
