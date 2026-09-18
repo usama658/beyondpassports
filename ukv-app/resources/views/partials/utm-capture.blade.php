@@ -10,7 +10,7 @@
   window.__bpAttr = true;
   var CRM = "https://go.beyondpassports.co.uk";
   var TRACK = CRM + "/api/track/wa-click?brand=beyond-passports";
-  var FORM = CRM + "/api/forms/PASTE-FORM-ID-HERE";
+  var FORM = CRM + "/api/forms/contact";
   var PREFIX = "BP";
   var KEYS = [ "gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ];
   var COOKIE_MAX = 7776e3;
@@ -139,7 +139,7 @@
       fd.append("phone", phone.slice(0, 30));
       var email = val(f, "email");
       if (email) fd.append("email", email.slice(0, 254));
-      fd.append("message", ((message ? message : "") + (time ? "\nBest time to call: " + time : "") + "\nForm: " + (f.id || "enquiry") + " · " + location.pathname).trim().slice(0, 4e3));
+      fd.append("notes", ((message ? message : "") + (time ? "\nBest time to call: " + time : "") + "\nForm: " + (f.id || "enquiry") + " · " + location.pathname).trim().slice(0, 4e3));
       KEYS.forEach(function(k) {
         var v = ck(k);
         if (v) fd.append(k, v);
