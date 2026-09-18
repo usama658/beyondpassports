@@ -1,9 +1,28 @@
 <?php
 
+// Read a key from the Laravel .env (../.env) — bpx.php is a standalone file so getenv()
+// can't see Laravel's env, and a SetEnv in .htaccess is wiped by `git reset --hard` on
+// deploy. The .env lives outside the web root (not git-tracked) and survives deploys.
+function bpx_env($key) {
+    static $env = null;
+    if ($env === null) {
+        $env = [];
+        $f = __DIR__ . '/../.env';
+        if (is_readable($f)) {
+            foreach (file($f, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+                if ($line === '' || $line[0] === '#' || strpos($line, '=') === false) continue;
+                list($k, $v) = explode('=', $line, 2);
+                $env[trim($k)] = trim(trim(trim($v), '"'), "'");
+            }
+        }
+    }
+    return $env[$key] ?? '';
+}
+
 $BPX = [
-    'crm'          => getenv('CRM_URL') ?: 'https://visacrm-production.up.railway.app',
+    'crm'          => getenv('CRM_URL') ?: (bpx_env('CRM_URL') ?: 'https://visacrm-production.up.railway.app'),
     'brand'        => 'beyond-passports',
-    'secret'       => getenv('CRM_PROXY_SECRET') ?: '',
+    'secret'       => getenv('CRM_PROXY_SECRET') ?: bpx_env('CRM_PROXY_SECRET'),
     'site'         => 'beyondpassports.co.uk',
     'turnstile'    => getenv('TURNSTILE_SECRET_KEY') ?: '',
     'browser_leads'=> getenv('BPX_BROWSER_LEADS') !== 'off',
