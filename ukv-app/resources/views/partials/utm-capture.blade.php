@@ -474,3 +474,51 @@
     }, true);
   } catch (e) {}
 })();</script>
+{{-- window.bpLead(data): explicit lead->CRM helper for BP's WhatsApp-first forms that the
+     v2 script above cannot auto-catch (button onclick -> window.open, no form submit; or a
+     fetch to a non-/lead endpoint). Posts to the same-origin /bpx.php?t=lead proxy with the
+     ad-click cookies attached. 60s per-phone dedup. Call it from a form's send handler with
+     {name|firstName/lastName, phone, dial, email, destination, visaType, travelDate, message,
+     formName}. Do NOT add it to forms the v2 script already captures (avoids double leads). --}}
+<script>
+(function () {
+  if (window.bpLead) return;
+  var sent = {};
+  function ck(n) { try { var m = document.cookie.match(new RegExp("(?:^|; )" + n + "=([^;]*)")); return m ? decodeURIComponent(m[1]) : ""; } catch (e) { return ""; } }
+  var KEYS = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  window.bpLead = function (d) {
+    try {
+      d = d || {};
+      var phone = (d.phone == null ? "" : "" + d.phone).trim();
+      var digits = phone.replace(/\D/g, "");
+      if (digits.length < 7) return false;
+      var now = Date.now();
+      if (sent[digits] && now - sent[digits] < 6e4) return false;
+      sent[digits] = now;
+      var first = d.firstName || "", last = d.lastName || "", full = (d.name || "").trim();
+      if (!first && full) { var p = full.split(/\s+/); first = p[0]; last = p.slice(1).join(" "); }
+      if (phone.charAt(0) !== "+") phone = (d.dial || "+44") + " " + phone.replace(/^0+/, "");
+      var fd = new FormData();
+      if (first) fd.append("firstName", first.slice(0, 100));
+      if (last) fd.append("lastName", last.slice(0, 100));
+      fd.append("phone", phone.slice(0, 30));
+      if (d.email) fd.append("email", ("" + d.email).slice(0, 254));
+      if (d.destination) fd.append("destination", ("" + d.destination).slice(0, 100));
+      if (d.visaType) fd.append("visaType", ("" + d.visaType).slice(0, 100));
+      if (d.travelDate) fd.append("travelDate", ("" + d.travelDate).slice(0, 40));
+      if (d.message) fd.append("message", ("" + d.message).slice(0, 4e3));
+      fd.append("formName", ("" + (d.formName || "enquiry")).slice(0, 80));
+      fd.append("page", location.pathname.slice(0, 200));
+      KEYS.forEach(function (k) { var v = ck(k); if (v) fd.append(k, v); });
+      fd.append("landing_path", location.pathname.slice(0, 200));
+      if (typeof window.fetch === "function") {
+        window.fetch("/bpx.php?t=lead", { method: "POST", body: fd, keepalive: true, credentials: "same-origin" }).catch(function () {
+          try { if (navigator.sendBeacon) navigator.sendBeacon("/bpx.php?t=lead", fd); } catch (e) {}
+        });
+      } else if (navigator.sendBeacon) {
+        navigator.sendBeacon("/bpx.php?t=lead", fd);
+      }
+      return true;
+    } catch (e) { return false; }
+  };
+})();</script>
