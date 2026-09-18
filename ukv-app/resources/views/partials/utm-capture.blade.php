@@ -10,7 +10,9 @@
   window.__bpAttr = true;
   var CRM = "https://go.beyondpassports.co.uk";
   var TRACK = CRM + "/api/track/wa-click?brand=beyond-passports";
-  var FORM = CRM + "/api/forms/contact";
+  var FORM = "https://visacrm-production.up.railway.app/api/forms/contact";
+  // NOTE: the go. alias serves /api/track/wa-click but NOT /api/forms/* (404), so the form
+  // post uses the canonical Railway host. CRM dev fix pending = route /api/forms via go. too.
   var PREFIX = "BP";
   var KEYS = [ "gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ];
   var COOKIE_MAX = 7776e3;
