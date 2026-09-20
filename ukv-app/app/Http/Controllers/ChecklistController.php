@@ -152,7 +152,7 @@ class ChecklistController extends Controller
             $bits[] = 'Travelling around '.$inputs['travel_date'].'.';
         }
         $bits[] = 'Please help me get it right.';
-        $waNum = preg_replace('/\D+/', '', (string) (config('ukv.whatsapp') ?: '447462230788'));
+        $waNum = preg_replace('/\D+/', '', (string) (config('ukv.whatsapp') ?: '447520684030'));
         $waUrl = 'https://wa.me/'.$waNum.'?text='.rawurlencode(implode(' ', $bits));
 
         return view('public.checklist-thanks', [
