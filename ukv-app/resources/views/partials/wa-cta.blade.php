@@ -1,7 +1,7 @@
 @php
     /** Shared WhatsApp CTA. Single source for every wa.me link.
      *  Params: message (?string), label (string), variant (primary|ghost|floating). */
-    $waNumber  = config('ukv.whatsapp') ?: '447520684030';
+    $waNumber  = config('ukv.whatsapp') ?: '4915213103462';
     $waMessage = $message ?? null;
     $waHref    = 'https://wa.me/'.$waNumber.(! empty($waMessage) ? '?text='.urlencode($waMessage) : '');
     $waLabel   = $label ?? 'Chat on WhatsApp';
