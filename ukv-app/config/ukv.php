@@ -179,6 +179,13 @@ return [
         // by real UK travel + Schengen visa demand. Every other country still renders as a hidden
         // "ask us to watch" card the board search box reveals, so all 29 stay reachable. Empty = all.
         'featured' => ['Spain', 'France', 'Italy', 'Greece', 'Netherlands', 'Germany', 'Portugal', 'Switzerland'],
+
+        // DYNAMIC weekly slots (App\Support\SlotBoard, spec docs/appointment-slots-dynamic.md).
+        // When true, the board's per-country count is the shared, weekly-randomised 70-slot pool
+        // that decrements per inquiry and resets every Saturday. OFF by default; flip
+        // UKV_SLOTS_DYNAMIC=true on staging to preview before go-live. Real snapshots still win
+        // where present; only 'ask'/dummy countries take the dynamic count.
+        'dynamic' => (bool) env('UKV_SLOTS_DYNAMIC', false),
     ],
 
     // Public registered office / location — footer (sitewide), contact, about, legal + Organization
