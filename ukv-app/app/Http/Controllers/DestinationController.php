@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Services\AvailabilityService;
+use App\Support\SlotBoard;
 use App\Services\GuideService;
 use App\Services\RequirementService;
 use Illuminate\Contracts\View\View;
@@ -45,7 +46,12 @@ class DestinationController extends Controller
         // with no fresh published snapshot with indicative dummy availability so the board shows
         // all 29 instead of hiding "ask" countries. Deterministic per country name (same crc32
         // seeds as the LP composer). Real snapshots always win; flip the flag off to revert.
-        if (config('ukv.slots.dummy_all')) {
+        // DYNAMIC slots (config ukv.slots.dynamic) take precedence over the static dummy backfill:
+        // the per-country count becomes the shared weekly 70-slot pool (App\Support\SlotBoard), and a
+        // country at 0 falls back to 'ask' so it renders exactly like a no-availability country today.
+        if (config('ukv.slots.dynamic')) {
+            $availability = $this->applyDynamicSlots($destinations, $availability);
+        } elseif (config('ukv.slots.dummy_all')) {
             foreach ($destinations as $d) {
                 if (($availability[$d->id]['status'] ?? 'ask') !== 'ask') {
                     continue;
@@ -96,6 +102,10 @@ class DestinationController extends Controller
 
         $avail = $availability->byDestination('Schengen');
 
+        if (config('ukv.slots.dynamic')) {
+            $avail = $this->applyDynamicSlots($destinations, $avail);
+        }
+
         $regionOrder = ['Western Europe', 'Southern Europe', 'Northern Europe', 'Central & Eastern Europe'];
         $byRegion = $destinations
             ->sortBy(fn ($d) => optional($avail[$d->id]['next_available_on'] ?? null)?->timestamp ?? PHP_INT_MAX)
@@ -110,6 +120,55 @@ class DestinationController extends Controller
             'byRegion' => $byRegion,
             'reviews' => array_slice(\App\Http\Controllers\ReviewController::all(), 0, 3),
         ]);
+    }
+
+    /**
+     * Overlay the shared dynamic weekly slot pool (App\Support\SlotBoard) onto the board data.
+     * Only touches countries WITHOUT a real fresh snapshot (status 'ask') — real ops availability
+     * always wins. remaining == 0 -> 'ask' (renders like a no-availability country today);
+     * otherwise the count (dummy_days) is the live remaining slots for that country this week.
+     *
+     * @param  \Illuminate\Support\Collection  $destinations
+     * @param  array<int,array>  $availability
+     * @return array<int,array>
+     */
+    private function applyDynamicSlots($destinations, array $availability): array
+    {
+        $remaining = SlotBoard::remaining();
+
+        foreach ($destinations as $d) {
+            if (($availability[$d->id]['status'] ?? 'ask') !== 'ask') {
+                continue; // real snapshot wins
+            }
+            if (! array_key_exists($d->name, $remaining)) {
+                continue;
+            }
+
+            $left = $remaining[$d->name];
+            if ($left <= 0) {
+                $availability[$d->id] = [
+                    'status'            => 'ask',
+                    'next_available_on' => null,
+                    'confirmed_at'      => null,
+                ];
+
+                continue;
+            }
+
+            $seed = crc32($d->name);
+            $next = now()->addDays(5 + ($seed % 23));
+            if (! $next->isWeekday()) {
+                $next = $next->nextWeekday();
+            }
+            $availability[$d->id] = [
+                'status'            => $left <= 2 ? 'lim' : 'ok',
+                'next_available_on' => $next,
+                'confirmed_at'      => now(),
+                'dummy_days'        => $left,
+            ];
+        }
+
+        return $availability;
     }
 
     /**

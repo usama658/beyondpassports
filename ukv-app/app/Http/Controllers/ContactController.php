@@ -79,6 +79,10 @@ class ContactController extends Controller
             'wa_url' => $waUrl,
         ]);
 
+        // Per-inquiry decrement for the dynamic slots board — /contact has no destination field, so
+        // this resolves a country only if the referer is a country page; otherwise a safe no-op.
+        \App\Support\SlotBoard::recordInquiry($request->headers->get('referer'), $request);
+
         if ($request->expectsJson()) {
             return response()->json([
                 'ok' => true,

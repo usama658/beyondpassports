@@ -77,6 +77,13 @@ class AppointmentEnquiryController extends Controller
             Log::warning('Appointment enquiry not emailed: no ukv.owner_email or mail.from.address configured.');
         }
 
+        // Per-inquiry decrement for the dynamic slots board — country resolved from the utm/dest or
+        // the landing path (e.g. /schengen-visa/france). No-op unless enabled + a country resolves.
+        \App\Support\SlotBoard::recordInquiry(
+            ($data['utm']['dest'] ?? $data['dest'] ?? null) ?: ($data['source'] ?? $request->headers->get('referer')),
+            $request
+        );
+
         return response()->json(['ok' => true]);
     }
 }

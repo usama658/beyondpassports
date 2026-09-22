@@ -100,6 +100,9 @@ class LpLeadController extends Controller
             Log::warning('LP lead not emailed: no ukv.owner_email or mail.from.address configured.');
         }
 
+        // Per-inquiry decrement for the dynamic slots board (no-op unless enabled + a country resolves).
+        \App\Support\SlotBoard::recordInquiry($data['dest'] ?? null, $request);
+
         return response()->json(['ok' => true]);
     }
 }
