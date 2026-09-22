@@ -138,12 +138,35 @@ class SlotBoardTest extends TestCase
         );
     }
 
-    public function test_match_country_from_path_and_text(): void
+    public function test_match_country_resolves_exact_dest_and_path_only(): void
     {
         SlotBoard::setCountriesForTesting($this->countries);
+
+        // Exact 'dest' field value (name or slug), case-insensitive.
+        $this->assertSame('France', SlotBoard::matchCountry('France'));
+        $this->assertSame('France', SlotBoard::matchCountry('france'));
+        $this->assertSame('Czechia', SlotBoard::matchCountry('czechia'));
+
+        // Landing path / referer URL: the country as a whole path segment resolves.
         $this->assertSame('France', SlotBoard::matchCountry('/schengen-visa/france'));
-        $this->assertSame('Spain', SlotBoard::matchCountry('Hi, I want a Spain appointment'));
+        $this->assertSame('Spain', SlotBoard::matchCountry('/schengen-visa/spain?gclid=abc123'));
+        $this->assertSame('Germany', SlotBoard::matchCountry('https://beyondpassports.co.uk/schengen-visa/germany'));
+
         $this->assertNull(SlotBoard::matchCountry('/contact'));
         $this->assertNull(SlotBoard::matchCountry(''));
+    }
+
+    public function test_match_country_never_matches_a_substring_or_free_text(): void
+    {
+        SlotBoard::setCountriesForTesting($this->countries);
+
+        // Free text that merely mentions a country must NOT decrement it (controllers pass
+        // dest/path, not chat bodies) — this is the tightened, exact-match behaviour.
+        $this->assertNull(SlotBoard::matchCountry('Hi, I want a Spain appointment'));
+        $this->assertNull(SlotBoard::matchCountry('I love france and italy'));
+
+        // Substring of a word that contains a country name must not match either.
+        $this->assertNull(SlotBoard::matchCountry('francexyz'));
+        $this->assertNull(SlotBoard::matchCountry('/blog/how-france-visas-work'));
     }
 }

@@ -264,21 +264,40 @@ final class SlotBoard
     }
 
     /**
-     * Resolve a board country from free text (a 'dest' field, a landing path like
-     * /schengen-visa/france, or a WhatsApp message). Returns the canonical country name or null.
-     * Longest names first so "Czech Republic" wins over a stray "Republic" substring.
+     * Resolve a board country from a controller-supplied value: a 'dest' field ("France") or a
+     * landing path / referer ("/schengen-visa/france"). Returns the canonical country name or null.
+     *
+     * Matches EXACTLY, never as a substring: a plain value must equal a country name or slug, and a
+     * path must contain the name/slug as a whole segment. This means free text that merely mentions a
+     * country (e.g. a chat body) can never decrement a slot — only a real dest/path resolution does.
      */
     public static function matchCountry(?string $text): ?string
     {
-        $text = strtolower((string) $text);
+        $text = trim(strtolower((string) $text));
         if ($text === '') {
             return null;
         }
         $countries = self::countries();
-        usort($countries, fn ($a, $b) => strlen($b) <=> strlen($a));
+
+        // Path / URL (e.g. /schengen-visa/france, or a referer): match an EXACT path segment only.
+        if (str_contains($text, '/')) {
+            $segments = preg_split('#[/?\#&]+#', $text, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+            foreach ($countries as $c) {
+                $name = strtolower($c);
+                $slug = self::slug($c);
+                foreach ($segments as $seg) {
+                    if ($seg === $name || $seg === $slug) {
+                        return $c;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // Plain value (a 'dest' field): exact whole-string match on the name or slug only.
         foreach ($countries as $c) {
-            $needle = strtolower($c);
-            if (str_contains($text, $needle) || str_contains($text, self::slug($c))) {
+            if ($text === strtolower($c) || $text === self::slug($c)) {
                 return $c;
             }
         }

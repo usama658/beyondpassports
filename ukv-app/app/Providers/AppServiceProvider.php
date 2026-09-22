@@ -199,8 +199,10 @@ class AppServiceProvider extends ServiceProvider
 
             // DYNAMIC slots (config ukv.slots.dynamic): single shared weekly pool overrides the card
             // counts for BOTH LP boards (lp-bold, lp-agency) from one source. Reuses existing card
-            // fields (slots/cls/label/date) — no design/copy change. Dates clamped to the next 7
-            // days; 0 -> "Very limited" (renders like a no-availability tile today).
+            // fields (slots/cls/label/date) — no design/copy change. Dates clamped to the next 7 days.
+            // A 0-remaining country is DROPPED here so every board renders it exactly like a country
+            // with no availability today: absent from the featured strip, and re-added as a 0-slot
+            // "no live slots" tile by the boards that backfill all Schengen countries. Never a date.
             if (config('ukv.slots.dynamic')) {
                 $rem = \App\Support\SlotBoard::remaining();
                 $cards = $cards->map(function ($c) use ($rem) {
@@ -208,15 +210,15 @@ class AppServiceProvider extends ServiceProvider
                     if ($n === null) {
                         return $c;
                     }
-                    $next = \App\Support\SlotBoard::nextDate($c['name']);
+                    if ($n <= 0) {
+                        return null;
+                    }
                     $c['slots'] = $n;
-                    [$c['cls'], $c['label']] = $n <= 0
-                        ? ['none', 'Very limited']
-                        : ($n <= 2 ? ['tight', 'Limited'] : ['open', 'Available']);
-                    $c['date'] = $next->format('j M Y');
+                    [$c['cls'], $c['label']] = $n <= 2 ? ['tight', 'Limited'] : ['open', 'Available'];
+                    $c['date'] = \App\Support\SlotBoard::nextDate($c['name'])->format('j M Y');
 
                     return $c;
-                })->values();
+                })->filter()->values();
             }
 
             $view->with('apptCards', $cards);
