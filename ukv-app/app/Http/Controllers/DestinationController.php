@@ -155,11 +155,8 @@ class DestinationController extends Controller
                 continue;
             }
 
-            $seed = crc32($d->name);
-            $next = now()->addDays(5 + ($seed % 23));
-            if (! $next->isWeekday()) {
-                $next = $next->nextWeekday();
-            }
+            // Locked rule: appointment date shown is a weekday within the NEXT 7 DAYS.
+            $next = SlotBoard::nextDate($d->name);
             $availability[$d->id] = [
                 'status'            => $left <= 2 ? 'lim' : 'ok',
                 'next_available_on' => $next,

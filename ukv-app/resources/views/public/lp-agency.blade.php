@@ -1549,6 +1549,20 @@
             $apptShown->push(['name' => $sn, 'cls' => 'none', 'label' => 'Very limited', 'slots' => 0]);
           }
         }
+        // DYNAMIC slots (config ukv.slots.dynamic): overlay the SAME shared weekly pool onto this
+        // board's existing slots/cls/label fields — no design/copy change. 0 -> "Very limited".
+        if (config('ukv.slots.dynamic')) {
+          $rem = \App\Support\SlotBoard::remaining();
+          $apptShown = $apptShown->map(function ($c) use ($rem) {
+            $n = $rem[$c['name']] ?? null;
+            if ($n === null) { return $c; }
+            $c['slots'] = $n;
+            $c['cls']   = $n <= 0 ? 'none' : ($n <= 2 ? 'tight' : 'open');
+            $c['label'] = $n <= 0 ? 'Very limited' : ($n <= 2 ? 'Limited' : 'Available');
+            return $c;
+          });
+          $apptTotal = $apptShown->sum('slots');
+        }
       @endphp
       <div class="ngstage" data-slotboard>
         <div class="nghd">

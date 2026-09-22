@@ -34,8 +34,8 @@ final class SlotBoard
     /** Weekly pool shared across all countries. */
     public const TOTAL = 70;
 
-    /** Minimum slots every country shows at seed. */
-    public const FLOOR = 2;
+    /** Minimum slots every country shows at seed. (1 = more weekly per-country variance.) */
+    public const FLOOR = 1;
 
     /** Higher-demand countries get proportionally more of the leftover pool. */
     private const POPULAR = ['France', 'Spain', 'Italy', 'Germany', 'Greece', 'Netherlands', 'Portugal'];
@@ -175,6 +175,29 @@ final class SlotBoard
     }
 
     /**
+     * Deterministic "next available" date for a country's board tile — always a WEEKDAY within the
+     * NEXT 7 DAYS (locked rule), stable per country + slot-week. Picks from the weekdays that fall in
+     * now+1..now+7, so it can never be a weekend, in the past, or beyond the 7-day window.
+     */
+    public static function nextDate(string $country, ?CarbonImmutable $now = null): CarbonImmutable
+    {
+        $now = $now ?? CarbonImmutable::now();
+        $days = [];
+        for ($i = 1; $i <= 7; $i++) {
+            $d = $now->addDays($i);
+            if ($d->isWeekday()) {
+                $days[] = $d;
+            }
+        }
+        if ($days === []) {
+            $days[] = $now->addDay();
+        }
+        $seed = crc32($country.'|'.self::slotWeek($now));
+
+        return $days[$seed % count($days)];
+    }
+
+    /**
      * Per-inquiry decrement: country -1 (reflected in the total), deduped per visitor per country
      * per slot week. Fire-and-forget — swallows all errors so it can never break lead capture.
      */
@@ -183,10 +206,6 @@ final class SlotBoard
         try {
             $country = trim($country);
             if ($country === '' || ! in_array($country, self::countries(), true)) {
-                return;
-            }
-            // Don't decrement a country that has nothing seeded / already at zero.
-            if (self::remainingFor($country) <= 0) {
                 return;
             }
 
@@ -199,50 +218,46 @@ final class SlotBoard
                 return;
             }
 
-            // Durable source of truth: atomic upsert + increment in the DB.
-            DB::table('slot_decrements')->upsert(
-                [['slot_week' => $week, 'country' => $country, 'count' => 1, 'updated_at' => now(), 'created_at' => now()]],
-                ['slot_week', 'country'],
-                [] // no-op on conflict; we bump with a follow-up increment below
-            );
-            DB::table('slot_decrements')
+            // Durable count. Bump the existing row; if there is none yet, insert at 1. (No upsert —
+            // some drivers REPLACE the row on conflict, which would reset the running count.)
+            $updated = DB::table('slot_decrements')
                 ->where('slot_week', $week)
                 ->where('country', $country)
                 ->increment('count', 1, ['updated_at' => now()]);
 
-            // Fast path for renders: keep a cache copy in step.
-            $cacheKey = "slots:$week:dec:$slug";
-            try {
-                if (Cache::add($cacheKey, 1, self::TTL_SECONDS) === false) {
-                    Cache::increment($cacheKey);
+            if ($updated === 0) {
+                try {
+                    DB::table('slot_decrements')->insert([
+                        'slot_week' => $week, 'country' => $country, 'count' => 1,
+                        'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                } catch (\Throwable $e) {
+                    // Lost an insert race — the row now exists, so just bump it.
+                    DB::table('slot_decrements')
+                        ->where('slot_week', $week)
+                        ->where('country', $country)
+                        ->increment('count', 1, ['updated_at' => now()]);
                 }
-            } catch (\Throwable $e) {
-                Cache::forget("slots:$week:decmap"); // force a DB rebuild next read
             }
-
-            Cache::forget("slots:$week:decmap");
         } catch (\Throwable $e) {
             // never break the lead path
         }
     }
 
     /**
-     * Current decrement counts keyed by country for the live slot week.
-     * Cached as one map (short TTL) rebuilt from the durable table; empty on any failure.
+     * Current decrement counts keyed by country for the live slot week — read straight from the
+     * durable table (one small indexed query; always consistent, no cache staleness). Empty on any
+     * failure so a DB hiccup degrades to the full seed allocation rather than breaking a render.
      * @return array<string,int>
      */
     private static function decrements(): array
     {
-        $week = self::slotWeek();
-
         try {
-            return Cache::remember("slots:$week:decmap", 60, function () use ($week): array {
-                return DB::table('slot_decrements')
-                    ->where('slot_week', $week)
-                    ->pluck('count', 'country')
-                    ->map(fn ($v) => (int) $v)
-                    ->all();
-            });
+            return DB::table('slot_decrements')
+                ->where('slot_week', self::slotWeek())
+                ->pluck('count', 'country')
+                ->map(fn ($v) => (int) $v)
+                ->all();
         } catch (\Throwable $e) {
             return [];
         }

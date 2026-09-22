@@ -197,6 +197,28 @@ class AppServiceProvider extends ServiceProvider
                 ->pluck('name')
                 ->values();
 
+            // DYNAMIC slots (config ukv.slots.dynamic): single shared weekly pool overrides the card
+            // counts for BOTH LP boards (lp-bold, lp-agency) from one source. Reuses existing card
+            // fields (slots/cls/label/date) — no design/copy change. Dates clamped to the next 7
+            // days; 0 -> "Very limited" (renders like a no-availability tile today).
+            if (config('ukv.slots.dynamic')) {
+                $rem = \App\Support\SlotBoard::remaining();
+                $cards = $cards->map(function ($c) use ($rem) {
+                    $n = $rem[$c['name']] ?? null;
+                    if ($n === null) {
+                        return $c;
+                    }
+                    $next = \App\Support\SlotBoard::nextDate($c['name']);
+                    $c['slots'] = $n;
+                    [$c['cls'], $c['label']] = $n <= 0
+                        ? ['none', 'Very limited']
+                        : ($n <= 2 ? ['tight', 'Limited'] : ['open', 'Available']);
+                    $c['date'] = $next->format('j M Y');
+
+                    return $c;
+                })->values();
+            }
+
             $view->with('apptCards', $cards);
             $view->with('heroDests', $heroDests);
         });

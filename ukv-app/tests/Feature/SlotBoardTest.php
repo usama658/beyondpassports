@@ -119,6 +119,25 @@ class SlotBoardTest extends TestCase
         $this->assertSame($total, SlotBoard::total(), 'unknown country never decrements');
     }
 
+    public function test_next_date_is_a_weekday_within_seven_days(): void
+    {
+        SlotBoard::setCountriesForTesting($this->countries);
+        $now = CarbonImmutable::now();
+
+        foreach ($this->countries as $c) {
+            $d = SlotBoard::nextDate($c, $now);
+            $this->assertTrue($d->isWeekday(), "$c date must be a weekday");
+            $this->assertGreaterThanOrEqual(1, $now->startOfDay()->diffInDays($d->startOfDay()), "$c must be in the future");
+            $this->assertLessThanOrEqual(7, $now->startOfDay()->diffInDays($d->startOfDay()), "$c must be within 7 days");
+        }
+
+        // Deterministic per country/week.
+        $this->assertEquals(
+            SlotBoard::nextDate('France', $now)->toDateString(),
+            SlotBoard::nextDate('France', $now)->toDateString()
+        );
+    }
+
     public function test_match_country_from_path_and_text(): void
     {
         SlotBoard::setCountriesForTesting($this->countries);
