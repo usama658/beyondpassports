@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Support\LpAssembler;
 use Illuminate\Http\Response;
 
 /**
@@ -42,21 +43,10 @@ class LpVariantController extends Controller
             ]);
         }
 
-        // Inject the canonical site-wide analytics/consent head once, right after <head>.
-        // str-based (not preg_replace) so JS containing $ in the partial isn't mangled.
-        $head = view('partials.analytics-head')->render();
-        $pos = stripos($html, '<head>');
-        if ($pos !== false) {
-            $at = $pos + strlen('<head>');
-            $html = substr($html, 0, $at).$head.substr($html, $at);
-        }
-
-        // Lead attribution (gclid/UTM capture + WhatsApp ref + CRM beacon), injected before </body>.
-        $attr = view('partials.utm-capture')->render();
-        $bpos = strripos($html, '</body>');
-        if ($bpos !== false) {
-            $html = substr($html, 0, $bpos).$attr.substr($html, $bpos);
-        }
+        // Inject the canonical site-wide analytics/consent head, the shared modal flow
+        // (full country picker, since lp-v2 is not locked to one destination), and lead
+        // attribution — single source of truth via LpAssembler (see app/Support/LpAssembler.php).
+        $html = LpAssembler::inject($html, null);
 
         return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
