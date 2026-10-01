@@ -205,13 +205,11 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     $path = public_path('lp-'.$country.'.html');
     abort_unless(is_file($path), 404);
     $html = (string) file_get_contents($path);
-    $head = view('partials.analytics-head')->render();
-    $pos = stripos($html, '<head>');
-    if ($pos !== false) { $at = $pos + strlen('<head>'); $html = substr($html, 0, $at).$head.substr($html, $at); }
-    // Lead attribution (gclid/UTM capture + WhatsApp ref + CRM beacon), injected before </body>.
-    $attr = view('partials.utm-capture')->render();
-    $bpos = strripos($html, '</body>');
-    if ($bpos !== false) { $html = substr($html, 0, $bpos).$attr.substr($html, $bpos); }
+    // Analytics/consent head + the shared modal flow, locked to this page's country (the
+    // `where` constraint below guarantees $iso is set) + lead attribution. Single source
+    // of truth via LpAssembler (see app/Support/LpAssembler.php).
+    $iso = ['france' => 'fr', 'spain' => 'es', 'germany' => 'de', 'netherlands' => 'nl'][$country];
+    $html = \App\Support\LpAssembler::inject($html, ['dest' => ucfirst($country), 'iso' => $iso]);
     return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
 })->where('country', 'france|spain|netherlands|germany')->name('schengen-visa-country');
 // Honour the trailing-slash form the slugs were chosen with.
