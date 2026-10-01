@@ -6472,7 +6472,7 @@ bars();
 (function(){
  var FB='https://beyondpassports.co.uk/assets/flags/';
  var C=[
-  ["United Kingdom","GB","+44",[10,10]],["Ireland","IE","+353",[7,9]],["Germany","FR","+33",[9,9]],
+  ["United Kingdom","GB","+44",[10,10]],["Ireland","IE","+353",[7,9]],["France","FR","+33",[9,9]],
   ["Germany","DE","+49",[10,11]],["Spain","ES","+34",[9,9]],["Italy","IT","+39",[9,10]],
   ["Netherlands","NL","+31",[9,9]],["Belgium","BE","+32",[8,9]],["Portugal","PT","+351",[9,9]],
   ["Poland","PL","+48",[9,9]],["Greece","GR","+30",[10,10]],["Austria","AT","+43",[9,13]],
@@ -6534,7 +6534,7 @@ var INT={
  price140:{seq:['plan','country','details','close'],plan:'full',wa:'I would like Full Service (£158, £39 to start).',preselect:'p140',cq:'Which country are you applying for?',head:'Where do we send your first step?'},
  find:{seq:['country','purpose','flex','tim','details','close'],wa:'which appointments are actually open for me right now?',cq:'Which Schengen country do you need?',head:'Tell us where to reach you.'}
 };
-var ISOM={Spain:'es',Germany:'de',Italy:'it',Germany:'de',Greece:'gr'};
+var ISOM={Spain:'es',France:'fr',Italy:'it',Germany:'de',Greece:'gr'};
 function $(id){return document.getElementById(id);}
 function bars(){var b=$('mbars');b.innerHTML='';SEQ.forEach(function(_,i){var d=document.createElement('div');d.className='mbar'+(i<=CUR?' on':'');b.appendChild(d);});}
 function realKey(k){if(k==='close')return (ST.pref==='notsure')?'closeCall':'closeWa';return k;}
@@ -6666,7 +6666,7 @@ function doClose(){postLead($('mfname').value.trim(),(window.mPcFull&&window.mPc
  var c=3,el=document.querySelector('#msntcnt b'),w=false;function go(){if(w)return;w=true;if(mob){try{location.href=app;}catch(e){}setTimeout(function(){location.href=web;},1500);}else{window.open(web,'_blank');}}
  var t=setInterval(function(){c--;if(el)el.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);setTimeout(go,3300);}
 var FB='https://beyondpassports.co.uk/assets/flags/';
-var C=[["United Kingdom","GB","+44",[10,10]],["Ireland","IE","+353",[7,9]],["Germany","FR","+33",[9,9]],["Germany","DE","+49",[10,11]],["Spain","ES","+34",[9,9]],["Italy","IT","+39",[9,10]],["Greece","GR","+30",[10,10]],["Netherlands","NL","+31",[9,9]],["Portugal","PT","+351",[9,9]],["Poland","PL","+48",[9,9]],["India","IN","+91",[10,10]],["Pakistan","PK","+92",[10,10]],["Nigeria","NG","+234",[8,10]],["United States","US","+1",[10,10]],["UAE","AE","+971",[9,9]]];
+var C=[["United Kingdom","GB","+44",[10,10]],["Ireland","IE","+353",[7,9]],["France","FR","+33",[9,9]],["Germany","DE","+49",[10,11]],["Spain","ES","+34",[9,9]],["Italy","IT","+39",[9,10]],["Greece","GR","+30",[10,10]],["Netherlands","NL","+31",[9,9]],["Portugal","PT","+351",[9,9]],["Poland","PL","+48",[9,9]],["India","IN","+91",[10,10]],["Pakistan","PK","+92",[10,10]],["Nigeria","NG","+234",[8,10]],["United States","US","+1",[10,10]],["UAE","AE","+971",[9,9]]];
 var pc=$('mpc'),btn=$('mpcbtn'),pop=$('mpcpop'),flag=$('mpcflag'),dc=$('mpcdc'),inp=$('mfphone'),cur=C[0];
 pop.innerHTML='<input id=mpcs placeholder="Search" style="width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;font:600 13px var(--sans);margin-bottom:6px"><ul id=mpcl style="list-style:none;max-height:200px;overflow:auto;margin:0;padding:0"></ul>';
 var s=pop.querySelector('#mpcs'),ul=pop.querySelector('#mpcl');
