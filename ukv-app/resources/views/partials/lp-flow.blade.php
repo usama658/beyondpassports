@@ -48,9 +48,6 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.18;c
 .mov .flag{width:26px;height:19px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .mov .globe{font-size:20px;flex:none}
 .mov .mres li img.flag,.mov .msearch img.flag{width:22px;height:16px}
-.dform .hflag{width:26px;height:19px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-.dform .tile .ic{display:none}
-.dform .mres li img.flag,.dform .msearch img.flag{width:22px;height:16px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
 .mtile.ctile,.mtile.ptile{align-items:center}
 #mcgrid .mtile{min-width:0}
 .mov .pg .mtile{align-items:center;position:relative;overflow:hidden}
