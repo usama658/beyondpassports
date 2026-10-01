@@ -49,4 +49,27 @@ class LpFlowSharedTest extends TestCase
         $this->assertStringContainsString('gtag', $h);        // analytics-head marker
         $this->assertStringContainsString('bpWaUrl', $h);     // utm-capture marker
     }
+
+    public function test_no_stale_start_price_on_served_pages(): void
+    {
+        foreach (['/schengen-visa-services-uk', '/schengen-visa-assistance',
+                  '/schengen-visa-application-help', '/schengen-visa-agents-uk',
+                  '/schengen-visa-consultancy', '/schengen-visa/france', '/schengen-visa/spain',
+                  '/schengen-visa/germany', '/schengen-visa/netherlands'] as $url) {
+            $h = $this->get($url)->assertOk()->getContent();
+            $this->assertStringNotContainsString('£39', $h, "stale £39 on $url");
+            $this->assertStringNotContainsString('&pound;39', $h, "stale &pound;39 on $url");
+            $this->assertStringNotContainsString('£194', $h, "stale £194 on $url");
+            $this->assertStringContainsString('£60', $h, "govt fee £60 missing on $url"); // left-untouched sentinel
+            $this->assertStringContainsString('£80', $h, "govt fee £80 missing on $url"); // left-untouched sentinel
+            $this->assertTrue(
+                str_contains($h, '£49') || str_contains($h, '&pound;49'),
+                "canonical start price £49 missing on $url"
+            );
+            $this->assertTrue(
+                str_contains($h, '£238') || str_contains($h, '&pound;238'),
+                "canonical refusal price £238 missing on $url"
+            );
+        }
+    }
 }
