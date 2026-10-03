@@ -31,7 +31,7 @@ final class SlotTiles
 
     /** Matches a slnum block, optionally followed by its slmeter and slnx siblings. */
     private const BARE_PATTERN = '/<div class=slnum><b[^>]*>\d+<\/b><span>[^<]*<\/span><\/div>'
-        .'(\s*<div class=slmeter><i style="width:\d+%"><\/i><\/div>)?'
+        .'(\s*<div class=slmeter><i style="width:\d+%[^"]*"><\/i><\/div>)?'
         .'(\s*<div class=slnx>.*?<\/div>)?/s';
 
     /**
@@ -139,7 +139,7 @@ final class SlotTiles
         ) ?? $block;
 
         $block = preg_replace(
-            '/<div class=slmeter><i style="width:\d+%"><\/i><\/div>/',
+            '/<div class=slmeter><i style="width:\d+%[^"]*"><\/i><\/div>/',
             '<div class=slmeter><i style="width:'.$width.'%;background:linear-gradient(90deg,'.$grad.')"></i></div>',
             $block,
             1
