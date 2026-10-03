@@ -216,10 +216,14 @@ Route::get('/schengen-visa/{country}', function (string $country) {
         $left = \App\Support\SlotBoard::remaining()[ucfirst($country)] ?? null;
         if ($left !== null) {
             $noun = $left === 1 ? 'slot open' : 'slots open';
-            $w = $left <= 2 ? 34 : 82; // mirror the board's band→meter width (lim/ok)
+            // Colour the number + meter by scarcity tier (inline, to override the baked green
+            // CSS which is not count-aware): 1 = red/very limited, 2-3 = amber/limited, 4+ = green.
+            if ($left <= 1)      { $col = '#dc2626'; $grad = '#dc2626,#ef4444';        $w = 16; }
+            elseif ($left <= 3)  { $col = '#d97706'; $grad = '#d97706,#f59e0b';        $w = 38; }
+            else                 { $col = 'var(--green)'; $grad = 'var(--green),#4bad82'; $w = 82; }
             $html = str_replace(
                 '<div class=slnum><b>32</b><span>slots open</span></div><div class=slmeter><i style="width:82%"></i></div>',
-                '<div class=slnum><b>'.$left.'</b><span>'.$noun.'</span></div><div class=slmeter><i style="width:'.$w.'%"></i></div>',
+                '<div class=slnum><b style="color:'.$col.'">'.$left.'</b><span>'.$noun.'</span></div><div class=slmeter><i style="width:'.$w.'%;background:linear-gradient(90deg,'.$grad.')"></i></div>',
                 $html
             );
         }
