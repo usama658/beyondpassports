@@ -209,6 +209,21 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     // `where` constraint below guarantees $iso is set) + lead attribution. Single source
     // of truth via LpAssembler (see app/Support/LpAssembler.php).
     $iso = ['france' => 'fr', 'spain' => 'es', 'germany' => 'de', 'netherlands' => 'nl', 'italy' => 'it', 'switzerland' => 'ch'][$country];
+    // Hero "slots open" counter: the static file bakes a fixed "32" (clone artifact, same on every
+    // country). When the dynamic weekly pool is on, replace it with this country's REAL remaining
+    // (App\Support\SlotBoard) so the hero matches the /schengen-visa board and is honest.
+    if (config('ukv.slots.dynamic')) {
+        $left = \App\Support\SlotBoard::remaining()[ucfirst($country)] ?? null;
+        if ($left !== null) {
+            $noun = $left === 1 ? 'slot open' : 'slots open';
+            $w = $left <= 2 ? 34 : 82; // mirror the board's band→meter width (lim/ok)
+            $html = str_replace(
+                '<div class=slnum><b>32</b><span>slots open</span></div><div class=slmeter><i style="width:82%"></i></div>',
+                '<div class=slnum><b>'.$left.'</b><span>'.$noun.'</span></div><div class=slmeter><i style="width:'.$w.'%"></i></div>',
+                $html
+            );
+        }
+    }
     $html = \App\Support\LpAssembler::inject($html, ['dest' => ucfirst($country), 'iso' => $iso]);
     return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
 })->where('country', 'france|spain|netherlands|germany|italy|switzerland')->name('schengen-visa-country');
