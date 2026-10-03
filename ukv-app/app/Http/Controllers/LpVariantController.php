@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Support\LpAssembler;
+use App\Support\SlotTiles;
 use Illuminate\Http\Response;
 
 /**
@@ -41,6 +42,13 @@ class LpVariantController extends Controller
                 $d['hook']                                  => $v['hook'],
                 $d['sub']                                   => $v['sub'],
             ]);
+        }
+
+        // Hydrate the per-country "slots open" tiles from the real weekly pool (SlotBoard),
+        // same mechanism as the /schengen-visa/{country} pages (see App\Support\SlotTiles).
+        // lp-v2 has no single page country, so each tile is keyed by its own fbOpen('Country',..).
+        if (config('ukv.slots.dynamic')) {
+            $html = SlotTiles::hydrate($html);
         }
 
         // Inject the canonical site-wide analytics/consent head, the shared modal flow

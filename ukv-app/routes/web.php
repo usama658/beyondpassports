@@ -209,24 +209,12 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     // `where` constraint below guarantees $iso is set) + lead attribution. Single source
     // of truth via LpAssembler (see app/Support/LpAssembler.php).
     $iso = ['france' => 'fr', 'spain' => 'es', 'germany' => 'de', 'netherlands' => 'nl', 'italy' => 'it', 'switzerland' => 'ch'][$country];
-    // Hero "slots open" counter: the static file bakes a fixed "32" (clone artifact, same on every
-    // country). When the dynamic weekly pool is on, replace it with this country's REAL remaining
-    // (App\Support\SlotBoard) so the hero matches the /schengen-visa board and is honest.
+    // Slot tile(s): the static file bakes a fixed "32" (clone artifact, same on every country).
+    // When the dynamic weekly pool is on, hydrate every tile with this page's country's REAL
+    // remaining (App\Support\SlotBoard) so the hero matches the /schengen-visa board and is
+    // honest. Single mechanism shared with the lp-v2 pages (see LpVariantController).
     if (config('ukv.slots.dynamic')) {
-        $left = \App\Support\SlotBoard::remaining()[ucfirst($country)] ?? null;
-        if ($left !== null) {
-            $noun = $left === 1 ? 'slot open' : 'slots open';
-            // Colour the number + meter by scarcity tier (inline, to override the baked green
-            // CSS which is not count-aware): 1 = red/very limited, 2-3 = amber/limited, 4+ = green.
-            if ($left <= 1)      { $col = '#dc2626'; $grad = '#dc2626,#ef4444';        $w = 16; }
-            elseif ($left <= 3)  { $col = '#d97706'; $grad = '#d97706,#f59e0b';        $w = 38; }
-            else                 { $col = 'var(--green)'; $grad = 'var(--green),#4bad82'; $w = 82; }
-            $html = str_replace(
-                '<div class=slnum><b>32</b><span>slots open</span></div><div class=slmeter><i style="width:82%"></i></div>',
-                '<div class=slnum><b style="color:'.$col.'">'.$left.'</b><span>'.$noun.'</span></div><div class=slmeter><i style="width:'.$w.'%;background:linear-gradient(90deg,'.$grad.')"></i></div>',
-                $html
-            );
-        }
+        $html = \App\Support\SlotTiles::hydrate($html, ucfirst($country));
     }
     $html = \App\Support\LpAssembler::inject($html, ['dest' => ucfirst($country), 'iso' => $iso]);
     return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
