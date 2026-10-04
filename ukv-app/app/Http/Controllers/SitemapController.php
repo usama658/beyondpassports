@@ -106,6 +106,18 @@ class SitemapController extends Controller
                 });
         }
 
+        // Standalone gold country money pages at /schengen-visa/{country} (static public/lp-<c>.html,
+        // served by the schengen-visa-country route). Live + indexable, independent of the DB
+        // /visa/{slug} set above and its country_pages_enabled flag. Whitelist mirrors the route.
+        foreach (['france', 'spain', 'germany', 'netherlands', 'italy', 'switzerland'] as $goldCountry) {
+            $urls[] = [
+                'loc' => $base . '/schengen-visa/' . $goldCountry,
+                'lastmod' => now()->toDateString(),
+                'changefreq' => 'weekly',
+                'priority' => '0.7',
+            ];
+        }
+
         // Nested country guides (spokes): /visa/{slug}/{topic} for each PUBLISHED country guide.
         Guide::query()
             ->when(! $countryPagesLive, fn ($q) => $q->whereRaw('1 = 0'))
