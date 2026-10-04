@@ -208,7 +208,7 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     // Analytics/consent head + the shared modal flow, locked to this page's country (the
     // `where` constraint below guarantees $iso is set) + lead attribution. Single source
     // of truth via LpAssembler (see app/Support/LpAssembler.php).
-    $iso = ['france' => 'fr', 'spain' => 'es', 'germany' => 'de', 'netherlands' => 'nl', 'italy' => 'it', 'switzerland' => 'ch'][$country];
+    $iso = ['france' => 'fr', 'spain' => 'es', 'germany' => 'de', 'netherlands' => 'nl', 'italy' => 'it', 'switzerland' => 'ch', 'belgium' => 'be'][$country];
     // Slot tile(s): the static file bakes a fixed "32" (clone artifact, same on every country).
     // When the dynamic weekly pool is on, hydrate every tile with this page's country's REAL
     // remaining (App\Support\SlotBoard) so the hero matches the /schengen-visa board and is
@@ -218,7 +218,7 @@ Route::get('/schengen-visa/{country}', function (string $country) {
     }
     $html = \App\Support\LpAssembler::inject($html, ['dest' => ucfirst($country), 'iso' => $iso]);
     return response($html, 200)->header('Content-Type', 'text/html; charset=UTF-8');
-})->where('country', 'france|spain|netherlands|germany|italy|switzerland')->name('schengen-visa-country');
+})->where('country', 'france|spain|netherlands|germany|italy|switzerland|belgium')->name('schengen-visa-country');
 // Honour the trailing-slash form the slugs were chosen with.
 Route::redirect('/schengen-visa/france/', '/schengen-visa/france', 301);
 Route::redirect('/schengen-visa/spain/', '/schengen-visa/spain', 301);
@@ -226,6 +226,7 @@ Route::redirect('/schengen-visa/netherlands/', '/schengen-visa/netherlands', 301
 Route::redirect('/schengen-visa/germany/', '/schengen-visa/germany', 301);
 Route::redirect('/schengen-visa/italy/', '/schengen-visa/italy', 301);
 Route::redirect('/schengen-visa/switzerland/', '/schengen-visa/switzerland', 301);
+Route::redirect('/schengen-visa/belgium/', '/schengen-visa/belgium', 301);
 // Dedicated thank-you for the Bold LP hero case form (WhatsApp-only lead; data via sessionStorage, no PII in URL).
 Route::view('/schengen-visa-consultancy/thank-you', 'public.lp-thanks')->name('lp-bold.thanks');
 // LP hero case-form lead: emails the lead to the owner inbox before the WhatsApp hand-off. Throttled; CSRF-exempt + honeypot.
