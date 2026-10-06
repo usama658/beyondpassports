@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Events and trip ideas: six section options for the ZA home | Beyond Passports (options page)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
+--bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-glass:rgba(255,255,255,.07);--bp-glass-line:rgba(255,255,255,.17);--bp-highlight:rgba(217,180,106,.55);
+--bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--bp-font-body);color:var(--bp-ink);background:var(--bp-paper);font-size:17px;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bp-gold);color:var(--bp-ink);padding:12px 16px;border-radius:8px;font-weight:700}.skip:focus{left:8px;z-index:50}
+h1,h2,h3,h4{font-family:var(--bp-font-display);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin:0}
+h2{font-size:30px;margin-bottom:8px}@media(min-width:1024px){h2{font-size:44px}}
+h4{font-size:20px}
+.sub{color:var(--bp-muted);margin:0 0 22px;max-width:62ch}
+section{padding:56px 0;position:relative;scroll-margin-top:16px}
+.tint{background:var(--bp-paper-tint)}
+.dark{background:var(--bp-hero-bg);color:var(--bp-hero-fg)}
+.label{position:absolute;right:12px;top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-gold-text);font-weight:700;z-index:2}
+.dark .label{color:var(--bp-gold)}
+.fit{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-gold-text);margin:0 0 10px;max-width:70ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;font-family:inherit;cursor:pointer;justify-self:start}
+.btn-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.btn-ghost{background:transparent;color:var(--bp-hero-fg);border-color:#B9D3D8}
+.btn-deep{background:var(--bp-teal-deep);color:#fff}
+.btn-out{background:#fff;color:var(--bp-teal-deep);border-color:var(--bp-teal-deep)}
+.btn.sm{padding:10px 14px;font-size:15px}
+:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(48,184,184,.55)}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;width:max-content}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.st-a{background:#DDEFE4;color:#17452E}.st-a i{background:#2F6B4F}
+.st-f{background:#FBEBC8;color:#5C3D05}.st-f i{background:#B8780D}
+.st-l{background:#F6DADA;color:#5E1C1C}.st-l i{background:#B23A3A}
+.st-c{background:#E4E7EC;color:#2B3545}.st-c i{background:#5B6B7D}
+.who{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.who.us{color:var(--bp-gold-text)}.who.ctr{color:var(--bp-muted)}
+.lab{display:grid;gap:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted)}
+select{height:48px;border:1px solid var(--bp-line);background:#fff;color:var(--bp-ink);border-radius:12px;padding:0 12px;font:inherit;font-size:16px;min-width:200px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.chip{min-height:48px;padding:0 16px;border-radius:999px;border:1px solid var(--bp-line);background:#fff;color:var(--bp-teal-deep);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.chip.on{background:var(--bp-teal-deep);color:#fff;border-color:var(--bp-teal-deep)}
+.chip.clr{align-self:end;color:var(--bp-muted)}
+.empty{border:1px dashed var(--bp-line);border-radius:14px;padding:22px;text-align:center;color:var(--bp-muted)}
+.evnote{margin:16px 0 0;font-size:14px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+.tint .evnote{background:#fff}
+.hon{font-size:15px;color:var(--bp-muted);margin:0 0 16px;max-width:80ch}
+.disc{margin-top:20px;background:#082C35;color:var(--bp-hero-muted);font-size:14px;line-height:1.55;padding:14px 18px;border-radius:12px;display:flex;gap:12px;align-items:flex-start}
+.disc i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--bp-gold);margin-top:9px}
+.disc b{color:var(--bp-hero-fg)}
+/* event card */
+.evc{background:#fff;border:1px solid var(--bp-line);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start}
+.evc .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold-text)}
+.evc .dt{font-size:15px;color:var(--bp-muted)}
+.evc .by{border-top:1px solid var(--bp-line);padding-top:10px;font-size:15px}
+.evc .by b{display:block;font-family:var(--bp-font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+.evc .ar{font-size:13px;color:var(--bp-muted)}
+.evc[hidden]{display:none}
+/* E1 */
+.tlm{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:1fr;gap:10px;padding:8px 0 16px;border-left:2px solid var(--bp-line);padding-left:18px;position:relative}
+.mrow::before{content:"";position:absolute;left:-7px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--bp-teal-deep)}
+.mlab span{position:sticky;top:0;z-index:3;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--bp-teal-deep);color:#fff;font-family:var(--bp-font-display);font-size:18px}
+.mcards{display:grid;gap:10px}
+@media(min-width:1024px){.mrow{grid-template-columns:140px 1fr;padding-left:0;border-left:0}.mrow::before{display:none}.mlab{border-right:2px solid var(--bp-line);padding-right:16px}.mlab span{position:static}.mcards{grid-template-columns:repeat(2,1fr)}}
+.mrow[hidden]{display:none}
+/* E2 */
+.e2grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+@media(min-width:1024px){.e2grid{grid-template-columns:.8fr 1.2fr}}
+.ladder{background:#fff;border:1px solid var(--bp-line);border-radius:18px;padding:22px;display:grid;gap:16px}
+.rungs{list-style:none;margin:0;padding:0;display:grid}
+.rungs li{display:grid;grid-template-columns:40px 1fr;gap:14px;position:relative;padding-bottom:20px}
+.rungs li::before{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--bp-line)}
+.rungs li:last-child::before{display:none}.rungs li:last-child{padding-bottom:0}
+.rungs b.n{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--bp-font-display);font-size:19px;background:transparent;border:2px solid var(--bp-muted);color:var(--bp-ink)}
+.rungs li.us b.n{background:var(--bp-teal);border-color:var(--bp-teal);color:var(--bp-teal-night)}
+.rungs .rv,.rungs .rt{font-family:var(--bp-font-display);font-size:26px;font-weight:600;letter-spacing:-.01em;line-height:1.05;font-variant-numeric:tabular-nums lining-nums;margin-top:2px}
+@media(min-width:1024px){.rungs .rv{font-size:30px}}
+.rungs .when{display:block;font-size:15px;margin-top:6px;color:var(--bp-ink)}
+.rungs .rule{display:block;font-size:13px;color:var(--bp-muted);margin-top:6px}
+.brow{border:1px solid var(--bp-line);border-radius:12px;padding:12px 14px;font-size:14px;display:grid;gap:4px;background:var(--bp-paper-tint)}
+.brow span b{font-weight:700}
+.brow .h{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted);font-weight:700}
+/* E3 */
+.strip{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:1024px){.strip{grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--bp-line);border-radius:16px;overflow:hidden}}
+.cell{background:#fff;border:1px solid var(--bp-line);border-radius:14px;padding:14px;display:grid;gap:10px;align-content:start}
+@media(min-width:1024px){.cell{border:0;border-right:1px solid var(--bp-line);border-radius:0}.cell:last-child{border-right:0}}
+.cell h4{font-size:18px;color:var(--bp-teal-deep);padding-bottom:8px;border-bottom:1px solid var(--bp-line)}
+.crow{display:grid;gap:8px;font-size:14px}
+.crow .cn{display:block;font-weight:700;font-size:15px}
+.crow .cc{display:flex;gap:6px;align-items:center;flex-wrap:wrap;color:var(--bp-muted);font-size:13px}
+.crow .cc .pill{font-size:12px;padding:3px 9px}
+.cby small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted);font-weight:700}
+.cby b{font-family:var(--bp-font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+/* T1 */
+.frow{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+@media(min-width:700px){.frow{grid-template-columns:repeat(3,1fr) auto;align-items:end}}
+.frow select{min-width:0;width:100%}
+.trips{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.trips{grid-template-columns:repeat(3,1fr)}}
+.trip{border:1px solid var(--bp-line);border-radius:16px;padding:18px;background:#fff;display:grid;gap:6px;font-size:15px;align-content:start}
+.trip[hidden]{display:none}
+.trip .k,.t2 .k{color:var(--bp-muted);font-size:15px}
+.trip .row{display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.trip .row span:first-child{font-weight:700}
+.nf{border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px;color:var(--bp-muted);display:block}
+/* T2 */
+.t2grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.t2grid{grid-template-columns:repeat(3,1fr)}}
+.t2{border:1px solid var(--bp-line);border-radius:18px;padding:20px;background:#fff;display:grid;gap:12px;align-content:start}
+.t2 .rt{font-size:22px}
+/* T3 + tables */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{min-height:48px;padding:0 16px;border-radius:12px;border:2px solid var(--bp-teal-deep);background:#fff;color:var(--bp-teal-deep);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.tab.on{background:var(--bp-teal-deep);color:#fff}
+.tpanel[hidden]{display:none}
+.board{border:1px solid var(--bp-line);border-radius:16px;overflow:hidden;background:#fff}
+.board table{width:100%;border-collapse:collapse;font-size:14px}
+.board caption{text-align:left;padding:12px 16px;font-size:13px;color:var(--bp-muted);border-bottom:1px solid var(--bp-line)}
+.board th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted);padding:12px 16px;border-bottom:1px solid var(--bp-line)}
+.board td{padding:12px 16px;border-bottom:1px solid var(--bp-line);vertical-align:top}
+.board tr:last-child td{border-bottom:0}
+.board .vrow td{background:var(--bp-paper-tint)}
+.board .foot{padding:12px 16px;font-size:13px;color:var(--bp-muted);border-top:1px solid var(--bp-line)}
+@media(max-width:900px){.board thead{display:none}.board tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;padding:14px 16px;border-bottom:1px solid var(--bp-line)}.board tr:last-child{border-bottom:0}.board td{display:block;padding:0;border:0}.board td::before{content:attr(data-l);display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted)}}
+/* page header */
+.ph{padding:40px 0 32px}
+.ph h1{font-size:clamp(36px,4.5vw,56px);line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 144;margin:0 0 10px}
+.ph h1 u{text-decoration:none;background:linear-gradient(transparent 68%,var(--bp-highlight) 68%)}
+.ph p{color:var(--bp-hero-muted);max-width:70ch;margin:0 0 16px}
+.toc{display:flex;gap:8px;flex-wrap:wrap}
+.toc a{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border-radius:999px;border:1px solid var(--bp-hero-line);background:rgba(255,255,255,.08);text-decoration:none;font-weight:600;font-size:15px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="dark ph"><span class="label">Options</span><div class="wrap">
+<h1>Events and trip ideas: <u>six ways to lay them out.</u></h1>
+<p>Same South Africa data as prototypes A and B (board leads seen Mon 6 Oct 2026, fee R2,490, consular fee EUR 90). Each option is full width with a fit tag and the competitor pattern it answers. Pick one E and one T per prototype; nothing here changes A or B until you do.</p>
+<nav class="toc" aria-label="Options"><a href="#e1">E1 Month timeline</a><a href="#e2">E2 Deadline ladder</a><a href="#e3">E3 Calendar strip</a><a href="#t1">T1 Filterable grid</a><a href="#t2">T2 Itemised ladder</a><a href="#t3">T3 Itinerary table</a><a href="#compare">Compare</a></nav>
+</div></header>
+<main id="main">
+
+<section class="opt" id="e1"><span class="label">E1</span><div class="wrap">
+<p class="fit">Fits A · answers the Atlys Events tab (visa-by-event countdown, attendance counters)</p>
+<h2>E1. Month timeline</h2>
+<p class="sub">Events flow beside the month they start in. Filter by type. Every card shows its arithmetic and the board state for that consulate.</p>
+<div class="chips" role="group" aria-label="Filter events by type"><button class="chip on" data-cat="">All</button><button class="chip" data-cat="festivals">Festivals</button><button class="chip" data-cat="sport">Sport</button><button class="chip" data-cat="markets">Markets</button><button class="chip" data-cat="culture">Culture</button></div>
+<div class="tlm" id="tlm"><div class="mrow" data-m="Nov 2026"><div class="mlab"><span>Nov 2026</span></div><div class="mcards"><div class="evc" data-cat="markets"><span class="k">Germany and Austria</span><h4>Christmas markets, Munich and Vienna</h4><span class="dt">From about Fri 20 Nov to Wed 23 Dec 2026 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Start your file by Today, Wed 7 Oct 2026</b><span class="ar">Fri 20 Nov 2026 minus 15 days processing = appointment by Thu 5 Nov 2026. Germany's lead is per client and Austria is not yet on our board, so no slack can be shown.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div><div class="mrow" data-m="Jan 2027"><div class="mlab"><span>Jan 2027</span></div><div class="mcards"><div class="evc" data-cat="festivals"><span class="k">Italy</span><h4>Venice Carnival</h4><span class="dt">Sat 23 Jan to Tue 9 Feb 2027 [to confirm]</span><span class="pill st-a"><i></i>Dates seen</span><div class="by"><b>Start your file by Fri 4 Dec 2026</b><span class="ar">Sat 23 Jan 2027 minus 15 days processing = appointment by Fri 8 Jan 2027. About 5 weeks to an Italy appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div><div class="mrow" data-m="Feb 2027"><div class="mlab"><span>Feb 2027</span></div><div class="mcards"><div class="evc" data-cat="sport"><span class="k">France</span><h4>Six Nations, opening weekend in Paris</h4><span class="dt">Sat 6 Feb to Sat 20 Mar 2027, fixtures [to confirm]</span><span class="pill st-f"><i></i>Filling</span><div class="by"><b>Start your file by Fri 11 Dec 2026</b><span class="ar">Sat 6 Feb 2027 minus 15 days processing = appointment by Fri 22 Jan 2027. About 6 weeks to a France appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div><div class="mrow" data-m="Mar 2027"><div class="mlab"><span>Mar 2027</span></div><div class="mcards"><div class="evc" data-cat="culture"><span class="k">Netherlands</span><h4>Tulip season, Keukenhof and Amsterdam</h4><span class="dt">Thu 18 Mar to Sun 9 May 2027 [to confirm]</span><span class="pill st-c"><i></i>None seen this week</span><div class="by"><b>Start your file by As early as you can</b><span class="ar">Thu 18 Mar 2027 minus 15 days processing = appointment by Wed 3 Mar 2027. No Netherlands dates were seen this week, so we cannot show a lead; we check it for you.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div><div class="mrow" data-m="May 2027"><div class="mlab"><span>May 2027</span></div><div class="mcards"><div class="evc" data-cat="sport"><span class="k">Spain</span><h4>Champions League final, Madrid</h4><span class="dt">Sat 29 May 2027 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Start your file by As early as you can</b><span class="ar">Sat 29 May 2027 minus 15 days processing = appointment by Fri 14 May 2027. Spain's BLS calendar is not yet checked, so no lead is shown; we check it for you.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div><div class="mrow" data-m="Sep 2027"><div class="mlab"><span>Sep 2027</span></div><div class="mcards"><div class="evc" data-cat="festivals"><span class="k">Germany</span><h4>Oktoberfest, Munich</h4><span class="dt">Sat 18 Sep to Sun 3 Oct 2027 [to confirm]</span><span class="pill st-c"><i></i>Gated, per client</span><div class="by"><b>Start your file by Earliest lodging Thu 18 Mar 2027</b><span class="ar">Sat 18 Sep 2027 minus 15 days processing = appointment by Fri 3 Sep 2027. Schengen rules allow lodging up to six months before travel. Germany's lead is per client.</span></div><a class="btn btn-out" href="#">Plan this with Chloe</a></div></div></div></div>
+<p class="empty" id="e1empty" hidden>No event of that type in the next months. Ask Chloe about yours.</p>
+<p class="evnote">Dates are set by the consulate and the organiser, not by us. Processing is 15 calendar days minimum and can be longer; appointment leads are what a person saw on our board, not a promise. Dates marked [to confirm] are checked with the organiser before go-live.</p>
+</div></section>
+
+<section class="opt tint" id="e2"><span class="label">E2</span><div class="wrap">
+<p class="fit">Fits B · sibling of the price ladder; answers Atlys's minute-level visa-date stamp with dated arithmetic</p>
+<h2>E2. Deadline ladder</h2>
+<p class="sub">Pick one event. Four rungs count back from it; the board row for that consulate sits underneath with who checked it.</p>
+<div class="e2grid">
+<div>
+<label class="lab" for="e2sel">Event</label>
+<select id="e2sel"><option value="markets">Christmas markets, Munich and Vienna</option><option value="venice">Venice Carnival</option><option value="sixn">Six Nations, opening weekend in Paris</option><option value="tulips">Tulip season, Keukenhof and Amsterdam</option><option value="ucl">Champions League final, Madrid</option><option value="okt">Oktoberfest, Munich</option></select>
+<div class="chips" role="group" aria-label="Pick an event"><button class="chip e2chip" data-k="markets">Germany and Austria</button><button class="chip e2chip on" data-k="venice">Italy</button><button class="chip e2chip" data-k="sixn">France</button><button class="chip e2chip" data-k="tulips">Netherlands</button><button class="chip e2chip" data-k="ucl">Spain</button><button class="chip e2chip" data-k="okt">Germany</button></div>
+</div>
+<div class="ladder">
+<ol class="rungs" id="e2r">
+<li><b class="n">1</b><div><span class="who ctr">Set by the organiser</span><div class="rv" data-f="ev"></div><span class="when">Event, <span data-f="n"></span></span></div></li>
+<li><b class="n">2</b><div><span class="who ctr">Set by the consulate</span><div class="rv" data-f="ev2"></div><span class="when">Decision in hand by your arrival day. Processing is 15 calendar days minimum, counted back from here.</span></div></li>
+<li><b class="n">3</b><div><span class="who ctr">Set by the visa centre</span><div class="rv" data-f="ap"></div><span class="when">Appointment by this date. <span data-f="lead"></span></span></div></li>
+<li class="us"><b class="n">4</b><div><span class="who us">Your move, with Chloe</span><div class="rv" data-f="sb"></div><span class="when">Start your file by this date so the review, form and calendar watch are done before you book.</span></div></li>
+</ol>
+<div class="brow" id="e2row"></div>
+<a class="btn btn-deep" href="#">Plan this with Chloe</a>
+</div>
+</div>
+<p class="evnote">Dates are set by the consulate and the organiser, not by us. Processing is 15 calendar days minimum and can be longer; appointment leads are what a person saw on our board, not a promise. Dates marked [to confirm] are checked with the organiser before go-live.</p>
+</div></section>
+<script>var E2D={"markets": {"n": "Christmas markets, Munich and Vienna", "c": "Germany and Austria", "ev": "Fri 20 Nov 2026", "ap": "Thu 5 Nov 2026", "sb": "Today, Wed 7 Oct 2026", "lead": "Germany's lead is per client and Austria is not yet on our board, so no slack can be shown.", "pc": "st-c", "pt": "We check for you", "row": ["Germany", "TLScontact", "Pretoria", "Waitlist, then allocation", "We check for you", "Gated, per client"]}, "venice": {"n": "Venice Carnival", "c": "Italy", "ev": "Sat 23 Jan 2027", "ap": "Fri 8 Jan 2027", "sb": "Fri 4 Dec 2026", "lead": "About 5 weeks to an Italy appointment, as seen on our board on Mon 6 Oct.", "pc": "st-a", "pt": "Dates seen", "row": ["Italy", "VFS Global", "Johannesburg", "Online calendar", "Available, Thu 14 Nov 2026", "Mon 6 Oct, 14:05 by Chloe"]}, "sixn": {"n": "Six Nations, opening weekend in Paris", "c": "France", "ev": "Sat 6 Feb 2027", "ap": "Fri 22 Jan 2027", "sb": "Fri 11 Dec 2026", "lead": "About 6 weeks to a France appointment, as seen on our board on Mon 6 Oct.", "pc": "st-f", "pt": "Filling", "row": ["France", "Capago", "Sandton", "Online calendar", "Filling, Mon 18 Nov 2026", "Mon 6 Oct, 14:12 by Chloe"]}, "tulips": {"n": "Tulip season, Keukenhof and Amsterdam", "c": "Netherlands", "ev": "Thu 18 Mar 2027", "ap": "Wed 3 Mar 2027", "sb": "As early as you can", "lead": "No Netherlands dates were seen this week, so we cannot show a lead; we check it for you.", "pc": "st-c", "pt": "None seen this week", "row": ["Netherlands", "VFS Global", "Cape Town", "Online calendar", "None seen, last seen Sat 3 Oct", "Mon 6 Oct, 14:26 by Chloe"]}, "ucl": {"n": "Champions League final, Madrid", "c": "Spain", "ev": "Sat 29 May 2027", "ap": "Fri 14 May 2027", "sb": "As early as you can", "lead": "Spain's BLS calendar is not yet checked, so no lead is shown; we check it for you.", "pc": "st-c", "pt": "We check for you", "row": ["Spain", "BLS International", "Cape Town", "Online calendar", "We check for you", "Not yet checked"]}, "okt": {"n": "Oktoberfest, Munich", "c": "Germany", "ev": "Sat 18 Sep 2027", "ap": "Fri 3 Sep 2027", "sb": "Earliest lodging Thu 18 Mar 2027", "lead": "Schengen rules allow lodging up to six months before travel. Germany's lead is per client.", "pc": "st-c", "pt": "Gated, per client", "row": ["Germany", "TLScontact", "Pretoria", "Waitlist, then allocation", "We check for you", "Gated, per client"]}};</script>
+
+<section class="opt" id="e3"><span class="label">E3</span><div class="wrap">
+<p class="fit">Fits both · answers Atlys Events with a plain calendar, no counters, no imagery</p>
+<h2>E3. Calendar strip</h2>
+<p class="sub">Six months, text only. The start-by date is the only number that matters, so it is the only one set large.</p>
+<p class="hon">Start-by dates are the event date minus 15 days processing minus the appointment lead a person saw on our board; where no lead was seen we say so and check for you.</p>
+<div class="strip"><div class="cell"><h4>Nov 2026</h4><div class="crow"><div><span class="cn">Christmas markets, Munich and Vienna</span><span class="cc">Germany and Austria · <span class="pill st-c"><i></i>We check for you</span></span></div><div class="cby"><small>Start by</small><b>Today, Wed 7 Oct 2026</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div><div class="cell"><h4>Jan 2027</h4><div class="crow"><div><span class="cn">Venice Carnival</span><span class="cc">Italy · <span class="pill st-a"><i></i>Dates seen</span></span></div><div class="cby"><small>Start by</small><b>Fri 4 Dec 2026</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div><div class="cell"><h4>Feb 2027</h4><div class="crow"><div><span class="cn">Six Nations, opening weekend in Paris</span><span class="cc">France · <span class="pill st-f"><i></i>Filling</span></span></div><div class="cby"><small>Start by</small><b>Fri 11 Dec 2026</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div><div class="cell"><h4>Mar 2027</h4><div class="crow"><div><span class="cn">Tulip season, Keukenhof and Amsterdam</span><span class="cc">Netherlands · <span class="pill st-c"><i></i>None seen this week</span></span></div><div class="cby"><small>Start by</small><b>As early as you can</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div><div class="cell"><h4>May 2027</h4><div class="crow"><div><span class="cn">Champions League final, Madrid</span><span class="cc">Spain · <span class="pill st-c"><i></i>We check for you</span></span></div><div class="cby"><small>Start by</small><b>As early as you can</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div><div class="cell"><h4>Sep 2027</h4><div class="crow"><div><span class="cn">Oktoberfest, Munich</span><span class="cc">Germany · <span class="pill st-c"><i></i>Gated, per client</span></span></div><div class="cby"><small>Start by</small><b>Earliest lodging Thu 18 Mar 2027</b></div><a class="btn btn-out sm" href="#">Plan with Chloe</a></div></div></div>
+<p class="evnote">Dates are set by the consulate and the organiser, not by us. Processing is 15 calendar days minimum and can be longer; appointment leads are what a person saw on our board, not a promise. Dates marked [to confirm] are checked with the organiser before go-live.</p>
+</div></section>
+
+<section class="opt tint" id="t1"><span class="label">T1</span><div class="wrap">
+<p class="fit">Fits A · answers Atlys destination cards and Tourloom's hidden cards with vague "transfers"</p>
+<h2>T1. Filterable card grid</h2>
+<p class="sub">Three filters, three cards, nothing hidden. Transport is always named; a filter with no match says so instead of padding the grid.</p>
+<div class="frow">
+<label class="lab">Nights<select id="t1n"><option value="">Any</option><option>4</option><option>7</option><option>9</option></select></label>
+<label class="lab">Country<select id="t1c"><option value="">Any</option><option value="italy">Italy</option><option value="france">France</option><option value="spain">Spain</option><option value="portugal">Portugal</option></select></label>
+<label class="lab">Transport<select id="t1t"><option value="">Any</option><option value="rail">Rail</option><option value="private">Private transfer</option><option value="ferry">Ferry</option></select></label>
+<button class="chip clr" id="t1clr">Clear</button>
+</div>
+<div class="trips" id="t1grid"><div class="trip" data-n="7" data-c="italy" data-t="rail private"><h4>Italy by Rail, 7 nights</h4><span class="k">Rome 3 · Florence 2 · Venice 2</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Frecciarossa 2nd class Rome to Florence to Venice; private sedan transfers at both airports</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Italy consulate), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#">Ask about this trip idea</a></div><div class="trip" data-n="4" data-c="france" data-t="private"><h4>Paris Essentials, 4 nights</h4><span class="k">Paris 4</span><div class="row"><span>Hotels</span><span>3 to 4-star central, breakfast included</span><span>Getting around</span><span>Private sedan transfers both ways; Seine cruise</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (France consulate via Capago), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#">Ask about this trip idea</a></div><div class="trip" data-n="9" data-c="spain portugal" data-t="rail private"><h4>Spain and Portugal, 9 nights</h4><span class="k">Madrid 3 · Seville 3 · Lisbon 3</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Renfe AVE Turista Madrid to Seville; Alsa coach Seville to Lisbon; private airport transfers</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Spain consulate via BLS), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#">Ask about this trip idea</a></div></div>
+<p class="empty" id="t1empty" hidden>No trip idea with that mix yet from South Africa. Greece by ferry is being written up; ask Chloe.</p>
+<div class="disc" role="note"><i aria-hidden="true"></i><span><b>How a trip idea works.</b> You book hotels and ground transport directly with one licensed operator we introduce by name; we send that operator nothing about you, and we take no commission or referral fee on the trip. Beyond Passports sends you the visa file and that introduction, nothing else. We do not sell flights, hold money for hotels or transport, or combine services at one price. Appointment dates are set by the visa centre and visa decisions by the consulate. Travel insurance is required for every Schengen application.</span></div>
+</div></section>
+
+<section class="opt" id="t2"><span class="label">T2</span><div class="wrap">
+<p class="fit">Fits B · same grammar as the price ladder; answers Musafir's appointment-promise tours and Thompsons' single flight-inclusive figure</p>
+<h2>T2. Itemised ladder</h2>
+<p class="sub">Each trip as four payees. Only one rung is ours and it is the same R2,490 as everywhere else on the page. No totals, by design.</p>
+<div class="t2grid"><div class="t2"><h4>Italy by Rail, 7 nights</h4><span class="k">Rome 3 · Florence 2 · Venice 2</span>
+<ol class="rungs light">
+<li><b class="n">1</b><div><span class="who ctr">Paid to the hotel or operator you book with</span><div class="rt">Hotels</div><span class="when">4-star central, breakfast included. The hotels you book with, in Rome, Florence and Venice.</span><span class="rule">Refundable until: the operator's published policy applies; we state it, we do not quote figures.</span></div></li>
+<li><b class="n">2</b><div><span class="who ctr">Paid to the rail or transfer operator</span><div class="rt">Transport</div><span class="when">Frecciarossa 2nd class Rome to Florence to Venice; private sedan transfers at both airports. Trenitalia for Frecciarossa; the transfer operator for airport sedans.</span></div></li>
+<li class="us"><b class="n">3</b><div><span class="who us">Paid to Beyond Passports</span><div class="rt">Visa, R2,490</div><span class="when">R750 to start, R1,740 when your appointment is confirmed. (Italy consulate).</span></div></li>
+<li><b class="n">4</b><div><span class="who ctr">Paid by you at the centre</span><div class="rt">Consular fee, EUR 90</div><span class="when">EUR 45 for a child 6 to 12, free under 6, plus the visa-centre fee set by the operator. Never through us.</span></div></li>
+</ol>
+<span class="nf">Flights not included; you book, we match the itinerary. No total is shown because the services are not sold together.</span>
+<a class="btn btn-out" href="#">Ask about this trip idea</a></div><div class="t2"><h4>Paris Essentials, 4 nights</h4><span class="k">Paris 4</span>
+<ol class="rungs light">
+<li><b class="n">1</b><div><span class="who ctr">Paid to the hotel or operator you book with</span><div class="rt">Hotels</div><span class="when">3 to 4-star central, breakfast included. The hotel you book with, in Paris.</span><span class="rule">Refundable until: the operator's published policy applies; we state it, we do not quote figures.</span></div></li>
+<li><b class="n">2</b><div><span class="who ctr">Paid to the rail or transfer operator</span><div class="rt">Transport</div><span class="when">Private sedan transfers both ways; Seine cruise. The transfer operator for airport sedans; the cruise operator for the Seine.</span></div></li>
+<li class="us"><b class="n">3</b><div><span class="who us">Paid to Beyond Passports</span><div class="rt">Visa, R2,490</div><span class="when">R750 to start, R1,740 when your appointment is confirmed. (France consulate via Capago).</span></div></li>
+<li><b class="n">4</b><div><span class="who ctr">Paid by you at the centre</span><div class="rt">Consular fee, EUR 90</div><span class="when">EUR 45 for a child 6 to 12, free under 6, plus the visa-centre fee set by the operator. Never through us.</span></div></li>
+</ol>
+<span class="nf">Flights not included; you book, we match the itinerary. No total is shown because the services are not sold together.</span>
+<a class="btn btn-out" href="#">Ask about this trip idea</a></div><div class="t2"><h4>Spain and Portugal, 9 nights</h4><span class="k">Madrid 3 · Seville 3 · Lisbon 3</span>
+<ol class="rungs light">
+<li><b class="n">1</b><div><span class="who ctr">Paid to the hotel or operator you book with</span><div class="rt">Hotels</div><span class="when">4-star central, breakfast included. The hotels you book with, in Madrid, Seville and Lisbon.</span><span class="rule">Refundable until: the operator's published policy applies; we state it, we do not quote figures.</span></div></li>
+<li><b class="n">2</b><div><span class="who ctr">Paid to the rail or transfer operator</span><div class="rt">Transport</div><span class="when">Renfe AVE Turista Madrid to Seville; Alsa coach Seville to Lisbon; private airport transfers. Renfe for the AVE; Alsa for the coach; the transfer operator for airport sedans.</span></div></li>
+<li class="us"><b class="n">3</b><div><span class="who us">Paid to Beyond Passports</span><div class="rt">Visa, R2,490</div><span class="when">R750 to start, R1,740 when your appointment is confirmed. (Spain consulate via BLS).</span></div></li>
+<li><b class="n">4</b><div><span class="who ctr">Paid by you at the centre</span><div class="rt">Consular fee, EUR 90</div><span class="when">EUR 45 for a child 6 to 12, free under 6, plus the visa-centre fee set by the operator. Never through us.</span></div></li>
+</ol>
+<span class="nf">Flights not included; you book, we match the itinerary. No total is shown because the services are not sold together.</span>
+<a class="btn btn-out" href="#">Ask about this trip idea</a></div></div>
+<div class="disc" role="note"><i aria-hidden="true"></i><span><b>How a trip idea works.</b> You book hotels and ground transport directly with one licensed operator we introduce by name; we send that operator nothing about you, and we take no commission or referral fee on the trip. Beyond Passports sends you the visa file and that introduction, nothing else. We do not sell flights, hold money for hotels or transport, or combine services at one price. Appointment dates are set by the visa centre and visa decisions by the consulate. Travel insurance is required for every Schengen application.</span></div>
+</div></section>
+
+<section class="opt tint" id="t3"><span class="label">T3</span><div class="wrap">
+<p class="fit">Fits both · answers Thompsons' R20,365 flight-inclusive Italy with a day-by-day table that names every supplier and sells none of them</p>
+<h2>T3. Itinerary table</h2>
+<p class="sub">One table per trip. The reader sees where they sleep, how they move and who they pay, and that only the last row is ours.</p>
+<div class="tabs" role="tablist" aria-label="Trip ideas"><button class="tab on" role="tab" id="tb-italy" aria-controls="tp-italy" aria-selected="true">Italy by Rail, 7 nights</button><button class="tab" role="tab" id="tb-paris" aria-controls="tp-paris" aria-selected="false">Paris Essentials, 4 nights</button><button class="tab" role="tab" id="tb-iberia" aria-controls="tp-iberia" aria-selected="false">Spain and Portugal, 9 nights</button></div>
+<div class="tpanel" id="tp-italy" role="tabpanel" aria-labelledby="tb-italy">
+<div class="board"><table><caption>Italy by Rail, 7 nights: Rome 3 · Florence 2 · Venice 2. Hotels 4-star central, breakfast included.</caption>
+<thead><tr><th scope="col">Day</th><th scope="col">Where</th><th scope="col">How you get there</th><th scope="col">Who you book with</th></tr></thead>
+<tbody><tr><td data-l="Day">1 to 3</td><td data-l="Where">Rome, 3 nights</td><td data-l="How you get there">Private sedan from Fiumicino airport</td><td data-l="Who you book with">Transfer operator and hotel, booked by you</td></tr><tr><td data-l="Day">4</td><td data-l="Where">Rome to Florence</td><td data-l="How you get there">Frecciarossa 2nd class, about 1 h 30</td><td data-l="Who you book with">Trenitalia, booked by you</td></tr><tr><td data-l="Day">4 to 5</td><td data-l="Where">Florence, 2 nights</td><td data-l="How you get there">On foot from Santa Maria Novella station</td><td data-l="Who you book with">Hotel, booked by you</td></tr><tr><td data-l="Day">6</td><td data-l="Where">Florence to Venice</td><td data-l="How you get there">Frecciarossa 2nd class, about 2 h</td><td data-l="Who you book with">Trenitalia, booked by you</td></tr><tr><td data-l="Day">6 to 7</td><td data-l="Where">Venice, 2 nights</td><td data-l="How you get there">Vaporetto or water taxi from Santa Lucia</td><td data-l="Who you book with">Hotel, booked by you</td></tr><tr><td data-l="Day">8</td><td data-l="Where">Venice to Marco Polo airport</td><td data-l="How you get there">Private transfer</td><td data-l="Who you book with">Transfer operator, booked by you</td></tr><tr class="vrow"><td data-l="Day">Before</td><td data-l="Where">Visa file</td><td data-l="How you get there">Italy consulate); you book the appointment in your own name</td><td data-l="Who you book with"><b>Beyond Passports, R2,490</b></td></tr></tbody></table>
+<div class="foot">Flights not included; you book, we match the itinerary. Hotels and transport quoted as separate supplier lines on WhatsApp.</div></div>
+<a class="btn btn-out" href="#" style="margin-top:12px">Ask about this trip idea</a></div><div class="tpanel" id="tp-paris" role="tabpanel" aria-labelledby="tb-paris" hidden>
+<div class="board"><table><caption>Paris Essentials, 4 nights: Paris 4. Hotels 3 to 4-star central, breakfast included.</caption>
+<thead><tr><th scope="col">Day</th><th scope="col">Where</th><th scope="col">How you get there</th><th scope="col">Who you book with</th></tr></thead>
+<tbody><tr><td data-l="Day">1</td><td data-l="Where">Charles de Gaulle to Paris</td><td data-l="How you get there">Private sedan transfer</td><td data-l="Who you book with">Transfer operator, booked by you</td></tr><tr><td data-l="Day">1 to 4</td><td data-l="Where">Paris, 4 nights</td><td data-l="How you get there">Metro and on foot</td><td data-l="Who you book with">Hotel, booked by you</td></tr><tr><td data-l="Day">2</td><td data-l="Where">Seine cruise, evening</td><td data-l="How you get there">Walk to the pier</td><td data-l="Who you book with">Cruise operator, booked by you</td></tr><tr><td data-l="Day">5</td><td data-l="Where">Paris to Charles de Gaulle</td><td data-l="How you get there">Private sedan transfer</td><td data-l="Who you book with">Transfer operator, booked by you</td></tr><tr class="vrow"><td data-l="Day">Before</td><td data-l="Where">Visa file</td><td data-l="How you get there">France consulate via Capago); you book the appointment in your own name</td><td data-l="Who you book with"><b>Beyond Passports, R2,490</b></td></tr></tbody></table>
+<div class="foot">Flights not included; you book, we match the itinerary. Hotels and transport quoted as separate supplier lines on WhatsApp.</div></div>
+<a class="btn btn-out" href="#" style="margin-top:12px">Ask about this trip idea</a></div><div class="tpanel" id="tp-iberia" role="tabpanel" aria-labelledby="tb-iberia" hidden>
+<div class="board"><table><caption>Spain and Portugal, 9 nights: Madrid 3 · Seville 3 · Lisbon 3. Hotels 4-star central, breakfast included.</caption>
+<thead><tr><th scope="col">Day</th><th scope="col">Where</th><th scope="col">How you get there</th><th scope="col">Who you book with</th></tr></thead>
+<tbody><tr><td data-l="Day">1 to 3</td><td data-l="Where">Madrid, 3 nights</td><td data-l="How you get there">Private sedan from Barajas airport</td><td data-l="Who you book with">Transfer operator and hotel, booked by you</td></tr><tr><td data-l="Day">4</td><td data-l="Where">Madrid to Seville</td><td data-l="How you get there">Renfe AVE Turista, about 2 h 30</td><td data-l="Who you book with">Renfe, booked by you</td></tr><tr><td data-l="Day">4 to 6</td><td data-l="Where">Seville, 3 nights</td><td data-l="How you get there">On foot from Santa Justa station</td><td data-l="Who you book with">Hotel, booked by you</td></tr><tr><td data-l="Day">7</td><td data-l="Where">Seville to Lisbon</td><td data-l="How you get there">Alsa coach, about 6 h 30</td><td data-l="Who you book with">Alsa, booked by you</td></tr><tr><td data-l="Day">7 to 9</td><td data-l="Where">Lisbon, 3 nights</td><td data-l="How you get there">Taxi from Sete Rios</td><td data-l="Who you book with">Hotel, booked by you</td></tr><tr><td data-l="Day">10</td><td data-l="Where">Lisbon to Humberto Delgado airport</td><td data-l="How you get there">Private transfer</td><td data-l="Who you book with">Transfer operator, booked by you</td></tr><tr class="vrow"><td data-l="Day">Before</td><td data-l="Where">Visa file</td><td data-l="How you get there">Spain consulate via BLS); you book the appointment in your own name</td><td data-l="Who you book with"><b>Beyond Passports, R2,490</b></td></tr></tbody></table>
+<div class="foot">Flights not included; you book, we match the itinerary. Hotels and transport quoted as separate supplier lines on WhatsApp.</div></div>
+<a class="btn btn-out" href="#" style="margin-top:12px">Ask about this trip idea</a></div>
+<div class="disc" role="note"><i aria-hidden="true"></i><span><b>How a trip idea works.</b> You book hotels and ground transport directly with one licensed operator we introduce by name; we send that operator nothing about you, and we take no commission or referral fee on the trip. Beyond Passports sends you the visa file and that introduction, nothing else. We do not sell flights, hold money for hotels or transport, or combine services at one price. Appointment dates are set by the visa centre and visa decisions by the consulate. Travel insurance is required for every Schengen application.</span></div>
+</div></section>
+
+<section class="opt" id="compare"><span class="label">Compare</span><div class="wrap">
+<h2>Comparison</h2>
+<p class="sub">Mobile cost is the measured height of each option at 375px, chrome excluded. Build effort assumes the existing Blade partials and config.</p>
+<div class="board"><table>
+<caption>Six options, one row each</caption>
+<thead><tr><th scope="col">Option</th><th scope="col">Fits</th><th scope="col">Competitor answered</th><th scope="col">Mobile cost</th><th scope="col">Build effort</th></tr></thead>
+<tbody>
+<tr><td data-l="Option"><b>E1</b> Month timeline</td><td data-l="Fits">A</td><td data-l="Competitor">Atlys Events tab (dated promise, attendance counters)</td><td data-l="Mobile cost">about 3,800 px</td><td data-l="Effort">Medium: month grouping, filter JS, sticky month header</td></tr>
+<tr><td data-l="Option"><b>E2</b> Deadline ladder</td><td data-l="Fits">B</td><td data-l="Competitor">Atlys minute-level visa-date stamp; xVisa delivery-time headline</td><td data-l="Mobile cost">about 1,600 px</td><td data-l="Effort">Medium: one ladder partial reused from price ladder, board row lookup</td></tr>
+<tr><td data-l="Option"><b>E3</b> Calendar strip</td><td data-l="Fits">Both</td><td data-l="Competitor">Atlys Events tab, by omission of everything but dates</td><td data-l="Mobile cost">about 2,050 px</td><td data-l="Effort">Low: static list grouped by month, no JS</td></tr>
+<tr><td data-l="Option"><b>T1</b> Filterable card grid</td><td data-l="Fits">A</td><td data-l="Competitor">Atlys destination cards; Tourloom hidden cards and vague "transfers"</td><td data-l="Mobile cost">about 2,700 px</td><td data-l="Effort">Low: existing tour-card partial plus three selects</td></tr>
+<tr><td data-l="Option"><b>T2</b> Itemised ladder</td><td data-l="Fits">B</td><td data-l="Competitor">Musafir appointment-promise tours; Thompsons single figure</td><td data-l="Mobile cost">about 3,950 px</td><td data-l="Effort">Medium: new ladder variant, payee copy per trip</td></tr>
+<tr><td data-l="Option"><b>T3</b> Itinerary table</td><td data-l="Fits">Both</td><td data-l="Competitor">Thompsons R20,365 flight-inclusive Italy</td><td data-l="Mobile cost">about 2,300 px</td><td data-l="Effort">High: per-trip day rows in the catalogue schema, tabs, mobile stacking</td></tr>
+</tbody></table></div>
+</div></section>
+</main>
+
+<script>
+(function(){
+// E1 filter
+var chips=document.querySelectorAll('#e1 .chip');chips.forEach(function(b){b.addEventListener('click',function(){chips.forEach(function(x){x.classList.remove('on')});b.classList.add('on');var c=b.dataset.cat,any=0;document.querySelectorAll('#tlm .mrow').forEach(function(r){var n=0;r.querySelectorAll('.evc').forEach(function(e){var ok=!c||e.dataset.cat===c;e.hidden=!ok;if(ok)n++});r.hidden=!n;any+=n});document.getElementById('e1empty').hidden=!!any;});});
+// E2 ladder
+var sel=document.getElementById('e2sel'),r=document.getElementById('e2r'),row=document.getElementById('e2row');
+function e2(k){var d=E2D[k];r.querySelectorAll('[data-f]').forEach(function(el){var f=el.dataset.f;el.textContent=f==='ev2'?d.ev:d[f]});var b=d.row;row.innerHTML='<span class="h">Board row, '+b[0]+'</span><span><b>'+b[1]+'</b>, '+b[2]+' · '+b[3]+'</span><span><span class="pill '+d.pc+'"><i></i>'+d.pt+'</span> '+b[4]+'</span><span>Last checked: '+b[5]+'</span>';sel.value=k;document.querySelectorAll('.e2chip').forEach(function(c){c.classList.toggle('on',c.dataset.k===k)});}
+sel.addEventListener('change',function(){e2(sel.value)});document.querySelectorAll('.e2chip').forEach(function(c){c.addEventListener('click',function(){e2(c.dataset.k)})});e2('venice');
+// T1 filter
+var fs=['t1n','t1c','t1t'].map(function(i){return document.getElementById(i)});function t1(){var n=0;document.querySelectorAll('#t1grid .trip').forEach(function(t){var ok=(!fs[0].value||t.dataset.n===fs[0].value)&&(!fs[1].value||t.dataset.c.indexOf(fs[1].value)>-1)&&(!fs[2].value||t.dataset.t.indexOf(fs[2].value)>-1);t.hidden=!ok;if(ok)n++});document.getElementById('t1empty').hidden=!!n;}
+fs.forEach(function(s){s.addEventListener('change',t1)});document.getElementById('t1clr').addEventListener('click',function(){fs.forEach(function(s){s.value=''});t1()});
+// T3 tabs
+document.querySelectorAll('#t3 .tab').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('#t3 .tab').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});document.querySelectorAll('#t3 .tpanel').forEach(function(p){p.hidden=true});t.classList.add('on');t.setAttribute('aria-selected','true');document.getElementById(t.getAttribute('aria-controls')).hidden=false;})});
+})();
+</script>
+</body>
+</html>
