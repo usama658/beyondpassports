@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction B teal-gold, dark layouts B4 B5 B6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:#07100F;color:#E9F1F2}
+.nav{position:sticky;top:0;z-index:5;background:#07100F;border-bottom:1px solid #1E2E33;padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.nav b{font-size:13px;margin-right:6px;color:#9FB8BD}
+.nav a{font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px;background:#152328;color:#E9F1F2;text-decoration:none}
+.intro{padding:18px 24px 0;max-width:110ch;font-size:14px;line-height:1.55;color:#9FB8BD}
+.spec{margin:20px 24px;border-radius:20px;overflow:hidden;background:var(--bg);color:var(--fg);border:1px solid var(--line);position:relative}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 28px;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.topbar img{height:40px;width:auto;display:block}
+.topbar .links{display:flex;gap:18px;font-size:14px;font-weight:600;color:var(--fg);opacity:.85}
+.topbar .chip{font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:var(--chip);color:var(--chip-fg)}
+.tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 10px}
+h2.big{font-family:var(--serif);font-weight:var(--sw);line-height:1.04;letter-spacing:-.012em;margin:0 0 14px;color:var(--fg)}
+h2.big em{font-style:normal;color:var(--gold)}
+.lead{font-size:18px;line-height:1.55;color:var(--muted);margin:0 0 18px;max-width:60ch}
+.btn{display:inline-block;padding:14px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;min-height:48px;line-height:1.3}
+.btn-p{background:var(--cta);color:var(--cta-fg)}
+.btn-s{background:transparent;color:var(--fg);border:2px solid var(--fg-border)}
+.trust{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:18px}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust i{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block}
+.meta{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0;padding:0 28px 24px}
+.meta b{color:var(--fg)}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--fg)}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.s1 i{background:#5BD39A}.s2 i{background:#E8B55A}.s3 i{background:#F08A8A}.s4 i{background:#9FB8BD}
+
+/* B4 split hero with form card */
+.b4{--serif:"DM Serif Display",serif;--sw:400;--bg:linear-gradient(135deg,#0B2A33 0%,#0F4C5C 60%,#0B3B47 100%);--fg:#F3F8F9;--fg-border:#B9D3D8;--muted:#B9D3D8;--line:rgba(255,255,255,.14);--gold:#D9B46A;--teal:#30B8B8;--cta:#D9B46A;--cta-fg:#0B2A33;--chip:#D9B46A;--chip-fg:#0B2A33}
+.b4 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;padding:34px 28px 30px;align-items:start}
+@media(max-width:960px){.b4 .hero{grid-template-columns:1fr}}
+.b4 h2.big{font-size:clamp(38px,5vw,58px)}
+.form{background:#fff;color:#0B1F26;border-radius:18px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.form h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:24px;margin:0 0 4px}
+.form p{margin:0 0 14px;font-size:13.5px;color:#4F6A72}
+.form label{display:block;font-size:12.5px;font-weight:600;margin:10px 0 4px}
+.form .in{height:44px;border:1px solid #CFDCE0;border-radius:10px;background:#fff;padding:0 12px;display:flex;align-items:center;font-size:14px;color:#0B1F26}
+.form .in.ph{color:#7A8F95}
+.form .go{margin-top:14px;display:block;text-align:center;background:#0F4C5C;color:#fff;border-radius:12px;padding:14px;font-weight:700;text-decoration:none}
+.form small{display:block;margin-top:10px;font-size:12px;color:#4F6A72;line-height:1.45}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 28px 26px}
+@media(max-width:960px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.05)}
+.stat b{display:block;font-family:var(--serif);font-weight:var(--sw);font-size:28px;color:var(--gold);font-variant-numeric:tabular-nums lining-nums}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* B5 editorial near-black, Fraunces */
+.b5{--serif:Fraunces,serif;--sw:500;--bg:#0C1416;--fg:#F0F3F3;--fg-border:#8FA6AB;--muted:#A9B9BD;--line:#223035;--gold:#C5963A;--teal:#30B8B8;--cta:#30B8B8;--cta-fg:#06181C;--chip:#1E8E8E;--chip-fg:#fff}
+.b5 .hero{padding:44px 28px 30px;max-width:980px}
+.b5 h2.big{font-size:clamp(44px,6.4vw,76px);letter-spacing:-.02em}
+.b5 h2.big u{text-decoration:none;background:linear-gradient(transparent 70%,rgba(48,184,184,.45) 70%)}
+.b5 .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.board{margin:0 28px 26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#101A1D}
+.board table{width:100%;border-collapse:collapse;font-size:14px}
+.board th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--line)}
+.board td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--fg)}
+.board tr:last-child td{border-bottom:0}
+.board a{color:var(--teal);font-weight:600}
+.board .cap{padding:12px 14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+
+/* B6 glass panels on deep teal */
+.b6{--serif:"DM Serif Display",serif;--sw:400;--bg:radial-gradient(1200px 500px at 80% -10%,rgba(48,184,184,.28),transparent 60%),#0B3B47;--fg:#F3F8F9;--fg-border:#B9D3D8;--muted:#BFD6DA;--line:rgba(255,255,255,.16);--gold:#D9B46A;--teal:#30B8B8;--cta:#30B8B8;--cta-fg:#06181C;--chip:rgba(255,255,255,.14);--chip-fg:#F3F8F9}
+.b6 .hero{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:36px 28px 28px;align-items:center}
+@media(max-width:960px){.b6 .hero{grid-template-columns:1fr}}
+.b6 h2.big{font-size:clamp(38px,5vw,58px)}
+.glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);border-radius:18px;padding:20px}
+.glass h3{margin:0 0 6px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:14.5px;line-height:1.45;color:var(--fg)}
+.steps b{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#06181C;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px}
+.steps span small{display:block;color:var(--muted);font-size:13px}
+.b6 .fee{margin:0 28px 26px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:960px){.b6 .fee{grid-template-columns:1fr}}
+.b6 .fee .glass b{display:block;font-family:var(--serif);font-size:34px;color:var(--fg);font-variant-numeric:tabular-nums lining-nums}
+.b6 .fee .glass span{font-size:13.5px;color:var(--muted);line-height:1.5;display:block;margin-top:4px}
+</style>
+</head>
+<body>
+<nav class="nav"><b>Direction B dark, set 2:</b><a href="#b4">B4 split hero with form</a><a href="#b5">B5 editorial, Fraunces</a><a href="#b6">B6 glass panels</a><a href="preview-com-b-dark.html">set 1</a><a href="preview-com-b-light.html">light</a></nav>
+<p class="intro">Local preview only. Three more dark layouts in the teal-gold family. This set varies composition as well as colour: B4 puts a white intake card inside a teal gradient hero (Atlys-style capture, but the price sits beside it); B5 is near-black editorial with a Fraunces headline and the availability board as the hero proof; B6 uses frosted panels on deep teal with the three-step "we watch, you book, we prepare" and the fee split as cards.</p>
+
+<section class="spec b4" id="b4">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="chip">South Africa · ZAR</span></div>
+<div class="hero">
+<div>
+<p class="tag">B4 · Split hero, teal gradient, white intake card</p>
+<h2 class="big">Your Schengen file, prepared by a <em>named consultant</em> who answers.</h2>
+<p class="lead">We watch the official calendar, you book in your own name, we prepare every page. Price in rand, upfront. No guaranteed slots, no shortcuts.</p>
+<div class="pillrow"><span class="pill s1"><i></i>Italy: dates seen</span><span class="pill s2"><i></i>France: filling</span><span class="pill s4"><i></i>Spain: we check for you</span></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Appointments are free. We never sell one.</span></div>
+</div>
+<div class="form">
+<h3>Check my eligibility</h3>
+<p>Two minutes. A named consultant replies on WhatsApp, 8am to 8pm SAST.</p>
+<label>Destination</label><div class="in">Italy</div>
+<label>Your status in South Africa</label><div class="in ph">South African passport, or permit holder</div>
+<label>Travel window</label><div class="in ph">e.g. 10 to 24 December 2026</div>
+<a class="go" href="#">Start my file, R750 to begin</a>
+<small>R2,490 all in. R1,740 only once your appointment is confirmed. Government and centre fees paid by you directly. You can also apply directly on the official site.</small>
+</div>
+</div>
+<div class="stats"><div class="stat"><b>R2,490</b><span>all-in service fee, per applicant</span></div><div class="stat"><b>R750</b><span>to start, refundable until work begins</span></div><div class="stat"><b>0</b><span>appointments sold, ever</span></div><div class="stat"><b>6 Oct</b><span>board last checked, by Chloe</span></div></div>
+<p class="meta"><b>Beats</b> Atlys app-only capture with a desktop-capable form and the price visible beside it; iVisa's hidden total. <b>Risk</b> the teal gradient is the most "VFS form portal" of the set; the serif and the honesty pills carry the difference.</p>
+</section>
+
+<section class="spec b5" id="b5">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="chip">UAE · AED</span></div>
+<div class="hero">
+<p class="tag">B5 · Editorial near-black, Fraunces, board as proof</p>
+<h2 class="big">The only thing we <u>don't sell</u> is a shortcut.</h2>
+<p class="lead">Schengen visas for people living in the UAE on a residence visa. A named consultant prepares your file to your consulate's checklist and watches the calendar with you. Checked by a person, not a bot.</p>
+<div class="ctas"><a class="btn btn-p" href="#">Start my file, AED 199 to begin</a><a class="btn btn-s" href="#">Message us on WhatsApp</a></div>
+<div class="trust"><span><i></i>AED 649 all in</span><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Replies 9am to 9pm GST</span></div>
+</div>
+<div class="board"><table><thead><tr><th>Destination</th><th>Operator</th><th>Centre</th><th>Earliest seen</th><th>Last checked</th><th>Official link</th></tr></thead><tbody>
+<tr><td>Germany</td><td>VFS Global</td><td>Dubai Wafi</td><td>Waitlist</td><td class="num">6 Oct, 18:40 by Sam</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>Spain</td><td>BLS International</td><td>Dubai</td><td class="num">Tue 19 Nov 2026</td><td class="num">6 Oct, 18:52 by Sam</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>Italy</td><td>VFS Global</td><td>Abu Dhabi</td><td class="num">Filling · Thu 28 Nov 2026</td><td class="num">6 Oct, 19:05 by Sam</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>France</td><td>Operator pending verification</td><td>Dubai</td><td>Check with us</td><td>Not yet checked</td><td>Operator pending verification</td></tr>
+</tbody></table><div class="cap">Dates move within minutes; a date shown here can be gone before you log in. We never hold or sell appointments.</div></div>
+<p class="meta"><b>Beats</b> Visard and Visa Catcher bots (board plus a named human), Musafir "guaranteed appointment" (honesty line in the hero). <b>Risk</b> near-black plus bright teal CTA reads tech-startup; Fraunces and the gold tag pull it back toward advisor.</p>
+</section>
+
+<section class="spec b6" id="b6">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="chip">Canada · CAD</span></div>
+<div class="hero">
+<div>
+<p class="tag">B6 · Deep teal, frosted panels, three-step promise</p>
+<h2 class="big">We watch. You book. <em>We prepare.</em></h2>
+<p class="lead">Schengen visas for permanent residents and permit holders in Canada. Routed to the right consulate for your province, every page prepared, never an appointment sold. Service en français disponible.</p>
+<div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-p" href="#">Start my file</a><a class="btn btn-s" href="#">Message us on WhatsApp</a></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Replies 8am to 8pm ET</span></div>
+</div>
+<div class="glass">
+<h3>How it works</h3>
+<ol class="steps">
+<li><b>1</b><span>You tell us destination, dates, province and status.<small>WhatsApp or the form, two minutes.</small></span></li>
+<li><b>2</b><span>We route you to the right consulate and prepare the file.<small>Form, cover letter, itinerary against your real bookings.</small></span></li>
+<li><b>3</b><span>We watch the official calendar with you; you book in your own name.<small>No bots on your account, no slot held or sold.</small></span></li>
+<li><b>4</b><span>You attend with the appointment-day pack. The consulate decides.<small>Second instalment only after your appointment is confirmed.</small></span></li>
+</ol>
+</div>
+</div>
+<div class="fee"><div class="glass"><b>CA$249</b><span>our service fee, all in, per applicant. Plus applicable taxes.</span></div><div class="glass"><b>CA$79</b><span>to start. Refundable until work begins on your file.</span></div><div class="glass"><b>CA$170</b><span>only once your appointment is confirmed on the official site. Government and centre fees paid by you directly.</span></div></div>
+<p class="meta"><b>Beats</b> iVisa's buried refund ladder and Atlys's movable "guaranteed by" date with the split shown as three plain cards. <b>Risk</b> frosted glass is a 2023 trend and needs a fallback where backdrop-filter is unsupported; keep panels readable without blur.</p>
+</section>
+</body>
+</html>

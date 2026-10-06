@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BP .com palette preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:24px 16px 48px;background:#ECE9E2;color:#0B1528;font:16px/1.6 "Plus Jakarta Sans","Segoe UI",system-ui,sans-serif}
+h1.page{font:400 28px/1.1 "DM Serif Display",Georgia,serif;margin:0 0 4px}
+p.lead{margin:0 0 24px;color:#44546A;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.col{border-radius:12px;overflow:hidden;border:1px solid rgba(11,21,40,.12);background:var(--bg);color:var(--text)}
+.tag{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--primary);color:var(--on-primary)}
+.tag em{font-style:normal;font-weight:500;letter-spacing:0;text-transform:none;opacity:.85}
+.hero{padding:28px 20px 24px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--hair);display:inline-block}
+.hero h2{font:400 34px/1.1 "DM Serif Display",Georgia,serif;letter-spacing:-.01em;margin:0 0 12px}
+.hero p{margin:0 0 20px;color:var(--text2);font-size:16px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:10px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid transparent;cursor:pointer}
+.btn-p{background:var(--cta);color:var(--cta-text)}
+.btn-p:hover{background:var(--cta-hover)}
+.btn-s{background:transparent;color:var(--text);border-color:var(--text)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+.pills{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 20px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 12px 6px 10px;font-size:14px;font-weight:500}
+.pill i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.fee{margin:0 20px 20px;padding:18px 20px;border-radius:10px;background:var(--fee-bg);color:var(--fee-text);border:1px solid var(--fee-border);box-shadow:0 8px 24px rgba(11,21,40,.08)}
+.fee .lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fee-lbl);margin:0 0 6px}
+.fee .row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--fee-border);font-variant-numeric:tabular-nums}
+.fee .row:last-of-type{border:0}
+.fee .row b{font-weight:600}
+.fee .note{font-size:14px;margin:10px 0 0;color:var(--fee-lbl)}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;padding:0 20px 20px;border-top:1px solid var(--hair);padding-top:16px}
+.s{border-radius:6px;overflow:hidden;border:1px solid rgba(11,21,40,.12);background:var(--surface);color:var(--text)}
+.s span{display:block;height:36px}
+.s small{display:block;padding:6px 8px;font-size:11px;line-height:1.3}
+.s small b{display:block;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.verdict{padding:14px 20px 18px;font-size:14px;border-top:1px solid var(--hair);color:var(--text2)}
+.verdict b{color:var(--text)}
+.c-a{--bg:#FFFDF8;--surface:#FFFFFF;--text:#0B1528;--text2:#5B6B7D;--hair:#C5963A;--primary:#12224D;--on-primary:#FFFFFF;--cta:#C5963A;--cta-hover:#F59E0B;--cta-text:#0B1528;--fee-bg:#12224D;--fee-text:#FFFFFF;--fee-lbl:#C5963A;--fee-border:#2A3B6B}
+.c-b{--bg:#FFFFFF;--surface:#F3F7F7;--text:#0F2A2A;--text2:#44546A;--hair:#C5963A;--primary:#0F7C7C;--on-primary:#FFFFFF;--cta:#0F7C7C;--cta-hover:#0E6E6E;--cta-text:#FFFFFF;--fee-bg:#F3F7F7;--fee-text:#0F2A2A;--fee-lbl:#0F7C7C;--fee-border:#CFE0E0}
+.c-c{--bg:#FFFDF8;--surface:#FFFFFF;--text:#0B1528;--text2:#44546A;--hair:#C5963A;--primary:#0B1528;--on-primary:#FFFDF8;--cta:#2F6B4F;--cta-hover:#255640;--cta-text:#FFFFFF;--fee-bg:#0B1528;--fee-text:#FFFDF8;--fee-lbl:#C5963A;--fee-border:#1E2B45}
+.c-c .tag{border-bottom:2px solid #5C9A7B}
+.rec{display:inline-block;background:#5C9A7B;color:#0B1528;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:600;letter-spacing:.04em}
+@media (min-width:1024px){.hero h2{font-size:40px;line-height:1.05;letter-spacing:-.015em}}
+</style>
+</head>
+<body>
+<h1 class="page">Beyond Passports .com: three colour directions</h1>
+<p class="lead">Market home pages for /za, /ae, /us, /ca. Each column: mini hero, four availability states, fee block, tokens. Local preview only.</p>
+
+<div class="grid">
+
+<!-- A -->
+<section class="col c-a" aria-label="Direction A">
+  <div class="tag"><span>A. Inherit UK brand</span><em>navy / gold / cream</em></div>
+  <div class="hero">
+    <p class="eyebrow">Schengen visas for South Africans</p>
+    <h2>We watch the calendar. You book. We prepare your file.</h2>
+    <p>An honest advisor in the UK, not a visa centre. Fixed fee, no queue-jumping promises.</p>
+    <div class="ctas">
+      <a class="btn btn-p" href="#"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.3 5.3 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp us</a>
+      <a class="btn btn-s" href="#">Start my check</a>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill" style="background:#DCFCE7;color:#14532D"><i style="background:#16A34A"></i>Available</span>
+    <span class="pill" style="background:#FEF3C7;color:#78350F"><i style="background:#F59E0B"></i>Filling</span>
+    <span class="pill" style="background:#FEE2E2;color:#7F1D1D"><i style="background:#DC2626"></i>Limited</span>
+    <span class="pill" style="background:#E2E8F0;color:#334155"><i style="background:#64748B"></i>Check with us</span>
+  </div>
+  <div class="fee">
+    <p class="lbl">Our fee, in full</p>
+    <div class="row"><span>Calendar watch + file preparation</span><b>R 2 950</b></div>
+    <div class="row"><span>Paid on appointment confirmed</span><b>R 1 950</b></div>
+    <p class="note">Embassy and centre fees are paid by you, directly. We never collect them.</p>
+  </div>
+  <div class="sw">
+    <div class="s"><span style="background:#12224D"></span><small><b>primary</b>#12224D</small></div>
+    <div class="s"><span style="background:#0B1528"></span><small><b>ink</b>#0B1528</small></div>
+    <div class="s"><span style="background:#FFFDF8"></span><small><b>cream</b>#FFFDF8</small></div>
+    <div class="s"><span style="background:#C5963A"></span><small><b>gold cta</b>#C5963A</small></div>
+    <div class="s"><span style="background:#F59E0B"></span><small><b>amber</b>#F59E0B</small></div>
+    <div class="s"><span style="background:#5B6B7D"></span><small><b>slate</b>#5B6B7D</small></div>
+    <div class="s"><span style="background:#16A34A"></span><small><b>green</b>#16A34A</small></div>
+    <div class="s"><span style="background:#E2E8F0"></span><small><b>border</b>#E2E8F0</small></div>
+  </div>
+  <div class="verdict"><b>Beats:</b> Atlys app chrome, Visard dark bot. <b>Risk:</b> navy + gold is the ZA/AE agency and crest cliché; gold CTA fights WhatsApp green.</div>
+</section>
+
+<!-- B -->
+<section class="col c-b" aria-label="Direction B">
+  <div class="tag"><span>B. Teal-gold</span><em>logo v2 tealgold</em></div>
+  <div class="hero">
+    <p class="eyebrow">Schengen visas for UAE residents</p>
+    <h2>We watch the calendar. You book. We prepare your file.</h2>
+    <p>An honest advisor in the UK, not a visa centre. Fixed fee, no queue-jumping promises.</p>
+    <div class="ctas">
+      <a class="btn btn-p" href="#"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.3 5.3 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp us</a>
+      <a class="btn btn-s" href="#">Start my check</a>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill" style="background:#D7F0EF;color:#0B4F4F"><i style="background:#0F7C7C"></i>Available</span>
+    <span class="pill" style="background:#FBF0D6;color:#7A4F08"><i style="background:#9E6E0A"></i>Filling</span>
+    <span class="pill" style="background:#F9E3DD;color:#8A3324"><i style="background:#C8553D"></i>Limited</span>
+    <span class="pill" style="background:#E8ECF1;color:#3B4A5E"><i style="background:#6B7B90"></i>Check with us</span>
+  </div>
+  <div class="fee">
+    <p class="lbl">Our fee, in full</p>
+    <div class="row"><span>Calendar watch + file preparation</span><b>AED 590</b></div>
+    <div class="row"><span>Paid on appointment confirmed</span><b>AED 390</b></div>
+    <p class="note">Embassy and centre fees are paid by you, directly. We never collect them.</p>
+  </div>
+  <div class="sw">
+    <div class="s"><span style="background:#0F7C7C"></span><small><b>deep teal</b>#0F7C7C</small></div>
+    <div class="s"><span style="background:#30B8B8"></span><small><b>logo teal</b>#30B8B8</small></div>
+    <div class="s"><span style="background:#0F2A2A"></span><small><b>text</b>#0F2A2A</small></div>
+    <div class="s"><span style="background:#FFFFFF"></span><small><b>white</b>#FFFFFF</small></div>
+    <div class="s"><span style="background:#F3F7F7"></span><small><b>band</b>#F3F7F7</small></div>
+    <div class="s"><span style="background:#C5963A"></span><small><b>gold hair</b>#C5963A</small></div>
+    <div class="s"><span style="background:#44546A"></span><small><b>muted</b>#44546A</small></div>
+    <div class="s"><span style="background:#CFE0E0"></span><small><b>border</b>#CFE0E0</small></div>
+  </div>
+  <div class="verdict"><b>Beats:</b> Atlys indigo, Visard lime, local red. <b>Risk:</b> lands next to iVisa teal and VFS institutional teal; logo teal 2.4:1 so unusable for text.</div>
+</section>
+
+<!-- C -->
+<section class="col c-c" aria-label="Direction C">
+  <div class="tag"><span>C. Ink and paper <span class="rec">recommended</span></span><em>stamp green accent</em></div>
+  <div class="hero">
+    <p class="eyebrow">Schengen visas for Canadians</p>
+    <h2>We watch the calendar. You book. We prepare your file.</h2>
+    <p>An honest advisor in the UK, not a visa centre. Fixed fee, no queue-jumping promises.</p>
+    <div class="ctas">
+      <a class="btn btn-p" href="#"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.3 5.3 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp us</a>
+      <a class="btn btn-s" href="#">Start my check</a>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill" style="background:#E3F1E8;color:#1F5A3C"><i style="background:#2F8A5B"></i>Available</span>
+    <span class="pill" style="background:#FBF0D6;color:#7A4F08"><i style="background:#9E6E0A"></i>Filling</span>
+    <span class="pill" style="background:#F9E3DD;color:#8A3324"><i style="background:#C8553D"></i>Limited</span>
+    <span class="pill" style="background:#E8ECF1;color:#3B4A5E"><i style="background:#6B7B90"></i>Check with us</span>
+  </div>
+  <div class="fee">
+    <p class="lbl">Our fee, in full</p>
+    <div class="row"><span>Calendar watch + file preparation</span><b>CA$ 215</b></div>
+    <div class="row"><span>Paid on appointment confirmed</span><b>CA$ 145</b></div>
+    <p class="note">Embassy and centre fees are paid by you, directly. We never collect them.</p>
+  </div>
+  <div class="sw">
+    <div class="s"><span style="background:#0B1528"></span><small><b>ink</b>#0B1528</small></div>
+    <div class="s"><span style="background:#FFFDF8"></span><small><b>paper</b>#FFFDF8</small></div>
+    <div class="s"><span style="background:#F4EFE4"></span><small><b>parchment</b>#F4EFE4</small></div>
+    <div class="s"><span style="background:#44546A"></span><small><b>text-2</b>#44546A</small></div>
+    <div class="s"><span style="background:#2F6B4F"></span><small><b>cta</b>#2F6B4F</small></div>
+    <div class="s"><span style="background:#255640"></span><small><b>cta hover</b>#255640</small></div>
+    <div class="s"><span style="background:#5C9A7B"></span><small><b>stamp</b>#5C9A7B</small></div>
+    <div class="s"><span style="background:#7FB899"></span><small><b>cta on ink</b>#7FB899</small></div>
+    <div class="s"><span style="background:#C5963A"></span><small><b>gold (logo)</b>#C5963A</small></div>
+    <div class="s"><span style="background:#D9D2C3"></span><small><b>border</b>#D9D2C3</small></div>
+    <div class="s"><span style="background:#7D766A"></span><small><b>input border</b>#7D766A</small></div>
+    <div class="s"><span style="background:#B8C2D1"></span><small><b>on-ink 2</b>#B8C2D1</small></div>
+  </div>
+  <div class="verdict"><b>Beats:</b> Atlys (paper vs purple app), iVisa and VFS (no teal), Visard (no dark/lime), local ZA/AE (no red, gold, flags). <b>Risk:</b> quieter; stamp green is decorative only, CTA uses the deeper green.</div>
+</section>
+
+</div>
+</body>
+</html>

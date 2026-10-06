@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction B teal-gold, light versions with logo v2 tealgold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:#ECEAE5;color:#111}
+.nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #E4E0D8;padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.nav b{font-size:13px;margin-right:6px;color:#444}
+.nav a{font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px;background:#F1EFEA;color:#111;text-decoration:none}
+.intro{padding:18px 24px 0;max-width:110ch;font-size:14px;line-height:1.55;color:#444}
+.spec{margin:20px 24px;border-radius:20px;overflow:hidden;background:var(--bg);color:var(--fg);border:1px solid var(--line)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 28px;border-bottom:1px solid var(--line)}
+.topbar img{height:40px;width:auto;display:block}
+.topbar .links{display:flex;gap:18px;font-size:14px;font-weight:600;color:var(--fg);opacity:.85}
+.topbar .pill{font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:var(--chip);color:var(--chip-fg)}
+.head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 28px 0;align-items:baseline}
+.head .id{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.head .verdict{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--chip);color:var(--chip-fg)}
+.row{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;padding:14px 28px 28px}
+@media(max-width:960px){.row{grid-template-columns:1fr}}
+h2.big{font-family:var(--serif);font-weight:var(--sw);font-size:clamp(38px,5.2vw,60px);line-height:1.04;letter-spacing:-.012em;margin:0 0 14px;color:var(--fg)}
+h2.big em{font-style:normal;color:#0F4C5C}
+.lead{font-size:18px;line-height:1.55;color:var(--muted);margin:0 0 18px;max-width:62ch}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.btn{display:inline-block;padding:14px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;min-height:48px;line-height:1.3}
+.btn-p{background:var(--cta);color:var(--cta-fg)}
+.btn-s{background:transparent;color:var(--fg-border);border:2px solid var(--fg-border)}
+.trust{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust i{width:6px;height:6px;border-radius:50%;background:#30B8B8;display:inline-block}
+.side .fee{border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:var(--card)}
+.fee .price{font-family:var(--serif);font-weight:var(--sw);font-size:40px;line-height:1;color:var(--fg);font-variant-numeric:tabular-nums lining-nums}
+.fee .l{font-size:15px;margin:6px 0 0;color:var(--fg)}
+.fee p{font-size:14px;line-height:1.55;color:var(--muted);margin:10px 0 0}
+.fee a{color:var(--gold);font-weight:600}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.pill2{font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);color:var(--fg)}
+.pill2 i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.s1 i{background:#2F6B4F}.s2 i{background:#B8780D}.s3 i{background:#B23A3A}.s4 i{background:#5B6B7D}
+.sw{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.sw div{height:54px;border-radius:10px;border:1px solid rgba(0,0,0,.08);font-size:10.5px;display:flex;align-items:flex-end;padding:5px;font-family:ui-monospace,monospace}
+.meta{font-size:13.5px;line-height:1.55;color:var(--muted);margin:14px 0 0}
+.meta b{color:var(--fg)}
+.board{margin:0 28px 28px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.board table{width:100%;border-collapse:collapse;font-size:14px}
+.board th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--line)}
+.board td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--fg)}
+.board tr:last-child td{border-bottom:0}
+.board a{color:var(--gold);font-weight:600}
+
+/* L1 white, deep teal CTA */
+.b1{--serif:"DM Serif Display",serif;--sw:400;--bg:#FFFFFF;--card:#FFFFFF;--fg:#0B1F26;--fg-border:#0F4C5C;--muted:#4F6A72;--line:#DCE6E9;--gold:#9A7224;--cta:#0F4C5C;--cta-fg:#fff;--chip:#0F4C5C;--chip-fg:#fff}
+/* L2 ice-teal tint, midnight text, logo-teal accents */
+.b2{--serif:"DM Serif Display",serif;--sw:400;--bg:#F3F8F9;--card:#FFFFFF;--fg:#0B1F26;--fg-border:#0B1F26;--muted:#4F6A72;--line:#D3E2E5;--gold:#9A7224;--cta:#0B1F26;--cta-fg:#fff;--chip:#30B8B8;--chip-fg:#06181C}
+/* L3 warm paper, muted teal CTA, Fraunces headline */
+.b3{--serif:Fraunces,serif;--sw:600;--bg:#FAF8F3;--card:#FFFFFF;--fg:#121A1D;--fg-border:#176F6F;--muted:#4A5558;--line:#E3DFD5;--gold:#9A7224;--cta:#176F6F;--cta-fg:#fff;--chip:#176F6F;--chip-fg:#fff}
+</style>
+</head>
+<body>
+<nav class="nav"><b>Direction B light:</b><a href="#b1">L1 white, deep teal CTA</a><a href="#b2">L2 ice-teal tint</a><a href="#b3">L3 warm paper, Fraunces</a> <a href="preview-com-b-dark.html">dark versions</a></nav>
+<p class="intro">Local preview only. Three light treatments of the teal-gold direction with the logo v2 tealgold asset. Rule applied: the logo teal #30B8B8 is 2.4:1 on white, so it appears only as the mark, dots and chips, never as text. Deep teal #0F4C5C (8.6:1 on white) or midnight #0B1F26 carries text and CTAs. Gold is darkened to #9A7224 for links so it passes 4.5:1 on white; the logo wordmark keeps its own gold.</p>
+
+<section class="spec b1" id="b1">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="pill">South Africa · ZAR</span></div>
+<div class="head"><span class="id">L1 · White surface, deep teal CTA, gold hairline</span><span class="verdict">Cleanest, most conventional</span></div>
+<div class="row"><div>
+<h2 class="big">Your Schengen file, prepared by a <em>named consultant</em> who answers.</h2>
+<p class="lead">We watch the official calendar, you book in your own name, we prepare every page. Price in rand, upfront. No guaranteed slots, no shortcuts, no surprises.</p>
+<div class="ctas"><a class="btn btn-p" href="#">Start my file</a><a class="btn btn-s" href="#">Message us on WhatsApp</a></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Appointments are free. We never sell one.</span><span><i></i>Replies 8am to 8pm SAST</span></div>
+</div><div class="side">
+<div class="fee"><div class="price">R2,490</div><p class="l">our service fee, all in, per applicant</p><p>R750 to start. R1,740 only once your appointment is confirmed on the official site. Government and visa centre fees are paid by you directly. <a href="#">You can also apply directly</a>.</p></div>
+<div class="pills"><span class="pill2 s1"><i></i>Available</span><span class="pill2 s2"><i></i>Filling</span><span class="pill2 s3"><i></i>Limited</span><span class="pill2 s4"><i></i>Check with us</span></div>
+<div class="sw"><div style="background:#0F4C5C;color:#fff">0F4C5C</div><div style="background:#D9B46A">D9B46A</div><div style="background:#30B8B8">30B8B8</div><div style="background:#F3F8F9">F3F8F9</div><div style="background:#0B2A33;color:#fff">0B2A33</div></div>
+<p class="meta"><b>Feel</b> clean and conventional; teal only in buttons, mark and dots, so the page reads white with a teal signature. <b>Risk</b> white plus teal buttons is the iVisa and VFS form look; the serif headline and gold hairline are what separate it.</p>
+</div></div>
+<div class="board"><table><thead><tr><th>Destination</th><th>Operator</th><th>Centre</th><th>Earliest seen</th><th>Last checked</th><th>Official link</th></tr></thead><tbody>
+<tr><td>Italy</td><td>VFS Global</td><td>Johannesburg</td><td>Thu 14 Nov 2026</td><td>6 Oct, 14:05 by Chloe</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>France</td><td>Capago</td><td>Sandton</td><td>No dates seen, last seen 03 Oct</td><td>6 Oct, 14:12 by Chloe</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>Spain</td><td>BLS International</td><td>Cape Town</td><td>Check with us</td><td>Not yet checked</td><td>BLS International</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="spec b2" id="b2">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="pill">UAE · AED</span></div>
+<div class="head"><span class="id">L2 · Ice-teal tint surface, midnight CTA, logo-teal accents</span><span class="verdict">Softest, tint echoes the mark</span></div>
+<div class="row"><div>
+<h2 class="big">The only thing we don't sell is a <em>shortcut.</em></h2>
+<p class="lead">Schengen visas for people living in the UAE on a residence visa. A named consultant prepares your file to your consulate's checklist and watches the calendar with you. You book in your own name.</p>
+<div class="ctas"><a class="btn btn-p" href="#">Start my file</a><a class="btn btn-s" href="#">Message us on WhatsApp</a></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Appointments are free. We never sell one.</span><span><i></i>Replies 9am to 9pm GST</span></div>
+</div><div class="side">
+<div class="fee"><div class="price">AED 649</div><p class="l">our service fee, all in, per applicant</p><p>AED 199 to start. AED 450 only once your appointment is confirmed on the official site. Government and visa centre fees are paid by you directly. <a href="#">You can also apply directly</a>.</p></div>
+<div class="pills"><span class="pill2 s1"><i></i>Available</span><span class="pill2 s2"><i></i>Filling</span><span class="pill2 s3"><i></i>Limited</span><span class="pill2 s4"><i></i>Check with us</span></div>
+<div class="sw"><div style="background:#0B1F26;color:#fff">0B1F26</div><div style="background:#30B8B8">30B8B8</div><div style="background:#C5963A">C5963A</div><div style="background:#EAF3F4">EAF3F4</div><div style="background:#102A33;color:#fff">102A33</div></div>
+<p class="meta"><b>Feel</b> airy; the pale teal tint echoes the mark without using it for text; midnight CTA keeps contrast at 15:1. <b>Risk</b> tinted backgrounds can look washed on cheap phone screens; cards stay pure white to anchor.</p>
+</div></div>
+<div class="board"><table><thead><tr><th>Destination</th><th>Operator</th><th>Centre</th><th>Earliest seen</th><th>Last checked</th><th>Official link</th></tr></thead><tbody>
+<tr><td>Germany</td><td>VFS Global</td><td>Dubai Wafi</td><td>Waitlist</td><td>6 Oct, 18:40 by Sam</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>Spain</td><td>BLS International</td><td>Dubai</td><td>Tue 19 Nov 2026</td><td>6 Oct, 18:52 by Sam</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>France</td><td>Operator pending verification</td><td>Dubai</td><td>Check with us</td><td>Not yet checked</td><td>Operator pending verification</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="spec b3" id="b3">
+<div class="topbar"><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports"><div class="links"><span>Schengen visa</span><span>Availability</span><span>Trips</span><span>About</span></div><span class="pill">Canada · CAD</span></div>
+<div class="head"><span class="id">L3 · Warm paper surface, muted teal CTA, Fraunces headline</span><span class="verdict">Warmest, least VFS-like</span></div>
+<div class="row"><div>
+<h2 class="big">Schengen visas for permanent residents and permit holders in <em>Canada.</em></h2>
+<p class="lead">We never sell appointments. We prepare your file, route it to the right consulate for your province, and watch the calendar with you. Service en français disponible.</p>
+<div class="ctas"><a class="btn btn-p" href="#">Start my file</a><a class="btn btn-s" href="#">Message us on WhatsApp</a></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>Appointments are free. We never sell one.</span><span><i></i>Replies 8am to 8pm ET</span></div>
+</div><div class="side">
+<div class="fee"><div class="price">CA$249</div><p class="l">our service fee, all in, per applicant. Plus applicable taxes.</p><p>CA$79 to start. CA$170 only once your appointment is confirmed on the official site. Government and visa centre fees are paid by you directly. <a href="#">You can also apply directly</a>.</p></div>
+<div class="pills"><span class="pill2 s1"><i></i>Available</span><span class="pill2 s2"><i></i>Filling</span><span class="pill2 s3"><i></i>Limited</span><span class="pill2 s4"><i></i>Check with us</span></div>
+<div class="sw"><div style="background:#121A1D;color:#fff">121A1D</div><div style="background:#1E8E8E;color:#fff">1E8E8E</div><div style="background:#C5963A">C5963A</div><div style="background:#F0F3F3">F0F3F3</div><div style="background:#192327;color:#fff">192327</div></div>
+<p class="meta"><b>Feel</b> warm paper with a desaturated teal, closest to the ink-and-paper honesty tone while staying in the B family; Fraunces per the typography brief. <b>Risk</b> teal #176F6F drifts from the logo mark; keep the mark visible in the top bar so the family reads.</p>
+</div></div>
+<div class="board"><table><thead><tr><th>Destination</th><th>Operator</th><th>Centre</th><th>Earliest seen</th><th>Last checked</th><th>Official link</th></tr></thead><tbody>
+<tr><td>Italy</td><td>Consulate (Prenot@mi)</td><td>Toronto</td><td>Fri 22 Nov 2026</td><td>6 Oct, 09:15 by Chloe</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>Spain</td><td>Consulate email queue</td><td>Toronto</td><td>No dates seen, last seen 01 Oct</td><td>6 Oct, 09:30 by Chloe</td><td><a href="#">Book free on the official site</a></td></tr>
+<tr><td>France</td><td>VFS Global</td><td>Vancouver</td><td>Filling · Mon 18 Nov 2026</td><td>6 Oct, 09:44 by Chloe</td><td><a href="#">Book free on the official site</a></td></tr>
+</tbody></table></div>
+</section>
+</body>
+</html>
