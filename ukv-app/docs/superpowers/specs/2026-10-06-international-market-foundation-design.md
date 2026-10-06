@@ -13,7 +13,7 @@ A spec is the agreement on WHAT gets built and WHY, written before any code, so 
 5. To change something later, edit this file first, then the plan, then the code. The file is the source of truth for the team or agent that inherits the work (see memory: scaling-agent-team-plan).
 
 ## 1. Goal
-Ship the plumbing that lets `beyondpassports.com` serve per-market Schengen pages for South Africa (`/za/`), UAE (`/ae/`), USA (`/us/`) and Canada (`/ca/`) from the existing Laravel app, with the UK untouched on `beyondpassports.co.uk`, so that sub-projects 2-7 (templates, tours catalogue, slots per market, payments per market, compliance/ops, launch) have one market model, one routing scheme, one SEO scheme and one analytics tag to build on.
+Ship the plumbing that lets `beyondpassports.com` serve per-market Schengen pages for South Africa (`/za/`), UAE (`/ae/`), USA (`/us/`) and Canada (`/ca/`) from the existing Laravel app, with the UK untouched on `beyondpassports.co.uk`, so that sub-projects 2-7 (tours catalogue, templates, slots per market, payments per market, compliance/ops, launch) have one market model, one routing scheme, one SEO scheme and one analytics tag to build on.
 
 Success for this sub-project: a market can be switched on by config, shows a market home and hub stub with correct chrome, canonical, hreflang, robots state and analytics tag, and is invisible (404) when off. Scoreboard lines served: G3 (page architecture, hreflang edge), G5 (per-market trust strip), G6 (nothing here spends UK budget).
 
@@ -66,7 +66,7 @@ A `MarketsConfigTest` asserts every entry has every key and that `enabled`/`inde
 ```php
 Route::prefix('{market}')->where(['market' => 'za|ae|us|ca'])->middleware(ResolveMarket::class)->group(function () {
     Route::get('/', MarketHomeController::class)->name('market.home');
-    Route::get('/schengen-visa', MarketHubController::class)->name('market.hub');       // stub until SP2/SP4
+    Route::get('/schengen-visa', MarketHubController::class)->name('market.hub');       // stub until SP3/SP4
     Route::get('/tour-packages', MarketToursController::class)->name('market.tours');   // existing catalogue, enquiry-only (A4)
 });
 Route::redirect('/south-africa', '/za', 301);
