@@ -1291,6 +1291,8 @@ git commit -m "feat(markets): hub stub with honest availability block and 29 des
 
 ### Task 7: Market tours route (existing catalogue, enquiry-only)
 
+> **Compliance flag (2026-10-06, tours exposure memo):** before building this task, check whether the owner accepted spec section 14 (slug `/trips`, no "package" wording, option (a) referral script). If accepted, substitute `/trips` for `/tour-packages` in the route, view, test, sitemap path and hreflang path throughout this task and Task 10; use "Visa-led trip ideas" as the H1 and "Ask about this itinerary" as the CTA.
+
 **Files:**
 - Create: `app/Http/Controllers/Market/MarketToursController.php`
 - Create: `resources/views/market/tours.blade.php`
