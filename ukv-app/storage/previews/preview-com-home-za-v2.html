@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schengen visa from South Africa | Beyond Passports (layout prototype v2, xVisa deltas)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
+--bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-glass:rgba(255,255,255,.07);--bp-glass-line:rgba(255,255,255,.17);--bp-highlight:rgba(217,180,106,.55);
+--bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--bp-font-body);color:var(--bp-ink);background:var(--bp-paper);font-size:17px;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bp-gold);color:var(--bp-ink);padding:8px 12px;border-radius:8px}.skip:focus{left:8px;z-index:50}
+h1,h2,h3,.price{font-family:var(--bp-font-display);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin:0}
+h2{font-size:30px;margin-bottom:8px}
+.sub{color:var(--bp-muted);margin:0 0 22px;max-width:62ch}
+section{padding:56px 0}
+.tint{background:var(--bp-paper-tint)}
+.dark{background:var(--bp-hero-bg);color:var(--bp-hero-fg)}
+.dark .sub{color:var(--bp-hero-muted)}
+.tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--bp-gold);margin:0 0 12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent}
+.btn-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.btn-ghost{background:transparent;color:var(--bp-hero-fg);border-color:#B9D3D8}
+.btn-deep{background:var(--bp-teal-deep);color:#fff}
+.btn-out{background:#fff;color:var(--bp-teal-deep);border-color:var(--bp-teal-deep)}
+:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(48,184,184,.55)}
+.glass{background:var(--bp-glass);border:1px solid var(--bp-glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;padding:22px}
+@supports not (backdrop-filter:blur(1px)){.glass{background:rgba(255,255,255,.12)}}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.st-a{background:#DDEFE4;color:#17452E}.st-a i{background:#2F6B4F}
+.st-f{background:#FBEBC8;color:#5C3D05}.st-f i{background:#B8780D}
+.st-l{background:#F6DADA;color:#5E1C1C}.st-l i{background:#B23A3A}
+.st-c{background:#E4E7EC;color:#2B3545}.st-c i{background:#5B6B7D}
+
+/* S0 */
+.chrome{position:sticky;top:0;z-index:40;background:var(--bp-teal-ink);border-bottom:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:72px}
+.chrome img{height:36px;width:auto;display:block}
+.chrome nav{display:flex;gap:18px;font-size:14px;font-weight:600}
+.chrome .right{display:flex;gap:10px;align-items:center}
+.switch{font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.indep{background:#082C35;color:var(--bp-hero-muted);font-size:13px;text-align:center;padding:7px 12px;min-height:32px;border-top:1px solid var(--bp-hero-line)}
+.who{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold);margin-bottom:8px}
+.chrome .btn{min-height:40px;padding:8px 14px;font-size:14px}
+@media(max-width:900px){.chrome nav{display:none}.chrome .wrap{min-height:56px}.chrome img{height:30px}}
+
+/* S1 */
+.hero{padding:64px 0 36px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.02em;font-variation-settings:"opsz" 144;margin:0 0 16px}
+.hero h1 u{text-decoration:none;background:linear-gradient(transparent 68%,var(--bp-highlight) 68%)}
+.hero .lead{font-size:18px;color:var(--bp-hero-muted);max-width:56ch;margin:0 0 22px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--bp-hero-muted);margin-top:18px}
+.trust span{display:inline-flex;align-items:center;gap:6px}.trust i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;font-size:15px}
+.steps b{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--bp-teal);color:var(--bp-teal-night);align-items:center;justify-content:center;font-family:var(--bp-font-display);font-size:18px}
+.steps small{display:block;color:var(--bp-hero-muted);font-size:13px}
+.glass h3{font-size:22px;margin-bottom:12px}.glass h3 small{display:block;font-family:var(--bp-font-body);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bp-gold);font-weight:700;margin-bottom:6px}
+@media(max-width:900px){.hero{padding:40px 0 24px}.hero .wrap{grid-template-columns:1fr}}
+
+/* S2 */
+.fees{padding:8px 0 56px}
+.fees .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fees .price{font-size:38px;color:var(--bp-hero-fg);font-variant-numeric:tabular-nums lining-nums}
+.fees .glass span{display:block;font-size:14px;color:var(--bp-hero-muted);margin-top:6px}
+.fees .note{grid-column:1/-1;font-size:14px;color:var(--bp-hero-muted);margin:4px 0 0}
+.fees .note a{color:var(--bp-teal);font-weight:600}
+@media(max-width:900px){.fees .wrap{grid-template-columns:1fr}}
+
+/* S3 */
+.search{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.search label{font-weight:600;font-size:14px;width:100%}
+.search input{flex:1;min-width:240px;height:48px;border:1px solid var(--bp-line);border-radius:12px;padding:0 14px;font:inherit;font-size:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;font-size:13px;color:var(--bp-muted)}
+.chips a{text-decoration:none;color:var(--bp-teal-deep);font-weight:600;padding:8px 12px;border-radius:999px;border:1px solid var(--bp-line);background:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--bp-line);border-radius:14px;padding:14px;background:#fff;display:grid;gap:6px;text-decoration:none;color:inherit;min-height:112px}
+.card .nm{font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px}
+.flag{width:22px;height:15px;border-radius:3px;display:inline-block;background:var(--f,#ccc)}
+.card .op{font-size:13px;color:var(--bp-muted)}
+.card .docs{font-size:12.5px;color:var(--bp-muted)}
+.more{text-align:center;margin-top:14px;font-size:14px;color:var(--bp-muted)}
+details.help{margin-top:20px;border:1px solid var(--bp-line);border-radius:14px;padding:14px 18px;background:var(--bp-paper-tint)}
+details.help summary{font-weight:700;cursor:pointer}
+details.help .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+details.help .row label{font-size:13px;font-weight:600;display:block;margin-bottom:4px}
+details.help .row input{width:100%;height:44px;border:1px solid var(--bp-line);border-radius:10px;padding:0 12px;font:inherit}
+@media(max-width:700px){details.help .row{grid-template-columns:1fr}}
+
+/* S4 */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:1000px){.tiles{display:flex;overflow-x:auto;gap:12px;padding-bottom:6px;scroll-snap-type:x mandatory}.tiles>div{min-width:78%;scroll-snap-align:start}}
+.tile{background:#fff;border:1px solid var(--bp-line);border-radius:14px;padding:16px;display:grid;gap:8px}
+.tile h3{font-size:17px;font-family:var(--bp-font-body);font-weight:700;letter-spacing:0}
+.tile p{margin:0;font-size:14px;color:var(--bp-muted)}
+.tile a{font-size:14px;font-weight:600;color:var(--bp-teal-deep)}
+
+/* S5 */
+.board{border:1px solid var(--bp-line);border-radius:16px;overflow:hidden;background:#fff}
+.board table{width:100%;border-collapse:collapse;font-size:14px}
+.board caption{text-align:left;padding:12px 16px;font-size:13px;color:var(--bp-muted);border-bottom:1px solid var(--bp-line)}
+.board th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted);padding:12px 16px;border-bottom:1px solid var(--bp-line)}
+.board td{padding:12px 16px;border-bottom:1px solid var(--bp-line);vertical-align:top}
+.board tr:last-child td{border-bottom:0}
+.board a{color:var(--bp-teal-deep);font-weight:600}
+.board .foot{padding:12px 16px;font-size:13px;color:var(--bp-muted);border-top:1px solid var(--bp-line)}
+@media(max-width:900px){.board thead{display:none}.board tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:12px 16px;border-bottom:1px solid var(--bp-line)}.board td{display:block;padding:0;border:0}.board td::before{content:attr(data-l);display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted)}}
+
+/* S6 */
+.pay{border:1px solid var(--bp-line);border-radius:16px;background:#fff;overflow:hidden}
+.pay div{display:grid;grid-template-columns:1.2fr 2fr;gap:12px;padding:16px 18px;border-bottom:1px solid var(--bp-line);font-size:15px}
+.pay div:last-child{border-bottom:0}
+.pay b{font-family:var(--bp-font-display);font-size:18px}
+@media(max-width:700px){.pay div{grid-template-columns:1fr}}
+
+/* S7 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.list{border:1px solid var(--bp-line);border-radius:16px;padding:18px 20px;background:#fff}
+.list h3{font-size:20px;margin-bottom:10px}
+.list ul{margin:0;padding-left:18px;font-size:15px;display:grid;gap:6px}
+
+/* S8 */
+.consult{display:grid;grid-template-columns:96px 1fr auto;gap:20px;align-items:center;background:#fff;border:1px solid var(--bp-line);border-radius:18px;padding:20px}
+.avatar{width:96px;height:96px;border-radius:50%;background:var(--bp-teal-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--bp-font-display);font-size:34px}
+.consult h3{font-size:22px}.consult p{margin:4px 0 0;color:var(--bp-muted);font-size:15px}
+@media(max-width:800px){.consult{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+/* S9 */
+.trips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.trips{grid-template-columns:1fr}}
+.trip{border:1px solid var(--bp-line);border-radius:16px;padding:16px;background:#fff;display:grid;gap:6px;font-size:14px}
+.trip h3{font-size:20px}.trip .k{color:var(--bp-muted)}
+.strip{margin-top:16px;font-size:13px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+
+/* S10 */
+.trustband{padding:28px 0}
+.trustband .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:14px;color:var(--bp-hero-muted)}
+.trustband span{display:inline-flex;align-items:center;gap:8px}.trustband i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold)}
+.trustband a{color:var(--bp-teal)}
+
+/* S11 */
+.faq details{border-bottom:1px solid var(--bp-line);padding:16px 0}
+.faq summary{font-weight:700;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;min-height:44px;align-items:center}
+.faq summary::after{content:"+";font-size:22px;color:var(--bp-teal-deep)}
+.faq details[open] summary::after{content:"\2013"}
+.faq p{margin:10px 0 0;color:var(--bp-muted);font-size:15px}
+
+/* S12 */
+footer{padding:48px 0 96px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;font-size:14px}
+footer h4{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--bp-gold)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer p{color:var(--bp-hero-muted);margin:0}
+@media(max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(11,59,71,.96);border-top:1px solid var(--bp-hero-line)}
+.sticky a{width:100%}
+@media(max-width:900px){.sticky{display:block}}
+.label{position:absolute;right:12px;top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-gold);font-weight:700;opacity:.8}
+section,footer,.chrome{position:relative}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="chrome"><span class="label">v2 · S0</span><div class="wrap">
+<img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports">
+<nav aria-label="Primary"><a href="#pick">Schengen visa</a><a href="#board">Dates seen</a><a href="#trips">Trip ideas</a><a href="#faq">Questions</a></nav>
+<div class="right"><span class="switch">🇿🇦 South Africa · ZAR</span><a class="btn btn-ghost" href="#">WhatsApp</a></div>
+</div><div class="indep">Independent service. Not the government, VFS Global, Capago, BLS or TLScontact. Appointments are free on the official sites and we never sell one.</div></header>
+
+<main id="main">
+<section class="dark hero" id="top"><span class="label">v2 · S1</span><div class="wrap">
+<div>
+<p class="tag">Schengen visa from South Africa</p>
+<h1>Your Schengen file, checked line by line, with a consultant who <u>actually answers.</u></h1>
+<p class="lead">We watch the official calendar, you book in your own name, we prepare every page. Price in rand, upfront. No guaranteed slots, no shortcuts.</p>
+<div class="ctas"><a class="btn btn-p" href="#">Talk to Chloe on WhatsApp</a><a class="btn btn-ghost" href="#fees">See fees and dates</a></div>
+<div class="trust"><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>POPIA notice</span></div>
+</div>
+<div class="glass"><h3><small>How it works</small>Four steps, one named consultant</h3>
+<ol class="steps">
+<li><b>1</b><span>We watch the calendar<small>Human-paced checks on our own accounts, logged with a name and time.</small></span></li>
+<li><b>2</b><span>You book in your own name<small>Appointments are free on the official site. We never hold or sell one.</small></span></li>
+<li><b>3</b><span>We prepare your file<small>Form, cover letter, itinerary against your real bookings, line-by-line audit.</small></span></li>
+<li><b>4</b><span>You attend and collect<small>Appointment-day pack in hand. The consulate decides.</small></span></li>
+</ol></div>
+</div></section>
+
+<section class="dark fees" id="fees"><span class="label">v2 · S2</span><div class="wrap">
+<div class="glass"><span class="who">Paid to Beyond Passports</span><div class="price">R2,490</div><span>Total, our service fee, all in, per applicant. One fee for all 29 destinations from South Africa.</span></div>
+<div class="glass"><span class="who">Paid to Beyond Passports</span><div class="price">R750</div><span>To start. Refundable until work begins on your file.</span></div>
+<div class="glass"><span class="who">Paid to Beyond Passports</span><div class="price">R1,740</div><span>After your appointment is booked and confirmed on the official site.</span></div>
+<p class="note"><b>Paid by you at the centre, never to us:</b> consular fee EUR 90 (adult), EUR 45 (child 6 to 12), free under 6, plus the visa-centre fee set by the operator. <a href="#board">You may apply directly on the official site at no service cost.</a></p>
+</div></section>
+
+<section id="pick"><span class="label">v2 · S3</span><div class="wrap">
+<h2>Where are you going?</h2>
+<p class="sub">Twenty-nine Schengen countries. Pick one, or tell us your route and we work out which consulate is yours.</p>
+<div class="search"><label for="q">Search a country</label><input id="q" type="search" placeholder="Italy, Portugal, Netherlands..."><select aria-label="Your province" style="height:48px;border:1px solid var(--bp-line);border-radius:12px;padding:0 12px;font:inherit;font-size:15px;background:#fff"><option>Your province (optional)</option><option>Gauteng</option><option>Western Cape</option><option>KwaZulu-Natal</option><option>Eastern Cape</option><option>Other</option></select><a class="btn btn-deep" href="#">Search</a></div>
+<div class="chips">Most asked from South Africa: <a href="#">Italy</a><a href="#">France</a><a href="#">Spain</a><a href="#">Portugal</a><a href="#">Netherlands</a><a href="#">Germany</a></div>
+<div class="grid">
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)"></i>Italy</span><span class="op">via VFS Global, Johannesburg and Cape Town</span><span class="pill st-a"><i></i>Dates seen</span><span class="docs">11 documents, 1 common mistake</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)"></i>France</span><span class="op">via Capago, Sandton and Cape Town</span><span class="pill st-f"><i></i>Filling</span><span class="docs">10 documents, 1 common mistake</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(180deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)"></i>Spain</span><span class="op">via BLS International, Cape Town and Pretoria</span><span class="pill st-c"><i></i>We check for you</span><span class="docs">10 documents, 1 common mistake</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(180deg,#006600 50%,#FF0000 50%)"></i>Portugal</span><span class="op">via VFS Global</span><span class="pill st-l"><i></i>Limited</span><span class="docs">10 documents</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)"></i>Netherlands</span><span class="op">via VFS Global</span><span class="pill st-c"><i></i>We check for you</span><span class="docs">10 documents</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(180deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)"></i>Germany</span><span class="op">via TLScontact</span><span class="pill st-c"><i></i>We check for you</span><span class="docs">10 documents</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:#D52B1E"></i>Switzerland</span><span class="op">via VFS Global</span><span class="pill st-c"><i></i>We check for you</span><span class="docs">Ask Chloe</span></a>
+<a class="card" href="#"><span class="nm"><i class="flag" style="--f:linear-gradient(180deg,#0D5EAF 50%,#fff 50%)"></i>Greece</span><span class="op">Operator pending verification</span><span class="pill st-c"><i></i>We check for you</span><span class="docs">Ask Chloe</span></a>
+</div>
+<p class="more">Showing 8 of 29. Austria, Belgium, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, Hungary, Iceland, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Norway, Poland, Romania, Slovakia, Slovenia, Sweden: <a href="#">show all</a></p>
+<details class="help"><summary>Two or more countries? Which consulate is mine</summary>
+<div class="row"><div><label for="m1">Country with the most nights</label><input id="m1" placeholder="Italy"></div><div><label for="m2">First country you enter</label><input id="m2" placeholder="France"></div></div>
+<p style="margin:0 0 12px;font-size:15px;color:var(--bp-muted)">The rule: apply to the country where you spend the most nights. If nights are equal, apply to the first country you enter. Routing is confirmed by a person, not a form. We never choose a country by appointment speed; the consulate checks your itinerary against the rule.</p>
+<a class="btn btn-out" href="#">Confirm my routing with Chloe</a>
+</details>
+</div></section>
+
+<section class="tint" id="who"><span class="label">v2 · S4</span><div class="wrap">
+<h2>Who this is for in South Africa</h2>
+<p class="sub">Find your situation. Red means the consulate usually refuses it, so ask us before paying.</p>
+<div class="tiles">
+<div class="tile"><span class="pill st-a"><i></i>Usually fine</span><h3>South African passport</h3><p>Apply with your ID and passport. Your province decides which centre takes your file.</p><a href="#">Tell Chloe your status</a></div>
+<div class="tile"><span class="pill st-f"><i></i>Check first</span><h3>Other passport, living in South Africa</h3><p>Proof of legal residence valid beyond your return. Bring the original.</p><a href="#">Tell Chloe your status</a></div>
+<div class="tile"><span class="pill st-f"><i></i>Check first</span><h3>Travelling with a child</h3><p>Unabridged birth certificate and a parental consent affidavit under six months old.</p><a href="#">Tell Chloe your status</a></div>
+<div class="tile"><span class="pill st-l"><i></i>Usually refused</span><h3>Bank statements not stamped</h3><p>Most consulates want three months, bank-stamped, under a month old. Get the stamp before you book.</p><a href="#">Tell Chloe your status</a></div>
+</div>
+</div></section>
+
+<section id="board"><span class="label">v2 · S5</span><div class="wrap">
+<h2>Appointment dates seen this week</h2>
+<p class="sub">Checked by a person, not a bot. Dates move within minutes; a date shown here can be gone before you log in. We never hold or sell appointments.</p>
+<div class="board"><table>
+<caption>Snapshot for South Africa. Six most asked destinations. Full board on the Schengen visa page.</caption>
+<thead><tr><th scope="col">Destination</th><th scope="col">Operator</th><th scope="col">Centre</th><th scope="col">Booking mode</th><th scope="col">Earliest date seen</th><th scope="col">Last checked</th><th scope="col">Official free booking link</th></tr></thead>
+<tbody>
+<tr><td data-l="Destination">Italy</td><td data-l="Operator">VFS Global</td><td data-l="Centre">Johannesburg</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen"><span class="pill st-a"><i></i>Available</span> Thu 14 Nov 2026</td><td data-l="Last checked">6 Oct, 14:05 by Chloe</td><td data-l="Official link"><a href="#">Book free on the official site</a></td></tr>
+<tr><td data-l="Destination">France</td><td data-l="Operator">Capago</td><td data-l="Centre">Sandton</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen"><span class="pill st-f"><i></i>Filling</span> Mon 18 Nov 2026</td><td data-l="Last checked">6 Oct, 14:12 by Chloe</td><td data-l="Official link"><a href="#">Book free on the official site</a></td></tr>
+<tr><td data-l="Destination">Spain</td><td data-l="Operator">BLS International</td><td data-l="Centre">Cape Town</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen"><span class="pill st-c"><i></i>We check for you</span></td><td data-l="Last checked">Not yet checked</td><td data-l="Official link">BLS International</td></tr>
+<tr><td data-l="Destination">Portugal</td><td data-l="Operator">VFS Global</td><td data-l="Centre">Johannesburg</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen"><span class="pill st-l"><i></i>Limited</span> Tue 3 Dec 2026</td><td data-l="Last checked">6 Oct, 14:20 by Chloe</td><td data-l="Official link"><a href="#">Book free on the official site</a></td></tr>
+<tr><td data-l="Destination">Netherlands</td><td data-l="Operator">VFS Global</td><td data-l="Centre">Cape Town</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen">No dates seen, last seen 03 Oct</td><td data-l="Last checked">6 Oct, 14:26 by Chloe</td><td data-l="Official link"><a href="#">Book free on the official site</a></td></tr>
+<tr><td data-l="Destination">Germany</td><td data-l="Operator">TLScontact</td><td data-l="Centre">Pretoria</td><td data-l="Booking mode">Online calendar</td><td data-l="Earliest seen"><span class="pill st-c"><i></i>We check for you</span></td><td data-l="Last checked">Gated, per client</td><td data-l="Official link"><a href="#">Book free on the official site</a></td></tr>
+</tbody></table>
+<div class="foot"><b>We do not run scripts against the booking sites and never book in our name; you book in yours.</b> Capago (France): a slot is confirmed only once the EUR 32 service fee is prepaid, so we book when your file is ready. Destinations not yet on this board: we'll check for you on WhatsApp.</div></div>
+</div></section>
+
+<section class="tint" id="pay"><span class="label">v2 · S6</span><div class="wrap">
+<h2>What you pay, itemised</h2>
+<p class="sub">Three separate amounts. Only the first is ours.</p>
+<div class="pay">
+<div><b>Our fee R2,490<br><small style="font-family:var(--bp-font-body);font-size:12px;color:var(--bp-gold-text);letter-spacing:.08em;text-transform:uppercase">Paid to Beyond Passports</small></b><span>R750 now, R1,740 when your appointment is booked. Refund rule: the first instalment is refunded in full if you cancel within 14 days and we have not started your file; the second part is never charged without an appointment confirmed on the official site. If a refusal cites an error of ours, the redo is free.</span></div>
+<div><b>Consular fee<br><small style="font-family:var(--bp-font-body);font-size:12px;color:var(--bp-muted);letter-spacing:.08em;text-transform:uppercase">Paid at the centre</small></b><span>EUR 90 adult, EUR 45 child 6 to 12, free under 6. Paid by you at the centre. Never refunded by any consulate.</span></div>
+<div><b>Visa-centre fee<br><small style="font-family:var(--bp-font-body);font-size:12px;color:var(--bp-muted);letter-spacing:.08em;text-transform:uppercase">Paid at the centre</small></b><span>Set by VFS, Capago, BLS or TLScontact. Paid by you at the centre. Shown on each country page with the date we verified it.</span></div>
+<div><b>Apply directly</b><span>You can apply without us on the official portal for the government and centre fees alone. Our fee is for preparation and review only.</span></div>
+</div>
+</div></section>
+
+<section id="do"><span class="label">v2 · S7</span><div class="wrap">
+<h2>What we do and what we don't</h2>
+<div class="two">
+<div class="list"><h3>We do</h3><ul><li>Watch the official calendar every working day and log who checked, when.</li><li>Check every form line and every document before you book.</li><li>Build the itinerary from your real bookings, never dummy ones.</li><li>Tell you if your case is weak before the second instalment.</li><li>Answer on WhatsApp, 8am to 8pm SAST, a person every time.</li><li>Treat every client the same, whatever they pay.</li></ul></div>
+<div class="list"><h3>We don't</h3><ul><li>Book in our name or hold your official login.</li><li>Sell, hold or block-book appointments.</li><li>Promise a date or a decision.</li><li>Make dummy flight or hotel bookings.</li><li>Bundle insurance or collect government and centre fees.</li><li>Run scripts or bots against VFS, Capago, BLS or TLScontact.</li><li>Sell paid queue-jumping or "priority" slots of any kind.</li></ul></div>
+</div>
+</div></section>
+
+<section class="tint" id="consultant"><span class="label">v2 · S8</span><div class="wrap">
+<div class="consult"><div class="avatar">C</div><div><h3>Chloe, your consultant for South Africa</h3><p>WhatsApp and email, 8am to 8pm SAST, Monday to Saturday. We reply the same working day. A person reads every message. No bot.</p><p style="margin-top:6px"><a href="#" style="color:var(--bp-teal-deep);font-weight:600">hello@beyondpassports.com</a></p></div><a class="btn btn-deep" href="#">Message Chloe on WhatsApp</a></div>
+</div></section>
+
+<section id="trips"><span class="label">v2 · S9</span><div class="wrap">
+<h2>Trip ideas from South Africa</h2>
+<p class="sub">A trip built around the visa, not a bundled holiday. Hotels and named ground transport, quoted separately. Flights not included.</p>
+<div class="trips">
+<div class="trip"><h3>Italy by Rail, 7 nights</h3><span class="k">Rome 3 · Florence 2 · Venice 2</span><span>Hotels: 4-star central, breakfast included</span><span>Getting around: Frecciarossa 2nd class, private airport transfers</span><span class="k">Visa: Schengen application prepared by Beyond Passports (Italy consulate), fee quoted separately</span><span class="k">Flights not included; you book, we match the itinerary.</span><a class="btn btn-out" href="#" style="margin-top:6px">Ask about this trip</a></div>
+<div class="trip"><h3>Paris Essentials, 4 nights</h3><span class="k">Paris 4</span><span>Hotels: 3 to 4-star central, breakfast included</span><span>Getting around: private sedan transfers, Seine cruise</span><span class="k">Visa: France consulate via Capago, fee quoted separately</span><span class="k">Flights not included; you book, we match the itinerary.</span><a class="btn btn-out" href="#" style="margin-top:6px">Ask about this trip</a></div>
+<div class="trip"><h3>Spain and Portugal, 9 nights</h3><span class="k">Madrid 3 · Seville 3 · Lisbon 3</span><span>Hotels: 4-star central, breakfast included</span><span>Getting around: Renfe AVE Turista, Alsa coach</span><span class="k">Visa: Spain consulate via BLS, fee quoted separately</span><span class="k">Flights not included; you book, we match the itinerary.</span><a class="btn btn-out" href="#" style="margin-top:6px">Ask about this trip</a></div>
+</div>
+<p class="strip">Separate services, no flights. Hotels and transport are indicative, priced separately from the visa service, and arranged on enquiry with named suppliers. Prices in rand converted on the date shown. Visa decisions are made solely by the consulate.</p>
+</div></section>
+
+<section class="dark trustband" id="trust"><span class="label">v2 · S10</span><div class="wrap">
+<span><i></i>Beyond Passports Ltd, registered in England and Wales, <a href="https://find-and-update.company-information.service.gov.uk/company/17331903">Companies House 17331903</a></span><span><i></i>Registered office: London, United Kingdom</span><span><i></i>ICO ZC197159</span><span><i></i>POPIA: your data is processed under UK GDPR and South Africa's POPIA</span><span><i></i>We never sell appointments</span><span><a href="#">All reviews, unfiltered</a></span>
+</div></section>
+
+<section id="faq" class="faq"><span class="label">v2 · S11</span><div class="wrap">
+<h2>Questions people ask before paying</h2>
+<details open><summary>Is it possible in the time I have?</summary><p>Honest arithmetic: 15 to 20 days processing minimum, plus the appointment lead time for your consulate, against your travel date. We tell you on WhatsApp whether it fits before you pay anything.</p></details>
+<details><summary>Why pay to start if I can book the slot myself?</summary><p>The first instalment buys document review, the application form, cover letter, itinerary and the daily calendar watch, not the booking itself. You always book in your own name.</p></details>
+<details><summary>Can you guarantee it?</summary><p>No one honestly can. The consulate decides. We prepare the strongest file your facts allow and tell you where it is weak.</p></details>
+<details><summary>Which country do I apply to for two trips?</summary><p>The one with the most nights; if equal, the first you enter. We confirm the routing with you before anything is lodged.</p></details>
+<details><summary>Does a faster service make the consulate faster?</summary><p>No. Faster handling speeds our work on your file. Processing time is the consulate's alone.</p></details>
+<details><summary>Do you book the appointment for me?</summary><p>No. You book in your own name on the official site, with us on WhatsApp while you do it. We never hold your login, run scripts, or book in our name. That is why the second instalment is due only after your appointment is confirmed.</p></details>
+<details><summary>How and when can I reach you?</summary><p>WhatsApp or email, 8am to 8pm SAST, Monday to Saturday. A named consultant replies the same working day. No bot, no ticket queue.</p></details>
+<details><summary>What is the refund rule?</summary><p>The first instalment is refunded in full if you cancel within 14 days and we have not started your file. The second instalment is never charged without an appointment confirmed on the official site. Consular and centre fees are paid by you at the centre and are never refunded by any consulate.</p></details>
+<details><summary>What if I am refused?</summary><p>We read the refusal letter with you box by box and tell you whether to re-apply or appeal. If the refusal cites an error of ours, the redo is free.</p></details>
+</div></section>
+</main>
+
+<footer class="dark"><span class="label">v2 · S12</span><div class="wrap">
+<div class="cols">
+<div><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" style="height:34px;width:auto;margin-bottom:10px"><p>Serving applicants in South Africa. Beyond Passports Ltd, registered in England and Wales, 17331903. Independent service, not affiliated with any government, VFS Global, Capago, BLS or TLScontact.</p></div>
+<div><h4>Schengen</h4><ul><li><a href="#">All 29 destinations</a></li><li><a href="#">Dates seen this week</a></li><li><a href="#">Who this is for</a></li></ul></div>
+<div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Other markets</a></li><li><a href="#">Contact</a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="#">Privacy and POPIA</a></li><li><a href="#">Terms</a></li><li><a href="#">Refund rule</a></li></ul></div>
+</div>
+</div></footer>
+
+<div class="sticky"><a class="btn btn-p" href="#">WhatsApp Chloe</a></div>
+</body>
+</html>
