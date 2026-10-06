@@ -120,6 +120,36 @@ section{padding:56px 0;position:relative;scroll-margin-top:80px}
 .sheet .btn{min-height:48px;padding:10px 16px;font-size:15px}
 @media(min-width:1024px){.sheet{display:none}}
 
+/* events + trip ideas (shared) */
+.ev{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:700px){.ev{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.ev{grid-template-columns:repeat(3,1fr)}}
+.evc{background:#fff;border:1px solid var(--bp-line);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start}
+.evc .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold-text)}
+.evc h3{font-size:20px}
+.evc .dt{font-size:15px;color:var(--bp-muted)}
+.evc .by{border-top:1px solid var(--bp-line);padding-top:10px;font-size:15px}
+.evc .by b{display:block;font-family:var(--bp-font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+.evc .ar{font-size:13px;color:var(--bp-muted)}
+.evc .btn{margin-top:4px;justify-self:start}
+.evnote{margin:16px 0 0;font-size:14px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+.trips{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.trips{grid-template-columns:repeat(3,1fr)}}
+.trip{border:1px solid var(--bp-line);border-radius:16px;padding:18px;background:#fff;display:grid;gap:6px;font-size:15px;align-content:start}
+.trip h3{font-size:20px;margin-bottom:2px}
+.trip .k{color:var(--bp-muted)}
+.trip .row{display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.trip .row span:first-child{font-weight:700;color:var(--bp-ink)}
+.trip .nf{border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px;color:var(--bp-muted)}
+.trip .btn{margin-top:6px;justify-self:start}
+.trip .pay{display:grid;gap:4px;border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px}
+.trip .pay span{display:flex;justify-content:space-between;gap:10px}
+.trip .pay b{font-weight:700}
+.trip .pay .us{color:var(--bp-gold-text)}.trip .pay .ctr{color:var(--bp-muted)}
+.disc{margin-top:20px;background:#082C35;color:var(--bp-hero-muted);font-size:14px;line-height:1.55;padding:14px 18px;border-radius:12px;display:flex;gap:12px;align-items:flex-start}
+.disc i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--bp-gold);margin-top:9px}
+.disc b{color:var(--bp-hero-fg)}
+
 /* A3 tools */
 .tools{display:grid;grid-template-columns:1fr;gap:14px}
 @media(min-width:1024px){.tools{grid-template-columns:repeat(3,1fr)}}
@@ -175,7 +205,7 @@ footer p{color:var(--bp-hero-muted);margin:0}
 
 <header class="chrome"><span class="label">A0</span><div class="wrap">
 <img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="190" height="36">
-<nav aria-label="Primary"><a href="#grid">Destinations</a><a href="#tools">Tools</a><a href="#fees">Fees</a><a href="#faq">Questions</a></nav>
+<nav aria-label="Primary"><a href="#grid">Destinations</a><a href="#events">Events</a><a href="#trips">Trip ideas</a><a href="#tools">Tools</a><a href="#fees">Fees</a><a href="#faq">Questions</a></nav>
 <div class="right"><span class="switch"><span class="full">South Africa · ZAR</span><span class="abbr" aria-label="South Africa, ZAR">ZA · ZAR</span></span><a class="btn btn-ghost" href="#">WhatsApp</a></div>
 </div></header>
 
@@ -242,11 +272,36 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <h3>Chloe, your consultant for South Africa</h3>
 <p>A person reads every message. No bot, no ticket queue.</p>
 <div class="hours"><span><b>WhatsApp and email</b></span><span>8am to 8pm SAST, Monday to Saturday</span><span>Reply the same working day</span></div>
-<a class="btn btn-deep" href="#">Message Chloe on WhatsApp</a>
+<a class="btn btn-deep" href="#" data-rail-topic>Message Chloe on WhatsApp</a>
 <a class="mail" href="#">hello@beyondpassports.com</a>
 </div>
 <div class="note">Appointments are free on the official sites. We never hold, sell or book one in our name. You book in yours, with us on WhatsApp while you do it.</div>
 </aside>
+</div></section>
+
+<section class="tint" id="events"><span class="label">A2b</span><div class="wrap">
+<h2>Travelling for an event? Start your file by...</h2>
+<p class="sub">Six Schengen events South Africans ask us about in the next months, each with the date your file should start. Arithmetic shown, nothing promised.</p>
+<div class="ev">
+<div class="evc"><span class="k">Germany and Austria</span><h3>Christmas markets, Munich and Vienna</h3><span class="dt">From about Fri 20 Nov to Wed 23 Dec 2026 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Start your file today</b><span class="ar">20 Nov minus 15 days processing = Thu 5 Nov. Germany's appointment lead is per client and Austria's is not yet on our board, so there is no slack to show.</span></div><a class="btn btn-out" href="#" data-topic="Christmas markets, Munich and Vienna">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">Italy</span><h3>Venice Carnival</h3><span class="dt">Sat 23 Jan to Tue 9 Feb 2027 [to confirm]</span><span class="pill st-a"><i></i>Dates seen</span><div class="by"><b>Start your file by Fri 4 Dec 2026</b><span class="ar">23 Jan minus 15 days processing minus about 5 weeks to an Italy appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#" data-topic="Venice Carnival">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">France</span><h3>Six Nations, opening weekend in Paris</h3><span class="dt">Sat 6 Feb to Sat 20 Mar 2027, fixtures [to confirm]</span><span class="pill st-f"><i></i>Filling</span><div class="by"><b>Start your file by Fri 11 Dec 2026</b><span class="ar">6 Feb minus 15 days processing minus about 6 weeks to a France appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#" data-topic="Six Nations, opening weekend in Paris">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">Netherlands</span><h3>Tulip season, Keukenhof and Amsterdam</h3><span class="dt">Thu 18 Mar to Sun 9 May 2027 [to confirm]</span><span class="pill st-c"><i></i>None seen this week</span><div class="by"><b>Appointment before Wed 3 Mar 2027</b><span class="ar">18 Mar minus 15 days processing. No Netherlands dates were seen this week, so we cannot show a lead; we check it for you.</span></div><a class="btn btn-out" href="#" data-topic="Tulip season, Keukenhof and Amsterdam">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">Spain</span><h3>Champions League final, Madrid</h3><span class="dt">Sat 29 May 2027 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Appointment before Fri 14 May 2027</b><span class="ar">29 May minus 15 days processing. Spain's BLS calendar is not yet checked, so no lead is shown; we check it for you.</span></div><a class="btn btn-out" href="#" data-topic="Champions League final, Madrid">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">Germany</span><h3>Oktoberfest, Munich</h3><span class="dt">Sat 18 Sep to Sun 3 Oct 2027 [to confirm]</span><span class="pill st-c"><i></i>Gated, per client</span><div class="by"><b>Earliest you may apply: Thu 18 Mar 2027</b><span class="ar">Schengen rules allow lodging up to six months before travel. Germany's lead is per client; we tell you the real window when you ask.</span></div><a class="btn btn-out" href="#" data-topic="Oktoberfest, Munich">Plan this with Chloe</a></div>
+</div>
+<p class="evnote">Dates are set by the consulate and the organiser, not by us. Processing is 15 calendar days minimum and can be longer; appointment leads are what a person saw on our board, not a promise. Exact 2026 and 2027 dates marked [to confirm] are checked against the organiser before this page goes live.</p>
+</div></section>
+
+<section id="trips"><span class="label">A2c</span><div class="wrap">
+<h2>Trip ideas from South Africa</h2>
+<p class="sub">A trip built around the visa. Hotels and named ground transport, each quoted as its own supplier line. No flights, no single price.</p>
+<div class="trips">
+<div class="trip"><h3>Italy by Rail, 7 nights</h3><span class="k">Rome 3 · Florence 2 · Venice 2</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Frecciarossa 2nd class Rome to Florence to Venice; private sedan transfers at both airports</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Italy consulate), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Italy by Rail, 7 nights">Ask about this trip idea</a></div>
+<div class="trip"><h3>Paris Essentials, 4 nights</h3><span class="k">Paris 4</span><div class="row"><span>Hotels</span><span>3 to 4-star central, breakfast included</span><span>Getting around</span><span>Private sedan transfers both ways; Seine cruise</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (France consulate via Capago), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Paris Essentials, 4 nights">Ask about this trip idea</a></div>
+<div class="trip"><h3>Spain and Portugal, 9 nights</h3><span class="k">Madrid 3 · Seville 3 · Lisbon 3</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Renfe AVE Turista Madrid to Seville; Alsa coach Seville to Lisbon; private airport transfers</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Spain consulate via BLS), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Spain and Portugal, 9 nights">Ask about this trip idea</a></div>
+</div>
+<div class="disc" role="note"><i aria-hidden="true"></i><span><b>How a trip idea works.</b> You book hotels and ground transport directly with one licensed operator we introduce by name; we send that operator nothing about you, and we take no commission or referral fee on the trip. Beyond Passports sends you the visa file and that introduction, nothing else. We do not sell flights, hold money for hotels or transport, or combine services at one price. Appointment dates are set by the visa centre and visa decisions by the consulate. Travel insurance is required for every Schengen application.</span></div>
 </div></section>
 
 <section class="tint" id="tools"><span class="label">A3</span><div class="wrap">
@@ -299,13 +354,13 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <footer class="dark"><span class="label">A8</span><div class="wrap">
 <div class="cols">
 <div><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="180" height="34" style="height:34px;width:auto;margin-bottom:10px"><p>Serving applicants in South Africa. Beyond Passports Ltd, registered in England and Wales, 17331903. ICO ZC197159. Independent service, not affiliated with any government, VFS Global, Capago, BLS, TLScontact or GVCW.</p></div>
-<div><h4>Schengen</h4><ul><li><a href="#grid">All 29 destinations</a></li><li><a href="#tools">Which consulate is mine</a></li><li><a href="#fees">What you pay</a></li></ul></div>
+<div><h4>Schengen</h4><ul><li><a href="#grid">All 29 destinations</a></li><li><a href="#events">Events</a></li><li><a href="#trips">Trip ideas</a></li><li><a href="#tools">Which consulate is mine</a></li><li><a href="#fees">What you pay</a></li></ul></div>
 <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Other markets</a></li><li><a href="#">Contact</a></li></ul></div>
 <div><h4>Legal</h4><ul><li><a href="#">Privacy and POPIA</a></li><li><a href="#">Terms</a></li><li><a href="#">Refund rule</a></li></ul></div>
 </div>
 </div></footer>
 
-<div class="sheet" aria-label="Your consultant"><div class="avatar" aria-hidden="true">C</div><div><b>Chloe, South Africa</b><span>8am to 8pm SAST, Mon to Sat</span></div><a class="btn btn-p" href="#">WhatsApp</a></div>
+<div class="sheet" aria-label="Your consultant"><div class="avatar" aria-hidden="true">C</div><div><b>Chloe, South Africa</b><span>8am to 8pm SAST, Mon to Sat</span></div><a class="btn btn-p" href="#" data-sticky-topic>WhatsApp</a></div>
 
 <script>
 (function(){
@@ -323,6 +378,9 @@ function run(){
 q.addEventListener('input',run);sel.forEach(function(s){s.addEventListener('change',run)});
 document.getElementById('clear').addEventListener('click',function(){q.value='';sel.forEach(function(s){s.value=''});run();q.focus()});
 })();
+</script>
+<script>
+(function(){var t=document.querySelector('[data-sticky-topic]');document.querySelectorAll('[data-topic]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(t)t.textContent='WhatsApp Chloe about '+a.dataset.topic;var r=document.querySelector('[data-rail-topic]');if(r)r.textContent='Message Chloe about '+a.dataset.topic;});});})();
 </script>
 </body>
 </html>

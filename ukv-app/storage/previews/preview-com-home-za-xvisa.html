@@ -128,6 +128,36 @@ section{padding:56px 0;position:relative;scroll-margin-top:80px}
 .board .foot{padding:12px 16px;font-size:13px;color:var(--bp-muted);border-top:1px solid var(--bp-line)}
 @media(max-width:900px){.board thead{display:none}.board tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;padding:14px 16px;border-bottom:1px solid var(--bp-line)}.board tr:last-child{border-bottom:0}.board td{display:block;padding:0;border:0}.board td::before{content:attr(data-l);display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted)}}
 
+/* events + trip ideas (shared) */
+.ev{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:700px){.ev{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.ev{grid-template-columns:repeat(3,1fr)}}
+.evc{background:#fff;border:1px solid var(--bp-line);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start}
+.evc .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold-text)}
+.evc h3{font-size:20px}
+.evc .dt{font-size:15px;color:var(--bp-muted)}
+.evc .by{border-top:1px solid var(--bp-line);padding-top:10px;font-size:15px}
+.evc .by b{display:block;font-family:var(--bp-font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+.evc .ar{font-size:13px;color:var(--bp-muted)}
+.evc .btn{margin-top:4px;justify-self:start}
+.evnote{margin:16px 0 0;font-size:14px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+.trips{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.trips{grid-template-columns:repeat(3,1fr)}}
+.trip{border:1px solid var(--bp-line);border-radius:16px;padding:18px;background:#fff;display:grid;gap:6px;font-size:15px;align-content:start}
+.trip h3{font-size:20px;margin-bottom:2px}
+.trip .k{color:var(--bp-muted)}
+.trip .row{display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.trip .row span:first-child{font-weight:700;color:var(--bp-ink)}
+.trip .nf{border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px;color:var(--bp-muted)}
+.trip .btn{margin-top:6px;justify-self:start}
+.trip .pay{display:grid;gap:4px;border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px}
+.trip .pay span{display:flex;justify-content:space-between;gap:10px}
+.trip .pay b{font-weight:700}
+.trip .pay .us{color:var(--bp-gold-text)}.trip .pay .ctr{color:var(--bp-muted)}
+.disc{margin-top:20px;background:#082C35;color:var(--bp-hero-muted);font-size:14px;line-height:1.55;padding:14px 18px;border-radius:12px;display:flex;gap:12px;align-items:flex-start}
+.disc i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--bp-gold);margin-top:9px}
+.disc b{color:var(--bp-hero-fg)}
+
 /* B5 chips */
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips a{text-decoration:none;color:var(--bp-teal-deep);font-weight:600;font-size:15px;min-height:48px;padding:0 16px;border-radius:999px;border:1px solid var(--bp-line);background:#fff;display:inline-flex;align-items:center}
@@ -193,7 +223,7 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <div class="indep" role="note"><span class="label">B0</span>Independent consultancy. Visa decisions are made by the consulate.<span class="more"><i aria-hidden="true"></i>Not the government, VFS Global, Capago, BLS or TLScontact. Appointments are free on the official sites and we never sell one.</span></div>
 <header class="chrome"><div class="wrap">
 <img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="190" height="36">
-<nav aria-label="Primary"><a href="#how">How it works</a><a href="#board">Dates seen</a><a href="#dest">Destinations</a><a href="#faq">Questions</a></nav>
+<nav aria-label="Primary"><a href="#how">How it works</a><a href="#board">Dates seen</a><a href="#dest">Destinations</a><a href="#trips">Trip ideas</a><a href="#faq">Questions</a></nav>
 <div class="right"><span class="switch"><span class="full">South Africa · ZAR</span><span class="abbr" aria-label="South Africa, ZAR">ZA · ZAR</span></span><a class="btn btn-ghost" href="#">WhatsApp</a></div>
 </div></header>
 
@@ -254,7 +284,18 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <div class="foot"><b>We do not run scripts against the booking sites and never book in our name; you book in yours.</b> Capago (France) confirms a slot only once its own centre fee is prepaid, so we book when your file is ready. Destinations not on this board: we check for you on WhatsApp.</div></div>
 </div></section>
 
-<section class="tint" id="dest"><span class="label">B5</span><div class="wrap">
+<section class="tint" id="events"><span class="label">B4b</span><div class="wrap">
+<h2>Travelling for an event? Start your file by...</h2>
+<p class="sub">Three events South Africans ask us about next, with the date your file should start. Arithmetic shown, nothing promised.</p>
+<div class="ev">
+<div class="evc"><span class="k">Germany and Austria</span><h3>Christmas markets, Munich and Vienna</h3><span class="dt">From about Fri 20 Nov to Wed 23 Dec 2026 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Start your file today</b><span class="ar">20 Nov minus 15 days processing = Thu 5 Nov. Germany's appointment lead is per client and Austria's is not yet on our board, so there is no slack to show.</span></div><a class="btn btn-out" href="#" data-topic="Christmas markets, Munich and Vienna">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">Italy</span><h3>Venice Carnival</h3><span class="dt">Sat 23 Jan to Tue 9 Feb 2027 [to confirm]</span><span class="pill st-a"><i></i>Dates seen</span><div class="by"><b>Start your file by Fri 4 Dec 2026</b><span class="ar">23 Jan minus 15 days processing minus about 5 weeks to an Italy appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#" data-topic="Venice Carnival">Plan this with Chloe</a></div>
+<div class="evc"><span class="k">France</span><h3>Six Nations, opening weekend in Paris</h3><span class="dt">Sat 6 Feb to Sat 20 Mar 2027, fixtures [to confirm]</span><span class="pill st-f"><i></i>Filling</span><div class="by"><b>Start your file by Fri 11 Dec 2026</b><span class="ar">6 Feb minus 15 days processing minus about 6 weeks to a France appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#" data-topic="Six Nations, opening weekend in Paris">Plan this with Chloe</a></div>
+</div>
+<p class="evnote">Dates are set by the consulate and the organiser, not by us. Processing is 15 calendar days minimum and can be longer; appointment leads are what a person saw on our board, not a promise. Exact 2026 and 2027 dates marked [to confirm] are checked against the organiser before this page goes live.</p>
+</div></section>
+
+<section id="dest"><span class="label">B5</span><div class="wrap">
 <h2>All 29 destinations, one fee</h2>
 <p class="sub">R2,490 whichever consulate is yours. Pick a country, or tell us your route and we work out which consulate takes your file.</p>
 <div class="chips">
@@ -262,6 +303,17 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <a href="#">Austria</a><a href="#">Belgium</a><a href="#">Bulgaria</a><a href="#">Croatia</a><a href="#">Czechia</a><a href="#">Denmark</a><a href="#">Estonia</a><a href="#">Finland</a><a href="#">Greece</a><a href="#">Hungary</a><a href="#">Iceland</a><a href="#">Latvia</a><a href="#">Liechtenstein</a><a href="#">Lithuania</a><a href="#">Luxembourg</a><a href="#">Malta</a><a href="#">Norway</a><a href="#">Poland</a><a href="#">Romania</a><a href="#">Slovakia</a><a href="#">Slovenia</a><a href="#">Sweden</a><a href="#">Switzerland</a>
 </div>
 <div class="route"><p><b>Two or more countries?</b> Apply to the one with the most nights; if equal, the first you enter. Routing is confirmed by a person. We never choose a country by appointment speed; the consulate checks your itinerary against the rule.</p><a class="btn btn-deep" href="#">Confirm my routing with Chloe</a></div>
+</div></section>
+
+<section class="tint" id="trips"><span class="label">B5b</span><div class="wrap">
+<h2>Trip ideas, with who you pay</h2>
+<p class="sub">Same rule as the price ladder: every service has one named payee. Only the visa line is ours. No flights, no single price.</p>
+<div class="trips">
+<div class="trip"><h3>Italy by Rail, 7 nights</h3><span class="k">Rome 3 · Florence 2 · Venice 2</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Frecciarossa 2nd class Rome to Florence to Venice; private sedan transfers at both airports</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Italy consulate), fee quoted separately</span></div><div class="pay"><span><span>Visa preparation</span><b class="us">Beyond Passports, R2,490</b></span><span><span>Hotels</span><b class="ctr">Named operator, booked by you</b></span><span><span>Rail and transfers</span><b class="ctr">Named operator, booked by you</b></span><span><span>Flights</span><b class="ctr">Airline, booked by you</b></span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Italy by Rail, 7 nights">Ask about this trip idea</a></div>
+<div class="trip"><h3>Paris Essentials, 4 nights</h3><span class="k">Paris 4</span><div class="row"><span>Hotels</span><span>3 to 4-star central, breakfast included</span><span>Getting around</span><span>Private sedan transfers both ways; Seine cruise</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (France consulate via Capago), fee quoted separately</span></div><div class="pay"><span><span>Visa preparation</span><b class="us">Beyond Passports, R2,490</b></span><span><span>Hotels</span><b class="ctr">Named operator, booked by you</b></span><span><span>Rail and transfers</span><b class="ctr">Named operator, booked by you</b></span><span><span>Flights</span><b class="ctr">Airline, booked by you</b></span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Paris Essentials, 4 nights">Ask about this trip idea</a></div>
+<div class="trip"><h3>Spain and Portugal, 9 nights</h3><span class="k">Madrid 3 · Seville 3 · Lisbon 3</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Renfe AVE Turista Madrid to Seville; Alsa coach Seville to Lisbon; private airport transfers</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Spain consulate via BLS), fee quoted separately</span></div><div class="pay"><span><span>Visa preparation</span><b class="us">Beyond Passports, R2,490</b></span><span><span>Hotels</span><b class="ctr">Named operator, booked by you</b></span><span><span>Rail and transfers</span><b class="ctr">Named operator, booked by you</b></span><span><span>Flights</span><b class="ctr">Airline, booked by you</b></span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Spain and Portugal, 9 nights">Ask about this trip idea</a></div>
+</div>
+<div class="disc" role="note"><i aria-hidden="true"></i><span><b>How a trip idea works.</b> You book hotels and ground transport directly with one licensed operator we introduce by name; we send that operator nothing about you, and we take no commission or referral fee on the trip. Beyond Passports sends you the visa file and that introduction, nothing else. We do not sell flights, hold money for hotels or transport, or combine services at one price. Appointment dates are set by the visa centre and visa decisions by the consulate. Travel insurance is required for every Schengen application.</span></div>
 </div></section>
 
 <section id="consultant"><span class="label">B6</span><div class="wrap">
@@ -302,12 +354,15 @@ footer p{color:var(--bp-hero-muted);margin:0}
 <footer class="dark"><span class="label">B10</span><div class="wrap">
 <div class="cols">
 <div><img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="180" height="34" style="height:34px;width:auto;margin-bottom:10px"><p>Serving applicants in South Africa. Beyond Passports Ltd, registered in England and Wales, 17331903. ICO ZC197159. Independent service, not affiliated with any government, VFS Global, Capago, BLS or TLScontact.</p></div>
-<div><h4>Schengen</h4><ul><li><a href="#dest">All 29 destinations</a></li><li><a href="#board">Dates seen this week</a></li><li><a href="#how">How it works</a></li></ul></div>
+<div><h4>Schengen</h4><ul><li><a href="#dest">All 29 destinations</a></li><li><a href="#board">Dates seen this week</a></li><li><a href="#events">Events</a></li><li><a href="#trips">Trip ideas</a></li><li><a href="#how">How it works</a></li></ul></div>
 <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Other markets</a></li><li><a href="#">Contact</a></li></ul></div>
 <div><h4>Legal</h4><ul><li><a href="#">Privacy and POPIA</a></li><li><a href="#">Terms</a></li><li><a href="#">Refund rule</a></li></ul></div>
 </div>
 </div></footer>
 
-<div class="sticky"><small>Chloe, 8am to 8pm SAST, Mon to Sat</small><a class="btn btn-p" href="#">WhatsApp Chloe</a></div>
+<div class="sticky"><small>Chloe, 8am to 8pm SAST, Mon to Sat</small><a class="btn btn-p" href="#" data-sticky-topic>WhatsApp Chloe</a></div>
+<script>
+(function(){var t=document.querySelector('[data-sticky-topic]');document.querySelectorAll('[data-topic]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(t)t.textContent='WhatsApp Chloe about '+a.dataset.topic;var r=document.querySelector('[data-rail-topic]');if(r)r.textContent='Message Chloe about '+a.dataset.topic;});});})();
+</script>
 </body>
 </html>
