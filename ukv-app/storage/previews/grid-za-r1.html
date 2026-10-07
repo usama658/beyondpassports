@@ -66,6 +66,7 @@ section{padding:56px 0;position:relative;scroll-margin-top:80px}
 /* layout + rail */
 .body2{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
 @media(min-width:1024px){.body2{grid-template-columns:minmax(0,1fr) 300px;gap:32px}}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .status{font-size:15px;color:var(--bp-muted);margin:0 0 24px;min-height:24px}
 .status b{color:var(--bp-ink)}
 .tier{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin:0 0 16px}
@@ -184,7 +185,7 @@ section{padding:56px 0;position:relative;scroll-margin-top:80px}
 <li><button type="button" class="chip-f" data-f="nordic" aria-pressed="false" aria-controls="g-all">Nordic and Baltic <span class="ct">8</span></button></li>
 <li><button type="button" class="chip-f" data-f="east" aria-pressed="false" aria-controls="g-all">Central and Eastern <span class="ct">6</span></button></li>
 </ul>
-<p class="status" id="g-count" role="status" aria-live="polite">All 29 destinations. Our fee is the same for every one.</p>
+<p class="sr-only" id="g-count" role="status" aria-live="polite">All 29 destinations. Our fee is the same for every one.</p>
 <div class="g1" id="g-all" role="list" aria-label="Destinations">
 <a class="cd" role="listitem" data-reg="south" data-pop="1" href="#" aria-label="Italy, Dates seen"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/960px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" width="960" height="563" alt="The Colosseum in Rome at dusk" loading="lazy"><span class="scrim" aria-hidden="true"></span><span class="pill chip st-a"><i></i>Dates seen</span><span class="ov id"><span class="flag f-it" aria-hidden="true"></span><span class="nm">Italy</span></span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="sp"></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:05</b> by Chloe</span></span></a>
 <a class="cd" role="listitem" data-reg="west" data-pop="1" href="#" aria-label="France, Filling"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Golden_sky_over_Paris.jpg/960px-Golden_sky_over_Paris.jpg" width="960" height="640" alt="Paris rooftops and the Eiffel Tower at golden hour" loading="lazy"><span class="scrim" aria-hidden="true"></span><span class="pill chip st-f"><i></i>Filling</span><span class="ov id"><span class="flag f-fr" aria-hidden="true"></span><span class="nm">France</span></span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="sp"></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:12</b> by Chloe</span></span></a>
