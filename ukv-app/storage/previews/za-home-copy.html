@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZA home copy picker | Beyond Passports (local, SOP step 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
+--bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-glass:rgba(255,255,255,.07);--bp-glass-line:rgba(255,255,255,.17);--bp-highlight:rgba(217,180,106,.55);
+--bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:var(--bp-font-body);color:var(--bp-ink);background:var(--bp-paper);font-size:17px;line-height:1.55;padding-bottom:88px}
+@media(min-width:1024px){body{padding-bottom:0}}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bp-gold);color:var(--bp-ink);padding:12px 16px;border-radius:8px;font-weight:700}.skip:focus{left:8px;z-index:50}
+h1,h2,h3,.price{font-family:var(--bp-font-display);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin:0}
+h2{font-size:30px;margin-bottom:8px}
+@media(min-width:1024px){h2{font-size:44px}}
+.sub{color:var(--bp-muted);margin:0 0 22px;max-width:62ch}
+section{padding:56px 0;position:relative;scroll-margin-top:80px}
+.tint{background:var(--bp-paper-tint)}
+.dark{background:var(--bp-hero-bg);color:var(--bp-hero-fg)}
+.dark .sub{color:var(--bp-hero-muted)}
+.tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--bp-gold);margin:0 0 12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.btn-ghost{background:transparent;color:var(--bp-hero-fg);border-color:#B9D3D8}
+.btn-deep{background:var(--bp-teal-deep);color:#fff}
+.btn-out{background:#fff;color:var(--bp-teal-deep);border-color:var(--bp-teal-deep)}
+:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(48,184,184,.55)}
+.glass{background:var(--bp-glass);border:1px solid var(--bp-glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;padding:22px}
+@supports not (backdrop-filter:blur(1px)){.glass{background:rgba(255,255,255,.12)}}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;width:max-content}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.st-a{background:#DDEFE4;color:#17452E}.st-a i{background:#2F6B4F}
+.st-f{background:#FBEBC8;color:#5C3D05}.st-f i{background:#B8780D}
+.st-l{background:#F6DADA;color:#5E1C1C}.st-l i{background:#B23A3A}
+.st-c{background:#E4E7EC;color:#2B3545}.st-c i{background:#5B6B7D}
+.label{position:absolute;right:12px;top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-gold);font-weight:700;opacity:.85;z-index:2}
+
+/* A0 chrome */
+.chrome{position:sticky;top:0;z-index:40;background:var(--bp-teal-ink);border-bottom:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px}
+@media(min-width:1024px){.chrome .wrap{min-height:72px}}
+.chrome img{height:30px;width:auto;display:block}
+@media(min-width:1024px){.chrome img{height:36px}}
+.chrome nav{display:none;gap:4px;font-size:14px;font-weight:600}
+.chrome nav a{text-decoration:none;padding:14px 10px;display:inline-flex;align-items:center;min-height:48px}
+@media(min-width:1024px){.chrome nav{display:flex}}
+.chrome .right{display:flex;gap:10px;align-items:center}
+.switch{font-size:13px;font-weight:700;padding:0 12px;min-height:40px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .btn{min-height:48px;padding:8px 14px;font-size:14px}
+.switch{white-space:nowrap}.switch .abbr{display:none}@media(max-width:600px){.switch .full{display:none}.switch .abbr{display:inline}}
+
+/* A1 compact hero + search */
+.hero{padding:36px 0 28px}
+@media(min-width:1024px){.hero{padding:48px 0 36px}}
+.hero h1{font-size:clamp(40px,4.2vw,56px);line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 144;margin:0 0 10px;max-width:22ch}
+@media(min-width:1024px){.hero h1{white-space:nowrap;max-width:none}}
+.hero h1 u{text-decoration:none;background:linear-gradient(transparent 68%,var(--bp-highlight) 68%)}
+.hero .lead{font-size:17px;color:var(--bp-hero-muted);max-width:60ch;margin:0 0 20px}
+@media(min-width:1024px){.hero .lead{font-size:18px}}
+.sbar{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.sbar label{display:block;width:100%;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-gold);margin-bottom:2px}
+.sbar .field{flex:1;min-width:240px;position:relative}
+.sbar input{width:100%;height:56px;border:1px solid var(--bp-glass-line);background:rgba(255,255,255,.95);border-radius:14px;padding:0 16px 0 48px;font:inherit;font-size:17px;color:var(--bp-ink)}
+.sbar .field svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--bp-teal-deep);fill:none;stroke-width:1.5;pointer-events:none}
+.sbar .btn{min-height:56px}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(min-width:1024px){.filters{grid-template-columns:repeat(4,1fr) auto}}
+.filters label{display:grid;gap:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-hero-muted)}
+.filters select{height:48px;border:1px solid var(--bp-glass-line);background:rgba(255,255,255,.10);color:var(--bp-hero-fg);border-radius:12px;padding:0 12px;font:inherit;font-size:15px}
+.filters select option{color:var(--bp-ink)}
+.filters .clear{align-self:end;background:transparent;color:var(--bp-hero-fg);border:2px solid #B9D3D8;border-radius:12px;min-height:48px;padding:0 16px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;grid-column:1/-1}
+@media(min-width:1024px){.filters .clear{grid-column:auto}}
+.trust{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--bp-hero-muted);margin-top:16px}
+.trust span{display:inline-flex;align-items:center;gap:6px}.trust i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold)}
+
+/* A2 grid + rail */
+.body2{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
+@media(min-width:1024px){.body2{grid-template-columns:1fr 300px}}
+.status{font-size:15px;color:var(--bp-muted);margin:0 0 14px;min-height:24px}
+.status b{color:var(--bp-ink)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:420px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{border:1px solid var(--bp-line);border-radius:14px;padding:16px;background:#fff;display:grid;gap:8px;text-decoration:none;color:inherit;align-content:start}
+.card[hidden]{display:none}
+.card .nm{font-weight:700;font-size:18px;display:flex;align-items:center;gap:10px}
+.flag{width:24px;height:16px;border-radius:3px;display:inline-block;flex:none;border:1px solid rgba(0,0,0,.08)}
+.f-it{background:linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)}.f-fr{background:linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)}.f-es{background:linear-gradient(180deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)}.f-pt{background:linear-gradient(90deg,#006600 40%,#FF0000 40%)}.f-nl{background:linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)}.f-de{background:linear-gradient(180deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)}.f-ch{background:linear-gradient(#fff,#fff) 50% 50%/60% 20% no-repeat,linear-gradient(#fff,#fff) 50% 50%/20% 60% no-repeat,#D52B1E}.f-gr{background:repeating-linear-gradient(180deg,#0D5EAF 0 11%,#fff 11% 22%)}.f-at{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#ED2939 66%)}.f-be{background:linear-gradient(90deg,#000 33%,#FAE042 33% 66%,#ED2939 66%)}.f-bg{background:linear-gradient(180deg,#fff 33%,#00966E 33% 66%,#D62612 66%)}.f-hr{background:linear-gradient(180deg,#FF0000 33%,#fff 33% 66%,#171796 66%)}.f-cz{background:linear-gradient(110deg,#11457E 38%,transparent 38%),linear-gradient(180deg,#fff 50%,#D7141A 50%)}.f-dk{background:linear-gradient(#fff,#fff) 0 50%/100% 20% no-repeat,linear-gradient(#fff,#fff) 32% 0/16% 100% no-repeat,#C60C30}.f-ee{background:linear-gradient(180deg,#0072CE 33%,#000 33% 66%,#fff 66%)}.f-fi{background:linear-gradient(#003580,#003580) 0 50%/100% 22% no-repeat,linear-gradient(#003580,#003580) 32% 0/16% 100% no-repeat,#fff}.f-hu{background:linear-gradient(180deg,#CE2939 33%,#fff 33% 66%,#477050 66%)}.f-is{background:linear-gradient(#DC1E35,#DC1E35) 0 50%/100% 14% no-repeat,linear-gradient(#DC1E35,#DC1E35) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#02529C}.f-lv{background:linear-gradient(180deg,#9E3039 40%,#fff 40% 60%,#9E3039 60%)}.f-li{background:linear-gradient(180deg,#002B7F 50%,#CE1126 50%)}.f-lt{background:linear-gradient(180deg,#FDB913 33%,#006A44 33% 66%,#C1272D 66%)}.f-lu{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#00A1DE 66%)}.f-mt{background:linear-gradient(90deg,#fff 50%,#CF142B 50%)}.f-no{background:linear-gradient(#002868,#002868) 0 50%/100% 14% no-repeat,linear-gradient(#002868,#002868) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#BA0C2F}.f-pl{background:linear-gradient(180deg,#fff 50%,#DC143C 50%)}.f-ro{background:linear-gradient(90deg,#002B7F 33%,#FCD116 33% 66%,#CE1126 66%)}.f-sk{background:linear-gradient(180deg,#fff 33%,#0B4EA2 33% 66%,#EE1C25 66%)}.f-si{background:linear-gradient(180deg,#fff 33%,#005DA4 33% 66%,#ED1C24 66%)}.f-se{background:linear-gradient(#FECC00,#FECC00) 0 50%/100% 20% no-repeat,linear-gradient(#FECC00,#FECC00) 32% 0/16% 100% no-repeat,#006AA7}
+.card .op{font-size:14px;color:var(--bp-muted)}
+.card .op em{font-style:normal;color:var(--bp-gold-text);font-weight:600}
+.card .docs{font-size:14px;color:var(--bp-muted)}
+.card .fee{font-size:14px;border-top:1px solid var(--bp-line);padding-top:8px;line-height:1.5}
+.card .fee b{font-family:var(--bp-font-display);font-size:17px;font-variant-numeric:tabular-nums lining-nums}
+.card .fee small{font-size:12px;color:var(--bp-muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.card .chk{font-size:13px;font-weight:500;color:var(--bp-muted)}
+.empty{display:none;border:1px dashed var(--bp-line);border-radius:14px;padding:22px;text-align:center;color:var(--bp-muted)}
+.empty.show{display:block}
+.rail{display:none}
+@media(min-width:1024px){.rail{display:grid;gap:12px;position:sticky;top:88px}}
+.rail .consult{background:#fff;border:1px solid var(--bp-line);border-radius:18px;padding:20px;display:grid;gap:10px}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--bp-teal-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--bp-font-display);font-size:26px}
+.rail h3{font-size:20px}
+.rail p{margin:0;font-size:15px;color:var(--bp-muted)}
+.rail .hours{display:grid;gap:4px;font-size:14px;border-top:1px solid var(--bp-line);padding-top:10px}
+.rail .hours b{color:var(--bp-ink)}
+.rail a.mail{color:var(--bp-teal-deep);font-weight:600;display:inline-flex;align-items:center;min-height:48px}
+.rail .note{font-size:13px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+/* mobile bottom sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(11,59,71,.97);border-top:1px solid var(--bp-hero-line);color:var(--bp-hero-fg);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center}
+.sheet .avatar{width:40px;height:40px;font-size:18px;background:var(--bp-teal);color:var(--bp-teal-night)}
+.sheet b{display:block;font-size:14px}.sheet span{font-size:12px;color:var(--bp-hero-muted)}
+.sheet .btn{min-height:48px;padding:10px 16px;font-size:15px}
+@media(min-width:1024px){.sheet{display:none}}
+
+/* events + trip ideas (shared) */
+.ev{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:700px){.ev{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.ev{grid-template-columns:repeat(3,1fr)}}
+.evc{background:#fff;border:1px solid var(--bp-line);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start}
+.evc .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold-text)}
+.evc h3{font-size:20px}
+.evc .dt{font-size:15px;color:var(--bp-muted)}
+.evc .by{border-top:1px solid var(--bp-line);padding-top:10px;font-size:15px}
+.evc .by b{display:block;font-family:var(--bp-font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
+.evc .ar{font-size:13px;color:var(--bp-muted)}
+.evc .btn{margin-top:4px;justify-self:start}
+.evnote{margin:16px 0 0;font-size:14px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+.trips{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.trips{grid-template-columns:repeat(3,1fr)}}
+.trip{border:1px solid var(--bp-line);border-radius:16px;padding:18px;background:#fff;display:grid;gap:6px;font-size:15px;align-content:start}
+.trip h3{font-size:20px;margin-bottom:2px}
+.trip .k{color:var(--bp-muted)}
+.trip .row{display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.trip .row span:first-child{font-weight:700;color:var(--bp-ink)}
+.trip .nf{border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px;color:var(--bp-muted)}
+.trip .btn{margin-top:6px;justify-self:start}
+.trip .pay{display:grid;gap:4px;border-top:1px solid var(--bp-line);padding-top:8px;font-size:14px}
+.trip .pay span{display:flex;justify-content:space-between;gap:10px}
+.trip .pay b{font-weight:700}
+.trip .pay .us{color:var(--bp-gold-text)}.trip .pay .ctr{color:var(--bp-muted)}
+.disc{margin-top:20px;background:#082C35;color:var(--bp-hero-muted);font-size:14px;line-height:1.55;padding:14px 18px;border-radius:12px;display:flex;gap:12px;align-items:flex-start}
+.disc i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--bp-gold);margin-top:9px}
+.disc b{color:var(--bp-hero-fg)}
+
+/* A2b events + A2c trip ideas (E1 + T1 locked) */
+.lab{display:grid;gap:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-muted)}
+.frow select,.lab select{height:48px;border:1px solid var(--bp-line);background:#fff;color:var(--bp-ink);border-radius:12px;padding:0 12px;font:inherit;font-size:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.chip{min-height:48px;padding:0 16px;border-radius:999px;border:1px solid var(--bp-line);background:#fff;color:var(--bp-teal-deep);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.chip.on{background:var(--bp-teal-deep);color:#fff;border-color:var(--bp-teal-deep)}
+.chip.clr{align-self:end;color:var(--bp-muted)}
+.none{border:1px dashed var(--bp-line);border-radius:14px;padding:22px;text-align:center;color:var(--bp-muted)}
+.none[hidden]{display:none}
+.tint .evnote{background:#fff}
+/* E1 */
+.tlm{display:grid;gap:10px;padding:8px 0 0 18px;border-left:2px solid var(--bp-line);position:relative}
+.mlab{position:relative;margin-top:8px}
+.mlab::before{content:"";position:absolute;left:-25px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--bp-teal-deep)}
+.mlab span{position:sticky;top:0;z-index:3;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--bp-teal-deep);color:#fff;font-family:var(--bp-font-display);font-size:18px}
+.mlab[hidden],.evc[hidden]{display:none}
+@media(min-width:1024px){.tlm{grid-template-columns:150px 1fr 1fr;gap:24px 14px;padding:0;border-left:0;align-items:start}.tlm::after{content:"";position:absolute;left:138px;top:0;bottom:0;width:2px;background:var(--bp-line)}.mlab{grid-row:var(--r);grid-column:1;margin-top:var(--mt,0)}.evc{grid-row:var(--r);grid-column:var(--c)}.mlab::before{display:none}.mlab span{position:static}}
+/* T1 */
+.frow{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+@media(min-width:700px){.frow{grid-template-columns:repeat(3,1fr) auto;align-items:end}}
+.frow select{min-width:0;width:100%}
+.trip[hidden]{display:none}
+
+/* A3 tools */
+.tools{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1024px){.tools{grid-template-columns:repeat(3,1fr)}}
+.tool{background:#fff;border:1px solid var(--bp-line);border-radius:16px;padding:20px;display:grid;gap:10px;align-content:start}
+.tool h3{font-size:20px}
+.tool p{margin:0;font-size:15px;color:var(--bp-muted)}
+.tool label{font-size:13px;font-weight:600;display:grid;gap:4px}
+.tool input,.tool select{width:100%;height:48px;border:1px solid var(--bp-line);border-radius:10px;padding:0 12px;font:inherit;font-size:16px;background:#fff}
+.tool .btn{margin-top:4px}
+
+/* A4 fees */
+.pay{border:1px solid var(--bp-line);border-radius:16px;background:#fff;overflow:hidden}
+.pay>div{display:grid;grid-template-columns:1fr;gap:8px;padding:16px 18px;border-bottom:1px solid var(--bp-line);font-size:15px}
+@media(min-width:700px){.pay>div{grid-template-columns:1.2fr 2fr;gap:12px}}
+.pay>div:last-child{border-bottom:0}
+.pay b{font-family:var(--bp-font-display);font-size:20px;font-variant-numeric:tabular-nums lining-nums}
+.who{display:block;font-family:var(--bp-font-body);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-top:4px}
+.who.us{color:var(--bp-gold-text)}.who.ctr{color:var(--bp-muted)}
+
+/* A5 do/don't */
+.two{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.two{grid-template-columns:1fr 1fr}}
+.list{border:1px solid var(--bp-line);border-radius:16px;padding:18px 20px;background:#fff}
+.list h3{font-size:20px;margin-bottom:10px}
+.list ul{margin:0;padding-left:18px;font-size:16px;display:grid;gap:6px}
+
+/* A6 trust */
+.trustband{padding:28px 0}
+.trustband .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:14px;color:var(--bp-hero-muted)}
+.trustband span{display:inline-flex;align-items:center;gap:8px;min-height:32px}.trustband i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold)}
+.trustband a{color:var(--bp-teal);display:inline-flex;align-items:center;min-height:48px}
+
+/* A7 FAQ */
+.faq details{border-bottom:1px solid var(--bp-line);padding:8px 0}
+.faq summary{font-weight:700;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;min-height:48px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;color:var(--bp-teal-deep)}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{margin:4px 0 12px;color:var(--bp-muted);font-size:16px}
+
+/* A8 footer */
+footer{padding:48px 0 40px;position:relative}
+footer .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:14px}
+@media(min-width:900px){footer .cols{grid-template-columns:2fr 1fr 1fr 1fr}}
+footer h4{margin:0 0 6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--bp-gold)}
+footer ul{list-style:none;margin:0;padding:0;display:grid}
+footer ul a{display:inline-flex;align-items:center;min-height:48px}
+footer p{color:var(--bp-hero-muted);margin:0}
+
+body{padding-bottom:0}
+.pickbar{position:sticky;top:0;z-index:60;background:#082C35;color:var(--bp-hero-fg);border-bottom:1px solid var(--bp-hero-line);font-size:14px}
+.pickbar .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;min-height:48px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.pickbar b{color:var(--bp-gold)}
+.pickbar .combo{font-variant-numeric:tabular-nums;color:var(--bp-hero-muted)}
+.pickbar .combo span{color:var(--bp-hero-fg)}
+.pickbar button{min-height:48px;border-radius:999px;border:1px solid var(--bp-hero-line);background:rgba(255,255,255,.08);color:var(--bp-hero-fg);font:600 13px var(--bp-font-body);padding:0 14px;cursor:pointer}
+.opts{display:grid;gap:8px;margin:10px 0 18px;grid-template-columns:1fr}
+@media(min-width:900px){.opts{grid-template-columns:repeat(3,1fr)}}
+.opt{cursor:pointer;border:1px solid var(--bp-line);background:#fff;color:var(--bp-ink);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.45;text-align:left;font-family:inherit;min-height:48px}
+.opt b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-muted);margin-bottom:4px}
+.opt small{display:block;color:var(--bp-muted);margin-top:4px;font-size:11px}
+.opt.on{border-color:var(--bp-gold-text);box-shadow:inset 0 0 0 1px var(--bp-gold-text);background:#FBF6EA}
+.opt.on b{color:var(--bp-gold-text)}
+.dark .opt{background:rgba(255,255,255,.06);color:var(--bp-hero-fg);border-color:var(--bp-glass-line)}
+.dark .opt b,.dark .opt small{color:var(--bp-hero-muted)}
+.dark .opt.on{background:rgba(217,180,106,.16);border-color:var(--bp-gold);box-shadow:inset 0 0 0 1px var(--bp-gold)}
+.dark .opt.on b{color:var(--bp-gold)}
+.slotname{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bp-gold-text);margin:14px 0 4px}
+.dark .slotname{color:var(--bp-gold)}
+.feat{display:block;font-size:13px;color:var(--bp-muted);margin-top:6px}
+.hook{font-size:15px;color:var(--bp-muted);margin:-10px 0 18px;max-width:70ch}
+.hero h1{white-space:normal}
+@media(max-width:900px){.pickbar{position:static}.pickbar .combo{font-size:12px}}
+.evpair{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px}@media(min-width:900px){.evpair{grid-template-columns:1fr 1fr}}
+.evpair .evc{grid-row:auto;grid-column:auto}
+.over{color:#B23A3A}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="pickbar"><div class="wrap"><span><b>ZA home copy picker.</b> Click an option to swap it into the live design. Gold = expert's recommended combo.</span><span class="combo" id="combo"></span><span style="display:flex;gap:8px"><button id="reset">Recommended</button><button id="copy">Copy combo</button></span></div></div>
+<main id="main">
+
+<section class="dark hero" id="s1"><span class="label">A1</span><div class="wrap">
+<p class="tag">Schengen visa from South Africa</p>
+<span class="slotname">H1, one line at 1280px, max 45 chars, [stroke phrase]</span>
+<h1 data-slot="H1"></h1>
+<div class="opts" data-for="H1"></div>
+<span class="slotname">Lead, 140 to 175 chars</span>
+<p class="lead" data-slot="LEAD"></p>
+<div class="opts" data-for="LEAD"></div>
+<div class="ctas"><a class="btn btn-p" href="#">Show matches</a></div>
+</div></section>
+
+<section class="tint" id="s2b"><span class="label">A2b</span><div class="wrap">
+<span class="slotname">Events H2, max 48 chars</span>
+<h2 data-slot="EVH2"></h2>
+<div class="opts" data-for="EVH2"></div>
+<span class="slotname">Events sub, 150 to 200 chars</span>
+<p class="sub" data-slot="EVSUB"></p>
+<div class="opts" data-for="EVSUB"></div>
+<span class="slotname">Hook line under the heading, 90 to 130 chars</span>
+<p class="hook" data-slot="EVHOOK"></p>
+<div class="opts" data-for="EVHOOK"></div>
+<div class="evpair"><div class="evc" data-cat="markets"><span class="k">Germany and Austria</span><h3>Christmas markets, Munich and Vienna</h3><span class="dt">From about Fri 20 Nov to Wed 23 Dec 2026 [to confirm]</span><span class="pill st-c"><i></i>We check for you</span><div class="by"><b>Start your file by Today, Wed 7 Oct 2026</b><span class="ar">Fri 20 Nov 2026 minus 15 days processing = appointment by Thu 5 Nov 2026. Germany's lead is per client and Austria is not yet on our board, so no slack can be shown.</span></div><a class="btn btn-out" href="#" data-slot="EVCTA"></a><span class="feat" data-slot="EVFEAT"></span></div><div class="evc" data-cat="festivals"><span class="k">Italy</span><h3>Venice Carnival</h3><span class="dt">Sat 23 Jan to Tue 9 Feb 2027 [to confirm]</span><span class="pill st-a"><i></i>Dates seen</span><div class="by"><b>Start your file by Fri 4 Dec 2026</b><span class="ar">Sat 23 Jan 2027 minus 15 days processing = appointment by Fri 8 Jan 2027. About 5 weeks to an Italy appointment, as seen on our board on Mon 6 Oct.</span></div><a class="btn btn-out" href="#" data-slot="EVCTA"></a><span class="feat" data-slot="EVFEAT"></span></div></div>
+<span class="slotname">Event card CTA, max 22 chars</span>
+<div class="opts" data-for="EVCTA"></div>
+<span class="slotname">Featured line under the event CTA, 60 to 90 chars</span>
+<div class="opts" data-for="EVFEAT"></div>
+</div></section>
+
+<section id="s2c"><span class="label">A2c</span><div class="wrap">
+<span class="slotname">Trip ideas H2, max 30 chars</span>
+<h2 data-slot="TRH2"></h2>
+<div class="opts" data-for="TRH2"></div>
+<span class="slotname">Trip ideas sub, 150 to 200 chars</span>
+<p class="sub" data-slot="TRSUB"></p>
+<div class="opts" data-for="TRSUB"></div>
+<div class="trips" style="grid-template-columns:1fr;max-width:420px"><div class="trip" data-n="7" data-c="italy" data-t="rail private"><h3>Italy by Rail, 7 nights</h3><span class="k">Rome 3 · Florence 2 · Venice 2</span><div class="row"><span>Hotels</span><span>4-star central, breakfast included</span><span>Getting around</span><span>Frecciarossa 2nd class Rome to Florence to Venice; private sedan transfers at both airports</span><span>Visa</span><span>Schengen application prepared by Beyond Passports (Italy consulate), fee quoted separately</span></div><span class="nf">Flights not included; you book, we match the itinerary.<br>Hotels and transport quoted as separate supplier lines on WhatsApp.</span><a class="btn btn-out" href="#" data-topic="Italy by Rail, 7 nights">Ask about this trip idea</a></div></div>
+</div></section>
+
+<section class="tint" id="s3"><span class="label">A3</span><div class="wrap">
+<span class="slotname">Tools H2, max 40 chars</span>
+<h2 data-slot="TOH2"></h2>
+<div class="opts" data-for="TOH2"></div>
+<span class="slotname">Tools sub, max 100 chars</span>
+<p class="sub" data-slot="TOSUB"></p>
+<div class="opts" data-for="TOSUB"></div>
+<div style="margin-top:28px"><span class="slotname">Tool 1</span>
+<div class="tools" style="grid-template-columns:1fr;max-width:460px"><div class="tool">
+<h3 data-slot="T1T"></h3>
+<p data-slot="T1B"></p>
+<label class="lab" style="margin-top:8px"><span data-slot="T1L1"></span><select><option>Your answer</option></select></label><label class="lab" style="margin-top:8px"><span data-slot="T1L2"></span><select><option>Your answer</option></select></label>
+<a class="btn btn-out" href="#" data-slot="T1C"></a>
+<span class="feat" data-slot="T1F"></span>
+</div></div>
+<span class="slotname">Title, max 28</span><div class="opts" data-for="T1T"></div>
+<span class="slotname">Blurb, 120 to 150</span><div class="opts" data-for="T1B"></div>
+<span class="slotname">Field label, max 34</span><div class="opts" data-for="T1L1"></div><span class="slotname">Field label, max 34</span><div class="opts" data-for="T1L2"></div>
+<span class="slotname">CTA, max 30, names Chloe</span><div class="opts" data-for="T1C"></div>
+<span class="slotname">Featured line, 60 to 90</span><div class="opts" data-for="T1F"></div>
+</div><div style="margin-top:28px"><span class="slotname">Tool 2</span>
+<div class="tools" style="grid-template-columns:1fr;max-width:460px"><div class="tool">
+<h3 data-slot="T2T"></h3>
+<p data-slot="T2B"></p>
+<label class="lab" style="margin-top:8px"><span data-slot="T2L"></span><select><option>Your answer</option></select></label>
+<a class="btn btn-out" href="#" data-slot="T2C"></a>
+<span class="feat" data-slot="T2F"></span>
+</div></div>
+<span class="slotname">Title, max 28</span><div class="opts" data-for="T2T"></div>
+<span class="slotname">Blurb, 120 to 150</span><div class="opts" data-for="T2B"></div>
+<span class="slotname">Field label, max 34</span><div class="opts" data-for="T2L"></div>
+<span class="slotname">CTA, max 30, names Chloe</span><div class="opts" data-for="T2C"></div>
+<span class="slotname">Featured line, 60 to 90</span><div class="opts" data-for="T2F"></div>
+</div><div style="margin-top:28px"><span class="slotname">Tool 3</span>
+<div class="tools" style="grid-template-columns:1fr;max-width:460px"><div class="tool">
+<h3 data-slot="T3T"></h3>
+<p data-slot="T3B"></p>
+<label class="lab" style="margin-top:8px"><span data-slot="T3L"></span><select><option>Your answer</option></select></label>
+<a class="btn btn-out" href="#" data-slot="T3C"></a>
+<span class="feat" data-slot="T3F"></span>
+</div></div>
+<span class="slotname">Title, max 28</span><div class="opts" data-for="T3T"></div>
+<span class="slotname">Blurb, 120 to 150</span><div class="opts" data-for="T3B"></div>
+<span class="slotname">Field label, max 34</span><div class="opts" data-for="T3L"></div>
+<span class="slotname">CTA, max 30, names Chloe</span><div class="opts" data-for="T3C"></div>
+<span class="slotname">Featured line, 60 to 90</span><div class="opts" data-for="T3F"></div>
+</div>
+</div></section>
+</main>
+<script>
+var DATA={"H1": {"opts": {"A": "One fee. Honest arithmetic. [A named person.]", "B": "Your dates, your booking, [our paperwork.]", "C": "R2,490. Same for all 29. [Ask Chloe first.]"}, "rec": "A", "angles": {"A": "Honesty, anti-hype", "B": "Control, you hold the booking", "C": "Rand clarity + named human"}, "cap": 45, "label": "Hero H1"}, "LEAD": {"opts": {"A": "No promised date, no promised outcome. Chloe watches the official calendar, you book in your own name, we prepare every page and say where it is weak. The consulate decides.", "B": "R2,490 for any of the 29 destinations, R750 to start and R1,740 only when your appointment is confirmed. The EUR 90 consular fee is paid by you at the centre, never to us.", "C": "Tell Chloe your travel month and centre, Johannesburg, Cape Town, Pretoria or Durban. She checks the arithmetic on WhatsApp before you pay a rand. You book in your own name."}, "rec": "C", "angles": {"A": "Honesty vs Atlys and Thompsons", "B": "Rand clarity, who gets paid", "C": "South African specifics, control"}, "cap": [140, 175], "label": "Hero lead"}, "EVH2": {"opts": {"A": "Travelling for an event? Work back from the date", "B": "Events with a start-by date, not a promise", "C": "The events South Africans ask Chloe about"}, "rec": "A", "angles": {"A": "Deadline arithmetic", "B": "Honesty", "C": "SA specific, named human"}, "cap": 48, "label": "Events H2"}, "EVSUB": {"opts": {"A": "Each card works back from the first day: minus 15 days processing, then the appointment lead a person last saw for that consulate. The arithmetic is shown; the date is never promised.", "B": "Organisers set the event, consulates set the dates, we set neither. Every card shows its arithmetic and what a person saw on our board that week. No date is promised; ask Chloe what fits.", "C": "Christmas markets, Six Nations, Oktoberfest: the events South Africans message us about, by the month they start. Filter by type. Each card shows the arithmetic; no date is promised."}, "rec": "C", "angles": {"A": "Arithmetic, control", "B": "Honesty, who sets what", "C": "SA specific, named events"}, "cap": [150, 200], "label": "Events sub"}, "TRH2": {"opts": {"A": "Trip ideas built on the visa", "B": "Trip ideas, no single price", "C": "Trip ideas to ask Chloe about"}, "rec": "C", "angles": {"A": "Specialist focus", "B": "Honesty, anti-bundle", "C": "Named human"}, "cap": 30, "label": "Trip ideas H2"}, "TRSUB": {"opts": {"A": "Itineraries shaped around the visa, not the other way round. Hotels and named transport are quoted as separate supplier lines by an operator we introduce. No flights, no single price.", "B": "You hold every booking. Hotels and named transport come as separate supplier lines from an operator we name; no flights from us. We prepare the visa file to match. No single price.", "C": "We are a visa consultancy, not a travel agent. Hotels and named transport are quoted as separate supplier lines by a licensed operator we introduce. No flights, no single price, no commission to us."}, "rec": "A", "angles": {"A": "Specialist, visa first", "B": "Control, you hold every booking", "C": "Vs travel-agency hybrids (needs counsel)"}, "cap": [150, 200], "label": "Trip ideas sub"}, "TOH2": {"opts": {"A": "Three questions to settle first", "B": "Ask Chloe before you pay anything", "C": "Three things worth getting right first"}, "rec": "A", "angles": {"A": "Control", "B": "Named human", "C": "Prevention"}, "cap": 40, "label": "Tools H2"}, "TOSUB": {"opts": {"A": "No download, no bot. Give Chloe the facts and she answers on WhatsApp, 8am to 8pm SAST.", "B": "Routing, checklist, refusal letter. Each ends in a WhatsApp reply from Chloe, not a PDF.", "C": "Your facts in, a straight answer back, before a rand changes hands. Chloe, on WhatsApp."}, "rec": "B", "angles": {"A": "Human vs machine", "B": "Serve, not inform", "C": "Honesty, control"}, "cap": 100, "label": "Tools sub"}, "EVHOOK": {"opts": {"A": "Pick an event and Chloe sends a dated plan: the appointment-by date, the day to start your file, and what to gather first.", "B": "Tap any card and Chloe works the arithmetic back from your event: appointment-by date, start date, first documents to gather.", "C": "Not a template: Chloe sends a plan for your event with the appointment-by date, when to start, and what to gather first."}, "rec": "A", "angles": {"A": "Outcome", "B": "Speed and ease", "C": "Human vs machine"}, "cap": [90, 130], "label": "Events hook line"}, "EVCTA": {"opts": {"A": "Plan this with Chloe", "B": "Get my start-by plan", "C": "Chloe, plan my dates"}, "rec": "A", "angles": {"A": "Current", "B": "Outcome", "C": "Named human"}, "cap": 22, "label": "Event card CTA"}, "EVFEAT": {"opts": {"A": "On WhatsApp: when to start your file, the appointment-by date and what to gather first.", "B": "Your event worked backwards: the date to have an appointment by and the day to begin.", "C": "Chloe's plan for your event, with what to gather first so the file starts moving."}, "rec": "A", "angles": {"A": "What you receive", "B": "Speed and ease", "C": "Outcome"}, "cap": [60, 90], "label": "Events featured line"}, "T1T": {"opts": {"A": "Which consulate is mine?", "B": "Two countries, one consulate", "C": "Check your consulate first"}, "rec": "A", "angles": {"A": "Outcome (current)", "B": "Specialist", "C": "Prevention"}, "cap": 28, "label": "Tool 1 title"}, "T1B": {"opts": {"A": "Two or more countries on one trip? The rule is most nights, then first entry. Chloe confirms yours. We never pick a consulate by appointment speed.", "B": "Apply at the wrong consulate and a refusal sits on your Schengen record. Most nights decides, then first entry. We never pick by appointment speed.", "C": "A person checks this, not a script. Most nights sets the consulate, then first entry. Chloe confirms it with you. We never pick by appointment speed."}, "rec": "A", "angles": {"A": "Outcome", "B": "Prevention (leads with risk)", "C": "Human vs machine"}, "cap": [120, 150], "label": "Tool 1 blurb"}, "T1L1": {"opts": {"A": "Country with the most nights", "B": "Where you sleep most nights", "C": "Most nights in which country?"}, "rec": "B", "angles": {"A": "Current", "B": "Plain behaviour", "C": "Question"}, "cap": 34, "label": "Tool 1 field 1"}, "T1L2": {"opts": {"A": "First country you enter", "B": "Where your flight lands first", "C": "First Schengen country you enter"}, "rec": "B", "angles": {"A": "Current", "B": "Plain behaviour", "C": "Precise"}, "cap": 34, "label": "Tool 1 field 2"}, "T1C": {"opts": {"A": "Confirm my routing with Chloe", "B": "Ask Chloe which consulate", "C": "Chloe, check my consulate"}, "rec": "A", "angles": {"A": "Current", "B": "Question", "C": "Direct address"}, "cap": 30, "label": "Tool 1 CTA"}, "T1F": {"opts": {"A": "On WhatsApp: your consulate, confirmed by Chloe, and the one-line reason why.", "B": "The consulate the rule points to, confirmed before you book anything.", "C": "Chloe replies with your consulate and why, in her own words, not a calculator."}, "rec": "A", "angles": {"A": "What you receive", "B": "Prevention", "C": "Human vs machine"}, "cap": [60, 90], "label": "Tool 1 featured line"}, "T2T": {"opts": {"A": "Document checklist by status", "B": "Your list, not a generic one", "C": "What your status changes"}, "rec": "A", "angles": {"A": "Outcome (current)", "B": "Specialist", "C": "Trust"}, "cap": 28, "label": "Tool 2 title"}, "T2B": {"opts": {"A": "SA passport, other passport on PR or a temporary permit, or a child in the party: three lists. Chloe sends yours and the one mistake we see most.", "B": "Generic lists are how files go wrong. SA passport, PR or temporary permit, or a child travelling: Chloe sends yours and the one mistake we see most.", "C": "Chloe reads your status herself: SA passport, PR or temporary permit, or a child travelling. You get what fits and the one mistake we see most."}, "rec": "A", "angles": {"A": "Outcome", "B": "Prevention", "C": "Human vs machine"}, "cap": [120, 150], "label": "Tool 2 blurb"}, "T2L": {"opts": {"A": "Your status in South Africa", "B": "Passport and status you hold", "C": "Which one is you?"}, "rec": "A", "angles": {"A": "Current", "B": "Precise", "C": "Conversational"}, "cap": 34, "label": "Tool 2 field"}, "T2C": {"opts": {"A": "Get my checklist from Chloe", "B": "Send my list, Chloe", "C": "Ask Chloe for my list"}, "rec": "A", "angles": {"A": "Current", "B": "Direct address", "C": "Question"}, "cap": 30, "label": "Tool 2 CTA"}, "T2F": {"opts": {"A": "On WhatsApp: the checklist for your status and the one mistake Chloe sees most.", "B": "Chloe sends the list that fits your passport and status, the same working day.", "C": "A person picks your list from your status, then tells you where files like yours slip."}, "rec": "A", "angles": {"A": "What you receive", "B": "Speed and ease", "C": "Human vs machine"}, "cap": [60, 90], "label": "Tool 2 featured line"}, "T3T": {"opts": {"A": "Refusal letter decoder", "B": "Refused? Read it with Chloe", "C": "What your refusal means"}, "rec": "A", "angles": {"A": "Outcome (current)", "B": "Human", "C": "Trust"}, "cap": 28, "label": "Tool 3 title"}, "T3B": {"opts": {"A": "Refused before? Send the letter. Chloe reads it with you box by box, says whether to re-apply or appeal, and names what to fix first.", "B": "Two refusals on record are worse than one. Before you re-apply or appeal, Chloe reads the letter box by box and tells you what to fix first.", "C": "Don't guess at the ticked box. Send Chloe the letter and she reads it box by box with you, then says re-apply or appeal and what to fix first."}, "rec": "A", "angles": {"A": "Outcome", "B": "Prevention", "C": "Speed and ease"}, "cap": [120, 150], "label": "Tool 3 blurb"}, "T3L": {"opts": {"A": "Box ticked on your letter", "B": "Which box did they tick?", "C": "Reason given on the letter"}, "rec": "B", "angles": {"A": "Current", "B": "Applicant's own words", "C": "Formal"}, "cap": 34, "label": "Tool 3 field"}, "T3C": {"opts": {"A": "Decode my letter with Chloe", "B": "Send Chloe my refusal letter", "C": "Chloe, read my letter"}, "rec": "A", "angles": {"A": "Current", "B": "Action", "C": "Direct address"}, "cap": 30, "label": "Tool 3 CTA"}, "T3F": {"opts": {"A": "On WhatsApp: your letter read box by box, re-apply or appeal, and the first fix.", "B": "On WhatsApp: what the ticked box means and the one thing to fix before anything else.", "C": "Chloe reads the letter with you and says, plainly, re-apply or appeal and why."}, "rec": "A", "angles": {"A": "What you receive", "B": "Prevention", "C": "Human vs machine"}, "cap": [60, 90], "label": "Tool 3 featured line"}},ORDER=["H1", "LEAD", "EVH2", "EVSUB", "EVHOOK", "EVCTA", "EVFEAT", "TRH2", "TRSUB", "TOH2", "TOSUB", "T1T", "T1B", "T1L1", "T1L2", "T1C", "T1F", "T2T", "T2B", "T2L", "T2C", "T2F", "T3T", "T3B", "T3L", "T3C", "T3F"],SEL={};
+ORDER.forEach(function(k){SEL[k]=DATA[k].rec});
+function plain(s){return s.replace(/<[^>]+>/g,'')}
+function render(){
+ ORDER.forEach(function(k){document.querySelectorAll('[data-slot="'+k+'"]').forEach(function(el){var t=DATA[k].opts[SEL[k]];if(k==='H1'){el.innerHTML=t.replace(/\[(.*?)\]/,'<u>$1</u>')}else{el.textContent=plain(t)}})});
+ document.querySelectorAll('.opt').forEach(function(c){c.classList.toggle('on',SEL[c.dataset.k]===c.dataset.v)});
+ document.getElementById('combo').innerHTML='Your combo: <span>'+ORDER.map(function(k){return k+' '+SEL[k]}).join(' · ')+'</span>';
+}
+ORDER.forEach(function(k){var box=document.querySelector('.opts[data-for="'+k+'"]');if(!box)return;['A','B','C'].forEach(function(v){var t=DATA[k].opts[v];if(!t)return;var n=plain(t).replace(/[\[\]]/g,'').length,cap=DATA[k].cap,lo=Array.isArray(cap)?cap[0]:0,hi=Array.isArray(cap)?cap[1]:cap,over=n<lo||n>hi;var c=document.createElement('button');c.className='opt';c.type='button';c.dataset.k=k;c.dataset.v=v;c.innerHTML='<b>'+v+' · '+DATA[k].angles[v]+'</b>'+plain(t).replace(/[\[\]]/g,'')+'<small'+(over?' class="over"':'')+'>'+n+' chars'+(over?' (over cap)':'')+'</small>';c.onclick=function(){SEL[k]=v;render()};box.appendChild(c)})});
+document.getElementById('reset').onclick=function(){ORDER.forEach(function(k){SEL[k]=DATA[k].rec});render()};
+document.getElementById('copy').onclick=function(){var s=ORDER.map(function(k){return k+' '+SEL[k]+': '+plain(DATA[k].opts[SEL[k]])}).join('\n');navigator.clipboard&&navigator.clipboard.writeText(s);this.textContent='Copied';var b=this;setTimeout(function(){b.textContent='Copy combo'},1500)};
+render();
+</script>
+</body>
+</html>
