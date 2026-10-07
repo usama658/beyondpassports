@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All 29 destinations, C2 status panel consultant rail | Beyond Passports ZA (local preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
+--bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-highlight:rgba(217,180,106,.55);
+--bp-cta-ghost:#B9D3D8;--bp-focus:0 0 0 3px rgba(48,184,184,.55);--bp-shadow:0 30px 60px -30px rgba(0,0,0,.6);--bp-font-display:"Fraunces",Georgia,"Times New Roman",serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif;
+--bp-st-available-bg:#DDEFE4;--bp-st-available-fg:#17452E;--bp-st-available-dot:#2F6B4F;
+--bp-st-filling-bg:#FBEBC8;--bp-st-filling-fg:#5C3D05;--bp-st-filling-dot:#B8780D;
+--bp-st-limited-bg:#F6DADA;--bp-st-limited-fg:#5E1C1C;--bp-st-limited-dot:#B23A3A;
+--bp-st-check-bg:#E4E7EC;--bp-st-check-fg:#2B3545;--bp-st-check-dot:#5B6B7D;
+--bp-sheet-bg:rgba(11,59,71,.97);--bp-flag-line:rgba(0,0,0,.08);--bp-chrome-chip:rgba(255,255,255,.12);
+--bp-glass-line:rgba(255,255,255,.17);--bp-glass-blur:10px;
+--bp-card-shadow:0 10px 24px -14px rgba(6,24,28,.45),0 1px 2px rgba(6,24,28,.10);
+/* scrim: single ink, ramped per treatment. 0.86 to 0.93 alpha at every text baseline. */
+--bp-scrim-ink:6,24,28}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:var(--bp-font-body);color:var(--bp-ink);background:var(--bp-paper);font-size:17px;line-height:1.55;padding-bottom:88px}
+@media(min-width:1024px){body{padding-bottom:0}}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bp-gold);color:var(--bp-ink);padding:12px 16px;border-radius:8px;font-weight:700;min-height:48px;display:inline-flex;align-items:center;text-decoration:none}.skip:focus{left:8px;z-index:50}
+h1,h2,h3,.price{font-family:var(--bp-font-display);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin:0}
+h2{font-size:30px;margin-bottom:8px}
+@media(min-width:1024px){h2{font-size:44px}}
+.sub{color:var(--bp-muted);margin:0 0 22px;max-width:62ch}
+section{padding:56px 0;position:relative;scroll-margin-top:80px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.btn-ghost{background:transparent;color:var(--bp-hero-fg);border-color:var(--bp-cta-ghost)}
+.btn-deep{background:var(--bp-teal-deep);color:var(--bp-paper)}
+:focus-visible{outline:none;box-shadow:var(--bp-focus)}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;width:max-content}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.st-a{background:var(--bp-st-available-bg);color:var(--bp-st-available-fg)}.st-a i{background:var(--bp-st-available-dot)}
+.st-f{background:var(--bp-st-filling-bg);color:var(--bp-st-filling-fg)}.st-f i{background:var(--bp-st-filling-dot)}
+.st-l{background:var(--bp-st-limited-bg);color:var(--bp-st-limited-fg)}.st-l i{background:var(--bp-st-limited-dot)}
+.st-c{background:var(--bp-st-check-bg);color:var(--bp-st-check-fg)}.st-c i{background:var(--bp-st-check-dot)}
+.label{position:absolute;right:12px;top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-gold);font-weight:700;opacity:.85;z-index:2}
+.label.g2{top:14px;right:20px;font-size:12px;opacity:1;border:1px solid var(--bp-gold);border-radius:999px;padding:4px 10px;line-height:1}
+
+/* chrome */
+.chrome{position:sticky;top:0;z-index:40;background:var(--bp-teal-ink);border-bottom:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px}
+@media(min-width:1024px){.chrome .wrap{min-height:72px}}
+.chrome img{height:30px;width:auto;display:block}
+@media(min-width:1024px){.chrome img{height:36px}}
+.chrome nav{display:none;gap:4px;font-size:14px;font-weight:600}
+.chrome nav a{text-decoration:none;padding:14px 10px;display:inline-flex;align-items:center;min-height:48px}
+@media(min-width:1024px){.chrome nav{display:flex}}
+.chrome .right{display:flex;gap:10px;align-items:center}
+.switch{font-size:13px;font-weight:700;padding:0 12px;min-height:40px;display:inline-flex;align-items:center;border-radius:999px;background:var(--bp-chrome-chip);border:1px solid var(--bp-hero-line);color:var(--bp-hero-fg);white-space:nowrap}
+.chrome .btn{min-height:48px;padding:8px 14px;font-size:14px}
+.switch .abbr{display:none}@media(max-width:600px){.switch .full{display:none}.switch .abbr{display:inline}}
+.band{height:24px;background:var(--bp-hero-bg)}
+
+/* flags */
+.flag{width:24px;height:16px;border-radius:3px;display:inline-block;flex:none;border:1px solid var(--bp-flag-line)}
+.f-it{background:linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)}.f-fr{background:linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)}.f-es{background:linear-gradient(180deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)}.f-pt{background:linear-gradient(90deg,#006600 40%,#FF0000 40%)}.f-nl{background:linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)}.f-de{background:linear-gradient(180deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)}.f-ch{background:linear-gradient(#fff,#fff) 50% 50%/60% 20% no-repeat,linear-gradient(#fff,#fff) 50% 50%/20% 60% no-repeat,#D52B1E}.f-gr{background:repeating-linear-gradient(180deg,#0D5EAF 0 11%,#fff 11% 22%)}.f-at{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#ED2939 66%)}.f-be{background:linear-gradient(90deg,#000 33%,#FAE042 33% 66%,#ED2939 66%)}.f-bg{background:linear-gradient(180deg,#fff 33%,#00966E 33% 66%,#D62612 66%)}.f-hr{background:linear-gradient(180deg,#FF0000 33%,#fff 33% 66%,#171796 66%)}.f-cz{background:linear-gradient(110deg,#11457E 38%,transparent 38%),linear-gradient(180deg,#fff 50%,#D7141A 50%)}.f-dk{background:linear-gradient(#fff,#fff) 0 50%/100% 20% no-repeat,linear-gradient(#fff,#fff) 32% 0/16% 100% no-repeat,#C60C30}.f-ee{background:linear-gradient(180deg,#0072CE 33%,#000 33% 66%,#fff 66%)}.f-fi{background:linear-gradient(#003580,#003580) 0 50%/100% 22% no-repeat,linear-gradient(#003580,#003580) 32% 0/16% 100% no-repeat,#fff}.f-hu{background:linear-gradient(180deg,#CE2939 33%,#fff 33% 66%,#477050 66%)}.f-is{background:linear-gradient(#DC1E35,#DC1E35) 0 50%/100% 14% no-repeat,linear-gradient(#DC1E35,#DC1E35) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#02529C}.f-lv{background:linear-gradient(180deg,#9E3039 40%,#fff 40% 60%,#9E3039 60%)}.f-li{background:linear-gradient(180deg,#002B7F 50%,#CE1126 50%)}.f-lt{background:linear-gradient(180deg,#FDB913 33%,#006A44 33% 66%,#C1272D 66%)}.f-lu{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#00A1DE 66%)}.f-mt{background:linear-gradient(90deg,#fff 50%,#CF142B 50%)}.f-no{background:linear-gradient(#002868,#002868) 0 50%/100% 14% no-repeat,linear-gradient(#002868,#002868) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#BA0C2F}.f-pl{background:linear-gradient(180deg,#fff 50%,#DC143C 50%)}.f-ro{background:linear-gradient(90deg,#002B7F 33%,#FCD116 33% 66%,#CE1126 66%)}.f-sk{background:linear-gradient(180deg,#fff 33%,#0B4EA2 33% 66%,#EE1C25 66%)}.f-si{background:linear-gradient(180deg,#fff 33%,#005DA4 33% 66%,#ED1C24 66%)}.f-se{background:linear-gradient(#FECC00,#FECC00) 0 50%/100% 20% no-repeat,linear-gradient(#FECC00,#FECC00) 32% 0/16% 100% no-repeat,#006AA7}
+
+/* layout + rail */
+.body2{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+@media(min-width:1024px){.body2{grid-template-columns:minmax(0,1fr) 300px;gap:32px}}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.status{font-size:15px;color:var(--bp-muted);margin:0 0 24px;min-height:24px}
+.status b{color:var(--bp-ink)}
+.tier{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin:0 0 16px}
+.tier h3{font-size:19px;letter-spacing:-.01em;line-height:1.25;flex:none;max-width:100%}
+@media(min-width:480px){.tier h3{font-size:20px}}
+@media(min-width:1024px){.tier h3{font-size:22px}}
+.tier .rule{flex:1 0 24px;height:1px;background:var(--bp-gold);align-self:center;min-width:24px}
+.tier .n{flex:none;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-gold-text)}
+@media(max-width:479px){.tier{gap:6px 0}.tier .rule{display:none}.tier .n{font-size:12px}}
+.t2{margin-top:40px}
+
+/* grid: minmax(0,1fr) on every track, mobile included */
+.g1{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media(min-width:700px){.g1{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.g1{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* rail: C2 status panel.
+   Availability leads. The strip at the top of the card reports whether Chloe is inside
+   her stated hours right now, computed from the browser clock against 8am to 8pm SAST,
+   Monday to Saturday. Outside those hours it says so plainly and names when the hours
+   open again; it never states a reply time we cannot hold. The hours themselves are a
+   three row block, which is what replaces the old run on sentence. */
+.rail{display:none}
+@media(min-width:1024px){.rail{display:grid;gap:12px;position:sticky;top:88px}}
+.card2{overflow:hidden;background:var(--bp-paper);border:1px solid var(--bp-line);border-radius:18px;box-shadow:0 20px 44px -30px rgba(6,24,28,.38),0 1px 2px rgba(6,24,28,.07)}
+.state{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:15px 18px;border-bottom:1px solid var(--bp-line);background:var(--bp-paper-tint)}
+.state .dot{width:11px;height:11px;border-radius:50%;margin-top:7px;flex:none;background:var(--bp-st-check-dot);box-shadow:0 0 0 4px rgba(91,107,125,.16)}
+.state b{display:block;font-size:16px;font-weight:700;line-height:1.3;color:var(--bp-ink)}
+.state span{display:block;margin-top:3px;font-size:13.5px;line-height:1.45;color:var(--bp-muted)}
+.state.live{background:var(--bp-st-available-bg)}
+.state.live .dot{background:var(--bp-st-available-dot);box-shadow:0 0 0 4px rgba(47,107,79,.22);animation:bp-pulse 2.4s ease-in-out infinite}
+.state.live b{color:var(--bp-st-available-fg)}
+.state.live span{color:#2C5744}
+@keyframes bp-pulse{0%,100%{box-shadow:0 0 0 4px rgba(47,107,79,.22)}50%{box-shadow:0 0 0 7px rgba(47,107,79,.10)}}
+@media(prefers-reduced-motion:reduce){.state.live .dot{animation:none}}
+.c2-body{padding:18px}
+.c2-who{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}
+.c2-mono{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--bp-font-display);font-weight:600;font-size:22px;line-height:1;color:var(--bp-teal-deep);border:1px solid var(--bp-gold);box-shadow:inset 0 0 0 4px var(--bp-paper)}
+.c2-name{margin:0;font-family:var(--bp-font-display);font-weight:600;font-size:21px;line-height:1.12;letter-spacing:-.015em;color:var(--bp-ink)}
+.c2-role{margin:3px 0 0;font-size:13px;line-height:1.35;color:var(--bp-muted)}
+.sched{margin:16px 0 0;border:1px solid var(--bp-line);border-radius:12px;overflow:hidden}
+.sched .hd{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--bp-paper-tint);border-bottom:1px solid var(--bp-line);font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bp-muted)}
+.sched .hd svg{width:15px;height:15px;flex:none;fill:none;stroke:var(--bp-teal-deep);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sched .row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:9px 13px;font-size:15px;line-height:1.35}
+.sched .row+.row{border-top:1px solid var(--bp-line)}
+.sched .row.now{background:rgba(48,184,184,.09)}
+.sched .d{color:var(--bp-muted);font-weight:500}
+.sched .v{font-weight:700;color:var(--bp-ink);font-variant-numeric:tabular-nums lining-nums;text-align:right}
+.sched .row.off .v{font-weight:600;color:var(--bp-muted)}
+.sched .ft{padding:8px 13px;border-top:1px solid var(--bp-line);background:var(--bp-paper-tint);font-size:12.5px;line-height:1.4;color:var(--bp-muted)}
+.sched .ft b{color:var(--bp-ink);font-weight:600}
+.acts{margin:16px 0 0;display:grid;gap:10px}
+.act{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:12px 14px;border-radius:13px;font-family:inherit;font-weight:700;text-decoration:none;border:2px solid transparent;line-height:1.2;white-space:nowrap}
+.act svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.act-p{background:var(--bp-teal-deep);color:var(--bp-paper);font-size:17px}
+.act-p:hover{background:var(--bp-teal-ink)}
+.act-s{background:var(--bp-paper);color:var(--bp-teal-deep);border-color:var(--bp-teal-deep);font-size:15px}
+.act-s:hover{background:var(--bp-paper-tint)}
+.c2-note{margin:14px 0 0;padding-top:13px;border-top:1px solid var(--bp-line);font-size:13px;line-height:1.5;color:var(--bp-muted)}
+.c2-note b{color:var(--bp-ink);font-weight:600}
+
+/* mobile sheet: hidden until the page header has scrolled away, so it costs no
+   permanent height, and it carries the hours and the honesty line the old one dropped */
+body{padding-bottom:0}
+body.sheet-on{padding-bottom:168px}
+@media(min-width:1024px){body.sheet-on{padding-bottom:0}}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--bp-sheet-bg);border-top:1px solid var(--bp-hero-line);color:var(--bp-hero-fg);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:grid;gap:10px;box-shadow:0 -18px 40px -24px rgba(0,0,0,.7);transform:translateY(calc(100% + 28px));transition:transform .26s ease;will-change:transform}
+.sheet.on{transform:none}
+@media(prefers-reduced-motion:reduce){.sheet{transition:none}}
+.sh-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:center}
+.sh-mono{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--bp-font-display);font-weight:600;font-size:17px;line-height:1;color:var(--bp-hero-fg);border:1px solid var(--bp-gold);flex:none}
+.sh-id{min-width:0;display:grid;gap:2px}
+.sh-id b{font-size:15px;font-weight:700;line-height:1.25}
+.sh-id span{font-size:13px;line-height:1.4;color:var(--bp-hero-muted)}
+.sh-acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.sh-acts a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 12px;border-radius:12px;font-family:inherit;font-weight:700;font-size:15px;text-decoration:none;border:2px solid transparent;line-height:1.2}
+.sh-acts svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sh-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.sh-s{background:transparent;color:var(--bp-hero-fg);border-color:var(--bp-cta-ghost)}
+.sh-note{margin:0;font-size:12.5px;line-height:1.45;color:var(--bp-hero-muted)}
+@media(min-width:1024px){.sheet{display:none}}
+.sheet .sh-top{align-items:start}
+.sh-dot{width:11px;height:11px;border-radius:50%;background:var(--bp-st-check-dot);box-shadow:0 0 0 4px rgba(255,255,255,.12);margin:7px 6px 0}
+.sh-dot.live{background:#6FD79B;box-shadow:0 0 0 4px rgba(111,215,155,.22)}
+
+/* footer + credits */
+.pfoot{background:var(--bp-teal-ink);color:var(--bp-hero-muted);padding:28px 0 36px}
+.pfoot .credits{font-size:12px;line-height:1.7;max-width:900px}
+.pfoot .credits b{color:var(--bp-hero-fg);font-weight:600}
+.pfoot a{color:var(--bp-hero-muted);text-decoration:underline}
+
+/* PHOTO-FILLED CARD
+   One image covers the WHOLE card (.ph is inset:0 behind everything). The card is a
+   column flex box: .lead is the photo-only top area (16/10, grows to level the row),
+   .pan is the translucent pricing panel over the lower part of that same photo.
+   .pan holds the flag + country name, the fee and the last-checked line; the status
+   pill stays absolute top-left on the photo with its own solid tint. */
+.cd{position:relative;display:flex;flex-direction:column;border:1px solid var(--bp-line);border-radius:18px;background:var(--bp-teal-ink);color:var(--bp-hero-fg);text-decoration:none;overflow:hidden;box-shadow:var(--bp-card-shadow);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.cd:hover{transform:translateY(-2px);box-shadow:var(--bp-shadow);border-color:var(--bp-teal-deep)}
+.cd:focus-visible{box-shadow:var(--bp-focus),var(--bp-shadow)}
+.ph{position:absolute;inset:0;z-index:0;display:block;background:var(--bp-paper-tint);overflow:hidden;pointer-events:none}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph.generic img{filter:saturate(.3) brightness(.86)}
+.lead{position:relative;z-index:1;flex:1 0 auto;aspect-ratio:16/10;min-height:0}
+.pan{position:relative;z-index:1;flex:0 0 auto;display:grid;gap:10px;padding:14px 18px 0;min-width:0}
+/* [flag][country name], one line of its own, never sharing a baseline with the pill */
+.ov{display:flex;align-items:center;gap:10px;min-width:0}
+.ov .flag{width:26px;height:18px;border-radius:4px;border-color:rgba(255,255,255,.5);box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.ov .nm{font-family:var(--bp-font-display);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.18;color:#fff;min-width:0;overflow-wrap:break-word}
+@media(min-width:1024px){.ov .nm{font-size:21px}}
+/* status pill: top-left on the photo in every variant, solid tint, self-contained */
+.chip{position:absolute;z-index:3;left:16px;top:14px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.tv{position:absolute;z-index:2;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F3F8F9;background:rgba(6,24,28,.9);padding:4px 9px;border-radius:999px;line-height:1.3}
+/* the fee is the dominant element on the card: 30/32px Fraunces against a 20/21px name */
+.fee{display:grid;gap:2px;min-width:0}
+.fee .price{font-size:30px;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em;line-height:1.08;color:var(--bp-hero-fg)}
+@media(min-width:1024px){.fee .price{font-size:32px}}
+.fee .w{font-size:14px;font-weight:500;line-height:1.35;color:var(--bp-hero-muted)}
+.chk{display:flex;align-items:flex-start;gap:8px;margin:0 -18px;padding:11px 18px 13px;border-top:1px solid var(--bp-hero-line);font-size:13px;font-weight:500;line-height:1.5;color:var(--bp-hero-muted)}
+.chk svg{width:16px;height:16px;flex:none;margin-top:2px;fill:none;stroke:var(--bp-teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.chk b{color:var(--bp-hero-fg);font-weight:600}
+/* X2 GRADIENT FADE
+   No blur, no backdrop-filter anywhere. The photo is untouched at the top of the card,
+   fades in through .pan::before, then ramps across the panel to near-opaque at the fee.
+   The ramp is keyed in PIXELS from the panel's top edge, not percentages, so every text
+   baseline keeps its alpha however the country name wraps: .64 at the panel edge (white
+   name only, 5.49:1), .78 by 44px and .90 at the bottom, where the muted lines sit
+   (5.57:1 or better). */
+.scrim{display:none}
+.pan{background:linear-gradient(180deg,rgba(var(--bp-scrim-ink),.64) 0,rgba(var(--bp-scrim-ink),.78) 44px,rgba(var(--bp-scrim-ink),.90) 100%)}
+.pan::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:124px;background:linear-gradient(0deg,rgba(var(--bp-scrim-ink),.64) 0,rgba(var(--bp-scrim-ink),.26) 42%,rgba(var(--bp-scrim-ink),0) 100%);pointer-events:none}
+/* one consular-fee sentence above the grid, instead of 29 repeats inside the cards */
+.feenote{margin:0 0 20px;padding:13px 16px;background:var(--bp-paper-tint);border-left:3px solid var(--bp-gold);border-radius:10px;font-size:17px;line-height:1.5;color:var(--bp-ink);max-width:64ch}
+.feenote b{font-weight:600}
+
+/* region chips: replaces the two tier headers. 48px tap target, wraps under 480px. */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px;padding:0;list-style:none}
+.chip-f{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:48px;padding:10px 18px;border-radius:999px;border:1px solid var(--bp-line);background:var(--bp-paper);color:var(--bp-ink);font-family:inherit;font-size:15px;font-weight:600;line-height:1.25;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.chip-f:hover{border-color:var(--bp-teal-deep)}
+.chip-f .ct{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums lining-nums;color:var(--bp-muted)}
+.chip-f[aria-pressed="true"],.chip-f[aria-current="true"]{background:var(--bp-teal);border-color:var(--bp-teal);color:var(--bp-teal-night)}
+.chip-f[aria-pressed="true"] .ct,.chip-f[aria-current="true"] .ct{color:var(--bp-teal-night)}
+@media(max-width:479px){.chips{gap:8px}.chip-f{padding:10px 14px;font-size:14px}}
+.cd[hidden]{display:none!important}
+.empty{margin:4px 0 0;padding:16px 18px;background:var(--bp-paper-tint);border-left:3px solid var(--bp-gold);border-radius:10px;font-size:17px;line-height:1.5;color:var(--bp-ink);max-width:62ch}
+/* region block: same .tier header treatment the two tiers used */
+.reg{scroll-margin-top:96px}
+.reg+.reg{margin-top:40px}
+.regnote{margin:-8px 0 16px;font-size:15px;line-height:1.5;color:var(--bp-muted);max-width:62ch}
+.reg.on .tier h3{color:var(--bp-teal-deep)}
+.reg.on .tier .rule{background:var(--bp-teal)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="chrome"><span class="label">A0</span><div class="wrap">
+<img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="190" height="36">
+<nav aria-label="Primary"><a href="#grid">Destinations</a><a href="#">Events</a><a href="#">Trip ideas</a><a href="#">Tools</a><a href="#">Fees</a><a href="#">Questions</a></nav>
+<div class="right"><span class="switch"><span class="full">South Africa &middot; ZAR</span><span class="abbr" aria-label="South Africa, ZAR">ZA &middot; ZAR</span></span><a class="btn btn-ghost" href="#">WhatsApp</a></div>
+</div></header>
+
+<div class="band" aria-hidden="true"></div>
+
+<main id="main">
+<section id="grid"><span class="label g2">C2</span><div class="wrap body2">
+<div>
+<h2>All 29 destinations</h2>
+<p class="feenote">Our fee is <b>R2,490</b>, the same for all 29 destinations. The consulate and visa centre charge about <b>R2,100 to R2,700</b> more, paid to them at your appointment, never to us.</p>
+<ul class="chips" role="group" aria-label="Filter the 29 destinations by region">
+<li><button type="button" class="chip-f" data-f="popular" aria-pressed="true" aria-controls="g-all">Popular</button></li>
+<li><button type="button" class="chip-f" data-f="west" aria-pressed="false" aria-controls="g-all">Western Europe</button></li>
+<li><button type="button" class="chip-f" data-f="south" aria-pressed="false" aria-controls="g-all">Southern Europe</button></li>
+<li><button type="button" class="chip-f" data-f="nordic" aria-pressed="false" aria-controls="g-all">Nordic and Baltic</button></li>
+<li><button type="button" class="chip-f" data-f="east" aria-pressed="false" aria-controls="g-all">Central and Eastern</button></li>
+</ul>
+<p class="sr-only" id="g-count" role="status" aria-live="polite">All 29 destinations. Our fee is the same for every one.</p>
+<div class="g1" id="g-all" role="list" aria-label="Destinations">
+<a class="cd" role="listitem" data-reg="south" data-pop="1" href="#" aria-label="Italy, Dates seen"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/960px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" width="960" height="563" alt="The Colosseum in Rome at dusk" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-a"><i></i>Dates seen</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-it" aria-hidden="true"></span><span class="nm">Italy</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:05</b> by Chloe</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" data-pop="1" href="#" aria-label="France, Filling"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Golden_sky_over_Paris.jpg/960px-Golden_sky_over_Paris.jpg" width="960" height="640" alt="Paris rooftops and the Eiffel Tower at golden hour" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-f"><i></i>Filling</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-fr" aria-hidden="true"></span><span class="nm">France</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:12</b> by Chloe</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" data-pop="1" href="#" aria-label="Spain, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Sagrada_Familia_Barcelona_2.jpg/960px-Sagrada_Familia_Barcelona_2.jpg" width="960" height="646" alt="Towers of the Sagrada Familia, Barcelona" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-es" aria-hidden="true"></span><span class="nm">Spain</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" data-pop="1" href="#" aria-label="Portugal, Limited"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bel%C3%A9m_Tower_in_Lisbon%2C_Portugal.jpg/960px-Bel%C3%A9m_Tower_in_Lisbon%2C_Portugal.jpg" width="960" height="640" alt="Belem Tower, Lisbon" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-l"><i></i>Limited</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-pt" aria-hidden="true"></span><span class="nm">Portugal</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:20</b> by Chloe</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" data-pop="1" href="#" aria-label="Netherlands, None seen this week"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Colorful_canal_houses_at_golden_hour_in_Damrak_avenue_Amsterdam_the_Netherlands.jpg/960px-Colorful_canal_houses_at_golden_hour_in_Damrak_avenue_Amsterdam_the_Netherlands.jpg" width="960" height="640" alt="Canal houses in Amsterdam at golden hour" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>None seen this week</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-nl" aria-hidden="true"></span><span class="nm">Netherlands</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Last checked <b>Mon 6 Oct, 14:26</b> by Chloe</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" data-pop="1" href="#" aria-label="Germany, Gated, per client"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_01.jpg/960px-Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_01.jpg" width="960" height="649" alt="Brandenburg Gate, Berlin" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>Gated, per client</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-de" aria-hidden="true"></span><span class="nm">Germany</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Checked per client only. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" href="#" aria-label="Switzerland, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/CH.VS.Zermatt_2021-10-17_Matterhorn_8726.jpg/960px-CH.VS.Zermatt_2021-10-17_Matterhorn_8726.jpg" width="960" height="640" alt="The Matterhorn above Zermatt, Switzerland" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-ch" aria-hidden="true"></span><span class="nm">Switzerland</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" href="#" aria-label="Greece, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Athens_Acropolis_at_Daybreak.jpg/960px-Athens_Acropolis_at_Daybreak.jpg" width="960" height="540" alt="The Acropolis of Athens at daybreak" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-gr" aria-hidden="true"></span><span class="nm">Greece</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" href="#" aria-label="Austria, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Palacio_de_Sch%C3%B6nbrunn%2C_Viena%2C_Austria%2C_2020-02-02%2C_DD_07-09_HDR.jpg/960px-Palacio_de_Sch%C3%B6nbrunn%2C_Viena%2C_Austria%2C_2020-02-02%2C_DD_07-09_HDR.jpg" width="960" height="528" alt="The garden facade of Schonbrunn Palace, Vienna, Austria" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-at" aria-hidden="true"></span><span class="nm">Austria</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" href="#" aria-label="Belgium, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Edificios_en_la_Grand-Place%2C_Bruselas%2C_B%C3%A9lgica%2C_2021-12-15%2C_DD_184-186_HDR.jpg/960px-Edificios_en_la_Grand-Place%2C_Bruselas%2C_B%C3%A9lgica%2C_2021-12-15%2C_DD_184-186_HDR.jpg" width="960" height="642" alt="Guild houses on the Grand Place, Brussels, Belgium" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-be" aria-hidden="true"></span><span class="nm">Belgium</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Bulgaria, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/AlexanderNevskyCathedral-Sofia-6.jpg/960px-AlexanderNevskyCathedral-Sofia-6.jpg" width="960" height="610" alt="Alexander Nevsky Cathedral, Sofia, Bulgaria" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-bg" aria-hidden="true"></span><span class="nm">Bulgaria</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" href="#" aria-label="Croatia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_07.JPG/960px-Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_07.JPG" width="960" height="618" alt="The walled old town of Dubrovnik, Croatia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-hr" aria-hidden="true"></span><span class="nm">Croatia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Czechia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most%2C_Prague_20160808_1.jpg/960px-North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most%2C_Prague_20160808_1.jpg" width="960" height="540" alt="Charles Bridge over the Vltava, Prague, Czechia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-cz" aria-hidden="true"></span><span class="nm">Czechia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Denmark, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Nyhavn%2C_Copenhagen%2C_20220618_1728_7354.jpg/960px-Nyhavn%2C_Copenhagen%2C_20220618_1728_7354.jpg" width="960" height="520" alt="Colourful townhouses along the Nyhavn canal, Copenhagen, Denmark" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-dk" aria-hidden="true"></span><span class="nm">Denmark</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Estonia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Tallinna_vanalinn_p%C3%A4ikeset%C3%B5usu_ajal.jpg/960px-Tallinna_vanalinn_p%C3%A4ikeset%C3%B5usu_ajal.jpg" width="960" height="641" alt="Tallinn old town rooftops at sunrise, Estonia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-ee" aria-hidden="true"></span><span class="nm">Estonia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Finland, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Catedral_Luterana_de_Helsinki%2C_Finlandia%2C_2012-08-14%2C_DD_14.JPG/960px-Catedral_Luterana_de_Helsinki%2C_Finlandia%2C_2012-08-14%2C_DD_14.JPG" width="960" height="700" alt="Helsinki Cathedral above Senate Square, Finland" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-fi" aria-hidden="true"></span><span class="nm">Finland</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Hungary, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/HUN-2015-Budapest-Hungarian_Parliament_%28Budapest%29_2015-02.jpg/960px-HUN-2015-Budapest-Hungarian_Parliament_%28Budapest%29_2015-02.jpg" width="960" height="540" alt="The Hungarian Parliament Building on the Danube, Budapest" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-hu" aria-hidden="true"></span><span class="nm">Hungary</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Iceland, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Kirkjufell%2C_Iceland%2C_20240714_1631_0713.jpg/960px-Kirkjufell%2C_Iceland%2C_20240714_1631_0713.jpg" width="960" height="639" alt="Mount Kirkjufell on the Snaefellsnes peninsula, Iceland" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-is" aria-hidden="true"></span><span class="nm">Iceland</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Latvia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/House_of_Blackheads_and_St._Peter%27s_Church_Tower%2C_Riga%2C_Latvia_-_Diliff.jpg/960px-House_of_Blackheads_and_St._Peter%27s_Church_Tower%2C_Riga%2C_Latvia_-_Diliff.jpg" width="960" height="675" alt="House of the Blackheads and St Peter's Church tower, Riga, Latvia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-lv" aria-hidden="true"></span><span class="nm">Latvia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" href="#" aria-label="Liechtenstein, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Schloss_Vaduz_%282018%29.jpg/960px-Schloss_Vaduz_%282018%29.jpg" width="960" height="640" alt="Vaduz Castle on its wooded ridge above the Rhine valley, Liechtenstein" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-li" aria-hidden="true"></span><span class="nm">Liechtenstein</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Lithuania, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Vilnius_old_town_by_Augustas_Didzgalvis.jpg/960px-Vilnius_old_town_by_Augustas_Didzgalvis.jpg" width="960" height="640" alt="Vilnius old town and church towers, Lithuania" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-lt" aria-hidden="true"></span><span class="nm">Lithuania</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="west" href="#" aria-label="Luxembourg, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Luxembourg_%28LU%29%2C_Grund_und_%C3%89glise_Saint-Jean_--_2023_--_8132.jpg/960px-Luxembourg_%28LU%29%2C_Grund_und_%C3%89glise_Saint-Jean_--_2023_--_8132.jpg" width="960" height="540" alt="The Grund quarter and Saint John's church, Luxembourg City" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-lu" aria-hidden="true"></span><span class="nm">Luxembourg</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" href="#" aria-label="Malta, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Our_Lady_of_Mount_Carmel_and_St_Pauls_Pro-Cathedral.jpg/960px-Our_Lady_of_Mount_Carmel_and_St_Pauls_Pro-Cathedral.jpg" width="960" height="640" alt="The dome and spire of the Valletta skyline above the harbour, Malta" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-mt" aria-hidden="true"></span><span class="nm">Malta</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Norway, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Fiordo_de_Geiranger_desde_Flydalsjuvet%2C_Noruega%2C_2019-09-07%2C_DD_59.jpg/960px-Fiordo_de_Geiranger_desde_Flydalsjuvet%2C_Noruega%2C_2019-09-07%2C_DD_59.jpg" width="960" height="641" alt="Geirangerfjord seen from Flydalsjuvet, Norway" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-no" aria-hidden="true"></span><span class="nm">Norway</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Poland, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Krak%C3%B3w_Cloth_Hall%2C_view_from_W%2C_3_Main_Market_square%2C_Old_Town%2C_Krakow%2C_Poland.jpg/960px-Krak%C3%B3w_Cloth_Hall%2C_view_from_W%2C_3_Main_Market_square%2C_Old_Town%2C_Krakow%2C_Poland.jpg" width="960" height="506" alt="The Cloth Hall on Krakow's Main Market Square, Poland" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-pl" aria-hidden="true"></span><span class="nm">Poland</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Romania, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/RO_BV_Council_Square_from_Tampa.jpg/960px-RO_BV_Council_Square_from_Tampa.jpg" width="960" height="639" alt="Council Square and the old town of Brasov seen from Tampa, Romania" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-ro" aria-hidden="true"></span><span class="nm">Romania</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="east" href="#" aria-label="Slovakia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Bratislava_Castle_with_Danube.jpeg/960px-Bratislava_Castle_with_Danube.jpeg" width="960" height="640" alt="Bratislava Castle above the Danube, Slovakia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-sk" aria-hidden="true"></span><span class="nm">Slovakia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="south" href="#" aria-label="Slovenia, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Bled_Island_in_Lake_Bled%2C_Slovenia%2C_20240504_0901_8297.jpg/960px-Bled_Island_in_Lake_Bled%2C_Slovenia%2C_20240504_0901_8297.jpg" width="960" height="641" alt="Bled Island and its church on Lake Bled, Slovenia" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-si" aria-hidden="true"></span><span class="nm">Slovenia</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+<a class="cd" role="listitem" data-reg="nordic" href="#" aria-label="Sweden, We check for you"><span class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Skeppsbrokajen_Gamla_Stan_from_Skeppsholmen_Stockholm_2016_01.jpg/960px-Skeppsbrokajen_Gamla_Stan_from_Skeppsholmen_Stockholm_2016_01.jpg" width="960" height="540" alt="The Skeppsbron waterfront of Gamla Stan, Stockholm, Sweden" loading="lazy"></span><span class="scrim" aria-hidden="true"></span><span class="pill chip st-c"><i></i>We check for you</span><span class="lead"></span><span class="pan"><span class="ov id"><span class="flag f-se" aria-hidden="true"></span><span class="nm">Sweden</span></span><span class="fee"><span class="price">R2,490</span><span class="w">to Beyond Passports</span></span><span class="chk"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Not yet checked. We check for you.</span></span></span></a>
+</div>
+<p class="empty" id="g-empty" hidden>No destinations in this region right now. Message Chloe and she will check any of the 29 for you.</p>
+</div>
+
+<aside class="rail" aria-label="Your consultant">
+<div class="card2">
+<div class="state" id="bp-state"><span class="dot" aria-hidden="true"></span><span><b id="bp-state-t">Checking her hours</b><span id="bp-state-s">8am to 8pm SAST, Monday to Saturday.</span></span></div>
+<div class="c2-body">
+<div class="c2-who"><span class="c2-mono" aria-hidden="true">C</span><span><h3 class="c2-name">Chloe</h3><p class="c2-role">Your consultant for South Africa</p></span></div>
+<div class="sched">
+<div class="hd"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>Her desk hours</div>
+<div class="row" id="bp-row-wk"><span class="d">Monday to Friday</span><span class="v">8am to 8pm</span></div>
+<div class="row" id="bp-row-sa"><span class="d">Saturday</span><span class="v">8am to 8pm</span></div>
+<div class="row off" id="bp-row-su"><span class="d">Sunday</span><span class="v">Closed</span></div>
+<p class="ft">All times SAST. WhatsApp or email, both read by her. <b>Reply the same working day.</b></p>
+</div>
+<div class="acts">
+<a class="act act-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/></svg>Ask Chloe</a>
+<a class="act act-s" href="mailto:info@beyondpassports.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7 8.2 5.6L20.2 7"/></svg>info@beyondpassports.com</a>
+</div>
+<p class="c2-note"><b>Appointments are free on the official sites.</b> We never hold, sell or book one in our name. You book in yours, with us on WhatsApp while you do it.</p>
+</div>
+</div>
+</aside>
+</div></section>
+</main>
+
+<footer class="pfoot"><div class="wrap"><p class="credits">Destination photographs via Wikimedia Commons, used under their stated Creative Commons licences. Rome: Diliff, CC BY-SA 2.5 &middot; Paris: Radek Kucharski, CC BY 4.0 &middot; Barcelona: Kallerna, CC BY-SA 4.0 &middot; Lisbon: Lisbon Photoshoots, CC BY-SA 4.0 &middot; Amsterdam: Basile Morin, CC BY-SA 4.0 &middot; Berlin: Norbert Nagel, CC BY-SA 3.0 &middot; Switzerland: Roy Egloff, CC BY-SA 4.0 &middot; Athens: Andrew Parlette, CC BY 4.0 &middot; Vienna: Diego Delso, CC BY-SA 4.0 &middot; Brussels: Diego Delso, CC BY-SA 4.0 &middot; Sofia: Plamen Agov, CC BY-SA 4.0 &middot; Dubrovnik: Diego Delso, CC BY-SA 3.0 &middot; Prague: DXR, CC BY-SA 4.0 &middot; Copenhagen: Jakub Hałun, CC BY-SA 4.0 &middot; Tallinn: Hendrik Mändla, CC BY-SA 4.0 &middot; Helsinki: Diego Delso, CC BY-SA 3.0 &middot; Budapest: Godot13, CC BY-SA 4.0 &middot; Kirkjufell: Jakub Hałun, CC BY 4.0 &middot; Riga: Diliff, CC BY-SA 3.0 &middot; Vaduz: JoachimKohlerBremen, CC BY-SA 4.0 &middot; Vilnius: Augustas Didzgalvis, CC BY-SA 4.0 &middot; Luxembourg City: Dietmar Rabich, CC BY-SA 4.0 &middot; Valletta: Anton Zelenov, CC BY-SA 4.0 &middot; Geirangerfjord: Diego Delso, CC BY-SA 4.0 &middot; Krakow: Zygmunt Put, CC BY-SA 4.0 &middot; Brasov: Andrei Stroe, CC BY-SA 4.0 &middot; Bratislava: Ingo Mehling, CC BY-SA 4.0 &middot; Lake Bled: Jakub Hałun, CC BY 4.0 &middot; Stockholm: Julian Herzog, CC BY 4.0. Image edits: crop and colour grade only. Full licence terms at each photo's Commons file page.</p></div></footer>
+
+<div class="sheet" id="sheet" aria-label="Your consultant">
+<div class="sh-top"><span class="sh-dot" id="bp-sdot" aria-hidden="true"></span><span class="sh-id"><b id="bp-sheet-t">Chloe, your consultant</b><span id="bp-sheet-s">8am to 8pm SAST, Mon to Sat &middot; Reply the same working day</span></span></div>
+<div class="sh-acts"><a class="sh-p" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/></svg>Ask Chloe</a><a class="sh-s" href="mailto:info@beyondpassports.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7 8.2 5.6L20.2 7"/></svg>Email</a></div>
+<p class="sh-note">Appointments are free on the official sites. You book in your name, with Chloe on WhatsApp while you do it.</p>
+</div>
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.chip-f'));
+  var cards=[].slice.call(document.querySelectorAll('#g-all .cd'));
+  var count=document.getElementById('g-count');
+  var empty=document.getElementById('g-empty');
+  var label={west:'in Western Europe',south:'in Southern Europe',nordic:'in the Nordic and Baltic region',east:'in Central and Eastern Europe'};
+  function match(card,f){
+    if(f==='popular')return card.getAttribute('data-pop')==='1';
+    return card.getAttribute('data-reg')===f;
+  }
+  function apply(f){
+    var n=0;
+    for(var i=0;i<cards.length;i++){
+      var on=match(cards[i],f);
+      cards[i].hidden=!on;
+      if(on)n++;
+    }
+    for(var j=0;j<btns.length;j++){
+      btns[j].setAttribute('aria-pressed',btns[j].getAttribute('data-f')===f?'true':'false');
+    }
+    count.textContent=(f==='popular')
+      ? ('Showing the '+n+' most asked for from South Africa. Pick a region for the other 23.')
+      : ('Showing '+n+' '+label[f]+' of 29. Our fee is the same for every one.');
+    empty.hidden=n>0;
+  }
+  for(var k=0;k<btns.length;k++){
+    btns[k].addEventListener('click',function(){apply(this.getAttribute('data-f'));});
+  }
+  apply('popular');
+})();
+</script>
+
+<script>
+(function(){
+  var sh=document.getElementById('sheet'),h=document.querySelector('#grid h2');
+  function show(on){sh.classList.toggle('on',on);document.body.classList.toggle('sheet-on',on);}
+  if(!sh)return;
+  if(!h||!('IntersectionObserver' in window)){show(true);return;}
+  new IntersectionObserver(function(e){
+    show(!e[0].isIntersecting && e[0].boundingClientRect.top<0);
+  },{threshold:0}).observe(h);
+})();
+</script>
+<script>
+/* Presence against the stated window: 8am to 8pm SAST (UTC+2), Monday to Saturday.
+   No countdown, no reply estimate. Call bpRenderStatus(aDate) to test a given moment. */
+(function(){
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function sast(d){return new Date(d.getTime()+(d.getTimezoneOffset()*60000)+(2*3600000));}
+  function nextOpen(s){
+    var day=s.getDay(),h=s.getHours();
+    if(day>=1&&day<=6&&h<8)return 'today';
+    var n=day;
+    do{n=(n+1)%7;}while(n===0);
+    return (n===((day+1)%7)&&day!==6)?'tomorrow':DAYS[n];
+  }
+  window.bpRenderStatus=function(when){
+    var s=sast(when||new Date()),day=s.getDay(),h=s.getHours()+s.getMinutes()/60;
+    var open=(day>=1&&day<=6)&&h>=8&&h<20;
+    var box=document.getElementById('bp-state');
+    var t=document.getElementById('bp-state-t'),sub=document.getElementById('bp-state-s');
+    var st=document.getElementById('bp-sheet-t'),ss=document.getElementById('bp-sheet-s');
+    var sd=document.getElementById('bp-sdot');
+    if(box)box.classList.toggle('live',open);
+    if(sd)sd.classList.toggle('live',open);
+    if(open){
+      if(t)t.textContent='Chloe is at her desk';
+      if(sub)sub.textContent='It is '+(s.getHours()<10?'0':'')+s.getHours()+':'+(s.getMinutes()<10?'0':'')+s.getMinutes()+' SAST. Messages land with her, not a queue.';
+      if(st)st.textContent='Chloe is at her desk';
+      if(ss)ss.innerHTML='8am to 8pm SAST, Mon to Sat &middot; Reply the same working day';
+    }else{
+      var w=nextOpen(s);
+      if(t)t.textContent='Outside her hours right now';
+      if(sub)sub.textContent='Send it anyway. She reads it when the desk opens again, '+(w==='today'?'from 8am SAST today':(w==='tomorrow'?'from 8am SAST tomorrow':'from 8am SAST on '+w))+'.';
+      if(st)st.textContent='Outside her hours right now';
+      if(ss)ss.innerHTML='8am to 8pm SAST, Mon to Sat &middot; She reads it when the desk opens, '+(w==='today'?'8am SAST today':(w==='tomorrow'?'8am SAST tomorrow':'8am SAST on '+w));
+    }
+    var rows={1:'bp-row-wk',2:'bp-row-wk',3:'bp-row-wk',4:'bp-row-wk',5:'bp-row-wk',6:'bp-row-sa',0:'bp-row-su'};
+    ['bp-row-wk','bp-row-sa','bp-row-su'].forEach(function(id){
+      var el=document.getElementById(id);if(el)el.classList.toggle('now',id===rows[day]);
+    });
+  };
+  window.bpRenderStatus();
+})();
+</script>
+</body>
+</html>
