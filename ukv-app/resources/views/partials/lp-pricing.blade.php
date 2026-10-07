@@ -34,6 +34,7 @@
     @endforeach
   </div>
   <p class="bpc-pr-foot">Embassy fee is separate and goes directly to the authorities. We never touch it. No payment until after your risk check.</p>
+  <p class="bpc-pr-foot">Beyond Passports is a document preparation service. We are not a government service and we do not book appointments or submit applications.</p>
 </div></section>
 @once
 <style>
