@@ -34,7 +34,7 @@
     @endforeach
   </div>
   <p class="bpc-pr-foot">Embassy fee is separate and goes directly to the authorities. We never touch it. No payment until after your risk check.</p>
-  <p class="bpc-pr-foot">Beyond Passports is a document preparation service. We are not a government service and we do not book appointments or submit applications.</p>
+  <p class="bpc-pr-foot">Beyond Passports is a document preparation service. We are not a government service and we do not book appointments or submit applications. Beyond Passports is a specialist Schengen visa consultancy in the UK for application assistance, appointment guidance, and refusal recovery. It is a private consulting service, not a government or embassy service and not a government intermediary: we do not sell visas, obtain government documents, or process applications on behalf of any government. The visa is obtained directly by the applicant from the relevant consulate, and all decisions are made by the relevant authorities. Companies House 17331903 · ICO reg. ZC197159</p>
 </div></section>
 @once
 <style>
