@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All 29 destinations, M3 reference map | Beyond Passports ZA (local preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
+--bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-glass:rgba(255,255,255,.07);--bp-glass-line:rgba(255,255,255,.17);--bp-highlight:rgba(217,180,106,.55);
+--bp-bar-line:rgba(217,180,106,.16);--bp-cta-ghost:#B9D3D8;--bp-focus:0 0 0 3px rgba(48,184,184,.55);--bp-glass-blur:10px;--bp-shadow:0 30px 60px -30px rgba(0,0,0,.6);--bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif;
+--bp-st-available-bg:#DDEFE4;--bp-st-available-fg:#17452E;--bp-st-available-dot:#2F6B4F;
+--bp-st-filling-bg:#FBEBC8;--bp-st-filling-fg:#5C3D05;--bp-st-filling-dot:#B8780D;
+--bp-st-limited-bg:#F6DADA;--bp-st-limited-fg:#5E1C1C;--bp-st-limited-dot:#B23A3A;
+--bp-st-check-bg:#E4E7EC;--bp-st-check-fg:#2B3545;--bp-st-check-dot:#5B6B7D;
+--bp-sheet-bg:rgba(11,59,71,.97);--bp-flag-line:rgba(0,0,0,.08);--bp-chrome-chip:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:var(--bp-font-body);color:var(--bp-ink);background:var(--bp-paper);font-size:17px;line-height:1.55;padding-bottom:88px;overflow-x:hidden}
+@media(min-width:1024px){body{padding-bottom:0}}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bp-gold);color:var(--bp-ink);padding:12px 16px;border-radius:8px;font-weight:700}.skip:focus{left:8px;z-index:50}
+h1,h2,h3,.price{font-family:var(--bp-font-display);font-weight:600;letter-spacing:-.015em;line-height:1.08;margin:0}
+h2{font-size:30px;margin-bottom:8px}
+@media(min-width:1024px){h2{font-size:44px}}
+.sub{color:var(--bp-muted);margin:0 0 22px;max-width:62ch}
+section{padding:56px 0;position:relative;scroll-margin-top:80px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-p{background:var(--bp-teal);color:var(--bp-teal-night)}
+.btn-ghost{background:transparent;color:var(--bp-hero-fg);border-color:var(--bp-cta-ghost)}
+.btn-deep{background:var(--bp-teal-deep);color:var(--bp-paper)}
+.btn-out{background:var(--bp-paper);color:var(--bp-teal-deep);border-color:var(--bp-teal-deep)}
+:focus-visible{outline:none;box-shadow:var(--bp-focus)}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;width:max-content}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.st-a{background:var(--bp-st-available-bg);color:var(--bp-st-available-fg)}.st-a i{background:var(--bp-st-available-dot)}
+.st-f{background:var(--bp-st-filling-bg);color:var(--bp-st-filling-fg)}.st-f i{background:var(--bp-st-filling-dot)}
+.st-l{background:var(--bp-st-limited-bg);color:var(--bp-st-limited-fg)}.st-l i{background:var(--bp-st-limited-dot)}
+.st-c{background:var(--bp-st-check-bg);color:var(--bp-st-check-fg)}.st-c i{background:var(--bp-st-check-dot)}
+.label{position:absolute;right:12px;top:10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-gold);font-weight:700;opacity:.85;z-index:2}
+.label.m3{top:14px;right:20px;font-size:12px;opacity:1;border:1px solid var(--bp-gold);border-radius:999px;padding:4px 10px;line-height:1}
+
+/* A0 chrome */
+.chrome{position:sticky;top:0;z-index:40;background:var(--bp-teal-ink);border-bottom:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px}
+@media(min-width:1024px){.chrome .wrap{min-height:72px}}
+.chrome img{height:30px;width:auto;display:block}
+@media(min-width:1024px){.chrome img{height:36px}}
+.chrome nav{display:none;gap:4px;font-size:14px;font-weight:600}
+.chrome nav a{text-decoration:none;padding:14px 10px;display:inline-flex;align-items:center;min-height:48px}
+@media(min-width:1024px){.chrome nav{display:flex}}
+.chrome .right{display:flex;gap:10px;align-items:center}
+.switch{font-size:13px;font-weight:700;padding:0 12px;min-height:40px;display:inline-flex;align-items:center;border-radius:999px;background:var(--bp-chrome-chip);border:1px solid var(--bp-hero-line);color:var(--bp-hero-fg)}
+.chrome .btn{min-height:48px;padding:8px 14px;font-size:14px}
+.switch{white-space:nowrap}.switch .abbr{display:none}@media(max-width:600px){.switch .full{display:none}.switch .abbr{display:inline}}
+.band{height:24px;background:var(--bp-hero-bg)}
+
+/* flags */
+.flag{width:24px;height:16px;border-radius:3px;display:inline-block;flex:none;border:1px solid var(--bp-flag-line)}
+.f-it{background:linear-gradient(90deg,#009246 33%,#fff 33% 66%,#CE2B37 66%)}.f-fr{background:linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)}.f-es{background:linear-gradient(180deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)}.f-pt{background:linear-gradient(90deg,#006600 40%,#FF0000 40%)}.f-nl{background:linear-gradient(180deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)}.f-de{background:linear-gradient(180deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)}.f-ch{background:linear-gradient(#fff,#fff) 50% 50%/60% 20% no-repeat,linear-gradient(#fff,#fff) 50% 50%/20% 60% no-repeat,#D52B1E}.f-gr{background:repeating-linear-gradient(180deg,#0D5EAF 0 11%,#fff 11% 22%)}.f-at{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#ED2939 66%)}.f-be{background:linear-gradient(90deg,#000 33%,#FAE042 33% 66%,#ED2939 66%)}.f-bg{background:linear-gradient(180deg,#fff 33%,#00966E 33% 66%,#D62612 66%)}.f-hr{background:linear-gradient(180deg,#FF0000 33%,#fff 33% 66%,#171796 66%)}.f-cz{background:linear-gradient(110deg,#11457E 38%,transparent 38%),linear-gradient(180deg,#fff 50%,#D7141A 50%)}.f-dk{background:linear-gradient(#fff,#fff) 0 50%/100% 20% no-repeat,linear-gradient(#fff,#fff) 32% 0/16% 100% no-repeat,#C60C30}.f-ee{background:linear-gradient(180deg,#0072CE 33%,#000 33% 66%,#fff 66%)}.f-fi{background:linear-gradient(#003580,#003580) 0 50%/100% 22% no-repeat,linear-gradient(#003580,#003580) 32% 0/16% 100% no-repeat,#fff}.f-hu{background:linear-gradient(180deg,#CE2939 33%,#fff 33% 66%,#477050 66%)}.f-is{background:linear-gradient(#DC1E35,#DC1E35) 0 50%/100% 14% no-repeat,linear-gradient(#DC1E35,#DC1E35) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#02529C}.f-lv{background:linear-gradient(180deg,#9E3039 40%,#fff 40% 60%,#9E3039 60%)}.f-li{background:linear-gradient(180deg,#002B7F 50%,#CE1126 50%)}.f-lt{background:linear-gradient(180deg,#FDB913 33%,#006A44 33% 66%,#C1272D 66%)}.f-lu{background:linear-gradient(180deg,#ED2939 33%,#fff 33% 66%,#00A1DE 66%)}.f-mt{background:linear-gradient(90deg,#fff 50%,#CF142B 50%)}.f-no{background:linear-gradient(#002868,#002868) 0 50%/100% 14% no-repeat,linear-gradient(#002868,#002868) 32% 0/10% 100% no-repeat,linear-gradient(#fff,#fff) 0 50%/100% 26% no-repeat,linear-gradient(#fff,#fff) 30% 0/18% 100% no-repeat,#BA0C2F}.f-pl{background:linear-gradient(180deg,#fff 50%,#DC143C 50%)}.f-ro{background:linear-gradient(90deg,#002B7F 33%,#FCD116 33% 66%,#CE1126 66%)}.f-sk{background:linear-gradient(180deg,#fff 33%,#0B4EA2 33% 66%,#EE1C25 66%)}.f-si{background:linear-gradient(180deg,#fff 33%,#005DA4 33% 66%,#ED1C24 66%)}.f-se{background:linear-gradient(#FECC00,#FECC00) 0 50%/100% 20% no-repeat,linear-gradient(#FECC00,#FECC00) 32% 0/16% 100% no-repeat,#006AA7}
+
+/* A2 layout + rail */
+.body3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+@media(min-width:1024px){.body3{grid-template-columns:minmax(0,1fr) 300px;gap:32px}}
+
+/* map + list split */
+.mapmain{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+@media(min-width:900px){.mapmain{grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}}
+.maptoggle{display:inline-flex}
+@media(min-width:900px){.maptoggle{display:none}}
+.mapwrap{display:none;margin-top:14px}
+.mapwrap.open{display:block}
+@media(min-width:900px){.mapwrap{display:block;margin-top:0;position:sticky;top:88px}}
+.mapcard{border:1px solid var(--bp-line);border-radius:18px;background:var(--bp-paper-tint);padding:16px}
+.mapcard svg{display:block;width:100%;height:auto;max-width:320px;margin:0 auto}
+.node{cursor:pointer}
+.node circle.dot{transition:r .15s ease,stroke-width .15s ease}
+.node:hover circle.dot,.node:focus circle.dot{stroke:var(--bp-teal-ink);stroke-width:2.5}
+.node:focus{outline:none}
+.node-a{fill:var(--bp-st-available-dot)}
+.node-f{fill:var(--bp-st-filling-dot)}
+.node-l{fill:var(--bp-st-limited-dot)}
+.node-c{fill:var(--bp-st-check-dot)}
+.maplegend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-size:12px;color:var(--bp-muted)}
+.maplegend span{display:inline-flex;align-items:center;gap:6px}
+.maplegend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.maphint{font-size:13px;color:var(--bp-muted);margin:10px 2px 0}
+
+/* tier subheads: wraps to its own line under 480px so the count label never overflows */
+.tier{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;row-gap:6px;margin:28px 0 4px}
+.tier:first-of-type{margin-top:0}
+.tier h3{font-size:18px;letter-spacing:-.01em;line-height:1.2;flex:none;margin:0}
+.tier .rule{flex:1;height:1px;background:var(--bp-gold);align-self:center;min-width:24px}
+.tier .n{flex:none;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-gold-text)}
+@media(max-width:480px){.tier .rule{display:none}.tier .n{flex:1 1 100%}}
+
+/* dense accordion rows (reused from M2): 56px collapsed line */
+.denselist{display:flex;flex-direction:column;border-top:1px solid var(--bp-line)}
+.crow{border-bottom:1px solid var(--bp-line);transition:background-color .5s ease;scroll-margin-top:96px}
+.crow.pulse{background-color:#FBF2DD}
+.crow-h{display:flex;align-items:center;gap:10px;width:100%;min-height:56px;background:none;border:0;padding:8px 36px 8px 8px;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer;position:relative}
+.crow-h:hover{background:var(--bp-paper-tint)}
+.crow-h .flag{flex:none}
+.crow-h .cn{font-weight:700;font-size:16px;flex:1 1 auto;min-width:40px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crow-h .cop{font-size:13px;color:var(--bp-muted);flex:1 1 120px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:none}
+@media(min-width:1180px){.crow-h .cop{display:block}}
+.crow-h .pill{flex:none}
+.crow-h .cfee{flex:none;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap;color:var(--bp-ink)}
+.crow-h .chev{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--bp-muted);stroke-width:1.5;fill:none;transition:transform .2s ease;flex:none}
+.crow-h[aria-expanded="true"] .chev{transform:translateY(-50%) rotate(180deg)}
+.crow-body{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.crow-body-in{padding:2px 8px 24px 38px;display:grid;gap:14px;max-width:72ch}
+.crow-body dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;margin:0;font-size:15px}
+@media(max-width:480px){.crow-body dl{grid-template-columns:1fr;gap:3px}.crow-body-in{padding-left:8px}}
+.crow-body dt{color:var(--bp-muted);font-weight:600;margin:0}
+.crow-body dd{margin:0}
+.crow-body .fee2{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--bp-line);border-bottom:1px solid var(--bp-line);padding:14px 0}
+.crow-body .fee2 span{display:grid;gap:2px}
+.crow-body .fee2 .k{font-size:13px;color:var(--bp-muted)}
+.crow-body .fee2 .v{font-family:var(--bp-font-display);font-size:20px;font-variant-numeric:tabular-nums lining-nums}
+
+/* rail */
+.rail{display:none}
+@media(min-width:1024px){.rail{display:grid;gap:12px;position:sticky;top:88px}}
+.rail .consult{background:var(--bp-paper);border:1px solid var(--bp-line);border-radius:18px;padding:20px;display:grid;gap:10px}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--bp-teal-deep);color:var(--bp-paper);display:flex;align-items:center;justify-content:center;font-family:var(--bp-font-display);font-size:26px}
+.rail h3{font-size:20px}
+.rail p{margin:0;font-size:15px;color:var(--bp-muted)}
+.rail .hours{display:grid;gap:4px;font-size:14px;border-top:1px solid var(--bp-line);padding-top:10px}
+.rail .hours b{color:var(--bp-ink)}
+.rail a.mail{color:var(--bp-teal-deep);font-weight:600;display:inline-flex;align-items:center;min-height:48px}
+.rail .note{font-size:13px;color:var(--bp-muted);border-left:3px solid var(--bp-gold);padding:8px 12px;background:var(--bp-paper-tint);border-radius:8px}
+/* mobile bottom sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--bp-sheet-bg);border-top:1px solid var(--bp-hero-line);color:var(--bp-hero-fg);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center}
+.sheet .avatar{width:40px;height:40px;font-size:18px;background:var(--bp-teal);color:var(--bp-teal-night)}
+.sheet b{display:block;font-size:14px}.sheet span{font-size:13px;color:var(--bp-hero-muted)}
+.sheet .btn{min-height:48px;padding:10px 16px;font-size:15px}
+@media(min-width:1024px){.sheet{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="chrome"><span class="label">A0</span><div class="wrap">
+<img src="brand/bp-logo-v2-tealgold.svg" alt="Beyond Passports" width="190" height="36">
+<nav aria-label="Primary"><a href="#grid">Destinations</a><a href="#">Events</a><a href="#">Trip ideas</a><a href="#">Tools</a><a href="#">Fees</a><a href="#">Questions</a></nav>
+<div class="right"><span class="switch"><span class="full">South Africa · ZAR</span><span class="abbr" aria-label="South Africa, ZAR">ZA · ZAR</span></span><a class="btn btn-ghost" href="#">WhatsApp</a></div>
+</div></header>
+
+<div class="band" aria-hidden="true"></div>
+
+<main id="main">
+<section id="grid"><span class="label m3">M3</span><div class="wrap body3">
+<div>
+<h2>All 29 destinations</h2>
+<p class="sub">An abstract map, not an atlas. Tap a country to jump straight to its fee, documents and last-checked line in the list.</p>
+
+<button class="btn btn-out maptoggle" id="mapToggleBtn" aria-expanded="false" aria-controls="mapwrap">Show the map</button>
+
+<div class="mapmain">
+<div class="mapwrap" id="mapwrap">
+<div class="mapcard">
+<svg id="mapSvg" viewBox="0 0 320 400" role="img" aria-label="Simplified map of the 29 Schengen destinations, coloured by appointment status">
+  <path d="M30,60 C60,20 140,10 200,25 C260,35 300,70 290,130 C300,180 270,230 230,270 C200,310 150,320 110,300 C70,290 40,260 35,220 C10,170 15,110 30,60 Z" fill="var(--bp-paper)" stroke="var(--bp-line)" stroke-width="1.5"></path>
+  <text x="62" y="18" font-size="9" letter-spacing="1" fill="var(--bp-muted)" font-family="var(--bp-font-body)" font-weight="700">NORDICS</text>
+  <text x="248" y="58" font-size="9" letter-spacing="1" fill="var(--bp-muted)" font-family="var(--bp-font-body)" font-weight="700">BALTICS</text>
+  <text x="18" y="252" font-size="9" letter-spacing="1" fill="var(--bp-muted)" font-family="var(--bp-font-body)" font-weight="700">IBERIA</text>
+  <text x="210" y="300" font-size="9" letter-spacing="1" fill="var(--bp-muted)" font-family="var(--bp-font-body)" font-weight="700">SE EUROPE</text>
+  <g id="mapLines" stroke="var(--bp-gold)" stroke-opacity=".35" stroke-width="1"></g>
+  <g id="mapNodes"></g>
+</svg>
+</div>
+<div class="maplegend">
+<span><i style="background:var(--bp-st-available-dot)"></i>Dates seen</span>
+<span><i style="background:var(--bp-st-filling-dot)"></i>Filling</span>
+<span><i style="background:var(--bp-st-limited-dot)"></i>Limited</span>
+<span><i style="background:var(--bp-st-check-dot)"></i>We check for you</span>
+</div>
+<p class="maphint">Not to scale. Position is a rough guide only, tap a country to confirm it in the list.</p>
+</div>
+
+<div class="maplist">
+<div class="tier"><h3 id="t1h">Checked by a person this week</h3><span class="rule" aria-hidden="true"></span><span class="n">6 destinations</span></div>
+<div class="denselist" id="grp1" aria-labelledby="t1h"></div>
+
+<div class="tier"><h3 id="t2h">We check for you</h3><span class="rule" aria-hidden="true"></span><span class="n">23 destinations</span></div>
+<div class="denselist" id="grp2" aria-labelledby="t2h"></div>
+</div>
+</div>
+</div>
+
+<aside class="rail" aria-label="Your consultant">
+<div class="consult"><div class="avatar" aria-hidden="true">C</div>
+<h3>Chloe, your consultant for South Africa</h3>
+<p>A person reads every message. No bot, no ticket queue.</p>
+<div class="hours"><span><b>WhatsApp and email</b></span><span>8am to 8pm SAST, Monday to Saturday</span><span>Reply the same working day</span></div>
+<a class="btn btn-deep" href="#">Message Chloe on WhatsApp</a>
+<a class="mail" href="#">hello@beyondpassports.com</a>
+</div>
+<div class="note">Appointments are free on the official sites. We never hold, sell or book one in our name. You book in yours, with us on WhatsApp while you do it.</div>
+</aside>
+</div></section>
+</main>
+
+<div class="sheet" aria-label="Your consultant"><div class="avatar" aria-hidden="true">C</div><div><b>Chloe, your consultant</b><span>A person reads every message. 8am to 8pm SAST.</span></div><a class="btn btn-p" href="#">WhatsApp</a></div>
+
+<script>
+var DATA=[
+{c:'it',name:'Italy',tier:1,op:'VFS Global',centre:'Johannesburg and Cape Town',mode:'Online calendar',docs:'11 documents, 1 common mistake',state:'a',stateLabel:'Dates seen',checked:'Last checked Mon 6 Oct 2026, 14:05 by Chloe',x:178,y:215},
+{c:'fr',name:'France',tier:1,op:'Capago',centre:'Sandton and Cape Town',mode:'Online calendar',docs:'10 documents, 1 common mistake',state:'f',stateLabel:'Filling',checked:'Last checked Mon 6 Oct 2026, 14:12 by Chloe',x:110,y:172},
+{c:'es',name:'Spain',tier:1,op:'BLS International',centre:'Cape Town and Pretoria',mode:'Online calendar',docs:'10 documents, 1 common mistake',state:'c',stateLabel:'We check for you',checked:'Not yet checked. We check for you.',x:65,y:222},
+{c:'pt',name:'Portugal',tier:1,op:'VFS Global',centre:'Johannesburg',mode:'Online calendar',docs:'10 documents, 1 common mistake',state:'l',stateLabel:'Limited',checked:'Last checked Mon 6 Oct 2026, 14:20 by Chloe',x:35,y:232},
+{c:'nl',name:'Netherlands',tier:1,op:'VFS Global',centre:'Cape Town',mode:'Online calendar',docs:'10 documents, 1 common mistake',state:'c',stateLabel:'None seen this week',checked:'Last checked Mon 6 Oct 2026, 14:26 by Chloe',x:140,y:130},
+{c:'de',name:'Germany',tier:1,op:'TLScontact',centre:'Pretoria',mode:'Waitlist, then allocation',docs:'10 documents, 1 common mistake',state:'c',stateLabel:'Gated, per client',checked:'Checked per client only. We check for you.',x:165,y:135},
+{c:'ch',name:'Switzerland',tier:2,op:'VFS Global (to verify)',centre:'Centre to verify',mode:'Online calendar',x:158,y:172},
+{c:'gr',name:'Greece',tier:2,op:'GVCW (to verify)',centre:'Centre to verify',mode:'Online calendar',x:235,y:262},
+{c:'at',name:'Austria',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:190,y:172},
+{c:'be',name:'Belgium',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:128,y:148},
+{c:'bg',name:'Bulgaria',tier:2,op:'Embassy direct (to verify)',centre:'Pretoria',mode:'Email queue',x:235,y:172},
+{c:'hr',name:'Croatia',tier:2,op:'Embassy direct (to verify)',centre:'Pretoria',mode:'Email queue',x:198,y:182},
+{c:'cz',name:'Czechia',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:180,y:128},
+{c:'dk',name:'Denmark',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:165,y:95},
+{c:'ee',name:'Estonia',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:235,y:70},
+{c:'fi',name:'Finland',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:230,y:35},
+{c:'hu',name:'Hungary',tier:2,op:'Embassy direct (to verify)',centre:'Pretoria',mode:'Email queue',x:205,y:152},
+{c:'is',name:'Iceland',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:40,y:30},
+{c:'lv',name:'Latvia',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:235,y:85},
+{c:'li',name:'Liechtenstein',tier:2,op:'VFS Global (to verify)',centre:'Centre to verify',mode:'Online calendar',x:168,y:165},
+{c:'lt',name:'Lithuania',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:225,y:100},
+{c:'lu',name:'Luxembourg',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:136,y:160},
+{c:'mt',name:'Malta',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:175,y:285},
+{c:'no',name:'Norway',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:150,y:35},
+{c:'pl',name:'Poland',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:198,y:110},
+{c:'ro',name:'Romania',tier:2,op:'Embassy direct (to verify)',centre:'Pretoria',mode:'Email queue',x:230,y:150},
+{c:'sk',name:'Slovakia',tier:2,op:'Embassy direct (to verify)',centre:'Pretoria',mode:'Email queue',x:205,y:130},
+{c:'si',name:'Slovenia',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg',mode:'Online calendar',x:188,y:172},
+{c:'se',name:'Sweden',tier:2,op:'VFS Global (to verify)',centre:'Johannesburg and Cape Town',mode:'Online calendar',x:185,y:45}
+];
+DATA.forEach(function(d){
+  if(d.tier===2){
+    d.docs='Checklist by status, 1 common mistake';
+    d.state='c';
+    d.stateLabel='We check for you';
+    d.checked='Not yet checked. We check for you.';
+  }
+});
+var BYCODE={};
+DATA.forEach(function(d){BYCODE[d.c]=d;});
+
+/* list, reusing M2's compact row style */
+function rowHtml(d){
+  var id='d-'+d.c;
+  return '<div class="crow" id="row-'+d.c+'">'
+    +'<button class="crow-h" id="h-'+d.c+'" aria-expanded="false" aria-controls="'+id+'" aria-label="'+d.name+', '+d.stateLabel+'">'
+      +'<i class="flag f-'+d.c+'" aria-hidden="true"></i>'
+      +'<span class="cn">'+d.name+'</span>'
+      +'<span class="cop">'+d.op.replace(' (to verify)','')+' &middot; '+d.centre+'</span>'
+      +'<span class="pill st-'+d.state+'"><i></i>'+d.stateLabel+'</span>'
+      +'<span class="cfee">R2,490</span>'
+      +'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
+    +'</button>'
+    +'<div class="crow-body" id="'+id+'" role="region" aria-labelledby="h-'+d.c+'">'
+      +'<div class="crow-body-in">'
+        +'<dl>'
+          +'<dt>Operator and centre</dt><dd>'+d.op+' &middot; '+d.centre+'</dd>'
+          +'<dt>Booking mode</dt><dd>'+d.mode+'</dd>'
+          +'<dt>Documents</dt><dd>'+d.docs+'</dd>'
+          +'<dt>Last checked</dt><dd>'+d.checked+'</dd>'
+        +'</dl>'
+        +'<div class="fee2"><span><span class="k">Our fee</span><span class="v">R2,490</span></span><span><span class="k">Consular fee</span><span class="v">EUR 90</span></span></div>'
+        +'<a class="btn btn-deep" href="#">Ask Chloe about '+d.name+' on WhatsApp</a>'
+      +'</div>'
+    +'</div>'
+  +'</div>';
+}
+document.getElementById('grp1').innerHTML=DATA.filter(function(d){return d.tier===1}).map(rowHtml).join('');
+document.getElementById('grp2').innerHTML=DATA.filter(function(d){return d.tier===2}).map(rowHtml).join('');
+
+function expand(btn){
+  btn.setAttribute('aria-expanded','true');
+  var body=document.getElementById(btn.getAttribute('aria-controls'));
+  body.style.maxHeight=body.scrollHeight+'px';
+}
+function collapse(btn){
+  btn.setAttribute('aria-expanded','false');
+  var body=document.getElementById(btn.getAttribute('aria-controls'));
+  body.style.maxHeight='0px';
+}
+document.querySelectorAll('.crow-h').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    if(btn.getAttribute('aria-expanded')==='true') collapse(btn); else expand(btn);
+  });
+});
+window.addEventListener('resize',function(){
+  document.querySelectorAll('.crow-h[aria-expanded="true"]').forEach(function(btn){
+    var body=document.getElementById(btn.getAttribute('aria-controls'));
+    body.style.maxHeight=body.scrollHeight+'px';
+  });
+});
+
+/* map nodes + connective hairlines */
+var PAIRS=[['is','no'],['no','se'],['se','fi'],['no','dk'],
+['dk','nl'],['nl','be'],['be','lu'],['nl','de'],
+['de','ch'],['ch','fr'],['fr','es'],['es','pt'],
+['ch','at'],['at','de'],['at','it'],['ch','it'],
+['fr','it'],['at','si'],['si','hr'],['hr','bg'],
+['at','hu'],['hu','ro'],['ro','bg'],['de','pl'],
+['pl','cz'],['cz','sk'],['sk','hu'],['pl','lt'],
+['lt','lv'],['lv','ee'],['it','mt'],['gr','bg']];
+var linesG=document.getElementById('mapLines');
+PAIRS.forEach(function(p){
+  var a=BYCODE[p[0]], b=BYCODE[p[1]];
+  if(!a||!b) return;
+  var el=document.createElementNS('http://www.w3.org/2000/svg','line');
+  el.setAttribute('x1',a.x);el.setAttribute('y1',a.y);
+  el.setAttribute('x2',b.x);el.setAttribute('y2',b.y);
+  linesG.appendChild(el);
+});
+
+var nodesG=document.getElementById('mapNodes');
+DATA.forEach(function(d){
+  var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('class','node');
+  g.setAttribute('tabindex','0');
+  g.setAttribute('role','button');
+  g.setAttribute('data-code',d.c);
+  g.setAttribute('aria-label',d.name+', '+d.stateLabel);
+  var hit=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  hit.setAttribute('cx',d.x);hit.setAttribute('cy',d.y);hit.setAttribute('r',26);hit.setAttribute('fill','transparent');
+  var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  dot.setAttribute('class','dot node-'+d.state);
+  dot.setAttribute('cx',d.x);dot.setAttribute('cy',d.y);dot.setAttribute('r',6);
+  dot.setAttribute('stroke','#fff');dot.setAttribute('stroke-width','1.5');
+  g.appendChild(hit);g.appendChild(dot);
+  nodesG.appendChild(g);
+});
+
+function goToDestination(code){
+  var row=document.getElementById('row-'+code);
+  if(!row) return;
+  var btn=row.querySelector('.crow-h');
+  document.querySelectorAll('.crow-h[aria-expanded="true"]').forEach(function(b){ if(b!==btn) collapse(b); });
+  expand(btn);
+  row.scrollIntoView({behavior:'smooth',block:'center'});
+  row.classList.add('pulse');
+  setTimeout(function(){row.classList.remove('pulse');},1600);
+}
+nodesG.querySelectorAll('.node').forEach(function(node){
+  node.addEventListener('click',function(){ goToDestination(node.getAttribute('data-code')); });
+  node.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goToDestination(node.getAttribute('data-code')); }
+  });
+});
+
+/* mobile map toggle */
+var mapToggleBtn=document.getElementById('mapToggleBtn');
+var mapwrap=document.getElementById('mapwrap');
+mapToggleBtn.addEventListener('click',function(){
+  var open=mapwrap.classList.toggle('open');
+  mapToggleBtn.setAttribute('aria-expanded',open?'true':'false');
+  mapToggleBtn.textContent=open?'Hide the map':'Show the map';
+});
+</script>
+</body>
+</html>
