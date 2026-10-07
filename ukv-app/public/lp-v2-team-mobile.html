@@ -1,0 +1,142 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Team section — premium mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel=stylesheet>
+<style>
+:root{--navy:#0B1528;--gold:#C5963A;--muted:#5b6b7d;--sans:'Inter',system-ui,sans-serif;--serif:'DM Serif Display',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:#20272f;padding:22px 14px 60px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+.wrap{width:390px}
+.cap{text-align:center;color:#fff;font:800 13px var(--sans);margin-bottom:2px}
+.csub{text-align:center;color:#9fb0c4;font:600 11px var(--sans);margin-bottom:12px}
+.phone{width:390px;border-radius:24px;overflow:hidden;box-shadow:0 34px 74px -22px rgba(0,0,0,.7)}
+.sec{background:linear-gradient(160deg,#0B1528,#12224a);padding:32px 18px 30px;color:#fff}
+.eyebrow{display:inline-block;font:800 11px var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.hd{text-align:center;margin-bottom:22px}
+.hd h2{font-family:var(--serif);font-weight:400;font-size:27px;color:#fff;line-height:1.14;margin-top:9px}
+.hd h2 em{font-style:italic;color:var(--gold)}
+.badge{display:inline-flex;align-items:center;gap:5px;font:700 11px var(--sans);padding:5px 10px;border-radius:999px;background:rgba(197,150,58,.14);color:#e6c885}
+.badge svg{width:12px;height:12px}
+.avail{display:inline-flex;align-items:center;gap:7px;font:600 12.5px var(--sans);color:#86efac}
+.avail span.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.body{font:400 15px var(--sans);color:rgba(255,255,255,.82);line-height:1.65}
+.trust{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 18px;margin:20px 0}
+.trust .t{display:flex;gap:9px;align-items:flex-start;padding:7px 0;font:500 13.5px var(--sans);color:rgba(255,255,255,.82)}
+.trust .t span.ck{color:var(--gold);flex:none;font-weight:800}
+.cta{display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(180deg,#E8CB8E,#C5963A);color:#3d2b08;font:800 15px var(--sans);height:52px;border-radius:13px;text-decoration:none;box-shadow:0 16px 30px -14px rgba(197,150,58,.7)}
+
+/* A profile hero */
+.a-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:24px 20px;text-align:center}
+.a-card img.lead{width:92px;height:92px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;outline:4px solid rgba(255,255,255,.1)}
+.a-nm{font:700 20px var(--sans);color:#fff}
+.a-ro{font:600 13px var(--sans);color:var(--gold);margin:2px 0 14px}
+.a-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.a-also{border-top:1px solid rgba(255,255,255,.1);margin-top:18px;padding-top:16px;text-align:left}
+.a-also .lbl{font:700 11px var(--sans);color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.a-mate{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.a-mate img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
+.a-mate .mn{font:700 14px var(--sans);color:#fff}
+.a-mate .mr{font:600 12px var(--sans);color:rgba(255,255,255,.55)}
+
+/* B spotlight */
+.b-wrap{text-align:center}
+.b-photo{position:relative;width:118px;margin:0 auto 14px}
+.b-photo img{width:118px;height:118px;border-radius:50%;object-fit:cover;display:block;outline:3px solid var(--gold);outline-offset:3px}
+.b-nm{font:700 21px var(--sans);color:#fff}
+.b-ro{font:600 13px var(--sans);color:var(--gold);margin:3px 0 12px}
+.b-badges{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
+.b-team{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 4px}
+.b-stack{display:flex}
+.b-stack img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #12224a;margin-left:-10px}
+.b-stack img:first-child{margin-left:0}
+.b-tcap{font:600 12.5px var(--sans);color:rgba(255,255,255,.7)}
+.b-body{font:400 14.5px var(--sans);color:rgba(255,255,255,.8);line-height:1.62;text-align:center;margin-top:14px}
+
+/* C credential-forward */
+.c-hdr{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.c-hdr img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;outline:2px solid rgba(197,150,58,.4)}
+.c-nm{font:700 17px var(--sans);color:#fff}
+.c-ro{font:600 12px var(--sans);color:var(--gold);margin:1px 0 4px}
+.c-trust{background:rgba(197,150,58,.06);border:1px solid rgba(197,150,58,.24);border-radius:18px;padding:18px 18px 16px}
+.c-trust .lbl{font:800 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.c-trust .t{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font:600 13.5px var(--sans);color:rgba(255,255,255,.86);border-top:1px solid rgba(255,255,255,.07)}
+.c-trust .t:first-of-type{border-top:0}
+.c-trust .t svg{width:16px;height:16px;color:#4ade80;flex:none;margin-top:1px}
+.c-team{display:flex;align-items:center;gap:10px;margin:16px 0}
+.c-team .st{display:flex}
+.c-team .st img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #0f1d3f;margin-left:-9px}
+.c-team .st img:first-child{margin-left:0}
+.c-team .cap{font:600 12px var(--sans);color:rgba(255,255,255,.65)}
+.c-body{font:400 14px var(--sans);color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:20px}
+</style></head><body>
+
+<svg width=0 height=0 style=position:absolute><symbol id=ck viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round/></symbol></svg>
+
+<!-- ===== A ===== -->
+<div class=wrap>
+ <div class=cap>A &middot; profile hero + trust</div><div class=csub>Sarah card up top, then story + credentials + CTA</div>
+ <div class=phone><div class=sec>
+  <div class=hd><span class=eyebrow>The team behind every case</span><h2>Real consultants. <em>Not a call centre. Not a chatbot.</em></h2></div>
+  <div class=a-card>
+   <img class=lead src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore">
+   <div class=a-nm>Sarah</div><div class=a-ro>Lead Consultant · Beyond Passports</div>
+   <div class=a-badges><span class=badge><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.9 stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Companies House</span><span class=badge><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.9><rect x=5 y=11 width=14 height=9 rx=2/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>ICO Registered</span></div>
+   <div class=avail><span class=dot></span>Available now · Mon to Sat, 9am to 7pm</div>
+   <div class=a-also><div class=lbl>Also on your case</div>
+    <div class=a-mate><img src="https://beyondpassports.co.uk/assets/img/team/james-whitfield-operations.jpg" alt="James Whitfield"><div><div class=mn>James</div><div class=mr>Document review specialist</div></div></div>
+    <div class=a-mate style=margin-bottom:0><img src="https://beyondpassports.co.uk/assets/img/team/zayla-ferreira-appointments.jpg" alt="Zayla Ferreira"><div><div class=mn>Zayla</div><div class=mr>Appointment and scheduling</div></div></div>
+   </div>
+  </div>
+  <p class=body style=margin-top:22px>Sarah leads the team and has handled 243 Schengen visa applications for UK residents on non-EU passports since 2019. Every case is reviewed personally. Your documents are read, the gaps are found, and you are told exactly what to fix before your appointment. Not a template response. Not a generic checklist.<br><br>You message on WhatsApp. Our team replies within 30 minutes. Everything is in writing, so you always have a record of what was said and what was agreed.</p>
+  <div class=trust>
+   <div class=t><span class=ck>✓</span>Companies House registered: #17331903</div>
+   <div class=t><span class=ck>✓</span>ICO Data Protection registered: ZC197159</div>
+   <div class=t><span class=ck>✓</span>UK registered address: 44 James Ln, London E10 6HZ</div>
+   <div class=t><span class=ck>✓</span>97% approval rate across 243 cases (Jan 2024 to Aug 2026)</div>
+  </div>
+  <a class=cta href="#" onclick="return false">Start my case</a>
+ </div></div>
+</div>
+
+<!-- ===== B ===== -->
+<div class=wrap>
+ <div class=cap>B &middot; centered spotlight</div><div class=csub>big portrait, team avatar stack, centered story</div>
+ <div class=phone><div class=sec>
+  <div class=hd><span class=eyebrow>The team behind every case</span><h2>Real consultants. <em>Not a call centre. Not a chatbot.</em></h2></div>
+  <div class=b-wrap>
+   <div class=b-photo><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore"></div>
+   <div class=b-nm>Sarah</div><div class=b-ro>Lead Consultant · Beyond Passports</div>
+   <div class=b-badges><span class=badge><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.9 stroke-linejoin=round><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Companies House</span><span class=badge><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.9><rect x=5 y=11 width=14 height=9 rx=2/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>ICO Registered</span></div>
+   <div class=avail><span class=dot></span>Available now · Mon to Sat, 9am to 7pm</div>
+   <div class=b-team><span class=b-stack><img src="https://beyondpassports.co.uk/assets/img/team/james-whitfield-operations.jpg" alt=James><img src="https://beyondpassports.co.uk/assets/img/team/zayla-ferreira-appointments.jpg" alt=Zayla></span><span class=b-tcap>James &amp; Zayla also on your case</span></div>
+   <p class=b-body>Sarah leads the team and has handled 243 Schengen visa applications for UK residents on non-EU passports since 2019. Every case is reviewed personally. Your documents are read, the gaps are found, and you are told exactly what to fix before your appointment. Not a template response. Not a generic checklist.<br><br>You message on WhatsApp. Our team replies within 30 minutes. Everything is in writing, so you always have a record.</p>
+  </div>
+  <div class=trust>
+   <div class=t><span class=ck>✓</span>Companies House registered: #17331903</div>
+   <div class=t><span class=ck>✓</span>ICO Data Protection registered: ZC197159</div>
+   <div class=t><span class=ck>✓</span>UK registered address: 44 James Ln, London E10 6HZ</div>
+   <div class=t><span class=ck>✓</span>97% approval rate across 243 cases (Jan 2024 to Aug 2026)</div>
+  </div>
+  <a class=cta href="#" onclick="return false">Start my case</a>
+ </div></div>
+</div>
+
+<!-- ===== C ===== -->
+<div class=wrap>
+ <div class=cap>C &middot; credential-forward</div><div class=csub>compact lead, trust checklist as hero, team stack</div>
+ <div class=phone><div class=sec>
+  <div class=hd><span class=eyebrow>The team behind every case</span><h2>Real consultants. <em>Not a call centre. Not a chatbot.</em></h2></div>
+  <div class=c-hdr><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt="Sarah Whitmore"><div><div class=c-nm>Sarah</div><div class=c-ro>Lead Consultant · Beyond Passports</div><div class=avail><span class=dot></span>Available · Mon to Sat, 9am to 7pm</div></div></div>
+  <div class=c-trust>
+   <div class=lbl>Verified &amp; registered</div>
+   <div class=t><svg viewBox="0 0 24 24"><use href=#ck /></svg>Companies House registered: #17331903</div>
+   <div class=t><svg viewBox="0 0 24 24"><use href=#ck /></svg>ICO Data Protection registered: ZC197159</div>
+   <div class=t><svg viewBox="0 0 24 24"><use href=#ck /></svg>UK registered address: 44 James Ln, London E10 6HZ</div>
+   <div class=t><svg viewBox="0 0 24 24"><use href=#ck /></svg>97% approval rate across 243 cases (Jan 2024 to Aug 2026)</div>
+  </div>
+  <div class=c-team><span class=st><img src="https://beyondpassports.co.uk/assets/img/team/lena-vogel-germany-lead.jpg?v=2" alt=Sarah><img src="https://beyondpassports.co.uk/assets/img/team/james-whitfield-operations.jpg" alt=James><img src="https://beyondpassports.co.uk/assets/img/team/zayla-ferreira-appointments.jpg" alt=Zayla></span><span class=cap>Sarah, James &amp; Zayla on your case</span></div>
+  <p class=c-body>Sarah leads the team and has handled 243 Schengen visa applications for UK residents on non-EU passports since 2019. Every case is reviewed personally. Not a template response. Not a generic checklist. You message on WhatsApp, our team replies within 30 minutes, everything in writing.</p>
+  <a class=cta href="#" onclick="return false">Start my case</a>
+ </div></div>
+</div>
+
+</body></html>

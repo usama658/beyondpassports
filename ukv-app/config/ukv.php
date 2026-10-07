@@ -194,10 +194,10 @@ return [
     'address' => [
         'company' => env('UKV_COMPANY_NAME', 'Beyond Passports Ltd'),
         'company_no' => env('UKV_COMPANY_NO', '17331903'),          // Companies House registration number
-        'line1' => env('UKV_ADDR_LINE1', '337 Express Drive'),  // registered office
-        'line2' => env('UKV_ADDR_LINE2', 'Goodmayes'),
-        'city' => env('UKV_ADDR_CITY', 'Ilford'),
-        'postcode' => env('UKV_ADDR_POSTCODE', 'IG3 9RE'),
+        'line1' => env('UKV_ADDR_LINE1', '44 James Ln'),  // registered office
+        'line2' => env('UKV_ADDR_LINE2', ''),
+        'city' => env('UKV_ADDR_CITY', 'London'),
+        'postcode' => env('UKV_ADDR_POSTCODE', 'E10 6HZ'),
         'country' => env('UKV_ADDR_COUNTRY', 'United Kingdom'),
     ],
 
