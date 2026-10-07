@@ -411,6 +411,11 @@ return [
         // Appointment operators named in copy. Schengen centres run under different operators
         // (VFS Global / TLScontact / BLS) per country, so keep this editable in one place.
         'appointment_operators' => env('UKV_APPOINTMENT_OPERATORS', 'official visa application'),
+
+        // Show company tenure / years-in-business claims ("since 2019", "in N years",
+        // "15+ years combined casework"). OFF hides them sitewide (reversible). Factual
+        // visa-rule years are unaffected.
+        'show_tenure' => (bool) env('UKV_STATS_SHOW_TENURE', true),
     ],
 
     // ── Service pricing ───────────────────────────────────────────────────────

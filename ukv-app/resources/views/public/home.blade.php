@@ -375,7 +375,7 @@
 </div></div></section>
 <section class="tbar-b"><div class="wrap"><div class="row">
   <div><div class="n">4.9★</div><div class="l">Average rating</div></div>
-  <div><div class="n">{{ App\Support\SiteStats::applications() }}</div><div class="l">Applications filed in {{ App\Support\SiteStats::yearsActive() }} years</div></div>
+  <div><div class="n">{{ App\Support\SiteStats::applications() }}</div><div class="l">Applications filed{{ config('ukv.stats.show_tenure') ? ' in '.App\Support\SiteStats::yearsActive().' years' : '' }}</div></div>
   <div><div class="n">{{ $schengenDests->count() }}</div><div class="l">Destinations &amp; growing</div></div>
   @include('partials.ico-stat-cell')
 </div></div></section>

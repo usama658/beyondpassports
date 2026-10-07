@@ -32,6 +32,11 @@ final class LpAssembler
             $html = substr($html, 0, $bpos).$shim.$flow.$utm.substr($html, $bpos);
         }
 
+        // 3. Tenure toggle: strip the baked "since 2019" team line on static pages when off.
+        if (! config('ukv.stats.show_tenure')) {
+            $html = str_replace(' since 2019', '', $html);
+        }
+
         return $html;
     }
 }

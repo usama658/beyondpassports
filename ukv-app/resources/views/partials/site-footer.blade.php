@@ -64,7 +64,7 @@
         </style>
         @endonce
         @endif
-        <p style="max-width:40ch;font-size:12.5px;line-height:1.6;color:#9fb2b0;margin-top:18px"><span style="display:inline-block;font:800 10px 'Outfit',system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#0f1e26;background:#7fd1b4;border-radius:5px;padding:2px 7px;margin-right:7px;vertical-align:1px">Independent</span>UK-based visa &amp; travel consultancy for Schengen applications, since {{ App\Support\SiteStats::foundedYear() }}. Not a government or embassy service; we do not issue visas or decide outcomes. All decisions rest with the relevant authorities.</p>
+        <p style="max-width:40ch;font-size:12.5px;line-height:1.6;color:#9fb2b0;margin-top:18px"><span style="display:inline-block;font:800 10px 'Outfit',system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#0f1e26;background:#7fd1b4;border-radius:5px;padding:2px 7px;margin-right:7px;vertical-align:1px">Independent</span>UK-based visa &amp; travel consultancy for Schengen applications{{ config('ukv.stats.show_tenure') ? ', since '.App\Support\SiteStats::foundedYear() : '' }}. Not a government or embassy service; we do not issue visas or decide outcomes. All decisions rest with the relevant authorities.</p>
       </div>
 @foreach (\App\Support\NavService::footerColumns() as $col)
       <div>
