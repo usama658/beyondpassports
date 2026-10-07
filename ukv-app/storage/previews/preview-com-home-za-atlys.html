@@ -9,7 +9,7 @@
 <style>
 :root{--bp-teal:#30B8B8;--bp-teal-deep:#0F4C5C;--bp-teal-ink:#0B3B47;--bp-teal-night:#06181C;--bp-gold:#D9B46A;--bp-gold-text:#85631E;--bp-ink:#0B1F26;--bp-muted:#4F6A72;--bp-paper:#fff;--bp-paper-tint:#F3F8F9;--bp-line:#DCE6E9;
 --bp-hero-bg:radial-gradient(1200px 520px at 80% -10%,rgba(48,184,184,.30),transparent 60%),#0B3B47;--bp-hero-fg:#F3F8F9;--bp-hero-muted:#BFD6DA;--bp-hero-line:rgba(255,255,255,.16);--bp-glass:rgba(255,255,255,.07);--bp-glass-line:rgba(255,255,255,.17);--bp-highlight:rgba(217,180,106,.55);
---bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
+--bp-bar-line:rgba(217,180,106,.16);--bp-cta-ghost:#B9D3D8;--bp-focus:0 0 0 3px rgba(48,184,184,.55);--bp-glass-blur:10px;--bp-shadow:0 30px 60px -30px rgba(0,0,0,.6);--bp-font-display:"Fraunces",Georgia,serif;--bp-font-body:"Plus Jakarta Sans","Segoe UI",Roboto,Arial,sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -57,29 +57,63 @@ section{padding:56px 0;position:relative;scroll-margin-top:80px}
 .chrome .btn{min-height:48px;padding:8px 14px;font-size:14px}
 .switch{white-space:nowrap}.switch .abbr{display:none}@media(max-width:600px){.switch .full{display:none}.switch .abbr{display:inline}}
 
-/* A1 compact hero + search */
-.hero{padding:36px 0 28px}
-@media(min-width:1024px){.hero{padding:48px 0 36px}}
-.hero h1{font-size:clamp(40px,4.2vw,56px);line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 144;margin:0 0 10px;max-width:22ch}
-@media(min-width:1024px){.hero h1{white-space:nowrap;max-width:none}}
+/* A1 hero (H2s locked) */
+.hero{position:relative;background:var(--bp-hero-bg);color:var(--bp-hero-fg);padding:56px 0 64px;overflow:hidden}
+@media(min-width:1100px){.hero{padding:96px 0 104px}}
+.copy{text-align:center;display:grid;justify-items:center}
+.hero h1{font-family:var(--bp-font-display);font-weight:600;font-variation-settings:"opsz" 144;font-size:clamp(40px,calc(28.4px + 3.094vw),68px);line-height:1.02;letter-spacing:-.02em;margin:0 0 22px;max-width:14ch;text-wrap:balance}
+@media(min-width:1100px){.hero h1{white-space:nowrap;max-width:none;margin-bottom:26px}}
 .hero h1 u{text-decoration:none;background:linear-gradient(transparent 68%,var(--bp-highlight) 68%)}
-.hero .lead{font-size:17px;color:var(--bp-hero-muted);max-width:60ch;margin:0 0 20px}
-@media(min-width:1024px){.hero .lead{font-size:18px}}
-.sbar{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
-.sbar label{display:block;width:100%;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-gold);margin-bottom:2px}
-.sbar .field{flex:1;min-width:240px;position:relative}
-.sbar input{width:100%;height:56px;border:1px solid var(--bp-glass-line);background:rgba(255,255,255,.95);border-radius:14px;padding:0 16px 0 48px;font:inherit;font-size:17px;color:var(--bp-ink)}
-.sbar .field svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--bp-teal-deep);fill:none;stroke-width:1.5;pointer-events:none}
-.sbar .btn{min-height:56px}
-.filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-@media(min-width:1024px){.filters{grid-template-columns:repeat(4,1fr) auto}}
-.filters label{display:grid;gap:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-hero-muted)}
-.filters select{height:48px;border:1px solid var(--bp-glass-line);background:rgba(255,255,255,.10);color:var(--bp-hero-fg);border-radius:12px;padding:0 12px;font:inherit;font-size:15px}
-.filters select option{color:var(--bp-ink)}
-.filters .clear{align-self:end;background:transparent;color:var(--bp-hero-fg);border:2px solid #B9D3D8;border-radius:12px;min-height:48px;padding:0 16px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;grid-column:1/-1}
-@media(min-width:1024px){.filters .clear{grid-column:auto}}
-.trust{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--bp-hero-muted);margin-top:16px}
-.trust span{display:inline-flex;align-items:center;gap:6px}.trust i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold)}
+.lead{font-size:17px;line-height:1.55;color:var(--bp-hero-muted);max-width:56ch;margin:0 auto 36px}
+@media(min-width:1100px){.lead{font-size:18px;margin-bottom:48px}}
+
+.bar{background:var(--bp-glass);border:1px solid var(--bp-glass-line);backdrop-filter:blur(var(--bp-glass-blur));-webkit-backdrop-filter:blur(var(--bp-glass-blur));border-radius:18px;box-shadow:var(--bp-shadow);text-align:left;margin:0}
+@supports not (backdrop-filter:blur(1px)){.bar{background:rgba(255,255,255,.12)}}
+.row{display:grid;grid-template-columns:1fr 1fr;padding:8px}
+.cell{position:relative;min-width:0}
+.cell label{position:absolute;left:16px;top:11px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bp-hero-muted);line-height:1;pointer-events:none}
+.cell.q label{left:46px}
+.cell input,.cell select{display:block;width:100%;height:56px;padding:22px 16px 0;margin:0;background:transparent;border:0;border-radius:12px;color:var(--bp-hero-fg);font:inherit;font-size:16px;line-height:1.3;appearance:none;-webkit-appearance:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell input::placeholder{color:var(--bp-hero-muted);opacity:.85}
+.cell input::-webkit-search-decoration,.cell input::-webkit-search-cancel-button{-webkit-appearance:none}
+.cell.q input{padding-left:46px}
+.cell select{padding-right:38px;cursor:pointer}
+.cell select option{color:var(--bp-ink);background:#fff}
+.cell:focus-within{z-index:1}
+.cell svg{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cell.q svg{left:16px;width:20px;height:20px;stroke:var(--bp-teal)}
+.cell .chev{right:14px;width:16px;height:16px;stroke:var(--bp-hero-muted)}
+/* hairlines: gold at 16%; stacked card below 1100 */
+.cell.q{grid-column:1/-1;border-bottom:1px solid var(--bp-bar-line)}
+.cell.r{border-left:1px solid var(--bp-bar-line)}
+.cell.b{border-bottom:1px solid var(--bp-bar-line)}
+.row .btn{grid-column:1/-1;min-height:56px;padding:0 24px;margin:8px 0 0}
+.row2{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:6px 16px 14px;border-top:1px solid var(--bp-bar-line)}
+.clear{background:transparent;border:0;color:var(--bp-hero-fg);font:inherit;font-weight:700;font-size:15px;min-height:48px;padding:0 8px;margin-left:-8px;cursor:pointer;border-radius:8px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--bp-hero-muted)}
+.clear:hover{color:var(--bp-teal);text-decoration-color:var(--bp-teal)}
+.trust{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;font-weight:500;line-height:1.5;color:var(--bp-hero-muted);padding-bottom:4px}
+.trust span{display:inline-flex;align-items:flex-start;gap:7px}
+.trust i{width:6px;height:6px;border-radius:50%;background:var(--bp-gold);flex:none;margin-top:7px}
+/* single row at 1280 */
+@media(min-width:1100px){
+.row{display:flex;align-items:stretch}
+.cell{flex:1}
+.cell.q{flex:2;border-bottom:0}
+.cell.b{border-bottom:0}
+.cell+.cell{border-left:1px solid var(--bp-bar-line)}
+.row .btn{flex:none;margin:0 0 0 8px}
+.row2{flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:2px 16px}
+.trust{justify-content:flex-end;padding:0}
+}
+
+/* white search cell, glass filters */
+.cell.q{background:var(--bp-paper);border-radius:12px;margin:6px;border-bottom:0}
+.cell.q label{color:var(--bp-muted)}
+.cell.q input{color:var(--bp-ink)}
+.cell.q input::placeholder{color:var(--bp-muted);opacity:.9}
+.cell.q svg{stroke:var(--bp-teal-deep)}
+.cell.q:focus-within{box-shadow:inset 0 0 0 2px var(--bp-teal)}
+@media(min-width:1100px){.cell.q{margin:6px 8px 6px 6px}.cell.q+.cell{border-left:0}}
 
 /* A2 grid + rail */
 .body2{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
@@ -234,22 +268,26 @@ footer p{color:var(--bp-hero-muted);margin:0}
 
 <main id="main">
 <section class="dark hero" id="top"><span class="label">A1</span><div class="wrap">
+<div class="copy">
 <p class="tag">Schengen visa from South Africa</p>
 <h1>Pick your country. See the fee. <u>Ask a person.</u></h1>
 <p class="lead">Twenty-nine Schengen destinations, one fee, a named consultant. We watch the official calendar, you book in your own name, we prepare every page. The consulate decides.</p>
-<form class="sbar" role="search" onsubmit="return false">
-<label for="q">Search a destination</label>
-<div class="field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Italy, Portugal, Netherlands..." autocomplete="off" aria-describedby="count"></div>
-<button class="btn btn-p" type="button" onclick="document.getElementById('grid').scrollIntoView()">Show matches</button>
-</form>
-<div class="filters">
-<label>Operator<select id="f-op"><option value="">Any operator</option><option value="vfs">VFS Global</option><option value="capago">Capago</option><option value="bls">BLS International</option><option value="tls">TLScontact</option><option value="gvcw">GVCW</option><option value="emb">Embassy direct</option></select></label>
-<label>Booking mode<select id="f-mode"><option value="">Any mode</option><option value="calendar">Online calendar</option><option value="waitlist">Waitlist</option><option value="allocation">Allocation</option><option value="email">Email queue</option></select></label>
-<label>Centre city<select id="f-city"><option value="">Any centre</option><option value="johannesburg">Johannesburg</option><option value="cape-town">Cape Town</option><option value="pretoria">Pretoria</option><option value="durban">Durban</option></select></label>
-<label>Dates seen<select id="f-seen"><option value="">Any</option><option value="week">This week</option></select></label>
-<button class="clear" type="button" id="clear">Clear filters</button>
 </div>
+
+<form class="bar" role="search" action="#grid" aria-label="Find a destination" onsubmit="document.getElementById('grid').scrollIntoView();return false">
+<div class="row">
+<div class="cell q"><label for="q">Search a destination</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="q" type="search" name="q" placeholder="Italy, Portugal, Netherlands..." autocomplete="off"></div>
+<div class="cell b"><label for="f-op">Operator</label><select id="f-op" name="operator"><option value="">Any operator</option><option value="vfs">VFS Global</option><option value="capago">Capago</option><option value="bls">BLS International</option><option value="tls">TLScontact</option><option value="gvcw">GVCW</option><option value="emb">Embassy direct</option></select><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div>
+<div class="cell b r"><label for="f-mode">Booking mode</label><select id="f-mode" name="mode"><option value="">Any mode</option><option value="calendar">Online calendar</option><option value="waitlist">Waitlist</option><option value="allocation">Allocation</option><option value="email">Email queue</option></select><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div>
+<div class="cell"><label for="f-city">Centre city</label><select id="f-city" name="city"><option value="">Any centre</option><option value="johannesburg">Johannesburg</option><option value="cape-town">Cape Town</option><option value="pretoria">Pretoria</option><option value="durban">Durban</option></select><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div>
+<div class="cell r"><label for="f-seen">Dates seen</label><select id="f-seen" name="seen"><option value="">Any</option><option value="week">This week</option></select><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div>
+<button class="btn btn-p" type="submit">Show matches</button>
+</div>
+<div class="row2">
+<button class="clear" type="button" id="clear">Clear filters</button>
 <div class="trust"><span><i></i>Independent. Not the government, VFS Global, Capago, BLS, TLScontact or GVCW</span><span><i></i>Companies House 17331903</span><span><i></i>ICO ZC197159</span><span><i></i>POPIA notice</span></div>
+</div>
+</form>
 </div></section>
 
 <section id="grid"><span class="label">A2</span><div class="wrap body2">
