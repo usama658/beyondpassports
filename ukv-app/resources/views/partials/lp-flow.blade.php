@@ -258,8 +258,8 @@ h3.mq{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.18;c
    </div>
 
    <div class=mstep data-k=tim><h3 class=mq>When are you travelling?</h3><p class=msub>Even a rough idea helps.</p><div class="mgrid pg">
-    <button class=mtile onclick="mPk('tim','Within 2 weeks')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Within 2 weeks</b><span class=s1s>Urgent</span></span><span class=s1n>1</span></button>
-    <button class=mtile onclick="mPk('tim','In 2 to 4 weeks')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 2 to 4 weeks</b><span class=s1s>Soon</span></span><span class=s1n>2</span></button>
+    <button class=mtile onclick="mPk('tim','2-3 weeks')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule=evenodd/></svg></span><span class=s1b><b>2-3 weeks</b><span class=s1s>Urgent</span></span><span class=s1n>1</span></button>
+    <button class=mtile onclick="mPk('tim','In a month')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In a month</b><span class=s1s>Soon</span></span><span class=s1n>2</span></button>
     <button class=mtile onclick="mPk('tim','In 1 to 3 months')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path fill-rule=evenodd d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule=evenodd/></svg></span><span class=s1b><b>In 1 to 3 months</b><span class=s1s>Planning</span></span><span class=s1n>3</span></button>
     <button class=mtile onclick="mPk('tim','Just planning ahead')"><span class=s1ic><svg viewBox="0 0 24 24" fill=currentColor><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path fill-rule=evenodd d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule=evenodd/></svg></span><span class=s1b><b>Just planning ahead</b><span class=s1s>No fixed date</span></span><span class=s1n>4</span></button>
    </div></div>
@@ -422,7 +422,7 @@ function mDetailsFill(){
    if((t==='amber'||t==='red')&&lean)snap.insertAdjacentHTML('beforeend','<div class=v-lean>'+PLINFO+lean+'</div>');}
   return;
  }
- var amber=/within 2 weeks/i.test(tim)||/complex/i.test(ST.intent||'');
+ var amber=/(within 2 weeks|2-3 weeks)/i.test(tim)||/complex/i.test(ST.intent||'');
  if(badge){badge.style.display='none';}
  if(head)head.textContent=amber?'Your case needs a human look.':'Good news. You look eligible.';
  if(sub)sub.innerHTML=amber
@@ -514,8 +514,8 @@ window.mPcFull=function(){var v=(inp.value||'').trim();if(!v)return '';return v.
   if(s==='waitlist')return['neutral','Waitlist'];
   return['neutral','Live check'];};
  window.vTime=window.vTime||function(t){t=t||'';
-  if(/within 2 weeks/i.test(t))return['bad','Very tight'];
-  if(/2 to 4 weeks/i.test(t))return['warn','Tight, act now'];
+  if(/(within 2 weeks|2-3 weeks)/i.test(t))return['bad','Very tight'];
+  if(/(2 to 4 weeks|in a month)/i.test(t))return['warn','Tight, act now'];
   if(/1 to 3 months/i.test(t))return['ok','Good runway'];
   if(/planning/i.test(t))return['ok','Plenty of time'];
   return['neutral',''];};
