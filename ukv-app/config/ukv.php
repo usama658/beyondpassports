@@ -36,8 +36,8 @@ return [
     // Master toggle for the DE/Europe phone line site-wide. OFF until a real number
     // is live; set UKV_SHOW_DE_PHONE=true to surface it everywhere again.
     'show_de_phone' => filter_var(env('UKV_SHOW_DE_PHONE', false), FILTER_VALIDATE_BOOLEAN),
-    'whatsapp' => env('UKV_WHATSAPP', '447848494680'),   // wa.me number (digits only)
-    'whatsapp_secondary' => env('UKV_WHATSAPP_SECONDARY', '447848494680'), // 2nd line (+44 7848 494680); "Talk to an Expert" CTAs route here
+    'whatsapp' => env('UKV_WHATSAPP', '447462230788'),   // wa.me number (digits only)
+    'whatsapp_secondary' => env('UKV_WHATSAPP_SECONDARY', '447462230788'), // 2nd line (+44 7462 230788); "Talk to an Expert" CTAs route here
     'email' => env('UKV_EMAIL', 'hello@beyondpassports.co.uk'),  // public enquiries inbox
     'email_billing' => env('UKV_EMAIL_BILLING', 'billing@beyondpassports.co.uk'), // reply-to on receipt + refund emails (forward to hello@)
     'email_adviser' => env('UKV_EMAIL_ADVISER', 'adviser@beyondpassports.co.uk'), // named "reach us directly" line on /about (forward to hello@)
@@ -228,7 +228,7 @@ return [
     // Shared WhatsApp shown on each /about team card (wa.me digits, no +). Defaults to the real
     // sitewide line so a placeholder never renders; override with UKV_TEAM_WHATSAPP if the team
     // ever gets a dedicated number.
-    'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447848494680'),
+    'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447462230788'),
 
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
