@@ -29,8 +29,8 @@ return [
     'show_prices' => (bool) env('UKV_SHOW_PRICES', true),
 
     // Public contact details — surfaced site-wide (topbar, footer, contact page, CTAs).
-    'phone' => env('UKV_PHONE', '+44 7848 494680'),      // human-readable display
-    'phone_e164' => env('UKV_PHONE_E164', '+447848494680'),  // for tel: links
+    'phone' => env('UKV_PHONE', '+44 7882 747584'),      // human-readable display
+    'phone_e164' => env('UKV_PHONE_E164', '+447882747584'),  // for tel: links
     'phone_de' => env('UKV_PHONE_DE', '+49 30 0000 0000'),   // Germany display — PLACEHOLDER until real number set
     'phone_de_e164' => env('UKV_PHONE_DE_E164', '+4930000000'),// Germany tel: link — PLACEHOLDER
     // Master toggle for the DE/Europe phone line site-wide. OFF until a real number

@@ -6,7 +6,7 @@
 <div class="topbar"><div class="wrap tb-row" style="justify-content:flex-end">
   {{-- Trustpilot rating removed from topbar; contact links right-aligned. --}}
   <span class="tb-links">
-    <a href="tel:{{ config('ukv.phone_e164') ?: '+4915213103462' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
+    <a href="tel:{{ config('ukv.phone_e164') ?: '+447882747584' }}">@include('partials.call-glyph')<b>UK Team:</b>&nbsp;{{ config('ukv.phone') ?: '+44' }}</a>
     @if(config('ukv.show_de_phone'))<a href="tel:{{ config('ukv.phone_de_e164') ?: '+490000000000' }}">@include('partials.call-glyph')<b>Europe Team:</b>&nbsp;{{ config('ukv.phone_de') ?: '+49' }}</a>@endif
     <a href="https://wa.me/{{ config('ukv.whatsapp') ?: '447882747584' }}">@include('partials.wa-glyph')WhatsApp</a>
     @php $tbIco = trim((string) config('ukv.compliance.ico_number', '')); @endphp
