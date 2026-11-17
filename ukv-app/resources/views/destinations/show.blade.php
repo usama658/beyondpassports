@@ -56,6 +56,10 @@
             'q' => 'What happens if my application is refused?',
             'a' => "The outcome of any application is decided solely by the {$name} authorities, so we cannot guarantee approval. We focus on getting your application accurate and complete to give it the best chance, and we're upfront with you throughout.",
         ],
+        [
+            'q' => "How do I book my {$visaLabel} appointment?",
+            'a' => "Appointment slots release on a rolling basis and can be hard to track on your own. Tell us your dates and we'll confirm availability, book the slot once your documents are ready, and let you know exactly what to bring.",
+        ],
     ];
 
     // --- JSON-LD: Service + FAQPage -----------------------------------------------------
