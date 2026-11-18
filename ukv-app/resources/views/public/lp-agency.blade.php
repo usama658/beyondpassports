@@ -1420,7 +1420,7 @@
 <div class="sva">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="eligibility-check">
   <span class="hero-spine" aria-hidden="true"></span>
   <svg class="hero-landmarks" viewBox="0 0 600 180" fill="var(--navy)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- Eiffel Tower silhouette -->
@@ -1519,7 +1519,7 @@
 
 <!-- APPOINTMENT TABLE -->
 <div class="section-divider"></div>
-<section class="section section--white">
+<section class="section section--white" id="apt">
   <div class="section-inner">
     <div class="reveal">
       <div class="board-topline">
@@ -1613,7 +1613,7 @@
 </section>
 
 <!-- ENGAGE -->
-<section class="section section--grey">
+<section class="section section--grey" id="paths">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-eyebrow">Your situation</p>
@@ -1671,7 +1671,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section section--grey">
+<section class="section section--grey" id="reviews">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-eyebrow">Client results</p>
@@ -1703,7 +1703,7 @@
 
 <!-- STAKE — VIS refusal severity meter -->
 <div class="section-divider"></div>
-<section class="stk">
+<section class="stk" id="visa-refusal-risk">
   <div class="stk-inner">
     <div class="stk-head reveal">
       <div class="stk-label"><span class="fd"></span>What's at stake</div>
@@ -1737,7 +1737,7 @@
 </section>
 
 <!-- PROCESS — ghost-number dark band -->
-<section class="section gpb">
+<section class="section gpb" id="how">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-eyebrow">How our Schengen visa agency works</p>
@@ -1766,7 +1766,7 @@
 
 <!-- PROMISE + TEAM — one section, two columns -->
 <div class="section-divider"></div>
-<section class="section section--grey">
+<section class="section section--grey" id="refused">
   <div class="section-inner">
     <div class="pt2 reveal">
       <div class="pt-pr">
@@ -1838,7 +1838,7 @@
       <div class="fcard"><div class="fq" onclick="this.closest('.fcard').classList.toggle('open')"><span class="qg">Q</span><span>How do I book an Italy visa appointment in the UK?</span><span class="pm">+</span></div><div class="fa"><div class="fain">Through VFS Global, across London, Manchester or Edinburgh. Slots fill quickly once documents are not sorted in time, so we get your file ready first and book the moment a slot is available.</div></div></div>
         </div>
       </div>
-      <aside class="faq-aside reveal" id="close-cta">
+      <aside class="faq-aside reveal" id="speak-to-agent">
         <div class="faq-formcard">
           <p class="fc-eyebrow">Get started with your Schengen visa agents</p>
           <h3 class="fc-h">Your Schengen visa starts with a 30-second message.</h3>
