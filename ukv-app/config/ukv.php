@@ -230,6 +230,15 @@ return [
     // ever gets a dedicated number.
     'team_whatsapp' => env('UKV_TEAM_WHATSAPP', '447882747584'),
 
+    // Hero-form switch (all gold country pages + lp-v2 money page/variants). '1' = default
+    // 4-step flow (country -> stopper -> timing -> phone). '2' = locked short-form variant
+    // (country -> name+phone only; partials.hero-form-variant2). Swapped at serve time by
+    // LpAssembler::inject() between HERO_FORM markers baked into each static file. Change
+    // with UKV_HERO_FORM_VARIANT, no redeploy of the static files needed.
+    'hero_form' => [
+        'variant' => env('UKV_HERO_FORM_VARIANT', '1'),
+    ],
+
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
     // Public social links. Consumers array_filter() these, so a null entry is hidden

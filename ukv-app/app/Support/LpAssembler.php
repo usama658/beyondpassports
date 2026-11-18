@@ -32,6 +32,24 @@ final class LpAssembler
             $html = substr($html, 0, $bpos).$shim.$flow.$utm.substr($html, $bpos);
         }
 
+        // 2b. Hero-form switch: swap the baked default flow (variant '1': country -> stopper ->
+        // timing -> phone) for the locked short-form variant ('2': country -> name+phone only)
+        // between the HERO_FORM_V1 markers baked mid-body into each static country/lp-v2 file.
+        // Files not yet wrapped with the markers are left untouched either way. Flip with
+        // UKV_HERO_FORM_VARIANT — no redeploy of the static files needed to switch back.
+        if (config('ukv.hero_form.variant') === '2') {
+            $startMark = '<!--HERO_FORM_V1_START-->';
+            $endMark = '<!--HERO_FORM_V1_END-->';
+            $sPos = strpos($html, $startMark);
+            $ePos = $sPos !== false ? strpos($html, $endMark, $sPos) : false;
+            if ($sPos !== false && $ePos !== false) {
+                $before = substr($html, 0, $sPos + strlen($startMark));
+                $after = substr($html, $ePos);
+                $variant2 = View::make('partials.hero-form-variant2')->render();
+                $html = $before.$variant2.$after;
+            }
+        }
+
         // 3. Tenure toggle: strip the baked "since 2019" team line on static pages when off.
         if (! config('ukv.stats.show_tenure')) {
             $html = str_replace(' since 2019', '', $html);
