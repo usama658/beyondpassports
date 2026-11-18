@@ -1420,7 +1420,7 @@
 <div class="sva">
 
 <!-- HERO -->
-<section class="hero" id="eligibility-check">
+<section class="hero" id="uk">
   <span class="hero-spine" aria-hidden="true"></span>
   <svg class="hero-landmarks" viewBox="0 0 600 180" fill="var(--navy)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- Eiffel Tower silhouette -->
