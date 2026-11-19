@@ -15,13 +15,17 @@
 <div id=hf2-step1>
   <div class=htoprow><span class=pill>Step 1 of 2</span></div>
   <h2 class=q>Where are you going?</h2>
-  <div class=grid style="grid-template-columns:repeat(2,1fr)">
+  <div class=grid id=hf2hcgrid style="grid-template-columns:repeat(2,1fr)">
     <button type=button class=tile onclick="hf2pick('Spain','es')"><img class=hflag src="https://flagcdn.com/es.svg" alt=""><span class=cn>Spain</span></button>
     <button type=button class=tile onclick="hf2pick('France','fr')"><img class=hflag src="https://flagcdn.com/fr.svg" alt=""><span class=cn>France</span></button>
     <button type=button class=tile onclick="hf2pick('Italy','it')"><img class=hflag src="https://flagcdn.com/it.svg" alt=""><span class=cn>Italy</span></button>
     <button type=button class=tile onclick="hf2pick('Germany','de')"><img class=hflag src="https://flagcdn.com/de.svg" alt=""><span class=cn>Germany</span></button>
     <button type=button class=tile onclick="hf2pick('Greece','gr')"><img class=hflag src="https://flagcdn.com/gr.svg" alt=""><span class=cn>Greece</span></button>
-    <button type=button class=tile onclick="hf2pick('Other Schengen','eu')"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span></button>
+    <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span><svg class=csrch viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7/><path d="M21 21l-4.3-4.3"/></svg></button>
+  </div>
+  <div id=hf2hcwrap class=mhide style="margin-top:10px">
+    <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">&#10005;</button></div>
+    <ul class=mres id=hf2hclist></ul>
   </div>
 </div>
 
@@ -68,6 +72,40 @@
 (function(){
   var WA={!! json_encode($bpWa) !!};
   var state={dest:null,iso:null};
+
+  // Same 29-country Schengen list + status slots as the default flow's "Other Schengen"
+  // search (HSC/HSLOT in the page's own script) — duplicated here under hf2-prefixed names
+  // so this variant doesn't depend on markup the LpAssembler::inject() swap removes from the
+  // page (the default #hcwrap/#hcgrid/#hclist search overlay lives INSIDE the HERO_FORM_V1
+  // markers, so it's gone from the DOM whenever this variant is active).
+  var HF2_HSC=[["Austria","at"],["Belgium","be"],["Bulgaria","bg"],["Croatia","hr"],["Czechia","cz"],["Denmark","dk"],["Estonia","ee"],["Finland","fi"],["France","fr"],["Germany","de"],["Greece","gr"],["Hungary","hu"],["Iceland","is"],["Italy","it"],["Latvia","lv"],["Liechtenstein","li"],["Lithuania","lt"],["Luxembourg","lu"],["Malta","mt"],["Netherlands","nl"],["Norway","no"],["Poland","pl"],["Portugal","pt"],["Romania","ro"],["Slovakia","sk"],["Slovenia","si"],["Spain","es"],["Sweden","se"],["Switzerland","ch"]];
+  var HF2_HSLOT={fr:['open','Open'],de:['open','Open'],gr:['open','Open'],es:['lim','Filling'],it:['lim','Limited']};
+
+  window.hf2hCsearch=function(){
+    var g=document.getElementById('hf2hcgrid');if(g)g.style.display='none';
+    var w=document.getElementById('hf2hcwrap');if(w)w.classList.remove('mhide');
+    hf2hCrender('');
+    var q=document.getElementById('hf2hcq');if(q)q.focus();
+  };
+  window.hf2hCclose=function(){
+    var w=document.getElementById('hf2hcwrap');if(w)w.classList.add('mhide');
+    var g=document.getElementById('hf2hcgrid');if(g)g.style.display='';
+    var q=document.getElementById('hf2hcq');if(q)q.value='';
+  };
+  window.hf2hCrender=function(q){
+    q=(q||'').toLowerCase();
+    var ul=document.getElementById('hf2hclist');if(!ul)return;
+    ul.innerHTML='';
+    var m=HF2_HSC.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});
+    if(!m.length){ul.innerHTML='<li class=nomatch>No match. Try another spelling.</li>';return;}
+    m.forEach(function(c){
+      var st=HF2_HSLOT[c[1]]||['chk','Check'];
+      var li=document.createElement('li');
+      li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+st[0]+'"><span class=cdot2></span>'+st[1]+'</span>';
+      li.onclick=function(){ hf2hCclose(); window.hf2pick(c[0],c[1]); };
+      ul.appendChild(li);
+    });
+  };
 
   // Country pages pre-fill the destination from BP_FLOW_DEST and skip straight to step 2 — but
   // the back button stays visible and working, so a visitor who landed on the wrong country page
