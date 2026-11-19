@@ -24,7 +24,7 @@
     <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span></button>
   </div>
   <div id=hf2hcwrap class=mhide style="margin-top:10px">
-    <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">&#10005;</button></div>
+    <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">Cancel</button></div>
     <ul class=mres id=hf2hclist></ul>
   </div>
 </div>
