@@ -49,11 +49,23 @@
   <p class=reassure>Nothing is charged. A UK specialist replies within 30 minutes.</p>
 </div>
 
-<div id=hf2-sent style="display:none">
+{{-- Thank-you screen, verbatim markup/CSS from the real default flow's own #sent (.snt/.sntgrid/
+     .sntL/.sntR/.seal/.ring/.wac/.disc/.pk/.cnt/.waopen all already global on every real page) -
+     3s auto-open-WhatsApp countdown ring + manual "Open now" fallback, not our own simpler box. --}}
+<div class=snt id=hf2sent><div class=sntgrid>
+ <div class=sntL>
   <div class=seal><svg width=27 height=27 viewBox="0 0 24 24" fill=none stroke="#C5963A" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M20 6L9 17l-5-5"/></svg></div>
-  <h3>You're all set<span id=hf2sentname></span>.</h3>
-  <p class=b>A UK-based specialist reads your details and replies, usually within 30 minutes.</p>
-</div>
+  <h3 id=hf2sntHead>You're all set.</h3>
+  <p class=b>A UK-based specialist reads your answers and replies, usually within 30 minutes.</p>
+  <div class=sntsum id=hf2sntSummary></div>
+ </div>
+ <div class=sntR>
+  <div class=ring><svg width=96 height=96 viewBox="0 0 104 104"><circle class=bg cx=52 cy=52 r=45></circle><circle class=fg cx=52 cy=52 r=45></circle></svg><span class=wac><span class=disc><svg width=26 height=26 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg></span></span></div>
+  <p class=pk>Opening WhatsApp</p>
+  <p class=cnt>The chat opens in <b id=hf2sntCount>3</b> seconds, prefilled with your details.</p>
+  <a class=waopen id=hf2sntWa href="#" target=_blank rel=noopener><svg width=18 height=18 viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Open now</a>
+ </div>
+</div></div>
 
 @once
 <style>
@@ -178,11 +190,19 @@
     var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     document.getElementById('hf2-step2').style.display='none';
-    document.getElementById('hf2sentname').textContent=name?(', '+name):'';
-    document.getElementById('hf2-sent').style.display='block';
+    if(state.dest){ document.getElementById('hf2sntSummary').innerHTML='<div class=row><span class=k>Destination</span><span class=v>'+state.dest+'</span></div>'; }
+    document.getElementById('hf2sntWa').href=web;
+    document.getElementById('hf2sent').classList.add('active');
 
-    if(isMobile){ try{location.href=app;}catch(e){} setTimeout(function(){location.href=web;},1500); }
-    else{ window.open(web,'_blank'); }
+    var went=false;
+    function go(){
+      if(went)return; went=true;
+      if(isMobile){ try{location.href=app;}catch(e){} setTimeout(function(){location.href=web;},1500); }
+      else{ window.open(web,'_blank'); }
+    }
+    var c=3,el=document.getElementById('hf2sntCount');
+    var t=setInterval(function(){c--;if(el)el.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);
+    setTimeout(go,3300);
   };
 
   // BP_FLOW_DEST is assigned by a <script> placed near </body> — later in the DOM than this
