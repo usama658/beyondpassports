@@ -39,7 +39,7 @@ class SecurityHeaders
         // payment-request / camera flows later.
         $response->headers->set(
             'Permissions-Policy',
-            'geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()'
+            'geolocation=(), microphone=(), camera=(), payment=(), usb=()'
         );
 
         // --- Content-Security-Policy ---------------------------------------
