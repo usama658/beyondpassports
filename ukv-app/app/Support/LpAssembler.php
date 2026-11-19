@@ -34,10 +34,16 @@ final class LpAssembler
 
         // 2b. Hero-form switch: swap the baked default flow (variant '1': country -> stopper ->
         // timing -> phone) for the locked short-form variant ('2': country -> name+phone only)
-        // between the HERO_FORM_V1 markers baked mid-body into each static country/lp-v2 file.
-        // Files not yet wrapped with the markers are left untouched either way. Flip with
-        // UKV_HERO_FORM_VARIANT — no redeploy of the static files needed to switch back.
-        if (config('ukv.hero_form.variant') === '2') {
+        // or the single-screen variant ('3': destination+name+phone together, destination opens
+        // a picker overlay) between the HERO_FORM_V1 markers baked mid-body into each static
+        // country/lp-v2 file. Files not yet wrapped with the markers are left untouched either
+        // way. Flip with UKV_HERO_FORM_VARIANT — no redeploy of the static files needed to switch.
+        $heroVariantPartial = match (config('ukv.hero_form.variant')) {
+            '2' => 'partials.hero-form-variant2',
+            '3' => 'partials.hero-form-variant3',
+            default => null,
+        };
+        if ($heroVariantPartial !== null) {
             $startMark = '<!--HERO_FORM_V1_START-->';
             $endMark = '<!--HERO_FORM_V1_END-->';
             $sPos = strpos($html, $startMark);
@@ -45,8 +51,8 @@ final class LpAssembler
             if ($sPos !== false && $ePos !== false) {
                 $before = substr($html, 0, $sPos + strlen($startMark));
                 $after = substr($html, $ePos);
-                $variant2 = View::make('partials.hero-form-variant2')->render();
-                $html = $before.$variant2.$after;
+                $variantHtml = View::make($heroVariantPartial)->render();
+                $html = $before.$variantHtml.$after;
             }
         }
 
