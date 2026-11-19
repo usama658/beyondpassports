@@ -153,7 +153,19 @@
 
   window.hf2startCallback=function(btn){
     if(btn.dataset.running)return;
+
+    var name=(document.getElementById('hf2name').value||'').trim();
+    var phoneRaw=(document.getElementById('hf2phone').value||'').trim();
+    var phoneDigits=phoneRaw.replace(/[^0-9]/g,'').replace(/^0+/,'');
+    var okName=name.length>=2, okPhone=phoneDigits.length>=9 && phoneDigits.length<=11;
+    document.getElementById('hf2e_name').style.display=okName?'none':'block';
+    document.getElementById('hf2e_phone').style.display=okPhone?'none':'block';
+    if(!okName||!okPhone)return;
+
     btn.dataset.running='1';
+    var fullPhone='+44'+phoneDigits;
+    try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-callback'); }catch(e){}
+
     var n=60,label=document.getElementById('hf2cbLabel');
     var tick=setInterval(function(){
       n--;
