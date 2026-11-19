@@ -1099,7 +1099,7 @@ function bars(){for(var i=1;i<=TOTAL;i++){var b=document.getElementById('bar'+i)
 function show(n){
   CUR=n;
   document.querySelectorAll('.step').forEach(function(s){s.classList.toggle('active',+s.dataset.n===n);});
-  document.getElementById('back').classList.toggle('show',n>1);
+  var backBtn=document.getElementById('back');if(backBtn)backBtn.classList.toggle('show',n>1);
   var pill=document.querySelector('.pill');if(pill){pill.style.display=(n<=3)?'':'none';pill.textContent='Step '+n+' of 3';}
   bars();
   var hf=document.getElementById('htopflag');
@@ -1162,7 +1162,7 @@ function send(){
   var waWeb=(window.bpWaUrl||String)('https://wa.me/'+WA+'?text='+text);
   var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
-  document.getElementById('back').classList.remove('show');
+  var backBtn2=document.getElementById('back');if(backBtn2)backBtn2.classList.remove('show');
   var pill=document.querySelector('.pill');if(pill){pill.style.display='';pill.textContent='All set';}
   document.querySelectorAll('.bar').forEach(function(b){b.classList.add('on');});
   document.getElementById('sntHead').textContent="You're all set.";
@@ -1181,7 +1181,7 @@ function send(){
   var t=setInterval(function(){c--;if(el)el.textContent=c<0?0:c;if(c<=0){clearInterval(t);go();}},1000);
   setTimeout(go,3300);
 }
-document.getElementById('back').addEventListener('click',goBack);
+var backBtn3=document.getElementById('back');if(backBtn3)backBtn3.addEventListener('click',goBack);
 bars();
 // ---- dial-code phone combo (port of partials.phone-country) ----
 (function(){
