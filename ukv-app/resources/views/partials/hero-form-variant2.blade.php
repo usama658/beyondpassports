@@ -65,6 +65,11 @@
 .cta-ghost:hover{border-color:var(--gold);background:#fffdf8}
 .cta-ghost svg{width:17px;height:17px;flex:none;color:var(--gold)}
 .cb-timer{font:800 13px var(--sans);color:var(--gold);min-width:28px;text-align:left}
+/* A site-wide script injects a .mx.df-close button into every .htoprow (for the DEFAULT flow's
+   mobile full-screen-sheet promotion, gated on .step.active[data-n]>=2 - markup this variant
+   doesn't use). It still appends into our htoprow since we reuse the real .htoprow class; scope
+   it off here only, so the default flow's own close button elsewhere is untouched. */
+#hf2-step1 .df-close,#hf2-step2 .df-close{display:none!important}
 </style>
 @endonce
 
