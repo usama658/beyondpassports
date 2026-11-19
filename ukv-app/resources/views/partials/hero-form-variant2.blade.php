@@ -117,6 +117,7 @@
       document.getElementById('hf2destq').textContent=' for your '+state.dest+' visa';
       document.getElementById('hf2-step1').style.display='none';
       document.getElementById('hf2-step2').style.display='block';
+      document.getElementById('hf2back').classList.add('show');
     }
   }
 
@@ -125,10 +126,12 @@
     document.getElementById('hf2destq').textContent='';
     document.getElementById('hf2-step1').style.display='none';
     document.getElementById('hf2-step2').style.display='block';
+    document.getElementById('hf2back').classList.add('show');
   };
   window.hf2back=function(){
     document.getElementById('hf2-step2').style.display='none';
     document.getElementById('hf2-step1').style.display='block';
+    document.getElementById('hf2back').classList.remove('show');
   };
 
   window.hf2startCallback=function(btn){
