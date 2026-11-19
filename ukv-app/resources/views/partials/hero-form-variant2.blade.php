@@ -21,7 +21,7 @@
     <button type=button class=tile onclick="hf2pick('Italy','it')"><img class=hflag src="https://flagcdn.com/it.svg" alt=""><span class=cn>Italy</span></button>
     <button type=button class=tile onclick="hf2pick('Germany','de')"><img class=hflag src="https://flagcdn.com/de.svg" alt=""><span class=cn>Germany</span></button>
     <button type=button class=tile onclick="hf2pick('Greece','gr')"><img class=hflag src="https://flagcdn.com/gr.svg" alt=""><span class=cn>Greece</span></button>
-    <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span><svg class=csrch viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7/><path d="M21 21l-4.3-4.3"/></svg></button>
+    <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/eu.svg" alt=""><span class=cn>Other Schengen</span></button>
   </div>
   <div id=hf2hcwrap class=mhide style="margin-top:10px">
     <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/eu.svg" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">&#10005;</button></div>
