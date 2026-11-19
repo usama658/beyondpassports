@@ -119,7 +119,7 @@
 
 <script>
 (function(){
-  var WA={{ json_encode($bpWa) }};
+  var WA={!! json_encode($bpWa) !!};
   var HSC=[['Austria','at'],['Belgium','be'],['Croatia','hr'],['Czechia','cz'],['Denmark','dk'],
   ['Estonia','ee'],['Finland','fi'],['France','fr'],['Germany','de'],['Greece','gr'],['Hungary','hu'],
   ['Iceland','is'],['Italy','it'],['Latvia','lv'],['Liechtenstein','li'],['Lithuania','lt'],

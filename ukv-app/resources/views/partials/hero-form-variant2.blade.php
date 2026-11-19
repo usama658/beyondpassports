@@ -58,7 +58,7 @@
 
 <script>
 (function(){
-  var WA={{ json_encode($bpWa) }};
+  var WA={!! json_encode($bpWa) !!};
   var state={dest:null,iso:null};
   var locked=false;
 
