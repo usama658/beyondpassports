@@ -38,6 +38,10 @@
   </div>
   <div class=errmsg id=hf2e_phone style="display:none">Please enter a valid UK number</div>
   <button type=button class=wabtn onclick="hf2send()"><svg width=19 height=19 viewBox="0 0 24 24" fill=none stroke="#3d2b08" stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> <span id=hf2cta>Get me a consultant</span></button>
+  <button type=button class=cta-ghost id=hf2cbBtn onclick="hf2startCallback(this)">
+    <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.1 stroke-linecap=round stroke-linejoin=round><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+    <span id=hf2cbLabel>Get a call back in 60 seconds</span>
+  </button>
   <p class=reassure>Nothing is charged. A UK specialist replies within 30 minutes.</p>
 </div>
 
@@ -53,6 +57,10 @@
 .hf2-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,150,58,.14)}
 #hf2-step1 .tile,#hf2-step2{animation:hf2in .18s ease}
 @keyframes hf2in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.cta-ghost{margin-top:10px;width:100%;background:#fff;color:var(--navy);border:1.5px solid var(--border);border-radius:13px;padding:14px;font:700 14px var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+.cta-ghost:hover{border-color:var(--gold);background:#fffdf8}
+.cta-ghost svg{width:17px;height:17px;flex:none;color:var(--gold)}
+.cb-timer{font:800 13px var(--sans);color:var(--gold);min-width:28px;text-align:left}
 </style>
 @endonce
 
@@ -60,16 +68,16 @@
 (function(){
   var WA={!! json_encode($bpWa) !!};
   var state={dest:null,iso:null};
-  var locked=false;
 
+  // Country pages pre-fill the destination from BP_FLOW_DEST and skip straight to step 2 — but
+  // the back button stays visible and working, so a visitor who landed on the wrong country page
+  // can still correct it instead of being stuck with a destination they didn't choose.
   function lockToFlowDest(){
     if (window.BP_FLOW_DEST && window.BP_FLOW_DEST.dest) {
-      locked = true;
       state.dest = window.BP_FLOW_DEST.dest;
       state.iso = window.BP_FLOW_DEST.iso || '';
-      document.getElementById('hf2-step1').style.display='none';
-      document.getElementById('hf2back').style.display='none';
       document.getElementById('hf2destq').textContent=' for your '+state.dest+' visa';
+      document.getElementById('hf2-step1').style.display='none';
       document.getElementById('hf2-step2').style.display='block';
     }
   }
@@ -81,9 +89,25 @@
     document.getElementById('hf2-step2').style.display='block';
   };
   window.hf2back=function(){
-    if(locked)return;
     document.getElementById('hf2-step2').style.display='none';
     document.getElementById('hf2-step1').style.display='block';
+  };
+
+  window.hf2startCallback=function(btn){
+    if(btn.dataset.running)return;
+    btn.dataset.running='1';
+    var n=60,label=document.getElementById('hf2cbLabel');
+    var tick=setInterval(function(){
+      n--;
+      label.innerHTML='Calling you back&hellip; <span class=cb-timer>'+n+'s</span>';
+      if(n<=0){
+        clearInterval(tick);
+        label.textContent='Request sent — stay by your phone';
+        btn.style.borderColor='var(--green)';
+        btn.style.color='var(--green)';
+      }
+    },1000);
+    label.innerHTML='Calling you back&hellip; <span class=cb-timer>60s</span>';
   };
 
   window.hf2send=function(){
