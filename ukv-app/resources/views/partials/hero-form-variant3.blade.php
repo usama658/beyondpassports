@@ -197,7 +197,20 @@
 
   window.hf3startCallback=function(btn){
     if(btn.dataset.running)return;
+
+    var name=(document.getElementById('hf3name').value||'').trim();
+    var phoneRaw=(document.getElementById('hf3phone').value||'').trim();
+    var phoneDigits=hf3NormalizePhone(phoneRaw);
+    var okDest=!!state.dest, okName=name.length>=2, okPhone=hf3PhoneOk(phoneDigits);
+    document.getElementById('hf3e_dest').style.display=okDest?'none':'block';
+    document.getElementById('hf3e_name').style.display=okName?'none':'block';
+    document.getElementById('hf3e_phone').style.display=okPhone?'none':'block';
+    if(!okDest||!okName||!okPhone)return;
+
     btn.dataset.running='1';
+    var fullPhone='+44'+phoneDigits;
+    try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-callback'); }catch(e){}
+
     var n=60,label=document.getElementById('hf3cbLabel');
     var tick=setInterval(function(){
       n--;
