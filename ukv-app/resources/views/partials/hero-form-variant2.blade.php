@@ -90,6 +90,22 @@
   var WA={!! json_encode($bpWa) !!};
   var state={dest:null,iso:null};
 
+  // UK mobile normalizer. Field is a fixed +44 with no country picker, but visitors commonly
+  // type their number already in international format ("+44 7911 123456", "+447911123456",
+  // "+44 (0) 7911 123456") since that's how UK numbers are stored on a phone that travels
+  // internationally - a plain digit-count check rejected all of those (only "07911 123456"
+  // passed) and, worse, accepted UK landlines (020.../011...) which can never receive WhatsApp.
+  // Strip a redundant leading "44" country code first, then any leftover leading zero (from a
+  // local "0..." entry or a "(0)" after +44), then require exactly 10 digits starting with 7 -
+  // the real shape of every UK mobile's national significant number.
+  function hf2NormalizePhone(raw){
+    var d=(raw||'').replace(/[^0-9]/g,'');
+    if(d.slice(0,2)==='44'&&d.length>10) d=d.slice(2);
+    d=d.replace(/^0+/,'');
+    return d;
+  }
+  function hf2PhoneOk(d){ return /^7\d{9}$/.test(d); }
+
   // Same 29-country Schengen list + status slots as the default flow's "Other Schengen"
   // search (HSC/HSLOT in the page's own script) — duplicated here under hf2-prefixed names
   // so this variant doesn't depend on markup the LpAssembler::inject() swap removes from the
@@ -156,8 +172,8 @@
 
     var name=(document.getElementById('hf2name').value||'').trim();
     var phoneRaw=(document.getElementById('hf2phone').value||'').trim();
-    var phoneDigits=phoneRaw.replace(/[^0-9]/g,'').replace(/^0+/,'');
-    var okName=name.length>=2, okPhone=phoneDigits.length>=9 && phoneDigits.length<=11;
+    var phoneDigits=hf2NormalizePhone(phoneRaw);
+    var okName=name.length>=2, okPhone=hf2PhoneOk(phoneDigits);
     document.getElementById('hf2e_name').style.display=okName?'none':'block';
     document.getElementById('hf2e_phone').style.display=okPhone?'none':'block';
     if(!okName||!okPhone)return;
@@ -183,8 +199,8 @@
   window.hf2send=function(){
     var name=(document.getElementById('hf2name').value||'').trim();
     var phoneRaw=(document.getElementById('hf2phone').value||'').trim();
-    var phoneDigits=phoneRaw.replace(/[^0-9]/g,'').replace(/^0+/,'');
-    var okName=name.length>=2, okPhone=phoneDigits.length>=9 && phoneDigits.length<=11;
+    var phoneDigits=hf2NormalizePhone(phoneRaw);
+    var okName=name.length>=2, okPhone=hf2PhoneOk(phoneDigits);
     document.getElementById('hf2e_name').style.display=okName?'none':'block';
     document.getElementById('hf2e_phone').style.display=okPhone?'none':'block';
     if(!okName||!okPhone)return;

@@ -120,6 +120,18 @@
 <script>
 (function(){
   var WA={!! json_encode($bpWa) !!};
+
+  // UK mobile normalizer — see [[hero-form-variants]] memory / hero-form-variant2.blade.php for
+  // why: a plain digit-count check rejected numbers typed in international format and accepted
+  // landlines. Strip a redundant leading "44", then any leftover leading zero, then require
+  // exactly 10 digits starting with 7 (the real shape of a UK mobile's national number).
+  function hf3NormalizePhone(raw){
+    var d=(raw||'').replace(/[^0-9]/g,'');
+    if(d.slice(0,2)==='44'&&d.length>10) d=d.slice(2);
+    d=d.replace(/^0+/,'');
+    return d;
+  }
+  function hf3PhoneOk(d){ return /^7\d{9}$/.test(d); }
   var HSC=[['Austria','at'],['Belgium','be'],['Croatia','hr'],['Czechia','cz'],['Denmark','dk'],
   ['Estonia','ee'],['Finland','fi'],['France','fr'],['Germany','de'],['Greece','gr'],['Hungary','hu'],
   ['Iceland','is'],['Italy','it'],['Latvia','lv'],['Liechtenstein','li'],['Lithuania','lt'],
@@ -203,8 +215,8 @@
   window.hf3send=function(){
     var name=(document.getElementById('hf3name').value||'').trim();
     var phoneRaw=(document.getElementById('hf3phone').value||'').trim();
-    var phoneDigits=phoneRaw.replace(/[^0-9]/g,'').replace(/^0+/,'');
-    var okDest=!!state.dest, okName=name.length>=2, okPhone=phoneDigits.length>=9 && phoneDigits.length<=11;
+    var phoneDigits=hf3NormalizePhone(phoneRaw);
+    var okDest=!!state.dest, okName=name.length>=2, okPhone=hf3PhoneOk(phoneDigits);
     document.getElementById('hf3e_dest').style.display=okDest?'none':'block';
     document.getElementById('hf3e_name').style.display=okName?'none':'block';
     document.getElementById('hf3e_phone').style.display=okPhone?'none':'block';
