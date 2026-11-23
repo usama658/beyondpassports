@@ -239,6 +239,14 @@ return [
         'variant' => env('UKV_HERO_FORM_VARIANT', '1'),
     ],
 
+    // Toggle for the appointment-flow modal (fbPop: country -> timing -> "Are your documents
+    // ready?" -> verdict). When true, skips the documents-ready question (defaults S.ready to
+    // 'almost' so the verdict screen still has content) and goes straight from timing to the
+    // verdict/CTA screen. Default OFF — no redeploy needed to flip either way.
+    'appointment_form' => [
+        'skip_readiness' => env('UKV_APPOINTMENT_SKIP_READINESS', false),
+    ],
+
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
     // Public social links. Consumers array_filter() these, so a null entry is hidden
