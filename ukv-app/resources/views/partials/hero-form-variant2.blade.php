@@ -31,7 +31,7 @@
 
 <div id=hf2-step2 style="display:none">
   <div class=htoprow><button type=button class=back id=hf2back aria-label=Back onclick="hf2back()"><svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round stroke-linejoin=round><path d="M15 18l-6-6 6-6"/></svg></button><span class=pill>Step 2 of 2</span></div>
-  <h2 class=q>Where do we send it<span id=hf2destq></span>?</h2>
+  <h2 class=q>Where should we contact you<span id=hf2destq></span>?</h2>
   <div class="v-flabel" style="margin-top:2px">Full name</div>
   <input type=text id=hf2name class=hf2-input placeholder="Your name" autocomplete=name>
   <div class=errmsg id=hf2e_name style="display:none">Please enter your name</div>
