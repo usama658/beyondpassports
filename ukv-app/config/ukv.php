@@ -347,7 +347,7 @@ return [
             'h1_lead' => 'Schengen visa consultants for anyone applying ',
             'h1_gold' => 'from the UK.',
             'hook'    => 'A named UK consultant checks your whole file, guides the application, and helps you get appointment-ready.',
-            'sub'     => 'Independent UK consultants who check every document before you submit and guide you through the application, so you apply with confidence. Not a government service, you submit and book your own appointment through the official portal.',
+            'sub'     => 'Tell us your travel dates. Our UK Schengen visa consultants confirm appointment availability, review your documents before you submit, and guide you through your application. Not a government service, you submit and book your own appointment through the official portal.',
         ],
     ],
 
