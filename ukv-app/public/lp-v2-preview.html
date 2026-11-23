@@ -1657,7 +1657,7 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
  window.fbOpenSearch=function(){fbOpen();fbCsearch();};
  window.fbCclose=function(){var w=$('fbcwrap');if(w)w.classList.add('mhide');var g=$('fbcgrid');if(g)g.style.display='';var q=$('fbcq');if(q)q.value='';};
  window.fbCrender=function(q){q=(q||'').toLowerCase();var ul=$('fbclist');if(!ul)return;ul.innerHTML='';var list=(typeof HSC!=='undefined'&&HSC)||[];var SL=(typeof HSLOT!=='undefined'&&HSLOT)||{};var m=list.filter(function(c){return !q||c[0].toLowerCase().indexOf(q)>-1;});if(!m.length){ul.innerHTML='<li class=nomatch>No match. Try another spelling.</li>';return;}m.forEach(function(c){var st=SL[c[1]]||['chk','Check'];var li=document.createElement('li');li.innerHTML='<img class=flag src="https://flagcdn.com/'+c[1]+'.svg" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+st[0]+'"><span class=cdot2></span>'+st[1]+'</span>';li.onclick=function(){S.country=c[0];S.cc=c[1];fbShow(1);fbCclose();};ul.appendChild(li);});};
- window.fbBackFn=function(){if(CUR>START&&CUR<4)fbShow(CUR-1);};
+ window.fbBackFn=function(){if(CUR>START&&CUR<4)fbShow((window.UKV_SKIP_READINESS&&CUR===3)?1:CUR-1);};
  window.fbPickCountry=function(el,name,iso){selIn(el);S.country=name;S.cc=iso||'';setTimeout(function(){fbShow(1);},180);};
  window.fbPickTiming=function(el,k){selIn(el);S.timing=k;setTimeout(function(){if(window.UKV_SKIP_READINESS){S.ready='almost';fbShow(3);}else{fbShow(2);}},180);};
  window.fbPickReady=function(el,k){selIn(el);S.ready=k;setTimeout(function(){fbShow(3);},180);};
