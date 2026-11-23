@@ -47,6 +47,8 @@ final class LpAssembler
             : null;
         $shim = '<script>window.BP_FLOW_DEST='
             .($dest ? json_encode($dest, JSON_UNESCAPED_SLASHES) : 'null')
+            .';window.UKV_SKIP_READINESS='
+            .(config('ukv.appointment_form.skip_readiness') ? 'true' : 'false')
             .';</script>';
         $flow = View::make('partials.lp-flow')->render();
         $utm  = View::make('partials.utm-capture')->render();
