@@ -699,8 +699,8 @@ var els=document.querySelectorAll('.bpcount');for(var i=0;i<els.length;i++)els[i
 (function(){
  var WA='447882747584';
  var READY={
-  yes:{badge:'Ready to book',bc:'g',v:"Then we can start today. It's £49 to start, and if you don't get a slot, you get it back.",cta:'Start with a consultant'},
-  almost:{badge:'Almost there',bc:'a',v:"Almost is enough to start. We'll tell you what's missing and get on with the booking at the same time. £49 to start, refunded if we can't get you a date.",cta:'Start with a consultant'},
+  yes:{badge:'Ready to book',bc:'g',v:"Then we can start today. It's £49 to start, and if you don't get a slot, you get it back.",cta:'Talk with a consultant'},
+  almost:{badge:'Almost there',bc:'a',v:"Almost is enough to start. We'll tell you what's missing and get on with the booking at the same time. £49 to start, refunded if we can't get you a date.",cta:'Talk with a consultant'},
   no:{badge:'Not started',bc:'s',v:"Most people haven't. We'll send you exactly what {C} asks for from someone on your visa, free. Booking starts at £49 when you're ready.",cta:'Send me what {C} asks for'}
  };
  var READYLBL={yes:'Documents ready',almost:'Almost ready',no:'Not started yet'};
