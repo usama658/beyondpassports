@@ -68,16 +68,16 @@
       <button type=button class=dest-x onclick="hf3destClose()">&#10005;</button>
     </div>
     <div class=grid id=hf3destGrid>
-      <button type=button class=tile onclick="hf3destPick('Spain','es')"><img class=hflag src="https://flagcdn.com/w80/es.png" alt=""><span><span class=cn>Spain</span><span class="cst lim"><span class=cdot></span>Filling</span></span></button>
-      <button type=button class=tile onclick="hf3destPick('France','fr')"><img class=hflag src="https://flagcdn.com/w80/fr.png" alt=""><span><span class=cn>France</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
-      <button type=button class=tile onclick="hf3destPick('Italy','it')"><img class=hflag src="https://flagcdn.com/w80/it.png" alt=""><span><span class=cn>Italy</span><span class="cst lim"><span class=cdot></span>Limited</span></span></button>
-      <button type=button class=tile onclick="hf3destPick('Germany','de')"><img class=hflag src="https://flagcdn.com/w80/de.png" alt=""><span><span class=cn>Germany</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
-      <button type=button class=tile onclick="hf3destPick('Greece','gr')"><img class=hflag src="https://flagcdn.com/w80/gr.png" alt=""><span><span class=cn>Greece</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
+      <button type=button class=tile onclick="hf3destPick('Spain','es')"><img class=hflag src="https://flagcdn.com/w80/es.png" width="26" height="19" alt=""><span><span class=cn>Spain</span><span class="cst lim"><span class=cdot></span>Filling</span></span></button>
+      <button type=button class=tile onclick="hf3destPick('France','fr')"><img class=hflag src="https://flagcdn.com/w80/fr.png" width="26" height="19" alt=""><span><span class=cn>France</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
+      <button type=button class=tile onclick="hf3destPick('Italy','it')"><img class=hflag src="https://flagcdn.com/w80/it.png" width="26" height="19" alt=""><span><span class=cn>Italy</span><span class="cst lim"><span class=cdot></span>Limited</span></span></button>
+      <button type=button class=tile onclick="hf3destPick('Germany','de')"><img class=hflag src="https://flagcdn.com/w80/de.png" width="26" height="19" alt=""><span><span class=cn>Germany</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
+      <button type=button class=tile onclick="hf3destPick('Greece','gr')"><img class=hflag src="https://flagcdn.com/w80/gr.png" width="26" height="19" alt=""><span><span class=cn>Greece</span><span class="cst open"><span class=cdot></span>Open</span></span></button>
       <button type=button class=tile onclick="hf3Search()"><svg class=csrch viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7></circle><path d="M21 21l-4.3-4.3"/></svg><span><span class=cn>Other Schengen</span></span></button>
     </div>
     <div id=hf3hcwrap class=mhide style="margin-top:14px">
       <div class=msearch>
-        <span class=euchip><img class=flag src="https://flagcdn.com/w80/eu.png" alt=""><svg width=14 height=14 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7></circle><path d="M21 21l-4.3-4.3"/></svg></span>
+        <span class=euchip><img class=flag src="https://flagcdn.com/w80/eu.png" width="24" height="17" alt=""><svg width=14 height=14 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.2 stroke-linecap=round stroke-linejoin=round><circle cx=11 cy=11 r=7></circle><path d="M21 21l-4.3-4.3"/></svg></span>
         <input type=text id=hf3hcq placeholder="Search Schengen countries" oninput="hf3Render(this.value)">
         <button type=button class=bk onclick="hf3Close()">Cancel</button>
       </div>
@@ -191,7 +191,7 @@
     var matches=HSC.filter(function(c){return c[0].toLowerCase().indexOf(q)===0;});
     if(!matches.length){ list.innerHTML='<li class=nomatch>No matches</li>'; return; }
     list.innerHTML=matches.map(function(c){
-      return '<li onclick="hf3destPick(\''+c[0]+'\',\''+c[1]+'\')"><img class=flag src="https://flagcdn.com/w80/'+c[1]+'.png" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 open"><span class=cdot2></span>Open</span></li>';
+      return '<li onclick="hf3destPick(\''+c[0]+'\',\''+c[1]+'\')"><img class=flag src="https://flagcdn.com/w80/'+c[1]+'.png" width="24" height="17" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 open"><span class=cdot2></span>Open</span></li>';
     }).join('');
   };
 

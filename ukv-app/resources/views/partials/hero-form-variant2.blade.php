@@ -16,15 +16,15 @@
   <div class=htoprow><span class=pill>Step 1 of 2</span></div>
   <h2 class=q>Where are you going?</h2>
   <div class=grid id=hf2hcgrid style="grid-template-columns:repeat(2,1fr)">
-    <button type=button class=tile onclick="hf2pick('Spain','es')"><img class=hflag src="https://flagcdn.com/w80/es.png" alt=""><span class=cn>Spain</span></button>
-    <button type=button class=tile onclick="hf2pick('France','fr')"><img class=hflag src="https://flagcdn.com/w80/fr.png" alt=""><span class=cn>France</span></button>
-    <button type=button class=tile onclick="hf2pick('Italy','it')"><img class=hflag src="https://flagcdn.com/w80/it.png" alt=""><span class=cn>Italy</span></button>
-    <button type=button class=tile onclick="hf2pick('Germany','de')"><img class=hflag src="https://flagcdn.com/w80/de.png" alt=""><span class=cn>Germany</span></button>
-    <button type=button class=tile onclick="hf2pick('Greece','gr')"><img class=hflag src="https://flagcdn.com/w80/gr.png" alt=""><span class=cn>Greece</span></button>
-    <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/w80/eu.png" alt=""><span class=cn>Other Schengen</span></button>
+    <button type=button class=tile onclick="hf2pick('Spain','es')"><img class=hflag src="https://flagcdn.com/w80/es.png" width="26" height="19" alt=""><span class=cn>Spain</span></button>
+    <button type=button class=tile onclick="hf2pick('France','fr')"><img class=hflag src="https://flagcdn.com/w80/fr.png" width="26" height="19" alt=""><span class=cn>France</span></button>
+    <button type=button class=tile onclick="hf2pick('Italy','it')"><img class=hflag src="https://flagcdn.com/w80/it.png" width="26" height="19" alt=""><span class=cn>Italy</span></button>
+    <button type=button class=tile onclick="hf2pick('Germany','de')"><img class=hflag src="https://flagcdn.com/w80/de.png" width="26" height="19" alt=""><span class=cn>Germany</span></button>
+    <button type=button class=tile onclick="hf2pick('Greece','gr')"><img class=hflag src="https://flagcdn.com/w80/gr.png" width="26" height="19" alt=""><span class=cn>Greece</span></button>
+    <button type=button class=tile onclick="hf2hCsearch()"><img class=hflag src="https://flagcdn.com/w80/eu.png" width="26" height="19" alt=""><span class=cn>Other Schengen</span></button>
   </div>
   <div id=hf2hcwrap class=mhide style="margin-top:10px">
-    <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/w80/eu.png" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">Cancel</button></div>
+    <div class=msearch><span class=euchip><img class=flag src="https://flagcdn.com/w80/eu.png" width="24" height="17" alt=""><span>Schengen</span></span><input id=hf2hcq placeholder="Search countries" oninput="hf2hCrender(this.value)" autocomplete=off><button type=button class=bk onclick="hf2hCclose()">Cancel</button></div>
     <ul class=mres id=hf2hclist></ul>
   </div>
 </div>
@@ -134,7 +134,7 @@
     m.forEach(function(c){
       var st=HF2_HSLOT[c[1]]||['chk','Check'];
       var li=document.createElement('li');
-      li.innerHTML='<img class=flag src="https://flagcdn.com/w80/'+c[1]+'.png" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+st[0]+'"><span class=cdot2></span>'+st[1]+'</span>';
+      li.innerHTML='<img class=flag src="https://flagcdn.com/w80/'+c[1]+'.png" width="24" height="17" alt=""><span class=cn2>'+c[0]+'</span><span class="cst2 '+st[0]+'"><span class=cdot2></span>'+st[1]+'</span>';
       li.onclick=function(){ hf2hCclose(); window.hf2pick(c[0],c[1]); };
       ul.appendChild(li);
     });
