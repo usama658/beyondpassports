@@ -410,14 +410,14 @@
     <div class="fcard">
       <form id="vfr-form" autocomplete="off">
         <div class="fc-eye"><i></i>TLScontact France &middot; checked daily</div>
-        <div class="fc-h"><img class="fc-flag" src="https://flagcdn.com/fr.svg" alt="">Find my France slot</div>
+        <div class="fc-h"><img class="fc-flag" src="https://flagcdn.com/w80/fr.png" alt="">Find my France slot</div>
         <div class="cchips"><span>London</span><span>Manchester</span><span>Edinburgh</span><span class="dl"><b>checked daily</b></span></div>
         <label class="fl">When are you travelling? <span class="rq">*</span></label>
         <div class="tf" id="vfr-tf">
           <button type="button" data-tf="Within 3 weeks">Within 3 weeks</button><button type="button" data-tf="This month">This month</button><button type="button" data-tf="In 1&ndash;3 months">In 1&ndash;3 months</button><button type="button" data-tf="Just planning">Just planning</button>
         </div>
         <label class="fl" for="vfr-phone">Your phone number <span class="rq">*</span></label>
-        <div class="pc"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+        <div class="pc"><span class="cc"><img src="https://flagcdn.com/w80/gb.png" alt="">+44</span><input id="vfr-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
         <button type="submit" class="sbtn">@include('partials.wa-glyph')Check France availability</button>
         <p class="fnote">We usually reply within 30 minutes and take the earliest date at your nearest centre.</p>
       </form>
@@ -470,7 +470,7 @@
             <button type="button" data-v="Medical"><svg viewBox="0 0 24 24"><path d="M11 3h2v6h6v2h-6v6h-2v-6H5V9h6z"/></svg>Medical</button>
           </div>
           <div class="afrow">
-            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/gb.svg" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/w80/gb.png" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
             <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
           </div>
           <div class="afoot"><span class="alive"><i></i>Checked daily</span>Usually a reply within 30 minutes, 7 days.</div>
