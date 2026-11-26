@@ -49,6 +49,8 @@ final class LpAssembler
             .($dest ? json_encode($dest, JSON_UNESCAPED_SLASHES) : 'null')
             .';window.UKV_SKIP_READINESS='
             .(config('ukv.appointment_form.skip_readiness') ? 'true' : 'false')
+            .';window.UKV_SKIP_PURPOSE='
+            .(config('ukv.eligibility_form.skip_purpose') ? 'true' : 'false')
             .';</script>';
         $flow = View::make('partials.lp-flow')->render();
         $utm  = View::make('partials.utm-capture')->render();

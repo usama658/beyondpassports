@@ -247,6 +247,15 @@ return [
         'skip_readiness' => env('UKV_APPOINTMENT_SKIP_READINESS', false),
     ],
 
+    // Toggle for the shared eligibility-check modal (partials.lp-flow, mOpen('eligibility'):
+    // country -> purpose -> timing -> details -> close). When true, drops the "Why are you
+    // travelling?" purpose step from the eligibility intent only (other intents like slots/
+    // priority/timeline that also ask purpose are unaffected). Default OFF — no redeploy
+    // needed to flip either way.
+    'eligibility_form' => [
+        'skip_purpose' => env('UKV_ELIGIBILITY_SKIP_PURPOSE', false),
+    ],
+
     // Social profiles — rendered as footer icons + Organization sameAs schema. Add each URL
     // as the account is created; blank entries are skipped. Env overrides per key.
     // Public social links. Consumers array_filter() these, so a null entry is hidden

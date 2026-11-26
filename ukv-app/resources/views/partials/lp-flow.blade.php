@@ -346,6 +346,7 @@ window.mOpen=function(intent,dest,iso){
  if(!INT[intent]){dest=intent;iso=ISOM[intent]||'';intent='availability';}
  CFG=INT[intent];ST={intent:intent,pref:null,plan:null,purpose:null,refreason:null,dest:null,iso:null,centre:null,dates:null,altc:null,tim:null};
  SEQ=CFG.seq.slice();
+ if(intent==='eligibility'&&window.UKV_SKIP_PURPOSE){var pi=SEQ.indexOf('purpose');if(pi>-1)SEQ.splice(pi,1);}
  if(!dest&&FD){dest=FD.dest;iso=FD.iso;}
  if(dest){ST.dest=dest;ST.iso=iso||'';var ci=SEQ.indexOf('country');if(ci>-1)SEQ.splice(ci,1);}
  if(CFG.preselect)ST.pref=CFG.preselect;
