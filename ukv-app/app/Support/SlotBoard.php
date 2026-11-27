@@ -10,16 +10,17 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Dynamic weekly appointment-slots board (LOCKED spec: docs/appointment-slots-dynamic.md v1.1).
+ * Dynamic appointment-slots board (LOCKED spec: docs/appointment-slots-dynamic.md v1.2).
  *
- * 70 total slots/week split across the Schengen countries the board renders. The split is a
- * weighted RANDOM allocation reseeded every week (so almost every country's number changes
- * week to week) but STABLE within the week — deterministic from the "slot week" key, which
- * rolls over each Saturday 00:00 Europe/London. No cron: a new Saturday changes the key, which
- * changes the seed AND the cache/DB namespace, so counts reset automatically.
+ * 70 total slots per reset PERIOD_DAYS-day period, split across the Schengen countries the
+ * board renders. The split is a weighted RANDOM allocation reseeded every period (so almost
+ * every country's number changes) but STABLE within the period — deterministic from the "slot
+ * week" key, which rolls over every PERIOD_DAYS days from a fixed epoch (EPOCH). No cron: once
+ * the clock crosses a period boundary the key changes, which changes the seed AND the cache/DB
+ * namespace, so counts reset automatically.
  *
  * Decrement is PER INQUIRY (server-side, from the three lead controllers), keyed to the lead's
- * destination country, deduped per visitor per country per week. Country -1 and total -1.
+ * destination country, deduped per visitor per country per period. Country -1 and total -1.
  * Never below 0; a country at 0 is reported as 'ask' so the board renders it exactly like a
  * no-availability country today.
  *
@@ -34,31 +35,42 @@ final class SlotBoard
     /** Weekly pool shared across all countries. */
     public const TOTAL = 70;
 
-    /** Minimum slots every country shows at seed. (1 = more weekly per-country variance.) */
+    /** Minimum slots every country shows at seed. (1 = more per-period variance.) */
     public const FLOOR = 1;
+
+    /** Reset cadence in days. Was weekly (7, Saturday-anchored); now every 3 days. */
+    public const PERIOD_DAYS = 3;
+
+    /**
+     * Fixed anchor date (a Saturday) that period boundaries are counted from. Arbitrary but
+     * must never change — moving it would shift every period boundary site-wide overnight.
+     */
+    private const EPOCH = '2000-01-01';
 
     /** Higher-demand countries get proportionally more of the leftover pool. */
     private const POPULAR = ['France', 'Spain', 'Italy', 'Germany', 'Greece', 'Netherlands', 'Portugal'];
 
     private const POPULAR_WEIGHT = 3;
 
-    /** Cache TTL for decrement/dedup keys — comfortably longer than one slot week. */
+    /** Cache TTL for decrement/dedup keys — comfortably longer than one slot period. */
     private const TTL_SECONDS = 10 * 24 * 60 * 60;
 
     /** Test seam: override the country list without touching the DB. */
     private static ?array $countriesOverride = null;
 
     /**
-     * The "slot week" key — the date (Y-m-d) of the most recent Saturday in Europe/London.
-     * Rolls over every Saturday 00:00; drives both the random seed and the storage namespace.
+     * The "slot week" key — the date (Y-m-d) of the start of the current PERIOD_DAYS-day
+     * period, counted from the fixed EPOCH in Europe/London. Rolls over every PERIOD_DAYS days
+     * at 00:00; drives both the random seed and the storage namespace.
      */
     public static function slotWeek(?CarbonImmutable $now = null): string
     {
         $now = ($now ?? CarbonImmutable::now())->setTimezone('Europe/London')->startOfDay();
-        // Carbon: Saturday = 6. Step back to the most recent Saturday (today if it is Saturday).
-        $daysSinceSat = ($now->dayOfWeek - CarbonImmutable::SATURDAY + 7) % 7;
+        $epoch = CarbonImmutable::createFromFormat('Y-m-d', self::EPOCH, 'Europe/London')->startOfDay();
+        $daysSinceEpoch = (int) $epoch->diffInDays($now);
+        $periodIndex = intdiv($daysSinceEpoch, self::PERIOD_DAYS);
 
-        return $now->subDays($daysSinceSat)->format('Y-m-d');
+        return $epoch->addDays($periodIndex * self::PERIOD_DAYS)->format('Y-m-d');
     }
 
     /** Schengen countries the board renders, in a stable order. Cached; DB-backed. */

@@ -67,16 +67,23 @@ class SlotBoardTest extends TestCase
         $this->assertGreaterThan($malta, $france, 'popular countries weighted higher on average');
     }
 
-    public function test_slot_week_rolls_over_on_saturday(): void
+    public function test_slot_week_rolls_over_every_three_days(): void
     {
-        $sat = CarbonImmutable::parse('2026-01-03', 'Europe/London'); // a Saturday
-        $this->assertTrue($sat->isSaturday());
+        $now = CarbonImmutable::parse('2026-03-02 12:00:00', 'Europe/London');
+        $periodStart = SlotBoard::slotWeek($now);
+        $periodStartDate = CarbonImmutable::parse($periodStart, 'Europe/London');
 
-        $this->assertSame('2026-01-03', SlotBoard::slotWeek($sat));
-        $this->assertSame('2026-01-03', SlotBoard::slotWeek($sat->addDays(3)));  // Tue, same week
-        $this->assertSame('2026-01-03', SlotBoard::slotWeek($sat->addDays(6)));  // Fri, same week
-        $this->assertSame('2026-01-10', SlotBoard::slotWeek($sat->addDays(7)));  // next Sat, new week
-        $this->assertTrue(CarbonImmutable::parse(SlotBoard::slotWeek($sat->addDays(2)))->isSaturday());
+        $this->assertSame($periodStart, SlotBoard::slotWeek($periodStartDate), 'day 0 of the period');
+        $this->assertSame($periodStart, SlotBoard::slotWeek($periodStartDate->addDays(1)), 'day 1, still same period');
+        $this->assertSame($periodStart, SlotBoard::slotWeek($periodStartDate->addDays(2)), 'day 2, still same period');
+        $this->assertNotSame($periodStart, SlotBoard::slotWeek($periodStartDate->addDays(3)), 'day 3 rolls to the next period');
+
+        // The new period is itself exactly PERIOD_DAYS after the one before it.
+        $next = SlotBoard::slotWeek($periodStartDate->addDays(3));
+        $this->assertSame(
+            SlotBoard::PERIOD_DAYS,
+            (int) $periodStartDate->diffInDays(CarbonImmutable::parse($next, 'Europe/London'))
+        );
     }
 
     public function test_decrement_reduces_country_and_total_and_dedups(): void
