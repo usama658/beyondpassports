@@ -7,8 +7,9 @@
      both already injected site-wide by LpAssembler::inject(). On a per-country page,
      window.BP_FLOW_DEST={dest,iso} is already set (same shim the modal flow uses) — step 1
      is skipped there and the destination shows locked, matching how the modal already locks.
-     Phone field is a fixed +44 (UK-only audience; no dial-code picker) — intentional scope
-     cut, see memory [[hero-form-variants]] for why. --}}
+     Phone field uses the shared partials.phone-country combo (53-country dial-code picker),
+     same as every other phone field site-wide — converted from the earlier UK-only fixed
+     +44 field per explicit request, see memory [[hero-form-variants]] for history. --}}
 @php
   $bpWa = config('ukv.whatsapp') ?: '447882747584';
 @endphp
@@ -36,11 +37,8 @@
   <input type=text id=hf2name class=hf2-input placeholder="Your name" autocomplete=name>
   <div class=errmsg id=hf2e_name style="display:none">Please enter your name</div>
   <div class="v-flabel">WhatsApp number</div>
-  <div class=pc-combo style="pointer-events:none">
-    <button type=button class=pc-btn tabindex=-1><img class=pc-fl-img src="https://beyondpassports.co.uk/assets/flags/gb.svg" width=20 height=15 alt=""><span class=pc-dc>+44</span></button>
-    <input type=tel id=hf2phone class=pc-input style="pointer-events:auto" placeholder="7911 123456" inputmode=tel autocomplete=tel>
-  </div>
-  <div class=errmsg id=hf2e_phone style="display:none">Please enter a valid UK number</div>
+  @include('partials.phone-country', ['id' => 'hf2phone', 'name' => 'hf2phone', 'placeholder' => '7911 123456'])
+  <div class=errmsg id=hf2e_phone style="display:none">Please enter a valid phone number</div>
   <button type=button class=wabtn onclick="hf2send()"><svg width=19 height=19 viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> <span id=hf2cta>Get urgent visa help</span></button>
   <button type=button class=cta-ghost id=hf2cbBtn onclick="hf2startCallback(this)">
     <svg viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2.1 stroke-linecap=round stroke-linejoin=round><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
@@ -90,21 +88,18 @@
   var WA={!! json_encode($bpWa) !!};
   var state={dest:null,iso:null};
 
-  // UK mobile normalizer. Field is a fixed +44 with no country picker, but visitors commonly
-  // type their number already in international format ("+44 7911 123456", "+447911123456",
-  // "+44 (0) 7911 123456") since that's how UK numbers are stored on a phone that travels
-  // internationally - a plain digit-count check rejected all of those (only "07911 123456"
-  // passed) and, worse, accepted UK landlines (020.../011...) which can never receive WhatsApp.
-  // Strip a redundant leading "44" country code first, then any leftover leading zero (from a
-  // local "0..." entry or a "(0)" after +44), then require exactly 10 digits starting with 7 -
-  // the real shape of every UK mobile's national significant number.
+  // Generic phone normalizer. The shared partials.phone-country combo now owns the real
+  // per-country digit-length validation (shown as its own pc-err on blur/submit) and the
+  // dial-code picker UI; this just strips non-digits/leading zero for our own loose gate and
+  // reads the user-selected dial code from the combo's hidden {name}_dialcode field.
   function hf2NormalizePhone(raw){
-    var d=(raw||'').replace(/[^0-9]/g,'');
-    if(d.slice(0,2)==='44'&&d.length>10) d=d.slice(2);
-    d=d.replace(/^0+/,'');
-    return d;
+    return (raw||'').replace(/[^0-9]/g,'').replace(/^0+/,'');
   }
-  function hf2PhoneOk(d){ return /^7\d{9}$/.test(d); }
+  function hf2PhoneOk(d){ return d.length>=6 && d.length<=15; }
+  function hf2DialCode(){
+    var dc=document.querySelector('[name="hf2phone_dialcode"]');
+    return dc?dc.value:'+44';
+  }
 
   // Same 29-country Schengen list + status slots as the default flow's "Other Schengen"
   // search (HSC/HSLOT in the page's own script) — duplicated here under hf2-prefixed names
@@ -179,7 +174,7 @@
     if(!okName||!okPhone)return;
 
     btn.dataset.running='1';
-    var fullPhone='+44'+phoneDigits;
+    var fullPhone=hf2DialCode()+' '+phoneDigits;
     try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-callback'); }catch(e){}
 
     var n=60,label=document.getElementById('hf2cbLabel');
@@ -205,7 +200,7 @@
     document.getElementById('hf2e_phone').style.display=okPhone?'none':'block';
     if(!okName||!okPhone)return;
 
-    var fullPhone='+44'+phoneDigits;
+    var fullPhone=hf2DialCode()+' '+phoneDigits;
     try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-short'); }catch(e){}
 
     var text='Hi Beyond Passports, I would like help with my Schengen visa.'

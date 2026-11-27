@@ -21,7 +21,9 @@
      window.BP_FLOW_DEST={dest,iso} (same shim variant 2 consumes) and locks the destination field
      — deferred to DOMContentLoaded since that shim's own <script> sits later in the DOM (near
      </body>) than this partial (mid-body); reading it synchronously would always see null.
-     Phone field is a fixed +44, no dial-code picker — same intentional scope cut as variant 2. --}}
+     Phone field uses the shared partials.phone-country combo (53-country dial-code picker),
+     same as every other phone field site-wide — converted from the earlier UK-only fixed
+     +44 field per explicit request, see memory [[hero-form-variants]] for history. --}}
 @php
   $bpWa = config('ukv.whatsapp') ?: '447882747584';
 @endphp
@@ -41,11 +43,8 @@
   <div class=errmsg id=hf3e_name style="display:none">Please enter your name</div>
 
   <div class=v-flabel>WhatsApp number</div>
-  <div class=pc-combo>
-    <button type=button class=pc-btn tabindex=-1><img class=pc-fl-img src="https://beyondpassports.co.uk/assets/flags/gb.svg" width=20 height=15 alt=""><span class=pc-dc>+44</span></button>
-    <input type=tel id=hf3phone class=pc-input placeholder="7911 123456" inputmode=tel autocomplete=tel>
-  </div>
-  <div class=errmsg id=hf3e_phone style="display:none">Please enter a valid UK number</div>
+  @include('partials.phone-country', ['id' => 'hf3phone', 'name' => 'hf3phone', 'placeholder' => '7911 123456'])
+  <div class=errmsg id=hf3e_phone style="display:none">Please enter a valid phone number</div>
 
   <button type=button class=wabtn onclick="hf3send()"><svg width=19 height=19 viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.2.5.2.5.4.1.1.1.8-.2 1.4z"/></svg> Get urgent visa help</button>
   <button type=button class=cta-ghost id=hf3cbBtn onclick="hf3startCallback(this)">
@@ -121,17 +120,18 @@
 (function(){
   var WA={!! json_encode($bpWa) !!};
 
-  // UK mobile normalizer — see [[hero-form-variants]] memory / hero-form-variant2.blade.php for
-  // why: a plain digit-count check rejected numbers typed in international format and accepted
-  // landlines. Strip a redundant leading "44", then any leftover leading zero, then require
-  // exactly 10 digits starting with 7 (the real shape of a UK mobile's national number).
+  // Generic phone normalizer. The shared partials.phone-country combo now owns the real
+  // per-country digit-length validation (shown as its own pc-err on blur/submit) and the
+  // dial-code picker UI; this just strips non-digits/leading zero for our own loose gate and
+  // reads the user-selected dial code from the combo's hidden {name}_dialcode field.
   function hf3NormalizePhone(raw){
-    var d=(raw||'').replace(/[^0-9]/g,'');
-    if(d.slice(0,2)==='44'&&d.length>10) d=d.slice(2);
-    d=d.replace(/^0+/,'');
-    return d;
+    return (raw||'').replace(/[^0-9]/g,'').replace(/^0+/,'');
   }
-  function hf3PhoneOk(d){ return /^7\d{9}$/.test(d); }
+  function hf3PhoneOk(d){ return d.length>=6 && d.length<=15; }
+  function hf3DialCode(){
+    var dc=document.querySelector('[name="hf3phone_dialcode"]');
+    return dc?dc.value:'+44';
+  }
   var HSC=[['Austria','at'],['Belgium','be'],['Croatia','hr'],['Czechia','cz'],['Denmark','dk'],
   ['Estonia','ee'],['Finland','fi'],['France','fr'],['Germany','de'],['Greece','gr'],['Hungary','hu'],
   ['Iceland','is'],['Italy','it'],['Latvia','lv'],['Liechtenstein','li'],['Lithuania','lt'],
@@ -208,7 +208,7 @@
     if(!okDest||!okName||!okPhone)return;
 
     btn.dataset.running='1';
-    var fullPhone='+44'+phoneDigits;
+    var fullPhone=hf3DialCode()+' '+phoneDigits;
     try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-callback'); }catch(e){}
 
     var n=60,label=document.getElementById('hf3cbLabel');
@@ -235,7 +235,7 @@
     document.getElementById('hf3e_phone').style.display=okPhone?'none':'block';
     if(!okDest||!okName||!okPhone)return;
 
-    var fullPhone='+44'+phoneDigits;
+    var fullPhone=hf3DialCode()+' '+phoneDigits;
     try{ if(window.postLead) window.postLead(name, fullPhone, state.dest||'', 'case-single'); }catch(e){}
 
     var text='Hi Beyond Passports, I would like help with my Schengen visa.'
