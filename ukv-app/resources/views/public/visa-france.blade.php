@@ -417,7 +417,7 @@
           <button type="button" data-tf="Within 3 weeks">Within 3 weeks</button><button type="button" data-tf="This month">This month</button><button type="button" data-tf="In 1&ndash;3 months">In 1&ndash;3 months</button><button type="button" data-tf="Just planning">Just planning</button>
         </div>
         <label class="fl" for="vfr-phone">Your phone number <span class="rq">*</span></label>
-        <div class="pc"><span class="cc"><img src="https://flagcdn.com/w80/gb.png" alt="">+44</span><input id="vfr-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+        @include('partials.phone-country', ['id' => 'vfr-phone', 'name' => 'vfr-phone', 'placeholder' => '7911 123456'])
         <button type="submit" class="sbtn">@include('partials.wa-glyph')Check France availability</button>
         <p class="fnote">We usually reply within 30 minutes and take the earliest date at your nearest centre.</p>
       </form>
@@ -470,7 +470,7 @@
             <button type="button" data-v="Medical"><svg viewBox="0 0 24 24"><path d="M11 3h2v6h6v2h-6v6h-2v-6H5V9h6z"/></svg>Medical</button>
           </div>
           <div class="afrow">
-            <div class="apc" id="vfr-appt-pcw"><span class="cc"><img src="https://flagcdn.com/w80/gb.png" alt="">+44</span><input id="vfr-appt-phone" type="tel" inputmode="tel" placeholder="7911 123456"></div>
+            <div class="apc" id="vfr-appt-pcw">@include('partials.phone-country', ['id' => 'vfr-appt-phone', 'name' => 'vfr-appt-phone', 'placeholder' => '7911 123456'])</div>
             <button type="submit" class="asb">@include('partials.wa-glyph')Check availability</button>
           </div>
           <div class="afoot"><span class="alive"><i></i>Checked daily</span>Usually a reply within 30 minutes, 7 days.</div>
@@ -735,7 +735,10 @@
     var input = document.getElementById('vfr-phone');
     var phone = (input.value || '').trim();
     if (!phone) { input.focus(); return; }
-    if (phone.charAt(0) !== '+') { phone = '+44 ' + phone.replace(/[^\d]/g,'').replace(/^0+/,''); }
+    if (phone.charAt(0) !== '+') {
+      var dc = form.querySelector('[name="vfr-phone_dialcode"]');
+      phone = (dc ? dc.value : '+44') + ' ' + phone.replace(/[^\d]/g,'').replace(/^0+/,'');
+    }
     var btn = form.querySelector('.sbtn'); btn.disabled = true;
     var payload = { phone: phone, dest: 'France', intent: 'France slot - ' + timeframe, utm: (window.bpUtm ? window.bpUtm() : null) };
     fetch(@json(route('lp-bold.lead')), {
@@ -766,7 +769,8 @@
     var input = document.getElementById('vfr-appt-phone');
     var raw = (input.value || '').replace(/[^\d]/g,'');
     if (raw.length < 7) { pcw.classList.add('err'); input.focus(); return; }
-    var phone = '+44 ' + raw.replace(/^0+/,'');
+    var dc = form.querySelector('[name="vfr-appt-phone_dialcode"]');
+    var phone = (dc ? dc.value : '+44') + ' ' + raw.replace(/^0+/,'');
     var btn = form.querySelector('.asb'); btn.disabled = true;
     var payload = { phone: phone, dest: 'France', intent: 'France appointment - ' + pick, utm: (window.bpUtm ? window.bpUtm() : null) };
     fetch(@json(route('lp-bold.lead')), {
